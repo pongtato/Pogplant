@@ -3,7 +3,7 @@
 #include <glfw3.h>
 
 // Printing error to console - To be replaced by IMGUI
-#if DEBUG
+#ifdef _DEBUG
 #include <iostream>
 #endif
 
@@ -34,7 +34,7 @@ namespace PP
 		m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, NULL, NULL);
 		if (m_Window == NULL)
 		{
-#if DEBUG
+#ifdef _DEBUG
 			std::cout << "[PP::WINDOW] Failed to create GLFW window" << std::endl;
 #endif
 			glfwTerminate();
@@ -53,7 +53,7 @@ namespace PP
 			glfwSwapInterval(0);
 		}
 
-#if DEBUG
+#ifdef _DEBUG
 		std::cout << "[PP::WINDOW] Window Created " << std::endl;
 #endif
 		return 0;
@@ -61,7 +61,7 @@ namespace PP
 
 	void Window::CleanUpWindow()
 	{
-#if DEBUG
+#ifdef _DEBUG
 		std::cout << "[PP::WINDOW] Window Cleaned Up " << std::endl;
 #endif
 		glfwTerminate();
@@ -69,7 +69,7 @@ namespace PP
 
 	void Window::CloseWindow()
 	{
-#if DEBUG
+#ifdef _DEBUG
 		std::cout << "[PP::WINDOW] Window Closed " << std::endl;
 #endif
 		glfwSetWindowShouldClose(m_Window, true);
