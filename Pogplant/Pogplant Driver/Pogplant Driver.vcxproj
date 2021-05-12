@@ -80,11 +80,15 @@
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
     <IncludePath>$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
