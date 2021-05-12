@@ -19,18 +19,66 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{74bed6fd-3848-4f13-a289-61d698aef94f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Renderer">
+      <UniqueIdentifier>{bf0245aa-8bfc-4085-9dd6-b85fbfa56ea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Mesh">
+      <UniqueIdentifier>{b1f2efb7-2da9-4771-9579-a51750cb3d3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Mesh\MeshBuilder">
+      <UniqueIdentifier>{93ea4051-3056-4952-b80e-1d8b2dbcf470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Camera">
+      <UniqueIdentifier>{71f4df85-95c9-48cd-b20a-5021ed1cf75a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Mesh\MeshResource">
+      <UniqueIdentifier>{6a8e81d2-09fc-4123-be58-f0a25f1790bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Mesh\MeshInstance">
+      <UniqueIdentifier>{b8e0f5ee-6c1e-4d11-881b-e509387b2c9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Window\PP_Window.cpp">
-      <Filter>Source Files\Window</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Src\Window\PP_Window.h">
-      <Filter>Source Files\Window</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Pogplant.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Window.h">
+      <Filter>Source Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Renderer.h">
+      <Filter>Source Files\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\MeshBuilder.h">
+      <Filter>Source Files\Graphics\Mesh\MeshBuilder</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Mesh.h">
+      <Filter>Source Files\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\MeshResource.h">
+      <Filter>Source Files\Graphics\Mesh\MeshResource</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\MeshInstance.h">
+      <Filter>Source Files\Graphics\Mesh\MeshInstance</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Window.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Renderer.cpp">
+      <Filter>Source Files\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\MeshBuilder.cpp">
+      <Filter>Source Files\Graphics\Mesh\MeshBuilder</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Mesh.cpp">
+      <Filter>Source Files\Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\MeshResource.cpp">
+      <Filter>Source Files\Graphics\Mesh\MeshResource</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\MeshInstance.cpp">
+      <Filter>Source Files\Graphics\Mesh\MeshInstance</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

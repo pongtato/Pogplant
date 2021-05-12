@@ -2,7 +2,7 @@
 
 struct GLFWwindow;
 
-namespace PP
+namespace Pogplant
 {
 	struct Window
 	{

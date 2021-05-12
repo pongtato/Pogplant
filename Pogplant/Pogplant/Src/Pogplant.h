@@ -1,2 +1,5 @@
 #pragma once
-#include "Window/PP_Window.h"
+#include "Window.h"
+#include "Renderer.h"
+
+namespace PP = Pogplant;

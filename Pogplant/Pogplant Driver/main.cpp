@@ -9,10 +9,13 @@ void Init()
 
 void Run()
 {
-	//while (!PP::Window::ShouldCloseWindow())
-	//{
-	//	PP::Window::CheckForceClose(); // Temp exit using Esc
-	//}
+	while (!PP::Window::ShouldCloseWindow())
+	{
+		PP::Window::CheckForceClose(); // Temp exit using Esc
+		PP::Renderer::ClearBuffer();
+		PP::Renderer::Draw();
+		PP::Renderer::SwapBuffer();
+	}
 }
 
 void Exit()

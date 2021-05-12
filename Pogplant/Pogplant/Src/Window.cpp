@@ -1,4 +1,4 @@
-#include "PP_Window.h"
+#include "Window.h"
 
 #include <glfw3.h>
 
@@ -7,7 +7,7 @@
 #include <iostream>
 #endif
 
-namespace PP
+namespace Pogplant
 {
 	/// Static
 	GLFWwindow* Window::m_Window = nullptr;
@@ -15,7 +15,7 @@ namespace PP
 	int Window::m_Height = 0;
 	bool Window::m_VSync = false;
 
-	void Window_Size_Callback(GLFWwindow*, int _Width, int _Height)
+	void WindowSizeCallback(GLFWwindow*, int _Width, int _Height)
 	{
 		Window::SetWindowSize(_Width, _Height);
 		glViewport(0, 0, _Width, _Height);
@@ -41,7 +41,7 @@ namespace PP
 			return -1;
 		}
 		glfwMakeContextCurrent(m_Window);
-		glfwSetFramebufferSizeCallback(m_Window, Window_Size_Callback);
+		glfwSetFramebufferSizeCallback(m_Window, WindowSizeCallback);
 
 		// VSync
 		if (m_VSync)
