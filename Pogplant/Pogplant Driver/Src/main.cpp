@@ -33,7 +33,7 @@ void ObjectTest()
 
 void Init()
 {
-	PP::Window::InitWindow(1280, 720, "KEKW");
+	PP::Window::InitWindow(1280, 720, "Pogplant Driver 6969");
 	PP::MeshBuilder::InitMesh();
 	PP::ShaderLinker::InitShader();
 	PP::FrameBuffer::InitFrameBuffer();

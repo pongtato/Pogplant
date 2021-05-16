@@ -66,4 +66,11 @@ namespace Pogplant
 			delete it;
 		}
 	}
+	void CameraResource::UpdateAllProjection()
+	{
+		for (auto& it : m_CameraPool)
+		{
+			it->UpdateProjection();
+		}
+	}
 }

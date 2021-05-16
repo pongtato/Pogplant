@@ -2,12 +2,9 @@
 #include "FrameBufferResource.h"
 #include "Window.h"
 #include "ShaderLinker.h"
+#include "Logger.h"
 
 #include <glew.h>
-
-#ifdef _DEBUG
-#include <iostream>
-#endif
 
 namespace Pogplant
 {
@@ -88,17 +85,15 @@ namespace Pogplant
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Window::m_Width, Window::m_Height);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, *depthStencil);
 
-#ifdef _DEBUG
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			std::cout << "[PP::FRAMEBUFFER] Editor framebuffer init failed" << std::endl;
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Editor Framebuffer init failed" });
 		}
 		else
 		{
-			std::cout << "[PP::FRAMEBUFFER] Editor framebuffer init complete" << std::endl;
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS,"Editor Framebuffer init complete" });
 		}
-#endif
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
@@ -130,17 +125,16 @@ namespace Pogplant
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Window::m_Width, Window::m_Height);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, *depthStencil);
 
-#ifdef _DEBUG
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			std::cout << "[PP::FRAMEBUFFER] Game framebuffer init failed" << std::endl;
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Game Framebuffer init failed" });
 		}
 		else
 		{
-			std::cout << "[PP::FRAMEBUFFER] Game framebuffer init complete" << std::endl;
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS,"Game Framebuffer init complete" });
 		}
-#endif
+
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
@@ -171,17 +165,16 @@ namespace Pogplant
 		unsigned int attachments[2] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1 };
 		glDrawBuffers(2, attachments);
 
-#ifdef _DEBUG
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			std::cout << "[PP::FRAMEBUFFER] Post processing framebuffer init failed" << std::endl;
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Post Processing Framebuffer init failed" });
 		}
 		else
 		{
-			std::cout << "[PP::FRAMEBUFFER] Post processing framebuffer init complete" << std::endl;
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS,"Post Processing Framebuffer init complete" });
 		}
-#endif
+
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 }

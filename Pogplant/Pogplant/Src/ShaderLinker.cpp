@@ -1,13 +1,10 @@
 #include "ShaderLinker.h"
 #include "ShaderResource.h"
+#include "Logger.h"
 
 #include <fstream>
 #include <sstream>
 #include <glew.h>
-// Printing error to console - To be replaced by IMGUI
-#ifdef _DEBUG
-#include <iostream>
-#endif
 
 namespace Pogplant
 {
@@ -45,9 +42,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -60,9 +57,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -75,9 +72,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -90,9 +87,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -105,9 +102,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -120,9 +117,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -135,9 +132,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -150,9 +147,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -165,9 +162,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -180,9 +177,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -195,9 +192,9 @@ namespace Pogplant
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			Logger::Log({ "PP::SHADER",LogEntry::WARNING, logEntry.str() });
 		}
 	}
 
@@ -240,10 +237,9 @@ namespace Pogplant
 		}
 		catch (std::ifstream::failure e)
 		{
-#ifdef _DEBUG
-			//logger.Error(true, "Failed to read shader file");
-			std::cout << "[PP::SHADER] Failed to read shader file" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << _ProgramID << " Failed to read shader file";
+			Logger::Log({ "PP::SHADER",LogEntry::ERROR, logEntry.str() });
 		}
 
 		///Compiling of shaders
@@ -268,10 +264,9 @@ namespace Pogplant
 		if (!success)
 		{
 			glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Failed to compile vertex shader: " << infoLog << std::endl;
-			std::cout << "[PP::SHADER] Failed at " << _VertexPath << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << _ProgramID << " Failed to compile vertex shader "  << " | " << infoLog;
+			Logger::Log({ "PP::SHADER",LogEntry::ERROR, logEntry.str() });
 		}
 
 		/// Fragment Shader
@@ -284,10 +279,9 @@ namespace Pogplant
 		if (!success)
 		{
 			glGetShaderInfoLog(fragment, 512, NULL, infoLog);
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Failed to compile fragment shader: " << infoLog << std::endl;
-			std::cout << "[PP::SHADER] Failed at " << _FragmentPath << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << _ProgramID << " Failed to compile fragment shader " << " | " << infoLog;
+			Logger::Log({ "PP::SHADER",LogEntry::ERROR, logEntry.str() });
 		}
 
 		// Shader Program
@@ -301,15 +295,15 @@ namespace Pogplant
 		if (!success)
 		{
 			glGetProgramInfoLog(ShaderResource::m_ShaderPrograms[_ProgramID], 512, NULL, infoLog);
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] Failed to link shaders: " << infoLog << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << _ProgramID << " Shaders failed to link " << " | " << infoLog;
+			Logger::Log({ "PP::SHADER",LogEntry::ERROR, logEntry.str() });
 		}
 		else
 		{
-#ifdef _DEBUG
-			std::cout << "[PP::SHADER] " << _VertexPath << " and " << _FragmentPath << " linked" << std::endl;
-#endif
+			std::stringstream logEntry;
+			logEntry << _ProgramID << " Shaders linked";
+			Logger::Log({ "PP::SHADER",LogEntry::SUCCESS, logEntry.str() });
 		}
 
 		// Delete the shaders as they're linked into our program now and no longer necessary

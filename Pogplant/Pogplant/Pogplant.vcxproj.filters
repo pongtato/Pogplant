@@ -55,6 +55,9 @@
     <Filter Include="Source Files\Camera\CameraResource">
       <UniqueIdentifier>{9ce489cc-150c-4016-a90b-d701d6781208}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Logger">
+      <UniqueIdentifier>{7575ba94-c103-4529-a55d-e26bfa5e785f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -96,6 +99,9 @@
     <ClInclude Include="Src\CameraResource.h">
       <Filter>Source Files\Camera\CameraResource</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Logger.h">
+      <Filter>Source Files\Logger</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -133,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="Src\CameraResource.cpp">
       <Filter>Source Files\Camera\CameraResource</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Logger.cpp">
+      <Filter>Source Files\Logger</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -15,6 +15,7 @@
     <ClInclude Include="Src\CameraResource.h" />
     <ClInclude Include="Src\FrameBuffer.h" />
     <ClInclude Include="Src\FrameBufferResource.h" />
+    <ClInclude Include="Src\Logger.h" />
     <ClInclude Include="Src\Mesh.h" />
     <ClInclude Include="Src\MeshBuilder.h" />
     <ClInclude Include="Src\MeshInstance.h" />
@@ -30,6 +31,7 @@
     <ClCompile Include="Src\CameraResource.cpp" />
     <ClCompile Include="Src\FrameBuffer.cpp" />
     <ClCompile Include="Src\FrameBufferResource.cpp" />
+    <ClCompile Include="Src\Logger.cpp" />
     <ClCompile Include="Src\Mesh.cpp" />
     <ClCompile Include="Src\MeshBuilder.cpp" />
     <ClCompile Include="Src\MeshInstance.cpp" />

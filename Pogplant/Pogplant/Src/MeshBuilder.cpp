@@ -2,9 +2,10 @@
 #include "Mesh.h"
 #include "MeshResource.h"
 #include "MeshInstance.h"
+#include "Logger.h"
 
 #include <glew.h>
-#include <iostream>
+
 
 namespace Pogplant
 {
@@ -29,13 +30,11 @@ namespace Pogplant
         Mesh* mesh = MeshResource::m_MeshPool[MT::QUAD];
 
         /// Assert
-#ifdef _DEBUG
         if (mesh == nullptr)
         {
-            std::cout << "[PP::MESH] Quad resource is null" << std::endl;
+            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Quad resource is NULL" });
             return;
         }
-#endif
 
         // Instanced data
         const size_t instDatSize = sizeof(InstanceData);
@@ -100,13 +99,11 @@ namespace Pogplant
         Mesh* mesh = MeshResource::m_MeshPool[MT::QUAD];
 
         /// Assert
-#ifdef _DEBUG
         if (mesh == nullptr)
         {
-            std::cout << "[PP::MESH] Quad resource is null" << std::endl;
+            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Quad resource is NULL" });
             return;
         }
-#endif
 
         mesh->m_VertexData =
         {
@@ -207,13 +204,11 @@ namespace Pogplant
         Mesh* mesh = MeshResource::m_MeshPool[MT::SCREEN];
 
         /// Assert
-#ifdef _DEBUG
         if (mesh == nullptr)
         {
-            std::cout << "[PP::MESH] Screen resource is null" << std::endl;
+            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Screen resource is NULL" });
             return;
         }
-#endif
 
         mesh->m_VertexData =
         {

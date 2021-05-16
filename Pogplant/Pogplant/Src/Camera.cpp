@@ -48,8 +48,16 @@ namespace Pogplant
 
 	void Camera::UpdateProjection()
 	{
-		const float aspectR = static_cast<float>(Window::m_Width) / Window::m_Height;
-		m_Projection = glm::perspective(glm::radians(m_CameraConfig.m_Zoom), aspectR, m_CameraConfig.m_Near, m_CameraConfig.m_Far);
+		if (Window::m_Height != 0)
+		{
+			const float aspectR = static_cast<float>(Window::m_Width) / Window::m_Height;
+			m_Projection = glm::perspective(glm::radians(m_CameraConfig.m_Zoom), aspectR, m_CameraConfig.m_Near, m_CameraConfig.m_Far);
+		}
+		else
+		{
+			const float aspectR = 1.0f;
+			m_Projection = glm::perspective(glm::radians(m_CameraConfig.m_Zoom), aspectR, m_CameraConfig.m_Near, m_CameraConfig.m_Far);
+		}
 	}
 
 	void Camera::UpdateVec()

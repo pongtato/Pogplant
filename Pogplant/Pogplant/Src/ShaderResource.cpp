@@ -1,8 +1,5 @@
 #include "ShaderResource.h"
-// Printing error to console - To be replaced by IMGUI
-#ifdef _DEBUG
-#include <iostream>
-#endif
+#include "Logger.h"
 
 namespace Pogplant
 {
@@ -18,12 +15,10 @@ namespace Pogplant
 
 	void ShaderResource::AddShaderProfile(const ShaderProfile& _ShaderProfile)
 	{
-#ifdef _DEBUG
 		if(m_ShaderProfiles.find(_ShaderProfile.m_ProgramID) != m_ShaderProfiles.end())
 		{
-			std::cout << "[PP::SHADER] Duplicate shader profile ID" << std::endl;
+			Logger::Log({ "PP::SHADER",LogEntry::ERROR,"Duplicate shader profile ID" });
 		}
-#endif
 		m_ShaderProfiles[_ShaderProfile.m_ProgramID] = _ShaderProfile;
 	}
 }
