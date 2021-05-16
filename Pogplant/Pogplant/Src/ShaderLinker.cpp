@@ -1,0 +1,319 @@
+#include "ShaderLinker.h"
+#include "ShaderResource.h"
+
+#include <fstream>
+#include <sstream>
+#include <glew.h>
+// Printing error to console - To be replaced by IMGUI
+#ifdef _DEBUG
+#include <iostream>
+#endif
+
+namespace Pogplant
+{
+	unsigned int ShaderLinker::m_ProgramHandle = 0;
+
+	void ShaderLinker::InitShader()
+	{
+		/// Serialize?
+		ShaderResource::AddShaderProfile(ShaderProfile("BASIC", "../Pogplant/Shaders/Basic.vert", "../Pogplant/Shaders/Basic.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("SCREEN", "../Pogplant/Shaders/Screen.vert", "../Pogplant/Shaders/Screen.frag"));
+
+		for (const auto& it : ShaderResource::m_ShaderProfiles)
+		{
+			LoadShader(it.second.m_ProgramID, it.second.m_VertexPath, it.second.m_FragmentPath);
+		}
+	}
+
+	void ShaderLinker::Use(const char* _ProgramID)
+	{
+		m_ProgramHandle = ShaderResource::m_ShaderPrograms[_ProgramID];
+		glUseProgram(m_ProgramHandle);
+	}
+
+	void ShaderLinker::UnUse()
+	{
+		glUseProgram(0);
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, bool _Val)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniform1i(loc, _Val);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, int _Val)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniform1i(loc, _Val);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, float _Val)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniform1f(loc, _Val);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, float _X, float _Y)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniform2f(loc, _X, _Y);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, float _X, float _Y, float _Z)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniform3f(loc, _X, _Y, _Z);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, float _X, float _Y, float _Z, float _W)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniform4f(loc, _X, _Y, _Z, _W);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, const glm::vec2& _Val)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniform2f(loc, _Val.x, _Val.y);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, const glm::vec3& _Val)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniform3f(loc, _Val.x, _Val.y, _Val.z);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, const glm::vec4& _Val)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniform4f(loc, _Val.x, _Val.y, _Val.z, _Val.w);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, const glm::mat3& _Val)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniformMatrix3fv(loc, 1, GL_FALSE, &_Val[0][0]);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	void ShaderLinker::SetUniform(char const* _Name, const glm::mat4& _Val)
+	{
+		GLint loc = glGetUniformLocation(m_ProgramHandle, _Name);
+		if (loc >= 0)
+		{
+			glUniformMatrix4fv(loc, 1, GL_FALSE, &_Val[0][0]);
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Uniform variable " << _Name << " doesn't exist" << std::endl;
+#endif
+		}
+	}
+
+	unsigned int ShaderLinker::GetHandle()
+	{
+		return m_ProgramHandle;
+	}
+
+	void ShaderLinker::LoadShader(const char* const _ProgramID, const char* const _VertexPath, const char* const _FragmentPath)
+	{
+		// Get vertex/fragment shader code from file path
+		std::string vertexCode;
+		std::string fragmentCode;
+		std::ifstream vShaderFile;
+		std::ifstream fShaderFile;
+
+		// For throwing exceptions
+		vShaderFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+		fShaderFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+
+		try
+		{
+			std::stringstream VShaderStream, FShaderStream, GShaderStream;
+
+			// Open files
+			vShaderFile.open(_VertexPath);
+			fShaderFile.open(_FragmentPath);
+
+			// Read file data
+			VShaderStream << vShaderFile.rdbuf();
+			FShaderStream << fShaderFile.rdbuf();
+
+			// Parse to string
+			vertexCode = VShaderStream.str();
+			fragmentCode = FShaderStream.str();
+
+			// Close when done
+			vShaderFile.close();
+			fShaderFile.close();
+		}
+		catch (std::ifstream::failure e)
+		{
+#ifdef _DEBUG
+			//logger.Error(true, "Failed to read shader file");
+			std::cout << "[PP::SHADER] Failed to read shader file" << std::endl;
+#endif
+		}
+
+		///Compiling of shaders
+		//To pass into func
+		const char* vShaderCode = vertexCode.c_str();
+		const char* fShaderCode = fragmentCode.c_str();
+
+		//Shader objects
+		unsigned int vertex;
+		unsigned int fragment;
+
+		int success;
+		char infoLog[512];
+
+		/// Vertex Shader
+		vertex = glCreateShader(GL_VERTEX_SHADER);
+		glShaderSource(vertex, 1, &vShaderCode, NULL);
+		glCompileShader(vertex);
+
+		// Print compile errors if any
+		glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			glGetShaderInfoLog(vertex, 512, NULL, infoLog);
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Failed to compile vertex shader: " << infoLog << std::endl;
+			std::cout << "[PP::SHADER] Failed at " << _VertexPath << std::endl;
+#endif
+		}
+
+		/// Fragment Shader
+		fragment = glCreateShader(GL_FRAGMENT_SHADER);
+		glShaderSource(fragment, 1, &fShaderCode, NULL);
+		glCompileShader(fragment);
+
+		// Print compile errors if any
+		glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
+		if (!success)
+		{
+			glGetShaderInfoLog(fragment, 512, NULL, infoLog);
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Failed to compile fragment shader: " << infoLog << std::endl;
+			std::cout << "[PP::SHADER] Failed at " << _FragmentPath << std::endl;
+#endif
+		}
+
+		// Shader Program
+		ShaderResource::m_ShaderPrograms[_ProgramID] = glCreateProgram();
+		glAttachShader(ShaderResource::m_ShaderPrograms[_ProgramID], vertex);
+		glAttachShader(ShaderResource::m_ShaderPrograms[_ProgramID], fragment);
+		glLinkProgram(ShaderResource::m_ShaderPrograms[_ProgramID]);
+
+		// Print linking errors if any
+		glGetProgramiv(ShaderResource::m_ShaderPrograms[_ProgramID], GL_LINK_STATUS, &success);
+		if (!success)
+		{
+			glGetProgramInfoLog(ShaderResource::m_ShaderPrograms[_ProgramID], 512, NULL, infoLog);
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] Failed to link shaders: " << infoLog << std::endl;
+#endif
+		}
+		else
+		{
+#ifdef _DEBUG
+			std::cout << "[PP::SHADER] " << _VertexPath << " and " << _FragmentPath << " linked" << std::endl;
+#endif
+		}
+
+		// Delete the shaders as they're linked into our program now and no longer necessary
+		glDeleteShader(vertex);
+		glDeleteShader(fragment);
+	}
+}

@@ -3,11 +3,11 @@
 
 #include <glew.h>
 
-
 namespace Pogplant
 {
-	VTX_DATA::VTX_DATA(const glm::vec2& _Pos_Vtx, const glm::vec2& _Tex_Coords)
-		: m_PosVtx{ _Pos_Vtx }
+	VTX_DATA::VTX_DATA(const glm::vec4& _Color, const glm::vec2& _Pos_Vtx, const glm::vec2& _Tex_Coords)
+		: m_Color{ _Color }
+		, m_PosVtx{ _Pos_Vtx }
 		, m_TexCoords{ _Tex_Coords }
 	{
 	}
@@ -22,9 +22,18 @@ namespace Pogplant
 	{
 	}
 
-	void Mesh::Draw()
+	void Mesh::Draw(unsigned int _Texture) const
+	{
+		glBindTextureUnit(0, _Texture);
+		glBindVertexArray(this->m_VAO);
+		glDrawElements(this->m_PrimitiveType, m_IndicesCount, GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);
+	}
+
+	void Mesh::DrawInstanced() const
 	{
 		glBindVertexArray(this->m_VAO);
+		// Bind all textures in the pool here
 		glDrawElementsInstanced(this->m_PrimitiveType, m_IndicesCount, GL_UNSIGNED_INT, 0, static_cast<GLsizei>(MeshInstance::GetInstanceCount()));
 		glBindVertexArray(0);
 	}

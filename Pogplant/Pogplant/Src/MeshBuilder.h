@@ -14,6 +14,7 @@ namespace Pogplant
 		static void RebindQuad();
 	private:
 		static void GenerateQuad();
+		static void GenerateScreen();
 	};
 }
 

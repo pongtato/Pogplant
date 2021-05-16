@@ -37,6 +37,24 @@
     <Filter Include="Source Files\Graphics\Mesh\MeshInstance">
       <UniqueIdentifier>{b8e0f5ee-6c1e-4d11-881b-e509387b2c9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Shader">
+      <UniqueIdentifier>{5ea1b083-9b3d-42fd-8133-1dd2a0d2bae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Shader\ShaderLinker">
+      <UniqueIdentifier>{f2920bb2-c6f2-4271-b2cd-22b096554657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Shader\ShaderResource">
+      <UniqueIdentifier>{198bc962-e07f-42b8-8c1d-47492ceb8237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\FrameBuffer">
+      <UniqueIdentifier>{7bad2320-8e4f-44d7-be74-3c092c624397}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\FrameBuffer\FrameBufferResource">
+      <UniqueIdentifier>{54124a88-2f3f-4c9c-9147-4336f51a6d66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Camera\CameraResource">
+      <UniqueIdentifier>{9ce489cc-150c-4016-a90b-d701d6781208}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -60,6 +78,24 @@
     <ClInclude Include="Src\MeshInstance.h">
       <Filter>Source Files\Graphics\Mesh\MeshInstance</Filter>
     </ClInclude>
+    <ClInclude Include="Src\ShaderResource.h">
+      <Filter>Source Files\Graphics\Shader\ShaderResource</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ShaderLinker.h">
+      <Filter>Source Files\Graphics\Shader\ShaderLinker</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\FrameBuffer.h">
+      <Filter>Source Files\Graphics\FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\FrameBufferResource.h">
+      <Filter>Source Files\Graphics\FrameBuffer\FrameBufferResource</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Camera.h">
+      <Filter>Source Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\CameraResource.h">
+      <Filter>Source Files\Camera\CameraResource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -79,6 +115,24 @@
     </ClCompile>
     <ClCompile Include="Src\MeshInstance.cpp">
       <Filter>Source Files\Graphics\Mesh\MeshInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ShaderResource.cpp">
+      <Filter>Source Files\Graphics\Shader\ShaderResource</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ShaderLinker.cpp">
+      <Filter>Source Files\Graphics\Shader\ShaderLinker</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\FrameBuffer.cpp">
+      <Filter>Source Files\Graphics\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\FrameBufferResource.cpp">
+      <Filter>Source Files\Graphics\FrameBuffer\FrameBufferResource</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Camera.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\CameraResource.cpp">
+      <Filter>Source Files\Camera\CameraResource</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

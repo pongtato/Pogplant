@@ -7,8 +7,9 @@ namespace Pogplant
 {
 	struct VTX_DATA
 	{
-		VTX_DATA(const glm::vec2& _Pos_Vtx, const glm::vec2& _Tex_Coords);
+		VTX_DATA(const glm::vec4& _Color, const glm::vec2& _Pos_Vtx, const glm::vec2& _Tex_Coords);
 
+		glm::vec4 m_Color;
 		glm::vec2 m_PosVtx;
 		glm::vec2 m_TexCoords;
 	};
@@ -16,7 +17,8 @@ namespace Pogplant
 	struct Mesh
 	{
 		Mesh();
-		void Draw();
+		void Draw(unsigned int _Texture) const;
+		void DrawInstanced() const;
 
 		std::vector<VTX_DATA> m_VertexData;
 		std::vector<unsigned int> m_Indices;

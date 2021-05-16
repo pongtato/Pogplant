@@ -79,14 +79,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
@@ -153,7 +153,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Libs\IMGUI\imgui.cpp" />
+    <ClCompile Include="Libs\IMGUI\imgui_demo.cpp" />
+    <ClCompile Include="Libs\IMGUI\imgui_draw.cpp" />
+    <ClCompile Include="Libs\IMGUI\imgui_impl_glfw.cpp" />
+    <ClCompile Include="Libs\IMGUI\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="Libs\IMGUI\imgui_tables.cpp" />
+    <ClCompile Include="Libs\IMGUI\imgui_widgets.cpp" />
+    <ClCompile Include="Src\ImguiHelper.cpp" />
+    <ClCompile Include="Src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Libs\IMGUI\imconfig.h" />
+    <ClInclude Include="Libs\IMGUI\imgui.h" />
+    <ClInclude Include="Libs\IMGUI\ImGuiExtraStyles.h" />
+    <ClInclude Include="Libs\IMGUI\imgui_impl_glfw.h" />
+    <ClInclude Include="Libs\IMGUI\imgui_impl_opengl3.h" />
+    <ClInclude Include="Libs\IMGUI\imgui_internal.h" />
+    <ClInclude Include="Libs\IMGUI\imstb_rectpack.h" />
+    <ClInclude Include="Libs\IMGUI\imstb_textedit.h" />
+    <ClInclude Include="Libs\IMGUI\imstb_truetype.h" />
+    <ClInclude Include="Src\ImguiHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

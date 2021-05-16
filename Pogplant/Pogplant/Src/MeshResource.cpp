@@ -9,16 +9,27 @@ namespace Pogplant
 
 	void MeshResource::InitResource()
 	{
-		m_MeshPool[QUAD] = new Mesh();
+		for (size_t i = 0; i < COUNT; ++i)
+		{
+			m_MeshPool[static_cast<MESH_TYPE>(i)] = new Mesh();
+		}
 	}
 
 	void MeshResource::CleanUpResource()
 	{
-		delete m_MeshPool[QUAD];
+		for (size_t i = 0; i < COUNT; ++i)
+		{
+			delete m_MeshPool[static_cast<MESH_TYPE>(i)];
+		}
 	}
 
-	void MeshResource::DrawPrimitive(MESH_TYPE _Mesh_Type)
+	void MeshResource::Draw(MESH_TYPE _Mesh_Type, unsigned int _Texture)
 	{
-		m_MeshPool[_Mesh_Type]->Draw();
+		m_MeshPool[_Mesh_Type]->Draw(_Texture);
+	}
+
+	void MeshResource::DrawInstanced(MESH_TYPE _Mesh_Type)
+	{
+		m_MeshPool[_Mesh_Type]->DrawInstanced();
 	}
 }

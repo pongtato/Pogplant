@@ -8,10 +8,12 @@ namespace Pogplant
 	{
 		glm::mat4 m_Model;
 		glm::vec4 m_Color;
-		glm::vec2 m_Tiling;
-		glm::vec2 m_UVOffset;
-		unsigned int m_TexID;
-		bool m_Ortho;
+		glm::vec2 m_UV;
+		glm::vec2 m_UV_Offset;
+		int m_TexID;
+		// Cant be bool, GLSL does not have varying bool
+		unsigned int m_Ortho;
+		unsigned int m_Bloom;
 	};
 
 	class MeshInstance
