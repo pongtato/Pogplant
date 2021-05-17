@@ -22,10 +22,11 @@ namespace Pogplant
 		Camera();
 		
 		void InitCamera(const glm::vec3& _Position, CameraConfig _CameraConfig);
-		void Update();
+		void Update(float _Dt);
 		void UpdateView();
 		void UpdateProjection();
 		void UpdateVec();
+		void UpdateZoom(double _ScrollAmount);
 
 		const glm::mat4& GetProjection() const;
 		const glm::mat4& GetView() const;
@@ -38,6 +39,7 @@ namespace Pogplant
 		glm::vec3 m_Up;
 		glm::vec3 m_Right;
 		glm::vec3 m_Target;
+		double m_ScrollAmount;
 
 		CameraConfig m_CameraConfig;
 	};

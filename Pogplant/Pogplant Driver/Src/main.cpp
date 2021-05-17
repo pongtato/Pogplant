@@ -8,6 +8,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
+#include <imgui.h>
 
 struct MEMLEAK
 {
@@ -49,6 +50,9 @@ void Run()
 	while (!PP::Window::ShouldCloseWindow())
 	{
 		PP::Window::CheckForceClose(); // Temp exit using Esc
+
+		// Camera KB movement
+		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
 
 		PP::MeshBuilder::RebindQuad();
 

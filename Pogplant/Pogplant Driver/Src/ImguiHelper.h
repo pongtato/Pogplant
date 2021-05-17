@@ -12,6 +12,10 @@ namespace PogplantDriver
 		static void DrawDock();
 		static void CleanUpImgui();
 
+		// Window handles
+		static void SceneWindow();
+		static void GameWindow();
+
 		static bool m_FirstRun;
 	};
 }

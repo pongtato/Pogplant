@@ -2,6 +2,7 @@
 
 #include <list>
 #include <string>
+#include <sstream>
 
 namespace Pogplant
 {
@@ -12,6 +13,7 @@ namespace Pogplant
 			ERROR,
 			SUCCESS,
 			WARNING,
+			DEBUG_TEXT,
 			COUNT
 		};
 

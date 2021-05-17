@@ -21,6 +21,13 @@ namespace Pogplant
 		CameraResource::UpdateAllProjection();
 	}
 
+	void WindowScrollCallback(GLFWwindow*, double xoffset, double yoffset)
+	{
+		(void)xoffset; // Unused
+
+		CameraResource::GetActiveCam()->UpdateZoom(yoffset);
+	}
+
 	int Window::InitWindow(int _Width, int _Height, const char* _Window_Name)
 	{
 		m_Width = _Width;
@@ -40,6 +47,7 @@ namespace Pogplant
 		}
 		glfwMakeContextCurrent(m_Window);
 		glfwSetFramebufferSizeCallback(m_Window, WindowSizeCallback);
+		glfwSetScrollCallback(m_Window, WindowScrollCallback);
 
 		// VSync
 		if (m_VSync)

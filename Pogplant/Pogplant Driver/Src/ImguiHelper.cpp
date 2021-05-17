@@ -183,19 +183,23 @@ namespace PogplantDriver
 					switch (it.m_Type)
 					{
 					case PP::LogEntry::ERROR:
-						ImGui::PushStyleColor(0, ImVec4{ 0.75f,0,0,1 });
+						ImGui::PushStyleColor(0, ImVec4{ 0.75f,0.0f,0.0f,1.0f });
 						typeText = "ERROR";
 						break;
 					case PP::LogEntry::SUCCESS:
-						ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
+						ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1.0f });
 						typeText = "SUCCESS";
 						break;
 					case PP::LogEntry::WARNING:
-						ImGui::PushStyleColor(0, ImVec4{ 1,1,0,1 });
+						ImGui::PushStyleColor(0, ImVec4{ 1.0f,1.0f,0.0f,1.0f });
 						typeText = "WARNING";
 						break;
+					case PP::LogEntry::DEBUG_TEXT:
+						ImGui::PushStyleColor(0, ImVec4{ 1.0f,1.0f,1.0f,1.0f });
+						typeText = "LOG";
+						break;
 					default:
-						ImGui::PushStyleColor(0, ImVec4{ 1,1,1,1 });
+						ImGui::PushStyleColor(0, ImVec4{ 0.2f,1.0f,1.0f,1.0f });
 						typeText = "Undefined Type";
 						break;
 					}
@@ -227,19 +231,13 @@ namespace PogplantDriver
 
 		ImGui::Begin("Scene");
 		{
-			ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
-			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-			ImGui::PopStyleColor();
-			ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
+			SceneWindow();
 		}
 		ImGui::End();
 
 		ImGui::Begin("Game");
 		{
-			ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
-			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-			ImGui::PopStyleColor();
-			ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
+			GameWindow();
 		}
 		ImGui::End();
 
@@ -257,5 +255,32 @@ namespace PogplantDriver
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
+	}
+
+	void ImguiHelper::SceneWindow()
+	{
+		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		ImGui::PopStyleColor();
+		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
+
+		// Make sure begin is being called before this function
+		// This ensures the input for camera only works when the Scene window is focused
+		if(ImGui::IsWindowFocused())
+		{
+			PP::CameraResource::SetActiveCam("EDITOR");
+		}
+		else
+		{
+			PP::CameraResource::DeselectCam();
+		}
+	}
+
+	void ImguiHelper::GameWindow()
+	{
+		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		ImGui::PopStyleColor();
+		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 	}
 }

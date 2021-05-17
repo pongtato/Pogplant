@@ -21,6 +21,9 @@ namespace Pogplant
 		m_ActiveCamera->InitCamera(_GamePosition, _CameraConfig);
 		m_ActiveCamera->UpdateProjection();
 		m_ActiveCamera->UpdateView();
+
+		// Back to editor since game should be offloaded to application camera instead of Pogplant camera
+		SetActiveCam("EDITOR");
 	}
 
 	void CameraResource::AddCamera(const char* _ID)
@@ -54,6 +57,11 @@ namespace Pogplant
 		m_ActiveCamera = m_CameraPool[_Index];
 	}
 
+	void CameraResource::DeselectCam()
+	{
+		m_ActiveCamera = nullptr;
+	}
+
 	Camera* CameraResource::GetActiveCam()
 	{
 		return m_ActiveCamera;
@@ -66,11 +74,19 @@ namespace Pogplant
 			delete it;
 		}
 	}
+
 	void CameraResource::UpdateAllProjection()
 	{
 		for (auto& it : m_CameraPool)
 		{
 			it->UpdateProjection();
+		}
+	}
+	void CameraResource::UpdateActiveCamera(float _Dt)
+	{
+		if (m_ActiveCamera)
+		{
+			m_ActiveCamera->Update(_Dt);
 		}
 	}
 }

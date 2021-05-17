@@ -17,9 +17,11 @@ namespace Pogplant
 		static Camera* GetCamera(size_t _Index);
 		static void SetActiveCam(const char* _ID);
 		static void SetActiveCam(size_t _Index);
+		static void DeselectCam();
 		static Camera* GetActiveCam();
 		static void CleanUpCameras();
 		static void UpdateAllProjection();
+		static void UpdateActiveCamera(float _Dt);
 
 	private:
 		static std::unordered_map<const char*, size_t> m_CameraKeys;

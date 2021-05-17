@@ -1,7 +1,9 @@
 #include "Camera.h"
 #include "Window.h"
+#include "Logger.h"
 
 #include <gtc/matrix_transform.hpp>
+#include <glfw3.h>
 
 namespace Pogplant
 {
@@ -37,8 +39,92 @@ namespace Pogplant
 		UpdateProjection();
 	}
 
-	void Camera::Update()
+	void Camera::Update(float _Dt)
 	{
+		// Forward
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_W) == GLFW_PRESS)
+		{
+			m_Position += m_CameraConfig.m_Speed * _Dt * m_Front;
+			UpdateView();
+		}
+
+		// Back
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_S) == GLFW_PRESS)
+		{
+			m_Position -= m_CameraConfig.m_Speed * _Dt * m_Front;
+			UpdateView();
+		}
+
+		// Left
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_A) == GLFW_PRESS)
+		{
+			m_Position -= m_CameraConfig.m_Speed * _Dt * m_Right;
+			UpdateView();
+		}
+
+		// Right
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_D) == GLFW_PRESS)
+		{
+			m_Position += m_CameraConfig.m_Speed * _Dt * m_Right;
+			UpdateView();
+		}
+
+		// Up
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_E) == GLFW_PRESS)
+		{
+			m_Position += m_CameraConfig.m_Speed * _Dt * m_Up;
+			UpdateView();
+		}
+
+		// Down
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_Q) == GLFW_PRESS)
+		{
+			m_Position -= m_CameraConfig.m_Speed * _Dt * m_Up;
+			UpdateView();
+		}
+
+		// Tilt left
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_J) == GLFW_PRESS)
+		{
+			m_CameraConfig.m_Yaw -= m_CameraConfig.m_Speed * _Dt;
+			UpdateVec();
+			UpdateView();
+		}
+
+		// Tilt Right
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_L) == GLFW_PRESS)
+		{
+			m_CameraConfig.m_Yaw += m_CameraConfig.m_Speed * _Dt;
+			UpdateVec();
+			UpdateView();
+		}
+
+		// Tilt Up
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_I) == GLFW_PRESS)
+		{
+			const float nextVal = m_CameraConfig.m_Pitch + m_CameraConfig.m_Speed * _Dt * 2.0f;
+			m_CameraConfig.m_Pitch = nextVal < 89.0f ? nextVal : m_CameraConfig.m_Pitch;
+			UpdateVec();
+			UpdateView();
+		}
+
+		// Tilt Down
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_K) == GLFW_PRESS)
+		{
+			const float nextVal = m_CameraConfig.m_Pitch - m_CameraConfig.m_Speed * _Dt * 2.0f;
+			m_CameraConfig.m_Pitch = nextVal > -89.0f ? nextVal : m_CameraConfig.m_Pitch;
+			UpdateVec();
+			UpdateView();
+		}
+
+		// Reset rotation
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_R) == GLFW_PRESS)
+		{	
+			m_CameraConfig.m_Yaw = -90.0f;
+			m_CameraConfig.m_Pitch = 0.0f;
+			UpdateVec();
+			UpdateView();
+		}
 	}
 
 	void Camera::UpdateView()
@@ -69,10 +155,23 @@ namespace Pogplant
 		m_Right = glm::cross(m_Front, glm::vec3(0, 1, 0));
 		m_Up = glm::cross(m_Right, m_Front);
 	}
+
+	void Camera::UpdateZoom(double _ScrollAmount)
+	{
+		std::stringstream logEntry;
+		logEntry << m_CameraConfig.m_Zoom;
+		Logger::Log({ "CAMERA",LogEntry::DEBUG_TEXT, logEntry.str() });
+
+		m_CameraConfig.m_Zoom = (m_CameraConfig.m_Zoom - static_cast<float>(_ScrollAmount) ) > 0.0f 
+			? m_CameraConfig.m_Zoom - static_cast<float>(_ScrollAmount) : m_CameraConfig.m_Zoom;
+		UpdateProjection();
+	}
+
 	const glm::mat4& Camera::GetProjection() const
 	{
 		return m_Projection;
 	}
+
 	const glm::mat4& Camera::GetView() const
 	{
 		return m_View;
