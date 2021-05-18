@@ -21,11 +21,24 @@ namespace Pogplant
 		CameraResource::UpdateAllProjection();
 	}
 
-	void WindowScrollCallback(GLFWwindow*, double xoffset, double yoffset)
+	void WindowScrollCallback(GLFWwindow*, double _XOffset, double _YOffset)
 	{
-		(void)xoffset; // Unused
+		(void)_XOffset; // Unused unless your mouse scrolls sideways
 
-		CameraResource::GetActiveCam()->UpdateZoom(yoffset);
+		Camera* activeCam = CameraResource::GetActiveCam();
+		if (activeCam)
+		{
+			activeCam->UpdateZoom(_YOffset);
+		}
+	}
+
+	void WindowMouseCallback(GLFWwindow*, double _XPos, double _YPos)
+	{
+		Camera* activeCam = CameraResource::GetActiveCam();
+		if (activeCam)
+		{
+			activeCam->UpdateYawPitch(_XPos, _YPos);
+		}
 	}
 
 	int Window::InitWindow(int _Width, int _Height, const char* _Window_Name)
@@ -48,6 +61,9 @@ namespace Pogplant
 		glfwMakeContextCurrent(m_Window);
 		glfwSetFramebufferSizeCallback(m_Window, WindowSizeCallback);
 		glfwSetScrollCallback(m_Window, WindowScrollCallback);
+		glfwSetCursorPosCallback(m_Window, WindowMouseCallback);
+
+		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
 		// VSync
 		if (m_VSync)
@@ -91,6 +107,11 @@ namespace Pogplant
 
 	bool Window::ShouldCloseWindow()
 	{
+		if (!m_Window)
+		{
+			return false;
+		}
+
 		return glfwWindowShouldClose(m_Window);
 	}
 

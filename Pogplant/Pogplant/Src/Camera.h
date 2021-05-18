@@ -14,6 +14,8 @@ namespace Pogplant
 		float m_Speed;
 		float m_Near;
 		float m_Far;
+		float m_LookSens;
+		float m_KeyLookSens;
 	};
 
 	class Camera
@@ -27,11 +29,17 @@ namespace Pogplant
 		void UpdateProjection();
 		void UpdateVec();
 		void UpdateZoom(double _ScrollAmount);
+		void UpdateYawPitch(double _XPos, double _YPos);
 
 		const glm::mat4& GetProjection() const;
 		const glm::mat4& GetView() const;
 
 	private:
+
+		void KeyUpdate(float _Dt);
+		void MouseUpdate(float _Dt);
+
+		CameraConfig m_CameraConfig;
 		glm::mat4 m_Projection;
 		glm::mat4 m_View;
 		glm::vec3 m_Position;
@@ -40,8 +48,9 @@ namespace Pogplant
 		glm::vec3 m_Right;
 		glm::vec3 m_Target;
 		double m_ScrollAmount;
-
-		CameraConfig m_CameraConfig;
+		double m_LastXPos;
+		double m_LastYPos;
+		bool m_MouseDown;
 	};
 }
 

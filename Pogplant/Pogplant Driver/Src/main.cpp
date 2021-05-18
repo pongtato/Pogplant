@@ -34,11 +34,27 @@ void ObjectTest()
 
 void Init()
 {
-	PP::Window::InitWindow(1280, 720, "Pogplant Driver 6969");
+	PP::Window::InitWindow(
+		1280,					// Width
+		720,					// Height
+		 "Pogplant Driver 6969" // Window name
+		);
 	PP::MeshBuilder::InitMesh();
 	PP::ShaderLinker::InitShader();
 	PP::FrameBuffer::InitFrameBuffer();
-	PP::CameraResource::InitBaseCameras(glm::vec3{ 0,0,5.0f }, glm::vec3{ 0,0,0.0f }, PP::CameraConfig{ -90.0f,0.0f,45.0f,2.0f,0.1f,100.0f });
+	PP::CameraResource::InitBaseCameras(
+		glm::vec3{ 0,0,5.0f }, // Editor cam pos
+		glm::vec3{ 0,0,0.0f }, // Game cam pos
+		PP::CameraConfig{ 
+			-90.0f, // Yaw
+			0.0f,	// Pitch
+			45.0f,	// Zoom 
+			6.9f,	// Speed 
+			0.1f,	// Near
+			100.0f,	// Far
+			0.21f,	// Mouse look sens
+			20.0f	// Key input look sens
+		});
 	PPD::ImguiHelper::InitImgui();
 
 	/// Test spawning of objects
