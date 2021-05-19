@@ -78,13 +78,13 @@ namespace Pogplant
 
 	void Camera::UpdateZoom(double _ScrollAmount)
 	{
-		std::stringstream logEntry;
-		logEntry << m_CameraConfig.m_Zoom;
-		Logger::Log({ "CAMERA",LogEntry::DEBUG_TEXT, logEntry.str() });
-
-		m_CameraConfig.m_Zoom = (m_CameraConfig.m_Zoom - static_cast<float>(_ScrollAmount) ) > 0.0f 
+		/*m_CameraConfig.m_Zoom = (m_CameraConfig.m_Zoom - static_cast<float>(_ScrollAmount) ) > 0.0f 
 			? m_CameraConfig.m_Zoom - static_cast<float>(_ScrollAmount) : m_CameraConfig.m_Zoom;
-		UpdateProjection();
+		UpdateProjection();*/
+
+		// Just move the camera closer 4Head 
+		m_Position += m_Front * static_cast<float>(_ScrollAmount);
+		UpdateView();
 	}
 
 	void Camera::UpdateYawPitch(double _XPos, double _YPos)
@@ -92,11 +92,17 @@ namespace Pogplant
 		// Right mouse to trigger
 		if (glfwGetMouseButton(Window::GetWindow(), GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
 		{
-			if (!m_MouseDown)
+			// Prevent mashing of keys
+			if (m_MMBDown)
+			{
+				return;
+			}
+
+			if (!m_RMBDown)
 			{
 				m_LastXPos = _XPos;
 				m_LastYPos = _YPos;
-				m_MouseDown = true;
+				m_RMBDown = true;
 			}
 
 			float xDifference = static_cast<float>(_XPos - m_LastXPos);
@@ -117,7 +123,42 @@ namespace Pogplant
 
 		if (glfwGetMouseButton(Window::GetWindow(), GLFW_MOUSE_BUTTON_RIGHT) == GLFW_RELEASE)
 		{
-			m_MouseDown = false;
+			m_RMBDown = false;
+		}
+	}
+
+	void Camera::UpdateCameraPan(double _XPos, double _YPos)
+	{
+		// Right mouse to trigger
+		if (glfwGetMouseButton(Window::GetWindow(), GLFW_MOUSE_BUTTON_MIDDLE) == GLFW_PRESS)
+		{
+			// Prevent mashing of keys
+			if (m_RMBDown)
+			{
+				return;
+			}
+
+			if (!m_MMBDown)
+			{
+				m_LastXPos = _XPos;
+				m_LastYPos = _YPos;
+				m_MMBDown = true;
+			}
+
+			float xDifference = static_cast<float>(_XPos - m_LastXPos);
+			float yDifference = static_cast<float>(_YPos - m_LastYPos);
+			m_LastXPos = _XPos;
+			m_LastYPos = _YPos;
+
+			m_Position -= xDifference * m_CameraConfig.m_PanSens * m_Right;
+			m_Position += yDifference * m_CameraConfig.m_PanSens * m_Up;
+
+			UpdateView();
+		}
+
+		if (glfwGetMouseButton(Window::GetWindow(), GLFW_MOUSE_BUTTON_MIDDLE) == GLFW_RELEASE)
+		{
+			m_MMBDown = false;
 		}
 	}
 

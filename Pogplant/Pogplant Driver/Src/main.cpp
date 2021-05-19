@@ -53,7 +53,8 @@ void Init()
 			0.1f,	// Near
 			100.0f,	// Far
 			0.21f,	// Mouse look sens
-			20.0f	// Key input look sens
+			20.0f,	// Key input look sens
+			0.1f	// Pan speed
 		});
 	PPD::ImguiHelper::InitImgui();
 

@@ -38,6 +38,7 @@ namespace Pogplant
 		if (activeCam)
 		{
 			activeCam->UpdateYawPitch(_XPos, _YPos);
+			activeCam->UpdateCameraPan(_XPos, _YPos);
 		}
 	}
 

@@ -16,6 +16,7 @@ namespace Pogplant
 		float m_Far;
 		float m_LookSens;
 		float m_KeyLookSens;
+		float m_PanSens;
 	};
 
 	class Camera
@@ -30,6 +31,7 @@ namespace Pogplant
 		void UpdateVec();
 		void UpdateZoom(double _ScrollAmount);
 		void UpdateYawPitch(double _XPos, double _YPos);
+		void UpdateCameraPan(double _XPos, double _YPos);
 
 		const glm::mat4& GetProjection() const;
 		const glm::mat4& GetView() const;
@@ -50,7 +52,8 @@ namespace Pogplant
 		double m_ScrollAmount;
 		double m_LastXPos;
 		double m_LastYPos;
-		bool m_MouseDown;
+		bool m_RMBDown; // Camera look
+		bool m_MMBDown; //Pan
 	};
 }
 
