@@ -48,6 +48,9 @@
     <ClCompile Include="Libs\IMGUI\imgui_widgets.cpp">
       <Filter>Source Files\Imgui</Filter>
     </ClCompile>
+    <ClCompile Include="Libs\IMGUI\ImGuizmo.cpp">
+      <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
@@ -78,6 +81,9 @@
       <Filter>Source Files\Imgui</Filter>
     </ClInclude>
     <ClInclude Include="Libs\IMGUI\imstb_truetype.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\IMGUI\ImGuizmo.h">
       <Filter>Source Files\Imgui</Filter>
     </ClInclude>
   </ItemGroup>

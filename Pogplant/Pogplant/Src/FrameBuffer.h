@@ -16,6 +16,7 @@ namespace Pogplant
 	private:
 		static void InitEditorBuffer();
 		static void InitGameBuffer();
+		static void InitGizmoBuffer();
 		static void InitPostProcessBuffer();
 	};
 }

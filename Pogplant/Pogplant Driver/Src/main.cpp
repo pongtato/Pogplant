@@ -50,37 +50,37 @@ void GizmoTest()
 	PP::MeshInstance::ResetCount();
 
 	glm::mat4 Parent = glm::mat4{ 1 };
-	Parent = glm::translate(Parent, glm::vec3(0.09f, 0.0f, -1.0f));
-	Parent = glm::scale(Parent, glm::vec3(0.5f, 0.5f, 0.5f));
+	Parent = glm::translate(Parent, glm::vec3(0.0f, 0.0f, 0.0f));
+	Parent = glm::scale(Parent, glm::vec3(2.0f, 2.0f, 2.0f));
 
 	/// To form a cube
 	// Front
 	glm::mat4 Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, 0.4f));
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0,0,1,1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,0.0f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
 	// Right
 	Model = glm::translate(Parent, glm::vec3(0.4f, 0, 0.0f));
 	Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1,0,0,1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1.0f,0.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
 	// Left
 	Model = glm::translate(Parent, glm::vec3(-0.6f, 0, 0.0f));
 	Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1.0f,0.2f,0.6f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
 	// Back
 	Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, -0.6f));
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.2f,0.6f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
 	// Top
 	Model = glm::translate(Parent, glm::vec3(0.0f, 0.6f, 0.0f));
 	Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0,1,0,1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,1.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
 	// Bottom
 	Model = glm::translate(Parent, glm::vec3(0.0f, -0.4f, 0.0f));
 	Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.6f,1.0f,0.2f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 }
 
 void Init()
@@ -100,7 +100,7 @@ void Init()
 			-90.0f, // Yaw
 			0.0f,	// Pitch
 			45.0f,	// Zoom 
-			6.9f,	// Speed 
+			16.9f,	// Speed 
 			0.1f,	// Near
 			100.0f,	// Far
 			0.21f,	// Mouse look sens
@@ -111,6 +111,7 @@ void Init()
 
 	/// Test spawning of objects
 	//ObjectTest();
+	std::cout << "PROGRAM STARTED, USE THE EDITOR DEBUGGER" << std::endl;
 }
 
 void Run()
@@ -140,6 +141,12 @@ void Run()
 
 		GizmoTest();
 		PP::MeshBuilder::RebindQuad();
+
+		// Game
+		PP::Renderer::StartGizmoBuffer();
+		PP::Renderer::ClearBuffer(0, 0, 0, 0);
+		PP::Renderer::Draw("GIZMO");
+		PP::Renderer::EndBuffer();
 
 		// Post process
 		PP::Renderer::PostProcess();

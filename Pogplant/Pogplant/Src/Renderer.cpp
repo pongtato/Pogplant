@@ -24,6 +24,12 @@ namespace Pogplant
 		glEnable(GL_DEPTH_TEST);
 	}
 
+	void Renderer::StartGizmoBuffer()
+	{
+		FrameBuffer::BindFrameBuffer(BufferType::GIZMO_BUFFER);
+		glEnable(GL_DEPTH_TEST);
+	}
+
 	void Renderer::EndBuffer()
 	{
 		FrameBuffer::UnbindFrameBuffer();
@@ -35,10 +41,10 @@ namespace Pogplant
 		FrameBuffer::BindFrameBuffer(BufferType::PP_BUFFER);
 	}
 
-	void Renderer::ClearBuffer(float _R, float _G, float _B)
+	void Renderer::ClearBuffer(float _R, float _G, float _B, float _A)
 	{
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		glClearColor(_R, _G, _B, 1.0f);
+		glClearColor(_R, _G, _B, _A);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 

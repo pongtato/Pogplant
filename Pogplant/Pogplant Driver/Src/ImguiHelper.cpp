@@ -270,6 +270,16 @@ namespace PogplantDriver
 		ImVec2 currWindowSize = ImGui::GetWindowSize();
 		PP::CameraResource::GetCamera("EDITOR")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
 
+		ImGui::SetCursorPos(ImVec2{ ImGui::GetWindowSize().x - 218.0f, currCursorPos.y - 40.0f });
+		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GIZMO_COLOR_BUFFER], ImVec2{ 320.0f,180.0f }, ImVec2(0, 1), ImVec2(1, 0));
+
+		const float radius = 10.0f;
+		PP::CameraConfig eCameraConfig = PP::CameraResource::GetCamera("EDITOR")->mCameraConfig();
+		float camX = cos(glm::radians(eCameraConfig.m_Yaw) + glm::radians(180.0f)) * cos(glm::radians(eCameraConfig.m_Pitch)) * radius;
+		float camY = sin(-glm::radians(eCameraConfig.m_Pitch)) * radius;
+		float camZ = sin(glm::radians(eCameraConfig.m_Yaw) + glm::radians(180.0f)) * cos(glm::radians(eCameraConfig.m_Pitch)) * radius;
+		PP::CameraResource::GetCamera("GIZMO")->UpdateView(glm::vec3(camX, camY, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
+		
 		// Make sure begin is being called before this function
 		// This ensures the input for camera only works when the Scene window is focused
 		if(ImGui::IsWindowFocused())

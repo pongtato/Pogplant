@@ -8,9 +8,10 @@ namespace Pogplant
 
 		static void StartEditorBuffer();
 		static void StartGameBuffer();
+		static void StartGizmoBuffer();
 		static void EndBuffer();
 		static void PostProcess();
-		static void ClearBuffer(float _R = 0.235f, float _G = 0.117f, float _B = 0.251f);
+		static void ClearBuffer(float _R = 0.235f, float _G = 0.117f, float _B = 0.251f, float _A = 1.0f);
 		static void SwapBuffer();
 		// Draw mesh in world space
 		static void Draw(const char* _CameraID);

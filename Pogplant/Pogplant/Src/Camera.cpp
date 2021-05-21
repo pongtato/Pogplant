@@ -93,7 +93,7 @@ namespace Pogplant
 
 	void Camera::UpdateZoom(double _ScrollAmount)
 	{
-		/*m_CameraConfig.m_Zoom = (m_CameraConfig.m_Zoom - static_cast<float>(_ScrollAmount) ) > 0.0f 
+		/*m_CameraConfig.m_Zoom = (m_CameraConfig.m_Zoom - static_cast<float>(_ScrollAmount) ) > 0.0f
 			? m_CameraConfig.m_Zoom - static_cast<float>(_ScrollAmount) : m_CameraConfig.m_Zoom;
 		UpdateProjection();*/
 

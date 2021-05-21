@@ -1,5 +1,4 @@
 #include "CameraResource.h"
-#include <glfw3.h>
 
 namespace Pogplant
 {
@@ -20,6 +19,13 @@ namespace Pogplant
 		AddCamera("GAME");
 		SetActiveCam("GAME");
 		m_ActiveCamera->InitCamera(_GamePosition, _CameraConfig);
+		m_ActiveCamera->UpdateProjection();
+		m_ActiveCamera->UpdateView();
+
+		// Gizmo
+		AddCamera("GIZMO");
+		SetActiveCam("GIZMO");
+		m_ActiveCamera->InitCamera(_EditorPosition, _CameraConfig);
 		m_ActiveCamera->UpdateProjection();
 		m_ActiveCamera->UpdateView();
 
