@@ -19,7 +19,8 @@ namespace Pogplant
 
 	Camera::Camera()
 		: m_CameraConfig{}
-		, m_Projection{ glm::mat4{1} }
+		, m_Ortho{ glm::mat4{1} }
+		, m_Perspective{ glm::mat4{1} }
 		, m_View{ glm::mat4{1} }
 		, m_Position{ glm::vec3{0} }
 		, m_Front{ glm::vec3{0} }
@@ -49,20 +50,33 @@ namespace Pogplant
 
 	void Camera::UpdateView()
 	{
-		m_View = glm::lookAt(m_Position, m_Position + m_Front, m_Up);
+		UpdateView(m_Position, m_Position + m_Front, m_Up);
+	}
+
+	void Camera::UpdateView(const glm::vec3& _Eye, const glm::vec3& _Center, const glm::vec3& _Up)
+	{
+		m_View = glm::lookAt(_Eye, _Center, _Up);
 	}
 
 	void Camera::UpdateProjection()
 	{
-		if (Window::m_Height != 0)
+		UpdateProjection(glm::vec2{ static_cast<float>(Window::m_Width),static_cast<float>(Window::m_Height) });
+	}
+
+	void Camera::UpdateProjection(const glm::vec2& _WindowSize)
+	{
+		// Updates both ortho & perspective
+		m_Ortho = glm::ortho(0.0f, _WindowSize.x, 0.0f, _WindowSize.y, m_CameraConfig.m_Near, m_CameraConfig.m_Far);
+
+		if (_WindowSize.y != 0)
 		{
-			const float aspectR = static_cast<float>(Window::m_Width) / Window::m_Height;
-			m_Projection = glm::perspective(glm::radians(m_CameraConfig.m_Zoom), aspectR, m_CameraConfig.m_Near, m_CameraConfig.m_Far);
+			const float aspectR = _WindowSize.x / _WindowSize.y;
+			m_Perspective = glm::perspective(glm::radians(m_CameraConfig.m_Zoom), aspectR, m_CameraConfig.m_Near, m_CameraConfig.m_Far);
 		}
 		else
 		{
 			const float aspectR = 1.0f;
-			m_Projection = glm::perspective(glm::radians(m_CameraConfig.m_Zoom), aspectR, m_CameraConfig.m_Near, m_CameraConfig.m_Far);
+			m_Perspective = glm::perspective(glm::radians(m_CameraConfig.m_Zoom), aspectR, m_CameraConfig.m_Near, m_CameraConfig.m_Far);
 		}
 	}
 
@@ -73,6 +87,7 @@ namespace Pogplant
 		m_Front.z = sin(glm::radians(m_CameraConfig.m_Yaw)) * cos(glm::radians(m_CameraConfig.m_Pitch));
 		m_Front = glm::normalize(m_Front);
 		m_Right = glm::cross(m_Front, glm::vec3(0, 1, 0));
+		m_Right = glm::normalize(m_Right);
 		m_Up = glm::cross(m_Right, m_Front);
 	}
 
@@ -162,14 +177,24 @@ namespace Pogplant
 		}
 	}
 
-	const glm::mat4& Camera::GetProjection() const
+	const glm::mat4& Camera::GetOrtho() const
 	{
-		return m_Projection;
+		return m_Ortho;
+	}
+
+	const glm::mat4& Camera::GetPerspective() const
+	{
+		return m_Perspective;
 	}
 
 	const glm::mat4& Camera::GetView() const
 	{
 		return m_View;
+	}
+
+	const CameraConfig& Camera::mCameraConfig() const
+	{
+		return m_CameraConfig;
 	}
 
 	void Camera::KeyUpdate(float _Dt)

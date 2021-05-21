@@ -20,7 +20,7 @@ struct MEMLEAK
 
 void ObjectTest()
 {
-	for (int i = -50; i < 50; i++)
+	/*for (int i = -50; i < 50; i++)
 	{
 		for (int j = -50; j < 50; j++)
 		{
@@ -29,7 +29,58 @@ void ObjectTest()
 			Model = glm::scale(Model, glm::vec3(0.2f, 0.2f, 0.2f));
 			PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 		}
-	}
+	}*/
+
+	PP::MeshInstance::ResetCount();
+
+	// 3D object background to see orientation
+	glm::mat4 Model = glm::mat4{ 1 };
+	Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -20.0f));
+	Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+
+	/*Model = glm::mat4{ 1 };
+	Model = glm::translate(Model, glm::vec3(800.0f, 600.0f, -5.0f));
+	Model = glm::scale(Model, glm::vec3(50.0f, 50.0f, 1.0f));
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,1.0f,0.0f,1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });*/
+}
+
+void GizmoTest()
+{
+	PP::MeshInstance::ResetCount();
+
+	glm::mat4 Parent = glm::mat4{ 1 };
+	Parent = glm::translate(Parent, glm::vec3(0.09f, 0.0f, -1.0f));
+	Parent = glm::scale(Parent, glm::vec3(0.5f, 0.5f, 0.5f));
+
+	/// To form a cube
+	// Front
+	glm::mat4 Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, 0.4f));
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0,0,1,1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+
+	// Right
+	Model = glm::translate(Parent, glm::vec3(0.4f, 0, 0.0f));
+	Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1,0,0,1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+
+	// Left
+	Model = glm::translate(Parent, glm::vec3(-0.6f, 0, 0.0f));
+	Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+
+	// Back
+	Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, -0.6f));
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+
+	// Top
+	Model = glm::translate(Parent, glm::vec3(0.0f, 0.6f, 0.0f));
+	Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0,1,0,1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
+
+	// Bottom
+	Model = glm::translate(Parent, glm::vec3(0.0f, -0.4f, 0.0f));
+	Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1}, glm::vec2{1}, glm::vec2{0}, -1, 1, 0 });
 }
 
 void Init()
@@ -59,7 +110,7 @@ void Init()
 	PPD::ImguiHelper::InitImgui();
 
 	/// Test spawning of objects
-	ObjectTest();
+	//ObjectTest();
 }
 
 void Run()
@@ -68,10 +119,12 @@ void Run()
 	{
 		PP::Window::CheckForceClose(); // Temp exit using Esc
 
+	
+		ObjectTest();
+		PP::MeshBuilder::RebindQuad();
+
 		// Camera KB movement
 		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
-
-		PP::MeshBuilder::RebindQuad();
 
 		// Editor
 		PP::Renderer::StartEditorBuffer();
@@ -83,6 +136,15 @@ void Run()
 		PP::Renderer::StartGameBuffer();
 		PP::Renderer::ClearBuffer();
 		PP::Renderer::Draw("GAME");
+		PP::Renderer::EndBuffer();
+
+		GizmoTest();
+		PP::MeshBuilder::RebindQuad();
+
+		// Gizmo
+		PP::Renderer::StartGizmoBuffer();
+		PP::Renderer::ClearBuffer(0,0,0);
+		PP::Renderer::Draw("GIZMO");
 		PP::Renderer::EndBuffer();
 
 		// Post process

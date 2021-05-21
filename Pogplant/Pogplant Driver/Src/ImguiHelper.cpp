@@ -180,7 +180,7 @@ namespace PogplantDriver
 				for (auto& it : PP::Logger::m_Logs)
 				{
 					const char* typeText;
-					switch (it.m_Type)
+					switch (it.second.m_Type)
 					{
 					case PP::LogEntry::ERROR:
 						ImGui::PushStyleColor(0, ImVec4{ 0.75f,0.0f,0.0f,1.0f });
@@ -206,9 +206,9 @@ namespace PogplantDriver
 
 					ImGui::TableNextRow();
 					ImGui::TableSetColumnIndex(0);
-					ImGui::Text(it.m_Source.c_str());
+					ImGui::Text(it.second.m_Source.c_str());
 					ImGui::TableSetColumnIndex(1);
-					ImGui::Text(it.m_Description.c_str());
+					ImGui::Text(it.second.m_Description.c_str());
 					ImGui::PopStyleColor();
 				}
 
@@ -262,7 +262,17 @@ namespace PogplantDriver
 		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
+
+		ImVec2 currCursorPos = ImGui::GetCursorPos();
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
+
+		// Update the camera when resizing window
+		ImVec2 currWindowSize = ImGui::GetWindowSize();
+		PP::CameraResource::GetCamera("EDITOR")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
+
+		ImGui::SetCursorPos(ImVec2{ ImGui::GetWindowSize().x - 208.0f, currCursorPos.y });
+		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GIZMO_COLOR_BUFFER], ImVec2{ 200.0f,150.0f }, ImVec2(0, 1), ImVec2(1, 0));
+		
 
 		// Make sure begin is being called before this function
 		// This ensures the input for camera only works when the Scene window is focused
@@ -282,5 +292,9 @@ namespace PogplantDriver
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
+
+		// Update the camera when resizing window
+		ImVec2 currWindowSize = ImGui::GetWindowSize();
+		PP::CameraResource::GetCamera("GAME")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
 	}
 }

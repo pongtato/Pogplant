@@ -52,17 +52,19 @@ namespace Pogplant
 	{
 		Camera* currCam = CameraResource::GetCamera(_CameraID);
 		ShaderLinker::Use("BASIC");
-		ShaderLinker::SetUniform("m4_Projection", currCam->GetProjection());
+		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
 		ShaderLinker::SetUniform("m4_View", currCam->GetView());
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();
 	}
 
-	void Renderer::Draw(const float(&_View)[16], const float(&_Projection)[16])
+	void Renderer::Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16])
 	{
+		(void)_Ortho;
+
 		// Scene
 		ShaderLinker::Use("BASIC");
-		ShaderLinker::SetUniform("m4_Projection", _Projection);
+		ShaderLinker::SetUniform("m4_Projection", _Perspective);
 		ShaderLinker::SetUniform("m4_View", _View);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();

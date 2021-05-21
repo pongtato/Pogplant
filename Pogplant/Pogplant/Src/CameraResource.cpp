@@ -1,4 +1,5 @@
 #include "CameraResource.h"
+#include <glfw3.h>
 
 namespace Pogplant
 {
@@ -87,6 +88,14 @@ namespace Pogplant
 		if (m_ActiveCamera)
 		{
 			m_ActiveCamera->Update(_Dt);
+		}
+	}
+
+	void CameraResource::ImGUIWindowSizeOverride(const glm::vec2& _ImGuiWinSize)
+	{
+		if (m_ActiveCamera)
+		{
+			m_ActiveCamera->UpdateProjection(_ImGuiWinSize);
 		}
 	}
 }

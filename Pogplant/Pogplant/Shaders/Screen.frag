@@ -7,8 +7,6 @@ in vec2 TexCoords;
 
 uniform sampler2D s2D_ScreenTexture;
 
-const float offset = 1.0 / 300.0;  
-
 void main () 
 {
     Frag_Colour = texture(s2D_ScreenTexture, TexCoords);

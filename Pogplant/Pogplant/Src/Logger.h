@@ -1,6 +1,7 @@
 #pragma once
 
-#include <list>
+//#include <list>
+#include <unordered_map>
 #include <string>
 #include <sstream>
 
@@ -26,7 +27,7 @@ namespace Pogplant
 	{
 		static void Log(LogEntry _LogEntry);
 
-		static std::list<LogEntry> m_Logs;
+		static std::unordered_map<std::string,LogEntry> m_Logs;
 		static const size_t m_MaxLog;
 	};
 }

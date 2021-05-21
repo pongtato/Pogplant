@@ -27,13 +27,17 @@ namespace Pogplant
 		void InitCamera(const glm::vec3& _Position, CameraConfig _CameraConfig);
 		void Update(float _Dt);
 		void UpdateView();
+		void UpdateView(const glm::vec3& _Eye, const glm::vec3& _Center, const glm::vec3& _Up);
 		void UpdateProjection();
+		void UpdateProjection(const glm::vec2& _WindowSize);
 		void UpdateVec();
 		void UpdateZoom(double _ScrollAmount);
 		void UpdateYawPitch(double _XPos, double _YPos);
 		void UpdateCameraPan(double _XPos, double _YPos);
+		const CameraConfig& mCameraConfig() const;
 
-		const glm::mat4& GetProjection() const;
+		const glm::mat4& GetOrtho() const;
+		const glm::mat4& GetPerspective() const;
 		const glm::mat4& GetView() const;
 
 	private:
@@ -42,7 +46,8 @@ namespace Pogplant
 		void MouseUpdate(float _Dt);
 
 		CameraConfig m_CameraConfig;
-		glm::mat4 m_Projection;
+		glm::mat4 m_Ortho;
+		glm::mat4 m_Perspective;
 		glm::mat4 m_View;
 		glm::vec3 m_Position;
 		glm::vec3 m_Front;

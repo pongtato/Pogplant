@@ -2,16 +2,18 @@
 
 namespace Pogplant
 {
-	std::list<LogEntry> Logger::m_Logs;
+	std::unordered_map<std::string, LogEntry> Logger::m_Logs;
 	const size_t Logger::m_MaxLog = 50;
 
 	void Logger::Log(LogEntry _LogEntry)
 	{
+		// Pop front
 		if (m_Logs.size() >= m_MaxLog)
 		{
-			m_Logs.pop_front();
+			m_Logs.erase(m_Logs.begin());
 		}
 
-		m_Logs.push_back(_LogEntry);
+		// This way description duplicates will just act as key and not contribute to size
+		m_Logs[_LogEntry.m_Description] = _LogEntry;
 	}
 }

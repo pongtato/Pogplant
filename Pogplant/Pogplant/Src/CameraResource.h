@@ -22,6 +22,7 @@ namespace Pogplant
 		static void CleanUpCameras();
 		static void UpdateAllProjection();
 		static void UpdateActiveCamera(float _Dt);
+		static void ImGUIWindowSizeOverride(const glm::vec2& _ImGuiWinSize);
 
 	private:
 		static std::unordered_map<const char*, size_t> m_CameraKeys;

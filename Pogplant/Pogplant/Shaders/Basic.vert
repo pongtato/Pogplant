@@ -29,5 +29,13 @@ void main()
     UV_Offset = v2_UV_Offset;
     TexID = i_TexID;
     Bloom = b_Bloom;
-    gl_Position = m4_Projection * m4_View * m4_Model * vec4(v2_Pos, 0.1f, 1.0f);
+    
+    mat4 proj = m4_Projection;
+    mat4 view = m4_View;
+    if(b_Ortho == 1)
+    {
+        view = mat4(1.0f);
+    }
+
+    gl_Position = proj * view * m4_Model * vec4(v2_Pos, 0.1f, 1.0f);
 }
