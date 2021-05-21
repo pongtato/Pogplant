@@ -1,24 +1,16 @@
 #include "Camera.h"
 #include "Window.h"
 #include "Logger.h"
+#include <iostream>
 
 #include <gtc/matrix_transform.hpp>
 #include <glfw3.h>
 
 namespace Pogplant
 {
-	//CameraConfig::CameraConfig()
-	//	: m_Zoom{ 0 }
-	//	, m_Speed{ 0 }
-	//	, m_Yaw{ 0 }
-	//	, m_Pitch{ 0 }
-	//	, m_Near{ 0 }
-	//	, m_Far{ 0 }
-	//{
-	//}
-
 	Camera::Camera()
 		: m_CameraConfig{}
+		, m_CameraLerp{}
 		, m_Ortho{ glm::mat4{1} }
 		, m_Perspective{ glm::mat4{1} }
 		, m_View{ glm::mat4{1} }
@@ -27,8 +19,8 @@ namespace Pogplant
 		, m_Up{ glm::vec3{0,1,0} }
 		, m_Right{ glm::vec3{1,0,0} }
 		, m_Target{ glm::vec3{0,0,-1} }
-		, m_LastXPos{ 0 }
-		, m_LastYPos{ 0 }
+		, m_LastXPos{ 0.0 }
+		, m_LastYPos{ 0.0 }
 	{
 	}
 
@@ -36,6 +28,7 @@ namespace Pogplant
 	{
 		m_Position = _Position;
 		m_CameraConfig = _CameraConfig;
+		m_CameraLerp = { 6.9f,0,0,0,0,0,0 }; // Lerp speed = 6.9f, rest = 0.0f
 
 		UpdateVec();
 		UpdateView();
@@ -46,6 +39,7 @@ namespace Pogplant
 	{
 		KeyUpdate(_Dt);
 		MouseUpdate(_Dt);
+		LerpUpdate(_Dt);
 	}
 
 	void Camera::UpdateView()
@@ -278,15 +272,53 @@ namespace Pogplant
 		// Reset rotation
 		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_R) == GLFW_PRESS)
 		{
-			m_CameraConfig.m_Yaw = -90.0f;
-			m_CameraConfig.m_Pitch = 0.0f;
-			UpdateVec();
-			UpdateView();
+			//m_CameraConfig.m_Yaw = -90.0f;
+			//m_CameraConfig.m_Pitch = 0.0f;
+			//UpdateVec();
+			//UpdateView();
+
+			if (!m_CameraLerp.m_Lerping)
+			{
+				m_CameraLerp.m_Lerping = true;
+				// Convert to positive range because lerp in negative is just pepega
+				m_CameraLerp.m_StartYaw = m_CameraConfig.m_Yaw + 180.0f;
+				m_CameraLerp.m_StartPitch = m_CameraConfig.m_Pitch + 90.0f;
+				m_CameraLerp.m_TargetYaw = 90.0f;
+				m_CameraLerp.m_TargetPitch = 90.0f;
+				m_CameraLerp.m_LerpTarget = m_CameraLerp.m_LerpTimer + 1.0f; // Lerp in 1 sec
+			}
 		}
 	}
 
 	void Camera::MouseUpdate(float _Dt)
 	{
 		(void)_Dt;
+	}
+
+	void Camera::LerpUpdate(float _Dt)
+	{
+		m_CameraLerp.m_LerpTimer += m_CameraLerp.m_LerpSpeed * _Dt;
+
+		if (m_CameraLerp.m_LerpTimer < m_CameraLerp.m_LerpTarget)
+		{
+			// Scale reference
+			float timeCalc = 1.0f - (m_CameraLerp.m_LerpTarget - m_CameraLerp.m_LerpTimer);
+
+			// Convert back to negative range because lerp in negative is just pepega :clown:
+			m_CameraConfig.m_Yaw = CameraLerp::Lerp(m_CameraLerp.m_StartYaw, m_CameraLerp.m_TargetYaw, timeCalc) - 180.0f;
+			m_CameraConfig.m_Pitch = CameraLerp::Lerp(m_CameraLerp.m_StartPitch, m_CameraLerp.m_TargetPitch, timeCalc) - 90.0f;
+
+			UpdateVec();
+			UpdateView();
+		}
+		else if(m_CameraLerp.m_Lerping)
+		{
+			m_CameraLerp.m_Lerping = false;
+		}
+	}
+
+	float CameraLerp::Lerp(float _A, float _B, float _T)
+	{
+		return _A + _T * (_B - _A);
 	}
 }

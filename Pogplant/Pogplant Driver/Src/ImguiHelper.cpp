@@ -180,7 +180,7 @@ namespace PogplantDriver
 				for (auto& it : PP::Logger::m_Logs)
 				{
 					const char* typeText;
-					switch (it.second.m_Type)
+					switch (it.m_Type)
 					{
 					case PP::LogEntry::ERROR:
 						ImGui::PushStyleColor(0, ImVec4{ 0.75f,0.0f,0.0f,1.0f });
@@ -206,9 +206,9 @@ namespace PogplantDriver
 
 					ImGui::TableNextRow();
 					ImGui::TableSetColumnIndex(0);
-					ImGui::Text(it.second.m_Source.c_str());
+					ImGui::Text(it.m_Source.c_str());
 					ImGui::TableSetColumnIndex(1);
-					ImGui::Text(it.second.m_Description.c_str());
+					ImGui::Text(it.m_Description.c_str());
 					ImGui::PopStyleColor();
 				}
 

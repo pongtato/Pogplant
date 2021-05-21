@@ -154,7 +154,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Libs\IMGUI\imgui.cpp" />
-    <ClCompile Include="Libs\IMGUI\ImGuizmo.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui_draw.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui_impl_glfw.cpp" />
@@ -168,7 +167,6 @@
     <ClInclude Include="Libs\IMGUI\imconfig.h" />
     <ClInclude Include="Libs\IMGUI\imgui.h" />
     <ClInclude Include="Libs\IMGUI\ImGuiExtraStyles.h" />
-    <ClInclude Include="Libs\IMGUI\ImGuizmo.h" />
     <ClInclude Include="Libs\IMGUI\imgui_impl_glfw.h" />
     <ClInclude Include="Libs\IMGUI\imgui_impl_opengl3.h" />
     <ClInclude Include="Libs\IMGUI\imgui_internal.h" />

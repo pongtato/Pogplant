@@ -4,6 +4,20 @@
 
 namespace Pogplant
 {
+	struct CameraLerp
+	{
+		float m_LerpSpeed;
+		float m_StartYaw;
+		float m_StartPitch;
+		float m_TargetYaw;
+		float m_TargetPitch;
+		float m_LerpTimer;
+		float m_LerpTarget;
+		bool m_Lerping;
+
+		static float Lerp(float _A, float _B, float _T);
+	};
+
 	struct CameraConfig
 	{
 		//CameraConfig();
@@ -44,8 +58,10 @@ namespace Pogplant
 
 		void KeyUpdate(float _Dt);
 		void MouseUpdate(float _Dt);
+		void LerpUpdate(float _Dt);
 
 		CameraConfig m_CameraConfig;
+		CameraLerp m_CameraLerp;
 		glm::mat4 m_Ortho;
 		glm::mat4 m_Perspective;
 		glm::mat4 m_View;
@@ -58,7 +74,7 @@ namespace Pogplant
 		double m_LastXPos;
 		double m_LastYPos;
 		bool m_RMBDown; // Camera look
-		bool m_MMBDown; //Pan
+		bool m_MMBDown; // Pan
 	};
 }
 
