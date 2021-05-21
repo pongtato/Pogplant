@@ -58,6 +58,18 @@
     <Filter Include="Source Files\Logger">
       <UniqueIdentifier>{7575ba94-c103-4529-a55d-e26bfa5e785f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Gizmos">
+      <UniqueIdentifier>{528d5f54-3d78-44fe-b09d-69900373ce9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gizmos\3DInspector">
+      <UniqueIdentifier>{9c792d88-aaf8-412c-a948-1e907b0b994a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gizmos\OBB">
+      <UniqueIdentifier>{b1f2ceef-cafd-42dc-aec0-f7e9f2a47ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gizmos\Ray">
+      <UniqueIdentifier>{626673a0-b9c6-4c31-99eb-f586bca9cbfa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -102,6 +114,18 @@
     <ClInclude Include="Src\Logger.h">
       <Filter>Source Files\Logger</Filter>
     </ClInclude>
+    <ClInclude Include="Src\3DInspector.h">
+      <Filter>Source Files\Gizmos\3DInspector</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\OBB.h">
+      <Filter>Source Files\Gizmos\OBB</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Ray.h">
+      <Filter>Source Files\Gizmos\Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Gizmos.h">
+      <Filter>Source Files\Gizmos</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -142,6 +166,18 @@
     </ClCompile>
     <ClCompile Include="Src\Logger.cpp">
       <Filter>Source Files\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\3DInspector.cpp">
+      <Filter>Source Files\Gizmos\3DInspector</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\OBB.cpp">
+      <Filter>Source Files\Gizmos\OBB</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Ray.cpp">
+      <Filter>Source Files\Gizmos\Ray</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Gizmos.cpp">
+      <Filter>Source Files\Gizmos</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
