@@ -270,10 +270,6 @@ namespace PogplantDriver
 		ImVec2 currWindowSize = ImGui::GetWindowSize();
 		PP::CameraResource::GetCamera("EDITOR")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
 
-		ImGui::SetCursorPos(ImVec2{ ImGui::GetWindowSize().x - 208.0f, currCursorPos.y });
-		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GIZMO_COLOR_BUFFER], ImVec2{ 200.0f,150.0f }, ImVec2(0, 1), ImVec2(1, 0));
-		
-
 		// Make sure begin is being called before this function
 		// This ensures the input for camera only works when the Scene window is focused
 		if(ImGui::IsWindowFocused())

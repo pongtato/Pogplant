@@ -35,7 +35,7 @@ void ObjectTest()
 
 	// 3D object background to see orientation
 	glm::mat4 Model = glm::mat4{ 1 };
-	Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -20.0f));
+	Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -40.0f));
 	Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
 	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
@@ -140,12 +140,6 @@ void Run()
 
 		GizmoTest();
 		PP::MeshBuilder::RebindQuad();
-
-		// Gizmo
-		PP::Renderer::StartGizmoBuffer();
-		PP::Renderer::ClearBuffer(0,0,0);
-		PP::Renderer::Draw("GIZMO");
-		PP::Renderer::EndBuffer();
 
 		// Post process
 		PP::Renderer::PostProcess();
