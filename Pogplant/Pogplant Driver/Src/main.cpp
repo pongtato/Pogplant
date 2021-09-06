@@ -42,12 +42,47 @@ void Init()
 			20.0f,	// Key input look sens
 			0.1f	// Pan speed
 		});
-	PP::Gizmos::InitGizmos();
 	PPD::ImguiHelper::InitImgui();
 
 	/// Test spawning of objects
 	//ObjectTest();
-	std::cout << "PROGRAM STARTED, USE THE EDITOR DEBUGGER" << std::endl;
+	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
+}
+
+void TestCube(glm::vec3 _Position, glm::vec3 _Scale)
+{
+	glm::mat4 Parent = glm::mat4{ 1 };
+	Parent = glm::translate(Parent, _Position);
+	Parent = glm::scale(Parent, _Scale);
+
+	/// To form a cube for orientation
+	// Front
+	glm::mat4 Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, 0.5f));
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,0.0f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+
+	// Right
+	Model = glm::translate(Parent, glm::vec3(0.5f, 0, 0.0f));
+	Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1.0f,0.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+
+	// Left
+	Model = glm::translate(Parent, glm::vec3(-0.5f, 0, 0.0f));
+	Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1.0f,0.2f,0.6f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+
+	// Back
+	Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, -0.5f));
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.2f,0.6f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+
+	// Top
+	Model = glm::translate(Parent, glm::vec3(0.0f, 0.5f, 0.0f));
+	Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,1.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+
+	// Bottom
+	Model = glm::translate(Parent, glm::vec3(0.0f, -0.5f, 0.0f));
+	Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
+	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.6f,1.0f,0.2f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 }
 
 void DrawCommon()
@@ -58,6 +93,9 @@ void DrawCommon()
 	Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -40.0f));
 	Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
 	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+
+	TestCube(glm::vec3(0),glm::vec3(1));
+
 	PP::MeshBuilder::RebindQuad();
 }
 
@@ -74,24 +112,6 @@ void DrawGame()
 	PP::Renderer::StartGameBuffer();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::Draw("GAME");
-	PP::Renderer::EndBuffer();
-}
-
-void DrawGizmos()
-{
-	PP::MeshInstance::ResetCount();
-
-	for (const auto& it : PP::ThreeDInspector::m_Cube.m_Planes)
-	{
-		PP::MeshInstance::SetInstance(PP::InstanceData{ it.m_Model, it.m_Color, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
-	}
-
-	PP::MeshBuilder::RebindQuad();
-
-	// Draw to buffer
-	PP::Renderer::StartGizmoBuffer();
-	PP::Renderer::ClearBuffer(0, 0, 0, 0);
-	PP::Renderer::Draw("GIZMO");
 	PP::Renderer::EndBuffer();
 }
 
@@ -125,8 +145,6 @@ void Run()
 		DrawEditor();
 		// Game
 		DrawGame();
-		// Gizmos
-		DrawGizmos();
 		// Post process
 		DrawScreen();
 		// ImGUI

@@ -1,4 +1,5 @@
 #pragma once
+#include "Ray.h"
 
 #include <glm.hpp>
 
@@ -48,8 +49,8 @@ namespace Pogplant
 		void UpdateZoom(double _ScrollAmount);
 		void UpdateYawPitch(double _XPos, double _YPos);
 		void UpdateCameraPan(double _XPos, double _YPos);
-		const CameraConfig& mCameraConfig() const;
 
+		const CameraConfig& mCameraConfig() const;
 		const glm::mat4& GetOrtho() const;
 		const glm::mat4& GetPerspective() const;
 		const glm::mat4& GetView() const;

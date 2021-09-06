@@ -37,5 +37,5 @@ void main()
         view = mat4(1.0f);
     }
 
-    gl_Position = proj * view * m4_Model * vec4(v2_Pos, 0.1f, 1.0f);
+    gl_Position = proj * view * m4_Model * vec4(v2_Pos, 0.0f, 1.0f);
 }

@@ -1,7 +1,7 @@
 #include "Camera.h"
 #include "Window.h"
 #include "Logger.h"
-#include <iostream>
+#include "3DInspector.h"
 
 #include <gtc/matrix_transform.hpp>
 #include <glfw3.h>

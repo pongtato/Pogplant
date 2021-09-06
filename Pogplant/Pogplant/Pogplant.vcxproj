@@ -11,39 +11,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\3DInspector.h" />
     <ClInclude Include="Src\Camera.h" />
     <ClInclude Include="Src\CameraResource.h" />
     <ClInclude Include="Src\FrameBuffer.h" />
     <ClInclude Include="Src\FrameBufferResource.h" />
-    <ClInclude Include="Src\Gizmos.h" />
     <ClInclude Include="Src\Logger.h" />
     <ClInclude Include="Src\Mesh.h" />
     <ClInclude Include="Src\MeshBuilder.h" />
     <ClInclude Include="Src\MeshInstance.h" />
     <ClInclude Include="Src\MeshResource.h" />
-    <ClInclude Include="Src\OBB.h" />
     <ClInclude Include="Src\Pogplant.h" />
-    <ClInclude Include="Src\Ray.h" />
     <ClInclude Include="Src\Renderer.h" />
     <ClInclude Include="Src\ShaderLinker.h" />
     <ClInclude Include="Src\ShaderResource.h" />
     <ClInclude Include="Src\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\3DInspector.cpp" />
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\CameraResource.cpp" />
     <ClCompile Include="Src\FrameBuffer.cpp" />
     <ClCompile Include="Src\FrameBufferResource.cpp" />
-    <ClCompile Include="Src\Gizmos.cpp" />
     <ClCompile Include="Src\Logger.cpp" />
     <ClCompile Include="Src\Mesh.cpp" />
     <ClCompile Include="Src\MeshBuilder.cpp" />
     <ClCompile Include="Src\MeshInstance.cpp" />
     <ClCompile Include="Src\MeshResource.cpp" />
-    <ClCompile Include="Src\OBB.cpp" />
-    <ClCompile Include="Src\Ray.cpp" />
     <ClCompile Include="Src\Renderer.cpp" />
     <ClCompile Include="Src\ShaderLinker.cpp" />
     <ClCompile Include="Src\ShaderResource.cpp" />

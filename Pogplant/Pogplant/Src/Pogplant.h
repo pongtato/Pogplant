@@ -8,6 +8,5 @@
 #include "FrameBufferResource.h"
 #include "CameraResource.h"
 #include "Logger.h"
-#include "Gizmos.h"
 
 namespace PP = Pogplant;

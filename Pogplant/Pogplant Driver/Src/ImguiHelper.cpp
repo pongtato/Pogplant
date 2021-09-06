@@ -172,7 +172,7 @@ namespace PogplantDriver
 
 			if (ImGui::BeginTable("##table", 2, flags))
 			{
-				ImGui::TableSetupScrollFreeze(0, 1); // Make top row always visible
+				//ImGui::TableSetupScrollFreeze(0, 0); // Make top row always visible
 				ImGui::TableSetupColumn("Source", ImGuiTableColumnFlags_None, 0.2f);
 				ImGui::TableSetupColumn("Description", ImGuiTableColumnFlags_None);
 				ImGui::TableHeadersRow();
@@ -210,6 +210,8 @@ namespace PogplantDriver
 					ImGui::TableSetColumnIndex(1);
 					ImGui::Text(it.m_Description.c_str());
 					ImGui::PopStyleColor();
+					// Scroll to bottom
+					ImGui::SetScrollHere(1.0f);
 				}
 
 				ImGui::EndTable();
@@ -259,27 +261,18 @@ namespace PogplantDriver
 
 	void ImguiHelper::SceneWindow()
 	{
+		// Debug info
 		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
 
-		ImVec2 currCursorPos = ImGui::GetCursorPos();
+		// Draw the actual editor scene
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 
 		// Update the camera when resizing window
 		ImVec2 currWindowSize = ImGui::GetWindowSize();
 		PP::CameraResource::GetCamera("EDITOR")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
 
-		ImGui::SetCursorPos(ImVec2{ ImGui::GetWindowSize().x - 218.0f, currCursorPos.y - 40.0f });
-		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GIZMO_COLOR_BUFFER], ImVec2{ 320.0f,180.0f }, ImVec2(0, 1), ImVec2(1, 0));
-
-		const float radius = 10.0f;
-		PP::CameraConfig eCameraConfig = PP::CameraResource::GetCamera("EDITOR")->mCameraConfig();
-		float camX = cos(glm::radians(eCameraConfig.m_Yaw) + glm::radians(180.0f)) * cos(glm::radians(eCameraConfig.m_Pitch)) * radius;
-		float camY = sin(-glm::radians(eCameraConfig.m_Pitch)) * radius;
-		float camZ = sin(glm::radians(eCameraConfig.m_Yaw) + glm::radians(180.0f)) * cos(glm::radians(eCameraConfig.m_Pitch)) * radius;
-		PP::CameraResource::GetCamera("GIZMO")->UpdateView(glm::vec3(camX, camY, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
-		
 		// Make sure begin is being called before this function
 		// This ensures the input for camera only works when the Scene window is focused
 		if(ImGui::IsWindowFocused())
