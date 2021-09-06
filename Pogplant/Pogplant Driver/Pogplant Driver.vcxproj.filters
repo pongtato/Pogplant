@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Imgui">
       <UniqueIdentifier>{bc8a3880-05c3-48ca-baed-433034b0c686}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Imguizmo">
+      <UniqueIdentifier>{13edda57-9c49-4319-9446-38ba6ce936a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -47,6 +50,18 @@
     </ClCompile>
     <ClCompile Include="Libs\IMGUI\imgui_widgets.cpp">
       <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\IMGUIZMO\ImCurveEdit.cpp">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\IMGUIZMO\ImGradient.cpp">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\IMGUIZMO\ImGuizmo.cpp">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\IMGUIZMO\ImSequencer.cpp">
+      <Filter>Source Files\Imguizmo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +94,21 @@
     </ClInclude>
     <ClInclude Include="Libs\IMGUI\imstb_truetype.h">
       <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\IMGUIZMO\ImCurveEdit.h">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\IMGUIZMO\ImGradient.h">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\IMGUIZMO\ImGuizmo.h">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\IMGUIZMO\ImSequencer.h">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\IMGUIZMO\ImZoomSlider.h">
+      <Filter>Source Files\Imguizmo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

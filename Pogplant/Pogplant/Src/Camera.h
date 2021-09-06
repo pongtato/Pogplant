@@ -49,11 +49,15 @@ namespace Pogplant
 		void UpdateZoom(double _ScrollAmount);
 		void UpdateYawPitch(double _XPos, double _YPos);
 		void UpdateCameraPan(double _XPos, double _YPos);
+		void UpdateFront(float* _Front);
 
-		const CameraConfig& mCameraConfig() const;
+		const CameraConfig& GetCameraConfig() const;
 		const glm::mat4& GetOrtho() const;
 		const glm::mat4& GetPerspective() const;
 		const glm::mat4& GetView() const;
+
+		glm::mat4& View();
+
 
 	private:
 

@@ -1,5 +1,4 @@
 #include "ImguiHelper.h"
-
 #include "Pogplant.h"
 
 #include <imgui.h>
@@ -7,6 +6,8 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include <ImGuiExtraStyles.h>
+#include <ImGuizmo.h>
+#include <gtc/type_ptr.hpp>
 
 namespace PogplantDriver
 {
@@ -32,7 +33,9 @@ namespace PogplantDriver
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
-		
+		ImGuizmo::SetOrthographic(false);
+		ImGuizmo::BeginFrame();
+
 		// Window
 		ImVec2 winSize = ImVec2(static_cast<float>(PP::Window::m_Width), static_cast<float>(PP::Window::m_Height));
 		ImGui::SetNextWindowSize(winSize);
@@ -266,18 +269,35 @@ namespace PogplantDriver
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
 
+		ImVec2 currCursor = ImGui::GetCursorPos();
+
 		// Draw the actual editor scene
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 
 		// Update the camera when resizing window
 		ImVec2 currWindowSize = ImGui::GetWindowSize();
-		PP::CameraResource::GetCamera("EDITOR")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
+		
+		Pogplant::Camera* currCam = PP::CameraResource::GetCamera("EDITOR");
+		currCam->UpdateProjection({ currWindowSize.x,currWindowSize.y });
 
 		// Make sure begin is being called before this function
 		// This ensures the input for camera only works when the Scene window is focused
 		if(ImGui::IsWindowFocused())
 		{
 			PP::CameraResource::SetActiveCam("EDITOR");
+			// Draw view manipulate only in editor scene
+			ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, currWindowSize.x, currWindowSize.y);
+			float view[16] = { 0 };
+			float front[3] = { 0 };
+			memcpy(view, glm::value_ptr(currCam->View()), sizeof(currCam->View()));
+			const float topRight = ImGui::GetWindowPos().x + currWindowSize.x;
+			// After clickng on gizmo update yaw pitch accordingly
+			if (ImGuizmo::ViewManipulate(view, 1.0f, ImVec2(topRight - 135, currCursor.y + 20), ImVec2(128, 128), 0x0, front))
+			{
+				currCam->UpdateFront(front);
+			}
+			// Updated view from gizmo
+			currCam->View() = glm::make_mat4(view);
 		}
 		else
 		{

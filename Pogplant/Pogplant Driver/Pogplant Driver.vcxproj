@@ -79,14 +79,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
@@ -153,6 +153,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Libs\IMGUIZMO\ImCurveEdit.cpp" />
+    <ClCompile Include="Libs\IMGUIZMO\ImGradient.cpp" />
+    <ClCompile Include="Libs\IMGUIZMO\ImGuizmo.cpp" />
+    <ClCompile Include="Libs\IMGUIZMO\ImSequencer.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui_draw.cpp" />
@@ -164,6 +168,11 @@
     <ClCompile Include="Src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Libs\IMGUIZMO\ImCurveEdit.h" />
+    <ClInclude Include="Libs\IMGUIZMO\ImGradient.h" />
+    <ClInclude Include="Libs\IMGUIZMO\ImGuizmo.h" />
+    <ClInclude Include="Libs\IMGUIZMO\ImSequencer.h" />
+    <ClInclude Include="Libs\IMGUIZMO\ImZoomSlider.h" />
     <ClInclude Include="Libs\IMGUI\imconfig.h" />
     <ClInclude Include="Libs\IMGUI\imgui.h" />
     <ClInclude Include="Libs\IMGUI\ImGuiExtraStyles.h" />

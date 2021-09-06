@@ -6,6 +6,8 @@
 #include <gtc/matrix_transform.hpp>
 #include <glfw3.h>
 
+#include <iostream>
+
 namespace Pogplant
 {
 	Camera::Camera()
@@ -171,6 +173,15 @@ namespace Pogplant
 		}
 	}
 
+	void Camera::UpdateFront(float* _Front)
+	{
+		// Cartesian to spherical
+		m_Front = { _Front[0],_Front[1],_Front[2] };
+		m_CameraConfig.m_Yaw = 180.0f + glm::degrees(atan2f(m_Front.z, m_Front.x));
+		m_CameraConfig.m_Pitch = glm::degrees(-asinf(m_Front.y));
+		UpdateVec();
+	}
+
 	const glm::mat4& Camera::GetOrtho() const
 	{
 		return m_Ortho;
@@ -186,7 +197,12 @@ namespace Pogplant
 		return m_View;
 	}
 
-	const CameraConfig& Camera::mCameraConfig() const
+	glm::mat4& Camera::View()
+	{
+		return m_View;
+	}
+
+	const CameraConfig& Camera::GetCameraConfig() const
 	{
 		return m_CameraConfig;
 	}

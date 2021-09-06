@@ -55,7 +55,6 @@ void TestCube(glm::vec3 _Position, glm::vec3 _Scale)
 	Parent = glm::translate(Parent, _Position);
 	Parent = glm::scale(Parent, _Scale);
 
-	/// To form a cube for orientation
 	// Front
 	glm::mat4 Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, 0.5f));
 	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,0.0f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
@@ -94,7 +93,7 @@ void DrawCommon()
 	Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
 	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
-	TestCube(glm::vec3(0),glm::vec3(1));
+	TestCube(glm::vec3(0.0f, 0.0f, -10.0f),glm::vec3(1));
 
 	PP::MeshBuilder::RebindQuad();
 }
