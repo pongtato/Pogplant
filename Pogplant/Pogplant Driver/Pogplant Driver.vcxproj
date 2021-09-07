@@ -164,6 +164,8 @@
     <ClCompile Include="Libs\IMGUI\imgui_impl_opengl3.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui_tables.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui_widgets.cpp" />
+    <ClCompile Include="Src\GameObject.cpp" />
+    <ClCompile Include="Src\GameObjectContainer.cpp" />
     <ClCompile Include="Src\ImguiHelper.cpp" />
     <ClCompile Include="Src\main.cpp" />
   </ItemGroup>
@@ -182,6 +184,8 @@
     <ClInclude Include="Libs\IMGUI\imstb_rectpack.h" />
     <ClInclude Include="Libs\IMGUI\imstb_textedit.h" />
     <ClInclude Include="Libs\IMGUI\imstb_truetype.h" />
+    <ClInclude Include="Src\GameObject.h" />
+    <ClInclude Include="Src\GameObjectContainer.h" />
     <ClInclude Include="Src\ImguiHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

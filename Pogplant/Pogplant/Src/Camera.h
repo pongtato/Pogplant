@@ -56,8 +56,8 @@ namespace Pogplant
 		const glm::mat4& GetPerspective() const;
 		const glm::mat4& GetView() const;
 
+		glm::mat4& Perspective();
 		glm::mat4& View();
-
 
 	private:
 

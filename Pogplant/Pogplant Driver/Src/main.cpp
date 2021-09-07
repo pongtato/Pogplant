@@ -1,9 +1,11 @@
 #include "ImguiHelper.h"
+#include "GameObjectContainer.h"
 
 #include <iostream>
 #include <Pogplant.h>
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
 
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -46,42 +48,55 @@ void Init()
 
 	/// Test spawning of objects
 	//ObjectTest();
+
+	/// Add to container
+	glm::vec3 pos = { 5.0f, 0.0f, -10.0f };
+	glm::vec3 rot = { 0.0f,0.0f,0.0f };
+	glm::vec3 scale = { 1.0f,1.0f,1.0f };
+	GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale));
+	pos = { -5.0f, 0.0f, -10.0f };
+	rot = { 0.0f,0.0f,0.0f };
+	scale = { 2.0f,2.0f,2.0f };
+	GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale));
+
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 }
 
-void TestCube(glm::vec3 _Position, glm::vec3 _Scale)
+void TestCube()
 {
-	glm::mat4 Parent = glm::mat4{ 1 };
-	Parent = glm::translate(Parent, _Position);
-	Parent = glm::scale(Parent, _Scale);
+	for (const auto& go : GO_Resource::m_GO_Container)
+	{
+		glm::mat4 Parent = glm::mat4{ 1 };
+		Parent = glm::make_mat4(go.m_ModelMtx);
 
-	// Front
-	glm::mat4 Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, 0.5f));
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,0.0f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+		// Front
+		glm::mat4 Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, 0.5f));
+		PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,0.0f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
-	// Right
-	Model = glm::translate(Parent, glm::vec3(0.5f, 0, 0.0f));
-	Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1.0f,0.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+		// Right
+		Model = glm::translate(Parent, glm::vec3(0.5f, 0, 0.0f));
+		Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
+		PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1.0f,0.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
-	// Left
-	Model = glm::translate(Parent, glm::vec3(-0.5f, 0, 0.0f));
-	Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1.0f,0.2f,0.6f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+		// Left
+		Model = glm::translate(Parent, glm::vec3(-0.5f, 0, 0.0f));
+		Model = glm::rotate(Model, glm::radians(90.0f), { 0, 1, 0 });
+		PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{1.0f,0.2f,0.6f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
-	// Back
-	Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, -0.5f));
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.2f,0.6f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+		// Back
+		Model = glm::translate(Parent, glm::vec3(0.0f, 0.0f, -0.5f));
+		PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.2f,0.6f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
-	// Top
-	Model = glm::translate(Parent, glm::vec3(0.0f, 0.5f, 0.0f));
-	Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,1.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+		// Top
+		Model = glm::translate(Parent, glm::vec3(0.0f, 0.5f, 0.0f));
+		Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
+		PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.0f,1.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
-	// Bottom
-	Model = glm::translate(Parent, glm::vec3(0.0f, -0.5f, 0.0f));
-	Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.6f,1.0f,0.2f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+		// Bottom
+		Model = glm::translate(Parent, glm::vec3(0.0f, -0.5f, 0.0f));
+		Model = glm::rotate(Model, glm::radians(90.0f), { 1, 0, 0 });
+		PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.6f,1.0f,0.2f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+	}
 }
 
 void DrawCommon()
@@ -93,7 +108,7 @@ void DrawCommon()
 	Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
 	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
-	TestCube(glm::vec3(0.0f, 0.0f, -10.0f),glm::vec3(1));
+	TestCube();
 
 	PP::MeshBuilder::RebindQuad();
 }

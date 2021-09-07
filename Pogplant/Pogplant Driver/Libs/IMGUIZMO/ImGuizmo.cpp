@@ -891,15 +891,26 @@ namespace IMGUIZMO_NAMESPACE
       return IsWithin(p.x, gContext.mX, gContext.mXMax) && IsWithin(p.y, gContext.mY, gContext.mYMax);
    }
 
-   void SetRect(float x, float y, float width, float height)
+   //void SetRect(float x, float y, float width, float height)
+   //{
+   //   gContext.mX = x;
+   //   gContext.mY = y;
+   //   gContext.mWidth = width;
+   //   gContext.mHeight = height;
+   //   gContext.mXMax = gContext.mX + gContext.mWidth;
+   //   gContext.mYMax = gContext.mY + gContext.mXMax;
+   //   gContext.mDisplayRatio = width / height;
+   //}
+
+   void SetRect(float x, float y, float max_x, float max_y)
    {
-      gContext.mX = x;
-      gContext.mY = y;
-      gContext.mWidth = width;
-      gContext.mHeight = height;
-      gContext.mXMax = gContext.mX + gContext.mWidth;
-      gContext.mYMax = gContext.mY + gContext.mXMax;
-      gContext.mDisplayRatio = width / height;
+	   gContext.mX = x;
+	   gContext.mY = y;
+	   gContext.mWidth = max_x-x;
+	   gContext.mHeight = max_y-y;
+	   gContext.mXMax = max_x;
+	   gContext.mYMax = max_y;
+	   gContext.mDisplayRatio = gContext.mWidth / gContext.mHeight;
    }
 
    void SetOrthographic(bool isOrthographic)

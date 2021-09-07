@@ -1,5 +1,6 @@
 #include "ImguiHelper.h"
 #include "Pogplant.h"
+#include "GameObjectContainer.h"
 
 #include <imgui.h>
 #include <imgui_internal.h>
@@ -12,6 +13,16 @@
 namespace PogplantDriver
 {
 	bool ImguiHelper::m_FirstRun = true;
+	static int m_CurrentGOIdx = -1;
+
+	// Guizmo editor stuff
+	static ImGuizmo::OPERATION m_EditMode(ImGuizmo::TRANSLATE);
+	static bool m_UseSnap = false;
+	static float m_SnapStep[]		= { 0.1f, 0.1f, 0.1f };
+	static float m_BoundsPos[]		= { -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, 0.5f };
+	static float m_BoundsSnapStep[] = { 0.1f, 0.1f, 0.1f };
+	static bool m_BoundSizing = false;
+	static bool m_UseBoundsSnap = false;
 
 	bool ImguiHelper::InitImgui()
 	{
@@ -23,7 +34,6 @@ namespace PogplantDriver
 		imgui_extra_styles::Pogplant();
 		ImGui_ImplGlfw_InitForOpenGL(PP::Window::GetWindow(), true);
 		ImGui_ImplOpenGL3_Init();
-
 		return true;
 	}
 
@@ -224,13 +234,60 @@ namespace PogplantDriver
 
 		ImGui::Begin("Scene Hierarchy");
 		{
-			ImGui::Text("Scene Hierarchy");
+			for (int i = 0; i < GO_Resource::m_GO_Container.size(); i++)
+			{
+				std::string name = "Object" + std::to_string(i);
+				if (ImGui::Selectable(name.c_str(), m_CurrentGOIdx == i))
+				{
+					m_CurrentGOIdx = i;
+				}
+			}
 		}
 		ImGui::End();
 
 		ImGui::Begin("Inspector");
 		{
-			ImGui::Text("Inspector");
+			if (m_CurrentGOIdx >= 0)
+			{
+				GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
+
+				// Mode switch
+				if (ImGui::RadioButton("Translate", m_EditMode == ImGuizmo::TRANSLATE))
+				{
+					m_EditMode = ImGuizmo::TRANSLATE;
+				}
+				ImGui::SameLine();
+				if (ImGui::RadioButton("Rotate", m_EditMode == ImGuizmo::ROTATE))
+				{
+					m_EditMode = ImGuizmo::ROTATE;
+				}
+				ImGui::SameLine();
+				if (ImGui::RadioButton("Scale", m_EditMode == ImGuizmo::SCALE))
+				{
+					m_EditMode = ImGuizmo::SCALE;
+				}
+
+				// Snap when editing transform
+				ImGui::Checkbox("Snap Transform", &m_UseSnap);
+				//Bounds edit
+				ImGui::Checkbox("Edit Bounds", &m_BoundSizing);
+				//Snap when editing
+				ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
+
+				// Usual stuff
+				ImGui::Text("Translate");
+				ImGui::PushID("Tr");
+				ImGui::DragFloat3("", currGO.m_Position);
+				ImGui::PopID();
+				ImGui::Text("Rotate");
+				ImGui::PushID("Rt");
+				ImGui::DragFloat3("", currGO.m_Rotation);
+				ImGui::PopID();
+				ImGui::Text("Scale");
+				ImGui::PushID("Sc");
+				ImGui::DragFloat3("", currGO.m_Scale);
+				ImGui::PopID();
+			}
 		}
 		ImGui::End();
 
@@ -269,35 +326,70 @@ namespace PogplantDriver
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
 
-		ImVec2 currCursor = ImGui::GetCursorPos();
-
 		// Draw the actual editor scene
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 
-		// Update the camera when resizing window
-		ImVec2 currWindowSize = ImGui::GetWindowSize();
-		
+		// Config the draw zone for guizmo
+		ImVec2 vMin = ImGui::GetWindowContentRegionMin();
+		ImVec2 vMax = ImGui::GetWindowContentRegionMax();
+
+		// Aspect ratio update
 		Pogplant::Camera* currCam = PP::CameraResource::GetCamera("EDITOR");
-		currCam->UpdateProjection({ currWindowSize.x,currWindowSize.y });
+		currCam->UpdateProjection({ vMax.x, vMax.y });
+
+		// Draw view manipulate only in editor scene
+		ImGuizmo::SetDrawlist();
+
+		// Account for position of window
+		vMin.x += ImGui::GetWindowPos().x;
+		vMin.y += ImGui::GetWindowPos().y + 20; // + 20 to account for the text line kekw
+		vMax.x += ImGui::GetWindowPos().x;
+		vMax.y += ImGui::GetWindowPos().y;
+
+		// Debug draw
+		// ImGui::GetForegroundDrawList()->AddRect(vMin, vMax, IM_COL32(255, 255, 0, 255));
+
+		// Bounds for guizmo
+		ImGuizmo::SetRect(vMin.x, vMin.y, vMax.x, vMax.y);
+
+		/// GUIZMO GO EDIT
+		if (m_CurrentGOIdx >= 0)
+		{
+			GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
+			// Gizmo transform, matrix to components & back
+			ImGuizmo::RecomposeMatrixFromComponents(currGO.m_Position, currGO.m_Rotation, currGO.m_Scale, currGO.m_ModelMtx);
+			ImGuizmo::Manipulate
+			(
+				glm::value_ptr(currCam->GetView()),
+				glm::value_ptr(currCam->GetPerspective()),
+				m_EditMode,
+				ImGuizmo::LOCAL,
+				currGO.m_ModelMtx,
+				NULL,
+				m_UseSnap ? m_SnapStep : NULL,
+				m_BoundSizing ? m_BoundsPos : NULL,
+				m_UseBoundsSnap ? m_BoundsSnapStep : NULL
+			);
+			ImGuizmo::DecomposeMatrixToComponents(currGO.m_ModelMtx, currGO.m_Position, currGO.m_Rotation, currGO.m_Scale);
+		}
+
+		/// GUIZMO VIEW EDIT
+		float view[16] = { 0 };
+		float front[3] = { 0 };
+		memcpy(view, glm::value_ptr(currCam->View()), sizeof(currCam->View()));
+		// After clickng on gizmo update yaw pitch accordingly
+		if (ImGuizmo::ViewManipulate(view, 1.0f, ImVec2(vMax.x - 128, vMin.y), ImVec2(128, 128), 0x0, front))
+		{
+			currCam->UpdateFront(front);
+		}
+		// Updated view from gizmo
+		currCam->View() = glm::make_mat4(view);
 
 		// Make sure begin is being called before this function
 		// This ensures the input for camera only works when the Scene window is focused
 		if(ImGui::IsWindowFocused())
 		{
 			PP::CameraResource::SetActiveCam("EDITOR");
-			// Draw view manipulate only in editor scene
-			ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, currWindowSize.x, currWindowSize.y);
-			float view[16] = { 0 };
-			float front[3] = { 0 };
-			memcpy(view, glm::value_ptr(currCam->View()), sizeof(currCam->View()));
-			const float topRight = ImGui::GetWindowPos().x + currWindowSize.x;
-			// After clickng on gizmo update yaw pitch accordingly
-			if (ImGuizmo::ViewManipulate(view, 1.0f, ImVec2(topRight - 135, currCursor.y + 20), ImVec2(128, 128), 0x0, front))
-			{
-				currCam->UpdateFront(front);
-			}
-			// Updated view from gizmo
-			currCam->View() = glm::make_mat4(view);
 		}
 		else
 		{

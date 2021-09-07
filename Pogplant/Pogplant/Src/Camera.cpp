@@ -197,6 +197,11 @@ namespace Pogplant
 		return m_View;
 	}
 
+	glm::mat4& Camera::Perspective()
+	{
+		return m_Perspective;
+	}
+
 	glm::mat4& Camera::View()
 	{
 		return m_View;

@@ -12,7 +12,7 @@ namespace Pogplant
 	{
 		InitEditorBuffer();
 		InitGameBuffer();
-		InitGizmoBuffer();
+		//InitGizmoBuffer();
 		InitPostProcessBuffer();
 	}
 
@@ -33,8 +33,8 @@ namespace Pogplant
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Window::m_Width, Window::m_Height);
 
 		// Gizmo
-		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::GIZMO_COLOR_BUFFER]);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::GIZMO_COLOR_BUFFER]);
+		//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
 
 		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::GIZMO_BUFFER]);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Window::m_Width, Window::m_Height);
@@ -60,9 +60,9 @@ namespace Pogplant
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::GAME_COLOR_BUFFER]);
 		glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::GAME_DEPTH_STENCIL]);
 
-		glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::GIZMO_BUFFER]);
-		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::GIZMO_COLOR_BUFFER]);
-		glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::GIZMO_DEPTH_STENCIL]);
+		//glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::GIZMO_BUFFER]);
+		//glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::GIZMO_COLOR_BUFFER]);
+		//glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::GIZMO_DEPTH_STENCIL]);
 
 		glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::PP_BUFFER]);
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_NORMAL]);
@@ -90,7 +90,7 @@ namespace Pogplant
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, *colorBuffer, 0);
 
-		//// Depth & Stencil
+		// Depth & Stencil
 		unsigned int* depthStencil = &FBR::m_FrameBuffers[BufferType::EDITOR_DEPTH_STENCIL];
 		glGenRenderbuffers(1, depthStencil);
 		glBindRenderbuffer(GL_RENDERBUFFER, *depthStencil);

@@ -22,6 +22,9 @@
     <Filter Include="Source Files\Imguizmo">
       <UniqueIdentifier>{13edda57-9c49-4319-9446-38ba6ce936a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObject">
+      <UniqueIdentifier>{afc11050-9695-4bd7-9e13-6c62acbeefbd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -62,6 +65,12 @@
     </ClCompile>
     <ClCompile Include="Libs\IMGUIZMO\ImSequencer.cpp">
       <Filter>Source Files\Imguizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameObject.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameObjectContainer.cpp">
+      <Filter>Source Files\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +118,12 @@
     </ClInclude>
     <ClInclude Include="Libs\IMGUIZMO\ImZoomSlider.h">
       <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\GameObject.h">
+      <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\GameObjectContainer.h">
+      <Filter>Source Files\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
