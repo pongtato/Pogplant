@@ -13,8 +13,8 @@ namespace Pogplant
 	void ShaderLinker::InitShader()
 	{
 		/// Serialize?
-		ShaderResource::AddShaderProfile(ShaderProfile("BASIC", "../Pogplant/Shaders/Basic.vert", "../Pogplant/Shaders/Basic.frag"));
-		ShaderResource::AddShaderProfile(ShaderProfile("SCREEN", "../Pogplant/Shaders/Screen.vert", "../Pogplant/Shaders/Screen.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("BASIC", "Shaders/Basic.vert", "Shaders/Basic.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("SCREEN", "Shaders/Screen.vert", "Shaders/Screen.frag"));
 
 		for (const auto& it : ShaderResource::m_ShaderProfiles)
 		{
