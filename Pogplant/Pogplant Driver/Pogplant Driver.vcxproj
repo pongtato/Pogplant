@@ -78,14 +78,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(LibraryPath)</LibraryPath>
     <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
@@ -125,11 +125,12 @@
       <PreprocessorDefinitions>PLATFORM_WINDOWS;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\Pogplant\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;Pogplant_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;Pogplant_D.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -143,13 +144,14 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\Pogplant\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;Pogplant.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;Pogplant.lib;assimp-vc142-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

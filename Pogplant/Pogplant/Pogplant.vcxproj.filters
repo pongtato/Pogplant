@@ -58,6 +58,15 @@
     <Filter Include="Source Files\Logger">
       <UniqueIdentifier>{7575ba94-c103-4529-a55d-e26bfa5e785f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Model">
+      <UniqueIdentifier>{d2cd713d-3659-4a7b-a832-ead2eae09fa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\TextureLoader">
+      <UniqueIdentifier>{163d7ef4-8c56-4d2d-8deb-f62425fed5f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Model\ModelResource">
+      <UniqueIdentifier>{7fbbbb23-57cb-4d87-8e5a-0d85c7f29feb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -102,6 +111,18 @@
     <ClInclude Include="Src\Logger.h">
       <Filter>Source Files\Logger</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Mesh3D.h">
+      <Filter>Source Files\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Model.h">
+      <Filter>Source Files\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\TextureLoader.h">
+      <Filter>Source Files\Graphics\TextureLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ModelResource.h">
+      <Filter>Source Files\Graphics\Model\ModelResource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -142,6 +163,18 @@
     </ClCompile>
     <ClCompile Include="Src\Logger.cpp">
       <Filter>Source Files\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Mesh3D.cpp">
+      <Filter>Source Files\Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Model.cpp">
+      <Filter>Source Files\Graphics\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\TextureLoader.cpp">
+      <Filter>Source Files\Graphics\TextureLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ModelResource.cpp">
+      <Filter>Source Files\Graphics\Model\ModelResource</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,6 +5,8 @@
 #include "ShaderLinker.h"
 #include "CameraResource.h"
 #include "MeshResource.h"
+#include "ModelResource.h"
+#include "Model.h"
 
 #include <glew.h>
 #include <glfw3.h>
@@ -61,6 +63,13 @@ namespace Pogplant
 		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
 		ShaderLinker::SetUniform("m4_View", currCam->GetView());
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
+		ShaderLinker::UnUse();
+
+		ShaderLinker::Use("MODEL");
+		ShaderLinker::SetUniform("m4_Model", glm::mat4{ 1 });
+		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		ShaderLinker::SetUniform("m4_View", currCam->GetView());
+		ModelResource::m_ModelPool["BAG"]->Draw();
 		ShaderLinker::UnUse();
 	}
 

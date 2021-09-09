@@ -6,6 +6,7 @@
 namespace Pogplant
 {
 	struct Mesh;
+	struct Mesh3D;
 	struct InstanceData;
 
 	struct MeshResource
@@ -14,7 +15,7 @@ namespace Pogplant
 		{
 			QUAD,
 			SCREEN,
-			COUNT,
+			COUNT_2D,
 		};
 
 		static void InitResource();

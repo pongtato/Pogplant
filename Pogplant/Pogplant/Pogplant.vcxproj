@@ -17,13 +17,17 @@
     <ClInclude Include="Src\FrameBufferResource.h" />
     <ClInclude Include="Src\Logger.h" />
     <ClInclude Include="Src\Mesh.h" />
+    <ClInclude Include="Src\Mesh3D.h" />
     <ClInclude Include="Src\MeshBuilder.h" />
     <ClInclude Include="Src\MeshInstance.h" />
     <ClInclude Include="Src\MeshResource.h" />
+    <ClInclude Include="Src\Model.h" />
+    <ClInclude Include="Src\ModelResource.h" />
     <ClInclude Include="Src\Pogplant.h" />
     <ClInclude Include="Src\Renderer.h" />
     <ClInclude Include="Src\ShaderLinker.h" />
     <ClInclude Include="Src\ShaderResource.h" />
+    <ClInclude Include="Src\TextureLoader.h" />
     <ClInclude Include="Src\Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -33,12 +37,16 @@
     <ClCompile Include="Src\FrameBufferResource.cpp" />
     <ClCompile Include="Src\Logger.cpp" />
     <ClCompile Include="Src\Mesh.cpp" />
+    <ClCompile Include="Src\Mesh3D.cpp" />
     <ClCompile Include="Src\MeshBuilder.cpp" />
     <ClCompile Include="Src\MeshInstance.cpp" />
     <ClCompile Include="Src\MeshResource.cpp" />
+    <ClCompile Include="Src\Model.cpp" />
+    <ClCompile Include="Src\ModelResource.cpp" />
     <ClCompile Include="Src\Renderer.cpp" />
     <ClCompile Include="Src\ShaderLinker.cpp" />
     <ClCompile Include="Src\ShaderResource.cpp" />
+    <ClCompile Include="Src\TextureLoader.cpp" />
     <ClCompile Include="Src\Window.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -76,16 +84,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant\Libs\STB;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)_D</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant\Libs\STB;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
@@ -96,6 +104,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;PLATFORM_WINDOWS;BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,6 +123,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;PLATFORM_WINDOWS;BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

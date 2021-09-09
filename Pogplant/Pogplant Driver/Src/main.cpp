@@ -12,21 +12,24 @@
 #include <crtdbg.h>
 #include <imgui.h>
 
-struct MEMLEAK
-{
-	~MEMLEAK()
-	{
-		_CrtDumpMemoryLeaks();
-	}
-}MEMLEAK;
+//struct MEMLEAK
+//{
+//	~MEMLEAK()
+//	{
+//		_CrtDumpMemoryLeaks();
+//	}
+//}MEMLEAK;
 
 void Init()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	PP::Window::InitWindow(
 		1280,					// Width
 		720,					// Height
 		"Pogplant Driver 6969" // Window name
 	);
+
 	PP::MeshBuilder::InitMesh();
 	PP::ShaderLinker::InitShader();
 	PP::FrameBuffer::InitFrameBuffer();

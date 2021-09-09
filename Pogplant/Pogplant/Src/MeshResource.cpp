@@ -1,5 +1,6 @@
 #include "MeshResource.h"
 #include "Mesh.h"
+#include "Mesh3D.h"
 #include "MeshInstance.h"
 
 namespace Pogplant
@@ -9,7 +10,7 @@ namespace Pogplant
 
 	void MeshResource::InitResource()
 	{
-		for (size_t i = 0; i < COUNT; ++i)
+		for (size_t i = 0; i < COUNT_2D; ++i)
 		{
 			m_MeshPool[static_cast<MESH_TYPE>(i)] = new Mesh();
 		}
@@ -17,9 +18,10 @@ namespace Pogplant
 
 	void MeshResource::CleanUpResource()
 	{
-		for (size_t i = 0; i < COUNT; ++i)
+		// Clear the meshes in the pools
+		for (auto& it : m_MeshPool)
 		{
-			delete m_MeshPool[static_cast<MESH_TYPE>(i)];
+			delete it.second;
 		}
 	}
 

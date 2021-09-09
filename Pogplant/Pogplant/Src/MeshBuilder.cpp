@@ -1,8 +1,10 @@
 #include "MeshBuilder.h"
 #include "Mesh.h"
+#include "Mesh3D.h"
 #include "MeshResource.h"
 #include "MeshInstance.h"
 #include "Logger.h"
+#include "ModelResource.h"
 
 #include <glew.h>
 
@@ -18,10 +20,12 @@ namespace Pogplant
         MeshInstance::InitMeshInstance(_PoolSize);
         GenerateQuad();
         GenerateScreen();
+        ModelResource::InitResource();
     }
 
     void MeshBuilder::CleanUpMesh()
     {
+        ModelResource::CleanUpResource();
         MeshResource::CleanUpResource();
     }
 

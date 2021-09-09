@@ -4,7 +4,7 @@
 
 namespace Pogplant
 {
-	struct Mesh;
+	struct Mesh3D;
 
 	class MeshBuilder
 	{
