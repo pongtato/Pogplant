@@ -17,6 +17,7 @@ namespace PogplantDriver
 		static void GameWindow();
 
 		static bool m_FirstRun;
+		static int m_CurrentGOIdx;
 	};
 }
 

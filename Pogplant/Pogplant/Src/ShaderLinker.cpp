@@ -16,6 +16,7 @@ namespace Pogplant
 		ShaderResource::AddShaderProfile(ShaderProfile("BASIC", "Shaders/Basic.vert", "Shaders/Basic.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("SCREEN", "Shaders/Screen.vert", "Shaders/Screen.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("MODEL", "Shaders/Model.vert", "Shaders/Model.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("EDGE", "Shaders/Edge.vert", "Shaders/Edge.frag"));
 
 		for (const auto& it : ShaderResource::m_ShaderProfiles)
 		{

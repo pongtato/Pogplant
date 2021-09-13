@@ -13,7 +13,7 @@
 namespace PogplantDriver
 {
 	bool ImguiHelper::m_FirstRun = true;
-	static int m_CurrentGOIdx = -1;
+	int ImguiHelper::m_CurrentGOIdx = -1;
 
 	// Guizmo editor stuff
 	static ImGuizmo::OPERATION m_EditMode(ImGuizmo::TRANSLATE);

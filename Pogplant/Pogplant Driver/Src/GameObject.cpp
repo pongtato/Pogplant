@@ -1,7 +1,10 @@
 #include "GameObject.h"
+#include "RenderObject.h"
+
 #include <gtc/type_ptr.hpp>
 
-GameObject::GameObject(glm::vec3 _Pos, glm::vec3 _Rot, glm::vec3 _Scale)
+GameObject::GameObject(glm::vec3 _Pos, glm::vec3 _Rot, glm::vec3 _Scale, Pogplant::RenderObject* _RenderObject)
+	: m_RenderObject{ _RenderObject }
 {
 	// Set translate to array
 	memcpy(m_Position, glm::value_ptr(_Pos), sizeof(_Pos));

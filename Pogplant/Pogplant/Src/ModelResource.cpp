@@ -9,7 +9,7 @@ namespace Pogplant
 	void ModelResource::InitResource()
 	{
 		// Driver edit json, this reads from the json or smth in the future idk kekw
-		LoadModel("BAG", "Models/backpack/backpack.obj", GL_LINES);
+		LoadModel("BAG", "Models/backpack/backpack.obj", GL_TRIANGLES);
 	}
 
 	void ModelResource::CleanUpResource()

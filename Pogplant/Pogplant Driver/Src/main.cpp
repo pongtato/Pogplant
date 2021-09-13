@@ -20,6 +20,8 @@
 //	}
 //}MEMLEAK;
 
+namespace PPD = PogplantDriver;
+
 void Init()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -53,14 +55,20 @@ void Init()
 	//ObjectTest();
 
 	/// Add to container
+	PP::Model* currModel = PP::ModelResource::m_ModelPool["BAG"];
+	// Assume 2 objects components
+	GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, currModel });
+	GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, currModel });
+
 	glm::vec3 pos = { 5.0f, 0.0f, -10.0f };
 	glm::vec3 rot = { 0.0f,0.0f,0.0f };
 	glm::vec3 scale = { 1.0f,1.0f,1.0f };
-	GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale));
+	GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[0]));
+
 	pos = { -5.0f, 0.0f, -10.0f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 2.0f,2.0f,2.0f };
-	GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale));
+	GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 }
@@ -111,16 +119,30 @@ void DrawCommon()
 	Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
 	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
-	TestCube();
+	//TestCube();
+
+	/// TEMP - Update transforms for render
+	for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
+	{
+		const auto& go = GO_Resource::m_GO_Container[i];
+		GO_Resource::m_Render_Container[i].m_Model = glm::make_mat4(go.m_ModelMtx);
+	}
 
 	PP::MeshBuilder::RebindQuad();
 }
 
 void DrawEditor()
 {
+	// If something is selected choose it to be highlighted
+	PP::RenderObject* renderOjbect = nullptr;
+	const int currIdx = PPD::ImguiHelper::m_CurrentGOIdx;
+	if (currIdx >= 0)
+	{
+		renderOjbect = GO_Resource::m_GO_Container[currIdx].m_RenderObject;
+	}
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw("EDITOR");
+	PP::Renderer::Draw("EDITOR", GO_Resource::m_Render_Container, renderOjbect);
 	PP::Renderer::EndBuffer();
 }
 
@@ -128,7 +150,8 @@ void DrawGame()
 {
 	PP::Renderer::StartGameBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw("GAME");
+	// Dont highlight in game scene so leave 3rd param as nullptr
+	PP::Renderer::Draw("GAME", GO_Resource::m_Render_Container, nullptr);
 	PP::Renderer::EndBuffer();
 }
 

@@ -25,6 +25,7 @@
     <ClInclude Include="Src\ModelResource.h" />
     <ClInclude Include="Src\Pogplant.h" />
     <ClInclude Include="Src\Renderer.h" />
+    <ClInclude Include="Src\RenderObject.h" />
     <ClInclude Include="Src\ShaderLinker.h" />
     <ClInclude Include="Src\ShaderResource.h" />
     <ClInclude Include="Src\TextureLoader.h" />
