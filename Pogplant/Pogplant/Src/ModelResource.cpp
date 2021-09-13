@@ -10,6 +10,8 @@ namespace Pogplant
 	{
 		// Driver edit json, this reads from the json or smth in the future idk kekw
 		LoadModel("BAG", "Models/backpack/backpack.obj", GL_TRIANGLES);
+		LoadModel("CUBE", "Models/cube/cube.fbx", GL_TRIANGLES);
+		LoadModel("SPHERE", "Models/sphere/sphere.fbx", GL_TRIANGLES);
 	}
 
 	void ModelResource::CleanUpResource()

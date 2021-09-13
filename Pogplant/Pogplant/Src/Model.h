@@ -8,6 +8,17 @@
 
 namespace Pogplant
 {
+	struct Bounds
+	{
+		float minX;
+		float maxX;
+		float minY;
+		float maxY;
+		float minZ;
+		float maxZ;
+		float longest;
+	};
+
 	class Model
 	{
 	public:
@@ -18,6 +29,7 @@ namespace Pogplant
 		std::vector<Texture> m_TexturesLoaded;
 		std::vector<Mesh3D> m_Meshes;
 		std::string m_Directory;
+		Bounds m_Bounds;
 
 	private:
 		void LoadModel(std::string _Path, uint _PrimitiveType);

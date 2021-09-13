@@ -2,11 +2,24 @@
 #include "Logger.h"
 #include "TextureLoader.h"
 
+#include <limits>
+
+#include <iostream>
+
 namespace Pogplant
 {
 	Model::Model(std::string _Path, uint _PrimitiveType)
 	{
 		LoadModel(_Path, _PrimitiveType);
+
+        // For comparison later
+        m_Bounds.minX = std::numeric_limits<float>::max();
+        m_Bounds.minY = std::numeric_limits<float>::max();
+        m_Bounds.minZ = std::numeric_limits<float>::max();
+
+        m_Bounds.maxX = std::numeric_limits<float>::min();
+        m_Bounds.maxY = std::numeric_limits<float>::min();
+        m_Bounds.maxZ = std::numeric_limits<float>::min();
 	}
 
 	void Model::Draw() const
@@ -29,6 +42,20 @@ namespace Pogplant
 		}
 		m_Directory = _Path.substr(0, _Path.find_last_of('/'));
 		ProcessNode(scene->mRootNode, scene, _PrimitiveType);
+
+        // Find longest edge - General usage no ritter's
+        float lenX = std::fabsf(m_Bounds.maxX) + std::fabsf(m_Bounds.minX);
+        float lenY = std::fabsf(m_Bounds.maxY) + std::fabsf(m_Bounds.minY);
+        float lenZ = std::fabsf(m_Bounds.maxZ) + std::fabsf(m_Bounds.minZ);
+        m_Bounds.longest = std::max(lenX, lenY);
+        m_Bounds.longest = std::max(m_Bounds.longest, lenZ);
+
+        std::cout << m_Bounds.minX << "|" << m_Bounds.maxX << std::endl;
+        std::cout << m_Bounds.minY << "|" << m_Bounds.maxY << std::endl;
+        std::cout << m_Bounds.minZ << "|" << m_Bounds.maxZ << std::endl;
+
+        std::cout << m_Bounds.longest << std::endl;
+        std::cout << std::endl;
 	}
 
 	void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, uint _PrimitiveType)
@@ -64,6 +91,16 @@ namespace Pogplant
             vector.x = _Mesh->mVertices[i].x;
             vector.y = _Mesh->mVertices[i].y;
             vector.z = _Mesh->mVertices[i].z;
+
+            /// Form bounds
+            m_Bounds.minX = std::min(m_Bounds.minX, vector.x);
+            m_Bounds.minY = std::min(m_Bounds.minY, vector.y);
+            m_Bounds.minZ = std::min(m_Bounds.minZ, vector.z);
+
+            m_Bounds.maxX = std::max(m_Bounds.maxX, vector.x);
+            m_Bounds.maxY = std::max(m_Bounds.maxY, vector.y);
+            m_Bounds.maxZ = std::max(m_Bounds.maxZ, vector.z);
+
             vertex.m_Position = vector;
             // normals
             if (_Mesh->HasNormals())
