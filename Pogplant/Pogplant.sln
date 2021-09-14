@@ -8,6 +8,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pogplant Driver", "Pogplant Driver\Pogplant Driver.vcxproj", "{2F88D911-792E-40A4-A5D3-3ADE64825F93}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B} = {A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}
+		{219AEB91-A767-43D4-9358-33CEF129F95C} = {219AEB91-A767-43D4-9358-33CEF129F95C}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scripting", "Scripting\Scripting.csproj", "{219AEB91-A767-43D4-9358-33CEF129F95C}"

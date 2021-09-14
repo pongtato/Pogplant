@@ -1,8 +1,0 @@
-C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_MainBranch\Pogplant\bin\Release-AnyCPU\Pogplant Driver\Scripting.dll
-C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_MainBranch\Pogplant\bin\Release-AnyCPU\Pogplant Driver\Scripting.pdb
-C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_MainBranch\Pogplant\bin\Release-x64\Pogplant Driver\Scripting.dll
-C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_MainBranch\Pogplant\bin\Release-x64\Pogplant Driver\Scripting.pdb
-C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_MainBranch\Pogplant\Scripting\obj\Release\Scripting.csprojAssemblyReference.cache
-C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_MainBranch\Pogplant\Scripting\obj\Release\Scripting.csproj.CoreCompileInputs.cache
-C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_MainBranch\Pogplant\Scripting\obj\Release\Scripting.dll
-C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_MainBranch\Pogplant\Scripting\obj\Release\Scripting.pdb
