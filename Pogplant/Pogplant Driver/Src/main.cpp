@@ -1,5 +1,6 @@
 #include "ImguiHelper.h"
 #include "GameObjectContainer.h"
+#include "ScriptSystem.h"
 
 #include <iostream>
 #include <Pogplant.h>
@@ -69,6 +70,11 @@ void Init()
 	GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
+	
+	// Nazi?
+	ScriptSystem SS;
+	SS.testfuncwithparam('X');
+	SS.testfuncwithreturn();
 }
 
 void SetCube(glm::mat4 _BasePos)

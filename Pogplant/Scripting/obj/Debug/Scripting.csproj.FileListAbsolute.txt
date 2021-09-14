@@ -1,0 +1,6 @@
+C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_Mainbranch\Pogplant\bin\Debug-x64\Pogplant Driver\Scripting.dll
+C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_Mainbranch\Pogplant\bin\Debug-x64\Pogplant Driver\Scripting.pdb
+C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_Mainbranch\Pogplant\Scripting\obj\Debug\Scripting.csprojAssemblyReference.cache
+C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_Mainbranch\Pogplant\Scripting\obj\Debug\Scripting.csproj.CoreCompileInputs.cache
+C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_Mainbranch\Pogplant\Scripting\obj\Debug\Scripting.dll
+C:\Users\Clarence Chye\Desktop\University\2021 Fall\GAM300\Engine_Mainbranch\Pogplant\Scripting\obj\Debug\Scripting.pdb

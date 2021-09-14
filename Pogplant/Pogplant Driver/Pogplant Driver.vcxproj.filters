@@ -25,6 +25,9 @@
     <Filter Include="Source Files\GameObject">
       <UniqueIdentifier>{afc11050-9695-4bd7-9e13-6c62acbeefbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Scripting">
+      <UniqueIdentifier>{aa89c469-d515-4775-8332-decb37dd3645}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -71,6 +74,12 @@
     </ClCompile>
     <ClCompile Include="Src\GameObjectContainer.cpp">
       <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ScriptBinder.cpp">
+      <Filter>Source Files\Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ScriptSystem.cpp">
+      <Filter>Source Files\Scripting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="Src\GameObjectContainer.h">
       <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ScriptBinder.h">
+      <Filter>Source Files\Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ScriptSystem.h">
+      <Filter>Source Files\Scripting</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
