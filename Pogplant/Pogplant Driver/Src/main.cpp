@@ -13,6 +13,7 @@
 #include <crtdbg.h>
 #include <imgui.h>
 
+#include "ECS/Entity.h"
 //struct MEMLEAK
 //{
 //	~MEMLEAK()
@@ -21,7 +22,11 @@
 //	}
 //}MEMLEAK;
 
+
 namespace PPD = PogplantDriver;
+
+using namespace Components;
+ECS ecs;
 
 void Init()
 {
@@ -50,24 +55,41 @@ void Init()
 			20.0f,	// Key input look sens
 			0.1f	// Pan speed
 		});
-	PPD::ImguiHelper::InitImgui();
+	PPD::ImguiHelper::InitImgui(&ecs);
 
 	/// Add to container
 	PP::Model* bagModel = PP::ModelResource::m_ModelPool["BAG"];
 	PP::Model* cubeModel = PP::ModelResource::m_ModelPool["SPHERE"];
 	// Assume 2 objects components
+	
 	GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, bagModel });
 	GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, cubeModel });
 
 	glm::vec3 pos = { 5.0f, 0.0f, -10.0f };
 	glm::vec3 rot = { 0.0f,0.0f,0.0f };
 	glm::vec3 scale = { 1.0f,1.0f,1.0f };
-	GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[0]));
+	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[0]));
+	
+	auto entity = ecs.CreateEntity();
+	entity.AddComponent<Components::Transform>(pos, rot, scale);
+	entity.AddComponent<Components::Renderer>(&GO_Resource::m_Render_Container[0]);
+
+	//ecs.AddComponent<Components::Renderer>(entity, &bagModel);
+	//registry.emplace<Renderer>(entity, &bagModel);
 
 	pos = { -5.0f, 0.0f, -10.0f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 2.0f,2.0f,2.0f };
-	GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
+	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
+	
+	entity = ecs.CreateEntity();
+	entity.AddComponent<Components::Transform>(pos, rot, scale);
+	entity.AddComponent<Components::Renderer>(&GO_Resource::m_Render_Container[1]);
+
+
+	//auto entity = registry.create();
+	//registry.emplace<Transform>(registry.create(), pos, rot, scale);
+	//registry.emplace<Renderer>(entity,&cubeModel);
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 	
@@ -142,6 +164,41 @@ void DebugCubes(const GameObject& _GO)
 	SetCube(model);
 }
 
+void DebugCubes(Transform& transform, Renderer& renderer)
+{
+	float largestScale = std::numeric_limits<float>::min();
+
+	for (int i = 0; i < 3; i++)
+	{
+		largestScale = std::max(largestScale, transform.m_scale[i]);
+	}
+	
+	const float halfLen = renderer.render_object->m_RenderModel->m_Bounds.longest * largestScale * 0.5f;
+	glm::mat4 base = glm::mat4{ 1 };
+	glm::vec3 trans = glm::make_vec3(transform.m_position);
+	base = glm::translate(base, trans);
+	base = glm::scale(base, { 1.0f,1.0f,1.0f });
+
+	// Top 
+	glm::mat4 model = glm::translate(base, { 0,halfLen,0 });
+	SetCube(model);
+	// Left
+	model = glm::translate(base, { -halfLen,0,0 });
+	SetCube(model);
+	// Right
+	model = glm::translate(base, { halfLen,0,0 });
+	SetCube(model);
+	// Front
+	model = glm::translate(base, { 0,0,-halfLen });
+	SetCube(model);
+	// Back
+	model = glm::translate(base, { 0,0,halfLen });
+	SetCube(model);
+	// Bottom
+	model = glm::translate(base, { 0,-halfLen,0 });
+	SetCube(model);
+}
+
 void DrawCommon()
 {
 	PP::MeshInstance::ResetCount();
@@ -152,12 +209,26 @@ void DrawCommon()
 	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
 	/// TEMP - Update transforms for render
-	for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
+	auto view = ecs.GetReg().view<Transform, Renderer>();
+	
+	for (auto entity : view)
 	{
-		const auto& go = GO_Resource::m_GO_Container[i];
-		go.m_RenderObject->m_Model = glm::make_mat4(go.m_ModelMtx);
-		//DebugCubes(go);
+		auto& transform = view.get<Transform>(entity);
+		auto& renderer = view.get<Renderer>(entity);
+		
+		renderer.render_object->m_Model = glm::make_mat4(transform.m_ModelMtx);
+		DebugCubes(transform, renderer);
 	}
+
+
+
+
+	//for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
+	//{
+	//	const auto& go = GO_Resource::m_GO_Container[i];
+	//	go.m_RenderObject->m_Model = glm::make_mat4(go.m_ModelMtx);
+	//	DebugCubes(go);
+	//}
 
 	PP::MeshBuilder::RebindQuad();
 }
@@ -166,11 +237,17 @@ void DrawEditor()
 {
 	// If something is selected choose it to be highlighted
 	PP::RenderObject* renderOjbect = nullptr;
-	const int currIdx = PPD::ImguiHelper::m_CurrentGOIdx;
-	if (currIdx >= 0)
+
+	//const int currIdx = PPD::ImguiHelper::m_CurrentGOIdx;
+	entt::entity currIdx = PPD::ImguiHelper::m_CurrentEntity;
+
+	//if (currIdx >= 0)
+	if (currIdx != entt::null)
 	{
-		renderOjbect = GO_Resource::m_GO_Container[currIdx].m_RenderObject;
+		//renderOjbect = GO_Resource::m_GO_Container[currIdx].m_RenderObject;
+		renderOjbect = ecs.GetReg().get<Renderer>(currIdx).render_object;
 	}
+
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::Draw("EDITOR", GO_Resource::m_Render_Container, renderOjbect);
@@ -202,6 +279,7 @@ void DrawImGUI()
 
 void Run()
 {
+
 	while (!PP::Window::ShouldCloseWindow())
 	{
 		PP::Window::CheckForceClose(); // Temp exit using Esc
@@ -237,6 +315,8 @@ void Exit()
 
 int main()
 {
+	//testing ecs stuffs
+
 	Init();
 	Run();
 	Exit();

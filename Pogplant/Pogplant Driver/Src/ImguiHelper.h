@@ -1,5 +1,9 @@
 #pragma once
 #include <unordered_map>
+#include "ECS/entt_ecs/entt.hpp"
+
+class ECS;
+class Entity;
 
 struct ImVec2;
 
@@ -12,9 +16,10 @@ namespace PogplantDriver
 {
 	typedef unsigned int ImGuiID;
 
+
 	struct ImguiHelper
 	{
-		static bool InitImgui();
+		static bool InitImgui(ECS* ecs);
 		static void DrawImgui();
 		static void DrawDock();
 		static void CleanUpImgui();
@@ -24,6 +29,12 @@ namespace PogplantDriver
 		static void GameWindow();
 
 		static bool m_FirstRun;
+		//static int m_CurrentGOIdx;
+
+		//ecs stuffs
+		static void DrawEntityNode(Entity entity);
+		static entt::entity m_CurrentEntity;
+		static ECS* m_ecs;
 		static int m_CurrentGOIdx;
 
 	private:

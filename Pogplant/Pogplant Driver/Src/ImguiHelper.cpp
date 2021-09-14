@@ -10,10 +10,14 @@
 #include <ImGuizmo.h>
 #include <gtc/type_ptr.hpp>
 
+#include "ECS/Entity.h"
+
 namespace PogplantDriver
 {
 	bool ImguiHelper::m_FirstRun = true;
-	int ImguiHelper::m_CurrentGOIdx = -1;
+	//int ImguiHelper::m_CurrentGOIdx = -1;
+	entt::entity ImguiHelper::m_CurrentEntity = entt::null;
+	ECS* ImguiHelper::m_ecs = nullptr;
 
 	// Guizmo editor stuff
 	static ImGuizmo::OPERATION m_EditMode(ImGuizmo::TRANSLATE);
@@ -24,7 +28,7 @@ namespace PogplantDriver
 	static bool m_BoundSizing = false;
 	static bool m_UseBoundsSnap = false;
 
-	bool ImguiHelper::InitImgui()
+	bool ImguiHelper::InitImgui(ECS* ecs)
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -34,6 +38,9 @@ namespace PogplantDriver
 		imgui_extra_styles::Pogplant();
 		ImGui_ImplGlfw_InitForOpenGL(PP::Window::GetWindow(), true);
 		ImGui_ImplOpenGL3_Init();
+
+		m_ecs = ecs;
+
 		return true;
 	}
 
@@ -234,22 +241,36 @@ namespace PogplantDriver
 
 		ImGui::Begin("Scene Hierarchy");
 		{
-			for (int i = 0; i < GO_Resource::m_GO_Container.size(); i++)
+			m_ecs->GetReg().each([](auto entity)
 			{
-				std::string name = "Object" + std::to_string(i);
-				if (ImGui::Selectable(name.c_str(), m_CurrentGOIdx == i))
+				//auto e_Tag = m_ecs->GetReg().get<Components::Tag>(entity).m_tag;
+					std::string name = "Object" + std::to_string((int)entity);
+
+				if (ImGui::Selectable(name.c_str(), m_CurrentEntity == entity))
 				{
-					m_CurrentGOIdx = i;
+					m_CurrentEntity = entity;
 				}
-			}
+			});
+
+
+			//for (int i = 0; i < GO_Resource::m_GO_Container.size(); i++)
+			//{
+			//	std::string name = "Object" + std::to_string(i);
+			//	if (ImGui::Selectable(name.c_str(), m_CurrentGOIdx == i))
+			//	{
+			//		m_CurrentGOIdx = i;
+			//	}
+			//}
 		}
 		ImGui::End();
 
 		ImGui::Begin("Inspector");
 		{
-			if (m_CurrentGOIdx >= 0)
+			if (m_CurrentEntity != entt::null)
 			{
-				GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
+				//GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
+
+				auto& transform = m_ecs->GetReg().get<Components::Transform>(m_CurrentEntity);
 
 				// Mode switch
 				if (ImGui::RadioButton("Translate", m_EditMode == ImGuizmo::TRANSLATE))
@@ -277,15 +298,18 @@ namespace PogplantDriver
 				// Usual stuff
 				ImGui::Text("Translate");
 				ImGui::PushID("Tr");
-				ImGui::DragFloat3("", currGO.m_Position);
+				//ImGui::DragFloat3("", currGO.m_Position);
+				ImGui::DragFloat3("", glm::value_ptr(transform.m_position));
 				ImGui::PopID();
 				ImGui::Text("Rotate");
 				ImGui::PushID("Rt");
-				ImGui::DragFloat3("", currGO.m_Rotation);
+				//ImGui::DragFloat3("", currGO.m_Rotation);
+				ImGui::DragFloat3("", glm::value_ptr(transform.m_rotation));
 				ImGui::PopID();
 				ImGui::Text("Scale");
 				ImGui::PushID("Sc");
-				ImGui::DragFloat3("", currGO.m_Scale);
+				//ImGui::DragFloat3("", currGO.m_Scale);
+				ImGui::DragFloat3("", glm::value_ptr(transform.m_scale));
 				ImGui::PopID();
 			}
 		}
@@ -423,24 +447,54 @@ namespace PogplantDriver
 		// Bounds for guizmo
 		ImGuizmo::SetRect(_VMin.x, _VMin.y, _VMax.x, _VMax.y);
 
-		if (m_CurrentGOIdx >= 0)
+		/// GUIZMO GO EDIT
+		//if (m_CurrentGOIdx >= 0)
+		//{
+		//	GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
+		//	// Gizmo transform, matrix to components & back
+		//	ImGuizmo::RecomposeMatrixFromComponents(currGO.m_Position, currGO.m_Rotation, currGO.m_Scale, currGO.m_ModelMtx);
+		//	ImGuizmo::Manipulate
+		//	(
+		//		glm::value_ptr(currCam->GetView()),
+		//		glm::value_ptr(currCam->GetPerspective()),
+		//		m_EditMode,
+		//		ImGuizmo::LOCAL,
+		//		currGO.m_ModelMtx,
+		//		NULL,
+		//		m_UseSnap ? m_SnapStep : NULL,
+		//		m_BoundSizing ? m_BoundsPos : NULL,
+		//		m_UseBoundsSnap ? m_BoundsSnapStep : NULL
+		//	);
+		//	ImGuizmo::DecomposeMatrixToComponents(currGO.m_ModelMtx, currGO.m_Position, currGO.m_Rotation, currGO.m_Scale);
+		//}
+
+		if (m_CurrentEntity != entt::null)
 		{
-			GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
+			//GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
+
+			auto& transform = m_ecs->GetReg().get<Components::Transform>(m_CurrentEntity);
+
 			// Gizmo transform, matrix to components & back
-			ImGuizmo::RecomposeMatrixFromComponents(currGO.m_Position, currGO.m_Rotation, currGO.m_Scale, currGO.m_ModelMtx);
+			ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(transform.m_position), 
+													glm::value_ptr(transform.m_rotation), 
+													glm::value_ptr(transform.m_scale), 
+													transform.m_ModelMtx);
 			ImGuizmo::Manipulate
 			(
 				glm::value_ptr(_CurrCam->GetView()),
 				glm::value_ptr(_CurrCam->GetPerspective()),
 				m_EditMode,
 				ImGuizmo::LOCAL,
-				currGO.m_ModelMtx,
+				transform.m_ModelMtx,
 				NULL,
 				m_UseSnap ? m_SnapStep : NULL,
 				m_BoundSizing ? m_BoundsPos : NULL,
 				m_UseBoundsSnap ? m_BoundsSnapStep : NULL
 			);
-			ImGuizmo::DecomposeMatrixToComponents(currGO.m_ModelMtx, currGO.m_Position, currGO.m_Rotation, currGO.m_Scale);
+			ImGuizmo::DecomposeMatrixToComponents(	transform.m_ModelMtx, 
+													glm::value_ptr(transform.m_position),
+													glm::value_ptr(transform.m_rotation),
+													glm::value_ptr(transform.m_scale));
 		}
 	}
 
@@ -467,5 +521,22 @@ namespace PogplantDriver
 		{
 			PP::CameraResource::DeselectCam();
 		}
+	}
+
+	void ImguiHelper::GameWindow()
+	{
+		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		ImGui::PopStyleColor();
+		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
+
+		// Update the camera when resizing window
+		ImVec2 currWindowSize = ImGui::GetWindowSize();
+		PP::CameraResource::GetCamera("GAME")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
+	}
+
+	void ImguiHelper::DrawEntityNode(Entity entity)
+	{
+
 	}
 }

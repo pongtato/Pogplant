@@ -25,6 +25,14 @@
     <Filter Include="Source Files\GameObject">
       <UniqueIdentifier>{afc11050-9695-4bd7-9e13-6c62acbeefbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Ecs">
+      <UniqueIdentifier>{af99dcaa-876c-4bc7-92d2-00079d15774a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ecs\Components">
+      <UniqueIdentifier>{0e406428-e49a-4b81-8416-f9cc396e0776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ecs\Systems">
+      <UniqueIdentifier>{908c02b4-e0e8-45ab-bc75-6a7332a09a98}</UniqueIdentifier>
     <Filter Include="Source Files\Scripting">
       <UniqueIdentifier>{aa89c469-d515-4775-8332-decb37dd3645}</UniqueIdentifier>
     </Filter>
@@ -80,6 +88,11 @@
     </ClCompile>
     <ClCompile Include="Src\ScriptSystem.cpp">
       <Filter>Source Files\Scripting</Filter>
+    <ClCompile Include="Src\ECS\ECS.cpp">
+      <Filter>Source Files\Ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ECS\Entity.cpp">
+      <Filter>Source Files\Ecs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +147,14 @@
     <ClInclude Include="Src\GameObjectContainer.h">
       <Filter>Source Files\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="Src\ECS\ECS.h">
+      <Filter>Source Files\Ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\Components\Components.h">
+      <Filter>Source Files\Ecs\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\Entity.h">
+      <Filter>Source Files\Ecs</Filter>
     <ClInclude Include="Src\ScriptBinder.h">
       <Filter>Source Files\Scripting</Filter>
     </ClInclude>
