@@ -231,7 +231,7 @@ namespace PogplantDriver
 					ImGui::Text(it.m_Description.c_str());
 					ImGui::PopStyleColor();
 					// Scroll to bottom
-					ImGui::SetScrollHere(1.0f);
+					//ImGui::SetScrollHere(1.0f);
 				}
 
 				ImGui::EndTable();
@@ -391,6 +391,11 @@ namespace PogplantDriver
 
 	void ImguiHelper::Scene_GOPick(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
+		if (!ImGui::IsWindowFocused())
+		{
+			return;
+		}
+
 		if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
 		{
 			glm::vec2 min = { _VMin.x,_VMin.y };
