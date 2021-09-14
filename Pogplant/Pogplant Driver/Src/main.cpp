@@ -156,7 +156,7 @@ void DrawCommon()
 	{
 		const auto& go = GO_Resource::m_GO_Container[i];
 		go.m_RenderObject->m_Model = glm::make_mat4(go.m_ModelMtx);
-		DebugCubes(go);
+		//DebugCubes(go);
 	}
 
 	PP::MeshBuilder::RebindQuad();

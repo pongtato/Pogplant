@@ -337,64 +337,20 @@ namespace PogplantDriver
 		Pogplant::Camera* currCam = PP::CameraResource::GetCamera("EDITOR");
 		currCam->UpdateProjection({ vMax.x, vMax.y });
 
-		// Draw view manipulate only in editor scene
-		ImGuizmo::SetDrawlist();
-
 		// Account for position of window
 		vMin.x += ImGui::GetWindowPos().x;
 		vMin.y += ImGui::GetWindowPos().y + 20; // + 20 to account for the text line kekw
 		vMax.x += ImGui::GetWindowPos().x;
 		vMax.y += ImGui::GetWindowPos().y;
 
-		// Debug draw
-		// ImGui::GetForegroundDrawList()->AddRect(vMin, vMax, IM_COL32(255, 255, 0, 255));
-
-		// Bounds for guizmo
-		ImGuizmo::SetRect(vMin.x, vMin.y, vMax.x, vMax.y);
+		/// Picker
+		Scene_GOPick(currCam, vMin, vMax);
 
 		/// GUIZMO GO EDIT
-		if (m_CurrentGOIdx >= 0)
-		{
-			GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
-			// Gizmo transform, matrix to components & back
-			ImGuizmo::RecomposeMatrixFromComponents(currGO.m_Position, currGO.m_Rotation, currGO.m_Scale, currGO.m_ModelMtx);
-			ImGuizmo::Manipulate
-			(
-				glm::value_ptr(currCam->GetView()),
-				glm::value_ptr(currCam->GetPerspective()),
-				m_EditMode,
-				ImGuizmo::LOCAL,
-				currGO.m_ModelMtx,
-				NULL,
-				m_UseSnap ? m_SnapStep : NULL,
-				m_BoundSizing ? m_BoundsPos : NULL,
-				m_UseBoundsSnap ? m_BoundsSnapStep : NULL
-			);
-			ImGuizmo::DecomposeMatrixToComponents(currGO.m_ModelMtx, currGO.m_Position, currGO.m_Rotation, currGO.m_Scale);
-		}
+		Scene_GOEdit(currCam, vMin, vMax);
 
 		/// GUIZMO VIEW EDIT
-		float view[16] = { 0 };
-		float front[3] = { 0 };
-		memcpy(view, glm::value_ptr(currCam->View()), sizeof(currCam->View()));
-		// After clickng on gizmo update yaw pitch accordingly
-		if (ImGuizmo::ViewManipulate(view, 1.0f, ImVec2(vMax.x - 128, vMin.y), ImVec2(128, 128), 0x0, front))
-		{
-			currCam->UpdateFront(front);
-		}
-		// Updated view from gizmo
-		currCam->View() = glm::make_mat4(view);
-
-		// Make sure begin is being called before this function
-		// This ensures the input for camera only works when the Scene window is focused
-		if(ImGui::IsWindowFocused())
-		{
-			PP::CameraResource::SetActiveCam("EDITOR");
-		}
-		else
-		{
-			PP::CameraResource::DeselectCam();
-		}
+		Scene_ViewEdit(currCam, vMin, vMax);
 	}
 
 	void ImguiHelper::GameWindow()
@@ -407,5 +363,109 @@ namespace PogplantDriver
 		// Update the camera when resizing window
 		ImVec2 currWindowSize = ImGui::GetWindowSize();
 		PP::CameraResource::GetCamera("GAME")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
+	}
+
+	void ImguiHelper::Scene_GOPick(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
+	{
+		if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+		{
+			glm::vec2 min = { _VMin.x,_VMin.y };
+			glm::vec2 max = { _VMax.x,_VMax.y };
+			glm::vec2 cursor = { ImGui::GetMousePos().x,ImGui::GetMousePos().y };
+			_CurrCam->UpdateRayConfig({ min,max,max - min,cursor });
+			_CurrCam->RayCast();
+			// Ray for picking
+			const PP::Ray ray = _CurrCam->GetRay();
+
+			float shortestTime = std::numeric_limits<float>::max();
+			int chosenObject = -1;
+			for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
+			{
+				GameObject& currGO = GO_Resource::m_GO_Container[i];
+				// Naive approach
+				float largestScale = std::numeric_limits<float>::min();
+				for (int j = 0; j < 3; j++)
+				{
+					largestScale = std::max(largestScale, currGO.m_Scale[i]);
+				}
+				const float radius = currGO.m_RenderObject->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
+				float currentTime = std::numeric_limits<float>::max();
+				if (ray.CollideSphere(glm::make_vec3(currGO.m_Position), radius, currentTime))
+				{
+					if (currentTime < shortestTime)
+					{
+						chosenObject = static_cast<int>(i);
+						shortestTime = currentTime;
+					}
+				}
+			}
+
+			// Update object picked
+			if (chosenObject >= 0)
+			{
+				m_CurrentGOIdx = chosenObject;
+			}
+			else
+			{
+				m_CurrentGOIdx = -1;
+			}
+		}
+	}
+
+	void ImguiHelper::Scene_GOEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
+	{
+		// Draw view manipulate only in editor scene
+		ImGuizmo::SetDrawlist();
+
+		// Debug draw
+		//ImGui::GetForegroundDrawList()->AddRect(_VMin, _VMax, IM_COL32(255, 255, 0, 255));
+
+		// Bounds for guizmo
+		ImGuizmo::SetRect(_VMin.x, _VMin.y, _VMax.x, _VMax.y);
+
+		if (m_CurrentGOIdx >= 0)
+		{
+			GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
+			// Gizmo transform, matrix to components & back
+			ImGuizmo::RecomposeMatrixFromComponents(currGO.m_Position, currGO.m_Rotation, currGO.m_Scale, currGO.m_ModelMtx);
+			ImGuizmo::Manipulate
+			(
+				glm::value_ptr(_CurrCam->GetView()),
+				glm::value_ptr(_CurrCam->GetPerspective()),
+				m_EditMode,
+				ImGuizmo::LOCAL,
+				currGO.m_ModelMtx,
+				NULL,
+				m_UseSnap ? m_SnapStep : NULL,
+				m_BoundSizing ? m_BoundsPos : NULL,
+				m_UseBoundsSnap ? m_BoundsSnapStep : NULL
+			);
+			ImGuizmo::DecomposeMatrixToComponents(currGO.m_ModelMtx, currGO.m_Position, currGO.m_Rotation, currGO.m_Scale);
+		}
+	}
+
+	void ImguiHelper::Scene_ViewEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
+	{
+		float view[16] = { 0 };
+		float front[3] = { 0 };
+		memcpy(view, glm::value_ptr(_CurrCam->View()), sizeof(_CurrCam->View()));
+		// After clickng on gizmo update yaw pitch accordingly
+		if (ImGuizmo::ViewManipulate(view, 1.0f, ImVec2(_VMax.x - 128, _VMin.y), ImVec2(128, 128), 0x0, front))
+		{
+			_CurrCam->UpdateFront(front);
+		}
+		// Updated view from gizmo
+		_CurrCam->View() = glm::make_mat4(view);
+
+		// Make sure begin is being called before this function
+		// This ensures the input for camera only works when the Scene window is focused
+		if (ImGui::IsWindowFocused())
+		{
+			PP::CameraResource::SetActiveCam("EDITOR");
+		}
+		else
+		{
+			PP::CameraResource::DeselectCam();
+		}
 	}
 }

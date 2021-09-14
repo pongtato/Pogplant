@@ -1,6 +1,13 @@
 #pragma once
 #include <unordered_map>
 
+struct ImVec2;
+
+namespace Pogplant
+{
+	class Camera;
+}
+
 namespace PogplantDriver
 {
 	typedef unsigned int ImGuiID;
@@ -18,6 +25,11 @@ namespace PogplantDriver
 
 		static bool m_FirstRun;
 		static int m_CurrentGOIdx;
+
+	private:
+		static void Scene_GOPick(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
+		static void Scene_GOEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
+		static void Scene_ViewEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
 	};
 }
 

@@ -49,13 +49,6 @@ namespace Pogplant
         float lenZ = std::fabsf(m_Bounds.maxZ) + std::fabsf(m_Bounds.minZ);
         m_Bounds.longest = std::max(lenX, lenY);
         m_Bounds.longest = std::max(m_Bounds.longest, lenZ);
-
-        std::cout << m_Bounds.minX << "|" << m_Bounds.maxX << std::endl;
-        std::cout << m_Bounds.minY << "|" << m_Bounds.maxY << std::endl;
-        std::cout << m_Bounds.minZ << "|" << m_Bounds.maxZ << std::endl;
-
-        std::cout << m_Bounds.longest << std::endl;
-        std::cout << std::endl;
 	}
 
 	void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, uint _PrimitiveType)

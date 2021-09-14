@@ -22,7 +22,6 @@ namespace Pogplant
 	struct CameraConfig
 	{
 		//CameraConfig();
-
 		float m_Yaw;
 		float m_Pitch;
 		float m_Zoom;
@@ -50,6 +49,7 @@ namespace Pogplant
 		void UpdateYawPitch(double _XPos, double _YPos);
 		void UpdateCameraPan(double _XPos, double _YPos);
 		void UpdateFront(float* _Front);
+		void UpdateRayConfig(RayConfig _Rayconfig);
 
 		const CameraConfig& GetCameraConfig() const;
 		const glm::mat4& GetOrtho() const;
@@ -59,6 +59,9 @@ namespace Pogplant
 		glm::mat4& Perspective();
 		glm::mat4& View();
 
+		const Ray& GetRay() const;
+		void RayCast();
+
 	private:
 
 		void KeyUpdate(float _Dt);
@@ -67,6 +70,7 @@ namespace Pogplant
 
 		CameraConfig m_CameraConfig;
 		CameraLerp m_CameraLerp;
+		Ray m_Ray;
 		glm::mat4 m_Ortho;
 		glm::mat4 m_Perspective;
 		glm::mat4 m_View;

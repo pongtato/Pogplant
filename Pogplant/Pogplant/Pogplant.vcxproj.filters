@@ -70,6 +70,9 @@
     <Filter Include="Source Files\Graphics\Renderer\RenderObject">
       <UniqueIdentifier>{1974da65-d023-4671-b125-60b627828ac7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Camera\Ray">
+      <UniqueIdentifier>{8bdb24e9-b5ce-44f1-97ec-55d0bfd684a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -129,6 +132,9 @@
     <ClInclude Include="Src\RenderObject.h">
       <Filter>Source Files\Graphics\Renderer\RenderObject</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Ray.h">
+      <Filter>Source Files\Camera\Ray</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -181,6 +187,9 @@
     </ClCompile>
     <ClCompile Include="Src\ModelResource.cpp">
       <Filter>Source Files\Graphics\Model\ModelResource</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Ray.cpp">
+      <Filter>Source Files\Camera\Ray</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
