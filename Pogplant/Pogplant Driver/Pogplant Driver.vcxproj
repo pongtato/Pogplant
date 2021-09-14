@@ -133,6 +133,10 @@
       <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;Pogplant_D.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PreBuildEvent>
+      <Command>copy "$(SolutionDir)Pogplant\Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(TargetDir)"
+copy "$(SolutionDir)Pogplant\Libs\GLEW\lib\glew32.dll" "$(TargetDir)"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -153,6 +157,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;Pogplant.lib;assimp-vc142-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>copy "$(SolutionDir)Pogplant\Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(TargetDir)"
+copy "$(SolutionDir)Pogplant\Libs\GLEW\lib\glew32.dll" "$(TargetDir)"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Libs\IMGUIZMO\ImCurveEdit.cpp" />

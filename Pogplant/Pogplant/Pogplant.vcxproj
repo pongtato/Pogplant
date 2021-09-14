@@ -114,6 +114,10 @@
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\Pogplant_D.lib" "$(SolutionDir)Pogplant Driver\Libs\Pogplant\"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -135,6 +139,10 @@
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\Pogplant.lib" "$(SolutionDir)Pogplant Driver\Libs\Pogplant\"</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
