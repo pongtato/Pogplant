@@ -79,14 +79,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(SolutionDir)Pogplant Driver\Libs\Mono\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant Driver\libs\Mono\include\mono-2.0;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant Driver\libs\Mono\include\mono-2.0;D:\GitFork_repo\Pogplant\Pogplant\Pogplant Driver\Src\ECS;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(SolutionDir)Pogplant Driver\Libs\Mono\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant Driver\libs\Mono\include\mono-2.0;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant Driver\libs\Mono\include\mono-2.0;D:\GitFork_repo\Pogplant\Pogplant\Pogplant Driver\Src\ECS;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>

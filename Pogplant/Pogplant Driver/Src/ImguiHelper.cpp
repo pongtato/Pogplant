@@ -402,36 +402,66 @@ namespace PogplantDriver
 			const PP::Ray ray = _CurrCam->GetRay();
 
 			float shortestTime = std::numeric_limits<float>::max();
-			int chosenObject = -1;
-			for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
-			{
-				GameObject& currGO = GO_Resource::m_GO_Container[i];
-				// Naive approach
-				float largestScale = std::numeric_limits<float>::min();
-				for (int j = 0; j < 3; j++)
+			entt::entity chosenObject = entt::null;
+
+			m_ecs->GetReg().each([&ray, &shortestTime, &chosenObject](auto entity)
 				{
-					largestScale = std::max(largestScale, currGO.m_Scale[i]);
-				}
-				const float radius = currGO.m_RenderObject->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
-				float currentTime = std::numeric_limits<float>::max();
-				if (ray.CollideSphere(glm::make_vec3(currGO.m_Position), radius, currentTime))
-				{
-					if (currentTime < shortestTime)
+
+					//GameObject& currGO = GO_Resource::m_GO_Container[i];
+					
+					auto& transform = m_ecs->GetReg().get<Components::Transform>(entity);
+					auto& renderer = m_ecs->GetReg().get<Components::Renderer>(entity);
+					// Naive approach
+					float largestScale = std::numeric_limits<float>::min();
+
+					for (int j = 0; j < 3; j++)
 					{
-						chosenObject = static_cast<int>(i);
-						shortestTime = currentTime;
+						largestScale = std::max(largestScale, transform.m_scale[j]);
 					}
-				}
-			}
+
+					const float radius = renderer.render_object->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
+					float currentTime = std::numeric_limits<float>::max();
+					if (ray.CollideSphere(glm::make_vec3(transform.m_position), radius, currentTime))
+					{
+						if (currentTime < shortestTime)
+						{
+							chosenObject = entity;
+							shortestTime = currentTime;
+						}
+					}
+				});
+
+
+
+			//for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
+			//{
+			//	GameObject& currGO = GO_Resource::m_GO_Container[i];
+			//	// Naive approach
+			//	float largestScale = std::numeric_limits<float>::min();
+			//	for (int j = 0; j < 3; j++)
+			//	{
+			//		largestScale = std::max(largestScale, currGO.m_Scale[i]);
+			//	}
+			//	const float radius = currGO.m_RenderObject->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
+			//	float currentTime = std::numeric_limits<float>::max();
+			//	if (ray.CollideSphere(glm::make_vec3(currGO.m_Position), radius, currentTime))
+			//	{
+			//		if (currentTime < shortestTime)
+			//		{
+			//			chosenObject = static_cast<int>(i);
+			//			shortestTime = currentTime;
+			//		}
+			//	}
+			//}
 
 			// Update object picked
-			if (chosenObject >= 0)
+			if (chosenObject != entt::null)
 			{
-				m_CurrentGOIdx = chosenObject;
+				m_CurrentEntity = chosenObject;
 			}
 			else
 			{
-				m_CurrentGOIdx = -1;
+				m_CurrentEntity = entt::null;
 			}
 		}
 	}
@@ -521,22 +551,5 @@ namespace PogplantDriver
 		{
 			PP::CameraResource::DeselectCam();
 		}
-	}
-
-	void ImguiHelper::GameWindow()
-	{
-		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-		ImGui::PopStyleColor();
-		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
-
-		// Update the camera when resizing window
-		ImVec2 currWindowSize = ImGui::GetWindowSize();
-		PP::CameraResource::GetCamera("GAME")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
-	}
-
-	void ImguiHelper::DrawEntityNode(Entity entity)
-	{
-
 	}
 }

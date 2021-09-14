@@ -217,7 +217,7 @@ void DrawCommon()
 		auto& renderer = view.get<Renderer>(entity);
 		
 		renderer.render_object->m_Model = glm::make_mat4(transform.m_ModelMtx);
-		DebugCubes(transform, renderer);
+		//DebugCubes(transform, renderer);
 	}
 
 

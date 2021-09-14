@@ -25,16 +25,17 @@
     <Filter Include="Source Files\GameObject">
       <UniqueIdentifier>{afc11050-9695-4bd7-9e13-6c62acbeefbd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Ecs">
-      <UniqueIdentifier>{af99dcaa-876c-4bc7-92d2-00079d15774a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Ecs\Components">
-      <UniqueIdentifier>{0e406428-e49a-4b81-8416-f9cc396e0776}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Ecs\Systems">
-      <UniqueIdentifier>{908c02b4-e0e8-45ab-bc75-6a7332a09a98}</UniqueIdentifier>
     <Filter Include="Source Files\Scripting">
       <UniqueIdentifier>{aa89c469-d515-4775-8332-decb37dd3645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS">
+      <UniqueIdentifier>{178c158a-720d-4a5c-8b81-d90e620da343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS\Components">
+      <UniqueIdentifier>{2ab88061-e3ad-4630-94f1-3a5c08c65c37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS\Systems">
+      <UniqueIdentifier>{27131b65-b53c-4195-b577-8012e999bc7d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -88,11 +89,12 @@
     </ClCompile>
     <ClCompile Include="Src\ScriptSystem.cpp">
       <Filter>Source Files\Scripting</Filter>
+    </ClCompile>
     <ClCompile Include="Src\ECS\ECS.cpp">
-      <Filter>Source Files\Ecs</Filter>
+      <Filter>Source Files\ECS</Filter>
     </ClCompile>
     <ClCompile Include="Src\ECS\Entity.cpp">
-      <Filter>Source Files\Ecs</Filter>
+      <Filter>Source Files\ECS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,19 +149,20 @@
     <ClInclude Include="Src\GameObjectContainer.h">
       <Filter>Source Files\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Src\ECS\ECS.h">
-      <Filter>Source Files\Ecs</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\ECS\Components\Components.h">
-      <Filter>Source Files\Ecs\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\ECS\Entity.h">
-      <Filter>Source Files\Ecs</Filter>
     <ClInclude Include="Src\ScriptBinder.h">
       <Filter>Source Files\Scripting</Filter>
     </ClInclude>
     <ClInclude Include="Src\ScriptSystem.h">
       <Filter>Source Files\Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\ECS.h">
+      <Filter>Source Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\Entity.h">
+      <Filter>Source Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\Components\Components.h">
+      <Filter>Source Files\ECS\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
