@@ -10,20 +10,36 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pogplant Driver", "Pogplant
 		{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B} = {A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scripting", "Scripting\Scripting.csproj", "{219AEB91-A767-43D4-9358-33CEF129F95C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}.Debug|x64.ActiveCfg = Debug|x64
 		{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}.Debug|x64.Build.0 = Debug|x64
+		{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}.Release|Any CPU.ActiveCfg = Release|x64
 		{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}.Release|x64.ActiveCfg = Release|x64
 		{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}.Release|x64.Build.0 = Release|x64
+		{2F88D911-792E-40A4-A5D3-3ADE64825F93}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{2F88D911-792E-40A4-A5D3-3ADE64825F93}.Debug|x64.ActiveCfg = Debug|x64
 		{2F88D911-792E-40A4-A5D3-3ADE64825F93}.Debug|x64.Build.0 = Debug|x64
+		{2F88D911-792E-40A4-A5D3-3ADE64825F93}.Release|Any CPU.ActiveCfg = Release|Win32
 		{2F88D911-792E-40A4-A5D3-3ADE64825F93}.Release|x64.ActiveCfg = Release|x64
 		{2F88D911-792E-40A4-A5D3-3ADE64825F93}.Release|x64.Build.0 = Release|x64
+		{219AEB91-A767-43D4-9358-33CEF129F95C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{219AEB91-A767-43D4-9358-33CEF129F95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{219AEB91-A767-43D4-9358-33CEF129F95C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{219AEB91-A767-43D4-9358-33CEF129F95C}.Debug|x64.Build.0 = Debug|Any CPU
+		{219AEB91-A767-43D4-9358-33CEF129F95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{219AEB91-A767-43D4-9358-33CEF129F95C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{219AEB91-A767-43D4-9358-33CEF129F95C}.Release|x64.ActiveCfg = Release|Any CPU
+		{219AEB91-A767-43D4-9358-33CEF129F95C}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
