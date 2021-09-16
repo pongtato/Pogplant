@@ -13,6 +13,11 @@ namespace Components
 		std::string m_tag;
 	};
 
+	struct Imaginary_object
+	{
+		std::string str;
+	};
+
 	struct Transform
 	{
 		glm::vec3 m_position;

@@ -14,6 +14,7 @@
 #include <imgui.h>
 
 #include "ECS/Entity.h"
+#include "ECS/Systems/imaginary_system.h"
 //struct MEMLEAK
 //{
 //	~MEMLEAK()
@@ -27,6 +28,7 @@ namespace PPD = PogplantDriver;
 
 using namespace Components;
 ECS ecs;
+Imaginary_system ImaginarySystem;
 
 void Init()
 {
@@ -85,6 +87,7 @@ void Init()
 	entity = ecs.CreateEntity();
 	entity.AddComponent<Components::Transform>(pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(&GO_Resource::m_Render_Container[1]);
+	entity.AddComponent<Imaginary_object>("gab_small_pepe");
 
 
 	//auto entity = registry.create();
@@ -97,6 +100,9 @@ void Init()
 	ScriptSystem SS;
 	SS.testfuncwithparam('X');
 	SS.testfuncwithreturn();
+
+	ImaginarySystem.Init(&ecs);
+
 }
 
 void SetCube(glm::mat4 _BasePos)
@@ -286,6 +292,9 @@ void Run()
 
 		// Camera KB movement
 		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
+
+
+		ImaginarySystem.Update();
 
 		/// Most of this should be moved to other files when the engine is developed
 		// Things that appear in both editor & game
