@@ -1150,6 +1150,9 @@ struct ImGuiOldColumns
 
 #ifdef IMGUI_HAS_DOCK
 
+#pragma warning( push )
+#pragma warning( disable : 5054)
+
 // Extend ImGuiDockNodeFlags_
 enum ImGuiDockNodeFlagsPrivate_
 {
@@ -1173,6 +1176,8 @@ enum ImGuiDockNodeFlagsPrivate_
     ImGuiDockNodeFlags_LocalFlagsTransferMask_  = ImGuiDockNodeFlags_LocalFlagsMask_ & ~ImGuiDockNodeFlags_DockSpace,  // When splitting those flags are moved to the inheriting child, never duplicated
     ImGuiDockNodeFlags_SavedFlagsMask_          = ImGuiDockNodeFlags_NoResizeFlagsMask_ | ImGuiDockNodeFlags_DockSpace | ImGuiDockNodeFlags_CentralNode | ImGuiDockNodeFlags_NoTabBar | ImGuiDockNodeFlags_HiddenTabBar | ImGuiDockNodeFlags_NoWindowMenuButton | ImGuiDockNodeFlags_NoCloseButton | ImGuiDockNodeFlags_NoDocking
 };
+
+#pragma warning( pop )
 
 // Store the source authority (dock node vs window) of a field
 enum ImGuiDataAuthority_

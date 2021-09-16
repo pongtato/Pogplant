@@ -78,15 +78,15 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(SolutionDir)Pogplant Driver\Libs\Mono\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant Driver\libs\Mono\include\mono-2.0;D:\GitFork_repo\Pogplant\Pogplant\Pogplant Driver\Src\ECS;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(SolutionDir)Pogplant Driver\Libs\Mono\lib;$(SolutionDir)bin\$(Configuration)-$(Platform)\PhysicsDLC;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant Driver\libs\Mono\include\mono-2.0;$(SolutionDir)\Pogplant Driver\Src\ECS;$(SolutionDir)\PhysicsDLC\Src;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(SolutionDir)Pogplant Driver\Libs\Mono\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant Driver\libs\Mono\include\mono-2.0;D:\GitFork_repo\Pogplant\Pogplant\Pogplant Driver\Src\ECS;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Pogplant Driver\Libs\Pogplant;$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(SolutionDir)Pogplant Driver\Libs\Mono\lib;$(SolutionDir)bin\$(Configuration)-$(Platform)\PhysicsDLC;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant Driver\libs\IMGUI;$(SolutionDir)\Pogplant Driver\libs\IMGUIZMO;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant Driver\libs\Mono\include\mono-2.0;$(SolutionDir)\Pogplant Driver\Src\ECS;$(SolutionDir)\PhysicsDLC\Src;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
@@ -126,11 +126,12 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\Pogplant\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;Pogplant_D.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;PhysicsDLC.lib;Pogplant_D.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PreBuildEvent>
@@ -153,13 +154,14 @@ xcopy "$(SolutionDir)Pogplant Driver\Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono
       <AdditionalIncludeDirectories>$(SolutionDir)\Pogplant\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;Pogplant.lib;assimp-vc142-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;PhysicsDLC.lib;Pogplant.lib;assimp-vc142-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>copy "$(SolutionDir)Pogplant\Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(TargetDir)"

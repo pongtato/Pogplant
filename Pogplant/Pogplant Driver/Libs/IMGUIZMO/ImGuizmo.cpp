@@ -61,11 +61,16 @@ namespace IMGUIZMO_NAMESPACE
      return static_cast<int>(lhs) != rhs;
    }
 
+#pragma warning( push )
+#pragma warning( disable : 4505)
+
    /// UNUSED
    static bool operator==(OPERATION lhs, int rhs)
    {
      return static_cast<int>(lhs) == rhs;
    }
+
+#pragma warning( pop )
 
    static bool Intersects(OPERATION lhs, OPERATION rhs)
    {

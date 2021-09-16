@@ -7278,6 +7278,8 @@ static void ImGui::TabBarLayout(ImGuiTabBar* tab_bar)
     ItemSize(ImVec2(tab_bar->WidthAllTabsIdeal, tab_bar->BarRect.GetHeight()), tab_bar->FramePadding.y);
 }
 
+#pragma warning( push )
+#pragma warning (disable: 4100)
 // Dockable uses Name/ID in the global namespace. Non-dockable items use the ID stack.
 static ImU32   ImGui::TabBarCalcTabID(ImGuiTabBar* tab_bar, const char* label, ImGuiWindow* docked_window)
 {
@@ -7294,6 +7296,7 @@ static ImU32   ImGui::TabBarCalcTabID(ImGuiTabBar* tab_bar, const char* label, I
         return window->GetID(label);
     }
 }
+#pragma warning( pop )
 
 static float ImGui::TabBarCalcMaxTabWidth()
 {

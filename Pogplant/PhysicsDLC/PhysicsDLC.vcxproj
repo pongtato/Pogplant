@@ -11,52 +11,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Camera.h" />
-    <ClInclude Include="Src\CameraResource.h" />
-    <ClInclude Include="Src\FrameBuffer.h" />
-    <ClInclude Include="Src\FrameBufferResource.h" />
-    <ClInclude Include="Src\Logger.h" />
-    <ClInclude Include="Src\Mesh.h" />
-    <ClInclude Include="Src\Mesh3D.h" />
-    <ClInclude Include="Src\MeshBuilder.h" />
-    <ClInclude Include="Src\MeshInstance.h" />
-    <ClInclude Include="Src\MeshResource.h" />
-    <ClInclude Include="Src\Model.h" />
-    <ClInclude Include="Src\ModelResource.h" />
-    <ClInclude Include="Src\Pogplant.h" />
-    <ClInclude Include="Src\Ray.h" />
-    <ClInclude Include="Src\Renderer.h" />
-    <ClInclude Include="Src\RenderObject.h" />
-    <ClInclude Include="Src\ShaderLinker.h" />
-    <ClInclude Include="Src\ShaderResource.h" />
-    <ClInclude Include="Src\TextureLoader.h" />
-    <ClInclude Include="Src\Window.h" />
+    <ClInclude Include="Src\Collision\Colliders.h" />
+    <ClInclude Include="Src\Collision\Collision.h" />
+    <ClInclude Include="Src\PhysicsDLC.h" />
+    <ClInclude Include="Src\TypeDefines.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Camera.cpp" />
-    <ClCompile Include="Src\CameraResource.cpp" />
-    <ClCompile Include="Src\FrameBuffer.cpp" />
-    <ClCompile Include="Src\FrameBufferResource.cpp" />
-    <ClCompile Include="Src\Logger.cpp" />
-    <ClCompile Include="Src\Mesh.cpp" />
-    <ClCompile Include="Src\Mesh3D.cpp" />
-    <ClCompile Include="Src\MeshBuilder.cpp" />
-    <ClCompile Include="Src\MeshInstance.cpp" />
-    <ClCompile Include="Src\MeshResource.cpp" />
-    <ClCompile Include="Src\Model.cpp" />
-    <ClCompile Include="Src\ModelResource.cpp" />
-    <ClCompile Include="Src\Ray.cpp" />
-    <ClCompile Include="Src\Renderer.cpp" />
-    <ClCompile Include="Src\ShaderLinker.cpp" />
-    <ClCompile Include="Src\ShaderResource.cpp" />
-    <ClCompile Include="Src\TextureLoader.cpp" />
-    <ClCompile Include="Src\Window.cpp" />
+    <ClCompile Include="Src\Collision\Colliders.cpp" />
+    <ClCompile Include="Src\Collision\Collision.cpp" />
+    <ClCompile Include="Src\Testbed.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a0fbcd3d-83a0-498a-a91f-9f25751d3a9b}</ProjectGuid>
-    <RootNamespace>Pogplant</RootNamespace>
+    <ProjectGuid>{5bdb65d7-b800-4f53-93a2-322a0f23bb51}</ProjectGuid>
+    <RootNamespace>PhysicsDLC</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -87,16 +59,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant\Libs\STB;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLM</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
-    <TargetName>$(ProjectName)_D</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant\Libs\STB;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(SolutionDir)\Pogplant\Libs\ASSIMP\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Pogplant\Libs\GLM</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
@@ -104,23 +73,15 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;PLATFORM_WINDOWS;BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\Pogplant_D.lib" "$(SolutionDir)Pogplant Driver\Libs\Pogplant\"</Command>
-    </PostBuildEvent>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -128,10 +89,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;PLATFORM_WINDOWS;BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -140,13 +100,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\Pogplant.lib" "$(SolutionDir)Pogplant Driver\Libs\Pogplant\"</Command>
-    </PostBuildEvent>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
