@@ -3,6 +3,7 @@
 #include "ShaderLinker.h"
 
 #include <glew.h>
+#include <iostream>
 
 namespace Pogplant
 {
@@ -18,30 +19,40 @@ namespace Pogplant
 
 	void Mesh3D::Draw() const
 	{
-        //// bind appropriate textures
-        //unsigned int diffuseNr = 1;
-        //unsigned int specularNr = 1;
-        //unsigned int normalNr = 1;
-        //unsigned int heightNr = 1;
-        //for (unsigned int i = 0; i < m_Textures.size(); i++)
-        //{
-        //    glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
-        //    // retrieve texture number (the N in diffuse_textureN)
-        //    std::string number;
-        //    std::string name = m_Textures[i].m_Type;
-        //    if (name == "texture_diffuse")
-        //        number = std::to_string(diffuseNr++);
-        //    else if (name == "texture_specular")
-        //        number = std::to_string(specularNr++); // transfer unsigned int to stream
-        //    else if (name == "texture_normal")
-        //        number = std::to_string(normalNr++); // transfer unsigned int to stream
-        //    else if (name == "texture_height")
-        //        number = std::to_string(heightNr++); // transfer unsigned int to stream
+        // bind appropriate textures
+        unsigned int diffuseNr = 0;
+        unsigned int specularNr = 0;
+        unsigned int normalNr = 0;
+        unsigned int heightNr = 0;
 
-        //    //shader.setFloat(("material." + name + number).c_str(), i);
-        //    //ShaderLinker::SetUniform(("material." + name + number).c_str(), static_cast<float>(i));
-        //    glBindTexture(GL_TEXTURE_2D, m_Textures[i].m_Id);
-        //}
+        if (m_Textures.size() == 0)
+        {
+            ShaderLinker::SetUniform("noTex", 1);
+        }
+        else
+        {
+            ShaderLinker::SetUniform("noTex", 0);
+            for (unsigned int i = 0; i < m_Textures.size(); i++)
+            {
+                //glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
+                // retrieve texture number (the N in diffuse_textureN)
+                std::string number;
+                std::string name = m_Textures[i].m_Type;
+                if (name == "texture_diffuse")
+                    number = std::to_string(diffuseNr++);
+                else if (name == "texture_specular")
+                    number = std::to_string(specularNr++); // transfer unsigned int to stream
+                else if (name == "texture_normal")
+                    number = std::to_string(normalNr++); // transfer unsigned int to stream
+                else if (name == "texture_height")
+                    number = std::to_string(heightNr++); // transfer unsigned int to stream
+
+                //std::cout << ("material." + name + "[" + number + "]") << std::endl;
+                ShaderLinker::SetUniform(("material." + name + "[" + number + "]").c_str(), static_cast<float>(i));
+                //glBindTexture(GL_TEXTURE_2D, m_Textures[i].m_Id);
+                glBindTextureUnit(static_cast<GLint>(i), m_Textures[i].m_Id);
+            }
+        }
 
 		glBindVertexArray(m_VAO);
 		glDrawElements(m_PrimitiveType, static_cast<int>(m_Indices.size()), GL_UNSIGNED_INT, 0);

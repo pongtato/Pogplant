@@ -7,7 +7,12 @@
 
 namespace Pogplant
 {
-	unsigned int TexLoader::LoadTexture(std::string _Path, std::string _Directory)
+    void TexLoader::SetTextureFlip(bool _Flip)
+    {
+        stbi_set_flip_vertically_on_load(_Flip);
+    }
+
+    unsigned int TexLoader::LoadTexture(std::string _Path, std::string _Directory)
 	{
         std::string filename = std::string(_Path);
         filename = _Directory + '/' + filename;

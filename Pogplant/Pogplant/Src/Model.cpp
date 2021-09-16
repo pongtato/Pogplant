@@ -10,6 +10,8 @@ namespace Pogplant
 {
 	Model::Model(std::string _Path, uint _PrimitiveType)
 	{
+        TexLoader::SetTextureFlip(true);
+
 		LoadModel(_Path, _PrimitiveType);
 
         // For comparison later
