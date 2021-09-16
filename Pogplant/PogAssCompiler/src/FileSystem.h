@@ -8,6 +8,9 @@
 #include <filesystem>
 #include <unordered_map>
 
+#include "ModelCompiler.h"
+#include "Logger.h"
+
 enum class FileType
 {
 	MODEL,
@@ -18,42 +21,47 @@ enum class FileType
 
 struct FileHeader
 {
-	FileType m_fileType;
-	size_t m_fileSize;
+	FileType m_type;
+	size_t m_payloadSize;
 	size_t m_subHeaderLen;
 };
 
 struct File
 {	
-	std::ifstream m_buffer;
+	std::ifstream m_inBuffer;
 	std::ofstream m_outBuffer;
-	FileHeader m_fileHeader;
-	static constexpr size_t m_maxHeaderLen {40};
+	FileHeader m_header;
 	size_t m_currPos;
+	std::string m_name;
+	std::string m_ext;
 };
 
 class FileSystem
 {
-	using Filename = std::string;
 
 public:
 
 	FileSystem();
 	~FileSystem();
 
-	void GenericToBinary(std::string fullpath);
+	void GenericToBinary(std::string filePath);
 	bool isRunning();
 
 private:
-	
 	// Helper function
-	bool getFileNameExt(std::string file, std::string& fileExt, std::string& fileName);
+	bool ProcessInput(std::string& input);
+	bool GetFileNameExt(std::string& filePath);
+	void WriteToBin(std::string& fileName);
+	void ReadRawBin(std::string& filePath);
+	bool Exists(std::string& filePath);
 
 	// Private data members
-	//std::unordered_map<Filename, File> m_Files;
+	static ModelCompiler m_modelCompiler;
+
 	const std::string m_Ext{"kek"};
-	File m_File;
+	File m_file;
 	bool m_running = true;
+	std::vector<char> m_buffer;
 };
 
 #endif // _FILE_SYSTEM

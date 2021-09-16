@@ -37,6 +37,9 @@
     <Filter Include="Source Files\ECS\Systems">
       <UniqueIdentifier>{27131b65-b53c-4195-b577-8012e999bc7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\FileStreamer">
+      <UniqueIdentifier>{6dded36b-01b3-4f3e-af82-6e08687c3cff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
