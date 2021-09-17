@@ -29,7 +29,9 @@
     <ClInclude Include="Src\RenderObject.h" />
     <ClInclude Include="Src\ShaderLinker.h" />
     <ClInclude Include="Src\ShaderResource.h" />
+    <ClInclude Include="Src\Skybox.h" />
     <ClInclude Include="Src\TextureLoader.h" />
+    <ClInclude Include="Src\TextureResource.h" />
     <ClInclude Include="Src\Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -49,7 +51,9 @@
     <ClCompile Include="Src\Renderer.cpp" />
     <ClCompile Include="Src\ShaderLinker.cpp" />
     <ClCompile Include="Src\ShaderResource.cpp" />
+    <ClCompile Include="Src\Skybox.cpp" />
     <ClCompile Include="Src\TextureLoader.cpp" />
+    <ClCompile Include="Src\TextureResource.cpp" />
     <ClCompile Include="Src\Window.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -107,7 +111,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;PLATFORM_WINDOWS;BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -131,7 +135,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;PLATFORM_WINDOWS;BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>

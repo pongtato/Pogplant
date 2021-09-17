@@ -5,6 +5,7 @@
 namespace Pogplant
 {
 	struct Mesh3D;
+	struct Skybox;
 
 	class MeshBuilder
 	{
@@ -15,6 +16,7 @@ namespace Pogplant
 	private:
 		static void GenerateQuad();
 		static void GenerateScreen();
+		static void GenerateSkybox();
 	};
 }
 

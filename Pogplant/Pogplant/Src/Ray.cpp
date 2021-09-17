@@ -25,10 +25,10 @@ bool Pogplant::Ray::CollideSphere(glm::vec3 _SpherePos, float _SphereRad, float&
 	}
 
 	// Else shortest time is the one we want
-	_Time = std::min(t1, t2);
+	_Time = glm::min(t1, t2);
 
 	// Clamp
-	_Time = std::max(_Time, 0.0f);
+	_Time = glm::max(_Time, 0.0f);
 
 	return true;
 }

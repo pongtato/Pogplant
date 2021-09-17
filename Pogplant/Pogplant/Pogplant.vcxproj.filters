@@ -73,6 +73,12 @@
     <Filter Include="Source Files\Camera\Ray">
       <UniqueIdentifier>{8bdb24e9-b5ce-44f1-97ec-55d0bfd684a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Skybox">
+      <UniqueIdentifier>{dc503976-0a2f-4241-b3e2-0d1330e19027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\TextureLoader\TextureResource">
+      <UniqueIdentifier>{c02d8c4a-0494-4799-8222-464fd92c695b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -135,6 +141,12 @@
     <ClInclude Include="Src\Ray.h">
       <Filter>Source Files\Camera\Ray</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Skybox.h">
+      <Filter>Source Files\Graphics\Skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\TextureResource.h">
+      <Filter>Source Files\Graphics\TextureLoader\TextureResource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -190,6 +202,12 @@
     </ClCompile>
     <ClCompile Include="Src\Ray.cpp">
       <Filter>Source Files\Camera\Ray</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Skybox.cpp">
+      <Filter>Source Files\Graphics\Skybox</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\TextureResource.cpp">
+      <Filter>Source Files\Graphics\TextureLoader\TextureResource</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

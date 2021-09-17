@@ -8,6 +8,8 @@
 #include "ModelResource.h"
 #include "Model.h"
 #include "RenderObject.h"
+#include "Skybox.h"
+#include "TextureResource.h"
 
 #include <gtc/matrix_transform.hpp>
 #include <glew.h>
@@ -57,32 +59,58 @@ namespace Pogplant
 	void Renderer::Draw(const char* _CameraID, const std::vector<RenderObject>& _DrawList, RenderObject* _Selected)
 	{
 		Camera* currCam = CameraResource::GetCamera(_CameraID);
+
 		ShaderLinker::Use("BASIC");
 		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
 		ShaderLinker::SetUniform("m4_View", currCam->GetView());
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();
 
-		glStencilFunc(GL_ALWAYS, 1, 0xFF);
-		glStencilMask(0xFF);
+		// Skybox
+		glDepthFunc(GL_LEQUAL);
+		ShaderLinker::Use("SKYBOX");
+		// Remove translate
+		glm::mat4 view = glm::mat4(glm::mat3(currCam->GetView()));
+		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		ShaderLinker::SetUniform("m4_View", view);
+		Skybox::Draw(TextureResource::m_TexturePool["SKYBOX4"]);
+		ShaderLinker::UnUse();
+		glDepthFunc(GL_LESS);
 
 		ShaderLinker::Use("MODEL");
 		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
 		ShaderLinker::SetUniform("m4_View", currCam->GetView());
 		for (const auto& it : _DrawList)
 		{
-			ShaderLinker::SetUniform("m4_Model", it.m_Model);
-			it.m_RenderModel->Draw();
+			// Draw selected objects seperately for edge detection
+			if(_Selected == nullptr || it.m_RenderModel != _Selected->m_RenderModel)
+			{
+				ShaderLinker::SetUniform("m4_Model", it.m_Model);
+				it.m_RenderModel->Draw();
+			}
 		}
 		ShaderLinker::UnUse();
 
 		// Edge
-		glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-		glStencilMask(0x00);
-		glDisable(GL_DEPTH_TEST);
-
 		if (_Selected != nullptr)
 		{
+			// Test against the selected object
+			glStencilFunc(GL_ALWAYS, 1, 0xFF);
+			glStencilMask(0xFF);
+
+			// Drawn seperately 
+			ShaderLinker::Use("MODEL");
+			ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+			ShaderLinker::SetUniform("m4_View", currCam->GetView());
+			ShaderLinker::SetUniform("m4_Model", _Selected->m_Model);
+			_Selected->m_RenderModel->Draw();
+			ShaderLinker::UnUse();
+
+			// Get the edge
+			glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+			glStencilMask(0x00);
+			glDisable(GL_DEPTH_TEST);
+
 			ShaderLinker::Use("EDGE");
 			ShaderLinker::SetUniform("f_Thicc", 0.05f);
 			ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
@@ -90,11 +118,11 @@ namespace Pogplant
 			ShaderLinker::SetUniform("m4_Model", _Selected->m_Model);
 			_Selected->m_RenderModel->Draw();
 			ShaderLinker::UnUse();
-		}
 
-		glStencilMask(0xFF);
-		glStencilFunc(GL_ALWAYS, 0, 0xFF);
-		glEnable(GL_DEPTH_TEST);
+			glStencilMask(0xFF);
+			glStencilFunc(GL_ALWAYS, 0, 0xFF);
+			glEnable(GL_DEPTH_TEST);
+		}
 	}
 
 	void Renderer::Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16])

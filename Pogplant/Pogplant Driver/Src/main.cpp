@@ -40,6 +40,7 @@ void Init()
 		"Pogplant Driver 6969" // Window name
 	);
 
+	PP::TextureResource::InitResource();
 	PP::MeshBuilder::InitMesh();
 	PP::ShaderLinker::InitShader();
 	PP::FrameBuffer::InitFrameBuffer();
@@ -63,7 +64,6 @@ void Init()
 	PP::Model* bagModel = PP::ModelResource::m_ModelPool["BAG"];
 	PP::Model* cubeModel = PP::ModelResource::m_ModelPool["SPHERE"];
 	// Assume 2 objects components
-	
 	GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, bagModel });
 	GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, cubeModel });
 

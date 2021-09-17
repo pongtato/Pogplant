@@ -5,6 +5,7 @@
 #include "MeshInstance.h"
 #include "Logger.h"
 #include "ModelResource.h"
+#include "Skybox.h"
 
 #include <glew.h>
 
@@ -20,6 +21,7 @@ namespace Pogplant
         MeshInstance::InitMeshInstance(_PoolSize);
         GenerateQuad();
         GenerateScreen();
+        GenerateSkybox();
         ModelResource::InitResource();
     }
 
@@ -253,5 +255,64 @@ namespace Pogplant
         // Update type ands size
         mesh->m_IndicesCount = static_cast<unsigned int>(mesh->m_Indices.size());
         mesh->m_PrimitiveType = GL_TRIANGLE_STRIP;
+    }
+
+    void MeshBuilder::GenerateSkybox()
+    {
+        float vertices[] = 
+        {
+            -1.0f,  1.0f, -1.0f,
+            -1.0f, -1.0f, -1.0f,
+             1.0f, -1.0f, -1.0f,
+             1.0f, -1.0f, -1.0f,
+             1.0f,  1.0f, -1.0f,
+            -1.0f,  1.0f, -1.0f,
+
+            -1.0f, -1.0f,  1.0f,
+            -1.0f, -1.0f, -1.0f,
+            -1.0f,  1.0f, -1.0f,
+            -1.0f,  1.0f, -1.0f,
+            -1.0f,  1.0f,  1.0f,
+            -1.0f, -1.0f,  1.0f,
+
+             1.0f, -1.0f, -1.0f,
+             1.0f, -1.0f,  1.0f,
+             1.0f,  1.0f,  1.0f,
+             1.0f,  1.0f,  1.0f,
+             1.0f,  1.0f, -1.0f,
+             1.0f, -1.0f, -1.0f,
+
+            -1.0f, -1.0f,  1.0f,
+            -1.0f,  1.0f,  1.0f,
+             1.0f,  1.0f,  1.0f,
+             1.0f,  1.0f,  1.0f,
+             1.0f, -1.0f,  1.0f,
+            -1.0f, -1.0f,  1.0f,
+
+            -1.0f,  1.0f, -1.0f,
+             1.0f,  1.0f, -1.0f,
+             1.0f,  1.0f,  1.0f,
+             1.0f,  1.0f,  1.0f,
+            -1.0f,  1.0f,  1.0f,
+            -1.0f,  1.0f, -1.0f,
+
+            -1.0f, -1.0f, -1.0f,
+            -1.0f, -1.0f,  1.0f,
+             1.0f, -1.0f, -1.0f,
+             1.0f, -1.0f, -1.0f,
+            -1.0f, -1.0f,  1.0f,
+             1.0f, -1.0f,  1.0f
+        };
+
+        glGenVertexArrays(1, &Skybox::m_VAO);
+        glGenBuffers(1, &Skybox::m_VBO);
+        glBindVertexArray(Skybox::m_VAO);
+        glBindBuffer(GL_ARRAY_BUFFER, Skybox::m_VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+
+        Skybox::m_IndicesCount = 36;
+        Skybox::m_PrimitiveType = GL_TRIANGLES;
     }
 }

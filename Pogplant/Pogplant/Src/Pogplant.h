@@ -9,5 +9,6 @@
 #include "CameraResource.h"
 #include "Logger.h"
 #include "ModelResource.h"
+#include "TextureResource.h"
 
 namespace PP = Pogplant;
