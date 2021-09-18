@@ -1,6 +1,5 @@
 #include "ImguiHelper.h"
 #include "Pogplant.h"
-#include "GameObjectContainer.h"
 
 #include <imgui.h>
 #include <imgui_internal.h>
@@ -11,6 +10,8 @@
 #include <gtc/type_ptr.hpp>
 
 #include "ECS/Entity.h"
+#include <algorithm>
+#include <execution>
 
 namespace PogplantDriver
 {
@@ -241,26 +242,49 @@ namespace PogplantDriver
 
 		ImGui::Begin("Scene Hierarchy");
 		{
-			m_ecs->GetReg().each([](auto entity)
-			{
-				//auto e_Tag = m_ecs->GetReg().get<Components::Tag>(entity).m_tag;
-					std::string name = "Object" + std::to_string((int)entity);
+			auto results = m_ecs->GetReg().view<Components::Transform>();
 
-				if (ImGui::Selectable(name.c_str(), m_CurrentEntity == entity))
+			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+				m_CurrentEntity = entt::null;
+
+			std::for_each(results.rbegin(), results.rend(), [&results](auto entity) 
 				{
-					m_CurrentEntity = entity;
+
+					DrawEntityNode(entity);
+				});
+
+			//right click hovered item
+			//if (ImGui::IsItemHovered())
+			if (m_CurrentEntity != entt::null)
+			{
+				if (ImGui::BeginPopupContextWindow("aaaa", ImGuiPopupFlags_MouseButtonRight))
+				{
+					if (ImGui::MenuItem("Delete Entity"))
+					{
+						m_ecs->GetReg().destroy(m_CurrentEntity);
+						m_CurrentEntity = entt::null;
+					}
+
+					ImGui::EndPopup();
 				}
-			});
+			}
 
 
-			//for (int i = 0; i < GO_Resource::m_GO_Container.size(); i++)
-			//{
-			//	std::string name = "Object" + std::to_string(i);
-			//	if (ImGui::Selectable(name.c_str(), m_CurrentGOIdx == i))
-			//	{
-			//		m_CurrentGOIdx = i;
-			//	}
-			//}
+
+
+			// Right-click on blank space
+			if (ImGui::BeginPopupContextWindow("wat", 1, false))
+			{
+				if (ImGui::MenuItem("Create Empty Entity"))
+					m_ecs->CreateEntity();
+
+				//if (ImGui::MenuItem("Create From Prefab"))
+				//{
+				//	//CreateEntityFromPrefab(m_current_scene, ecs_handler);
+				//}
+
+				ImGui::EndPopup();
+			}
 		}
 		ImGui::End();
 
@@ -415,25 +439,30 @@ namespace PogplantDriver
 					//GameObject& currGO = GO_Resource::m_GO_Container[i];
 					
 					auto& transform = m_ecs->GetReg().get<Components::Transform>(entity);
-					auto& renderer = m_ecs->GetReg().get<Components::Renderer>(entity);
-					// Naive approach
-					float largestScale = std::numeric_limits<float>::min();
+					auto renderer = m_ecs->GetReg().try_get<Components::RenderObject>(entity);
 
-					for (int j = 0; j < 3; j++)
+					if (renderer != nullptr)
 					{
-						largestScale = std::max(largestScale, transform.m_scale[j]);
-					}
+						// Naive approach
+						float largestScale = std::numeric_limits<float>::min();
 
-					const float radius = renderer.render_object->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
-					float currentTime = std::numeric_limits<float>::max();
-					if (ray.CollideSphere(glm::make_vec3(transform.m_position), radius, currentTime))
-					{
-						if (currentTime < shortestTime)
+						for (int j = 0; j < 3; j++)
 						{
-							chosenObject = entity;
-							shortestTime = currentTime;
+							largestScale = std::max(largestScale, transform.m_scale[j]);
+						}
+
+						const float radius = renderer->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
+						float currentTime = std::numeric_limits<float>::max();
+						if (ray.CollideSphere(glm::make_vec3(transform.m_position), radius, currentTime))
+						{
+							if (currentTime < shortestTime)
+							{
+								chosenObject = entity;
+								shortestTime = currentTime;
+							}
 						}
 					}
+					
 				});
 
 
@@ -556,5 +585,73 @@ namespace PogplantDriver
 		{
 			PP::CameraResource::DeselectCam();
 		}
+	}
+
+	bool ImguiHelper::DrawEntityNode(entt::entity entity, bool draw_childen)
+	{
+		//if (!draw_childen && ecs_handler.IsChildren(entity))
+		//	return false;
+
+		//auto name = ecs_handler.GetComponent<ECS::ObjectName>(entity).name.c_str();
+		auto name = m_ecs->GetReg().get<Components::Name>(entity);
+		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
+		flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+
+		bool is_opened = ImGui::TreeNodeEx((void*)(uint64_t)entity, flags, name.m_name.c_str());
+
+		if (ImGui::IsItemClicked() || ImGui::IsMouseClicked(1) && ImGui::IsItemHovered(ImGuiHoveredFlags_RectOnly))
+			m_CurrentEntity = entity;
+
+		bool is_deleted = false;
+
+		if (m_CurrentEntity != entt::null && ImGui::BeginPopupContextItem())
+		{
+
+			if (ImGui::MenuItem("Delete Entity"))
+				is_deleted = true;
+
+			//if (ImGui::MenuItem("Save As Prefab"))
+			//{
+			//	auto path = WindowsFileDialogue::SaveFileDialogue("Prefab (*.prefab)\0*.prefab\0", "untitled.prefab");
+			//	if (path.has_value())
+			//	{
+			//		GameObjectFactory::SavePrefab(ecs_handler, path.value(), m_selectedEntity);
+			//	}
+			//}
+
+			ImGui::EndPopup();
+		}
+
+		if (is_opened)
+		{
+			std::string c_name = "<no children>";
+			ImGuiTreeNodeFlags flags2 = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
+
+			//if (ecs_handler.IsParent(entity))
+			//{
+			//	std::set<ECS::Entity> s = ecs_handler.GetChildren(entity);
+			//	//int i = 0;
+			//	for (const auto& ent : s)
+			//	{
+			//		//std::string new_c_name = ecs_handler.GetComponent<ECS::ObjectName>(ent).name.c_str();
+			//		//bool active = ImGui::TreeNodeEx((void*)(uint64_t)ent, flags, new_c_name.c_str(), i++);
+			//		DrawEntityNode(ent, true);
+			//		//if (ImGui::IsItemClicked())
+			//		//	m_selectedEntity = ent;
+			//		//if (active)
+			//		//	ImGui::TreePop();
+			//	}
+			//}
+			//else
+			//{
+			//	bool is_opened2 = ImGui::TreeNodeEx((void*)9817239, flags2, c_name.c_str());
+			//	if (is_opened2)
+			//		ImGui::TreePop();
+			//}
+			ImGui::TreePop();
+
+		}
+
+		return is_deleted;
 	}
 }

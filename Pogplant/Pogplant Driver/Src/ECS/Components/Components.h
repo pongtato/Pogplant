@@ -1,7 +1,8 @@
 #ifndef COMPONENTS_H
 #define COMPONENTS_H
 
-#include <Pogplant.h>
+#include "../Src/Model.h"
+
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
@@ -11,6 +12,16 @@ namespace Components
 	struct Tag
 	{
 		std::string m_tag;
+	};
+
+	struct Name
+	{
+		std::string m_name;
+	};
+
+	struct PositionList
+	{
+		short m_index;
 	};
 
 	struct Imaginary_object
@@ -43,9 +54,11 @@ namespace Components
 		}
 	};
 
-	struct Renderer
+	struct RenderObject
 	{
-		Pogplant::RenderObject* render_object;
+		glm::mat4 m_Model;
+		Pogplant::Model* m_RenderModel;
+
 	};
 }
 

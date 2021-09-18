@@ -1,5 +1,4 @@
 #include "ImguiHelper.h"
-#include "GameObjectContainer.h"
 #include "ScriptSystem.h"
 
 #include <iostream>
@@ -63,18 +62,19 @@ void Init()
 	/// Add to container
 	PP::Model* bagModel = PP::ModelResource::m_ModelPool["BAG"];
 	PP::Model* cubeModel = PP::ModelResource::m_ModelPool["SPHERE"];
+
 	// Assume 2 objects components
-	GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, bagModel });
-	GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, cubeModel });
+	//GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, bagModel });
+	//GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, cubeModel });
 
 	glm::vec3 pos = { 5.0f, 0.0f, -10.0f };
 	glm::vec3 rot = { 0.0f,0.0f,0.0f };
 	glm::vec3 scale = { 1.0f,1.0f,1.0f };
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[0]));
 	
-	auto entity = ecs.CreateEntity();
-	entity.AddComponent<Components::Transform>(pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(&GO_Resource::m_Render_Container[0]);
+	auto entity = ecs.CreateEntity("", pos, rot, scale);
+	//entity.AddComponent<Components::Transform>(pos, rot, scale);
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, bagModel });
 
 	//ecs.AddComponent<Components::Renderer>(entity, &bagModel);
 	//registry.emplace<Renderer>(entity, &bagModel);
@@ -84,9 +84,8 @@ void Init()
 	scale = { 2.0f,2.0f,2.0f };
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
 	
-	entity = ecs.CreateEntity();
-	entity.AddComponent<Components::Transform>(pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(&GO_Resource::m_Render_Container[1]);
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, cubeModel });
 	entity.AddComponent<Imaginary_object>("gab_small_pepe");
 
 
@@ -136,41 +135,41 @@ void SetCube(glm::mat4 _BasePos)
 	PP::MeshInstance::SetInstance(PP::InstanceData{ model, glm::vec4{0.6f,1.0f,0.2f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 }
 
-void DebugCubes(const GameObject& _GO)
-{
-	float largestScale = std::numeric_limits<float>::min();
-	for (int i = 0; i < 3; i++)
-	{
-		largestScale = std::max(largestScale, _GO.m_Scale[i]);
-	}
+//void DebugCubes(const GameObject& _GO)
+//{
+//	float largestScale = std::numeric_limits<float>::min();
+//	for (int i = 0; i < 3; i++)
+//	{
+//		largestScale = std::max(largestScale, _GO.m_Scale[i]);
+//	}
+//
+//	const float halfLen = _GO.m_RenderObject->m_RenderModel->m_Bounds.longest * largestScale * 0.5f;
+//	glm::mat4 base = glm::mat4{ 1 };
+//	glm::vec3 trans = glm::make_vec3(_GO.m_Position);
+//	base = glm::translate( base, trans );
+//	base = glm::scale( base, {1.0f,1.0f,1.0f } );
+//
+//	// Top 
+//	glm::mat4 model = glm::translate(base, { 0,halfLen,0 });
+//	SetCube(model);
+//	// Left
+//	model = glm::translate(base, { -halfLen,0,0 });
+//	SetCube(model);
+//	// Right
+//	model = glm::translate(base, { halfLen,0,0 });
+//	SetCube(model);
+//	// Front
+//	model = glm::translate(base, { 0,0,-halfLen });
+//	SetCube(model);
+//	// Back
+//	model = glm::translate(base, { 0,0,halfLen });
+//	SetCube(model);
+//	// Bottom
+//	model = glm::translate(base, { 0,-halfLen,0 });
+//	SetCube(model);
+//}
 
-	const float halfLen = _GO.m_RenderObject->m_RenderModel->m_Bounds.longest * largestScale * 0.5f;
-	glm::mat4 base = glm::mat4{ 1 };
-	glm::vec3 trans = glm::make_vec3(_GO.m_Position);
-	base = glm::translate( base, trans );
-	base = glm::scale( base, {1.0f,1.0f,1.0f } );
-
-	// Top 
-	glm::mat4 model = glm::translate(base, { 0,halfLen,0 });
-	SetCube(model);
-	// Left
-	model = glm::translate(base, { -halfLen,0,0 });
-	SetCube(model);
-	// Right
-	model = glm::translate(base, { halfLen,0,0 });
-	SetCube(model);
-	// Front
-	model = glm::translate(base, { 0,0,-halfLen });
-	SetCube(model);
-	// Back
-	model = glm::translate(base, { 0,0,halfLen });
-	SetCube(model);
-	// Bottom
-	model = glm::translate(base, { 0,-halfLen,0 });
-	SetCube(model);
-}
-
-void DebugCubes(Transform& transform, Renderer& renderer)
+void DebugCubes(Transform& transform, RenderObject& renderer)
 {
 	float largestScale = std::numeric_limits<float>::min();
 
@@ -178,8 +177,8 @@ void DebugCubes(Transform& transform, Renderer& renderer)
 	{
 		largestScale = std::max(largestScale, transform.m_scale[i]);
 	}
-	
-	const float halfLen = renderer.render_object->m_RenderModel->m_Bounds.longest * largestScale * 0.5f;
+
+	const float halfLen = renderer.m_RenderModel->m_Bounds.longest * largestScale * 0.5f;
 	glm::mat4 base = glm::mat4{ 1 };
 	glm::vec3 trans = glm::make_vec3(transform.m_position);
 	base = glm::translate(base, trans);
@@ -215,19 +214,16 @@ void DrawCommon()
 	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
 	/// TEMP - Update transforms for render
-	auto view = ecs.GetReg().view<Transform, Renderer>();
+	auto view = ecs.GetReg().view<Transform, RenderObject>();
 	
 	for (auto entity : view)
 	{
 		auto& transform = view.get<Transform>(entity);
-		auto& renderer = view.get<Renderer>(entity);
+		auto& renderer = view.get<RenderObject>(entity);
 		
-		renderer.render_object->m_Model = glm::make_mat4(transform.m_ModelMtx);
+		renderer.m_Model = glm::make_mat4(transform.m_ModelMtx);
 		//DebugCubes(transform, renderer);
 	}
-
-
-
 
 	//for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
 	//{
@@ -242,7 +238,7 @@ void DrawCommon()
 void DrawEditor()
 {
 	// If something is selected choose it to be highlighted
-	PP::RenderObject* renderOjbect = nullptr;
+	RenderObject* renderOjbect = nullptr;
 
 	//const int currIdx = PPD::ImguiHelper::m_CurrentGOIdx;
 	entt::entity currIdx = PPD::ImguiHelper::m_CurrentEntity;
@@ -251,21 +247,23 @@ void DrawEditor()
 	if (currIdx != entt::null)
 	{
 		//renderOjbect = GO_Resource::m_GO_Container[currIdx].m_RenderObject;
-		renderOjbect = ecs.GetReg().get<Renderer>(currIdx).render_object;
+		renderOjbect = ecs.GetReg().try_get<RenderObject>(currIdx);
 	}
 
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw("EDITOR", GO_Resource::m_Render_Container, renderOjbect);
+	PP::Renderer::Draw("EDITOR", ecs.GetReg(), renderOjbect);
 	PP::Renderer::EndBuffer();
 }
 
 void DrawGame()
 {
+	auto results = ecs.GetReg().view<RenderObject>();
+
 	PP::Renderer::StartGameBuffer();
 	PP::Renderer::ClearBuffer();
 	// Dont highlight in game scene so leave 3rd param as nullptr
-	PP::Renderer::Draw("GAME", GO_Resource::m_Render_Container, nullptr);
+	PP::Renderer::Draw("GAME", ecs.GetReg(), nullptr);
 	PP::Renderer::EndBuffer();
 }
 

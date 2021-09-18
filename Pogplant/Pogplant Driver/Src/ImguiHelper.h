@@ -41,6 +41,9 @@ namespace PogplantDriver
 		static void Scene_GOPick(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
 		static void Scene_GOEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
 		static void Scene_ViewEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
+
+		static bool DrawEntityNode(entt::entity entity, bool draw_childen = false);
+	
 	};
 }
 

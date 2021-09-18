@@ -7,7 +7,6 @@
 #include "MeshResource.h"
 #include "ModelResource.h"
 #include "Model.h"
-#include "RenderObject.h"
 #include "Skybox.h"
 #include "TextureResource.h"
 
@@ -15,6 +14,9 @@
 #include <glew.h>
 #include <glfw3.h>
 #include <string>
+
+
+#include "../../Pogplant Driver/Src/ECS/Components/Components.h"
 
 namespace Pogplant
 {
@@ -56,7 +58,7 @@ namespace Pogplant
 		glfwPollEvents();
 	}
 
-	void Renderer::Draw(const char* _CameraID, const std::vector<RenderObject>& _DrawList, RenderObject* _Selected)
+	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::RenderObject* _Selected)
 	{
 		Camera* currCam = CameraResource::GetCamera(_CameraID);
 
@@ -80,9 +82,14 @@ namespace Pogplant
 		ShaderLinker::Use("MODEL");
 		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
 		ShaderLinker::SetUniform("m4_View", currCam->GetView());
-		for (const auto& it : _DrawList)
+
+		auto results = registry.view<Components::RenderObject>();
+
+		for (const auto& e : results)
 		{
 			// Draw selected objects seperately for edge detection
+			const auto& it = results.get<const Components::RenderObject>(e);
+
 			if(_Selected == nullptr || it.m_RenderModel != _Selected->m_RenderModel)
 			{
 				ShaderLinker::SetUniform("m4_Model", it.m_Model);

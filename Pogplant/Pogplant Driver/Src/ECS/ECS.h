@@ -4,6 +4,9 @@
 
 #include "entt_ecs/entt.hpp"
 //#include "Entity.h"
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
 
 class Entity;
 
@@ -11,10 +14,13 @@ class ECS
 {
 public:
 	ECS();
-	~ECS();
+	~ECS();		
 
-	Entity CreateEntity(std::string str = "pepe");
-
+	Entity CreateEntity(std::string str = "pepe", 
+						glm::vec3 pos = { 0, 0, 0 }, 
+						glm::vec3 rot = { 0, 0, 0 },
+						glm::vec3 scale = { 1, 1, 1 });
+	
 	//template<typename... Type>
 	//auto& GetEntitiesWith()
 	//{
