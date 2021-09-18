@@ -35,5 +35,6 @@ void Imaginary_system::Update()
 		//get components
 		auto& imaginary_component = entities.get<Imaginary_object>(entity);
 
+		(void)imaginary_component;
 	}
 }

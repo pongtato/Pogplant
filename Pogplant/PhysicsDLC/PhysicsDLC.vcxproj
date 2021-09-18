@@ -14,11 +14,13 @@
     <ClInclude Include="Src\Collision\Colliders.h" />
     <ClInclude Include="Src\Collision\Collision.h" />
     <ClInclude Include="Src\PhysicsDLC.h" />
+    <ClInclude Include="Src\Physics\PhysicsResolvers.h" />
     <ClInclude Include="Src\TypeDefines.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Collision\Colliders.cpp" />
     <ClCompile Include="Src\Collision\Collision.cpp" />
+    <ClCompile Include="Src\Physics\PhysicsResolvers.cpp" />
     <ClCompile Include="Src\Testbed.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>

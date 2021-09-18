@@ -14,7 +14,7 @@ namespace PhysicsDLC
 		bool RayAABB(const vec3& rayStart, const vec3& rayDir, const vec3& aabbMin, const vec3& aabbMax, float& collisionTime);
 
 		bool StaticAABBAABB(const Shapes::AABB& aabb1, const Shapes::AABB& aabb2);
-		bool DynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime);
+		float DynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime);
 	}
 }
 

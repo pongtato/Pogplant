@@ -16,6 +16,9 @@
     <Filter Include="Source Files\Collision">
       <UniqueIdentifier>{871049e8-dd30-4c42-849f-11e26a100d80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{938fd04b-0340-470b-96bd-4c5a6e09b15a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\PhysicsDLC.h">
@@ -30,6 +33,9 @@
     <ClInclude Include="Src\TypeDefines.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Physics\PhysicsResolvers.h">
+      <Filter>Source Files\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Collision\Colliders.cpp">
@@ -40,6 +46,9 @@
     </ClCompile>
     <ClCompile Include="Src\Collision\Collision.cpp">
       <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Physics\PhysicsResolvers.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

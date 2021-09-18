@@ -77,7 +77,7 @@ namespace PhysicsDLC
 			float tMin = 0.f;
 			float tMax = std::numeric_limits<float>::max();
 
-			for (size_t i = 0; i < 3; ++i)
+			for (vec3::length_type i = 0; i < 3; ++i)
 			{
 				//If Ray is parallel
 				if (fabs(rayDir[i]) < std::numeric_limits<float>::epsilon())
@@ -116,7 +116,7 @@ namespace PhysicsDLC
 				&& aabb1.m_max.z >= aabb2.m_min.z && aabb2.m_max.z >= aabb1.m_min.z);
 		}
 
-		bool DynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime)
+		float DynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime)
 		{
 			//calculate relative velocity
 			vec3 Vrel = vel2 - vel1;
@@ -125,7 +125,7 @@ namespace PhysicsDLC
 			float tFirst = 0.f;
 			float tLast = static_cast<float>(deltaTime);
 
-			for (size_t i = 0; i < 3; i++)
+			for (vec3::length_type i = 0; i < 3; i++)
 			{
 				if (aabb1.m_max[i] > aabb2.m_min[i] && aabb2.m_max[i] > aabb1.m_min[i])
 					tFirst = std::max(0.f, tFirst);

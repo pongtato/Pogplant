@@ -589,6 +589,7 @@ namespace PogplantDriver
 
 	bool ImguiHelper::DrawEntityNode(entt::entity entity, bool draw_childen)
 	{
+		(void)draw_childen;
 		//if (!draw_childen && ecs_handler.IsChildren(entity))
 		//	return false;
 
@@ -626,7 +627,8 @@ namespace PogplantDriver
 		{
 			std::string c_name = "<no children>";
 			ImGuiTreeNodeFlags flags2 = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
-
+			
+			(void)flags2;
 			//if (ecs_handler.IsParent(entity))
 			//{
 			//	std::set<ECS::Entity> s = ecs_handler.GetChildren(entity);
