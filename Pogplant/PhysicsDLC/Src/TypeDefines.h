@@ -16,8 +16,14 @@
 
 namespace PhysicsDLC
 {
+	/**> Type used for vector 3*/
 	using vec3 = glm::vec3;
+	
+	/**> Type used for floating point values*/
 	using floatType = float;
+
+	/**> Type used for delta time calculations*/
+	using dtType = double;
 }
 
 #endif // !TYPEDEFINES_H_
