@@ -14,6 +14,8 @@
 
 #include "ECS/Entity.h"
 #include "ECS/Systems/imaginary_system.h"
+
+#include "Input/InputSystem.h"
 //struct MEMLEAK
 //{
 //	~MEMLEAK()
@@ -101,7 +103,7 @@ void Init()
 	SS.testfuncwithreturn();
 
 	ImaginarySystem.Init(&ecs);
-
+	Pogplant::Input::InputSystem::Instance()->Init(PP::Window::GetWindow());
 }
 
 void SetCube(glm::mat4 _BasePos)
@@ -283,7 +285,7 @@ void DrawImGUI()
 
 void Run()
 {
-
+	
 	while (!PP::Window::ShouldCloseWindow())
 	{
 		PP::Window::CheckForceClose(); // Temp exit using Esc
@@ -307,6 +309,8 @@ void Run()
 		DrawImGUI();
 		///
 
+		Pogplant::Input::InputSystem::Instance()->pollEvents();
+
 		PP::Renderer::SwapBuffer();
 	}
 }
@@ -318,6 +322,8 @@ void Exit()
 	PP::FrameBuffer::CleanUpFrameBuffer();
 	PP::MeshBuilder::CleanUpMesh();
 	PP::Window::CleanUpWindow();
+
+	Pogplant::Input::InputSystem::Destroy();
 }
 
 int main()

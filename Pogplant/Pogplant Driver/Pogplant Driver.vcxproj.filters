@@ -40,6 +40,9 @@
     <Filter Include="Source Files\ECS\Systems\Imaginary">
       <UniqueIdentifier>{372aaf41-b46d-4d7f-9e5e-b868df14d2f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{745812e4-c280-44e8-81bf-2219c052b00e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -95,6 +98,12 @@
     </ClCompile>
     <ClCompile Include="Src\ECS\Systems\imaginary_system.cpp">
       <Filter>Source Files\ECS\Systems\Imaginary</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Input\GLFWInput.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Input\InputSystem.cpp">
+      <Filter>Source Files\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +169,12 @@
     </ClInclude>
     <ClInclude Include="Src\ECS\Systems\imaginary_system.h">
       <Filter>Source Files\ECS\Systems\Imaginary</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Input\GLFWInput.h">
+      <Filter>Source Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Input\InputSystem.h">
+      <Filter>Source Files\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
