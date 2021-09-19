@@ -17,6 +17,7 @@ Entity ECS::CreateEntity(std::string str, glm::vec3 pos, glm::vec3 rot, glm::vec
 	entity.AddComponent<Tag>(str);
 	entity.AddComponent<Transform>(pos, rot, scale);
 	entity.AddComponent<Name>("letsgoooo");
+
 	return entity;
 }
 

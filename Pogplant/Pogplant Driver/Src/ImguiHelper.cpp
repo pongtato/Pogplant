@@ -261,16 +261,13 @@ namespace PogplantDriver
 				{
 					if (ImGui::MenuItem("Delete Entity"))
 					{
-						m_ecs->GetReg().destroy(m_CurrentEntity);
+						m_ecs->GetReg().destroy(m_CurrentEntity, 0);
 						m_CurrentEntity = entt::null;
 					}
 
 					ImGui::EndPopup();
 				}
 			}
-
-
-
 
 			// Right-click on blank space
 			if (ImGui::BeginPopupContextWindow("wat", 1, false))
@@ -593,12 +590,17 @@ namespace PogplantDriver
 		//if (!draw_childen && ecs_handler.IsChildren(entity))
 		//	return false;
 
+		//printf("id: %d\n", entity);
+
 		//auto name = ecs_handler.GetComponent<ECS::ObjectName>(entity).name.c_str();
+
+		std::string obj_name = "Object" + std::to_string((uint32_t)entity);
+
 		auto name = m_ecs->GetReg().get<Components::Name>(entity);
 		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
 		flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
 
-		bool is_opened = ImGui::TreeNodeEx((void*)(uint64_t)entity, flags, name.m_name.c_str());
+		bool is_opened = ImGui::TreeNodeEx((void*)(uint64_t)entity, flags, obj_name.c_str());
 
 		if (ImGui::IsItemClicked() || ImGui::IsMouseClicked(1) && ImGui::IsItemHovered(ImGuiHoveredFlags_RectOnly))
 			m_CurrentEntity = entity;
