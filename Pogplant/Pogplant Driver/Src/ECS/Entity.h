@@ -50,6 +50,8 @@ public:
 		return m_ecs->m_registry.remove<Type>(m_id);
 	}
 
+	inline entt::entity GetID() { return m_id; }
+
 	operator bool() const { return m_id != entt::null; }
 
 private:

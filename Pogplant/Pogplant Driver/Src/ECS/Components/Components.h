@@ -2,6 +2,7 @@
 #define COMPONENTS_H
 
 #include "../Src/Model.h"
+#include "../entt_ecs/entt.hpp"
 
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
@@ -27,6 +28,13 @@ namespace Components
 	struct Imaginary_object
 	{
 		std::string str;
+	};
+
+	struct Relationship
+	{
+		entt::entity m_parent = entt::null;
+		std::set<entt::entity> m_children;
+
 	};
 
 	struct Transform

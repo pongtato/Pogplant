@@ -249,9 +249,11 @@ namespace PogplantDriver
 
 			std::for_each(results.rbegin(), results.rend(), [&results](auto entity) 
 				{
-
 					DrawEntityNode(entity);
 				});
+
+			printf("id: %d\n", m_CurrentEntity);
+
 
 			//right click hovered item
 			//if (ImGui::IsItemHovered())
@@ -259,11 +261,18 @@ namespace PogplantDriver
 			{
 				if (ImGui::BeginPopupContextWindow("aaaa", ImGuiPopupFlags_MouseButtonRight))
 				{
+					if (ImGui::MenuItem("Create Child"))
+					{
+						m_ecs->CreateChild(m_CurrentEntity);
+					}
+
 					if (ImGui::MenuItem("Delete Entity"))
 					{
-						m_ecs->GetReg().destroy(m_CurrentEntity, 0);
+						m_ecs->DestroyEntity(m_CurrentEntity);
 						m_CurrentEntity = entt::null;
+
 					}
+
 
 					ImGui::EndPopup();
 				}
@@ -586,9 +595,12 @@ namespace PogplantDriver
 
 	bool ImguiHelper::DrawEntityNode(entt::entity entity, bool draw_childen)
 	{
-		(void)draw_childen;
+
+		auto _r = m_ecs->GetReg().try_get<Components::Relationship>(entity);
+
 		//if (!draw_childen && ecs_handler.IsChildren(entity))
-		//	return false;
+		if (!draw_childen && _r && _r->m_parent != entt::null)
+			return false;
 
 		//printf("id: %d\n", entity);
 
@@ -607,23 +619,23 @@ namespace PogplantDriver
 
 		bool is_deleted = false;
 
-		if (m_CurrentEntity != entt::null && ImGui::BeginPopupContextItem())
-		{
+		//if (m_CurrentEntity != entt::null && ImGui::BeginPopupContextItem())
+		//{
 
-			if (ImGui::MenuItem("Delete Entity"))
-				is_deleted = true;
+		//	if (ImGui::MenuItem("Delete Entity"))
+		//		is_deleted = true;
 
-			//if (ImGui::MenuItem("Save As Prefab"))
-			//{
-			//	auto path = WindowsFileDialogue::SaveFileDialogue("Prefab (*.prefab)\0*.prefab\0", "untitled.prefab");
-			//	if (path.has_value())
-			//	{
-			//		GameObjectFactory::SavePrefab(ecs_handler, path.value(), m_selectedEntity);
-			//	}
-			//}
+		//	//if (ImGui::MenuItem("Save As Prefab"))
+		//	//{
+		//	//	auto path = WindowsFileDialogue::SaveFileDialogue("Prefab (*.prefab)\0*.prefab\0", "untitled.prefab");
+		//	//	if (path.has_value())
+		//	//	{
+		//	//		GameObjectFactory::SavePrefab(ecs_handler, path.value(), m_selectedEntity);
+		//	//	}
+		//	//}
 
-			ImGui::EndPopup();
-		}
+		//	ImGui::EndPopup();
+		//}
 
 		if (is_opened)
 		{
@@ -631,27 +643,30 @@ namespace PogplantDriver
 			ImGuiTreeNodeFlags flags2 = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
 			
 			(void)flags2;
-			//if (ecs_handler.IsParent(entity))
-			//{
-			//	std::set<ECS::Entity> s = ecs_handler.GetChildren(entity);
-			//	//int i = 0;
-			//	for (const auto& ent : s)
-			//	{
-			//		//std::string new_c_name = ecs_handler.GetComponent<ECS::ObjectName>(ent).name.c_str();
-			//		//bool active = ImGui::TreeNodeEx((void*)(uint64_t)ent, flags, new_c_name.c_str(), i++);
-			//		DrawEntityNode(ent, true);
-			//		//if (ImGui::IsItemClicked())
-			//		//	m_selectedEntity = ent;
-			//		//if (active)
-			//		//	ImGui::TreePop();
-			//	}
-			//}
-			//else
-			//{
-			//	bool is_opened2 = ImGui::TreeNodeEx((void*)9817239, flags2, c_name.c_str());
-			//	if (is_opened2)
-			//		ImGui::TreePop();
-			//}
+
+			//auto _r = m_ecs->GetReg().try_get<Components::Relationship>(entity);
+
+			if (_r)
+			{
+				std::set<entt::entity> s = _r->m_children;
+				//int i = 0;
+				for (const auto& ent : s)
+				{
+					//std::string new_c_name = ecs_handler.GetComponent<ECS::ObjectName>(ent).name.c_str();
+					//bool active = ImGui::TreeNodeEx((void*)(uint64_t)ent, flags, new_c_name.c_str(), i++);
+					DrawEntityNode(ent, true);
+					//if (ImGui::IsItemClicked())
+					//	m_selectedEntity = ent;
+					//if (active)
+					//	ImGui::TreePop();
+				}
+			}
+			else
+			{
+				bool is_opened2 = ImGui::TreeNodeEx((void*)9817239, flags2, c_name.c_str());
+				if (is_opened2)
+					ImGui::TreePop();
+			}
 			ImGui::TreePop();
 
 		}

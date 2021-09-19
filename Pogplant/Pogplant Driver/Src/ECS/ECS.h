@@ -21,6 +21,13 @@ public:
 						glm::vec3 rot = { 0, 0, 0 },
 						glm::vec3 scale = { 1, 1, 1 });
 	
+	Entity CreateChild(	entt::entity parent,
+						std::string str = "pepe",
+						glm::vec3 pos = { 0, 0, 0 },
+						glm::vec3 rot = { 0, 0, 0 },
+						glm::vec3 scale = { 1, 1, 1 });
+
+	void DestroyEntity(	entt::entity entity);
 	//template<typename... Type>
 	//auto& GetEntitiesWith()
 	//{
