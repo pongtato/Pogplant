@@ -32,6 +32,180 @@ namespace Pogplant
 		}
 	}
 
+    bool Model::LoadFromFile(std::string filePath)
+    {
+        // Check if file exists & read to buffer
+        std::ifstream inFile;
+        inFile.open(filePath, std::ios::binary);
+        if (!inFile.good())
+        {
+            std::cout << "Unable to read file." << std::endl;
+            return false;
+        }
+
+        inFile.seekg(0, std::ios::beg);
+        size_t fileSize = std::filesystem::file_size(filePath);
+        std::vector<char> readBuffer(fileSize);
+        inFile.read(readBuffer.data(), fileSize);
+        inFile.close();
+
+        size_t binDumpSize = static_cast<size_t>(readBuffer[2]);
+
+        std::string inBuffer(readBuffer.data(), readBuffer.size());
+        std::vector<Vertex> vertices;
+        std::vector<unsigned int> indices;
+        std::vector<Texture> textures;
+
+        size_t found;
+        size_t count = 0;
+        while ((found = inBuffer.find("\r\n\r\n")) != std::string::npos)
+        {
+            std::string subHeader = inBuffer.substr(0, found);
+            inBuffer.erase(0, found + 4);
+            std::stringstream ss;
+            ss << subHeader;
+
+            switch (count)
+            {
+                // Read Vertex
+            case 1:
+            {
+                while (!ss.eof())
+                {
+                    std::string temp;
+                    Vertex vertex;
+                    glm::vec3 vector3;
+                    glm::vec2 vector2;
+
+                    
+                    std::getline(ss, temp);
+                    if (!temp.empty())
+                    {
+                        std::stringstream ss1(temp);
+                        ss1 >> vector3.x >> vector3.y >> vector3.z;
+                        vertex.m_Position = vector3;
+
+                        m_Bounds.minX = std::min(m_Bounds.minX, vector3.x);
+                        m_Bounds.minY = std::min(m_Bounds.minY, vector3.y);
+                        m_Bounds.minZ = std::min(m_Bounds.minZ, vector3.z);
+
+                        m_Bounds.maxX = std::max(m_Bounds.maxX, vector3.x);
+                        m_Bounds.maxY = std::max(m_Bounds.maxY, vector3.y);
+                        m_Bounds.maxZ = std::max(m_Bounds.maxZ, vector3.z);
+
+                        ss1 >> vector3.x >> vector3.y >> vector3.z;
+                        vertex.m_Normal = vector3;
+
+                        ss1 >> vector3.x >> vector3.y >> vector3.z;
+                        vertex.m_Tangent = vector3;
+
+                        ss1 >> vector3.x >> vector3.y >> vector3.z;
+                        vertex.m_BiTangent = vector3;
+
+                        ss1 >> vector2.x >> vector2.y;
+                        vertex.m_TexCoords = vector2;
+
+                        vertices.push_back(vertex);
+                    }
+                }
+            }
+            break;
+            // Read Indices
+            case 2:
+            {
+                while (!ss.eof())
+                {
+                    uint indice;
+                    std::string temp;
+                    std::getline(ss, temp);
+
+                    if (!temp.empty())
+                    {
+                        std::stringstream ss1(temp);
+                        ss1 >> indice;
+                        indices.push_back(indice);
+                    }
+                }
+            }
+            break;
+            // Read Textures
+            case 3:
+            {
+                while (!ss.eof())
+                {
+                    Texture texture;
+                    std::string temp;
+                    std::getline(ss, temp);
+                    if (!temp.empty())
+                    {
+                        std::stringstream ss1(temp);
+                        ss1 >> texture.m_Type >> texture.m_Path;
+                        textures.push_back(texture);
+                    }
+                }
+            }
+            break;
+            default:
+                break;
+            }
+
+            if (count == 3)
+            {
+                m_Meshes.push_back(Mesh3D(vertices, indices, textures));
+                count = 1;
+            }
+            else
+                ++count;
+        }
+
+        size_t found1;
+        size_t count1 = 0;
+        while ((found1 = inBuffer.find("\t\r\n")) != std::string::npos)
+        {   
+            std::string subHeader = inBuffer.substr(0, found1);
+            inBuffer.erase(0, found1 + 3);
+            std::stringstream ss;
+            ss << subHeader;
+
+            switch (count1)
+            {
+                case 0:
+                {
+                    while (!ss.eof())
+                    {
+                        Texture texture;
+                        std::string temp;
+                        std::getline(ss, temp);
+                        if (!temp.empty())
+                        {
+                            std::stringstream ss1(temp);
+                            ss1 >> texture.m_Type >> texture.m_Path;
+                            m_TexturesLoaded.push_back(texture);
+                        }
+                    }
+                }
+                break;
+                case 1:
+                {
+                    ss >> m_Directory;
+                }
+                break;
+                default:
+                    break;
+            }
+
+            ++count1;
+        }
+
+        // Find longest edge - General usage no ritter's
+        float lenX = std::fabsf(m_Bounds.maxX) + std::fabsf(m_Bounds.minX);
+        float lenY = std::fabsf(m_Bounds.maxY) + std::fabsf(m_Bounds.minY);
+        float lenZ = std::fabsf(m_Bounds.maxZ) + std::fabsf(m_Bounds.minZ);
+        m_Bounds.longest = std::max(lenX, lenY);
+        m_Bounds.longest = std::max(m_Bounds.longest, lenZ);
+        return true;
+    }
+
 	void Model::LoadModel(std::string _Path, uint _PrimitiveType)
 	{
 		Assimp::Importer importer;

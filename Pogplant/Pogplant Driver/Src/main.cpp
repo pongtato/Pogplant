@@ -16,6 +16,7 @@
 #include "ECS/Systems/imaginary_system.h"
 
 #include "Input/InputSystem.h"
+#include "ResourceAllocator.hpp"
 //struct MEMLEAK
 //{
 //	~MEMLEAK()
@@ -43,6 +44,15 @@ void Init()
 
 	PP::TextureResource::InitResource();
 	PP::MeshBuilder::InitMesh();
+
+	// TESTING RESOURCE ALLOCATOR AND THE KEK LOADER
+	static ResourceAllocator<PP::Model> ModelRA;
+	int cubeID = ModelRA.Add("C:\\Users\\Clarence Chye\\Desktop\\University\\2021 Fall\\GAM300\\Engine_Mainbranch\\Pogplant\\Resources\\Kek\\Cube.kek");
+	std::shared_ptr<PP::Model> testCube = ModelRA.Get(cubeID);
+
+	//int backID = ModelRA.Add("C:\\Users\\Clarence Chye\\Desktop\\University\\2021 Fall\\GAM300\\Engine_Mainbranch\\Pogplant\\Resources\\Kek\\backpack.kek");
+	//std::shared_ptr<PP::Model> testBack = ModelRA.Get(backID);
+
 	PP::ShaderLinker::InitShader();
 	PP::FrameBuffer::InitFrameBuffer();
 	PP::CameraResource::InitBaseCameras(
@@ -60,10 +70,57 @@ void Init()
 			0.1f	// Pan speed
 		});
 	PPD::ImguiHelper::InitImgui(&ecs);
+	
 
 	/// Add to container
 	PP::Model* bagModel = PP::ModelResource::m_ModelPool["BAG"];
-	PP::Model* cubeModel = PP::ModelResource::m_ModelPool["SPHERE"];
+	//PP::Model* cubeModel = PP::ModelResource::m_ModelPool["SPHERE"];
+	//PP::Model* cubeModel = PP::ModelResource::m_ModelPool["CUBE"];
+
+	// Testing kek loader
+	PP::Model* cubeModel = testCube.get();
+	//PP::Model* bagModel = testBack.get();
+	
+	/* CLARENCE DEBUGGING STUFF */
+	//std::cout << "number of meshes: " << cubeModel->m_Meshes.size() << std::endl;
+	//std::cout << "How many meshes: " << bagModel->m_Meshes.size() << std::endl;
+	//for (auto& meshes : bagModel->m_Meshes)
+	//{
+	//	for (auto& vert : meshes.m_Vertices)
+	//	{
+	//		std::cout
+	//			// Position
+	//			<< vert.m_Position.x << ' ' << vert.m_Position.y << ' ' << vert.m_Position.z << ' '
+	//			// Normal
+	//			<< vert.m_Normal.x << ' ' << vert.m_Normal.y << ' ' << vert.m_Normal.z << ' '
+	//			// Tangent
+	//			<< vert.m_Tangent.x << ' ' << vert.m_Tangent.y << ' ' << vert.m_Tangent.z << ' '
+	//			// Bi-Tangent
+	//			<< vert.m_BiTangent.x << ' ' << vert.m_BiTangent.y << ' ' << vert.m_BiTangent.z << ' '
+	//			// Tex-Coords
+	//			<< vert.m_TexCoords.x << ' ' << vert.m_TexCoords.y <<
+	//		std::endl;
+	//	}
+
+	//	for (auto& idx : meshes.m_Indices)
+	//	{
+	//		std::cout << idx << std::endl;
+	//	}
+
+	//	for (auto& tex : meshes.m_Textures)
+	//	{
+	//		std::cout << tex.m_Path << ' ' << tex.m_Type << std::endl;
+	//	}
+
+	//	std::cout << meshes.m_PrimitiveType << std::endl;
+	//}
+
+	//for (auto& texLoaded : bagModel->m_TexturesLoaded)
+	//{
+	//	std::cout << texLoaded.m_Path << ' ' << texLoaded.m_Type << std::endl;
+	//}
+	//std::cout << cubeModel->m_Directory << std::endl;
+	/* END OF CLARENCE DEBUGGING STUFF*/
 
 	// Assume 2 objects components
 	//GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, bagModel });
@@ -251,6 +308,8 @@ void DrawEditor()
 		//renderOjbect = GO_Resource::m_GO_Container[currIdx].m_RenderObject;
 		renderOjbect = ecs.GetReg().try_get<RenderObject>(currIdx);
 	}
+
+
 
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();

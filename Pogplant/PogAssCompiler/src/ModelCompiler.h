@@ -2,8 +2,12 @@
 #define _MODEL_COMPILER_H_
 
 #include "Model.h"
+#include <iostream>
+#include <string>
 #include <sstream>
 #include <fstream>
+#include <filesystem>
+#include <unordered_map>
 
 class ModelCompiler
 {

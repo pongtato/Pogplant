@@ -25,6 +25,10 @@ void Model::LoadModel(std::string _Path, uint _PrimitiveType)
 {
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(_Path, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+    size_t found = _Path.find("Resources");
+    size_t found1 = _Path.find_last_of("/\\") - found;
+    std::string front = _Path.substr(found, found1);
+    m_Directory = "..\\" + front;
     // check for errors
     if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
     {
@@ -157,7 +161,7 @@ std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* _Material, aiTextur
         if (!skip)
         {   // if texture hasn't been loaded already, load it
             Texture texture;
-            texture.m_Id = Textures::LoadTexture(str.C_Str(), this->m_Directory);
+            //texture.m_Id = Textures::LoadTexture(str.C_Str(), this->m_Directory);
             texture.m_Type = _TypeName;
             texture.m_Path = str.C_Str();
             textures.push_back(texture);

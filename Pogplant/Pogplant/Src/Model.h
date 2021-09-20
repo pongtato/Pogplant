@@ -1,6 +1,11 @@
 #pragma once
 
 #include "Mesh3D.h"
+#include <filesystem>
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
 
 #include <Importer.hpp>
 #include <scene.h>
@@ -23,8 +28,10 @@ namespace Pogplant
 	{
 	public:
 		// 0x0004 = GL_TRIANGLES
+		Model() {};
 		Model(std::string _Path, uint _PrimitiveType = 0x0004);
 		void Draw() const;
+		bool LoadFromFile(std::string filePath);
 
 		std::vector<Texture> m_TexturesLoaded;
 		std::vector<Mesh3D> m_Meshes;

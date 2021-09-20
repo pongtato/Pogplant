@@ -10,5 +10,6 @@
 #include "Logger.h"
 #include "ModelResource.h"
 #include "TextureResource.h"
+#include "TextureLoader.h"
 
 namespace PP = Pogplant;

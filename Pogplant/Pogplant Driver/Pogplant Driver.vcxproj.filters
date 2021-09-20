@@ -43,6 +43,9 @@
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{745812e4-c280-44e8-81bf-2219c052b00e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ResourceAllocator">
+      <UniqueIdentifier>{5349901d-a3e1-4658-8469-8e3c4d4ec5bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -181,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="Src\ContentBrowser.h">
       <Filter>Source Files\ImguiHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ResourceAllocator.hpp">
+      <Filter>Source Files\ResourceAllocator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

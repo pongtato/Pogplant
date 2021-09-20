@@ -96,6 +96,7 @@ namespace Pogplant
 				it.m_RenderModel->Draw();
 			}
 		}
+
 		ShaderLinker::UnUse();
 
 		// Edge

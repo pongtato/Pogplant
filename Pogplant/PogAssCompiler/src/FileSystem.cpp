@@ -117,13 +117,13 @@ void FileSystem::WriteToBin(std::string& fileName)
 	// Header Stuff
 	std::stringstream ss;
 	ss << static_cast<size_t>(m_file.m_header.m_type) << '\n'
-	   << m_file.m_header.m_payloadSize << "\n\n";
+	   << m_file.m_header.m_payloadSize << "\r\n\r\n";
 	m_file.m_outBuffer.write(ss.str().c_str(), ss.str().length());
 
 	m_modelCompiler.Write(m_file.m_outBuffer);
 
 	// Writing the raw binary dump (Payload)
-	m_file.m_outBuffer.write(m_buffer.data(), m_file.m_header.m_payloadSize);
+	//m_file.m_outBuffer.write(m_buffer.data(), m_file.m_header.m_payloadSize);
 
 	// Close the buffer
 	m_file.m_outBuffer.close();

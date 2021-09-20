@@ -13,7 +13,7 @@ void Textures::SetTextureFlip(bool _Flip)
 unsigned int Textures::LoadTexture(std::string _Path, std::string _Directory)
 {
     std::string filename = std::string(_Path);
-    filename = _Directory + '/' + filename;
+    filename = _Directory + "/\\" + filename;
 
     unsigned int textureID;
     glGenTextures(1, &textureID);
