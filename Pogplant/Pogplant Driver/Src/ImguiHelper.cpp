@@ -19,6 +19,7 @@ namespace PogplantDriver
 	//int ImguiHelper::m_CurrentGOIdx = -1;
 	entt::entity ImguiHelper::m_CurrentEntity = entt::null;
 	ECS* ImguiHelper::m_ecs = nullptr;
+	Directory ImguiHelper::m_Directory;
 
 	// Guizmo editor stuff
 	static ImGuizmo::OPERATION m_EditMode(ImGuizmo::TRANSLATE);
@@ -168,11 +169,14 @@ namespace PogplantDriver
 		}
 
 		/// MUST MATCH WINDOW NAMES ABOVE
-		ImGui::Begin("Directory");
-		{
-			ImGui::Text("Directory");
-		}
-		ImGui::End();
+		//ImGui::Begin("Directory");
+		//{
+		//	ImGui::Text("Directory");
+		//}
+		//ImGui::End();
+		m_Directory.RenderDirectory();
+
+
 
 		ImGui::Begin("Prefab");
 		{

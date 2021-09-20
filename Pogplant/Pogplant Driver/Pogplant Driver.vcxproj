@@ -184,6 +184,7 @@ xcopy "$(SolutionDir)Pogplant Driver\Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono
     <ClCompile Include="Libs\IMGUI\imgui_impl_opengl3.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui_tables.cpp" />
     <ClCompile Include="Libs\IMGUI\imgui_widgets.cpp" />
+    <ClCompile Include="Src\ContentBrowser.cpp" />
     <ClCompile Include="Src\ECS\ECS.cpp" />
     <ClCompile Include="Src\ECS\Entity.cpp" />
     <ClCompile Include="Src\ECS\Systems\imaginary_system.cpp" />
@@ -209,6 +210,7 @@ xcopy "$(SolutionDir)Pogplant Driver\Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono
     <ClInclude Include="Libs\IMGUI\imstb_rectpack.h" />
     <ClInclude Include="Libs\IMGUI\imstb_textedit.h" />
     <ClInclude Include="Libs\IMGUI\imstb_truetype.h" />
+    <ClInclude Include="Src\ContentBrowser.h" />
     <ClInclude Include="Src\ECS\Components\Components.h" />
     <ClInclude Include="Src\ECS\ECS.h" />
     <ClInclude Include="Src\ECS\Entity.h" />

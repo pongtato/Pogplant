@@ -1,6 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include "ECS/entt_ecs/entt.hpp"
+#include "ContentBrowser.h"
 
 class ECS;
 class Entity;
@@ -36,7 +37,8 @@ namespace PogplantDriver
 		static entt::entity m_CurrentEntity;
 		static ECS* m_ecs;
 		static int m_CurrentGOIdx;
-
+		
+		static Directory m_Directory;
 	private:
 		static void Scene_GOPick(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
 		static void Scene_GOEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
