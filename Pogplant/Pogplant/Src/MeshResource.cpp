@@ -25,6 +25,11 @@ namespace Pogplant
 		}
 	}
 
+	void MeshResource::Draw(MESH_TYPE _Mesh_Type)
+	{
+		m_MeshPool[_Mesh_Type]->Draw();
+	}
+
 	void MeshResource::Draw(MESH_TYPE _Mesh_Type, unsigned int _Texture)
 	{
 		m_MeshPool[_Mesh_Type]->Draw(_Texture);

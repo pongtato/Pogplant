@@ -20,6 +20,7 @@ namespace Pogplant
 
 		static void InitResource();
 		static void CleanUpResource();
+		static void Draw(MESH_TYPE _Mesh_Type);
 		static void Draw(MESH_TYPE _Mesh_Type, unsigned int _Texture);
 		static void DrawInstanced(MESH_TYPE _Mesh_Type);
 

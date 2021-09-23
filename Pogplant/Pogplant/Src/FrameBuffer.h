@@ -18,6 +18,7 @@ namespace Pogplant
 		static void InitGameBuffer();
 		static void InitGizmoBuffer();
 		static void InitPostProcessBuffer();
+		static void InitGBuffer();
 	};
 }
 

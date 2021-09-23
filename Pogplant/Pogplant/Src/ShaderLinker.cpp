@@ -18,6 +18,7 @@ namespace Pogplant
 		ShaderResource::AddShaderProfile(ShaderProfile("MODEL", "Shaders/Model.vert", "Shaders/Model.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("EDGE", "Shaders/Edge.vert", "Shaders/Edge.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("SKYBOX", "Shaders/Skybox.vert", "Shaders/Skybox.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("GPASS", "Shaders/GPass.vert", "Shaders/GPass.frag"));
 
 		for (const auto& it : ShaderResource::m_ShaderProfiles)
 		{

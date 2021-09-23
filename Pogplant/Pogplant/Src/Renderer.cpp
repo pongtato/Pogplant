@@ -34,6 +34,12 @@ namespace Pogplant
 		glEnable(GL_DEPTH_TEST);
 	}
 
+	void Renderer::StartGBuffer()
+	{
+		FrameBuffer::BindFrameBuffer(BufferType::G_BUFFER);
+		glEnable(GL_DEPTH_TEST);
+	}
+
 	void Renderer::EndBuffer()
 	{
 		FrameBuffer::UnbindFrameBuffer();
@@ -43,6 +49,45 @@ namespace Pogplant
 	void Renderer::PostProcess()
 	{
 		FrameBuffer::BindFrameBuffer(BufferType::PP_BUFFER);
+	}
+
+	void Renderer::GLightPass()
+	{
+		ShaderLinker::Use("GPASS");
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NORMAL_BUFFER]);
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_COLOR_BUFFER]);
+		glActiveTexture(GL_TEXTURE3);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
+
+		// Lights
+		ShaderLinker::SetUniform("lights[0].Position", glm::vec3(0,0,0));
+		ShaderLinker::SetUniform("lights[0].Color", glm::vec3(255, 255, 255));
+		// update attenuation parameters and calculate radius
+		const float constant = 1.0f; // note that we don't send this to the shader, we assume it is always 1.0 (in our case)
+		const float linear = 0.7f;
+		const float quadratic = 1.8f;
+		ShaderLinker::SetUniform("lights[0].Linear", linear);
+		ShaderLinker::SetUniform("lights[0].Quadratic", quadratic);
+		// then calculate radius of light volume/sphere
+		const float maxBrightness = std::fmaxf(std::fmaxf(255,0), 0);
+		float radius = (-linear + std::sqrt(linear * linear - 4 * quadratic * (constant - (256.0f / 5.0f) * maxBrightness))) / (2.0f * quadratic);
+		ShaderLinker::SetUniform("lights[0].Radius", radius);
+
+		Camera* currCam = CameraResource::GetCamera("EDITOR");
+		ShaderLinker::SetUniform("viewPos", currCam->GetPosition());
+
+		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
+		ShaderLinker::UnUse();
+
+		// Copy back
+		glBindFramebuffer(GL_READ_FRAMEBUFFER, FBR::m_FrameBuffers[BufferType::G_BUFFER]);
+		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0); 
+		glBlitFramebuffer(0, 0, Window::m_Width, Window::m_Height, 0, 0, Window::m_Width, Window::m_Height, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
 	void Renderer::ClearBuffer(float _R, float _G, float _B, float _A)
@@ -62,6 +107,23 @@ namespace Pogplant
 	{
 		Camera* currCam = CameraResource::GetCamera(_CameraID);
 
+		// Render G pass objects first
+		ShaderLinker::Use("MODEL");
+		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		ShaderLinker::SetUniform("m4_View", currCam->GetView());
+
+		auto results = registry.view<Components::RenderObject>();
+
+		for (const auto& e : results)
+		{
+			// Draw selected objects seperately for edge detection
+			const auto& it = results.get<const Components::RenderObject>(e);
+
+			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			it.m_RenderModel->Draw();
+		}
+		ShaderLinker::UnUse();
+
 		ShaderLinker::Use("BASIC");
 		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
 		ShaderLinker::SetUniform("m4_View", currCam->GetView());
@@ -78,26 +140,6 @@ namespace Pogplant
 		Skybox::Draw(TextureResource::m_TexturePool["SKYBOX4"]);
 		ShaderLinker::UnUse();
 		glDepthFunc(GL_LESS);
-
-		ShaderLinker::Use("MODEL");
-		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-		ShaderLinker::SetUniform("m4_View", currCam->GetView());
-
-		auto results = registry.view<Components::RenderObject>();
-
-		for (const auto& e : results)
-		{
-			// Draw selected objects seperately for edge detection
-			const auto& it = results.get<const Components::RenderObject>(e);
-
-			if(_Selected == nullptr || it.m_RenderModel != _Selected->m_RenderModel)
-			{
-				ShaderLinker::SetUniform("m4_Model", it.m_Model);
-				it.m_RenderModel->Draw();
-			}
-		}
-
-		ShaderLinker::UnUse();
 
 		// Edge
 		if (_Selected != nullptr)

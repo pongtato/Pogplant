@@ -255,6 +255,11 @@ namespace Pogplant
 		//Logger::Log({ "PP::CAMERA",LogEntry::DEBUG_TEXT, logEntry.str() });
 	}
 
+	const glm::vec3& Camera::GetPosition() const
+	{
+		return m_Position;
+	}
+
 	const CameraConfig& Camera::GetCameraConfig() const
 	{
 		return m_CameraConfig;

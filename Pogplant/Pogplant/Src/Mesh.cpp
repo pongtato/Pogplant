@@ -22,6 +22,13 @@ namespace Pogplant
 	{
 	}
 
+	void Mesh::Draw() const
+	{
+		glBindVertexArray(this->m_VAO);
+		glDrawElements(this->m_PrimitiveType, m_IndicesCount, GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);
+	}
+
 	void Mesh::Draw(unsigned int _Texture) const
 	{
 		glBindTextureUnit(0, _Texture);

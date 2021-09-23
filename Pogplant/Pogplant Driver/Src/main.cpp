@@ -309,11 +309,15 @@ void DrawEditor()
 		renderOjbect = ecs.GetReg().try_get<RenderObject>(currIdx);
 	}
 
-
-
-	PP::Renderer::StartEditorBuffer();
+	// Models for Gpass
+	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::Draw("EDITOR", ecs.GetReg(), renderOjbect);
+	PP::Renderer::EndBuffer();
+	// Where to draw the gpass FB to
+	PP::Renderer::StartEditorBuffer();
+	PP::Renderer::ClearBuffer();
+	PP::Renderer::GLightPass();
 	PP::Renderer::EndBuffer();
 }
 
@@ -321,10 +325,15 @@ void DrawGame()
 {
 	auto results = ecs.GetReg().view<RenderObject>();
 
+	// Models for Gpass
+	PP::Renderer::StartGBuffer();
+	PP::Renderer::ClearBuffer();
+	PP::Renderer::Draw("GAME", ecs.GetReg(), nullptr);
+	PP::Renderer::EndBuffer();
+	// Where to draw the gpass FB to
 	PP::Renderer::StartGameBuffer();
 	PP::Renderer::ClearBuffer();
-	// Dont highlight in game scene so leave 3rd param as nullptr
-	PP::Renderer::Draw("GAME", ecs.GetReg(), nullptr);
+	PP::Renderer::GLightPass();
 	PP::Renderer::EndBuffer();
 }
 
@@ -363,7 +372,7 @@ void Run()
 		// Game
 		DrawGame();
 		// Post process
-		DrawScreen();
+		// DrawScreen();
 		// ImGUI
 		DrawImGUI();
 		///

@@ -1,7 +1,6 @@
 #version 450 core
 
-layout (location = 0) out vec4 Frag_Colour;
-layout (location = 1) out vec4 Bright_Colour;
+layout (location = 3) out vec4 FragColor;
 
 in vec4 ColorCoords;
 in vec2 TexCoords;
@@ -19,29 +18,16 @@ void main ()
     
     if(TexID >= 0)
     {
-        Frag_Colour = texture(Textures[int(TexID)],newTex);
-        Frag_Colour.rgb *= ColorCoords.rgb;
+        FragColor = texture(Textures[int(TexID)],newTex);
+        FragColor.rgb *= ColorCoords.rgb;
     }
     else
     {
-        Frag_Colour = ColorCoords;
+        FragColor = ColorCoords;
     }
-    // vec3 mixColor = mix(Frag_Colour.rgb,ColorCoords.rgb,ColorCoords.a);
-    // Frag_Colour.rgb = mixColor;
 
-    if(Frag_Colour.a < 0.01f)
+    if(FragColor.a < 0.01f)
     {
         discard;
-    }
-
-    // Bloom handle
-    bool b_Bloom = bool(Bloom);
-    if(!b_Bloom)
-    {
-        Bright_Colour = vec4(0);
-    }
-    else
-    {
-        Bright_Colour = ColorCoords;
     }
 }

@@ -17,6 +17,7 @@ namespace Pogplant
 	struct Mesh
 	{
 		Mesh();
+		void Draw() const;
 		void Draw(unsigned int _Texture) const;
 		void DrawInstanced() const;
 

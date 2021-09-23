@@ -62,6 +62,8 @@ namespace Pogplant
 		const Ray& GetRay() const;
 		void RayCast();
 
+		const glm::vec3& GetPosition() const;
+
 	private:
 
 		void KeyUpdate(float _Dt);
