@@ -46,9 +46,9 @@ void Init()
 	PP::MeshBuilder::InitMesh();
 
 	// TESTING RESOURCE ALLOCATOR AND THE KEK LOADER
-	static ResourceAllocator<PP::Model> ModelRA;
-	int cubeID = ModelRA.Add("C:\\Users\\Clarence Chye\\Desktop\\University\\2021 Fall\\GAM300\\Engine_Mainbranch\\Pogplant\\Resources\\Kek\\Cube.kek");
-	std::shared_ptr<PP::Model> testCube = ModelRA.Get(cubeID);
+	//static ResourceAllocator<PP::Model> ModelRA;
+	//int cubeID = ModelRA.Add("..\\Resources\\Kek\\Cube.kek");
+	//std::shared_ptr<PP::Model> testCube = ModelRA.Get(cubeID);
 
 	//int backID = ModelRA.Add("C:\\Users\\Clarence Chye\\Desktop\\University\\2021 Fall\\GAM300\\Engine_Mainbranch\\Pogplant\\Resources\\Kek\\backpack.kek");
 	//std::shared_ptr<PP::Model> testBack = ModelRA.Get(backID);
@@ -75,10 +75,10 @@ void Init()
 	/// Add to container
 	PP::Model* bagModel = PP::ModelResource::m_ModelPool["BAG"];
 	//PP::Model* cubeModel = PP::ModelResource::m_ModelPool["SPHERE"];
-	//PP::Model* cubeModel = PP::ModelResource::m_ModelPool["CUBE"];
+	PP::Model* cubeModel = PP::ModelResource::m_ModelPool["CUBE"];
 
 	// Testing kek loader
-	PP::Model* cubeModel = testCube.get();
+	//PP::Model* cubeModel = testCube.get();
 	//PP::Model* bagModel = testBack.get();
 	
 	/* CLARENCE DEBUGGING STUFF */
@@ -155,9 +155,9 @@ void Init()
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 	
 	// Nazi?
-	ScriptSystem SS;
-	SS.testfuncwithparam('X');
-	SS.testfuncwithreturn();
+	//ScriptSystem SS;
+	//SS.testfuncwithparam('X');
+	//SS.testfuncwithreturn();
 
 	ImaginarySystem.Init(&ecs);
 	Pogplant::Input::InputSystem::Instance()->Init(PP::Window::GetWindow());
