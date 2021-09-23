@@ -256,7 +256,7 @@ namespace PogplantDriver
 					DrawEntityNode(entity);
 				});
 
-			printf("id: %d\n", m_CurrentEntity);
+			//printf("id: %d\n", m_CurrentEntity);
 
 
 			//right click hovered item

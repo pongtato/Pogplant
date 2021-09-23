@@ -29,6 +29,10 @@ Entity ECS::CreateChild(entt::entity parent,
 {
 	auto _p_r = m_registry.try_get<Relationship>(parent);
 
+	(void)pos;
+	(void)rot;
+	(void)scale;
+
 	//create child
 	auto _child = CreateEntity();
 

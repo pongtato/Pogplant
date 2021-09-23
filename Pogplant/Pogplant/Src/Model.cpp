@@ -50,6 +50,7 @@ namespace Pogplant
         inFile.close();
 
         size_t binDumpSize = static_cast<size_t>(readBuffer[2]);
+        (void)binDumpSize;
 
         std::string inBuffer(readBuffer.data(), readBuffer.size());
         std::vector<Vertex> vertices;
