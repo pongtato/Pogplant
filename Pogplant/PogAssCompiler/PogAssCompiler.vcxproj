@@ -80,15 +80,15 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant\Libs\STB;$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Pogplant\Libs\ASSIMP\lib;$(SolutionDir)Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)\Pogplant\Libs\ASSIMP\include;$(SolutionDir)\Pogplant\Libs\GLM;$(SolutionDir)\Pogplant\Libs\STB;$(SolutionDir)\Pogplant\Libs\GLEW\include;$(SolutionDir)\Pogplant\Libs\GLFW\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Pogplant\Libs\ASSIMP\lib;$(SolutionDir)Pogplant\Libs\GLEW\lib;$(SolutionDir)\Pogplant\Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -120,7 +120,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
@@ -135,7 +135,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>

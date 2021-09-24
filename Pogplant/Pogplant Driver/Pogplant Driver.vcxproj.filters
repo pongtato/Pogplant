@@ -54,39 +54,6 @@
     <ClCompile Include="Src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Libs\IMGUI\imgui.cpp">
-      <Filter>Source Files\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUI\imgui_demo.cpp">
-      <Filter>Source Files\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUI\imgui_draw.cpp">
-      <Filter>Source Files\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUI\imgui_impl_glfw.cpp">
-      <Filter>Source Files\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUI\imgui_impl_opengl3.cpp">
-      <Filter>Source Files\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUI\imgui_tables.cpp">
-      <Filter>Source Files\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUI\imgui_widgets.cpp">
-      <Filter>Source Files\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUIZMO\ImCurveEdit.cpp">
-      <Filter>Source Files\Imguizmo</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUIZMO\ImGradient.cpp">
-      <Filter>Source Files\Imguizmo</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUIZMO\ImGuizmo.cpp">
-      <Filter>Source Files\Imguizmo</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\IMGUIZMO\ImSequencer.cpp">
-      <Filter>Source Files\Imguizmo</Filter>
-    </ClCompile>
     <ClCompile Include="Src\ScriptBinder.cpp">
       <Filter>Source Files\Scripting</Filter>
     </ClCompile>
@@ -111,52 +78,43 @@
     <ClCompile Include="Src\ContentBrowser.cpp">
       <Filter>Source Files\ImguiHelper</Filter>
     </ClCompile>
+    <ClCompile Include="..\Libs\IMGUI\imgui.cpp">
+      <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUI\imgui_demo.cpp">
+      <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUI\imgui_draw.cpp">
+      <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUI\imgui_impl_glfw.cpp">
+      <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUI\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUI\imgui_tables.cpp">
+      <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUI\imgui_widgets.cpp">
+      <Filter>Source Files\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUIZMO\ImCurveEdit.cpp">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUIZMO\ImGradient.cpp">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUIZMO\ImGuizmo.cpp">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Libs\IMGUIZMO\ImSequencer.cpp">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
       <Filter>Source Files\ImguiHelper</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUI\imconfig.h">
-      <Filter>Source Files\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUI\imgui.h">
-      <Filter>Source Files\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUI\imgui_impl_glfw.h">
-      <Filter>Source Files\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUI\imgui_impl_opengl3.h">
-      <Filter>Source Files\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUI\imgui_internal.h">
-      <Filter>Source Files\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUI\ImGuiExtraStyles.h">
-      <Filter>Source Files\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUI\imstb_rectpack.h">
-      <Filter>Source Files\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUI\imstb_textedit.h">
-      <Filter>Source Files\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUI\imstb_truetype.h">
-      <Filter>Source Files\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUIZMO\ImCurveEdit.h">
-      <Filter>Source Files\Imguizmo</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUIZMO\ImGradient.h">
-      <Filter>Source Files\Imguizmo</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUIZMO\ImGuizmo.h">
-      <Filter>Source Files\Imguizmo</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUIZMO\ImSequencer.h">
-      <Filter>Source Files\Imguizmo</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\IMGUIZMO\ImZoomSlider.h">
-      <Filter>Source Files\Imguizmo</Filter>
     </ClInclude>
     <ClInclude Include="Src\ScriptBinder.h">
       <Filter>Source Files\Scripting</Filter>
@@ -187,6 +145,48 @@
     </ClInclude>
     <ClInclude Include="Src\ResourceAllocator.hpp">
       <Filter>Source Files\ResourceAllocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\imconfig.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\imgui.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\imgui_impl_glfw.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\imgui_impl_opengl3.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\imgui_internal.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\ImGuiExtraStyles.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\imstb_rectpack.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\imstb_textedit.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\imstb_truetype.h">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUIZMO\ImCurveEdit.h">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUIZMO\ImGradient.h">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUIZMO\ImGuizmo.h">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUIZMO\ImSequencer.h">
+      <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\IMGUIZMO\ImZoomSlider.h">
+      <Filter>Source Files\Imguizmo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
