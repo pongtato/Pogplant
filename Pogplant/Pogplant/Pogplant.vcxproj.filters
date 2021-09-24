@@ -76,6 +76,9 @@
     <Filter Include="Source Files\Graphics\TextureLoader\TextureResource">
       <UniqueIdentifier>{c02d8c4a-0494-4799-8222-464fd92c695b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{47fd05de-b1a9-4f19-a323-9d43d89766e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -141,6 +144,9 @@
     <ClInclude Include="Src\TextureResource.h">
       <Filter>Source Files\Graphics\TextureLoader\TextureResource</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Utils\FileDialogs.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -202,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="Src\TextureResource.cpp">
       <Filter>Source Files\Graphics\TextureLoader\TextureResource</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Utils\FileDialogs.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
