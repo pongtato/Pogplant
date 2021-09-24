@@ -35,7 +35,7 @@ namespace PogplantDriver
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
-		io.Fonts->AddFontFromFileTTF("../Pogplant Driver/Fonts/Ruda.ttf", 14);
+		io.Fonts->AddFontFromFileTTF("Resources/Fonts/Ruda.ttf", 14);
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // Enable Docking
 		imgui_extra_styles::Pogplant();
 		ImGui_ImplGlfw_InitForOpenGL(PP::Window::GetWindow(), true);

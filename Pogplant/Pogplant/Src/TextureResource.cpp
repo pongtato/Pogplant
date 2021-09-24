@@ -17,7 +17,7 @@ namespace Pogplant
 				"front.jpg",
 				"back.jpg"
 			}
-			, "Textures/Skybox"
+			, "Resources/Textures/Skybox"
 		);
 
 		m_TexturePool["SKYBOX2"] = TexLoader::LoadCubemap
@@ -30,7 +30,7 @@ namespace Pogplant
 				"pz.png",
 				"nz.png"
 			}
-			, "Textures/Skybox2"
+			, "Resources/Textures/Skybox2"
 		);
 
 		m_TexturePool["SKYBOX3"] = TexLoader::LoadCubemap
@@ -43,7 +43,7 @@ namespace Pogplant
 				"pz.png",
 				"nz.png"
 			}
-			, "Textures/Skybox3"
+			, "Resources/Textures/Skybox3"
 		);
 
 		m_TexturePool["SKYBOX4"] = TexLoader::LoadCubemap
@@ -56,7 +56,7 @@ namespace Pogplant
 				"pz.png",
 				"nz.png"
 			}
-			, "Textures/Skybox4"
+			, "Resources/Textures/Skybox4"
 		);
 
 	}
