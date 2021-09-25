@@ -49,6 +49,9 @@
     <Filter Include="Source Files\AssetCompiler">
       <UniqueIdentifier>{d438e707-a1b8-4644-b20c-4796e32846ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Serialiser">
+      <UniqueIdentifier>{e4701d30-6323-44af-9e4a-355c6917d653}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -116,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="Src\AssetCompiler.cpp">
       <Filter>Source Files\AssetCompiler</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Serialiser\Serializer.cpp">
+      <Filter>Source Files\Serialiser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="Src\AssetCompiler.h">
       <Filter>Source Files\AssetCompiler</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Serialiser\Serializer.h">
+      <Filter>Source Files\Serialiser</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

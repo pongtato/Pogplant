@@ -203,6 +203,7 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\ScriptBinder.cpp" />
     <ClCompile Include="Src\ScriptSystem.cpp" />
+    <ClCompile Include="Src\Serialiser\Serializer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Libs\IMGUIZMO\ImCurveEdit.h" />
@@ -231,6 +232,7 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClInclude Include="Src\ResourceAllocator.hpp" />
     <ClInclude Include="Src\ScriptBinder.h" />
     <ClInclude Include="Src\ScriptSystem.h" />
+    <ClInclude Include="Src\Serialiser\Serializer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

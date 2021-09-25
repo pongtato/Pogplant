@@ -1,7 +1,8 @@
 #include "Serializer.h"
 
-#include "../../../Pogplant Driver/Src/ImguiHelper.h"
-#include "../../../Pogplant Driver/Src/ECS/Components/Components.h"
+
+#include "../ImguiHelper.h"
+#include "../ECS/Components/Components.h"
 #include <fstream>
 
 using namespace PogplantDriver;

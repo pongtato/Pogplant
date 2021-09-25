@@ -32,7 +32,6 @@
     <ClInclude Include="Src\TextureLoader.h" />
     <ClInclude Include="Src\TextureResource.h" />
     <ClInclude Include="Src\Utils\FileDialogs.h" />
-    <ClInclude Include="Src\Utils\Serializer.h" />
     <ClInclude Include="Src\Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -56,7 +55,6 @@
     <ClCompile Include="Src\TextureLoader.cpp" />
     <ClCompile Include="Src\TextureResource.cpp" />
     <ClCompile Include="Src\Utils\FileDialogs.cpp" />
-    <ClCompile Include="Src\Utils\Serializer.cpp" />
     <ClCompile Include="Src\Window.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

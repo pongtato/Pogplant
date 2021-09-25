@@ -1,8 +1,8 @@
 #ifndef SERIALIZER_H
 #define SERIALIZER_H
 
-#include "../../../Pogplant Driver/Src/ECS/Entity.h"
-#include "../../../Libs/json/include/json.h"
+#include "../ECS/Entity.h"
+#include "../../Libs/json/include/json.h"
 #include <string>
 #include <filesystem>
 
