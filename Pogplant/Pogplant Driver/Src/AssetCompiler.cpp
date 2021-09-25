@@ -45,10 +45,9 @@ void AssetCompiler::RunExecutable(std::string appName, std::string param)
 		
 		DWORD error = GetLastError();
 		std::stringstream ss;
-		ss << "CreateProcess Failed Error: " << error;
+		ss << "CreateProcess Failed, Error: " << error;
 		//PP::Logger::Log({"PP::SUCCESS::PROCESS", PP::LogEntry::TYPE::SUCCESS, ss.str()});
-		//std::cout << "ERROR: Unable to Start Process: " << appName 
-		//		  << ", Error Code: "<< error << std::endl;
+		std::cout << ss.str() << std::endl;
 		return;
 	}
 

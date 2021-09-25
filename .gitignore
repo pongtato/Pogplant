@@ -60,3 +60,6 @@
 *.pdb
 *.ini
 Pogplant/Libs/Pogplant/Pogplant_D.lib
+
+# Custom File Types
+*.kek
