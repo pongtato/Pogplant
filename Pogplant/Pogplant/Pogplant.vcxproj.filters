@@ -147,6 +147,9 @@
     <ClInclude Include="Src\Utils\FileDialogs.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Utils\Serializer.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -210,6 +213,9 @@
       <Filter>Source Files\Graphics\TextureLoader\TextureResource</Filter>
     </ClCompile>
     <ClCompile Include="Src\Utils\FileDialogs.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Utils\Serializer.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>

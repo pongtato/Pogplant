@@ -11,7 +11,7 @@
 
 #include "ECS/Entity.h"
 #include "../../Pogplant/Src/Utils/FileDialogs.h"
-//#include "../../Pogplant/Src/Utils/Serializer.h"
+#include "../../Pogplant/Src/Utils/Serializer.h"
 #include <algorithm>
 #include <execution>
 
@@ -464,19 +464,27 @@ namespace PogplantDriver
 	void ImguiHelper::SaveSceneAs()
 	{
 		std::string filepath = Pogplant::FileDialogs::SaveFile("Json Files(*.json)\0*.json\0");
+		//Append .json 
+		if (filepath.find(".json") == std::string::npos)
+		{
+			filepath.append(".json");
+		}
 		if (!filepath.empty())
 		{
 			std::cout << filepath << std::endl;
-			//PP::Serializer serialiser;
-			//serialiser.Save(filepath);
+			PP::Serializer serialiser;
+			serialiser.Save(filepath);
 		}
 	}
 
-	void PogplantDriver::ImguiHelper::NewScene()
+	void ImguiHelper::NewScene()
 	{
+		m_CurrentEntity = entt::null;
+		m_ecs->GetReg().clear();
+
 	}
 
-	void PogplantDriver::ImguiHelper::OpenScene()
+	void ImguiHelper::OpenScene()
 	{
 		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
 		if (!filepath.empty())
