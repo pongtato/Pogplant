@@ -1,19 +1,16 @@
 #include "AssetCompiler.h"
 #include <windows.h>
 
-AssetCompiler* AssetCompiler::m_Instance;
+std::unique_ptr<AssetCompiler> AssetCompiler::m_instance = nullptr;
+std::once_flag AssetCompiler::m_onceFlag;
 
-AssetCompiler::AssetCompiler()
+AssetCompiler& AssetCompiler::GetInstance()
 {
-}
+	std::call_once(m_onceFlag, [] {
+		m_instance.reset(new AssetCompiler);
+		});
 
-AssetCompiler* AssetCompiler::GetInstance()
-{
-	if (!m_Instance)
-	{
-		m_Instance = new AssetCompiler();
-	}
-	return m_Instance;
+	return *m_instance.get();
 }
 
 void AssetCompiler::RunExecutable(std::string appName, std::string param)
@@ -55,6 +52,13 @@ void AssetCompiler::RunExecutable(std::string appName, std::string param)
 	CloseHandle(pi.hProcess);
 }
 
-AssetCompiler::~AssetCompiler()
+// just for testing
+void AssetCompiler::SetData(int data)
 {
+	m_data = data;
+}
+
+int AssetCompiler::GetData()
+{
+	return m_data;
 }

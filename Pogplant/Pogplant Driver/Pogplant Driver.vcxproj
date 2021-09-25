@@ -139,8 +139,9 @@
 copy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(TargetDir)"
 copy "$(SolutionDir)Libs\json\lib\jsoncpp_d.dll" "$(TargetDir)jsoncpp.dll" /Y
 xcopy "$(TargetDir)Pogplant Compiler.exe" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(TargetDir)glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(TargetDir)assimp-vc142-mtd.dll" "$(SolutionDir)Pogplant Driver" /y /i /s</Command>
+xcopy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
+xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
+xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy "$(SolutionDir)Libs\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)" /y
@@ -172,8 +173,9 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
 copy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(TargetDir)"
 copy "$(SolutionDir)Libs\json\lib\jsoncpp_r.dll" "$(TargetDir)jsoncpp.dll" /Y
 xcopy "$(TargetDir)Pogplant Compiler.exe" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(TargetDir)glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(TargetDir)assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s</Command>
+xcopy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s 
+xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
+xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>xcopy "$(SolutionDir)Libs\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)" /y

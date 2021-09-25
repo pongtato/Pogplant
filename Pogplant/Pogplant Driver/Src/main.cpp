@@ -47,11 +47,12 @@ void Init()
 	PP::MeshBuilder::InitMesh();
 
 	// TESTING RESOURCE ALLOCATOR AND THE KEK LOADER
-	AssetCompiler *ac = ac->GetInstance();
-	ac->RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\cube\\Cube.fbx");
-	ac->RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\sphere\\Sphere.fbx");
-	ac->RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\backpack\\backpack.obj");
-	
+	AssetCompiler& acc = acc.GetInstance();
+	acc.SetData(100);
+	acc.RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\cube\\Cube.fbx");
+	acc.RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\sphere\\Sphere.fbx");
+	acc.RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\backpack\\backpack.obj");
+
 	//static ResourceAllocator<PP::Model> ModelRA;
 	//int cubeID = ModelRA.Add("Resources\\KekFiles\\Cube.kek");
 	//std::shared_ptr<PP::Model> testCube = ModelRA.Get(cubeID);
