@@ -1,7 +1,7 @@
 #ifndef COMPONENTS_H
 #define COMPONENTS_H
 
-#include "../Src/Model.h"
+#include "../../Pogplant/Src/Model.h"
 #include "../entt_ecs/entt.hpp"
 
 #include <glm.hpp>

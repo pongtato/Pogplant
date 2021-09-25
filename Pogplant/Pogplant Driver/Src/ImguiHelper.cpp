@@ -10,6 +10,7 @@
 #include <gtc/type_ptr.hpp>
 
 #include "ECS/Entity.h"
+#include "../../Pogplant/Src/Utils/FileDialogs.h"
 #include <algorithm>
 #include <execution>
 
@@ -149,10 +150,18 @@ namespace PogplantDriver
 		{
 			if (ImGui::BeginMenu("File"))
 			{
-				ImGui::MenuItem("(File menu)", NULL, false, false);
-				if (ImGui::MenuItem("New")) {}
+				// Save scene
+				if (ImGui::MenuItem("New"))
+					NewScene();
+				if (ImGui::MenuItem("Open..."))
+					OpenScene();
+				if (ImGui::MenuItem("Save"))
+					SaveSceneAs();
+				if (ImGui::MenuItem("Exit"))
+					PP::Window::CloseWindow();
 				ImGui::EndMenu();
 			}
+
 			if (ImGui::BeginMenu("Create"))
 			{
 				ImGui::MenuItem("(Create menu)", NULL, false, false);
@@ -423,6 +432,28 @@ namespace PogplantDriver
 		PP::CameraResource::GetCamera("GAME")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
 	}
 
+	void ImguiHelper::SaveSceneAs()
+	{
+		std::string filepath = Pogplant::FileDialogs::SaveFile("Json Files(*.json)\0*.json\0");
+		if (!filepath.empty())
+		{
+			std::cout << filepath << std::endl;
+			//SceneSerializer serializer(m_ActiveScene);
+			//serializer.Serialize(filepath);
+		}
+	}
+
+	void PogplantDriver::ImguiHelper::NewScene()
+	{
+	}
+
+	void PogplantDriver::ImguiHelper::OpenScene()
+	{
+		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
+		if (!filepath.empty())
+			OpenScene(filepath);
+	}
+
 	void ImguiHelper::Scene_GOPick(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
 		if (!ImGui::IsWindowFocused())
@@ -677,4 +708,20 @@ namespace PogplantDriver
 
 		return is_deleted;
 	}
+
+	void ImguiHelper::OpenScene(const std::filesystem::path& path)
+	{
+		if (path.extension().string() != ".json")
+		{
+			//ASSET HERE
+			//("Could not load {0} - not a scene file", path.filename().string());
+			return;
+		}
+		//SceneSerializer serializer(newScene);
+		//if (serializer.Deserialize(path.string()))
+		//{
+		//}
+	}
+
+
 }

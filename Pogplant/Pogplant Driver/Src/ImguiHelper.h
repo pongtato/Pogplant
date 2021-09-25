@@ -37,6 +37,12 @@ namespace PogplantDriver
 		static entt::entity m_CurrentEntity;
 		static ECS* m_ecs;
 		static int m_CurrentGOIdx;
+
+		//Scene saving
+		static void SaveSceneAs();
+		static void NewScene();
+		static void OpenScene();
+
 		
 		static Directory m_Directory;
 	private:
@@ -45,8 +51,10 @@ namespace PogplantDriver
 		static void Scene_ViewEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
 
 		static bool DrawEntityNode(entt::entity entity, bool draw_childen = false);
-	
+		//Helper for opening Scene
+		static void OpenScene(const std::filesystem::path& path);
 	};
+
 }
 
 namespace PPD = PogplantDriver;
