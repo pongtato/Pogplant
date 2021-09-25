@@ -11,7 +11,7 @@
 
 #include "ECS/Entity.h"
 #include "../../Pogplant/Src/Utils/FileDialogs.h"
-#include "../../Pogplant/Src/Utils/Serializer.h"
+//#include "../../Pogplant/Src/Utils/Serializer.h"
 #include <algorithm>
 #include <execution>
 
