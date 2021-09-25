@@ -11,6 +11,7 @@
 
 #include "ECS/Entity.h"
 #include "../../Pogplant/Src/Utils/FileDialogs.h"
+#include "../../Pogplant/Src/Utils/Serializer.h"
 #include <algorithm>
 #include <execution>
 
@@ -146,6 +147,7 @@ namespace PogplantDriver
 		ImGui::PopStyleVar(2);
 
 		// Menu Bar
+		bool exiting = false;
 		if (ImGui::BeginMainMenuBar())
 		{
 			if (ImGui::BeginMenu("File"))
@@ -158,7 +160,7 @@ namespace PogplantDriver
 				if (ImGui::MenuItem("Save"))
 					SaveSceneAs();
 				if (ImGui::MenuItem("Exit"))
-					PP::Window::CloseWindow();
+					exiting = true;
 				ImGui::EndMenu();
 			}
 
@@ -176,13 +178,38 @@ namespace PogplantDriver
 			}
 			ImGui::EndMainMenuBar();
 		}
+		if(exiting)
+			ImGui::OpenPopup("Exiting");
+		//ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		//ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+		if (ImGui::BeginPopupModal("Exiting", NULL, ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			ImGui::Text("All those beautiful files will be deleted.\nThis operation cannot be undone!\n\n");
+			ImGui::Separator();
 
-		/// MUST MATCH WINDOW NAMES ABOVE
-		//ImGui::Begin("Directory");
-		//{
-		//	ImGui::Text("Directory");
-		//}
-		//ImGui::End();
+			//static int unused_i = 0;
+			//ImGui::Combo("Combo", &unused_i, "Delete\0Delete harder\0");
+
+			//static bool dont_ask_me_next_time = false;
+			//ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
+			//ImGui::Checkbox("Don't ask me next time", &dont_ask_me_next_time);
+			//ImGui::PopStyleVar();
+
+			if (ImGui::Button("OK", ImVec2(120, 0)))
+			{
+				PP::Window::CloseWindow();
+			}
+			ImGui::SetItemDefaultFocus();
+			ImGui::SameLine();
+			if (ImGui::Button("Cancel", ImVec2(120, 0)))
+			{
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::EndPopup();
+		}
+
+
+		// Directory Render
 		m_Directory.RenderDirectory();
 
 
@@ -377,6 +404,8 @@ namespace PogplantDriver
 			ImGui::SetWindowFocus("Scene");
 			m_FirstRun = false;
 		}
+
+
 	}
 
 	void ImguiHelper::CleanUpImgui()
@@ -438,8 +467,8 @@ namespace PogplantDriver
 		if (!filepath.empty())
 		{
 			std::cout << filepath << std::endl;
-			//SceneSerializer serializer(m_ActiveScene);
-			//serializer.Serialize(filepath);
+			//PP::Serializer serialiser;
+			//serialiser.Save(filepath);
 		}
 	}
 
