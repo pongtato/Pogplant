@@ -148,10 +148,8 @@
       <AdditionalDependencies>assimp-vc142-mt.lib;assimp-vc142-mtd.lib;glew32.lib;glfw3dll.lib;glfw3.lib;opengl32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)$(ProjectName).exe" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(TargetDir)glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(TargetDir)assimp-vc142-mtd.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -173,9 +171,7 @@ xcopy "$(TargetDir)assimp-vc142-mtd.dll" "$(SolutionDir)Pogplant Driver" /y /i /
       <AdditionalDependencies>assimp-vc142-mt.lib;assimp-vc142-mtd.lib;glew32.lib;glfw3dll.lib;glfw3.lib;opengl32.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)$(ProjectName).exe" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(TargetDir)glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(TargetDir)assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
+      <Command>
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
