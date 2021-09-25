@@ -186,6 +186,7 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClCompile Include="..\Libs\IMGUI\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\Libs\IMGUI\imgui_tables.cpp" />
     <ClCompile Include="..\Libs\IMGUI\imgui_widgets.cpp" />
+    <ClCompile Include="Src\AssetCompiler.cpp" />
     <ClCompile Include="Src\ContentBrowser.cpp" />
     <ClCompile Include="Src\ECS\ECS.cpp" />
     <ClCompile Include="Src\ECS\Entity.cpp" />
@@ -212,6 +213,7 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClInclude Include="..\Libs\IMGUI\imstb_rectpack.h" />
     <ClInclude Include="..\Libs\IMGUI\imstb_textedit.h" />
     <ClInclude Include="..\Libs\IMGUI\imstb_truetype.h" />
+    <ClInclude Include="Src\AssetCompiler.h" />
     <ClInclude Include="Src\ContentBrowser.h" />
     <ClInclude Include="Src\ECS\Components\Components.h" />
     <ClInclude Include="Src\ECS\ECS.h" />

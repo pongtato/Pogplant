@@ -153,6 +153,9 @@ namespace Pogplant
             if (count == 3)
             {
                 m_Meshes.push_back(Mesh3D(vertices, indices, textures));
+                vertices.clear();
+                indices.clear();
+                textures.clear();
                 count = 1;
             }
             else

@@ -46,6 +46,9 @@
     <Filter Include="Source Files\ResourceAllocator">
       <UniqueIdentifier>{5349901d-a3e1-4658-8469-8e3c4d4ec5bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\AssetCompiler">
+      <UniqueIdentifier>{d438e707-a1b8-4644-b20c-4796e32846ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -110,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="..\Libs\IMGUIZMO\ImSequencer.cpp">
       <Filter>Source Files\Imguizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\AssetCompiler.cpp">
+      <Filter>Source Files\AssetCompiler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="..\Libs\IMGUIZMO\ImZoomSlider.h">
       <Filter>Source Files\Imguizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\AssetCompiler.h">
+      <Filter>Source Files\AssetCompiler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

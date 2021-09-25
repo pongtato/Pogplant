@@ -17,6 +17,7 @@
 
 #include "Input/InputSystem.h"
 #include "ResourceAllocator.hpp"
+#include "AssetCompiler.h"
 //struct MEMLEAK
 //{
 //	~MEMLEAK()
@@ -46,11 +47,16 @@ void Init()
 	PP::MeshBuilder::InitMesh();
 
 	// TESTING RESOURCE ALLOCATOR AND THE KEK LOADER
+	AssetCompiler *ac = ac->GetInstance();
+	ac->RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\cube\\Cube.fbx");
+	ac->RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\sphere\\Sphere.fbx");
+	ac->RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\backpack\\backpack.obj");
+	
 	//static ResourceAllocator<PP::Model> ModelRA;
-	//int cubeID = ModelRA.Add("..\\Resources\\Kek\\Cube.kek");
+	//int cubeID = ModelRA.Add("Resources\\KekFiles\\Cube.kek");
 	//std::shared_ptr<PP::Model> testCube = ModelRA.Get(cubeID);
 
-	//int backID = ModelRA.Add("C:\\Users\\Clarence Chye\\Desktop\\University\\2021 Fall\\GAM300\\Engine_Mainbranch\\Pogplant\\Resources\\Kek\\backpack.kek");
+	//int backID = ModelRA.Add("Resources\\KekFiles\\backpack.kek");
 	//std::shared_ptr<PP::Model> testBack = ModelRA.Get(backID);
 
 	PP::ShaderLinker::InitShader();
@@ -231,7 +237,6 @@ void SetCube(glm::mat4 _BasePos)
 void DebugCubes(Transform& transform, RenderObject& renderer)
 {
 	float largestScale = std::numeric_limits<float>::min();
-
 	for (int i = 0; i < 3; i++)
 	{
 		largestScale = std::max(largestScale, transform.m_scale[i]);
