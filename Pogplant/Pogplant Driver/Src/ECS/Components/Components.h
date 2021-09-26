@@ -73,8 +73,20 @@ namespace Components
 	struct Light
 	{
 		glm::vec3 m_Color;
+		float m_Intensity;
+	};
+
+	struct Point_Light : public Light
+	{
 		float m_Linear;
 		float m_Quadratic;
+	};
+
+	struct Directional_Light : public Light
+	{
+		glm::vec3 m_Direction;
+		float m_Diffuse;
+		float m_Specular;
 	};
 }
 

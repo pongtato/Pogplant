@@ -20,8 +20,19 @@ struct Light
     float Quadratic;
     float Radius;
 };
+
+struct DirectionalLightDir
+{
+    vec3 Direction;
+    vec3 Color;
+
+    float Diffuse;
+    float Specular;
+};
+
 const int MAX_LIGHTS = 32;
 uniform Light lights[MAX_LIGHTS];
+uniform DirectionalLightDir directLight;
 uniform vec3 viewPos;
 uniform int activeLights;
 
@@ -56,6 +67,18 @@ void main()
             specular *= attenuation;
             lighting += diffuse + specular;
         }
-    }    
+    }
+
+    // Apply directional light
+    vec3 lightDir = normalize(-directLight.Direction);
+    vec3 diffuse = max(dot(Normal, lightDir), 0.0) * Diffuse * directLight.Color;
+    // specular
+    vec3 halfwayDir = normalize(lightDir + viewDir);  
+    float spec = pow(max(dot(Normal, halfwayDir), 0.0), 16.0);
+    vec3 specular = directLight.Color * spec * Specular;
+    diffuse *= directLight.Diffuse;
+    specular *= directLight.Specular;
+    lighting += diffuse + specular;
+
     outColor = NoLight + vec4(lighting, 1.0f);
 }

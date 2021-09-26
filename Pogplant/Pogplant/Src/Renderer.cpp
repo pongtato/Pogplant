@@ -15,6 +15,7 @@
 #include <glfw3.h>
 #include <string>
 
+#include <iostream>
 
 #include "../../Pogplant Driver/Src/ECS/Components/Components.h"
 
@@ -64,17 +65,29 @@ namespace Pogplant
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
 
 		// Lights
-		auto results = registry.view<Components::Light, Components::Transform>();
+
+		// Directional
+		auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
+		auto dLight_it = dResults.begin();
+		const auto& dLight = dResults.get<const Components::Directional_Light>(*dLight_it);
+		const std::string currLight = "directLight.";
+		ShaderLinker::SetUniform((currLight + "Direction").c_str(), dLight.m_Direction);
+		ShaderLinker::SetUniform((currLight + "Color").c_str(), dLight.m_Color * dLight.m_Intensity);
+		ShaderLinker::SetUniform((currLight + "Diffuse").c_str(), dLight.m_Diffuse);
+		ShaderLinker::SetUniform((currLight + "Specular").c_str(), dLight.m_Specular);
+
+		// Point lights
+		auto results = registry.view<Components::Point_Light, Components::Transform>();
 		ShaderLinker::SetUniform("activeLights", static_cast<int>(results.size_hint()));
 		int light_it = 0;
 		for (const auto& e : results)
 		{
-			const auto& it_light = results.get<const Components::Light>(e);
+			const auto& it_light = results.get<const Components::Point_Light>(e);
 			const auto& it_trans = results.get<const Components::Transform>(e);
 
 			const std::string currLight = "lights[" + std::to_string(light_it) + "].";
 			ShaderLinker::SetUniform((currLight + "Position").c_str(), it_trans.m_position);
-			ShaderLinker::SetUniform((currLight + "Color").c_str(), it_light.m_Color);
+			ShaderLinker::SetUniform((currLight + "Color").c_str(), it_light.m_Color * it_light.m_Intensity);
 
 			// update attenuation parameters and calculate radius
 			const float k = 1.0f; // Constant
@@ -83,7 +96,7 @@ namespace Pogplant
 			const float& linear = it_light.m_Linear;
 			const float& quad = it_light.m_Linear;
 			// then calculate radius of light volume/sphere
-			const float maxBrightness = std::fmaxf(std::fmaxf(255, 0), 0);
+			const float maxBrightness = std::fmaxf(std::fmaxf(it_light.m_Color.r, it_light.m_Color.g), it_light.m_Color.b);
 			float radius = (-linear + std::sqrt(linear * linear - 4 * quad * (k - (256.0f / 5.0f) * maxBrightness))) / (2.0f * quad);
 			ShaderLinker::SetUniform((currLight + "Radius").c_str(), radius);
 			// Iteration count

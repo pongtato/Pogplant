@@ -187,32 +187,43 @@ void Init()
 	//registry.emplace<Renderer>(entity,&cubeModel);
 
 	/// Light
-	pos = { 0.0f, 10.0f, 0.0f };
-	scale = { 0.69f,0.69f,0.69f }; // Affects light model and not the actual light size
-	color = { 255.0f, 255.0f, 255.0f };
+	pos = { 0.0f, 1000.0f, 0.0f };
+	glm::vec3 direction = {-0.5f,-0.5f,-0.5f};
+	scale = { 1.0f,1.0f,1.0f }; // Affects light model and not the actual light size
+	float intensity = 0.5f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{0}, scale);
-	entity.AddComponent<Components::Light>(Light{ color, 0.69f, 2.0f });
+	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
-	entity.AddComponent<Components::Name>(Name{ "Light 1"});
+	entity.AddComponent<Components::Name>(Name{ "Directional"});
 
-	pos = { -10.0f, 10.0f, 10.0f };
-	color = { 0.0f, 0.0f, 255.0f };
+	pos = { 0.0f, 10.0f, 0.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	const float linear = 0.00069f;
+	const float quadratic = 0.0042f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Light>(Light{ color, 0.69f, 2.0f });
+	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Name>(Name{ "Light 1" });
+
+	intensity = 1.0f;
+	pos = { -10.0f, 10.0f, 10.0f };
+	color = { 0.0f, 0.0f, 1.0f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
 	entity.AddComponent<Components::Name>(Name{ "Light 2" });
 
 	pos = { 10.0f, 10.0f, 10.0f };
-	color = { 255.0f, 0.0f, 0.0f };
+	color = { 1.0f, 0.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Light>(Light{ color, 0.69f, 2.0f });
+	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
 	entity.AddComponent<Components::Name>(Name{ "Light 3" });
 
 	pos = { 0.0f, 10.0f, -10.0f };
-	color = { 0.0f, 255.0f, 0.0f };
+	color = { 0.0f, 1.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Light>(Light{ color, 0.69f, 2.0f });
+	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
 	entity.AddComponent<Components::Name>(Name{ "Light 4" });
 
