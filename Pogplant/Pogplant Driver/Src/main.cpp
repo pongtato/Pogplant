@@ -159,9 +159,9 @@ void Init()
 	entity.AddComponent<Imaginary_object>("gab_small_pepe");
 	entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
 
-	pos = { 0.0f, -5.0f, -50.0f };
+	pos = { 0.0f, -55.0f, 0.0f };
 	rot = { 0.0f,0.0f,0.0f };
-	scale = { 100.0f,0.1f,100.0f };
+	scale = { 100.0f,100.0f,100.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, floorModel });
 	entity.AddComponent<Components::Name>(Name{ "Floor" });
