@@ -3,8 +3,9 @@
 
 #include "../ImguiHelper.h"
 #include "../ECS/Components/Components.h"
-#include <fstream>
+#include "ModelResource.h"
 
+#include <fstream>
 
 using namespace Components;
 namespace PogplantDriver
@@ -69,7 +70,7 @@ namespace PogplantDriver
 		auto name_component = ImguiHelper::m_ecs->GetReg().try_get<Name>(id);
 		auto position_component = ImguiHelper::m_ecs->GetReg().try_get<PositionList>(id);
 		auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
-		auto mesh_component = ImguiHelper::m_ecs->GetReg().try_get<RenderObject>(id);
+		auto mesh_component = ImguiHelper::m_ecs->GetReg().try_get<Render>(id);
 
 		if (transform_component)
 		{
@@ -105,7 +106,7 @@ namespace PogplantDriver
 			}
 
 
-			subroot["Mesh"] = classroot;
+			subroot["Render"] = classroot;
 		}
 
 
@@ -139,17 +140,48 @@ namespace PogplantDriver
 	{
 		auto& transform = root["Transform"];
 		auto& name = root["Name"];
-
+		auto& render = root["Render"];
 		if (transform)
 		{
 			glm::vec3 pos = { transform["Position"][0].asFloat(),transform["Position"][1].asFloat(),transform["Position"][2].asFloat() };
 			glm::vec3 rot = { transform["Rotation"][0].asFloat(),transform["Rotation"][1].asFloat(),transform["Rotation"][2].asFloat() };
 			glm::vec3 sca = { transform["Scale"][0].asFloat(),transform["Scale"][1].asFloat(),transform["Scale"][2].asFloat() };
-			ImguiHelper::m_ecs->GetReg().emplace<Transform>(id,pos,rot,sca);
+
+			ImguiHelper::m_ecs->GetReg().emplace<Transform>(id, pos, rot, sca);
 		}
+
 		if (name)
 		{
 			ImguiHelper::m_ecs->GetReg().emplace<Name>(id, name.asString());
+		}
+
+		if (render)
+		{
+			//glm::vec3 _colorTint = ;
+			Pogplant::Model* m_Model = nullptr;
+
+			if (render["RenderModel"] != Json::nullValue)
+			{
+				auto result = Pogplant::ModelResource::m_ModelPool.find(render["RenderModel"][0].asString());
+
+				if (result != Pogplant::ModelResource::m_ModelPool.end())
+				{
+					m_Model = result->second;
+				}
+				else
+				{
+					std::cout	<< "Unable to find " << render["RenderModel"][1].asString()
+								<< " (" << render["RenderModel"][0].asString() << ")" << std::endl;
+				}
+			}
+
+			ImguiHelper::m_ecs->GetReg().emplace<Render>(
+				id,
+				glm::mat4{1},
+				glm::vec3{ render["ColorTint"][0].asFloat(),render["ColorTint"][1].asFloat(),render["ColorTint"][2].asFloat() },
+				m_Model,
+				render["UseLight"].asInt()
+				);
 		}
 	}
 

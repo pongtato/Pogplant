@@ -132,7 +132,7 @@ namespace Pogplant
 		glfwPollEvents();
 	}
 
-	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::RenderObject* _Selected)
+	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::Render* _Selected)
 	{
 		// Outline edge shit will be solved later
 		(void)_Selected;
@@ -144,12 +144,12 @@ namespace Pogplant
 		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
 		ShaderLinker::SetUniform("m4_View", currCam->GetView());
 
-		auto results = registry.view<Components::RenderObject>();
+		auto results = registry.view<Components::Render>();
 
 		for (const auto& e : results)
 		{
 			// Draw selected objects seperately for edge detection
-			const auto& it = results.get<const Components::RenderObject>(e);
+			const auto& it = results.get<const Components::Render>(e);
 
 			ShaderLinker::SetUniform("m4_Model", it.m_Model);
 			ShaderLinker::SetUniform("useLight", it.m_UseLight);

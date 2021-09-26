@@ -516,7 +516,7 @@ namespace PogplantDriver
 					//GameObject& currGO = GO_Resource::m_GO_Container[i];
 					
 					auto& transform = m_ecs->GetReg().get<Components::Transform>(entity);
-					auto renderer = m_ecs->GetReg().try_get<Components::RenderObject>(entity);
+					auto renderer = m_ecs->GetReg().try_get<Components::Render>(entity);
 
 					if (renderer != nullptr)
 					{

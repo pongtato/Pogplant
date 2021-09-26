@@ -21,6 +21,11 @@ namespace Components
 		std::string m_name;
 	};
 
+	struct TheUnkillable6969xx
+	{
+		//anything with this won't be deleted
+	};
+
 	struct PositionList
 	{
 		short m_index;
@@ -63,7 +68,7 @@ namespace Components
 		}
 	};
 
-	struct RenderObject
+	struct Render
 	{
 		glm::mat4 m_Model;
 		glm::vec3 m_ColorTint;

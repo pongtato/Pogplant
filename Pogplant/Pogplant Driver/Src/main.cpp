@@ -143,7 +143,7 @@ void Init()
 	
 	auto entity = ecs.CreateEntity("", pos, rot, scale);
 	//entity.AddComponent<Components::Transform>(pos, rot, scale);
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, bagModel });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, bagModel });
 	//entity.AddComponent<Components::Name>(Name{ "Bag" });
 
 	//ecs.AddComponent<Components::Renderer>(entity, &bagModel);
@@ -155,7 +155,7 @@ void Init()
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
 	
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, sphereModel });
 	entity.AddComponent<Imaginary_object>("gab_small_pepe");
 	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
 
@@ -163,7 +163,7 @@ void Init()
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 100.0f,100.0f,100.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, floorModel });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, floorModel });
 	//entity.AddComponent<Components::Name>(Name{ "Floor" });
 
 	pos = { 5, -2.0f, 10.0f };
@@ -171,7 +171,7 @@ void Init()
 	scale = { 1.0f,1.0f,1.0f };
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, shipModel });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, shipModel });
 	//entity.AddComponent<Components::Name>(Name{ "Ship" });
 
 	pos = { -10.0f, -2.0f, 10.0f };
@@ -179,7 +179,7 @@ void Init()
 	scale = { 1.0f,1.0f,1.0f };
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, enemyModel });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, enemyModel });
 	//entity.AddComponent<Components::Name>(Name{ "Enemy" });
 
 	//auto entity = registry.create();
@@ -193,7 +193,7 @@ void Init()
 	float intensity = 0.5f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{0}, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, sphereModel, false });
 	//entity.AddComponent<Components::Name>(Name{ "Directional"});
 
 	pos = { 0.0f, 10.0f, 0.0f };
@@ -202,7 +202,7 @@ void Init()
 	const float quadratic = 0.0042f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, sphereModel, false });
 	//entity.AddComponent<Components::Name>(Name{ "Light 1" });
 
 	intensity = 1.0f;
@@ -210,21 +210,21 @@ void Init()
 	color = { 0.0f, 0.0f, 1.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, sphereModel, false });
 	//entity.AddComponent<Components::Name>(Name{ "Light 2" });
 
 	pos = { 10.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, sphereModel, false });
 	//entity.AddComponent<Components::Name>(Name{ "Light 3" });
 
 	pos = { 0.0f, 10.0f, -10.0f };
 	color = { 0.0f, 1.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, sphereModel, false });
 	//entity.AddComponent<Components::Name>(Name{ "Light 4" });
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
@@ -303,7 +303,7 @@ void SetCube(glm::mat4 _BasePos)
 //	SetCube(model);
 //}
 
-void DebugCubes(Transform& transform, RenderObject& renderer)
+void DebugCubes(Transform& transform, Render& renderer)
 {
 	float largestScale = std::numeric_limits<float>::min();
 	for (int i = 0; i < 3; i++)
@@ -347,12 +347,12 @@ void DrawCommon()
 	//PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
 	/// TEMP - Update transforms for render
-	auto view = ecs.GetReg().view<Transform, RenderObject>();
+	auto view = ecs.GetReg().view<Transform, Render>();
 	
 	for (auto entity : view)
 	{
 		auto& transform = view.get<Transform>(entity);
-		auto& renderer = view.get<RenderObject>(entity);
+		auto& renderer = view.get<Render>(entity);
 		
 		renderer.m_Model = glm::make_mat4(transform.m_ModelMtx);
 		//DebugCubes(transform, renderer);
@@ -371,7 +371,7 @@ void DrawCommon()
 void DrawEditor()
 {
 	// If something is selected choose it to be highlighted
-	RenderObject* renderOjbect = nullptr;
+	Render* renderOjbect = nullptr;
 
 	//const int currIdx = PPD::ImguiHelper::m_CurrentGOIdx;
 	entt::entity currIdx = PPD::ImguiHelper::m_CurrentEntity;
@@ -380,7 +380,7 @@ void DrawEditor()
 	if (currIdx != entt::null)
 	{
 		//renderOjbect = GO_Resource::m_GO_Container[currIdx].m_RenderObject;
-		renderOjbect = ecs.GetReg().try_get<RenderObject>(currIdx);
+		renderOjbect = ecs.GetReg().try_get<Render>(currIdx);
 	}
 
 	// Models for Gpass
@@ -397,7 +397,7 @@ void DrawEditor()
 
 void DrawGame()
 {
-	auto results = ecs.GetReg().view<RenderObject>();
+	auto results = ecs.GetReg().view<Render>();
 
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
