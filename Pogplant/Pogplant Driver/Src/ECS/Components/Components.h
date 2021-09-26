@@ -65,8 +65,16 @@ namespace Components
 	struct RenderObject
 	{
 		glm::mat4 m_Model;
+		glm::vec3 m_ColorTint;
 		Pogplant::Model* m_RenderModel;
+		int m_UseLight = 1; // int cause opegnl no bool kekw
+	};
 
+	struct Light
+	{
+		glm::vec3 m_Color;
+		float m_Linear;
+		float m_Quadratic;
 	};
 }
 

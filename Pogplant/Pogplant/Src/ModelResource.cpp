@@ -12,6 +12,8 @@ namespace Pogplant
 		LoadModel("BAG", "Resources/Models/backpack/backpack.obj", GL_TRIANGLES);
 		LoadModel("CUBE", "Resources/Models/cube/cube.fbx", GL_TRIANGLES);
 		LoadModel("SPHERE", "Resources/Models/sphere/sphere.fbx", GL_TRIANGLES);
+		LoadModel("SHIP", "Resources/Models/Ship/Player_Ship.fbx", GL_TRIANGLES);
+		LoadModel("ENEMY", "Resources/Models/Enemy/Enemy_01_Merged.fbx", GL_TRIANGLES);
 	}
 
 	void ModelResource::CleanUpResource()

@@ -678,9 +678,10 @@ namespace PogplantDriver
 
 		//auto name = ecs_handler.GetComponent<ECS::ObjectName>(entity).name.c_str();
 
-		std::string obj_name = "Object" + std::to_string((uint32_t)entity);
+
 
 		auto name = m_ecs->GetReg().get<Components::Name>(entity);
+		std::string obj_name = name.m_name;
 		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
 		flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
 

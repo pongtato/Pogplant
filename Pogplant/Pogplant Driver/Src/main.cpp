@@ -71,7 +71,7 @@ void Init()
 			45.0f,	// Zoom 
 			16.9f,	// Speed 
 			0.1f,	// Near
-			100.0f,	// Far
+			200.0f,	// Far
 			0.21f,	// Mouse look sens
 			20.0f,	// Key input look sens
 			0.1f	// Pan speed
@@ -81,8 +81,10 @@ void Init()
 
 	/// Add to container
 	PP::Model* bagModel = PP::ModelResource::m_ModelPool["BAG"];
-	//PP::Model* cubeModel = PP::ModelResource::m_ModelPool["SPHERE"];
-	PP::Model* cubeModel = PP::ModelResource::m_ModelPool["CUBE"];
+	PP::Model* sphereModel = PP::ModelResource::m_ModelPool["SPHERE"];
+	PP::Model* floorModel = PP::ModelResource::m_ModelPool["CUBE"];
+	PP::Model* shipModel = PP::ModelResource::m_ModelPool["SHIP"];
+	PP::Model* enemyModel = PP::ModelResource::m_ModelPool["ENEMY"];
 
 	// Testing kek loader
 	//PP::Model* cubeModel = testCube.get();
@@ -136,11 +138,13 @@ void Init()
 	glm::vec3 pos = { 5.0f, 0.0f, -10.0f };
 	glm::vec3 rot = { 0.0f,0.0f,0.0f };
 	glm::vec3 scale = { 1.0f,1.0f,1.0f };
+	glm::vec3 color = { 0.835f,0.921f,0.905f }; // In the event of no texture
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[0]));
 	
 	auto entity = ecs.CreateEntity("", pos, rot, scale);
 	//entity.AddComponent<Components::Transform>(pos, rot, scale);
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, bagModel });
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, bagModel });
+	entity.AddComponent<Components::Name>(Name{ "Bag" });
 
 	//ecs.AddComponent<Components::Renderer>(entity, &bagModel);
 	//registry.emplace<Renderer>(entity, &bagModel);
@@ -151,13 +155,66 @@ void Init()
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
 	
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, cubeModel });
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel });
 	entity.AddComponent<Imaginary_object>("gab_small_pepe");
+	entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
 
+	pos = { 0.0f, -5.0f, -50.0f };
+	rot = { 0.0f,0.0f,0.0f };
+	scale = { 100.0f,0.1f,100.0f };
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, floorModel });
+	entity.AddComponent<Components::Name>(Name{ "Floor" });
+
+	pos = { 5, -2.0f, 10.0f };
+	rot = { 0.0f,0.0f,0.0f };
+	scale = { 1.0f,1.0f,1.0f };
+
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, shipModel });
+	entity.AddComponent<Components::Name>(Name{ "Ship" });
+
+	pos = { -10.0f, -2.0f, 10.0f };
+	rot = { 0.0f,0.0f,0.0f };
+	scale = { 1.0f,1.0f,1.0f };
+
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, enemyModel });
+	entity.AddComponent<Components::Name>(Name{ "Enemy" });
 
 	//auto entity = registry.create();
 	//registry.emplace<Transform>(registry.create(), pos, rot, scale);
 	//registry.emplace<Renderer>(entity,&cubeModel);
+
+	/// Light
+	pos = { 0.0f, 10.0f, 0.0f };
+	scale = { 0.69f,0.69f,0.69f }; // Affects light model and not the actual light size
+	color = { 255.0f, 255.0f, 255.0f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{0}, scale);
+	entity.AddComponent<Components::Light>(Light{ color, 0.69f, 2.0f });
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Name>(Name{ "Light 1"});
+
+	pos = { -10.0f, 10.0f, 10.0f };
+	color = { 0.0f, 0.0f, 255.0f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Light>(Light{ color, 0.69f, 2.0f });
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Name>(Name{ "Light 2" });
+
+	pos = { 10.0f, 10.0f, 10.0f };
+	color = { 255.0f, 0.0f, 0.0f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Light>(Light{ color, 0.69f, 2.0f });
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Name>(Name{ "Light 3" });
+
+	pos = { 0.0f, 10.0f, -10.0f };
+	color = { 0.0f, 255.0f, 0.0f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Light>(Light{ color, 0.69f, 2.0f });
+	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Name>(Name{ "Light 4" });
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 	
@@ -273,10 +330,10 @@ void DrawCommon()
 {
 	PP::MeshInstance::ResetCount();
 	// 3D object background to see orientation
-	glm::mat4 Model = glm::mat4{ 1 };
-	Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -40.0f));
-	Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
-	PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+	//glm::mat4 Model = glm::mat4{ 1 };
+	//Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -40.0f));
+	//Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
+	//PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
 	/// TEMP - Update transforms for render
 	auto view = ecs.GetReg().view<Transform, RenderObject>();
@@ -323,7 +380,7 @@ void DrawEditor()
 	// Where to draw the gpass FB to
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::GLightPass();
+	PP::Renderer::GLightPass("EDITOR", ecs.GetReg());
 	PP::Renderer::EndBuffer();
 }
 
@@ -339,7 +396,7 @@ void DrawGame()
 	// Where to draw the gpass FB to
 	PP::Renderer::StartGameBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::GLightPass();
+	PP::Renderer::GLightPass("GAME", ecs.GetReg());
 	PP::Renderer::EndBuffer();
 }
 

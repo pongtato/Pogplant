@@ -5,6 +5,7 @@
 layout (location = 0) out vec3 gPosition;
 layout (location = 1) out vec3 gNormal;
 layout (location = 2) out vec4 gAlbedoSpec;
+layout (location = 3) out vec4 gNoLight;
 
 in vec2 TexCoords;
 in vec3 FragPos;
@@ -19,19 +20,28 @@ struct Material
 };
 
 uniform Material material;
+uniform vec3 colorTint;
 uniform int noTex;
+uniform int useLight;
 
 void main()
 {    
-    gPosition = FragPos;
-    gNormal = normalize(Normal);
-    if(noTex == 0)
+    if(useLight == 1)
     {
-        gAlbedoSpec.rgb = texture(material.texture_diffuse[0], TexCoords).rgb;
-        gAlbedoSpec.a = texture(material.texture_specular[0], TexCoords).r;
+        gPosition = FragPos;
+        gNormal = normalize(Normal);
+        if(noTex == 0)
+        {
+            gAlbedoSpec.rgb = texture(material.texture_diffuse[0], TexCoords).rgb;
+            gAlbedoSpec.a = texture(material.texture_specular[0], TexCoords).r;
+        }
+        else
+        {
+            gAlbedoSpec = vec4(colorTint,1.0f);
+        }
     }
     else
     {
-        gAlbedoSpec = vec4(gNormal,1.0f);
+        gNoLight = vec4(colorTint,1.0f);
     }
 }

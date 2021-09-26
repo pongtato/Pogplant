@@ -51,7 +51,7 @@ namespace Pogplant
 		FrameBuffer::BindFrameBuffer(BufferType::PP_BUFFER);
 	}
 
-	void Renderer::GLightPass()
+	void Renderer::GLightPass(const char* _CameraID, const entt::registry& registry)
 	{
 		ShaderLinker::Use("GPASS");
 		glActiveTexture(GL_TEXTURE0);
@@ -64,20 +64,33 @@ namespace Pogplant
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
 
 		// Lights
-		ShaderLinker::SetUniform("lights[0].Position", glm::vec3(0,0,0));
-		ShaderLinker::SetUniform("lights[0].Color", glm::vec3(255, 255, 255));
-		// update attenuation parameters and calculate radius
-		const float constant = 1.0f; // note that we don't send this to the shader, we assume it is always 1.0 (in our case)
-		const float linear = 0.7f;
-		const float quadratic = 1.8f;
-		ShaderLinker::SetUniform("lights[0].Linear", linear);
-		ShaderLinker::SetUniform("lights[0].Quadratic", quadratic);
-		// then calculate radius of light volume/sphere
-		const float maxBrightness = std::fmaxf(std::fmaxf(255,0), 0);
-		float radius = (-linear + std::sqrt(linear * linear - 4 * quadratic * (constant - (256.0f / 5.0f) * maxBrightness))) / (2.0f * quadratic);
-		ShaderLinker::SetUniform("lights[0].Radius", radius);
+		auto results = registry.view<Components::Light, Components::Transform>();
+		ShaderLinker::SetUniform("activeLights", static_cast<int>(results.size_hint()));
+		int light_it = 0;
+		for (const auto& e : results)
+		{
+			const auto& it_light = results.get<const Components::Light>(e);
+			const auto& it_trans = results.get<const Components::Transform>(e);
 
-		Camera* currCam = CameraResource::GetCamera("EDITOR");
+			const std::string currLight = "lights[" + std::to_string(light_it) + "].";
+			ShaderLinker::SetUniform((currLight + "Position").c_str(), it_trans.m_position);
+			ShaderLinker::SetUniform((currLight + "Color").c_str(), it_light.m_Color);
+
+			// update attenuation parameters and calculate radius
+			const float k = 1.0f; // Constant
+			ShaderLinker::SetUniform((currLight + "Linear").c_str(), it_light.m_Linear);
+			ShaderLinker::SetUniform((currLight + "Quadratic").c_str(), it_light.m_Quadratic);
+			const float& linear = it_light.m_Linear;
+			const float& quad = it_light.m_Linear;
+			// then calculate radius of light volume/sphere
+			const float maxBrightness = std::fmaxf(std::fmaxf(255, 0), 0);
+			float radius = (-linear + std::sqrt(linear * linear - 4 * quad * (k - (256.0f / 5.0f) * maxBrightness))) / (2.0f * quad);
+			ShaderLinker::SetUniform((currLight + "Radius").c_str(), radius);
+			// Iteration count
+			light_it++;
+		}
+
+		Camera* currCam = CameraResource::GetCamera(_CameraID);
 		ShaderLinker::SetUniform("viewPos", currCam->GetPosition());
 
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
@@ -105,6 +118,9 @@ namespace Pogplant
 
 	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::RenderObject* _Selected)
 	{
+		// Outline edge shit will be solved later
+		(void)_Selected;
+
 		Camera* currCam = CameraResource::GetCamera(_CameraID);
 
 		// Render G pass objects first
@@ -120,15 +136,17 @@ namespace Pogplant
 			const auto& it = results.get<const Components::RenderObject>(e);
 
 			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			ShaderLinker::SetUniform("useLight", it.m_UseLight);
+			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
 			it.m_RenderModel->Draw();
 		}
 		ShaderLinker::UnUse();
 
-		ShaderLinker::Use("BASIC");
-		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-		ShaderLinker::SetUniform("m4_View", currCam->GetView());
-		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
-		ShaderLinker::UnUse();
+		//ShaderLinker::Use("BASIC");
+		//ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		//ShaderLinker::SetUniform("m4_View", currCam->GetView());
+		//MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
+		//ShaderLinker::UnUse();
 
 		// Skybox
 		glDepthFunc(GL_LEQUAL);
@@ -141,38 +159,38 @@ namespace Pogplant
 		ShaderLinker::UnUse();
 		glDepthFunc(GL_LESS);
 
-		// Edge
-		if (_Selected != nullptr)
-		{
-			// Test against the selected object
-			glStencilFunc(GL_ALWAYS, 1, 0xFF);
-			glStencilMask(0xFF);
+		//// Edge
+		//if (_Selected != nullptr)
+		//{
+		//	// Test against the selected object
+		//	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+		//	glStencilMask(0xFF);
 
-			// Drawn seperately 
-			ShaderLinker::Use("MODEL");
-			ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-			ShaderLinker::SetUniform("m4_View", currCam->GetView());
-			ShaderLinker::SetUniform("m4_Model", _Selected->m_Model);
-			_Selected->m_RenderModel->Draw();
-			ShaderLinker::UnUse();
+		//	// Drawn seperately 
+		//	ShaderLinker::Use("MODEL");
+		//	ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		//	ShaderLinker::SetUniform("m4_View", currCam->GetView());
+		//	ShaderLinker::SetUniform("m4_Model", _Selected->m_Model);
+		//	_Selected->m_RenderModel->Draw();
+		//	ShaderLinker::UnUse();
 
-			// Get the edge
-			glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-			glStencilMask(0x00);
-			glDisable(GL_DEPTH_TEST);
+		//	// Get the edge
+		//	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+		//	glStencilMask(0x00);
+		//	glDisable(GL_DEPTH_TEST);
 
-			ShaderLinker::Use("EDGE");
-			ShaderLinker::SetUniform("f_Thicc", 0.05f);
-			ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-			ShaderLinker::SetUniform("m4_View", currCam->GetView());
-			ShaderLinker::SetUniform("m4_Model", _Selected->m_Model);
-			_Selected->m_RenderModel->Draw();
-			ShaderLinker::UnUse();
+		//	ShaderLinker::Use("EDGE");
+		//	ShaderLinker::SetUniform("f_Thicc", 0.05f);
+		//	ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		//	ShaderLinker::SetUniform("m4_View", currCam->GetView());
+		//	ShaderLinker::SetUniform("m4_Model", _Selected->m_Model);
+		//	_Selected->m_RenderModel->Draw();
+		//	ShaderLinker::UnUse();
 
-			glStencilMask(0xFF);
-			glStencilFunc(GL_ALWAYS, 0, 0xFF);
-			glEnable(GL_DEPTH_TEST);
-		}
+		//	glStencilMask(0xFF);
+		//	glStencilFunc(GL_ALWAYS, 0, 0xFF);
+		//	glEnable(GL_DEPTH_TEST);
+		//}
 	}
 
 	void Renderer::Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16])
