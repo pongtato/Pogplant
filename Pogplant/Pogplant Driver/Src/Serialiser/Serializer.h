@@ -22,6 +22,9 @@ namespace PogplantDriver
 		void LoadObjects(const std::string& File);
 		void LoadComponents(const Json::Value& root, entt::entity id);
 
+
+		//helper functions for saving
+		void AddVec3To(Json::Value& _classroot, std::string _string, glm::vec3& _vec3);
 	};
 
 

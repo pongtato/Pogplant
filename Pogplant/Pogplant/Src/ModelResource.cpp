@@ -26,6 +26,6 @@ namespace Pogplant
 
 	void ModelResource::LoadModel(std::string _ModelID, std::string _Path, unsigned int _PrimitiveType)
 	{
-		m_ModelPool[_ModelID] = new Model(_Path, _PrimitiveType);
+		m_ModelPool[_ModelID] = new Model(_Path, _PrimitiveType, _ModelID);
 	}
 }

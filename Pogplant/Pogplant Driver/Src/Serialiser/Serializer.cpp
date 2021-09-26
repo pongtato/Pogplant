@@ -58,6 +58,8 @@ namespace PogplantDriver
 		}
 
 	}
+
+
 	Json::Value Serializer::SaveComponents(entt::entity id)
 	{
 		Json::Value subroot;
@@ -72,37 +74,10 @@ namespace PogplantDriver
 		if (transform_component)
 		{
 			Json::Value classroot;
-			Json::Value data(Json::arrayValue);
 
-			// Save position
-			glm::vec3 vec = transform_component->m_position;
-
-			data.append(vec.x);
-			data.append(vec.y);
-			data.append(vec.z);
-
-			classroot["Position"] = data;
-			data.clear();
-
-			// Save rotation
-			vec = transform_component->m_rotation;
-
-			data.append(vec.x);
-			data.append(vec.y);
-			data.append(vec.z);
-
-			classroot["Rotation"] = data;
-			data.clear();
-
-			// Save scale
-			vec = transform_component->m_scale;
-
-			data.append(vec.x);
-			data.append(vec.y);
-			data.append(vec.z);
-
-			classroot["Scale"] = data;
-			data.clear();
+			AddVec3To(classroot, "Position", transform_component->m_position);
+			AddVec3To(classroot, "Rotation", transform_component->m_rotation);
+			AddVec3To(classroot, "Scale", transform_component->m_scale);
 
 			subroot["Transform"] = classroot;
 
@@ -111,6 +86,26 @@ namespace PogplantDriver
 		if (name_component)
 		{
 			subroot["Name"] = name_component->m_name;
+		}
+
+		if (mesh_component)
+		{
+			Json::Value classroot;
+
+			AddVec3To(classroot, "ColorTint", mesh_component->m_ColorTint);
+
+			classroot["UseLight"] = mesh_component->m_UseLight;
+
+			if (mesh_component->m_RenderModel)
+			{
+				Json::Value temp(Json::arrayValue);
+				temp.append(mesh_component->m_RenderModel->m_Model_key);
+				temp.append(mesh_component->m_RenderModel->m_Directory);
+				classroot["RenderModel"] = temp;
+			}
+
+
+			subroot["Mesh"] = classroot;
 		}
 
 
@@ -156,6 +151,19 @@ namespace PogplantDriver
 		{
 			ImguiHelper::m_ecs->GetReg().emplace<Name>(id, name.asString());
 		}
+	}
+
+	void Serializer::AddVec3To(Json::Value& _classroot, std::string _string, glm::vec3& _vec3)
+	{
+		static Json::Value data(Json::arrayValue);
+
+		data.append(_vec3.x);
+		data.append(_vec3.y);
+		data.append(_vec3.z);
+
+		_classroot[_string] = data;
+
+		data.clear();
 	}
 }
 
