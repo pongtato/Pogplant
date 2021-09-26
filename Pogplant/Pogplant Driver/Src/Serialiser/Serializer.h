@@ -6,7 +6,7 @@
 #include <string>
 #include <filesystem>
 
-namespace Pogplant
+namespace PogplantDriver
 {
 	class Serializer
 	{
@@ -14,10 +14,13 @@ namespace Pogplant
 		// Save scene
 		void Save(const std::string& File);
 		// Load scene
-		void Load(const std::string& File);
+		bool Load(const std::string& File);
 	private:
 		void SaveObjects(const std::string& File);
 		Json::Value SaveComponents(entt::entity id);
+
+		void LoadObjects(const std::string& File);
+		void LoadComponents(const Json::Value& root, entt::entity id);
 
 	};
 

@@ -69,12 +69,15 @@ namespace Pogplant
 		// Directional
 		auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
 		auto dLight_it = dResults.begin();
-		const auto& dLight = dResults.get<const Components::Directional_Light>(*dLight_it);
-		const std::string currLight = "directLight.";
-		ShaderLinker::SetUniform((currLight + "Direction").c_str(), dLight.m_Direction);
-		ShaderLinker::SetUniform((currLight + "Color").c_str(), dLight.m_Color * dLight.m_Intensity);
-		ShaderLinker::SetUniform((currLight + "Diffuse").c_str(), dLight.m_Diffuse);
-		ShaderLinker::SetUniform((currLight + "Specular").c_str(), dLight.m_Specular);
+		if (dLight_it != dResults.end())
+		{
+			const auto& dLight = dResults.get<const Components::Directional_Light>(*dLight_it);
+			const std::string currLight = "directLight.";
+			ShaderLinker::SetUniform((currLight + "Direction").c_str(), dLight.m_Direction);
+			ShaderLinker::SetUniform((currLight + "Color").c_str(), dLight.m_Color * dLight.m_Intensity);
+			ShaderLinker::SetUniform((currLight + "Diffuse").c_str(), dLight.m_Diffuse);
+			ShaderLinker::SetUniform((currLight + "Specular").c_str(), dLight.m_Specular);
+		}
 
 		// Point lights
 		auto results = registry.view<Components::Point_Light, Components::Transform>();

@@ -17,6 +17,7 @@ namespace Components
 
 	struct Name
 	{
+		Name(std::string name) : m_name(name) {}
 		std::string m_name;
 	};
 

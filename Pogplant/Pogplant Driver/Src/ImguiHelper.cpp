@@ -471,8 +471,7 @@ namespace PogplantDriver
 		}
 		if (!filepath.empty())
 		{
-			std::cout << filepath << std::endl;
-			PP::Serializer serialiser;
+			Serializer serialiser;
 			serialiser.Save(filepath);
 		}
 	}
@@ -755,10 +754,13 @@ namespace PogplantDriver
 			//("Could not load {0} - not a scene file", path.filename().string());
 			return;
 		}
-		//SceneSerializer serializer(newScene);
-		//if (serializer.Deserialize(path.string()))
-		//{
-		//}
+		NewScene();
+		Serializer serialiser;
+		if(!serialiser.Load(path.string()));
+		{
+			//ASSET HERE
+			//Something failed to load?
+		}
 	}
 
 

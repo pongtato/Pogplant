@@ -144,7 +144,7 @@ void Init()
 	auto entity = ecs.CreateEntity("", pos, rot, scale);
 	//entity.AddComponent<Components::Transform>(pos, rot, scale);
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, bagModel });
-	entity.AddComponent<Components::Name>(Name{ "Bag" });
+	//entity.AddComponent<Components::Name>(Name{ "Bag" });
 
 	//ecs.AddComponent<Components::Renderer>(entity, &bagModel);
 	//registry.emplace<Renderer>(entity, &bagModel);
@@ -157,14 +157,14 @@ void Init()
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel });
 	entity.AddComponent<Imaginary_object>("gab_small_pepe");
-	entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
+	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
 
 	pos = { 0.0f, -55.0f, 0.0f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 100.0f,100.0f,100.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, floorModel });
-	entity.AddComponent<Components::Name>(Name{ "Floor" });
+	//entity.AddComponent<Components::Name>(Name{ "Floor" });
 
 	pos = { 5, -2.0f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -172,7 +172,7 @@ void Init()
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, shipModel });
-	entity.AddComponent<Components::Name>(Name{ "Ship" });
+	//entity.AddComponent<Components::Name>(Name{ "Ship" });
 
 	pos = { -10.0f, -2.0f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -180,7 +180,7 @@ void Init()
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, enemyModel });
-	entity.AddComponent<Components::Name>(Name{ "Enemy" });
+	//entity.AddComponent<Components::Name>(Name{ "Enemy" });
 
 	//auto entity = registry.create();
 	//registry.emplace<Transform>(registry.create(), pos, rot, scale);
@@ -194,7 +194,7 @@ void Init()
 	entity = ecs.CreateEntity("", pos, glm::vec3{0}, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
-	entity.AddComponent<Components::Name>(Name{ "Directional"});
+	//entity.AddComponent<Components::Name>(Name{ "Directional"});
 
 	pos = { 0.0f, 10.0f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
@@ -203,7 +203,7 @@ void Init()
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
-	entity.AddComponent<Components::Name>(Name{ "Light 1" });
+	//entity.AddComponent<Components::Name>(Name{ "Light 1" });
 
 	intensity = 1.0f;
 	pos = { -10.0f, 10.0f, 10.0f };
@@ -211,21 +211,21 @@ void Init()
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
-	entity.AddComponent<Components::Name>(Name{ "Light 2" });
+	//entity.AddComponent<Components::Name>(Name{ "Light 2" });
 
 	pos = { 10.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
-	entity.AddComponent<Components::Name>(Name{ "Light 3" });
+	//entity.AddComponent<Components::Name>(Name{ "Light 3" });
 
 	pos = { 0.0f, 10.0f, -10.0f };
 	color = { 0.0f, 1.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::RenderObject>(RenderObject{ glm::mat4{1}, color, sphereModel, false });
-	entity.AddComponent<Components::Name>(Name{ "Light 4" });
+	//entity.AddComponent<Components::Name>(Name{ "Light 4" });
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 	
