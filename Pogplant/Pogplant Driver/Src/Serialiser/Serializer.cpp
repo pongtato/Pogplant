@@ -75,15 +75,15 @@ namespace PogplantDriver
 		if (transform_component)
 		{
 			//this works
-			//Reflect_This(subroot, transform_component);
+			Reflect_This(subroot, transform_component);
 
-			Json::Value classroot;
+			//Json::Value classroot;
 
-			AddVec3To(classroot, "Position", transform_component->m_position);
-			AddVec3To(classroot, "Rotation", transform_component->m_rotation);
-			AddVec3To(classroot, "Scale", transform_component->m_scale);
+			//AddVec3To(classroot, "Position", transform_component->m_position);
+			//AddVec3To(classroot, "Rotation", transform_component->m_rotation);
+			//AddVec3To(classroot, "Scale", transform_component->m_scale);
 
-			subroot["Transform"] = classroot;
+			//subroot["Transform"] = classroot;
 
 		}
 
@@ -146,9 +146,9 @@ namespace PogplantDriver
 		auto& render = root["Render"];
 		if (transform)
 		{
-			glm::vec3 pos = { transform["Position"][0].asFloat(),transform["Position"][1].asFloat(),transform["Position"][2].asFloat() };
-			glm::vec3 rot = { transform["Rotation"][0].asFloat(),transform["Rotation"][1].asFloat(),transform["Rotation"][2].asFloat() };
-			glm::vec3 sca = { transform["Scale"][0].asFloat(),transform["Scale"][1].asFloat(),transform["Scale"][2].asFloat() };
+			glm::vec3 pos = { transform["m_position"][0].asFloat(),transform["m_position"][1].asFloat(),transform["m_position"][2].asFloat() };
+			glm::vec3 rot = { transform["m_rotation"][0].asFloat(),transform["m_rotation"][1].asFloat(),transform["m_rotation"][2].asFloat() };
+			glm::vec3 sca = { transform["m_scale"][0].asFloat(),transform["m_scale"][1].asFloat(),transform["m_scale"][2].asFloat() };
 
 			ImguiHelper::m_ecs->GetReg().emplace<Transform>(id, pos, rot, sca);
 		}
