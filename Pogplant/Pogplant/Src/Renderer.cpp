@@ -9,6 +9,7 @@
 #include "Model.h"
 #include "Skybox.h"
 #include "TextureResource.h"
+#include "ShadowConfig.h"
 
 #include <gtc/matrix_transform.hpp>
 #include <glew.h>
@@ -63,10 +64,13 @@ namespace Pogplant
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_COLOR_BUFFER]);
 		glActiveTexture(GL_TEXTURE3);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
+		glActiveTexture(GL_TEXTURE4);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
 
 		// Lights
 
 		// Directional
+		ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
 		auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
 		auto dLight_it = dResults.begin();
 		if (dLight_it != dResults.end())
@@ -77,6 +81,7 @@ namespace Pogplant
 			ShaderLinker::SetUniform((currLight + "Color").c_str(), dLight.m_Color * dLight.m_Intensity);
 			ShaderLinker::SetUniform((currLight + "Diffuse").c_str(), dLight.m_Diffuse);
 			ShaderLinker::SetUniform((currLight + "Specular").c_str(), dLight.m_Specular);
+			ShaderLinker::SetUniform((currLight + "Direction").c_str(), dLight.m_Direction);
 		}
 
 		// Point lights
@@ -108,7 +113,6 @@ namespace Pogplant
 
 		Camera* currCam = CameraResource::GetCamera(_CameraID);
 		ShaderLinker::SetUniform("viewPos", currCam->GetPosition());
-
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
 		ShaderLinker::UnUse();
 
@@ -117,6 +121,56 @@ namespace Pogplant
 		glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0); 
 		glBlitFramebuffer(0, 0, Window::m_Width, Window::m_Height, 0, 0, Window::m_Width, Window::m_Height, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	}
+
+	void Renderer::ShadowPass(const entt::registry& registry)
+	{
+		// Default position in case directional light not in scene
+		glm::vec3 lightPos = { 0,0,0 };
+		// Directional light
+		auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
+		auto dLight_it = dResults.begin();
+		if (dLight_it != dResults.end())
+		{
+			const auto& dLight = dResults.get<const Components::Transform>(*dLight_it);
+			lightPos = dLight.m_position;
+		}
+
+		glm::mat4 orthogalProj = glm::ortho(-50.0f, 50.0f, -50.0f, 50.0f, 0.1f, 200.0f);
+		glm::mat4 lightView = glm::lookAt(lightPos, glm::vec3{ 0 }, glm::vec3{ 0.0f, 1.0f, 0.0f });
+		ShadowCFG::m_LightProj = orthogalProj * lightView;
+
+		ShaderLinker::Use("SHADOW");
+		ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
+
+		glEnable(GL_DEPTH_TEST);
+		glViewport(0, 0, ShadowCFG::m_ShadowMapW, ShadowCFG::m_ShadowMapH);
+		glBindFramebuffer(GL_FRAMEBUFFER, FrameBufferResource::m_FrameBuffers[BufferType::SHADOW_BUFFER]);
+		glClear(GL_DEPTH_BUFFER_BIT);
+
+		/// Draw
+		auto results = registry.view<Components::Render>();
+		for (const auto& e : results)
+		{
+			const auto& it = results.get<const Components::Render>(e);
+			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			ShaderLinker::SetUniform("i_CastShadow", it.m_UseLight);
+			it.m_RenderModel->Draw();
+		}
+		///
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		ShaderLinker::UnUse();
+
+		glViewport(0, 0, Window::m_Width, Window::m_Height);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		/// Debug draw
+		//glBindFramebuffer(GL_FRAMEBUFFER, FrameBufferResource::m_FrameBuffers[BufferType::PP_BUFFER]);
+		//ShaderLinker::Use("DEPTH");
+		//MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+		//ShaderLinker::UnUse();
+		//glBindFramebuffer(GL_FRAMEBUFFER,0);
 	}
 
 	void Renderer::ClearBuffer(float _R, float _G, float _B, float _A)
@@ -134,6 +188,8 @@ namespace Pogplant
 
 	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::Render* _Selected)
 	{
+		glEnable(GL_CULL_FACE);
+
 		// Outline edge shit will be solved later
 		(void)_Selected;
 
@@ -148,7 +204,6 @@ namespace Pogplant
 
 		for (const auto& e : results)
 		{
-			// Draw selected objects seperately for edge detection
 			const auto& it = results.get<const Components::Render>(e);
 
 			ShaderLinker::SetUniform("m4_Model", it.m_Model);
@@ -207,18 +262,18 @@ namespace Pogplant
 		//	glStencilFunc(GL_ALWAYS, 0, 0xFF);
 		//	glEnable(GL_DEPTH_TEST);
 		//}
+
+		glDisable(GL_CULL_FACE);
 	}
 
 	void Renderer::Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16])
 	{
 		(void)_Ortho;
+		(void)_View;
+		(void)_Perspective;
 
-		// Scene
-		ShaderLinker::Use("BASIC");
-		ShaderLinker::SetUniform("m4_Projection", _Perspective);
-		ShaderLinker::SetUniform("m4_View", _View);
-		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
-		ShaderLinker::UnUse();
+		// Use the other draw function after casting to glm type
+		// ... to do
 	}
 
 	void Renderer::DrawScreen()

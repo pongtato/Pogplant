@@ -190,8 +190,8 @@ void Init()
 	//registry.emplace<Renderer>(entity,&cubeModel);
 
 	/// Light
-	pos = { 0.0f, 1000.0f, 0.0f };
-	glm::vec3 direction = {-0.5f,-0.5f,-0.5f};
+	pos = { 7.5f, 15.0f, 20.0f };
+	glm::vec3 direction = -glm::normalize(pos);
 	scale = { 1.0f,1.0f,1.0f }; // Affects light model and not the actual light size
 	float intensity = 0.5f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{0}, scale);
@@ -387,6 +387,7 @@ void DrawEditor()
 	}
 
 	// Models for Gpass
+	PP::Renderer::ShadowPass(ecs.GetReg());
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::Draw("EDITOR", ecs.GetReg(), renderOjbect);

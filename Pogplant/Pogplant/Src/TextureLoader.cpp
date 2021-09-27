@@ -45,7 +45,7 @@ namespace Pogplant
         else
         {
             std::string err = "Texture failed to load at ";
-            err += _Path;
+            err += _Directory + '/' + _Path;
             Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
             stbi_image_free(data);
         }
@@ -81,7 +81,7 @@ namespace Pogplant
             else
             {
                 std::string err = "Texture failed to load at ";
-                err += _Paths[i];
+                err += _Directory + '/' + _Paths[i];
                 Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
                 stbi_image_free(data);
             }

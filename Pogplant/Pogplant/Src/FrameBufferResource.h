@@ -28,6 +28,10 @@ namespace Pogplant
 		G_NOLIGHT_BUFFER,
 		G_DEPTH,
 
+		// Shadow pass
+		SHADOW_BUFFER,
+		SHADOW_DEPTH,
+
 		// Post process
 		PP_BUFFER,
 		PP_COLOR_BUFFER_NORMAL,

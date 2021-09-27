@@ -756,7 +756,7 @@ namespace PogplantDriver
 		}
 		NewScene();
 		Serializer serialiser;
-		if(!serialiser.Load(path.string()));
+		if(!serialiser.Load(path.string()))
 		{
 			//ASSET HERE
 			//Something failed to load?

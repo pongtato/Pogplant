@@ -1,16 +1,17 @@
 #pragma once
 #include <unordered_map>
+#include <string>
 
 namespace Pogplant
 {
 	struct ShaderProfile
 	{
 		ShaderProfile() = default;
-		ShaderProfile(const char* const _ProgramID, const char* const _VertexPath, const char* const _FragmentPath);
+		ShaderProfile(std::string _ProgramID, std::string _Directory, std::string _VertexPath, std::string _FragmentPath);
 
-		const char* m_ProgramID;
-		const char* m_VertexPath;
-		const char* m_FragmentPath;
+		std::string m_ProgramID;
+		std::string m_VertexPath;
+		std::string m_FragmentPath;
 	};
 
 	struct ShaderResource
@@ -18,7 +19,7 @@ namespace Pogplant
 		static void AddShaderProfile(const ShaderProfile& _ShaderProfile);
 
 		/// Container
-		static std::unordered_map < const char*, unsigned int > m_ShaderPrograms;
-		static std::unordered_map < const char*, ShaderProfile > m_ShaderProfiles;
+		static std::unordered_map < std::string, unsigned int > m_ShaderPrograms;
+		static std::unordered_map < std::string, ShaderProfile > m_ShaderProfiles;
 	};
 }

@@ -3,13 +3,13 @@
 
 namespace Pogplant
 {
-	std::unordered_map < const char*, unsigned int > ShaderResource::m_ShaderPrograms;
-	std::unordered_map<const char*, ShaderProfile> ShaderResource::m_ShaderProfiles;
+	std::unordered_map <std::string, unsigned int> ShaderResource::m_ShaderPrograms;
+	std::unordered_map <std::string, ShaderProfile> ShaderResource::m_ShaderProfiles;
 
-	ShaderProfile::ShaderProfile(const char* const _ProgramID, const char* const _VertexPath, const char* const _FragmentPath)
+	ShaderProfile::ShaderProfile(std::string _ProgramID, std::string _Directory, std::string _VertexPath, std::string _FragmentPath)
 		: m_ProgramID{ _ProgramID }
-		, m_VertexPath{ _VertexPath }
-		, m_FragmentPath{ _FragmentPath }
+		, m_VertexPath{ _Directory + _VertexPath }
+		, m_FragmentPath{ _Directory + _FragmentPath }
 	{
 	};
 

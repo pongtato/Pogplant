@@ -28,6 +28,7 @@
     <ClInclude Include="Src\Renderer.h" />
     <ClInclude Include="Src\ShaderLinker.h" />
     <ClInclude Include="Src\ShaderResource.h" />
+    <ClInclude Include="Src\ShadowConfig.h" />
     <ClInclude Include="Src\Skybox.h" />
     <ClInclude Include="Src\TextureLoader.h" />
     <ClInclude Include="Src\TextureResource.h" />
@@ -51,6 +52,7 @@
     <ClCompile Include="Src\Renderer.cpp" />
     <ClCompile Include="Src\ShaderLinker.cpp" />
     <ClCompile Include="Src\ShaderResource.cpp" />
+    <ClCompile Include="Src\ShadowConfig.cpp" />
     <ClCompile Include="Src\Skybox.cpp" />
     <ClCompile Include="Src\TextureLoader.cpp" />
     <ClCompile Include="Src\TextureResource.cpp" />

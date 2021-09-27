@@ -10,6 +10,7 @@ uniform sampler2D gPosition;
 uniform sampler2D gNormal;
 uniform sampler2D gAlbedoSpec;
 uniform sampler2D gNoLight;
+uniform sampler2D gShadow;
 
 struct Light 
 {
@@ -21,7 +22,7 @@ struct Light
     float Radius;
 };
 
-struct DirectionalLightDir
+struct DirectionalLight
 {
     vec3 Direction;
     vec3 Color;
@@ -32,9 +33,48 @@ struct DirectionalLightDir
 
 const int MAX_LIGHTS = 32;
 uniform Light lights[MAX_LIGHTS];
-uniform DirectionalLightDir directLight;
+uniform DirectionalLight directLight;
 uniform vec3 viewPos;
 uniform int activeLights;
+uniform mat4 m4_LightProjection;
+
+float ShadowCalculation()
+{
+    vec3 FragPos = texture(gPosition, TexCoords).rgb;
+    vec4 fragPosLightSpace = m4_LightProjection * vec4(FragPos,1.0f);
+    // perform perspective divide
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    // transform to [0,1] range
+    projCoords = projCoords * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
+    float closestDepth = texture(gShadow, projCoords.xy).r; 
+    // get depth of current fragment from light's perspective
+    float currentDepth = projCoords.z;
+    // calculate bias (based on depth map resolution and slope)
+    vec3 normal = texture(gNormal, TexCoords).rgb;
+    vec3 lightDir = normalize(-directLight.Direction);
+    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);
+    // check whether current frag pos is in shadow
+    // float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;
+    // PCF
+    float shadow = 0.0;
+    vec2 texelSize = 1.0 / textureSize(gShadow, 0);
+    for(int x = -1; x <= 1; ++x)
+    {
+        for(int y = -1; y <= 1; ++y)
+        {
+            float pcfDepth = texture(gShadow, projCoords.xy + vec2(x, y) * texelSize).r; 
+            shadow += currentDepth - bias > pcfDepth  ? 1.0 : 0.0;        
+        }    
+    }
+    shadow /= 9.0;
+    
+    // keep the shadow at 0.0 when outside the far_plane region of the light's frustum.
+    if(projCoords.z > 1.0)
+        shadow = 0.0;
+        
+    return shadow;
+}
 
 void main()
 {             
@@ -46,7 +86,8 @@ void main()
     vec4 NoLight = texture(gNoLight, TexCoords);
     
     // then calculate lighting as usual
-    vec3 lighting  = Diffuse * 0.42; // hard-coded ambient component
+    float shadow = 1-ShadowCalculation();
+    vec3 lighting  = Diffuse * 0.42 * clamp(shadow,0.0f,1.0f); // hard-coded ambient component
     vec3 viewDir  = normalize(viewPos - FragPos);
     for(int i = 0; i < activeLights; ++i)
     {

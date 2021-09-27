@@ -1,5 +1,7 @@
 #pragma once
 
+#include <glm.hpp>
+
 namespace Pogplant
 {
 	enum class BufferType;
@@ -19,6 +21,7 @@ namespace Pogplant
 		static void InitGizmoBuffer();
 		static void InitPostProcessBuffer();
 		static void InitGBuffer();
+		static void InitShadowBuffer();
 	};
 }
 

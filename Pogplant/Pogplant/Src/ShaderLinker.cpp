@@ -12,17 +12,21 @@ namespace Pogplant
 
 	void ShaderLinker::InitShader()
 	{
+		const std::string dir = "Resources/Shaders/";
+
 		/// Serialize?
-		ShaderResource::AddShaderProfile(ShaderProfile("BASIC", "Resources/Shaders/Basic.vert", "Resources/Shaders/Basic.frag"));
-		ShaderResource::AddShaderProfile(ShaderProfile("SCREEN", "Resources/Shaders/Screen.vert", "Resources/Shaders/Screen.frag"));
-		ShaderResource::AddShaderProfile(ShaderProfile("MODEL", "Resources/Shaders/Model.vert", "Resources/Shaders/Model.frag"));
-		ShaderResource::AddShaderProfile(ShaderProfile("EDGE", "Resources/Shaders/Edge.vert", "Resources/Shaders/Edge.frag"));
-		ShaderResource::AddShaderProfile(ShaderProfile("SKYBOX", "Resources/Shaders/Skybox.vert", "Resources/Shaders/Skybox.frag"));
-		ShaderResource::AddShaderProfile(ShaderProfile("GPASS", "Resources/Shaders/GPass.vert", "Resources/Shaders/GPass.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("BASIC", dir, "Basic.vert", "Basic.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("SCREEN", dir, "Screen.vert", "Screen.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("MODEL", dir, "Model.vert", "Model.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("EDGE", dir, "Edge.vert", "Edge.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("SKYBOX", dir, "Skybox.vert", "Skybox.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("GPASS", dir, "GPass.vert", "GPass.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("SHADOW", dir, "Shadows.vert", "Shadows.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("DEPTH", dir, "Depth.vert", "Depth.frag"));
 
 		for (const auto& it : ShaderResource::m_ShaderProfiles)
 		{
-			LoadShader(it.second.m_ProgramID, it.second.m_VertexPath, it.second.m_FragmentPath);
+			LoadShader(it.second.m_ProgramID.c_str(), it.second.m_VertexPath.c_str(), it.second.m_FragmentPath.c_str());
 		}
 	}
 

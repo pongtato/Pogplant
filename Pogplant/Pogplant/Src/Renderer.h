@@ -22,6 +22,7 @@ namespace Pogplant
 		static void EndBuffer();
 		static void PostProcess();
 		static void GLightPass(const char* _CameraID, const entt::registry& registry);
+		static void ShadowPass(const entt::registry& registry);
 		static void ClearBuffer(float _R = 0.0f, float _G = 0.0f, float _B = 0.0f, float _A = 1.0f);
 		static void SwapBuffer();
 		// Draw mesh in world space
