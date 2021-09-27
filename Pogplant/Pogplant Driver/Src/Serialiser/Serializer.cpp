@@ -74,6 +74,9 @@ namespace PogplantDriver
 
 		if (transform_component)
 		{
+			//this works
+			//Reflect_This(subroot, transform_component);
+
 			Json::Value classroot;
 
 			AddVec3To(classroot, "Position", transform_component->m_position);
@@ -196,6 +199,41 @@ namespace PogplantDriver
 		_classroot[_string] = data;
 
 		data.clear();
+	}
+
+	Json::Value Serializer::Reflect_This(Json::Value& _root, rttr::instance _obj)
+	{
+		rttr::instance obj = _obj.get_type().get_raw_type().is_wrapper() ? _obj.get_wrapped_instance() : _obj;
+		const auto component_name = obj.get_type().get_raw_type().get_name().to_string();
+
+		auto prop_list = obj.get_derived_type().get_properties();
+
+		Json::Value root;
+
+		for (auto prop : prop_list)
+		{
+			if (prop.get_metadata("NO_SERIALIZE"))
+				continue;
+
+			rttr::variant prop_value = prop.get_value(obj);
+
+			if (!prop_value)
+				continue; // cannot serialize, because we cannot retrieve the value
+
+			const auto name = prop.get_name().to_string();
+
+			if (prop_value.is_type<glm::vec3>())
+			{
+				AddVec3To(root, name, prop_value.get_value<glm::vec3>());
+			}
+			else
+			{
+				std::cout << "type not supported" << std::endl;
+			}
+
+		}
+
+		return _root[component_name] = root;
 	}
 }
 

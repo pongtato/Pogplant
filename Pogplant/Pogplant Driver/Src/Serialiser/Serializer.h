@@ -25,6 +25,11 @@ namespace PogplantDriver
 
 		//helper functions for saving
 		void AddVec3To(Json::Value& _classroot, std::string _string, glm::vec3& _vec3);
+	
+		//reflection based function
+
+		Json::Value Reflect_This(Json::Value& _root, rttr::instance _obj);
+
 	};
 
 

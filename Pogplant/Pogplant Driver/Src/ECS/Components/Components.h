@@ -17,12 +17,6 @@ namespace Components
 		std::string m_tag;
 	};
 
-	RTTR_REGISTRATION
-	{
-		rttr::registration::class_<Tag>("Tag")
-			 .property("data", &Tag::m_tag);
-	}
-
 	struct Name
 	{
 		Name(std::string name) : m_name(name) {}
@@ -75,6 +69,17 @@ namespace Components
 			memcpy(m_ModelMtx, glm::value_ptr(model), sizeof(model));
 		}
 	};
+
+	RTTR_REGISTRATION
+	{
+		rttr::registration::class_<Transform>("Transform")
+			.constructor<glm::vec3, glm::vec3,glm::vec3>()
+			.property("m_position", &Transform::m_position)
+			.property("m_rotation", &Transform::m_rotation)
+			.property("m_scale", &Transform::m_scale);
+	}
+
+
 
 	struct Render
 	{
