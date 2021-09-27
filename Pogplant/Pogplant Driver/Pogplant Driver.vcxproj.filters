@@ -120,6 +120,9 @@
     <ClCompile Include="Src\Serialiser\Serializer.cpp">
       <Filter>Source Files\Serialiser</Filter>
     </ClCompile>
+    <ClCompile Include="Src\FileHandler.cpp">
+      <Filter>Source Files\AssetCompiler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="Src\Serialiser\Serializer.h">
       <Filter>Source Files\Serialiser</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\FileHandler.h">
+      <Filter>Source Files\AssetCompiler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

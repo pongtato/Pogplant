@@ -16,11 +16,11 @@ namespace Pogplant
 		//LoadModel("ENEMY", "Resources/Models/Enemy/Enemy_01.fbx", GL_TRIANGLES, 0);
 
 		// Load from .kek files
-		LoadModel("CUBE", "Resources/KekFiles/cube.kek", GL_TRIANGLES, 1);
-		LoadModel("SPHERE", "Resources/KekFiles/sphere.kek", GL_TRIANGLES, 1);
-		LoadModel("SHIP", "Resources/KekFiles/Player_Ship.kek", GL_TRIANGLES, 1);
-		LoadModel("ENEMY", "Resources/KekFiles/Enemy_01.kek", GL_TRIANGLES, 1);
-		LoadModel("BAG", "Resources/KekFiles/backpack.kek", GL_TRIANGLES, 1);
+		LoadModel(GetFileName("Resources/KekFiles/Cube.kek"), "Resources/KekFiles/Cube.kek", GL_TRIANGLES, 1);
+		LoadModel(GetFileName("Resources/KekFiles/Sphere.kek"), "Resources/KekFiles/Sphere.kek", GL_TRIANGLES, 1);
+		LoadModel(GetFileName("Resources/KekFiles/Player_Ship.kek"), "Resources/KekFiles/Player_Ship.kek", GL_TRIANGLES, 1);
+		LoadModel(GetFileName("Resources/KekFiles/Enemy_01.kek"), "Resources/KekFiles/Enemy_01.kek", GL_TRIANGLES, 1);
+		LoadModel(GetFileName("Resources/KekFiles/backpack.kek"), "Resources/KekFiles/backpack.kek", GL_TRIANGLES, 1);
 	}
 
 	void ModelResource::CleanUpResource()
@@ -35,5 +35,13 @@ namespace Pogplant
 	{
 		// 0 to use assimp, 1 to use asset compiler
 		m_ModelPool[_ModelID] = new Model(_Path, _PrimitiveType, _ModelID, _Mode);
+	}
+
+	std::string ModelResource::GetFileName(const std::string& fullpath)
+	{
+		std::string filename;
+		size_t found = fullpath.find_last_of('/');
+		filename = fullpath.substr(found + 1, fullpath.find_last_of('.') - found - 1);
+		return filename;
 	}
 }

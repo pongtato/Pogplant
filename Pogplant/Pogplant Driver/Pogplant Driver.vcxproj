@@ -201,6 +201,7 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClCompile Include="Src\ECS\ECS.cpp" />
     <ClCompile Include="Src\ECS\Entity.cpp" />
     <ClCompile Include="Src\ECS\Systems\imaginary_system.cpp" />
+    <ClCompile Include="Src\FileHandler.cpp" />
     <ClCompile Include="Src\ImguiHelper.cpp" />
     <ClCompile Include="Src\Input\GLFWInput.cpp" />
     <ClCompile Include="Src\Input\InputSystem.cpp" />
@@ -230,6 +231,7 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClInclude Include="Src\ECS\ECS.h" />
     <ClInclude Include="Src\ECS\Entity.h" />
     <ClInclude Include="Src\ECS\Systems\imaginary_system.h" />
+    <ClInclude Include="Src\FileHandler.h" />
     <ClInclude Include="Src\ImguiHelper.h" />
     <ClInclude Include="Src\Input\GLFWInput.h" />
     <ClInclude Include="Src\Input\InputSystem.h" />

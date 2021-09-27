@@ -5,14 +5,12 @@ std::once_flag AssetCompiler::m_onceFlag;
 
 AssetCompiler& AssetCompiler::GetInstance()
 {
-	std::call_once(m_onceFlag, [] {
-		m_instance.reset(new AssetCompiler);
-		});
+	std::call_once(m_onceFlag, [] {m_instance.reset(new AssetCompiler);});
 
 	return *m_instance.get();
 }
 
-void AssetCompiler::RunExecutable(std::string key,std::string appName, std::string param)
+void AssetCompiler::RunExecutable(std::string appName, std::string param)
 {
 	//std::cout << "[PP::ASSETCOMPILER] " << appName << ", Input: " << param << std::endl;
 
@@ -23,9 +21,10 @@ void AssetCompiler::RunExecutable(std::string key,std::string appName, std::stri
 	si.cb = sizeof(si);
 	ZeroMemory(&pi, sizeof(pi));
 
-	bool flag = CreateProcessA(
+	bool flag = CreateProcessA
+	(
 		appName.c_str(),					// Application Name
-		const_cast<char *>(param.c_str()),	// Command Line Parameters
+		const_cast<char*>(param.c_str()),	// Command Line Parameters
 		NULL,
 		NULL,
 		FALSE,
@@ -38,7 +37,7 @@ void AssetCompiler::RunExecutable(std::string key,std::string appName, std::stri
 
 	if (!flag)
 	{
-		
+
 		DWORD error = GetLastError();
 		std::stringstream ss;
 		ss << "CreateProcess Failed, Error: " << error;
@@ -46,9 +45,8 @@ void AssetCompiler::RunExecutable(std::string key,std::string appName, std::stri
 		std::cout << ss.str() << std::endl;
 		return;
 	}
-
-	m_processHandle[key] = pi.hProcess;
-	//CloseHandle(pi.hThread);
+	m_processHandle[GetFileName(param)] = pi.hProcess;
+	CloseHandle(pi.hThread);
 	//CloseHandle(pi.hProcess);
 }
 
@@ -78,7 +76,8 @@ void AssetCompiler::WaitForAllProcess()
 void AssetCompiler::Update()
 {
 	auto it = m_processHandle.begin();
-	while (it != m_processHandle.end()) {
+	while (it != m_processHandle.end()) 
+	{
 		DWORD exit_code;
 		GetExitCodeProcess(it->second, &exit_code);
 		if (exit_code != STILL_ACTIVE)
@@ -110,4 +109,12 @@ bool AssetCompiler::Exists(std::string filePath)
 		return true;
 	}
 	return false;
+}
+
+std::string AssetCompiler::GetFileName(const std::string& fullpath)
+{
+	std::string filename;
+	size_t found = fullpath.find_last_of('/');
+	filename = fullpath.substr(found + 1, fullpath.find_last_of('.') - found - 1);
+	return filename;
 }

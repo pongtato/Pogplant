@@ -23,18 +23,18 @@ private:
 	AssetCompiler& operator=(const AssetCompiler& rhs) = delete;
 	// Key = String, Value = Process Handle
 	std::unordered_map<std::string, HANDLE> m_processHandle;
-	int m_data;
 
 public:
 
 	virtual ~AssetCompiler() = default;
 	static AssetCompiler& GetInstance();
-	void RunExecutable(std::string key, std::string appName, std::string param = "");
+	void RunExecutable(std::string appName, std::string param = "");
 	void WaitForSingleProcess(std::string key);
 	void WaitForAllProcess();
 	void Update();
 	bool CheckProcessDone(std::string key);
 	bool Exists(std::string filePath);
+	static std::string GetFileName(const std::string& fullpath);
 };
 
 #endif //_ASSET_COMPILER_H_

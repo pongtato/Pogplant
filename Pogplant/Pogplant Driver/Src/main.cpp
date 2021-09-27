@@ -18,6 +18,7 @@
 #include "Input/InputSystem.h"
 #include "ResourceAllocator.hpp"
 #include "AssetCompiler.h"
+#include "FileHandler.h"
 //struct MEMLEAK
 //{
 //	~MEMLEAK()
@@ -43,19 +44,41 @@ void Init()
 		"Pogplant Driver 6969" // Window name
 	);
 
-	
+	FileHandler& fileHandler = fileHandler.GetInstance();
+	fileHandler.AddNewWatchPath("Resources/KekFiles/");
+
+	//const std::function<void(std::string, FileStatus)>& fs = [](std::string path_to_watch, FileStatus status) -> void
+	//{
+	//	switch (status)
+	//	{
+	//	case FileStatus::CREATED:
+	//		std::cout << "File created: " << path_to_watch << '\n';
+	//		break;
+	//	case FileStatus::MODIFIED:
+	//		std::cout << "File modified: " << path_to_watch << '\n';
+	//		break;
+	//	case FileStatus::ERASED:
+	//		std::cout << "File erased: " << path_to_watch << '\n';
+	//		break;
+	//	default:
+	//		std::cout << "Error! Unknown file status.\n";
+	//	}
+	//};
+	//std::thread t1(&FileHandler::start, &fileHandler, fs);
+
+
 	// Will change to automatic update when i figure it out
 	AssetCompiler& acc = acc.GetInstance();
-	if(!acc.Exists("Resources\\KekFiles\\Cube.kek"))
-		acc.RunExecutable("CUBE", "Pogplant Compiler.exe", "Resources\\Models\\cube\\Cube.fbx");
-	if (!acc.Exists("Resources\\KekFiles\\Sphere.kek"))
-		acc.RunExecutable("SPHERE", "Pogplant Compiler.exe", "Resources\\Models\\sphere\\Sphere.fbx");
-	if (!acc.Exists("Resources\\KekFiles\\Enemy_01.kek"))
-		acc.RunExecutable("ENEMY", "Pogplant Compiler.exe", "Resources\\Models\\Enemy\\Enemy_01.fbx");
-	if (!acc.Exists("Resources\\KekFiles\\Player_Ship.kek"))
-		acc.RunExecutable("SHIP", "Pogplant Compiler.exe", "Resources\\Models\\Ship\\Player_Ship.fbx");
-	if (!acc.Exists("Resources\\KekFiles\\backpack.kek"))
-		acc.RunExecutable("BAG", "Pogplant Compiler.exe", "Resources\\Models\\backpack\\backpack.obj");
+	if(!acc.Exists("Resources/KekFiles/Cube.kek"))
+		acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/cube/Cube.fbx");
+	if (!acc.Exists("Resources/KekFiles/Sphere.kek"))
+		acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/sphere/Sphere.fbx");
+	if (!acc.Exists("Resources/KekFiles/Enemy_01.kek"))
+		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/Enemy/Enemy_01.fbx");
+	if (!acc.Exists("Resources/KekFiles/Player_Ship.kek"))
+		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/Ship/Player_Ship.fbx");
+	if (!acc.Exists("Resources/KekFiles/backpack.kek"))
+		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/backpack/backpack.obj");
 	acc.WaitForAllProcess();
 	//acc.WaitForSingleProcess("BAG");
 
@@ -82,11 +105,17 @@ void Init()
 	
 
 	/// Add to container
-	PP::Model* bagModel = PP::ModelResource::m_ModelPool["BAG"];
-	PP::Model* sphereModel = PP::ModelResource::m_ModelPool["SPHERE"];
-	PP::Model* floorModel = PP::ModelResource::m_ModelPool["CUBE"];
-	PP::Model* shipModel = PP::ModelResource::m_ModelPool["SHIP"];
-	PP::Model* enemyModel = PP::ModelResource::m_ModelPool["ENEMY"];
+	std::string bag, sphere, floor, ship, enemy;
+	bag = AssetCompiler::GetFileName("Resources/KekFiles/backpack.kek");
+	sphere = AssetCompiler::GetFileName("Resources/KekFiles/Sphere.kek");
+	floor = AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
+	ship = AssetCompiler::GetFileName("Resources/KekFiles/Player_Ship.kek");
+	enemy = AssetCompiler::GetFileName("Resources/KekFiles/Enemy_01.kek");
+	PP::Model* bagModel = PP::ModelResource::m_ModelPool[bag];
+	PP::Model* sphereModel = PP::ModelResource::m_ModelPool[sphere];
+	PP::Model* floorModel = PP::ModelResource::m_ModelPool[floor];
+	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
+	PP::Model* enemyModel = PP::ModelResource::m_ModelPool[enemy];
 	
 	/* CLARENCE DEBUGGING STUFF */
 	//std::cout << "number of meshes: " << cubeModel->m_Meshes.size() << std::endl;
@@ -470,6 +499,8 @@ void Exit()
 	PP::Window::CleanUpWindow();
 
 	Pogplant::Input::InputSystem::Destroy();
+	FileHandler& fh = fh.GetInstance();
+	fh.Stop();
 }
 
 int main()
