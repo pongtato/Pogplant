@@ -41,9 +41,11 @@ namespace Pogplant
         inFile.open(filePath, std::ios::binary);
         if (!inFile.good())
         {
-            std::cout << "Unable to read file." << std::endl;
+            std::cout << "Unable to read file " << filePath << std::endl;
             return false;
         }
+
+        TexLoader::SetTextureFlip(true);
 
         inFile.seekg(0, std::ios::beg);
         size_t fileSize = std::filesystem::file_size(filePath);
@@ -51,8 +53,8 @@ namespace Pogplant
         inFile.read(readBuffer.data(), fileSize);
         inFile.close();
 
-        size_t binDumpSize = static_cast<size_t>(readBuffer[2]);
-        (void)binDumpSize;
+        //size_t binDumpSize = static_cast<size_t>(readBuffer[2]);
+        //(void)binDumpSize;
 
         std::string inBuffer(readBuffer.data(), readBuffer.size());
         std::vector<Vertex> vertices;
@@ -70,7 +72,15 @@ namespace Pogplant
 
             switch (count)
             {
-                // Read Vertex
+            // Read File directory
+            case 0:
+            {
+                std::string temp;
+                std::getline(ss, temp);
+                m_Directory = temp;
+            }
+            break;
+            // Read Vertex
             case 1:
             {
                 while (!ss.eof())
@@ -79,7 +89,6 @@ namespace Pogplant
                     Vertex vertex;
                     glm::vec3 vector3;
                     glm::vec2 vector2;
-
                     
                     std::getline(ss, temp);
                     if (!temp.empty())
@@ -136,14 +145,15 @@ namespace Pogplant
             {
                 while (!ss.eof())
                 {
-                    Texture texture;
                     std::string temp;
                     std::getline(ss, temp);
                     if (!temp.empty())
                     {
+                        std::string type, path;
                         std::stringstream ss1(temp);
-                        ss1 >> texture.m_Type >> texture.m_Path;
-                        textures.push_back(texture);
+                        ss1 >> type >> path;
+                        std::vector<Texture> texture = LoadMaterialTextures(path, type);
+                        textures.insert(textures.end(), texture.begin(), texture.end());
                     }
                 }
             }
@@ -164,44 +174,40 @@ namespace Pogplant
                 ++count;
         }
 
-        size_t found1;
-        size_t count1 = 0;
-        while ((found1 = inBuffer.find("\t\r\n")) != std::string::npos)
-        {   
-            std::string subHeader = inBuffer.substr(0, found1);
-            inBuffer.erase(0, found1 + 3);
-            std::stringstream ss;
-            ss << subHeader;
+        //// Additional data
+        //size_t found1;
+        //size_t count1 = 0;
+        //while ((found1 = inBuffer.find("\t\r\n")) != std::string::npos)
+        //{   
+        //    std::string subHeader = inBuffer.substr(0, found1);
+        //    inBuffer.erase(0, found1 + 3);
+        //    std::stringstream ss;
+        //    ss << subHeader;
 
-            switch (count1)
-            {
-                case 0:
-                {
-                    while (!ss.eof())
-                    {
-                        Texture texture;
-                        std::string temp;
-                        std::getline(ss, temp);
-                        if (!temp.empty())
-                        {
-                            std::stringstream ss1(temp);
-                            ss1 >> texture.m_Type >> texture.m_Path;
-                            m_TexturesLoaded.push_back(texture);
-                        }
-                    }
-                }
-                break;
-                case 1:
-                {
-                    ss >> m_Directory;
-                }
-                break;
-                default:
-                    break;
-            }
+        //    switch (count1)
+        //    {
+        //        case 0:
+        //        {
+        //            while (!ss.eof())
+        //            {
+        //                Texture texture;
+        //                std::string temp;
+        //                std::getline(ss, temp);
+        //                if (!temp.empty())
+        //                {
+        //                    std::stringstream ss1(temp);
+        //                    ss1 >> texture.m_Type >> texture.m_Path;
+        //                    m_TexturesLoaded.push_back(texture);
+        //                }
+        //            }
+        //        }
+        //        break;
+        //        default:
+        //            break;
+        //    }
 
-            ++count1;
-        }
+        //    ++count1;
+        //}
 
         // Find longest edge - General usage no ritter's
         float lenX = std::fabsf(m_Bounds.maxX) + std::fabsf(m_Bounds.minX);
@@ -374,4 +380,33 @@ namespace Pogplant
         }
         return textures;
 	}
+
+    std::vector<Texture> Model::LoadMaterialTextures(std::string& _Material, std::string _TypeName)
+    {
+        std::vector<Texture> textures;
+        //for (unsigned int i = 0; i < _Material->GetTextureCount(_Type); i++)
+        //{
+            // check if texture was loaded before and if so, continue to next iteration: skip loading a new texture
+            bool skip = false;
+            for (unsigned int j = 0; j < m_TexturesLoaded.size(); j++)
+            {
+                if (std::strcmp(m_TexturesLoaded[j].m_Path.data(), _Material.c_str()) == 0)
+                {
+                    textures.push_back(m_TexturesLoaded[j]);
+                    skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
+                    break;
+                }
+            }
+            if (!skip)
+            {   // if texture hasn't been loaded already, load it
+                Texture texture;
+                texture.m_Id = TexLoader::LoadTexture(_Material, this->m_Directory);
+                texture.m_Type = _TypeName;
+                texture.m_Path = _Material;
+                textures.push_back(texture);
+                m_TexturesLoaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
+            }
+        //}
+        return textures;
+    }
 }

@@ -25,7 +25,12 @@ void ModelCompiler::Read(std::string& filePath)
 
 void ModelCompiler::Write(std::ofstream& outBuffer)
 {
-	// Write the meshes vertices/indices/textures in
+	// Write the meshes directory/vertices/indices/textures in
+	std::stringstream dir;
+	dir << m_modelVec.back().m_Directory << std::endl;
+	dir << "\r\n\r\n";
+	outBuffer.write(dir.str().c_str(), dir.str().length());
+	
 	for (auto& meshes : m_modelVec.back().m_Meshes)
 	{
 		std::stringstream ss;
@@ -65,15 +70,13 @@ void ModelCompiler::Write(std::ofstream& outBuffer)
 		outBuffer.write(ss.str().c_str(), ss.str().length());
 	}
 
-	std::stringstream ss1;
-	for (auto& texloaded : m_modelVec.back().m_TexturesLoaded)
-	{
-		ss1 << texloaded.m_Type << ' ' << texloaded.m_Path << '\n';
-	}
-	ss1 << "\t\r\n";
-	ss1 << m_modelVec.back().m_Directory << std::endl;
-	ss1 << "\t\r\n";
-	outBuffer.write(ss1.str().c_str(), ss1.str().length());
+	//std::stringstream ss1;
+	//for (auto& texloaded : m_modelVec.back().m_TexturesLoaded)
+	//{
+	//	ss1 << texloaded.m_Type << ' ' << texloaded.m_Path << '\n';
+	//}
+	//ss1 << "\t\r\n";
+	//outBuffer.write(ss1.str().c_str(), ss1.str().length());
 
 	UnloadModel();
 }

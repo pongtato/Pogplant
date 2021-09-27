@@ -115,9 +115,9 @@ void FileSystem::WriteToBin(std::string& fileName)
 	}
 
 	// Header Stuff
-	std::stringstream ss;
-	ss << static_cast<size_t>(m_file.m_header.m_type) << "\r\n\r\n";
-	outBuffer.write(ss.str().c_str(), ss.str().length());
+	//std::stringstream ss;
+	//ss << static_cast<size_t>(m_file.m_header.m_type) << "\r\n\r\n";
+	//outBuffer.write(ss.str().c_str(), ss.str().length());
 
 	/* If file type is model, call the model compiler to write */
 	if (m_file.m_header.m_type == FileType::MODEL)
