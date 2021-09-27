@@ -92,16 +92,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\RTTR\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\RTTR\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)_D</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\RTTR\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\RTTR\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>

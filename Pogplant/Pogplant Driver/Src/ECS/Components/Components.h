@@ -8,12 +8,20 @@
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
 
+#include <rttr/registration>
+
 namespace Components
 {
 	struct Tag
 	{
 		std::string m_tag;
 	};
+
+	RTTR_REGISTRATION
+	{
+		rttr::registration::class_<Tag>("Tag")
+			 .property("data", &Tag::m_tag);
+	}
 
 	struct Name
 	{
