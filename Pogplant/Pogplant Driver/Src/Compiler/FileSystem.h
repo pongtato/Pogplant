@@ -57,7 +57,7 @@ private:
 	// Private data members
 
 	static ModelCompiler m_modelCompiler;
-	const std::string m_Ext{"kek"};
+	const std::string m_Ext{".kek"};
 	Mode m_mode;
 	File m_file;
 	bool m_running = true;

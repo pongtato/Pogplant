@@ -103,7 +103,7 @@ void FileSystem::WriteToBin(std::string& fileName)
 {
 	// File writing
 	std::string outPath = "Resources/KekFiles";
-	std::string outFile = fileName + '.' + m_Ext;
+	std::string outFile = fileName + m_Ext;
 	std::string filePath = outPath + '/' + outFile;
 	std::filesystem::create_directories(outPath);
 	std::ofstream outBuffer(filePath.c_str(), std::ios::binary | std::ios::trunc);
@@ -131,7 +131,7 @@ void FileSystem::WriteToBin(std::string& fileName)
 	
 	// Close the buffer
 	outBuffer.close();
-	std::cout << "[POGPLANT COMPILER] Finished compiling " << m_file.m_name << " to kek format." << std::endl;
+	std::cout << "[PP::COMPILER] Finished compiling " << m_file.m_name << '.' << m_file.m_ext << "to " << m_Ext << " format" << std::endl;
 }
 
 void FileSystem::ReadRawBin(std::string& filePath)

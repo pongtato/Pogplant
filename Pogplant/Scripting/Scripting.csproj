@@ -51,4 +51,7 @@
     <Compile Include="Script\ObjectScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y /d "$(SolutionDir)bin\$(Configuration)-x64\Pogplant Driver\Scripting.dll" "$(SolutionDir)Libs\ScriptLib\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

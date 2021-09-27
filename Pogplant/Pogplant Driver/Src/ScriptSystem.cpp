@@ -2,18 +2,14 @@
 
 ScriptSystem::ScriptSystem()
 {
-	mono_set_dirs("Libs\\Mono\\lib", "Libs\\Mono\\etc");
+	mono_set_dirs("..\\Libs\\Mono\\lib", "..\\Libs\\Mono\\etc");
 
 	// Create the mono domain
 	m_ptrMonoDomain = mono_jit_init("ScriptSystem");
 	if (m_ptrMonoDomain)
 	{
 		// Load the compiled dll script (c#)
-#if defined _DEBUG
-		m_ptrGameAssembly = mono_domain_assembly_open(m_ptrMonoDomain, "..\\bin\\Debug-x64\\Pogplant Driver\\Scripting.dll");
-#else
-		m_ptrGameAssembly = mono_domain_assembly_open(m_ptrMonoDomain, "..\\bin\\Release-x64\\Pogplant Driver\\Scripting.dll");
-#endif
+		m_ptrGameAssembly = mono_domain_assembly_open(m_ptrMonoDomain, "..\\Libs\\ScriptLib\\Scripting.dll");
 
 		if (m_ptrGameAssembly)
 		{

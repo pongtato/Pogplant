@@ -12,7 +12,8 @@ namespace Pogplant
 		static void InitResource();
 		static void CleanUpResource();
 		// 0x0004 = GL_TRIANGLES
-		static void LoadModel(std::string _ModelID, std::string _Path, unsigned int _PrimitiveType = 0x0004);
+		// _Mode = 0 to use assimp, 1 to use asset compiler
+		static void LoadModel(std::string _ModelID, std::string _Path, unsigned int _PrimitiveType = 0x0004, int _Mode = 0);
 		static std::unordered_map<std::string, Model*> m_ModelPool;
 	};
 }

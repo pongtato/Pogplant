@@ -8,14 +8,19 @@
 
 namespace Pogplant
 {
-	Model::Model(std::string _Path, uint _PrimitiveType, std::string _Key)
+	Model::Model(std::string _Path, uint _PrimitiveType, std::string _Key, int _Mode)
 	{
         m_Model_key = _Key;
 
-        TexLoader::SetTextureFlip(true);
-
-		LoadModel(_Path, _PrimitiveType);
-
+        if (_Mode == 0)
+        {
+            TexLoader::SetTextureFlip(true);
+            LoadModel(_Path, _PrimitiveType);
+        }
+        else if (_Mode == 1)
+        {
+            LoadFromFile(_Path);
+        }
         // For comparison later
         m_Bounds.minX = std::numeric_limits<float>::max();
         m_Bounds.minY = std::numeric_limits<float>::max();
@@ -83,78 +88,62 @@ namespace Pogplant
             // Read Vertex
             case 1:
             {
-                while (!ss.eof())
+                for (std::string line; std::getline(ss, line);)
                 {
-                    std::string temp;
                     Vertex vertex;
                     glm::vec3 vector3;
                     glm::vec2 vector2;
-                    
-                    std::getline(ss, temp);
-                    if (!temp.empty())
-                    {
-                        std::stringstream ss1(temp);
-                        ss1 >> vector3.x >> vector3.y >> vector3.z;
-                        vertex.m_Position = vector3;
 
-                        m_Bounds.minX = std::min(m_Bounds.minX, vector3.x);
-                        m_Bounds.minY = std::min(m_Bounds.minY, vector3.y);
-                        m_Bounds.minZ = std::min(m_Bounds.minZ, vector3.z);
+                    std::stringstream ss1(line);
+                    ss1 >> vector3.x >> vector3.y >> vector3.z;
+                    vertex.m_Position = vector3;
 
-                        m_Bounds.maxX = std::max(m_Bounds.maxX, vector3.x);
-                        m_Bounds.maxY = std::max(m_Bounds.maxY, vector3.y);
-                        m_Bounds.maxZ = std::max(m_Bounds.maxZ, vector3.z);
+                    m_Bounds.minX = std::min(m_Bounds.minX, vector3.x);
+                    m_Bounds.minY = std::min(m_Bounds.minY, vector3.y);
+                    m_Bounds.minZ = std::min(m_Bounds.minZ, vector3.z);
 
-                        ss1 >> vector3.x >> vector3.y >> vector3.z;
-                        vertex.m_Normal = vector3;
+                    m_Bounds.maxX = std::max(m_Bounds.maxX, vector3.x);
+                    m_Bounds.maxY = std::max(m_Bounds.maxY, vector3.y);
+                    m_Bounds.maxZ = std::max(m_Bounds.maxZ, vector3.z);
 
-                        ss1 >> vector3.x >> vector3.y >> vector3.z;
-                        vertex.m_Tangent = vector3;
+                    ss1 >> vector3.x >> vector3.y >> vector3.z;
+                    vertex.m_Normal = vector3;
 
-                        ss1 >> vector3.x >> vector3.y >> vector3.z;
-                        vertex.m_BiTangent = vector3;
+                    ss1 >> vector3.x >> vector3.y >> vector3.z;
+                    vertex.m_Tangent = vector3;
 
-                        ss1 >> vector2.x >> vector2.y;
-                        vertex.m_TexCoords = vector2;
+                    ss1 >> vector3.x >> vector3.y >> vector3.z;
+                    vertex.m_BiTangent = vector3;
 
-                        vertices.push_back(vertex);
-                    }
+                    ss1 >> vector2.x >> vector2.y;
+                    vertex.m_TexCoords = vector2;
+
+                    vertices.push_back(vertex);
                 }
             }
             break;
             // Read Indices
             case 2:
             {
-                while (!ss.eof())
+                for (std::string line; std::getline(ss, line);)
                 {
                     uint indice;
-                    std::string temp;
-                    std::getline(ss, temp);
-
-                    if (!temp.empty())
-                    {
-                        std::stringstream ss1(temp);
-                        ss1 >> indice;
-                        indices.push_back(indice);
-                    }
+                    std::stringstream ss1(line);
+                    ss1 >> indice;
+                    indices.push_back(indice);
                 }
             }
             break;
             // Read Textures
             case 3:
             {
-                while (!ss.eof())
+                for (std::string line; std::getline(ss, line);)
                 {
-                    std::string temp;
-                    std::getline(ss, temp);
-                    if (!temp.empty())
-                    {
-                        std::string type, path;
-                        std::stringstream ss1(temp);
-                        ss1 >> type >> path;
-                        std::vector<Texture> texture = LoadMaterialTextures(path, type);
-                        textures.insert(textures.end(), texture.begin(), texture.end());
-                    }
+                    std::string type, path;
+                    std::stringstream ss1(line);
+                    ss1 >> type >> path;
+                    std::vector<Texture> texture = LoadMaterialTextures(path, type);
+                    textures.insert(textures.end(), texture.begin(), texture.end());
                 }
             }
             break;

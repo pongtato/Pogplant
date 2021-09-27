@@ -6,7 +6,7 @@
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
-
+#define NOMINMAX
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
@@ -43,22 +43,24 @@ void Init()
 		"Pogplant Driver 6969" // Window name
 	);
 
+	
+	// Will change to automatic update when i figure it out
+	AssetCompiler& acc = acc.GetInstance();
+	if(!acc.Exists("Resources\\KekFiles\\Cube.kek"))
+		acc.RunExecutable("CUBE", "Pogplant Compiler.exe", "Resources\\Models\\cube\\Cube.fbx");
+	if (!acc.Exists("Resources\\KekFiles\\Sphere.kek"))
+		acc.RunExecutable("SPHERE", "Pogplant Compiler.exe", "Resources\\Models\\sphere\\Sphere.fbx");
+	if (!acc.Exists("Resources\\KekFiles\\Enemy_01.kek"))
+		acc.RunExecutable("ENEMY", "Pogplant Compiler.exe", "Resources\\Models\\Enemy\\Enemy_01.fbx");
+	if (!acc.Exists("Resources\\KekFiles\\Player_Ship.kek"))
+		acc.RunExecutable("SHIP", "Pogplant Compiler.exe", "Resources\\Models\\Ship\\Player_Ship.fbx");
+	if (!acc.Exists("Resources\\KekFiles\\backpack.kek"))
+		acc.RunExecutable("BAG", "Pogplant Compiler.exe", "Resources\\Models\\backpack\\backpack.obj");
+	acc.WaitForAllProcess();
+	//acc.WaitForSingleProcess("BAG");
+
 	PP::TextureResource::InitResource();
 	PP::MeshBuilder::InitMesh();
-
-	// TESTING RESOURCE ALLOCATOR AND THE KEK LOADER
-	AssetCompiler& acc = acc.GetInstance();
-	acc.SetData(100);
-	acc.RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\cube\\Cube.fbx");
-	acc.RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\sphere\\Sphere.fbx");
-	acc.RunExecutable("Pogplant Compiler.exe", "Resources\\Models\\backpack\\backpack.obj");
-
-	//static ResourceAllocator<PP::Model> ModelRA;
-	//int cubeID = ModelRA.Add("Resources\\KekFiles\\Cube.kek");
-	//std::shared_ptr<PP::Model> testCube = ModelRA.Get(cubeID);
-
-	//int backID = ModelRA.Add("Resources\\KekFiles\\backpack.kek");
-	//std::shared_ptr<PP::Model> testBack = ModelRA.Get(backID);
 
 	PP::ShaderLinker::InitShader();
 	PP::FrameBuffer::InitFrameBuffer();
@@ -85,16 +87,15 @@ void Init()
 	PP::Model* floorModel = PP::ModelResource::m_ModelPool["CUBE"];
 	PP::Model* shipModel = PP::ModelResource::m_ModelPool["SHIP"];
 	PP::Model* enemyModel = PP::ModelResource::m_ModelPool["ENEMY"];
-
-	// Testing kek loader
-	//PP::Model* cubeModel = testCube.get();
-	//PP::Model* bagModel = testBack.get();
 	
 	/* CLARENCE DEBUGGING STUFF */
 	//std::cout << "number of meshes: " << cubeModel->m_Meshes.size() << std::endl;
 	//std::cout << "How many meshes: " << bagModel->m_Meshes.size() << std::endl;
+	//std::cout << "How many textures loaded: " << bagModel->m_TexturesLoaded.size() << std::endl;
+
 	//for (auto& meshes : bagModel->m_Meshes)
 	//{
+	//	
 	//	for (auto& vert : meshes.m_Vertices)
 	//	{
 	//		std::cout
@@ -120,8 +121,10 @@ void Init()
 	//	{
 	//		std::cout << tex.m_Path << ' ' << tex.m_Type << std::endl;
 	//	}
-
-	//	std::cout << meshes.m_PrimitiveType << std::endl;
+	//	
+	//	std::cout << "Number of vert: " << meshes.m_Vertices.size() << std::endl;
+	//	std::cout << "Number of idx: " << meshes.m_Indices.size() << std::endl;
+	//	std::cout << "Number of texs: " << meshes.m_Textures.size() << std::endl;
 	//}
 
 	//for (auto& texLoaded : bagModel->m_TexturesLoaded)

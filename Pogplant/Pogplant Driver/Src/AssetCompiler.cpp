@@ -1,5 +1,4 @@
 #include "AssetCompiler.h"
-#include <windows.h>
 
 std::unique_ptr<AssetCompiler> AssetCompiler::m_instance = nullptr;
 std::once_flag AssetCompiler::m_onceFlag;
@@ -13,9 +12,9 @@ AssetCompiler& AssetCompiler::GetInstance()
 	return *m_instance.get();
 }
 
-void AssetCompiler::RunExecutable(std::string appName, std::string param)
+void AssetCompiler::RunExecutable(std::string key,std::string appName, std::string param)
 {
-	std::cout << "Starting Process: " << appName << std::endl;
+	//std::cout << "[PP::ASSETCOMPILER] " << appName << ", Input: " << param << std::endl;
 
 	STARTUPINFOA si;
 	PROCESS_INFORMATION pi;
@@ -48,17 +47,67 @@ void AssetCompiler::RunExecutable(std::string appName, std::string param)
 		return;
 	}
 
-	CloseHandle(pi.hThread);
-	CloseHandle(pi.hProcess);
+	m_processHandle[key] = pi.hProcess;
+	//CloseHandle(pi.hThread);
+	//CloseHandle(pi.hProcess);
 }
 
-// just for testing
-void AssetCompiler::SetData(int data)
+void AssetCompiler::WaitForSingleProcess(std::string key)
 {
-	m_data = data;
+	// Continue until either timeout or process ends
+	bool done = false;
+	while (!done)
+	{
+		DWORD exit = WaitForSingleObject(m_processHandle[key], 0);
+		if (exit == WAIT_OBJECT_0)
+		{
+			done = true;
+		}
+	}
 }
 
-int AssetCompiler::GetData()
+void AssetCompiler::WaitForAllProcess()
 {
-	return m_data;
+	// Continue until either timeout or process ends
+	while (!m_processHandle.empty())
+	{
+		Update();
+	}
+}
+
+void AssetCompiler::Update()
+{
+	auto it = m_processHandle.begin();
+	while (it != m_processHandle.end()) {
+		DWORD exit_code;
+		GetExitCodeProcess(it->second, &exit_code);
+		if (exit_code != STILL_ACTIVE)
+		{
+			// Delete the processHandle from the map
+			it = m_processHandle.erase(it);
+		}
+		else
+		{
+			it++;
+		}
+	}
+}
+
+bool AssetCompiler::CheckProcessDone(std::string key)
+{
+	Update();
+	if (m_processHandle.contains(key))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool AssetCompiler::Exists(std::string filePath)
+{
+	if (std::filesystem::exists(filePath))
+	{
+		return true;
+	}
+	return false;
 }
