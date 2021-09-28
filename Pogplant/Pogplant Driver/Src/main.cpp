@@ -44,9 +44,6 @@ void Init()
 		"Pogplant Driver 6969" // Window name
 	);
 
-	FileHandler& fileHandler = fileHandler.GetInstance();
-	fileHandler.AddNewWatchPath("Resources/KekFiles/");
-
 	//const std::function<void(std::string, FileStatus)>& fs = [](std::string path_to_watch, FileStatus status) -> void
 	//{
 	//	switch (status)
@@ -69,18 +66,21 @@ void Init()
 
 	// Will change to automatic update when i figure it out
 	AssetCompiler& acc = acc.GetInstance();
-	if(!acc.Exists("Resources/KekFiles/Cube.kek"))
+	//if(!acc.Exists("Resources/KekFiles/Cube.kek"))
 		acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/cube/Cube.fbx");
-	if (!acc.Exists("Resources/KekFiles/Sphere.kek"))
+	//if (!acc.Exists("Resources/KekFiles/Sphere.kek"))
 		acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/sphere/Sphere.fbx");
-	if (!acc.Exists("Resources/KekFiles/Enemy_01.kek"))
+	//if (!acc.Exists("Resources/KekFiles/Enemy_01.kek"))
 		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/Enemy/Enemy_01.fbx");
-	if (!acc.Exists("Resources/KekFiles/Player_Ship.kek"))
+	//if (!acc.Exists("Resources/KekFiles/Player_Ship.kek"))
 		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/Ship/Player_Ship.fbx");
-	if (!acc.Exists("Resources/KekFiles/backpack.kek"))
+	//if (!acc.Exists("Resources/KekFiles/backpack.kek"))
 		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/backpack/backpack.obj");
 	acc.WaitForAllProcess();
 	//acc.WaitForSingleProcess("BAG");
+
+	FileHandler& fileHandler = fileHandler.GetInstance();
+	fileHandler.AddNewWatchPath("Resources/KekFiles/");
 
 	PP::TextureResource::InitResource();
 	PP::MeshBuilder::InitMesh();
@@ -122,7 +122,7 @@ void Init()
 	//std::cout << "How many meshes: " << bagModel->m_Meshes.size() << std::endl;
 	//std::cout << "How many textures loaded: " << bagModel->m_TexturesLoaded.size() << std::endl;
 
-	//for (auto& meshes : bagModel->m_Meshes)
+	//for (auto& meshes : floorModel->m_Meshes)
 	//{
 	//	
 	//	for (auto& vert : meshes.m_Vertices)
@@ -431,7 +431,60 @@ void DrawEditor()
 void DrawGame()
 {
 	auto results = ecs.GetReg().view<Render>();
+	//FileHandler& fh = fh.GetInstance();
+	//if (fh.GetUpdate())
+	//{
+	//	for (auto& e : results)
+	//	{
+	//		auto& render = results.get<Components::Render>(e);
+	//		std::string key = fh.GetKey();
+	//		if (render.m_RenderModel->m_Model_key == key)
+	//		{
+	//			render.m_RenderModel = PP::ModelResource::m_ModelPool[key];
 
+				//std::cout << "number of meshes: " << render.m_RenderModel->m_Meshes.size() << std::endl;
+				//std::cout << "How many meshes: " << render.m_RenderModel->m_Meshes.size() << std::endl;
+				//std::cout << "How many textures loaded: " << render.m_RenderModel->m_TexturesLoaded.size() << std::endl;
+
+				//for (auto& meshes : render.m_RenderModel->m_Meshes)
+				//{
+		
+				//	for (auto& vert : meshes.m_Vertices)
+				//	{
+				//		std::cout
+				//			// Position
+				//			<< vert.m_Position.x << ' ' << vert.m_Position.y << ' ' << vert.m_Position.z << ' '
+				//			// Normal
+				//			<< vert.m_Normal.x << ' ' << vert.m_Normal.y << ' ' << vert.m_Normal.z << ' '
+				//			// Tangent
+				//			<< vert.m_Tangent.x << ' ' << vert.m_Tangent.y << ' ' << vert.m_Tangent.z << ' '
+				//			// Bi-Tangent
+				//			<< vert.m_BiTangent.x << ' ' << vert.m_BiTangent.y << ' ' << vert.m_BiTangent.z << ' '
+				//			// Tex-Coords
+				//			<< vert.m_TexCoords.x << ' ' << vert.m_TexCoords.y <<
+				//		std::endl;
+				//	}
+
+				//	for (auto& idx : meshes.m_Indices)
+				//	{
+				//		std::cout << idx << std::endl;
+				//	}
+
+				//	for (auto& tex : meshes.m_Textures)
+				//	{
+				//		std::cout << tex.m_Path << ' ' << tex.m_Type << std::endl;
+				//	}
+		
+				//	std::cout << "Number of vert: " << meshes.m_Vertices.size() << std::endl;
+				//	std::cout << "Number of idx: " << meshes.m_Indices.size() << std::endl;
+				//	std::cout << "Number of texs: " << meshes.m_Textures.size() << std::endl;
+				//}
+
+			//	fh.SetUpdate(false);
+			//	fh.SetKey("");
+			//}
+		//}
+	//}
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();

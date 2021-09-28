@@ -11,6 +11,7 @@
 #include <memory>
 #include <iostream>
 #include <Pogplant.h>
+#include "ECS/Entity.h"
 
 enum class FileStatus
 {
@@ -35,7 +36,10 @@ private:
 	// Time interval at which we check the base folder for changes
 	const std::chrono::duration<int, std::milli> m_delay{4000};
 	std::atomic<bool> m_running = true;
+	std::atomic<bool> m_update = false;
 	std::unordered_map<std::string, std::thread> m_threads;
+	// Temporary to test
+	std::string m_key;
 	void Start();
 
 public:
@@ -43,6 +47,10 @@ public:
 	static FileHandler& GetInstance();
 	void AddNewWatchPath(std::string path);
 	void Stop();
+	bool GetUpdate();
+	void SetUpdate(bool update);
+	std::string GetKey();
+	void SetKey(std::string key);
 };
 
 #endif // _FILE_HANDLER_H_

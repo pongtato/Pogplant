@@ -71,6 +71,8 @@ void FileHandler::Start()
                     if (!PP::ModelResource::m_ModelPool.contains(key))
                     {
                         PP::ModelResource::LoadModel(key, file.path().string());
+                        m_key = key;
+                        m_update = true;
                     }
                 }
                 // File modification
@@ -86,6 +88,8 @@ void FileHandler::Start()
                         if (PP::ModelResource::m_ModelPool.contains(key))
                         {
                             PP::ModelResource::LoadModel(key, file.path().string());
+                            m_key = key;
+                            m_update = true;
                         }
                     }
                 }
@@ -108,4 +112,24 @@ void FileHandler::Stop()
         }
         ++it;
     }
+}
+
+bool FileHandler::GetUpdate()
+{
+    return m_update;
+}
+
+void FileHandler::SetUpdate(bool update)
+{
+    m_update = update;
+}
+
+std::string FileHandler::GetKey()
+{
+    return m_key;
+}
+
+void FileHandler::SetKey(std::string key)
+{
+    m_key = key;
 }
