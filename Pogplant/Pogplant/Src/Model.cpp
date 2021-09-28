@@ -8,19 +8,20 @@
 
 namespace Pogplant
 {
-	Model::Model(std::string _Path, uint _PrimitiveType, std::string _Key, int _Mode)
+	Model::Model(std::string _Path, uint _PrimitiveType, std::string _Key)
 	{
         m_Model_key = _Key;
 
-        if (_Mode == 0)
-        {
-            TexLoader::SetTextureFlip(true);
-            LoadModel(_Path, _PrimitiveType);
-        }
-        else if (_Mode == 1)
-        {
-            LoadFromFile(_Path);
-        }
+        //if (_Mode == 0)
+        //{
+        //    TexLoader::SetTextureFlip(true);
+        //    LoadModel(_Path, _PrimitiveType);
+        //}
+        //else if (_Mode == 1)
+        //{
+            
+        //}
+        LoadFromFile(_Path);
         // For comparison later
         m_Bounds.minX = std::numeric_limits<float>::max();
         m_Bounds.minY = std::numeric_limits<float>::max();

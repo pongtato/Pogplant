@@ -29,7 +29,7 @@ namespace Pogplant
 	public:
 		// 0x0004 = GL_TRIANGLES
 		Model() {};
-		Model(std::string _Path, uint _PrimitiveType = 0x0004, std::string _Key = "Key", int _Mode = 0);
+		Model(std::string _Path, uint _PrimitiveType = 0x0004, std::string _Key = "Key");
 		void Draw() const;
 		bool LoadFromFile(std::string filePath);
 

@@ -57,7 +57,7 @@ void FileHandler::Start()
         auto it2 = m_path.begin();
         while (it2 != m_path.end())
         {
-            // Check if a file was created or modified
+            // Check the files in the directory if its changed or modified
             for (auto& file : std::filesystem::recursive_directory_iterator(it2->first))
             {
                 auto current_file_last_write_time = std::filesystem::last_write_time(file);
@@ -67,12 +67,10 @@ void FileHandler::Start()
                     it2->second[file.path().string()] = current_file_last_write_time;
                     // CREATED
                     std::cout << file.path().string() << " CREATED" << std::endl;
-                    std::string key = PP::ModelResource::GetFileName(file.path().string());
+                    std::string key = GetFileName(file.path().string());
                     if (!PP::ModelResource::m_ModelPool.contains(key))
                     {
-                        PP::ModelResource::LoadModel(key, file.path().string());
-                        m_key = key;
-                        m_update = true;
+                        m_modelNew.push({ key, file.path().string() });
                     }
                 }
                 // File modification
@@ -84,12 +82,10 @@ void FileHandler::Start()
                         // MODIFIED
                         std::cout << file.path().string() << " MODIFIED" << std::endl;
 
-                        std::string key = PP::ModelResource::GetFileName(file.path().string());
+                        std::string key = GetFileName(file.path().string());
                         if (PP::ModelResource::m_ModelPool.contains(key))
                         {
-                            PP::ModelResource::LoadModel(key, file.path().string());
-                            m_key = key;
-                            m_update = true;
+                            m_modelUpdate.push({ key, file.path().string() });
                         }
                     }
                 }
@@ -114,22 +110,20 @@ void FileHandler::Stop()
     }
 }
 
-bool FileHandler::GetUpdate()
+std::string FileHandler::GetFileName(const std::string& fullpath)
 {
-    return m_update;
+    std::string filename;
+    size_t found = fullpath.find_last_of('/');
+    filename = fullpath.substr(found + 1, fullpath.find_last_of('.') - found - 1);
+    return filename;
 }
 
-void FileHandler::SetUpdate(bool update)
+std::stack<FileStuff::ModelUpdate>& FileHandler::GetModelUpdate()
 {
-    m_update = update;
+    return m_modelUpdate;
 }
 
-std::string FileHandler::GetKey()
+std::stack<FileStuff::ModelNew>& FileHandler::GetModelNew()
 {
-    return m_key;
-}
-
-void FileHandler::SetKey(std::string key)
-{
-    m_key = key;
+    return m_modelNew;
 }

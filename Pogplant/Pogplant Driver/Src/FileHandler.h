@@ -11,7 +11,7 @@
 #include <memory>
 #include <iostream>
 #include <Pogplant.h>
-#include "ECS/Entity.h"
+#include <stack>
 
 enum class FileStatus
 {
@@ -20,6 +20,23 @@ enum class FileStatus
 	ERASED,
 	TOTAL
 };
+
+namespace FileStuff
+{
+	struct ModelUpdate
+	{
+		std::string m_key;
+		std::string m_filepath;
+	};
+
+	struct ModelNew
+	{
+		std::string m_key;
+		std::string m_filepath;
+	};
+}
+
+
 
 class FileHandler
 {
@@ -36,21 +53,19 @@ private:
 	// Time interval at which we check the base folder for changes
 	const std::chrono::duration<int, std::milli> m_delay{4000};
 	std::atomic<bool> m_running = true;
-	std::atomic<bool> m_update = false;
 	std::unordered_map<std::string, std::thread> m_threads;
-	// Temporary to test
-	std::string m_key;
+	std::stack<FileStuff::ModelUpdate> m_modelUpdate;
+	std::stack<FileStuff::ModelNew> m_modelNew;
 	void Start();
+	std::string GetFileName(const std::string& fullpath);
 
 public:
 	virtual ~FileHandler() = default;
 	static FileHandler& GetInstance();
 	void AddNewWatchPath(std::string path);
 	void Stop();
-	bool GetUpdate();
-	void SetUpdate(bool update);
-	std::string GetKey();
-	void SetKey(std::string key);
+	std::stack<FileStuff::ModelUpdate>& GetModelUpdate();
+	std::stack<FileStuff::ModelNew>& GetModelNew();
 };
 
 #endif // _FILE_HANDLER_H_

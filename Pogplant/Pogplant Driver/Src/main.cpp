@@ -44,26 +44,6 @@ void Init()
 		"Pogplant Driver 6969" // Window name
 	);
 
-	//const std::function<void(std::string, FileStatus)>& fs = [](std::string path_to_watch, FileStatus status) -> void
-	//{
-	//	switch (status)
-	//	{
-	//	case FileStatus::CREATED:
-	//		std::cout << "File created: " << path_to_watch << '\n';
-	//		break;
-	//	case FileStatus::MODIFIED:
-	//		std::cout << "File modified: " << path_to_watch << '\n';
-	//		break;
-	//	case FileStatus::ERASED:
-	//		std::cout << "File erased: " << path_to_watch << '\n';
-	//		break;
-	//	default:
-	//		std::cout << "Error! Unknown file status.\n";
-	//	}
-	//};
-	//std::thread t1(&FileHandler::start, &fileHandler, fs);
-
-
 	// Will change to automatic update when i figure it out
 	AssetCompiler& acc = acc.GetInstance();
 	//if(!acc.Exists("Resources/KekFiles/Cube.kek"))
@@ -431,60 +411,25 @@ void DrawEditor()
 void DrawGame()
 {
 	auto results = ecs.GetReg().view<Render>();
-	//FileHandler& fh = fh.GetInstance();
-	//if (fh.GetUpdate())
-	//{
-	//	for (auto& e : results)
-	//	{
-	//		auto& render = results.get<Components::Render>(e);
-	//		std::string key = fh.GetKey();
-	//		if (render.m_RenderModel->m_Model_key == key)
-	//		{
-	//			render.m_RenderModel = PP::ModelResource::m_ModelPool[key];
 
-				//std::cout << "number of meshes: " << render.m_RenderModel->m_Meshes.size() << std::endl;
-				//std::cout << "How many meshes: " << render.m_RenderModel->m_Meshes.size() << std::endl;
-				//std::cout << "How many textures loaded: " << render.m_RenderModel->m_TexturesLoaded.size() << std::endl;
+	FileHandler& fh = fh.GetInstance();
+	auto& modelNewStack = fh.GetModelNew();
+	auto& modelUpdateStack = fh.GetModelUpdate();
 
-				//for (auto& meshes : render.m_RenderModel->m_Meshes)
-				//{
-		
-				//	for (auto& vert : meshes.m_Vertices)
-				//	{
-				//		std::cout
-				//			// Position
-				//			<< vert.m_Position.x << ' ' << vert.m_Position.y << ' ' << vert.m_Position.z << ' '
-				//			// Normal
-				//			<< vert.m_Normal.x << ' ' << vert.m_Normal.y << ' ' << vert.m_Normal.z << ' '
-				//			// Tangent
-				//			<< vert.m_Tangent.x << ' ' << vert.m_Tangent.y << ' ' << vert.m_Tangent.z << ' '
-				//			// Bi-Tangent
-				//			<< vert.m_BiTangent.x << ' ' << vert.m_BiTangent.y << ' ' << vert.m_BiTangent.z << ' '
-				//			// Tex-Coords
-				//			<< vert.m_TexCoords.x << ' ' << vert.m_TexCoords.y <<
-				//		std::endl;
-				//	}
+	while (!modelNewStack.empty())
+	{
+		auto& modelNew = modelNewStack.top();
+		PP::ModelResource::LoadModel(PP::ModelResource::m_ModelPool, modelNew.m_key, modelNew.m_filepath);
+		modelNewStack.pop();
+	}
 
-				//	for (auto& idx : meshes.m_Indices)
-				//	{
-				//		std::cout << idx << std::endl;
-				//	}
+	while (!modelUpdateStack.empty())
+	{
+		auto& modelUpdate = modelUpdateStack.top();
+		PP::ModelResource::UpdateModel(PP::ModelResource::m_ModelPool, modelUpdate.m_key, modelUpdate.m_filepath);
+		modelUpdateStack.pop();
+	}
 
-				//	for (auto& tex : meshes.m_Textures)
-				//	{
-				//		std::cout << tex.m_Path << ' ' << tex.m_Type << std::endl;
-				//	}
-		
-				//	std::cout << "Number of vert: " << meshes.m_Vertices.size() << std::endl;
-				//	std::cout << "Number of idx: " << meshes.m_Indices.size() << std::endl;
-				//	std::cout << "Number of texs: " << meshes.m_Textures.size() << std::endl;
-				//}
-
-			//	fh.SetUpdate(false);
-			//	fh.SetKey("");
-			//}
-		//}
-	//}
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
