@@ -10,6 +10,10 @@
 using namespace Components;
 namespace PogplantDriver
 {
+	Serializer::Serializer() : 
+	m_child_counter()
+	{
+	}
 	void Serializer::Save(const std::string& File)
 	{
 		//std::ofstream ostream(File, std::ios::out);
@@ -37,11 +41,18 @@ namespace PogplantDriver
 	{
 		std::ofstream ostream(File, std::ios::out);
 
+		int i = 0;
 		if (ostream.is_open())
 		{
 			Json::Value root;
 			Json::Value subroot = SaveComponents(id);
-			root[0] = subroot;
+			root[i] = subroot;
+			auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
+			if (relationship_component)
+			{
+				RecurSaveChild(root, id, ++i);
+			}
+
 
 			Json::StreamWriterBuilder builder;
 			Json::StreamWriter* writer = builder.newStreamWriter();
@@ -98,6 +109,11 @@ namespace PogplantDriver
 		auto render_component = ImguiHelper::m_ecs->GetReg().try_get<Render>(id);
 		auto point_light_component = ImguiHelper::m_ecs->GetReg().try_get<Point_Light>(id);
 		auto directional_light_component = ImguiHelper::m_ecs->GetReg().try_get<Directional_Light>(id);
+
+		if (relationship_component)
+		{
+			subroot["Children"] = relationship_component->m_children.size();
+		}
 
 		if (transform_component)
 		{
@@ -196,6 +212,7 @@ namespace PogplantDriver
 		auto& transform = root["Transform"];
 		auto& name = root["Name"];
 		auto& render = root["Render"];
+		auto& relationship = root["Children"];
 		auto& light = root["Light"];
 		if (transform)
 		{
@@ -209,6 +226,43 @@ namespace PogplantDriver
 		if (name)
 		{
 			ImguiHelper::m_ecs->GetReg().emplace<Name>(id, name.asString());
+		}
+
+		if (relationship)
+		{
+			auto& new_relation = ImguiHelper::m_ecs->GetReg().emplace<Relationship>(id);
+			int child = relationship.asInt();
+			//Starting case
+			if (child != 0 && m_parent_id.empty())
+			{
+				m_child_counter.push(child);
+				m_parent_id.push(id);
+			}
+			//Base Child only case, Seek parent
+			else if (child == 0 && !m_parent_id.empty())
+			{
+				auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(m_parent_id.top());
+				relationship_component->m_children.insert(id);
+				new_relation.m_parent = m_parent_id.top();
+
+				--m_child_counter.top();
+			}
+			//Case the child is also of a parent of another child
+			else 
+			{
+				auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(m_parent_id.top());
+				relationship_component->m_children.insert(id);
+				new_relation.m_parent = m_parent_id.top();
+				--m_child_counter.top();
+			
+				m_child_counter.push(child);
+				m_parent_id.push(id);
+			}
+			if (!m_child_counter.empty() && m_child_counter.top() <= 0)
+			{
+				m_child_counter.pop();
+				m_parent_id.pop();
+			}
 		}
 
 		if (render)
@@ -239,6 +293,24 @@ namespace PogplantDriver
 				render["UseLight"].asInt()
 				);
 		}
+	}
+
+	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id,int counter)
+	{
+		auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
+		if (relationship_component)
+		{
+			for (auto& child : relationship_component->m_children)
+			{
+				_classroot[counter++] = SaveComponents(child);
+				auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(child);
+				if (relationship_component)
+				{
+					counter = RecurSaveChild(_classroot, child, counter);
+				}
+			}
+		}
+		return counter;
 	}
 
 	void Serializer::AddVec3To(Json::Value& _classroot, std::string _string, glm::vec3& _vec3)

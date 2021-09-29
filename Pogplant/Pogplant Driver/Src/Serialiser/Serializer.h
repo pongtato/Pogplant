@@ -4,6 +4,7 @@
 #include "../ECS/Entity.h"
 #include "../../Libs/json/include/json.h"
 #include <string>
+#include <stack>
 #include <filesystem>
 
 namespace PogplantDriver
@@ -11,6 +12,7 @@ namespace PogplantDriver
 	class Serializer
 	{
 	public:
+		Serializer();
 		// Save scene
 		void Save(const std::string& File);
 		// Load scene
@@ -19,11 +21,14 @@ namespace PogplantDriver
 		void SavePrefab(const std::string& File, entt::entity id);
 		void LoadPrefab(const std::string& File);
 	private:
+		std::stack<int> m_child_counter;
+		std::stack<entt::entity> m_parent_id;
+
 		void SaveObjects(const std::string& File);
 		Json::Value SaveComponents(entt::entity id);
-
 		void LoadObjects(const std::string& File);
 		void LoadComponents(const Json::Value& root, entt::entity id);
+		int RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter);
 
 
 		//helper functions for saving
