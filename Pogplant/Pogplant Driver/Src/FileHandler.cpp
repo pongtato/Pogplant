@@ -1,19 +1,22 @@
 #include "FileHandler.h"
 
 std::unique_ptr<FileHandler> FileHandler::m_instance = nullptr;
-std::once_flag FileHandler::m_onceFlag;
+std::once_flag FileHandler::m_onceFlag;;
 std::filesystem::path FileHandler::m_defaultpath;
+std::thread FileHandler::m_thread;
 
 FileHandler& FileHandler::GetInstance()
 {
     std::call_once(m_onceFlag, [] {
         m_instance.reset(new FileHandler);
+        m_defaultpath = std::filesystem::current_path();
+        m_thread = std::thread( &FileHandler::Start, m_instance.get());
         });
 
     return *m_instance.get();
 }
 
-void FileHandler::AddNewWatchPath(std::string path)
+void FileHandler::AddNewWatchPath(const std::string& path)
 {
     std::unordered_map<std::string, ftt> files;
     for (auto& file : std::filesystem::recursive_directory_iterator(path))
@@ -22,8 +25,6 @@ void FileHandler::AddNewWatchPath(std::string path)
     }
 
     m_path[path] = files;
-    // Each new folder is a new thread, might change in the future
-    m_threads[path] = std::thread{&FileHandler::Start, this};
 }
 
 void FileHandler::Start()
@@ -41,13 +42,12 @@ void FileHandler::Start()
         auto it = m_path.begin();
         while (it != m_path.end()) 
         {
-            // Iterator to the VECTOR (File)
+            // Iterator to the MAP (Files)
             auto it1 = it->second.begin();
             while (it1 != it->second.end())
             {
                 if (!std::filesystem::exists(it1->first))
                 {
-                    std::cout << "Current Path is: " << std::filesystem::current_path() << std::endl;
                     std::cout << it1->first << " ERASED" << std::endl;
                     it1 = it->second.erase(it1);
                 }
@@ -73,6 +73,8 @@ void FileHandler::Start()
                     it2->second[file.path().string()] = current_file_last_write_time;
                     // CREATED
                     std::cout << file.path().string() << " CREATED" << std::endl;
+
+                    // KEY will be the filename, example: Copy.kek, key = "Copy"
                     std::string key = GetFileName(file.path().string());
                     if (!PP::ModelResource::m_ModelPool.contains(key))
                     {
@@ -88,6 +90,7 @@ void FileHandler::Start()
                         // MODIFIED
                         std::cout << file.path().string() << " MODIFIED" << std::endl;
 
+                        // KEY will be the filename, example: Copy.kek, key = "Copy"
                         std::string key = GetFileName(file.path().string());
                         if (PP::ModelResource::m_ModelPool.contains(key))
                         {
@@ -105,14 +108,9 @@ void FileHandler::Start()
 void FileHandler::Stop()
 {
     m_running = false;
-    auto it = m_threads.begin();
-    while (it != m_threads.end())
+    if (m_thread.joinable())
     {
-        if (it->second.joinable())
-        {
-            it->second.join();
-        }
-        ++it;
+        m_thread.join();
     }
 }
 

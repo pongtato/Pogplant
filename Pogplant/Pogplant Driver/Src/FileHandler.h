@@ -36,8 +36,6 @@ namespace FileStuff
 	};
 }
 
-
-
 class FileHandler
 {
 private:
@@ -52,19 +50,27 @@ private:
 	std::unordered_map<std::string, std::unordered_map<std::string, ftt>> m_path;
 	// Time interval at which we check the base folder for changes
 	const std::chrono::duration<int, std::milli> m_delay{4000};
+	// The bool to terminate the running thread of Start()
 	std::atomic<bool> m_running = true;
-	std::unordered_map<std::string, std::thread> m_threads;
+	void Start();
+	static std::filesystem::path m_defaultpath;
+	static std::thread m_thread;
+
+	// Stacks to update particular thing, add own type here
 	std::stack<FileStuff::ModelUpdate> m_modelUpdate;
 	std::stack<FileStuff::ModelNew> m_modelNew;
-	void Start();
+
+	// Helper functions
 	std::string GetFileName(const std::string& fullpath);
-	static std::filesystem::path m_defaultpath;
 
 public:
 	virtual ~FileHandler() = default;
 	static FileHandler& GetInstance();
-	void AddNewWatchPath(std::string path);
+	// Add path to folder to watch for, [IMPORTANT]: FOLDER CANNOT CONTAIN OTHER FOLDERS
+	void AddNewWatchPath(const std::string& path);
+	// Call for cleanup of thread
 	void Stop();
+	// Return the ref of the stack for usage
 	std::stack<FileStuff::ModelUpdate>& GetModelUpdate();
 	std::stack<FileStuff::ModelNew>& GetModelNew();
 };

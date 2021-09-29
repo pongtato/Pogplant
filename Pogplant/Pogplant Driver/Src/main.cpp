@@ -61,6 +61,7 @@ void Init()
 
 	FileHandler& fileHandler = fileHandler.GetInstance();
 	fileHandler.AddNewWatchPath("Resources/KekFiles/");
+	fileHandler.AddNewWatchPath("Resources/Prefabs/");
 
 	PP::TextureResource::InitResource();
 	PP::MeshBuilder::InitMesh();
