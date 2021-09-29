@@ -2,6 +2,7 @@
 
 std::unique_ptr<FileHandler> FileHandler::m_instance = nullptr;
 std::once_flag FileHandler::m_onceFlag;
+std::filesystem::path FileHandler::m_defaultpath;
 
 FileHandler& FileHandler::GetInstance()
 {
@@ -31,7 +32,11 @@ void FileHandler::Start()
     {
         // Wait for "delay" milliseconds
         std::this_thread::sleep_for(m_delay);
-        
+        //Windows Dialog fix
+        if (std::filesystem::current_path() != m_defaultpath)
+        {
+          continue;
+        }
         // Iterator to the MAP (Path)
         auto it = m_path.begin();
         while (it != m_path.end()) 
@@ -42,6 +47,7 @@ void FileHandler::Start()
             {
                 if (!std::filesystem::exists(it1->first))
                 {
+                    std::cout << "Current Path is: " << std::filesystem::current_path() << std::endl;
                     std::cout << it1->first << " ERASED" << std::endl;
                     it1 = it->second.erase(it1);
                 }

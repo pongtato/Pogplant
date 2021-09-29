@@ -15,6 +15,9 @@ namespace PogplantDriver
 		void Save(const std::string& File);
 		// Load scene
 		bool Load(const std::string& File);
+		//
+		void SavePrefab(const std::string& File, entt::entity id);
+		void LoadPrefab(const std::string& File);
 	private:
 		void SaveObjects(const std::string& File);
 		Json::Value SaveComponents(entt::entity id);

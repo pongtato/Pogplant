@@ -4,7 +4,7 @@
 namespace PogplantDriver
 {
 	//Use current path to test
-	Directory::Directory() : m_AssetPath{".."} , m_CurrentPath{".."}
+	Directory::Directory() : m_AssetPath{"..//Pogplant Driver//Resources"} , m_CurrentPath{"..//Pogplant Driver//Resources"}
 	{
 		
 	}

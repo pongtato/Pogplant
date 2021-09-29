@@ -33,6 +33,31 @@ namespace PogplantDriver
 		return true;
 	}
 
+	void Serializer::SavePrefab(const std::string& File, entt::entity id)
+	{
+		std::ofstream ostream(File, std::ios::out);
+
+		if (ostream.is_open())
+		{
+			Json::Value root;
+			Json::Value subroot = SaveComponents(id);
+			root[0] = subroot;
+
+			Json::StreamWriterBuilder builder;
+			Json::StreamWriter* writer = builder.newStreamWriter();
+
+			writer->write(root, &ostream);
+
+			delete writer;
+			ostream.close();
+		}
+	}
+
+	void Serializer::LoadPrefab(const std::string& File)
+	{
+		LoadObjects(File);
+	}
+
 	void Serializer::SaveObjects(const std::string& File)
 	{
 		std::ofstream ostream(File, std::ios::out);
@@ -70,7 +95,9 @@ namespace PogplantDriver
 		auto name_component = ImguiHelper::m_ecs->GetReg().try_get<Name>(id);
 		auto position_component = ImguiHelper::m_ecs->GetReg().try_get<PositionList>(id);
 		auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
-		auto mesh_component = ImguiHelper::m_ecs->GetReg().try_get<Render>(id);
+		auto render_component = ImguiHelper::m_ecs->GetReg().try_get<Render>(id);
+		auto point_light_component = ImguiHelper::m_ecs->GetReg().try_get<Point_Light>(id);
+		auto directional_light_component = ImguiHelper::m_ecs->GetReg().try_get<Directional_Light>(id);
 
 		if (transform_component)
 		{
@@ -92,24 +119,49 @@ namespace PogplantDriver
 			subroot["Name"] = name_component->m_name;
 		}
 
-		if (mesh_component)
+		if (render_component)
 		{
 			Json::Value classroot;
 
-			AddVec3To(classroot, "ColorTint", mesh_component->m_ColorTint);
+			AddVec3To(classroot, "ColorTint", render_component->m_ColorTint);
 
-			classroot["UseLight"] = mesh_component->m_UseLight;
+			classroot["UseLight"] = render_component->m_UseLight;
 
-			if (mesh_component->m_RenderModel)
+			if (render_component->m_RenderModel)
 			{
 				Json::Value temp(Json::arrayValue);
-				temp.append(mesh_component->m_RenderModel->m_Model_key);
-				temp.append(mesh_component->m_RenderModel->m_Directory);
+				temp.append(render_component->m_RenderModel->m_Model_key);
+				temp.append(render_component->m_RenderModel->m_Directory);
 				classroot["RenderModel"] = temp;
 			}
 
 
 			subroot["Render"] = classroot;
+		}
+
+		if (point_light_component)
+		{
+			Json::Value classroot;
+			AddVec3To(classroot, "Colour", point_light_component->m_Color);
+			classroot["Intensity"] = point_light_component->m_Intensity;
+			classroot["Linear"] = point_light_component->m_Linear;
+			classroot["Quadratic"] = point_light_component->m_Quadratic;
+
+
+			subroot["Point_Light"] = classroot;
+		}
+
+		if (directional_light_component)
+		{
+			Json::Value classroot;
+			AddVec3To(classroot, "Colour", directional_light_component->m_Color);
+			classroot["Intensity"] = directional_light_component->m_Intensity;
+			AddVec3To(classroot, "Direction", directional_light_component->m_Direction);
+			classroot["Diffuse"] = directional_light_component->m_Diffuse;
+			classroot["Specular"] = directional_light_component->m_Specular;
+
+
+			subroot["Directional_Light"] = classroot;
 		}
 
 
@@ -144,6 +196,7 @@ namespace PogplantDriver
 		auto& transform = root["Transform"];
 		auto& name = root["Name"];
 		auto& render = root["Render"];
+		auto& light = root["Light"];
 		if (transform)
 		{
 			glm::vec3 pos = { transform["m_position"][0].asFloat(),transform["m_position"][1].asFloat(),transform["m_position"][2].asFloat() };

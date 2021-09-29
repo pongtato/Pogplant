@@ -58,6 +58,7 @@ private:
 	std::stack<FileStuff::ModelNew> m_modelNew;
 	void Start();
 	std::string GetFileName(const std::string& fullpath);
+	static std::filesystem::path m_defaultpath;
 
 public:
 	virtual ~FileHandler() = default;

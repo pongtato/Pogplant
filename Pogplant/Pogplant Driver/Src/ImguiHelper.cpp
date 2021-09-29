@@ -312,6 +312,10 @@ namespace PogplantDriver
 						m_CurrentEntity = entt::null;
 
 					}
+					if (ImGui::MenuItem("Save Prefab"))
+					{
+						SavePrefab(m_CurrentEntity);
+					}
 
 
 					ImGui::EndPopup();
@@ -323,6 +327,8 @@ namespace PogplantDriver
 			{
 				if (ImGui::MenuItem("Create Empty Entity"))
 					m_ecs->CreateEntity();
+				if (ImGui::MenuItem("Load Prefab"))
+					LoadPrefab();
 
 				//if (ImGui::MenuItem("Create From Prefab"))
 				//{
@@ -488,6 +494,31 @@ namespace PogplantDriver
 		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
 		if (!filepath.empty())
 			OpenScene(filepath);
+	}
+
+	void PogplantDriver::ImguiHelper::SavePrefab(entt::entity _object)
+	{
+		std::string filepath = Pogplant::FileDialogs::SaveFile("Json Files(*.json)\0*.json\0");
+		//Append .json 
+		if (filepath.find(".json") == std::string::npos)
+		{
+			filepath.append(".json");
+		}
+		if (!filepath.empty())
+		{
+			Serializer serialiser;
+			serialiser.SavePrefab(filepath, _object);
+		}
+	}
+
+	void PogplantDriver::ImguiHelper::LoadPrefab()
+	{
+		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
+		if (!filepath.empty())
+		{
+			Serializer serialiser;
+			serialiser.LoadPrefab(filepath);
+		}
 	}
 
 	void ImguiHelper::Scene_GOPick(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)

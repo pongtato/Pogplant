@@ -42,7 +42,8 @@ namespace PogplantDriver
 		static void SaveSceneAs();
 		static void NewScene();
 		static void OpenScene();
-
+		static void SavePrefab(entt::entity _object);
+		static void LoadPrefab();
 		
 		static Directory m_Directory;
 	private:
