@@ -77,17 +77,6 @@ namespace Components
 		}
 	};
 
-	RTTR_REGISTRATION
-	{
-		rttr::registration::class_<Transform>("Transform")
-			//.constructor<glm::vec3, glm::vec3,glm::vec3>()
-			.method("init", &Transform::init)
-			.property("m_position", &Transform::m_position)
-			.property("m_rotation", &Transform::m_rotation)
-			.property("m_scale", &Transform::m_scale);
-	}
-
-
 
 	struct Render
 	{
@@ -99,22 +88,67 @@ namespace Components
 
 	struct Light
 	{
+		Light(){};
+		Light(glm::vec3 _color, float _intensity)
+			: m_Color(_color), m_Intensity(_intensity) {}
+
 		glm::vec3 m_Color;
 		float m_Intensity;
+
+		RTTR_ENABLE();
 	};
 
 	struct Point_Light : public Light
 	{
+		Point_Light(){};
+		Point_Light(glm::vec3 _color, float _intensity, float _Linear, float _Quadratic)
+			: Light{ _color, _intensity }, m_Linear(_Linear), m_Quadratic(_Quadratic){}
+
 		float m_Linear;
 		float m_Quadratic;
+
+		RTTR_ENABLE(Light);
 	};
 
 	struct Directional_Light : public Light
 	{
+		Directional_Light() {};
+		Directional_Light(glm::vec3 _color, float _intensity, glm::vec3 _direction, float _diffuse, float _specular)
+			: Light{_color, _intensity }, m_Direction(_direction), m_Diffuse(_diffuse), m_Specular(_specular) {}
+
 		glm::vec3 m_Direction;
 		float m_Diffuse;
 		float m_Specular;
+
+		RTTR_ENABLE(Light);
 	};
+
+
+
+	RTTR_REGISTRATION
+	{
+		rttr::registration::class_<Transform>("Transform")
+		//.constructor<glm::vec3, glm::vec3,glm::vec3>()
+		.method("init", &Transform::init)
+		.property("m_position", &Transform::m_position)
+		.property("m_rotation", &Transform::m_rotation)
+		.property("m_scale", &Transform::m_scale);
+
+		rttr::registration::class_<Light>("Light")
+			.property("m_Color", &Light::m_Color)
+			.property("m_Intensity", &Light::m_Intensity);
+
+		rttr::registration::class_<Point_Light>("Point_Light")
+			.property("m_Linear", &Point_Light::m_Linear)
+			.property("m_Quadratic", &Point_Light::m_Quadratic);
+
+		rttr::registration::class_<Directional_Light>("Directional_Light")
+			.property("m_Direction", &Directional_Light::m_Direction)
+			.property("m_Diffuse", &Directional_Light::m_Diffuse)
+			.property("m_Specular", &Directional_Light::m_Specular);
+	}
+
+
 }
 
 

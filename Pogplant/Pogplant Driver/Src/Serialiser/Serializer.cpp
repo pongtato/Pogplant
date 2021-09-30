@@ -116,17 +116,7 @@ namespace PogplantDriver
 
 		if (transform_component)
 		{
-			//this works
 			Reflect_Serialization(subroot, transform_component);
-
-			//Json::Value classroot;
-
-			//AddVec3To(classroot, "Position", transform_component->m_position);
-			//AddVec3To(classroot, "Rotation", transform_component->m_rotation);
-			//AddVec3To(classroot, "Scale", transform_component->m_scale);
-
-			//subroot["Transform"] = classroot;
-
 		}
 
 		if (name_component)
@@ -156,27 +146,31 @@ namespace PogplantDriver
 
 		if (point_light_component)
 		{
-			Json::Value classroot;
-			AddVec3To(classroot, "Colour", point_light_component->m_Color);
-			classroot["Intensity"] = point_light_component->m_Intensity;
-			classroot["Linear"] = point_light_component->m_Linear;
-			classroot["Quadratic"] = point_light_component->m_Quadratic;
+			//Json::Value classroot;
+			//AddVec3To(classroot, "Colour", point_light_component->m_Color);
+			//classroot["Intensity"] = point_light_component->m_Intensity;
+			//classroot["Linear"] = point_light_component->m_Linear;
+			//classroot["Quadratic"] = point_light_component->m_Quadratic;
 
 
-			subroot["Point_Light"] = classroot;
+			//subroot["Point_Light"] = classroot;
+
+			Reflect_Serialization(subroot, point_light_component);
 		}
 
 		if (directional_light_component)
 		{
-			Json::Value classroot;
-			AddVec3To(classroot, "Colour", directional_light_component->m_Color);
-			classroot["Intensity"] = directional_light_component->m_Intensity;
-			AddVec3To(classroot, "Direction", directional_light_component->m_Direction);
-			classroot["Diffuse"] = directional_light_component->m_Diffuse;
-			classroot["Specular"] = directional_light_component->m_Specular;
+			//Json::Value classroot;
+			//AddVec3To(classroot, "Colour", directional_light_component->m_Color);
+			//classroot["Intensity"] = directional_light_component->m_Intensity;
+			//AddVec3To(classroot, "Direction", directional_light_component->m_Direction);
+			//classroot["Diffuse"] = directional_light_component->m_Diffuse;
+			//classroot["Specular"] = directional_light_component->m_Specular;
 
 
-			subroot["Directional_Light"] = classroot;
+			//subroot["Directional_Light"] = classroot;
+
+			Reflect_Serialization(subroot, directional_light_component);
 		}
 
 
@@ -215,24 +209,30 @@ namespace PogplantDriver
 		auto& name = root["Name"];
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
-		auto& light = root["Light"];
-
+		auto& direction_light = root["Directional_Light"];
+		auto& point_light = root["Point_Light"];
 
 		if (transform)
 		{
-			//glm::vec3 pos = { transform["m_position"][0].asFloat(),transform["m_position"][1].asFloat(),transform["m_position"][2].asFloat() };
-			//glm::vec3 rot = { transform["m_rotation"][0].asFloat(),transform["m_rotation"][1].asFloat(),transform["m_rotation"][2].asFloat() };
-			//glm::vec3 sca = { transform["m_scale"][0].asFloat(),transform["m_scale"][1].asFloat(),transform["m_scale"][2].asFloat() };
-
-			//ImguiHelper::m_ecs->GetReg().emplace<Transform>(id, pos, rot, sca);
-
 			Transform _t;
 			Reflect_Deserialization(_t, transform);
-			auto& _component = ImguiHelper::m_ecs->GetReg().emplace<Transform>(id, _t);
-			////ImguiHelper::m_ecs->GetReg().replace<Transform>(id, _component);
-
-			//std::cout << _component.m_scale.x << ", " << _component.m_scale.y << ", " <<  _component.m_scale.z << std::endl;
+			ImguiHelper::m_ecs->GetReg().emplace<Transform>(id, _t);
 		}
+
+		if (direction_light)
+		{
+			Directional_Light d_light;
+			Reflect_Deserialization(d_light, direction_light);
+			ImguiHelper::m_ecs->GetReg().emplace<Directional_Light>(id, d_light);
+		}
+
+		if (point_light)
+		{
+			Point_Light p_light;
+			Reflect_Deserialization(p_light, point_light);
+			ImguiHelper::m_ecs->GetReg().emplace<Point_Light>(id, p_light);
+		}
+
 
 		if (name)
 		{
@@ -314,8 +314,8 @@ namespace PogplantDriver
 			for (auto& child : relationship_component->m_children)
 			{
 				_classroot[counter++] = SaveComponents(child);
-				auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(child);
-				if (relationship_component)
+				auto child_relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(child);
+				if (child_relationship_component)
 				{
 					counter = RecurSaveChild(_classroot, child, counter);
 				}
@@ -368,14 +368,20 @@ namespace PogplantDriver
 				continue; // cannot serialize, because we cannot retrieve the value
 
 			const auto name = prop.get_name().to_string();
+			auto variable_type = prop_value.get_type();
 
 			if (prop_value.is_type<glm::vec3>())
 			{
 				AddVec3To(root, name, prop_value.get_value<glm::vec3>());
 			}
+			else if (variable_type.is_arithmetic())
+			{
+				if(!Save_arithmetic(root, name, variable_type, prop_value))
+					std::cout << name << " is an unsupported arithmetic type" << std::endl;
+			}
 			else
 			{
-				std::cout << "type not supported" << std::endl;
+				std::cout << name << " is somehow not supported" << std::endl;
 			}
 
 		}
@@ -401,21 +407,97 @@ namespace PogplantDriver
 				continue; // cannot serialize, because we cannot retrieve the value
 
 			const auto name = prop.get_name().to_string();
+			auto variable_type = prop_value.get_type();
 
-			if (prop_value.is_type<glm::vec3>())
+			if (_data[name])
 			{
-				if (_data[name])
+				if (prop_value.is_type<glm::vec3>())
+				{
 					prop.set_value(obj, CreateVec3(_data[name]));
+				}
+				else if (variable_type.is_arithmetic())
+				{
+					if (!Load_arithmetic(variable_type, prop, obj, _data[name]))
+						std::cout << name << " is an unsupported arithmetic type" << std::endl;
+				}
+				else
+				{
+					std::cout << "type not supported" << std::endl;
+				}
+			}
 
-			}
-			else
-			{
-				std::cout << "type not supported" << std::endl;
-			}
+			
 
 		}
 
 		_obj.get_derived_type().get_method("init").invoke(obj);
+	}
+
+	//basically checking all the basic types lol
+	bool Serializer::Save_arithmetic(Json::Value& _root, const std::string& _name, rttr::type _type, rttr::variant& _value)
+	{
+		if (_type == rttr::type::get<bool>())
+			_root[_name] = _value.to_bool();
+		else if (_type == rttr::type::get<char>())
+			_root[_name] = _value.to_bool();
+
+		else if (_type == rttr::type::get<int8_t>())
+			_root[_name] = _value.to_int8();
+		else if (_type == rttr::type::get<int16_t>())
+			_root[_name] = _value.to_int16();
+		else if (_type == rttr::type::get<int32_t>())
+			_root[_name] = _value.to_int32();
+		else if (_type == rttr::type::get<int64_t>())
+			_root[_name] = _value.to_int64();
+
+		else if (_type == rttr::type::get<uint8_t>())
+			_root[_name] = _value.to_uint8();
+		else if (_type == rttr::type::get<uint16_t>())
+			_root[_name] = _value.to_uint16();
+		else if (_type == rttr::type::get<uint32_t>())
+			_root[_name] = _value.to_uint32();
+		else if (_type == rttr::type::get<uint64_t>())
+			_root[_name] = _value.to_uint64();
+
+		else if (_type == rttr::type::get<float>())
+			_root[_name] = _value.to_float();
+		else if (_type == rttr::type::get<double>())
+			_root[_name] = _value.to_double();
+		else
+			return false;
+
+		return true;
+	}
+
+	bool Serializer::Load_arithmetic(rttr::type _type, rttr::property& _prop, rttr::instance& _obj, const Json::Value& _data)
+	{
+		if (_type == rttr::type::get<bool>())
+			_prop.set_value(_obj, _data.asBool());
+		else if (_type == rttr::type::get<char>())
+			_prop.set_value(_obj, _data.asBool());
+
+		else if (_type == rttr::type::get<int8_t>() ||
+				_type == rttr::type::get<int16_t>() ||
+				_type == rttr::type::get<int32_t>())
+			_prop.set_value(_obj, _data.asInt());
+		else if (_type == rttr::type::get<int64_t>())
+			_prop.set_value(_obj, _data.asInt64());
+
+		else if (_type == rttr::type::get<uint8_t>() ||
+			_type == rttr::type::get<uint16_t>() ||
+			_type == rttr::type::get<uint32_t>())
+			_prop.set_value(_obj, _data.asUInt());
+		else if (_type == rttr::type::get<uint64_t>())
+			_prop.set_value(_obj, _data.asUInt64());
+
+		else if (_type == rttr::type::get<float>())
+			_prop.set_value(_obj, _data.asFloat());
+		else if (_type == rttr::type::get<double>())
+			_prop.set_value(_obj, _data.asDouble());
+		else
+			return false;
+
+		return true;
 	}
 }
 

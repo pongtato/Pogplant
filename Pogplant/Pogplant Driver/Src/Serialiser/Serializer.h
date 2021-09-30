@@ -35,10 +35,12 @@ namespace PogplantDriver
 		//helper functions
 		void AddVec3To(Json::Value& _classroot, std::string _string, glm::vec3& _vec3);
 		glm::vec3 CreateVec3(const Json::Value& _data);
-		//reflection based function
 
+		//reflection based function
 		Json::Value Reflect_Serialization(Json::Value& _root, rttr::instance _obj);
 		void Reflect_Deserialization(rttr::instance _obj, const Json::Value& _data);
+		bool Save_arithmetic(Json::Value& _root, const std::string& _name, rttr::type _type,rttr::variant& _value);
+		bool Load_arithmetic(rttr::type _type, rttr::property& _prop, rttr::instance& _obj, const Json::Value& _data);
 
 	};
 
