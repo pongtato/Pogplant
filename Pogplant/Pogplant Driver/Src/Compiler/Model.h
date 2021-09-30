@@ -21,36 +21,46 @@ struct Vertex
 
 struct Texture
 {
-	unsigned int m_Id;
 	std::string m_Type;
 	std::string m_Path;
+};
+
+struct Bounds
+{
+	float minX;
+	float maxX;
+	float minY;
+	float maxY;
+	float minZ;
+	float maxZ;
+	float longest;
 };
 
 struct Mesh3D
 {
 	// 0x0004 = GL_TRIANGLES
-	Mesh3D(std::vector<Vertex> _Vertices, std::vector<uint> _Indices, std::vector<Texture> _Textures, uint _PrimitiveType = 0x0004);
+	Mesh3D(std::vector<Vertex> _Vertices, std::vector<uint> _Indices, std::vector<Texture> _Textures);
 
 	std::vector<Vertex> m_Vertices;
 	std::vector<uint> m_Indices;
 	std::vector<Texture> m_Textures;
-	uint m_PrimitiveType;
 };
 
 class Model
 {
 public:
 	// 0x0004 = GL_TRIANGLES
-	Model(std::string _Path, uint _PrimitiveType = 0x0004);
+	Model(std::string _Path);
 
 	std::vector<Texture> m_TexturesLoaded;
 	std::vector<Mesh3D> m_Meshes;
+	Bounds m_Bounds;
 	std::string m_Directory;
 
 private:
-	void LoadModel(std::string _Path, uint _PrimitiveType);
-	void ProcessNode(aiNode* _Node, const aiScene* _Scene, uint _PrimitiveType);
-	Mesh3D ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, uint _PrimitiveType);
+	void LoadModel(std::string _Path);
+	void ProcessNode(aiNode* _Node, const aiScene* _Scene);
+	Mesh3D ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene);
 	std::vector<Texture> LoadMaterialTextures(aiMaterial* _Material, aiTextureType _Type, std::string _TypeName);
 };
 

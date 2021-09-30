@@ -16,9 +16,6 @@
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{0ec58af1-2a1d-4121-aa2c-5e70167c63a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Textures">
-      <UniqueIdentifier>{46c8e2ff-a47d-406f-9241-b3792061f060}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Logger">
       <UniqueIdentifier>{037d1176-7a61-493d-ac9e-5e2160d96a63}</UniqueIdentifier>
     </Filter>
@@ -33,9 +30,6 @@
     <ClCompile Include="Src\Compiler\Model.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Compiler\Textures.cpp">
-      <Filter>Source Files\Textures</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Compiler\ModelCompiler.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
@@ -49,9 +43,6 @@
   <ItemGroup>
     <ClInclude Include="Src\Compiler\Model.h">
       <Filter>Source Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Compiler\Textures.h">
-      <Filter>Source Files\Textures</Filter>
     </ClInclude>
     <ClInclude Include="Src\Compiler\ModelCompiler.h">
       <Filter>Source Files\Models</Filter>

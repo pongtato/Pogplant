@@ -21,7 +21,7 @@ public:
 
 private:
 	
-	void LoadModel(std::string _Path, unsigned int _PrimitiveType = 0x0004);
+	void LoadModel(std::string _Path);
 	void UnloadModel();
 	// This model contains all the data needed
 	std::vector<Model> m_modelVec;

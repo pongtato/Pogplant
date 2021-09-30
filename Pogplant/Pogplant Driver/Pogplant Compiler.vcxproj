@@ -24,14 +24,12 @@
     <ClCompile Include="Src\Compiler\main.cpp" />
     <ClCompile Include="Src\Compiler\Model.cpp" />
     <ClCompile Include="Src\Compiler\ModelCompiler.cpp" />
-    <ClCompile Include="Src\Compiler\Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Compiler\FileSystem.h" />
     <ClInclude Include="Src\Compiler\Logger.h" />
     <ClInclude Include="Src\Compiler\Model.h" />
     <ClInclude Include="Src\Compiler\ModelCompiler.h" />
-    <ClInclude Include="Src\Compiler\Textures.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -172,7 +170,7 @@
     </Link>
     <PostBuildEvent>
       <Command>
-</Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

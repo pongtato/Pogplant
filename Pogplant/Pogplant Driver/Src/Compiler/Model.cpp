@@ -1,27 +1,22 @@
 #include "Model.h"
 #include "Logger.h"
-#include "Textures.h"
 
 #include <limits>
-
 #include <iostream>
 
-Mesh3D::Mesh3D(std::vector<Vertex> _Vertices, std::vector<uint> _Indices, std::vector<Texture> _Textures, uint _PrimitiveType)
+Mesh3D::Mesh3D(std::vector<Vertex> _Vertices, std::vector<uint> _Indices, std::vector<Texture> _Textures)
 {
     m_Vertices = _Vertices;
     m_Indices = _Indices;
     m_Textures = _Textures;
-    m_PrimitiveType = _PrimitiveType;
 }
 
-Model::Model(std::string _Path, uint _PrimitiveType)
+Model::Model(std::string _Path)
 {
-    Textures::SetTextureFlip(true);
-
-    LoadModel(_Path, _PrimitiveType);
+    LoadModel(_Path);
 }
 
-void Model::LoadModel(std::string _Path, uint _PrimitiveType)
+void Model::LoadModel(std::string _Path)
 {
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(_Path, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
@@ -35,10 +30,10 @@ void Model::LoadModel(std::string _Path, uint _PrimitiveType)
         Logger::Log({ "PP::ERROR::ASSIMP",LogEntry::ERROR, importer.GetErrorString() });
         return;
     }
-    ProcessNode(scene->mRootNode, scene, _PrimitiveType);
+    ProcessNode(scene->mRootNode, scene);
 }
 
-void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, uint _PrimitiveType)
+void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene)
 {
     // process each mesh located at the current node
     for (unsigned int i = 0; i < _Node->mNumMeshes; i++)
@@ -46,16 +41,16 @@ void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, uint _PrimitiveTyp
         // the node object only contains indices to index the actual objects in the scene. 
         // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
         aiMesh* mesh = _Scene->mMeshes[_Node->mMeshes[i]];
-        m_Meshes.push_back(ProcessMesh(mesh, _Scene, _PrimitiveType));
+        m_Meshes.push_back(ProcessMesh(mesh, _Scene));
     }
     // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
     for (unsigned int i = 0; i < _Node->mNumChildren; i++)
     {
-        ProcessNode(_Node->mChildren[i], _Scene, _PrimitiveType);
+        ProcessNode(_Node->mChildren[i], _Scene);
     }
 }
 
-Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, uint _PrimitiveType)
+Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene)
 {
     // data to fill
     std::vector<Vertex> vertices;
@@ -73,6 +68,15 @@ Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, uint _PrimitiveT
         vector.z = _Mesh->mVertices[i].z;
 
         vertex.m_Position = vector;
+
+        m_Bounds.minX = std::min(m_Bounds.minX, vector.x);
+        m_Bounds.minY = std::min(m_Bounds.minY, vector.y);
+        m_Bounds.minZ = std::min(m_Bounds.minZ, vector.z);
+
+        m_Bounds.maxX = std::max(m_Bounds.maxX, vector.x);
+        m_Bounds.maxY = std::max(m_Bounds.maxY, vector.y);
+        m_Bounds.maxZ = std::max(m_Bounds.maxZ, vector.z);
+
         // normals
         if (_Mesh->HasNormals())
         {
@@ -136,8 +140,15 @@ Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, uint _PrimitiveT
     std::vector<Texture> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
     textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
+    // Find longest edge - General usage no ritter's
+    float lenX = std::fabsf(m_Bounds.maxX) + std::fabsf(m_Bounds.minX);
+    float lenY = std::fabsf(m_Bounds.maxY) + std::fabsf(m_Bounds.minY);
+    float lenZ = std::fabsf(m_Bounds.maxZ) + std::fabsf(m_Bounds.minZ);
+    m_Bounds.longest = std::max(lenX, lenY);
+    m_Bounds.longest = std::max(m_Bounds.longest, lenZ);
+
     // return a mesh object created from the extracted mesh data
-    return Mesh3D(vertices, indices, textures, _PrimitiveType);
+    return Mesh3D(vertices, indices, textures);
 }
 
 std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* _Material, aiTextureType _Type, std::string _TypeName)

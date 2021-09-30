@@ -91,5 +91,9 @@ namespace Pogplant
         glVertexAttribPointer(4, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, m_TexCoords));
 
         glBindVertexArray(0);
+
+        // Clear vertices buffer after done copying to opengl
+        m_Vertices.clear();
+        m_Vertices.shrink_to_fit();
     }
 }
