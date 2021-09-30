@@ -1,10 +1,9 @@
 #include "Serializer.h"
 
 
-#include "../ImguiHelper.h"
 #include "../ECS/Components/Components.h"
 #include "ModelResource.h"
-
+#include <typeinfo>
 #include <fstream>
 
 using namespace Components;
@@ -118,7 +117,7 @@ namespace PogplantDriver
 		if (transform_component)
 		{
 			//this works
-			Reflect_This(subroot, transform_component);
+			Reflect_Serialization(subroot, transform_component);
 
 			//Json::Value classroot;
 
@@ -183,6 +182,7 @@ namespace PogplantDriver
 
 		return subroot;
 	}
+
 	void Serializer::LoadObjects(const std::string& File)
 	{
 		std::ifstream istream(File, std::ios::in);
@@ -207,20 +207,31 @@ namespace PogplantDriver
 			istream.close();
 		}
 	}
+
 	void Serializer::LoadComponents(const Json::Value& root, entt::entity id)
 	{
+
 		auto& transform = root["Transform"];
 		auto& name = root["Name"];
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
 		auto& light = root["Light"];
+
+
 		if (transform)
 		{
-			glm::vec3 pos = { transform["m_position"][0].asFloat(),transform["m_position"][1].asFloat(),transform["m_position"][2].asFloat() };
-			glm::vec3 rot = { transform["m_rotation"][0].asFloat(),transform["m_rotation"][1].asFloat(),transform["m_rotation"][2].asFloat() };
-			glm::vec3 sca = { transform["m_scale"][0].asFloat(),transform["m_scale"][1].asFloat(),transform["m_scale"][2].asFloat() };
+			//glm::vec3 pos = { transform["m_position"][0].asFloat(),transform["m_position"][1].asFloat(),transform["m_position"][2].asFloat() };
+			//glm::vec3 rot = { transform["m_rotation"][0].asFloat(),transform["m_rotation"][1].asFloat(),transform["m_rotation"][2].asFloat() };
+			//glm::vec3 sca = { transform["m_scale"][0].asFloat(),transform["m_scale"][1].asFloat(),transform["m_scale"][2].asFloat() };
 
-			ImguiHelper::m_ecs->GetReg().emplace<Transform>(id, pos, rot, sca);
+			//ImguiHelper::m_ecs->GetReg().emplace<Transform>(id, pos, rot, sca);
+
+			Transform _t;
+			Reflect_Deserialization(_t, transform);
+			auto& _component = ImguiHelper::m_ecs->GetReg().emplace<Transform>(id, _t);
+			////ImguiHelper::m_ecs->GetReg().replace<Transform>(id, _component);
+
+			//std::cout << _component.m_scale.x << ", " << _component.m_scale.y << ", " <<  _component.m_scale.z << std::endl;
 		}
 
 		if (name)
@@ -326,7 +337,18 @@ namespace PogplantDriver
 		data.clear();
 	}
 
-	Json::Value Serializer::Reflect_This(Json::Value& _root, rttr::instance _obj)
+	glm::vec3 Serializer::CreateVec3(const Json::Value& _data)
+	{
+		if (_data[0] && _data[1] && _data[2])
+			return glm::vec3{ _data[0].asFloat(), _data[1].asFloat(), _data[2].asFloat() };
+
+		std::cout << _data.asCString() << " is not a vec 3" << std::endl;
+
+		return glm::vec3{};
+
+	}
+
+	Json::Value Serializer::Reflect_Serialization(Json::Value& _root, rttr::instance _obj)
 	{
 		rttr::instance obj = _obj.get_type().get_raw_type().is_wrapper() ? _obj.get_wrapped_instance() : _obj;
 		const auto component_name = obj.get_type().get_raw_type().get_name().to_string();
@@ -359,6 +381,41 @@ namespace PogplantDriver
 		}
 
 		return _root[component_name] = root;
+	}
+
+	void Serializer::Reflect_Deserialization(rttr::instance _obj, const Json::Value& _data)
+	{
+		rttr::instance obj = _obj.get_type().get_raw_type().is_wrapper() ? _obj.get_wrapped_instance() : _obj;
+		const auto component_name = obj.get_type().get_raw_type().get_name().to_string();
+
+		auto prop_list = obj.get_derived_type().get_properties();
+
+		for (auto prop : prop_list)
+		{
+			if (prop.get_metadata("NO_SERIALIZE"))
+				continue;
+
+			rttr::variant prop_value = prop.get_value(obj);
+
+			if (!prop_value)
+				continue; // cannot serialize, because we cannot retrieve the value
+
+			const auto name = prop.get_name().to_string();
+
+			if (prop_value.is_type<glm::vec3>())
+			{
+				if (_data[name])
+					prop.set_value(obj, CreateVec3(_data[name]));
+
+			}
+			else
+			{
+				std::cout << "type not supported" << std::endl;
+			}
+
+		}
+
+		_obj.get_derived_type().get_method("init").invoke(obj);
 	}
 }
 

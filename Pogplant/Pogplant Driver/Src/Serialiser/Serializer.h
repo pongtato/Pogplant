@@ -3,6 +3,7 @@
 
 #include "../ECS/Entity.h"
 #include "../../Libs/json/include/json.h"
+#include "../ImguiHelper.h"
 #include <string>
 #include <stack>
 #include <filesystem>
@@ -31,12 +32,13 @@ namespace PogplantDriver
 		int RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter);
 
 
-		//helper functions for saving
+		//helper functions
 		void AddVec3To(Json::Value& _classroot, std::string _string, glm::vec3& _vec3);
-	
+		glm::vec3 CreateVec3(const Json::Value& _data);
 		//reflection based function
 
-		Json::Value Reflect_This(Json::Value& _root, rttr::instance _obj);
+		Json::Value Reflect_Serialization(Json::Value& _root, rttr::instance _obj);
+		void Reflect_Deserialization(rttr::instance _obj, const Json::Value& _data);
 
 	};
 

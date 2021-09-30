@@ -58,6 +58,11 @@ namespace Components
 		Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scale)
 			: m_position(pos), m_rotation(rot), m_scale(scale)
 		{
+			init();
+		}
+
+		void init(void)
+		{
 			glm::mat4 model = glm::mat4{ 1 };
 			model = glm::translate(model, m_position);
 			model = glm::rotate(model, m_rotation[0], { 1,0,0 });
@@ -67,13 +72,16 @@ namespace Components
 
 			// Convert back to float
 			memcpy(m_ModelMtx, glm::value_ptr(model), sizeof(model));
+
+			//std::cout << "init called " << std::endl;
 		}
 	};
 
 	RTTR_REGISTRATION
 	{
 		rttr::registration::class_<Transform>("Transform")
-			.constructor<glm::vec3, glm::vec3,glm::vec3>()
+			//.constructor<glm::vec3, glm::vec3,glm::vec3>()
+			.method("init", &Transform::init)
 			.property("m_position", &Transform::m_position)
 			.property("m_rotation", &Transform::m_rotation)
 			.property("m_scale", &Transform::m_scale);

@@ -46,15 +46,15 @@ void Init()
 
 	// Will change to automatic update when i figure it out
 	AssetCompiler& acc = acc.GetInstance();
-	//if(!acc.Exists("Resources/KekFiles/Cube.kek"))
+	if(!acc.Exists("Resources/KekFiles/Cube.kek"))
 		acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/cube/Cube.fbx");
-	//if (!acc.Exists("Resources/KekFiles/Sphere.kek"))
+	if (!acc.Exists("Resources/KekFiles/Sphere.kek"))
 		acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/sphere/Sphere.fbx");
-	//if (!acc.Exists("Resources/KekFiles/Enemy_01.kek"))
+	if (!acc.Exists("Resources/KekFiles/Enemy_01.kek"))
 		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/Enemy/Enemy_01.fbx");
-	//if (!acc.Exists("Resources/KekFiles/Player_Ship.kek"))
+	if (!acc.Exists("Resources/KekFiles/Player_Ship.kek"))
 		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/Ship/Player_Ship.fbx");
-	//if (!acc.Exists("Resources/KekFiles/backpack.kek"))
+	if (!acc.Exists("Resources/KekFiles/backpack.kek"))
 		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/backpack/backpack.obj");
 	acc.WaitForAllProcess();
 	//acc.WaitForSingleProcess("BAG");
