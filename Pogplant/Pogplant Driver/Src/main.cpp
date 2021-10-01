@@ -67,7 +67,7 @@ void Init()
 
 	PP::TextureResource::InitResource();
 	PP::MeshBuilder::InitMesh();
-
+	PP::FontResource::InitResource();
 	PP::ShaderLinker::InitShader();
 	PP::FrameBuffer::InitFrameBuffer();
 	PP::CameraResource::InitBaseCameras(
@@ -242,6 +242,13 @@ void Init()
 	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, sphereModel, false });
 	//entity.AddComponent<Components::Name>(Name{ "Light 4" });
 
+	/// FONT
+	pos = { 0.0f, 0.0f, 0.0f };
+	rot = { 0.0f, 0.0f,0.0f };
+	scale = { 10.0f,10.0f,10.0f };
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "Test font kekw", false });
+
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 	
 	// Nazi?
@@ -405,10 +412,13 @@ void DrawEditor()
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::Draw("EDITOR", ecs.GetReg(), renderOjbect);
 	PP::Renderer::EndBuffer();
+
 	// Where to draw the gpass FB to
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::GLightPass("EDITOR", ecs.GetReg());
+	//PP::Renderer::DrawNoLight("EDITOR", ecs.GetReg(), renderOjbect);
+	//PP::Renderer::DrawTextPls("EDITOR", ecs.GetReg());
 	PP::Renderer::EndBuffer();
 }
 
@@ -435,6 +445,7 @@ void DrawGame()
 	}
 
 	// Models for Gpass
+	PP::Renderer::ShadowPass(ecs.GetReg());
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::Draw("GAME", ecs.GetReg(), nullptr);
@@ -471,7 +482,6 @@ void Run()
 		// Camera KB movement
 		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
 
-
 		ImaginarySystem.Update();
 
 		/// Most of this should be moved to other files when the engine is developed
@@ -498,6 +508,7 @@ void Exit()
 	PPD::ImguiHelper::CleanUpImgui();
 	PP::CameraResource::CleanUpCameras();
 	PP::FrameBuffer::CleanUpFrameBuffer();
+	PP::FontResource::CleanUpResource();
 	PP::MeshBuilder::CleanUpMesh();
 	PP::Window::CleanUpWindow();
 

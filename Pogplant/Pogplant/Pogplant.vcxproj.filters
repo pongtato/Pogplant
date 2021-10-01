@@ -79,6 +79,15 @@
     <Filter Include="Source Files\Utils">
       <UniqueIdentifier>{a26b604a-520b-4c46-b194-8230a93ea184}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Font">
+      <UniqueIdentifier>{cc40a832-9f35-4800-9023-8ebfc7fa272b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Font\Character">
+      <UniqueIdentifier>{30a9c372-0b97-491b-a5db-e4d509a10d79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Font\FontResource">
+      <UniqueIdentifier>{aa9d1e8a-51b7-4dac-b566-772eec9d1d8b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -150,6 +159,18 @@
     <ClInclude Include="Src\ShadowConfig.h">
       <Filter>Source Files\Graphics\FrameBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Character.h">
+      <Filter>Source Files\Graphics\Font\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Font.h">
+      <Filter>Source Files\Graphics\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\FontResource.h">
+      <Filter>Source Files\Graphics\Font\FontResource</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Text.h">
+      <Filter>Source Files\Graphics\Font</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -217,6 +238,12 @@
     </ClCompile>
     <ClCompile Include="Src\ShadowConfig.cpp">
       <Filter>Source Files\Graphics\FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Character.cpp">
+      <Filter>Source Files\Graphics\Font\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\FontResource.cpp">
+      <Filter>Source Files\Graphics\Font\FontResource</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

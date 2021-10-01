@@ -116,7 +116,13 @@ namespace Components
 		RTTR_ENABLE(Light);
 	};
 
-
+	struct Text
+	{
+		glm::vec3 m_Color;
+		std::string m_FontID;
+		std::string m_Text;
+		bool m_Ortho;
+	};
 
 	RTTR_REGISTRATION
 	{

@@ -20,6 +20,7 @@ namespace Pogplant
         MeshResource::InitResource();
         MeshInstance::InitMeshInstance(_PoolSize);
         GenerateQuad();
+        GenerateTextQuad();
         GenerateScreen();
         GenerateSkybox();
         ModelResource::InitResource();
@@ -98,6 +99,27 @@ namespace Pogplant
         // Unbind
         glBindVertexArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }
+
+    void MeshBuilder::RebindTextQuad(float _X, float _Y, float _Width, float _Height, float _UVx, float _UVy)
+    {
+        float vertices[6][4] = 
+        {
+           { _X         , _Y + _Height  , 0.0f, 0.0f },
+           { _X         , _Y            , 0.0f, _UVy },
+           { _X + _Width, _Y            , _UVx, _UVy },
+
+           { _X         , _Y + _Height  , 0.0f, 0.0f },
+           { _X + _Width, _Y            , _UVx, _UVy },
+           { _X + _Width, _Y + _Height  , _UVx, 0.0f }
+        };
+
+        Mesh* mesh = MeshResource::m_MeshPool[MT::TEXT_QUAD];
+        glBindVertexArray(mesh->m_VAO);
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->m_VBO);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindVertexArray(0);
     }
 
     void MeshBuilder::GenerateQuad()
@@ -203,6 +225,21 @@ namespace Pogplant
         // Update type ands size
         mesh->m_IndicesCount = static_cast<unsigned int>(mesh->m_Indices.size());
         mesh->m_PrimitiveType = GL_TRIANGLE_STRIP;
+    }
+
+    void MeshBuilder::GenerateTextQuad()
+    {
+        Mesh* mesh = MeshResource::m_MeshPool[MT::TEXT_QUAD];
+
+        glGenVertexArrays(1, &mesh->m_VAO);
+        glGenBuffers(1, &mesh->m_VBO);
+        glBindVertexArray(mesh->m_VAO);
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->m_VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 24, NULL, GL_DYNAMIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindVertexArray(0);
     }
 
     void MeshBuilder::GenerateScreen()
@@ -314,5 +351,8 @@ namespace Pogplant
 
         Skybox::m_IndicesCount = 36;
         Skybox::m_PrimitiveType = GL_TRIANGLES;
+
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindVertexArray(0);
     }
 }

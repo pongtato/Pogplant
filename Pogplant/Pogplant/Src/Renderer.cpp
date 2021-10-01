@@ -4,12 +4,16 @@
 #include "FrameBuffer.h"
 #include "ShaderLinker.h"
 #include "CameraResource.h"
+#include "Mesh.h"
 #include "MeshResource.h"
 #include "ModelResource.h"
 #include "Model.h"
 #include "Skybox.h"
 #include "TextureResource.h"
 #include "ShadowConfig.h"
+#include "Font.h"
+#include "FontResource.h"
+#include "MeshBuilder.h"
 
 #include <gtc/matrix_transform.hpp>
 #include <glew.h>
@@ -26,8 +30,8 @@ namespace Pogplant
 	{
 		FrameBuffer::BindFrameBuffer(BufferType::EDITOR_BUFFER);
 		glEnable(GL_DEPTH_TEST);
-		glEnable(GL_STENCIL_TEST);
-		glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+		//glEnable(GL_STENCIL_TEST);
+		//glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 	}
 
 	void Renderer::StartGameBuffer()
@@ -154,10 +158,13 @@ namespace Pogplant
 		{
 			const auto& it = results.get<const Components::Render>(e);
 			ShaderLinker::SetUniform("m4_Model", it.m_Model);
-			ShaderLinker::SetUniform("i_CastShadow", it.m_UseLight);
-			it.m_RenderModel->Draw();
+			if (it.m_UseLight)
+			{
+				it.m_RenderModel->Draw();
+			}
 		}
 		///
+		glDisable(GL_DEPTH_TEST);
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		ShaderLinker::UnUse();
@@ -177,7 +184,7 @@ namespace Pogplant
 	{
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glClearColor(_R, _G, _B, _A);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
 	void Renderer::SwapBuffer()
@@ -207,17 +214,11 @@ namespace Pogplant
 			const auto& it = results.get<const Components::Render>(e);
 
 			ShaderLinker::SetUniform("m4_Model", it.m_Model);
-			ShaderLinker::SetUniform("useLight", it.m_UseLight);
 			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
+			ShaderLinker::SetUniform("useLight", it.m_UseLight);
 			it.m_RenderModel->Draw();
 		}
 		ShaderLinker::UnUse();
-
-		//ShaderLinker::Use("BASIC");
-		//ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-		//ShaderLinker::SetUniform("m4_View", currCam->GetView());
-		//MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
-		//ShaderLinker::UnUse();
 
 		// Skybox
 		glDepthFunc(GL_LEQUAL);
@@ -229,6 +230,14 @@ namespace Pogplant
 		Skybox::Draw(TextureResource::m_TexturePool["SKYBOX4"]);
 		ShaderLinker::UnUse();
 		glDepthFunc(GL_LESS);
+
+		DrawText(_CameraID, registry);
+
+		//ShaderLinker::Use("BASIC");
+		//ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		//ShaderLinker::SetUniform("m4_View", currCam->GetView());
+		//MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
+		//ShaderLinker::UnUse();
 
 		//// Edge
 		//if (_Selected != nullptr)
@@ -266,6 +275,10 @@ namespace Pogplant
 		glDisable(GL_CULL_FACE);
 	}
 
+	void Renderer::DrawNoLight(const char* _CameraID, const entt::registry& registry, Components::Render* _Selected)
+	{
+	}
+
 	void Renderer::Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16])
 	{
 		(void)_Ortho;
@@ -291,5 +304,78 @@ namespace Pogplant
 		ShaderLinker::SetUniform(append.c_str(), _Location);
 		glBindTextureUnit(static_cast<GLint>(_Location), _TexID);
 		ShaderLinker::UnUse();
+	}
+
+	void Renderer::DrawText(const char* _CameraID, const entt::registry& registry)
+	{
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		Camera* currCam = CameraResource::GetCamera(_CameraID);
+
+		// Use shader
+		ShaderLinker::Use("TEXT");
+
+		auto results = registry.view<Components::Text, Components::Transform>();
+		for (const auto& e : results)
+		{
+			const auto& it_Text = results.get<const Components::Text>(e);
+			const auto& it_Trans = results.get<const Components::Transform>(e);
+
+			Font* currFont = FontResource::m_FontPool[it_Text.m_FontID];
+
+			// Ortho or not
+			if (!it_Text.m_Ortho)
+			{
+				ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+				ShaderLinker::SetUniform("m4_View", currCam->GetView());
+			}
+			else
+			{
+				ShaderLinker::SetUniform("m4_Projection", glm::mat4{ 1 });
+				ShaderLinker::SetUniform("m4_View", glm::mat4{ 1 });
+			}
+
+			glm::mat4 model = glm::mat4{ 1 };
+			model = glm::translate(model, { it_Trans.m_position.x,it_Trans.m_position.y - it_Trans.m_scale.y, it_Trans.m_position.z });
+			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.x), glm::vec3{ 1.0f,0.0f,0.0f });
+			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.y), glm::vec3{ 0.0f,1.0f,0.0f });
+			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.z), glm::vec3{ 0.0f,0.0f,1.0f });
+			model = glm::scale(model, it_Trans.m_scale);
+
+			ShaderLinker::SetUniform("m4_Model", glm::mat4{ model });
+			ShaderLinker::SetUniform("distanceRange", currFont->m_DistanceRange);
+			ShaderLinker::SetUniform("textColor", it_Text.m_Color);
+			glBindTexture(GL_TEXTURE_2D, currFont->m_TextureID);
+
+			//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			float xAccumulate = 0;
+			for (const auto& it : it_Text.m_Text)
+			{
+				const auto& currChar = currFont->m_Font[it];
+				ShaderLinker::SetUniform("offset", currChar.m_TexCoords);
+
+				const float xPos = xAccumulate + currChar.m_Offsets.x;
+				const float yPos = -(currChar.m_Size.y - currChar.m_Offsets.y);
+
+				const float width = currChar.m_Size.x;
+				const float height = currChar.m_Size.y;
+
+				MeshBuilder::RebindTextQuad(xPos, yPos, width, height, currChar.m_Size.x, currChar.m_Size.y);
+
+				/// Draw
+				glBindVertexArray(MeshResource::m_MeshPool[MeshResource::MESH_TYPE::TEXT_QUAD]->m_VAO);
+				glDrawArrays(GL_TRIANGLES, 0, 6);
+				glBindVertexArray(0);
+
+				xAccumulate += currChar.m_Advance;
+			}
+
+			glBindTexture(GL_TEXTURE_2D, 0);
+			//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		}
+		ShaderLinker::UnUse();
+
+		glDisable(GL_BLEND);
 	}
 }

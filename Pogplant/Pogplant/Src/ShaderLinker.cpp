@@ -23,6 +23,8 @@ namespace Pogplant
 		ShaderResource::AddShaderProfile(ShaderProfile("GPASS", dir, "GPass.vert", "GPass.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("SHADOW", dir, "Shadows.vert", "Shadows.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("DEPTH", dir, "Depth.vert", "Depth.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("TEXT", dir, "Text.vert", "Text.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("MODELNL", dir, "ModelNL.vert", "ModelNL.frag"));
 
 		for (const auto& it : ShaderResource::m_ShaderProfiles)
 		{

@@ -14,6 +14,7 @@ namespace Pogplant
 		enum MESH_TYPE
 		{
 			QUAD,
+			TEXT_QUAD,
 			SCREEN,
 			COUNT_2D,
 		};

@@ -13,6 +13,9 @@
   <ItemGroup>
     <ClInclude Include="Src\Camera.h" />
     <ClInclude Include="Src\CameraResource.h" />
+    <ClInclude Include="Src\Character.h" />
+    <ClInclude Include="Src\Font.h" />
+    <ClInclude Include="Src\FontResource.h" />
     <ClInclude Include="Src\FrameBuffer.h" />
     <ClInclude Include="Src\FrameBufferResource.h" />
     <ClInclude Include="Src\Logger.h" />
@@ -30,6 +33,7 @@
     <ClInclude Include="Src\ShaderResource.h" />
     <ClInclude Include="Src\ShadowConfig.h" />
     <ClInclude Include="Src\Skybox.h" />
+    <ClInclude Include="Src\Text.h" />
     <ClInclude Include="Src\TextureLoader.h" />
     <ClInclude Include="Src\TextureResource.h" />
     <ClInclude Include="Src\Utils\FileDialogs.h" />
@@ -38,6 +42,8 @@
   <ItemGroup>
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\CameraResource.cpp" />
+    <ClCompile Include="Src\Character.cpp" />
+    <ClCompile Include="Src\FontResource.cpp" />
     <ClCompile Include="Src\FrameBuffer.cpp" />
     <ClCompile Include="Src\FrameBufferResource.cpp" />
     <ClCompile Include="Src\Logger.cpp" />
@@ -94,16 +100,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\RTTR\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\RTTR\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\json\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\RTTR\lib;$(SolutionDir)Libs\json\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName)_D</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\RTTR\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\RTTR\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\json\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\RTTR\lib;$(SolutionDir)Libs\json\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>

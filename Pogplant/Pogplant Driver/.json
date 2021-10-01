@@ -1,0 +1,458 @@
+[
+	{
+		"Name" : "letsgoooo",
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"RenderModel" : 
+			[
+				"backpack",
+				"Resources/Models/backpack"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.0,
+				0.0,
+				-10.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : "letsgoooo",
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"RenderModel" : 
+			[
+				"Sphere",
+				"Resources/Models/sphere"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-5.0,
+				0.0,
+				-10.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			]
+		}
+	},
+	{
+		"Name" : "letsgoooo",
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"RenderModel" : 
+			[
+				"Cube",
+				"Resources/Models/cube"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-55.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				100.0,
+				100.0,
+				100.0
+			]
+		}
+	},
+	{
+		"Name" : "letsgoooo",
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"RenderModel" : 
+			[
+				"Player_Ship",
+				"Resources/Models/Ship"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.0,
+				-2.0,
+				10.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : "letsgoooo",
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models/Enemy"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.0,
+				-2.0,
+				10.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Directional_Light" : 
+		{
+			"Colour" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"Diffuse" : 0.41999998688697815,
+			"Direction" : 
+			[
+				-0.28734788298606873,
+				-0.57469576597213745,
+				-0.76626098155975342
+			],
+			"Intensity" : 0.5,
+			"Specular" : 0.68999999761581421
+		},
+		"Name" : "letsgoooo",
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"RenderModel" : 
+			[
+				"Sphere",
+				"Resources/Models/sphere"
+			],
+			"UseLight" : 0
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				7.5,
+				15.0,
+				20.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : "letsgoooo",
+		"Point_Light" : 
+		{
+			"Colour" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"Intensity" : 0.5,
+			"Linear" : 0.00069000001531094313,
+			"Quadratic" : 0.00419999985024333
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Sphere",
+				"Resources/Models/sphere"
+			],
+			"UseLight" : 0
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				10.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : "letsgoooo",
+		"Point_Light" : 
+		{
+			"Colour" : 
+			[
+				0.0,
+				0.0,
+				1.0
+			],
+			"Intensity" : 1.0,
+			"Linear" : 0.00069000001531094313,
+			"Quadratic" : 0.00419999985024333
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.0,
+				0.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Sphere",
+				"Resources/Models/sphere"
+			],
+			"UseLight" : 0
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.0,
+				10.0,
+				10.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : "letsgoooo",
+		"Point_Light" : 
+		{
+			"Colour" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"Intensity" : 1.0,
+			"Linear" : 0.00069000001531094313,
+			"Quadratic" : 0.00419999985024333
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Sphere",
+				"Resources/Models/sphere"
+			],
+			"UseLight" : 0
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : "letsgoooo",
+		"Point_Light" : 
+		{
+			"Colour" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"Intensity" : 1.0,
+			"Linear" : 0.00069000001531094313,
+			"Quadratic" : 0.00419999985024333
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Sphere",
+				"Resources/Models/sphere"
+			],
+			"UseLight" : 0
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				10.0,
+				-10.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

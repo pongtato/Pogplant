@@ -10,6 +10,8 @@ namespace Pogplant
 {
 	Model::Model(std::string _Path, uint _PrimitiveType, std::string _Key)
 	{
+        (void)_PrimitiveType;
+
         m_Model_key = _Key;
 
         // For comparison later

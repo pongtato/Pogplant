@@ -37,11 +37,14 @@ void main()
         }
         else
         {
-            gAlbedoSpec = vec4(colorTint,1.0f);
+            gAlbedoSpec = vec4(colorTint,0.0f);
         }
     }
     else
     {
         gNoLight = vec4(colorTint,1.0f);
+        gPosition = vec3(0.0f);
+        gNormal = vec3(0.0f);
+        gAlbedoSpec = vec4(colorTint,0.0f);
     }
 }

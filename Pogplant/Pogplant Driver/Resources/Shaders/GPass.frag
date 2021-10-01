@@ -121,5 +121,5 @@ void main()
     specular *= directLight.Specular;
     lighting += diffuse + specular;
 
-    outColor = NoLight + vec4(lighting, 1.0f);
+    outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
 }
