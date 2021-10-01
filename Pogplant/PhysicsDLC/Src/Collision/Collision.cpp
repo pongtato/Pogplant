@@ -237,5 +237,12 @@ namespace PhysicsDLC
 			//Objects collide
 			return tFirst;
 		}
+
+		bool PointAABB(const vec3& point, const Shapes::AABB& aabb)
+		{
+			return (aabb.m_min.x <= point.x && aabb.m_max.x >= point.x
+				&& aabb.m_min.y <= point.y && aabb.m_max.y >= point.y
+				&& aabb.m_min.z <= point.z && aabb.m_max.z >= point.z);
+		}
 	}
 }

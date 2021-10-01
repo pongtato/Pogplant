@@ -14,6 +14,7 @@
 
 #include "ECS/Entity.h"
 #include "ECS/Systems/imaginary_system.h"
+#include "ECS/Systems/PhysicsSystem.h"
 
 #include "Input/InputSystem.h"
 #include "ResourceAllocator.hpp"
@@ -33,6 +34,7 @@ namespace PPD = PogplantDriver;
 using namespace Components;
 ECS ecs;
 Imaginary_system ImaginarySystem;
+PhysicsSystem PhysicsSystem;
 
 void Init()
 {
@@ -248,6 +250,7 @@ void Init()
 	//SS.testfuncwithreturn();
 
 	ImaginarySystem.Init(&ecs);
+	PhysicsSystem.Init(&ecs);
 	Pogplant::Input::InputSystem::Instance()->Init(PP::Window::GetWindow());
 }
 
@@ -455,6 +458,7 @@ void DrawImGUI()
 {
 	PP::Renderer::ClearBuffer();
 	PPD::ImguiHelper::DrawImgui();
+	PhysicsSystem.DrawImGUI();
 }
 
 void Run()

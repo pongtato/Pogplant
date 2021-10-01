@@ -15,6 +15,8 @@ namespace PhysicsDLC
 
 		bool StaticAABBAABB(const Shapes::AABB& aabb1, const Shapes::AABB& aabb2);
 		float DynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime);
+		
+		bool PointAABB(const vec3& point, const Shapes::AABB& aabb);
 	}
 }
 

@@ -24,6 +24,14 @@ namespace PhysicsDLC
 
 	/**> Type used for delta time calculations*/
 	using dtType = double;
+
+	namespace Vector
+	{
+		static const glm::vec3 X = glm::vec3(1.f, 0.f, 0.f);
+		static const glm::vec3 Y = glm::vec3(0.f, 1.f, 0.f);
+		static const glm::vec3 Z = glm::vec3(0.f, 0.f, 1.f);
+		static const glm::vec3 Zero = glm::vec3(0.f, 0.f, 0.f);
+	};
 }
 
 #endif // !TYPEDEFINES_H_
