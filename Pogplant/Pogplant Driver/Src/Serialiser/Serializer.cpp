@@ -105,7 +105,7 @@ namespace PogplantDriver
 		auto name_component = ImguiHelper::m_ecs->GetReg().try_get<Name>(id);
 		auto position_component = ImguiHelper::m_ecs->GetReg().try_get<PositionList>(id);
 		auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
-		auto render_component = ImguiHelper::m_ecs->GetReg().try_get<Render>(id);
+		auto render_component = ImguiHelper::m_ecs->GetReg().try_get<Renderer>(id);
 		auto point_light_component = ImguiHelper::m_ecs->GetReg().try_get<Point_Light>(id);
 		auto directional_light_component = ImguiHelper::m_ecs->GetReg().try_get<Directional_Light>(id);
 
@@ -296,7 +296,7 @@ namespace PogplantDriver
 				}
 			}
 
-			ImguiHelper::m_ecs->GetReg().emplace<Render>(
+			ImguiHelper::m_ecs->GetReg().emplace<Renderer>(
 				id,
 				glm::mat4{1},
 				glm::vec3{ render["ColorTint"][0].asFloat(),render["ColorTint"][1].asFloat(),render["ColorTint"][2].asFloat() },

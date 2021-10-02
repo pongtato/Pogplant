@@ -76,9 +76,9 @@ namespace Components
 	};
 
 
-	struct Render
+	struct Renderer
 	{
-		Render(glm::mat4 Model, glm::vec3 ColorTint, Pogplant::Model* RenderModel, int UseLight = 1) :
+		Renderer(glm::mat4 Model, glm::vec3 ColorTint, Pogplant::Model* RenderModel, int UseLight = 1) :
 			m_Model(Model), m_ColorTint(ColorTint), m_RenderModel(RenderModel), m_UseLight(UseLight){}
 
 		glm::mat4 m_Model;

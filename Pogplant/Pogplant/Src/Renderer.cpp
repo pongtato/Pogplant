@@ -153,12 +153,12 @@ namespace Pogplant
 		glClear(GL_DEPTH_BUFFER_BIT);
 
 		/// Draw
-		auto results = registry.view<Components::Render>();
+		auto results = registry.view<Components::Renderer>();
 		for (const auto& e : results)
 		{
-			const auto& it = results.get<const Components::Render>(e);
+			const auto& it = results.get<const Components::Renderer>(e);
 			ShaderLinker::SetUniform("m4_Model", it.m_Model);
-			if (it.m_UseLight)
+			if (it.m_UseLight && it.m_RenderModel)
 			{
 				it.m_RenderModel->Draw();
 			}
@@ -193,7 +193,7 @@ namespace Pogplant
 		glfwPollEvents();
 	}
 
-	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::Render* _Selected)
+	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected)
 	{
 		glEnable(GL_CULL_FACE);
 
@@ -207,16 +207,19 @@ namespace Pogplant
 		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
 		ShaderLinker::SetUniform("m4_View", currCam->GetView());
 
-		auto results = registry.view<Components::Render>();
+		auto results = registry.view<Components::Renderer>();
 
 		for (const auto& e : results)
 		{
-			const auto& it = results.get<const Components::Render>(e);
+			const auto& it = results.get<const Components::Renderer>(e);
 
-			ShaderLinker::SetUniform("m4_Model", it.m_Model);
-			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
-			ShaderLinker::SetUniform("useLight", it.m_UseLight);
-			it.m_RenderModel->Draw();
+			if (it.m_RenderModel)
+			{
+				ShaderLinker::SetUniform("m4_Model", it.m_Model);
+				ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
+				ShaderLinker::SetUniform("useLight", it.m_UseLight);
+				it.m_RenderModel->Draw();
+			}
 		}
 		ShaderLinker::UnUse();
 
@@ -275,7 +278,7 @@ namespace Pogplant
 		glDisable(GL_CULL_FACE);
 	}
 
-	void Renderer::DrawNoLight(const char* _CameraID, const entt::registry& registry, Components::Render* _Selected)
+	void Renderer::DrawNoLight(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected)
 	{
 	}
 

@@ -187,11 +187,10 @@ namespace PogplantDriver
 						glm::vec3 color = { 0.835f,0.921f,0.905f };
 						if (ImGui::MenuItem("Sphere"))
 						{
-							auto temp = PP::ModelResource::m_ModelPool["Sphere"];
-							auto& renderer = m_ecs->GetReg().get_or_emplace<Components::Render>(m_CurrentEntity,
+							auto& renderer = m_ecs->GetReg().get_or_emplace<Components::Renderer>(m_CurrentEntity,
 								glm::mat4{1},
 								color, 
-								temp);
+								nullptr);
 						}
 						ImGui::EndMenu();
 					}
@@ -425,7 +424,7 @@ namespace PogplantDriver
 					ImGui::PopID();
 				}
 
-				auto renderer = m_ecs->GetReg().try_get<Components::Render>(m_CurrentEntity);
+				auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(m_CurrentEntity);
 				if (renderer)
 				{
 					bool enable_render = true;
@@ -443,7 +442,7 @@ namespace PogplantDriver
 					}
 					if (!enable_render)
 					{
-						m_ecs->GetReg().remove<Components::Render>(m_CurrentEntity);
+						m_ecs->GetReg().remove<Components::Renderer>(m_CurrentEntity);
 					}
 				}
 
@@ -668,7 +667,7 @@ namespace PogplantDriver
 					//GameObject& currGO = GO_Resource::m_GO_Container[i];
 					
 					auto& transform = m_ecs->GetReg().get<Components::Transform>(entity);
-					auto renderer = m_ecs->GetReg().try_get<Components::Render>(entity);
+					auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(entity);
 
 					if (renderer != nullptr)
 					{

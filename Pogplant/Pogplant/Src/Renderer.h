@@ -6,7 +6,7 @@
 
 namespace Components 
 {
-	struct Render;
+	struct Renderer;
 }
 
 namespace Pogplant
@@ -25,8 +25,8 @@ namespace Pogplant
 		static void ClearBuffer(float _R = 0.0f, float _G = 0.0f, float _B = 0.0f, float _A = 1.0f);
 		static void SwapBuffer();
 		// Draw mesh in world space
-		static void Draw(const char* _CameraID, const entt::registry& registry, Components::Render* _Selected);
-		static void DrawNoLight(const char* _CameraID, const entt::registry& registry, Components::Render* _Selected);
+		static void Draw(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected);
+		static void DrawNoLight(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected);
 		static void Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16]);
 		// Draw screen buffer
 		static void DrawScreen();
