@@ -15,10 +15,10 @@ namespace Pogplant
 		GAME_COLOR_BUFFER,
 		GAME_DEPTH_STENCIL,
 
-		// Gizmo
-		GIZMO_BUFFER,
-		GIZMO_COLOR_BUFFER,
-		GIZMO_DEPTH_STENCIL,
+		// Debug
+		DEBUG_BUFFER,
+		DEBUG_COLOR_BUFFER,
+		DEBUG_DEPTH_STENCIL,
 
 		// GPass
 		G_BUFFER,
@@ -39,8 +39,8 @@ namespace Pogplant
 
 		// Blur pass
 		BLUR_BUFFER_0,
-		BLUR_COLOR_BUFFER_0,
 		BLUR_BUFFER_1,
+		BLUR_COLOR_BUFFER_0,
 		BLUR_COLOR_BUFFER_1
 	};
 

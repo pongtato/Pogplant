@@ -11,12 +11,19 @@ namespace Pogplant
 {
 	void FrameBuffer::InitFrameBuffer()
 	{
-		InitEditorBuffer();
-		InitGameBuffer();
-		//InitGizmoBuffer();
-		InitPostProcessBuffer();
-		InitGBuffer();
-		InitShadowBuffer();
+		bool passFlag = true;
+		passFlag &= InitEditorBuffer();
+		passFlag &= InitGameBuffer();
+		passFlag &= InitDebugBuffer();
+		passFlag &= InitPostProcessBuffer();
+		passFlag &= InitGBuffer();
+		passFlag &= InitShadowBuffer();
+		passFlag &= InitBlurBuffer();
+
+		if (passFlag)
+		{
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS, "Framebuffers init complete" });
+		}
 	}
 
 	void FrameBuffer::ResizeFrameBuffer()
@@ -24,23 +31,15 @@ namespace Pogplant
 		// Editor
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::EDITOR_COLOR_BUFFER]);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
-
 		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::EDITOR_BUFFER]);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Window::m_Width, Window::m_Height);
 
 		// Game
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::GAME_COLOR_BUFFER]);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
-
 		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::GAME_BUFFER]);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Window::m_Width, Window::m_Height);
 
-		// Gizmo
-		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::GIZMO_COLOR_BUFFER]);
-		//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
-		//glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::GIZMO_BUFFER]);
-		//glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Window::m_Width, Window::m_Height);
-		
 		// Gpass
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
@@ -53,6 +52,20 @@ namespace Pogplant
 		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::G_DEPTH]);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, Window::m_Width, Window::m_Height);
 
+		// Post process
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_NORMAL]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_BRIGHT]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_0]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_1]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_0]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_1]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::PP_BUFFER]);
 	}
 
 	void FrameBuffer::BindFrameBuffer(BufferType _BufferType)
@@ -75,10 +88,6 @@ namespace Pogplant
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::GAME_COLOR_BUFFER]);
 		glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::GAME_DEPTH_STENCIL]);
 
-		//glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::GIZMO_BUFFER]);
-		//glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::GIZMO_COLOR_BUFFER]);
-		//glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::GIZMO_DEPTH_STENCIL]);
-
 		glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::G_BUFFER]);
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::G_NORMAL_BUFFER]);
@@ -86,13 +95,23 @@ namespace Pogplant
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
 		glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::G_DEPTH]);
 
+		glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::SHADOW_BUFFER]);
+		glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+
 		glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::PP_BUFFER]);
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_NORMAL]);
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_BRIGHT]);
+
+		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_0]);
+		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_0]);
+		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_1]);
+		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_1]);
 	}
 
-	void FrameBuffer::InitEditorBuffer()
+	bool FrameBuffer::InitEditorBuffer()
 	{
+		bool passFlag = true;
+
 		// Set this texture to be at location 0
 		ShaderLinker::Use("SCREEN");
 		ShaderLinker::SetUniform("s2D_ScreenTexture", 0);
@@ -119,20 +138,22 @@ namespace Pogplant
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Window::m_Width, Window::m_Height);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, *depthStencil);
 
+
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
 			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Editor Framebuffer init failed" });
+			passFlag = false;
 		}
-		else
-		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS,"Editor Framebuffer init complete" });
-		}
+
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		return passFlag;
 	}
 
-	void FrameBuffer::InitGameBuffer()
+	bool FrameBuffer::InitGameBuffer()
 	{
+		bool passFlag = true;
+
 		// Set this texture to be at location 0
 		ShaderLinker::Use("SCREEN");
 		ShaderLinker::SetUniform("s2D_ScreenTexture", 0);
@@ -152,7 +173,7 @@ namespace Pogplant
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, *colorBuffer, 0);
 
-		//// Depth & Stencil
+		// Depth & Stencil
 		unsigned int* depthStencil = &FBR::m_FrameBuffers[BufferType::GAME_DEPTH_STENCIL];
 		glGenRenderbuffers(1, depthStencil);
 		glBindRenderbuffer(GL_RENDERBUFFER, *depthStencil);
@@ -163,29 +184,24 @@ namespace Pogplant
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
 			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Game Framebuffer init failed" });
-		}
-		else
-		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS,"Game Framebuffer init complete" });
+			passFlag = false;
 		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		return passFlag;
 	}
 
-	void FrameBuffer::InitGizmoBuffer()
+	bool FrameBuffer::InitDebugBuffer()
 	{
-		// Set this texture to be at location 0
-		ShaderLinker::Use("SCREEN");
-		ShaderLinker::SetUniform("s2D_ScreenTexture", 0);
-		ShaderLinker::UnUse();
+		bool passFlag = true;
 
 		// FB gen
-		unsigned int* frameBuffer = &FBR::m_FrameBuffers[BufferType::GIZMO_BUFFER];
+		unsigned int* frameBuffer = &FBR::m_FrameBuffers[BufferType::DEBUG_BUFFER];
 		glGenFramebuffers(1, frameBuffer);
 		glBindFramebuffer(GL_FRAMEBUFFER, *frameBuffer);
 
 		// Color texture gen
-		unsigned int* colorBuffer = &FBR::m_FrameBuffers[BufferType::GIZMO_COLOR_BUFFER];
+		unsigned int* colorBuffer = &FBR::m_FrameBuffers[BufferType::DEBUG_COLOR_BUFFER];
 		glGenTextures(1, colorBuffer);
 		glBindTexture(GL_TEXTURE_2D, *colorBuffer);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
@@ -193,8 +209,8 @@ namespace Pogplant
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, *colorBuffer, 0);
 
-		//// Depth & Stencil
-		unsigned int* depthStencil = &FBR::m_FrameBuffers[BufferType::GIZMO_DEPTH_STENCIL];
+		// Depth & Stencil
+		unsigned int* depthStencil = &FBR::m_FrameBuffers[BufferType::DEBUG_DEPTH_STENCIL];
 		glGenRenderbuffers(1, depthStencil);
 		glBindRenderbuffer(GL_RENDERBUFFER, *depthStencil);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Window::m_Width, Window::m_Height);
@@ -203,18 +219,18 @@ namespace Pogplant
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Gizmo Framebuffer init failed" });
-		}
-		else
-		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS,"Gizmo Framebuffer init complete" });
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Debug Framebuffer init failed" });
+			passFlag = false;
 		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		return passFlag;
 	}
 
-	void FrameBuffer::InitPostProcessBuffer()
+	bool FrameBuffer::InitPostProcessBuffer()
 	{
+		bool passFlag = true;
+
 		// FB gen
 		unsigned int* frameBuffer = &FBR::m_FrameBuffers[BufferType::PP_BUFFER];
 		glGenFramebuffers(1, frameBuffer);
@@ -244,17 +260,17 @@ namespace Pogplant
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
 			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Post Processing Framebuffer init failed" });
-		}
-		else
-		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS,"Post Processing Framebuffer init complete" });
+			passFlag = false;
 		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		return passFlag;
 	}
 
-	void FrameBuffer::InitGBuffer()
+	bool FrameBuffer::InitGBuffer()
 	{
+		bool passFlag = true;
+
 		ShaderLinker::Use("GPASS");
 		ShaderLinker::SetUniform("gPosition", 0);
 		ShaderLinker::SetUniform("gNormal", 1);
@@ -317,17 +333,17 @@ namespace Pogplant
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
 			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"G Framebuffer init failed" });
-		}
-		else
-		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS,"G Framebuffer init complete" });
+			passFlag = false;
 		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		return passFlag;
 	}
 
-	void FrameBuffer::InitShadowBuffer()
+	bool FrameBuffer::InitShadowBuffer()
 	{
+		bool passFlag = true;
+
 		unsigned int* shadowFBO = &FBR::m_FrameBuffers[BufferType::SHADOW_BUFFER];
 		glGenFramebuffers(1, shadowFBO);
 
@@ -351,12 +367,59 @@ namespace Pogplant
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
 			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Shadow Framebuffer init failed" });
-		}
-		else
-		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS,"Shadow Framebuffer init complete" });
+			passFlag = false;
 		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		return passFlag;
+	}
+
+	bool FrameBuffer::InitBlurBuffer()
+	{
+		bool passFlag = true;
+
+		unsigned int* frameBuffer = &FBR::m_FrameBuffers[BufferType::PP_BUFFER];
+		glBindFramebuffer(GL_FRAMEBUFFER, *frameBuffer);
+
+		// Alternate buffers for blur
+		unsigned int* blurBuffer = &FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_0];
+		unsigned int* blurColorBuffer = &FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_0];
+		glGenFramebuffers(1, blurBuffer);
+		glGenTextures(1, blurColorBuffer);
+
+		glBindFramebuffer(GL_FRAMEBUFFER, *blurBuffer);
+		glBindTexture(GL_TEXTURE_2D, *blurColorBuffer);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, *blurColorBuffer, 0);
+
+		blurBuffer = &FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_1];
+		blurColorBuffer = &FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_1];
+		glGenFramebuffers(1, blurBuffer);
+		glGenTextures(1, blurColorBuffer);
+
+		glBindFramebuffer(GL_FRAMEBUFFER, *blurBuffer);
+		glBindTexture(GL_TEXTURE_2D, *blurColorBuffer);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, *blurColorBuffer, 0);
+
+		// also check if framebuffers are complete (no need for depth buffer)
+		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+		{
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Blur Framebuffer init failed" });
+			passFlag = false;
+		}
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		return passFlag;
 	}
 }

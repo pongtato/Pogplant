@@ -16,12 +16,13 @@ namespace Pogplant
 		static void CleanUpFrameBuffer();
 
 	private:
-		static void InitEditorBuffer();
-		static void InitGameBuffer();
-		static void InitGizmoBuffer();
-		static void InitPostProcessBuffer();
-		static void InitGBuffer();
-		static void InitShadowBuffer();
+		static bool InitEditorBuffer();
+		static bool InitGameBuffer();
+		static bool InitDebugBuffer();
+		static bool InitPostProcessBuffer();
+		static bool InitGBuffer();
+		static bool InitShadowBuffer();
+		static bool InitBlurBuffer();
 	};
 }
 

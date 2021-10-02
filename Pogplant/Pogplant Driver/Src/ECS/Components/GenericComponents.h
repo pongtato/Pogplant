@@ -78,13 +78,19 @@ namespace Components
 
 	struct Renderer
 	{
-		Renderer(glm::mat4 Model, glm::vec3 ColorTint, Pogplant::Model* RenderModel, int UseLight = 1) :
-			m_Model(Model), m_ColorTint(ColorTint), m_RenderModel(RenderModel), m_UseLight(UseLight){}
+		Renderer(glm::mat4 Model, glm::vec3 ColorTint, Pogplant::Model* RenderModel, int UseLight = 1, bool EditorDrawOnly = false) :
+			m_Model(Model), m_ColorTint(ColorTint), m_RenderModel(RenderModel), m_UseLight(UseLight), m_EditorDrawOnly(EditorDrawOnly){}
 
 		glm::mat4 m_Model;
 		glm::vec3 m_ColorTint;
 		Pogplant::Model* m_RenderModel;
-		int m_UseLight = 1; // int cause opegnl no bool kekw
+		int m_UseLight = true;
+		bool m_EditorDrawOnly = false;
+	};
+
+	struct DebugRender : public Renderer
+	{
+		// Some info to add for special render like edge detection
 	};
 
 	struct Light

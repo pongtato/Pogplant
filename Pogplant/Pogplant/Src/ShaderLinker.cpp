@@ -24,11 +24,19 @@ namespace Pogplant
 		ShaderResource::AddShaderProfile(ShaderProfile("SHADOW", dir, "Shadows.vert", "Shadows.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("DEPTH", dir, "Depth.vert", "Depth.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("TEXT", dir, "Text.vert", "Text.frag"));
-		ShaderResource::AddShaderProfile(ShaderProfile("MODELNL", dir, "ModelNL.vert", "ModelNL.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("BLUR", dir, "Sotong.vert", "Sotong.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("BLOOM", dir, "Bling.vert", "Bling.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("DEBUG", dir, "Debug.vert", "Debug.frag"));
 
+		bool passFlag = true;
 		for (const auto& it : ShaderResource::m_ShaderProfiles)
 		{
-			LoadShader(it.second.m_ProgramID.c_str(), it.second.m_VertexPath.c_str(), it.second.m_FragmentPath.c_str());
+			passFlag &= LoadShader(it.second.m_ProgramID.c_str(), it.second.m_VertexPath.c_str(), it.second.m_FragmentPath.c_str());
+		}
+
+		if (passFlag)
+		{
+			Logger::Log({ "PP::SHADER",LogEntry::SUCCESS, "Shaders init complete"});
 		}
 	}
 
@@ -213,7 +221,7 @@ namespace Pogplant
 		return m_ProgramHandle;
 	}
 
-	void ShaderLinker::LoadShader(const char* const _ProgramID, const char* const _VertexPath, const char* const _FragmentPath)
+	bool ShaderLinker::LoadShader(const char* const _ProgramID, const char* const _VertexPath, const char* const _FragmentPath)
 	{
 		// Get vertex/fragment shader code from file path
 		std::string vertexCode;
@@ -262,6 +270,7 @@ namespace Pogplant
 		unsigned int fragment;
 
 		int success;
+		int passFlag = true;
 		char infoLog[512];
 
 		/// Vertex Shader
@@ -271,6 +280,7 @@ namespace Pogplant
 
 		// Print compile errors if any
 		glGetShaderiv(vertex, GL_COMPILE_STATUS, &success);
+		passFlag &= success;
 		if (!success)
 		{
 			glGetShaderInfoLog(vertex, 512, NULL, infoLog);
@@ -286,6 +296,7 @@ namespace Pogplant
 
 		// Print compile errors if any
 		glGetShaderiv(fragment, GL_COMPILE_STATUS, &success);
+		passFlag &= success;
 		if (!success)
 		{
 			glGetShaderInfoLog(fragment, 512, NULL, infoLog);
@@ -302,6 +313,7 @@ namespace Pogplant
 
 		// Print linking errors if any
 		glGetProgramiv(ShaderResource::m_ShaderPrograms[_ProgramID], GL_LINK_STATUS, &success);
+		passFlag &= success;
 		if (!success)
 		{
 			glGetProgramInfoLog(ShaderResource::m_ShaderPrograms[_ProgramID], 512, NULL, infoLog);
@@ -309,15 +321,11 @@ namespace Pogplant
 			logEntry << _ProgramID << " Shaders failed to link " << " | " << infoLog;
 			Logger::Log({ "PP::SHADER",LogEntry::ERROR, logEntry.str() });
 		}
-		else
-		{
-			std::stringstream logEntry;
-			logEntry << _ProgramID << " Shaders linked";
-			Logger::Log({ "PP::SHADER",LogEntry::SUCCESS, logEntry.str() });
-		}
 
 		// Delete the shaders as they're linked into our program now and no longer necessary
 		glDeleteShader(vertex);
 		glDeleteShader(fragment);
+
+		return passFlag;
 	}
 }

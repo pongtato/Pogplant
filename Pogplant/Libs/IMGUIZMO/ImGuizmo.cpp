@@ -1195,7 +1195,7 @@ namespace IMGUIZMO_NAMESPACE
       return angle;
    }
 
-   static void DrawRotationGizmo(OPERATION op, int type)
+   static void DrawRotationGizmo(bool& mouseOver, OPERATION op, int type)
    {
       if(!Intersects(op, ROTATE))
       {
@@ -1283,6 +1283,7 @@ namespace IMGUIZMO_NAMESPACE
          ImFormatString(tmps, sizeof(tmps), rotationInfoMask[type - MT_ROTATE_X], (gContext.mRotationAngle / ZPI) * 180.f, gContext.mRotationAngle);
          drawList->AddText(ImVec2(destinationPosOnScreen.x + 15, destinationPosOnScreen.y + 15), IM_COL32_BLACK, tmps);
          drawList->AddText(ImVec2(destinationPosOnScreen.x + 14, destinationPosOnScreen.y + 14), IM_COL32_WHITE, tmps);
+         mouseOver = true;
       }
    }
 
@@ -1296,7 +1297,7 @@ namespace IMGUIZMO_NAMESPACE
       }
    }
 
-   static void DrawScaleGizmo(OPERATION op, int type)
+   static void DrawScaleGizmo(bool& mouseOver, OPERATION op, int type)
    {
       ImDrawList* drawList = gContext.mDrawList;
 
@@ -1379,11 +1380,12 @@ namespace IMGUIZMO_NAMESPACE
          ImFormatString(tmps, sizeof(tmps), scaleInfoMask[type - MT_SCALE_X], scaleDisplay[translationInfoIndex[componentInfoIndex]]);
          drawList->AddText(ImVec2(destinationPosOnScreen.x + 15, destinationPosOnScreen.y + 15), IM_COL32_BLACK, tmps);
          drawList->AddText(ImVec2(destinationPosOnScreen.x + 14, destinationPosOnScreen.y + 14), IM_COL32_WHITE, tmps);
+         mouseOver = true;
       }
    }
 
 
-   static void DrawScaleUniveralGizmo(OPERATION op, int type)
+   static void DrawScaleUniveralGizmo(bool& mouseOver, OPERATION op, int type)
    {
       ImDrawList* drawList = gContext.mDrawList;
 
@@ -1462,10 +1464,11 @@ namespace IMGUIZMO_NAMESPACE
          ImFormatString(tmps, sizeof(tmps), scaleInfoMask[type - MT_SCALE_X], scaleDisplay[translationInfoIndex[componentInfoIndex]]);
          drawList->AddText(ImVec2(destinationPosOnScreen.x + 15, destinationPosOnScreen.y + 15), IM_COL32_BLACK, tmps);
          drawList->AddText(ImVec2(destinationPosOnScreen.x + 14, destinationPosOnScreen.y + 14), IM_COL32_WHITE, tmps);
+         mouseOver = true;
       }
    }
 
-   static void DrawTranslationGizmo(OPERATION op, int type)
+   static void DrawTranslationGizmo(bool& mouseOver, OPERATION op, int type)
    {
       ImDrawList* drawList = gContext.mDrawList;
       if (!drawList)
@@ -1556,6 +1559,7 @@ namespace IMGUIZMO_NAMESPACE
          ImFormatString(tmps, sizeof(tmps), translationInfoMask[type - MT_MOVE_X], deltaInfo[translationInfoIndex[componentInfoIndex]], deltaInfo[translationInfoIndex[componentInfoIndex + 1]], deltaInfo[translationInfoIndex[componentInfoIndex + 2]]);
          drawList->AddText(ImVec2(destinationPosOnScreen.x + 15, destinationPosOnScreen.y + 15), IM_COL32_BLACK, tmps);
          drawList->AddText(ImVec2(destinationPosOnScreen.x + 14, destinationPosOnScreen.y + 14), IM_COL32_WHITE, tmps);
+         mouseOver = true;
       }
    }
 
@@ -2418,7 +2422,7 @@ namespace IMGUIZMO_NAMESPACE
      gContext.mAllowAxisFlip = value;
    }
 
-   bool Manipulate(const float* view, const float* projection, OPERATION operation, MODE mode, float* matrix, float* deltaMatrix, const float* snap, const float* localBounds, const float* boundsSnap)
+   bool Manipulate(bool& mouseOver, const float* view, const float* projection, OPERATION operation, MODE mode, float* matrix, float* deltaMatrix, const float* snap, const float* localBounds, const float* boundsSnap)
    {
       ComputeContext(view, projection, matrix, mode);
 
@@ -2454,13 +2458,14 @@ namespace IMGUIZMO_NAMESPACE
          HandleAndDrawLocalBounds(localBounds, (matrix_t*)matrix, boundsSnap, operation);
       }
 
+      mouseOver = false;
       gContext.mOperation = operation;
       if (!gContext.mbUsingBounds)
       {
-         DrawRotationGizmo(operation, type);
-         DrawTranslationGizmo(operation, type);
-         DrawScaleGizmo(operation, type);
-         DrawScaleUniveralGizmo(operation, type);
+         DrawRotationGizmo(mouseOver, operation, type);
+         DrawTranslationGizmo(mouseOver, operation, type);
+         DrawScaleGizmo(mouseOver, operation, type);
+         DrawScaleUniveralGizmo(mouseOver, operation, type);
       }
       return manipulated;
    }

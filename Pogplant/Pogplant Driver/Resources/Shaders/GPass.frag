@@ -1,6 +1,7 @@
 #version 450 core
 
 layout (location = 0) out vec4 outColor;
+layout (location = 1) out vec4 brightColor;
 
 //out vec4 FragColor;
 
@@ -87,7 +88,7 @@ void main()
     
     // then calculate lighting as usual
     float shadow = 1-ShadowCalculation();
-    vec3 lighting  = Diffuse * 0.42 * clamp(shadow,0.0f,1.0f); // hard-coded ambient component
+    vec3 lighting  = Diffuse * 0.1 * clamp(shadow,0.0f,1.0f); // hard-coded ambient component
     vec3 viewDir  = normalize(viewPos - FragPos);
     for(int i = 0; i < activeLights; ++i)
     {
@@ -122,4 +123,11 @@ void main()
     lighting += diffuse + specular;
 
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
+
+    // check whether result is higher than some threshold, if so, output as bloom threshold color
+    float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+    if(brightness > 0.9)
+        brightColor = vec4(outColor.rgb,1.0);
+    else
+        brightColor = vec4(0.0, 0.0, 0.0, 1.0);
 }

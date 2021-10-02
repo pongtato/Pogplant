@@ -46,6 +46,15 @@ namespace Pogplant
 		glEnable(GL_DEPTH_TEST);
 	}
 
+	void Renderer::DebugPass(const char* _CameraID, const entt::registry& registry)
+	{
+		FrameBuffer::BindFrameBuffer(BufferType::DEBUG_BUFFER);
+		glEnable(GL_DEPTH_TEST);
+		ClearBuffer();
+		DrawDebug(_CameraID, registry, nullptr);
+		EndBuffer();
+	}
+
 	void Renderer::EndBuffer()
 	{
 		FrameBuffer::UnbindFrameBuffer();
@@ -158,7 +167,7 @@ namespace Pogplant
 		{
 			const auto& it = results.get<const Components::Renderer>(e);
 			ShaderLinker::SetUniform("m4_Model", it.m_Model);
-			if (it.m_UseLight && it.m_RenderModel)
+			if (it.m_UseLight)
 			{
 				it.m_RenderModel->Draw();
 			}
@@ -180,6 +189,45 @@ namespace Pogplant
 		//glBindFramebuffer(GL_FRAMEBUFFER,0);
 	}
 
+	void Renderer::BlurPass()
+	{
+		bool horizontal = true;
+		bool first_it = true;
+		ShaderLinker::Use("BLUR");
+		const size_t blur_amnt = 10;
+		for (size_t i = 0; i < blur_amnt; i++)
+		{
+			BufferType currFBuff = horizontal == true ? BufferType::BLUR_BUFFER_1 : BufferType::BLUR_BUFFER_0;
+			glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[currFBuff]);
+			ShaderLinker::SetUniform("horizontal", horizontal);
+			BufferType targetCBuff = horizontal == true ? BufferType::BLUR_COLOR_BUFFER_0 : BufferType::BLUR_COLOR_BUFFER_1;
+			BufferType currCBuff = first_it == true ? BufferType::PP_COLOR_BUFFER_BRIGHT : targetCBuff;
+			MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[currCBuff]);
+			horizontal = !horizontal;
+			first_it = false;
+		}
+		ShaderLinker::UnUse();
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	}
+
+	void Renderer::HDRPass()
+	{
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		ShaderLinker::Use("BLOOM");
+		ShaderLinker::SetUniform("scene", 0);
+		ShaderLinker::SetUniform("bloomBlur", 1);
+		ShaderLinker::SetUniform("debug", 2);
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_NORMAL]);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_0]);
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::DEBUG_COLOR_BUFFER]);
+		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN);
+		ShaderLinker::UnUse();
+	}
+
 	void Renderer::ClearBuffer(float _R, float _G, float _B, float _A)
 	{
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -193,7 +241,7 @@ namespace Pogplant
 		glfwPollEvents();
 	}
 
-	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected)
+	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected, bool _EditorMode)
 	{
 		glEnable(GL_CULL_FACE);
 
@@ -213,11 +261,12 @@ namespace Pogplant
 		{
 			const auto& it = results.get<const Components::Renderer>(e);
 
-			if (it.m_RenderModel)
+			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
+			ShaderLinker::SetUniform("useLight", it.m_UseLight);
+			if (!it.m_EditorDrawOnly || it.m_EditorDrawOnly && _EditorMode)
 			{
-				ShaderLinker::SetUniform("m4_Model", it.m_Model);
-				ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
-				ShaderLinker::SetUniform("useLight", it.m_UseLight);
+				
 				it.m_RenderModel->Draw();
 			}
 		}
@@ -278,8 +327,32 @@ namespace Pogplant
 		glDisable(GL_CULL_FACE);
 	}
 
-	void Renderer::DrawNoLight(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected)
+	void Renderer::DrawDebug(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected)
 	{
+		glEnable(GL_CULL_FACE);
+
+		// Outline edge shit will be solved later
+		(void)_Selected;
+
+		Camera* currCam = CameraResource::GetCamera(_CameraID);
+
+		// Render G pass objects first
+		ShaderLinker::Use("DEBUG");
+		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		ShaderLinker::SetUniform("m4_View", currCam->GetView());
+
+		auto results = registry.view<Components::DebugRender>();
+
+		for (const auto& e : results)
+		{
+			const auto& it = results.get<const Components::DebugRender>(e);
+			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
+			it.m_RenderModel->Draw();
+		}
+		ShaderLinker::UnUse();
+
+		glDisable(GL_CULL_FACE);
 	}
 
 	void Renderer::Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16])

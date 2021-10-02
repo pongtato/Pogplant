@@ -40,6 +40,7 @@ namespace PogplantDriver
 	static float m_BoundsSnapStep[] = { 0.1f, 0.1f, 0.1f };
 	static bool m_BoundSizing = false;
 	static bool m_UseBoundsSnap = false;
+	static bool m_GoEditing = false;
 
 	bool ImguiHelper::InitImgui(ECS* ecs)
 	{
@@ -592,11 +593,11 @@ namespace PogplantDriver
 		vMax.x += ImGui::GetWindowPos().x;
 		vMax.y += ImGui::GetWindowPos().y;
 
-		/// Picker
-		Scene_GOPick(currCam, vMin, vMax);
-
 		/// GUIZMO GO EDIT
 		Scene_GOEdit(currCam, vMin, vMax);
+
+		/// Picker
+		Scene_GOPick(currCam, vMin, vMax);
 
 		/// GUIZMO VIEW EDIT
 		Scene_ViewEdit(currCam, vMin, vMax);
@@ -677,13 +678,14 @@ namespace PogplantDriver
 			return;
 		}
 
-		if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+		if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) && !m_GoEditing)
 		{
 			glm::vec2 min = { _VMin.x,_VMin.y };
 			glm::vec2 max = { _VMax.x,_VMax.y };
 			glm::vec2 cursor = { ImGui::GetMousePos().x,ImGui::GetMousePos().y };
 			_CurrCam->UpdateRayConfig({ min,max,max - min,cursor });
 			_CurrCam->RayCast();
+
 			// Ray for picking
 			const PP::Ray ray = _CurrCam->GetRay();
 
@@ -691,36 +693,35 @@ namespace PogplantDriver
 			entt::entity chosenObject = entt::null;
 
 			m_ecs->GetReg().each([&ray, &shortestTime, &chosenObject](auto entity)
-				{
-
-					//GameObject& currGO = GO_Resource::m_GO_Container[i];
+			{
+				//GameObject& currGO = GO_Resource::m_GO_Container[i];
 					
-					auto& transform = m_ecs->GetReg().get<Components::Transform>(entity);
-					auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(entity);
+				auto& transform = m_ecs->GetReg().get<Components::Transform>(entity);
+				auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(entity);
+				auto debugRenderer = m_ecs->GetReg().try_get<Components::DebugRender>(entity);
 
-					if (renderer != nullptr)
-					{
+				if (renderer != nullptr)
+				{
 						// Naive approach
-						float largestScale = std::numeric_limits<float>::min();
+					float largestScale = std::numeric_limits<float>::min();
 
-						for (int j = 0; j < 3; j++)
-						{
-							largestScale = std::max(largestScale, transform.m_scale[j]);
-						}
+					for (int j = 0; j < 3; j++)
+					{
+						largestScale = std::max(largestScale, transform.m_scale[j]);
+					}
 
-						const float radius = renderer->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
-						float currentTime = std::numeric_limits<float>::max();
-						if (ray.CollideSphere(glm::make_vec3(transform.m_position), radius, currentTime))
+					const float radius = renderer->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
+					float currentTime = std::numeric_limits<float>::max();
+					if (ray.CollideSphere(glm::make_vec3(transform.m_position), radius, currentTime))
+					{
+						if (currentTime < shortestTime)
 						{
-							if (currentTime < shortestTime)
-							{
-								chosenObject = entity;
-								shortestTime = currentTime;
-							}
+							chosenObject = entity;
+							shortestTime = currentTime;
 						}
 					}
-					
-				});
+				}
+			});
 
 
 
@@ -802,6 +803,7 @@ namespace PogplantDriver
 													glm::value_ptr(transform.m_ModelMtx));
 			ImGuizmo::Manipulate
 			(
+				m_GoEditing,
 				glm::value_ptr(_CurrCam->GetView()),
 				glm::value_ptr(_CurrCam->GetPerspective()),
 				m_EditMode,

@@ -30,7 +30,7 @@ namespace Pogplant
 		static unsigned int GetHandle();
 
 	private:
-		static void LoadShader(const char* const _ProgramID, const char* const _VertexPath, const char* const _FragmentPath);
+		static bool LoadShader(const char* const _ProgramID, const char* const _VertexPath, const char* const _FragmentPath);
 
 		/// Var
 		static unsigned int m_ProgramHandle;

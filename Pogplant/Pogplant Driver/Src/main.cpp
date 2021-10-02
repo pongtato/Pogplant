@@ -1,4 +1,4 @@
-#include "ImguiHelper.h"
+﻿#include "ImguiHelper.h"
 #include "ScriptSystem.h"
 
 #include <iostream>
@@ -43,7 +43,7 @@ void Init()
 	PP::Window::InitWindow(
 		1280,					// Width
 		720,					// Height
-		"Pogplant Driver 6969" // Window name
+		"Vilgax"				// Window name
 	);
 
 	// Will change to automatic update when i figure it out
@@ -72,7 +72,7 @@ void Init()
 	PP::FrameBuffer::InitFrameBuffer();
 	PP::CameraResource::InitBaseCameras(
 		glm::vec3{ 0,0,5.0f }, // Editor cam pos
-		glm::vec3{ 0,0,0.0f }, // Game cam pos
+		glm::vec3{ 0,0,30.0f }, // Game cam pos
 		PP::CameraConfig{
 			-90.0f, // Yaw
 			0.0f,	// Pitch
@@ -205,10 +205,10 @@ void Init()
 	pos = { 7.5f, 15.0f, 20.0f };
 	glm::vec3 direction = -glm::normalize(pos);
 	scale = { 1.0f,1.0f,1.0f }; // Affects light model and not the actual light size
-	float intensity = 0.5f;
+	float intensity = 0.69f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{0}, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	//entity.AddComponent<Components::Name>(Name{ "Directional"});
 
 	pos = { 0.0f, 10.0f, 0.0f };
@@ -217,7 +217,7 @@ void Init()
 	const float quadratic = 0.0042f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	//entity.AddComponent<Components::Name>(Name{ "Light 1" });
 
 	intensity = 1.0f;
@@ -225,42 +225,36 @@ void Init()
 	color = { 0.0f, 0.0f, 1.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	//entity.AddComponent<Components::Name>(Name{ "Light 2" });
 
 	pos = { 10.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	//entity.AddComponent<Components::Name>(Name{ "Light 3" });
 
 	pos = { 0.0f, 10.0f, -10.0f };
 	color = { 0.0f, 1.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	//entity.AddComponent<Components::Name>(Name{ "Light 4" });
 
 
 	/// FONT
-	pos = { 0.0f, 0.0f, 0.0f };
+	pos = { 0.0f, 0.0f, -5.0f };
 	rot = { 0.0f, 0.0f,0.0f };
 	scale = { 10.0f,10.0f,10.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "Test font kekw", false });
 
-	//test object;
-	pos = { 0.f, 0.f, 0.f };
-	scale = { 0.1f, 0.1f, 0.1f };
-	entity = ecs.CreateEntity("Apple", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, glm::vec3{1.f, 0.f, 0.f}, sphereModel, false });
-	entity.AddComponent<Components::BoxCollider>();
-	entity.AddComponent<Components::Rigidbody>();
-	auto& tmpRigidbody = entity.GetComponent<Components::Rigidbody>();
-	tmpRigidbody.mass = 1.f;
-	ImaginarySystem.testObject = entity.GetID();
-
+	pos = { -1.0f, 1.0f, 0.0f };
+	rot = { 0.0f, 0.0f,0.0f };
+	scale = { 1.0f,1.0f,1.0f };
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,1.0f}, "Ruda", "Screen Font", true });
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 	
@@ -375,15 +369,18 @@ void DebugCubes(Transform& transform, Renderer& renderer)
 
 void DrawCommon()
 {
-	PP::MeshInstance::ResetCount();
-	// 3D object background to see orientation
-	//glm::mat4 Model = glm::mat4{ 1 };
-	//Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -40.0f));
-	//Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
-	//PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+	/// TEMP - Old reference code for instancing
 
-	/// TEMP - Update transforms for render
+	//PP::MeshInstance::ResetCount();
+	//// 3D object background to see orientation
+	////glm::mat4 Model = glm::mat4{ 1 };
+	////Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -40.0f));
+	////Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
+	////PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
+
+
 	auto view = ecs.GetReg().view<Transform, Renderer>();
+	auto debugView = ecs.GetReg().view<Transform, DebugRender>();
 	
 	for (auto entity : view)
 	{
@@ -395,18 +392,25 @@ void DrawCommon()
 		//DebugCubes(transform, renderer);
 	}
 
-	//for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
-	//{
-	//	const auto& go = GO_Resource::m_GO_Container[i];
-	//	go.m_RenderObject->m_Model = glm::make_mat4(go.m_ModelMtx);
-	//	DebugCubes(go);
-	//}
+	for (auto entity : debugView)
+	{
+		auto& transform = debugView.get<Transform>(entity);
+		auto& renderer = debugView.get<DebugRender>(entity);
 
-	PP::MeshBuilder::RebindQuad();
-}
+		renderer.m_Model = transform.m_ModelMtx;
+		//DebugCubes(transform, renderer);
+	}
 
-void DrawEditor()
-{
+	////for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
+	////{
+	////	const auto& go = GO_Resource::m_GO_Container[i];
+	////	go.m_RenderObject->m_Model = glm::make_mat4(go.m_ModelMtx);
+	////	DebugCubes(go);
+	////}
+
+	//PP::MeshBuilder::RebindQuad();
+
+	/// For all draws
 	// If something is selected choose it to be highlighted
 	Renderer* renderOjbect = nullptr;
 
@@ -420,19 +424,29 @@ void DrawEditor()
 		renderOjbect = ecs.GetReg().try_get<Renderer>(currIdx);
 	}
 
-	// Models for Gpass
+	// Common, since directional
 	PP::Renderer::ShadowPass(ecs.GetReg());
+}
+
+void DrawEditor()
+{
+	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw("EDITOR", ecs.GetReg(), renderOjbect);
+	PP::Renderer::Draw("EDITOR", ecs.GetReg(), nullptr, true);
 	PP::Renderer::EndBuffer();
 
 	// Where to draw the gpass FB to
-	PP::Renderer::StartEditorBuffer();
+	PP::Renderer::PostProcess();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::GLightPass("EDITOR", ecs.GetReg());
-	//PP::Renderer::DrawNoLight("EDITOR", ecs.GetReg(), renderOjbect);
-	//PP::Renderer::DrawTextPls("EDITOR", ecs.GetReg());
+	PP::Renderer::EndBuffer();
+
+	PP::Renderer::DebugPass("EDITOR", ecs.GetReg());
+	PP::Renderer::BlurPass();
+	PP::Renderer::StartEditorBuffer();
+	PP::Renderer::ClearBuffer();
+	PP::Renderer::HDRPass();
 	PP::Renderer::EndBuffer();
 }
 
@@ -459,15 +473,21 @@ void DrawGame()
 	}
 
 	// Models for Gpass
-	PP::Renderer::ShadowPass(ecs.GetReg());
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw("GAME", ecs.GetReg(), nullptr);
+	PP::Renderer::Draw("GAME", ecs.GetReg(), nullptr, false);
 	PP::Renderer::EndBuffer();
+
 	// Where to draw the gpass FB to
-	PP::Renderer::StartGameBuffer();
+	PP::Renderer::PostProcess();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::GLightPass("GAME", ecs.GetReg());
+	PP::Renderer::EndBuffer();
+
+	PP::Renderer::BlurPass();
+	PP::Renderer::StartGameBuffer();
+	PP::Renderer::ClearBuffer();
+	PP::Renderer::HDRPass();
 	PP::Renderer::EndBuffer();
 }
 
@@ -507,7 +527,7 @@ void Run()
 		// Game
 		DrawGame();
 		// Post process
-		// DrawScreen();
+		//DrawScreen();
 		// ImGUI
 		DrawImGUI();
 		///
