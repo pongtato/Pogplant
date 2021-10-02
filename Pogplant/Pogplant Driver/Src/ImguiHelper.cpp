@@ -164,12 +164,30 @@ namespace PogplantDriver
 				ImGui::EndMenu();
 			}
 
-			if (ImGui::BeginMenu("Create"))
+			if (ImGui::BeginMenu("Component"))
 			{
-				ImGui::MenuItem("(Create menu)", NULL, false, false);
-				if (ImGui::MenuItem("Create")) {}
-				ImGui::EndMenu();
-			}
+					bool adding_enabled = false;
+					if (m_CurrentEntity != entt::null)
+						adding_enabled = true;
+					//if(ImGui::MenuItem("Transform", NULL, false, adding_enabled))
+					//{
+					//	auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Transform>(m_CurrentEntity);
+					//}
+					if (ImGui::MenuItem("Render", NULL, false, false))
+					{
+						auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Render>(m_CurrentEntity);
+					}
+					if (ImGui::MenuItem("Point_Light", NULL, false, adding_enabled))
+					{
+						auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Point_Light>(m_CurrentEntity);
+					}
+					if (ImGui::MenuItem("Directional_Light", NULL, false, adding_enabled))
+					{
+						auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Directional_Light>(m_CurrentEntity);
+					}
+					ImGui::EndMenu();
+				}
+
 			if (ImGui::BeginMenu("Tools"))
 			{
 				ImGui::MenuItem("(Tools menu)", NULL, false, false);
@@ -299,7 +317,7 @@ namespace PogplantDriver
 			//if (ImGui::IsItemHovered())
 			if (m_CurrentEntity != entt::null)
 			{
-				if (ImGui::BeginPopupContextWindow("aaaa", ImGuiPopupFlags_MouseButtonRight))
+				if (ImGui::BeginPopupContextWindow("EntityPopup", ImGuiPopupFlags_MouseButtonRight))
 				{
 					if (ImGui::MenuItem("Create Child"))
 					{
@@ -323,7 +341,7 @@ namespace PogplantDriver
 			}
 
 			// Right-click on blank space
-			if (ImGui::BeginPopupContextWindow("wat", 1, false))
+			if (ImGui::BeginPopupContextWindow("NoEntityPopup", 1, false))
 			{
 				if (ImGui::MenuItem("Create Empty Entity"))
 					m_ecs->CreateEntity();
@@ -345,48 +363,131 @@ namespace PogplantDriver
 			if (m_CurrentEntity != entt::null)
 			{
 				//GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
-
-				auto& transform = m_ecs->GetReg().get<Components::Transform>(m_CurrentEntity);
-
-				// Mode switch
-				if (ImGui::RadioButton("Translate", m_EditMode == ImGuizmo::TRANSLATE))
+				auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);
+				if (transform && ImGui::CollapsingHeader("Transform"))
 				{
-					m_EditMode = ImGuizmo::TRANSLATE;
+					// Mode switch
+					if (ImGui::RadioButton("Translate", m_EditMode == ImGuizmo::TRANSLATE))
+					{
+						m_EditMode = ImGuizmo::TRANSLATE;
+					}
+					ImGui::SameLine();
+					if (ImGui::RadioButton("Rotate", m_EditMode == ImGuizmo::ROTATE))
+					{
+						m_EditMode = ImGuizmo::ROTATE;
+					}
+					ImGui::SameLine();
+					if (ImGui::RadioButton("Scale", m_EditMode == ImGuizmo::SCALE))
+					{
+						m_EditMode = ImGuizmo::SCALE;
+					}
+
+					// Snap when editing transform
+					ImGui::Checkbox("Snap Transform", &m_UseSnap);
+					//Bounds edit
+					ImGui::Checkbox("Edit Bounds", &m_BoundSizing);
+					//Snap when editing
+					ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
+
+					// Usual stuff
+					ImGui::Text("Translate");
+					ImGui::PushID("Tr");
+					//ImGui::DragFloat3("", currGO.m_Position);
+					ImGui::DragFloat3("", glm::value_ptr(transform->m_position));
+					ImGui::PopID();
+					ImGui::Text("Rotate");
+					ImGui::PushID("Rt");
+					//ImGui::DragFloat3("", currGO.m_Rotation);
+					ImGui::DragFloat3("", glm::value_ptr(transform->m_rotation));
+					ImGui::PopID();
+					ImGui::Text("Scale");
+					ImGui::PushID("Sc");
+					//ImGui::DragFloat3("", currGO.m_Scale);
+					ImGui::DragFloat3("", glm::value_ptr(transform->m_scale));
+					ImGui::PopID();
 				}
-				ImGui::SameLine();
-				if (ImGui::RadioButton("Rotate", m_EditMode == ImGuizmo::ROTATE))
+
+				auto renderer = m_ecs->GetReg().try_get<Components::Render>(m_CurrentEntity);
+				if (renderer)
 				{
-					m_EditMode = ImGuizmo::ROTATE;
+					bool enable_render = true;
+					if (ImGui::CollapsingHeader("Renderer", &enable_render))
+					{
+						ImGui::Text("Color Editor");
+						ImGui::ColorEdit3("RenderColor", glm::value_ptr(renderer->m_ColorTint));
+
+						ImGui::Text("RLighting");
+						bool temp_light = renderer->m_UseLight;
+						ImGui::Checkbox("Use Light", &temp_light);
+						if (temp_light != renderer->m_UseLight)
+							renderer->m_UseLight = temp_light;
+
+					}
+					if (!enable_render)
+					{
+						m_ecs->GetReg().remove<Components::Render>(m_CurrentEntity);
+					}
 				}
-				ImGui::SameLine();
-				if (ImGui::RadioButton("Scale", m_EditMode == ImGuizmo::SCALE))
+
+				auto point_light = m_ecs->GetReg().try_get<Components::Point_Light>(m_CurrentEntity);
+				if (point_light)
+				{
+					bool enable_pointlight = true;
+					if (ImGui::CollapsingHeader("Point Lighting", &enable_pointlight))
+					{
+						ImGui::Text("Light Color Editor");
+						ImGui::ColorEdit3("PLight", glm::value_ptr(point_light->m_Color));
+
+						ImGui::Text("Light Intensity");
+						ImGui::InputFloat("PLI", &point_light->m_Intensity, 0.1f, 1.0f, "%.3f");
+
+						ImGui::Text("Linear Attenuation");
+						ImGui::InputFloat("PLA", &point_light->m_Linear, 0.001f, 1.0f, "%.3f");
+
+						ImGui::Text("Quadratic Attenuation");
+						ImGui::InputFloat("PQA", &point_light->m_Quadratic, 0.001f, 1.0f, "%.3f");
+
+					}
+					if (!enable_pointlight)
+					{
+						m_ecs->GetReg().remove<Components::Point_Light>(m_CurrentEntity);
+					}
+				}
+
+				auto direction_light = m_ecs->GetReg().try_get<Components::Directional_Light>(m_CurrentEntity);
+				if (direction_light)
 				{
 					m_EditMode = ImGuizmo::SCALE;
+					bool enable_directionlight = true;
+					if (ImGui::CollapsingHeader("Directional Lighting", &enable_directionlight))
+					{
+						ImGui::Text("Direction");
+						ImGui::DragFloat3("Ddir", glm::value_ptr(direction_light->m_Direction));
+
+						ImGui::Text("Light Color Editor");
+						ImGui::ColorEdit3("DLight", glm::value_ptr(direction_light->m_Color));
+
+						ImGui::Text("Light Intensity");
+						ImGui::InputFloat("DLI", &direction_light->m_Intensity, 0.1f, 1.0f, "%.3f");
+
+						ImGui::Text("Diffusion");
+						ImGui::InputFloat("Ddif", &direction_light->m_Diffuse, 0.01f, 1.0f, "%.3f");
+
+						ImGui::Text("Specular");
+						ImGui::InputFloat("Dspec", &direction_light->m_Specular, 0.01f, 1.0f, "%.3f");
+
+					}
+					if (!enable_directionlight)
+					{
+						m_ecs->GetReg().remove<Components::Directional_Light>(m_CurrentEntity);
+					}
 				}
 
-				// Snap when editing transform
-				ImGui::Checkbox("Snap Transform", &m_UseSnap);
-				//Bounds edit
-				ImGui::Checkbox("Edit Bounds", &m_BoundSizing);
-				//Snap when editing
-				ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
 
-				// Usual stuff
-				ImGui::Text("Translate");
-				ImGui::PushID("Tr");
-				//ImGui::DragFloat3("", currGO.m_Position);
-				ImGui::DragFloat3("", glm::value_ptr(transform.m_position));
-				ImGui::PopID();
-				ImGui::Text("Rotate");
-				ImGui::PushID("Rt");
-				//ImGui::DragFloat3("", currGO.m_Rotation);
-				ImGui::DragFloat3("", glm::value_ptr(transform.m_rotation));
-				ImGui::PopID();
-				ImGui::Text("Scale");
-				ImGui::PushID("Sc");
-				//ImGui::DragFloat3("", currGO.m_Scale);
-				ImGui::DragFloat3("", glm::value_ptr(transform.m_scale));
-				ImGui::PopID();
+
+
+
+
 			}
 		}
 		ImGui::End();
