@@ -9,9 +9,9 @@ namespace PhysicsDLC
 	{
 		struct Rigidbody
 		{
-			bool isKinematic;
-			bool useGravity;
-			float mass = 1.f;
+			bool isKinematic = false;
+			bool useGravity = false;
+			float mass = 10.f;
 
 			vec3 velocity;
 			vec3 acceleration;

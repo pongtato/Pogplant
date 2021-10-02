@@ -1,6 +1,8 @@
 #ifndef  IMAGINARY_H
 #define IMAGINARY_H
 
+#include "../ECS.h"
+
 class ECS;
 
 class Imaginary_system
@@ -12,6 +14,7 @@ public:
 	void Init(ECS* ecs);
 	void Update();
 
+	entt::entity testObject;
 
 private:
 	ECS* m_registry;

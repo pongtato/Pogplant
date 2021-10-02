@@ -44,7 +44,7 @@ namespace Components
 		glm::vec3 m_rotation;
 		glm::vec3 m_scale;
 
-		float m_ModelMtx[16];
+		glm::mat4 m_ModelMtx;
 
 		Transform() = default;
 		Transform(const Transform&) = default;
@@ -56,17 +56,22 @@ namespace Components
 
 		void init(void)
 		{
-			glm::mat4 model = glm::mat4{ 1 };
-			model = glm::translate(model, m_position);
-			model = glm::rotate(model, m_rotation[0], { 1,0,0 });
-			model = glm::rotate(model, m_rotation[1], { 0,1,0 });
-			model = glm::rotate(model, m_rotation[2], { 0,0,1 });
-			model = glm::scale(model, m_scale);
+			m_ModelMtx = glm::mat4{ 1 };
+			m_ModelMtx = glm::translate(m_ModelMtx, m_position);
+			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[0], { 1,0,0 });
+			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[1], { 0,1,0 });
+			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[2], { 0,0,1 });
+			m_ModelMtx = glm::scale(m_ModelMtx, m_scale);
+		}
 
-			// Convert back to float
-			memcpy(m_ModelMtx, glm::value_ptr(model), sizeof(model));
-
-			//std::cout << "init called " << std::endl;
+		void updateModelMtx(void)
+		{
+			m_ModelMtx = glm::mat4{ 1 };
+			m_ModelMtx = glm::translate(m_ModelMtx, m_position);
+			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[0], { 1,0,0 });
+			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[1], { 0,1,0 });
+			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[2], { 0,0,1 });
+			m_ModelMtx = glm::scale(m_ModelMtx, m_scale);
 		}
 	};
 

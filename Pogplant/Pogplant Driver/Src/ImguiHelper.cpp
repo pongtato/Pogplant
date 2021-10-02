@@ -650,20 +650,20 @@ namespace PogplantDriver
 			ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(transform.m_position), 
 													glm::value_ptr(transform.m_rotation), 
 													glm::value_ptr(transform.m_scale), 
-													transform.m_ModelMtx);
+													glm::value_ptr(transform.m_ModelMtx));
 			ImGuizmo::Manipulate
 			(
 				glm::value_ptr(_CurrCam->GetView()),
 				glm::value_ptr(_CurrCam->GetPerspective()),
 				m_EditMode,
 				ImGuizmo::LOCAL,
-				transform.m_ModelMtx,
+				glm::value_ptr(transform.m_ModelMtx),
 				NULL,
 				m_UseSnap ? m_SnapStep : NULL,
 				m_BoundSizing ? m_BoundsPos : NULL,
 				m_UseBoundsSnap ? m_BoundsSnapStep : NULL
 			);
-			ImGuizmo::DecomposeMatrixToComponents(	transform.m_ModelMtx, 
+			ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(transform.m_ModelMtx),
 													glm::value_ptr(transform.m_position),
 													glm::value_ptr(transform.m_rotation),
 													glm::value_ptr(transform.m_scale));

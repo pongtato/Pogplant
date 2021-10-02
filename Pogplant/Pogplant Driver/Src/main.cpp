@@ -34,7 +34,7 @@ namespace PPD = PogplantDriver;
 using namespace Components;
 ECS ecs;
 Imaginary_system ImaginarySystem;
-PhysicsSystem PhysicsSystem;
+PhysicsSystem physicsSystem;
 
 void Init()
 {
@@ -242,12 +242,25 @@ void Init()
 	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, color, sphereModel, false });
 	//entity.AddComponent<Components::Name>(Name{ "Light 4" });
 
+
 	/// FONT
 	pos = { 0.0f, 0.0f, 0.0f };
 	rot = { 0.0f, 0.0f,0.0f };
 	scale = { 10.0f,10.0f,10.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "Test font kekw", false });
+
+	//test object;
+	pos = { 0.f, 0.f, 0.f };
+	scale = { 0.1f, 0.1f, 0.1f };
+	entity = ecs.CreateEntity("Apple", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Render>(Render{ glm::mat4{1}, glm::vec3{1.f, 0.f, 0.f}, sphereModel, false });
+	entity.AddComponent<Components::BoxCollider>();
+	entity.AddComponent<Components::Rigidbody>();
+	auto& tmpRigidbody = entity.GetComponent<Components::Rigidbody>();
+	tmpRigidbody.mass = 1.f;
+	ImaginarySystem.testObject = entity.GetID();
+
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 	
@@ -257,7 +270,7 @@ void Init()
 	//SS.testfuncwithreturn();
 
 	ImaginarySystem.Init(&ecs);
-	PhysicsSystem.Init(&ecs);
+	physicsSystem.Init(&ecs);
 	Pogplant::Input::InputSystem::Instance()->Init(PP::Window::GetWindow());
 }
 
@@ -377,7 +390,8 @@ void DrawCommon()
 		auto& transform = view.get<Transform>(entity);
 		auto& renderer = view.get<Render>(entity);
 		
-		renderer.m_Model = glm::make_mat4(transform.m_ModelMtx);
+		transform.updateModelMtx();
+		renderer.m_Model = transform.m_ModelMtx;
 		//DebugCubes(transform, renderer);
 	}
 
@@ -469,7 +483,7 @@ void DrawImGUI()
 {
 	PP::Renderer::ClearBuffer();
 	PPD::ImguiHelper::DrawImgui();
-	PhysicsSystem.DrawImGUI();
+	physicsSystem.DrawImGUI();
 }
 
 void Run()
@@ -481,7 +495,7 @@ void Run()
 
 		// Camera KB movement
 		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
-
+		physicsSystem.Update(ImGui::GetIO().DeltaTime);
 		ImaginarySystem.Update();
 
 		/// Most of this should be moved to other files when the engine is developed

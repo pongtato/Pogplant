@@ -32,16 +32,18 @@ namespace Components
 
 	struct BoxCollider : public Collider
 	{
-		PhysicsDLC::Collision::Shapes::AABB aabb;
 		glm::vec3 extends;
 		glm::vec3 centre;
+
+		PhysicsDLC::Collision::Shapes::AABB aabb;
 	};
 
 	struct SphereCollider : public Collider
 	{
-		PhysicsDLC::Collision::Shapes::Sphere sphere;
 		float radius;
 		glm::vec3 centre;
+
+		PhysicsDLC::Collision::Shapes::Sphere sphere;
 	};
 }
 
