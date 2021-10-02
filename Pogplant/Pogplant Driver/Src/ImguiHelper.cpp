@@ -382,7 +382,7 @@ namespace PogplantDriver
 			{
 				//GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
 				auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);
-				if (transform && ImGui::CollapsingHeader("Transform"))
+				if (transform && ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					// Mode switch
 					if (ImGui::RadioButton("Translate", m_EditMode == ImGuizmo::TRANSLATE))
@@ -430,7 +430,7 @@ namespace PogplantDriver
 				{
 					bool enable_render = true;
 
-					if (ImGui::CollapsingHeader("Renderer", &enable_render))
+					if (ImGui::CollapsingHeader("Renderer", &enable_render, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGuiComboFlags flag = 0;
 						flag |= ImGuiComboFlags_PopupAlignLeft;
@@ -480,7 +480,7 @@ namespace PogplantDriver
 				if (point_light)
 				{
 					bool enable_pointlight = true;
-					if (ImGui::CollapsingHeader("Point Lighting", &enable_pointlight))
+					if (ImGui::CollapsingHeader("Point Lighting", &enable_pointlight, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Light Color Editor");
 						ImGui::ColorEdit3("PLight", glm::value_ptr(point_light->m_Color));
@@ -506,7 +506,7 @@ namespace PogplantDriver
 				{
 					m_EditMode = ImGuizmo::SCALE;
 					bool enable_directionlight = true;
-					if (ImGui::CollapsingHeader("Directional Lighting", &enable_directionlight))
+					if (ImGui::CollapsingHeader("Directional Lighting", &enable_directionlight, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Direction");
 						ImGui::DragFloat3("Ddir", glm::value_ptr(direction_light->m_Direction));
