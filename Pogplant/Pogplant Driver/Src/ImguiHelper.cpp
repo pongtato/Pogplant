@@ -428,8 +428,37 @@ namespace PogplantDriver
 				if (renderer)
 				{
 					bool enable_render = true;
+
 					if (ImGui::CollapsingHeader("Renderer", &enable_render))
 					{
+						ImGuiComboFlags flag = 0;
+						flag |= ImGuiComboFlags_PopupAlignLeft;
+						auto model_itr = PP::ModelResource::m_ModelPool.begin();
+						for (auto it = PP::ModelResource::m_ModelPool.begin(); it != PP::ModelResource::m_ModelPool.end(); ++it)
+						{
+							if (it->second == renderer->m_RenderModel)
+								model_itr = it;
+						}
+
+						ImGui::Text("Model");
+						if (ImGui::BeginCombo("Mdl", model_itr->first.c_str(), flag))
+						{
+							for (auto it = PP::ModelResource::m_ModelPool.begin(); it != PP::ModelResource::m_ModelPool.end(); ++it)
+							{
+								const bool  is_selected = (model_itr == it);
+								if (ImGui::Selectable(it->first.c_str(), is_selected))
+								{
+									model_itr = it;
+									renderer->m_RenderModel = model_itr->second;
+								}
+
+								if (is_selected)
+									ImGui::SetItemDefaultFocus();
+
+							}
+							ImGui::EndCombo();
+						}
+
 						ImGui::Text("Color Editor");
 						ImGui::ColorEdit3("RenderColor", glm::value_ptr(renderer->m_ColorTint));
 
