@@ -15,8 +15,17 @@
 #include <algorithm>
 #include <execution>
 
+
 namespace PogplantDriver
 {
+	std::string GetFileName(const std::string& fullpath)
+	{
+		std::string filename;
+		size_t found = fullpath.find_last_of('/');
+		filename = fullpath.substr(found + 1, fullpath.find_last_of('.') - found - 1);
+		return filename;
+	}
+
 	bool ImguiHelper::m_FirstRun = true;
 	//int ImguiHelper::m_CurrentGOIdx = -1;
 	entt::entity ImguiHelper::m_CurrentEntity = entt::null;
@@ -164,7 +173,7 @@ namespace PogplantDriver
 				ImGui::EndMenu();
 			}
 
-			if (ImGui::BeginMenu("Component"))
+			if (ImGui::BeginMenu("Components"))
 			{
 					bool adding_enabled = false;
 					if (m_CurrentEntity != entt::null)
@@ -173,17 +182,26 @@ namespace PogplantDriver
 					//{
 					//	auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Transform>(m_CurrentEntity);
 					//}
-					if (ImGui::MenuItem("Render", NULL, false, false))
+					if (ImGui::BeginMenu("3D Render"))
 					{
-						auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Render>(m_CurrentEntity);
+						glm::vec3 color = { 0.835f,0.921f,0.905f };
+						if (ImGui::MenuItem("Sphere"))
+						{
+							auto temp = PP::ModelResource::m_ModelPool["Sphere"];
+							auto& renderer = m_ecs->GetReg().get_or_emplace<Components::Render>(m_CurrentEntity,
+								glm::mat4{1},
+								color, 
+								temp);
+						}
+						ImGui::EndMenu();
 					}
 					if (ImGui::MenuItem("Point_Light", NULL, false, adding_enabled))
 					{
-						auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Point_Light>(m_CurrentEntity);
+						auto& lightp_component = m_ecs->GetReg().get_or_emplace<Components::Point_Light>(m_CurrentEntity);
 					}
 					if (ImGui::MenuItem("Directional_Light", NULL, false, adding_enabled))
 					{
-						auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Directional_Light>(m_CurrentEntity);
+						auto& lightd_component = m_ecs->GetReg().get_or_emplace<Components::Directional_Light>(m_CurrentEntity);
 					}
 					ImGui::EndMenu();
 				}
@@ -585,8 +603,10 @@ namespace PogplantDriver
 
 	void ImguiHelper::NewScene()
 	{
+		
 		m_CurrentEntity = entt::null;
 		m_ecs->GetReg().clear();
+
 
 	}
 

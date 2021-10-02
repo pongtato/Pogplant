@@ -496,7 +496,8 @@ void Run()
 		// Camera KB movement
 		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
 		physicsSystem.Update(ImGui::GetIO().DeltaTime);
-		ImaginarySystem.Update();
+
+		//ImaginarySystem.Update();
 
 		/// Most of this should be moved to other files when the engine is developed
 		// Things that appear in both editor & game
