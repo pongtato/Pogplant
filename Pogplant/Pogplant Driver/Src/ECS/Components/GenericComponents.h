@@ -132,6 +132,8 @@ namespace Components
 
 	struct Text
 	{
+		Text(glm::vec3 Color, std::string FontID, std::string Text = "", bool Ortho = false) :
+			m_Color(Color), m_FontID(FontID), m_Text(Text), m_Ortho(Ortho) {};
 		glm::vec3 m_Color;
 		std::string m_FontID;
 		std::string m_Text;

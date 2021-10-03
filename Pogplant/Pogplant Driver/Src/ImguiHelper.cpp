@@ -11,6 +11,7 @@
 
 #include "ECS/Entity.h"
 #include "../../Pogplant/Src/Utils/FileDialogs.h"
+#include "ECS/Systems/PhysicsSystem.h" // Should not be here?
 #include "Serialiser/Serializer.h"
 #include <algorithm>
 #include <execution>
@@ -192,7 +193,7 @@ namespace PogplantDriver
 							auto& renderer = m_ecs->GetReg().get_or_emplace<Components::Renderer>(m_CurrentEntity,
 								glm::mat4{1},
 								color, 
-								nullptr);
+								PP::ModelResource::m_ModelPool["Sphere"]);
 						}
 						ImGui::EndMenu();
 					}
@@ -206,7 +207,15 @@ namespace PogplantDriver
 					}
 					if (ImGui::MenuItem("Font", NULL, false, adding_enabled)) //There is another font somewhere might crash (But should not as id stack is cleared)
 					{
-						auto& lightd_component = m_ecs->GetReg().get_or_emplace<Components::Text>(m_CurrentEntity);
+						auto& new_font = m_ecs->GetReg().get_or_emplace<Components::Text>(m_CurrentEntity, glm::vec3 {0.835f,0.921f,0.905f },"Ruda", "Lorem ipsum dolor sit amet");
+					}
+					if (ImGui::MenuItem("RigidBody", NULL, false, adding_enabled)) 
+					{
+						auto& new_body = m_ecs->GetReg().get_or_emplace<Components::Rigidbody>(m_CurrentEntity);
+					}
+					if (ImGui::MenuItem("BoxCollider", NULL, false, adding_enabled))
+					{
+						auto& new_bcollider = m_ecs->GetReg().get_or_emplace<Components::BoxCollider>(m_CurrentEntity);
 					}
 					ImGui::EndMenu();
 				}
@@ -391,7 +400,7 @@ namespace PogplantDriver
 					ImGui::Text("Name");
 					static char name_stuff[256] = "";
 					sprintf_s(name_stuff, IM_ARRAYSIZE(name_stuff), naming->m_name.c_str());
-					ImGui::InputText("TI", name_stuff, IM_ARRAYSIZE(name_stuff));
+					ImGui::InputText("###TI", name_stuff, IM_ARRAYSIZE(name_stuff));
 					naming->m_name = name_stuff;
 					ImguiBlankSeperator(1);
 				}
@@ -459,7 +468,7 @@ namespace PogplantDriver
 						}
 
 						ImGui::Text("Model");
-						if (ImGui::BeginCombo("Mdl", model_itr->first.c_str(), flag))
+						if (ImGui::BeginCombo("###Mdl", model_itr->first.c_str(), flag))
 						{
 							for (auto it = PP::ModelResource::m_ModelPool.begin(); it != PP::ModelResource::m_ModelPool.end(); ++it)
 							{
@@ -478,7 +487,7 @@ namespace PogplantDriver
 						}
 
 						ImGui::Text("Color Editor");
-						ImGui::ColorEdit3("RenderColor", glm::value_ptr(renderer->m_ColorTint));
+						ImGui::ColorEdit3("###RenderColor", glm::value_ptr(renderer->m_ColorTint));
 
 						ImGui::Text("RLighting");
 						bool temp_light = renderer->m_UseLight;
@@ -500,16 +509,16 @@ namespace PogplantDriver
 					if (ImGui::CollapsingHeader("Point Lighting", &enable_pointlight, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Light Color Editor");
-						ImGui::ColorEdit3("PLight", glm::value_ptr(point_light->m_Color));
+						ImGui::ColorEdit3("###PLight", glm::value_ptr(point_light->m_Color));
 
 						ImGui::Text("Light Intensity");
-						ImGui::InputFloat("PLI", &point_light->m_Intensity, 0.1f, 1.0f, "%.3f");
+						ImGui::InputFloat("###PLI", &point_light->m_Intensity, 0.1f, 1.0f, "%.3f");
 
 						ImGui::Text("Linear Attenuation");
-						ImGui::InputFloat("PLA", &point_light->m_Linear, 0.001f, 1.0f, "%.3f");
+						ImGui::InputFloat("###PLA", &point_light->m_Linear, 0.001f, 1.0f, "%.3f");
 
 						ImGui::Text("Quadratic Attenuation");
-						ImGui::InputFloat("PQA", &point_light->m_Quadratic, 0.001f, 1.0f, "%.3f");
+						ImGui::InputFloat("###PQA", &point_light->m_Quadratic, 0.001f, 1.0f, "%.3f");
 
 					}
 					if (!enable_pointlight)
@@ -526,19 +535,19 @@ namespace PogplantDriver
 					if (ImGui::CollapsingHeader("Directional Lighting", &enable_directionlight, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Direction");
-						ImGui::DragFloat3("Ddir", glm::value_ptr(direction_light->m_Direction));
+						ImGui::DragFloat3("###Ddir", glm::value_ptr(direction_light->m_Direction));
 
 						ImGui::Text("Light Color Editor");
-						ImGui::ColorEdit3("DLight", glm::value_ptr(direction_light->m_Color));
+						ImGui::ColorEdit3("###DLight", glm::value_ptr(direction_light->m_Color));
 
 						ImGui::Text("Light Intensity");
-						ImGui::InputFloat("DLI", &direction_light->m_Intensity, 0.1f, 1.0f, "%.3f");
+						ImGui::InputFloat("###DLI", &direction_light->m_Intensity, 0.1f, 1.0f, "%.3f");
 
 						ImGui::Text("Diffusion");
-						ImGui::InputFloat("Ddif", &direction_light->m_Diffuse, 0.01f, 1.0f, "%.3f");
+						ImGui::InputFloat("###Ddif", &direction_light->m_Diffuse, 0.01f, 1.0f, "%.3f");
 
 						ImGui::Text("Specular");
-						ImGui::InputFloat("Dspec", &direction_light->m_Specular, 0.01f, 1.0f, "%.3f");
+						ImGui::InputFloat("###Dspec", &direction_light->m_Specular, 0.01f, 1.0f, "%.3f");
 
 					}
 					if (!enable_directionlight)
@@ -596,6 +605,99 @@ namespace PogplantDriver
 					}
 				}
 
+				auto rigid = m_ecs->GetReg().try_get<Components::Rigidbody>(m_CurrentEntity);
+				if (rigid)
+				{
+					bool enable_rigid = true;
+
+					if (ImGui::CollapsingHeader("RigidBody", &enable_rigid, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						ImGui::Text("Mass");
+						ImGui::InputFloat("###", &rigid->mass , 0.1f, 1.0f, "%.3f");
+						ImGui::Checkbox("Kinematic", &rigid->isKinematic);
+						ImGui::SameLine();
+						ImGui::Checkbox("Gravity", &rigid->useGravity);
+
+					}
+					if (!enable_rigid)
+					{
+						m_ecs->GetReg().remove<Components::Rigidbody>(m_CurrentEntity);
+					}
+				}
+
+
+				auto box_collider = m_ecs->GetReg().try_get<Components::BoxCollider>(m_CurrentEntity);
+				if (box_collider)
+				{
+					bool enable_box_collider = true;
+
+					if (ImGui::CollapsingHeader("Collider", &enable_box_collider, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						ImGuiComboFlags flag = 0;
+						flag |= ImGuiComboFlags_PopupAlignLeft;
+						std::vector<std::string> collision_rule_str = { "Collide", "Event", "Collide & Event", "Ignore" };
+						std::vector<int> collision_rule = { Components::BoxCollider::COLLISION_RULE::CR_COLLIDE,
+																								Components::BoxCollider::COLLISION_RULE::CR_EVENT,
+																								Components::BoxCollider::COLLISION_RULE::CR_COLLIDE_EVENT,
+																								Components::BoxCollider::COLLISION_RULE::CR_IGNORE };
+						std::vector<std::string> collision_type_str = { "Box", "Sphere", "GFK"};
+						std::vector<int> collider_type = { Components::BoxCollider::CT_BOX,
+																							 Components::BoxCollider::CT_SPHERE,
+																							 Components::BoxCollider::CT_GJK };
+						auto box_rule = box_collider->collisionLayer;
+						ImGui::Text("Collision Rule");
+						if (ImGui::BeginCombo("Crule", collision_rule_str[box_rule].c_str(), flag))
+						{
+							for (auto& it : collision_rule)
+							{
+								const bool  is_selected = (box_rule == it);
+								if (ImGui::Selectable(collision_rule_str[it].c_str(), is_selected))
+								{
+									box_rule = it;
+									box_collider->collisionLayer = collision_rule[box_rule];
+								}
+
+								if (is_selected)
+									ImGui::SetItemDefaultFocus();
+							}
+							ImGui::EndCombo();
+						}
+
+						auto box_type = box_collider->colliderType;
+						ImGui::Text("Collision Type");
+						if (ImGui::BeginCombo("CType", collision_type_str[box_type].c_str(), flag))
+						{
+							for (auto& it : collider_type)
+							{
+								const bool  is_selected = (box_type == it);
+								if (ImGui::Selectable(collision_type_str[it].c_str(), is_selected))
+								{
+									box_type = it;
+									box_collider->colliderType = collider_type[box_type];
+								}
+
+								if (is_selected)
+									ImGui::SetItemDefaultFocus();
+							}
+							ImGui::EndCombo();
+						}
+
+
+						ImGui::Text("Extend");
+						ImGui::DragFloat3("###CExt", glm::value_ptr(box_collider->extends));
+
+						ImGui::Text("Centre");
+						ImGui::DragFloat3("###CCen", glm::value_ptr(box_collider->centre));
+
+						ImGui::Text("Trigger?");
+						ImGui::Checkbox("Trig?", &box_collider->isTrigger);
+
+					}
+					if (!enable_box_collider)
+					{
+						m_ecs->GetReg().remove<Components::Rigidbody>(m_CurrentEntity);
+					}
+				}
 
 	
 				ImGui::Separator();
