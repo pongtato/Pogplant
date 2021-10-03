@@ -977,6 +977,7 @@ namespace PogplantDriver
 													glm::value_ptr(transform.m_rotation), 
 													glm::value_ptr(transform.m_scale), 
 													glm::value_ptr(transform.m_ModelMtx));
+
 			ImGuizmo::Manipulate
 			(
 				m_GoEditing,
@@ -990,6 +991,7 @@ namespace PogplantDriver
 				m_BoundSizing ? m_BoundsPos : NULL,
 				m_UseBoundsSnap ? m_BoundsSnapStep : NULL
 			);
+
 			ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(transform.m_ModelMtx),
 													glm::value_ptr(transform.m_position),
 													glm::value_ptr(transform.m_rotation),

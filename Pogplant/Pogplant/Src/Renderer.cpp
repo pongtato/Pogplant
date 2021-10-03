@@ -266,11 +266,27 @@ namespace Pogplant
 			ShaderLinker::SetUniform("useLight", it.m_UseLight);
 			if (!it.m_EditorDrawOnly || it.m_EditorDrawOnly && _EditorMode)
 			{
-				
 				it.m_RenderModel->Draw();
 			}
 		}
 		ShaderLinker::UnUse();
+
+		// Debug boxes
+		if (_EditorMode)
+		{
+			ShaderLinker::Use("LINE");
+			ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+			ShaderLinker::SetUniform("m4_View", currCam->GetView());
+			ShaderLinker::SetUniform("m4_Model", glm::mat4{ 1 });
+			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.8f,0.2f,0.8f });
+
+			Mesh* lineMesh = MeshResource::m_MeshPool[MeshResource::MESH_TYPE::LINE];
+			glBindVertexArray(lineMesh->m_VAO);
+			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
+			glBindVertexArray(0);
+
+			ShaderLinker::UnUse();
+		}
 
 		// Skybox
 		glDepthFunc(GL_LEQUAL);

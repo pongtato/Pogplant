@@ -23,6 +23,7 @@ namespace Pogplant
         GenerateTextQuad();
         GenerateScreen();
         GenerateSkybox();
+        GenerateLines();
         ModelResource::InitResource();
     }
 
@@ -120,6 +121,40 @@ namespace Pogplant
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
+    }
+
+    void MeshBuilder::RebindLines(const std::vector<glm::vec3>& _Points)
+    {
+        Mesh* mesh = MeshResource::m_MeshPool[MT::LINE];
+
+        /// Assert
+        if (mesh == nullptr)
+        {
+            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Quad resource is NULL" });
+            return;
+        }
+
+        size_t poxVtxSize = sizeof(glm::vec3) * _Points.size();
+
+        // Rebind m_VAO
+        glBindVertexArray(mesh->m_VAO);
+
+        // Rebind m_VBO
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->m_VBO);
+        glBufferData(GL_ARRAY_BUFFER, poxVtxSize, _Points.data(), GL_DYNAMIC_DRAW);
+
+        // m_VAO rebind for position
+        glEnableVertexArrayAttrib(mesh->m_VAO, 0);
+        glVertexArrayVertexBuffer(mesh->m_VAO, 0, mesh->m_VBO, 0, sizeof(glm::vec3));
+        glVertexArrayAttribFormat(mesh->m_VAO, 0, 3, GL_FLOAT, GL_FALSE, 0);
+        glVertexArrayAttribBinding(mesh->m_VAO, 0, 0);
+
+        // Unbind
+        glBindBuffer(0, mesh->m_VBO);
+        glBindVertexArray(0);
+
+        mesh->m_IndicesCount = static_cast<unsigned int>(_Points.size());
+        mesh->m_PrimitiveType = GL_LINES;
     }
 
     void MeshBuilder::GenerateQuad()
@@ -354,5 +389,35 @@ namespace Pogplant
 
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
+    }
+
+    void MeshBuilder::GenerateLines()
+    {
+        Mesh* mesh = MeshResource::m_MeshPool[MT::LINE];
+
+        std::vector<glm::vec3> temp;
+        temp.resize(10);
+        size_t poxVtxSize = sizeof(glm::vec2) * temp.size();
+
+        // Create m_VAO
+        glCreateVertexArrays(1, &mesh->m_VAO);
+
+        // Create m_VBO
+        glCreateBuffers(1, &mesh->m_VBO);
+        glBindBuffer(GL_ARRAY_BUFFER, mesh->m_VBO);
+        glBufferData(GL_ARRAY_BUFFER, poxVtxSize, temp.data(), GL_DYNAMIC_DRAW);
+
+        // m_VAO setup for position
+        glEnableVertexArrayAttrib(mesh->m_VAO, 0);
+        glVertexArrayVertexBuffer(mesh->m_VAO, 0, mesh->m_VBO, 0, sizeof(glm::vec3));
+        glVertexArrayAttribFormat(mesh->m_VAO, 0, 3, GL_FLOAT, GL_FALSE, 0);
+        glVertexArrayAttribBinding(mesh->m_VAO, 0, 0);
+
+        // Unbind
+        glBindBuffer(0, mesh->m_VBO);
+        glBindVertexArray(0);
+
+        mesh->m_IndicesCount = static_cast<unsigned int>(temp.size());
+        mesh->m_PrimitiveType = GL_LINES;
     }
 }

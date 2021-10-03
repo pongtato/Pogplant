@@ -27,6 +27,7 @@ namespace Pogplant
 		ShaderResource::AddShaderProfile(ShaderProfile("BLUR", dir, "Sotong.vert", "Sotong.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("BLOOM", dir, "Bling.vert", "Bling.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("DEBUG", dir, "Debug.vert", "Debug.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("LINE", dir, "Line.vert", "Line.frag"));
 
 		bool passFlag = true;
 		for (const auto& it : ShaderResource::m_ShaderProfiles)

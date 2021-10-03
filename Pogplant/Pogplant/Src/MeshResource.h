@@ -16,6 +16,7 @@ namespace Pogplant
 			QUAD,
 			TEXT_QUAD,
 			SCREEN,
+			LINE,
 			COUNT_2D,
 		};
 
