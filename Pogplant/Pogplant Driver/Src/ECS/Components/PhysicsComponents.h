@@ -24,7 +24,7 @@ namespace Components
 			CT_GJK
 		};
 
-		bool isTrigger;
+		bool isTrigger = false;
 
 		int collisionLayer = 0;
 		int colliderType = 0;
@@ -32,6 +32,11 @@ namespace Components
 
 	struct BoxCollider : public Collider
 	{
+		BoxCollider() = default;
+		inline BoxCollider(glm::vec3 c_extends, glm::vec3 c_centre)
+			: extends{ c_extends }, centre{ c_centre }
+		{}
+
 		glm::vec3 extends;
 		glm::vec3 centre;
 
@@ -40,6 +45,11 @@ namespace Components
 
 	struct SphereCollider : public Collider
 	{
+		SphereCollider() = default;
+		inline SphereCollider(glm::vec3 c_centre, float c_radius)
+			: centre{ c_centre }, radius{ c_radius }
+		{}
+
 		float radius;
 		glm::vec3 centre;
 

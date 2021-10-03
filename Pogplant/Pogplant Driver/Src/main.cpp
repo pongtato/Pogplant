@@ -242,6 +242,15 @@ void Init()
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	//entity.AddComponent<Components::Name>(Name{ "Light 4" });
 
+	//Test Object with body
+	pos = { 10.0f, 1.f, -10.0f };
+	color = { 0.0f, 1.0f, 1.0f };
+	scale = { 0.5f, 0.5f, 0.5f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f });
+	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
 
 	/// FONT
 	pos = { 0.0f, 0.0f, -5.0f };
@@ -389,71 +398,79 @@ void DrawCommon()
 		auto& transform = view.get<Transform>(entity);
 		auto& renderer = view.get<Renderer>(entity);
 		
+		auto boxCollider = ecs.GetReg().try_get<BoxCollider>(entity);
+
 		transform.updateModelMtx();
 		renderer.m_Model = transform.m_ModelMtx;
-		//DebugCubes(transform, renderer);
+		
+
 
 		/// Debug draw vertex calculation
-
-		// Very naive longest edge
-		float largestScale = std::numeric_limits<float>::min();
-		for (int j = 0; j < 3; j++)
+		if (boxCollider)
 		{
-			largestScale = std::max(largestScale, transform.m_scale[j]);
+			std::vector<glm::vec3> verts;
+
+			verts.push_back(boxCollider->aabb.m_min);
+			verts.push_back(glm::vec3{ boxCollider->aabb.m_min.x, boxCollider->aabb.m_min.y, boxCollider->aabb.m_max.z });
+			verts.push_back(glm::vec3{ boxCollider->aabb.m_max.x, boxCollider->aabb.m_min.y, boxCollider->aabb.m_max.z });
+			verts.push_back(glm::vec3{ boxCollider->aabb.m_max.x, boxCollider->aabb.m_min.y, boxCollider->aabb.m_min.z });
+
+			verts.push_back(glm::vec3{ boxCollider->aabb.m_min.x, boxCollider->aabb.m_max.y, boxCollider->aabb.m_min.z });
+			verts.push_back(glm::vec3{ boxCollider->aabb.m_min.x, boxCollider->aabb.m_max.y, boxCollider->aabb.m_max.z });
+			verts.push_back(boxCollider->aabb.m_max);
+			verts.push_back(glm::vec3{ boxCollider->aabb.m_max.x, boxCollider->aabb.m_max.y, boxCollider->aabb.m_min.z });
+			
+			// Bottom quad
+			/*verts.push_back(transform.m_position + glm::vec3{-offset, -offset, -offset}); // 0
+			verts.push_back(transform.m_position + glm::vec3{ -offset, -offset,  offset }); // 1
+			verts.push_back(transform.m_position + glm::vec3{  offset, -offset,  offset }); // 2
+			verts.push_back(transform.m_position + glm::vec3{  offset, -offset, -offset }); // 3
+			// Top quad
+			verts.push_back(transform.m_position + glm::vec3{ -offset,  offset, -offset }); // 4
+			verts.push_back(transform.m_position + glm::vec3{ -offset,  offset,  offset }); // 5
+			verts.push_back(transform.m_position + glm::vec3{  offset,  offset,  offset }); // 6
+			verts.push_back(transform.m_position + glm::vec3{  offset,  offset, -offset }); // 7*/
+
+			// Add to modelBounds, GL_LINE
+			// Bottom Quad
+			modelBounds.push_back(verts[0]);
+			modelBounds.push_back(verts[1]);
+
+			modelBounds.push_back(verts[1]);
+			modelBounds.push_back(verts[2]);
+
+			modelBounds.push_back(verts[2]);
+			modelBounds.push_back(verts[3]);
+
+			modelBounds.push_back(verts[3]);
+			modelBounds.push_back(verts[0]);
+
+			// Top Quad
+			modelBounds.push_back(verts[4]);
+			modelBounds.push_back(verts[5]);
+
+			modelBounds.push_back(verts[5]);
+			modelBounds.push_back(verts[6]);
+
+			modelBounds.push_back(verts[6]);
+			modelBounds.push_back(verts[7]);
+
+			modelBounds.push_back(verts[7]);
+			modelBounds.push_back(verts[4]);
+
+			// Plane Connectors
+			modelBounds.push_back(verts[0]);
+			modelBounds.push_back(verts[4]);
+
+			modelBounds.push_back(verts[1]);
+			modelBounds.push_back(verts[5]);
+
+			modelBounds.push_back(verts[2]);
+			modelBounds.push_back(verts[6]);
+
+			modelBounds.push_back(verts[3]);
+			modelBounds.push_back(verts[7]);
 		}
-
-		float offset = renderer.m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
-		std::vector<glm::vec3> verts;
-		// Bottom quad
-		verts.push_back(transform.m_position + glm::vec3{ -offset, -offset, -offset }); // 0
-		verts.push_back(transform.m_position + glm::vec3{ -offset, -offset,  offset }); // 1
-		verts.push_back(transform.m_position + glm::vec3{  offset, -offset,  offset }); // 2
-		verts.push_back(transform.m_position + glm::vec3{  offset, -offset, -offset }); // 3
-		// Top quad
-		verts.push_back(transform.m_position + glm::vec3{ -offset,  offset, -offset }); // 4
-		verts.push_back(transform.m_position + glm::vec3{ -offset,  offset,  offset }); // 5
-		verts.push_back(transform.m_position + glm::vec3{  offset,  offset,  offset }); // 6
-		verts.push_back(transform.m_position + glm::vec3{  offset,  offset, -offset }); // 7
-
-		// Add to modelBounds, GL_LINE
-		// Bottom Quad
-		modelBounds.push_back(verts[0]);
-		modelBounds.push_back(verts[1]);
-
-		modelBounds.push_back(verts[1]);
-		modelBounds.push_back(verts[2]);
-
-		modelBounds.push_back(verts[2]);
-		modelBounds.push_back(verts[3]);
-
-		modelBounds.push_back(verts[3]);
-		modelBounds.push_back(verts[0]);
-
-		// Top Quad
-		modelBounds.push_back(verts[4]);
-		modelBounds.push_back(verts[5]);
-
-		modelBounds.push_back(verts[5]);
-		modelBounds.push_back(verts[6]);
-
-		modelBounds.push_back(verts[6]);
-		modelBounds.push_back(verts[7]);
-
-		modelBounds.push_back(verts[7]);
-		modelBounds.push_back(verts[4]);
-
-		// Plane Connectors
-		modelBounds.push_back(verts[0]);
-		modelBounds.push_back(verts[4]);
-
-		modelBounds.push_back(verts[1]);
-		modelBounds.push_back(verts[5]);
-
-		modelBounds.push_back(verts[2]);
-		modelBounds.push_back(verts[6]);
-
-		modelBounds.push_back(verts[3]);
-		modelBounds.push_back(verts[7]);
 	}
 	PP::MeshBuilder::RebindLines(modelBounds);
 
