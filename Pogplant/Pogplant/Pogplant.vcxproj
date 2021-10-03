@@ -108,7 +108,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\json\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\STB;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\json\include;$(SolutionDir)Libs\tinydds;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\RTTR\lib;$(SolutionDir)Libs\json\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
