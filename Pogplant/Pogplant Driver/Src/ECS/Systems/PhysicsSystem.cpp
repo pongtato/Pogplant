@@ -196,14 +196,17 @@ void PhysicsSystem::Update(float c_dt)
 				}
 				else
 				{
-					float collisionTime = 01.f;
+					float collisionTime = -1.f;
 					if(_2rigidbody)
-						collisionTime = PhysicsDLC::Collision::DynamicAABBAABB(_1collider.aabb, _1rigidbody.velocity, _2collider.aabb, _2rigidbody->velocity, c_dt);
+						collisionTime = PhysicsDLC::Collision::DynamicAABBAABB(_1collider.aabb, _1rigidbody.velocity, _2collider.aabb, _2rigidbody->velocity, 10.f);
 					else
-						collisionTime = PhysicsDLC::Collision::DynamicAABBAABB(_1collider.aabb, _1rigidbody.velocity, _2collider.aabb, PhysicsDLC::Vector::Zero, c_dt);
+						collisionTime = PhysicsDLC::Collision::DynamicAABBAABB(_1collider.aabb, _1rigidbody.velocity, _2collider.aabb, PhysicsDLC::Vector::Zero, 10.f);
 					
-					if(collisionTime > std::numeric_limits<float>::epsilon() && collisionTime < c_dt)
+					if (collisionTime > 0.f && collisionTime < c_dt)
+					{
+						//std::cout << "COLLIDE" << std::endl;
 						PhysicsDLC::Physics::ResolveAABBDynamic(_1transform.m_position, _1rigidbody, _2rigidbody, _1collider.aabb, _2collider.aabb, collisionTime, c_dt);
+					}
 				}
 			}
 		}

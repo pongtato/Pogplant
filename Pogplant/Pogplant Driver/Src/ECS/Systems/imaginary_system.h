@@ -14,8 +14,6 @@ public:
 	void Init(ECS* ecs);
 	void Update();
 
-	entt::entity testObject;
-
 private:
 	ECS* m_registry;
 

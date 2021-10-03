@@ -140,6 +140,12 @@ namespace Components
 		bool m_Ortho;
 	};
 
+	//Temporary
+	struct CharacterController
+	{
+		float force = 2.f;
+	};
+
 	RTTR_REGISTRATION
 	{
 		rttr::registration::class_<Transform>("Transform")

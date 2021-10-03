@@ -39,36 +39,39 @@ void Imaginary_system::Update()
 		auto& imaginary_component = entities.get<Imaginary_object>(entity);
 
 		(void)imaginary_component;
-	}*/
+	}//*/
 
-	auto test = m_registry->GetReg().try_get<Components::Rigidbody>(testObject);
+	auto characters = m_registry->GetReg().view<Transform, Rigidbody, Components::CharacterController>();
 
-	if (test)
+	for (auto entity : characters)
 	{
+		auto& character = characters.get<Components::CharacterController>(entity);
+		auto& rigidBody = characters.get<Components::Rigidbody>(entity);
+
 		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_UP))
 		{
-			test->AddForce({ 0.f, 0.f, -1.f });
+			rigidBody.AddForce({ 0.f, 0.f, -character.force });
 		}
 
 		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_DOWN))
 		{
-			test->AddForce({ 0.f, 0.f, 1.f });
+			rigidBody.AddForce({ 0.f, 0.f, character.force });
 		}
 
 		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_LEFT))
 		{
-			test->AddForce({ -1.f, 0.f, 0.f });
+			rigidBody.AddForce({ -character.force, 0.f, 0.f });
 		}
 
 		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_RIGHT))
 		{
-			test->AddForce({ 1.f, 0.f, 0.f });
+			rigidBody.AddForce({ character.force, 0.f, 0.f });
 		}
 
 		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_PAGE_UP))
-			test->mass = 3.f;
+			rigidBody.mass = 3.f;
 
 		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_PAGE_DOWN))
-			test->mass = 0.5f;
+			rigidBody.mass = 0.5f;
 	}
 }

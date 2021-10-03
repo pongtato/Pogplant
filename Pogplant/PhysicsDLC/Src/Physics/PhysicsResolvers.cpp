@@ -37,23 +37,23 @@ namespace PhysicsDLC
 			float dt)
 		{
 			assert(dt > collisionTime);
-			collisionTime -= dt;
 
 			static vec3 m_hotSpot[6];
 			static float extendCheck = 0.01f;
-			static float edgeCheck = 0.01f;
+			static float edgeCheck = 0.05f;
 
 			static Collision::Shapes::AABB hsBounds;
 
 			if (_2rigidbody != nullptr)
 			{
-				_2aabb.m_min + _2rigidbody->velocity * collisionTime;
-				_2aabb.m_max + _2rigidbody->velocity * collisionTime;
+				_2aabb.m_min += _2rigidbody->velocity * collisionTime;
+				_2aabb.m_max += _2rigidbody->velocity * collisionTime;
 			}
-			else
-			{
-				_1rigidbody.newPosition = _1pos + _1rigidbody.velocity * collisionTime;
-			}
+
+			_1rigidbody.newPosition = _1pos + _1rigidbody.velocity * collisionTime;
+
+			_1aabb.m_min += _1rigidbody.velocity * collisionTime;
+			_1aabb.m_max += _1rigidbody.velocity * collisionTime;
 
 			hsBounds.m_min = _1aabb.m_min + _1rigidbody.velocity * collisionTime;
 			hsBounds.m_max = _1aabb.m_max + _1rigidbody.velocity * collisionTime;
@@ -104,33 +104,53 @@ namespace PhysicsDLC
 					{
 					case 0:
 						if (_1rigidbody.velocity.y > 0)
+						{
 							_1rigidbody.velocity.y = 0.f;
+							_1rigidbody.newPosition.y += _2aabb.m_min.y - _1aabb.m_max.y;
+						}
 						break;
 					case 1:
 						if (_1rigidbody.velocity.y < 0)
+						{
 							_1rigidbody.velocity.y = 0.f;
+							_1rigidbody.newPosition.y += _2aabb.m_max.y - _1aabb.m_min.y;
+						}
 						break;
 					case 2:
 						if (_1rigidbody.velocity.x > 0)
+						{
 							_1rigidbody.velocity.x = 0.f;
+							_1rigidbody.newPosition.x += _2aabb.m_min.x - _1aabb.m_max.x;
+						}
 						break;
 					case 3:
 						if (_1rigidbody.velocity.x < 0)
+						{
 							_1rigidbody.velocity.x = 0.f;
+							_1rigidbody.newPosition.x += _2aabb.m_max.x - _1aabb.m_min.x;
+						}
 						break;
 					case 4:
 						if (_1rigidbody.velocity.z > 0)
+						{
 							_1rigidbody.velocity.z = 0.f;
+							_1rigidbody.newPosition.z += _2aabb.m_min.z - _1aabb.m_max.z;
+						}
 						break;
 					case 5:
 						if (_1rigidbody.velocity.z < 0)
+						{
 							_1rigidbody.velocity.z = 0.f;
+							_1rigidbody.newPosition.z += _2aabb.m_max.z - _1aabb.m_min.z;
+						}
 						break;
 					default:
 						throw std::exception("Wait what");
 					}
 				}
 			}
+
+			_1rigidbody.newPosition += _1rigidbody.velocity * (dt - collisionTime);
 		}
 	}
 }

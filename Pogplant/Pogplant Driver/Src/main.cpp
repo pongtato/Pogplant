@@ -252,6 +252,16 @@ void Init()
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f });
 	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
 
+	pos = { 10.0f, 1.f, -15.0f };
+	color = { 0.0f, 1.0f, 1.0f };
+	scale = { 0.5f, 0.5f, 0.5f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f });
+	entity.AddComponent<Components::CharacterController>();
+	entity.GetComponent<Components::Name>().m_name = "Test movableObject";
+
 	/// FONT
 	pos = { 0.0f, 0.0f, -5.0f };
 	rot = { 0.0f, 0.0f,0.0f };
@@ -599,7 +609,7 @@ void Run()
 		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
 		physicsSystem.Update(ImGui::GetIO().DeltaTime);
 
-		//ImaginarySystem.Update();
+		ImaginarySystem.Update();
 
 		/// Most of this should be moved to other files when the engine is developed
 		// Things that appear in both editor & game
