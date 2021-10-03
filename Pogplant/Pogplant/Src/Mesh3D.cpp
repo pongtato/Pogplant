@@ -93,7 +93,7 @@ namespace Pogplant
         glBindVertexArray(0);
 
         // Clear vertices buffer after done copying to opengl
-        m_Vertices.clear();
-        m_Vertices.shrink_to_fit();
+        //m_Vertices.clear();
+        //m_Vertices.shrink_to_fit();
     }
 }

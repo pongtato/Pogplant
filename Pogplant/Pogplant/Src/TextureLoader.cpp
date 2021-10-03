@@ -3,51 +3,339 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
+
+#define TINYDDSLOADER_IMPLEMENTATION
+#include "tinyddsloader.h"
 #include <glew.h>
+#include <glfw3.h>
 
 namespace Pogplant
 {
+    // Helpers for the tinyDDSloader
+    struct GLSwizzle {
+        GLenum m_r, m_g, m_b, m_a;
+    };
+
+    struct GLFormat {
+        tinyddsloader::DDSFile::DXGIFormat m_dxgiFormat;
+        GLenum m_type;
+        GLenum m_format;
+        GLSwizzle m_swizzle;
+    };
+
+    bool TranslateFormat(tinyddsloader::DDSFile::DXGIFormat fmt, GLFormat* outFormat) 
+    {
+        static const GLSwizzle sws[] = 
+        {
+            {GL_RED, GL_GREEN, GL_BLUE, GL_ALPHA},
+            {GL_BLUE, GL_GREEN, GL_RED, GL_ALPHA},
+            {GL_BLUE, GL_GREEN, GL_RED, GL_ONE},
+            {GL_RED, GL_GREEN, GL_BLUE, GL_ONE},
+            {GL_RED, GL_ZERO, GL_ZERO, GL_ZERO},
+            {GL_RED, GL_GREEN, GL_ZERO, GL_ZERO},
+        };
+        using DXGIFmt = tinyddsloader::DDSFile::DXGIFormat;
+        static const GLFormat formats[] = 
+        {
+            {DXGIFmt::R8G8B8A8_UNorm, GL_UNSIGNED_BYTE, GL_RGBA, sws[0]},
+            {DXGIFmt::B8G8R8A8_UNorm, GL_UNSIGNED_BYTE, GL_RGBA, sws[1]},
+            {DXGIFmt::B8G8R8X8_UNorm, GL_UNSIGNED_BYTE, GL_RGBA, sws[2]},
+            {DXGIFmt::BC1_UNorm, 0, GL_COMPRESSED_RGBA_S3TC_DXT1_EXT, sws[0]},
+            {DXGIFmt::BC2_UNorm, 0, GL_COMPRESSED_RGBA_S3TC_DXT3_EXT, sws[0]},
+            {DXGIFmt::BC3_UNorm, 0, GL_COMPRESSED_RGBA_S3TC_DXT5_EXT, sws[0]},
+            {DXGIFmt::BC4_UNorm, 0, GL_COMPRESSED_RED_RGTC1_EXT, sws[0]},
+            {DXGIFmt::BC4_SNorm, 0, GL_COMPRESSED_SIGNED_RED_RGTC1_EXT, sws[0]},
+            {DXGIFmt::BC5_UNorm, 0, GL_COMPRESSED_RED_GREEN_RGTC2_EXT, sws[0]},
+            {DXGIFmt::BC5_SNorm, 0, GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT,
+             sws[0]},
+        };
+        for (const auto& format : formats) 
+        {
+            if (format.m_dxgiFormat == fmt) 
+            {
+                if (outFormat) 
+                {
+                    *outFormat = format;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool IsCompressed(GLenum fmt) 
+    {
+        switch (fmt) 
+        {
+        case GL_COMPRESSED_RGB_S3TC_DXT1_EXT:
+        case GL_COMPRESSED_RGBA_S3TC_DXT1_EXT:
+        case GL_COMPRESSED_RGBA_S3TC_DXT3_EXT:
+        case GL_COMPRESSED_RGBA_S3TC_DXT5_EXT:
+        case GL_COMPRESSED_RED_RGTC1_EXT:
+        case GL_COMPRESSED_SIGNED_RED_RGTC1_EXT:
+        case GL_COMPRESSED_RED_GREEN_RGTC2_EXT:
+        case GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT:
+            return true;
+        default:
+            return false;
+        }
+    }
+
+    bool LoadGLTexture(GLuint tex, tinyddsloader::DDSFile& dds) 
+    {
+        GLenum target = GL_INVALID_ENUM;
+        bool isArray = false;
+        if (dds.GetTextureDimension() == tinyddsloader::DDSFile::TextureDimension::Texture1D) 
+        {
+            if (dds.GetArraySize() > 1) 
+            {
+                target = GL_TEXTURE_1D_ARRAY;
+                isArray = true;
+            }
+            else 
+            {
+                target = GL_TEXTURE_1D;
+            }
+        }
+        else if (dds.GetTextureDimension() ==
+            tinyddsloader::DDSFile::TextureDimension::Texture2D) 
+        {
+            if (dds.GetArraySize() > 1) 
+            {
+                if (dds.IsCubemap()) 
+                {
+                    if (dds.GetArraySize() > 6) 
+                    {
+                        target = GL_TEXTURE_CUBE_MAP_ARRAY;
+                        isArray = true;
+                    }
+                    else 
+                    {
+                        target = GL_TEXTURE_CUBE_MAP;
+                    }
+                }
+                else 
+                {
+                    target = GL_TEXTURE_2D_ARRAY;
+                    isArray = true;
+                }
+            }
+            else 
+            {
+                target = GL_TEXTURE_2D;
+            }
+        }
+        else if (dds.GetTextureDimension() ==
+            tinyddsloader::DDSFile::TextureDimension::Texture3D) 
+        {
+            target = GL_TEXTURE_3D;
+        }
+
+        GLFormat format;
+        if (!TranslateFormat(dds.GetFormat(), &format)) 
+        {
+            return false;
+        }
+
+        glBindTexture(target, tex);
+        glTexParameteri(target, GL_TEXTURE_BASE_LEVEL, 0);
+        glTexParameteri(target, GL_TEXTURE_MAX_LEVEL, dds.GetMipCount() - 1);
+        glTexParameteri(target, GL_TEXTURE_SWIZZLE_R, format.m_swizzle.m_r);
+        glTexParameteri(target, GL_TEXTURE_SWIZZLE_G, format.m_swizzle.m_g);
+        glTexParameteri(target, GL_TEXTURE_SWIZZLE_B, format.m_swizzle.m_b);
+        glTexParameteri(target, GL_TEXTURE_SWIZZLE_A, format.m_swizzle.m_a);
+
+        switch (target) 
+        {
+        case GL_TEXTURE_1D:
+            glTexStorage1D(target, dds.GetMipCount(), format.m_format,
+                dds.GetWidth());
+            break;
+        case GL_TEXTURE_1D_ARRAY:
+            glTexStorage2D(target, dds.GetMipCount(), format.m_format,
+                dds.GetWidth(), dds.GetArraySize());
+            break;
+        case GL_TEXTURE_2D:
+            glTexStorage2D(target, dds.GetMipCount(), format.m_format,
+                dds.GetWidth(), dds.GetHeight());
+            break;
+        case GL_TEXTURE_CUBE_MAP:
+            glTexStorage2D(target, dds.GetMipCount(), format.m_format,
+                dds.GetWidth(), dds.GetHeight());
+            break;
+        case GL_TEXTURE_2D_ARRAY:
+            glTexStorage3D(target, dds.GetMipCount(), format.m_format,
+                dds.GetWidth(), dds.GetHeight(), dds.GetArraySize());
+            break;
+        case GL_TEXTURE_3D:
+            glTexStorage3D(target, dds.GetMipCount(), format.m_format,
+                dds.GetWidth(), dds.GetHeight(), dds.GetDepth());
+            break;
+        case GL_TEXTURE_CUBE_MAP_ARRAY:
+            glTexStorage3D(target, dds.GetMipCount(), format.m_format,
+                dds.GetWidth(), dds.GetHeight(), dds.GetArraySize());
+            break;
+        default:
+            glBindTexture(target, 0);
+            return false;
+        }
+        dds.Flip();
+
+        uint32_t numFaces = dds.IsCubemap() ? 6 : 1;
+        for (uint32_t layer = 0; layer < dds.GetArraySize(); layer++) 
+        {
+            for (uint32_t face = 0; face < numFaces; face++) 
+            {
+                for (uint32_t level = 0; level < dds.GetMipCount(); level++) 
+                {
+                    GLenum target2 = dds.IsCubemap()
+                        ? (GL_TEXTURE_CUBE_MAP_POSITIVE_X + face)
+                        : target;
+                    auto imageData = dds.GetImageData(level, layer * numFaces);
+                    switch (target) 
+                    {
+                    case GL_TEXTURE_1D:
+                        if (IsCompressed(format.m_format)) 
+                        {
+                            glCompressedTexSubImage1D(
+                                target2, level, 0, imageData->m_width,
+                                format.m_format, imageData->m_memSlicePitch,
+                                imageData->m_mem);
+                        }
+                        else 
+                        {
+                            glTexSubImage1D(target2, level, 0,
+                                imageData->m_width, format.m_format,
+                                format.m_type, imageData->m_mem);
+                        }
+                        break;
+                    case GL_TEXTURE_1D_ARRAY:
+                    case GL_TEXTURE_2D:
+                    case GL_TEXTURE_CUBE_MAP: 
+                    {
+                        auto w = imageData->m_width;
+                        auto h = isArray ? layer : imageData->m_height;
+                        if (IsCompressed(format.m_format)) 
+                        {
+                            glCompressedTexSubImage2D(
+                                target2, level, 0, 0, w, h, format.m_format,
+                                imageData->m_memSlicePitch, imageData->m_mem);
+                        }
+                        else 
+                        {
+                            glTexSubImage2D(target2, level, 0, 0, w, h,
+                                format.m_format, format.m_type,
+                                imageData->m_mem);
+                        }
+                        break;
+                    }
+                    default:
+                        glBindTexture(target, 0);
+                        return false;
+                    }
+                }
+            }
+        }
+
+        glBindTexture(target, 0);
+        return true;
+    }
+
     void TexLoader::SetTextureFlip(bool _Flip)
     {
         stbi_set_flip_vertically_on_load(_Flip);
     }
 
+    // Load texture with .dds format using TinyDDSLoader
+    //unsigned int TexLoader::LoadTexture(std::string _Path, std::string _Directory)
+    //{
+    //    std::string filename = _Directory + '/' + _Path;
+
+    //    unsigned int textureID;
+    //    glGenTextures(1, &textureID);
+
+    //    tinyddsloader::DDSFile dds;
+    //    auto ret = dds.Load(filename.c_str());
+    //    if (tinyddsloader::Result::Success != ret) 
+    //    {
+    //        std::string err = "Texture failed to load at ";
+    //       err += _Directory + '/' + _Path;
+    //       Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+    //    }
+    //    else
+    //    {
+    //        if (!LoadGLTexture(textureID, dds))
+    //        {
+    //            std::string err = "LoadGLTexture failed to load at ";
+    //            err += _Directory + '/' + _Path;
+    //            Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+    //        }
+    //    }
+    //    return textureID;
+    //}
+    
+    // Load texture using STB
     unsigned int TexLoader::LoadTexture(std::string _Path, std::string _Directory)
 	{
         std::string filename = _Directory + '/' + _Path;
+        size_t found = _Path.find_last_of('.');
+        std::string ext = _Path.substr(found + 1, _Path.length() - found - 1);
 
         unsigned int textureID;
         glGenTextures(1, &textureID);
 
-        int width, height, nrComponents;
-        unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
-        if (data)
+        if (ext.compare("dds") == 0)
         {
-            GLenum format = 0;
-            if (nrComponents == 1)
-                format = GL_RED;
-            else if (nrComponents == 3)
-                format = GL_RGB;
-            else if (nrComponents == 4)
-                format = GL_RGBA;
-
-            glBindTexture(GL_TEXTURE_2D, textureID);
-            glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-            glGenerateMipmap(GL_TEXTURE_2D);
-
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-            stbi_image_free(data);
+            tinyddsloader::DDSFile dds;
+            auto ret = dds.Load(filename.c_str());
+            if (tinyddsloader::Result::Success != ret)
+            {
+                std::string err = "Texture failed to load at ";
+                err += _Directory + '/' + _Path;
+                Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+            }
+            else
+            {
+                if (!LoadGLTexture(textureID, dds))
+                {
+                    std::string err = "LoadGLTexture failed to load at ";
+                    err += _Directory + '/' + _Path;
+                    Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+                }
+            }
         }
         else
         {
-            std::string err = "Texture failed to load at ";
-            err += _Directory + '/' + _Path;
-            Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
-            stbi_image_free(data);
+            int width, height, nrComponents;
+            unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
+            if (data)
+            {
+                GLenum format = 0;
+                if (nrComponents == 1)
+                    format = GL_RED;
+                else if (nrComponents == 3)
+                    format = GL_RGB;
+                else if (nrComponents == 4)
+                    format = GL_RGBA;
+
+                glBindTexture(GL_TEXTURE_2D, textureID);
+                glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+                glGenerateMipmap(GL_TEXTURE_2D);
+
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+                stbi_image_free(data);
+            }
+            else
+            {
+                std::string err = "Texture failed to load at ";
+                err += _Directory + '/' + _Path;
+                Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+                stbi_image_free(data);
+            }
         }
 
         return textureID;

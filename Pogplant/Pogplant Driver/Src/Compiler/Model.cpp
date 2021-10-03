@@ -140,6 +140,8 @@ Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene)
     std::vector<Texture> heightMaps = LoadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
     textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
 
+    //textures.push_back({ "diffuse", "sample.dds"});
+
     // Find longest edge - General usage no ritter's
     float lenX = std::fabsf(m_Bounds.maxX) + std::fabsf(m_Bounds.minX);
     float lenY = std::fabsf(m_Bounds.maxY) + std::fabsf(m_Bounds.minY);
