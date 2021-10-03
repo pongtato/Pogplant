@@ -18,12 +18,13 @@
 
 namespace PogplantDriver
 {
-	std::string GetFileName(const std::string& fullpath)
+	//Adds blank text as seperator text to make things look nicer
+	void ImguiBlankSeperator(int value)
 	{
-		std::string filename;
-		size_t found = fullpath.find_last_of('/');
-		filename = fullpath.substr(found + 1, fullpath.find_last_of('.') - found - 1);
-		return filename;
+		for (int i = 0; i < value; ++i)
+		{
+			ImGui::Text("");
+		}
 	}
 
 	bool ImguiHelper::m_FirstRun = true;
@@ -203,6 +204,10 @@ namespace PogplantDriver
 					{
 						auto& lightd_component = m_ecs->GetReg().get_or_emplace<Components::Directional_Light>(m_CurrentEntity);
 					}
+					if (ImGui::MenuItem("Font", NULL, false, adding_enabled)) //There is another font somewhere might crash (But should not as id stack is cleared)
+					{
+						auto& lightd_component = m_ecs->GetReg().get_or_emplace<Components::Text>(m_CurrentEntity);
+					}
 					ImGui::EndMenu();
 				}
 
@@ -380,6 +385,18 @@ namespace PogplantDriver
 		{
 			if (m_CurrentEntity != entt::null)
 			{
+				auto naming = m_ecs->GetReg().try_get<Components::Name>(m_CurrentEntity);
+				if (naming && ImGui::CollapsingHeader("Name", ImGuiTreeNodeFlags_DefaultOpen))
+				{
+					ImGui::Text("Name");
+					static char name_stuff[256] = "";
+					sprintf_s(name_stuff, IM_ARRAYSIZE(name_stuff), naming->m_name.c_str());
+					ImGui::InputText("TI", name_stuff, IM_ARRAYSIZE(name_stuff));
+					naming->m_name = name_stuff;
+					ImguiBlankSeperator(1);
+				}
+
+
 				//GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
 				auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);
 				if (transform && ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
@@ -530,11 +547,68 @@ namespace PogplantDriver
 					}
 				}
 
+				auto text = m_ecs->GetReg().try_get<Components::Text>(m_CurrentEntity);
+				if (text)
+				{
+					bool enable_text = true;
+					if (ImGui::CollapsingHeader("Text Editor", &enable_text, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						ImGui::Text("Color");
+						ImGui::ColorEdit3("Tcol", glm::value_ptr(text->m_Color));
+						PP::FontResource::m_FontPool;
 
 
+						ImGuiComboFlags flag = 0;
+						flag |= ImGuiComboFlags_PopupAlignLeft;
+						auto font_itr = PP::FontResource::m_FontPool.find(text->m_FontID);
+						ImGui::Text("Fonts");
+						if (ImGui::BeginCombo("Fnt", font_itr->first.c_str(), flag))
+						{
+							for (auto it = PP::FontResource::m_FontPool.begin(); it != PP::FontResource::m_FontPool.end(); ++it)
+							{
+								const bool  is_selected = (font_itr == it);
+								if (ImGui::Selectable(it->first.c_str(), is_selected))
+								{
+									font_itr = it;
+									text->m_FontID = font_itr->first;
+								}
+
+								if (is_selected)
+									ImGui::SetItemDefaultFocus();
+
+							}
+							ImGui::EndCombo();
+						}
+
+						ImGui::Text("UI font");
+						static char font_stuff[256] = "";
+						sprintf_s(font_stuff, IM_ARRAYSIZE(font_stuff), text->m_Text.c_str());
+						ImGui::InputText("TextInput", font_stuff, IM_ARRAYSIZE(font_stuff));
+						text->m_Text = font_stuff;
+
+						ImguiBlankSeperator(1);
+						ImGui::Checkbox("Use Ortho", &text->m_Ortho);
+						ImguiBlankSeperator(2);
+					}
+					if (!enable_text)
+					{
+						m_ecs->GetReg().remove<Components::Text>(m_CurrentEntity);
+					}
+				}
 
 
+	
+				ImGui::Separator();
+				ImguiBlankSeperator(2);
+				ImGui::Indent(ImGui::GetContentRegionAvail().x * 0.2f);
+				float lineHeight = GImGui->Font->FontSize + GImGui->Style.FramePadding.y * 2.0f;
+				ImVec2 buttonSize = { lineHeight + 100.0f, lineHeight };
+				if (ImGui::Button("Add Component", buttonSize))
+				{
 
+				}
+				ImGui::Unindent();
+				ImguiBlankSeperator(2);
 			}
 		}
 		ImGui::End();
