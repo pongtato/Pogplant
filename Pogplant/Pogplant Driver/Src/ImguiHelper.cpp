@@ -412,6 +412,7 @@ namespace PogplantDriver
 					ImGui::InputText("###TI", name_stuff, IM_ARRAYSIZE(name_stuff));
 					naming->m_name = name_stuff;
 					ImguiBlankSeperator(1);
+					ImGui::Separator();
 				}
 
 
@@ -458,6 +459,9 @@ namespace PogplantDriver
 					//ImGui::DragFloat3("", currGO.m_Scale);
 					ImGui::DragFloat3("", glm::value_ptr(transform->m_scale));
 					ImGui::PopID();
+
+					ImguiBlankSeperator(1);
+					ImGui::Separator();
 				}
 
 				auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(m_CurrentEntity);
@@ -509,6 +513,8 @@ namespace PogplantDriver
 					{
 						m_ecs->GetReg().remove<Components::Renderer>(m_CurrentEntity);
 					}
+					ImguiBlankSeperator(1);
+					ImGui::Separator();
 				}
 
 				auto point_light = m_ecs->GetReg().try_get<Components::Point_Light>(m_CurrentEntity);
@@ -534,6 +540,8 @@ namespace PogplantDriver
 					{
 						m_ecs->GetReg().remove<Components::Point_Light>(m_CurrentEntity);
 					}
+					ImguiBlankSeperator(1);
+					ImGui::Separator();
 				}
 
 				auto direction_light = m_ecs->GetReg().try_get<Components::Directional_Light>(m_CurrentEntity);
@@ -563,6 +571,8 @@ namespace PogplantDriver
 					{
 						m_ecs->GetReg().remove<Components::Directional_Light>(m_CurrentEntity);
 					}
+					ImguiBlankSeperator(1);
+					ImGui::Separator();
 				}
 
 				auto text = m_ecs->GetReg().try_get<Components::Text>(m_CurrentEntity);
@@ -612,6 +622,8 @@ namespace PogplantDriver
 					{
 						m_ecs->GetReg().remove<Components::Text>(m_CurrentEntity);
 					}
+					ImguiBlankSeperator(1);
+					ImGui::Separator();
 				}
 
 				auto rigid = m_ecs->GetReg().try_get<Components::Rigidbody>(m_CurrentEntity);
@@ -632,6 +644,8 @@ namespace PogplantDriver
 					{
 						m_ecs->GetReg().remove<Components::Rigidbody>(m_CurrentEntity);
 					}
+					ImguiBlankSeperator(1);
+					ImGui::Separator();
 				}
 
 
@@ -706,6 +720,8 @@ namespace PogplantDriver
 					{
 						m_ecs->GetReg().remove<Components::BoxCollider>(m_CurrentEntity);
 					}
+					ImguiBlankSeperator(1);
+					ImGui::Separator();
 				}
 
 
@@ -730,14 +746,19 @@ namespace PogplantDriver
 					{
 						m_ecs->GetReg().remove<Components::SphereCollider>(m_CurrentEntity);
 					}
+
+					ImguiBlankSeperator(1);
+					ImGui::Separator();
 				}
 
 	
 				ImGui::Separator();
 				ImguiBlankSeperator(2);
-				ImGui::Indent(ImGui::GetContentRegionAvail().x * 0.2f);
+
 				float lineHeight = GImGui->Font->FontSize + GImGui->Style.FramePadding.y * 2.0f;
-				ImVec2 buttonSize = { lineHeight + 100.0f, lineHeight };
+				float lineWidth = lineHeight + 100.f;
+				ImGui::SameLine(ImGui::GetContentRegionAvail().x * 0.5f - lineWidth + lineWidth * 0.5f);
+				ImVec2 buttonSize = { lineWidth , lineHeight };
 				if (ImGui::Button("Add Component", buttonSize))
 				{
 					ImGui::OpenPopup("AddComPop");
