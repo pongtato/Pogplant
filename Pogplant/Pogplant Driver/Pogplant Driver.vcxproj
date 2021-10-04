@@ -46,14 +46,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(SolutionDir)Libs\Pogplant;$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\Mono\lib;$(SolutionDir)Libs\json\lib;$(SolutionDir)Libs\RTTR\lib;$(SolutionDir)Libs\FMOD\lib;$(SolutionDir)bin\$(Configuration)-$(Platform)\PhysicsDLC;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\IMGUI;$(SolutionDir)Libs\IMGUIZMO;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\Mono\include\mono-2.0;$(SolutionDir)Libs\json\include;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\FMOD\inc;$(SolutionDir)Pogplant Driver\Src\ECS;$(SolutionDir)PhysicsDLC\Src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Libs\IconFontCppHeaders;$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\IMGUI;$(SolutionDir)Libs\IMGUIZMO;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\Mono\include\mono-2.0;$(SolutionDir)Libs\json\include;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\FMOD\inc;$(SolutionDir)Pogplant Driver\Src\ECS;$(SolutionDir)PhysicsDLC\Src;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>$(SolutionDir)Libs\Pogplant;$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\Mono\lib;$(SolutionDir)Libs\json\lib;$(SolutionDir)Libs\RTTR\lib;$(SolutionDir)Libs\FMOD\lib;$(SolutionDir)bin\$(Configuration)-$(Platform)\PhysicsDLC;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\IMGUI;$(SolutionDir)Libs\IMGUIZMO;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\Mono\include\mono-2.0;$(SolutionDir)Libs\json\include;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\FMOD\inc;$(SolutionDir)Pogplant Driver\Src\ECS;$(SolutionDir)PhysicsDLC\Src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\IMGUI;$(SolutionDir)Libs\IconFontCppHeaders;$(SolutionDir)Libs\IMGUIZMO;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\Mono\include\mono-2.0;$(SolutionDir)Libs\json\include;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\FMOD\inc;$(SolutionDir)Pogplant Driver\Src\ECS;$(SolutionDir)PhysicsDLC\Src;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>

@@ -8,6 +8,8 @@
 #include <ImGuiExtraStyles.h>
 #include <ImGuizmo.h>
 #include <gtc/type_ptr.hpp>
+#include <IconsFontAwesome5.h>
+#include <IconsKenney.h>
 
 #include "ECS/Entity.h"
 #include "../../Pogplant/Src/Utils/FileDialogs.h"
@@ -95,12 +97,23 @@ namespace PogplantDriver
 	{
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
-		ImGuiIO& io = ImGui::GetIO(); (void)io;
+		ImGuiIO& io = ImGui::GetIO(); 
 		io.Fonts->AddFontFromFileTTF("Resources/Fonts/Ruda.ttf", 14);
+		static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+		ImFontConfig icons_config; icons_config.MergeMode = true; icons_config.PixelSnapH = true;
+		io.Fonts->AddFontFromFileTTF("Resources/Fonts/fa-solid-900.ttf", 16.0f, &icons_config, icons_ranges);
+
+		static const ImWchar more_icons_ranges[] = { ICON_MIN_KI, ICON_MAX_KI, 0 };
+		ImFontConfig more_icons_config; more_icons_config.MergeMode = true; more_icons_config.PixelSnapH = true;
+		io.Fonts->AddFontFromFileTTF("Resources/Fonts/kenney-icon-font.ttf", 16.0f, &more_icons_config, more_icons_ranges);
+
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // Enable Docking
 		imgui_extra_styles::Pogplant();
 		ImGui_ImplGlfw_InitForOpenGL(PP::Window::GetWindow(), true);
 		ImGui_ImplOpenGL3_Init();
+
+
+
 
 		m_ecs = ecs;
 
@@ -212,13 +225,13 @@ namespace PogplantDriver
 			if (ImGui::BeginMenu("File"))
 			{
 				// Save scene
-				if (ImGui::MenuItem("New"))
+				if (ImGui::MenuItem(ICON_FA_FILE "  New"))
 					NewScene();
-				if (ImGui::MenuItem("Open..."))
+				if (ImGui::MenuItem(ICON_FA_FOLDER_OPEN "  Open..."))
 					OpenScene();
-				if (ImGui::MenuItem("Save"))
+				if (ImGui::MenuItem(ICON_KI_SAVE "  Save"))
 					SaveSceneAs();
-				if (ImGui::MenuItem("Exit"))
+				if (ImGui::MenuItem(ICON_FA_TIMES "  Exit"))
 					exiting = true;
 				ImGui::EndMenu();
 			}
