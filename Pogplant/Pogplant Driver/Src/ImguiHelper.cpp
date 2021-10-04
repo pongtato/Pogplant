@@ -1203,6 +1203,22 @@ namespace PogplantDriver
 		}
 	}
 
+	std::string ImguiHelper::CreateStringInputField(std::string& _label, std::string _target)
+	{
+		ImGui::Text(_label.c_str());
+		static char name_stuff[256] = "";
+		sprintf_s(name_stuff, IM_ARRAYSIZE(name_stuff), _target.c_str());
+
+		std::string aaa{ "###" };
+		aaa.append(_label);
+
+		ImGui::InputText(aaa.c_str(), name_stuff, IM_ARRAYSIZE(name_stuff));
+
+		ImguiBlankSeperator(1);
+		ImGui::Separator();
+
+		return std::string{ name_stuff };
+	}
 
 	void ImguiHelper::Reflect_ImGui(rttr::instance _obj)
 	{
@@ -1218,27 +1234,14 @@ namespace PogplantDriver
 			if (!prop_value)
 				continue; // cannot serialize, because we cannot retrieve the value
 
-			const auto name = prop.get_name().to_string();
+			auto name = prop.get_name().to_string();
 
 			if (prop_value.is_type<std::string>())
 			{
-
-				ImGui::Text(name.c_str());
-				static char name_stuff[256] = "";
-				sprintf_s(name_stuff, IM_ARRAYSIZE(name_stuff), prop_value.to_string().c_str());
-
-				std::string aaa{"###"};
-				aaa.append(name);
-
-				ImGui::InputText(aaa.c_str(), name_stuff, IM_ARRAYSIZE(name_stuff));
-
-				prop.set_value(obj, std::string{ name_stuff });
-
-				ImguiBlankSeperator(1);
-				ImGui::Separator();
+				std::string _str = CreateStringInputField(name, prop_value.to_string());
+				prop.set_value(obj, _str);
 			}
 		}
-
 	}
 
 }

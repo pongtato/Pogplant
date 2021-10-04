@@ -60,6 +60,9 @@ namespace PogplantDriver
 		//Helper for opening Scene
 		static void OpenScene(const std::filesystem::path& path);
 
+		//simple helper imgui function
+		//less copy pasta lol.
+		static std::string CreateStringInputField(std::string& _label, std::string _target);
 
 		//imgui reflection functions
 		static void Reflect_ImGui(rttr::instance _obj);
