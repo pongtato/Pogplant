@@ -12,6 +12,7 @@ namespace Components
 
 	struct Name
 	{
+		Name() = default;
 		Name(std::string name) : m_name(name) {}
 		std::string m_name;
 	};
@@ -132,6 +133,7 @@ namespace Components
 
 	struct Text
 	{
+		Text() = default;
 		Text(glm::vec3 Color, std::string FontID, std::string Text = "", bool Ortho = false) :
 			m_Color(Color), m_FontID(FontID), m_Text(Text), m_Ortho(Ortho) {};
 		glm::vec3 m_Color;
@@ -167,6 +169,16 @@ namespace Components
 			.property("m_Direction", &Directional_Light::m_Direction)
 			.property("m_Diffuse", &Directional_Light::m_Diffuse)
 			.property("m_Specular", &Directional_Light::m_Specular);
+
+		rttr::registration::class_<Name>("Name")
+			.property("m_Name", &Name::m_name);
+
+		rttr::registration::class_<Text>("Text")
+			.property("m_Color", &Text::m_Color)
+			.property("m_FontID", &Text::m_FontID)
+			.property("m_Text", &Text::m_Text)
+			.property("m_Ortho", &Text::m_Ortho);
+
 	}
 }
 

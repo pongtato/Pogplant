@@ -7,6 +7,7 @@
 #include <string>
 #include <stack>
 #include <filesystem>
+#include <fstream>
 
 namespace PogplantDriver
 {
@@ -42,6 +43,25 @@ namespace PogplantDriver
 		bool Save_arithmetic(Json::Value& _root, const std::string& _name, rttr::type _type,rttr::variant& _value);
 		bool Load_arithmetic(rttr::type _type, rttr::property& _prop, rttr::instance& _obj, const Json::Value& _data);
 
+		template <typename T>
+		void Try_Load_Component(const Json::Value& _root, std::string _name, entt::entity _id)
+		{
+			if (_root[_name])
+			{
+				T _component;
+				Reflect_Deserialization(_component, _root[_name]);
+				ImguiHelper::m_ecs->GetReg().emplace<T>(_id, _component);
+			}
+		}
+
+		template <typename T>
+		void Try_Save_Component(Json::Value& _root, entt::entity _id)
+		{
+			T* _component = ImguiHelper::m_ecs->GetReg().try_get<T>(_id);
+
+			if (_component)
+				Reflect_Serialization(_root, _component);
+		}
 	};
 
 

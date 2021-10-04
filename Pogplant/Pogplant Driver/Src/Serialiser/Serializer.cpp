@@ -4,7 +4,6 @@
 #include "../ECS/Components/Components.h"
 #include "ModelResource.h"
 #include <typeinfo>
-#include <fstream>
 
 using namespace Components;
 namespace PogplantDriver
@@ -101,27 +100,20 @@ namespace PogplantDriver
 		Json::Value subroot;
 
 		//Get all pointers to all components
-		auto transform_component = ImguiHelper::m_ecs->GetReg().try_get<Transform>(id);
-		auto name_component = ImguiHelper::m_ecs->GetReg().try_get<Name>(id);
+
 		auto position_component = ImguiHelper::m_ecs->GetReg().try_get<PositionList>(id);
 		auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
 		auto render_component = ImguiHelper::m_ecs->GetReg().try_get<Renderer>(id);
-		auto point_light_component = ImguiHelper::m_ecs->GetReg().try_get<Point_Light>(id);
-		auto directional_light_component = ImguiHelper::m_ecs->GetReg().try_get<Directional_Light>(id);
+
+		Try_Save_Component<Transform>(subroot, id);
+		Try_Save_Component<Name>(subroot, id);
+		Try_Save_Component<Point_Light>(subroot, id);
+		Try_Save_Component<Directional_Light>(subroot, id);
+		Try_Save_Component<Text>(subroot, id);
 
 		if (relationship_component)
 		{
 			subroot["Children"] = relationship_component->m_children.size();
-		}
-
-		if (transform_component)
-		{
-			Reflect_Serialization(subroot, transform_component);
-		}
-
-		if (name_component)
-		{
-			subroot["Name"] = name_component->m_name;
 		}
 
 		if (render_component)
@@ -140,38 +132,10 @@ namespace PogplantDriver
 				classroot["RenderModel"] = temp;
 			}
 
-
 			subroot["Render"] = classroot;
 		}
 
-		if (point_light_component)
-		{
-			//Json::Value classroot;
-			//AddVec3To(classroot, "Colour", point_light_component->m_Color);
-			//classroot["Intensity"] = point_light_component->m_Intensity;
-			//classroot["Linear"] = point_light_component->m_Linear;
-			//classroot["Quadratic"] = point_light_component->m_Quadratic;
 
-
-			//subroot["Point_Light"] = classroot;
-
-			Reflect_Serialization(subroot, point_light_component);
-		}
-
-		if (directional_light_component)
-		{
-			//Json::Value classroot;
-			//AddVec3To(classroot, "Colour", directional_light_component->m_Color);
-			//classroot["Intensity"] = directional_light_component->m_Intensity;
-			//AddVec3To(classroot, "Direction", directional_light_component->m_Direction);
-			//classroot["Diffuse"] = directional_light_component->m_Diffuse;
-			//classroot["Specular"] = directional_light_component->m_Specular;
-
-
-			//subroot["Directional_Light"] = classroot;
-
-			Reflect_Serialization(subroot, directional_light_component);
-		}
 
 
 		return subroot;
@@ -205,39 +169,16 @@ namespace PogplantDriver
 	void Serializer::LoadComponents(const Json::Value& root, entt::entity id)
 	{
 
-		auto& transform = root["Transform"];
 		auto& name = root["Name"];
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
-		auto& direction_light = root["Directional_Light"];
-		auto& point_light = root["Point_Light"];
-
-		if (transform)
-		{
-			Transform _t;
-			Reflect_Deserialization(_t, transform);
-			ImguiHelper::m_ecs->GetReg().emplace<Transform>(id, _t);
-		}
-
-		if (direction_light)
-		{
-			Directional_Light d_light;
-			Reflect_Deserialization(d_light, direction_light);
-			ImguiHelper::m_ecs->GetReg().emplace<Directional_Light>(id, d_light);
-		}
-
-		if (point_light)
-		{
-			Point_Light p_light;
-			Reflect_Deserialization(p_light, point_light);
-			ImguiHelper::m_ecs->GetReg().emplace<Point_Light>(id, p_light);
-		}
 
 
-		if (name)
-		{
-			ImguiHelper::m_ecs->GetReg().emplace<Name>(id, name.asString());
-		}
+		Try_Load_Component<Transform>(root, "Transform", id);
+		Try_Load_Component<Directional_Light>(root, "Directional_Light", id);
+		Try_Load_Component<Point_Light>(root, "Point_Light", id);
+		Try_Load_Component<Name>(root, "Name", id);
+		Try_Load_Component<Text>(root, "Text", id);
 
 		if (relationship)
 		{
@@ -374,6 +315,10 @@ namespace PogplantDriver
 			{
 				AddVec3To(root, name, prop_value.get_value<glm::vec3>());
 			}
+			else if (prop_value.is_type<std::string>())
+			{
+				root[name] = prop_value.get_value<std::string>();
+			}
 			else if (variable_type.is_arithmetic())
 			{
 				if(!Save_arithmetic(root, name, variable_type, prop_value))
@@ -409,11 +354,16 @@ namespace PogplantDriver
 			const auto name = prop.get_name().to_string();
 			auto variable_type = prop_value.get_type();
 
+
 			if (_data[name])
 			{
 				if (prop_value.is_type<glm::vec3>())
 				{
 					prop.set_value(obj, CreateVec3(_data[name]));
+				}
+				else if (prop_value.is_type<std::string>())
+				{
+					prop.set_value(obj, _data[name].asString());
 				}
 				else if (variable_type.is_arithmetic())
 				{
