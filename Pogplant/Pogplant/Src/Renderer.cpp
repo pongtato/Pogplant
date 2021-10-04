@@ -211,7 +211,7 @@ namespace Pogplant
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
-	void Renderer::HDRPass()
+	void Renderer::HDRPass(bool _Bloom)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		ShaderLinker::Use("BLOOM");
@@ -219,6 +219,7 @@ namespace Pogplant
 		ShaderLinker::SetUniform("bloomBlur", 1);
 		ShaderLinker::SetUniform("debug", 2);
 
+		ShaderLinker::SetUniform("bloom", _Bloom);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_NORMAL]);
 		glActiveTexture(GL_TEXTURE1);

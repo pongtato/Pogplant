@@ -478,10 +478,10 @@ void DrawEditor()
 	PP::Renderer::EndBuffer();
 
 	PP::Renderer::DebugPass("EDITOR", ecs.GetReg());
-	PP::Renderer::BlurPass();
+	//PP::Renderer::BlurPass();
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::HDRPass();
+	PP::Renderer::HDRPass(false);
 	PP::Renderer::EndBuffer();
 }
 
@@ -507,7 +507,7 @@ void DrawGame()
 	PP::Renderer::BlurPass();
 	PP::Renderer::StartGameBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::HDRPass();
+	PP::Renderer::HDRPass(true);
 	PP::Renderer::EndBuffer();
 }
 
