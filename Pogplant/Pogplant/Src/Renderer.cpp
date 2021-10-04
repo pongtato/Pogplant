@@ -376,7 +376,7 @@ namespace Pogplant
 		view = glm::mat4(glm::mat3(view));
 		ShaderLinker::SetUniform("m4_Projection", projection);
 		ShaderLinker::SetUniform("m4_View", view);
-		Skybox::Draw(TextureResource::m_TexturePool["SKYBOX3"]);
+		Skybox::Draw(TextureResource::m_TexturePool["SKYBOX"]);
 		ShaderLinker::UnUse();
 		glDepthFunc(GL_LESS);
 
