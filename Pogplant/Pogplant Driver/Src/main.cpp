@@ -52,15 +52,15 @@ void Init()
 	// Will change to automatic update when i figure it out
 	AssetCompiler& acc = acc.GetInstance();
 	//if(!acc.Exists("Resources/KekFiles/Cube.kek"))
-		acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/cube/Cube.fbx");
+	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/cube/Cube.fbx");
 	//if (!acc.Exists("Resources/KekFiles/Sphere.kek"))
-		acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/sphere/Sphere.fbx");
+	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/sphere/Sphere.fbx");
 	//if (!acc.Exists("Resources/KekFiles/Enemy_01.kek"))
-		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/Enemy/Enemy_01.fbx");
+	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/Enemy/Enemy_01.fbx");
 	//if (!acc.Exists("Resources/KekFiles/Player_Ship.kek"))
-		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/Ship/Player_Ship.fbx");
+	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/Ship/Player_Ship.fbx");
 	//if (!acc.Exists("Resources/KekFiles/backpack.kek"))
-		acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/backpack/backpack.obj");
+	//acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/backpack/backpack.obj");
 	acc.WaitForAllProcess();
 	//acc.WaitForSingleProcess("BAG");
 
@@ -88,21 +88,19 @@ void Init()
 			0.1f	// Pan speed
 		});
 	PPD::ImguiHelper::InitImgui(&ecs);
-	
+
 
 	/// Add to container
-	std::string bag, sphere, cube, ship, enemy;
-	bag = AssetCompiler::GetFileName("Resources/KekFiles/backpack.kek");
+	std::string sphere, cube, ship, enemy;
 	sphere = AssetCompiler::GetFileName("Resources/KekFiles/Sphere.kek");
 	cube = AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
 	ship = AssetCompiler::GetFileName("Resources/KekFiles/Player_Ship.kek");
 	enemy = AssetCompiler::GetFileName("Resources/KekFiles/Enemy_01.kek");
-	PP::Model* bagModel = PP::ModelResource::m_ModelPool[bag];
 	PP::Model* sphereModel = PP::ModelResource::m_ModelPool[sphere];
 	PP::Model* cubeModel = PP::ModelResource::m_ModelPool[cube];
 	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
 	PP::Model* enemyModel = PP::ModelResource::m_ModelPool[enemy];
-	
+
 	/* CLARENCE DEBUGGING STUFF */
 	//std::cout << "number of meshes: " << cubeModel->m_Meshes.size() << std::endl;
 	//std::cout << "How many meshes: " << bagModel->m_Meshes.size() << std::endl;
@@ -158,11 +156,6 @@ void Init()
 	glm::vec3 scale = { 1.0f,1.0f,1.0f };
 	glm::vec3 color = { 0.835f,0.921f,0.905f }; // In the event of no texture
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[0]));
-	
-	auto entity = ecs.CreateEntity("", pos, rot, scale);
-	//entity.AddComponent<Components::Transform>(pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, bagModel });
-	entity.GetComponent<Components::Name>().m_name = "Bag";
 
 	//ecs.AddComponent<Components::Renderer>(entity, &bagModel);
 	//registry.emplace<Renderer>(entity, &bagModel);
@@ -171,8 +164,8 @@ void Init()
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 2.0f,2.0f,2.0f };
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
-	
-	entity = ecs.CreateEntity("", pos, rot, scale);
+
+	auto entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel });
 	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
 	entity.AddComponent<Imaginary_object>("gab_small_pepe");
@@ -185,10 +178,10 @@ void Init()
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
 	entity.GetComponent<Components::Name>().m_name = "Floor";
-	std::vector<std::string> scriptsok;
-	scriptsok.push_back("Start");
-	scriptsok.push_back("Update");
-	entity.AddComponent<Components::Scriptable>(Scriptable{scriptsok});
+	//scriptsok.push_back("Start");
+	//scriptsok.push_back("Update");
+	//scriptsok.push_back("Move");
+	//entity.AddComponent<Components::Scriptable>(Scriptable{ scriptsok });
 	//entity.AddComponent<Components::Name>(Name{ "Floor" });
 
 	pos = { 5, -2.0f, 10.0f };
@@ -197,6 +190,10 @@ void Init()
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, shipModel });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
+	std::vector<std::string> scriptsok;
+	entity.AddComponent<Components::Scriptable>(Scriptable{ scriptsok });
 	entity.GetComponent<Components::Name>().m_name = "Ship";
 
 	pos = { -10.0f, -2.0f, 10.0f };
@@ -216,7 +213,7 @@ void Init()
 	glm::vec3 direction = -glm::normalize(pos);
 	scale = { 1.0f,1.0f,1.0f }; // Affects light model and not the actual light size
 	float intensity = 0.69f;
-	entity = ecs.CreateEntity("", pos, glm::vec3{0}, scale);
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	entity.GetComponent<Components::Name>().m_name = "Directional Light";
@@ -292,7 +289,7 @@ void Init()
 	pos = { 0.0f, 0.0f, 30.0f };
 	color = { 0.9f, 0.5f, 0.2f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, - 90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
+	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel, false, false });
 	entity.GetComponent<Components::Name>().m_name = "Game Camera";
 
@@ -440,7 +437,7 @@ void DrawCommon()
 	{
 		auto& transform = view.get<Transform>(entity);
 		auto& renderer = view.get<Renderer>(entity);
-		
+
 		auto boxCollider = ecs.GetReg().try_get<BoxCollider>(entity);
 		auto sphereCollider = ecs.GetReg().try_get<SphereCollider>(entity);
 

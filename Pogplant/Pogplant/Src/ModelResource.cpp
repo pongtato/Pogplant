@@ -21,7 +21,6 @@ namespace Pogplant
 		LoadModel(fs::path("Resources/KekFiles/Sphere.kek").stem().string() , "Resources/KekFiles/Sphere.kek", GL_TRIANGLES);
 		LoadModel(fs::path("Resources/KekFiles/Player_Ship.kek").stem().string(), "Resources/KekFiles/Player_Ship.kek", GL_TRIANGLES);
 		LoadModel(fs::path("Resources/KekFiles/Enemy_01.kek").stem().string(), "Resources/KekFiles/Enemy_01.kek", GL_TRIANGLES);
-		LoadModel(fs::path("Resources/KekFiles/backpack.kek").stem().string(), "Resources/KekFiles/backpack.kek", GL_TRIANGLES);
 	}
 
 	void ModelResource::CleanUpResource()

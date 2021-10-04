@@ -42,7 +42,7 @@ namespace PhysicsDLC
 			float collisionTime,
 			float dt)
 		{
-			assert(dt > collisionTime);
+			//assert(dt > collisionTime);
 
 			static vec3 m_hotSpot[6];
 			static float extendCheck = 0.01f;

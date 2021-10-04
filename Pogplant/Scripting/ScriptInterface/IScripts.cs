@@ -14,5 +14,9 @@ namespace Scripting
         void Start();
 
         void Update();
+
+        void Move(float dt, ref Transform transform);
+
+        void RigidbodyMove(ref Rigidbody rigidbody);
     }
 }

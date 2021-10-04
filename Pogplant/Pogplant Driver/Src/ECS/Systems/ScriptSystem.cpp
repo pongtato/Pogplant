@@ -1,4 +1,5 @@
 #include "../Components/Components.h"
+#include "../Components/PhysicsComponents.h"
 #include "ScriptSystem.h"
 
 ScriptSystem::ScriptSystem()
@@ -102,6 +103,7 @@ void ScriptSystem::Start()
 				auto& scriptable = entities.get<Components::Scriptable>(entity);
 				MonoMethod* method = FindMethod(klass, "Start");
 				mono_runtime_invoke(method, obj.second, nullptr, nullptr);
+
 				//for (auto& methodName : scriptable.m_Functions)
 				//{
 				//	MonoMethod* method = FindMethod(klass, methodName);
@@ -117,7 +119,7 @@ void ScriptSystem::Start()
 
 void ScriptSystem::Update()
 {
-	auto entities = m_registry->GetReg().view<Components::Scriptable>();
+	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Transform, Components::Rigidbody>();
 
 	for (auto& obj : m_MonoObjects)
 	{
@@ -127,8 +129,21 @@ void ScriptSystem::Update()
 			for (auto& entity : entities)
 			{
 				auto& scriptable = entities.get<Components::Scriptable>(entity);
+				auto& transform = entities.get<Components::Transform>(entity);
+				auto& rigidbody = entities.get<Components::Rigidbody>(entity);
+				
+				
 				MonoMethod* method = FindMethod(klass, "Update");
 				mono_runtime_invoke(method, obj.second, nullptr, nullptr);
+				//MonoMethod* methodMove = FindMethod(klass, "Move");
+				//float random = 0.00167f;
+
+				//void* args[] = { &random,  &transform };
+				//mono_runtime_invoke(methodMove, obj.second, args, nullptr);
+
+				void* args1[] = { &rigidbody };
+				MonoMethod* rigidbodyMove = FindMethod(klass, "RigidbodyMove"); 
+				mono_runtime_invoke(rigidbodyMove, obj.second, args1, nullptr);
 				//for (auto& methodName : scriptable.m_Functions)
 				//{
 				//	MonoMethod* method = FindMethod(klass, methodName);
