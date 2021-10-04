@@ -142,6 +142,15 @@ namespace Components
 		bool m_Ortho;
 	};
 
+	struct Camera
+	{
+		float m_Yaw;
+		float m_Pitch;
+		float m_Zoom;
+		float m_Near;
+		float m_Far;
+	};
+
 	//Temporary
 	struct CharacterController
 	{
