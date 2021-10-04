@@ -11,7 +11,6 @@ namespace Components
 	RTTR_REGISTRATION
 	{
 		rttr::registration::class_<Transform>("Transform")
-		//.constructor<glm::vec3, glm::vec3,glm::vec3>()
 		.method("init", &Transform::init)
 		.property("m_position", &Transform::m_position)
 		.property("m_rotation", &Transform::m_rotation)

@@ -419,13 +419,16 @@ namespace PogplantDriver
 				auto naming = m_ecs->GetReg().try_get<Components::Name>(m_CurrentEntity);
 				if (naming && ImGui::CollapsingHeader("Name", ImGuiTreeNodeFlags_DefaultOpen))
 				{
-					ImGui::Text("Name");
-					static char name_stuff[256] = "";
-					sprintf_s(name_stuff, IM_ARRAYSIZE(name_stuff), naming->m_name.c_str());
-					ImGui::InputText("###TI", name_stuff, IM_ARRAYSIZE(name_stuff));
-					naming->m_name = name_stuff;
-					ImguiBlankSeperator(1);
-					ImGui::Separator();
+					Reflect_ImGui(naming);
+
+					//ImGui::Text("Name");
+					//static char name_stuff[256] = "";
+					//sprintf_s(name_stuff, IM_ARRAYSIZE(name_stuff), naming->m_name.c_str());
+					//ImGui::InputText("###TI", name_stuff, IM_ARRAYSIZE(name_stuff));
+					//naming->m_name = name_stuff;
+
+					//ImguiBlankSeperator(1);
+					//ImGui::Separator();
 				}
 
 
@@ -459,17 +462,16 @@ namespace PogplantDriver
 					// Usual stuff
 					ImGui::Text("Translate");
 					ImGui::PushID("Tr");
-					//ImGui::DragFloat3("", currGO.m_Position);
 					ImGui::DragFloat3("", glm::value_ptr(transform->m_position));
 					ImGui::PopID();
+
 					ImGui::Text("Rotate");
 					ImGui::PushID("Rt");
-					//ImGui::DragFloat3("", currGO.m_Rotation);
 					ImGui::DragFloat3("", glm::value_ptr(transform->m_rotation));
 					ImGui::PopID();
+
 					ImGui::Text("Scale");
 					ImGui::PushID("Sc");
-					//ImGui::DragFloat3("", currGO.m_Scale);
 					ImGui::DragFloat3("", glm::value_ptr(transform->m_scale));
 					ImGui::PopID();
 
@@ -1201,5 +1203,42 @@ namespace PogplantDriver
 		}
 	}
 
+
+	void ImguiHelper::Reflect_ImGui(rttr::instance _obj)
+	{
+		rttr::instance obj = _obj.get_type().get_raw_type().is_wrapper() ? _obj.get_wrapped_instance() : _obj;
+		const auto component_name = obj.get_type().get_raw_type().get_name().to_string();
+
+		auto prop_list = obj.get_derived_type().get_properties();
+
+		for (auto prop : prop_list)
+		{
+			rttr::variant prop_value = prop.get_value(obj);
+
+			if (!prop_value)
+				continue; // cannot serialize, because we cannot retrieve the value
+
+			const auto name = prop.get_name().to_string();
+
+			if (prop_value.is_type<std::string>())
+			{
+
+				ImGui::Text(name.c_str());
+				static char name_stuff[256] = "";
+				sprintf_s(name_stuff, IM_ARRAYSIZE(name_stuff), prop_value.to_string().c_str());
+
+				std::string aaa{"###"};
+				aaa.append(name);
+
+				ImGui::InputText(aaa.c_str(), name_stuff, IM_ARRAYSIZE(name_stuff));
+
+				prop.set_value(obj, std::string{ name_stuff });
+
+				ImguiBlankSeperator(1);
+				ImGui::Separator();
+			}
+		}
+
+	}
 
 }

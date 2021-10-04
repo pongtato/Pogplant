@@ -13,6 +13,11 @@ namespace Pogplant
 	class Camera;
 }
 
+namespace rttr
+{
+	class instance;
+}
+
 namespace PogplantDriver
 {
 	typedef unsigned int ImGuiID;
@@ -54,6 +59,11 @@ namespace PogplantDriver
 		static bool DrawEntityNode(entt::entity entity, bool draw_childen = false);
 		//Helper for opening Scene
 		static void OpenScene(const std::filesystem::path& path);
+
+
+		//imgui reflection functions
+		static void Reflect_ImGui(rttr::instance _obj);
+
 	};
 
 }
