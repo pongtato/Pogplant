@@ -21,6 +21,8 @@ public:
 	void Update(float c_dt);
 	void DrawImGUI();
 
+	void CleanUp();
+
 	void SetCollisionRule(int collisionLayer1, int collisionLayer2, Components::Collider::COLLISION_RULE collisionRule);
 	Components::Collider::COLLISION_RULE GetCollisionRule(int collisionLayer1, int collisionLayer2);
 

@@ -23,7 +23,13 @@ PhysicsSystem::PhysicsSystem()
 
 PhysicsSystem::~PhysicsSystem()
 {
+	CleanUp();
+}
+
+void PhysicsSystem::CleanUp()
+{
 	t_EXIT_THREADS = true;
+	m_hasJob.release();
 
 	for (auto& thread : m_threads)
 	{
