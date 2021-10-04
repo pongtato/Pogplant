@@ -5,6 +5,7 @@
 #include "../Entity.h"
 
 #include <PhysicsDLC.h>
+#include <Pogplant.h>
 
 #include <imgui.h>
 
@@ -38,29 +39,36 @@ void PhysicsSystem::Init(ECS* ecs)
 void PhysicsSystem::InitPlayState()
 {
 	//Update all colliders
-	auto colliders = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>()
-		| m_registry->GetReg().view<Components::SphereCollider>();
+	auto boxColliders = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
+	auto sphereColliders = m_registry->GetReg().view<Components::Transform, Components::SphereCollider>();
 
-	for (auto collidable : colliders)
+	/*auto combinedView = boxColliders | sphereColliders;
+
+	for (auto collidable : combinedView)
 	{
-		auto& transform = colliders.get<Components::Transform>(collidable);
+		auto& transform = combinedView.get<Components::Transform>(collidable);
 
-		auto boxCollider = m_registry->GetReg().try_get<Components::BoxCollider>(collidable);
-		auto sphereCollider = m_registry->GetReg().try_get<Components::SphereCollider>(collidable);
+		transform.m_position;
+	}//*/
 
-		if (boxCollider)
-		{
-			boxCollider->colliderType = Components::Collider::COLLIDER_TYPE::CT_BOX;
-			boxCollider->aabb.m_min = transform.m_position + boxCollider->centre - boxCollider->extends;
-			boxCollider->aabb.m_max = transform.m_position + boxCollider->centre + boxCollider->extends;
-		}
+	for (auto collidable : boxColliders)
+	{
+		auto& transform = boxColliders.get<Components::Transform>(collidable);
+		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
 
-		if (sphereCollider)
-		{
-			sphereCollider->colliderType = Components::Collider::COLLIDER_TYPE::CT_SPHERE;
-			sphereCollider->sphere.m_pos = transform.m_position + sphereCollider->centre;
-			sphereCollider->sphere.m_radius = sphereCollider->radius;
-		}
+		boxCollider.colliderType = Components::Collider::COLLIDER_TYPE::CT_BOX;
+		boxCollider.aabb.m_min = transform.m_position + boxCollider.centre - boxCollider.extends;
+		boxCollider.aabb.m_max = transform.m_position + boxCollider.centre + boxCollider.extends;
+	}
+
+	for (auto collidable : sphereColliders)
+	{
+		auto& transform = sphereColliders.get<Components::Transform>(collidable);
+		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
+
+		sphereCollider.colliderType = Components::Collider::COLLIDER_TYPE::CT_SPHERE;
+		sphereCollider.sphere.m_pos = transform.m_position + sphereCollider.centre;
+		sphereCollider.sphere.m_radius = sphereCollider.radius;
 	}
 }
 
@@ -167,6 +175,12 @@ void PhysicsSystem::Update(float c_dt)
 
 		_1collider.aabb.m_min = _1transform.m_position + _1collider.centre - _1collider.extends * _1transform.m_scale;
 		_1collider.aabb.m_max = _1transform.m_position + _1collider.centre + _1collider.extends * _1transform.m_scale;
+
+		if (_1rigidbody.useGravity)
+			_1rigidbody.acceleration.y += m_gravityAcc;
+
+		//temp for now
+		PP::DebugDraw::DebugLine(_1rigidbody.newPosition, _1rigidbody.newPosition + _1rigidbody.acceleration * _1rigidbody.mass * 0.5f);
 
 		_1rigidbody.velocity += _1rigidbody.acceleration * c_dt;
 		_1rigidbody.acceleration = PhysicsDLC::Vector::Zero;

@@ -20,6 +20,8 @@
 #include "ResourceAllocator.hpp"
 #include "AssetCompiler.h"
 #include "FileHandler.h"
+
+#include "Utils/ChronoTimer.h"
 //struct MEMLEAK
 //{
 //	~MEMLEAK()
@@ -160,7 +162,7 @@ void Init()
 	auto entity = ecs.CreateEntity("", pos, rot, scale);
 	//entity.AddComponent<Components::Transform>(pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, bagModel });
-	//entity.AddComponent<Components::Name>(Name{ "Bag" });
+	entity.GetComponent<Components::Name>().m_name = "Bag";
 
 	//ecs.AddComponent<Components::Renderer>(entity, &bagModel);
 	//registry.emplace<Renderer>(entity, &bagModel);
@@ -174,7 +176,7 @@ void Init()
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel });
 	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
 	entity.AddComponent<Imaginary_object>("gab_small_pepe");
-	entity.GetComponent<Components::Name>().m_name = "SPHERE";
+	entity.GetComponent<Components::Name>().m_name = "Sphere";
 	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
 
 	pos = { 0.0f, -55.0f, 0.0f };
@@ -182,7 +184,7 @@ void Init()
 	scale = { 100.0f,100.0f,100.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, floorModel });
-	//entity.AddComponent<Components::Name>(Name{ "Floor" });
+	entity.GetComponent<Components::Name>().m_name = "Floor";
 
 	pos = { 5, -2.0f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -190,7 +192,7 @@ void Init()
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, shipModel });
-	//entity.AddComponent<Components::Name>(Name{ "Ship" });
+	entity.GetComponent<Components::Name>().m_name = "Ship";
 
 	pos = { -10.0f, -2.0f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -198,7 +200,7 @@ void Init()
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, enemyModel });
-	//entity.AddComponent<Components::Name>(Name{ "Enemy" });
+	entity.GetComponent<Components::Name>().m_name = "Enemy";
 
 	//auto entity = registry.create();
 	//registry.emplace<Transform>(registry.create(), pos, rot, scale);
@@ -212,7 +214,7 @@ void Init()
 	entity = ecs.CreateEntity("", pos, glm::vec3{0}, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	//entity.AddComponent<Components::Name>(Name{ "Directional"});
+	entity.GetComponent<Components::Name>().m_name = "Directional Light";
 
 	pos = { 0.0f, 10.0f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
@@ -221,7 +223,7 @@ void Init()
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	//entity.AddComponent<Components::Name>(Name{ "Light 1" });
+	entity.GetComponent<Components::Name>().m_name = "White point light";
 
 	intensity = 1.0f;
 	pos = { -10.0f, 10.0f, 10.0f };
@@ -229,29 +231,30 @@ void Init()
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	//entity.AddComponent<Components::Name>(Name{ "Light 2" });
+	entity.GetComponent<Components::Name>().m_name = "Blue light";
 
 	pos = { 10.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	//entity.AddComponent<Components::Name>(Name{ "Light 3" });
+	entity.GetComponent<Components::Name>().m_name = "Red light";
 
 	pos = { 0.0f, 10.0f, -10.0f };
 	color = { 0.0f, 1.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	//entity.AddComponent<Components::Name>(Name{ "Light 4" });
+	entity.GetComponent<Components::Name>().m_name = "Green light";
 
 	//Test Object with body
 	pos = { 10.0f, 1.f, -10.0f };
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, false });
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
+	//entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{0.f}, 1.f });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f });
 	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
 
@@ -259,7 +262,7 @@ void Init()
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, false });
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f });
 	entity.AddComponent<Components::CharacterController>();
@@ -271,12 +274,14 @@ void Init()
 	scale = { 10.0f,10.0f,10.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "Test font kekw", false });
+	entity.GetComponent<Components::Name>().m_name = "World font";
 
 	pos = { -1.0f, 0.85f, 0.0f };
 	rot = { 0.0f, 0.0f,0.0f };
 	scale = { 1.0f,1.0f,1.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,1.0f}, "Ruda", "Screen Font", true });
+	entity.GetComponent<Components::Name>().m_name = "Screen font";
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 	
@@ -287,7 +292,7 @@ void Init()
 
 	ImaginarySystem.Init(&ecs);
 	physicsSystem.Init(&ecs);
-	Pogplant::Input::InputSystem::Instance()->Init(PP::Window::GetWindow());
+	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
 }
 
 void SetCube(glm::mat4 _BasePos)
@@ -478,10 +483,10 @@ void DrawEditor()
 	PP::Renderer::EndBuffer();
 
 	PP::Renderer::DebugPass("EDITOR", ecs.GetReg());
-	PP::Renderer::BlurPass();
+	//PP::Renderer::BlurPass();
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::HDRPass();
+	PP::Renderer::HDRPass(false);
 	PP::Renderer::EndBuffer();
 }
 
@@ -507,7 +512,7 @@ void DrawGame()
 	PP::Renderer::BlurPass();
 	PP::Renderer::StartGameBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::HDRPass();
+	PP::Renderer::HDRPass(true);
 	PP::Renderer::EndBuffer();
 }
 
@@ -528,14 +533,39 @@ void DrawImGUI()
 
 void Run()
 {
-	
+	PPU::ChronoTimer<float> c_dtTimer;
+	float c_deltaTime = 0.f;
+	float c_accumulatedFixedTime = 0.f;
+	static constexpr float c_minFixedUpdateTime = 1 / 30.f;
+
 	while (!PP::Window::ShouldCloseWindow())
 	{
+		c_dtTimer.startTimer();
+
 		PP::Window::CheckForceClose(); // Temp exit using Esc
 
 		// Camera KB movement
 		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
-		physicsSystem.Update(ImGui::GetIO().DeltaTime);
+
+
+		//Should move this to game state when it's available
+		//Physics dynamic update until fps drops below 30fps
+		c_accumulatedFixedTime += c_deltaTime;
+
+		if (c_accumulatedFixedTime < c_minFixedUpdateTime)
+		{
+			physicsSystem.Update(c_accumulatedFixedTime);
+			c_accumulatedFixedTime = 0.f;
+		}
+		else
+		{
+			while (c_accumulatedFixedTime > c_minFixedUpdateTime)
+			{
+				physicsSystem.Update(c_minFixedUpdateTime);
+				c_accumulatedFixedTime -= c_minFixedUpdateTime;
+			}
+		}
+
 
 		ImaginarySystem.Update();
 
@@ -552,9 +582,11 @@ void Run()
 		DrawImGUI();
 		///
 
-		Pogplant::Input::InputSystem::Instance()->pollEvents();
+		PPI::InputSystem::Instance()->pollEvents();
 
 		PP::Renderer::SwapBuffer();
+
+		c_deltaTime = c_dtTimer.getElapsedTimePrecise();
 	}
 }
 
@@ -567,7 +599,7 @@ void Exit()
 	PP::MeshBuilder::CleanUpMesh();
 	PP::Window::CleanUpWindow();
 
-	Pogplant::Input::InputSystem::Destroy();
+	PPI::InputSystem::Destroy();
 	FileHandler& fh = fh.GetInstance();
 	fh.Stop();
 }

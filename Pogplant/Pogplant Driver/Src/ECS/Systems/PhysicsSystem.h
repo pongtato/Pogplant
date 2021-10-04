@@ -28,6 +28,8 @@ public:
 private:
 	ECS* m_registry;
 
+	float m_gravityAcc = -9.81f;
+
 	void TriggerUpdate();
 
 	decltype(auto) GetTriggered(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);

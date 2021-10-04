@@ -2,6 +2,7 @@
 #define PHYSICSCOMPONENTS_H_
 
 #include <PhysicsDLC.h>
+#include <rttr/registration>
 
 namespace Components
 {

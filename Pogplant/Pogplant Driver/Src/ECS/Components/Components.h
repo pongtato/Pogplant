@@ -9,5 +9,4 @@
 #include <gtc/type_ptr.hpp>
 
 #include "GenericComponents.h"
-
 #endif
