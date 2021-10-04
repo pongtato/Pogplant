@@ -547,7 +547,6 @@ namespace PogplantDriver
 				auto direction_light = m_ecs->GetReg().try_get<Components::Directional_Light>(m_CurrentEntity);
 				if (direction_light)
 				{
-					m_EditMode = ImGuizmo::SCALE;
 					bool enable_directionlight = true;
 					if (ImGui::CollapsingHeader("Directional Lighting", &enable_directionlight, ImGuiTreeNodeFlags_DefaultOpen))
 					{
