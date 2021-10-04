@@ -276,9 +276,9 @@ void Init()
 	/// FONT
 	pos = { 0.0f, 0.0f, -5.0f };
 	rot = { 0.0f, 0.0f,0.0f };
-	scale = { 10.0f,10.0f,10.0f };
+	scale = { 30.0f,30.0f,30.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "Test font kekw", false });
+	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "This is a very big text", false });
 	entity.GetComponent<Components::Name>().m_name = "World font";
 
 	pos = { -1.0f, 0.85f, 0.0f };

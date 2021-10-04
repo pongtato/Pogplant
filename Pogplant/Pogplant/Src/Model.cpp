@@ -45,7 +45,7 @@ namespace Pogplant
             return false;
         }
 
-        //TexLoader::SetTextureFlip(true);
+        TexLoader::SetTextureFlip(true);
 
         std::getline(inFile, m_Directory);
         inFile.read(reinterpret_cast<char*>(&m_Bounds), sizeof(Bounds));

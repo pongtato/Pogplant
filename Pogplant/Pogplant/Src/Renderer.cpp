@@ -548,7 +548,8 @@ namespace Pogplant
 			}
 
 			glm::mat4 model = glm::mat4{ 1 };
-			model = glm::translate(model, { it_Trans.m_position.x,it_Trans.m_position.y, it_Trans.m_position.z });
+			// Magic padding to shift font down lmao
+			model = glm::translate(model, { it_Trans.m_position.x,it_Trans.m_position.y - it_Trans.m_scale.y * 0.85f, it_Trans.m_position.z });
 			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.x), glm::vec3{ 1.0f,0.0f,0.0f });
 			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.y), glm::vec3{ 0.0f,1.0f,0.0f });
 			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.z), glm::vec3{ 0.0f,0.0f,1.0f });
@@ -567,8 +568,8 @@ namespace Pogplant
 				ShaderLinker::SetUniform("offset", currChar.m_TexCoords);
 
 				const float xPos = xAccumulate + currChar.m_Offsets.x;
-				//const float yPos = currChar.m_Size.y + currChar.m_Offsets.y;
-				const float yPos = 0.0f; // By line
+				const float yPos = -(currChar.m_Size.y - currChar.m_Offsets.y);
+				//const float yPos = 0.0f; // By line
 
 				const float width = currChar.m_Size.x;
 				const float height = currChar.m_Size.y;
