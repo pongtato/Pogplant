@@ -113,8 +113,10 @@ bool AssetCompiler::Exists(std::string filePath)
 
 std::string AssetCompiler::GetFileName(const std::string& fullpath)
 {
-	std::string filename;
-	size_t found = fullpath.find_last_of('/');
-	filename = fullpath.substr(found + 1, fullpath.find_last_of('.') - found - 1);
-	return filename;
+	return std::filesystem::path(fullpath).stem().string();
+}
+
+std::string AssetCompiler::GetFileExtension(const std::string& fullpath)
+{
+	return std::filesystem::path(fullpath).extension().string();
 }

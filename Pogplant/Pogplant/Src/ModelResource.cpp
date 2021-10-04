@@ -16,11 +16,12 @@ namespace Pogplant
 		//LoadModel("ENEMY", "Resources/Models/Enemy/Enemy_01.fbx", GL_TRIANGLES, 0);
 
 		// Load from .kek files
-		LoadModel(GetFileName("Resources/KekFiles/Cube.kek"), "Resources/KekFiles/Cube.kek", GL_TRIANGLES);
-		LoadModel(GetFileName("Resources/KekFiles/Sphere.kek"), "Resources/KekFiles/Sphere.kek", GL_TRIANGLES);
-		LoadModel(GetFileName("Resources/KekFiles/Player_Ship.kek"), "Resources/KekFiles/Player_Ship.kek", GL_TRIANGLES);
-		LoadModel(GetFileName("Resources/KekFiles/Enemy_01.kek"), "Resources/KekFiles/Enemy_01.kek", GL_TRIANGLES);
-		LoadModel(GetFileName("Resources/KekFiles/backpack.kek"), "Resources/KekFiles/backpack.kek", GL_TRIANGLES);
+		namespace fs = std::filesystem;
+		LoadModel(fs::path("Resources/KekFiles/Cube.kek").stem().string(), "Resources/KekFiles/Cube.kek", GL_TRIANGLES);
+		LoadModel(fs::path("Resources/KekFiles/Sphere.kek").stem().string() , "Resources/KekFiles/Sphere.kek", GL_TRIANGLES);
+		LoadModel(fs::path("Resources/KekFiles/Player_Ship.kek").stem().string(), "Resources/KekFiles/Player_Ship.kek", GL_TRIANGLES);
+		LoadModel(fs::path("Resources/KekFiles/Enemy_01.kek").stem().string(), "Resources/KekFiles/Enemy_01.kek", GL_TRIANGLES);
+		LoadModel(fs::path("Resources/KekFiles/backpack.kek").stem().string(), "Resources/KekFiles/backpack.kek", GL_TRIANGLES);
 	}
 
 	void ModelResource::CleanUpResource()
@@ -62,13 +63,5 @@ namespace Pogplant
 		_ModelPool[_ModelID]->m_Meshes = temp.m_Meshes;
 		_ModelPool[_ModelID]->m_Model_key = temp.m_Model_key;
 		_ModelPool[_ModelID]->m_TexturesLoaded = temp.m_TexturesLoaded;
-	}
-
-	std::string ModelResource::GetFileName(const std::string& fullpath)
-	{
-		std::string filename;
-		size_t found = fullpath.find_last_of('/');
-		filename = fullpath.substr(found + 1, fullpath.find_last_of('.') - found - 1);
-		return filename;
 	}
 }

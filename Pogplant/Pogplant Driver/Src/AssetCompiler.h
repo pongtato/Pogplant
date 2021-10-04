@@ -35,6 +35,7 @@ public:
 	bool CheckProcessDone(std::string key);
 	bool Exists(std::string filePath);
 	static std::string GetFileName(const std::string& fullpath);
+	static std::string GetFileExtension(const std::string& fullpath);
 };
 
 #endif //_ASSET_COMPILER_H_

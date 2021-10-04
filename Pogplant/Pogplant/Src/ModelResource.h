@@ -17,7 +17,6 @@ namespace Pogplant
 		static void UpdateModel(std::string _ModelID, std::string _Path, unsigned int _PrimitiveType = 0x0004);
 		static void LoadModel(std::unordered_map<std::string, Model*>& _ModelPool, std::string _ModelID, std::string _Path,unsigned int _PrimitiveType = 0x0004);
 		static void UpdateModel(std::unordered_map<std::string, Model*>& _ModelPool, std::string _ModelID, std::string _Path,unsigned int _PrimitiveType = 0x0004);
-		static std::string GetFileName(const std::string& fullpath);
 		static std::unordered_map<std::string, Model*> m_ModelPool;
 	};
 }

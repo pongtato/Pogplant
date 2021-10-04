@@ -62,8 +62,9 @@ void Init()
 	//acc.WaitForSingleProcess("BAG");
 
 	FileHandler& fileHandler = fileHandler.GetInstance();
-	fileHandler.AddNewWatchPath("Resources/KekFiles/");
-	fileHandler.AddNewWatchPath("Resources/Prefabs/");
+	fileHandler.AddNewWatchPath("Resources/KekFiles");
+	fileHandler.AddNewWatchPath("Resources/Models");
+	fileHandler.AddNewWatchPath("Resources/Prefabs");
 
 	PP::TextureResource::InitResource();
 	PP::MeshBuilder::InitMesh();
@@ -547,22 +548,7 @@ void DrawGame()
 	auto results = ecs.GetReg().view<Renderer>();
 
 	FileHandler& fh = fh.GetInstance();
-	auto& modelNewStack = fh.GetModelNew();
-	auto& modelUpdateStack = fh.GetModelUpdate();
-
-	while (!modelNewStack.empty())
-	{
-		auto& modelNew = modelNewStack.top();
-		PP::ModelResource::LoadModel(PP::ModelResource::m_ModelPool, modelNew.m_key, modelNew.m_filepath);
-		modelNewStack.pop();
-	}
-
-	while (!modelUpdateStack.empty())
-	{
-		auto& modelUpdate = modelUpdateStack.top();
-		PP::ModelResource::UpdateModel(PP::ModelResource::m_ModelPool, modelUpdate.m_key, modelUpdate.m_filepath);
-		modelUpdateStack.pop();
-	}
+	fh.UpdateModels();
 
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
