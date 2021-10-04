@@ -55,6 +55,9 @@
     <Filter Include="Source Files\Utility">
       <UniqueIdentifier>{d6c61706-5e10-4cea-889b-d918b021fb56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ECS\Systems\ScriptSystem">
+      <UniqueIdentifier>{698a48c7-5271-43ed-81ed-2b287216d0d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -64,9 +67,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\ScriptBinder.cpp">
-      <Filter>Source Files\Scripting</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\ScriptSystem.cpp">
       <Filter>Source Files\Scripting</Filter>
     </ClCompile>
     <ClCompile Include="Src\ECS\ECS.cpp">
@@ -132,15 +132,15 @@
     <ClCompile Include="Src\ECS\Systems\PhysicsSystem.cpp">
       <Filter>Source Files\ECS\Systems\Physics/Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Src\ECS\Systems\ScriptSystem.cpp">
+      <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
       <Filter>Source Files\ImguiHelper</Filter>
     </ClInclude>
     <ClInclude Include="Src\ScriptBinder.h">
-      <Filter>Source Files\Scripting</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\ScriptSystem.h">
       <Filter>Source Files\Scripting</Filter>
     </ClInclude>
     <ClInclude Include="Src\ECS\ECS.h">
@@ -234,6 +234,12 @@
       <Filter>Source Files\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Src\ECS\Components\Reflection_for_components.h">
+      <Filter>Source Files\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\Systems\ScriptSystem.h">
+      <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\Components\ScriptComponents.h">
       <Filter>Source Files\ECS\Components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,25 +10,29 @@ namespace Scripting
     // Scripting class
     class Scripts : IScripts
     {
-        public Scripts(string word)
+        public Scripts()
         {
-            m_word = word;
+            i = 0;
         }
 
-        // test function with a bool return
-        public bool testfuncwithreturn()
+        public void testing123()
         {
-            Console.WriteLine("C# PRINTOUT: The testfuncwithreturn printout word is: {0}", m_word);
-            return false;
+            //Console.WriteLine("C# PRINTOUT: testing123 function bogos binted.");
         }
 
-        // test function with a param input
-        public void testfuncwithparam(char key)
+        public void Start()
         {
-            Console.WriteLine("C# PRINTOUT: The testfuncwithparam printout key is: {0}", key);
+            Console.WriteLine("C# PRINTOUT: Start Scripts.");
+        }
+
+        public void Update()
+        {
+            ++i;
+            //Console.WriteLine("C# PRINTOUT: Update i {0}", i);
+            testing123();
         }
 
         // Private data members
-        private string m_word;
+        private int i;
     }
 }

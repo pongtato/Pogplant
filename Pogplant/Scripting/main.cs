@@ -12,7 +12,7 @@ namespace Scripting
          public static IScripts main()
         {
             string word = ObjectScript.getRandomWord();
-            return new Scripts(word);
+            return new Scripts();
         }
     }
 }

@@ -9,8 +9,10 @@ namespace Scripting
     // Interface class for scripts
     public interface IScripts
     {
-        bool testfuncwithreturn();
+        void testing123();
 
-        void testfuncwithparam(char key);
+        void Start();
+
+        void Update();
     }
 }

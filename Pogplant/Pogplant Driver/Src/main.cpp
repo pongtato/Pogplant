@@ -1,5 +1,4 @@
 ﻿#include "ImguiHelper.h"
-#include "ScriptSystem.h"
 
 #include <iostream>
 #include <Pogplant.h>
@@ -15,6 +14,7 @@
 #include "ECS/Entity.h"
 #include "ECS/Systems/imaginary_system.h"
 #include "ECS/Systems/PhysicsSystem.h"
+#include "ECS/Systems/ScriptSystem.h"
 
 #include "Input/InputSystem.h"
 #include "ResourceAllocator.hpp"
@@ -37,6 +37,7 @@ using namespace Components;
 ECS ecs;
 Imaginary_system ImaginarySystem;
 PhysicsSystem physicsSystem;
+ScriptSystem scriptSystem;
 
 void Init()
 {
@@ -185,6 +186,11 @@ void Init()
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, floorModel });
 	entity.GetComponent<Components::Name>().m_name = "Floor";
+	std::vector<std::string> scriptsok;
+	scriptsok.push_back("Start");
+	scriptsok.push_back("Update");
+	entity.AddComponent<Components::Scriptable>(Scriptable{scriptsok});
+	//entity.AddComponent<Components::Name>(Name{ "Floor" });
 
 	pos = { 5, -2.0f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -284,14 +290,10 @@ void Init()
 	entity.GetComponent<Components::Name>().m_name = "Screen font";
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
-	
-	// Nazi?
-	//ScriptSystem SS;
-	//SS.testfuncwithparam('X');
-	//SS.testfuncwithreturn();
 
 	ImaginarySystem.Init(&ecs);
 	physicsSystem.Init(&ecs);
+	scriptSystem.Init(&ecs);
 	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
 }
 
@@ -494,9 +496,6 @@ void DrawGame()
 {
 	auto results = ecs.GetReg().view<Renderer>();
 
-	FileHandler& fh = fh.GetInstance();
-	fh.UpdateModels();
-
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
@@ -547,7 +546,6 @@ void Run()
 		// Camera KB movement
 		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
 
-
 		//Should move this to game state when it's available
 		//Physics dynamic update until fps drops below 30fps
 		c_accumulatedFixedTime += c_deltaTime;
@@ -566,8 +564,11 @@ void Run()
 			}
 		}
 
-
+		physicsSystem.Update(ImGui::GetIO().DeltaTime);
 		ImaginarySystem.Update();
+		scriptSystem.Update();
+		FileHandler& fh = fh.GetInstance();
+		fh.UpdateModels();
 
 		/// Most of this should be moved to other files when the engine is developed
 		// Things that appear in both editor & game

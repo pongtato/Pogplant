@@ -288,6 +288,7 @@ namespace Pogplant
         {
             tinyddsloader::DDSFile dds;
             auto ret = dds.Load(filename.c_str());
+            dds.Flip();
             if (tinyddsloader::Result::Success != ret)
             {
                 std::string err = "Texture failed to load at ";
