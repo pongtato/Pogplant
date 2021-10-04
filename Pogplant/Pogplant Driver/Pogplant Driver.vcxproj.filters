@@ -221,5 +221,8 @@
     <ClInclude Include="Src\ECS\Systems\PhysicsSystem.h">
       <Filter>Source Files\ECS\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="Src\ECS\Components\Reflection_for_components.h">
+      <Filter>Source Files\ECS\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

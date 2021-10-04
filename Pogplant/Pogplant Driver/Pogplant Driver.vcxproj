@@ -233,6 +233,7 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClInclude Include="Src\ECS\Components\Components.h" />
     <ClInclude Include="Src\ECS\Components\GenericComponents.h" />
     <ClInclude Include="Src\ECS\Components\PhysicsComponents.h" />
+    <ClInclude Include="Src\ECS\Components\Reflection_for_components.h" />
     <ClInclude Include="Src\ECS\ECS.h" />
     <ClInclude Include="Src\ECS\Entity.h" />
     <ClInclude Include="Src\ECS\Systems\imaginary_system.h" />
