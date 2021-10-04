@@ -43,7 +43,7 @@ void Init()
 	PP::Window::InitWindow(
 		1280,					// Width
 		720,					// Height
-		"Vilgax"				// Window name
+		"BogosBinted"			// Window name
 	);
 
 	// Will change to automatic update when i figure it out
