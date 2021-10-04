@@ -28,6 +28,53 @@ namespace PogplantDriver
 		}
 	}
 
+	void CurrentPopupComponents()
+	{
+		bool adding_enabled = false;
+		if (PPD::ImguiHelper::m_CurrentEntity != entt::null)
+			adding_enabled = true;
+		//if(ImGui::MenuItem("Transform", NULL, false, adding_enabled))
+		//{
+		//	auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Transform>(m_CurrentEntity);
+		//}
+		if (ImGui::BeginMenu("3D Render"))
+		{
+			glm::vec3 color = { 0.835f,0.921f,0.905f };
+			if (ImGui::MenuItem("Sphere"))
+			{
+				auto& renderer = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
+					glm::mat4{ 1 },
+					color,
+					PP::ModelResource::m_ModelPool["Sphere"]);
+			}
+			ImGui::EndMenu();
+		}
+		if (ImGui::MenuItem("Point_Light", NULL, false, adding_enabled))
+		{
+			auto& lightp_component = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Point_Light>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+		if (ImGui::MenuItem("Directional_Light", NULL, false, adding_enabled))
+		{
+			auto& lightd_component = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Directional_Light>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+		if (ImGui::MenuItem("Font", NULL, false, adding_enabled)) //There is another font somewhere might crash (But should not as id stack is cleared)
+		{
+			auto& new_font = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Text>(PPD::ImguiHelper::m_CurrentEntity, glm::vec3{ 0.835f,0.921f,0.905f }, "Ruda", "Lorem ipsum dolor sit amet");
+		}
+		if (ImGui::MenuItem("RigidBody", NULL, false, adding_enabled))
+		{
+			auto& new_body = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Rigidbody>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+		if (ImGui::MenuItem("BoxCollider", NULL, false, adding_enabled))
+		{
+			auto& new_bcollider = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::BoxCollider>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+		if (ImGui::MenuItem("SphereCollider", NULL, false, adding_enabled))
+		{
+			auto& new_spcollider = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::SphereCollider>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+	}
+
 	bool ImguiHelper::m_FirstRun = true;
 	//int ImguiHelper::m_CurrentGOIdx = -1;
 	entt::entity ImguiHelper::m_CurrentEntity = entt::null;
@@ -178,47 +225,9 @@ namespace PogplantDriver
 
 			if (ImGui::BeginMenu("Components"))
 			{
-					bool adding_enabled = false;
-					if (m_CurrentEntity != entt::null)
-						adding_enabled = true;
-					//if(ImGui::MenuItem("Transform", NULL, false, adding_enabled))
-					//{
-					//	auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Transform>(m_CurrentEntity);
-					//}
-					if (ImGui::BeginMenu("3D Render"))
-					{
-						glm::vec3 color = { 0.835f,0.921f,0.905f };
-						if (ImGui::MenuItem("Sphere"))
-						{
-							auto& renderer = m_ecs->GetReg().get_or_emplace<Components::Renderer>(m_CurrentEntity,
-								glm::mat4{1},
-								color, 
-								PP::ModelResource::m_ModelPool["Sphere"]);
-						}
-						ImGui::EndMenu();
-					}
-					if (ImGui::MenuItem("Point_Light", NULL, false, adding_enabled))
-					{
-						auto& lightp_component = m_ecs->GetReg().get_or_emplace<Components::Point_Light>(m_CurrentEntity);
-					}
-					if (ImGui::MenuItem("Directional_Light", NULL, false, adding_enabled))
-					{
-						auto& lightd_component = m_ecs->GetReg().get_or_emplace<Components::Directional_Light>(m_CurrentEntity);
-					}
-					if (ImGui::MenuItem("Font", NULL, false, adding_enabled)) //There is another font somewhere might crash (But should not as id stack is cleared)
-					{
-						auto& new_font = m_ecs->GetReg().get_or_emplace<Components::Text>(m_CurrentEntity, glm::vec3 {0.835f,0.921f,0.905f },"Ruda", "Lorem ipsum dolor sit amet");
-					}
-					if (ImGui::MenuItem("RigidBody", NULL, false, adding_enabled)) 
-					{
-						auto& new_body = m_ecs->GetReg().get_or_emplace<Components::Rigidbody>(m_CurrentEntity);
-					}
-					if (ImGui::MenuItem("BoxCollider", NULL, false, adding_enabled))
-					{
-						auto& new_bcollider = m_ecs->GetReg().get_or_emplace<Components::BoxCollider>(m_CurrentEntity);
-					}
-					ImGui::EndMenu();
-				}
+				CurrentPopupComponents();
+				ImGui::EndMenu();
+			}
 
 			if (ImGui::BeginMenu("Tools"))
 			{
@@ -631,7 +640,7 @@ namespace PogplantDriver
 				{
 					bool enable_box_collider = true;
 
-					if (ImGui::CollapsingHeader("Collider", &enable_box_collider, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader("Collider Box", &enable_box_collider, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGuiComboFlags flag = 0;
 						flag |= ImGuiComboFlags_PopupAlignLeft;
@@ -695,7 +704,31 @@ namespace PogplantDriver
 					}
 					if (!enable_box_collider)
 					{
-						m_ecs->GetReg().remove<Components::Rigidbody>(m_CurrentEntity);
+						m_ecs->GetReg().remove<Components::BoxCollider>(m_CurrentEntity);
+					}
+				}
+
+
+				auto sphere_collider = m_ecs->GetReg().try_get<Components::SphereCollider>(m_CurrentEntity);
+				if (sphere_collider)
+				{
+					bool enable_sphere_collider = true;
+
+					if (ImGui::CollapsingHeader("Collider Sphere", &enable_sphere_collider, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						ImGui::Text("Centre");
+						ImGui::DragFloat3("###CCen", glm::value_ptr(sphere_collider->centre));
+
+						ImGui::Text("Radius");
+						ImGui::InputFloat("###CRad", &sphere_collider->radius, 0.01f, 1.0f, "%.3f");
+
+						ImGui::Text("Trigger?");
+						ImGui::Checkbox("Trig?", &sphere_collider->isTrigger);
+
+					}
+					if (!enable_sphere_collider)
+					{
+						m_ecs->GetReg().remove<Components::SphereCollider>(m_CurrentEntity);
 					}
 				}
 
@@ -707,10 +740,22 @@ namespace PogplantDriver
 				ImVec2 buttonSize = { lineHeight + 100.0f, lineHeight };
 				if (ImGui::Button("Add Component", buttonSize))
 				{
-
+					ImGui::OpenPopup("AddComPop");
 				}
 				ImGui::Unindent();
 				ImguiBlankSeperator(2);
+				if (ImGui::BeginPopup("AddComPop"))
+				{
+					CurrentPopupComponents();
+					ImGui::EndPopup();
+				}
+
+				
+
+
+
+
+
 			}
 		}
 		ImGui::End();
