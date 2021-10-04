@@ -86,11 +86,11 @@ namespace Pogplant
 				if (width) { c.m_Size.x = width.asInt() / _Font->m_ImageW; } else { failFlag = true; }
 				if (height) { c.m_Size.y = height.asInt() / _Font->m_ImageH; } else { failFlag = true; }
 				if (xoffset) { c.m_Offsets.x = xoffset.asInt() / _Font->m_ImageW; } else { failFlag = true; }
-				if (yoffset) { c.m_Offsets.y = 1.0f - yoffset.asInt() / _Font->m_ImageH; } else { failFlag = true; }
+				if (yoffset) { c.m_Offsets.y = yoffset.asInt() / _Font->m_ImageH; } else { failFlag = true; }
 				if (xadvance) { c.m_Advance = xadvance.asInt() / _Font->m_ImageW; } else { failFlag = true; }
 				if (chnl) { c.m_Chnl = chnl.asInt(); } else { failFlag = true; }
 				if (x) { c.m_TexCoords.x = x.asInt() / _Font->m_ImageW; } else { failFlag = true; }
-				if (y) { c.m_TexCoords.y = 1.0f - y.asInt() / _Font->m_ImageH; } else { failFlag = true; }
+				if (y) { c.m_TexCoords.y = y.asInt() / _Font->m_ImageH; } else { failFlag = true; }
 
 				// Assert
 				if (failFlag)

@@ -14,6 +14,7 @@
     <ClInclude Include="Src\Camera.h" />
     <ClInclude Include="Src\CameraResource.h" />
     <ClInclude Include="Src\Character.h" />
+    <ClInclude Include="Src\DebugDraw.h" />
     <ClInclude Include="Src\Font.h" />
     <ClInclude Include="Src\FontResource.h" />
     <ClInclude Include="Src\FrameBuffer.h" />
@@ -43,6 +44,7 @@
     <ClCompile Include="Src\Camera.cpp" />
     <ClCompile Include="Src\CameraResource.cpp" />
     <ClCompile Include="Src\Character.cpp" />
+    <ClCompile Include="Src\DebugDraw.cpp" />
     <ClCompile Include="Src\FontResource.cpp" />
     <ClCompile Include="Src\FrameBuffer.cpp" />
     <ClCompile Include="Src\FrameBufferResource.cpp" />

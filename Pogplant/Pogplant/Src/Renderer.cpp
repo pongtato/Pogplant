@@ -14,6 +14,7 @@
 #include "Font.h"
 #include "FontResource.h"
 #include "MeshBuilder.h"
+#include "DebugDraw.h"
 
 #include <gtc/matrix_transform.hpp>
 #include <glew.h>
@@ -274,18 +275,26 @@ namespace Pogplant
 		// Debug boxes
 		if (_EditorMode)
 		{
+			// Debug line size
+			glLineWidth(DebugDraw::m_LineWidth);
+
+			// Update verts to mesh
+			MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
+
 			ShaderLinker::Use("LINE");
 			ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
 			ShaderLinker::SetUniform("m4_View", currCam->GetView());
 			ShaderLinker::SetUniform("m4_Model", glm::mat4{ 1 });
 			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.8f,0.2f,0.8f });
-
+		
 			Mesh* lineMesh = MeshResource::m_MeshPool[MeshResource::MESH_TYPE::LINE];
 			glBindVertexArray(lineMesh->m_VAO);
 			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
 			glBindVertexArray(0);
 
 			ShaderLinker::UnUse();
+			// Call this after or all points will be cleared
+			DebugDraw::NewFrame();
 		}
 
 		// Skybox
@@ -429,7 +438,7 @@ namespace Pogplant
 			}
 
 			glm::mat4 model = glm::mat4{ 1 };
-			model = glm::translate(model, { it_Trans.m_position.x,it_Trans.m_position.y - it_Trans.m_scale.y, it_Trans.m_position.z });
+			model = glm::translate(model, { it_Trans.m_position.x,it_Trans.m_position.y, it_Trans.m_position.z });
 			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.x), glm::vec3{ 1.0f,0.0f,0.0f });
 			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.y), glm::vec3{ 0.0f,1.0f,0.0f });
 			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.z), glm::vec3{ 0.0f,0.0f,1.0f });
@@ -448,7 +457,8 @@ namespace Pogplant
 				ShaderLinker::SetUniform("offset", currChar.m_TexCoords);
 
 				const float xPos = xAccumulate + currChar.m_Offsets.x;
-				const float yPos = -(currChar.m_Size.y - currChar.m_Offsets.y);
+				//const float yPos = currChar.m_Size.y + currChar.m_Offsets.y;
+				const float yPos = 0.0f; // By line
 
 				const float width = currChar.m_Size.x;
 				const float height = currChar.m_Size.y;

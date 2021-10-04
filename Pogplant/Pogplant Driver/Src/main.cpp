@@ -172,7 +172,9 @@ void Init()
 	
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel });
+	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
 	entity.AddComponent<Imaginary_object>("gab_small_pepe");
+	entity.GetComponent<Components::Name>().m_name = "SPHERE";
 	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
 
 	pos = { 0.0f, -55.0f, 0.0f };
@@ -270,7 +272,7 @@ void Init()
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "Test font kekw", false });
 
-	pos = { -1.0f, 1.0f, 0.0f };
+	pos = { -1.0f, 0.85f, 0.0f };
 	rot = { 0.0f, 0.0f,0.0f };
 	scale = { 1.0f,1.0f,1.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
@@ -401,89 +403,29 @@ void DrawCommon()
 
 	auto view = ecs.GetReg().view<Transform, Renderer>();
 	auto debugView = ecs.GetReg().view<Transform, DebugRender>();
-	
-	/// TEMP - Debug draw container test, vertices will be replaced by physics collider boxes @ Gab
-	std::vector<glm::vec3> modelBounds;
+	glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->GetPosition();
 	for (auto entity : view)
 	{
 		auto& transform = view.get<Transform>(entity);
 		auto& renderer = view.get<Renderer>(entity);
 		
 		auto boxCollider = ecs.GetReg().try_get<BoxCollider>(entity);
+		auto sphereCollider = ecs.GetReg().try_get<SphereCollider>(entity);
 
 		transform.updateModelMtx();
 		renderer.m_Model = transform.m_ModelMtx;
-		
 
-
-		/// Debug draw vertex calculation
+		/// Debug draw update
 		if (boxCollider)
 		{
-			std::vector<glm::vec3> verts;
-
-			verts.push_back(boxCollider->aabb.m_min);
-			verts.push_back(glm::vec3{ boxCollider->aabb.m_min.x, boxCollider->aabb.m_min.y, boxCollider->aabb.m_max.z });
-			verts.push_back(glm::vec3{ boxCollider->aabb.m_max.x, boxCollider->aabb.m_min.y, boxCollider->aabb.m_max.z });
-			verts.push_back(glm::vec3{ boxCollider->aabb.m_max.x, boxCollider->aabb.m_min.y, boxCollider->aabb.m_min.z });
-
-			verts.push_back(glm::vec3{ boxCollider->aabb.m_min.x, boxCollider->aabb.m_max.y, boxCollider->aabb.m_min.z });
-			verts.push_back(glm::vec3{ boxCollider->aabb.m_min.x, boxCollider->aabb.m_max.y, boxCollider->aabb.m_max.z });
-			verts.push_back(boxCollider->aabb.m_max);
-			verts.push_back(glm::vec3{ boxCollider->aabb.m_max.x, boxCollider->aabb.m_max.y, boxCollider->aabb.m_min.z });
-			
-			// Bottom quad
-			/*verts.push_back(transform.m_position + glm::vec3{-offset, -offset, -offset}); // 0
-			verts.push_back(transform.m_position + glm::vec3{ -offset, -offset,  offset }); // 1
-			verts.push_back(transform.m_position + glm::vec3{  offset, -offset,  offset }); // 2
-			verts.push_back(transform.m_position + glm::vec3{  offset, -offset, -offset }); // 3
-			// Top quad
-			verts.push_back(transform.m_position + glm::vec3{ -offset,  offset, -offset }); // 4
-			verts.push_back(transform.m_position + glm::vec3{ -offset,  offset,  offset }); // 5
-			verts.push_back(transform.m_position + glm::vec3{  offset,  offset,  offset }); // 6
-			verts.push_back(transform.m_position + glm::vec3{  offset,  offset, -offset }); // 7*/
-
-			// Add to modelBounds, GL_LINE
-			// Bottom Quad
-			modelBounds.push_back(verts[0]);
-			modelBounds.push_back(verts[1]);
-
-			modelBounds.push_back(verts[1]);
-			modelBounds.push_back(verts[2]);
-
-			modelBounds.push_back(verts[2]);
-			modelBounds.push_back(verts[3]);
-
-			modelBounds.push_back(verts[3]);
-			modelBounds.push_back(verts[0]);
-
-			// Top Quad
-			modelBounds.push_back(verts[4]);
-			modelBounds.push_back(verts[5]);
-
-			modelBounds.push_back(verts[5]);
-			modelBounds.push_back(verts[6]);
-
-			modelBounds.push_back(verts[6]);
-			modelBounds.push_back(verts[7]);
-
-			modelBounds.push_back(verts[7]);
-			modelBounds.push_back(verts[4]);
-
-			// Plane Connectors
-			modelBounds.push_back(verts[0]);
-			modelBounds.push_back(verts[4]);
-
-			modelBounds.push_back(verts[1]);
-			modelBounds.push_back(verts[5]);
-
-			modelBounds.push_back(verts[2]);
-			modelBounds.push_back(verts[6]);
-
-			modelBounds.push_back(verts[3]);
-			modelBounds.push_back(verts[7]);
+			PP::DebugDraw::DebugCube(boxCollider->aabb.m_min, boxCollider->aabb.m_max);
+		}
+		else if (sphereCollider)
+		{
+			const glm::vec3 camDir = sphereCollider->sphere.m_pos - camPos;
+			PP::DebugDraw::DebugSphere(sphereCollider->sphere.m_pos, camDir, sphereCollider->sphere.m_radius);
 		}
 	}
-	PP::MeshBuilder::RebindLines(modelBounds);
 
 	for (auto entity : debugView)
 	{

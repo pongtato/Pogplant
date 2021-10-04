@@ -19,9 +19,9 @@ float median(float r, float g, float b)
 
 void main()
 {   
-    vec2 flipped_texCoords = vec2(TexCoords.x, 1.0 - TexCoords.y) + offset;
-    vec2 pos = flipped_texCoords;
-    vec3 distance = texture(text, flipped_texCoords).rgb;
+    vec2 offset_texCoords = TexCoords + offset;
+    vec2 pos = offset_texCoords;
+    vec3 distance = texture(text, offset_texCoords).rgb;
     ivec2 sz = textureSize(text, 0).xy;
     float dx = dFdx(pos.x) * sz.x; 
     float dy = dFdy(pos.y) * sz.y;

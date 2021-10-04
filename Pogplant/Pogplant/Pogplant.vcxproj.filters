@@ -88,6 +88,9 @@
     <Filter Include="Source Files\Graphics\Font\FontResource">
       <UniqueIdentifier>{aa9d1e8a-51b7-4dac-b566-772eec9d1d8b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\DebugDraw">
+      <UniqueIdentifier>{c5fec187-db38-492d-90f2-ba1704402716}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -171,6 +174,9 @@
     <ClInclude Include="Src\Text.h">
       <Filter>Source Files\Graphics\Font</Filter>
     </ClInclude>
+    <ClInclude Include="Src\DebugDraw.h">
+      <Filter>Source Files\Graphics\DebugDraw</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -244,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="Src\FontResource.cpp">
       <Filter>Source Files\Graphics\Font\FontResource</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\DebugDraw.cpp">
+      <Filter>Source Files\Graphics\DebugDraw</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
