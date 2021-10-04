@@ -18,6 +18,9 @@
 using namespace PhysicsDLC::Collision::Shapes;
 
 Ray::Ray()
+	:
+	m_start{ 0.f, 0.f, 0.f },
+	m_dir{ 0.f, 0.f, 1.f }
 {
 }
 
@@ -29,6 +32,9 @@ Ray::Ray(vec3 start, vec3 dir)
 }
 
 Sphere::Sphere()
+	:
+	m_pos{ 0.f, 0.f, 0.f },
+	m_radius{ 1.f }
 {
 }
 
@@ -180,6 +186,9 @@ void Sphere::SetRitter(const std::vector<vec3>& points)
 }
 
 AABB::AABB()
+	:
+	m_min{ -1.f, -1.f, -1.f },
+	m_max{ 1.f, 1.f, 1.f }
 {
 }
 
@@ -191,7 +200,16 @@ AABB::AABB(vec3 min, vec3 max)
 
 }
 
+void AABB::CalculateAABBFromExtends(const vec3& position, const vec3& extends)
+{
+	m_min = position - extends;
+	m_max = position + extends;
+}
+
 Plane::Plane()
+	:
+	m_pos{ 0.f, 0.f, 0.f },
+	m_normal{ 0.f, 1.f, 0.f }
 {
 }
 

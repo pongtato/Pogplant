@@ -22,9 +22,11 @@ namespace PhysicsDLC
 
 			vec3 velocity;
 			vec3 acceleration;
+			vec3 impulseAcceleration;
 			vec3 newPosition;
 
 			void AddForce(glm::vec3 direction);
+			void AddImpulseForce(glm::vec3 direction);
 		};
 
 		void ResolveAABBDynamic(

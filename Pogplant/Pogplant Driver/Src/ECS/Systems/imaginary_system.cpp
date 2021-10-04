@@ -68,6 +68,11 @@ void Imaginary_system::Update()
 			rigidBody.AddForce({ character.force, 0.f, 0.f });
 		}
 
+		if (PPI::GLFWInputManager::Instance()->onKeyTriggered(GLFW_KEY_SPACE))
+		{
+			rigidBody.AddImpulseForce({ 0.f, 10.f, 0.f });
+		}
+
 		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_PAGE_UP))
 			rigidBody.mass = 3.f;
 

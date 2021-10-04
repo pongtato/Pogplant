@@ -16,6 +16,7 @@ namespace PhysicsDLC
 			useGravity{ c_useGravity },
 			velocity{ 0.f, 0.f, 0.f },
 			acceleration{ 0.f, 0.f, 0.f },
+			impulseAcceleration{ 0.f, 0.f, 0.f },
 			newPosition{ 0.f, 0.f, 0.f }
 		{
 		}
@@ -25,6 +26,11 @@ namespace PhysicsDLC
 			//F = MA
 			//A = F/M
 			acceleration += direction * (1.f / mass);
+		}
+
+		void Rigidbody::AddImpulseForce(glm::vec3 direction)
+		{
+			impulseAcceleration += direction * (1.f / mass);
 		}
 
 		void ResolveAABBDynamic(

@@ -53,6 +53,8 @@ namespace PhysicsDLC
 				AABB();
 				AABB(vec3 min, vec3 max);
 
+				void CalculateAABBFromExtends(const vec3& position, const vec3& extends);
+
 				vec3 m_min;
 				vec3 m_max;
 			};

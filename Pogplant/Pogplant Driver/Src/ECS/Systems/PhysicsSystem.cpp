@@ -57,8 +57,7 @@ void PhysicsSystem::InitPlayState()
 		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
 
 		boxCollider.colliderType = Components::Collider::COLLIDER_TYPE::CT_BOX;
-		boxCollider.aabb.m_min = transform.m_position + boxCollider.centre - boxCollider.extends;
-		boxCollider.aabb.m_max = transform.m_position + boxCollider.centre + boxCollider.extends;
+		boxCollider.aabb.CalculateAABBFromExtends(transform.m_position + boxCollider.centre, boxCollider.extends * transform.m_scale);
 	}
 
 	for (auto collidable : sphereColliders)
@@ -68,7 +67,7 @@ void PhysicsSystem::InitPlayState()
 
 		sphereCollider.colliderType = Components::Collider::COLLIDER_TYPE::CT_SPHERE;
 		sphereCollider.sphere.m_pos = transform.m_position + sphereCollider.centre;
-		sphereCollider.sphere.m_radius = sphereCollider.radius;
+		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
 	}
 }
 
@@ -77,7 +76,9 @@ void PhysicsSystem::TriggerUpdate()
 	while (!t_EXIT_THREADS)
 	{
 		//perform busy wait LOL
-		if (m_hasJob.try_acquire())
+		m_hasJob.acquire();
+
+		if (!t_EXIT_THREADS)
 		{
 			auto collidableEntities = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
 			auto movableEntities = m_registry->GetReg().view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
@@ -173,17 +174,18 @@ void PhysicsSystem::Update(float c_dt)
 		if (_1rigidbody.isKinematic)
 			continue;
 
-		_1collider.aabb.m_min = _1transform.m_position + _1collider.centre - _1collider.extends * _1transform.m_scale;
-		_1collider.aabb.m_max = _1transform.m_position + _1collider.centre + _1collider.extends * _1transform.m_scale;
+		_1collider.aabb.CalculateAABBFromExtends(_1transform.m_position + _1collider.centre, _1collider.extends * _1transform.m_scale);
 
 		if (_1rigidbody.useGravity)
 			_1rigidbody.acceleration.y += m_gravityAcc;
 
 		//temp for now
 		PP::DebugDraw::DebugLine(_1rigidbody.newPosition, _1rigidbody.newPosition + _1rigidbody.acceleration * _1rigidbody.mass * 0.5f);
+		PP::DebugDraw::DebugLine(_1rigidbody.newPosition, _1rigidbody.newPosition + _1rigidbody.impulseAcceleration * _1rigidbody.mass * 0.5f);
 
-		_1rigidbody.velocity += _1rigidbody.acceleration * c_dt;
+		_1rigidbody.velocity += _1rigidbody.acceleration * c_dt + _1rigidbody.impulseAcceleration;
 		_1rigidbody.acceleration = PhysicsDLC::Vector::Zero;
+		_1rigidbody.impulseAcceleration = PhysicsDLC::Vector::Zero;
 		_1rigidbody.newPosition = _1transform.m_position + _1rigidbody.velocity * c_dt;
 
 		if (!_1collider.isTrigger)
@@ -198,7 +200,7 @@ void PhysicsSystem::Update(float c_dt)
 				auto collisionRule = GetCollisionRule(_1collider.collisionLayer, _2collider.collisionLayer);
 
 				if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE
-					|| _1collider.isTrigger)
+					|| _2collider.isTrigger)
 					continue;
 
 				auto _2rigidbody = m_registry->GetReg().try_get<Components::Rigidbody>(_2entity);
