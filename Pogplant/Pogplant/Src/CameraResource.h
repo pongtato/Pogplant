@@ -10,7 +10,7 @@ namespace Pogplant
 	class CameraResource
 	{
 	public:
-		static void InitBaseCameras(const glm::vec3& _EditorPosition, const glm::vec3& _GamePosition, CameraConfig _CameraConfig);
+		static void InitBaseCameras(const glm::vec3& _EditorPosition, CameraConfig _CameraConfig);
 		static void AddCamera(const char* _ID);
 		static void RemoveCamera(size_t _Index);
 		static Camera* GetCamera(const char* _ID);

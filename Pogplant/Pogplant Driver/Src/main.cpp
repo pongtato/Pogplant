@@ -76,7 +76,6 @@ void Init()
 	PP::FrameBuffer::InitFrameBuffer();
 	PP::CameraResource::InitBaseCameras(
 		glm::vec3{ 0,0,5.0f }, // Editor cam pos
-		glm::vec3{ 0,0,30.0f }, // Game cam pos
 		PP::CameraConfig{
 			-90.0f, // Yaw
 			0.0f,	// Pitch
@@ -92,15 +91,15 @@ void Init()
 	
 
 	/// Add to container
-	std::string bag, sphere, floor, ship, enemy;
+	std::string bag, sphere, cube, ship, enemy;
 	bag = AssetCompiler::GetFileName("Resources/KekFiles/backpack.kek");
 	sphere = AssetCompiler::GetFileName("Resources/KekFiles/Sphere.kek");
-	floor = AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
+	cube = AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
 	ship = AssetCompiler::GetFileName("Resources/KekFiles/Player_Ship.kek");
 	enemy = AssetCompiler::GetFileName("Resources/KekFiles/Enemy_01.kek");
 	PP::Model* bagModel = PP::ModelResource::m_ModelPool[bag];
 	PP::Model* sphereModel = PP::ModelResource::m_ModelPool[sphere];
-	PP::Model* floorModel = PP::ModelResource::m_ModelPool[floor];
+	PP::Model* cubeModel = PP::ModelResource::m_ModelPool[cube];
 	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
 	PP::Model* enemyModel = PP::ModelResource::m_ModelPool[enemy];
 	
@@ -184,7 +183,7 @@ void Init()
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 100.0f,100.0f,100.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, floorModel });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
 	entity.GetComponent<Components::Name>().m_name = "Floor";
 	std::vector<std::string> scriptsok;
 	scriptsok.push_back("Start");
@@ -288,6 +287,14 @@ void Init()
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,1.0f}, "Ruda", "Screen Font", true });
 	entity.GetComponent<Components::Name>().m_name = "Screen font";
+
+	/// Camera
+	pos = { 0.0f, 0.0f, 30.0f };
+	color = { 0.9f, 0.5f, 0.2f };
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, - 90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel, false, false });
+	entity.GetComponent<Components::Name>().m_name = "Game Camera";
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 
@@ -407,6 +414,24 @@ void DrawCommon()
 	////Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
 	////PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
+	auto camView = ecs.GetReg().view<Transform, Camera>();
+	{
+		for (auto entity : camView)
+		{
+			auto& camera = ecs.GetReg().get<Camera>(entity);
+			auto& transform = ecs.GetReg().get<Transform>(entity);
+
+			// If active update its projection & view;
+			if (camera.m_Active)
+			{
+				const glm::vec2 windowSize = { PP::Window::m_Width, PP::Window::m_Height };
+				PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
+				PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
+				PP::Camera::GetUpdatedView(transform.m_position, transform.m_position + camera.m_Front, camera.m_Up, camera.m_View);
+			}
+		}
+	}
+
 
 	auto view = ecs.GetReg().view<Transform, Renderer>();
 	auto debugView = ecs.GetReg().view<Transform, DebugRender>();
@@ -475,16 +500,16 @@ void DrawEditor()
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw("EDITOR", ecs.GetReg(), nullptr, true);
+	PP::Renderer::Draw(ecs.GetReg(), nullptr, true);
 	PP::Renderer::EndBuffer();
 
 	// Where to draw the gpass FB to
 	PP::Renderer::PostProcess();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::GLightPass("EDITOR", ecs.GetReg());
+	PP::Renderer::GLightPass(ecs.GetReg(), true);
 	PP::Renderer::EndBuffer();
 
-	PP::Renderer::DebugPass("EDITOR", ecs.GetReg());
+	PP::Renderer::DebugPass(ecs.GetReg());
 	//PP::Renderer::BlurPass();
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();
@@ -499,13 +524,13 @@ void DrawGame()
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw("GAME", ecs.GetReg(), nullptr, false);
+	PP::Renderer::Draw(ecs.GetReg(), nullptr, false);
 	PP::Renderer::EndBuffer();
 
 	// Where to draw the gpass FB to
 	PP::Renderer::PostProcess();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::GLightPass("GAME", ecs.GetReg());
+	PP::Renderer::GLightPass(ecs.GetReg(), false);
 	PP::Renderer::EndBuffer();
 
 	PP::Renderer::BlurPass();

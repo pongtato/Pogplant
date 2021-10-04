@@ -6,25 +6,11 @@ namespace Pogplant
 	std::vector<Camera*> CameraResource::m_CameraPool;
 	Camera* CameraResource::m_ActiveCamera = nullptr;
 
-	void CameraResource::InitBaseCameras(const glm::vec3& _EditorPosition, const glm::vec3& _GamePosition, CameraConfig _CameraConfig)
+	void CameraResource::InitBaseCameras(const glm::vec3& _EditorPosition, CameraConfig _CameraConfig)
 	{
 		// Editor
 		AddCamera("EDITOR");
 		SetActiveCam("EDITOR");
-		m_ActiveCamera->InitCamera(_EditorPosition, _CameraConfig);
-		m_ActiveCamera->UpdateProjection();
-		m_ActiveCamera->UpdateView();
-
-		// Game
-		AddCamera("GAME");
-		SetActiveCam("GAME");
-		m_ActiveCamera->InitCamera(_GamePosition, _CameraConfig);
-		m_ActiveCamera->UpdateProjection();
-		m_ActiveCamera->UpdateView();
-
-		// Gizmo
-		AddCamera("GIZMO");
-		SetActiveCam("GIZMO");
 		m_ActiveCamera->InitCamera(_EditorPosition, _CameraConfig);
 		m_ActiveCamera->UpdateProjection();
 		m_ActiveCamera->UpdateView();

@@ -54,6 +54,11 @@ namespace Pogplant
 		m_View = glm::lookAt(_Eye, _Center, _Up);
 	}
 
+	void Camera::GetUpdatedView(const glm::vec3& _Eye, const glm::vec3& _Center, const glm::vec3& _Up, glm::mat4& _View)
+	{
+		_View = glm::lookAt(_Eye, _Center, _Up);
+	}
+
 	void Camera::UpdateProjection()
 	{
 		UpdateProjection(glm::vec2{ static_cast<float>(Window::m_Width),static_cast<float>(Window::m_Height) });
@@ -76,6 +81,20 @@ namespace Pogplant
 		}
 	}
 
+	void Camera::GetUpdatedProjection(const glm::vec2& _WindowSize, float _Zoom, float _Near, float _Far, glm::mat4& _Projection)
+	{
+		if (_WindowSize.y != 0)
+		{
+			const float aspectR = _WindowSize.x / _WindowSize.y;
+			_Projection = glm::perspective(glm::radians(_Zoom), aspectR, _Near, _Far);
+		}
+		else
+		{
+			const float aspectR = 1.0f;
+			_Projection = glm::perspective(glm::radians(_Zoom), aspectR, _Near, _Far);
+		}
+	}
+
 	void Camera::UpdateVec()
 	{
 		m_Front.x = cos(glm::radians(m_CameraConfig.m_Yaw)) * cos(glm::radians(m_CameraConfig.m_Pitch));
@@ -85,6 +104,17 @@ namespace Pogplant
 		m_Right = glm::cross(m_Front, glm::vec3(0, 1, 0));
 		m_Right = glm::normalize(m_Right);
 		m_Up = glm::cross(m_Right, m_Front);
+	}
+
+	void Camera::GetUpdatedVec(float _Yaw, float _Pitch, glm::vec3& _Up, glm::vec3& _Right, glm::vec3& _Front)
+	{
+		_Front.x = cos(glm::radians(_Yaw)) * cos(glm::radians(_Pitch));
+		_Front.y = sin(glm::radians(_Pitch));
+		_Front.z = sin(glm::radians(_Yaw)) * cos(glm::radians(_Pitch));
+		_Front = glm::normalize(_Front);
+		_Right = glm::cross(_Front, glm::vec3(0, 1, 0));
+		_Right = glm::normalize(_Right);
+		_Up = glm::cross(_Right, _Front);
 	}
 
 	void Camera::UpdateZoom(double _ScrollAmount)

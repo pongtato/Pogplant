@@ -42,9 +42,12 @@ namespace Pogplant
 		void Update(float _Dt);
 		void UpdateView();
 		void UpdateView(const glm::vec3& _Eye, const glm::vec3& _Center, const glm::vec3& _Up);
+		static void GetUpdatedView(const glm::vec3& _Eye, const glm::vec3& _Center, const glm::vec3& _Up, glm::mat4& _View);
 		void UpdateProjection();
 		void UpdateProjection(const glm::vec2& _WindowSize);
+		static void GetUpdatedProjection(const glm::vec2& _WindowSize, float _Zoom, float _Near, float _Far, glm::mat4& _Projection);
 		void UpdateVec();
+		static void GetUpdatedVec(float _Yaw, float _Pitch, glm::vec3& _Up, glm::vec3& _Right, glm::vec3& _Front);
 		void UpdateZoom(double _ScrollAmount);
 		void UpdateYawPitch(double _XPos, double _YPos);
 		void UpdateCameraPan(double _XPos, double _YPos);

@@ -15,6 +15,7 @@
 #include "FontResource.h"
 #include "MeshBuilder.h"
 #include "DebugDraw.h"
+#include "Logger.h"
 
 #include <gtc/matrix_transform.hpp>
 #include <glew.h>
@@ -47,12 +48,12 @@ namespace Pogplant
 		glEnable(GL_DEPTH_TEST);
 	}
 
-	void Renderer::DebugPass(const char* _CameraID, const entt::registry& registry)
+	void Renderer::DebugPass(const entt::registry& registry)
 	{
 		FrameBuffer::BindFrameBuffer(BufferType::DEBUG_BUFFER);
 		glEnable(GL_DEPTH_TEST);
 		ClearBuffer();
-		DrawDebug(_CameraID, registry, nullptr);
+		DrawDebug(registry, nullptr);
 		EndBuffer();
 	}
 
@@ -67,7 +68,7 @@ namespace Pogplant
 		FrameBuffer::BindFrameBuffer(BufferType::PP_BUFFER);
 	}
 
-	void Renderer::GLightPass(const char* _CameraID, const entt::registry& registry)
+	void Renderer::GLightPass(const entt::registry& registry, bool _EditorMode)
 	{
 		ShaderLinker::Use("GPASS");
 		glActiveTexture(GL_TEXTURE0);
@@ -125,8 +126,43 @@ namespace Pogplant
 			light_it++;
 		}
 
-		Camera* currCam = CameraResource::GetCamera(_CameraID);
-		ShaderLinker::SetUniform("viewPos", currCam->GetPosition());
+		/// Editor cam by default;
+		Camera* currCam = CameraResource::GetCamera("EDITOR");
+		// Try to get game camera
+		auto cam_results = registry.view<Components::Transform, Components::Camera>();
+		glm::vec3 position = currCam->GetPosition();
+		if (!_EditorMode)
+		{
+			// If game cam exists
+			if (cam_results.size_hint() > 0)
+			{
+				bool failFlag = true;
+				// Use the game camera
+				for (const auto& e : cam_results)
+				{
+					const auto& it_Trans = cam_results.get<const Components::Transform>(e);
+					const auto& it_Camera = cam_results.get<const Components::Camera>(e);
+					if (it_Camera.m_Active)
+					{
+						position = it_Trans.m_position;
+						failFlag = false;
+					}
+
+					if (failFlag)
+					{
+						Logger::Log({ "PP::RENDERER", LogEntry::TYPE::WARNING, "No active game cameras!" });
+					}
+				}
+
+			}
+			else
+			{
+				Logger::Log({ "PP::RENDERER", LogEntry::TYPE::ERROR, "No game camera found, default to editor camera" });
+			}
+		}
+		///
+
+		ShaderLinker::SetUniform("viewPos", position);
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
 		ShaderLinker::UnUse();
 
@@ -243,19 +279,54 @@ namespace Pogplant
 		glfwPollEvents();
 	}
 
-	void Renderer::Draw(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected, bool _EditorMode)
+	void Renderer::Draw(const entt::registry& registry, Components::Renderer* _Selected, bool _EditorMode)
 	{
 		glEnable(GL_CULL_FACE);
 
 		// Outline edge shit will be solved later
 		(void)_Selected;
 
-		Camera* currCam = CameraResource::GetCamera(_CameraID);
+		/// Editor cam by default;
+		Camera* currCam = CameraResource::GetCamera("EDITOR");
+		// Try to get game camera
+		auto cam_results = registry.view<Components::Camera>();
+		glm::mat4 projection = currCam->GetPerspective();
+		glm::mat4 view = currCam->GetView();
+		if (!_EditorMode)
+		{
+			// If game cam exists
+			if (cam_results.size() > 0)
+			{
+				bool failFlag = true;
+				// Use the game camera
+				for (const auto& e : cam_results)
+				{
+					const auto& it_Camera = cam_results.get<const Components::Camera>(e);
+					if (it_Camera.m_Active)
+					{
+						projection = it_Camera.m_Projection;
+						view = it_Camera.m_View;
+						failFlag = false;
+					}
+
+					if (failFlag)
+					{
+						Logger::Log({ "PP::RENDERER", LogEntry::TYPE::WARNING, "No active game cameras!" });
+					}
+				}
+
+			}
+			else
+			{
+				Logger::Log({ "PP::RENDERER", LogEntry::TYPE::ERROR, "No game camera found, default to editor camera" });
+			}
+		}
+		///
 
 		// Render G pass objects first
 		ShaderLinker::Use("MODEL");
-		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-		ShaderLinker::SetUniform("m4_View", currCam->GetView());
+		ShaderLinker::SetUniform("m4_Projection", projection);
+		ShaderLinker::SetUniform("m4_View", view);
 
 		auto results = registry.view<Components::Renderer>();
 
@@ -283,8 +354,8 @@ namespace Pogplant
 			MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
 
 			ShaderLinker::Use("LINE");
-			ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-			ShaderLinker::SetUniform("m4_View", currCam->GetView());
+			ShaderLinker::SetUniform("m4_Projection", projection);
+			ShaderLinker::SetUniform("m4_View", view);
 			ShaderLinker::SetUniform("m4_Model", glm::mat4{ 1 });
 			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.8f,0.2f,0.8f });
 		
@@ -302,14 +373,14 @@ namespace Pogplant
 		glDepthFunc(GL_LEQUAL);
 		ShaderLinker::Use("SKYBOX");
 		// Remove translate
-		glm::mat4 view = glm::mat4(glm::mat3(currCam->GetView()));
-		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		view = glm::mat4(glm::mat3(view));
+		ShaderLinker::SetUniform("m4_Projection", projection);
 		ShaderLinker::SetUniform("m4_View", view);
 		Skybox::Draw(TextureResource::m_TexturePool["SKYBOX3"]);
 		ShaderLinker::UnUse();
 		glDepthFunc(GL_LESS);
 
-		DrawText(_CameraID, registry);
+		DrawText(registry, _EditorMode);
 
 		//ShaderLinker::Use("BASIC");
 		//ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
@@ -353,19 +424,24 @@ namespace Pogplant
 		glDisable(GL_CULL_FACE);
 	}
 
-	void Renderer::DrawDebug(const char* _CameraID, const entt::registry& registry, Components::Renderer* _Selected)
+	void Renderer::DrawDebug(const entt::registry& registry, Components::Renderer* _Selected)
 	{
 		glEnable(GL_CULL_FACE);
 
 		// Outline edge shit will be solved later
 		(void)_Selected;
 
-		Camera* currCam = CameraResource::GetCamera(_CameraID);
+		/// Editor cam by default;
+		Camera* currCam = CameraResource::GetCamera("EDITOR");
+		// Try to get game camera
+		auto cam_results = registry.view<Components::Camera>();
+		glm::mat4 projection = currCam->GetPerspective();
+		glm::mat4 view = currCam->GetView();
 
 		// Render G pass objects first
 		ShaderLinker::Use("DEBUG");
-		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-		ShaderLinker::SetUniform("m4_View", currCam->GetView());
+		ShaderLinker::SetUniform("m4_Projection", projection);
+		ShaderLinker::SetUniform("m4_View", view);
 
 		auto results = registry.view<Components::DebugRender>();
 
@@ -408,13 +484,46 @@ namespace Pogplant
 		ShaderLinker::UnUse();
 	}
 
-	void Renderer::DrawText(const char* _CameraID, const entt::registry& registry)
+	void Renderer::DrawText(const entt::registry& registry, bool _EditorMode)
 	{
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		Camera* currCam = CameraResource::GetCamera(_CameraID);
+		// Editor cam by default;
+		Camera* currCam = CameraResource::GetCamera("EDITOR");
+		// Try to get game camera
+		auto cam_results = registry.view<Components::Camera>();
+		glm::mat4 projection = currCam->GetPerspective();
+		glm::mat4 view = currCam->GetView();
+		if (!_EditorMode)
+		{
+			// If game cam exists
+			if (cam_results.size() > 0)
+			{
+				bool failFlag = true;
+				// Use the game camera
+				for (const auto& e : cam_results)
+				{
+					const auto& it_Camera = cam_results.get<const Components::Camera>(e);
+					if (it_Camera.m_Active)
+					{
+						projection = it_Camera.m_Projection;
+						view = it_Camera.m_View;
+						failFlag = false;
+					}
 
+					if (failFlag)
+					{
+						Logger::Log({ "PP::RENDERER", LogEntry::TYPE::WARNING, "No active game cameras!" });
+					}
+				}
+			}
+			else
+			{
+				Logger::Log({ "PP::RENDERER", LogEntry::TYPE::ERROR, "No game camera found, default to editor camera" });
+			}
+		}
+		
 		// Use shader
 		ShaderLinker::Use("TEXT");
 
@@ -429,8 +538,8 @@ namespace Pogplant
 			// Ortho or not
 			if (!it_Text.m_Ortho)
 			{
-				ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-				ShaderLinker::SetUniform("m4_View", currCam->GetView());
+				ShaderLinker::SetUniform("m4_Projection", projection);
+				ShaderLinker::SetUniform("m4_View", view);
 			}
 			else
 			{
