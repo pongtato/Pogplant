@@ -165,77 +165,24 @@ namespace PhysicsDLC
 					return -1.f;
 			}
 
-			/*if (aabb1.m_min.x < aabb2.m_max.x && aabb2.m_min.x < aabb1.m_max.x)
-				tFirst = 0.f;
-			else
-			{
-				if (Vrel.x > 0)
-				{
-					if (aabb1.m_max.x < aabb2.m_min.x)
-						return -1.f;
-
-					if (aabb1.m_min.x > aabb2.m_max.x)
-						tFirst = std::max((aabb1.m_min.x - aabb2.m_max.x) / Vrel.x, tFirst);
-
-					if (aabb1.m_max.x > aabb2.m_min.x)
-						tLast = std::min((aabb1.m_max.x - aabb2.m_min.x) / Vrel.x, tLast);
-				}
-				else if (Vrel.x < 0)
-				{
-					if (aabb1.m_min.x > aabb2.m_max.x)
-						return -1.f;
-
-					if (aabb1.m_max.x < aabb2.m_min.x)
-						tFirst = std::max((aabb1.m_max.x - aabb2.m_min.x) / Vrel.x, tFirst);
-					if (aabb1.m_min.x < aabb2.m_max.x)
-						tLast = std::min((aabb1.m_min.x - aabb2.m_max.x) / Vrel.x, tLast);
-				}
-				else
-				{
-					if (aabb2.m_max.x < aabb1.m_min.x)
-						return false;
-					else if (aabb2.m_min.x > aabb1.m_max.x)
-						return false;
-				}
-			}
-
-
-			if (aabb1.m_max.y > aabb2.m_min.y && aabb2.m_max.y > aabb1.m_min.y)
-				tFirst = std::max(0.f, tFirst);
-			else
-			{
-				if (Vrel.y > 0)
-				{
-					if (aabb1.m_max.y < aabb2.m_min.y)
-						return -1.f;
-
-					if (aabb1.m_min.y > aabb2.m_max.y)
-						tFirst = std::max((aabb1.m_min.y - aabb2.m_max.y) / Vrel.y, tFirst);
-
-					if (aabb1.m_max.y > aabb2.m_min.y)
-						tLast = std::min((aabb1.m_max.y - aabb2.m_min.y) / Vrel.y, tLast);
-				}
-				else if (Vrel.y < 0)
-				{
-					if (aabb1.m_min.y > aabb2.m_max.y)
-						return -1.f;
-
-					if (aabb1.m_max.y < aabb2.m_min.y)
-						tFirst = std::max((aabb1.m_max.y - aabb2.m_min.y) / Vrel.y, tFirst);
-					if (aabb1.m_min.y < aabb2.m_max.y)
-						tLast = std::min((aabb1.m_min.y - aabb2.m_max.y) / Vrel.y, tLast);
-				}
-				else
-				{
-					if (aabb2.m_max.y < aabb1.m_min.y)
-						return false;
-					else if (aabb2.m_min.y > aabb1.m_max.y)
-						return false;
-				}
-			}//*/
-
 			//Objects collide
 			return tFirst;
+		}
+
+		CollisionResults&& CRDynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime)
+		{
+			CollisionResults CR;
+			CR.collisionTime = DynamicAABBAABB(aabb1, vel1, aabb2, vel2, deltaTime);
+
+			CR.collided = (CR.collisionTime > 0.f && CR.collisionTime < deltaTime);
+
+			if (CR.collided)
+			{
+				//Do extra checks
+
+			}
+
+			return std::move(CR);
 		}
 
 		bool PointAABB(const vec3& point, const Shapes::AABB& aabb)

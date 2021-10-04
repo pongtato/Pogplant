@@ -48,30 +48,30 @@ void Imaginary_system::Update()
 		auto& character = characters.get<Components::CharacterController>(entity);
 		auto& rigidBody = characters.get<Components::Rigidbody>(entity);
 
-		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_UP))
+		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_UP))
 		{
 			rigidBody.AddForce({ 0.f, 0.f, -character.force });
 		}
 
-		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_DOWN))
+		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_DOWN))
 		{
 			rigidBody.AddForce({ 0.f, 0.f, character.force });
 		}
 
-		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_LEFT))
+		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_LEFT))
 		{
 			rigidBody.AddForce({ -character.force, 0.f, 0.f });
 		}
 
-		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_RIGHT))
+		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_RIGHT))
 		{
 			rigidBody.AddForce({ character.force, 0.f, 0.f });
 		}
 
-		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_PAGE_UP))
+		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_PAGE_UP))
 			rigidBody.mass = 3.f;
 
-		if (Pogplant::Input::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_PAGE_DOWN))
+		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_PAGE_DOWN))
 			rigidBody.mass = 0.5f;
 	}
 }

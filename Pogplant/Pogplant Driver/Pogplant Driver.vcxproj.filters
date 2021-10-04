@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Serialiser">
       <UniqueIdentifier>{e4701d30-6323-44af-9e4a-355c6917d653}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ECS\Systems\Physics/Collision">
+      <UniqueIdentifier>{8ba0cf03-b687-4c98-998b-37473bbf41f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{d6c61706-5e10-4cea-889b-d918b021fb56}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -124,7 +130,7 @@
       <Filter>Source Files\AssetCompiler</Filter>
     </ClCompile>
     <ClCompile Include="Src\ECS\Systems\PhysicsSystem.cpp">
-      <Filter>Source Files\ECS\Systems</Filter>
+      <Filter>Source Files\ECS\Systems\Physics/Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -219,7 +225,13 @@
       <Filter>Source Files\ECS\Components</Filter>
     </ClInclude>
     <ClInclude Include="Src\ECS\Systems\PhysicsSystem.h">
-      <Filter>Source Files\ECS\Systems</Filter>
+      <Filter>Source Files\ECS\Systems\Physics/Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utils\ChronoTimer.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utils\ChronoTimer.hpp">
+      <Filter>Source Files\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Src\ECS\Components\Reflection_for_components.h">
       <Filter>Source Files\ECS\Components</Filter>

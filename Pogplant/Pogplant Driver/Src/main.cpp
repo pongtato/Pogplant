@@ -20,6 +20,8 @@
 #include "ResourceAllocator.hpp"
 #include "AssetCompiler.h"
 #include "FileHandler.h"
+
+#include "Utils/ChronoTimer.h"
 //struct MEMLEAK
 //{
 //	~MEMLEAK()
@@ -250,8 +252,9 @@ void Init()
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, false });
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
+	//entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{0.f}, 1.f });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f });
 	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
 
@@ -259,7 +262,7 @@ void Init()
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, false });
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f });
 	entity.AddComponent<Components::CharacterController>();
@@ -287,7 +290,7 @@ void Init()
 
 	ImaginarySystem.Init(&ecs);
 	physicsSystem.Init(&ecs);
-	Pogplant::Input::InputSystem::Instance()->Init(PP::Window::GetWindow());
+	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
 }
 
 void SetCube(glm::mat4 _BasePos)
@@ -528,14 +531,39 @@ void DrawImGUI()
 
 void Run()
 {
-	
+	PPU::ChronoTimer<float> c_dtTimer;
+	float c_deltaTime = 0.f;
+	float c_accumulatedFixedTime = 0.f;
+	static constexpr float c_minFixedUpdateTime = 1 / 30.f;
+
 	while (!PP::Window::ShouldCloseWindow())
 	{
+		c_dtTimer.startTimer();
+
 		PP::Window::CheckForceClose(); // Temp exit using Esc
 
 		// Camera KB movement
 		PP::CameraResource().UpdateActiveCamera(ImGui::GetIO().DeltaTime);
-		physicsSystem.Update(ImGui::GetIO().DeltaTime);
+
+
+		//Should move this to game state when it's available
+		//Physics dynamic update until fps drops below 30fps
+		c_accumulatedFixedTime += c_deltaTime;
+
+		if (c_accumulatedFixedTime < c_minFixedUpdateTime)
+		{
+			physicsSystem.Update(c_accumulatedFixedTime);
+			c_accumulatedFixedTime = 0.f;
+		}
+		else
+		{
+			while (c_accumulatedFixedTime > c_minFixedUpdateTime)
+			{
+				physicsSystem.Update(c_minFixedUpdateTime);
+				c_accumulatedFixedTime -= c_minFixedUpdateTime;
+			}
+		}
+
 
 		ImaginarySystem.Update();
 
@@ -552,9 +580,11 @@ void Run()
 		DrawImGUI();
 		///
 
-		Pogplant::Input::InputSystem::Instance()->pollEvents();
+		PPI::InputSystem::Instance()->pollEvents();
 
 		PP::Renderer::SwapBuffer();
+
+		c_deltaTime = c_dtTimer.getElapsedTimePrecise();
 	}
 }
 
@@ -567,7 +597,7 @@ void Exit()
 	PP::MeshBuilder::CleanUpMesh();
 	PP::Window::CleanUpWindow();
 
-	Pogplant::Input::InputSystem::Destroy();
+	PPI::InputSystem::Destroy();
 	FileHandler& fh = fh.GetInstance();
 	fh.Stop();
 }
