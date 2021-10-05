@@ -241,6 +241,17 @@ namespace Pogplant
         return true;
     }
 
+    bool ExtractTextureData(tinyddsloader::DDSFile& dds, tinyddsloader::DDSFile::ImageData& _DataExtract, GLFormat& _Format)
+    {
+        if (!TranslateFormat(dds.GetFormat(), &_Format))
+        {
+            return false;
+        }
+        _DataExtract = *dds.GetImageData(0, 0);
+
+        return true;
+    }
+
     void TexLoader::SetTextureFlip(bool _Flip)
     {
         stbi_set_flip_vertically_on_load(_Flip);
@@ -353,26 +364,36 @@ namespace Pogplant
         {
             std::string filename = _Directory + '/' + _Paths[i];
 
-            unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrChannels, 0);
-            if (data)
-            {
-                GLenum format = 0;
-                if (nrChannels == 1)
-                    format = GL_RED;
-                else if (nrChannels == 3)
-                    format = GL_RGB;
-                else if (nrChannels == 4)
-                    format = GL_RGBA;
+            //unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrChannels, 0);
 
-                glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-                stbi_image_free(data);
+            tinyddsloader::DDSFile dds;
+            auto ret = dds.Load(filename.c_str());
+            //dds.Flip();
+            GLFormat format;
+            tinyddsloader::DDSFile::ImageData imageData;
+            ExtractTextureData(dds, imageData, format);
+
+            if (imageData.m_width !=0 && imageData.m_height != 0)
+            {
+                glCompressedTexImage2D
+                (
+                    GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
+                    0,
+                    GL_COMPRESSED_RGBA_S3TC_DXT1_EXT,
+                    imageData.m_width,
+                    imageData.m_height,
+                    0,
+                    imageData.m_memSlicePitch,
+                    imageData.m_mem
+                );
+                //stbi_image_free(data);
             }
             else
             {
                 std::string err = "Texture failed to load at ";
                 err += _Directory + '/' + _Paths[i];
                 Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
-                stbi_image_free(data);
+                //stbi_image_free(data);
             }
         }
 

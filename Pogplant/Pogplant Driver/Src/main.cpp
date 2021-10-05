@@ -69,8 +69,8 @@ void Init()
 	fileHandler.AddNewWatchPath("Resources/Models");
 	fileHandler.AddNewWatchPath("Resources/Prefabs");
 
-	PP::TextureResource::InitResource();
 	PP::MeshBuilder::InitMesh();
+	PP::TextureResource::InitResource();
 	PP::FontResource::InitResource();
 	PP::ShaderLinker::InitShader();
 	PP::FrameBuffer::InitFrameBuffer();

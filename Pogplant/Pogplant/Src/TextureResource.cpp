@@ -7,17 +7,17 @@ namespace Pogplant
 
 	void TextureResource::InitResource()
 	{
-		m_TexturePool["SKYBOX"] = TexLoader::LoadCubemap
-		(
-			{
-				"right.dds",
-				"left.dds",
-				"top.dds",
-				"bottom.dds",
-				"front.dds",
-				"back.dds"
-			}
-			, "Resources/Textures/Skybox"
-		);
+        m_TexturePool["SKYBOX"] = TexLoader::LoadCubemap
+        (
+            {
+                "px.dds",
+                "nx.dds",
+                "py.dds",
+                "ny.dds",
+                "pz.dds",
+                "nz.dds"
+            }
+            , "Resources/Textures/Skybox"
+        );
 	}
 }
