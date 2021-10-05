@@ -452,6 +452,8 @@ namespace PogplantDriver
 				auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);
 				if (transform && ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
 				{
+					Reflect_ImGui(transform);
+
 					//// Mode switch
 					//if (ImGui::RadioButton("Translate", m_EditMode == ImGuizmo::TRANSLATE))
 					//{
@@ -476,23 +478,23 @@ namespace PogplantDriver
 					//ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
 
 					// Usual stuff
-					ImGui::Text("Translate");
-					ImGui::PushID("Tr");
-					ImGui::DragFloat3("", glm::value_ptr(transform->m_position));
-					ImGui::PopID();
+					//ImGui::Text("Translate");
+					//ImGui::PushID("Tr");
+					//ImGui::DragFloat3("", glm::value_ptr(transform->m_position));
+					//ImGui::PopID();
 
-					ImGui::Text("Rotate");
-					ImGui::PushID("Rt");
-					ImGui::DragFloat3("", glm::value_ptr(transform->m_rotation));
-					ImGui::PopID();
+					//ImGui::Text("Rotate");
+					//ImGui::PushID("Rt");
+					//ImGui::DragFloat3("", glm::value_ptr(transform->m_rotation));
+					//ImGui::PopID();
 
-					ImGui::Text("Scale");
-					ImGui::PushID("Sc");
-					ImGui::DragFloat3("", glm::value_ptr(transform->m_scale));
-					ImGui::PopID();
+					//ImGui::Text("Scale");
+					//ImGui::PushID("Sc");
+					//ImGui::DragFloat3("", glm::value_ptr(transform->m_scale));
+					//ImGui::PopID();
 
-					ImguiBlankSeperator(1);
-					ImGui::Separator();
+					//ImguiBlankSeperator(1);
+					//ImGui::Separator();
 				}
 
 				auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(m_CurrentEntity);
@@ -1334,10 +1336,15 @@ namespace PogplantDriver
 
 		ImGui::InputText(aaa.c_str(), name_stuff, IM_ARRAYSIZE(name_stuff));
 
-		ImguiBlankSeperator(1);
-		ImGui::Separator();
-
 		return std::string{ name_stuff };
+	}
+
+	void ImguiHelper::CreateDragFloat3(std::string& _label, float* _value, float increment_speed, float min_val, float max_val)
+	{
+		ImGui::Text(_label.c_str());
+		ImGui::PushID(_label.c_str());
+		ImGui::DragFloat3("", _value, increment_speed, min_val, max_val);
+		ImGui::PopID();
 	}
 
 	void ImguiHelper::Reflect_ImGui(rttr::instance _obj)
@@ -1347,7 +1354,7 @@ namespace PogplantDriver
 
 		auto prop_list = obj.get_derived_type().get_properties();
 
-		for (auto prop : prop_list)
+		for (auto& prop : prop_list)
 		{
 			rttr::variant prop_value = prop.get_value(obj);
 
@@ -1361,7 +1368,18 @@ namespace PogplantDriver
 				std::string _str = CreateStringInputField(name, prop_value.to_string());
 				prop.set_value(obj, _str);
 			}
+			else if (prop_value.is_type<glm::vec3>()) 
+			{
+				glm::vec3& test = prop_value.get_value<glm::vec3>();
+				CreateDragFloat3(name, glm::value_ptr(test));
+				prop.set_value(obj, test);
+			}
 		}
+
+
+		ImguiBlankSeperator(1);
+		ImGui::Separator();
+
 	}
 
 }
