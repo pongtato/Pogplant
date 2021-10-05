@@ -111,7 +111,7 @@ namespace PPF
                             }
                         }
                         // File type is an uncompiled model
-                        else if (extension.compare(".fbx") == 0 || extension.compare(".obj"))
+                        else if (extension.compare(".fbx") == 0 || extension.compare(".obj") == 0)
                         {
                             if (!PP::ModelResource::m_ModelPool.contains(key))
                             {
@@ -142,7 +142,7 @@ namespace PPF
                                 }
                             }
                             // File type is an uncompiled model
-                            else if (extension.compare(".fbx") == 0 || extension.compare(".obj"))
+                            else if (extension.compare(".fbx") == 0 || extension.compare(".obj") == 0)
                             {
                                 // Compile the new model
                                 PPC::AssetCompiler& ac = ac.GetInstance();
