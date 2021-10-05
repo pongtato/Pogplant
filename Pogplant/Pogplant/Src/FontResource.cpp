@@ -168,7 +168,7 @@ namespace Pogplant
 		}
 
 		// Prepare textures
-		newFont->m_TextureID = TexLoader::LoadTexture(newFont->m_Texture, "Resources/Fonts/");
+		newFont->m_TextureID = TexLoader::LoadUncompressedTexture(newFont->m_Texture, "Resources/Fonts/");
 
 		// Update pool
 		m_FontPool[id] = newFont;

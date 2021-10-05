@@ -241,9 +241,10 @@ namespace Pogplant
         return true;
     }
 
-    bool ExtractTextureData(tinyddsloader::DDSFile& dds, tinyddsloader::DDSFile::ImageData& _DataExtract, GLFormat& _Format)
+    bool ExtractTextureData(tinyddsloader::DDSFile& dds, tinyddsloader::DDSFile::ImageData& _DataExtract)
     {
-        if (!TranslateFormat(dds.GetFormat(), &_Format))
+        GLFormat format;
+        if (!TranslateFormat(dds.GetFormat(), &format))
         {
             return false;
         }
@@ -353,6 +354,41 @@ namespace Pogplant
         return textureID;
 	}
 
+    unsigned int TexLoader::LoadUncompressedTexture(std::string _Path, std::string _Directory, bool _Alpha)
+    {
+        const GLint format = _Alpha ? GL_RGBA : GL_RGB;
+
+        std::string filename = _Directory + '/' + _Path;
+
+        tinyddsloader::DDSFile dds;
+        auto ret = dds.Load(filename.c_str());
+        dds.Flip();
+        tinyddsloader::DDSFile::ImageData imageData;
+        ExtractTextureData(dds, imageData);
+        unsigned int textureID;
+        glGenTextures(1, &textureID);
+
+        if (imageData.m_width != 0 && imageData.m_height != 0)
+        {
+            glBindTexture(GL_TEXTURE_2D, textureID);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, imageData.m_width, imageData.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData.m_mem);
+            glGenerateMipmap(GL_TEXTURE_2D);
+
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        }
+        else
+        {
+            std::string err = "Texture failed to load at ";
+            err += _Directory + '/' + _Path;
+            Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+        }
+
+        return textureID;
+    }
+
     unsigned int TexLoader::LoadCubemap(std::vector<std::string> _Paths, std::string _Directory)
     {
         unsigned int textureID;
@@ -369,9 +405,8 @@ namespace Pogplant
             tinyddsloader::DDSFile dds;
             auto ret = dds.Load(filename.c_str());
             //dds.Flip();
-            GLFormat format;
             tinyddsloader::DDSFile::ImageData imageData;
-            ExtractTextureData(dds, imageData, format);
+            ExtractTextureData(dds, imageData);
 
             if (imageData.m_width !=0 && imageData.m_height != 0)
             {
