@@ -242,12 +242,22 @@ namespace PogplantDriver
 				ImGui::EndMenu();
 			}
 
-			if (ImGui::BeginMenu("Tools"))
+			ImGui::SameLine(150.f);
+			if (ImGui::Button(ICON_FA_ARROWS_ALT " Move"))
 			{
-				ImGui::MenuItem("(Tools menu)", NULL, false, false);
-				if (ImGui::MenuItem("Tool?")) {}
-				ImGui::EndMenu();
+				m_EditMode = ImGuizmo::TRANSLATE;
 			}
+
+			if (ImGui::Button(ICON_FA_SYNC " Rotate"))
+			{
+				m_EditMode = ImGuizmo::ROTATE;
+			}
+
+			if (ImGui::Button(ICON_FA_EXPAND_ALT " Scale"))
+			{
+				m_EditMode = ImGuizmo::SCALE;
+			}
+
 			ImGui::EndMainMenuBar();
 		}
 		if(exiting)
@@ -279,7 +289,6 @@ namespace PogplantDriver
 			}
 			ImGui::EndPopup();
 		}
-
 
 		// Directory Render
 		m_Directory.RenderDirectory();
@@ -436,21 +445,21 @@ namespace PogplantDriver
 				auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);
 				if (transform && ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
 				{
-					// Mode switch
-					if (ImGui::RadioButton("Translate", m_EditMode == ImGuizmo::TRANSLATE))
-					{
-						m_EditMode = ImGuizmo::TRANSLATE;
-					}
-					ImGui::SameLine();
-					if (ImGui::RadioButton("Rotate", m_EditMode == ImGuizmo::ROTATE))
-					{
-						m_EditMode = ImGuizmo::ROTATE;
-					}
-					ImGui::SameLine();
-					if (ImGui::RadioButton("Scale", m_EditMode == ImGuizmo::SCALE))
-					{
-						m_EditMode = ImGuizmo::SCALE;
-					}
+					//// Mode switch
+					//if (ImGui::RadioButton("Translate", m_EditMode == ImGuizmo::TRANSLATE))
+					//{
+					//	m_EditMode = ImGuizmo::TRANSLATE;
+					//}
+					//ImGui::SameLine();
+					//if (ImGui::RadioButton("Rotate", m_EditMode == ImGuizmo::ROTATE))
+					//{
+					//	m_EditMode = ImGuizmo::ROTATE;
+					//}
+					//ImGui::SameLine();
+					//if (ImGui::RadioButton("Scale", m_EditMode == ImGuizmo::SCALE))
+					//{
+					//	m_EditMode = ImGuizmo::SCALE;
+					//}
 
 					// Snap when editing transform
 					ImGui::Checkbox("Snap Transform", &m_UseSnap);
@@ -523,13 +532,13 @@ namespace PogplantDriver
 						if (temp_light != renderer->m_UseLight)
 							renderer->m_UseLight = temp_light;
 
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
 					}
 					if (!enable_render)
 					{
 						m_ecs->GetReg().remove<Components::Renderer>(m_CurrentEntity);
 					}
-					ImguiBlankSeperator(1);
-					ImGui::Separator();
 				}
 
 				auto point_light = m_ecs->GetReg().try_get<Components::Point_Light>(m_CurrentEntity);
@@ -550,13 +559,14 @@ namespace PogplantDriver
 						ImGui::Text("Quadratic Attenuation");
 						ImGui::InputFloat("###PQA", &point_light->m_Quadratic, 0.001f, 1.0f, "%.3f");
 
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
 					}
 					if (!enable_pointlight)
 					{
 						m_ecs->GetReg().remove<Components::Point_Light>(m_CurrentEntity);
 					}
-					ImguiBlankSeperator(1);
-					ImGui::Separator();
+
 				}
 
 				auto direction_light = m_ecs->GetReg().try_get<Components::Directional_Light>(m_CurrentEntity);
@@ -580,13 +590,14 @@ namespace PogplantDriver
 						ImGui::Text("Specular");
 						ImGui::InputFloat("###Dspec", &direction_light->m_Specular, 0.01f, 1.0f, "%.3f");
 
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
 					}
 					if (!enable_directionlight)
 					{
 						m_ecs->GetReg().remove<Components::Directional_Light>(m_CurrentEntity);
 					}
-					ImguiBlankSeperator(1);
-					ImGui::Separator();
+
 				}
 
 				auto text = m_ecs->GetReg().try_get<Components::Text>(m_CurrentEntity);
@@ -653,13 +664,14 @@ namespace PogplantDriver
 						ImGui::SameLine();
 						ImGui::Checkbox("Gravity", &rigid->useGravity);
 
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
 					}
 					if (!enable_rigid)
 					{
 						m_ecs->GetReg().remove<Components::Rigidbody>(m_CurrentEntity);
 					}
-					ImguiBlankSeperator(1);
-					ImGui::Separator();
+
 				}
 
 
@@ -729,15 +741,14 @@ namespace PogplantDriver
 						ImGui::Text("Trigger?");
 						ImGui::Checkbox("Trig?", &box_collider->isTrigger);
 
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
 					}
 					if (!enable_box_collider)
 					{
 						m_ecs->GetReg().remove<Components::BoxCollider>(m_CurrentEntity);
 					}
-					ImguiBlankSeperator(1);
-					ImGui::Separator();
 				}
-
 
 				auto sphere_collider = m_ecs->GetReg().try_get<Components::SphereCollider>(m_CurrentEntity);
 				if (sphere_collider)
@@ -755,14 +766,14 @@ namespace PogplantDriver
 						ImGui::Text("Trigger?");
 						ImGui::Checkbox("Trig?", &sphere_collider->isTrigger);
 
+
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
 					}
 					if (!enable_sphere_collider)
 					{
 						m_ecs->GetReg().remove<Components::SphereCollider>(m_CurrentEntity);
 					}
-
-					ImguiBlankSeperator(1);
-					ImGui::Separator();
 				}
 
 	
