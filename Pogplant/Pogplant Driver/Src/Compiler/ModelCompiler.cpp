@@ -1,4 +1,19 @@
+/*****************************************************************************/
+/*!
+\file	ModelCompiler.cpp
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+	ModelCompiler class to compile models to own filetype
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
 #include "ModelCompiler.h"
+#include "Logger.h"
 
 ModelCompiler::ModelCompiler()
 {
@@ -50,48 +65,6 @@ void ModelCompiler::Write(std::ofstream& outBuffer)
 			outBuffer.write(textures.m_Path.c_str(), len);
 		}
 	}
-
-	// Write the meshes directory/vertices/indices/textures in
-	//std::stringstream dir;
-	//dir << m_modelVec.back().m_Directory << std::endl;
-	//dir << "\r\n\r\n";
-	//outBuffer.write(dir.str().c_str(), dir.str().length());
-
-	//for (auto& meshes : m_modelVec.back().m_Meshes)
-	//{
-	//	std::stringstream ss;
-	//	// Save the vertices
-	//	for (auto& vtx : meshes.m_Vertices)
-	//	{
-	//		// Position
-	//		ss << vtx.m_Position.x << ' ' << vtx.m_Position.y << ' ' << vtx.m_Position.z << ' ';
-	//		// Normal
-	//		ss << vtx.m_Normal.x << ' ' << vtx.m_Normal.y << ' ' << vtx.m_Normal.z << ' ';
-	//		// Tangent
-	//		ss << vtx.m_Tangent.x << ' ' << vtx.m_Tangent.y << ' ' << vtx.m_Tangent.z << ' ';
-	//		// Bi-Tangent
-	//		ss << vtx.m_BiTangent.x << ' ' << vtx.m_BiTangent.y << ' ' << vtx.m_BiTangent.z << ' ';
-	//		// Tex-Coords
-	//		ss << vtx.m_TexCoords.x << ' ' << vtx.m_TexCoords.y << '\n';
-	//	}
-	//	ss << "\r\n\r\n";
-	//	// Save the indices
-	//	for (auto& idx : meshes.m_Indices)
-	//	{
-	//		// Indices (unsigned int)
-	//		ss << idx << '\n';
-	//	}
-	//	ss << "\r\n\r\n";
-	//	// Save the textures
-	//	for (auto& texture : meshes.m_Textures)
-	//	{
-	//		// Type of texture
-	//		ss << texture.m_Type << ' ' << texture.m_Path << '\n';
-	//	}
-	//	ss << "\r\n\r\n";
-	//		//Write to the file
-	//	outBuffer.write(ss.str().c_str(), ss.str().length());
-	//}
 	UnloadModel();
 }
 	

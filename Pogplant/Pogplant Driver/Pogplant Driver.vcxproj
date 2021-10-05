@@ -183,7 +183,6 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClInclude Include="Src\ImguiHelper.h" />
     <ClInclude Include="Src\Input\GLFWInput.h" />
     <ClInclude Include="Src\Input\InputSystem.h" />
-    <ClInclude Include="Src\ResourceAllocator.hpp" />
     <ClInclude Include="Src\ScriptBinder.h" />
     <ClInclude Include="Src\Serialiser\Serializer.h" />
     <ClInclude Include="Src\Utils\ChronoTimer.h" />

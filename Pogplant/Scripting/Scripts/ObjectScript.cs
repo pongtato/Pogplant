@@ -1,10 +1,10 @@
 ﻿/*****************************************************************************/
 /*!
-\file	main.cs
+\file	ObjectScript.cs
 \author Clarence Chye Min Liang
 \par	email: chye.m\@digipen.edu
 \details
-	Main class for scripting c# project
+	ObjectScript class for scripting c# project
 
 \copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
 			or disclosure of this file or its contents without the prior
@@ -17,21 +17,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace Scripting
 {
-    // My main class for scripting
-    public class Scripting
+    // This is mainly for testing purposes
+    public class ObjectScript
     {
-        // Add Script Types here
-        public static PlayerScript Player()
-        {
-            return new PlayerScript();
-        }
-
-        public static EnemyScript Enemy()
-        {
-            return new EnemyScript();
-        }
+        // Fetch something from CPP, in this example I'll fetch a string
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static string getRandomWord();
     }
 }

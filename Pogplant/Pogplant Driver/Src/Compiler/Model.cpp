@@ -1,3 +1,17 @@
+/*****************************************************************************/
+/*!
+\file	Model.cpp
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+    Model class that contains all data for geometry of models
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+            or disclosure of this file or its contents without the prior
+            written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
 #include "Model.h"
 #include "Logger.h"
 
@@ -27,7 +41,7 @@ void Model::LoadModel(std::string _Path)
     // check for errors
     if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
     {
-        Logger::Log({ "PP::ERROR::ASSIMP",LogEntry::ERROR, importer.GetErrorString() });
+        Logger::Log({ "PP::ASSIMP",LogEntry::ERROR, importer.GetErrorString() });
         return;
     }
     ProcessNode(scene->mRootNode, scene);
@@ -61,7 +75,9 @@ Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene)
     for (unsigned int i = 0; i < _Mesh->mNumVertices; i++)
     {
         Vertex vertex;
-        glm::vec3 vector; // we declare a placeholder vector since assimp uses its own vector class that doesn't directly convert to glm's vec3 class so we transfer the data to this placeholder glm::vec3 first.
+        // we declare a placeholder vector since assimp uses its own vector class that doesn't directly
+        // convert to glm's vec3 class so we transfer the data to this placeholder glm::vec3 first.
+        glm::vec3 vector; 
         // positions
         vector.x = _Mesh->mVertices[i].x;
         vector.y = _Mesh->mVertices[i].y;

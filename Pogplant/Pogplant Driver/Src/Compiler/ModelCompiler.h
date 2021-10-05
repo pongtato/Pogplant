@@ -1,8 +1,21 @@
+/*****************************************************************************/
+/*!
+\file	ModelCompiler.h
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+	ModelCompiler class to compile models to own filetype
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
 #ifndef _MODEL_COMPILER_H_
 #define _MODEL_COMPILER_H_
 
 #include "Model.h"
-#include <iostream>
 #include <string>
 #include <sstream>
 #include <fstream>

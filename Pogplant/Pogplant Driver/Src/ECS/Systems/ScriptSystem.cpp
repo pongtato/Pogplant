@@ -1,3 +1,17 @@
+/*****************************************************************************/
+/*!
+\file	ScriptSystem.cpp
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+	Scripting system that utilizes Mono for c# scripting
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
 #include "../Components/Components.h"
 #include "../Components/PhysicsComponents.h"
 #include "ScriptSystem.h"
@@ -10,7 +24,8 @@ ScriptSystem::~ScriptSystem()
 {
 	for (auto& monoObj : m_MonoObjects)
 	{
-		mono_gchandle_free(monoObj.first);
+		mono_gchandle_free(monoObj.second->m_GCHandle);
+		free(monoObj.second);
 	}
 
 	if (m_ptrMonoDomain)
@@ -37,20 +52,14 @@ void ScriptSystem::Init(ECS* ecs)
 			m_ptrGameAssemblyImage = mono_assembly_get_image(m_ptrGameAssembly);
 			if (m_ptrGameAssemblyImage)
 			{
-				// Add the internal calls
-				mono_add_internal_call("Scripting.ObjectScript::getRandomWord()", &ScriptBinder::CS_getRandomWord);
-				// The IScript Class
-				//MonoClass* ptrIScriptClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "IScripts");
-				m_VirtualMonoClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "IScripts");
-				// The Main Class
-				//MonoClass* ptrMainClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "Scripting");
-				m_MonoClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "Scripting");
+				MonoClass* m_MonoClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "Scripting");
+				MonoClass* m_MonoPlayerClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "PlayerScript");
+				MonoClass* m_MonoEnemyClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "EnemyScript");
 
-				// If both classes exist
-				if (m_VirtualMonoClass && m_MonoClass)
+				if (m_MonoPlayerClass && m_MonoClass)
 				{
 					// Main method describe
-					MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(".Scripting:main()", false);
+					MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(".Scripting:Player()", false);
 
 					if (ptrMainMethodDesc)
 					{
@@ -65,8 +74,44 @@ void ScriptSystem::Init(ECS* ecs)
 							{
 								// Garbage Collection Handle for the game object
 								uint32_t m_gameObjectGCHandle = mono_gchandle_new(m_ptrGameObject, false);
-								// Add to the pool
-								m_MonoObjects[m_gameObjectGCHandle] = m_ptrGameObject;
+								// Add to the map
+								m_MonoObjects["Player"] = new MonoObjectWithGC{m_gameObjectGCHandle, m_ptrGameObject};
+
+								// Exception hit
+								if (ptrExObject)
+								{
+									MonoString* exString = mono_object_to_string(ptrExObject, nullptr);
+									const char* exCString = mono_string_to_utf8(exString);
+									std::cout << exCString << std::endl;
+								}
+
+								// Free desc
+								mono_method_desc_free(ptrMainMethodDesc);
+							}
+						}
+					}
+				}
+
+				if (m_MonoEnemyClass && m_MonoClass)
+				{
+					// Main method describe
+					MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(".Scripting:Enemy()", false);
+
+					if (ptrMainMethodDesc)
+					{
+						// Find the main in mainclass
+						MonoMethod* ptrMainMethod = mono_method_desc_search_in_class(ptrMainMethodDesc, m_MonoClass);
+						if (ptrMainMethod)
+						{
+							MonoObject* ptrExObject = nullptr;
+							MonoObject* m_ptrGameObject = mono_runtime_invoke(ptrMainMethod, nullptr, nullptr, &ptrExObject);
+
+							if (m_ptrGameObject)
+							{
+								// Garbage Collection Handle for the game object
+								uint32_t m_gameObjectGCHandle = mono_gchandle_new(m_ptrGameObject, false);
+								// Add to the map
+								m_MonoObjects["Enemy"] = new MonoObjectWithGC{ m_gameObjectGCHandle, m_ptrGameObject };
 
 								// Exception hit
 								if (ptrExObject)
@@ -93,73 +138,66 @@ void ScriptSystem::Start()
 {
 	auto entities = m_registry->GetReg().view<Components::Scriptable>();
 
-	for (auto& obj : m_MonoObjects)
+	for (auto& entity : entities)
 	{
-		auto klass = mono_object_get_class(obj.second);
-		if (klass)
+		auto& scriptable = entities.get<Components::Scriptable>(entity);
+		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
-			for (auto& entity : entities)
+			MonoObject* monoObj = m_MonoObjects[scripts]->m_MonoObject;
+			if (!monoObj)
 			{
-				auto& scriptable = entities.get<Components::Scriptable>(entity);
-				MonoMethod* method = FindMethod(klass, "Start");
-				mono_runtime_invoke(method, obj.second, nullptr, nullptr);
-
-				//for (auto& methodName : scriptable.m_Functions)
-				//{
-				//	MonoMethod* method = FindMethod(klass, methodName);
-				//	if (method)
-				//	{
-				//		mono_runtime_invoke(method, obj.second, nullptr, nullptr);
-				//	}
-				//}
+				// Maybe log something here
+				std::cout << "Script: "<< scripts << " not found" << std::endl;
+				continue;
 			}
+
+			auto klass = mono_object_get_class(monoObj);
+			if (!klass)
+			{
+				// Maybe log something here
+				std::cout << "MonoClass not found" << std::endl;
+			}
+			MonoMethod* method = FindMethod(klass, "Start");
+			mono_runtime_invoke(method, monoObj, nullptr, nullptr);
 		}
 	}
 }
 
 void ScriptSystem::Update()
 {
-	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Transform, Components::Rigidbody>();
+	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform>();
 
-	for (auto& obj : m_MonoObjects)
+	for (auto& entity : entities)
 	{
-		auto klass = mono_object_get_class(obj.second);
-		if (klass)
+		auto& scriptable = entities.get<Components::Scriptable>(entity);
+		auto& rigidbody = entities.get<Components::Rigidbody>(entity);
+		auto& transform = entities.get<Components::Transform>(entity);
+
+		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
-			for (auto& entity : entities)
+			MonoObject* monoObj = m_MonoObjects[scripts]->m_MonoObject;
+			if (!monoObj)
 			{
-				auto& scriptable = entities.get<Components::Scriptable>(entity);
-				auto& transform = entities.get<Components::Transform>(entity);
-				auto& rigidbody = entities.get<Components::Rigidbody>(entity);
-				
-				
-				MonoMethod* method = FindMethod(klass, "Update");
-				mono_runtime_invoke(method, obj.second, nullptr, nullptr);
-				//MonoMethod* methodMove = FindMethod(klass, "Move");
-				//float random = 0.00167f;
-
-				//void* args[] = { &random,  &transform };
-				//mono_runtime_invoke(methodMove, obj.second, args, nullptr);
-
-				void* args1[] = { &rigidbody };
-				MonoMethod* rigidbodyMove = FindMethod(klass, "RigidbodyMove"); 
-				mono_runtime_invoke(rigidbodyMove, obj.second, args1, nullptr);
-				//for (auto& methodName : scriptable.m_Functions)
-				//{
-				//	MonoMethod* method = FindMethod(klass, methodName);
-				//	if (method)
-				//	{
-				//		mono_runtime_invoke(method, obj.second, nullptr, nullptr);
-				//	}
-				//}
+				// Maybe log something here
+				std::cout << "Script: " << scripts << " not found" << std::endl;
+				continue;
 			}
+
+			auto klass = mono_object_get_class(monoObj);
+			if (!klass)
+			{
+				// Maybe log something here
+				std::cout << "MonoClass not found" << std::endl;
+			}
+			MonoMethod* method = FindMethod(klass, "Update");
+			void* args[] = {&transform, &rigidbody };
+			mono_runtime_invoke(method, monoObj, args, nullptr);
 		}
 	}
 }
 
 MonoMethod* ScriptSystem::FindMethod(MonoClass* klass, std::string methodName, int params)
 {
-	// I think that takes searches all methods with any number of params.
 	MonoMethod* method = mono_class_get_method_from_name(klass, methodName.c_str(), params);
 	if (!method)
 	{

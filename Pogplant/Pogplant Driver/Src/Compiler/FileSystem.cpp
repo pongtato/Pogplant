@@ -1,3 +1,17 @@
+/*****************************************************************************/
+/*!
+\file	FileSystem.cpp
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+	FileSystem class that calls the necessary compiler
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
 #include "FileSystem.h"
 
 ModelCompiler FileSystem::m_modelCompiler;
@@ -17,12 +31,10 @@ void FileSystem::GenericToBinary(std::string filePath)
 	{
 		return;
 	}
-	/* Read the raw binary dump, not needed for models, not sure about font */
+	
+	// Read
 	ReadRawBin(filePath);
-	// Not sure what to add to the subheader
-	m_file.m_header.m_subHeaderLen = 0;
-
-	// Write back the data
+	// Write 
 	WriteToBin(m_file.m_name);
 	m_buffer.clear();
 }
@@ -34,15 +46,10 @@ bool FileSystem::isRunning()
 
 bool FileSystem::ProcessInput(std::string& input)
 {
-	if (input.compare("quit") == 0)
-	{
-		m_running = false;
-		return false;
-	}
-
+	// Check if input is empty
 	if (input.empty())
 	{
-		std::cout << "Input is empty, try again." << std::endl;
+		Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Input is empty" });
 		return false;
 	}
 
@@ -52,6 +59,7 @@ bool FileSystem::ProcessInput(std::string& input)
 		input = input.substr(1, input.length() - 2);
 	}
 
+	// Check if file exists
 	if (!Exists(input))
 	{
 		return false;
@@ -63,7 +71,6 @@ bool FileSystem::ProcessInput(std::string& input)
 	// Get the file extension and file name
 	if (!GetFileNameExt(input))
 	{
-		std::cout << "Failed to extract file extension." << std::endl;
 		return false;
 	}
 
@@ -85,6 +92,7 @@ bool FileSystem::GetFileNameExt(std::string& filePath)
 	bool result;
 	size_t foundSlash = filePath.find_last_of("/\\");
 	size_t foundDot = filePath.find('.');
+
 	if (foundDot != std::string::npos)
 	{
 		m_file.m_name = filePath.substr(foundSlash+1, foundDot-foundSlash-1);
@@ -93,6 +101,7 @@ bool FileSystem::GetFileNameExt(std::string& filePath)
 	}
 	else
 	{
+		Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Unable to extract file extension" });
 		result = false;
 	}
 
@@ -110,16 +119,11 @@ void FileSystem::WriteToBin(std::string& fileName)
 
 	if (outBuffer.fail())
 	{
-		std::cout << "Unable to write file." << std::endl;
+		Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Unable to write file"});
 		return;
 	}
 
-	// Header Stuff
-	//std::stringstream ss;
-	//ss << static_cast<size_t>(m_file.m_header.m_type) << "\r\n\r\n";
-	//outBuffer.write(ss.str().c_str(), ss.str().length());
-
-	/* If file type is model, call the model compiler to write */
+	// If file type is model, call the model compiler to write
 	if (m_file.m_header.m_type == FileType::MODEL)
 	{
 		m_modelCompiler.Write(outBuffer);
@@ -131,7 +135,8 @@ void FileSystem::WriteToBin(std::string& fileName)
 	
 	// Close the buffer
 	outBuffer.close();
-	std::cout << "[PP::COMPILER] Finished compiling " << m_file.m_name << '.' << m_file.m_ext << "to " << m_Ext << " format" << std::endl;
+	std::string succ = "Finished compiling " + m_file.m_name + '.' + m_file.m_ext + "to " + m_Ext + " format";
+	Logger::Log({ "PP::COMPILER", LogEntry::SUCCESS, succ });
 }
 
 void FileSystem::ReadRawBin(std::string& filePath)
@@ -141,7 +146,7 @@ void FileSystem::ReadRawBin(std::string& filePath)
 
 	if (inBuffer.fail())
 	{
-		std::cout << "Unable to read file." << std::endl;
+		Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Unable to read file" });
 		return;
 	}
 
@@ -168,6 +173,6 @@ bool FileSystem::Exists(std::string& filePath)
 		return true;
 	}
 
-	std::cout << "Unable to find file." << std::endl;
+	Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Unable to find file" });
 	return false;
 }

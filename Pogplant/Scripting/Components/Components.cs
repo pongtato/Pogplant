@@ -1,4 +1,18 @@
-﻿using System;
+﻿/*****************************************************************************/
+/*!
+\file	Components.cs
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+	Components class for scripting c# project
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +22,7 @@ using System.Runtime.CompilerServices;
 
 namespace Scripting
 {
+    // All the components needed for the scripts
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector3
     {

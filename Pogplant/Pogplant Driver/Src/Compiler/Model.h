@@ -1,3 +1,17 @@
+/*****************************************************************************/
+/*!
+\file	Model.h
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+	Model class that contains all data for geometry of models
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
 #ifndef _MODEL_H_
 #define _MODEL_H_
 
@@ -65,4 +79,4 @@ private:
 };
 
 
-#endif // _MODEL_H_#pragma once
+#endif // _MODEL_H_

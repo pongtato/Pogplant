@@ -1,9 +1,22 @@
+/*****************************************************************************/
+/*!
+\file	FileSystem.h
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+	FileSystem class that calls the necessary compiler
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
 #ifndef _FILE_SYSTEM_
 #define _FILE_SYSTEM_
 
 #include "ModelCompiler.h"
 #include "Logger.h"
-#include <iostream>
 
 enum class Mode
 {
@@ -24,7 +37,6 @@ struct FileHeader
 {
 	FileType m_type;
 	size_t m_payloadSize;
-	size_t m_subHeaderLen;
 };
 
 struct File
@@ -55,7 +67,6 @@ private:
 	bool Exists(std::string& filePath);
 
 	// Private data members
-
 	static ModelCompiler m_modelCompiler;
 	const std::string m_Ext{".kek"};
 	Mode m_mode;

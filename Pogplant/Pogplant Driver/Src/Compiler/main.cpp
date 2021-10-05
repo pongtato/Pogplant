@@ -1,17 +1,19 @@
-#include "FileSystem.h"
+/*****************************************************************************/
+/*!
+\file	main.cpp
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+	Pogplant compiler used to compile just models for now.
+	main file for Pogplant Compiler
 
-//int main()
-//{
-//	FileSystem fileSystem(Mode::CONT);
-//	while (fileSystem.isRunning())
-//	{
-//		std::cout << "Drag and drop files here." << std::endl;
-//
-//		char input[256];
-//		std::cin.getline(input, 256);
-//		fileSystem.GenericToBinary(input);
-//	}
-//}
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
+#include "FileSystem.h"
 
 int main(int argc, char* argv[])
 {
@@ -34,4 +36,5 @@ int main(int argc, char* argv[])
 	{
 		fileSystem.GenericToBinary(input.str());
 	}
+	Logger::Print();
 }

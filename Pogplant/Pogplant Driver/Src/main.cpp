@@ -50,7 +50,7 @@ void Init()
 	);
 
 	// Will change to automatic update when i figure it out
-	AssetCompiler& acc = acc.GetInstance();
+	PPC::AssetCompiler& acc = acc.GetInstance();
 	//if(!acc.Exists("Resources/KekFiles/Cube.kek"))
 	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/cube/Cube.fbx");
 	//if (!acc.Exists("Resources/KekFiles/Sphere.kek"))
@@ -64,7 +64,7 @@ void Init()
 	acc.WaitForAllProcess();
 	//acc.WaitForSingleProcess("BAG");
 
-	FileHandler& fileHandler = fileHandler.GetInstance();
+	PPF::FileHandler& fileHandler = fileHandler.GetInstance();
 	fileHandler.AddNewWatchPath("Resources/KekFiles");
 	fileHandler.AddNewWatchPath("Resources/Models");
 	fileHandler.AddNewWatchPath("Resources/Prefabs");
@@ -92,10 +92,10 @@ void Init()
 
 	/// Add to container
 	std::string sphere, cube, ship, enemy;
-	sphere = AssetCompiler::GetFileName("Resources/KekFiles/Sphere.kek");
-	cube = AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
-	ship = AssetCompiler::GetFileName("Resources/KekFiles/Player_Ship.kek");
-	enemy = AssetCompiler::GetFileName("Resources/KekFiles/Enemy_01.kek");
+	sphere = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Sphere.kek");
+	cube = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
+	ship = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Player_Ship.kek");
+	enemy = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Enemy_01.kek");
 	PP::Model* sphereModel = PP::ModelResource::m_ModelPool[sphere];
 	PP::Model* cubeModel = PP::ModelResource::m_ModelPool[cube];
 	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
@@ -178,11 +178,6 @@ void Init()
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
 	entity.GetComponent<Components::Name>().m_name = "Floor";
-	//scriptsok.push_back("Start");
-	//scriptsok.push_back("Update");
-	//scriptsok.push_back("Move");
-	//entity.AddComponent<Components::Scriptable>(Scriptable{ scriptsok });
-	//entity.AddComponent<Components::Name>(Name{ "Floor" });
 
 	pos = { 5, -2.0f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -192,8 +187,9 @@ void Init()
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, shipModel });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
-	std::vector<std::string> scriptsok;
-	entity.AddComponent<Components::Scriptable>(Scriptable{ scriptsok });
+	std::vector<std::string> shipScripts;
+	shipScripts.push_back("Player");
+	entity.AddComponent<Components::Scriptable>(Scriptable{ shipScripts });
 	entity.GetComponent<Components::Name>().m_name = "Ship";
 
 	pos = { -10.0f, -2.0f, 10.0f };
@@ -202,6 +198,11 @@ void Init()
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, enemyModel });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
+	std::vector<std::string> enemyScripts;
+	enemyScripts.push_back("Enemy");
+	entity.AddComponent<Components::Scriptable>(Scriptable{ enemyScripts });
 	entity.GetComponent<Components::Name>().m_name = "Enemy";
 
 	//auto entity = registry.create();
@@ -589,7 +590,7 @@ void Run()
 		physicsSystem.Update(ImGui::GetIO().DeltaTime);
 		ImaginarySystem.Update();
 		scriptSystem.Update();
-		FileHandler& fh = fh.GetInstance();
+		PPF::FileHandler & fh = fh.GetInstance();
 		fh.UpdateModels();
 
 		/// Most of this should be moved to other files when the engine is developed
@@ -623,7 +624,7 @@ void Exit()
 	PP::Window::CleanUpWindow();
 
 	PPI::InputSystem::Destroy();
-	FileHandler& fh = fh.GetInstance();
+	PPF::FileHandler& fh = fh.GetInstance();
 	fh.Stop();
 }
 

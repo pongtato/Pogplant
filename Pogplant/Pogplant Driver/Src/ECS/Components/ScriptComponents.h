@@ -1,3 +1,17 @@
+/*****************************************************************************/
+/*!
+\file	ScriptComponents.h
+\author Clarence Chye Min Liang
+\par	email: chye.m\@digipen.edu
+\details
+	Components that are needed for c# scripting
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/*****************************************************************************/
+
 #ifndef _SCRIPT_COMPONENTS_H_
 #define _SCRIPT_COMPONENTS_H_
 
@@ -12,10 +26,9 @@ namespace Components
 {
 	struct Scriptable
 	{
-		// Names of the functions in C# to call the method
-		std::vector<std::string> m_Functions;
+		// Type of scripts the entity should have
+		std::vector<std::string> m_ScriptTypes;
 	};
 }
-
 
 #endif // _SCRIPT_COMPONENTS_H_
