@@ -1,6 +1,8 @@
 #include "TextureLoader.h"
 #include "Logger.h"
 
+#include <fstream>
+
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 
@@ -361,7 +363,7 @@ namespace Pogplant
         std::string filename = _Directory + '/' + _Path;
 
         tinyddsloader::DDSFile dds;
-        auto ret = dds.Load(filename.c_str());
+        dds.Load(filename.c_str());
         dds.Flip();
         tinyddsloader::DDSFile::ImageData imageData;
         ExtractTextureData(dds, imageData);
@@ -395,7 +397,6 @@ namespace Pogplant
         glGenTextures(1, &textureID);
         glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 
-        int width, height, nrChannels;
         for (unsigned int i = 0; i < _Paths.size(); i++)
         {
             std::string filename = _Directory + '/' + _Paths[i];
@@ -403,7 +404,7 @@ namespace Pogplant
             //unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrChannels, 0);
 
             tinyddsloader::DDSFile dds;
-            auto ret = dds.Load(filename.c_str());
+            dds.Load(filename.c_str());
             //dds.Flip();
             tinyddsloader::DDSFile::ImageData imageData;
             ExtractTextureData(dds, imageData);
@@ -439,5 +440,40 @@ namespace Pogplant
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
         return textureID;
+    }
+
+    bool TexLoader::LoadHeightMap(std::string _Path, std::string _Directory, std::vector<unsigned char>& _HeightMap, size_t& _Dim)
+    {
+        std::string filename = _Directory + '/' + _Path;
+        std::ifstream fileStream(filename, std::ios::binary);
+        if (!fileStream.is_open())
+        {
+            std::string err = "Heightmap failed to load at ";
+            err += filename;
+            Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+            return false;
+        }
+
+        fileStream.seekg(0, std::ios::end);
+        std::streampos fsize = (unsigned)fileStream.tellg();
+        fileStream.seekg(0, std::ios::beg);
+        _HeightMap.resize((unsigned)fsize);
+        _Dim = static_cast<size_t>(sqrtf(_HeightMap.size()));
+        fileStream.read((char*)&_HeightMap[0], fsize);
+
+        fileStream.close();
+
+        return true;
+    }
+    float TexLoader::GetHeight(int _X, int _Z, size_t _Dim, const std::vector<unsigned char>& _HeightMap)
+    {
+        if (_X < 0 || _X >= _Dim || _Z < 0 || _Z >= _Dim)
+        {
+            return 0.0f;
+        }
+        else
+        {
+            return _HeightMap[_Z * _Dim + _X];
+        }
     }
 }

@@ -88,7 +88,7 @@ void main()
     
     // then calculate lighting as usual
     float shadow = 1-ShadowCalculation();
-    vec3 lighting  = Diffuse * 0.1 * clamp(shadow,0.0f,1.0f); // hard-coded ambient component
+    vec3 lighting  = Diffuse * 0.42 * clamp(shadow,0.0f,1.0f); // hard-coded ambient component
     vec3 viewDir  = normalize(viewPos - FragPos);
     for(int i = 0; i < activeLights; ++i)
     {

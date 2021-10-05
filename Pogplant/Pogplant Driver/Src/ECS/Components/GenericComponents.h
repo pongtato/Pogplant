@@ -79,6 +79,7 @@ namespace Components
 
 	struct Renderer
 	{
+		Renderer() {};
 		Renderer(glm::mat4 Model, glm::vec3 ColorTint, Pogplant::Model* RenderModel, int UseLight = 1, bool EditorDrawOnly = false) :
 			m_Model(Model), m_ColorTint(ColorTint), m_RenderModel(RenderModel), m_UseLight(UseLight), m_EditorDrawOnly(EditorDrawOnly){}
 
@@ -87,6 +88,28 @@ namespace Components
 		Pogplant::Model* m_RenderModel;
 		int m_UseLight = true;
 		bool m_EditorDrawOnly = false;
+	};
+
+	struct PrimitiveRender : public Renderer
+	{
+		PrimitiveRender(std::vector<std::string> _DiffTex, std::vector<std::string> _BumpTex, std::vector<std::string> _NormTex, std::vector<std::string> _SpecTex, Pogplant::Mesh* _Mesh, float _Blend, bool _Heightmap = false)
+			: m_DiffTex{ _DiffTex }
+			, m_BumpTex{ _BumpTex }
+			, m_NormTex{ _NormTex }
+			, m_SpecTex{ _SpecTex }
+			, m_Mesh{ _Mesh }
+			, m_Blend{ _Blend }
+			, m_Heightmap{ _Heightmap }
+		{
+		}
+
+		std::vector<std::string> m_DiffTex;
+		std::vector<std::string> m_BumpTex;
+		std::vector<std::string> m_NormTex;
+		std::vector<std::string> m_SpecTex;
+		Pogplant::Mesh* m_Mesh;
+		float m_Blend;
+		bool m_Heightmap;
 	};
 
 	struct DebugRender : public Renderer

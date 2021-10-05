@@ -2,6 +2,7 @@
 #define COMPONENTS_H
 
 #include "../../Pogplant/Src/Model.h"
+#include "../../Pogplant/Src/Mesh.h"
 #include "../entt_ecs/entt.hpp"
 
 #include <glm.hpp>

@@ -14,6 +14,22 @@ namespace Pogplant
 		glm::vec2 m_TexCoords;
 	};
 
+	//struct VTX_DATA_3D
+	//{
+	//	VTX_DATA_3D() {};
+	//	VTX_DATA_3D(glm::vec3 _Position, glm::vec3 _Normal, glm::vec3 _Color, glm::vec2 _Tex_Coords)
+	//		: m_Position{ _Position }
+	//		, m_Normal{ _Normal }
+	//		, m_Color{ _Color }
+	//		, m_TexCoords{ _Tex_Coords }
+	//	{}
+
+	//	glm::vec3 m_Position;
+	//	glm::vec3 m_Normal;
+	//	glm::vec3 m_Color;
+	//	glm::vec2 m_TexCoords;
+	//};
+
 	struct Mesh
 	{
 		Mesh();
@@ -22,6 +38,7 @@ namespace Pogplant
 		void DrawInstanced() const;
 
 		std::vector<VTX_DATA> m_VertexData;
+		//std::vector<VTX_DATA_3D> m_VertexData3D;
 		std::vector<unsigned int> m_Indices;
 		unsigned int m_VAO;
 		unsigned int m_VBO;

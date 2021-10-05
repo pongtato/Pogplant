@@ -13,5 +13,8 @@
 #include "TextureLoader.h"
 #include "FontResource.h"
 #include "DebugDraw.h"
+#include "MeshResource.h"
+#include "Mesh.h"
 
 namespace PP = Pogplant;
+

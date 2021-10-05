@@ -9,7 +9,6 @@ uniform vec3 textColor;
 uniform vec2 offset;
 uniform float distanceRange;
 
-const float outline = 0.0f;
 const float imageSize = 512.0;
 
 float median(float r, float g, float b) 

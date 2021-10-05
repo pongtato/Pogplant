@@ -5,9 +5,11 @@
 #include "MeshInstance.h"
 #include "Logger.h"
 #include "ModelResource.h"
+#include "TextureLoader.h"
 #include "Skybox.h"
 
 #include <glew.h>
+#include <iostream>
 
 
 namespace Pogplant
@@ -24,6 +26,7 @@ namespace Pogplant
         GenerateScreen();
         GenerateSkybox();
         GenerateLines();
+        GenerateHeightmap();
         ModelResource::InitResource();
     }
 
@@ -116,6 +119,13 @@ namespace Pogplant
         };
 
         Mesh* mesh = MeshResource::m_MeshPool[MT::TEXT_QUAD];
+
+        if (mesh == nullptr)
+        {
+            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Screen resource is NULL" });
+            return;
+        }
+
         glBindVertexArray(mesh->m_VAO);
         glBindBuffer(GL_ARRAY_BUFFER, mesh->m_VBO);
         glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
@@ -155,6 +165,12 @@ namespace Pogplant
 
         mesh->m_IndicesCount = static_cast<unsigned int>(_Points.size());
         mesh->m_PrimitiveType = GL_LINES;
+    }
+
+    void MeshBuilder::RebindHeightMap(const std::vector<float>& _Vertex, int _Size)
+    {
+        (void)_Size;
+        (void)_Vertex;
     }
 
     void MeshBuilder::GenerateQuad()
@@ -265,6 +281,12 @@ namespace Pogplant
     void MeshBuilder::GenerateTextQuad()
     {
         Mesh* mesh = MeshResource::m_MeshPool[MT::TEXT_QUAD];
+
+        if (mesh == nullptr)
+        {
+            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Screen resource is NULL" });
+            return;
+        }
 
         glGenVertexArrays(1, &mesh->m_VAO);
         glGenBuffers(1, &mesh->m_VBO);
@@ -397,7 +419,7 @@ namespace Pogplant
 
         std::vector<glm::vec3> temp;
         temp.resize(10);
-        size_t poxVtxSize = sizeof(glm::vec2) * temp.size();
+        size_t poxVtxSize = sizeof(glm::vec3) * temp.size();
 
         // Create m_VAO
         glCreateVertexArrays(1, &mesh->m_VAO);
@@ -419,5 +441,159 @@ namespace Pogplant
 
         mesh->m_IndicesCount = static_cast<unsigned int>(temp.size());
         mesh->m_PrimitiveType = GL_LINES;
+    }
+
+    void MeshBuilder::GenerateHeightmap()
+    {
+        // Get mesh
+        Mesh* mesh = MeshResource::m_MeshPool[MT::HEIGHTMAP];
+        if (mesh == nullptr)
+        {
+            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Screen resource is NULL" });
+            return;
+        }
+
+        // Get heightmap
+        std::vector<unsigned char> heightmap;
+        size_t dim = 0;
+        if (!TexLoader::LoadHeightMap("Heightmap.raw", "Resources/Textures/Heightmap", heightmap, dim))
+        {
+            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Bad heightmap" });
+            return;
+        }
+
+        // Construct
+        struct TerrainVertex
+        {
+            glm::vec3 position;
+            glm::vec3 normal;
+            glm::vec3 color;
+            glm::vec2 uv;
+        };
+
+        std::vector<TerrainVertex> terrainVertex;
+		//for (size_t z = 0; z < dim; z++)
+		//{
+		//	for (size_t x = 0; x < dim; x++)
+		//	{
+		//		TerrainVertex v;
+
+		//		const float scaledX = static_cast<float>(x / dim);
+		//		const float scaledZ = static_cast<float>(z / dim);
+
+		//		const float height = static_cast<float>(heightmap[z * dim + x]);
+		//		const float scaledHeight = height / dim;
+		//		v.position = { scaledX - 0.5f, scaledHeight, scaledZ - 0.5f };
+		//		v.color = { scaledHeight,scaledHeight,scaledHeight };
+		//		v.uv = { scaledX * 8.0f, 1.0f - scaledZ * 8.0f };
+		//		glm::vec3 origin = { x,height, z };
+
+		//		if (x + 1 < dim && z + 1 < dim)
+		//		{
+		//			glm::vec3 U =
+		//			{
+		//				x + 1,
+		//				heightmap[z * dim + x + 1],
+		//				z
+		//			};
+		//			glm::vec3 V =
+		//			{
+		//				x,
+		//				heightmap[(z + 1) * dim + x],
+		//				z + 1
+		//			};
+
+		//			v.normal = glm::normalize(glm::cross(V - origin, U - origin));
+		//		}
+		//		else
+		//		{
+		//			v.normal = { 0,1,0 };
+		//		}
+
+		//		terrainVertex.push_back(v);
+		//	}
+		//}
+
+		//// Indices
+		//for (size_t z = 0; z < dim - 1; ++z)
+		//{
+		//	for (size_t x = 0; x < dim - 1; ++x)
+		//	{
+		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * z + x));
+		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * (z + 1) + x));
+		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * z + x + 1));
+
+		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * (z + 1) + x + 1));
+		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * z + x + 1));
+		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * (z + 1) + x));
+		//	}
+		//}
+
+        TerrainVertex v;
+        for (unsigned z = 0; z < dim; ++z)
+        {
+            for (unsigned x = 0; x < dim; ++x)
+            {
+                float scaledHeight = (float)heightmap[z * dim + x] / 256.0f;
+                v.position = { static_cast<float>(x) / dim - 0.5f, scaledHeight, static_cast<float>(z) / dim - 0.5f };
+                v.color = { 1.0f, 1.0f, 1.0f }; //for rendering height map without texture
+
+				glm::vec3 origin = { x,scaledHeight, z };
+                // Normal calc
+                float hL = TexLoader::GetHeight(x - 1, z    , dim, heightmap);
+                float hR = TexLoader::GetHeight(x + 1, z    , dim, heightmap);
+                float hD = TexLoader::GetHeight(x    , z - 1, dim, heightmap);
+                float hU = TexLoader::GetHeight(x    , z + 1, dim, heightmap);
+                v.normal = glm::normalize(glm::vec3{ hL - hR, 2.0f, hD - hU });
+                v.uv = { (float)x / dim * 8.0f, 1.f - (float)z / dim * 8.0f };
+                terrainVertex.push_back(v);
+            }
+        }
+        for (unsigned z = 0; z < dim - 1; ++z)
+        {
+            for (unsigned x = 0; x < dim - 1; ++x)
+            {
+                mesh->m_Indices.push_back(dim* z + x + 0); //Tri 1
+                mesh->m_Indices.push_back(dim* (z + 1) + x + 0);
+                mesh->m_Indices.push_back(dim* z + x + 1);
+                mesh->m_Indices.push_back(dim* (z + 1) + x + 1); //Tri 2
+                mesh->m_Indices.push_back(dim* z + x + 1);
+                mesh->m_Indices.push_back(dim* (z + 1) + x + 0);
+            }
+        }
+
+        glCreateVertexArrays(1, &mesh->m_VAO);
+        glCreateBuffers(1, &mesh->m_VBO);
+        glCreateBuffers(1, &mesh->m_IBO);
+
+        // m_VBO
+        glNamedBufferStorage(mesh->m_VBO, sizeof(TerrainVertex)* terrainVertex.size(), terrainVertex.data(), GL_DYNAMIC_STORAGE_BIT);
+
+        // Update m_VAO
+        glVertexArrayAttribBinding(mesh->m_VAO, 0, 0);
+        glVertexArrayAttribFormat(mesh->m_VAO, 0, 3, GL_FLOAT, GL_FALSE, offsetof(TerrainVertex, TerrainVertex::position));
+        glEnableVertexArrayAttrib(mesh->m_VAO, 0);
+
+        glVertexArrayAttribBinding(mesh->m_VAO, 1, 0);
+        glVertexArrayAttribFormat(mesh->m_VAO, 1, 3, GL_FLOAT, GL_FALSE, offsetof(TerrainVertex, TerrainVertex::normal));
+        glEnableVertexArrayAttrib(mesh->m_VAO, 1);
+
+        glVertexArrayAttribBinding(mesh->m_VAO, 2, 0);
+        glVertexArrayAttribFormat(mesh->m_VAO, 2, 3, GL_FLOAT, GL_FALSE, offsetof(TerrainVertex, TerrainVertex::color));
+        glEnableVertexArrayAttrib(mesh->m_VAO, 2);
+
+        glVertexArrayAttribBinding(mesh->m_VAO, 3, 0);
+        glVertexArrayAttribFormat(mesh->m_VAO, 3, 2, GL_FLOAT, GL_FALSE, offsetof(TerrainVertex, TerrainVertex::uv));
+        glEnableVertexArrayAttrib(mesh->m_VAO, 3);
+
+        glVertexArrayVertexBuffer(mesh->m_VAO, 0, mesh->m_VBO, 0, sizeof(TerrainVertex));
+
+        // Bind the m_Indices
+        glNamedBufferStorage(mesh->m_IBO, sizeof(unsigned int)* mesh->m_Indices.size(), mesh->m_Indices.data(), GL_DYNAMIC_STORAGE_BIT);
+        glVertexArrayElementBuffer(mesh->m_VAO, mesh->m_IBO);
+
+        // Update type ands size
+        mesh->m_IndicesCount = static_cast<unsigned int>(mesh->m_Indices.size());
+        mesh->m_PrimitiveType = GL_TRIANGLES;
     }
 }

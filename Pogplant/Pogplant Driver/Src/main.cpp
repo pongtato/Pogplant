@@ -103,6 +103,7 @@ void Init()
 	PP::Model* cubeModel = PP::ModelResource::m_ModelPool[cube];
 	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
 	PP::Model* enemyModel = PP::ModelResource::m_ModelPool[enemy];
+	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
 
 	/* CLARENCE DEBUGGING STUFF */
 	//std::cout << "number of meshes: " << cubeModel->m_Meshes.size() << std::endl;
@@ -175,11 +176,21 @@ void Init()
 	entity.GetComponent<Components::Name>().m_name = "Sphere";
 	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
 
-	pos = { 0.0f, -55.0f, 0.0f };
+	pos = { 0.0f, -10.0f, 0.0f };
 	rot = { 0.0f,0.0f,0.0f };
-	scale = { 100.0f,100.0f,100.0f };
+	scale = { 210.0f,30.0f,210.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
+	//entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
+	entity.AddComponent<Components::PrimitiveRender>(PrimitiveRender
+	(
+		{ "MUD_DIFF", "FOREST_DIFF"},
+		{ "MUD_BUMP", "FOREST_BUMP"},
+		{ "MUD_NORM", "FOREST_NORM"},
+		{ "MUD_SPEC", "FOREST_SPEC"},
+		floorMesh,
+		0.69f,
+		true
+	));
 	entity.GetComponent<Components::Name>().m_name = "Floor";
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.5f, 0.5f, 0.5f }, {0.f, 0.f, 0.f} });
 
@@ -437,6 +448,7 @@ void DrawCommon()
 
 	auto view = ecs.GetReg().view<Transform, Renderer>();
 	auto debugView = ecs.GetReg().view<Transform, DebugRender>();
+	auto primView = ecs.GetReg().view<Transform, PrimitiveRender>();
 	glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->GetPosition();
 	for (auto entity : view)
 	{
@@ -467,7 +479,14 @@ void DrawCommon()
 		auto& renderer = debugView.get<DebugRender>(entity);
 
 		renderer.m_Model = transform.m_ModelMtx;
-		//DebugCubes(transform, renderer);
+	}
+
+	for (auto entity : primView)
+	{
+		auto& transform = primView.get<Transform>(entity);
+		auto& renderer = primView.get<PrimitiveRender>(entity);
+
+		renderer.m_Model = transform.m_ModelMtx;
 	}
 
 	////for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)

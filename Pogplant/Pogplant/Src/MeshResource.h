@@ -17,6 +17,7 @@ namespace Pogplant
 			TEXT_QUAD,
 			SCREEN,
 			LINE,
+			HEIGHTMAP,
 			COUNT_2D,
 		};
 

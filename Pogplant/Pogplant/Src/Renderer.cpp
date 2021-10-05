@@ -209,6 +209,14 @@ namespace Pogplant
 				it.m_RenderModel->Draw();
 			}
 		}
+
+		auto p_results = registry.view<Components::PrimitiveRender>();
+		for (const auto& e : p_results)
+		{
+			const auto& it = p_results.get<const Components::PrimitiveRender>(e);
+			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			it.m_Mesh->Draw();
+		}
 		///
 		glDisable(GL_DEPTH_TEST);
 
@@ -341,6 +349,49 @@ namespace Pogplant
 			{
 				it.m_RenderModel->Draw();
 			}
+		}
+		ShaderLinker::UnUse();
+
+		// Primitive shapes
+		ShaderLinker::Use("PRIMITIVE");
+		ShaderLinker::SetUniform("m4_Projection", projection);
+		ShaderLinker::SetUniform("m4_View", view);
+		auto p_results = registry.view<Components::PrimitiveRender>();
+		for (const auto& e : p_results)
+		{
+			const auto& it = p_results.get<const Components::PrimitiveRender>(e);
+			ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
+			ShaderLinker::SetUniform("blend", it.m_Blend);
+			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			ShaderLinker::SetUniform("texture_diffuse", 0);
+			ShaderLinker::SetUniform("texture_normal", 1);
+			ShaderLinker::SetUniform("texture_disp", 2);
+			ShaderLinker::SetUniform("texture_specular", 3);
+
+			ShaderLinker::SetUniform("texture_diffuse2", 4);
+			ShaderLinker::SetUniform("texture_normal2", 5);
+			ShaderLinker::SetUniform("texture_disp2", 6);
+			ShaderLinker::SetUniform("texture_specular2", 7);
+
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_DiffTex[0]]);
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_NormTex[0]]);
+			glActiveTexture(GL_TEXTURE2);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_BumpTex[0]]);
+			glActiveTexture(GL_TEXTURE3);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_SpecTex[0]]);
+
+			glActiveTexture(GL_TEXTURE4);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_DiffTex[1]]);
+			glActiveTexture(GL_TEXTURE5);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_NormTex[1]]);
+			glActiveTexture(GL_TEXTURE6);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_BumpTex[1]]);
+			glActiveTexture(GL_TEXTURE7);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_SpecTex[1]]);
+
+			it.m_Mesh->Draw();
 		}
 		ShaderLinker::UnUse();
 
