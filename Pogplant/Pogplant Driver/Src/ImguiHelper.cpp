@@ -74,6 +74,10 @@ namespace PogplantDriver
 		{
 			auto& new_spcollider = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::SphereCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
+		if (ImGui::MenuItem(ICON_FA_CAMERA "  Camera", NULL, false, adding_enabled))
+		{
+			auto& new_spcollider = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Camera>(PPD::ImguiHelper::m_CurrentEntity);
+		}
 	}
 
 	bool ImguiHelper::m_FirstRun = true;
@@ -464,12 +468,12 @@ namespace PogplantDriver
 					//	m_EditMode = ImGuizmo::SCALE;
 					//}
 
-					// Snap when editing transform
-					ImGui::Checkbox("Snap Transform", &m_UseSnap);
-					//Bounds edit
-					ImGui::Checkbox("Edit Bounds", &m_BoundSizing);
-					//Snap when editing
-					ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
+					//// Snap when editing transform
+					//ImGui::Checkbox("Snap Transform", &m_UseSnap);
+					////Bounds edit
+					//ImGui::Checkbox("Edit Bounds", &m_BoundSizing);
+					////Snap when editing
+					//ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
 
 					// Usual stuff
 					ImGui::Text("Translate");
@@ -779,6 +783,42 @@ namespace PogplantDriver
 					}
 				}
 
+				auto camera_com = m_ecs->GetReg().try_get<Components::Camera>(m_CurrentEntity);
+				if (camera_com)
+				{
+					bool enable_camera_com = true;
+
+					if (ImGui::CollapsingHeader(ICON_FA_CAMERA_RETRO "  Camera", &enable_camera_com, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+
+						ImGui::Text("Active Cam");
+						ImGui::Checkbox("Active?", &camera_com->m_Active);
+
+						ImGui::Text("Yaw");
+						ImGui::InputFloat("###yaw", &camera_com->m_Yaw, 0.1f, 1.0f, "%.3f");
+
+						ImGui::Text("Pitch");
+						ImGui::InputFloat("###pitch", &camera_com->m_Pitch, 0.1f, 1.0f, "%.3f");
+
+						ImGui::Text("Near");
+						ImGui::InputFloat("###near", &camera_com->m_Near, 0.1f, 1.0f, "%.3f");
+
+						ImGui::Text("Far");
+						ImGui::InputFloat("###far", &camera_com->m_Far, 1.f, 1.0f, "%.3f");
+
+						ImGui::Text("Zoom");
+						ImGui::InputFloat("###zoom", &camera_com->m_Zoom, 1.f, 1.0f, "%.3f");
+
+
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
+					}
+					if (!enable_camera_com)
+					{
+						m_ecs->GetReg().remove<Components::SphereCollider>(m_CurrentEntity);
+					}
+				}
+
 	
 				ImGui::Separator();
 				ImguiBlankSeperator(2);
@@ -845,6 +885,16 @@ namespace PogplantDriver
 		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
+
+		ImGui::SameLine(ImGui::GetContentRegionAvail().x * 0.62f);
+		// Snap when editing transform
+		ImGui::Checkbox("Snap Transform", &m_UseSnap);
+		//Bounds edit
+		ImGui::SameLine();
+		ImGui::Checkbox("Edit Bounds", &m_BoundSizing);
+		//Snap when editing
+		ImGui::SameLine();
+		ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
 
 		// Draw the actual editor scene
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
