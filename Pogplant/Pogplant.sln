@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pogplant", "Pogplant\Pogplant.vcxproj", "{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pogplant Driver", "Pogplant Driver\Pogplant Driver.vcxproj", "{2F88D911-792E-40A4-A5D3-3ADE64825F93}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B} = {A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}
@@ -12,6 +10,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pogplant Driver", "Pogplant
 		{219AEB91-A767-43D4-9358-33CEF129F95C} = {219AEB91-A767-43D4-9358-33CEF129F95C}
 		{5BDB65D7-B800-4F53-93A2-322A0F23BB51} = {5BDB65D7-B800-4F53-93A2-322A0F23BB51}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pogplant", "Pogplant\Pogplant.vcxproj", "{A0FBCD3D-83A0-498A-A91F-9F25751D3A9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scripting", "Scripting\Scripting.csproj", "{219AEB91-A767-43D4-9358-33CEF129F95C}"
 EndProject

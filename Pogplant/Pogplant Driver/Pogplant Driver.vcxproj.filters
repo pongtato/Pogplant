@@ -55,6 +55,9 @@
     <Filter Include="Source Files\ECS\Systems\ScriptSystem">
       <UniqueIdentifier>{698a48c7-5271-43ed-81ed-2b287216d0d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Audio">
+      <UniqueIdentifier>{d3dd2134-0dca-4434-9216-d6ab7cf5a3b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -131,6 +134,9 @@
     </ClCompile>
     <ClCompile Include="Src\ECS\Systems\ScriptSystem.cpp">
       <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\AudioEngine.cpp">
+      <Filter>Source Files\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="Src\ECS\Components\ScriptComponents.h">
       <Filter>Source Files\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\AudioEngine.h">
+      <Filter>Source Files\Audio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

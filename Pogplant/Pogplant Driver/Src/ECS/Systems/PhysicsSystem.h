@@ -36,7 +36,7 @@ private:
 
 	decltype(auto) GetTriggered(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 	void SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
-	void SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
+	bool SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 
 	std::binary_semaphore m_hasJob;
 	std::atomic<bool> t_EXIT_THREADS;

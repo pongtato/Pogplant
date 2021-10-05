@@ -45,15 +45,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(SolutionDir)Libs\Pogplant;$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\Mono\lib;$(SolutionDir)Libs\json\lib;$(SolutionDir)Libs\RTTR\lib;$(SolutionDir)Libs\FMOD\lib;$(SolutionDir)bin\$(Configuration)-$(Platform)\PhysicsDLC;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Libs\IconFontCppHeaders;$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\IMGUI;$(SolutionDir)Libs\IMGUIZMO;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\Mono\include\mono-2.0;$(SolutionDir)Libs\json\include;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\FMOD\inc;$(SolutionDir)Pogplant Driver\Src\ECS;$(SolutionDir)PhysicsDLC\Src;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\Pogplant;$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\Mono\lib;$(SolutionDir)Libs\json\lib;$(SolutionDir)Libs\RTTR\lib;$(SolutionDir)Libs\FMODStudio\lib;$(SolutionDir)Libs\FMOD\lib;$(SolutionDir)bin\$(Configuration)-$(Platform)\PhysicsDLC;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Libs\IconFontCppHeaders;$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\IMGUI;$(SolutionDir)Libs\IMGUIZMO;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\Mono\include\mono-2.0;$(SolutionDir)Libs\json\include;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\FMODStudio\inc;$(SolutionDir)Libs\FMOD\inc;$(SolutionDir)Pogplant Driver\Src\ECS;$(SolutionDir)PhysicsDLC\Src;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>$(SolutionDir)Libs\Pogplant;$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\Mono\lib;$(SolutionDir)Libs\json\lib;$(SolutionDir)Libs\RTTR\lib;$(SolutionDir)Libs\FMOD\lib;$(SolutionDir)bin\$(Configuration)-$(Platform)\PhysicsDLC;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\IMGUI;$(SolutionDir)Libs\IconFontCppHeaders;$(SolutionDir)Libs\IMGUIZMO;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\Mono\include\mono-2.0;$(SolutionDir)Libs\json\include;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\FMOD\inc;$(SolutionDir)Pogplant Driver\Src\ECS;$(SolutionDir)PhysicsDLC\Src;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs\Pogplant;$(SolutionDir)Libs\GLEW\lib;$(SolutionDir)Libs\GLFW\lib;$(SolutionDir)Libs\ASSIMP\lib;$(SolutionDir)Libs\Mono\lib;$(SolutionDir)Libs\json\lib;$(SolutionDir)Libs\RTTR\lib;$(SolutionDir)Libs\FMODStudio\lib;$(SolutionDir)Libs\FMOD\lib;$(SolutionDir)bin\$(Configuration)-$(Platform)\PhysicsDLC;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Libs\IconFontCppHeaders;$(SolutionDir)Libs\GLEW\include;$(SolutionDir)Libs\GLFW\include;$(SolutionDir)Libs\GLM;$(SolutionDir)Libs\IMGUI;$(SolutionDir)Libs\IMGUIZMO;$(SolutionDir)Libs\ASSIMP\include;$(SolutionDir)Libs\Mono\include\mono-2.0;$(SolutionDir)Libs\json\include;$(SolutionDir)Libs\RTTR\include;$(SolutionDir)Libs\FMODStudio\inc;$(SolutionDir)Libs\FMOD\inc;$(SolutionDir)Pogplant Driver\Src\ECS;$(SolutionDir)PhysicsDLC\Src;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</OutDir>
     <IntDir>$(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</IntDir>
   </PropertyGroup>
@@ -70,7 +70,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;PhysicsDLC.lib;Pogplant_D.lib;assimp-vc142-mtd.lib;jsoncpp_d.lib;rttr_core_d.lib;fmodL64_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;PhysicsDLC.lib;Pogplant_D.lib;assimp-vc142-mtd.lib;jsoncpp_d.lib;rttr_core_d.lib;fmodL_vc.lib;fmodstudioL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PreBuildEvent>
@@ -78,7 +78,8 @@
 copy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(TargetDir)"
 copy "$(SolutionDir)Libs\json\lib\jsoncpp_d.dll" "$(TargetDir)jsoncpp.dll" /Y
 copy "$(SolutionDir)Libs\RTTR\lib\rttr_core_d.dll" "$(TargetDir)"
-copy "$(SolutionDir)Libs\FMOD\lib\fmodL64.dll" "$(TargetDir)"
+copy "$(SolutionDir)Libs\FMOD\lib\fmodL.dll" "$(TargetDir)"
+copy "$(SolutionDir)Libs\FMODStudio\lib\fmodstudioL.dll" "$(TargetDir)"
 xcopy "$(TargetDir)Pogplant Compiler.exe" "$(SolutionDir)Pogplant Driver" /y /i /s
 xcopy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
 xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
@@ -107,14 +108,15 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;PhysicsDLC.lib;Pogplant.lib;assimp-vc142-mt.lib;jsoncpp_r.lib;rttr_core.lib;fmod64_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;PhysicsDLC.lib;Pogplant.lib;assimp-vc142-mt.lib;jsoncpp_r.lib;rttr_core.lib;fmod_vc.lib;fmodstudio_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>copy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(TargetDir)"
 copy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(TargetDir)"
 copy "$(SolutionDir)Libs\json\lib\jsoncpp_r.dll" "$(TargetDir)jsoncpp.dll" /Y
 copy "$(SolutionDir)Libs\RTTR\lib\rttr_core.dll" "$(TargetDir)"
-copy "$(SolutionDir)Libs\FMOD\lib\fmod64.dll" "$(TargetDir)"
+copy "$(SolutionDir)Libs\FMOD\lib\fmod.dll" "$(TargetDir)"
+copy "$(SolutionDir)Libs\FMODStudio\lib\fmodstudio.dll" "$(TargetDir)"
 xcopy "$(TargetDir)Pogplant Compiler.exe" "$(SolutionDir)Pogplant Driver" /y /i /s
 xcopy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s 
 xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
@@ -145,6 +147,7 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClCompile Include="Src\ECS\Systems\PhysicsSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\ScriptSystem.cpp" />
     <ClCompile Include="Src\FileHandler.cpp" />
+    <ClCompile Include="Src\AudioEngine.cpp" />
     <ClCompile Include="Src\ImguiHelper.cpp" />
     <ClCompile Include="Src\Input\GLFWInput.cpp" />
     <ClCompile Include="Src\Input\InputSystem.cpp" />
@@ -180,6 +183,7 @@ xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s<
     <ClInclude Include="Src\ECS\Systems\PhysicsSystem.h" />
     <ClInclude Include="Src\ECS\Systems\ScriptSystem.h" />
     <ClInclude Include="Src\FileHandler.h" />
+    <ClInclude Include="Src\AudioEngine.h" />
     <ClInclude Include="Src\ImguiHelper.h" />
     <ClInclude Include="Src\Input\GLFWInput.h" />
     <ClInclude Include="Src\Input\InputSystem.h" />

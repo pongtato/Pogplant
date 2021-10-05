@@ -16,6 +16,7 @@
 #include "ECS/Systems/PhysicsSystem.h"
 #include "ECS/Systems/ScriptSystem.h"
 
+#include "AudioEngine.h"
 #include "Input/InputSystem.h"
 #include "ResourceAllocator.hpp"
 #include "AssetCompiler.h"
@@ -63,6 +64,8 @@ void Init()
 	//acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/backpack/backpack.obj");
 	acc.WaitForAllProcess();
 	//acc.WaitForSingleProcess("BAG");
+
+	PPA::AudioEngine::Instance();
 
 	PPF::FileHandler& fileHandler = fileHandler.GetInstance();
 	fileHandler.AddNewWatchPath("Resources/KekFiles");
@@ -178,6 +181,7 @@ void Init()
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
 	entity.GetComponent<Components::Name>().m_name = "Floor";
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.5f, 0.5f, 0.5f }, {0.f, 0.f, 0.f} });
 
 	pos = { 5, -2.0f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -623,6 +627,7 @@ void Exit()
 	PP::MeshBuilder::CleanUpMesh();
 	PP::Window::CleanUpWindow();
 
+	PPA::AudioEngine::Destroy();
 	PPI::InputSystem::Destroy();
 	PPF::FileHandler& fh = fh.GetInstance();
 	fh.Stop();

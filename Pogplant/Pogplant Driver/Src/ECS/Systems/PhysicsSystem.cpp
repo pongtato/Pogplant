@@ -133,7 +133,8 @@ void PhysicsSystem::TriggerUpdate()
 					}
 					else if (objects.first != objects.second)
 					{
-						SetUntrigger(_1entity, _2entity);
+						if(SetUntrigger(_1entity, _2entity))
+							objects = m_triggerList.equal_range(_1entity);
 					}
 				}
 			}
@@ -288,21 +289,22 @@ void PhysicsSystem::SetTrigger(entt::entity c_triggerEntity, entt::entity c_trig
 	m_triggerList.insert(std::make_pair(c_triggerEntity, c_triggeringEntity));
 }
 
-void PhysicsSystem::SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
+bool PhysicsSystem::SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
 {
-	//Call ontriggerexit function here
-	std::cout << "OnTriggerExit: "
-		<< (uint32_t)c_triggerEntity << " "
-		<< (uint32_t)c_triggeringEntity << std::endl;
-
 	auto objects = m_triggerList.equal_range(c_triggerEntity);
 
 	for (auto it = objects.first; it != objects.second; ++it)
 	{
 		if ((*it).second == c_triggeringEntity)
 		{
+			//Call ontriggerexit function here
+			std::cout << "OnTriggerExit: "
+				<< (uint32_t)c_triggerEntity << " "
+				<< (uint32_t)c_triggeringEntity << std::endl;
+
 			m_triggerList.erase(it);
-			return;
+			return true;
 		}
 	}
+	return false;
 }
