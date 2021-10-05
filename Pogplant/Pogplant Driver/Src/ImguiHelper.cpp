@@ -278,8 +278,10 @@ namespace PogplantDriver
 		}
 
 		//Secondary bar
+		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,6.f });
 		if (ImGui_BeginMainStatusBar())
 		{
+			ImGui::PopStyleVar();
 			if (ImGui::Button(ICON_FA_ARROWS_ALT " Move"))
 			{
 				m_EditMode = ImGuizmo::TRANSLATE;
@@ -294,6 +296,17 @@ namespace PogplantDriver
 			{
 				m_EditMode = ImGuizmo::SCALE;
 			}
+
+			ImGui::SameLine(ImGui::GetContentRegionAvail().x * 0.62f);
+			// Snap when editing transform
+			ImGui::Checkbox("Snap Transform", &m_UseSnap);
+			//Bounds edit
+			ImGui::SameLine();
+			ImGui::Checkbox("Edit Bounds", &m_BoundSizing);
+			//Snap when editing
+			ImGui::SameLine();
+			ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
+
 			ImGui_EndMainStatusBar();
 		}
 
@@ -887,16 +900,6 @@ namespace PogplantDriver
 		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
-
-		ImGui::SameLine(ImGui::GetContentRegionAvail().x * 0.62f);
-		// Snap when editing transform
-		ImGui::Checkbox("Snap Transform", &m_UseSnap);
-		//Bounds edit
-		ImGui::SameLine();
-		ImGui::Checkbox("Edit Bounds", &m_BoundSizing);
-		//Snap when editing
-		ImGui::SameLine();
-		ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
 
 		// Draw the actual editor scene
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
