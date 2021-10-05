@@ -746,10 +746,20 @@ namespace IMGUIZMO_NAMESPACE
    static Context gContext;
 
    static const vec_t directionUnary[3] = { makeVect(1.f, 0.f, 0.f), makeVect(0.f, 1.f, 0.f), makeVect(0.f, 0.f, 1.f) };
-   static const ImU32 directionColor[3] = { IM_COL32(0xAA, 0, 0, 0xFF), IM_COL32(0, 0xAA, 0, 0xFF), IM_COL32(0, 0, 0xAA, 0XFF) };
+   static const ImU32 directionColor[3] = 
+   { 
+       IM_COL32(0xA8, 0x32, 0x32, 0xFF), 
+       IM_COL32(0x77, 0xA8, 0x32, 0xFF),
+       IM_COL32(0x32, 0x6D, 0xA8, 0XFF)
+   };
 
    // Alpha: 100%: FF, 87%: DE, 70%: B3, 54%: 8A, 50%: 80, 38%: 61, 12%: 1F
-   static const ImU32 planeColor[3] = { IM_COL32(0xAA, 0, 0, 0x61), IM_COL32(0, 0xAA, 0, 0x61), IM_COL32(0, 0, 0xAA, 0x61) };
+   static const ImU32 planeColor[3] = 
+   { 
+       IM_COL32(0xA8, 0x32, 0x32, 0x61),
+       IM_COL32(0x77, 0xA8, 0x32, 0x61),
+       IM_COL32(0x32, 0x6D, 0xA8, 0x61)
+   };
    static const ImU32 selectionColor = IM_COL32(0xFF, 0x80, 0x10, 0x8A);
    static const ImU32 inactiveColor = IM_COL32(0x99, 0x99, 0x99, 0x99);
    static const ImU32 translationLineColor = IM_COL32(0xAA, 0xAA, 0xAA, 0xAA);
@@ -2798,7 +2808,9 @@ namespace IMGUIZMO_NAMESPACE
                // draw face with lighter color
                if (iPass)
                {
-                  gContext.mDrawList->AddConvexPolyFilled(faceCoordsScreen, 4, (directionColor[normalIndex] | IM_COL32(0x80, 0x80, 0x80, 0x80)) | (isInside ? IM_COL32(0x08, 0x08, 0x08, 0) : 0));
+                   // Fix for wrong color axis
+                  int ghettomap = normalIndex + 1 > 2 ? normalIndex + 1 - 3 : normalIndex + 1;
+                  gContext.mDrawList->AddConvexPolyFilled(faceCoordsScreen, 4, (directionColor[ghettomap] | IM_COL32(0x80, 0x80, 0x80, 0x80)) | (isInside ? IM_COL32(0x08, 0x08, 0x08, 0) : 0));
                   if (boxes[boxCoordInt])
                   {
                      gContext.mDrawList->AddConvexPolyFilled(faceCoordsScreen, 4, IM_COL32(0xF0, 0xA0, 0x60, 0x80));
