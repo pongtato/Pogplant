@@ -191,9 +191,9 @@ void Init()
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, shipModel });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
-	std::vector<std::string> shipScripts;
-	shipScripts.push_back("Player");
-	entity.AddComponent<Components::Scriptable>(Scriptable{ shipScripts });
+	std::unordered_map<std::string, bool> shipScripts;
+	shipScripts["Player"] =  false;
+	entity.AddComponent<Components::Scriptable>(Scriptable{ shipScripts});
 	entity.GetComponent<Components::Name>().m_name = "Ship";
 
 	pos = { -10.0f, -2.0f, 10.0f };
@@ -204,8 +204,8 @@ void Init()
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, enemyModel });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
-	std::vector<std::string> enemyScripts;
-	enemyScripts.push_back("Enemy");
+	std::unordered_map<std::string, bool> enemyScripts;
+	enemyScripts["Enemy"] = false;
 	entity.AddComponent<Components::Scriptable>(Scriptable{ enemyScripts });
 	entity.GetComponent<Components::Name>().m_name = "Enemy";
 

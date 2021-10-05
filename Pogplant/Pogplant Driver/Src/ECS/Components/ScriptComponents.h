@@ -16,18 +16,17 @@
 #define _SCRIPT_COMPONENTS_H_
 
 #include <iostream>
-#include <vector>
+#include <unordered_map>
 #include <string>
-#include <mono/jit/jit.h>
-#include <mono/metadata/assembly.h>
-#include <mono/metadata/debug-helpers.h>
 
 namespace Components
 {
 	struct Scriptable
 	{
 		// Type of scripts the entity should have
-		std::vector<std::string> m_ScriptTypes;
+		//std::vector<std::string> m_ScriptTypes;
+		// key is name of script, bool is if it has started
+		std::unordered_map<std::string, bool> m_ScriptTypes;
 	};
 }
 

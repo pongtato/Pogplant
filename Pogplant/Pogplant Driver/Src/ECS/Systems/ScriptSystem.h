@@ -15,6 +15,10 @@
 #ifndef _SCRIPT_SYSTEM_H_
 #define _SCRIPT_SYSTEM_H_
 
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
+#include <mono/metadata/debug-helpers.h>
+
 #include "../ECS.h"
 #include "../ScriptBinder.h"
 #include "../Components/ScriptComponents.h"
@@ -41,7 +45,8 @@ public:
 
 private:
 	// Call the Start function of every script needed for each object
-	void Start();
+	//void Start();
+	//void Start(MonoObject* object, MonoClass* klass);
 	// Helper function to find the monomethod in monoclass
 	MonoMethod* FindMethod(MonoClass* klass, std::string methodName, int params = -1);
 

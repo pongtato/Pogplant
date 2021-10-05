@@ -18,26 +18,6 @@
 
 ScriptSystem::ScriptSystem()
 {
-}
-
-ScriptSystem::~ScriptSystem()
-{
-	for (auto& monoObj : m_MonoObjects)
-	{
-		mono_gchandle_free(monoObj.second->m_GCHandle);
-		free(monoObj.second);
-	}
-
-	if (m_ptrMonoDomain)
-	{
-		mono_jit_cleanup(m_ptrMonoDomain);
-	}
-}
-
-void ScriptSystem::Init(ECS* ecs)
-{
-	m_registry = ecs;
-
 	mono_set_dirs("..\\Libs\\Mono\\lib", "..\\Libs\\Mono\\etc");
 
 	// Create the mono domain
@@ -75,7 +55,7 @@ void ScriptSystem::Init(ECS* ecs)
 								// Garbage Collection Handle for the game object
 								uint32_t m_gameObjectGCHandle = mono_gchandle_new(m_ptrGameObject, false);
 								// Add to the map
-								m_MonoObjects["Player"] = new MonoObjectWithGC{m_gameObjectGCHandle, m_ptrGameObject};
+								m_MonoObjects["Player"] = new MonoObjectWithGC{ m_gameObjectGCHandle, m_ptrGameObject };
 
 								// Exception hit
 								if (ptrExObject)
@@ -130,68 +110,66 @@ void ScriptSystem::Init(ECS* ecs)
 			}
 		}
 	}
-
-	Start();
 }
 
-void ScriptSystem::Start()
+ScriptSystem::~ScriptSystem()
 {
-	auto entities = m_registry->GetReg().view<Components::Scriptable>();
-
-	for (auto& entity : entities)
+	for (auto& monoObj : m_MonoObjects)
 	{
-		auto& scriptable = entities.get<Components::Scriptable>(entity);
-		for (auto& scripts : scriptable.m_ScriptTypes)
-		{
-			MonoObject* monoObj = m_MonoObjects[scripts]->m_MonoObject;
-			if (!monoObj)
-			{
-				// Maybe log something here
-				std::cout << "Script: "<< scripts << " not found" << std::endl;
-				continue;
-			}
-
-			auto klass = mono_object_get_class(monoObj);
-			if (!klass)
-			{
-				// Maybe log something here
-				std::cout << "MonoClass not found" << std::endl;
-			}
-			MonoMethod* method = FindMethod(klass, "Start");
-			mono_runtime_invoke(method, monoObj, nullptr, nullptr);
-		}
+		mono_gchandle_free(monoObj.second->m_GCHandle);
+		free(monoObj.second);
 	}
+
+	if (m_ptrMonoDomain)
+	{
+		mono_jit_cleanup(m_ptrMonoDomain);
+	}
+}
+
+void ScriptSystem::Init(ECS* ecs)
+{
+	m_registry = ecs;
 }
 
 void ScriptSystem::Update()
 {
-	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform>();
+	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
 		auto& rigidbody = entities.get<Components::Rigidbody>(entity);
 		auto& transform = entities.get<Components::Transform>(entity);
+		auto& name = entities.get<Components::Name>(entity);
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
-			MonoObject* monoObj = m_MonoObjects[scripts]->m_MonoObject;
+			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
 			if (!monoObj)
 			{
 				// Maybe log something here
-				std::cout << "Script: " << scripts << " not found" << std::endl;
+				std::cout << "Script: " << scripts.first << " not found" << std::endl;
 				continue;
 			}
 
-			auto klass = mono_object_get_class(monoObj);
+			MonoClass* klass = mono_object_get_class(monoObj);
 			if (!klass)
 			{
 				// Maybe log something here
 				std::cout << "MonoClass not found" << std::endl;
 			}
-			MonoMethod* method = FindMethod(klass, "Update");
+
+			if (scripts.second == false)
+			{
+				MonoMethod* startMethod = FindMethod(klass, "Start");
+				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
+				scripts.second = true;
+				std::cout << "Entity [" << name.m_name << "] has started script [" << scripts.first << "]" << std::endl;
+			}
+
+			MonoMethod* updateMethod = FindMethod(klass, "Update");
 			void* args[] = {&transform, &rigidbody };
-			mono_runtime_invoke(method, monoObj, args, nullptr);
+			mono_runtime_invoke(updateMethod, monoObj, args, nullptr);
 		}
 	}
 }

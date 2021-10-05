@@ -30,7 +30,7 @@ namespace Scripting
 
         public void Start()
         {
-            Console.WriteLine("C# PRINTOUT: Player Script Started.");
+            //Console.WriteLine("C# PRINTOUT: Player Script Started.");
         }
 
         public void Awake()
@@ -40,12 +40,12 @@ namespace Scripting
 
         public void Update(ref Transform transform, ref Rigidbody rigidbody)
         {
-            if(transform.Position.Y >= 10.0f)
+            if(transform.Position.Y >= 5.0f)
             {
                 rigidbody.AddForce(new Vector3(0, -3.0f, 0));
             }
 
-            if(transform.Position.Y <= 0.0f)
+            if(transform.Position.Y < 5.0f)
             {
                 rigidbody.AddForce(new Vector3(0, 3.0f, 0));
             }

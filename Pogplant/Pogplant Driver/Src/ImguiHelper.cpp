@@ -78,6 +78,17 @@ namespace PogplantDriver
 		{
 			auto& new_spcollider = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Camera>(PPD::ImguiHelper::m_CurrentEntity);
 		}
+		// Scriptable Component
+		if (ImGui::MenuItem("Scriptable", NULL, false, adding_enabled))
+		{
+			PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Scriptable>(PPD::ImguiHelper::m_CurrentEntity);
+			auto name_com = PPD::ImguiHelper::m_ecs->GetReg().try_get<Components::Name>(PPD::ImguiHelper::m_CurrentEntity);
+			if (name_com)
+			{
+				std::cout << "Entity [" << name_com->m_name << "] has added script component" << std::endl;
+			}
+			
+		}
 	}
 
 	bool ImguiHelper::m_FirstRun = true;
@@ -831,6 +842,47 @@ namespace PogplantDriver
 					if (!enable_camera_com)
 					{
 						m_ecs->GetReg().remove<Components::Camera>(m_CurrentEntity);
+					}
+				}
+
+				// Scriptable Component
+				auto scripts_com = m_ecs->GetReg().try_get<Components::Scriptable>(m_CurrentEntity);
+				auto name_com = m_ecs->GetReg().try_get<Components::Name>(m_CurrentEntity);
+				if (scripts_com && name_com)
+				{
+					bool enable_scripts_com = true;
+
+					if (ImGui::CollapsingHeader("Active Scripts", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						std::vector<std::string> totalScripts;
+						// I have to hard code the script names for now until I figure out a better solution.
+						totalScripts.push_back("Player");
+						totalScripts.push_back("Enemy");
+
+						for (auto& scriptName : totalScripts)
+						{
+							bool hasScript = scripts_com->m_ScriptTypes.contains(scriptName);
+							bool setScript = hasScript;
+							ImGui::Checkbox(scriptName.c_str(), &setScript);
+							if (setScript != hasScript)
+							{
+								if (setScript == false)
+								{
+									scripts_com->m_ScriptTypes.erase(scriptName);
+									std::cout << "Entity [" << name_com->m_name << "] has stopped script [" << scriptName << "]" << std::endl;
+								}
+								else
+								{
+									scripts_com->m_ScriptTypes[scriptName] = false;
+								}
+							}
+						}
+					}
+
+					if (!enable_scripts_com)
+					{
+						m_ecs->GetReg().remove<Components::Scriptable>(m_CurrentEntity);
+						std::cout << "Entity [" << name_com->m_name << "] has removed script component" << std::endl;
 					}
 				}
 
