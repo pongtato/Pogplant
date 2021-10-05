@@ -815,7 +815,7 @@ namespace PogplantDriver
 					}
 					if (!enable_camera_com)
 					{
-						m_ecs->GetReg().remove<Components::SphereCollider>(m_CurrentEntity);
+						m_ecs->GetReg().remove<Components::Camera>(m_CurrentEntity);
 					}
 				}
 
