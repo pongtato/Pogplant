@@ -186,7 +186,7 @@ namespace Pogplant
 			lightPos = dLight.m_position;
 		}
 
-		glm::mat4 orthogalProj = glm::ortho(-50.0f, 50.0f, -50.0f, 50.0f, 0.1f, 200.0f);
+		glm::mat4 orthogalProj = glm::ortho(-200.0f, 200.0f, -200.0f, 200.0f, 0.1f, 200.0f);
 		glm::mat4 lightView = glm::lookAt(lightPos, glm::vec3{ 0 }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 		ShadowCFG::m_LightProj = orthogalProj * lightView;
 

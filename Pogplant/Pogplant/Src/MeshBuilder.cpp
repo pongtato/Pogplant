@@ -469,65 +469,11 @@ namespace Pogplant
             glm::vec3 normal;
             glm::vec3 color;
             glm::vec2 uv;
+            glm::vec3 tangent;
+            glm::vec3 bitangent;
         };
 
         std::vector<TerrainVertex> terrainVertex;
-		//for (size_t z = 0; z < dim; z++)
-		//{
-		//	for (size_t x = 0; x < dim; x++)
-		//	{
-		//		TerrainVertex v;
-
-		//		const float scaledX = static_cast<float>(x / dim);
-		//		const float scaledZ = static_cast<float>(z / dim);
-
-		//		const float height = static_cast<float>(heightmap[z * dim + x]);
-		//		const float scaledHeight = height / dim;
-		//		v.position = { scaledX - 0.5f, scaledHeight, scaledZ - 0.5f };
-		//		v.color = { scaledHeight,scaledHeight,scaledHeight };
-		//		v.uv = { scaledX * 8.0f, 1.0f - scaledZ * 8.0f };
-		//		glm::vec3 origin = { x,height, z };
-
-		//		if (x + 1 < dim && z + 1 < dim)
-		//		{
-		//			glm::vec3 U =
-		//			{
-		//				x + 1,
-		//				heightmap[z * dim + x + 1],
-		//				z
-		//			};
-		//			glm::vec3 V =
-		//			{
-		//				x,
-		//				heightmap[(z + 1) * dim + x],
-		//				z + 1
-		//			};
-
-		//			v.normal = glm::normalize(glm::cross(V - origin, U - origin));
-		//		}
-		//		else
-		//		{
-		//			v.normal = { 0,1,0 };
-		//		}
-
-		//		terrainVertex.push_back(v);
-		//	}
-		//}
-
-		//// Indices
-		//for (size_t z = 0; z < dim - 1; ++z)
-		//{
-		//	for (size_t x = 0; x < dim - 1; ++x)
-		//	{
-		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * z + x));
-		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * (z + 1) + x));
-		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * z + x + 1));
-
-		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * (z + 1) + x + 1));
-		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * z + x + 1));
-		//		mesh->m_Indices.push_back(static_cast<unsigned int>(dim * (z + 1) + x));
-		//	}
-		//}
 
         TerrainVertex v;
         for (unsigned z = 0; z < dim; ++z)
@@ -545,6 +491,11 @@ namespace Pogplant
                 float hD = TexLoader::GetHeight(x    , z - 1, dim, heightmap);
                 float hU = TexLoader::GetHeight(x    , z + 1, dim, heightmap);
                 v.normal = glm::normalize(glm::vec3{ hL - hR, 2.0f, hD - hU });
+                v.bitangent = glm::vec3{ 2.0f, hR - hL ,0.0f };
+                v.tangent = glm::vec3(0.0f, hU - hD, 2.0f);
+                //v.normal = glm::normalize(glm::cross(v.tangent, v.bitangent));
+
+                //v.normal = { 0,1,0 };
                 v.uv = { (float)x / dim * 8.0f, 1.f - (float)z / dim * 8.0f };
                 terrainVertex.push_back(v);
             }
@@ -585,6 +536,14 @@ namespace Pogplant
         glVertexArrayAttribBinding(mesh->m_VAO, 3, 0);
         glVertexArrayAttribFormat(mesh->m_VAO, 3, 2, GL_FLOAT, GL_FALSE, offsetof(TerrainVertex, TerrainVertex::uv));
         glEnableVertexArrayAttrib(mesh->m_VAO, 3);
+
+        glVertexArrayAttribBinding(mesh->m_VAO, 4, 0);
+        glVertexArrayAttribFormat(mesh->m_VAO, 4, 3, GL_FLOAT, GL_FALSE, offsetof(TerrainVertex, TerrainVertex::tangent));
+        glEnableVertexArrayAttrib(mesh->m_VAO, 4);
+
+        glVertexArrayAttribBinding(mesh->m_VAO, 5, 0);
+        glVertexArrayAttribFormat(mesh->m_VAO, 5, 3, GL_FLOAT, GL_FALSE, offsetof(TerrainVertex, TerrainVertex::bitangent));
+        glEnableVertexArrayAttrib(mesh->m_VAO, 5);
 
         glVertexArrayVertexBuffer(mesh->m_VAO, 0, mesh->m_VBO, 0, sizeof(TerrainVertex));
 
