@@ -1,3 +1,17 @@
+/******************************************************************************/
+/*!
+\file	PhysicsReolvers.cpp
+\author Gabriel Wong Choon Jieh
+\par	email: c.wong\@digipen.edu
+\details
+
+	This file contains code to handle physics related functions
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
 #include "PhysicsResolvers.h"
 
 namespace PhysicsDLC

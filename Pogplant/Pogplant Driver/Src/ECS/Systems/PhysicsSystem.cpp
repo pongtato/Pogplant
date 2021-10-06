@@ -1,5 +1,19 @@
+/******************************************************************************/
+/*!
+\file	PhysicsSystem.cpp
+\author Gabriel Wong Choon Jieh
+\par	email: c.wong\@digipen.edu
+\details
+
+	System to handle components with colliders and rigidbodies
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
 #include "../Components/Components.h"
-#include "../Components/PhysicsComponents.h"
+#include "../Components/DependantComponents.h"
 
 #include "PhysicsSystem.h"
 #include "../Entity.h"
@@ -77,6 +91,13 @@ void PhysicsSystem::InitPlayState()
 	}
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Updates trigger behaviour on a separate thread to try to improve
+	performance
+*/
+/******************************************************************************/
 void PhysicsSystem::TriggerUpdate()
 {
 	while (!t_EXIT_THREADS)
@@ -142,6 +163,14 @@ void PhysicsSystem::TriggerUpdate()
 	}
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Main physics update loop
+\param c_dt
+	Delta time for this frame
+*/
+/******************************************************************************/
 void PhysicsSystem::Update(float c_dt)
 {
 	//Temporary since we have no play state
@@ -238,6 +267,32 @@ void PhysicsSystem::Update(float c_dt)
 	}
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Draws all the colliders in the world
+*/
+/******************************************************************************/
+void PhysicsSystem::DrawColliders()
+{
+	glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->GetPosition();
+
+	auto boxColliders = m_registry->GetReg().view<Components::BoxCollider>();
+	for (auto collidable : boxColliders)
+	{
+		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
+		PP::DebugDraw::DebugCube(boxCollider.aabb.m_min, boxCollider.aabb.m_max);
+	}
+
+	auto sphereColliders = m_registry->GetReg().view<Components::SphereCollider>();
+	for (auto collidable : sphereColliders)
+	{
+		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
+
+		PP::DebugDraw::DebugSphere(sphereCollider.sphere.m_pos, (sphereCollider.sphere.m_pos - camPos), sphereCollider.sphere.m_radius);
+	}
+}
+
 void PhysicsSystem::DrawImGUI()
 {
 
@@ -282,9 +337,13 @@ decltype(auto) PhysicsSystem::GetTriggered(entt::entity c_triggerEntity, entt::e
 void PhysicsSystem::SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
 {
 	//Call ontriggerenter function here
-	std::cout << "OnTriggerEnter: "
+	std::stringstream ss;
+	ss << "OnTriggerEnter: "
 		<< (uint32_t)c_triggerEntity << " "
-		<< (uint32_t)c_triggeringEntity << std::endl;
+		<< (uint32_t)c_triggeringEntity;
+
+	PP::Logger::Log(
+		PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() });
 
 	m_triggerList.insert(std::make_pair(c_triggerEntity, c_triggeringEntity));
 }
@@ -298,9 +357,13 @@ bool PhysicsSystem::SetUntrigger(entt::entity c_triggerEntity, entt::entity c_tr
 		if ((*it).second == c_triggeringEntity)
 		{
 			//Call ontriggerexit function here
-			std::cout << "OnTriggerExit: "
+			std::stringstream ss;
+			ss << "OnTriggerExit: "
 				<< (uint32_t)c_triggerEntity << " "
-				<< (uint32_t)c_triggeringEntity << std::endl;
+				<< (uint32_t)c_triggeringEntity;
+
+			PP::Logger::Log(
+				PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() });
 
 			m_triggerList.erase(it);
 			return true;

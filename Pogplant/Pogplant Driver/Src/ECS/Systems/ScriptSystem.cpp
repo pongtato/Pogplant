@@ -13,7 +13,7 @@
 /*****************************************************************************/
 
 #include "../Components/Components.h"
-#include "../Components/PhysicsComponents.h"
+#include "../Components/DependantComponents.h"
 #include "ScriptSystem.h"
 
 ScriptSystem::ScriptSystem()

@@ -2,7 +2,7 @@
 #define REFLECTION_COMPONENTS
 
 #include "GenericComponents.h"
-#include "PhysicsComponents.h"
+#include "DependantComponents.h"
 
 
 

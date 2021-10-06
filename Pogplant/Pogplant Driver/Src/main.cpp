@@ -11,12 +11,12 @@
 #include <crtdbg.h>
 #include <imgui.h>
 
+#include "AudioEngine.h"
 #include "ECS/Entity.h"
 #include "ECS/Systems/imaginary_system.h"
 #include "ECS/Systems/PhysicsSystem.h"
 #include "ECS/Systems/ScriptSystem.h"
 
-#include "AudioEngine.h"
 #include "Input/InputSystem.h"
 #include "ResourceAllocator.hpp"
 #include "AssetCompiler.h"
@@ -192,7 +192,7 @@ void Init()
 		true
 	));
 	entity.GetComponent<Components::Name>().m_name = "Floor";
-	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.5f, 0.5f, 0.5f }, {0.f, 0.f, 0.f} });
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.1f, 0.1f, 0.1f }, {0.f, 0.f, 0.f} });
 
 	pos = { 15.0f, 15.0f, 10.f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -266,25 +266,34 @@ void Init()
 	entity.GetComponent<Components::Name>().m_name = "Green light";
 
 	//Test Object with body
-	pos = { 10.0f, 1.f, -10.0f };
+	pos = { 3.0f, 1.f, 0.0f };
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, false });
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	//entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{0.f}, 1.f });
-	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
 	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
+	entity.AddComponent<Components::AudioSource>();
+	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
+		Components::AudioSource::AudioClip{ "Resources/Audio/test2.ogg", 0.2f }
+	);
 
-	pos = { 10.0f, 1.f, -15.0f };
+	//Test movable controllable body
+	pos = { -3.0f, 1.f, 0.0f };
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, false });
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
-	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
 	entity.AddComponent<Components::CharacterController>();
 	entity.GetComponent<Components::Name>().m_name = "Test movableObject";
+	entity.AddComponent<Components::AudioSource>();
+	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
+		Components::AudioSource::AudioClip{"Resources/Audio/test.ogg", 0.2f}
+	);
 
 	/// FONT
 	pos = { 0.0f, 0.0f, -5.0f };
@@ -441,6 +450,8 @@ void DrawCommon()
 				PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
 				PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
 				PP::Camera::GetUpdatedView(transform.m_position, transform.m_position + camera.m_Front, camera.m_Up, camera.m_View);
+
+				PPA::AudioEngine::UpdateListenerPosition(transform.m_position, camera.m_Front, camera.m_Up, PhysicsDLC::Vector::Zero);
 			}
 		}
 	}
@@ -449,28 +460,16 @@ void DrawCommon()
 	auto view = ecs.GetReg().view<Transform, Renderer>();
 	auto debugView = ecs.GetReg().view<Transform, DebugRender>();
 	auto primView = ecs.GetReg().view<Transform, PrimitiveRender>();
-	glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->GetPosition();
+	
+	physicsSystem.DrawColliders();
+
 	for (auto entity : view)
 	{
 		auto& transform = view.get<Transform>(entity);
 		auto& renderer = view.get<Renderer>(entity);
 
-		auto boxCollider = ecs.GetReg().try_get<BoxCollider>(entity);
-		auto sphereCollider = ecs.GetReg().try_get<SphereCollider>(entity);
-
 		transform.updateModelMtx();
 		renderer.m_Model = transform.m_ModelMtx;
-
-		/// Debug draw update
-		if (boxCollider)
-		{
-			PP::DebugDraw::DebugCube(boxCollider->aabb.m_min, boxCollider->aabb.m_max);
-		}
-		else if (sphereCollider)
-		{
-			const glm::vec3 camDir = sphereCollider->sphere.m_pos - camPos;
-			PP::DebugDraw::DebugSphere(sphereCollider->sphere.m_pos, camDir, sphereCollider->sphere.m_radius);
-		}
 	}
 
 	for (auto entity : debugView)
@@ -610,7 +609,8 @@ void Run()
 			}
 		}
 
-		physicsSystem.Update(ImGui::GetIO().DeltaTime);
+		PPA::AudioEngine::Update();
+
 		ImaginarySystem.Update();
 		scriptSystem.Update();
 		PPF::FileHandler & fh = fh.GetInstance();

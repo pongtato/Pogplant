@@ -17,6 +17,7 @@
 
 #include <fmod_studio.hpp>
 #include <fmod.hpp>
+#include <glm.hpp>
 
 #include <vector>
 #include <string>
@@ -33,6 +34,15 @@ namespace PPA
 		static void Destroy();
 		
 		static void LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed);
+		static void UnloadAudio(const std::string& fileName);
+
+		static int PlaySound(const std::string& fileName, float volume, const glm::vec3& position);
+		static void StopPlayingChannel(int channelID);
+
+		static bool UpdateChannel3DPosition(int channelID, const glm::vec3& position);
+		static void UpdateChannelVolume(int channelID, float volume);
+
+		static void UpdateListenerPosition(const glm::vec3& position, const glm::vec3& forwardVec, const glm::vec3& upVec, const glm::vec3& velocity);
 	private:
 		AudioEngine() = default;
 		~AudioEngine() = default;
@@ -54,6 +64,8 @@ namespace PPA
 		};
 
 		xFMOD xFmod;
+
+		static FMOD_VECTOR&& GLMToFMODVec3(const glm::vec3& vec);
 
 		static AudioEngine* m_instance;
 	};

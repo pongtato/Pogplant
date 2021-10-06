@@ -179,7 +179,7 @@ namespace PhysicsDLC
 			if (CR.collided)
 			{
 				//Do extra checks
-
+				CR.collisionNormal = glm::vec3{ 0.f, 1.f, 0.f };
 			}
 
 			return std::move(CR);

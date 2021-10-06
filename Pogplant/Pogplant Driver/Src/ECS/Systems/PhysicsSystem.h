@@ -1,8 +1,22 @@
+/******************************************************************************/
+/*!
+\file	PhysicsSystem.h
+\author Gabriel Wong Choon Jieh
+\par	email: c.wong\@digipen.edu
+\details
+	
+	System to handle components with colliders and rigidbodies
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
 #ifndef PHYSICSSYSTEM_H_
 #define PHYSICSSYSTEM_H_
 
 #include "../ECS.h"
-#include "../Components/PhysicsComponents.h"
+#include "../Components/DependantComponents.h"
 
 #include <thread>
 #include <semaphore>
@@ -19,6 +33,7 @@ public:
 	void InitPlayState();
 
 	void Update(float c_dt);
+	void DrawColliders();
 	void DrawImGUI();
 
 	void CleanUp();

@@ -1,8 +1,9 @@
 #include "imaginary_system.h"
 #include "../Entity.h"
 
-#include "../Components/PhysicsComponents.h"
+#include "../Components/DependantComponents.h"
 #include "../../Input/GLFWInput.h"
+#include "../../AudioEngine.h"
 
 using namespace Components;
 
@@ -17,6 +18,24 @@ Imaginary_system::~Imaginary_system()
 void Imaginary_system::Init(ECS* ecs)
 {
 	m_registry = ecs;
+
+	auto audios = m_registry->GetReg().view<Components::AudioSource>();
+
+	for (auto& audioEntity : audios)
+	{
+		auto& audioSource = audios.get<Components::AudioSource>(audioEntity);
+
+		for (size_t i = 0; i < audioSource.m_audioSources.size(); i++)
+		{
+			PPA::AudioEngine::LoadAudio(
+				audioSource.m_audioSources[i].m_fileDir,
+				audioSource.m_audioSources[i].m_is3D,
+				audioSource.m_audioSources[i].m_isLooping,
+				audioSource.m_audioSources[i].m_isStreamed);
+			
+			audioSource.PlayAudio(i, glm::vec3{ 0.f, 0.f, 0.f });
+		}
+	}
 }
 
 void Imaginary_system::Update()
@@ -40,6 +59,20 @@ void Imaginary_system::Update()
 
 		(void)imaginary_component;
 	}//*/
+
+	auto audios = m_registry->GetReg().view<Components::Transform, Components::AudioSource>();
+
+	for (auto& audioEntity : audios)
+	{
+		auto& audioSource = audios.get<Components::AudioSource>(audioEntity);
+		auto& transform = audios.get<Components::Transform>(audioEntity);
+
+		for (size_t i = 0; i < audioSource.m_audioSources.size(); i++)
+		{
+			if(audioSource.m_audioSources[i].m_update3DPosition && audioSource.m_audioSources[i].c_playing)
+				audioSource.m_audioSources[i].c_playing = PPA::AudioEngine::UpdateChannel3DPosition(audioSource.m_audioSources[i].c_channelID, transform.m_position);
+		}
+	}
 
 	auto characters = m_registry->GetReg().view<Transform, Rigidbody, Components::CharacterController>();
 

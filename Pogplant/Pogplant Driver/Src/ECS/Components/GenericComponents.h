@@ -180,28 +180,6 @@ namespace Components
 		bool m_Active;
 	};
 
-	struct AudioSource
-	{
-		struct AudioClip
-		{
-			std::string m_name;
-			float m_volume = 1.f;
-			bool m_is3D;
-			bool m_isLooping;
-			bool m_isStreamed;
-		};
-
-		std::vector<AudioClip> m_audioSources;
-
-		inline void PlayAudio(size_t id = 0)
-		{
-			if (m_audioSources.size() > id)
-			{
-				//PPA::AudioEngine::Instance();
-			}
-		}
-	};
-
 	//Temporary
 	struct CharacterController
 	{

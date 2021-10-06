@@ -221,7 +221,7 @@
     <ClInclude Include="Src\ECS\Components\GenericComponents.h">
       <Filter>Source Files\ECS\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Src\ECS\Components\PhysicsComponents.h">
+    <ClInclude Include="Src\ECS\Components\DependantComponents.h">
       <Filter>Source Files\ECS\Components</Filter>
     </ClInclude>
     <ClInclude Include="Src\ECS\Systems\PhysicsSystem.h">
