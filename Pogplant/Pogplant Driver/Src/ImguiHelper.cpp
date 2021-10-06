@@ -115,11 +115,11 @@ namespace PogplantDriver
 		io.Fonts->AddFontFromFileTTF("Resources/Fonts/Ruda.ttf", 14);
 		static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
 		ImFontConfig icons_config; icons_config.MergeMode = true; icons_config.PixelSnapH = true;
-		io.Fonts->AddFontFromFileTTF("Resources/Fonts/fa-solid-900.ttf", 16.0f, &icons_config, icons_ranges);
+		io.Fonts->AddFontFromFileTTF("Resources/Fonts/fa-solid-900.ttf", 14.0f, &icons_config, icons_ranges);
 
 		static const ImWchar more_icons_ranges[] = { ICON_MIN_KI, ICON_MAX_KI, 0 };
 		ImFontConfig more_icons_config; more_icons_config.MergeMode = true; more_icons_config.PixelSnapH = true;
-		io.Fonts->AddFontFromFileTTF("Resources/Fonts/kenney-icon-font.ttf", 16.0f, &more_icons_config, more_icons_ranges);
+		io.Fonts->AddFontFromFileTTF("Resources/Fonts/kenney-icon-font.ttf", 14.0f, &more_icons_config, more_icons_ranges);
 
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // Enable Docking
 		imgui_extra_styles::Pogplant();
@@ -457,7 +457,7 @@ namespace PogplantDriver
 			if (m_CurrentEntity != entt::null)
 			{
 				auto naming = m_ecs->GetReg().try_get<Components::Name>(m_CurrentEntity);
-				if (naming && ImGui::CollapsingHeader("Name", ImGuiTreeNodeFlags_DefaultOpen))
+				if (naming && ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  Name", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					Reflect_ImGui(naming);
 
@@ -474,7 +474,7 @@ namespace PogplantDriver
 
 				//GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
 				auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);
-				if (transform && ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen))
+				if (transform && ImGui::CollapsingHeader(ICON_FA_SLIDERS_H "  Transform", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					Reflect_ImGui(transform);
 
@@ -526,7 +526,7 @@ namespace PogplantDriver
 				{
 					bool enable_render = true;
 
-					if (ImGui::CollapsingHeader("Renderer", &enable_render, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_TH "  Renderer", &enable_render, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGuiComboFlags flag = 0;
 						flag |= ImGuiComboFlags_PopupAlignLeft;
@@ -578,7 +578,7 @@ namespace PogplantDriver
 				if (point_light)
 				{
 					bool enable_pointlight = true;
-					if (ImGui::CollapsingHeader("Point Lighting", &enable_pointlight, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_LIGHTBULB "  Point Lighting", &enable_pointlight, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Light Color Editor");
 						ImGui::ColorEdit3("###PLight", glm::value_ptr(point_light->m_Color));
@@ -606,7 +606,7 @@ namespace PogplantDriver
 				if (direction_light)
 				{
 					bool enable_directionlight = true;
-					if (ImGui::CollapsingHeader("Directional Lighting", &enable_directionlight, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_CLOUD_SUN "  Directional Lighting", &enable_directionlight, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Direction");
 						ImGui::DragFloat3("###Ddir", glm::value_ptr(direction_light->m_Direction));
@@ -637,7 +637,7 @@ namespace PogplantDriver
 				if (text)
 				{
 					bool enable_text = true;
-					if (ImGui::CollapsingHeader("Text Editor", &enable_text, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_TEXT_HEIGHT "  Text Editor", &enable_text, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Color");
 						ImGui::ColorEdit3("Tcol", glm::value_ptr(text->m_Color));
@@ -689,7 +689,7 @@ namespace PogplantDriver
 				{
 					bool enable_rigid = true;
 
-					if (ImGui::CollapsingHeader("RigidBody", &enable_rigid, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_SKIING  "RigidBody", &enable_rigid, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Mass");
 						ImGui::InputFloat("###", &rigid->mass , 0.1f, 1.0f, "%.3f");
@@ -713,7 +713,7 @@ namespace PogplantDriver
 				{
 					bool enable_box_collider = true;
 
-					if (ImGui::CollapsingHeader("Collider Box", &enable_box_collider, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_BOXES "  Collider Box", &enable_box_collider, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGuiComboFlags flag = 0;
 						flag |= ImGuiComboFlags_PopupAlignLeft;
@@ -788,7 +788,7 @@ namespace PogplantDriver
 				{
 					bool enable_sphere_collider = true;
 
-					if (ImGui::CollapsingHeader("Collider Sphere", &enable_sphere_collider, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_USER_CIRCLE "  Collider Sphere", &enable_sphere_collider, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Centre");
 						ImGui::DragFloat3("###CCen", glm::value_ptr(sphere_collider->centre));
@@ -852,7 +852,7 @@ namespace PogplantDriver
 				{
 					bool enable_scripts_com = true;
 
-					if (ImGui::CollapsingHeader("Active Scripts", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_SCROLL "  Active Scripts", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						std::vector<std::string> totalScripts;
 						// I have to hard code the script names for now until I figure out a better solution.
