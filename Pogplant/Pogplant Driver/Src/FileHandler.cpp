@@ -36,6 +36,12 @@ namespace PPF
 
     void FileHandler::AddNewWatchPath(const std::string& path)
     {
+        if (!std::filesystem::exists(path))
+        {
+            std::cout << "Path: " << path << " does not exist." << std::endl;
+            return;
+        }
+
         std::unordered_map<std::string, ftt> files;
         for (auto& file : std::filesystem::recursive_directory_iterator(path))
         {

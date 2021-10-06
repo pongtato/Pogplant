@@ -83,11 +83,14 @@ copy "$(SolutionDir)Libs\FMODStudio\lib\fmodstudioL.dll" "$(TargetDir)"
 xcopy "$(TargetDir)Pogplant Compiler.exe" "$(SolutionDir)Pogplant Driver" /y /i /s
 xcopy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
 xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s</Command>
+xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
+xcopy "$(SolutionDir)Libs\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)" /y
+xcopy "$(SolutionDir)Libs\Mono\lib\" "$(TargetDir)..\Libs\Mono\lib\" /y /i /s
+xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)Libs\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)" /y
-xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -120,11 +123,14 @@ copy "$(SolutionDir)Libs\FMODStudio\lib\fmodstudio.dll" "$(TargetDir)"
 xcopy "$(TargetDir)Pogplant Compiler.exe" "$(SolutionDir)Pogplant Driver" /y /i /s
 xcopy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(SolutionDir)Pogplant Driver" /y /i /s 
 xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
-xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s</Command>
+xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
+xcopy "$(SolutionDir)Libs\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)" /y
+xcopy "$(SolutionDir)Libs\Mono\lib\" "$(TargetDir)..\Libs\Mono\lib\" /y /i /s
+xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)Libs\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)" /y
-xcopy "$(SolutionDir)Libs\Mono\lib\mono\4.5\*" "$(TargetDir)mono\4.5\" /y /i /s</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

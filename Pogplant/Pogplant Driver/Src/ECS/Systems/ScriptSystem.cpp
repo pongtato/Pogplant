@@ -25,7 +25,7 @@ ScriptSystem::ScriptSystem()
 	if (m_ptrMonoDomain)
 	{
 		// Load the compiled dll script (c#)
-		m_ptrGameAssembly = mono_domain_assembly_open(m_ptrMonoDomain, "..\\Libs\\ScriptLib\\Scripting.dll");
+		m_ptrGameAssembly = mono_domain_assembly_open(m_ptrMonoDomain, "Scripting.dll");
 
 		if (m_ptrGameAssembly)
 		{
