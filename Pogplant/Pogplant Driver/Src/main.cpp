@@ -194,7 +194,7 @@ void Init()
 	entity.GetComponent<Components::Name>().m_name = "Floor";
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.5f, 0.5f, 0.5f }, {0.f, 0.f, 0.f} });
 
-	pos = { 5, -2.0f, 10.0f };
+	pos = { 15.0f, 15.0f, 10.f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 1.0f,1.0f,1.0f };
 
@@ -207,7 +207,7 @@ void Init()
 	entity.AddComponent<Components::Scriptable>(Scriptable{ shipScripts});
 	entity.GetComponent<Components::Name>().m_name = "Ship";
 
-	pos = { -10.0f, -2.0f, 10.0f };
+	pos = { 7.5f, 7.5f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 1.0f,1.0f,1.0f };
 

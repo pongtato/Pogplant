@@ -40,12 +40,12 @@ namespace Scripting
 
         public void Update(ref Transform transform, ref Rigidbody rigidbody)
         {
-            if (transform.Position.X >= 4.0f)
+            if (transform.Position.X >= 10.0f)
             {
                 rigidbody.AddForce(new Vector3(-3.0f, 0, 0));
             }
 
-            if (transform.Position.X < 4.0f)
+            if (transform.Position.X < 10.0f)
             {
                 rigidbody.AddForce(new Vector3(3.0f, 0, 0));
             }
