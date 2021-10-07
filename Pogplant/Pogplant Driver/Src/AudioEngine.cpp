@@ -97,7 +97,7 @@ namespace PPA
 
 			ss << "Unable to load audio file \"" << fileName << "\"";
 			PP::Logger::Log(
-				PP::LogEntry{ "AudioEngine::LoadAudio", PP::LogEntry::TYPE::ERROR, ss.str() });
+				PP::LogEntry{ "AudioEngine::LoadAudio", PP::LogEntry::TYPE::ERROR, ss.str() }, true);
 		}
 	}
 
@@ -146,7 +146,7 @@ namespace PPA
 				PP::LogEntry{
 					"AudioEngine::PlaySound",
 					PP::LogEntry::TYPE::ERROR,
-					"Unable to play sound, might not have loaded properly"});//*/
+					"Unable to play sound, might not have loaded properly"}, true);//*/
 			return -1;
 		}
 

@@ -25,7 +25,7 @@ namespace Pogplant
 
 	struct Logger
 	{
-		static void Log(LogEntry _LogEntry);
+		static void Log(LogEntry _LogEntry, bool printDuplicates = false);
 
 		static std::unordered_map<std::string, size_t> m_Keys;
 		static std::list<LogEntry> m_Logs;

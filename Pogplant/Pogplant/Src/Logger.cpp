@@ -6,7 +6,7 @@ namespace Pogplant
 	std::list<LogEntry> Logger::m_Logs;
 	const size_t Logger::m_MaxLog = 420;
 
-	void Logger::Log(LogEntry _LogEntry)
+	void Logger::Log(LogEntry _LogEntry, bool printDuplicates)
 	{
 		// Pop front
 		if (m_Logs.size() >= m_MaxLog)
@@ -18,7 +18,7 @@ namespace Pogplant
 		}
 
 		// Prevent duplicates
-		if (m_Keys[_LogEntry.m_Description] == 0)
+		if (printDuplicates || m_Keys[_LogEntry.m_Description] == 0)
 		{
 			m_Logs.push_back(_LogEntry);
 			// Set key index to + 1 of actual index, we dont really care about the index.
