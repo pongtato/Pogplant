@@ -291,6 +291,24 @@ void PhysicsSystem::DrawColliders()
 
 		PP::DebugDraw::DebugSphere(sphereCollider.sphere.m_pos, (sphereCollider.sphere.m_pos - camPos), sphereCollider.sphere.m_radius);
 	}
+
+	// haha xd
+	auto cameras = m_registry->GetReg().view<Components::Camera, Components::Transform>();
+	const float aspect = PP::Window::m_Width / PP::Window::m_Height;
+	for (auto it : cameras)
+	{
+		auto& cam_trans = cameras.get<Components::Transform>(it);
+		auto& cam = cameras.get<Components::Camera>(it);
+
+		const auto near = cam.m_Near;
+		const auto far = cam.m_Far;
+		const glm::vec3 right = cam.m_Right;
+		const glm::vec3 up = cam.m_Up;
+		const glm::vec3 front = cam.m_Front;
+		const float zoom = cam.m_Zoom * 0.5f;
+
+		PP::DebugDraw::DebugFrustum(cam_trans.m_position, glm::radians(zoom), aspect, near, far, right, up, front);
+	}
 }
 
 void PhysicsSystem::DrawImGUI()

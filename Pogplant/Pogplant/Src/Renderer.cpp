@@ -82,8 +82,7 @@ namespace Pogplant
 		glActiveTexture(GL_TEXTURE4);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
 
-		// Lights
-
+		/// Lights
 		// Directional
 		ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
 		auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
@@ -301,6 +300,7 @@ namespace Pogplant
 		glm::mat4 projection = currCam->GetPerspective();
 		glm::mat4 view = currCam->GetView();
 		glm::vec3 position = currCam->GetPosition();
+
 		if (!_EditorMode)
 		{
 			// If game cam exists

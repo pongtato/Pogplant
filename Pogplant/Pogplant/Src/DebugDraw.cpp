@@ -1,7 +1,8 @@
 #include "DebugDraw.h"
+#include "Window.h"
 #include <gtc/constants.hpp>
-
 #include <iostream>
+
 namespace Pogplant
 {
 	std::vector<glm::vec3> DebugDraw::m_DebugVerts;
@@ -107,6 +108,57 @@ namespace Pogplant
 		up = glm::normalize(glm::cross(right, _CamDirection));
 
 		DebugCircle(_Position, _Radius, right, up, _Segments);
+	}
+
+	void DebugDraw::DebugFrustum(glm::vec3 _Position, float _Zoom, float _Aspect, float _Near, float _Far, glm::vec3 _Right, glm::vec3 _Up, glm::vec3 _Front)
+	{
+		float Hnear = 2 * tan(_Zoom) * _Near;
+		float Wnear = Hnear * _Aspect;
+
+		float Hfar = 2 * tan(_Zoom) * _Far;
+		float Wfar = Hfar * _Aspect;
+
+		glm::vec3 r = _Right * Wnear;
+		glm::vec3 u = _Up * Hnear;
+		glm::vec3 f = _Front * _Near;
+
+		glm::vec3 nTL = _Position - r + u + f;
+		glm::vec3 nTR = _Position + r + u + f;
+		glm::vec3 nBL = _Position - r - u + f;
+		glm::vec3 nBR = _Position + r - u + f;
+
+		// Camera to 4 corners
+		DebugLine(_Position, nTL);
+		DebugLine(_Position, nTR);
+		DebugLine(_Position, nBL);
+		DebugLine(_Position, nBR);
+
+		// Plane 
+		DebugLine(nTL, nTR);
+		DebugLine(nTR, nBR);
+		DebugLine(nBR, nBL);
+		DebugLine(nBL, nTL);
+
+		r = _Right * Wfar;
+		u = _Up * Hfar;
+		f = _Front * _Far;
+
+		nTL = _Position - r + u + f;
+		nTR = _Position + r + u + f;
+		nBL = _Position - r - u + f;
+		nBR = _Position + r - u + f;
+
+		// Camera to 4 corners
+		DebugLine(_Position, nTL);
+		DebugLine(_Position, nTR);
+		DebugLine(_Position, nBL);
+		DebugLine(_Position, nBR);
+
+		// Plane 
+		DebugLine(nTL, nTR);
+		DebugLine(nTR, nBR);
+		DebugLine(nBR, nBL);
+		DebugLine(nBL, nTL);
 	}
 
 	glm::vec3 DebugDraw::CircleWrapper(float _Angle, float _Radius, glm::vec3 _Axis1, glm::vec3 _Axis2)
