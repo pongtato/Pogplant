@@ -79,31 +79,31 @@ float ShadowCalculation()
 
 void main()
 {             
-    // retrieve data from gbuffer
+    // gBuffer sample
     vec3 FragPos = texture(gPosition, TexCoords).rgb;
     vec3 Normal = texture(gNormal, TexCoords).rgb;
     vec3 Diffuse = texture(gAlbedoSpec, TexCoords).rgb;
     float Specular = texture(gAlbedoSpec, TexCoords).a;
     vec4 NoLight = texture(gNoLight, TexCoords);
     
-    // then calculate lighting as usual
+    // Light calc
     float shadow = 1-ShadowCalculation();
-    vec3 lighting  = Diffuse * 0.42 * clamp(shadow,0.0f,1.0f); // hard-coded ambient component
+    vec3 lighting  = Diffuse * 0.42 * clamp(shadow,0.0f,1.0f);
     vec3 viewDir  = normalize(viewPos - FragPos);
     for(int i = 0; i < activeLights; ++i)
     {
-        // calculate distance between light source and current fragment
+        // Distance factor
         float distance = length(lights[i].Position - FragPos);
         if(distance < lights[i].Radius)
         {
-            // diffuse
+            // Diffuse
             vec3 lightDir = normalize(lights[i].Position - FragPos);
             vec3 diffuse = max(dot(Normal, lightDir), 0.0) * Diffuse * lights[i].Color;
-            // specular
+            // Specular
             vec3 halfwayDir = normalize(lightDir + viewDir);  
             float spec = pow(max(dot(Normal, halfwayDir), 0.0), 16.0);
             vec3 specular = lights[i].Color * spec * Specular;
-            // attenuation
+            // Attenuation
             float attenuation = 1.0 / (1.0 + lights[i].Linear * distance + lights[i].Quadratic * distance * distance);
             diffuse *= attenuation;
             specular *= attenuation;
@@ -111,12 +111,13 @@ void main()
         }
     }
 
-    // Apply directional light
+    // Directional light
     vec3 lightDir = normalize(-directLight.Direction);
     vec3 diffuse = max(dot(Normal, lightDir), 0.0) * Diffuse * directLight.Color;
-    // specular
-    vec3 halfwayDir = normalize(lightDir + viewDir);  
-    float spec = pow(max(dot(Normal, halfwayDir), 0.0), 16.0);
+    
+    // Specular
+    vec3 halfway = normalize(lightDir + viewDir);  
+    float spec = pow(max(dot(Normal, halfway), 0.0), 16.0);
     vec3 specular = directLight.Color * spec * Specular;
     diffuse *= directLight.Diffuse;
     specular *= directLight.Specular;
@@ -124,7 +125,7 @@ void main()
 
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
 
-    // check whether result is higher than some threshold, if so, output as bloom threshold color
+    // Output bright bixels for bloom
     float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
     if(brightness > 0.9)
         brightColor = vec4(outColor.rgb,1.0);

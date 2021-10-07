@@ -297,13 +297,14 @@ namespace Pogplant
 		/// Editor cam by default;
 		Camera* currCam = CameraResource::GetCamera("EDITOR");
 		// Try to get game camera
-		auto cam_results = registry.view<Components::Camera>();
+		auto cam_results = registry.view<Components::Camera, Components::Transform>();
 		glm::mat4 projection = currCam->GetPerspective();
 		glm::mat4 view = currCam->GetView();
+		glm::vec3 position = currCam->GetPosition();
 		if (!_EditorMode)
 		{
 			// If game cam exists
-			if (cam_results.size() > 0)
+			if (cam_results.size_hint() > 0)
 			{
 				bool failFlag = true;
 				// Use the game camera
@@ -315,6 +316,9 @@ namespace Pogplant
 						projection = it_Camera.m_Projection;
 						view = it_Camera.m_View;
 						failFlag = false;
+
+						const auto& it_Trans = cam_results.get<const Components::Transform>(e);
+						position = it_Trans.m_position;
 					}
 
 					if (failFlag)
@@ -322,7 +326,6 @@ namespace Pogplant
 						Logger::Log({ "PP::RENDERER", LogEntry::TYPE::WARNING, "No active game cameras!" });
 					}
 				}
-
 			}
 			else
 			{
@@ -363,6 +366,8 @@ namespace Pogplant
 			ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
 			ShaderLinker::SetUniform("blend", it.m_Blend);
 			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			ShaderLinker::SetUniform("v3_ViewPosition", position);
+
 			ShaderLinker::SetUniform("texture_diffuse", 0);
 			ShaderLinker::SetUniform("texture_normal", 1);
 			ShaderLinker::SetUniform("texture_disp", 2);

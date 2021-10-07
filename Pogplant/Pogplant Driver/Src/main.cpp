@@ -183,10 +183,10 @@ void Init()
 	//entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
 	entity.AddComponent<Components::PrimitiveRender>(PrimitiveRender
 	(
-		{ "MUD_DIFF", "FOREST_DIFF"},
-		{ "MUD_BUMP", "FOREST_BUMP"},
-		{ "MUD_NORM", "FOREST_NORM"},
-		{ "MUD_SPEC", "FOREST_SPEC"},
+		{ "MUD_DIFF", "GRASS_DIFF"},
+		{ "MUD_BUMP", "GRASS_BUMP"},
+		{ "MUD_NORM", "GRASS_NORM"},
+		{ "MUD_SPEC", "GRASS_SPEC"},
 		floorMesh,
 		0.69f,
 		true
@@ -234,7 +234,8 @@ void Init()
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	entity.GetComponent<Components::Name>().m_name = "Directional Light";
 
-	pos = { 0.0f, 10.0f, 0.0f };
+	intensity = 1.0f;
+	pos = { 15.0f, 22.0f, 19.0f };
 	color = { 1.0f, 1.0f, 1.0f };
 	const float linear = 0.00069f;
 	const float quadratic = 0.0042f;
@@ -243,22 +244,22 @@ void Init()
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	entity.GetComponent<Components::Name>().m_name = "White point light";
 
-	intensity = 1.0f;
-	pos = { -10.0f, 10.0f, 10.0f };
+	intensity = 4.2f;
+	pos = { 26.0f, 10.0f, -16.5f };
 	color = { 0.0f, 0.0f, 1.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	entity.GetComponent<Components::Name>().m_name = "Blue light";
 
-	pos = { 10.0f, 10.0f, 10.0f };
+	pos = { 21.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
 	entity.GetComponent<Components::Name>().m_name = "Red light";
 
-	pos = { 0.0f, 10.0f, -10.0f };
+	pos = { -12.5, 10.0f, -10.0f };
 	color = { 0.0f, 1.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
@@ -296,9 +297,9 @@ void Init()
 	);
 
 	/// FONT
-	pos = { 0.0f, 0.0f, -5.0f };
+	pos = { 0.0f, 10.0, -10.0f };
 	rot = { 0.0f, 0.0f,0.0f };
-	scale = { 30.0f,30.0f,30.0f };
+	scale = { 42.0f,42.0f,42.0f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "This is a very big text", false });
 	entity.GetComponent<Components::Name>().m_name = "World font";
@@ -311,7 +312,7 @@ void Init()
 	entity.GetComponent<Components::Name>().m_name = "Screen font";
 
 	/// Camera
-	pos = { 0.0f, 0.0f, 30.0f };
+	pos = { 15.0f, 10.0f, 45.0f };
 	color = { 0.9f, 0.5f, 0.2f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });

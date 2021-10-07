@@ -13,24 +13,26 @@ out vec3 Normal;
 out vec3 Color;
 out float Height;
 out mat3 TBN;
+out mat3 nmMtx;
 
 uniform mat4 m4_Model;
 uniform mat4 m4_View;
 uniform mat4 m4_Projection;
+uniform vec3 v3_ViewPosition;
 
 void main()
 {
     vec4 worldPos = m4_Model * vec4(v3_Pos, 1.0);
-    FragPos = worldPos.xyz; 
+    FragPos = worldPos.xyz;
 
-    mat3 normalMatrix = transpose(inverse(mat3(m4_Model)));
-    vec3 T = normalize(normalMatrix * v3_Tangent);
-    vec3 N = normalize(normalMatrix * v3_Normal);
+    nmMtx = transpose(inverse(mat3(m4_Model)));
+    Normal = nmMtx * v3_Normal;
+    
+    vec3 T = normalize(nmMtx * v3_Tangent);
+    vec3 N = normalize(Normal);
     T = normalize(T - dot(T,N) * N);
     vec3 B = cross(N,T);
     TBN = mat3(T,B,N);
-    Normal = normalMatrix * v3_Normal;
-
     TexCoords = v2_TexCoords; 
 
     Color = v3_Color;

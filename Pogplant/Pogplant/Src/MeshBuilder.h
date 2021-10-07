@@ -25,6 +25,7 @@ namespace Pogplant
 		static void GenerateSkybox();
 		static void GenerateLines();
 		static void GenerateHeightmap();
+		//static void GenerateDebugQuad();
 	};
 }
 

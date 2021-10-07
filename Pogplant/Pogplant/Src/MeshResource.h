@@ -18,6 +18,7 @@ namespace Pogplant
 			SCREEN,
 			LINE,
 			HEIGHTMAP,
+			DEBUG_QUAD,
 			COUNT_2D,
 		};
 
