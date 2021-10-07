@@ -279,7 +279,7 @@ void Init()
 	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
 	entity.AddComponent<Components::AudioSource>();
 	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
-		Components::AudioSource::AudioClip{ "Resources/Audio/test2.ogg", 0.2f }
+		Components::AudioSource::AudioClip{ "Resources/Audio/test2.ogg", 0.2f, true, true, true }
 	);
 
 	//Test movable controllable body
@@ -294,7 +294,7 @@ void Init()
 	entity.GetComponent<Components::Name>().m_name = "Test movableObject";
 	entity.AddComponent<Components::AudioSource>();
 	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
-		Components::AudioSource::AudioClip{"Resources/Audio/test.ogg", 0.2f}
+		Components::AudioSource::AudioClip{"Resources/Audio/test.ogg", 0.2f, true, true, true }
 	);
 
 	/// FONT

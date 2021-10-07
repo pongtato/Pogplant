@@ -79,6 +79,25 @@ namespace Components
 	{
 		struct AudioClip
 		{
+			inline AudioClip(const std::string& fileDir,
+				float volume = 1.f,
+				bool is3D = true,
+				bool isLooping = false,
+				bool isStreamed = false,
+				bool enableDoppler = false,
+				bool followTransformPosition = true)
+				:
+				m_fileDir{ fileDir },
+				m_volume{ volume },
+				m_is3D{ is3D },
+				m_isLooping{ isLooping },
+				m_isStreamed{ isStreamed },
+				m_enableDopplerEffect{ enableDoppler },
+				m_update3DPosition{ followTransformPosition }
+			{
+			}
+			
+
 			/**> Relative file directory of the audio file*/
 			std::string m_fileDir;
 			float m_volume = 1.f;

@@ -343,7 +343,7 @@ void PhysicsSystem::SetTrigger(entt::entity c_triggerEntity, entt::entity c_trig
 		<< (uint32_t)c_triggeringEntity;
 
 	PP::Logger::Log(
-		PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() });
+		PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
 
 	m_triggerList.insert(std::make_pair(c_triggerEntity, c_triggeringEntity));
 }
@@ -363,7 +363,7 @@ bool PhysicsSystem::SetUntrigger(entt::entity c_triggerEntity, entt::entity c_tr
 				<< (uint32_t)c_triggeringEntity;
 
 			PP::Logger::Log(
-				PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() });
+				PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
 
 			m_triggerList.erase(it);
 			return true;
