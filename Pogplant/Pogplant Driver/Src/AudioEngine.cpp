@@ -111,14 +111,15 @@ namespace PPA
 	/***************************************************************************/
 	void AudioEngine::UnloadAudio(const std::string& fileName)
 	{
-		auto instance = AudioEngine::Instance();
+		if (m_instance)
+		{
+			auto soundItr = m_instance->xFmod.m_soundMap.find(fileName);
+			if (soundItr == m_instance->xFmod.m_soundMap.end())
+				return;
 
-		auto soundItr = instance->xFmod.m_soundMap.find(fileName);
-		if (soundItr == instance->xFmod.m_soundMap.end())
-			return;
-
-		soundItr->second->release();
-		instance->xFmod.m_soundMap.erase(soundItr);
+			soundItr->second->release();
+			m_instance->xFmod.m_soundMap.erase(soundItr);
+		}
 	}
 
 	/***************************************************************************/
@@ -137,43 +138,46 @@ namespace PPA
 	/***************************************************************************/
 	int AudioEngine::PlaySound(const std::string& fileName, float volume, const glm::vec3& position)
 	{
-		auto instance = AudioEngine::Instance();
-
-		auto soundItr = instance->xFmod.m_soundMap.find(fileName);
-		if (soundItr == instance->xFmod.m_soundMap.end())
+		if (m_instance)
 		{
-			PP::Logger::Log(
-				PP::LogEntry{
-					"AudioEngine::PlaySound",
-					PP::LogEntry::TYPE::ERROR,
-					"Unable to play sound, might not have loaded properly"}, true);//*/
-			return -1;
-		}
-
-		int channelID{ instance->xFmod.m_nextChannelID++ };
-		FMOD::Channel* channel{ nullptr };
-
-		instance->xFmod.m_system->playSound(soundItr->second, nullptr, true, &channel);
-
-		if (channel)
-		{
-			FMOD_MODE mode;
-			soundItr->second->getMode(&mode);
-
-			if (mode & FMOD_3D)
+			auto soundItr = m_instance->xFmod.m_soundMap.find(fileName);
+			if (soundItr == m_instance->xFmod.m_soundMap.end())
 			{
-				FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
-
-				channel->set3DAttributes(&fvPosition, nullptr);
+				PP::Logger::Log(
+					PP::LogEntry{
+						"AudioEngine::PlaySound",
+						PP::LogEntry::TYPE::ERROR,
+						"Unable to play sound, might not have loaded properly" }, true);//*/
+				return -1;
 			}
 
-			channel->setVolume(volume);
-			channel->setPaused(false);
+			int channelID{ m_instance->xFmod.m_nextChannelID++ };
+			FMOD::Channel* channel{ nullptr };
 
-			instance->xFmod.m_channelMap[channelID] = channel;
+			m_instance->xFmod.m_system->playSound(soundItr->second, nullptr, true, &channel);
+
+			if (channel)
+			{
+				FMOD_MODE mode;
+				soundItr->second->getMode(&mode);
+
+				if (mode & FMOD_3D)
+				{
+					FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
+
+					channel->set3DAttributes(&fvPosition, nullptr);
+				}
+
+				channel->setVolume(volume);
+				channel->setPaused(false);
+
+				m_instance->xFmod.m_channelMap[channelID] = channel;
+			}
+
+			return channelID;
 		}
 
-		return channelID;
+		return -1;
 	}
 
 	/***************************************************************************/
@@ -184,11 +188,14 @@ namespace PPA
 	/***************************************************************************/
 	void AudioEngine::StopPlayingChannel(int channelID)
 	{
-		auto channelItr = m_instance->xFmod.m_channelMap.find(channelID);
-		
-		if (channelItr != m_instance->xFmod.m_channelMap.end())
+		if (m_instance)
 		{
-			channelItr->second->stop();
+			auto channelItr = m_instance->xFmod.m_channelMap.find(channelID);
+
+			if (channelItr != m_instance->xFmod.m_channelMap.end())
+			{
+				channelItr->second->stop();
+			}
 		}
 	}
 
@@ -206,14 +213,17 @@ namespace PPA
 	/***************************************************************************/
 	bool AudioEngine::UpdateChannel3DPosition(int channelID, const glm::vec3& position)
 	{
-		auto channelItr = m_instance->xFmod.m_channelMap.find(channelID);
-
-		if (channelItr != m_instance->xFmod.m_channelMap.end())
+		if (m_instance)
 		{
-			FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
-			channelItr->second->set3DAttributes(&fvPosition, nullptr);
+			auto channelItr = m_instance->xFmod.m_channelMap.find(channelID);
 
-			return true;
+			if (channelItr != m_instance->xFmod.m_channelMap.end())
+			{
+				FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
+				channelItr->second->set3DAttributes(&fvPosition, nullptr);
+
+				return true;
+			}
 		}
 
 		return false;
@@ -221,11 +231,14 @@ namespace PPA
 
 	void AudioEngine::UpdateChannelVolume(int channelID, float volume)
 	{
-		auto channelItr = m_instance->xFmod.m_channelMap.find(channelID);
-
-		if (channelItr != m_instance->xFmod.m_channelMap.end())
+		if (m_instance)
 		{
-			channelItr->second->setVolume(volume);
+			auto channelItr = m_instance->xFmod.m_channelMap.find(channelID);
+
+			if (channelItr != m_instance->xFmod.m_channelMap.end())
+			{
+				channelItr->second->setVolume(volume);
+			}
 		}
 	}
 
