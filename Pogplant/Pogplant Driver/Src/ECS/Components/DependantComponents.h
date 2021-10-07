@@ -96,6 +96,14 @@ namespace Components
 				m_update3DPosition{ followTransformPosition }
 			{
 			}
+
+			inline ~AudioClip()
+			{
+				if(c_playing)
+					PPA::AudioEngine::StopPlayingChannel(c_channelID);
+
+				PPA::AudioEngine::UnloadAudio(m_fileDir);
+			}
 			
 
 			/**> Relative file directory of the audio file*/
@@ -116,7 +124,7 @@ namespace Components
 
 		std::vector<AudioClip> m_audioSources;
 
-		inline void PlayAudio(size_t id, const glm::vec3& pos)
+		inline void PlayAudio(size_t id, const glm::vec3& pos = PhysicsDLC::Vector::Zero)
 		{
 			if (m_audioSources.size() > id)
 			{
@@ -131,7 +139,11 @@ namespace Components
 
 		inline void StopAudio(size_t id)
 		{
-
+			if (m_audioSources.size() > id && m_audioSources[id].c_playing)
+			{
+				PPA::AudioEngine::StopPlayingChannel(m_audioSources[id].c_channelID);
+				m_audioSources[id].c_playing = false;
+			}
 		}
 	};
 }
