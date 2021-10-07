@@ -228,7 +228,8 @@ void Init()
 	pos = { 7.5f, 15.0f, 20.0f };
 	glm::vec3 direction = -glm::normalize(pos);
 	scale = { 1.0f,1.0f,1.0f }; // Affects light model and not the actual light size
-	float intensity = 0.69f;
+	color = { 0.2f, 0.2f, 0.15f };
+	float intensity = 13.0f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
 	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
