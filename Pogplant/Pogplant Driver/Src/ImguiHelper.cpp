@@ -293,6 +293,7 @@ namespace PogplantDriver
 		if (ImGui_BeginMainStatusBar())
 		{
 			ImGui::PopStyleVar();
+			ImGui::SetCursorPosY(ImGui::GetFrameHeight() * 0.16f);
 			if (ImGui::Button(ICON_FA_ARROWS_ALT " Move"))
 			{
 				m_EditMode = ImGuizmo::TRANSLATE;
@@ -308,7 +309,7 @@ namespace PogplantDriver
 				m_EditMode = ImGuizmo::SCALE;
 			}
 
-			ImGui::SameLine(ImGui::GetContentRegionAvail().x * 0.62f);
+			//ImGui::SameLine(ImGui::GetContentRegionAvail().x * 0.62f);
 			// Snap when editing transform
 			ImGui::Checkbox("Snap Transform", &m_UseSnap);
 			//Bounds edit
