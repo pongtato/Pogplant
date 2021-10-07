@@ -106,6 +106,7 @@ namespace PogplantDriver
 		auto position_component = ImguiHelper::m_ecs->GetReg().try_get<PositionList>(id);
 		auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
 		auto render_component = ImguiHelper::m_ecs->GetReg().try_get<Renderer>(id);
+		auto script_component = ImguiHelper::m_ecs->GetReg().try_get<Scriptable>(id);
 
 		Try_Save_Component<Transform>(subroot, id);
 		Try_Save_Component<Name>(subroot, id);
@@ -114,6 +115,8 @@ namespace PogplantDriver
 		Try_Save_Component<Text>(subroot, id);
 		Try_Save_Component<SphereCollider>(subroot, id);
 		Try_Save_Component<BoxCollider>(subroot, id);
+		Try_Save_Component<Camera>(subroot, id);
+		Try_Save_Component<Rigidbody>(subroot, id);
 
 		if (relationship_component)
 		{
@@ -139,7 +142,15 @@ namespace PogplantDriver
 			subroot["Render"] = classroot;
 		}
 
-
+		if (script_component)
+		{
+			Json::Value classroot;
+			for (auto& script_name : script_component->m_ScriptTypes)
+			{
+				classroot[script_name.first] = script_name.second;
+			}
+			subroot["Scripting"] = classroot;
+		}
 
 
 		return subroot;
@@ -176,6 +187,7 @@ namespace PogplantDriver
 		auto& name = root["Name"];
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
+		auto& scripting = root["Scripting"];
 
 
 		Try_Load_Component<Transform>(root, "Transform", id);
@@ -185,6 +197,8 @@ namespace PogplantDriver
 		Try_Load_Component<Text>(root, "Text", id);
 		Try_Load_Component<BoxCollider>(root, "BoxCollider", id);
 		Try_Load_Component<SphereCollider>(root, "SphereCollider", id);
+		Try_Load_Component<Camera>(root, "Camera", id);
+		Try_Load_Component<Rigidbody>(root, "Rigidbody", id);
 
 		if (relationship)
 		{
@@ -251,6 +265,18 @@ namespace PogplantDriver
 				render["UseLight"].asInt()
 				);
 		}
+
+		if (scripting)
+		{
+			auto members = scripting.getMemberNames();
+			std::unordered_map<std::string, bool> temp_ScriptTypes;
+			for (auto it = members.begin(); it != members.end(); ++it)
+			{
+				temp_ScriptTypes.emplace(it->c_str(), scripting[*it].asBool());
+			}
+			ImguiHelper::m_ecs->GetReg().emplace<Scriptable>(id, temp_ScriptTypes);
+		}
+
 	}
 
 	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id,int counter)
@@ -295,6 +321,36 @@ namespace PogplantDriver
 
 	}
 
+	void Serializer::AddMat4To(Json::Value& _classroot, std::string _string, glm::mat4& _mat4)
+	{
+		static Json::Value mat4_data(Json::arrayValue);
+
+		for (auto i = 0; i < 4; i++)
+			for (auto j = 0; j < 4; j++)
+				mat4_data.append(_mat4[i][j]);
+
+
+		_classroot[_string] = mat4_data;
+
+		mat4_data.clear();
+	}
+
+	glm::mat4 Serializer::CreateMat4(const Json::Value& _data)
+	{
+		for (int i = 0; i < 16; ++i)
+		{
+			if (!_data[i])
+			{
+				//Assert here 
+				return glm::mat4{};
+			}
+		}
+		return glm::mat4{ _data[0].asFloat(), _data[1].asFloat(), _data[2].asFloat(), _data[3].asFloat(),
+											_data[4].asFloat(), _data[5].asFloat(), _data[6].asFloat(), _data[7].asFloat(),
+											_data[8].asFloat(), _data[9].asFloat(), _data[10].asFloat(), _data[11].asFloat(),
+											_data[12].asFloat(), _data[13].asFloat(), _data[14].asFloat(), _data[15].asFloat() };
+	}
+
 	Json::Value Serializer::Reflect_Serialization(Json::Value& _root, rttr::instance _obj)
 	{
 		rttr::instance obj = _obj.get_type().get_raw_type().is_wrapper() ? _obj.get_wrapped_instance() : _obj;
@@ -320,6 +376,10 @@ namespace PogplantDriver
 			if (prop_value.is_type<glm::vec3>())
 			{
 				AddVec3To(root, name, prop_value.get_value<glm::vec3>());
+			}
+			else if (prop_value.is_type<glm::mat4>())
+			{
+				AddMat4To(root, name, prop_value.get_value<glm::mat4>());
 			}
 			else if (prop_value.is_type<std::string>())
 			{

@@ -5,7 +5,6 @@
 #include "DependantComponents.h"
 
 
-
 namespace Components
 {
 	RTTR_REGISTRATION
@@ -38,6 +37,11 @@ namespace Components
 			.property("m_Text", &Text::m_Text)
 			.property("m_Ortho", &Text::m_Ortho);
 
+		rttr::registration::class_<Rigidbody>("Rigidbody")
+			.property("mass", &Rigidbody::mass)
+			.property("isKinematic", &Rigidbody::isKinematic)
+			.property("useGravity", &Rigidbody::useGravity);
+
 		rttr::registration::class_<BoxCollider>("BoxCollider")
 			.property("extends", &BoxCollider::extends)
 			.property("centre", &BoxCollider::centre);
@@ -45,6 +49,14 @@ namespace Components
 		rttr::registration::class_<SphereCollider>("SphereCollider")
 			.property("radius", &SphereCollider::radius)
 			.property("centre", &SphereCollider::centre);
+
+		rttr::registration::class_<Camera>("Camera")
+			.property("m_Active", &Camera::m_Active)
+			.property("m_Yaw", &Camera::m_Yaw)
+			.property("m_Pitch", &Camera::m_Pitch)
+			.property("m_Near", &Camera::m_Near)
+			.property("m_Far", &Camera::m_Far)
+			.property("m_Zoom", &Camera::m_Zoom);
 	}
 }
 

@@ -37,6 +37,9 @@ namespace PogplantDriver
 		void AddVec3To(Json::Value& _classroot, std::string _string, glm::vec3& _vec3);
 		glm::vec3 CreateVec3(const Json::Value& _data);
 
+		void AddMat4To(Json::Value& _classroot, std::string _string, glm::mat4& _mat4);
+		glm::mat4 CreateMat4(const Json::Value& _data);
+
 		//reflection based function
 		Json::Value Reflect_Serialization(Json::Value& _root, rttr::instance _obj);
 		void Reflect_Deserialization(rttr::instance _obj, const Json::Value& _data);

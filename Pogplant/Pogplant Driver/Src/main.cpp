@@ -204,7 +204,7 @@ void Init()
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
 	std::unordered_map<std::string, bool> shipScripts;
 	shipScripts["Player"] =  false;
-	entity.AddComponent<Components::Scriptable>(Scriptable{ shipScripts});
+	entity.AddComponent<Components::Scriptable>( shipScripts);
 	entity.GetComponent<Components::Name>().m_name = "Ship";
 
 	pos = { 7.5f, 7.5f, 10.0f };
@@ -217,7 +217,7 @@ void Init()
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
 	std::unordered_map<std::string, bool> enemyScripts;
 	enemyScripts["Enemy"] = false;
-	entity.AddComponent<Components::Scriptable>(Scriptable{ enemyScripts });
+	entity.AddComponent<Components::Scriptable>( enemyScripts );
 	entity.GetComponent<Components::Name>().m_name = "Enemy";
 
 	//auto entity = registry.create();
