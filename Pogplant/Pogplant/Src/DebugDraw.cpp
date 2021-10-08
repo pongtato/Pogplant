@@ -112,12 +112,13 @@ namespace Pogplant
 
 	void DebugDraw::DebugFrustum(glm::vec3 _Position, float _Zoom, float _Aspect, float _Near, float _Far, glm::vec3 _Right, glm::vec3 _Up, glm::vec3 _Front)
 	{
-		float Hnear = 2 * tan(_Zoom) * _Near;
-		float Wnear = Hnear * _Aspect;
+		float Wnear = 2 * tan(_Zoom) * _Near;
+		float Hnear = Wnear * _Aspect;
 
-		float Hfar = 2 * tan(_Zoom) * _Far;
-		float Wfar = Hfar * _Aspect;
+		float Wfar = 2 * tan(_Zoom) * _Far;
+		float Hfar = Wfar * _Aspect;
 
+		// Corner calculation
 		glm::vec3 r = _Right * Wnear;
 		glm::vec3 u = _Up * Hnear;
 		glm::vec3 f = _Front * _Near;
@@ -139,6 +140,7 @@ namespace Pogplant
 		DebugLine(nBR, nBL);
 		DebugLine(nBL, nTL);
 
+		// Corner calculation
 		r = _Right * Wfar;
 		u = _Up * Hfar;
 		f = _Front * _Far;

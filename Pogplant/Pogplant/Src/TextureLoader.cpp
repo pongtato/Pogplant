@@ -356,6 +356,54 @@ namespace Pogplant
         return textureID;
 	}
 
+    unsigned int TexLoader::LoadTextureSRGB(std::string _Path, std::string _Directory, bool _Alpha)
+    {
+        const GLint format = _Alpha ? GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT : GL_COMPRESSED_SRGB_S3TC_DXT1_EXT;
+
+        std::string filename = _Directory + '/' + _Path;
+
+        tinyddsloader::DDSFile dds;
+        dds.Load(filename.c_str());
+        dds.Flip();
+        tinyddsloader::DDSFile::ImageData imageData;
+        ExtractTextureData(dds, imageData);
+        unsigned int textureID;
+        glGenTextures(1, &textureID);
+
+        if (imageData.m_width != 0 && imageData.m_height != 0)
+        {
+            glBindTexture(GL_TEXTURE_2D, textureID);
+            //glTexImage2D(GL_TEXTURE_2D, 0, format, imageData.m_width, imageData.m_height, 0, format, GL_UNSIGNED_BYTE, imageData.m_mem);
+
+            glCompressedTexImage2D
+            (
+                GL_TEXTURE_2D,
+                0,
+                format,
+                imageData.m_width,
+                imageData.m_height,
+                0,
+                imageData.m_memSlicePitch,
+                imageData.m_mem
+            );
+
+            glGenerateMipmap(GL_TEXTURE_2D);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            glBindTexture(GL_TEXTURE_2D, 0);
+        }
+        else
+        {
+            std::string err = "Texture failed to load at ";
+            err += _Directory + '/' + _Path;
+            Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+        }
+
+        return textureID;
+    }
+
     unsigned int TexLoader::LoadUncompressedTexture(std::string _Path, std::string _Directory, bool _Alpha)
     {
         const GLint format = _Alpha ? GL_RGBA : GL_RGB;
@@ -373,13 +421,14 @@ namespace Pogplant
         if (imageData.m_width != 0 && imageData.m_height != 0)
         {
             glBindTexture(GL_TEXTURE_2D, textureID);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, imageData.m_width, imageData.m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData.m_mem);
+            glTexImage2D(GL_TEXTURE_2D, 0, format, imageData.m_width, imageData.m_height, 0, format, GL_UNSIGNED_BYTE, imageData.m_mem);
             glGenerateMipmap(GL_TEXTURE_2D);
 
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            glBindTexture(GL_TEXTURE_2D, 0);
         }
         else
         {
@@ -415,7 +464,7 @@ namespace Pogplant
                 (
                     GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
                     0,
-                    GL_COMPRESSED_RGBA_S3TC_DXT1_EXT,
+                    GL_COMPRESSED_SRGB_S3TC_DXT1_EXT,
                     imageData.m_width,
                     imageData.m_height,
                     0,
@@ -438,6 +487,7 @@ namespace Pogplant
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+        glBindTexture(GL_TEXTURE_2D, 0);
 
         return textureID;
     }

@@ -989,8 +989,25 @@ namespace PogplantDriver
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 
 		// Update the camera when resizing window
-		ImVec2 currWindowSize = ImGui::GetWindowSize();
-		PP::CameraResource::GetCamera("GAME")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
+		//ImVec2 currWindowSize = ImGui::GetWindowSize();
+		//PP::CameraResource::GetCamera("GAME")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
+
+		ImVec2 vMax = ImGui::GetWindowContentRegionMax();
+
+		// Update game cameras
+		//auto cam_results = m_ecs->GetReg().view<Components::Transform, Components::Camera>();
+		//for (auto& e : cam_results)
+		//{
+		//	auto& it_Camera = cam_results.get<Components::Camera>(e);
+		//	PP::Camera::GetUpdatedProjection
+		//	(
+		//		{ vMax.x,vMax.y },
+		//		it_Camera.m_Zoom,
+		//		it_Camera.m_Near,
+		//		it_Camera.m_Far,
+		//		it_Camera.m_Projection
+		//	);
+		//}
 	}
 
 	void ImguiHelper::SaveSceneAs()

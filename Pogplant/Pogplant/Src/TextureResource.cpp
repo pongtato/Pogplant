@@ -20,11 +20,21 @@ namespace Pogplant
             , "Resources/Textures/Skybox"
         );
 
-        m_TexturePool["MUD_DIFF"] = TexLoader::LoadTexture
+        // Must group all SRGB together
+
+        m_TexturePool["GRASS_DIFF"] = TexLoader::LoadTextureSRGB
+        (
+            "grass_diff.dds",
+            "Resources/Textures/Grass"
+        );
+
+        m_TexturePool["MUD_DIFF"] = TexLoader::LoadTextureSRGB
         (
             "mud_diff.dds",
             "Resources/Textures/Mud"
         );
+
+        // 
 
         m_TexturePool["MUD_BUMP"] = TexLoader::LoadTexture
         (
@@ -115,12 +125,6 @@ namespace Pogplant
         //    "forest_rough.dds",
         //    "Resources/Textures/Forest"
         //);
-
-		m_TexturePool["GRASS_DIFF"] = TexLoader::LoadTexture
-		(
-			"grass_diff.dds",
-			"Resources/Textures/Grass"
-		);
 
 		m_TexturePool["GRASS_BUMP"] = TexLoader::LoadTexture
 		(

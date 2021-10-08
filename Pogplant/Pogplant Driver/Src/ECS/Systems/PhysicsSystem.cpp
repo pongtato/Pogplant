@@ -294,7 +294,7 @@ void PhysicsSystem::DrawColliders()
 
 	// haha xd
 	auto cameras = m_registry->GetReg().view<Components::Camera, Components::Transform>();
-	const float aspect = PP::Window::m_Width / PP::Window::m_Height;
+	const float aspect = static_cast<float>(PP::Window::m_Height) / PP::Window::m_Width;
 	for (auto it : cameras)
 	{
 		auto& cam_trans = cameras.get<Components::Transform>(it);

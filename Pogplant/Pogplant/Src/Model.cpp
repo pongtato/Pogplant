@@ -10,20 +10,20 @@ namespace Pogplant
 {
 	Model::Model(std::string _Path, uint _PrimitiveType, std::string _Key)
 	{
-        (void)_PrimitiveType;
+		(void)_PrimitiveType;
 
-        m_Model_key = _Key;
+		m_Model_key = _Key;
 
-        // For comparison later
-        m_Bounds.minX = std::numeric_limits<float>::max();
-        m_Bounds.minY = std::numeric_limits<float>::max();
-        m_Bounds.minZ = std::numeric_limits<float>::max();
+		// For comparison later
+		m_Bounds.minX = std::numeric_limits<float>::max();
+		m_Bounds.minY = std::numeric_limits<float>::max();
+		m_Bounds.minZ = std::numeric_limits<float>::max();
 
-        m_Bounds.maxX = std::numeric_limits<float>::min();
-        m_Bounds.maxY = std::numeric_limits<float>::min();
-        m_Bounds.maxZ = std::numeric_limits<float>::min();
+		m_Bounds.maxX = std::numeric_limits<float>::min();
+		m_Bounds.maxY = std::numeric_limits<float>::min();
+		m_Bounds.maxZ = std::numeric_limits<float>::min();
 
-        LoadFromFile(_Path);
+		LoadFromFile(_Path);
 	}
 
 	void Model::Draw() const
@@ -34,63 +34,63 @@ namespace Pogplant
 		}
 	}
 
-    bool Model::LoadFromFile(std::string filePath)
-    {
-        // Check if file exists & read to buffer
-        std::ifstream inFile;
-        inFile.open(filePath, std::ios::binary);
-        if (!inFile.good())
-        {
-            std::cout << "Unable to read file " << filePath << std::endl;
-            return false;
-        }
+	bool Model::LoadFromFile(std::string filePath)
+	{
+		// Check if file exists & read to buffer
+		std::ifstream inFile;
+		inFile.open(filePath, std::ios::binary);
+		if (!inFile.good())
+		{
+			std::cout << "Unable to read file " << filePath << std::endl;
+			return false;
+		}
 
-        //TexLoader::SetTextureFlip(true);
+		//TexLoader::SetTextureFlip(true);
 
-        std::getline(inFile, m_Directory);
-        inFile.read(reinterpret_cast<char*>(&m_Bounds), sizeof(Bounds));
+		std::getline(inFile, m_Directory);
+		inFile.read(reinterpret_cast<char*>(&m_Bounds), sizeof(Bounds));
 
-        for (std::string line; std::getline(inFile, line);)
-        {
-            std::vector<Vertex> vertices;
-            std::vector<uint> indices;
-            std::vector<Texture> textures;
-            size_t vertSize, idxSize, texSize;
-            std::stringstream ss;
-            ss << line;
-            ss >> vertSize >> idxSize >> texSize;
-            vertices.resize(vertSize);
-            indices.resize(idxSize);
-            //textures.resize(texSize);
-            inFile.read(reinterpret_cast<char*>(&vertices[0]), vertSize * sizeof(Vertex));
-            inFile.read(reinterpret_cast<char*>(&indices[0]), idxSize * sizeof(uint));
+		for (std::string line; std::getline(inFile, line);)
+		{
+			std::vector<Vertex> vertices;
+			std::vector<uint> indices;
+			std::vector<Texture> textures;
+			size_t vertSize, idxSize, texSize;
+			std::stringstream ss;
+			ss << line;
+			ss >> vertSize >> idxSize >> texSize;
+			vertices.resize(vertSize);
+			indices.resize(idxSize);
+			//textures.resize(texSize);
+			inFile.read(reinterpret_cast<char*>(&vertices[0]), vertSize * sizeof(Vertex));
+			inFile.read(reinterpret_cast<char*>(&indices[0]), idxSize * sizeof(uint));
 
-            for (size_t i = 0; i < texSize; ++i)
-            {
-                size_t len;
+			for (size_t i = 0; i < texSize; ++i)
+			{
+				size_t len;
 
-                inFile.read(reinterpret_cast<char*>(&len), sizeof(size_t));
-                std::string type(len, '\0');
-                inFile.read(&type[0], len);
+				inFile.read(reinterpret_cast<char*>(&len), sizeof(size_t));
+				std::string type(len, '\0');
+				inFile.read(&type[0], len);
 
-                inFile.read(reinterpret_cast<char*>(&len), sizeof(size_t));
-                std::string path(len, '\0');
-                inFile.read(&path[0], len);
+				inFile.read(reinterpret_cast<char*>(&len), sizeof(size_t));
+				std::string path(len, '\0');
+				inFile.read(&path[0], len);
 
-                std::vector<Texture> texture = LoadMaterialTextures(path, type);
-                textures.insert(textures.end(), texture.begin(), texture.end());
-            }
-            m_Meshes.push_back(Mesh3D(vertices, indices, textures));
-        }
+				std::vector<Texture> texture = LoadMaterialTextures(path, type);
+				textures.insert(textures.end(), texture.begin(), texture.end());
+			}
+			m_Meshes.push_back(Mesh3D(vertices, indices, textures));
+		}
 
-        // Find longest edge - General usage no ritter's
-        float lenX = std::fabsf(m_Bounds.maxX) + std::fabsf(m_Bounds.minX);
-        float lenY = std::fabsf(m_Bounds.maxY) + std::fabsf(m_Bounds.minY);
-        float lenZ = std::fabsf(m_Bounds.maxZ) + std::fabsf(m_Bounds.minZ);
-        m_Bounds.longest = std::max(lenX, lenY);
-        m_Bounds.longest = std::max(m_Bounds.longest, lenZ);
-        return true;
-    }
+		// Find longest edge - General usage no ritter's
+		float lenX = std::fabsf(m_Bounds.maxX) + std::fabsf(m_Bounds.minX);
+		float lenY = std::fabsf(m_Bounds.maxY) + std::fabsf(m_Bounds.minY);
+		float lenZ = std::fabsf(m_Bounds.maxZ) + std::fabsf(m_Bounds.minZ);
+		m_Bounds.longest = std::max(lenX, lenY);
+		m_Bounds.longest = std::max(m_Bounds.longest, lenZ);
+		return true;
+	}
 
 	//void Model::LoadModel(std::string _Path, uint _PrimitiveType)
 	//{
@@ -255,32 +255,30 @@ namespace Pogplant
  //       return textures;
 	//}
 
-    std::vector<Texture> Model::LoadMaterialTextures(std::string& _Material, std::string _TypeName)
-    {
-        std::vector<Texture> textures;
-        //for (unsigned int i = 0; i < _Material->GetTextureCount(_Type); i++)
-        //{
-            // check if texture was loaded before and if so, continue to next iteration: skip loading a new texture
-            bool skip = false;
-            for (unsigned int j = 0; j < m_TexturesLoaded.size(); j++)
-            {
-                if (std::strcmp(m_TexturesLoaded[j].m_Path.data(), _Material.c_str()) == 0)
-                {
-                    textures.push_back(m_TexturesLoaded[j]);
-                    skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
-                    break;
-                }
-            }
-            if (!skip)
-            {   // if texture hasn't been loaded already, load it
-                Texture texture;
-                texture.m_Id = TexLoader::LoadTexture(_Material, this->m_Directory);
-                texture.m_Type = _TypeName;
-                texture.m_Path = _Material;
-                textures.push_back(texture);
-                m_TexturesLoaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
-            }
-        //}
-        return textures;
-    }
+	std::vector<Texture> Model::LoadMaterialTextures(std::string& _Material, std::string _TypeName)
+	{
+		std::vector<Texture> textures;
+		bool skip = false;
+		for (unsigned int j = 0; j < m_TexturesLoaded.size(); j++)
+		{
+			// Optimization to skip loading again
+			if (std::strcmp(m_TexturesLoaded[j].m_Path.data(), _Material.c_str()) == 0)
+			{
+				textures.push_back(m_TexturesLoaded[j]);
+				skip = true;
+				break;
+			}
+		}
+		if (!skip)
+		{
+			Texture texture;
+			texture.m_Id = TexLoader::LoadTexture(_Material, this->m_Directory);
+			texture.m_Type = _TypeName;
+			texture.m_Path = _Material;
+			textures.push_back(texture);
+			// To not load dupes
+			m_TexturesLoaded.push_back(texture);
+		}
+		return textures;
+	}
 }

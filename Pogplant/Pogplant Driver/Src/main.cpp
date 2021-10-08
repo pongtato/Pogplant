@@ -79,7 +79,8 @@ void Init()
 	PP::FrameBuffer::InitFrameBuffer();
 	PP::CameraResource::InitBaseCameras(
 		glm::vec3{ 0,0,5.0f }, // Editor cam pos
-		PP::CameraConfig{
+		PP::CameraConfig
+		{
 			-90.0f, // Yaw
 			0.0f,	// Pitch
 			45.0f,	// Zoom 
@@ -91,7 +92,6 @@ void Init()
 			0.1f	// Pan speed
 		});
 	PPD::ImguiHelper::InitImgui(&ecs);
-
 
 	/// Add to container
 	std::string sphere, cube, ship, enemy;
@@ -463,6 +463,7 @@ void DrawCommon()
 	auto debugView = ecs.GetReg().view<Transform, DebugRender>();
 	auto primView = ecs.GetReg().view<Transform, PrimitiveRender>();
 	
+	// Debug draws
 	physicsSystem.DrawColliders();
 
 	for (auto entity : view)

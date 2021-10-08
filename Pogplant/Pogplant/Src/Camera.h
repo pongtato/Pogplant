@@ -67,6 +67,11 @@ namespace Pogplant
 
 		const glm::vec3& GetPosition() const;
 
+		glm::vec3 m_Position;
+		glm::vec3 m_Front;
+		glm::vec3 m_Up;
+		glm::vec3 m_Right;
+
 	private:
 
 		void KeyUpdate(float _Dt);
@@ -79,10 +84,6 @@ namespace Pogplant
 		glm::mat4 m_Ortho;
 		glm::mat4 m_Perspective;
 		glm::mat4 m_View;
-		glm::vec3 m_Position;
-		glm::vec3 m_Front;
-		glm::vec3 m_Up;
-		glm::vec3 m_Right;
 		glm::vec3 m_Target;
 		double m_ScrollAmount;
 		double m_LastXPos;
