@@ -103,7 +103,6 @@ namespace PogplantDriver
 
 		//Get all pointers to all components
 
-		auto position_component = ImguiHelper::m_ecs->GetReg().try_get<PositionList>(id);
 		auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
 		auto render_component = ImguiHelper::m_ecs->GetReg().try_get<Renderer>(id);
 		auto script_component = ImguiHelper::m_ecs->GetReg().try_get<Scriptable>(id);
@@ -184,7 +183,6 @@ namespace PogplantDriver
 	void Serializer::LoadComponents(const Json::Value& root, entt::entity id)
 	{
 
-		auto& name = root["Name"];
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
 		auto& scripting = root["Scripting"];

@@ -43,7 +43,7 @@ namespace PogplantDriver
 			glm::vec3 color = { 0.835f,0.921f,0.905f };
 			if (ImGui::MenuItem("Sphere"))
 			{
-				auto& renderer = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
+				 (void) PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
 					glm::mat4{ 1 },
 					color,
 					PP::ModelResource::m_ModelPool["Sphere"]);
@@ -52,36 +52,36 @@ namespace PogplantDriver
 		}
 		if (ImGui::MenuItem("Point_Light", NULL, false, adding_enabled))
 		{
-			auto& lightp_component = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Point_Light>(PPD::ImguiHelper::m_CurrentEntity);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Point_Light>(PPD::ImguiHelper::m_CurrentEntity);
 		}
 		if (ImGui::MenuItem("Directional_Light", NULL, false, adding_enabled))
 		{
-			auto& lightd_component = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Directional_Light>(PPD::ImguiHelper::m_CurrentEntity);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Directional_Light>(PPD::ImguiHelper::m_CurrentEntity);
 		}
 		if (ImGui::MenuItem("Font", NULL, false, adding_enabled)) //There is another font somewhere might crash (But should not as id stack is cleared)
 		{
-			auto& new_font = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Text>(PPD::ImguiHelper::m_CurrentEntity, glm::vec3{ 0.835f,0.921f,0.905f }, "Ruda", "Lorem ipsum dolor sit amet");
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Text>(PPD::ImguiHelper::m_CurrentEntity, glm::vec3{ 0.835f,0.921f,0.905f }, "Ruda", "Lorem ipsum dolor sit amet");
 		}
 		if (ImGui::MenuItem("RigidBody", NULL, false, adding_enabled))
 		{
-			auto& new_body = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Rigidbody>(PPD::ImguiHelper::m_CurrentEntity);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Rigidbody>(PPD::ImguiHelper::m_CurrentEntity);
 		}
 		if (ImGui::MenuItem("BoxCollider", NULL, false, adding_enabled))
 		{
-			auto& new_bcollider = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::BoxCollider>(PPD::ImguiHelper::m_CurrentEntity);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::BoxCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
 		if (ImGui::MenuItem("SphereCollider", NULL, false, adding_enabled))
 		{
-			auto& new_spcollider = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::SphereCollider>(PPD::ImguiHelper::m_CurrentEntity);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::SphereCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
 		if (ImGui::MenuItem(ICON_FA_CAMERA "  Camera", NULL, false, adding_enabled))
 		{
-			auto& new_spcollider = PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Camera>(PPD::ImguiHelper::m_CurrentEntity);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Camera>(PPD::ImguiHelper::m_CurrentEntity);
 		}
 		// Scriptable Component
 		if (ImGui::MenuItem("Scriptable", NULL, false, adding_enabled))
 		{
-			PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Scriptable>(PPD::ImguiHelper::m_CurrentEntity);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Scriptable>(PPD::ImguiHelper::m_CurrentEntity);
 			auto name_com = PPD::ImguiHelper::m_ecs->GetReg().try_get<Components::Name>(PPD::ImguiHelper::m_CurrentEntity);
 			if (name_com)
 			{
@@ -563,7 +563,7 @@ namespace PogplantDriver
 						ImGui::Text("RLighting");
 						bool temp_light = renderer->m_UseLight;
 						ImGui::Checkbox("Use Light", &temp_light);
-						if (temp_light != renderer->m_UseLight)
+						if (temp_light != static_cast<bool>(renderer->m_UseLight))
 							renderer->m_UseLight = temp_light;
 
 						ImguiBlankSeperator(1);
@@ -1132,7 +1132,7 @@ namespace PogplantDriver
 					
 				auto& transform = m_ecs->GetReg().get<Components::Transform>(entity);
 				auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(entity);
-				auto debugRenderer = m_ecs->GetReg().try_get<Components::DebugRender>(entity);
+				//auto debugRenderer = m_ecs->GetReg().try_get<Components::DebugRender>(entity);
 
 				if (renderer != nullptr)
 				{
