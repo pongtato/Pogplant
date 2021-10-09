@@ -279,21 +279,42 @@ namespace Pogplant
 
 	void Renderer::BlurPass()
 	{
-		bool horizontal = true;
-		bool first_it = true;
+		// Pass this first as first iteration
+		ShaderLinker::SetUniform("horizontal", true);
+		glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_0]);
+		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_BRIGHT]);
+
 		ShaderLinker::Use("BLUR");
-		const size_t blur_amnt = 10;
-		for (size_t i = 0; i < blur_amnt; i++)
+		bool first_it = true;
+		const float blur_increment = 0.25f;
+		for (int i = 1; i <= 3; i++)
 		{
-			BufferType currFBuff = horizontal == true ? BufferType::BLUR_BUFFER_1 : BufferType::BLUR_BUFFER_0;
-			glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[currFBuff]);
-			ShaderLinker::SetUniform("horizontal", horizontal);
-			BufferType targetCBuff = horizontal == true ? BufferType::BLUR_COLOR_BUFFER_0 : BufferType::BLUR_COLOR_BUFFER_1;
-			BufferType currCBuff = first_it == true ? BufferType::PP_COLOR_BUFFER_BRIGHT : targetCBuff;
-			MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[currCBuff]);
-			horizontal = !horizontal;
+			if (blur_increment != 0)
+			{
+				ShaderLinker::SetUniform("targetWidth", Window::m_Width * blur_increment * i);
+				ShaderLinker::SetUniform("targetHeight", Window::m_Height * blur_increment * i);
+			}
+			else
+			{
+				Logger::Log({ "PP::RENDERER", LogEntry::TYPE::ERROR, "Divide by zero when incrementing blur amount" });
+			}
+			
+			// Skip this one as we use the bright color as first pass
+			if (!first_it)
+			{
+				ShaderLinker::SetUniform("horizontal", true);
+				glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_0]);
+				MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_BRIGHT]);
+			}
+
+			ShaderLinker::SetUniform("horizontal", false);
+			glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_1]);
+			MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_0]);
+
+			// First pass complete
 			first_it = false;
 		}
+		
 		ShaderLinker::UnUse();
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
@@ -310,7 +331,7 @@ namespace Pogplant
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_NORMAL]);
 		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_0]);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_1]);
 		glActiveTexture(GL_TEXTURE2);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::DEBUG_COLOR_BUFFER]);
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN);

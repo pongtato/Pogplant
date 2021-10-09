@@ -2,32 +2,38 @@
 
 layout (location = 0) out vec4 outColor;
 
-in vec2 TexCoords;
+in vec2 blurTexCoords[11];
 
 uniform sampler2D image;
 
-uniform bool horizontal;
-uniform float weight[5] = float[] (0.2270270270, 0.1945945946, 0.1216216216, 0.0540540541, 0.0162162162);
+uniform float weights[11] = float[] 
+(
+    0.009,
+    0.028,
+    0.066,
+    0.122,
+    0.176,
+    0.199,
+    0.176,
+    0.122,
+    0.066,
+    0.028,
+    0.009
+);
 
 void main()
 {             
-     vec2 tex_offset = 1.0 / textureSize(image, 0); // gets size of single texel
-     vec3 result = texture(image, TexCoords).rgb * weight[0];
-     if(horizontal)
-     {
-         for(int i = 1; i < 5; ++i)
-         {
-            result += texture(image, TexCoords + vec2(tex_offset.x * i, 0.0)).rgb * weight[i];
-            result += texture(image, TexCoords - vec2(tex_offset.x * i, 0.0)).rgb * weight[i];
-         }
-     }
-     else
-     {
-         for(int i = 1; i < 5; ++i)
-         {
-             result += texture(image, TexCoords + vec2(0.0, tex_offset.y * i)).rgb * weight[i];
-             result += texture(image, TexCoords - vec2(0.0, tex_offset.y * i)).rgb * weight[i];
-         }
-     }
-     outColor = vec4(result, 1.0);
+    vec3 result = vec3(0.0);
+
+    for(int i = 0; i < 11; ++i)
+    {
+        if(blurTexCoords[i].x < 0 || blurTexCoords[i].x > 1 || blurTexCoords[i].y < 0 || blurTexCoords[i].y > 1)
+        {
+            continue;
+        }
+
+        result += texture(image, blurTexCoords[i]).rgb * weights[i];
+    }
+
+    outColor = vec4(result, 1.0);
 }
