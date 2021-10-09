@@ -4,7 +4,7 @@
 \author Gabriel Wong Choon Jieh
 \par	email: c.wong\@digipen.edu
 \details
-	
+
 	This file contains the components that may require another library
 	or include. It's separated from the main GenericComponents.h to
 	prevent the Pogplant graphics library requiring to include
@@ -24,8 +24,39 @@
 
 namespace Components
 {
+	/**> Use PhysicsDLC as rigidbody*/
 	using Rigidbody = PhysicsDLC::Physics::Rigidbody;
 
+	/**************************************************************************/
+	/*!
+	\brief
+		A component automatically added on runtime to identify the collider type
+		used for that particular object
+
+		Notes: Do not serialise or make this object editable, it's for runtime
+		use only
+	*/
+	/**************************************************************************/
+	struct ColliderIdentifier
+	{
+		enum class COLLIDER_TYPE
+		{
+			CT_BOX,
+			CT_SPHERE,
+			CT_HEIGHTMAP
+		};
+
+		COLLIDER_TYPE colliderType = COLLIDER_TYPE::CT_BOX;
+		bool isTrigger = false;
+		int collisionLayer = 0;
+	};
+
+	/**************************************************************************/
+	/*!
+	\brief
+		Base collider class
+	*/
+	/**************************************************************************/
 	struct Collider
 	{
 		enum COLLISION_RULE
@@ -36,17 +67,8 @@ namespace Components
 			CR_IGNORE/**<Just ignore the collision*/
 		};
 
-		enum COLLIDER_TYPE
-		{
-			CT_BOX,
-			CT_SPHERE,
-			CT_GJK
-		};
-
 		bool isTrigger = false;
-
 		int collisionLayer = 0;
-		int colliderType = 0;
 	};
 
 	struct BoxCollider : public Collider
@@ -99,12 +121,12 @@ namespace Components
 
 			inline ~AudioClip()
 			{
-				if(c_playing)
+				if (c_playing)
 					PPA::AudioEngine::StopPlayingChannel(c_channelID);
 
 				PPA::AudioEngine::UnloadAudio(m_fileDir);
 			}
-			
+
 
 			/**> Relative file directory of the audio file*/
 			std::string m_fileDir;

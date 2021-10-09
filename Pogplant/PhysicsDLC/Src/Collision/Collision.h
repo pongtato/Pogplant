@@ -9,11 +9,11 @@ namespace PhysicsDLC
 	{
 		struct CollisionResults
 		{
-			bool collided;
-			float collisionTime;
+			bool collided = false;
+			float collisionTime = -1.f;
 
 			/**> Collision normal relative to shape 1*/
-			vec3 collisionNormal;
+			vec3 collisionNormal = PhysicsDLC::Vector::Zero;
 
 			operator bool()
 			{
@@ -30,8 +30,15 @@ namespace PhysicsDLC
 		bool StaticAABBAABB(const Shapes::AABB& aabb1, const Shapes::AABB& aabb2);
 		float DynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime);
 		CollisionResults&& CRDynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime);
+
+		bool StaticSphereSphere(const Shapes::Sphere& sphere1, const Shapes::Sphere& sphere2);
+		CollisionResults&& CRDynamicSphereSphere(const Shapes::Sphere& sphere1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime);
 		
+		bool StaticAABBSphere();
+		CollisionResults&& CRDynamicAABBSphere(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime);
+
 		bool PointAABB(const vec3& point, const Shapes::AABB& aabb);
+		bool PointSphere(const vec3& point, const Shapes::Sphere& sphere);
 	}
 }
 

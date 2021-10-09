@@ -47,8 +47,8 @@ namespace PhysicsDLC
 			impulseAcceleration += direction * (1.f / mass);
 		}
 
-		void ResolveAABBDynamic(
-			vec3& _1pos,
+		void ResolveAABBAABBDynamic(
+			glm::vec3& _1pos,
 			Rigidbody& _1rigidbody,
 			Rigidbody* _2rigidbody,
 			Collision::Shapes::AABB& _1aabb,
@@ -57,10 +57,9 @@ namespace PhysicsDLC
 			float dt)
 		{
 			//assert(dt > collisionTime);
-
 			static vec3 m_hotSpot[6];
 			static float extendCheck = 0.01f;
-			static float edgeCheck = 0.05f;
+			static float edgeCheck = 0.1f;
 
 			static Collision::Shapes::AABB hsBounds;
 
@@ -75,8 +74,8 @@ namespace PhysicsDLC
 			_1aabb.m_min += _1rigidbody.velocity * collisionTime;
 			_1aabb.m_max += _1rigidbody.velocity * collisionTime;
 
-			hsBounds.m_min = _1aabb.m_min + _1rigidbody.velocity * collisionTime;
-			hsBounds.m_max = _1aabb.m_max + _1rigidbody.velocity * collisionTime;
+			hsBounds.m_min = _1aabb.m_min;
+			hsBounds.m_max = _1aabb.m_max;
 
 			hsBounds.m_max.x -= edgeCheck;
 			hsBounds.m_max.y -= edgeCheck;
@@ -126,43 +125,49 @@ namespace PhysicsDLC
 						if (_1rigidbody.velocity.y > 0)
 						{
 							_1rigidbody.velocity.y = 0.f;
-							_1rigidbody.newPosition.y += _2aabb.m_min.y - _1aabb.m_max.y;
 						}
+
+						_1rigidbody.newPosition.y += _2aabb.m_min.y - _1aabb.m_max.y;
 						break;
 					case 1:
 						if (_1rigidbody.velocity.y < 0)
 						{
 							_1rigidbody.velocity.y = 0.f;
-							_1rigidbody.newPosition.y += _2aabb.m_max.y - _1aabb.m_min.y;
 						}
+
+						_1rigidbody.newPosition.y += _2aabb.m_max.y - _1aabb.m_min.y;
 						break;
 					case 2:
 						if (_1rigidbody.velocity.x > 0)
 						{
 							_1rigidbody.velocity.x = 0.f;
-							_1rigidbody.newPosition.x += _2aabb.m_min.x - _1aabb.m_max.x;
 						}
+
+						_1rigidbody.newPosition.x += _2aabb.m_min.x - _1aabb.m_max.x;
 						break;
 					case 3:
 						if (_1rigidbody.velocity.x < 0)
 						{
 							_1rigidbody.velocity.x = 0.f;
-							_1rigidbody.newPosition.x += _2aabb.m_max.x - _1aabb.m_min.x;
 						}
+
+						_1rigidbody.newPosition.x += _2aabb.m_max.x - _1aabb.m_min.x;
 						break;
 					case 4:
 						if (_1rigidbody.velocity.z > 0)
 						{
 							_1rigidbody.velocity.z = 0.f;
-							_1rigidbody.newPosition.z += _2aabb.m_min.z - _1aabb.m_max.z;
 						}
+
+						_1rigidbody.newPosition.z += _2aabb.m_min.z - _1aabb.m_max.z;
 						break;
 					case 5:
 						if (_1rigidbody.velocity.z < 0)
 						{
 							_1rigidbody.velocity.z = 0.f;
-							_1rigidbody.newPosition.z += _2aabb.m_max.z - _1aabb.m_min.z;
 						}
+
+						_1rigidbody.newPosition.z += _2aabb.m_max.z - _1aabb.m_min.z;
 						break;
 					default:
 						throw std::exception("Wait what");
@@ -171,6 +176,61 @@ namespace PhysicsDLC
 			}
 
 			_1rigidbody.newPosition += _1rigidbody.velocity * (dt - collisionTime);
+		}
+
+		void ResolveSphereSphereDynamic(
+			vec3& _1pos,
+			Rigidbody& _1rigidbody,
+			Rigidbody* _2rigidbody,
+			Collision::Shapes::Sphere& _1sphere,
+			Collision::Shapes::Sphere& _2sphere,
+			const Collision::CollisionResults& collisionResult,
+			float dt)
+		{
+			(void)_1pos;
+			(void)_2rigidbody;
+
+			//Temp code
+			float collisionForce = -glm::dot(_1rigidbody.velocity, collisionResult.collisionNormal);
+
+			if (collisionForce > 0.f)
+				collisionForce = 0.f;
+
+			_1rigidbody.newPosition += _1rigidbody.velocity * collisionResult.collisionTime;
+
+			_1rigidbody.velocity += collisionResult.collisionNormal * collisionForce;
+
+			//Handle penetration
+			static vec3 deltaPos;
+			
+			if(_2rigidbody)
+				deltaPos = ((_2sphere.m_pos + _2rigidbody->velocity * collisionResult.collisionTime) - (_1sphere.m_pos + _1rigidbody.velocity * collisionResult.collisionTime));
+			else
+				deltaPos = (_2sphere.m_pos - _1sphere.m_pos * _1rigidbody.velocity * collisionResult.collisionTime);
+
+			float penetrationOffset = (_1sphere.m_radius + _2sphere.m_radius) - glm::length(deltaPos);
+
+			if(penetrationOffset > 0.f)
+				_1rigidbody.newPosition += -penetrationOffset * collisionResult.collisionNormal;
+
+			_1rigidbody.newPosition += _1rigidbody.velocity * (dt - collisionResult.collisionTime);
+		}
+
+		void GenericResolveCollision(const Collision::CollisionResults& collisionResult, vec3& _1pos, Rigidbody& _1rigidbody, Rigidbody* _2rigidbody, float dt)
+		{
+			(void)_1pos;
+			(void)_2rigidbody;
+
+			float collisionForce = -glm::dot(_1rigidbody.velocity, collisionResult.collisionNormal);
+
+			if (collisionForce > 0.f)
+				collisionForce = 0.f;
+
+			_1rigidbody.newPosition += _1rigidbody.velocity * collisionResult.collisionTime;
+
+			_1rigidbody.velocity += collisionResult.collisionNormal * collisionForce;
+
+			_1rigidbody.newPosition += _1rigidbody.velocity * (dt - collisionResult.collisionTime);
 		}
 	}
 }

@@ -27,11 +27,6 @@ namespace Components
 		short m_index;
 	};
 
-	struct Imaginary_object
-	{
-		std::string str;
-	};
-
 	struct Relationship
 	{
 		entt::entity m_parent = entt::null;

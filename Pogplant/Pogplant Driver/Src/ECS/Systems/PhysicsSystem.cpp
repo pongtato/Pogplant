@@ -12,9 +12,6 @@
 			written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#include "../Components/Components.h"
-#include "../Components/DependantComponents.h"
-
 #include "PhysicsSystem.h"
 #include "../Entity.h"
 
@@ -71,21 +68,39 @@ void PhysicsSystem::InitPlayState()
 		transform.m_position;
 	}//*/
 
-	for (auto collidable : boxColliders)
+	for (auto& collidable : boxColliders)
 	{
 		auto& transform = boxColliders.get<Components::Transform>(collidable);
 		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
 
-		boxCollider.colliderType = Components::Collider::COLLIDER_TYPE::CT_BOX;
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
+		if (!colliderIdentifier)
+		{
+			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+				collidable,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
+				boxCollider.isTrigger,
+				boxCollider.collisionLayer);
+		}
+
 		boxCollider.aabb.CalculateAABBFromExtends(transform.m_position + boxCollider.centre, boxCollider.extends * transform.m_scale);
 	}
 
-	for (auto collidable : sphereColliders)
+	for (auto& collidable : sphereColliders)
 	{
 		auto& transform = sphereColliders.get<Components::Transform>(collidable);
 		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
 
-		sphereCollider.colliderType = Components::Collider::COLLIDER_TYPE::CT_SPHERE;
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
+		if (!colliderIdentifier)
+		{
+			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+				collidable,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE,
+				sphereCollider.isTrigger,
+				sphereCollider.collisionLayer);
+		}
+
 		sphereCollider.sphere.m_pos = transform.m_position + sphereCollider.centre;
 		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
 	}
@@ -166,7 +181,69 @@ void PhysicsSystem::TriggerUpdate()
 /******************************************************************************/
 /*!
 \brief
-	Main physics update loop
+	Main physics update loop for the editor
+\param c_dt
+	Delta time for this frame
+*/
+/******************************************************************************/
+void PhysicsSystem::UpdateEditor()
+{
+	//Update all colliders
+	auto boxColliders = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
+	auto sphereColliders = m_registry->GetReg().view<Components::Transform, Components::SphereCollider>();
+
+	for (auto& collidable : boxColliders)
+	{
+		auto& transform = boxColliders.get<Components::Transform>(collidable);
+		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
+
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
+		if (!colliderIdentifier)
+		{
+			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+				collidable,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
+				boxCollider.isTrigger,
+				boxCollider.collisionLayer);
+		}
+		else
+		{
+			colliderIdentifier->isTrigger = boxCollider.isTrigger;
+			colliderIdentifier->collisionLayer = boxCollider.collisionLayer;
+		}
+
+		boxCollider.aabb.CalculateAABBFromExtends(transform.m_position + boxCollider.centre, boxCollider.extends * transform.m_scale);
+	}
+
+	for (auto& collidable : sphereColliders)
+	{
+		auto& transform = sphereColliders.get<Components::Transform>(collidable);
+		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
+
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
+		if (!colliderIdentifier)
+		{
+			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+				collidable,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE,
+				sphereCollider.isTrigger,
+				sphereCollider.collisionLayer);
+		}
+		else
+		{
+			colliderIdentifier->isTrigger = sphereCollider.isTrigger;
+			colliderIdentifier->collisionLayer = sphereCollider.collisionLayer;
+		}
+
+		sphereCollider.sphere.m_pos = transform.m_position + sphereCollider.centre;
+		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
+	}
+}
+
+/******************************************************************************/
+/*!
+\brief
+	Main physics update loop, meant for playstate
 \param c_dt
 	Delta time for this frame
 */
@@ -176,10 +253,91 @@ void PhysicsSystem::Update(float c_dt)
 	//Temporary since we have no play state
 	InitPlayState();
 
-	auto rigidBodyEntities = m_registry->GetReg().view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
-	auto collidableEntities = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
+	auto rigidBodyEntities = m_registry->GetReg().view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
+	auto collidableEntities = m_registry->GetReg().view<Components::Transform, Components::ColliderIdentifier>();
 
-	auto movedColliders = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
+	//Update colliders that move
+	for (auto& movableColliders : rigidBodyEntities)
+	{
+		auto& rigidbody = rigidBodyEntities.get<Components::Rigidbody>(movableColliders);
+
+		if (rigidbody.isKinematic)
+			continue;
+
+		auto& transform = rigidBodyEntities.get<Components::Transform>(movableColliders);
+		auto& colliderIdentifier = rigidBodyEntities.get<Components::ColliderIdentifier>(movableColliders);
+
+		switch (colliderIdentifier.colliderType)
+		{
+		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
+		{
+			auto boxCollider = m_registry->GetReg().try_get<Components::BoxCollider>(movableColliders);
+			boxCollider->aabb.CalculateAABBFromExtends(transform.m_position + boxCollider->centre, boxCollider->extends * transform.m_scale);
+			break;
+		}
+		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
+		{
+			auto sphereCollider = m_registry->GetReg().try_get<Components::SphereCollider>(movableColliders);
+			sphereCollider->sphere.m_pos = transform.m_position + sphereCollider->centre;
+			break;
+		}
+		default:
+			std::cerr << "PhysicsSystem::Update, unhandled collider update" << std::endl;
+			break;
+		}
+	}
+
+	//Set the 2nd thread to update trigger behavior
+	m_hasJob.release();
+
+	//O(n^2) probably not ideal, but will do for now
+	for (auto& _1entity : rigidBodyEntities)
+	{
+		auto& _1rigidbody = rigidBodyEntities.get<Components::Rigidbody>(_1entity);
+
+		if (_1rigidbody.isKinematic)
+			continue;
+
+		auto& _1transform = rigidBodyEntities.get<Components::Transform>(_1entity);
+		auto& _1colliderIdentifier = rigidBodyEntities.get<Components::ColliderIdentifier>(_1entity);
+
+		if (_1rigidbody.useGravity)
+			_1rigidbody.acceleration.y += m_gravityAcc;
+
+		//Temp debug draw to show resultant forces, will change location after playstate if needed
+		PP::DebugDraw::DebugLine(_1rigidbody.newPosition, _1rigidbody.newPosition + _1rigidbody.acceleration * _1rigidbody.mass * 0.5f);
+		PP::DebugDraw::DebugLine(_1rigidbody.newPosition, _1rigidbody.newPosition + _1rigidbody.impulseAcceleration * _1rigidbody.mass * 0.5f);
+
+		_1rigidbody.velocity += _1rigidbody.acceleration * c_dt + _1rigidbody.impulseAcceleration;
+		_1rigidbody.acceleration = PhysicsDLC::Vector::Zero;
+		_1rigidbody.impulseAcceleration = PhysicsDLC::Vector::Zero;
+		_1rigidbody.newPosition = _1transform.m_position + _1rigidbody.velocity * c_dt;
+		
+		if (!_1colliderIdentifier.isTrigger)
+		{
+			for (auto _2entity : collidableEntities)
+			{
+				if (_2entity == _1entity)
+					continue;
+
+				auto& _2colliderIdentifier = collidableEntities.get<Components::ColliderIdentifier>(_2entity);
+
+				if (_2colliderIdentifier.isTrigger)
+					continue;
+
+				auto& _2transform = collidableEntities.get<Components::Transform>(_2entity);
+
+				auto _2rigidbody = m_registry->GetReg().try_get<Components::Rigidbody>(_2entity);
+				HandleCollision(_1entity, _2entity, _1transform, _2transform, _1rigidbody, _2rigidbody, _1colliderIdentifier, _2colliderIdentifier, c_dt);
+			}
+		}
+
+		_1transform.m_position = _1rigidbody.newPosition;
+
+	}
+
+	/*auto rigidBodyEntities = m_registry->GetReg().view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
+	auto collidableEntities = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
 
 	//Update colliders that move
 	for (auto movableColliders : rigidBodyEntities)
@@ -197,11 +355,11 @@ void PhysicsSystem::Update(float c_dt)
 	}
 
 	//Set the 2nd thread to do trigger list
-	m_hasJob.release();
+	m_hasJob.release();//*/
 
 
 	//O(n^2) probably not ideal, but will do for now
-	for (auto _1entity : rigidBodyEntities)
+	/*for (auto _1entity : rigidBodyEntities)
 	{
 		auto& _1transform = rigidBodyEntities.get<Components::Transform>(_1entity);
 		auto& _1rigidbody = rigidBodyEntities.get<Components::Rigidbody>(_1entity);
@@ -265,127 +423,10 @@ void PhysicsSystem::Update(float c_dt)
 
 		_1transform.m_position = _1rigidbody.newPosition;
 	}
-}
-
-/******************************************************************************/
-/*!
-\brief
-	Draws all the colliders in the world
-*/
-/******************************************************************************/
-void PhysicsSystem::DrawColliders()
-{
-	glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->GetPosition();
-
-	auto boxColliders = m_registry->GetReg().view<Components::BoxCollider>();
-	for (auto collidable : boxColliders)
-	{
-		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
-		PP::DebugDraw::DebugCube(boxCollider.aabb.m_min, boxCollider.aabb.m_max);
-	}
-
-	auto sphereColliders = m_registry->GetReg().view<Components::SphereCollider>();
-	for (auto collidable : sphereColliders)
-	{
-		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
-
-		PP::DebugDraw::DebugSphere(sphereCollider.sphere.m_pos, (sphereCollider.sphere.m_pos - camPos), sphereCollider.sphere.m_radius);
-	}
-
-	// haha xd
-	auto cameras = m_registry->GetReg().view<Components::Camera, Components::Transform>();
-	const float aspect = static_cast<float>(PP::Window::m_Height) / PP::Window::m_Width;
-	for (auto it : cameras)
-	{
-		auto& cam_trans = cameras.get<Components::Transform>(it);
-		auto& cam = cameras.get<Components::Camera>(it);
-
-		const auto near = cam.m_Near;
-		const auto far = cam.m_Far;
-		const glm::vec3 right = cam.m_Right;
-		const glm::vec3 up = cam.m_Up;
-		const glm::vec3 front = cam.m_Front;
-		const float zoom = cam.m_Zoom * 0.5f;
-
-		PP::DebugDraw::DebugFrustum(cam_trans.m_position, glm::radians(zoom), aspect, near, far, right, up, front);
-	}
+	//*/
 }
 
 void PhysicsSystem::DrawImGUI()
 {
 
-}
-
-void PhysicsSystem::SetCollisionRule(int collisionLayer1, int collisionLayer2, Components::Collider::COLLISION_RULE collisionRule)
-{
-	if (collisionLayer1 > collisionLayer2)
-		std::swap(collisionLayer1, collisionLayer2);
-
-	m_collisionMatrix[std::make_pair(collisionLayer1, collisionLayer2)] = collisionRule;
-}
-
-Components::Collider::COLLISION_RULE PhysicsSystem::GetCollisionRule(int collisionLayer1, int collisionLayer2)
-{
-	if (collisionLayer1 > collisionLayer2)
-		std::swap(collisionLayer1, collisionLayer2);
-
-	auto itr = m_collisionMatrix.find(std::make_pair(collisionLayer1, collisionLayer2));
-
-	if (itr == m_collisionMatrix.end())
-		return Components::Collider::COLLISION_RULE::CR_COLLIDE;
-
-	return static_cast<Components::Collider::COLLISION_RULE>((*itr).second);
-}
-
-decltype(auto) PhysicsSystem::GetTriggered(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
-{
-	auto objects = m_triggerList.equal_range(c_triggerEntity);
-
-	for (auto it = objects.first; it != objects.second; ++it)
-	{
-		if ((*it).second == c_triggeringEntity)
-		{
-			return it;
-		}
-	}
-
-	return objects.second;
-}
-
-void PhysicsSystem::SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
-{
-	//Call ontriggerenter function here
-	std::stringstream ss;
-	ss << "OnTriggerEnter: "
-		<< (uint32_t)c_triggerEntity << " "
-		<< (uint32_t)c_triggeringEntity;
-
-	PP::Logger::Log(
-		PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
-
-	m_triggerList.insert(std::make_pair(c_triggerEntity, c_triggeringEntity));
-}
-
-bool PhysicsSystem::SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
-{
-	auto objects = m_triggerList.equal_range(c_triggerEntity);
-
-	for (auto it = objects.first; it != objects.second; ++it)
-	{
-		if ((*it).second == c_triggeringEntity)
-		{
-			//Call ontriggerexit function here
-			std::stringstream ss;
-			ss << "OnTriggerExit: "
-				<< (uint32_t)c_triggerEntity << " "
-				<< (uint32_t)c_triggeringEntity;
-
-			PP::Logger::Log(
-				PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
-
-			m_triggerList.erase(it);
-			return true;
-		}
-	}
-	return false;
 }

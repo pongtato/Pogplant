@@ -43,13 +43,27 @@ namespace PhysicsDLC
 			void AddImpulseForce(glm::vec3 direction);
 		};
 
-		void ResolveAABBDynamic(
+		void ResolveAABBAABBDynamic(
 			vec3& _1pos,
 			Rigidbody& _1rigidbody,
 			Rigidbody* _2rigidbody,
 			Collision::Shapes::AABB& _1aabb,
 			Collision::Shapes::AABB& _2aabb,
 			float collisionTime,
+			float dt);
+
+		void ResolveSphereSphereDynamic(
+			vec3& _1pos,
+			Rigidbody& _1rigidbody,
+			Rigidbody* _2rigidbody,
+			Collision::Shapes::Sphere& _1sphere,
+			Collision::Shapes::Sphere& _2sphere,
+			const Collision::CollisionResults& collisionResult,
+			float dt);
+
+		void GenericResolveCollision(const Collision::CollisionResults& collisionResult, vec3& _1pos,
+			Rigidbody& _1rigidbody,
+			Rigidbody* _2rigidbody,
 			float dt);
 	}
 }

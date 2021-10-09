@@ -717,15 +717,13 @@ namespace PogplantDriver
 					{
 						ImGuiComboFlags flag = 0;
 						flag |= ImGuiComboFlags_PopupAlignLeft;
-						std::vector<std::string> collision_rule_str = { "Collide", "Event", "Collide & Event", "Ignore" };
+						
+						/*std::vector<std::string> collision_rule_str = {"Collide", "Event", "Collide & Event", "Ignore"};
 						std::vector<int> collision_rule = { Components::BoxCollider::COLLISION_RULE::CR_COLLIDE,
 																								Components::BoxCollider::COLLISION_RULE::CR_EVENT,
 																								Components::BoxCollider::COLLISION_RULE::CR_COLLIDE_EVENT,
 																								Components::BoxCollider::COLLISION_RULE::CR_IGNORE };
-						std::vector<std::string> collision_type_str = { "Box", "Sphere", "GFK"};
-						std::vector<int> collider_type = { Components::BoxCollider::CT_BOX,
-																							 Components::BoxCollider::CT_SPHERE,
-																							 Components::BoxCollider::CT_GJK };
+						
 						auto box_rule = box_collider->collisionLayer;
 						ImGui::Text("Collision Rule");
 						if (ImGui::BeginCombo("Crule", collision_rule_str[box_rule].c_str(), flag))
@@ -743,27 +741,7 @@ namespace PogplantDriver
 									ImGui::SetItemDefaultFocus();
 							}
 							ImGui::EndCombo();
-						}
-
-						auto box_type = box_collider->colliderType;
-						ImGui::Text("Collision Type");
-						if (ImGui::BeginCombo("CType", collision_type_str[box_type].c_str(), flag))
-						{
-							for (auto& it : collider_type)
-							{
-								const bool  is_selected = (box_type == it);
-								if (ImGui::Selectable(collision_type_str[it].c_str(), is_selected))
-								{
-									box_type = it;
-									box_collider->colliderType = collider_type[box_type];
-								}
-
-								if (is_selected)
-									ImGui::SetItemDefaultFocus();
-							}
-							ImGui::EndCombo();
-						}
-
+						}//*/
 
 						ImGui::Text("Extend");
 						ImGui::DragFloat3("###CExt", glm::value_ptr(box_collider->extends));
@@ -771,8 +749,7 @@ namespace PogplantDriver
 						ImGui::Text("Centre");
 						ImGui::DragFloat3("###CCen", glm::value_ptr(box_collider->centre));
 
-						ImGui::Text("Trigger?");
-						ImGui::Checkbox("Trig?", &box_collider->isTrigger);
+						ImGui::Checkbox("Is Trigger?", &box_collider->isTrigger);
 
 						ImguiBlankSeperator(1);
 						ImGui::Separator();
@@ -780,6 +757,7 @@ namespace PogplantDriver
 					if (!enable_box_collider)
 					{
 						m_ecs->GetReg().remove<Components::BoxCollider>(m_CurrentEntity);
+						m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
 					}
 				}
 
@@ -796,8 +774,7 @@ namespace PogplantDriver
 						ImGui::Text("Radius");
 						ImGui::InputFloat("###CRad", &sphere_collider->radius, 0.01f, 1.0f, "%.3f");
 
-						ImGui::Text("Trigger?");
-						ImGui::Checkbox("Trig?", &sphere_collider->isTrigger);
+						ImGui::Checkbox("Is Trigger?", &sphere_collider->isTrigger);
 
 
 						ImguiBlankSeperator(1);
@@ -806,6 +783,7 @@ namespace PogplantDriver
 					if (!enable_sphere_collider)
 					{
 						m_ecs->GetReg().remove<Components::SphereCollider>(m_CurrentEntity);
+						m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
 					}
 				}
 

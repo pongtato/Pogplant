@@ -16,6 +16,7 @@
 #define PHYSICSSYSTEM_H_
 
 #include "../ECS.h"
+#include "../Components/Components.h"
 #include "../Components/DependantComponents.h"
 
 #include <thread>
@@ -32,6 +33,7 @@ public:
 	void Init(ECS* ecs);
 	void InitPlayState();
 
+	void UpdateEditor();
 	void Update(float c_dt);
 	void DrawColliders();
 	void DrawImGUI();
@@ -48,6 +50,16 @@ private:
 	float m_gravityAcc = -9.81f;
 
 	void TriggerUpdate();
+
+	void HandleCollision(const entt::entity& c_1entity,
+		const entt::entity& c_2entity,
+		Components::Transform& c_1transform,
+		Components::Transform& c_2transform,
+		Components::Rigidbody& c_1rigidbody,
+		Components::Rigidbody* c_2rigidbody,
+		const Components::ColliderIdentifier& c_1colliderIdentifier,
+		const Components::ColliderIdentifier& c_2colliderIdentifier,
+		float c_dt);
 
 	decltype(auto) GetTriggered(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 	void SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);

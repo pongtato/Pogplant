@@ -1,4 +1,20 @@
-#include "imaginary_system.h"
+/******************************************************************************/
+/*!
+\file	GeneralSystem.cpp
+\author
+\par	email:
+\details
+
+	This file contains implementations for a system handling generic components
+	that are basic enough that do not require a whole file or class
+	delicated to it
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
+#include "GeneralSystem.h"
 #include "../Entity.h"
 
 #include "../Components/DependantComponents.h"
@@ -7,15 +23,15 @@
 
 using namespace Components;
 
-Imaginary_system::Imaginary_system()
+GeneralSystem::GeneralSystem()
 {
 }
 
-Imaginary_system::~Imaginary_system()
+GeneralSystem::~GeneralSystem()
 {
 }
 
-void Imaginary_system::Init(ECS* ecs)
+void GeneralSystem::Init(ECS* ecs)
 {
 	m_registry = ecs;
 
@@ -32,13 +48,13 @@ void Imaginary_system::Init(ECS* ecs)
 				audioSource.m_audioSources[i].m_is3D,
 				audioSource.m_audioSources[i].m_isLooping,
 				audioSource.m_audioSources[i].m_isStreamed);
-			
+
 			audioSource.PlayAudio(i, glm::vec3{ 0.f, 0.f, 0.f });
 		}
 	}
 }
 
-void Imaginary_system::Update()
+void GeneralSystem::Update()
 {
 	/*//entities will be a container of objects with it
 	//get all entities with the imaginary_object component
@@ -46,7 +62,7 @@ void Imaginary_system::Update()
 
 	//get all entities with more than 1 component
 	//auto entities = m_registry->GetReg().view<Imaginary_object, Transform, Tag>();
-	
+
 	//exclude entities with certain component
 	//auto entities = m_registry->GetReg().view<Transform>(entt::exclude<Imaginary_object>);
 
@@ -69,7 +85,7 @@ void Imaginary_system::Update()
 
 		for (size_t i = 0; i < audioSource.m_audioSources.size(); i++)
 		{
-			if(audioSource.m_audioSources[i].m_update3DPosition && audioSource.m_audioSources[i].c_playing)
+			if (audioSource.m_audioSources[i].m_update3DPosition && audioSource.m_audioSources[i].c_playing)
 				audioSource.m_audioSources[i].c_playing = PPA::AudioEngine::UpdateChannel3DPosition(audioSource.m_audioSources[i].c_channelID, transform.m_position);
 		}
 	}

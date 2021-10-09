@@ -71,7 +71,7 @@ namespace Pogplant
 	void FrameBuffer::ResizeFrameBuffer(BufferType _BufferType, const float _Scale)
 	{
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[_BufferType]);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width * _Scale, Window::m_Height * _Scale, 0, GL_RGBA, GL_FLOAT, NULL);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, (GLsizei)(Window::m_Width * _Scale), (GLsizei)(Window::m_Height * _Scale), 0, GL_RGBA, GL_FLOAT, NULL);
 	}
 
 	void FrameBuffer::BindFrameBuffer(BufferType _BufferType)

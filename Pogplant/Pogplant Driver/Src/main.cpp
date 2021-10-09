@@ -4,7 +4,7 @@
 
 #include "AudioEngine.h"
 #include "ECS/Entity.h"
-#include "ECS/Systems/imaginary_system.h"
+#include "ECS/Systems/GeneralSystem.h"
 #include "ECS/Systems/PhysicsSystem.h"
 #include "ECS/Systems/ScriptSystem.h"
 
@@ -29,7 +29,7 @@
 namespace PPD = PogplantDriver;
 using namespace Components;
 ECS ecs;
-Imaginary_system ImaginarySystem;
+GeneralSystem generalSystem;
 PhysicsSystem physicsSystem;
 ScriptSystem scriptSystem;
 
@@ -65,7 +65,6 @@ void TempSceneObjects()
 	auto entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel });
 	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
-	entity.AddComponent<Imaginary_object>("gab_small");
 	entity.AddComponent<Components::HeightMapDebugger>(0.0f);
 	entity.GetComponent<Components::Name>().m_name = "Sphere";
 	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
@@ -216,7 +215,7 @@ void TempSceneObjects()
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 
-	ImaginarySystem.Init(&ecs);
+	generalSystem.Init(&ecs);
 	physicsSystem.Init(&ecs);
 	scriptSystem.Init(&ecs);
 	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
@@ -433,7 +432,7 @@ void Run()
 
 		PPA::AudioEngine::Update();
 
-		ImaginarySystem.Update();
+		generalSystem.Update();
 		scriptSystem.Update();
 		PPF::FileHandler & fh = fh.GetInstance();
 		fh.UpdateModels();

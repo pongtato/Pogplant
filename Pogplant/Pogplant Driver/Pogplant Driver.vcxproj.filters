@@ -34,9 +34,6 @@
     <Filter Include="Source Files\ECS\Systems">
       <UniqueIdentifier>{27131b65-b53c-4195-b577-8012e999bc7d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ECS\Systems\Imaginary">
-      <UniqueIdentifier>{372aaf41-b46d-4d7f-9e5e-b868df14d2f9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{745812e4-c280-44e8-81bf-2219c052b00e}</UniqueIdentifier>
     </Filter>
@@ -58,6 +55,9 @@
     <Filter Include="Source Files\Audio">
       <UniqueIdentifier>{d3dd2134-0dca-4434-9216-d6ab7cf5a3b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ECS\Systems\Others">
+      <UniqueIdentifier>{372aaf41-b46d-4d7f-9e5e-b868df14d2f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -75,8 +75,8 @@
     <ClCompile Include="Src\ECS\Entity.cpp">
       <Filter>Source Files\ECS</Filter>
     </ClCompile>
-    <ClCompile Include="Src\ECS\Systems\imaginary_system.cpp">
-      <Filter>Source Files\ECS\Systems\Imaginary</Filter>
+    <ClCompile Include="Src\ECS\Systems\GeneralSystem.cpp">
+      <Filter>Source Files\ECS\Systems\Others</Filter>
     </ClCompile>
     <ClCompile Include="Src\Input\GLFWInput.cpp">
       <Filter>Source Files\Input</Filter>
@@ -138,6 +138,9 @@
     <ClCompile Include="Src\AudioEngine.cpp">
       <Filter>Source Files\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="Src\ECS\Systems\PhysicsSystemCollision.cpp">
+      <Filter>Source Files\ECS\Systems\Physics/Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
@@ -155,8 +158,8 @@
     <ClInclude Include="Src\ECS\Components\Components.h">
       <Filter>Source Files\ECS\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Src\ECS\Systems\imaginary_system.h">
-      <Filter>Source Files\ECS\Systems\Imaginary</Filter>
+    <ClInclude Include="Src\ECS\Systems\GeneralSystem.h">
+      <Filter>Source Files\ECS\Systems\Others</Filter>
     </ClInclude>
     <ClInclude Include="Src\Input\GLFWInput.h">
       <Filter>Source Files\Input</Filter>

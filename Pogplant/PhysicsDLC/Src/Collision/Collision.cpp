@@ -185,11 +185,65 @@ namespace PhysicsDLC
 			return std::move(CR);
 		}
 
+		bool StaticSphereSphere(const Shapes::Sphere& sphere1, const Shapes::Sphere& sphere2)
+		{
+			Collision::Shapes::Sphere newSphere;
+
+			newSphere.m_pos = sphere1.m_pos;
+			newSphere.m_radius = sphere1.m_radius + sphere2.m_radius;
+
+			return PointSphere(sphere2.m_pos, newSphere);
+		}
+
+		CollisionResults&& CRDynamicSphereSphere(const Shapes::Sphere& sphere1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime)
+		{
+			CollisionResults CR;
+
+			Collision::Shapes::Ray ray;
+			Collision::Shapes::Sphere sphere;
+
+			ray.m_dir = glm::normalize(vel1 - vel2);
+			ray.m_start = sphere1.m_pos;
+
+			sphere.m_pos = sphere2.m_pos;
+			sphere.m_radius = sphere1.m_radius + sphere2.m_radius;
+
+			if (RaySphere(ray.m_start, ray.m_dir, sphere.m_pos, sphere.m_radius, CR.collisionTime))
+			{
+				CR.collided = (CR.collisionTime > 0.f && CR.collisionTime < deltaTime);
+
+				if (CR.collided)
+				{
+					CR.collisionNormal = (sphere2.m_pos + vel1 * CR.collisionTime) - (sphere1.m_pos + vel2 * CR.collisionTime);
+					CR.collisionNormal = glm::normalize(CR.collisionNormal);
+				}
+			}
+
+			return std::move(CR);
+		}
+
+		bool StaticAABBSphere()
+		{
+			return false;
+		}
+
+		CollisionResults&& CRDynamicAABBSphere(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime)
+		{
+			CollisionResults CR;
+
+			return std::move(CR);
+		}
+
 		bool PointAABB(const vec3& point, const Shapes::AABB& aabb)
 		{
 			return (aabb.m_min.x <= point.x && aabb.m_max.x >= point.x
 				&& aabb.m_min.y <= point.y && aabb.m_max.y >= point.y
 				&& aabb.m_min.z <= point.z && aabb.m_max.z >= point.z);
+		}
+
+		bool PointSphere(const vec3& point, const Shapes::Sphere& sphere)
+		{
+			return (glm::length2((point - sphere.m_pos)) <= sphere.m_radius * sphere.m_radius);
 		}
 	}
 }
