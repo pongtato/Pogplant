@@ -21,16 +21,16 @@ struct Material
 
 uniform Material material;
 uniform vec3 colorTint;
-uniform int noTex;
-uniform int useLight;
+uniform bool noTex;
+uniform bool useLight;
 
 void main()
 {    
-    if(useLight == 1)
+    if(useLight)
     {
         gPosition = FragPos;
         gNormal = normalize(Normal);
-        if(noTex == 0)
+        if(!noTex)
         {
             gAlbedoSpec.rgb = texture(material.texture_diffuse[0], TexCoords).rgb;
             gAlbedoSpec.a = texture(material.texture_specular[0], TexCoords).r;

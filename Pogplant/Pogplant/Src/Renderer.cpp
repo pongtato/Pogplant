@@ -247,7 +247,7 @@ namespace Pogplant
 			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			if (it.m_UseLight)
 			{
-				it.m_RenderModel->Draw();
+				it.m_RenderModel->Draw(false);
 			}
 		}
 
@@ -279,26 +279,19 @@ namespace Pogplant
 
 	void Renderer::BlurPass()
 	{
+		ShaderLinker::Use("BLUR");
 		// Pass this first as first iteration
 		ShaderLinker::SetUniform("horizontal", true);
 		glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[BufferType::BLUR_BUFFER_0]);
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_BRIGHT]);
 
-		ShaderLinker::Use("BLUR");
 		bool first_it = true;
 		const float blur_increment = 0.25f;
 		for (int i = 1; i <= 3; i++)
 		{
-			if (blur_increment != 0)
-			{
-				ShaderLinker::SetUniform("targetWidth", Window::m_Width * blur_increment * i);
-				ShaderLinker::SetUniform("targetHeight", Window::m_Height * blur_increment * i);
-			}
-			else
-			{
-				Logger::Log({ "PP::RENDERER", LogEntry::TYPE::ERROR, "Divide by zero when incrementing blur amount" });
-			}
-			
+			ShaderLinker::SetUniform("targetWidth", Window::m_Width * blur_increment * i);
+			ShaderLinker::SetUniform("targetHeight", Window::m_Height * blur_increment * i);
+
 			// Skip this one as we use the bright color as first pass
 			if (!first_it)
 			{
@@ -377,7 +370,15 @@ namespace Pogplant
 			ShaderLinker::SetUniform("useLight", it.m_UseLight);
 			if (!it.m_EditorDrawOnly || it.m_EditorDrawOnly && _EditorMode)
 			{
-				it.m_RenderModel->Draw();
+				if (it.m_RenderModel->m_TexturesLoaded.size() == 0)
+				{
+					ShaderLinker::SetUniform("noTex", true);
+				}
+				else
+				{
+					ShaderLinker::SetUniform("noTex", false);
+				}
+				it.m_RenderModel->Draw(true);
 			}
 		}
 		ShaderLinker::UnUse();
@@ -392,7 +393,7 @@ namespace Pogplant
 			const auto& it = p_results.get<const Components::PrimitiveRender>(e);
 			const auto& it_trans = p_results.get<const Components::Transform>(e);
 
-			ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
+			//ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
 			ShaderLinker::SetUniform("tile", it.m_Blend);
 			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			ShaderLinker::SetUniform("v3_ViewPosition", ret.m_Position);
@@ -540,7 +541,7 @@ namespace Pogplant
 			const auto& it_trans = results.get<const Components::Transform>(e);
 			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
-			it.m_RenderModel->Draw();
+			it.m_RenderModel->Draw(false);
 		}
 		ShaderLinker::UnUse();
 
@@ -616,7 +617,6 @@ namespace Pogplant
 			model = glm::scale(model, it_Trans.m_scale);
 
 			ShaderLinker::SetUniform("m4_Model", glm::mat4{ model });
-			ShaderLinker::SetUniform("distanceRange", currFont->m_DistanceRange);
 			ShaderLinker::SetUniform("textColor", it_Text.m_Color);
 			glBindTexture(GL_TEXTURE_2D, currFont->m_TextureID);
 

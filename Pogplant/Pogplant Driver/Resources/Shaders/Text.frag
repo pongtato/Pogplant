@@ -7,8 +7,6 @@ in vec2 TexCoords;
 uniform sampler2D text;
 uniform vec3 textColor;
 uniform vec2 offset;
-uniform float distanceRange;
-
 const float imageSize = 512.0;
 
 float median(float r, float g, float b) 

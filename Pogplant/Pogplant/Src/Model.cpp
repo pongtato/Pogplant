@@ -26,11 +26,11 @@ namespace Pogplant
 		LoadFromFile(_Path);
 	}
 
-	void Model::Draw() const
+	void Model::Draw(bool _BindTex) const
 	{
 		for (const auto& it : m_Meshes)
 		{
-			it.Draw();
+			it.Draw(_BindTex);
 		}
 	}
 

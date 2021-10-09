@@ -30,14 +30,13 @@ namespace Pogplant
 		// 0x0004 = GL_TRIANGLES
 		Model() {};
 		Model(std::string _Path, uint _PrimitiveType = 0x0004, std::string _Key = "Key");
-		void Draw() const;
+		void Draw(bool _BindTex) const;
 		bool LoadFromFile(std::string filePath);
 
+		Bounds m_Bounds;
 		std::vector<Texture> m_TexturesLoaded;
 		std::vector<Mesh3D> m_Meshes;
 		std::string m_Directory;
-		Bounds m_Bounds;
-
 		std::string m_Model_key;
 
 	private:

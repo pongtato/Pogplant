@@ -29,7 +29,7 @@ namespace Pogplant
 		// 0x0004 = GL_TRIANGLES
 		Mesh3D(std::vector<Vertex> _Vertices, std::vector<uint> _Indices, std::vector<Texture> _Textures, uint _PrimitiveType = 0x0004);
 
-		void Draw() const;
+		void Draw(bool _BindTex) const;
 
 		std::vector<Vertex> m_Vertices;
 		std::vector<uint> m_Indices;

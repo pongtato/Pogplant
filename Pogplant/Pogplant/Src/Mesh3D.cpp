@@ -17,7 +17,7 @@ namespace Pogplant
         GenerateMesh3D();
 	}
 
-	void Mesh3D::Draw() const
+	void Mesh3D::Draw(bool _BindTex) const
 	{
         // bind appropriate textures
         unsigned int diffuseNr = 0;
@@ -25,13 +25,8 @@ namespace Pogplant
         unsigned int normalNr = 0;
         unsigned int heightNr = 0;
 
-        if (m_Textures.size() == 0)
+        if (m_Textures.size() > 0 && _BindTex)
         {
-            ShaderLinker::SetUniform("noTex", 1);
-        }
-        else
-        {
-            ShaderLinker::SetUniform("noTex", 0);
             for (unsigned int i = 0; i < m_Textures.size(); i++)
             {
                 //glActiveTexture(GL_TEXTURE0 + i); // active proper texture unit before binding
@@ -57,8 +52,6 @@ namespace Pogplant
 		glBindVertexArray(m_VAO);
 		glDrawElements(m_PrimitiveType, static_cast<int>(m_Indices.size()), GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
-
-        // always good practice to set everything back to defaults once configured.
         glActiveTexture(GL_TEXTURE0);
 	}
 

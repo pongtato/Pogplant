@@ -93,7 +93,7 @@ void main()
     vec3 viewDir  = normalize(viewPos - FragPos);
     for(int i = 0; i < activeLights; ++i)
     {
-        // Distance factor
+        // Distance cutoff
         float distance = length(lights[i].Position - FragPos);
         if(distance < lights[i].Radius)
         {
