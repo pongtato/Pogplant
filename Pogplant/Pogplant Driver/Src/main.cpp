@@ -226,20 +226,12 @@ void Init()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	// Will change to automatic update when i figure it out
 	PPC::AssetCompiler& acc = acc.GetInstance();
-	//if(!acc.Exists("Resources/KekFiles/Cube.kek"))
 	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/cube/Cube.fbx");
-	//if (!acc.Exists("Resources/KekFiles/Sphere.kek"))
 	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/sphere/Sphere.fbx");
-	//if (!acc.Exists("Resources/KekFiles/Enemy_01.kek"))
 	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/Enemy/Enemy_01.fbx");
-	//if (!acc.Exists("Resources/KekFiles/Player_Ship.kek"))
 	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/Ship/Player_Ship.fbx");
-	//if (!acc.Exists("Resources/KekFiles/backpack.kek"))
-	//acc.RunExecutable( "Pogplant Compiler.exe", "Resources/Models/backpack/backpack.obj");
 	acc.WaitForAllProcess();
-	//acc.WaitForSingleProcess("BAG");
 
 	PPA::AudioEngine::Instance();
 
@@ -254,52 +246,6 @@ void Init()
 
 	/// To be moved to relative scenes
 	TempSceneObjects();
-
-	/* CLARENCE DEBUGGING STUFF */
-	//std::cout << "number of meshes: " << cubeModel->m_Meshes.size() << std::endl;
-	//std::cout << "How many meshes: " << bagModel->m_Meshes.size() << std::endl;
-	//std::cout << "How many textures loaded: " << bagModel->m_TexturesLoaded.size() << std::endl;
-
-	//for (auto& meshes : floorModel->m_Meshes)
-	//{
-	//	
-	//	for (auto& vert : meshes.m_Vertices)
-	//	{
-	//		std::cout
-	//			// Position
-	//			<< vert.m_Position.x << ' ' << vert.m_Position.y << ' ' << vert.m_Position.z << ' '
-	//			// Normal
-	//			<< vert.m_Normal.x << ' ' << vert.m_Normal.y << ' ' << vert.m_Normal.z << ' '
-	//			// Tangent
-	//			<< vert.m_Tangent.x << ' ' << vert.m_Tangent.y << ' ' << vert.m_Tangent.z << ' '
-	//			// Bi-Tangent
-	//			<< vert.m_BiTangent.x << ' ' << vert.m_BiTangent.y << ' ' << vert.m_BiTangent.z << ' '
-	//			// Tex-Coords
-	//			<< vert.m_TexCoords.x << ' ' << vert.m_TexCoords.y <<
-	//		std::endl;
-	//	}
-
-	//	for (auto& idx : meshes.m_Indices)
-	//	{
-	//		std::cout << idx << std::endl;
-	//	}
-
-	//	for (auto& tex : meshes.m_Textures)
-	//	{
-	//		std::cout << tex.m_Path << ' ' << tex.m_Type << std::endl;
-	//	}
-	//	
-	//	std::cout << "Number of vert: " << meshes.m_Vertices.size() << std::endl;
-	//	std::cout << "Number of idx: " << meshes.m_Indices.size() << std::endl;
-	//	std::cout << "Number of texs: " << meshes.m_Textures.size() << std::endl;
-	//}
-
-	//for (auto& texLoaded : bagModel->m_TexturesLoaded)
-	//{
-	//	std::cout << texLoaded.m_Path << ' ' << texLoaded.m_Type << std::endl;
-	//}
-	//std::cout << cubeModel->m_Directory << std::endl;
-	/* END OF CLARENCE DEBUGGING STUFF*/
 }
 
 void UpdateTransforms()
