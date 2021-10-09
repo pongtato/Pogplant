@@ -39,25 +39,22 @@ uniform vec3 viewPos;
 uniform int activeLights;
 uniform mat4 m4_LightProjection;
 
-float ShadowCalculation()
+float Shadow()
 {
-    vec3 FragPos = texture(gPosition, TexCoords).rgb;
-    vec4 fragPosLightSpace = m4_LightProjection * vec4(FragPos,1.0f);
-    // perform perspective divide
+    vec3 fragPos = texture(gPosition, TexCoords).rgb;
+
+    // Map to correct space 
+    vec4 fragPosLightSpace = m4_LightProjection * vec4(fragPos,1.0f);
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
-    // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
-    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
     float closestDepth = texture(gShadow, projCoords.xy).r; 
-    // get depth of current fragment from light's perspective
-    float currentDepth = projCoords.z;
-    // calculate bias (based on depth map resolution and slope)
+    float currDepth = projCoords.z;
+
+    // Bias calc
     vec3 normal = texture(gNormal, TexCoords).rgb;
     vec3 lightDir = normalize(-directLight.Direction);
     float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);
-    // check whether current frag pos is in shadow
-    // float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;
-    // PCF
+
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(gShadow, 0);
     for(int x = -1; x <= 1; ++x)
@@ -65,16 +62,19 @@ float ShadowCalculation()
         for(int y = -1; y <= 1; ++y)
         {
             float pcfDepth = texture(gShadow, projCoords.xy + vec2(x, y) * texelSize).r; 
-            shadow += currentDepth - bias > pcfDepth  ? 1.0 : 0.0;        
+            shadow += currDepth - bias > pcfDepth  ? 1.0 : 0.0;        
         }    
     }
-    shadow /= 9.0;
-    
-    // keep the shadow at 0.0 when outside the far_plane region of the light's frustum.
-    if(projCoords.z > 1.0)
-        shadow = 0.0;
         
-    return shadow;
+    // Cull outside frustum
+    if(projCoords.z > 1.0)
+    {
+        return 0;
+    }
+    else
+    {
+        return shadow /= 9.0;
+    }
 }
 
 void main()
@@ -87,8 +87,9 @@ void main()
     vec4 NoLight = texture(gNoLight, TexCoords);
     
     // Light calc
-    float shadow = 1-ShadowCalculation();
-    vec3 lighting  = Diffuse * 0.42 * clamp(shadow,0.0f,1.0f);
+    const float ambient = 0.42f;
+    float shadow = 1 - Shadow();
+    vec3 lighting  = Diffuse * ambient * clamp(shadow,0.0f,1.0f);
     vec3 viewDir  = normalize(viewPos - FragPos);
     for(int i = 0; i < activeLights; ++i)
     {
@@ -104,7 +105,8 @@ void main()
             float spec = pow(max(dot(Normal, halfwayDir), 0.0), 16.0);
             vec3 specular = lights[i].Color * spec * Specular;
             // Attenuation
-            float attenuation = 1.0 / (1.0 + lights[i].Linear * distance + lights[i].Quadratic * distance * distance);
+            const float k = 1.0f;
+            float attenuation = k / (k + lights[i].Linear * distance + lights[i].Quadratic * distance * distance);
             diffuse *= attenuation;
             specular *= attenuation;
             lighting += diffuse + specular;
@@ -127,7 +129,7 @@ void main()
 
     // Output bright bixels for bloom
     float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
-    if(brightness > 0.9)
+    if(brightness > 0.69f)
         brightColor = vec4(outColor.rgb,1.0);
     else
         brightColor = vec4(0.0, 0.0, 0.0, 1.0);

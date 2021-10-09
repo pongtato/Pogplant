@@ -8,16 +8,15 @@
 		Reproduction or disclosure of this file or its contents without the prior
 		written consent of DigiPen Institute of Technology is prohibited.
 ******************************************************************************/
+#include "../Window.h"
+#include "FileDialogs.h"
+
 #include <Windows.h>
 #include <commdlg.h>
-
 #include <glew.h>
 #include <glfw3.h>
 #define GLFW_EXPOSE_NATIVE_WIN32
 #include <glfw3native.h>
-
-#include "../Window.h"
-#include "FileDialogs.h"
 
 namespace Pogplant
 {

@@ -1,15 +1,6 @@
-﻿#include "ImguiHelper.h"
+﻿#pragma warning(disable  : 4005) // Winapi entry 
 
-#include <iostream>
-#include <Pogplant.h>
-#include <glm.hpp>
-#include <gtc/matrix_transform.hpp>
-#include <gtc/type_ptr.hpp>
-#define NOMINMAX
-#define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-#include <crtdbg.h>
-#include <imgui.h>
+#include "ImguiHelper.h"
 
 #include "AudioEngine.h"
 #include "ECS/Entity.h"
@@ -24,9 +15,18 @@
 
 #include "Utils/ChronoTimer.h"
 
+#include <iostream>
+#include <Pogplant.h>
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
+#define NOMINMAX
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+#include <imgui.h>
 
 namespace PPD = PogplantDriver;
-
 using namespace Components;
 ECS ecs;
 Imaginary_system ImaginarySystem;
@@ -249,7 +249,7 @@ void Init()
 	fileHandler.AddNewWatchPath("Resources/Prefabs");
 
 	/// Start pogplant lib
-	PP::PogplantInit();
+	PP::Entry::Init();
 	PPD::ImguiHelper::InitImgui(&ecs);
 
 	/// To be moved to relative scenes
@@ -518,7 +518,7 @@ void Run()
 void Exit()
 {
 	PPD::ImguiHelper::CleanUpImgui();
-	PP::PogplantCleanup();
+	PP::Entry::Cleanup();
 	PPA::AudioEngine::Destroy();
 	PPI::InputSystem::Destroy();
 	PPF::FileHandler& fh = fh.GetInstance();

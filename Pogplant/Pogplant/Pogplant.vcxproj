@@ -28,6 +28,7 @@
     <ClInclude Include="Src\Model.h" />
     <ClInclude Include="Src\ModelResource.h" />
     <ClInclude Include="Src\Pogplant.h" />
+    <ClInclude Include="Src\PP_Entry.h" />
     <ClInclude Include="Src\Ray.h" />
     <ClInclude Include="Src\Renderer.h" />
     <ClInclude Include="Src\ShaderLinker.h" />
@@ -56,6 +57,7 @@
     <ClCompile Include="Src\MeshResource.cpp" />
     <ClCompile Include="Src\Model.cpp" />
     <ClCompile Include="Src\ModelResource.cpp" />
+    <ClCompile Include="Src\PP_Entry.cpp" />
     <ClCompile Include="Src\Ray.cpp" />
     <ClCompile Include="Src\Renderer.cpp" />
     <ClCompile Include="Src\ShaderLinker.cpp" />

@@ -91,6 +91,9 @@
     <Filter Include="Source Files\Graphics\DebugDraw">
       <UniqueIdentifier>{c5fec187-db38-492d-90f2-ba1704402716}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entry">
+      <UniqueIdentifier>{3df60710-c6c6-47c5-b55b-d9892a67fed0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Pogplant.h">
@@ -177,6 +180,9 @@
     <ClInclude Include="Src\DebugDraw.h">
       <Filter>Source Files\Graphics\DebugDraw</Filter>
     </ClInclude>
+    <ClInclude Include="Src\PP_Entry.h">
+      <Filter>Source Files\Entry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Window.cpp">
@@ -253,6 +259,9 @@
     </ClCompile>
     <ClCompile Include="Src\DebugDraw.cpp">
       <Filter>Source Files\Graphics\DebugDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PP_Entry.cpp">
+      <Filter>Source Files\Entry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

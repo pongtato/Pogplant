@@ -17,6 +17,7 @@
 #include "ModelResource.h"
 #include "FrameBufferResource.h"
 #include "TextureResource.h"
+#include "../../Pogplant Driver/Src/ECS/Components/Components.h"
 
 #include <gtc/matrix_transform.hpp>
 #include <glew.h>
@@ -25,7 +26,7 @@
 
 #include <iostream>
 
-#include "../../Pogplant Driver/Src/ECS/Components/Components.h"
+
 
 namespace Pogplant
 {

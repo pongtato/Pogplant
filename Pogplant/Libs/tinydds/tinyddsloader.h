@@ -6,6 +6,7 @@
 #ifndef TINYDDSLOADER_H_
 #define TINYDDSLOADER_H_
 
+#pragma warning(disable : 4456) // dxt10header
 #include <iostream>
 #include <vector>
 

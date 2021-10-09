@@ -61,8 +61,8 @@ namespace Pogplant
 
 		float gridSquareSize = 1.f / m_HeightMapDim;
 
-		size_t gridX = (_Position.x + 0.5f) / gridSquareSize;
-		size_t gridZ = (_Position.z + 0.5f) / gridSquareSize;
+		size_t gridX = static_cast<size_t>((_Position.x + 0.5f) / gridSquareSize);
+		size_t gridZ = static_cast<size_t>((_Position.z + 0.5f) / gridSquareSize);
 
 		float xCoord = fmod((_Position.x + 0.5f), gridSquareSize) / gridSquareSize;
 		float zCoord = fmod((_Position.z + 0.5f), gridSquareSize) / gridSquareSize;
