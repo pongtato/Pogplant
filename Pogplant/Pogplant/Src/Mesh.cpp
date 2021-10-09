@@ -44,4 +44,53 @@ namespace Pogplant
 		glDrawElementsInstanced(this->m_PrimitiveType, m_IndicesCount, GL_UNSIGNED_INT, 0, static_cast<GLsizei>(MeshInstance::GetInstanceCount()));
 		glBindVertexArray(0);
 	}
+
+	float Mesh::GetHeight(glm::vec3 _Position)
+	{
+		/// You need to map the position to -0.5f to 0.5f, / by model component's scale
+
+		if (m_Heightmap.size() == 0)
+		{
+			return 0;
+		}
+
+		if (_Position.x < -0.5f || _Position.x > 0.5f || _Position.z < -0.5f || _Position.z > 0.5f)
+		{
+			return 0;
+		}
+
+		float gridSquareSize = 1.f / m_HeightMapDim;
+
+		size_t gridX = (_Position.x + 0.5f) / gridSquareSize;
+		size_t gridZ = (_Position.z + 0.5f) / gridSquareSize;
+
+		float xCoord = fmod((_Position.x + 0.5f), gridSquareSize) / gridSquareSize;
+		float zCoord = fmod((_Position.z + 0.5f), gridSquareSize) / gridSquareSize;
+
+		float HeightmapReturn = 0.f;
+
+		size_t var1 = xCoord <= (1 - zCoord) ? 0 : 1;
+		HeightmapReturn = Barycentric
+		(
+			glm::vec3(var1, m_Heightmap[gridZ * m_HeightMapDim + gridX + var1], 0),
+			glm::vec3(1, m_Heightmap[(gridZ + var1) * m_HeightMapDim + gridX + 1], var1),
+			glm::vec3(0, m_Heightmap[(gridZ + 1) * m_HeightMapDim + gridX], 1),
+			glm::vec3(xCoord, 0, zCoord)
+		);
+
+		return HeightmapReturn / m_HeightMapDim;
+	}
+
+	float Mesh::Barycentric(glm::vec3 _V1, glm::vec3 _V2, glm::vec3 _V3, glm::vec3 _Position) const
+	{
+		float det = (_V2.z - _V3.z) * (_V1.x - _V3.x) + (_V3.x - _V2.x) * (_V1.z - _V3.z);
+
+		float l1 = ((_V2.z - _V3.z) * (_Position.x - _V3.x) + (_V3.x - _V2.x) * (_Position.z - _V3.z)) / det;
+
+		float l2 = ((_V3.z - _V1.z) * (_Position.x - _V3.x) + (_V1.x - _V3.x) * (_Position.z - _V3.z)) / det;
+
+		float l3 = 1.0f - l1 - l2;
+
+		return l1 * _V1.y + l2 * _V2.y + l3 * _V3.y;
+	}
 }

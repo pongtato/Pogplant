@@ -455,9 +455,7 @@ namespace Pogplant
         }
 
         // Get heightmap
-        std::vector<unsigned char> heightmap;
-        size_t dim = 0;
-        if (!TexLoader::LoadHeightMap("Heightmap.raw", "Resources/Textures/Heightmap", heightmap, dim))
+        if (!TexLoader::LoadHeightMap("Heightmap.raw", "Resources/Textures/Heightmap", mesh->m_Heightmap, mesh->m_HeightMapDim))
         {
             Logger::Log({ "PP::MESH",LogEntry::ERROR,"Bad heightmap" });
             return;
@@ -475,42 +473,38 @@ namespace Pogplant
         };
 
         std::vector<TerrainVertex> terrainVertex;
-
         TerrainVertex v;
-        for (unsigned z = 0; z < dim; ++z)
+        for (unsigned z = 0; z < mesh->m_HeightMapDim; ++z)
         {
-            for (unsigned x = 0; x < dim; ++x)
+            for (unsigned x = 0; x < mesh->m_HeightMapDim; ++x)
             {
-                float scaledHeight = (float)heightmap[z * dim + x] / 256.0f;
-                v.position = { static_cast<float>(x) / dim - 0.5f, scaledHeight, static_cast<float>(z) / dim - 0.5f };
+                float scaledHeight = (float)mesh->m_Heightmap[z * mesh->m_HeightMapDim + x] / 256.0f;
+                v.position = { static_cast<float>(x) / mesh->m_HeightMapDim - 0.5f, scaledHeight, static_cast<float>(z) / mesh->m_HeightMapDim - 0.5f };
                 v.color = { 1.0f, 1.0f, 1.0f }; //for rendering height map without texture
 
 				glm::vec3 origin = { x,scaledHeight, z };
                 // Normal calc
-                float hL = TexLoader::GetHeight(x - 1, z    , dim, heightmap);
-                float hR = TexLoader::GetHeight(x + 1, z    , dim, heightmap);
-                float hD = TexLoader::GetHeight(x    , z - 1, dim, heightmap);
-                float hU = TexLoader::GetHeight(x    , z + 1, dim, heightmap);
+                float hL = TexLoader::GetHeight(x - 1, z    , mesh->m_HeightMapDim, mesh->m_Heightmap);
+                float hR = TexLoader::GetHeight(x + 1, z    , mesh->m_HeightMapDim, mesh->m_Heightmap);
+                float hD = TexLoader::GetHeight(x    , z - 1, mesh->m_HeightMapDim, mesh->m_Heightmap);
+                float hU = TexLoader::GetHeight(x    , z + 1, mesh->m_HeightMapDim, mesh->m_Heightmap);
                 v.normal = glm::normalize(glm::vec3{ hL - hR, 2.0f, hD - hU });
                 v.bitangent = glm::vec3{ 2.0f, hR - hL ,0.0f };
                 v.tangent = glm::vec3(0.0f, hU - hD, 2.0f);
-                //v.normal = glm::normalize(glm::cross(v.tangent, v.bitangent));
-
-                //v.normal = { 0,1,0 };
-                v.uv = { (float)x / dim, 1.f - (float)z / dim };
+                v.uv = { (float)x / mesh->m_HeightMapDim, 1.f - (float)z / mesh->m_HeightMapDim };
                 terrainVertex.push_back(v);
             }
         }
-        for (unsigned z = 0; z < dim - 1; ++z)
+        for (size_t z = 0; z < mesh->m_HeightMapDim - 1; ++z)
         {
-            for (unsigned x = 0; x < dim - 1; ++x)
+            for (size_t x = 0; x < mesh->m_HeightMapDim - 1; ++x)
             {
-                mesh->m_Indices.push_back(dim* z + x + 0); //Tri 1
-                mesh->m_Indices.push_back(dim* (z + 1) + x + 0);
-                mesh->m_Indices.push_back(dim* z + x + 1);
-                mesh->m_Indices.push_back(dim* (z + 1) + x + 1); //Tri 2
-                mesh->m_Indices.push_back(dim* z + x + 1);
-                mesh->m_Indices.push_back(dim* (z + 1) + x + 0);
+                mesh->m_Indices.push_back(static_cast<unsigned int>(mesh->m_HeightMapDim * z + x));      //Tri 1
+                mesh->m_Indices.push_back(static_cast<unsigned int>(mesh->m_HeightMapDim * (z + 1) + x));
+                mesh->m_Indices.push_back(static_cast<unsigned int>(mesh->m_HeightMapDim * z + x + 1));
+                mesh->m_Indices.push_back(static_cast<unsigned int>(mesh->m_HeightMapDim * (z + 1) + x + 1)); //Tri 2
+                mesh->m_Indices.push_back(static_cast<unsigned int>(mesh->m_HeightMapDim * z + x + 1));
+                mesh->m_Indices.push_back(static_cast<unsigned int>(mesh->m_HeightMapDim * (z + 1) + x));
             }
         }
 

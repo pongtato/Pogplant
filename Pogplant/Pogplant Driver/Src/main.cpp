@@ -23,13 +23,6 @@
 #include "FileHandler.h"
 
 #include "Utils/ChronoTimer.h"
-//struct MEMLEAK
-//{
-//	~MEMLEAK()
-//	{
-//		_CrtDumpMemoryLeaks();
-//	}
-//}MEMLEAK;
 
 
 namespace PPD = PogplantDriver;
@@ -40,15 +33,198 @@ Imaginary_system ImaginarySystem;
 PhysicsSystem physicsSystem;
 ScriptSystem scriptSystem;
 
+void TempSceneObjects()
+{
+	/// Add to container
+	std::string sphere, cube, ship, enemy;
+	sphere = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Sphere.kek");
+	cube = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
+	ship = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Player_Ship.kek");
+	enemy = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Enemy_01.kek");
+
+	PP::Model* sphereModel = PP::ModelResource::m_ModelPool[sphere];
+	PP::Model* cubeModel = PP::ModelResource::m_ModelPool[cube];
+	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
+	PP::Model* enemyModel = PP::ModelResource::m_ModelPool[enemy];
+	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
+
+	glm::vec3 pos = { 5.0f, 0.0f, -10.0f };
+	glm::vec3 rot = { 0.0f,0.0f,0.0f };
+	glm::vec3 scale = { 1.0f,1.0f,1.0f };
+	glm::vec3 color = { 0.835f,0.921f,0.905f }; // In the event of no texture
+	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[0]));
+
+	//ecs.AddComponent<Components::Renderer>(entity, &bagModel);
+	//registry.emplace<Renderer>(entity, &bagModel);
+
+	pos = { -5.0f, 0.0f, -10.0f };
+	rot = { 0.0f,0.0f,0.0f };
+	scale = { 2.0f,2.0f,2.0f };
+	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
+
+	auto entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel });
+	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
+	entity.AddComponent<Imaginary_object>("gab_small");
+	entity.AddComponent<Components::HeightMapDebugger>(0.0f);
+	entity.GetComponent<Components::Name>().m_name = "Sphere";
+	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
+
+	pos = { 0.0f, -10.0f, 0.0f };
+	rot = { 0.0f,0.0f,0.0f };
+	scale = { 210.0f,30.0f,210.0f };
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	//entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
+	entity.AddComponent<Components::PrimitiveRender>(PrimitiveRender
+	(
+		{ "MUD_DIFF", "GRASS_DIFF" },
+		{ "MUD_BUMP", "GRASS_BUMP" },
+		{ "MUD_NORM", "GRASS_NORM" },
+		{ "MUD_SPEC", "GRASS_SPEC" },
+		floorMesh,
+		4.0f,
+		true
+	));
+	entity.GetComponent<Components::Name>().m_name = "Floor";
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.1f, 0.1f, 0.1f }, {0.f, 0.f, 0.f} });
+
+	pos = { 15.0f, 15.0f, 10.f };
+	rot = { 0.0f,0.0f,0.0f };
+	scale = { 1.0f,1.0f,1.0f };
+
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Renderer>(Renderer{ color, shipModel });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
+	std::unordered_map<std::string, bool> shipScripts;
+	shipScripts["Player"] = false;
+	entity.AddComponent<Components::Scriptable>(shipScripts);
+	entity.GetComponent<Components::Name>().m_name = "Ship";
+
+	pos = { 7.5f, 7.5f, 10.0f };
+	rot = { 0.0f,0.0f,0.0f };
+	scale = { 1.0f,1.0f,1.0f };
+
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Renderer>(Renderer{ color, enemyModel });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
+	std::unordered_map<std::string, bool> enemyScripts;
+	enemyScripts["Enemy"] = false;
+	entity.AddComponent<Components::Scriptable>(enemyScripts);
+	entity.GetComponent<Components::Name>().m_name = "Enemy";
+
+	//auto entity = registry.create();
+	//registry.emplace<Transform>(registry.create(), pos, rot, scale);
+	//registry.emplace<Renderer>(entity,&cubeModel);
+
+	/// Light
+	pos = { 7.5f, 15.0f, 20.0f };
+	glm::vec3 direction = -glm::normalize(pos);
+	scale = { 1.0f,1.0f,1.0f }; // Affects light model and not the actual light size
+	color = { 0.2f, 0.2f, 0.15f };
+	float intensity = 13.0f;
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.GetComponent<Components::Name>().m_name = "Directional Light";
+
+	intensity = 1.0f;
+	pos = { 15.0f, 22.0f, 19.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	const float linear = 0.00069f;
+	const float quadratic = 0.0042f;
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.GetComponent<Components::Name>().m_name = "White point light";
+
+	intensity = 4.2f;
+	pos = { 26.0f, 10.0f, -16.5f };
+	color = { 0.0f, 0.0f, 1.0f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.GetComponent<Components::Name>().m_name = "Blue light";
+
+	pos = { 21.0f, 10.0f, 10.0f };
+	color = { 1.0f, 0.0f, 0.0f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.GetComponent<Components::Name>().m_name = "Red light";
+
+	pos = { -12.5, 10.0f, -10.0f };
+	color = { 0.0f, 1.0f, 0.0f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.GetComponent<Components::Name>().m_name = "Green light";
+
+	//Test Object with body
+	pos = { 3.0f, 1.f, 0.0f };
+	color = { 0.0f, 1.0f, 1.0f };
+	scale = { 0.5f, 0.5f, 0.5f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, false });
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
+	//entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{0.f}, 1.f });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
+	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
+	entity.AddComponent<Components::AudioSource>();
+	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
+		Components::AudioSource::AudioClip{ "Resources/Audio/test2.ogg", 0.2f, true, true, true }
+	);
+
+	//Test movable controllable body
+	pos = { -3.0f, 1.f, 0.0f };
+	color = { 0.0f, 1.0f, 1.0f };
+	scale = { 0.5f, 0.5f, 0.5f };
+	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, false });
+	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
+	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
+	entity.AddComponent<Components::CharacterController>();
+	entity.GetComponent<Components::Name>().m_name = "Test movableObject";
+	entity.AddComponent<Components::AudioSource>();
+	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
+		Components::AudioSource::AudioClip{ "Resources/Audio/test.ogg", 0.2f, true, true, true }
+	);
+
+	/// FONT
+	pos = { 0.0f, 10.0, -10.0f };
+	rot = { 0.0f, 0.0f,0.0f };
+	scale = { 42.0f,42.0f,42.0f };
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "This is a very big text", false });
+	entity.GetComponent<Components::Name>().m_name = "World font";
+
+	pos = { -1.0f, 0.85f, 0.0f };
+	rot = { 0.0f, 0.0f,0.0f };
+	scale = { 1.0f,1.0f,1.0f };
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,1.0f}, "Ruda", "Screen Font", true });
+	entity.GetComponent<Components::Name>().m_name = "Screen font";
+
+	/// Camera
+	pos = { 15.0f, 10.0f, 45.0f };
+	color = { 0.9f, 0.5f, 0.2f };
+	entity = ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, cubeModel, false, false });
+	entity.GetComponent<Components::Name>().m_name = "Game Camera";
+
+	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
+
+	ImaginarySystem.Init(&ecs);
+	physicsSystem.Init(&ecs);
+	scriptSystem.Init(&ecs);
+	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
+}
+
 void Init()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
-	PP::Window::InitWindow(
-		1280,					// Width
-		720,					// Height
-		"BogosBinted"			// Window name
-	);
 
 	// Will change to automatic update when i figure it out
 	PPC::AssetCompiler& acc = acc.GetInstance();
@@ -72,38 +248,12 @@ void Init()
 	fileHandler.AddNewWatchPath("Resources/Models");
 	fileHandler.AddNewWatchPath("Resources/Prefabs");
 
-	PP::MeshBuilder::InitMesh();
-	PP::TextureResource::InitResource();
-	PP::FontResource::InitResource();
-	PP::ShaderLinker::InitShader();
-	PP::FrameBuffer::InitFrameBuffer();
-	PP::CameraResource::InitBaseCameras(
-		glm::vec3{ 0,0,5.0f }, // Editor cam pos
-		PP::CameraConfig
-		{
-			-90.0f, // Yaw
-			0.0f,	// Pitch
-			45.0f,	// Zoom 
-			16.9f,	// Speed 
-			0.1f,	// Near
-			200.0f,	// Far
-			0.21f,	// Mouse look sens
-			20.0f,	// Key input look sens
-			0.1f	// Pan speed
-		});
+	/// Start pogplant lib
+	PP::PogplantInit();
 	PPD::ImguiHelper::InitImgui(&ecs);
 
-	/// Add to container
-	std::string sphere, cube, ship, enemy;
-	sphere = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Sphere.kek");
-	cube = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
-	ship = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Player_Ship.kek");
-	enemy = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Enemy_01.kek");
-	PP::Model* sphereModel = PP::ModelResource::m_ModelPool[sphere];
-	PP::Model* cubeModel = PP::ModelResource::m_ModelPool[cube];
-	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
-	PP::Model* enemyModel = PP::ModelResource::m_ModelPool[enemy];
-	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
+	/// To be moved to relative scenes
+	TempSceneObjects();
 
 	/* CLARENCE DEBUGGING STUFF */
 	//std::cout << "number of meshes: " << cubeModel->m_Meshes.size() << std::endl;
@@ -150,294 +300,10 @@ void Init()
 	//}
 	//std::cout << cubeModel->m_Directory << std::endl;
 	/* END OF CLARENCE DEBUGGING STUFF*/
-
-	// Assume 2 objects components
-	//GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, bagModel });
-	//GO_Resource::m_Render_Container.push_back({ glm::mat4{1}, cubeModel });
-
-	glm::vec3 pos = { 5.0f, 0.0f, -10.0f };
-	glm::vec3 rot = { 0.0f,0.0f,0.0f };
-	glm::vec3 scale = { 1.0f,1.0f,1.0f };
-	glm::vec3 color = { 0.835f,0.921f,0.905f }; // In the event of no texture
-	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[0]));
-
-	//ecs.AddComponent<Components::Renderer>(entity, &bagModel);
-	//registry.emplace<Renderer>(entity, &bagModel);
-
-	pos = { -5.0f, 0.0f, -10.0f };
-	rot = { 0.0f,0.0f,0.0f };
-	scale = { 2.0f,2.0f,2.0f };
-	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
-
-	auto entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel });
-	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
-	entity.AddComponent<Imaginary_object>("gab_small_pepe");
-	entity.GetComponent<Components::Name>().m_name = "Sphere";
-	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
-
-	pos = { 0.0f, -10.0f, 0.0f };
-	rot = { 0.0f,0.0f,0.0f };
-	scale = { 210.0f,30.0f,210.0f };
-	entity = ecs.CreateEntity("", pos, rot, scale);
-	//entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
-	entity.AddComponent<Components::PrimitiveRender>(PrimitiveRender
-	(
-		{ "MUD_DIFF", "GRASS_DIFF"},
-		{ "MUD_BUMP", "GRASS_BUMP"},
-		{ "MUD_NORM", "GRASS_NORM"},
-		{ "MUD_SPEC", "GRASS_SPEC"},
-		floorMesh,
-		0.69f,
-		true
-	));
-	entity.GetComponent<Components::Name>().m_name = "Floor";
-	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.1f, 0.1f, 0.1f }, {0.f, 0.f, 0.f} });
-
-	pos = { 15.0f, 15.0f, 10.f };
-	rot = { 0.0f,0.0f,0.0f };
-	scale = { 1.0f,1.0f,1.0f };
-
-	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, shipModel });
-	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
-	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
-	std::unordered_map<std::string, bool> shipScripts;
-	shipScripts["Player"] =  false;
-	entity.AddComponent<Components::Scriptable>( shipScripts);
-	entity.GetComponent<Components::Name>().m_name = "Ship";
-
-	pos = { 7.5f, 7.5f, 10.0f };
-	rot = { 0.0f,0.0f,0.0f };
-	scale = { 1.0f,1.0f,1.0f };
-
-	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, enemyModel });
-	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
-	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
-	std::unordered_map<std::string, bool> enemyScripts;
-	enemyScripts["Enemy"] = false;
-	entity.AddComponent<Components::Scriptable>( enemyScripts );
-	entity.GetComponent<Components::Name>().m_name = "Enemy";
-
-	//auto entity = registry.create();
-	//registry.emplace<Transform>(registry.create(), pos, rot, scale);
-	//registry.emplace<Renderer>(entity,&cubeModel);
-
-	/// Light
-	pos = { 7.5f, 15.0f, 20.0f };
-	glm::vec3 direction = -glm::normalize(pos);
-	scale = { 1.0f,1.0f,1.0f }; // Affects light model and not the actual light size
-	color = { 0.2f, 0.2f, 0.15f };
-	float intensity = 13.0f;
-	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	entity.GetComponent<Components::Name>().m_name = "Directional Light";
-
-	intensity = 1.0f;
-	pos = { 15.0f, 22.0f, 19.0f };
-	color = { 1.0f, 1.0f, 1.0f };
-	const float linear = 0.00069f;
-	const float quadratic = 0.0042f;
-	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	entity.GetComponent<Components::Name>().m_name = "White point light";
-
-	intensity = 4.2f;
-	pos = { 26.0f, 10.0f, -16.5f };
-	color = { 0.0f, 0.0f, 1.0f };
-	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	entity.GetComponent<Components::Name>().m_name = "Blue light";
-
-	pos = { 21.0f, 10.0f, 10.0f };
-	color = { 1.0f, 0.0f, 0.0f };
-	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	entity.GetComponent<Components::Name>().m_name = "Red light";
-
-	pos = { -12.5, 10.0f, -10.0f };
-	color = { 0.0f, 1.0f, 0.0f };
-	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, true });
-	entity.GetComponent<Components::Name>().m_name = "Green light";
-
-	//Test Object with body
-	pos = { 3.0f, 1.f, 0.0f };
-	color = { 0.0f, 1.0f, 1.0f };
-	scale = { 0.5f, 0.5f, 0.5f };
-	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, false });
-	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
-	//entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{0.f}, 1.f });
-	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
-	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
-	entity.AddComponent<Components::AudioSource>();
-	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
-		Components::AudioSource::AudioClip{ "Resources/Audio/test2.ogg", 0.2f, true, true, true }
-	);
-
-	//Test movable controllable body
-	pos = { -3.0f, 1.f, 0.0f };
-	color = { 0.0f, 1.0f, 1.0f };
-	scale = { 0.5f, 0.5f, 0.5f };
-	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, sphereModel, false, false });
-	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
-	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
-	entity.AddComponent<Components::CharacterController>();
-	entity.GetComponent<Components::Name>().m_name = "Test movableObject";
-	entity.AddComponent<Components::AudioSource>();
-	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
-		Components::AudioSource::AudioClip{"Resources/Audio/test.ogg", 0.2f, true, true, true }
-	);
-
-	/// FONT
-	pos = { 0.0f, 10.0, -10.0f };
-	rot = { 0.0f, 0.0f,0.0f };
-	scale = { 42.0f,42.0f,42.0f };
-	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "This is a very big text", false });
-	entity.GetComponent<Components::Name>().m_name = "World font";
-
-	pos = { -1.0f, 0.85f, 0.0f };
-	rot = { 0.0f, 0.0f,0.0f };
-	scale = { 1.0f,1.0f,1.0f };
-	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,1.0f}, "Ruda", "Screen Font", true });
-	entity.GetComponent<Components::Name>().m_name = "Screen font";
-
-	/// Camera
-	pos = { 15.0f, 10.0f, 45.0f };
-	color = { 0.9f, 0.5f, 0.2f };
-	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
-	entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel, false, false });
-	entity.GetComponent<Components::Name>().m_name = "Game Camera";
-
-	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
-
-	ImaginarySystem.Init(&ecs);
-	physicsSystem.Init(&ecs);
-	scriptSystem.Init(&ecs);
-	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
 }
 
-void SetCube(glm::mat4 _BasePos)
+void UpdateTransforms()
 {
-	// Front
-	glm::mat4 model = glm::translate(_BasePos, glm::vec3(0.0f, 0.0f, 0.5f));
-	PP::MeshInstance::SetInstance(PP::InstanceData{ model, glm::vec4{0.0f,0.0f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
-
-	// Right
-	model = glm::translate(_BasePos, glm::vec3(0.5f, 0, 0.0f));
-	model = glm::rotate(model, glm::radians(90.0f), { 0, 1, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ model, glm::vec4{1.0f,0.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
-
-	// Left
-	model = glm::translate(_BasePos, glm::vec3(-0.5f, 0, 0.0f));
-	model = glm::rotate(model, glm::radians(90.0f), { 0, 1, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ model, glm::vec4{1.0f,0.2f,0.6f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
-
-	// Back
-	model = glm::translate(_BasePos, glm::vec3(0.0f, 0.0f, -0.5f));
-	PP::MeshInstance::SetInstance(PP::InstanceData{ model, glm::vec4{0.2f,0.6f,1.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
-
-	// Top
-	model = glm::translate(_BasePos, glm::vec3(0.0f, 0.5f, 0.0f));
-	model = glm::rotate(model, glm::radians(90.0f), { 1, 0, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ model, glm::vec4{0.0f,1.0f,0.0f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
-
-	// Bottom
-	model = glm::translate(_BasePos, glm::vec3(0.0f, -0.5f, 0.0f));
-	model = glm::rotate(model, glm::radians(90.0f), { 1, 0, 0 });
-	PP::MeshInstance::SetInstance(PP::InstanceData{ model, glm::vec4{0.6f,1.0f,0.2f,1.0f}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
-}
-
-//void DebugCubes(const GameObject& _GO)
-//{
-//	float largestScale = std::numeric_limits<float>::min();
-//	for (int i = 0; i < 3; i++)
-//	{
-//		largestScale = std::max(largestScale, _GO.m_Scale[i]);
-//	}
-//
-//	const float halfLen = _GO.m_RenderObject->m_RenderModel->m_Bounds.longest * largestScale * 0.5f;
-//	glm::mat4 base = glm::mat4{ 1 };
-//	glm::vec3 trans = glm::make_vec3(_GO.m_Position);
-//	base = glm::translate( base, trans );
-//	base = glm::scale( base, {1.0f,1.0f,1.0f } );
-//
-//	// Top 
-//	glm::mat4 model = glm::translate(base, { 0,halfLen,0 });
-//	SetCube(model);
-//	// Left
-//	model = glm::translate(base, { -halfLen,0,0 });
-//	SetCube(model);
-//	// Right
-//	model = glm::translate(base, { halfLen,0,0 });
-//	SetCube(model);
-//	// Front
-//	model = glm::translate(base, { 0,0,-halfLen });
-//	SetCube(model);
-//	// Back
-//	model = glm::translate(base, { 0,0,halfLen });
-//	SetCube(model);
-//	// Bottom
-//	model = glm::translate(base, { 0,-halfLen,0 });
-//	SetCube(model);
-//}
-
-void DebugCubes(Transform& transform, Renderer& renderer)
-{
-	float largestScale = std::numeric_limits<float>::min();
-	for (int i = 0; i < 3; i++)
-	{
-		largestScale = std::max(largestScale, transform.m_scale[i]);
-	}
-
-	const float halfLen = renderer.m_RenderModel->m_Bounds.longest * largestScale * 0.5f;
-	glm::mat4 base = glm::mat4{ 1 };
-	glm::vec3 trans = glm::make_vec3(transform.m_position);
-	base = glm::translate(base, trans);
-	base = glm::scale(base, { 1.0f,1.0f,1.0f });
-
-	// Top 
-	glm::mat4 model = glm::translate(base, { 0,halfLen,0 });
-	SetCube(model);
-	// Left
-	model = glm::translate(base, { -halfLen,0,0 });
-	SetCube(model);
-	// Right
-	model = glm::translate(base, { halfLen,0,0 });
-	SetCube(model);
-	// Front
-	model = glm::translate(base, { 0,0,-halfLen });
-	SetCube(model);
-	// Back
-	model = glm::translate(base, { 0,0,halfLen });
-	SetCube(model);
-	// Bottom
-	model = glm::translate(base, { 0,-halfLen,0 });
-	SetCube(model);
-}
-
-void DrawCommon()
-{
-	/// TEMP - Old reference code for instancing
-
-	//PP::MeshInstance::ResetCount();
-	//// 3D object background to see orientation
-	////glm::mat4 Model = glm::mat4{ 1 };
-	////Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -40.0f));
-	////Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
-	////PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
-
 	auto camView = ecs.GetReg().view<Transform, Camera>();
 	{
 		for (auto entity : camView)
@@ -452,44 +318,50 @@ void DrawCommon()
 				PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
 				PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
 				PP::Camera::GetUpdatedView(transform.m_position, transform.m_position + camera.m_Front, camera.m_Up, camera.m_View);
-
 				PPA::AudioEngine::UpdateListenerPosition(transform.m_position, camera.m_Front, camera.m_Up, PhysicsDLC::Vector::Zero);
 			}
 		}
 	}
 
+	/// Height map example GAB refer to this hehe xd
+	auto hmd_view = ecs.GetReg().view<Transform, HeightMapDebugger>();
+	auto heightMap_view = ecs.GetReg().view<Transform, PrimitiveRender>();
+	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
+	for (auto hm : heightMap_view)
+	{
+		auto& hmT = heightMap_view.get<Transform>(hm);
+		for (auto entity : hmd_view)
+		{
+			auto& debugObjectT = hmd_view.get<Transform>(entity);
+			glm::vec3 mappedPos = glm::vec3(debugObjectT.m_position.x / hmT.m_scale.x, 0.0f, debugObjectT.m_position.z / hmT.m_scale.z);
+			// Factor height * heightmap scale + heightmaps relative position then + the size of object
+			debugObjectT.m_position.y = floorMesh->GetHeight(mappedPos) * hmT.m_scale.y + hmT.m_position.y + debugObjectT.m_scale.y;
+		}
+	}
 
-	auto view = ecs.GetReg().view<Transform, Renderer>();
-	auto debugView = ecs.GetReg().view<Transform, DebugRender>();
-	auto primView = ecs.GetReg().view<Transform, PrimitiveRender>();
-	
 	// Debug draws
 	physicsSystem.DrawColliders();
-
+	auto view = ecs.GetReg().view<Transform>();
 	for (auto entity : view)
 	{
 		auto& transform = view.get<Transform>(entity);
-		auto& renderer = view.get<Renderer>(entity);
-
 		transform.updateModelMtx();
-		renderer.m_Model = transform.m_ModelMtx;
 	}
+}
 
-	for (auto entity : debugView)
-	{
-		auto& transform = debugView.get<Transform>(entity);
-		auto& renderer = debugView.get<DebugRender>(entity);
+void DrawCommon()
+{
+	/// TEMP - Old reference code for instancing
 
-		renderer.m_Model = transform.m_ModelMtx;
-	}
+	//PP::MeshInstance::ResetCount();
+	//// 3D object background to see orientation
+	////glm::mat4 Model = glm::mat4{ 1 };
+	////Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -40.0f));
+	////Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
+	////PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
 
-	for (auto entity : primView)
-	{
-		auto& transform = primView.get<Transform>(entity);
-		auto& renderer = primView.get<PrimitiveRender>(entity);
-
-		renderer.m_Model = transform.m_ModelMtx;
-	}
+	// Debug draws
+	physicsSystem.DrawColliders();
 
 	////for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
 	////{
@@ -580,6 +452,7 @@ void DrawImGUI()
 
 void Run()
 {
+	// Delta time
 	PPU::ChronoTimer<float> c_dtTimer;
 	float c_deltaTime = 0.f;
 	float c_accumulatedFixedTime = 0.f;
@@ -620,13 +493,15 @@ void Run()
 		fh.UpdateModels();
 
 		/// Most of this should be moved to other files when the engine is developed
+		// Update the transform before drawing
+		UpdateTransforms();
 		// Things that appear in both editor & game
 		DrawCommon();
 		// Editor
 		DrawEditor();
 		// Game
 		DrawGame();
-		// Post process
+		// Post process - Only used for run time, currently drawing to imgui
 		//DrawScreen();
 		// ImGUI
 		DrawImGUI();
@@ -643,12 +518,7 @@ void Run()
 void Exit()
 {
 	PPD::ImguiHelper::CleanUpImgui();
-	PP::CameraResource::CleanUpCameras();
-	PP::FrameBuffer::CleanUpFrameBuffer();
-	PP::FontResource::CleanUpResource();
-	PP::MeshBuilder::CleanUpMesh();
-	PP::Window::CleanUpWindow();
-
+	PP::PogplantCleanup();
 	PPA::AudioEngine::Destroy();
 	PPI::InputSystem::Destroy();
 	PPF::FileHandler& fh = fh.GetInstance();
@@ -658,7 +528,6 @@ void Exit()
 int main()
 {
 	//testing ecs stuffs
-
 	Init();
 	Run();
 	Exit();

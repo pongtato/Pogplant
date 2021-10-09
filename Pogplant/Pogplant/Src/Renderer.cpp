@@ -238,22 +238,24 @@ namespace Pogplant
 		glClear(GL_DEPTH_BUFFER_BIT);
 
 		/// Draw
-		auto results = registry.view<Components::Renderer>();
+		auto results = registry.view<Components::Renderer, Components::Transform>();
 		for (const auto& e : results)
 		{
 			const auto& it = results.get<const Components::Renderer>(e);
-			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			const auto& it_trans = results.get<const Components::Transform>(e);
+			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			if (it.m_UseLight)
 			{
 				it.m_RenderModel->Draw();
 			}
 		}
 
-		auto p_results = registry.view<Components::PrimitiveRender>();
+		auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
 		for (const auto& e : p_results)
 		{
 			const auto& it = p_results.get<const Components::PrimitiveRender>(e);
-			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			const auto& it_trans = p_results.get<const Components::Transform>(e);
+			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			it.m_Mesh->Draw();
 		}
 		///
@@ -342,12 +344,13 @@ namespace Pogplant
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
 
-		auto results = registry.view<Components::Renderer>();
+		auto results = registry.view<Components::Renderer, Components::Transform>();
 		for (const auto& e : results)
 		{
 			const auto& it = results.get<const Components::Renderer>(e);
+			const auto& it_trans = results.get<const Components::Transform>(e);
 
-			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
 			ShaderLinker::SetUniform("useLight", it.m_UseLight);
 			if (!it.m_EditorDrawOnly || it.m_EditorDrawOnly && _EditorMode)
@@ -361,13 +364,15 @@ namespace Pogplant
 		ShaderLinker::Use("PRIMITIVE");
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
-		auto p_results = registry.view<Components::PrimitiveRender>();
+		auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
 		for (const auto& e : p_results)
 		{
 			const auto& it = p_results.get<const Components::PrimitiveRender>(e);
+			const auto& it_trans = p_results.get<const Components::Transform>(e);
+
 			ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
-			ShaderLinker::SetUniform("blend", it.m_Blend);
-			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			ShaderLinker::SetUniform("tile", it.m_Blend);
+			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			ShaderLinker::SetUniform("v3_ViewPosition", ret.m_Position);
 
 			ShaderLinker::SetUniform("texture_diffuse", 0);
@@ -505,12 +510,13 @@ namespace Pogplant
 		ShaderLinker::SetUniform("m4_Projection", projection);
 		ShaderLinker::SetUniform("m4_View", view);
 
-		auto results = registry.view<Components::DebugRender>();
+		auto results = registry.view<Components::DebugRender, Components::Transform>();
 
 		for (const auto& e : results)
 		{
 			const auto& it = results.get<const Components::DebugRender>(e);
-			ShaderLinker::SetUniform("m4_Model", it.m_Model);
+			const auto& it_trans = results.get<const Components::Transform>(e);
+			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
 			it.m_RenderModel->Draw();
 		}

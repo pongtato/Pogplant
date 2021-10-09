@@ -30,7 +30,7 @@ uniform sampler2D texture_normal2;
 uniform sampler2D texture_disp2;
 uniform sampler2D texture_specular2;
 
-uniform float blend;
+uniform float tile;
 uniform int activeTextures;
 
 uniform vec3 v3_ViewPosition;
@@ -52,6 +52,8 @@ void main()
     {
         discard;
     }
+    // Tile
+    nTexCoords *= tile;
     
     // Sampling
     vec3 difflBlend =  mix(texture(texture_diffuse, nTexCoords).rgb, texture(texture_diffuse2, nTexCoords).rgb, Height);

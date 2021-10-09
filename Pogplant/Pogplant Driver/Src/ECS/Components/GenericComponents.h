@@ -80,10 +80,14 @@ namespace Components
 	struct Renderer
 	{
 		Renderer() {};
-		Renderer(glm::mat4 Model, glm::vec3 ColorTint, Pogplant::Model* RenderModel, int UseLight = 1, bool EditorDrawOnly = false) :
-			m_Model(Model), m_ColorTint(ColorTint), m_RenderModel(RenderModel), m_UseLight(UseLight), m_EditorDrawOnly(EditorDrawOnly){}
+		Renderer(glm::vec3 ColorTint, Pogplant::Model* RenderModel, int UseLight = 1, bool EditorDrawOnly = false) 
+			: m_ColorTint(ColorTint)
+			, m_RenderModel(RenderModel)
+			, m_UseLight(UseLight)
+			, m_EditorDrawOnly(EditorDrawOnly)
+		{
+		}
 
-		glm::mat4 m_Model;
 		glm::vec3 m_ColorTint;
 		Pogplant::Model* m_RenderModel;
 		int m_UseLight = true;
@@ -184,6 +188,12 @@ namespace Components
 	struct CharacterController
 	{
 		float force = 2.f;
+	};
+
+	// For reference for Gab 
+	struct HeightMapDebugger
+	{
+		float currHeight = 0.0f;
 	};
 
 }

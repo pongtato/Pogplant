@@ -508,7 +508,7 @@ namespace Pogplant
         std::streampos fsize = (unsigned)fileStream.tellg();
         fileStream.seekg(0, std::ios::beg);
         _HeightMap.resize((unsigned)fsize);
-        _Dim = static_cast<size_t>(sqrtf(_HeightMap.size()));
+        _Dim = static_cast<size_t>(sqrt(_HeightMap.size()));
         fileStream.read((char*)&_HeightMap[0], fsize);
 
         fileStream.close();

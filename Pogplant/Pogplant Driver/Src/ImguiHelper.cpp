@@ -44,7 +44,6 @@ namespace PogplantDriver
 			if (ImGui::MenuItem("Sphere"))
 			{
 				 (void) PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
-					glm::mat4{ 1 },
 					color,
 					PP::ModelResource::m_ModelPool["Sphere"]);
 			}

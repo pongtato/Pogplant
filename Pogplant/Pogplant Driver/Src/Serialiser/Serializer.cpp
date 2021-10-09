@@ -257,7 +257,6 @@ namespace PogplantDriver
 
 			ImguiHelper::m_ecs->GetReg().emplace<Renderer>(
 				id,
-				glm::mat4{1},
 				glm::vec3{ render["ColorTint"][0].asFloat(),render["ColorTint"][1].asFloat(),render["ColorTint"][2].asFloat() },
 				m_Model,
 				render["UseLight"].asInt()
