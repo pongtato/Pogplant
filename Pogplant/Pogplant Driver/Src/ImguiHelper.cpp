@@ -1312,12 +1312,13 @@ namespace PogplantDriver
 
 		//auto name = ecs_handler.GetComponent<ECS::ObjectName>(entity).name.c_str();
 
-
-
 		auto name = m_ecs->GetReg().get<Components::Name>(entity);
 		std::string obj_name = name.m_name;
 		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
-		flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+		if(_r && _r->m_children.size() != 0)
+			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+		else
+			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Leaf ;
 
 		bool is_opened = ImGui::TreeNodeEx((void*)(uint64_t)entity, flags, obj_name.c_str());
 
@@ -1326,30 +1327,12 @@ namespace PogplantDriver
 
 		bool is_deleted = false;
 
-		//if (m_CurrentEntity != entt::null && ImGui::BeginPopupContextItem())
-		//{
-
-		//	if (ImGui::MenuItem("Delete Entity"))
-		//		is_deleted = true;
-
-		//	//if (ImGui::MenuItem("Save As Prefab"))
-		//	//{
-		//	//	auto path = WindowsFileDialogue::SaveFileDialogue("Prefab (*.prefab)\0*.prefab\0", "untitled.prefab");
-		//	//	if (path.has_value())
-		//	//	{
-		//	//		GameObjectFactory::SavePrefab(ecs_handler, path.value(), m_selectedEntity);
-		//	//	}
-		//	//}
-
-		//	ImGui::EndPopup();
-		//}
-
 		if (is_opened)
 		{
 			std::string c_name = "<no children>";
-			ImGuiTreeNodeFlags flags2 = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth;
-			
-			(void)flags2;
+			//ImGuiTreeNodeFlags flags2 = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_Leaf;
+			//
+			//(void)flags2;
 
 			//auto _r = m_ecs->GetReg().try_get<Components::Relationship>(entity);
 
@@ -1370,9 +1353,9 @@ namespace PogplantDriver
 			}
 			else
 			{
-				bool is_opened2 = ImGui::TreeNodeEx((void*)9817239, flags2, c_name.c_str());
-				if (is_opened2)
-					ImGui::TreePop();
+				//bool is_opened2 = ImGui::TreeNodeEx((void*)9817239, flags2, c_name.c_str());
+				//if (is_opened2)
+				//	ImGui::TreePop();
 			}
 			ImGui::TreePop();
 
