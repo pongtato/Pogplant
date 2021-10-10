@@ -76,6 +76,7 @@ namespace PPC
 				done = true;
 			}
 		}
+		Update();
 	}
 
 	void AssetCompiler::WaitForAllProcess()

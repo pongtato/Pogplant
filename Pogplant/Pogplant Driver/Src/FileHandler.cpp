@@ -51,6 +51,31 @@ namespace PPF
             }
         }
         m_path[path] = files;
+
+        // On startup
+        for (auto& file : std::filesystem::recursive_directory_iterator(path))
+        {
+            std::string filePath = file.path().string();
+            std::string extension = file.path().extension().string();
+            std::string key = file.path().stem().string();
+
+            if (!PP::ModelResource::m_ModelPool.contains(key))
+            {
+                if (extension.compare(".kek") == 0)
+                {
+                    m_modelNew.push({ key, filePath });
+                }
+                else if (extension.compare(".fbx") == 0 || extension.compare(".obj") == 0)
+                {
+                    // Compile the new model
+                    PPC::AssetCompiler& ac = ac.GetInstance();
+                    ac.RunExecutable("Pogplant Compiler.exe", filePath);
+                    ac.WaitForSingleProcess(key);
+                }
+            }
+        }
+
+        UpdateModels();
     }
 
     void FileHandler::Start()
@@ -99,6 +124,7 @@ namespace PPF
                     std::string filePath = file.path().string();
                     std::string extension = file.path().extension().string();
                     std::string key = file.path().stem().string();
+                    
                     // File creation
                     if (!it->second.contains(filePath))
                     {
@@ -116,7 +142,7 @@ namespace PPF
                                 m_modelNew.push({ key, filePath });
                             }
                         }
-                        // File type is an uncompiled model
+                        //File type is an uncompiled model
                         else if (extension.compare(".fbx") == 0 || extension.compare(".obj") == 0)
                         {
                             if (!PP::ModelResource::m_ModelPool.contains(key))

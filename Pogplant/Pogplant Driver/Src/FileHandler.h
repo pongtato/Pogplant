@@ -77,7 +77,7 @@ namespace PPF
 	public:
 		virtual ~FileHandler() = default;
 		static FileHandler& GetInstance();
-		// Add path to folder to watch for, [IMPORTANT]: FOLDER CANNOT CONTAIN OTHER FOLDERS
+		// Add path to folder to watch for
 		void AddNewWatchPath(const std::string& path);
 		// Update the model pool whenever needed
 		void UpdateModels();

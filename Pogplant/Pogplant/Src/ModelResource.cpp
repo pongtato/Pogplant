@@ -8,19 +8,6 @@ namespace Pogplant
 
 	void ModelResource::InitResource()
 	{
-		// Driver edit json, this reads from the json or smth in the future idk kekw
-		//LoadModel("BAG", "Resources/Models/backpack/backpack.obj", GL_TRIANGLES, 0);
-		//LoadModel("CUBE", "Resources/Models/cube/cube.fbx", GL_TRIANGLES, 0);
-		//LoadModel("SPHERE", "Resources/Models/sphere/sphere.fbx", GL_TRIANGLES, 0);
-		//LoadModel("SHIP", "Resources/Models/Ship/Player_Ship.fbx", GL_TRIANGLES, 0);
-		//LoadModel("ENEMY", "Resources/Models/Enemy/Enemy_01.fbx", GL_TRIANGLES, 0);
-
-		// Load from .kek files
-		namespace fs = std::filesystem;
-		LoadModel(fs::path("Resources/KekFiles/Cube.kek").stem().string(), "Resources/KekFiles/Cube.kek", GL_TRIANGLES);
-		LoadModel(fs::path("Resources/KekFiles/Sphere.kek").stem().string() , "Resources/KekFiles/Sphere.kek", GL_TRIANGLES);
-		LoadModel(fs::path("Resources/KekFiles/Player_Ship.kek").stem().string(), "Resources/KekFiles/Player_Ship.kek", GL_TRIANGLES);
-		LoadModel(fs::path("Resources/KekFiles/Enemy_01.kek").stem().string(), "Resources/KekFiles/Enemy_01.kek", GL_TRIANGLES);
 	}
 
 	void ModelResource::CleanUpResource()

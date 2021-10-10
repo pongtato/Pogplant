@@ -37,7 +37,7 @@ void TempSceneObjects()
 {
 	/// Add to container
 	std::string sphere, cube, ship, enemy;
-	sphere = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Sphere.kek");
+	sphere = PPC::AssetCompiler::GetFileName("Resources/KekFiles/sphere.kek");
 	cube = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
 	ship = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Player_Ship.kek");
 	enemy = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Enemy_01.kek");
@@ -224,24 +224,18 @@ void TempSceneObjects()
 void Init()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
-	PPC::AssetCompiler& acc = acc.GetInstance();
-	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/cube/Cube.fbx");
-	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/sphere/Sphere.fbx");
-	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/Enemy/Enemy_01.fbx");
-	acc.RunExecutable("Pogplant Compiler.exe", "Resources/Models/Ship/Player_Ship.fbx");
-	acc.WaitForAllProcess();
-
 	PPA::AudioEngine::Instance();
-
-	PPF::FileHandler& fileHandler = fileHandler.GetInstance();
-	fileHandler.AddNewWatchPath("Resources/KekFiles");
-	fileHandler.AddNewWatchPath("Resources/Models");
-	fileHandler.AddNewWatchPath("Resources/Prefabs");
 
 	/// Start pogplant lib
 	PP::Entry::Init();
 	PPD::ImguiHelper::InitImgui(&ecs);
+
+	PPF::FileHandler& fh = fh.GetInstance();
+	// DO THIS ONLY AFTER OPENGL HAS INIT
+	// Model has to be before KekFiles
+	fh.AddNewWatchPath("Resources/Models");
+	fh.AddNewWatchPath("Resources/KekFiles");
+	fh.AddNewWatchPath("Resources/Prefabs");
 
 	/// To be moved to relative scenes
 	TempSceneObjects();
@@ -434,7 +428,7 @@ void Run()
 
 		generalSystem.Update();
 		scriptSystem.Update();
-		PPF::FileHandler & fh = fh.GetInstance();
+		PPF::FileHandler& fh = fh.GetInstance();
 		fh.UpdateModels();
 
 		/// Most of this should be moved to other files when the engine is developed
