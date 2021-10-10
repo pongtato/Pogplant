@@ -79,7 +79,7 @@ namespace Components
 			: extends{ c_extends }, centre{ c_centre }
 		{}
 
-		glm::vec3 extends;
+		glm::vec3 extends = glm::vec3{ 1.f, 1.f, 1.f };
 		glm::vec3 centre;
 
 		PhysicsDLC::Collision::Shapes::AABB aabb;
@@ -92,7 +92,7 @@ namespace Components
 			: centre{ c_centre }, radius{ c_radius }
 		{}
 
-		float radius;
+		float radius = 1.f;
 		glm::vec3 centre;
 
 		PhysicsDLC::Collision::Shapes::Sphere sphere;

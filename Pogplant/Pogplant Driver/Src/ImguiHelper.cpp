@@ -41,7 +41,7 @@ namespace PogplantDriver
 		if (ImGui::BeginMenu("3D Render"))
 		{
 			glm::vec3 color = { 0.835f,0.921f,0.905f };
-			if (ImGui::MenuItem("Sphere"))
+			if (ImGui::MenuItem("Sphere", NULL, false, adding_enabled))
 			{
 				 (void) PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
 					color,
@@ -751,13 +751,19 @@ namespace PogplantDriver
 
 						ImGui::Checkbox("Is Trigger?", &box_collider->isTrigger);
 
+						auto identifier = m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity);
+						if (identifier)
+							identifier->isTrigger = box_collider->isTrigger;
+
 						ImguiBlankSeperator(1);
 						ImGui::Separator();
 					}
 					if (!enable_box_collider)
 					{
 						m_ecs->GetReg().remove<Components::BoxCollider>(m_CurrentEntity);
-						m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
+						
+						if (m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity))
+							m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
 					}
 				}
 
@@ -776,6 +782,9 @@ namespace PogplantDriver
 
 						ImGui::Checkbox("Is Trigger?", &sphere_collider->isTrigger);
 
+						auto identifier = m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity);
+						if (identifier)
+							identifier->isTrigger = sphere_collider->isTrigger;
 
 						ImguiBlankSeperator(1);
 						ImGui::Separator();
@@ -783,7 +792,9 @@ namespace PogplantDriver
 					if (!enable_sphere_collider)
 					{
 						m_ecs->GetReg().remove<Components::SphereCollider>(m_CurrentEntity);
-						m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
+
+						if(m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity))
+							m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
 					}
 				}
 

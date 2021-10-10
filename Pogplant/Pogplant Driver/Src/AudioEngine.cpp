@@ -104,7 +104,6 @@ namespace PPA
 		}
 
 		std::stringstream ss;
-
 		ss << "Successfully loaded: \"" << fileName << "\"";
 		PP::Logger::Log(
 			PP::LogEntry{ "AudioEngine::LoadAudio", PP::LogEntry::TYPE::SUCCESS, ss.str() }, true);
@@ -131,11 +130,11 @@ namespace PPA
 			soundItr->second->release();
 			m_instance->xFmod.m_soundMap.erase(soundItr);
 
-			std::stringstream ss;
+			/*std::stringstream ss;
 
 			ss << "Successfully unloaded: \"" << fileName << "\"";
 			PP::Logger::Log(
-				PP::LogEntry{ "AudioEngine::UnloadAudio", PP::LogEntry::TYPE::SUCCESS, ss.str() }, true);
+				PP::LogEntry{ "AudioEngine::UnloadAudio", PP::LogEntry::TYPE::SUCCESS, ss.str() }, true);*/
 		}
 	}
 

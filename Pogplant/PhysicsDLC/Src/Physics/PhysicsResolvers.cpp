@@ -206,8 +206,8 @@ namespace PhysicsDLC
 				if (_2collisionForce < 0.f)
 					_2collisionForce = 0.f;
 
-				_1rigidbody.velocity += collisionResult.collisionNormal * (_1collisionForce - _2collisionForce) * _2rigidbody->mass / (_1rigidbody.mass + _2rigidbody->mass) * 2.f;
-				_2rigidbody->velocity += collisionResult.collisionNormal * (_2collisionForce - _1collisionForce) * _1rigidbody.mass / (_1rigidbody.mass + _2rigidbody->mass) * 2.f;
+				_1rigidbody.velocity += collisionResult.collisionNormal * (_1collisionForce - _2collisionForce) * _2rigidbody->mass / (_1rigidbody.mass + _2rigidbody->mass);
+				_2rigidbody->velocity += collisionResult.collisionNormal * (_2collisionForce - _1collisionForce) * _1rigidbody.mass / (_1rigidbody.mass + _2rigidbody->mass);
 			}
 
 			//Handle object penetration
