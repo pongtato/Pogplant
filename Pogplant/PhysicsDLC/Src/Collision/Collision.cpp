@@ -230,7 +230,11 @@ namespace PhysicsDLC
 		CollisionResults&& CRDynamicAABBSphere(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime)
 		{
 			CollisionResults CR;
-
+			(void)aabb1;
+			(void)vel1;
+			(void)sphere2;
+			(void)vel2;
+			(void)deltaTime;
 			return std::move(CR);
 		}
 
