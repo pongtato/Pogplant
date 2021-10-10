@@ -135,6 +135,7 @@ void FileSystem::WriteToBin(std::string& fileName)
 	
 	// Close the buffer
 	outBuffer.close();
+	std::filesystem::rename(filePath.c_str(), filePath.c_str());
 	std::string succ = "Finished compiling " + m_file.m_name + '.' + m_file.m_ext + "to " + m_Ext + " format";
 	Logger::Log({ "PP::COMPILER", LogEntry::SUCCESS, succ });
 }
