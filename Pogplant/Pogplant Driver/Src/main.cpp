@@ -66,7 +66,7 @@ void TempSceneObjects()
 	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel });
 	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
 	entity.AddComponent<Components::HeightMapDebugger>(0.0f);
-	entity.GetComponent<Components::Name>().m_name = "Sphere";
+	entity.GetComponent<Components::Name>().m_name = "Height Map Debugger";
 	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
 
 	pos = { 0.0f, -10.0f, 0.0f };
