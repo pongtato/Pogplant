@@ -33,9 +33,11 @@ namespace PPA
 		static void Update();
 		static void Destroy();
 		
-		static void LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed);
+		static bool LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed);
 		static void UnloadAudio(const std::string& fileName);
 
+
+		static void UpdateAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed);
 		static int PlaySound(const std::string& fileName, float volume, const glm::vec3& position);
 		static void StopPlayingChannel(int channelID);
 

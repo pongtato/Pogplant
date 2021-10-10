@@ -823,6 +823,71 @@ namespace PogplantDriver
 					}
 				}
 
+				//TODO
+				auto audioSourceComponent = m_ecs->GetReg().try_get<Components::AudioSource>(m_CurrentEntity);
+				if (audioSourceComponent)
+				{
+					bool enable_audio_com = true;
+
+					if (ImGui::CollapsingHeader(ICON_FA_MUSIC "  AudioSource", &enable_audio_com, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						for (size_t i = 0; i < audioSourceComponent->m_audioSources.size(); i++)
+						{
+							ImGui::Text(audioSourceComponent->m_audioSources[i].m_fileDir.c_str());
+
+							bool hasChanged = false;
+
+							hasChanged |= ImGui::Checkbox("Is 3D", &audioSourceComponent->m_audioSources[i].m_is3D);
+							hasChanged |= ImGui::Checkbox("Loop", &audioSourceComponent->m_audioSources[i].m_isLooping);
+							hasChanged |= ImGui::Checkbox("Stream audio", &audioSourceComponent->m_audioSources[i].m_isStreamed);
+							hasChanged |= ImGui::Checkbox("Enable doppler", &audioSourceComponent->m_audioSources[i].m_enableDopplerEffect);
+							hasChanged |= ImGui::SliderFloat("Volume", &audioSourceComponent->m_audioSources[i].m_volume, 0.f, 1.f);
+
+							if (hasChanged)
+								audioSourceComponent->UpdateAudioSettings(i);
+
+							if (ImGui::Button("Play"))
+								audioSourceComponent->PlayAudio(i);
+
+							ImGui::SameLine();
+
+							if (ImGui::Button("Stop"))
+								audioSourceComponent->StopAudio(i);
+
+							ImguiBlankSeperator(1);
+						}
+
+						//TODO CHANGE THIS TO FILE BROWSER-------------------------
+
+						/*static char name_stuff[256] = "";
+
+						std::string aaa{ "###AudioEditor" };
+
+						ImGui::InputText(aaa.c_str(), name_stuff, IM_ARRAYSIZE(name_stuff));
+
+
+						if (ImGui::Button("Add audio"))
+						{
+							audioSourceComponent->m_audioSources.push_back(Components::AudioSource::AudioClip{ name_stuff, 1.f });
+							bool success = audioSourceComponent->LoadAudioToFMOD(audioSourceComponent->m_audioSources.size() - 1);
+
+							if (!success)
+							{
+								audioSourceComponent->m_audioSources.pop_back();
+							}
+						}//*/
+						//---------------------------------------------------------------------------
+
+
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
+					}
+					if (!enable_audio_com)
+					{
+						m_ecs->GetReg().remove<Components::AudioSource>(m_CurrentEntity);
+					}
+				}
+
 				// Scriptable Component
 				auto scripts_com = m_ecs->GetReg().try_get<Components::Scriptable>(m_CurrentEntity);
 				auto name_com = m_ecs->GetReg().try_get<Components::Name>(m_CurrentEntity);

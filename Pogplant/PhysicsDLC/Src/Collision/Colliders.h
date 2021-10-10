@@ -74,6 +74,15 @@ namespace PhysicsDLC
 				vec3 m_pos;
 				vec3 m_normal;
 			};
+
+			struct HeightMap
+			{
+				std::vector<unsigned char> m_Heightmap;
+				size_t m_HeightMapDim;
+
+				float GetHeight(const vec3& _Position);
+				float Barycentric(const vec3& _V1, const vec3& _V2, const vec3& _V3, const vec3& _Position) const;
+			};
 		}
 	}
 }

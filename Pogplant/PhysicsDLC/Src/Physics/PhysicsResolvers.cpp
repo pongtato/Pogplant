@@ -188,22 +188,32 @@ namespace PhysicsDLC
 			float dt)
 		{
 			(void)_1pos;
-			(void)_2rigidbody;
 
 			//Temp code
-			float collisionForce = -glm::dot(_1rigidbody.velocity, collisionResult.collisionNormal);
+			float _1collisionForce = -glm::dot(_1rigidbody.velocity, collisionResult.collisionNormal);
 
-			if (collisionForce > 0.f)
-				collisionForce = 0.f;
+			if (_1collisionForce > 0.f)
+				_1collisionForce = 0.f;
 
 			_1rigidbody.newPosition += _1rigidbody.velocity * collisionResult.collisionTime;
 
-			_1rigidbody.velocity += collisionResult.collisionNormal * collisionForce;
+			if(!_2rigidbody || _2rigidbody->isKinematic)
+				_1rigidbody.velocity += collisionResult.collisionNormal * _1collisionForce;
+			else
+			{
+				float _2collisionForce = glm::dot(_2rigidbody->velocity, collisionResult.collisionNormal);
 
-			//Handle penetration
+				if (_2collisionForce < 0.f)
+					_2collisionForce = 0.f;
+
+				_1rigidbody.velocity += collisionResult.collisionNormal * (_1collisionForce - _2collisionForce) * _2rigidbody->mass / (_1rigidbody.mass + _2rigidbody->mass) * 2.f;
+				_2rigidbody->velocity += collisionResult.collisionNormal * (_2collisionForce - _1collisionForce) * _1rigidbody.mass / (_1rigidbody.mass + _2rigidbody->mass) * 2.f;
+			}
+
+			//Handle object penetration
 			static vec3 deltaPos;
 			
-			if(_2rigidbody)
+			if(_2rigidbody && !_2rigidbody->isKinematic)
 				deltaPos = ((_2sphere.m_pos + _2rigidbody->velocity * collisionResult.collisionTime) - (_1sphere.m_pos + _1rigidbody.velocity * collisionResult.collisionTime));
 			else
 				deltaPos = (_2sphere.m_pos - _1sphere.m_pos * _1rigidbody.velocity * collisionResult.collisionTime);
@@ -212,6 +222,7 @@ namespace PhysicsDLC
 
 			if(penetrationOffset > 0.f)
 				_1rigidbody.newPosition += -penetrationOffset * collisionResult.collisionNormal;
+
 
 			_1rigidbody.newPosition += _1rigidbody.velocity * (dt - collisionResult.collisionTime);
 		}

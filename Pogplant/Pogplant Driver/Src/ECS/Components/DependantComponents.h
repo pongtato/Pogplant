@@ -41,12 +41,13 @@ namespace Components
 	{
 		enum class COLLIDER_TYPE
 		{
+			CT_UNDEFINED,
 			CT_BOX,
 			CT_SPHERE,
 			CT_HEIGHTMAP
 		};
 
-		COLLIDER_TYPE colliderType = COLLIDER_TYPE::CT_BOX;
+		COLLIDER_TYPE colliderType = COLLIDER_TYPE::CT_UNDEFINED;
 		bool isTrigger = false;
 		int collisionLayer = 0;
 	};
@@ -97,6 +98,13 @@ namespace Components
 		PhysicsDLC::Collision::Shapes::Sphere sphere;
 	};
 
+	/*struct HeightMapCollider : public Collider
+	{
+		HeightMapCollider() = default;
+
+		PhysicsDLC::Collision::Shapes::HeightMap heightMap;
+	};//*/
+
 	struct AudioSource
 	{
 		struct AudioClip
@@ -117,6 +125,7 @@ namespace Components
 				m_enableDopplerEffect{ enableDoppler },
 				m_update3DPosition{ followTransformPosition }
 			{
+
 			}
 
 			inline ~AudioClip()
@@ -145,6 +154,35 @@ namespace Components
 		};
 
 		std::vector<AudioClip> m_audioSources;
+
+		inline bool LoadAudioToFMOD(size_t id)
+		{
+			if (m_audioSources.size() > id)
+			{
+				return PPA::AudioEngine::LoadAudio(
+					m_audioSources[id].m_fileDir,
+					m_audioSources[id].m_is3D,
+					m_audioSources[id].m_isLooping,
+					m_audioSources[id].m_isStreamed);
+			}
+
+			return false;
+		}
+
+		inline void UpdateAudioSettings(size_t id)
+		{
+			if (m_audioSources.size() > id)
+			{
+				PPA::AudioEngine::StopPlayingChannel(m_audioSources[id].c_channelID);
+				m_audioSources[id].c_playing = false;
+
+				PPA::AudioEngine::UpdateAudio(
+					m_audioSources[id].m_fileDir,
+					m_audioSources[id].m_is3D,
+					m_audioSources[id].m_isLooping,
+					m_audioSources[id].m_isStreamed);
+			}
+		}
 
 		inline void PlayAudio(size_t id, const glm::vec3& pos = PhysicsDLC::Vector::Zero)
 		{

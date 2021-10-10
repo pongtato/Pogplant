@@ -104,6 +104,36 @@ void PhysicsSystem::InitPlayState()
 		sphereCollider.sphere.m_pos = transform.m_position + sphereCollider.centre;
 		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
 	}
+
+
+
+	/// Height map example GAB refer to this hehe xd
+	/*auto hmd_view = ecs.GetReg().view<Transform, HeightMapDebugger>();
+	auto heightMap_view = ecs.GetReg().view<Transform, PrimitiveRender>();
+	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
+	for (auto hm : heightMap_view)
+	{
+		floorMesh->m_Heightmap;
+		auto& hmT = heightMap_view.get<Transform>(hm);
+		for (auto entity : hmd_view)
+		{
+			auto& debugObjectT = hmd_view.get<Transform>(entity);
+			glm::vec3 mappedPos = glm::vec3(debugObjectT.m_position.x / hmT.m_scale.x, 0.0f, debugObjectT.m_position.z / hmT.m_scale.z);
+			// Factor height * heightmap scale + heightmaps relative position then + the size of object
+			debugObjectT.m_position.y = floorMesh->GetHeight(mappedPos) * hmT.m_scale.y + hmT.m_position.y + debugObjectT.m_scale.y;
+		}
+	}//*/
+
+	/*auto heightMap_view = m_registry->GetReg().view<Components::Transform, Components::PrimitiveRender, Components::HeightMapCollider>();
+	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
+	for (auto& heightMap : heightMap_view)
+	{
+		auto& heightMapTransform = heightMap_view.get<Components::Transform>(heightMap);
+		auto& heightMapCollider = heightMap_view.get<Components::HeightMapCollider>(heightMap);
+
+		heightMapCollider.heightMap.m_Heightmap = floorMesh->m_Heightmap;
+		heightMapCollider.heightMap.m_HeightMapDim = floorMesh->m_HeightMapDim;
+	}//*/
 }
 
 /******************************************************************************/

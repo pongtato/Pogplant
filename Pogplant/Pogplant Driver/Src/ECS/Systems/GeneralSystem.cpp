@@ -48,8 +48,6 @@ void GeneralSystem::Init(ECS* ecs)
 				audioSource.m_audioSources[i].m_is3D,
 				audioSource.m_audioSources[i].m_isLooping,
 				audioSource.m_audioSources[i].m_isStreamed);
-
-			audioSource.PlayAudio(i, glm::vec3{ 0.f, 0.f, 0.f });
 		}
 	}
 }

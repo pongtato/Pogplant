@@ -72,13 +72,14 @@ namespace PPA
 		If the file should be streamed
 	*/
 	/***************************************************************************/
-	void AudioEngine::LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed)
+	bool AudioEngine::LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed)
 	{
-		auto instance = AudioEngine::Instance();
+		if (!m_instance)
+			return false;
 
-		auto soundItr = instance->xFmod.m_soundMap.find(fileName);
-		if (soundItr != instance->xFmod.m_soundMap.end())
-			return;
+		auto soundItr = m_instance->xFmod.m_soundMap.find(fileName);
+		if (soundItr != m_instance->xFmod.m_soundMap.end())
+			return true;
 
 		FMOD_MODE mode = FMOD_DEFAULT;
 		//mode |= FMOD_NONBLOCKING;
@@ -87,10 +88,10 @@ namespace PPA
 		mode |= isStreamed ? FMOD_CREATESTREAM : FMOD_CREATECOMPRESSEDSAMPLE;
 
 		FMOD::Sound* sound = nullptr;
-		instance->xFmod.m_system->createSound(fileName.c_str(), mode, nullptr, &sound);
+		m_instance->xFmod.m_system->createSound(fileName.c_str(), mode, nullptr, &sound);
 
 		if (sound)
-			instance->xFmod.m_soundMap[fileName] = sound;
+			m_instance->xFmod.m_soundMap[fileName] = sound;
 		else
 		{
 			std::stringstream ss;
@@ -98,7 +99,17 @@ namespace PPA
 			ss << "Unable to load audio file \"" << fileName << "\"";
 			PP::Logger::Log(
 				PP::LogEntry{ "AudioEngine::LoadAudio", PP::LogEntry::TYPE::ERROR, ss.str() }, true);
+
+			return false;
 		}
+
+		std::stringstream ss;
+
+		ss << "Successfully loaded: \"" << fileName << "\"";
+		PP::Logger::Log(
+			PP::LogEntry{ "AudioEngine::LoadAudio", PP::LogEntry::TYPE::SUCCESS, ss.str() }, true);
+
+		return true;
 	}
 
 	/***************************************************************************/
@@ -119,6 +130,36 @@ namespace PPA
 
 			soundItr->second->release();
 			m_instance->xFmod.m_soundMap.erase(soundItr);
+
+			std::stringstream ss;
+
+			ss << "Successfully unloaded: \"" << fileName << "\"";
+			PP::Logger::Log(
+				PP::LogEntry{ "AudioEngine::UnloadAudio", PP::LogEntry::TYPE::SUCCESS, ss.str() }, true);
+		}
+	}
+
+	void AudioEngine::UpdateAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed)
+	{
+		if (m_instance)
+		{
+			auto soundItr = m_instance->xFmod.m_soundMap.find(fileName);
+			if (soundItr == m_instance->xFmod.m_soundMap.end())
+			{
+				PP::Logger::Log(
+					PP::LogEntry{
+						"AudioEngine::UpdateAudio",
+						PP::LogEntry::TYPE::ERROR,
+						"Unable to update sound, might not have loaded properly" }, true);//*/
+				return;
+			}
+
+			FMOD_MODE mode = FMOD_DEFAULT;
+			//mode |= FMOD_NONBLOCKING;
+			mode |= is3D ? FMOD_3D : FMOD_2D;
+			mode |= isLooping ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF;
+			mode |= isStreamed ? FMOD_CREATESTREAM : FMOD_CREATECOMPRESSEDSAMPLE;
+			soundItr->second->setMode(mode);
 		}
 	}
 
