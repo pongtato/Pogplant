@@ -29,13 +29,13 @@ namespace PhysicsDLC
 
 		bool StaticAABBAABB(const Shapes::AABB& aabb1, const Shapes::AABB& aabb2);
 		float DynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime);
-		CollisionResults&& CRDynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime);
+		CollisionResults CRDynamicAABBAABB(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::AABB& aabb2, const vec3& vel2, dtType deltaTime);
 
 		bool StaticSphereSphere(const Shapes::Sphere& sphere1, const Shapes::Sphere& sphere2);
-		CollisionResults&& CRDynamicSphereSphere(const Shapes::Sphere& sphere1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime);
+		CollisionResults CRDynamicSphereSphere(const Shapes::Sphere& sphere1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime);
 		
 		bool StaticAABBSphere();
-		CollisionResults&& CRDynamicAABBSphere(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime);
+		CollisionResults CRDynamicAABBSphere(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime);
 
 		bool PointAABB(const vec3& point, const Shapes::AABB& aabb);
 		bool PointSphere(const vec3& point, const Shapes::Sphere& sphere);

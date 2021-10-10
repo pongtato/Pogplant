@@ -67,7 +67,7 @@ namespace PPA
 
 		xFMOD xFmod;
 
-		static FMOD_VECTOR&& GLMToFMODVec3(const glm::vec3& vec);
+		static FMOD_VECTOR GLMToFMODVec3(const glm::vec3& vec);
 
 		static AudioEngine* m_instance;
 	};

@@ -292,13 +292,13 @@ namespace PPA
 		m_instance->xFmod.m_system->set3DListenerAttributes(0, &fvPosition, nullptr, &fvForward, &fvUp);
 	}
 
-	FMOD_VECTOR&& AudioEngine::GLMToFMODVec3(const glm::vec3& vec)
+	FMOD_VECTOR AudioEngine::GLMToFMODVec3(const glm::vec3& vec)
 	{
 		FMOD_VECTOR fv;
 		fv.x = vec.x;
 		fv.y = vec.y;
 		fv.z = -vec.z;
-		return std::move(fv);
+		return fv;
 	}
 
 	/***************************************************************************/
