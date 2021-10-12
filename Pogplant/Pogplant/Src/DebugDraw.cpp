@@ -6,6 +6,7 @@
 namespace Pogplant
 {
 	std::vector<glm::vec3> DebugDraw::m_DebugVerts;
+	float DebugDraw::m_GridWidth = 1.5f;
 	float DebugDraw::m_LineWidth = 3.0f;
 
 	void DebugDraw::NewFrame()

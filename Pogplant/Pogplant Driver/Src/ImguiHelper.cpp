@@ -959,13 +959,6 @@ namespace PogplantDriver
 					CurrentPopupComponents();
 					ImGui::EndPopup();
 				}
-
-				
-
-
-
-
-
 			}
 		}
 		ImGui::End();
@@ -989,8 +982,6 @@ namespace PogplantDriver
 			ImGui::SetWindowFocus("Scene");
 			m_FirstRun = false;
 		}
-
-
 	}
 
 	void ImguiHelper::CleanUpImgui()
@@ -1080,11 +1071,8 @@ namespace PogplantDriver
 
 	void ImguiHelper::NewScene()
 	{
-		
 		m_CurrentEntity = entt::null;
 		m_ecs->GetReg().clear();
-
-
 	}
 
 	void ImguiHelper::OpenScene()
@@ -1330,8 +1318,10 @@ namespace PogplantDriver
 	void ImguiHelper::Scene_ViewEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
 		float view[16] = { 0 };
+		float projection[16] = { 0 };
 		float front[3] = { 0 };
 		memcpy(view, glm::value_ptr(_CurrCam->View()), sizeof(_CurrCam->View()));
+		memcpy(projection, glm::value_ptr(_CurrCam->Perspective()), sizeof(_CurrCam->Perspective()));
 		// After clickng on gizmo update yaw pitch accordingly
 		if (ImGuizmo::ViewManipulate(view, 1.0f, ImVec2(_VMax.x - 128, _VMin.y), ImVec2(128, 128), 0x0, front))
 		{

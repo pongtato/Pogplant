@@ -177,7 +177,6 @@ void PhysicsSystem::DrawColliders()
 	for (auto collidable : sphereColliders)
 	{
 		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
-
 		PP::DebugDraw::DebugSphere(sphereCollider.sphere.m_pos, (sphereCollider.sphere.m_pos - camPos), sphereCollider.sphere.m_radius);
 	}
 
@@ -189,7 +188,8 @@ void PhysicsSystem::DrawColliders()
 		auto& cam_trans = cameras.get<Components::Transform>(it);
 		auto& cam = cameras.get<Components::Camera>(it);
 
-		PP::DebugDraw::DebugFrustum(
+		PP::DebugDraw::DebugFrustum
+		(
 			cam_trans.m_position,
 			glm::radians(cam.m_Zoom * 0.5f),
 			aspect,
@@ -197,7 +197,8 @@ void PhysicsSystem::DrawColliders()
 			cam.m_Far,
 			cam.m_Right,
 			cam.m_Up,
-			cam.m_Front);
+			cam.m_Front
+		);
 	}
 }
 
