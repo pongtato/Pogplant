@@ -116,9 +116,10 @@ namespace PogplantDriver
 		ImFontConfig icons_config; icons_config.MergeMode = true; icons_config.PixelSnapH = true;
 		io.Fonts->AddFontFromFileTTF("Resources/Fonts/fa-solid-900.ttf", 14.0f, &icons_config, icons_ranges);
 
-		static const ImWchar more_icons_ranges[] = { ICON_MIN_KI, ICON_MAX_KI, 0 };
-		ImFontConfig more_icons_config; more_icons_config.MergeMode = true; more_icons_config.PixelSnapH = true;
-		io.Fonts->AddFontFromFileTTF("Resources/Fonts/kenney-icon-font.ttf", 14.0f, &more_icons_config, more_icons_ranges);
+		static const ImWchar wicons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+		ImFontConfig wicons_config; wicons_config.MergeMode = true; wicons_config.PixelSnapH = true;
+		io.Fonts->AddFontFromFileTTF("Resources/Fonts/MaterialIcons-Regular.ttf", 58.0f, &wicons_config, wicons_ranges);
+
 
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // Enable Docking
 		imgui_extra_styles::Pogplant();
@@ -324,13 +325,6 @@ namespace PogplantDriver
 		// Directory Render
 		m_Directory.RenderDirectory();
 
-
-
-		ImGui::Begin("Prefab");
-		{
-			ImGui::Text("Prefab");
-		}
-		ImGui::End();
 
 		ImGui::Begin("Debug");
 		{
