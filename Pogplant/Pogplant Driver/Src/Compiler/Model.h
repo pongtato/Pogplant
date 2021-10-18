@@ -53,11 +53,24 @@ struct Bounds
 struct Mesh3D
 {
 	// 0x0004 = GL_TRIANGLES
-	Mesh3D(std::vector<Vertex> _Vertices, std::vector<uint> _Indices, std::vector<Texture> _Textures);
+	Mesh3D
+	(
+		std::vector<Vertex> _Vertices,
+		std::vector<uint> _Indices,
+		std::vector<Texture> _Textures,
+		const glm::vec3& _Translate,
+		const glm::vec4& _Rotate,
+		const glm::vec3& _Scale,
+		const std::string& _ParentName
+	);
 
 	std::vector<Vertex> m_Vertices;
 	std::vector<uint> m_Indices;
 	std::vector<Texture> m_Textures;
+	glm::vec3 m_Translate;
+	glm::vec4 m_Rotate;
+	glm::vec3 m_Scale;
+	std::string m_ParentName;
 };
 
 class Model
@@ -73,8 +86,8 @@ public:
 
 private:
 	void LoadModel(std::string _Path);
-	void ProcessNode(aiNode* _Node, const aiScene* _Scene);
-	Mesh3D ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene);
+	void ProcessNode(aiNode* _Node, const aiScene* _Scene, std::string _ParentName);
+	Mesh3D ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, std::string _ParentName);
 	std::vector<Texture> LoadMaterialTextures(aiMaterial* _Material, aiTextureType _Type, std::string _TypeName);
 };
 

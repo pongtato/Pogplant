@@ -343,6 +343,8 @@ namespace Pogplant
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
                 stbi_image_free(data);
+
+                Logger::Log({ "PP::TEXURE LOADER",LogEntry::WARNING, "LOAD USING .DDS" });
             }
             else
             {
@@ -364,7 +366,7 @@ namespace Pogplant
 
         tinyddsloader::DDSFile dds;
         dds.Load(filename.c_str());
-        dds.Flip();
+        //dds.Flip();
         tinyddsloader::DDSFile::ImageData imageData;
         ExtractTextureData(dds, imageData);
         unsigned int textureID;

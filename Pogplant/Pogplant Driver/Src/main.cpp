@@ -36,14 +36,16 @@ ScriptSystem scriptSystem;
 void TempSceneObjects()
 {
 	/// Add to container
-	std::string sphere, cube, ship, enemy;
+	std::string sphere, cube, ship, enemy, cubeDebug;
 	sphere = PPC::AssetCompiler::GetFileName("Resources/KekFiles/sphere.kek");
 	cube = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Cube.kek");
+	cubeDebug = PPC::AssetCompiler::GetFileName("Resources/KekFiles/CubeTest.kek");
 	ship = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Player_Ship.kek");
 	enemy = PPC::AssetCompiler::GetFileName("Resources/KekFiles/Enemy_01.kek");
 
 	PP::Model* sphereModel = PP::ModelResource::m_ModelPool[sphere];
 	PP::Model* cubeModel = PP::ModelResource::m_ModelPool[cube];
+	PP::Model* cubeDebugModel = PP::ModelResource::m_ModelPool[cubeDebug];
 	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
 	PP::Model* enemyModel = PP::ModelResource::m_ModelPool[enemy];
 	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
@@ -68,6 +70,13 @@ void TempSceneObjects()
 	entity.AddComponent<Components::HeightMapDebugger>(0.0f);
 	entity.GetComponent<Components::Name>().m_name = "Height Map Debugger";
 	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
+
+	//pos = { 0.0f, 0.0f, 0.0f };
+	//rot = { 0.0f,0.0f,0.0f };
+	//scale = { 2.0f,2.0f,2.0f };
+	//entity = ecs.CreateEntity("", pos, rot, scale);
+	//entity.AddComponent<Components::Renderer>(Renderer{ color, cubeDebugModel });
+	//entity.GetComponent<Components::Name>().m_name = "DebugCube";
 
 	pos = { 0.0f, -10.0f, 0.0f };
 	rot = { 0.0f,0.0f,0.0f };

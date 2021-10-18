@@ -18,11 +18,24 @@
 #include <limits>
 #include <iostream>
 
-Mesh3D::Mesh3D(std::vector<Vertex> _Vertices, std::vector<uint> _Indices, std::vector<Texture> _Textures)
+Mesh3D::Mesh3D
+(
+    std::vector<Vertex> _Vertices,
+    std::vector<uint> _Indices,
+    std::vector<Texture> _Textures,
+    const glm::vec3& _Translate,
+    const glm::vec4& _Rotate,
+    const glm::vec3& _Scale,
+    const std::string& _ParentName
+)
 {
     m_Vertices = _Vertices;
     m_Indices = _Indices;
     m_Textures = _Textures;
+    m_Translate = _Translate;
+    m_Rotate = _Rotate;
+    m_Scale = _Scale;
+    m_ParentName = _ParentName;
 }
 
 Model::Model(std::string _Path)
@@ -44,27 +57,31 @@ void Model::LoadModel(std::string _Path)
         Logger::Log({ "PP::ASSIMP",LogEntry::ERROR, importer.GetErrorString() });
         return;
     }
-    ProcessNode(scene->mRootNode, scene);
+    ProcessNode(scene->mRootNode, scene, "Root");
 }
 
-void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene)
+void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, std::string _ParentName)
 {
+    std::string ref = _ParentName;
+
     // process each mesh located at the current node
     for (unsigned int i = 0; i < _Node->mNumMeshes; i++)
     {
         // the node object only contains indices to index the actual objects in the scene. 
         // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
         aiMesh* mesh = _Scene->mMeshes[_Node->mMeshes[i]];
-        m_Meshes.push_back(ProcessMesh(mesh, _Scene));
+        ref = mesh->mName.C_Str(); // Assume only 1 mesh per node
+        m_Meshes.push_back(ProcessMesh(mesh, _Scene, _Node, _ParentName));
     }
+
     // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
     for (unsigned int i = 0; i < _Node->mNumChildren; i++)
     {
-        ProcessNode(_Node->mChildren[i], _Scene);
+        ProcessNode(_Node->mChildren[i], _Scene, ref);
     }
 }
 
-Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene)
+Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, std::string _ParentName)
 {
     // data to fill
     std::vector<Vertex> vertices;
@@ -165,8 +182,24 @@ Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene)
     m_Bounds.longest = std::max(lenX, lenY);
     m_Bounds.longest = std::max(m_Bounds.longest, lenZ);
 
+    // Get the variables required for parenting/transformation
+    aiVector3D pos = {};
+    aiVector3D scale = {};
+    aiVector3D rotAxis = {};
+    ai_real rotAmnt = {};
+    _Node->mTransformation.Decompose(scale, rotAxis, rotAmnt, pos);
+
+    /// DEBUG INFO
+    //std::cout << "TRANSFORM DATA" << std::endl;
+    //std::cout << "T: " << pos.x << "|" << pos.y << "|" <<  pos.z << std::endl;
+    //std::cout << "S: " << scale.x << "|" << scale.y << "|" <<scale.z << std::endl;
+    //std::cout << "R: " << rotAxis.x << "|" << rotAxis.y << "|" << rotAxis.z << "|" << rotAmnt << std::endl;
+    //std::cout << "Parent: " << _ParentName << std::endl;
+    //std::cout << "Current: " << _Mesh->mName.C_Str() << std::endl;
+    //std::cout << std::endl;
+
     // return a mesh object created from the extracted mesh data
-    return Mesh3D(vertices, indices, textures);
+    return Mesh3D(vertices, indices, textures, { pos.x,pos.y,pos.z }, { rotAxis.x,rotAxis.y,rotAxis.z,rotAmnt }, { scale.x,scale.y,scale.z }, _ParentName);
 }
 
 std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* _Material, aiTextureType _Type, std::string _TypeName)
