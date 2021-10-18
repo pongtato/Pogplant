@@ -55,7 +55,11 @@ namespace Pogplant
 			std::vector<Vertex> vertices;
 			std::vector<uint> indices;
 			std::vector<Texture> textures;
+			glm::vec3 pos{0.f};
+			glm::vec4 rot{0.f};
+			glm::vec3 scale{0.f};
 			size_t vertSize, idxSize, texSize;
+
 			std::stringstream ss;
 			ss << line;
 			ss >> vertSize >> idxSize >> texSize;
@@ -64,10 +68,18 @@ namespace Pogplant
 			//textures.resize(texSize);
 			inFile.read(reinterpret_cast<char*>(&vertices[0]), vertSize * sizeof(Vertex));
 			inFile.read(reinterpret_cast<char*>(&indices[0]), idxSize * sizeof(uint));
+			inFile.read(reinterpret_cast<char*>(&pos), pos.length() * sizeof(float));
+			inFile.read(reinterpret_cast<char*>(&rot), rot.length() * sizeof(float));
+			inFile.read(reinterpret_cast<char*>(&scale), scale.length() * sizeof(float));
+
+			size_t parenLen = 0;
+			inFile.read(reinterpret_cast<char*>(&parenLen), sizeof(size_t));
+			std::string parentName(parenLen, '\0');
+			inFile.read(&parentName[0], parenLen);
 
 			for (size_t i = 0; i < texSize; ++i)
 			{
-				size_t len;
+				size_t len = 0;
 
 				inFile.read(reinterpret_cast<char*>(&len), sizeof(size_t));
 				std::string type(len, '\0');
@@ -80,7 +92,7 @@ namespace Pogplant
 				std::vector<Texture> texture = LoadMaterialTextures(path, type);
 				textures.insert(textures.end(), texture.begin(), texture.end());
 			}
-			m_Meshes.push_back(Mesh3D(vertices, indices, textures));
+			m_Meshes.push_back(Mesh3D(vertices, indices, textures, pos, rot, scale, parentName));
 		}
 
 		// Find longest edge - General usage no ritter's

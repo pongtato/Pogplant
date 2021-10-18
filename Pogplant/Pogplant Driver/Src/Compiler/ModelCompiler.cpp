@@ -53,6 +53,16 @@ void ModelCompiler::Write(std::ofstream& outBuffer)
 		outBuffer.write(sizes.str().c_str(), sizes.str().length());
 		outBuffer.write(reinterpret_cast<char*>(&meshes.m_Vertices[0]), meshes.m_Vertices.size() * sizeof(Vertex));
 		outBuffer.write(reinterpret_cast<char*>(&meshes.m_Indices[0]), meshes.m_Indices.size() * sizeof(uint));
+		outBuffer.write(reinterpret_cast<char*>(&meshes.m_Translate), meshes.m_Translate.length() * sizeof(float));
+		outBuffer.write(reinterpret_cast<char*>(&meshes.m_Rotate), meshes.m_Rotate.length() * sizeof(float));
+		outBuffer.write(reinterpret_cast<char*>(&meshes.m_Scale), meshes.m_Scale.length() * sizeof(float));
+
+		size_t parentLen = meshes.m_ParentName.size();
+		if (parentLen > 0)
+		{
+			outBuffer.write(reinterpret_cast<char*>(&parentLen), sizeof(size_t));
+			outBuffer.write(meshes.m_ParentName.c_str(), parentLen);
+		}
 
 		for (auto& textures : meshes.m_Textures)
 		{

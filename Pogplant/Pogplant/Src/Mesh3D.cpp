@@ -7,11 +7,23 @@
 
 namespace Pogplant
 {
-	Mesh3D::Mesh3D(std::vector<Vertex> _Vertices, std::vector<uint> _Indices, std::vector<Texture> _Textures, uint _PrimitiveType)
+	Mesh3D::Mesh3D(
+        std::vector<Vertex> _Vertices,
+        std::vector<uint> _Indices,
+        std::vector<Texture> _Textures,
+        glm::vec3 _Translate,
+        glm::vec4 _Rotate,
+        glm::vec3 _Scale,
+        std::string _ParentName,
+        uint _PrimitiveType)
 	{
 		m_Vertices = _Vertices;
 		m_Indices = _Indices;
 		m_Textures = _Textures;
+        m_Translate = _Translate;
+        m_Rotate = _Rotate;
+        m_Scale = _Scale;
+        m_ParentName = _ParentName;
         m_PrimitiveType = _PrimitiveType;
 
         GenerateMesh3D();
