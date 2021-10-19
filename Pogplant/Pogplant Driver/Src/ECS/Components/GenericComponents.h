@@ -179,6 +179,44 @@ namespace Components
 		bool m_Active;
 	};
 
+	struct Particle
+	{
+		glm::vec4 m_Color;
+		glm::vec3 m_Position;
+		glm::vec3 m_Velocity;
+		glm::vec3 m_BaseScale;
+		glm::vec3 m_Scale;
+		int m_TexID;
+		float m_BaseLife;
+		float m_Life;
+		bool m_Gravity;
+	};
+
+	struct ParticleSystem
+	{
+		ParticleSystem(glm::vec4 _Color, glm::vec3 _SpawnDir, float _Delay, float _Life, float _Scale, bool _Gravity) 
+			: m_Color {_Color}
+			, m_SpawnDirection {_SpawnDir}
+			, m_Delay {_Delay}
+			, m_Timer {0}
+			, m_Life {_Life}
+			, m_Scale {_Scale}
+			, m_ActiveCount {0}
+			, m_Gravity {_Gravity}
+		{
+		}
+		
+		std::vector<Particle> m_ParticlePool;
+		glm::vec4 m_Color;
+		glm::vec3 m_SpawnDirection;
+		float m_Delay;
+		float m_Timer;
+		float m_Life;
+		float m_Scale;
+		int m_ActiveCount;
+		bool m_Gravity;
+	};
+
 	//Temporary
 	struct CharacterController
 	{

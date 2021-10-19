@@ -26,8 +26,6 @@
 
 #include <iostream>
 
-
-
 namespace Pogplant
 {
 	struct CameraReturnData
@@ -355,6 +353,12 @@ namespace Pogplant
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
 
 		// Render G pass objects first
+		ShaderLinker::Use("BASIC");
+		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
+		ShaderLinker::SetUniform("m4_View", ret.m_View);
+		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
+		ShaderLinker::UnUse();
+
 		ShaderLinker::Use("MODEL");
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);

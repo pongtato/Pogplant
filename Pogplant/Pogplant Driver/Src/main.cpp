@@ -45,7 +45,7 @@ void TempSceneObjects()
 
 	PP::Model* sphereModel = PP::ModelResource::m_ModelPool[sphere];
 	PP::Model* cubeModel = PP::ModelResource::m_ModelPool[cube];
-	PP::Model* cubeDebugModel = PP::ModelResource::m_ModelPool[cubeDebug];
+	//PP::Model* cubeDebugModel = PP::ModelResource::m_ModelPool[cubeDebug];
 	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
 	PP::Model* enemyModel = PP::ModelResource::m_ModelPool[enemy];
 	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
@@ -107,6 +107,7 @@ void TempSceneObjects()
 	std::unordered_map<std::string, bool> shipScripts;
 	shipScripts["Player"] = false;
 	entity.AddComponent<Components::Scriptable>(shipScripts);
+	entity.AddComponent<Components::ParticleSystem>(ParticleSystem(glm::vec4{ 1,0,1,1 }, glm::vec3{ 0,0,0 }, 0.005f, 1.5f, 0.3f, false));
 	entity.GetComponent<Components::Name>().m_name = "Ship";
 
 	pos = { 7.5f, 7.5f, 10.0f };
@@ -250,11 +251,11 @@ void Init()
 	TempSceneObjects();
 }
 
-void UpdateTransforms()
+void UpdateTransforms(float _Dt)
 {
 	auto camView = ecs.GetReg().view<Transform, Camera>();
 	{
-		for (auto entity : camView)
+		for (auto& entity : camView)
 		{
 			auto& camera = ecs.GetReg().get<Camera>(entity);
 			auto& transform = ecs.GetReg().get<Transform>(entity);
@@ -270,6 +271,79 @@ void UpdateTransforms()
 			}
 		}
 	}
+
+	PP::MeshInstance::ResetCount();
+	// Update particle system
+	auto particleView = ecs.GetReg().view<Transform, ParticleSystem>();
+	{
+		for (auto& entity : particleView)
+		{
+			auto& transform = ecs.GetReg().get<Transform>(entity);
+			auto& particle = ecs.GetReg().get<ParticleSystem>(entity);
+
+			// Spawn delay
+			particle.m_Timer += _Dt;
+			if (particle.m_Timer >= particle.m_Delay)
+			{
+				particle.m_Timer = 0.0f;
+
+				// Scale up if need more
+				if (particle.m_ActiveCount >= particle.m_ParticlePool.size())
+				{
+					particle.m_ParticlePool.resize(particle.m_ParticlePool.size() + 1 * 2);
+				}
+
+				// Update at end of pool
+				particle.m_ParticlePool[particle.m_ActiveCount] =
+					Particle
+				{
+					particle.m_Color,
+					transform.m_position,
+					particle.m_SpawnDirection,
+					glm::vec3{particle.m_Scale},
+					glm::vec3{particle.m_Scale},
+					-1,
+					particle.m_Life,
+					particle.m_Life,
+					false
+				};
+
+				particle.m_ActiveCount++;
+			}
+			
+			// Update particles
+			for (int i = 0; i < particle.m_ActiveCount; i++)
+			{
+				Particle& it = particle.m_ParticlePool[i];
+				if (it.m_Life > 0.0f)
+				{
+					// Decrease life
+					it.m_Life -= _Dt;
+
+					if (it.m_Life <= 0.0f)
+					{
+						particle.m_ActiveCount--;
+						std::swap(it, particle.m_ParticlePool[particle.m_ActiveCount]);
+						continue;
+					}
+
+					it.m_Scale = it.m_Life / it.m_BaseLife * it.m_BaseScale;
+					// Update position
+					if (it.m_Gravity)
+					{
+						it.m_Velocity -= _Dt;
+					}
+					it.m_Position += it.m_Velocity * _Dt;
+
+					glm::mat4 model = glm::mat4{ 1 };
+					model = glm::translate(model, it.m_Position);
+					model = glm::scale(model, it.m_Scale);
+					PP::MeshInstance::SetInstance(PP::InstanceData{ model, it.m_Color, -1, 0 });
+				}
+			}
+		}
+	}
+	PP::MeshBuilder::RebindQuad();
 
 	/// Height map example GAB refer to this hehe xd
 	auto hmd_view = ecs.GetReg().view<Transform, HeightMapDebugger>();
@@ -442,7 +516,7 @@ void Run()
 
 		/// Most of this should be moved to other files when the engine is developed
 		// Update the transform before drawing
-		UpdateTransforms();
+		UpdateTransforms(ImGui::GetIO().DeltaTime);
 		// Things that appear in both editor & game
 		DrawCommon();
 		// Editor

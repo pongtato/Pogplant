@@ -70,25 +70,13 @@ namespace Pogplant
         glEnableVertexAttribArray(6);
         glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)(3 * sizeof(glm::vec4)));
 
-        // UV tiling
-        glEnableVertexAttribArray(7);
-        glVertexAttribPointer(7, 2, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_UV));
-
-        // UV Offset
-        glEnableVertexAttribArray(8);
-        glVertexAttribPointer(8, 2, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_UV_Offset));
-
         // Tex ID
-        glEnableVertexAttribArray(9);
-        glVertexAttribIPointer(9, 1, GL_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_TexID));
+        glEnableVertexAttribArray(7);
+        glVertexAttribIPointer(7, 1, GL_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_TexID));
 
         // Ortho
-        glEnableVertexAttribArray(10);
-        glVertexAttribIPointer(10, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Ortho));
-
-        // Bloom toggle
-        glEnableVertexAttribArray(11);
-        glVertexAttribIPointer(11, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Bloom));
+        glEnableVertexAttribArray(8);
+        glVertexAttribIPointer(8, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Ortho));
 
         glVertexAttribDivisor(2, 1);
         glVertexAttribDivisor(3, 1);
@@ -97,9 +85,6 @@ namespace Pogplant
         glVertexAttribDivisor(6, 1);
         glVertexAttribDivisor(7, 1);
         glVertexAttribDivisor(8, 1);
-        glVertexAttribDivisor(9, 1);
-        glVertexAttribDivisor(10, 1);
-        glVertexAttribDivisor(11, 1);
 
         // Unbind
         glBindVertexArray(0);
@@ -196,7 +181,7 @@ namespace Pogplant
 
         mesh->m_Indices =
         {
-            0,1,3,2
+            2,1,3,0
         };
 
         glCreateVertexArrays(1, &mesh->m_VAO);
@@ -241,24 +226,13 @@ namespace Pogplant
         glEnableVertexAttribArray(6);
         glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)(3 * sizeof(glm::vec4)));
 
-        // UV m_Tiling
-        glEnableVertexAttribArray(7);
-        glVertexAttribPointer(7, 2, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_UV));
-        // UV Offset
-        glEnableVertexAttribArray(8);
-        glVertexAttribPointer(8, 2, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_UV_Offset));
-
         // Tex ID
-        glEnableVertexAttribArray(9);
-        glVertexAttribIPointer(9, 1, GL_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_TexID));
+        glEnableVertexAttribArray(7);
+        glVertexAttribIPointer(7, 1, GL_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_TexID));
 
         // Ortho
-        glEnableVertexAttribArray(10);
-        glVertexAttribIPointer(10, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Ortho));
-
-        // Bloom toggle
-        glEnableVertexAttribArray(11);
-        glVertexAttribIPointer(11, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Bloom));
+        glEnableVertexAttribArray(8);
+        glVertexAttribIPointer(8, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Ortho));
 
         glVertexAttribDivisor(2, 1);
         glVertexAttribDivisor(3, 1);
@@ -267,9 +241,6 @@ namespace Pogplant
         glVertexAttribDivisor(6, 1);
         glVertexAttribDivisor(7, 1);
         glVertexAttribDivisor(8, 1);
-        glVertexAttribDivisor(9, 1);
-        glVertexAttribDivisor(10, 1);
-        glVertexAttribDivisor(11, 1);
 
         glBindVertexArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
