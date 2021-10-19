@@ -15,6 +15,7 @@ namespace Pogplant
         glm::vec4 _Rotate,
         glm::vec3 _Scale,
         std::string _ParentName,
+        std::string _Name,
         uint _PrimitiveType)
 	{
 		m_Vertices = _Vertices;
@@ -24,6 +25,7 @@ namespace Pogplant
         m_Rotate = _Rotate;
         m_Scale = _Scale;
         m_ParentName = _ParentName;
+        m_Name = _Name;
         m_PrimitiveType = _PrimitiveType;
 
         GenerateMesh3D();

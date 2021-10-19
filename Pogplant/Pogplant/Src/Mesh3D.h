@@ -36,6 +36,7 @@ namespace Pogplant
 			glm::vec4 _Rotate,
 			glm::vec3 _Scale,
 			std::string _ParentName,
+			std::string _Name,
 			uint _PrimitiveType = 0x0004
 		);
 
@@ -48,6 +49,7 @@ namespace Pogplant
 		glm::vec4 m_Rotate;
 		glm::vec3 m_Scale;
 		std::string m_ParentName;
+		std::string m_Name;
 		uint m_VAO;
 		uint m_VBO;
 		uint m_EBO;

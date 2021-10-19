@@ -64,6 +64,13 @@ void ModelCompiler::Write(std::ofstream& outBuffer)
 			outBuffer.write(meshes.m_ParentName.c_str(), parentLen);
 		}
 
+		size_t nameLen = meshes.m_Name.size();
+		if (nameLen > 0)
+		{
+			outBuffer.write(reinterpret_cast<char*>(&nameLen), sizeof(size_t));
+			outBuffer.write(meshes.m_Name.c_str(), nameLen);
+		}
+
 		for (auto& textures : meshes.m_Textures)
 		{
 			size_t len = textures.m_Type.size();

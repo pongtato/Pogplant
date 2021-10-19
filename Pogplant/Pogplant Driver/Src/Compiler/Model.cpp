@@ -26,7 +26,8 @@ Mesh3D::Mesh3D
     const glm::vec3& _Translate,
     const glm::vec4& _Rotate,
     const glm::vec3& _Scale,
-    const std::string& _ParentName
+    const std::string& _ParentName,
+    const std::string& _Name
 )
 {
     m_Vertices = _Vertices;
@@ -36,6 +37,7 @@ Mesh3D::Mesh3D
     m_Rotate = _Rotate;
     m_Scale = _Scale;
     m_ParentName = _ParentName;
+    m_Name = _Name;
 }
 
 Model::Model(std::string _Path)
@@ -199,7 +201,7 @@ Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, s
     //std::cout << std::endl;
 
     // return a mesh object created from the extracted mesh data
-    return Mesh3D(vertices, indices, textures, { pos.x,pos.y,pos.z }, { rotAxis.x,rotAxis.y,rotAxis.z,rotAmnt }, { scale.x,scale.y,scale.z }, _ParentName);
+	return Mesh3D(vertices, indices, textures, { pos.x,pos.y,pos.z }, { rotAxis.x,rotAxis.y,rotAxis.z,rotAmnt }, { scale.x,scale.y,scale.z }, _ParentName, _Mesh->mName.C_Str());
 }
 
 std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* _Material, aiTextureType _Type, std::string _TypeName)

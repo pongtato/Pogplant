@@ -61,7 +61,8 @@ struct Mesh3D
 		const glm::vec3& _Translate,
 		const glm::vec4& _Rotate,
 		const glm::vec3& _Scale,
-		const std::string& _ParentName
+		const std::string& _ParentName,
+		const std::string& _Name
 	);
 
 	std::vector<Vertex> m_Vertices;
@@ -71,6 +72,7 @@ struct Mesh3D
 	glm::vec4 m_Rotate;
 	glm::vec3 m_Scale;
 	std::string m_ParentName;
+	std::string m_Name;
 };
 
 class Model

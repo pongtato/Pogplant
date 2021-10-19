@@ -77,6 +77,11 @@ namespace Pogplant
 			std::string parentName(parenLen, '\0');
 			inFile.read(&parentName[0], parenLen);
 
+			size_t nameLen = 0;
+			inFile.read(reinterpret_cast<char*>(&nameLen), sizeof(size_t));
+			std::string name(nameLen, '\0');
+			inFile.read(&name[0], nameLen);
+
 			for (size_t i = 0; i < texSize; ++i)
 			{
 				size_t len = 0;
@@ -92,7 +97,7 @@ namespace Pogplant
 				std::vector<Texture> texture = LoadMaterialTextures(path, type);
 				textures.insert(textures.end(), texture.begin(), texture.end());
 			}
-			m_Meshes.push_back(Mesh3D(vertices, indices, textures, pos, rot, scale, parentName));
+			m_Meshes.push_back(Mesh3D(vertices, indices, textures, pos, rot, scale, parentName, name));
 		}
 
 		// Find longest edge - General usage no ritter's
