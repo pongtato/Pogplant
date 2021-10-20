@@ -20,6 +20,7 @@
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
+#include <gtc/random.hpp>
 #define NOMINMAX
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -107,7 +108,26 @@ void TempSceneObjects()
 	std::unordered_map<std::string, bool> shipScripts;
 	shipScripts["Player"] = false;
 	entity.AddComponent<Components::Scriptable>(shipScripts);
-	entity.AddComponent<Components::ParticleSystem>(ParticleSystem(glm::vec4{ 1,0,1,1 }, glm::vec3{ 0,0,0 }, 0.005f, 1.5f, 0.3f, false));
+	entity.AddComponent<Components::ParticleSystem>
+		(
+			ParticleSystem
+			(
+				glm::vec4{ 1,0,1,1 },
+				glm::vec3{ 0,0,0 },
+				0.005f, // Delay
+				0.69f,	// Min Life
+				1.00f,	// Max Life
+				0.42f,	// Min Scale
+				0.69f,	// Max Scale
+				21.0f,	// Min Speed
+				42.0f,	// Max Speed
+				420,	// Spawn Count
+				true,	// Loop
+				false,	// Gravity
+				true,	// Burst
+				true	// Lerp speed
+			)
+		);
 	entity.GetComponent<Components::Name>().m_name = "Ship";
 
 	pos = { 7.5f, 7.5f, 10.0f };
@@ -296,42 +316,42 @@ void UpdateTransforms(float _Dt)
 		for (auto& entity : particleView)
 		{
 			auto& transform = ecs.GetReg().get<Transform>(entity);
-			auto& particle = ecs.GetReg().get<ParticleSystem>(entity);
+			auto& pSys = ecs.GetReg().get<ParticleSystem>(entity);
 
-			// Spawn delay
-			particle.m_Timer += _Dt;
-			if (particle.m_Timer >= particle.m_Delay)
+			// Burst vs constant spawn
+			if (!pSys.m_Burst)
 			{
-				particle.m_Timer = 0.0f;
-
-				// Scale up if need more
-				if (particle.m_ActiveCount >= particle.m_ParticlePool.size())
+				// Spawn delay
+				pSys.m_Timer += _Dt;
+				if (pSys.m_Timer >= pSys.m_Delay)
 				{
-					particle.m_ParticlePool.resize(particle.m_ParticlePool.size() + 1 * 2);
+					pSys.m_Timer = 0.0f;
+					pSys.Spawn(transform.m_position, pSys.m_SpawnDirection);
+				}
+			}
+			// Burst
+			else if(!pSys.m_Done)
+			{
+				// Only spawn when everything has despawned
+				if (pSys.m_ActiveCount == 0)
+				{
+					for (int i = 0; i < pSys.m_SpawnCount; i++)
+					{
+						pSys.Spawn(transform.m_position, glm::sphericalRand(1.0f));
+					}
 				}
 
-				// Update at end of pool
-				particle.m_ParticlePool[particle.m_ActiveCount] =
-					Particle
+				// To loop or not
+				if (!pSys.m_Loop)
 				{
-					particle.m_Color,
-					transform.m_position,
-					particle.m_SpawnDirection,
-					glm::vec3{particle.m_Scale},
-					glm::vec3{particle.m_Scale},
-					-1,
-					particle.m_Life,
-					particle.m_Life,
-					false
-				};
-
-				particle.m_ActiveCount++;
+					pSys.m_Done = true;
+				}
 			}
 			
 			// Update particles
-			for (int i = 0; i < particle.m_ActiveCount; i++)
+			for (int i = 0; i < pSys.m_ActiveCount; i++)
 			{
-				Particle& it = particle.m_ParticlePool[i];
+				Particle& it = pSys.m_ParticlePool[i];
 				if (it.m_Life > 0.0f)
 				{
 					// Decrease life
@@ -339,18 +359,29 @@ void UpdateTransforms(float _Dt)
 
 					if (it.m_Life <= 0.0f)
 					{
-						particle.m_ActiveCount--;
-						std::swap(it, particle.m_ParticlePool[particle.m_ActiveCount]);
+						pSys.m_ActiveCount--;
+						std::swap(it, pSys.m_ParticlePool[pSys.m_ActiveCount]);
 						continue;
 					}
 
-					it.m_Scale = it.m_Life / it.m_BaseLife * it.m_BaseScale;
+					float t = it.m_Life / it.m_BaseLife;
+					it.m_Scale = t * it.m_BaseScale;
 					// Update position
 					if (it.m_Gravity)
 					{
-						it.m_Velocity -= _Dt;
+						it.m_Velocity.y -= _Dt * 9.81f;
 					}
-					it.m_Position += it.m_Velocity * _Dt;
+
+					glm::vec3 currVel = it.m_Velocity;
+					// Update lerp speed
+					if (it.m_LerpSpeed)
+					{
+						// Ease in
+						t = sinf(t * 3.14f * 0.25f);
+						currVel = it.m_MinVelocity * (1 - t) + it.m_Velocity * t;
+					}
+
+					it.m_Position += currVel * _Dt;
 
 					glm::mat4 model = glm::mat4{ 1 };
 					model = glm::translate(model, it.m_Position);

@@ -6,6 +6,7 @@
 //#include <ImGuizmo.h>
 #include <../IMGUIZMO/ImGuizmo.h>
 #include <gtc/type_ptr.hpp>
+#include <gtc/random.hpp>
 
 namespace Components
 {
@@ -212,26 +213,85 @@ namespace Components
 		glm::vec4 m_Color;
 		glm::vec3 m_Position;
 		glm::vec3 m_Velocity;
+		glm::vec3 m_MinVelocity;
 		glm::vec3 m_BaseScale;
 		glm::vec3 m_Scale;
 		int m_TexID;
 		float m_BaseLife;
 		float m_Life;
 		bool m_Gravity;
+		bool m_LerpSpeed;
 	};
 
 	struct ParticleSystem
 	{
-		ParticleSystem(glm::vec4 _Color, glm::vec3 _SpawnDir, float _Delay, float _Life, float _Scale, bool _Gravity) 
-			: m_Color {_Color}
-			, m_SpawnDirection {_SpawnDir}
-			, m_Delay {_Delay}
-			, m_Timer {0}
-			, m_Life {_Life}
-			, m_Scale {_Scale}
-			, m_ActiveCount {0}
-			, m_Gravity {_Gravity}
+		ParticleSystem
+		(
+			glm::vec4 _Color,
+			glm::vec3 _SpawnDir,
+			float _Delay,
+			float _MinLife,
+			float _MaxLife,
+			float _MinScale,
+			float _MaxScale,
+			float _MinSpeed,
+			float _MaxSpeed,
+			int _SpawnCount,
+			bool _Loop,
+			bool _Gravity,
+			bool _Burst,
+			bool _LerpSpeed
+		) 
+			: m_Color{ _Color }
+			, m_SpawnDirection{ _SpawnDir }
+			, m_Delay{ _Delay }
+			, m_Timer{ 0 }
+			, m_MinLife{ _MinLife }
+			, m_MaxLife{ _MaxLife }
+			, m_MinScale{ _MinScale }
+			, m_MaxScale{ _MaxScale }
+			, m_MinSpeed{ _MinSpeed }
+			, m_MaxSpeed{ _MaxSpeed }
+			, m_ActiveCount{ 0 }
+			, m_SpawnCount{ _SpawnCount }
+			, m_Gravity{ _Gravity }
+			, m_Loop{ _Loop }
+			, m_Done{ false }
+			, m_Burst{ _Burst }
+			, m_LerpSpeed{ _LerpSpeed }
 		{
+		}
+
+		void Spawn(glm::vec3 _Position, glm::vec3 _Direction)
+		{
+			// Scale up if need more
+			if (m_ActiveCount >= m_ParticlePool.size())
+			{
+				m_ParticlePool.resize(m_ParticlePool.size() + 1 * 2);
+			}
+
+			float speed = glm::linearRand(m_MinSpeed, m_MaxSpeed);
+			float life = glm::linearRand(m_MinLife, m_MaxLife);
+			float scale = glm::linearRand(m_MinScale, m_MaxScale);
+
+			// Update at end of pool
+			m_ParticlePool[m_ActiveCount] =
+				Particle
+			{
+				m_Color,
+				_Position,
+				_Direction * speed,
+				glm::vec3{0},
+				glm::vec3{scale},
+				glm::vec3{scale},
+				-1,
+				life,
+				life,
+				m_Gravity,
+				m_LerpSpeed,
+			};
+
+			m_ActiveCount++;
 		}
 		
 		std::vector<Particle> m_ParticlePool;
@@ -239,10 +299,19 @@ namespace Components
 		glm::vec3 m_SpawnDirection;
 		float m_Delay;
 		float m_Timer;
-		float m_Life;
-		float m_Scale;
+		float m_MinLife;
+		float m_MaxLife;
+		float m_MinScale;
+		float m_MaxScale;
+		float m_MinSpeed;
+		float m_MaxSpeed;
 		int m_ActiveCount;
+		int m_SpawnCount;
 		bool m_Gravity;
+		bool m_Loop;
+		bool m_Done;
+		bool m_Burst;
+		bool m_LerpSpeed;
 	};
 
 	//Temporary
