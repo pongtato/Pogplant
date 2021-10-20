@@ -265,6 +265,7 @@ void Init()
 	// Model has to be before KekFiles
 	fh.AddNewWatchPath("Resources/Models");
 	fh.AddNewWatchPath("Resources/KekFiles");
+	fh.AddNewWatchPath("Resources/DLL");
 	fh.AddNewWatchPath("Resources/Prefabs");
 
 	/// To be moved to relative scenes

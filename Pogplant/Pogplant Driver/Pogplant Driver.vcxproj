@@ -86,8 +86,7 @@ xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(SolutionDir)Pogpla
 xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
 xcopy "$(SolutionDir)Libs\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)" /y
 xcopy "$(SolutionDir)Libs\Mono\lib\" "$(TargetDir)..\Libs\Mono\lib\" /y /i /s
-xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s
-xcopy "$(SolutionDir)bin\$(Configuration)-x64\$(ProjectName)\Scripting.dll" "$(SolutionDir)\$(ProjectName)\" /y /i /s</Command>
+xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -127,8 +126,7 @@ xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(SolutionDir)Pogpla
 xcopy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(SolutionDir)Pogplant Driver" /y /i /s
 xcopy "$(SolutionDir)Libs\Mono\bin\mono-2.0-sgen.dll" "$(TargetDir)" /y
 xcopy "$(SolutionDir)Libs\Mono\lib\" "$(TargetDir)..\Libs\Mono\lib\" /y /i /s
-xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s
-xcopy "$(SolutionDir)bin\$(Configuration)-x64\$(ProjectName)\Scripting.dll" "$(SolutionDir)\$(ProjectName)\" /y /i /s</Command>
+xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>

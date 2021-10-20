@@ -42,6 +42,7 @@ public:
 	void Init(ECS* ecs);
 	// Update loop
 	void Update();
+	static void SetReload(bool _isReload);
 
 private:
 	// Call the Start function of every script needed for each object
@@ -49,6 +50,12 @@ private:
 	//void Start(MonoObject* object, MonoClass* klass);
 	// Helper function to find the monomethod in monoclass
 	MonoMethod* FindMethod(MonoClass* klass, std::string methodName, int params = -1);
+	void Reload();
+	void Load();
+	void LoadMemory();
+	void Cleanup();
+
+	void Unload();
 
 	ECS* m_registry;
 	// Mono Stuff to save
@@ -56,7 +63,9 @@ private:
 	MonoAssembly* m_ptrGameAssembly = nullptr;
 	MonoImage* m_ptrGameAssemblyImage = nullptr;
 	// Save all my mono objects here, key is the type of script.
-	std::unordered_map<std::string, MonoObjectWithGC*> m_MonoObjects;
+	//std::unordered_map<std::string, MonoObjectWithGC*> m_MonoObjects;
+	std::unordered_map<std::string, std::unique_ptr<MonoObjectWithGC>> m_MonoObjects;
+	static bool isReload;
 };
 
 #endif // _SCRIPT_SYSTEM_H_
