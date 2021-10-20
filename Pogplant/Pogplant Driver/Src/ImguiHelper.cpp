@@ -34,18 +34,18 @@ namespace PogplantDriver
 		bool adding_enabled = false;
 		if (PPD::ImguiHelper::m_CurrentEntity != entt::null)
 			adding_enabled = true;
-		//if(ImGui::MenuItem("Transform", NULL, false, adding_enabled))
-		//{
-		//	auto& trans_component = m_ecs->GetReg().get_or_emplace<Components::Transform>(m_CurrentEntity);
-		//}
+
 		if (ImGui::BeginMenu("3D Render"))
 		{
 			glm::vec3 color = { 0.835f,0.921f,0.905f };
-			if (ImGui::MenuItem("Sphere", NULL, false, adding_enabled))
+			for (const auto& model : PP::ModelResource::m_ModelPool)
 			{
-				 (void) PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
-					color,
-					PP::ModelResource::m_ModelPool["Sphere"]);
+				if (ImGui::MenuItem(model.first.c_str(), NULL, false, adding_enabled))
+				{
+					(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
+						color,
+						model.second);
+				}
 			}
 			ImGui::EndMenu();
 		}
@@ -125,9 +125,6 @@ namespace PogplantDriver
 		imgui_extra_styles::Pogplant();
 		ImGui_ImplGlfw_InitForOpenGL(PP::Window::GetWindow(), true);
 		ImGui_ImplOpenGL3_Init();
-
-
-
 
 		m_ecs = ecs;
 
@@ -258,22 +255,14 @@ namespace PogplantDriver
 
 			ImGui::EndMainMenuBar();
 		}
+
 		if(exiting)
 			ImGui::OpenPopup("Exiting");
-		//ImVec2 center = ImGui::GetMainViewport()->GetCenter();
-		//ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
 		if (ImGui::BeginPopupModal("Exiting", NULL, ImGuiWindowFlags_AlwaysAutoResize))
 		{
 			ImGui::Text("All those beautiful files will be deleted.\nThis operation cannot be undone!\n\n");
 			ImGui::Separator();
-
-			//static int unused_i = 0;
-			//ImGui::Combo("Combo", &unused_i, "Delete\0Delete harder\0");
-
-			//static bool dont_ask_me_next_time = false;
-			//ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
-			//ImGui::Checkbox("Don't ask me next time", &dont_ask_me_next_time);
-			//ImGui::PopStyleVar();
 
 			if (ImGui::Button("OK", ImVec2(120, 0)))
 			{
@@ -378,7 +367,6 @@ namespace PogplantDriver
 					ImGui::Text(it.m_Description.c_str());
 					ImGui::PopStyleColor();
 					// Scroll to bottom
-					//ImGui::SetScrollHere(1.0f);
 				}
 
 				ImGui::EndTable();
@@ -398,11 +386,7 @@ namespace PogplantDriver
 					DrawEntityNode(entity);
 				});
 
-			//printf("id: %d\n", m_CurrentEntity);
 
-
-			//right click hovered item
-			//if (ImGui::IsItemHovered())
 			if (m_CurrentEntity != entt::null)
 			{
 				if (ImGui::BeginPopupContextWindow("EntityPopup", ImGuiPopupFlags_MouseButtonRight))
@@ -436,11 +420,6 @@ namespace PogplantDriver
 				if (ImGui::MenuItem("Load Prefab"))
 					LoadPrefab();
 
-				//if (ImGui::MenuItem("Create From Prefab"))
-				//{
-				//	//CreateEntityFromPrefab(m_current_scene, ecs_handler);
-				//}
-
 				ImGui::EndPopup();
 			}
 		}
@@ -454,65 +433,12 @@ namespace PogplantDriver
 				if (naming && ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  Name", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					Reflect_ImGui(naming);
-
-					//ImGui::Text("Name");
-					//static char name_stuff[256] = "";
-					//sprintf_s(name_stuff, IM_ARRAYSIZE(name_stuff), naming->m_name.c_str());
-					//ImGui::InputText("###TI", name_stuff, IM_ARRAYSIZE(name_stuff));
-					//naming->m_name = name_stuff;
-
-					//ImguiBlankSeperator(1);
-					//ImGui::Separator();
 				}
 
-
-				//GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
 				auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);
 				if (transform && ImGui::CollapsingHeader(ICON_FA_SLIDERS_H "  Transform", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					Reflect_ImGui(transform);
-
-					//// Mode switch
-					//if (ImGui::RadioButton("Translate", m_EditMode == ImGuizmo::TRANSLATE))
-					//{
-					//	m_EditMode = ImGuizmo::TRANSLATE;
-					//}
-					//ImGui::SameLine();
-					//if (ImGui::RadioButton("Rotate", m_EditMode == ImGuizmo::ROTATE))
-					//{
-					//	m_EditMode = ImGuizmo::ROTATE;
-					//}
-					//ImGui::SameLine();
-					//if (ImGui::RadioButton("Scale", m_EditMode == ImGuizmo::SCALE))
-					//{
-					//	m_EditMode = ImGuizmo::SCALE;
-					//}
-
-					//// Snap when editing transform
-					//ImGui::Checkbox("Snap Transform", &m_UseSnap);
-					////Bounds edit
-					//ImGui::Checkbox("Edit Bounds", &m_BoundSizing);
-					////Snap when editing
-					//ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
-
-					// Usual stuff
-					//ImGui::Text("Translate");
-					//ImGui::PushID("Tr");
-					//ImGui::DragFloat3("", glm::value_ptr(transform->m_position));
-					//ImGui::PopID();
-
-					//ImGui::Text("Rotate");
-					//ImGui::PushID("Rt");
-					//ImGui::DragFloat3("", glm::value_ptr(transform->m_rotation));
-					//ImGui::PopID();
-
-					//ImGui::Text("Scale");
-					//ImGui::PushID("Sc");
-					//ImGui::DragFloat3("", glm::value_ptr(transform->m_scale));
-					//ImGui::PopID();
-
-					//ImguiBlankSeperator(1);
-					//ImGui::Separator();
 				}
 
 				auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(m_CurrentEntity);
@@ -711,31 +637,6 @@ namespace PogplantDriver
 					{
 						ImGuiComboFlags flag = 0;
 						flag |= ImGuiComboFlags_PopupAlignLeft;
-						
-						/*std::vector<std::string> collision_rule_str = {"Collide", "Event", "Collide & Event", "Ignore"};
-						std::vector<int> collision_rule = { Components::BoxCollider::COLLISION_RULE::CR_COLLIDE,
-																								Components::BoxCollider::COLLISION_RULE::CR_EVENT,
-																								Components::BoxCollider::COLLISION_RULE::CR_COLLIDE_EVENT,
-																								Components::BoxCollider::COLLISION_RULE::CR_IGNORE };
-						
-						auto box_rule = box_collider->collisionLayer;
-						ImGui::Text("Collision Rule");
-						if (ImGui::BeginCombo("Crule", collision_rule_str[box_rule].c_str(), flag))
-						{
-							for (auto& it : collision_rule)
-							{
-								const bool  is_selected = (box_rule == it);
-								if (ImGui::Selectable(collision_rule_str[it].c_str(), is_selected))
-								{
-									box_rule = it;
-									box_collider->collisionLayer = collision_rule[box_rule];
-								}
-
-								if (is_selected)
-									ImGui::SetItemDefaultFocus();
-							}
-							ImGui::EndCombo();
-						}//*/
 
 						ImGui::Text("Extend");
 						ImGui::DragFloat3("###CExt", glm::value_ptr(box_collider->extends));
@@ -861,28 +762,6 @@ namespace PogplantDriver
 
 							ImguiBlankSeperator(1);
 						}
-
-						//TODO CHANGE THIS TO FILE BROWSER-------------------------
-
-						/*static char name_stuff[256] = "";
-
-						std::string aaa{ "###AudioEditor" };
-
-						ImGui::InputText(aaa.c_str(), name_stuff, IM_ARRAYSIZE(name_stuff));
-
-
-						if (ImGui::Button("Add audio"))
-						{
-							audioSourceComponent->m_audioSources.push_back(Components::AudioSource::AudioClip{ name_stuff, 1.f });
-							bool success = audioSourceComponent->LoadAudioToFMOD(audioSourceComponent->m_audioSources.size() - 1);
-
-							if (!success)
-							{
-								audioSourceComponent->m_audioSources.pop_back();
-							}
-						}//*/
-						//---------------------------------------------------------------------------
-
 
 						ImguiBlankSeperator(1);
 						ImGui::Separator();
@@ -1026,26 +905,7 @@ namespace PogplantDriver
 		ImGui::PopStyleColor();
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 
-		// Update the camera when resizing window
-		//ImVec2 currWindowSize = ImGui::GetWindowSize();
-		//PP::CameraResource::GetCamera("GAME")->UpdateProjection({ currWindowSize.x,currWindowSize.y });
-
 		ImVec2 vMax = ImGui::GetWindowContentRegionMax();
-
-		// Update game cameras
-		//auto cam_results = m_ecs->GetReg().view<Components::Transform, Components::Camera>();
-		//for (auto& e : cam_results)
-		//{
-		//	auto& it_Camera = cam_results.get<Components::Camera>(e);
-		//	PP::Camera::GetUpdatedProjection
-		//	(
-		//		{ vMax.x,vMax.y },
-		//		it_Camera.m_Zoom,
-		//		it_Camera.m_Near,
-		//		it_Camera.m_Far,
-		//		it_Camera.m_Projection
-		//	);
-		//}
 	}
 
 	void ImguiHelper::SaveSceneAs()
@@ -1188,7 +1048,7 @@ namespace PogplantDriver
 
 				if (renderer != nullptr)
 				{
-						// Naive approach
+					// Naive approach
 					float largestScale = std::numeric_limits<float>::min();
 
 					for (int j = 0; j < 3; j++)
@@ -1244,37 +1104,30 @@ namespace PogplantDriver
 		}
 	}
 
+	glm::mat4 ImguiHelper::get_parent_transform(entt::entity _id)
+	{
+		auto relationship = m_ecs->GetReg().try_get<Components::Relationship>(_id);
+
+		if (relationship && relationship->m_parent != entt::null)
+		{
+			auto transform = m_ecs->GetReg().get<Components::Transform>(relationship->m_parent);
+
+			return transform.m_ModelMtx * glm::inverse(get_parent_transform(relationship->m_parent));
+		}
+		else
+		{
+			auto transform = m_ecs->GetReg().get<Components::Transform>(_id);
+			return transform.m_ModelMtx;
+		}
+	}
+
 	void ImguiHelper::Scene_GOEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
 		// Draw view manipulate only in editor scene
 		ImGuizmo::SetDrawlist();
 
-		// Debug draw
-		//ImGui::GetForegroundDrawList()->AddRect(_VMin, _VMax, IM_COL32(255, 255, 0, 255));
-
 		// Bounds for guizmo
 		ImGuizmo::SetRect(_VMin.x, _VMin.y, _VMax.x, _VMax.y);
-
-		/// GUIZMO GO EDIT
-		//if (m_CurrentGOIdx >= 0)
-		//{
-		//	GameObject& currGO = GO_Resource::m_GO_Container[m_CurrentGOIdx];
-		//	// Gizmo transform, matrix to components & back
-		//	ImGuizmo::RecomposeMatrixFromComponents(currGO.m_Position, currGO.m_Rotation, currGO.m_Scale, currGO.m_ModelMtx);
-		//	ImGuizmo::Manipulate
-		//	(
-		//		glm::value_ptr(currCam->GetView()),
-		//		glm::value_ptr(currCam->GetPerspective()),
-		//		m_EditMode,
-		//		ImGuizmo::LOCAL,
-		//		currGO.m_ModelMtx,
-		//		NULL,
-		//		m_UseSnap ? m_SnapStep : NULL,
-		//		m_BoundSizing ? m_BoundsPos : NULL,
-		//		m_UseBoundsSnap ? m_BoundsSnapStep : NULL
-		//	);
-		//	ImGuizmo::DecomposeMatrixToComponents(currGO.m_ModelMtx, currGO.m_Position, currGO.m_Rotation, currGO.m_Scale);
-		//}
 
 		if (m_CurrentEntity != entt::null)
 		{
@@ -1282,12 +1135,32 @@ namespace PogplantDriver
 
 			auto& transform = m_ecs->GetReg().get<Components::Transform>(m_CurrentEntity);
 
-			// Gizmo transform, matrix to components & back
-			ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(transform.m_position), 
-													glm::value_ptr(transform.m_rotation), 
-													glm::value_ptr(transform.m_scale), 
+			////glm::mat4& pos = transform.m_ModelMtx;
+			//glm::mat4 parent_pos;
+			//bool parent = false;
+			//
+			//auto relationship = m_ecs->GetReg().try_get<Components::Relationship>(m_CurrentEntity);
+
+			//if (relationship && relationship->m_parent != entt::null)
+			//{
+			//	parent = true;
+			//	parent_pos = get_parent_transform(relationship->m_parent);
+			//	////pos += parent_pos;
+			//	//pos = parent_pos * pos;
+			//}
+
+
+			 //Gizmo transform, matrix to components & back
+			ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(transform.m_position),
+													glm::value_ptr(transform.m_rotation),
+													glm::value_ptr(transform.m_scale),
 													glm::value_ptr(transform.m_ModelMtx));
 
+			//if (parent)
+			//{
+			//	auto iasd = glm::inverse(parent_pos);
+			//	transform.m_ModelMtx = transform.m_ModelMtx * iasd;
+			//}
 			ImGuizmo::Manipulate
 			(
 				m_GoEditing,
@@ -1302,10 +1175,26 @@ namespace PogplantDriver
 				m_UseBoundsSnap ? m_BoundsSnapStep : NULL
 			);
 
-			ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(transform.m_ModelMtx),
-													glm::value_ptr(transform.m_position),
-													glm::value_ptr(transform.m_rotation),
-													glm::value_ptr(transform.m_scale));
+			//if (parent)
+			//{
+			//	auto iasd = glm::inverse(parent_pos);
+			//	transform.m_ModelMtx = transform.m_ModelMtx * iasd;
+			//}
+			////else
+			{
+
+				ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(transform.m_ModelMtx),
+														glm::value_ptr(transform.m_position),
+														glm::value_ptr(transform.m_rotation),
+														glm::value_ptr(transform.m_scale));
+			}
+
+
+
+
+
+			//transform.m_position = pos;
+
 		}
 	}
 
@@ -1341,19 +1230,14 @@ namespace PogplantDriver
 
 		auto _r = m_ecs->GetReg().try_get<Components::Relationship>(entity);
 
-		//if (!draw_childen && ecs_handler.IsChildren(entity))
 		if (!draw_childen && _r && _r->m_parent != entt::null)
 			return false;
-
-		//printf("id: %d\n", entity);
-
-		//auto name = ecs_handler.GetComponent<ECS::ObjectName>(entity).name.c_str();
 
 		auto name = m_ecs->GetReg().get<Components::Name>(entity);
 		std::string obj_name = name.m_name;
 		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
 		if(_r && _r->m_children.size() != 0)
-			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_DefaultOpen;
 		else
 			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Leaf ;
 
@@ -1367,11 +1251,6 @@ namespace PogplantDriver
 		if (is_opened)
 		{
 			std::string c_name = "<no children>";
-			//ImGuiTreeNodeFlags flags2 = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_Leaf;
-			//
-			//(void)flags2;
-
-			//auto _r = m_ecs->GetReg().try_get<Components::Relationship>(entity);
 
 			if (_r)
 			{
@@ -1379,20 +1258,12 @@ namespace PogplantDriver
 				//int i = 0;
 				for (const auto& ent : s)
 				{
-					//std::string new_c_name = ecs_handler.GetComponent<ECS::ObjectName>(ent).name.c_str();
-					//bool active = ImGui::TreeNodeEx((void*)(uint64_t)ent, flags, new_c_name.c_str(), i++);
 					DrawEntityNode(ent, true);
-					//if (ImGui::IsItemClicked())
-					//	m_selectedEntity = ent;
-					//if (active)
-					//	ImGui::TreePop();
 				}
 			}
 			else
 			{
-				//bool is_opened2 = ImGui::TreeNodeEx((void*)9817239, flags2, c_name.c_str());
-				//if (is_opened2)
-				//	ImGui::TreePop();
+
 			}
 			ImGui::TreePop();
 
@@ -1472,7 +1343,6 @@ namespace PogplantDriver
 
 		ImguiBlankSeperator(1);
 		ImGui::Separator();
-
 	}
 
 }

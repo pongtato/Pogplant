@@ -251,6 +251,23 @@ void Init()
 	TempSceneObjects();
 }
 
+//recursion call
+void UpdateTransform(entt::entity _id, Transform& parent_transform)
+{
+	//update myself
+	auto& transform = ecs.GetReg().get<Transform>(_id);
+
+	transform.updateModelMtx(parent_transform);
+
+	//update children
+	auto relationship = ecs.GetReg().try_get<Relationship>(_id);
+	if (relationship)
+	{
+		for(auto& entity : relationship->m_children)
+			UpdateTransform(entity, transform);
+	}
+}
+
 void UpdateTransforms(float _Dt)
 {
 	auto camView = ecs.GetReg().view<Transform, Camera>();
@@ -363,11 +380,25 @@ void UpdateTransforms(float _Dt)
 
 	// Debug draws
 	physicsSystem.DrawColliders();
+
+
+	//Update transform matrix of all gameobject
 	auto view = ecs.GetReg().view<Transform>();
 	for (auto entity : view)
 	{
 		auto& transform = view.get<Transform>(entity);
-		transform.updateModelMtx();
+
+		auto relationship = ecs.GetReg().try_get<Relationship>(entity);
+		if (relationship && relationship->m_parent == entt::null)
+		{
+			//transform.updateModelMtx();
+			for(auto& ent : relationship->m_children)
+				UpdateTransform(ent, transform);
+		}
+		else if(relationship == nullptr)
+		{
+			transform.updateModelMtx();
+		}
 	}
 }
 

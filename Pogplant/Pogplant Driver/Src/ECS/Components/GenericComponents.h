@@ -2,6 +2,10 @@
 #define GENERICCOMPONENTS_H_
 
 #include <rttr/registration>
+#include <../IMGUI/ImGuiExtraStyles.h>
+//#include <ImGuizmo.h>
+#include <../IMGUIZMO/ImGuizmo.h>
+#include <gtc/type_ptr.hpp>
 
 namespace Components
 {
@@ -52,6 +56,11 @@ namespace Components
 
 		void init(void)
 		{
+			//ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(m_position),
+			//										glm::value_ptr(m_rotation),
+			//										glm::value_ptr(m_scale),
+			//										glm::value_ptr(m_ModelMtx));
+
 			m_ModelMtx = glm::mat4{ 1 };
 			m_ModelMtx = glm::translate(m_ModelMtx, m_position);
 			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[0], { 1,0,0 });
@@ -62,12 +71,31 @@ namespace Components
 
 		void updateModelMtx(void)
 		{
-			m_ModelMtx = glm::mat4{ 1 };
-			m_ModelMtx = glm::translate(m_ModelMtx, m_position);
-			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[0], { 1,0,0 });
-			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[1], { 0,1,0 });
-			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[2], { 0,0,1 });
-			m_ModelMtx = glm::scale(m_ModelMtx, m_scale);
+			//m_ModelMtx = glm::mat4{ 1 };
+			//m_ModelMtx = glm::translate(m_ModelMtx, m_position);
+			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[0]), { 1,0,0 });
+			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[1]), { 0,1,0 });
+			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[2]), { 0,0,1 });
+			//m_ModelMtx = glm::scale(m_ModelMtx, m_scale);
+
+			ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(m_position),
+													glm::value_ptr(m_rotation),
+													glm::value_ptr(m_scale),
+													glm::value_ptr(m_ModelMtx));
+		}
+
+		void updateModelMtx(Transform _transform)
+		{
+			//m_ModelMtx = glm::mat4{ 1 };
+			//m_ModelMtx = glm::translate(m_ModelMtx, m_position);
+			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[0]), { 1,0,0 });
+			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[1]), { 0,1,0 });
+			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[2]), { 0,0,1 });
+			//m_ModelMtx = glm::scale(m_ModelMtx, m_scale);
+
+			updateModelMtx();
+
+			m_ModelMtx = _transform.m_ModelMtx * m_ModelMtx;
 		}
 	};
 
