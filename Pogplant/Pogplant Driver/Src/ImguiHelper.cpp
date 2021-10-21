@@ -1130,15 +1130,15 @@ namespace PogplantDriver
 
 	glm::mat4 ImguiHelper::get_parent_transform(entt::entity _id)
 	{
-		auto relationship = m_ecs->GetReg().try_get<Components::Relationship>(_id);
+		//auto relationship = m_ecs->GetReg().try_get<Components::Relationship>(_id);
 
-		if (relationship && relationship->m_parent != entt::null)
-		{
-			auto transform = m_ecs->GetReg().get<Components::Transform>(relationship->m_parent);
-			//return get_parent_transform(relationship->m_parent) * transform.m_ModelMtx;
-			return get_parent_transform(relationship->m_parent) * transform.m_ModelMtx;
-		}
-		else
+		//if (relationship && relationship->m_parent != entt::null)
+		//{
+		//	auto transform = m_ecs->GetReg().get<Components::Transform>(_id);
+		//	//return get_parent_transform(relationship->m_parent) * transform.m_ModelMtx;
+		//	return transform.m_ModelMtx * get_parent_transform(relationship->m_parent);
+		//}
+		//else
 		{
 			auto transform = m_ecs->GetReg().get<Components::Transform>(_id);
 			return transform.m_ModelMtx;
@@ -1180,14 +1180,13 @@ namespace PogplantDriver
 				ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(transform.m_position),
 														glm::value_ptr(transform.m_rotation),
 														glm::value_ptr(transform.m_scale),
-														glm::value_ptr(transform.m_ModelMtx));
+														glm::value_ptr(matrix_delta));
 			}
 
 
 			if (parent)
 			{
-				auto iasd = (parent_pos);
-				transform.m_ModelMtx = iasd * transform.m_ModelMtx;
+				matrix_delta = parent_pos * matrix_delta;
 			}
 			ImGuizmo::Manipulate
 			(
@@ -1196,8 +1195,8 @@ namespace PogplantDriver
 				glm::value_ptr(_CurrCam->GetPerspective()),
 				m_EditMode,
 				ImGuizmo::LOCAL,
-				glm::value_ptr(transform.m_ModelMtx),
-				parent ? glm::value_ptr(matrix_delta) : NULL,
+				glm::value_ptr(matrix_delta),
+				NULL,
 				m_UseSnap ? m_SnapStep : NULL,
 				m_BoundSizing ? m_BoundsPos : NULL,
 				m_UseBoundsSnap ? m_BoundsSnapStep : NULL
@@ -1206,7 +1205,7 @@ namespace PogplantDriver
 			if (parent)
 			{
 				auto iasd = inverse(parent_pos);
-				transform.m_ModelMtx = iasd * transform.m_ModelMtx;
+				matrix_delta = iasd * matrix_delta;
 				//ImGuizmo::DecomposeMatrixToComponents(	glm::value_ptr(matrix_delta),
 				//										glm::value_ptr(transform.m_position),
 				//										glm::value_ptr(transform.m_rotation),
@@ -1215,7 +1214,7 @@ namespace PogplantDriver
 			//else
 			{
 
-				ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(transform.m_ModelMtx),
+				ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(matrix_delta),
 														glm::value_ptr(transform.m_position),
 														glm::value_ptr(transform.m_rotation),
 														glm::value_ptr(transform.m_scale));
