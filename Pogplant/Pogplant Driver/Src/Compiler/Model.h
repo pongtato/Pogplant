@@ -21,6 +21,7 @@
 #include <glm.hpp>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 typedef unsigned int uint;
 
@@ -53,6 +54,7 @@ struct Bounds
 struct Mesh3D
 {
 	// 0x0004 = GL_TRIANGLES
+	Mesh3D() = default;
 	Mesh3D
 	(
 		std::vector<Vertex> _Vertices,
@@ -82,7 +84,7 @@ public:
 	Model(std::string _Path);
 
 	std::vector<Texture> m_TexturesLoaded;
-	std::vector<Mesh3D> m_Meshes;
+	std::unordered_map<std::string, Mesh3D> m_Meshes;
 	Bounds m_Bounds;
 	std::string m_Directory;
 

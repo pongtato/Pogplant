@@ -44,7 +44,8 @@ namespace PogplantDriver
 				{
 					(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
 						color,
-						model.second);
+						model.second,
+						&model.second->m_Meshes[0]);
 				}
 			}
 			ImGui::EndMenu();
@@ -448,6 +449,7 @@ namespace PogplantDriver
 
 					if (ImGui::CollapsingHeader(ICON_FA_TH "  Renderer", &enable_render, ImGuiTreeNodeFlags_DefaultOpen))
 					{
+						// Model
 						ImGuiComboFlags flag = 0;
 						flag |= ImGuiComboFlags_PopupAlignLeft;
 						auto model_itr = PP::ModelResource::m_ModelPool.begin();
@@ -462,11 +464,34 @@ namespace PogplantDriver
 						{
 							for (auto it = PP::ModelResource::m_ModelPool.begin(); it != PP::ModelResource::m_ModelPool.end(); ++it)
 							{
-								const bool  is_selected = (model_itr == it);
+								const bool is_selected = (model_itr == it);
 								if (ImGui::Selectable(it->first.c_str(), is_selected))
 								{
 									model_itr = it;
 									renderer->m_RenderModel = model_itr->second;
+									// Update mesh as well
+									renderer->m_Mesh = &model_itr->second->m_Meshes.begin()->second;
+								}
+
+								if (is_selected)
+									ImGui::SetItemDefaultFocus();
+
+							}
+							ImGui::EndCombo();
+						}
+
+						// Mesh
+						std::string select = renderer->m_Mesh->m_Name;
+						ImGui::Text("Mesh");
+						if (ImGui::BeginCombo("###Msh", select.c_str(), flag))
+						{
+							for (auto it = model_itr->second->m_Meshes.begin(); it != model_itr->second->m_Meshes.end(); ++it)
+							{
+								const bool is_selected = (select == it->first.c_str());
+								if (ImGui::Selectable(it->first.c_str(), is_selected))
+								{
+									select = it->first;
+									renderer->m_Mesh = &model_itr->second->m_Meshes[select];
 								}
 
 								if (is_selected)
@@ -1068,8 +1093,6 @@ namespace PogplantDriver
 					}
 				}
 			});
-
-
 
 			//for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
 			//{

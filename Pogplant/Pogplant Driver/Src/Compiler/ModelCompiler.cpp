@@ -46,8 +46,10 @@ void ModelCompiler::Write(std::ofstream& outBuffer)
 	outBuffer.write(dir.str().c_str(), dir.str().length());
 	outBuffer.write(reinterpret_cast<char*>(&model.m_Bounds), sizeof(Bounds));
 
-	for (auto& meshes : model.m_Meshes)
+	for (auto& it : model.m_Meshes)
 	{
+		auto& meshes = it.second;
+
 		std::stringstream sizes;
 		sizes << meshes.m_Vertices.size() << ' ' << meshes.m_Indices.size() << ' ' << meshes.m_Textures.size() << '\n';
 		outBuffer.write(sizes.str().c_str(), sizes.str().length());

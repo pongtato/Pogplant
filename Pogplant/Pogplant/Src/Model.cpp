@@ -30,7 +30,7 @@ namespace Pogplant
 	{
 		for (const auto& it : m_Meshes)
 		{
-			it.Draw(_BindTex);
+			it.second.Draw(_BindTex);
 		}
 	}
 
@@ -97,7 +97,7 @@ namespace Pogplant
 				std::vector<Texture> texture = LoadMaterialTextures(path, type);
 				textures.insert(textures.end(), texture.begin(), texture.end());
 			}
-			m_Meshes.push_back(Mesh3D(vertices, indices, textures, pos, rot, scale, parentName, name));
+			m_Meshes[name] = (Mesh3D(vertices, indices, textures, pos, rot, scale, parentName, name));
 		}
 
 		// Find longest edge - General usage no ritter's

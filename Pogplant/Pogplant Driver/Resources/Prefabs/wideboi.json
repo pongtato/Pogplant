@@ -1,43 +1,69 @@
 [
 	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		},
 		"Name" : 
 		{
-			"m_Name" : "wideo"
+			"m_Name" : "Ship"
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
-				1.0,
-				0.069767415523529053,
-				0.43320780992507935
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
 			],
 			"RenderModel" : 
 			[
 				"Player_Ship",
-				"Resources/Models/Ship"
+				"Resources/Models\\Ship",
+				"Player_Ship_Base"
 			],
 			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Player" : true
 		},
 		"Transform" : 
 		{
 			"m_position" : 
 			[
-				10.038399696350098,
-				5.9759111404418945,
-				1.9653840065002441
+				15.0,
+				4.6904220581054688,
+				10.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
 				-0.0,
-				-4.9632522859610617e-05
+				0.0
 			],
 			"m_scale" : 
 			[
-				3.3497624397277832,
-				1.5348359346389771,
-				2.362079381942749
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	}

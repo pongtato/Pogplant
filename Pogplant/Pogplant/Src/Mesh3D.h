@@ -26,6 +26,7 @@ namespace Pogplant
 
 	struct Mesh3D
 	{
+		Mesh3D() = default;
 		// 0x0004 = GL_TRIANGLES
 		Mesh3D
 		(

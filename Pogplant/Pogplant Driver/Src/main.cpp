@@ -66,7 +66,7 @@ void TempSceneObjects()
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
 
 	auto entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, &sphereModel->m_Meshes.begin()->second });
 	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
 	entity.AddComponent<Components::HeightMapDebugger>(0.0f);
 	entity.GetComponent<Components::Name>().m_name = "Height Map Debugger";
@@ -102,7 +102,7 @@ void TempSceneObjects()
 	scale = { 1.0f,1.0f,1.0f };
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ color, shipModel });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, shipModel, &shipModel->m_Meshes.begin()->second });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
 	std::unordered_map<std::string, bool> shipScripts;
@@ -135,7 +135,7 @@ void TempSceneObjects()
 	scale = { 1.0f,1.0f,1.0f };
 
 	entity = ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ color, enemyModel });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, enemyModel, &enemyModel->m_Meshes.begin()->second });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
 	std::unordered_map<std::string, bool> enemyScripts;
@@ -155,7 +155,7 @@ void TempSceneObjects()
 	float intensity = 13.0f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
-	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, &sphereModel->m_Meshes.begin()->second, false, true });
 	entity.GetComponent<Components::Name>().m_name = "Directional Light";
 
 	intensity = 1.0f;
@@ -165,7 +165,7 @@ void TempSceneObjects()
 	const float quadratic = 0.0042f;
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, &sphereModel->m_Meshes.begin()->second, false, true });
 	entity.GetComponent<Components::Name>().m_name = "White point light";
 
 	intensity = 4.2f;
@@ -173,21 +173,21 @@ void TempSceneObjects()
 	color = { 0.0f, 0.0f, 1.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, &sphereModel->m_Meshes.begin()->second, false, true });
 	entity.GetComponent<Components::Name>().m_name = "Blue light";
 
 	pos = { 21.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, &sphereModel->m_Meshes.begin()->second, false, true });
 	entity.GetComponent<Components::Name>().m_name = "Red light";
 
 	pos = { -12.5, 10.0f, -10.0f };
 	color = { 0.0f, 1.0f, 0.0f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, true });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, &sphereModel->m_Meshes.begin()->second, false, true });
 	entity.GetComponent<Components::Name>().m_name = "Green light";
 
 	//Test Object with body
@@ -195,7 +195,7 @@ void TempSceneObjects()
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, false });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, &sphereModel->m_Meshes.begin()->second, false, false });
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	//entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{0.f}, 1.f });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
@@ -210,7 +210,7 @@ void TempSceneObjects()
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
 	entity = ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
-	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, false, false });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, sphereModel, &sphereModel->m_Meshes.begin()->second, false, false });
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
 	entity.AddComponent<Components::CharacterController>();
@@ -240,7 +240,7 @@ void TempSceneObjects()
 	color = { 0.9f, 0.5f, 0.2f };
 	entity = ecs.CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
-	entity.AddComponent<Components::Renderer>(Renderer{ color, cubeModel, false, false });
+	entity.AddComponent<Components::Renderer>(Renderer{ color, cubeModel, &cubeModel->m_Meshes.begin()->second, false, false });
 	entity.GetComponent<Components::Name>().m_name = "Game Camera";
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;

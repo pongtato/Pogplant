@@ -245,7 +245,7 @@ namespace Pogplant
 			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			if (it.m_UseLight)
 			{
-				it.m_RenderModel->Draw(false);
+				it.m_Mesh->Draw(false);
 			}
 		}
 
@@ -374,7 +374,7 @@ namespace Pogplant
 			ShaderLinker::SetUniform("useLight", it.m_UseLight);
 			if (!it.m_EditorDrawOnly || it.m_EditorDrawOnly && _EditorMode)
 			{
-				if (it.m_RenderModel->m_TexturesLoaded.size() == 0)
+				if (it.m_Mesh->m_Textures.size() == 0)
 				{
 					ShaderLinker::SetUniform("noTex", true);
 				}
@@ -382,7 +382,7 @@ namespace Pogplant
 				{
 					ShaderLinker::SetUniform("noTex", false);
 				}
-				it.m_RenderModel->Draw(true);
+				it.m_Mesh->Draw(true);
 			}
 		}
 		ShaderLinker::UnUse();
@@ -578,7 +578,7 @@ namespace Pogplant
 			const auto& it_trans = results.get<const Components::Transform>(e);
 			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
-			it.m_RenderModel->Draw(false);
+			it.m_Mesh->Draw(false);
 		}
 		ShaderLinker::UnUse();
 

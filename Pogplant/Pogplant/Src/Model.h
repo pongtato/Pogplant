@@ -10,6 +10,7 @@
 #include <Importer.hpp>
 #include <scene.h>
 #include <postprocess.h>
+#include <unordered_map>
 
 namespace Pogplant
 {
@@ -35,7 +36,7 @@ namespace Pogplant
 
 		Bounds m_Bounds;
 		std::vector<Texture> m_TexturesLoaded;
-		std::vector<Mesh3D> m_Meshes;
+		std::unordered_map<std::string, Mesh3D> m_Meshes;
 		std::string m_Directory;
 		std::string m_Model_key;
 

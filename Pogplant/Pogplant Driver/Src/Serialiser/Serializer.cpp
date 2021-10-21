@@ -130,11 +130,12 @@ namespace PogplantDriver
 
 			classroot["UseLight"] = render_component->m_UseLight;
 
-			if (render_component->m_RenderModel)
+			if (render_component->m_Mesh)
 			{
 				Json::Value temp(Json::arrayValue);
 				temp.append(render_component->m_RenderModel->m_Model_key);
 				temp.append(render_component->m_RenderModel->m_Directory);
+				temp.append(render_component->m_Mesh->m_Name);
 				classroot["RenderModel"] = temp;
 			}
 
@@ -238,7 +239,8 @@ namespace PogplantDriver
 		if (render)
 		{
 			//glm::vec3 _colorTint = ;
-			Pogplant::Model* m_Model = nullptr;
+			Pogplant::Model* model = nullptr;
+			Pogplant::Mesh3D* mesh = nullptr;
 
 			if (render["RenderModel"] != Json::nullValue)
 			{
@@ -246,7 +248,18 @@ namespace PogplantDriver
 
 				if (result != Pogplant::ModelResource::m_ModelPool.end())
 				{
-					m_Model = result->second;
+					model = result->second;
+
+					// Find mesh
+					for (auto& it : model->m_Meshes)
+					{
+						if (it.second.m_Name == render["RenderModel"][2].asString())
+						{
+							mesh = &it.second;
+						}
+					}
+
+					assert(mesh != nullptr);
 				}
 				else
 				{
@@ -258,7 +271,8 @@ namespace PogplantDriver
 			ImguiHelper::m_ecs->GetReg().emplace<Renderer>(
 				id,
 				glm::vec3{ render["ColorTint"][0].asFloat(),render["ColorTint"][1].asFloat(),render["ColorTint"][2].asFloat() },
-				m_Model,
+				model,
+				mesh,
 				render["UseLight"].asInt()
 				);
 		}

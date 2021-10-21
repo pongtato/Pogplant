@@ -73,7 +73,7 @@ void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, std::string _Paren
         // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
         aiMesh* mesh = _Scene->mMeshes[_Node->mMeshes[i]];
         ref = mesh->mName.C_Str(); // Assume only 1 mesh per node
-        m_Meshes.push_back(ProcessMesh(mesh, _Scene, _Node, _ParentName));
+        m_Meshes[mesh->mName.C_Str()] = (ProcessMesh(mesh, _Scene, _Node, _ParentName));
     }
 
     // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
