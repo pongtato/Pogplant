@@ -23,20 +23,20 @@ Mesh3D::Mesh3D
     std::vector<Vertex> _Vertices,
     std::vector<uint> _Indices,
     std::vector<Texture> _Textures,
+    std::vector<std::string> _SubMeshIDs,
     const glm::vec3& _Translate,
     const glm::vec4& _Rotate,
     const glm::vec3& _Scale,
-    const std::string& _ParentName,
     const std::string& _Name
 )
 {
     m_Vertices = _Vertices;
     m_Indices = _Indices;
     m_Textures = _Textures;
+    m_SubMeshIDs = _SubMeshIDs;
     m_Translate = _Translate;
     m_Rotate = _Rotate;
     m_Scale = _Scale;
-    m_ParentName = _ParentName;
     m_Name = _Name;
 }
 
@@ -59,12 +59,13 @@ void Model::LoadModel(std::string _Path)
         Logger::Log({ "PP::ASSIMP",LogEntry::ERROR, importer.GetErrorString() });
         return;
     }
-    ProcessNode(scene->mRootNode, scene, "Root");
+
+    ProcessNode(scene->mRootNode, scene, nullptr);
 }
 
-void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, std::string _ParentName)
+void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, Mesh3D* _Parent)
 {
-    std::string ref = _ParentName;
+    Mesh3D* ref = _Parent;
 
     // process each mesh located at the current node
     for (unsigned int i = 0; i < _Node->mNumMeshes; i++)
@@ -72,8 +73,8 @@ void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, std::string _Paren
         // the node object only contains indices to index the actual objects in the scene. 
         // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
         aiMesh* mesh = _Scene->mMeshes[_Node->mMeshes[i]];
-        ref = mesh->mName.C_Str(); // Assume only 1 mesh per node
-        m_Meshes[mesh->mName.C_Str()] = (ProcessMesh(mesh, _Scene, _Node, _ParentName));
+        ProcessMesh(mesh, _Scene, _Node, _Parent);
+        ref = &m_Meshes[mesh->mName.C_Str()];
     }
 
     // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
@@ -83,7 +84,7 @@ void Model::ProcessNode(aiNode* _Node, const aiScene* _Scene, std::string _Paren
     }
 }
 
-Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, std::string _ParentName)
+void Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, Mesh3D* _Parent)
 {
     // data to fill
     std::vector<Vertex> vertices;
@@ -200,8 +201,14 @@ Mesh3D Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, s
     //std::cout << "Current: " << _Mesh->mName.C_Str() << std::endl;
     //std::cout << std::endl;
 
-    // return a mesh object created from the extracted mesh data
-	return Mesh3D(vertices, indices, textures, { pos.x,pos.y,pos.z }, { rotAxis.x,rotAxis.y,rotAxis.z,rotAmnt }, { scale.x,scale.y,scale.z }, _ParentName, _Mesh->mName.C_Str());
+    // Update container
+    m_Meshes[_Mesh->mName.C_Str()] = Mesh3D(vertices, indices, textures, std::vector<std::string>{}, { pos.x,pos.y,pos.z }, { rotAxis.x,rotAxis.y,rotAxis.z,rotAmnt }, { scale.x,scale.y,scale.z }, _Mesh->mName.C_Str());
+
+    // Update parent
+    if (_Parent)
+    {
+        _Parent->m_SubMeshIDs.push_back(_Mesh->mName.C_Str());
+    }
 }
 
 std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* _Material, aiTextureType _Type, std::string _TypeName)

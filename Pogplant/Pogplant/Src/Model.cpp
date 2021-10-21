@@ -55,14 +55,15 @@ namespace Pogplant
 			std::vector<Vertex> vertices;
 			std::vector<uint> indices;
 			std::vector<Texture> textures;
+			std::vector<std::string> subMeshIDs;
 			glm::vec3 pos{0.f};
 			glm::vec4 rot{0.f};
 			glm::vec3 scale{0.f};
-			size_t vertSize, idxSize, texSize;
+			size_t vertSize, idxSize, texSize, subMeshSize;
 
 			std::stringstream ss;
 			ss << line;
-			ss >> vertSize >> idxSize >> texSize;
+			ss >> vertSize >> idxSize >> texSize >> subMeshSize;
 			vertices.resize(vertSize);
 			indices.resize(idxSize);
 			//textures.resize(texSize);
@@ -72,10 +73,14 @@ namespace Pogplant
 			inFile.read(reinterpret_cast<char*>(&rot), rot.length() * sizeof(float));
 			inFile.read(reinterpret_cast<char*>(&scale), scale.length() * sizeof(float));
 
-			size_t parenLen = 0;
-			inFile.read(reinterpret_cast<char*>(&parenLen), sizeof(size_t));
-			std::string parentName(parenLen, '\0');
-			inFile.read(&parentName[0], parenLen);
+			for (int i = 0; i < subMeshSize; ++i)
+			{
+				size_t submeshLen = 0;
+				inFile.read(reinterpret_cast<char*>(&submeshLen), sizeof(size_t));
+				std::string subMeshID(submeshLen, '\0');
+				inFile.read(&subMeshID[0], submeshLen);
+				subMeshIDs.push_back(subMeshID);
+			}
 
 			size_t nameLen = 0;
 			inFile.read(reinterpret_cast<char*>(&nameLen), sizeof(size_t));
@@ -97,7 +102,7 @@ namespace Pogplant
 				std::vector<Texture> texture = LoadMaterialTextures(path, type);
 				textures.insert(textures.end(), texture.begin(), texture.end());
 			}
-			m_Meshes[name] = (Mesh3D(vertices, indices, textures, pos, rot, scale, parentName, name));
+			m_Meshes[name] = (Mesh3D(vertices, indices, textures, subMeshIDs, pos, rot, scale, name));
 		}
 
 		// Find longest edge - General usage no ritter's

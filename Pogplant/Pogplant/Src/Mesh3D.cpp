@@ -11,20 +11,20 @@ namespace Pogplant
         std::vector<Vertex> _Vertices,
         std::vector<uint> _Indices,
         std::vector<Texture> _Textures,
+        std::vector<std::string> _SubMeshIDs,
         glm::vec3 _Translate,
         glm::vec4 _Rotate,
         glm::vec3 _Scale,
-        std::string _ParentName,
         std::string _Name,
         uint _PrimitiveType)
 	{
 		m_Vertices = _Vertices;
 		m_Indices = _Indices;
 		m_Textures = _Textures;
+        m_SubMeshIDs = _SubMeshIDs;
         m_Translate = _Translate;
         m_Rotate = _Rotate;
         m_Scale = _Scale;
-        m_ParentName = _ParentName;
         m_Name = _Name;
         m_PrimitiveType = _PrimitiveType;
 

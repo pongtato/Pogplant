@@ -60,20 +60,20 @@ struct Mesh3D
 		std::vector<Vertex> _Vertices,
 		std::vector<uint> _Indices,
 		std::vector<Texture> _Textures,
+		std::vector<std::string> _SubMeshIDs,
 		const glm::vec3& _Translate,
 		const glm::vec4& _Rotate,
 		const glm::vec3& _Scale,
-		const std::string& _ParentName,
 		const std::string& _Name
 	);
 
 	std::vector<Vertex> m_Vertices;
 	std::vector<uint> m_Indices;
 	std::vector<Texture> m_Textures;
+	std::vector<std::string> m_SubMeshIDs;
 	glm::vec3 m_Translate;
 	glm::vec4 m_Rotate;
 	glm::vec3 m_Scale;
-	std::string m_ParentName;
 	std::string m_Name;
 };
 
@@ -90,8 +90,8 @@ public:
 
 private:
 	void LoadModel(std::string _Path);
-	void ProcessNode(aiNode* _Node, const aiScene* _Scene, std::string _ParentName);
-	Mesh3D ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, std::string _ParentName);
+	void ProcessNode(aiNode* _Node, const aiScene* _Scene, Mesh3D* _Parent);
+	void ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, Mesh3D* _Parent);
 	std::vector<Texture> LoadMaterialTextures(aiMaterial* _Material, aiTextureType _Type, std::string _TypeName);
 };
 

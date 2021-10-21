@@ -51,7 +51,7 @@ void ModelCompiler::Write(std::ofstream& outBuffer)
 		auto& meshes = it.second;
 
 		std::stringstream sizes;
-		sizes << meshes.m_Vertices.size() << ' ' << meshes.m_Indices.size() << ' ' << meshes.m_Textures.size() << '\n';
+		sizes << meshes.m_Vertices.size() << ' ' << meshes.m_Indices.size() << ' ' << meshes.m_Textures.size() << ' ' << meshes.m_SubMeshIDs.size() << '\n';
 		outBuffer.write(sizes.str().c_str(), sizes.str().length());
 		outBuffer.write(reinterpret_cast<char*>(&meshes.m_Vertices[0]), meshes.m_Vertices.size() * sizeof(Vertex));
 		outBuffer.write(reinterpret_cast<char*>(&meshes.m_Indices[0]), meshes.m_Indices.size() * sizeof(uint));
@@ -59,14 +59,17 @@ void ModelCompiler::Write(std::ofstream& outBuffer)
 		outBuffer.write(reinterpret_cast<char*>(&meshes.m_Rotate), meshes.m_Rotate.length() * sizeof(float));
 		outBuffer.write(reinterpret_cast<char*>(&meshes.m_Scale), meshes.m_Scale.length() * sizeof(float));
 
-		size_t parentLen = meshes.m_ParentName.size();
-		if (parentLen > 0)
+		for (const auto& subMeshID : meshes.m_SubMeshIDs)
 		{
-			outBuffer.write(reinterpret_cast<char*>(&parentLen), sizeof(size_t));
-			outBuffer.write(meshes.m_ParentName.c_str(), parentLen);
+			size_t idLen = subMeshID.length();
+			if (idLen > 0)
+			{
+				outBuffer.write(reinterpret_cast<char*>(&idLen), sizeof(size_t));
+				outBuffer.write(subMeshID.c_str(), idLen);
+			}
 		}
 
-		size_t nameLen = meshes.m_Name.size();
+		size_t nameLen = meshes.m_Name.length();
 		if (nameLen > 0)
 		{
 			outBuffer.write(reinterpret_cast<char*>(&nameLen), sizeof(size_t));
