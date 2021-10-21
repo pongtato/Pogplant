@@ -45,7 +45,8 @@ namespace Components
 		glm::vec3 m_rotation;
 		glm::vec3 m_scale;
 
-		glm::mat4 m_ModelMtx;
+		glm::mat4 m_ModelMtx;// has been multiplied by parent matrix
+		glm::mat4 actual_m_ModelMtx;
 
 		Transform() = default;
 		Transform(const Transform&) = default;
@@ -72,12 +73,6 @@ namespace Components
 
 		void updateModelMtx(void)
 		{
-			//m_ModelMtx = glm::mat4{ 1 };
-			//m_ModelMtx = glm::translate(m_ModelMtx, m_position);
-			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[0]), { 1,0,0 });
-			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[1]), { 0,1,0 });
-			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[2]), { 0,0,1 });
-			//m_ModelMtx = glm::scale(m_ModelMtx, m_scale);
 
 			ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(m_position),
 													glm::value_ptr(m_rotation),
@@ -87,15 +82,8 @@ namespace Components
 
 		void updateModelMtx(Transform _transform)
 		{
-			//m_ModelMtx = glm::mat4{ 1 };
-			//m_ModelMtx = glm::translate(m_ModelMtx, m_position);
-			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[0]), { 1,0,0 });
-			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[1]), { 0,1,0 });
-			//m_ModelMtx = glm::rotate(m_ModelMtx, glm::radians(m_rotation[2]), { 0,0,1 });
-			//m_ModelMtx = glm::scale(m_ModelMtx, m_scale);
-
 			updateModelMtx();
-
+			actual_m_ModelMtx = m_ModelMtx;
 			m_ModelMtx = _transform.m_ModelMtx * m_ModelMtx;
 		}
 	};
