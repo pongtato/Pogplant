@@ -84,12 +84,10 @@ namespace PPI
 
 	void InputSystem::setControllerLayout(int layout)
 	{
-		std::cout << "Controller Layout (" << layout << ") ";
 		switch (layout)
 		{
 		default:
 		case 0:
-			std::cout << "Michael's Layout ";
 			InputSystem::Instance()->appendKey("JUMP", GLFW_KEY_SPACE, GLFW_GAMEPAD_BUTTON_A);
 			InputSystem::Instance()->appendKey("SPRINT", GLFW_KEY_LEFT_SHIFT, GLFW_GAMEPAD_BUTTON_X);
 			InputSystem::Instance()->appendKey("ATTACK", GLFW_MOUSE_BUTTON_LEFT, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER + JOYSTICKOSET);
@@ -98,7 +96,6 @@ namespace PPI
 			InputSystem::Instance()->appendKey("COUNTER", GLFW_KEY_E, GLFW_GAMEPAD_AXIS_LEFT_TRIGGER + JOYSTICKOSET);
 			break;
 		case 1:
-			std::cout << "Monster Hunter Style ";
 			InputSystem::Instance()->appendKey("JUMP", GLFW_KEY_SPACE, GLFW_GAMEPAD_BUTTON_A);
 			InputSystem::Instance()->appendKey("SPRINT", GLFW_KEY_LEFT_SHIFT, GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER);
 			InputSystem::Instance()->appendKey("ATTACK", GLFW_MOUSE_BUTTON_LEFT, GLFW_GAMEPAD_BUTTON_B);
@@ -107,8 +104,6 @@ namespace PPI
 			InputSystem::Instance()->appendKey("COUNTER", GLFW_KEY_E, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER + JOYSTICKOSET);
 			break;
 		}
-
-		std::cout << "loaded" << std::endl;
 	}
 
 	/******************************************************************************/

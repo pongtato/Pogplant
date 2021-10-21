@@ -317,6 +317,8 @@ namespace PPA
 		auto result = m_studioSystem->initialize(32, FMOD_STUDIO_INIT_LIVEUPDATE, FMOD_INIT_PROFILE_ENABLE, nullptr);
 		m_studioSystem->getCoreSystem(&m_system);
 
+		assert(result == FMOD_OK && m_system != nullptr);
+
 		if (result != FMOD_OK || m_system == nullptr)
 		{
 			PP::Logger::Log(

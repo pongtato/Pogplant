@@ -13,7 +13,8 @@
 
 #include "ECS/Entity.h"
 #include "../../Pogplant/Src/Utils/FileDialogs.h"
-#include "ECS/Systems/PhysicsSystem.h" // Should not be here?
+#include "ECS/Components/Components.h"
+#include "ECS/Components/DependantComponents.h"
 #include "Serialiser/Serializer.h"
 #include <algorithm>
 #include <execution>

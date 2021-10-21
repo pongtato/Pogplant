@@ -280,9 +280,6 @@ void PhysicsSystem::UpdateEditor()
 /******************************************************************************/
 void PhysicsSystem::Update(float c_dt)
 {
-	//Temporary since we have no play state
-	InitPlayState();
-
 	auto rigidBodyEntities = m_registry->GetReg().view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
 	auto collidableEntities = m_registry->GetReg().view<Components::Transform, Components::ColliderIdentifier>();
 

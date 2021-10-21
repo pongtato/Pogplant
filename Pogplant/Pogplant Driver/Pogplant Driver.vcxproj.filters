@@ -141,6 +141,15 @@
     <ClCompile Include="Src\ECS\Systems\PhysicsSystemCollision.cpp">
       <Filter>Source Files\ECS\Systems\Physics/Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ApplicationEditorState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ApplicationPlayState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
@@ -247,6 +256,9 @@
     </ClInclude>
     <ClInclude Include="Src\AudioEngine.h">
       <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
