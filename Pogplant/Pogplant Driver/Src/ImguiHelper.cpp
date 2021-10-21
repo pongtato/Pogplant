@@ -241,7 +241,7 @@ namespace PogplantDriver
 					NewScene();
 				if (ImGui::MenuItem(ICON_FA_FOLDER_OPEN "  Open..."))
 					OpenScene();
-				if (ImGui::MenuItem(ICON_KI_SAVE "  Save"))
+				if (ImGui::MenuItem(ICON_FA_SAVE "  Save"))
 					SaveSceneAs();
 				if (ImGui::MenuItem(ICON_FA_TIMES "  Exit"))
 					exiting = true;
