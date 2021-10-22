@@ -46,7 +46,7 @@ namespace PogplantDriver
 					(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
 						color,
 						model.second,
-						&model.second->m_Meshes[0]);
+						&model.second->m_Meshes.begin()->second);
 				}
 			}
 			ImGui::EndMenu();
