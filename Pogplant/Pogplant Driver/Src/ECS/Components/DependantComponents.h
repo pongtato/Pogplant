@@ -128,14 +128,7 @@ namespace Components
 
 			}
 
-			inline ~AudioClip()
-			{
-				if (c_playing)
-					PPA::AudioEngine::StopPlayingChannel(c_channelID);
-
-				PPA::AudioEngine::UnloadAudio(m_fileDir);
-			}
-
+			~AudioClip() = default;
 
 			/**> Relative file directory of the audio file*/
 			std::string m_fileDir;
@@ -143,10 +136,9 @@ namespace Components
 			bool m_is3D = true;
 			bool m_isLooping = false;
 			bool m_isStreamed = false;
-
 			bool m_enableDopplerEffect = false;
-
 			bool m_update3DPosition = true;
+
 
 			/**> Runtime variables, do not serialise*/
 			int c_channelID;
@@ -203,6 +195,19 @@ namespace Components
 			{
 				PPA::AudioEngine::StopPlayingChannel(m_audioSources[id].c_channelID);
 				m_audioSources[id].c_playing = false;
+			}
+		}
+
+		//Don't actually need to use it as the audio engine
+		//will auto clear up if anything is not freed
+		inline void UnloadResources()
+		{
+			for (size_t i = 0; i < m_audioSources.size(); i++)
+			{
+				if (m_audioSources[i].c_playing)
+					PPA::AudioEngine::StopPlayingChannel(m_audioSources[i].c_channelID);
+
+				PPA::AudioEngine::UnloadAudio(m_audioSources[i].m_fileDir);
 			}
 		}
 	};

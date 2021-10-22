@@ -90,6 +90,11 @@ namespace PogplantDriver
 			}
 			
 		}
+
+		if (ImGui::MenuItem("Audio Source", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::AudioSource>(PPD::ImguiHelper::m_CurrentEntity);
+		}
 	}
 
 	bool ImguiHelper::m_FirstRun = true;
@@ -763,13 +768,16 @@ namespace PogplantDriver
 
 					if (ImGui::CollapsingHeader(ICON_FA_MUSIC "  AudioSource", &enable_audio_com, ImGuiTreeNodeFlags_DefaultOpen))
 					{
+						ImGui::PushID("AudioSourcesID");
 						for (size_t i = 0; i < audioSourceComponent->m_audioSources.size(); i++)
 						{
+							ImGui::PushID((int)i);
 							ImGui::Text(audioSourceComponent->m_audioSources[i].m_fileDir.c_str());
 
 							bool hasChanged = false;
 
 							hasChanged |= ImGui::Checkbox("Is 3D", &audioSourceComponent->m_audioSources[i].m_is3D);
+							hasChanged |= ImGui::Checkbox("Audio follows object", &audioSourceComponent->m_audioSources[i].m_update3DPosition);
 							hasChanged |= ImGui::Checkbox("Loop", &audioSourceComponent->m_audioSources[i].m_isLooping);
 							hasChanged |= ImGui::Checkbox("Stream audio", &audioSourceComponent->m_audioSources[i].m_isStreamed);
 							hasChanged |= ImGui::Checkbox("Enable doppler", &audioSourceComponent->m_audioSources[i].m_enableDopplerEffect);
@@ -787,7 +795,30 @@ namespace PogplantDriver
 								audioSourceComponent->StopAudio(i);
 
 							ImguiBlankSeperator(1);
+
+							ImGui::PopID();
 						}
+						
+
+						//TODO CHANGE THIS TO FILE BROWSER-------------------------
+
+						static char name_stuff[256] = "";
+
+						ImGui::InputText("Directory", name_stuff, IM_ARRAYSIZE(name_stuff));
+
+						if (ImGui::Button("Add audio"))
+						{
+							audioSourceComponent->m_audioSources.push_back(Components::AudioSource::AudioClip{ name_stuff, 1.f });
+							bool success = audioSourceComponent->LoadAudioToFMOD(audioSourceComponent->m_audioSources.size() - 1);
+
+							if (!success)
+							{
+								audioSourceComponent->m_audioSources.pop_back();
+							}
+						}
+
+						ImGui::PopID();
+						//---------------------------------------------------------------------------
 
 						ImguiBlankSeperator(1);
 						ImGui::Separator();

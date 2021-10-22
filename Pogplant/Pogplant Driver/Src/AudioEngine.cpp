@@ -41,8 +41,7 @@ namespace PPA
 	/***************************************************************************/
 	void AudioEngine::Update()
 	{
-		if (m_instance)
-			m_instance->xFmod.Update();
+		AudioEngine::Instance()->xFmod.Update();
 	}
 
 	/***************************************************************************/
@@ -74,11 +73,10 @@ namespace PPA
 	/***************************************************************************/
 	bool AudioEngine::LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed)
 	{
-		if (!m_instance)
-			return false;
+		auto c_instance = AudioEngine::Instance();
 
-		auto soundItr = m_instance->xFmod.m_soundMap.find(fileName);
-		if (soundItr != m_instance->xFmod.m_soundMap.end())
+		auto soundItr = c_instance->xFmod.m_soundMap.find(fileName);
+		if (soundItr != c_instance->xFmod.m_soundMap.end())
 			return true;
 
 		FMOD_MODE mode = FMOD_DEFAULT;
@@ -88,10 +86,10 @@ namespace PPA
 		mode |= isStreamed ? FMOD_CREATESTREAM : FMOD_CREATECOMPRESSEDSAMPLE;
 
 		FMOD::Sound* sound = nullptr;
-		m_instance->xFmod.m_system->createSound(fileName.c_str(), mode, nullptr, &sound);
+		c_instance->xFmod.m_system->createSound(fileName.c_str(), mode, nullptr, &sound);
 
 		if (sound)
-			m_instance->xFmod.m_soundMap[fileName] = sound;
+			c_instance->xFmod.m_soundMap[fileName] = sound;
 		else
 		{
 			std::stringstream ss;
@@ -121,45 +119,43 @@ namespace PPA
 	/***************************************************************************/
 	void AudioEngine::UnloadAudio(const std::string& fileName)
 	{
-		if (m_instance)
-		{
-			auto soundItr = m_instance->xFmod.m_soundMap.find(fileName);
-			if (soundItr == m_instance->xFmod.m_soundMap.end())
-				return;
+		auto c_instance = AudioEngine::Instance();
 
-			soundItr->second->release();
-			m_instance->xFmod.m_soundMap.erase(soundItr);
+		auto soundItr = c_instance->xFmod.m_soundMap.find(fileName);
+		if (soundItr == c_instance->xFmod.m_soundMap.end())
+			return;
 
-			/*std::stringstream ss;
+		soundItr->second->release();
+		c_instance->xFmod.m_soundMap.erase(soundItr);
 
-			ss << "Successfully unloaded: \"" << fileName << "\"";
-			PP::Logger::Log(
-				PP::LogEntry{ "AudioEngine::UnloadAudio", PP::LogEntry::TYPE::SUCCESS, ss.str() }, true);*/
-		}
+		/*std::stringstream ss;
+
+		ss << "Successfully unloaded: \"" << fileName << "\"";
+		PP::Logger::Log(
+			PP::LogEntry{ "AudioEngine::UnloadAudio", PP::LogEntry::TYPE::SUCCESS, ss.str() }, true);*/
 	}
 
 	void AudioEngine::UpdateAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed)
 	{
-		if (m_instance)
-		{
-			auto soundItr = m_instance->xFmod.m_soundMap.find(fileName);
-			if (soundItr == m_instance->xFmod.m_soundMap.end())
-			{
-				PP::Logger::Log(
-					PP::LogEntry{
-						"AudioEngine::UpdateAudio",
-						PP::LogEntry::TYPE::ERROR,
-						"Unable to update sound, might not have loaded properly" }, true);//*/
-				return;
-			}
+		auto c_instance = AudioEngine::Instance();
 
-			FMOD_MODE mode = FMOD_DEFAULT;
-			//mode |= FMOD_NONBLOCKING;
-			mode |= is3D ? FMOD_3D : FMOD_2D;
-			mode |= isLooping ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF;
-			mode |= isStreamed ? FMOD_CREATESTREAM : FMOD_CREATECOMPRESSEDSAMPLE;
-			soundItr->second->setMode(mode);
+		auto soundItr = c_instance->xFmod.m_soundMap.find(fileName);
+		if (soundItr == c_instance->xFmod.m_soundMap.end())
+		{
+			PP::Logger::Log(
+				PP::LogEntry{
+					"AudioEngine::UpdateAudio",
+					PP::LogEntry::TYPE::ERROR,
+					"Unable to update sound, might not have loaded properly" }, true);//*/
+			return;
 		}
+
+		FMOD_MODE mode = FMOD_DEFAULT;
+		//mode |= FMOD_NONBLOCKING;
+		mode |= is3D ? FMOD_3D : FMOD_2D;
+		mode |= isLooping ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF;
+		mode |= isStreamed ? FMOD_CREATESTREAM : FMOD_CREATECOMPRESSEDSAMPLE;
+		soundItr->second->setMode(mode);
 	}
 
 	/***************************************************************************/
@@ -178,46 +174,45 @@ namespace PPA
 	/***************************************************************************/
 	int AudioEngine::PlaySound(const std::string& fileName, float volume, const glm::vec3& position)
 	{
-		if (m_instance)
+		auto c_instance = AudioEngine::Instance();
+
+		auto soundItr = c_instance->xFmod.m_soundMap.find(fileName);
+		if (soundItr == c_instance->xFmod.m_soundMap.end())
 		{
-			auto soundItr = m_instance->xFmod.m_soundMap.find(fileName);
-			if (soundItr == m_instance->xFmod.m_soundMap.end())
-			{
-				PP::Logger::Log(
-					PP::LogEntry{
-						"AudioEngine::PlaySound",
-						PP::LogEntry::TYPE::ERROR,
-						"Unable to play sound, might not have loaded properly" }, true);//*/
-				return -1;
-			}
-
-			int channelID{ m_instance->xFmod.m_nextChannelID++ };
-			FMOD::Channel* channel{ nullptr };
-
-			m_instance->xFmod.m_system->playSound(soundItr->second, nullptr, true, &channel);
-
-			if (channel)
-			{
-				FMOD_MODE mode;
-				soundItr->second->getMode(&mode);
-
-				if (mode & FMOD_3D)
-				{
-					FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
-
-					channel->set3DAttributes(&fvPosition, nullptr);
-				}
-
-				channel->setVolume(volume);
-				channel->setPaused(false);
-
-				m_instance->xFmod.m_channelMap[channelID] = channel;
-			}
-
-			return channelID;
+			std::stringstream ss;
+			ss << "Unable to play sound \"" << fileName << "\"";
+			PP::Logger::Log(
+				PP::LogEntry{
+					"AudioEngine::PlaySound",
+					PP::LogEntry::TYPE::ERROR,
+					ss.str() }, true);//*/
+			return -1;
 		}
 
-		return -1;
+		int channelID{ c_instance->xFmod.m_nextChannelID++ };
+		FMOD::Channel* channel{ nullptr };
+
+		c_instance->xFmod.m_system->playSound(soundItr->second, nullptr, true, &channel);
+
+		if (channel)
+		{
+			FMOD_MODE mode;
+			soundItr->second->getMode(&mode);
+
+			if (mode & FMOD_3D)
+			{
+				FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
+
+				channel->set3DAttributes(&fvPosition, nullptr);
+			}
+
+			channel->setVolume(volume);
+			channel->setPaused(false);
+
+			c_instance->xFmod.m_channelMap[channelID] = channel;
+		}
+
+		return channelID;
 	}
 
 	/***************************************************************************/
@@ -228,14 +223,13 @@ namespace PPA
 	/***************************************************************************/
 	void AudioEngine::StopPlayingChannel(int channelID)
 	{
-		if (m_instance)
-		{
-			auto channelItr = m_instance->xFmod.m_channelMap.find(channelID);
+		auto c_instance = AudioEngine::Instance();
 
-			if (channelItr != m_instance->xFmod.m_channelMap.end())
-			{
-				channelItr->second->stop();
-			}
+		auto channelItr = c_instance->xFmod.m_channelMap.find(channelID);
+
+		if (channelItr != c_instance->xFmod.m_channelMap.end())
+		{
+			channelItr->second->stop();
 		}
 	}
 
@@ -253,17 +247,16 @@ namespace PPA
 	/***************************************************************************/
 	bool AudioEngine::UpdateChannel3DPosition(int channelID, const glm::vec3& position)
 	{
-		if (m_instance)
+		auto c_instance = AudioEngine::Instance();
+
+		auto channelItr = c_instance->xFmod.m_channelMap.find(channelID);
+
+		if (channelItr != c_instance->xFmod.m_channelMap.end())
 		{
-			auto channelItr = m_instance->xFmod.m_channelMap.find(channelID);
+			FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
+			channelItr->second->set3DAttributes(&fvPosition, nullptr);
 
-			if (channelItr != m_instance->xFmod.m_channelMap.end())
-			{
-				FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
-				channelItr->second->set3DAttributes(&fvPosition, nullptr);
-
-				return true;
-			}
+			return true;
 		}
 
 		return false;
@@ -271,14 +264,13 @@ namespace PPA
 
 	void AudioEngine::UpdateChannelVolume(int channelID, float volume)
 	{
-		if (m_instance)
-		{
-			auto channelItr = m_instance->xFmod.m_channelMap.find(channelID);
+		auto c_instance = AudioEngine::Instance();
 
-			if (channelItr != m_instance->xFmod.m_channelMap.end())
-			{
-				channelItr->second->setVolume(volume);
-			}
+		auto channelItr = c_instance->xFmod.m_channelMap.find(channelID);
+
+		if (channelItr != c_instance->xFmod.m_channelMap.end())
+		{
+			channelItr->second->setVolume(volume);
 		}
 	}
 
@@ -289,7 +281,7 @@ namespace PPA
 		auto fvUp = GLMToFMODVec3(upVec);
 		auto fvVelo = GLMToFMODVec3(velocity);
 
-		m_instance->xFmod.m_system->set3DListenerAttributes(0, &fvPosition, nullptr, &fvForward, &fvUp);
+		AudioEngine::Instance()->xFmod.m_system->set3DListenerAttributes(0, &fvPosition, nullptr, &fvForward, &fvUp);
 	}
 
 	FMOD_VECTOR AudioEngine::GLMToFMODVec3(const glm::vec3& vec)
