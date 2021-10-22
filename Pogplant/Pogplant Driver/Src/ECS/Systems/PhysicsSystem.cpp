@@ -200,7 +200,7 @@ void PhysicsSystem::TriggerUpdate()
 					}
 					else if (objects.first != objects.second)
 					{
-						if(SetUntrigger(_1entity, _2entity))
+						if (SetUntrigger(_1entity, _2entity))
 							objects = m_triggerList.equal_range(_1entity);
 					}
 				}
@@ -340,7 +340,7 @@ void PhysicsSystem::Update(float c_dt)
 		_1rigidbody.acceleration = PhysicsDLC::Vector::Zero;
 		_1rigidbody.impulseAcceleration = PhysicsDLC::Vector::Zero;
 		_1rigidbody.newPosition = _1transform.m_position + _1rigidbody.velocity * c_dt;
-		
+
 		if (!_1colliderIdentifier.isTrigger)
 		{
 			for (auto _2entity : collidableEntities)
@@ -364,94 +364,38 @@ void PhysicsSystem::Update(float c_dt)
 
 	}
 
-	/*auto rigidBodyEntities = m_registry->GetReg().view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
-	auto collidableEntities = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
-
-	//Update colliders that move
-	for (auto movableColliders : rigidBodyEntities)
+	if (!m_triggerQueue.empty())
 	{
-		auto& rigidbody = rigidBodyEntities.get<Components::Rigidbody>(movableColliders);
+		m_mTriggerQueueMutex.lock();
 
-		if (rigidbody.isKinematic)
-			continue;
-
-		auto& transform = rigidBodyEntities.get<Components::Transform>(movableColliders);
-		auto& collider = rigidBodyEntities.get<Components::BoxCollider>(movableColliders);
-
-		collider.aabb.m_min = transform.m_position + collider.centre - collider.extends * transform.m_scale;
-		collider.aabb.m_max = transform.m_position + collider.centre + collider.extends * transform.m_scale;
-	}
-
-	//Set the 2nd thread to do trigger list
-	m_hasJob.release();//*/
-
-
-	//O(n^2) probably not ideal, but will do for now
-	/*for (auto _1entity : rigidBodyEntities)
-	{
-		auto& _1transform = rigidBodyEntities.get<Components::Transform>(_1entity);
-		auto& _1rigidbody = rigidBodyEntities.get<Components::Rigidbody>(_1entity);
-		auto& _1collider = rigidBodyEntities.get<Components::BoxCollider>(_1entity);
-
-		if (_1rigidbody.isKinematic)
-			continue;
-
-		_1collider.aabb.CalculateAABBFromExtends(_1transform.m_position + _1collider.centre, _1collider.extends * _1transform.m_scale);
-
-		if (_1rigidbody.useGravity)
-			_1rigidbody.acceleration.y += m_gravityAcc;
-
-		//temp for now
-		PP::DebugDraw::DebugLine(_1rigidbody.newPosition, _1rigidbody.newPosition + _1rigidbody.acceleration * _1rigidbody.mass * 0.5f);
-		PP::DebugDraw::DebugLine(_1rigidbody.newPosition, _1rigidbody.newPosition + _1rigidbody.impulseAcceleration * _1rigidbody.mass * 0.5f);
-
-		_1rigidbody.velocity += _1rigidbody.acceleration * c_dt + _1rigidbody.impulseAcceleration;
-		_1rigidbody.acceleration = PhysicsDLC::Vector::Zero;
-		_1rigidbody.impulseAcceleration = PhysicsDLC::Vector::Zero;
-		_1rigidbody.newPosition = _1transform.m_position + _1rigidbody.velocity * c_dt;
-
-		if (!_1collider.isTrigger)
+		while (!m_triggerQueue.empty())
 		{
-			for (auto _2entity : collidableEntities)
+			auto& queuedAction = m_triggerQueue.back();
+
+			if (std::get<2>(queuedAction))
 			{
-				if (_2entity == _1entity)
-					continue;
-
-				auto& _2collider = collidableEntities.get<Components::BoxCollider>(_2entity);
-
-				auto collisionRule = GetCollisionRule(_1collider.collisionLayer, _2collider.collisionLayer);
-
-				if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE
-					|| _2collider.isTrigger)
-					continue;
-
-				auto _2rigidbody = m_registry->GetReg().try_get<Components::Rigidbody>(_2entity);
-				
-				//auto& _2transform = collidableEntities.get<Components::Transform>(_2entity);
-				if (PhysicsDLC::Collision::StaticAABBAABB(_1collider.aabb, _2collider.aabb))
-				{
-					PhysicsDLC::Physics::ResolveAABBDynamic(_1transform.m_position, _1rigidbody, _2rigidbody, _1collider.aabb, _2collider.aabb, 0.f, c_dt);
-				}
-				else
-				{
-					float collisionTime = -1.f;
-					if(_2rigidbody)
-						collisionTime = PhysicsDLC::Collision::DynamicAABBAABB(_1collider.aabb, _1rigidbody.velocity, _2collider.aabb, _2rigidbody->velocity, 10.f);
-					else
-						collisionTime = PhysicsDLC::Collision::DynamicAABBAABB(_1collider.aabb, _1rigidbody.velocity, _2collider.aabb, PhysicsDLC::Vector::Zero, 10.f);
-					
-					if (collisionTime > 0.f && collisionTime < c_dt)
-					{
-						//std::cout << "COLLIDE" << std::endl;
-						PhysicsDLC::Physics::ResolveAABBDynamic(_1transform.m_position, _1rigidbody, _2rigidbody, _1collider.aabb, _2collider.aabb, collisionTime, c_dt);
-					}
-				}
+				m_eventBus->emit(
+					std::make_shared<PPE::OnTriggerEnterEvent>(
+						std::get<0>(queuedAction),
+						std::get<1>(queuedAction)
+						)
+				);
 			}
+			else
+			{
+				m_eventBus->emit(
+					std::make_shared<PPE::OnTriggerExitEvent>(
+						std::get<0>(queuedAction),
+						std::get<1>(queuedAction)
+						)
+				);
+			}
+
+			m_triggerQueue.pop_back();
 		}
 
-		_1transform.m_position = _1rigidbody.newPosition;
+		m_mTriggerQueueMutex.unlock();
 	}
-	//*/
 }
 
 void PhysicsSystem::DrawImGUI()

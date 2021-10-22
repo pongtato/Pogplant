@@ -22,6 +22,8 @@
 
 #include <thread>
 #include <semaphore>
+#include <mutex>
+#include <tuple>
 
 class ECS;
 
@@ -45,9 +47,12 @@ public:
 	Components::Collider::COLLISION_RULE GetCollisionRule(int collisionLayer1, int collisionLayer2);
 
 	std::map<std::pair<int, int>, int> m_collisionMatrix;
+
 private:
 	ECS* m_registry;
 	std::shared_ptr<PPE::EventBus> m_eventBus;
+
+	std::vector<std::tuple<entt::entity, entt::entity, bool>> m_triggerQueue;
 
 	float m_gravityAcc = -9.81f;
 
@@ -70,6 +75,7 @@ private:
 	std::binary_semaphore m_hasJob;
 	std::atomic<bool> t_EXIT_THREADS;
 	std::vector<std::thread> m_threads;
+	std::mutex m_mTriggerQueueMutex;
 
 	std::unordered_multimap<entt::entity, entt::entity> m_triggerList;
 };

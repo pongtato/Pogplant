@@ -37,12 +37,24 @@ void Application::ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D*
 
 void Application::OnTriggerEnterEventTest(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
 {
-	std::cout << "TriggerEnter:" << (uint32_t)onTriggerEnterEvent->m_entity1 << " " << (uint32_t)onTriggerEnterEvent->m_entity2 << std::endl;
+	std::stringstream ss;
+	ss << "OnTriggerEnter: "
+		<< (uint32_t)onTriggerEnterEvent->m_entity1 << " "
+		<< (uint32_t)onTriggerEnterEvent->m_entity2;
+
+	PP::Logger::Log(
+		PP::LogEntry{ "Application::OnTriggerEnterEventTest", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
 }
 
 void Application::OnTriggerExitEventTest(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent)
 {
-	std::cout << "TriggerExit:" << (uint32_t)onTriggerExitEvent->m_entity1 << " " << (uint32_t)onTriggerExitEvent->m_entity2 << std::endl;
+	std::stringstream ss;
+	ss << "OnTriggerExit: "
+		<< (uint32_t)onTriggerExitEvent->m_entity1 << " "
+		<< (uint32_t)onTriggerExitEvent->m_entity2;
+
+	PP::Logger::Log(
+		PP::LogEntry{ "Application::OnTriggerExitEventTest", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
 }
 
 /****************************END OF TEMPORARY STUFF TO MOVE***************************/

@@ -133,7 +133,7 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 						_2collider->sphere,
 						collisionResult,
 						c_dt);
-				//	PhysicsDLC::Physics::ResolveAABBAABBDynamic(c_1transform.m_position, c_1rigidbody, c_2rigidbody, _1collider->aabb, _2collider->aabb, collisionResult.collisionTime, c_dt);
+					//	PhysicsDLC::Physics::ResolveAABBAABBDynamic(c_1transform.m_position, c_1rigidbody, c_2rigidbody, _1collider->aabb, _2collider->aabb, collisionResult.collisionTime, c_dt);
 				}
 			}
 
@@ -240,19 +240,13 @@ decltype(auto) PhysicsSystem::GetTriggered(entt::entity c_triggerEntity, entt::e
 
 void PhysicsSystem::SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
 {
-	//Call ontriggerenter function here
-	std::stringstream ss;
-	ss << "OnTriggerEnter: "
-		<< (uint32_t)c_triggerEntity << " "
-		<< (uint32_t)c_triggeringEntity;
+	m_mTriggerQueueMutex.lock();
 
-	//CHANGE THIS TO QUEUE SYSTEM
-	m_eventBus->emit(std::make_shared<PPE::OnTriggerEnterEvent>(c_triggerEntity, c_triggeringEntity));
-
-	PP::Logger::Log(
-		PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
+	//Add to trigger queue
+	m_triggerQueue.push_back(std::tuple{ c_triggerEntity, c_triggeringEntity, true });
 
 	m_triggerList.insert(std::make_pair(c_triggerEntity, c_triggeringEntity));
+	m_mTriggerQueueMutex.unlock();
 }
 
 bool PhysicsSystem::SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
@@ -263,19 +257,14 @@ bool PhysicsSystem::SetUntrigger(entt::entity c_triggerEntity, entt::entity c_tr
 	{
 		if ((*it).second == c_triggeringEntity)
 		{
-			//Call ontriggerexit function here
-			std::stringstream ss;
-			ss << "OnTriggerExit: "
-				<< (uint32_t)c_triggerEntity << " "
-				<< (uint32_t)c_triggeringEntity;
+			m_mTriggerQueueMutex.lock();
 
-			//CHANGE THIS TO QUEUE SYSTEM
-			m_eventBus->emit(std::make_shared<PPE::OnTriggerExitEvent>(c_triggerEntity, c_triggeringEntity));
-
-			PP::Logger::Log(
-				PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
+			//Add to trigger queue
+			m_triggerQueue.push_back(std::tuple{ c_triggerEntity, c_triggeringEntity, false });
 
 			m_triggerList.erase(it);
+
+			m_mTriggerQueueMutex.unlock();
 			return true;
 		}
 	}
