@@ -58,6 +58,9 @@
     <Filter Include="Source Files\ECS\Systems\Others">
       <UniqueIdentifier>{372aaf41-b46d-4d7f-9e5e-b868df14d2f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Events">
+      <UniqueIdentifier>{8a45bc8b-e077-4d59-8d72-9d3251f301bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -259,6 +262,12 @@
     </ClInclude>
     <ClInclude Include="Src\Application.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Events\EventSystem.h">
+      <Filter>Source Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Events\Events.h">
+      <Filter>Source Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

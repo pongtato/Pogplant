@@ -48,9 +48,10 @@ void PhysicsSystem::CleanUp()
 	}
 }
 
-void PhysicsSystem::Init(ECS* ecs)
+void PhysicsSystem::Init(ECS* ecs, std::shared_ptr<PPE::EventBus>& eventBus)
 {
 	m_registry = ecs;
+	m_eventBus = eventBus;
 }
 
 void PhysicsSystem::InitPlayState()

@@ -20,6 +20,7 @@
 #include "FileHandler.h"
 
 #include "Utils/ChronoTimer.h"
+#include "Events/Events.h"
 
 #include <iostream>
 #include <Pogplant.h>
@@ -67,6 +68,8 @@ namespace PogplantDriver
 #ifdef PPD_DEBUG_OBJECTS
 		void InitialiseDebugObjects();
 #endif
+		void BindEvents();
+
 		void UpdateTransform(entt::entity _id, Components::Transform& parent_transform);
 		void UpdateTransforms(float _Dt);
 
@@ -102,7 +105,7 @@ namespace PogplantDriver
 		GeneralSystem m_sGeneralSystem;
 		PhysicsSystem m_sPhysicsSystem;
 		ScriptSystem m_sScriptSystem;
-
+		std::shared_ptr<PPE::EventBus> m_eventBus;
 
 		/**************************
 		*
@@ -135,6 +138,8 @@ namespace PogplantDriver
 		*
 		**************************/
 		void ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D* _Mesh3D, const glm::vec3& _Color = glm::vec3{ 1 }, bool _UseLight = true, bool _EditorOnly = false, bool _FirstIt = true);
+		void OnTriggerEnterEventTest(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
+		void OnTriggerExitEventTest(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent);
 	};
 }
 

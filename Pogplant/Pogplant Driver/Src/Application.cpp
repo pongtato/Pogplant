@@ -35,6 +35,16 @@ void Application::ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D*
 	}
 }
 
+void Application::OnTriggerEnterEventTest(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
+{
+	std::cout << "TriggerEnter:" << (uint32_t)onTriggerEnterEvent->m_entity1 << " " << (uint32_t)onTriggerEnterEvent->m_entity2 << std::endl;
+}
+
+void Application::OnTriggerExitEventTest(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent)
+{
+	std::cout << "TriggerExit:" << (uint32_t)onTriggerExitEvent->m_entity1 << " " << (uint32_t)onTriggerExitEvent->m_entity2 << std::endl;
+}
+
 /****************************END OF TEMPORARY STUFF TO MOVE***************************/
 
 
@@ -48,6 +58,9 @@ void Application::Init()
 {
 	//Create audio engine
 	PPA::AudioEngine::Instance();
+
+	//Initialise event bus
+	m_eventBus = std::make_shared<PPE::EventBus>();
 
 	/// Start pogplant lib
 	PP::Entry::Init();
@@ -68,7 +81,7 @@ void Application::Init()
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 
 	m_sGeneralSystem.Init(&m_ecs);
-	m_sPhysicsSystem.Init(&m_ecs);
+	m_sPhysicsSystem.Init(&m_ecs, m_eventBus);
 	m_sScriptSystem.Init(&m_ecs);
 	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
 
@@ -81,6 +94,8 @@ void Application::Init()
 	m_nextAppState = Application::APPLICATIONSTATE::PLAY;
 	EnterPlayState();
 #endif // PPD_EDITOR_BUILD
+
+	BindEvents();
 }
 
 
@@ -298,6 +313,12 @@ void Application::InitialiseDebugObjects()
 	entity.GetComponent<Components::Name>().m_name = "Game Camera";
 }
 #endif
+
+void Application::BindEvents()
+{
+	m_eventBus->listen(this, &Application::OnTriggerEnterEventTest);
+	m_eventBus->listen(this, &Application::OnTriggerExitEventTest);
+}
 
 //recursion call
 void Application::UpdateTransform(entt::entity _id, Transform& parent_transform)
@@ -674,7 +695,7 @@ void Application::Exit()
 	Returns a reference to the Application instance
 */
 /******************************************************************************/
-Application& PogplantDriver::Application::GetInstance()
+Application& Application::GetInstance()
 {
 	std::call_once(m_onceFlag, [] {
 		m_instance.reset(new Application);

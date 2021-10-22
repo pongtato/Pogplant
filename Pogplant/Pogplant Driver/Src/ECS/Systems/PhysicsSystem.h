@@ -18,6 +18,7 @@
 #include "../ECS.h"
 #include "../Components/Components.h"
 #include "../Components/DependantComponents.h"
+#include "../../Events/Events.h"
 
 #include <thread>
 #include <semaphore>
@@ -30,7 +31,7 @@ public:
 	PhysicsSystem();
 	~PhysicsSystem();
 
-	void Init(ECS* ecs);
+	void Init(ECS* ecs, std::shared_ptr<PPE::EventBus>& eventBus);
 	void InitPlayState();
 
 	void UpdateEditor();
@@ -46,6 +47,7 @@ public:
 	std::map<std::pair<int, int>, int> m_collisionMatrix;
 private:
 	ECS* m_registry;
+	std::shared_ptr<PPE::EventBus> m_eventBus;
 
 	float m_gravityAcc = -9.81f;
 

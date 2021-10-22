@@ -246,6 +246,9 @@ void PhysicsSystem::SetTrigger(entt::entity c_triggerEntity, entt::entity c_trig
 		<< (uint32_t)c_triggerEntity << " "
 		<< (uint32_t)c_triggeringEntity;
 
+	//CHANGE THIS TO QUEUE SYSTEM
+	m_eventBus->emit(std::make_shared<PPE::OnTriggerEnterEvent>(c_triggerEntity, c_triggeringEntity));
+
 	PP::Logger::Log(
 		PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
 
@@ -265,6 +268,9 @@ bool PhysicsSystem::SetUntrigger(entt::entity c_triggerEntity, entt::entity c_tr
 			ss << "OnTriggerExit: "
 				<< (uint32_t)c_triggerEntity << " "
 				<< (uint32_t)c_triggeringEntity;
+
+			//CHANGE THIS TO QUEUE SYSTEM
+			m_eventBus->emit(std::make_shared<PPE::OnTriggerExitEvent>(c_triggerEntity, c_triggeringEntity));
 
 			PP::Logger::Log(
 				PP::LogEntry{ "PhysicsSystem::TriggerUpdate", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);

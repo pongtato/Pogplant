@@ -193,6 +193,8 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\ECS\Systems\GeneralSystem.h" />
     <ClInclude Include="Src\ECS\Systems\PhysicsSystem.h" />
     <ClInclude Include="Src\ECS\Systems\ScriptSystem.h" />
+    <ClInclude Include="Src\Events\Events.h" />
+    <ClInclude Include="Src\Events\EventSystem.h" />
     <ClInclude Include="Src\FileHandler.h" />
     <ClInclude Include="Src\AudioEngine.h" />
     <ClInclude Include="Src\ImguiHelper.h" />
