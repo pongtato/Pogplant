@@ -7,6 +7,7 @@
 #define PPD_UPDATE_EDITOR_AS_GAME //Defines if stuff should update as a game even in editor state
 #define PPD_DEBUG_OBJECTS //Whether we should spawn those random debug stuff we using
 
+#define NOMINMAX
 #include "ImguiHelper.h"
 #include "AudioEngine.h"
 #include "ECS/Entity.h"
@@ -22,14 +23,6 @@
 #include "Utils/ChronoTimer.h"
 #include "Events/Events.h"
 
-#include <iostream>
-#include <Pogplant.h>
-#include <glm.hpp>
-#include <gtc/matrix_transform.hpp>
-#include <gtc/type_ptr.hpp>
-#include <gtc/random.hpp>
-#include <imgui.h>
-
 namespace PogplantDriver
 {
 	class Application
@@ -41,7 +34,6 @@ namespace PogplantDriver
 		void Run();
 		void Exit();
 
-	private:
 		/**************************
 		*
 		* Enums
@@ -53,6 +45,21 @@ namespace PogplantDriver
 			EDITOR,
 			PLAY
 		};
+
+		void TransitionApplicationState(APPLICATIONSTATE c_newState);
+
+		inline APPLICATIONSTATE GetState() const
+		{
+			return m_appState;
+		}
+
+	private:
+		/**************************
+		*
+		* Enums
+		*
+		**************************/
+		
 
 		/**************************
 		*
@@ -92,8 +99,7 @@ namespace PogplantDriver
 		void RenderPlayState();
 		void LeavePlayState();
 
-		//Other
-		void TransitionApplicationState(APPLICATIONSTATE c_newState);
+		
 
 		/**************************
 		* 
@@ -138,8 +144,6 @@ namespace PogplantDriver
 		*
 		**************************/
 		void ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D* _Mesh3D, const glm::vec3& _Color = glm::vec3{ 1 }, bool _UseLight = true, bool _EditorOnly = false, bool _FirstIt = true);
-		void OnTriggerEnterEventTest(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
-		void OnTriggerExitEventTest(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent);
 	};
 }
 

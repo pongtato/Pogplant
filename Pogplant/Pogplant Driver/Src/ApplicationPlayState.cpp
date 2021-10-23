@@ -76,6 +76,9 @@ void Application::UpdatePlayState(float c_dt)
 void Application::RenderPlayState()
 {
 #ifdef PPD_EDITOR_BUILD
+	// Debug draw colliders
+	m_sPhysicsSystem.DrawColliders();
+
 	// Things that appear in both editor & game
 	DrawCommon();
 	// Editor
@@ -90,6 +93,7 @@ void Application::RenderPlayState()
 
 #else
 	//To do
+	DrawCommon();
 	DrawGame() // only this?
 #endif // PPD_EDITOR_BUILD
 }

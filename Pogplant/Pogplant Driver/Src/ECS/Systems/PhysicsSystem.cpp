@@ -311,7 +311,7 @@ void PhysicsSystem::Update(float c_dt)
 		}
 		default:
 			std::cerr << "PhysicsSystem::Update, unhandled collider update" << std::endl;
-			break;
+			assert(false);
 		}
 	}
 

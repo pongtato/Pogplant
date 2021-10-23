@@ -1,5 +1,14 @@
 #include "Application.h"
 
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
+#include <gtc/random.hpp>
+#include <imgui.h>
+
+#include <iostream>
+#include <Pogplant.h>
+
 namespace PPD = PogplantDriver;
 using namespace Components;
 using namespace PogplantDriver;
@@ -33,28 +42,6 @@ void Application::ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D*
 			ConstructModel(_Entity, _Model, &_Model->m_Meshes[it], _Color, _UseLight, _EditorOnly, false);
 		}
 	}
-}
-
-void Application::OnTriggerEnterEventTest(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
-{
-	std::stringstream ss;
-	ss << "OnTriggerEnter: "
-		<< (uint32_t)onTriggerEnterEvent->m_entity1 << " "
-		<< (uint32_t)onTriggerEnterEvent->m_entity2;
-
-	PP::Logger::Log(
-		PP::LogEntry{ "Application::OnTriggerEnterEventTest", PP::LogEntry::LOGTYPE::DEBUG_TEXT, ss.str() }, true);
-}
-
-void Application::OnTriggerExitEventTest(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent)
-{
-	std::stringstream ss;
-	ss << "OnTriggerExit: "
-		<< (uint32_t)onTriggerExitEvent->m_entity1 << " "
-		<< (uint32_t)onTriggerExitEvent->m_entity2;
-
-	PP::Logger::Log(
-		PP::LogEntry{ "Application::OnTriggerExitEventTest", PP::LogEntry::LOGTYPE::DEBUG_TEXT, ss.str() }, true);
 }
 
 /****************************END OF TEMPORARY STUFF TO MOVE***************************/
@@ -353,8 +340,6 @@ void Application::InitialiseDebugObjects()
 
 void Application::BindEvents()
 {
-	m_eventBus->listen(this, &Application::OnTriggerEnterEventTest);
-	m_eventBus->listen(this, &Application::OnTriggerExitEventTest);
 	m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerEnterEvent);
 	m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerExitEvent);
 }
@@ -686,6 +671,8 @@ void Application::Run()
 			default:
 				assert(false);
 			}
+
+			m_appState = m_nextAppState;
 		}
 
 		c_deltaTime = c_dtTimer.getElapsedTimePrecise();

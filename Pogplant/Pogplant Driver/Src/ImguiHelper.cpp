@@ -19,6 +19,8 @@
 #include <algorithm>
 #include <execution>
 
+#include "Application.h"
+
 namespace PogplantDriver
 {
 	//Adds blank text as seperator text to make things look nicer
@@ -285,6 +287,38 @@ namespace PogplantDriver
 				ImGui::CloseCurrentPopup();
 			}
 			ImGui::EndPopup();
+		}
+
+		//Play button
+		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,6.f });
+		if (ImGui_BeginMainStatusBar())
+		{
+			ImGui::PopStyleVar();
+			ImGui::SetCursorPosY(ImGui::GetFrameHeight() * 0.16f);
+
+			switch (Application::GetInstance().GetState())
+			{
+				case Application::APPLICATIONSTATE::EDITOR:
+				{
+					if (ImGui::Button(ICON_FA_PLAY_CIRCLE " Play"))
+					{
+						Application::GetInstance().TransitionApplicationState(Application::APPLICATIONSTATE::PLAY);
+					}
+				}
+				break;
+				case Application::APPLICATIONSTATE::PLAY:
+				{
+					if (ImGui::Button(ICON_FA_STOP_CIRCLE " Stop"))
+					{
+						Application::GetInstance().TransitionApplicationState(Application::APPLICATIONSTATE::EDITOR);
+					}
+				}
+				break;
+				default:
+					assert(false);
+			}
+
+			ImGui_EndMainStatusBar();
 		}
 
 		//Secondary bar
