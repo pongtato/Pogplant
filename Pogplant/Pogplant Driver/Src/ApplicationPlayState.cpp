@@ -12,6 +12,7 @@
 */
 /******************************************************************************/
 #include "Application.h"
+#include "Serialiser/Serializer.h"
 
 namespace PPD = PogplantDriver;
 using namespace Components;
@@ -25,7 +26,17 @@ using namespace PogplantDriver;
 /******************************************************************************/
 void Application::EnterPlayState()
 {
-	std::cout << "Entering Play State" << std::endl;
+	m_activeECS = &m_playECS;
+
+	PPD::ImguiHelper::RelinkECS(&m_playECS);
+
+	Serializer serialiser{ m_playECS };
+	if (!serialiser.Load("Resources/tmp"))
+		assert(false);
+
+	m_sGeneralSystem.Init(&m_playECS);
+	m_sPhysicsSystem.Init(&m_playECS, m_eventBus);
+	m_sScriptSystem.Init(&m_playECS);
 
 	//This is where it'll be code when transitioning to play state
 	m_sPhysicsSystem.InitPlayState();
@@ -106,5 +117,5 @@ void Application::RenderPlayState()
 /******************************************************************************/
 void Application::LeavePlayState()
 {
-	std::cout << "Leaving Play State" << std::endl;
+	m_playECS.GetReg().clear();
 }

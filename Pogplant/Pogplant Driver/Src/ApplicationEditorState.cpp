@@ -11,6 +11,7 @@
 */
 /******************************************************************************/
 #include "Application.h"
+#include "Serialiser/Serializer.h"
 
 namespace PPD = PogplantDriver;
 using namespace Components;
@@ -24,7 +25,12 @@ using namespace PogplantDriver;
 /******************************************************************************/
 void Application::EnterEditorState()
 {
-	std::cout << "Entering Editor State" << std::endl;
+	//std::cout << "Entering Editor State" << std::endl;
+	m_activeECS = &m_editorECS;
+	PPD::ImguiHelper::RelinkECS(&m_editorECS);
+	m_sGeneralSystem.Init(&m_editorECS);
+	m_sPhysicsSystem.Init(&m_editorECS, m_eventBus);
+	m_sScriptSystem.Init(&m_editorECS);
 }
 
 /******************************************************************************/
@@ -57,7 +63,9 @@ void Application::UpdateEditorState(float c_dt)
 	m_sScriptSystem.Update(c_dt);
 	m_sScriptSystem.LateUpdate();
 #else
+
 	m_sPhysicsSystem.UpdateEditor();
+
 #endif // PPD_UPDATE_EDITOR_AS_GAME
 
 
@@ -102,5 +110,8 @@ void Application::RenderEditorState()
 /******************************************************************************/
 void Application::LeaveEditorState()
 {
-	std::cout << "Leaving Editor State" << std::endl;
+	//std::cout << "Leaving Editor State" << std::endl;
+
+	Serializer serialiser{ m_editorECS };
+	serialiser.Save("Resources/tmp");
 }

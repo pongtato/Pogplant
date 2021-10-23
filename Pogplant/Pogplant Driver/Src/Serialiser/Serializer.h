@@ -14,7 +14,8 @@ namespace PogplantDriver
 	class Serializer
 	{
 	public:
-		Serializer();
+
+		Serializer(ECS& ecs);
 		// Save scene
 		void Save(const std::string& File);
 		// Load scene
@@ -23,6 +24,8 @@ namespace PogplantDriver
 		void SavePrefab(const std::string& File, entt::entity id);
 		void LoadPrefab(const std::string& File);
 	private:
+		ECS& m_ecs;
+
 		std::stack<int> m_child_counter;
 		std::stack<entt::entity> m_parent_id;
 

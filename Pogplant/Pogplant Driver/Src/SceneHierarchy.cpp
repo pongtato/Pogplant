@@ -134,7 +134,7 @@ namespace PogplantDriver
 		}
 		if (!filepath.empty())
 		{
-			Serializer serialiser;
+			Serializer serialiser{ (*ImguiHelper::m_ecs) };
 			serialiser.SavePrefab(filepath, _object);
 		}
 	}
@@ -144,7 +144,7 @@ namespace PogplantDriver
 		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
 		if (!filepath.empty())
 		{
-			Serializer serialiser;
+			Serializer serialiser{ (*ImguiHelper::m_ecs) };
 			serialiser.LoadPrefab(filepath);
 		}
 	}

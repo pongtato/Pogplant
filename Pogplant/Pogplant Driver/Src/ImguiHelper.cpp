@@ -143,6 +143,12 @@ namespace PogplantDriver
 		return true;
 	}
 
+	void ImguiHelper::RelinkECS(ECS* ecs)
+	{
+		m_ecs = ecs;
+		m_SceneHierarchy.Init(m_ecs, m_CurrentEntity);
+	}
+
 	void ImguiHelper::DrawImgui()
 	{
 		/// IMGUI start
@@ -964,7 +970,7 @@ namespace PogplantDriver
 		}
 		if (!filepath.empty())
 		{
-			Serializer serialiser;
+			Serializer serialiser{ (*m_ecs) };
 			serialiser.Save(filepath);
 		}
 	}
@@ -1262,7 +1268,7 @@ namespace PogplantDriver
 			return;
 		}
 		NewScene();
-		Serializer serialiser;
+		Serializer serialiser{ (*m_ecs) };
 		if(!serialiser.Load(path.string()))
 		{
 			//ASSET HERE

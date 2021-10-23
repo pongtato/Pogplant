@@ -22,7 +22,7 @@ void Application::ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D*
 {
 	if (!_FirstIt)
 	{
-		auto child = m_ecs.CreateChild(_Entity.GetID());
+		auto child = m_activeECS->CreateChild(_Entity.GetID());
 		child.AddComponent<Components::Renderer>(Renderer{ _Color, _Model, _Mesh3D, _UseLight, _EditorOnly });
 		child.GetComponent<Components::Name>().m_name = _Mesh3D->m_Name;
 		auto& transform = child.GetComponent<Components::Transform>();
@@ -63,7 +63,7 @@ void Application::Init()
 
 	/// Start pogplant lib
 	PP::Entry::Init();
-	PPD::ImguiHelper::InitImgui(&m_ecs);
+	PPD::ImguiHelper::InitImgui(&m_editorECS);
 
 	PPF::FileHandler& fh = fh.GetInstance();
 	// DO THIS ONLY AFTER OPENGL HAS INIT
@@ -74,21 +74,19 @@ void Application::Init()
 	fh.AddNewWatchPath("Resources/Prefabs");
 	fh.AddNewWatchPath("Resources/Audio");
 
-#ifdef PPD_DEBUG_OBJECTS
-	InitialiseDebugObjects();
-#endif
-
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 
-	m_sGeneralSystem.Init(&m_ecs);
-	m_sPhysicsSystem.Init(&m_ecs, m_eventBus);
-	m_sScriptSystem.Init(&m_ecs);
 	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
 
 #ifdef PPD_EDITOR_BUILD
 	m_appState = Application::APPLICATIONSTATE::EDITOR;
 	m_nextAppState = Application::APPLICATIONSTATE::EDITOR;
 	EnterEditorState();
+
+#ifdef PPD_DEBUG_OBJECTS
+	InitialiseDebugObjects();
+#endif
+
 #else
 	m_appState = Application::APPLICATIONSTATE::PLAY;
 	m_nextAppState = Application::APPLICATIONSTATE::PLAY;
@@ -137,7 +135,7 @@ void Application::InitialiseDebugObjects()
 	scale = { 2.0f,2.0f,2.0f };
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
 
-	auto entity = m_ecs.CreateEntity("", pos, rot, scale);
+	auto entity = m_activeECS->CreateEntity("", pos, rot, scale);
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color);
 	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
 	entity.AddComponent<Components::HeightMapDebugger>(0.0f);
@@ -155,7 +153,7 @@ void Application::InitialiseDebugObjects()
 	pos = { 0.0f, -10.0f, 0.0f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 210.0f,30.0f,210.0f };
-	entity = m_ecs.CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("", pos, rot, scale);
 	//entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
 	entity.AddComponent<Components::PrimitiveRender>(PrimitiveRender
 	(
@@ -174,7 +172,7 @@ void Application::InitialiseDebugObjects()
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 1.0f,1.0f,1.0f };
 
-	entity = m_ecs.CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("", pos, rot, scale);
 	ConstructModel(entity, shipModel, &shipModel->m_Meshes.begin()->second);
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
@@ -207,7 +205,7 @@ void Application::InitialiseDebugObjects()
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 1.0f,1.0f,1.0f };
 
-	entity = m_ecs.CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("", pos, rot, scale);
 	ConstructModel(entity, enemyModel, &enemyModel->m_Meshes.begin()->second);
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
@@ -222,7 +220,7 @@ void Application::InitialiseDebugObjects()
 	scale = { 1.0f,1.0f,1.0f }; // Affects light model and not the actual light size
 	color = { 0.2f, 0.2f, 0.15f };
 	float intensity = 13.0f;
-	entity = m_ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
 	entity.GetComponent<Components::Name>().m_name = "Directional Light";
@@ -232,7 +230,7 @@ void Application::InitialiseDebugObjects()
 	color = { 1.0f, 1.0f, 1.0f };
 	const float linear = 0.00069f;
 	const float quadratic = 0.0042f;
-	entity = m_ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
 	entity.GetComponent<Components::Name>().m_name = "White point light";
@@ -240,21 +238,21 @@ void Application::InitialiseDebugObjects()
 	intensity = 4.2f;
 	pos = { 26.0f, 10.0f, -16.5f };
 	color = { 0.0f, 0.0f, 1.0f };
-	entity = m_ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
 	entity.GetComponent<Components::Name>().m_name = "Blue light";
 
 	pos = { 21.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
-	entity = m_ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
 	entity.GetComponent<Components::Name>().m_name = "Red light";
 
 	pos = { -12.5, 10.0f, -10.0f };
 	color = { 0.0f, 1.0f, 0.0f };
-	entity = m_ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
 	entity.GetComponent<Components::Name>().m_name = "Green light";
@@ -263,7 +261,7 @@ void Application::InitialiseDebugObjects()
 	pos = { 3.0f, 1.f, 0.0f };
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
-	entity = m_ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color);
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	//entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{0.f}, 1.f });
@@ -278,7 +276,7 @@ void Application::InitialiseDebugObjects()
 	pos = { -3.0f, 1.f, 0.0f };
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
-	entity = m_ecs.CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color);
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
@@ -293,21 +291,21 @@ void Application::InitialiseDebugObjects()
 	pos = { 0.0f, 10.0, -10.0f };
 	rot = { 0.0f, 0.0f, 0.0f };
 	scale = { 42.0f, 42.0f, 42.0f };
-	entity = m_ecs.CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f, 0.0f, 0.0f}, "Ruda", "This is a very big text", false });
 	entity.GetComponent<Components::Name>().m_name = "World font";
 
 	pos = { -1.0f, 0.85f, 0.0f };
 	rot = { 0.0f, 0.0f, 0.0f };
 	scale = { 1.0f, 1.0f, 1.0f };
-	entity = m_ecs.CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f, 0.0f, 1.0f}, "Ruda", "Screen Font", true });
 	entity.GetComponent<Components::Name>().m_name = "Screen font";
 
 	/// Camera
 	pos = { 15.0f, 10.0f, 45.0f };
 	color = { 0.9f, 0.5f, 0.2f };
-	entity = m_ecs.CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("", pos, rot, scale);
 	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
 	ConstructModel(entity, cubeModel, &cubeModel->m_Meshes.begin()->second, color, false, true);
 	entity.GetComponent<Components::Name>().m_name = "Game Camera";
@@ -315,12 +313,12 @@ void Application::InitialiseDebugObjects()
 	/// Canvas test
 	pos = { 0.0f, 0.0f, -1.0f };
 	scale = { 1.0f, 1.0f, 1.0f };
-	entity = m_ecs.CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("", pos, rot, scale);
 	entity.GetComponent<Components::Name>().m_name = "Canvas";
 	pos = { -0.55f, 0.3f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
 	scale = { 0.1f, 0.1f, 0.1f };
-	auto child = m_ecs.CreateChild(entity.GetID(), "", pos, rot, scale);
+	auto child = m_activeECS->CreateChild(entity.GetID(), "", pos, rot, scale);
 	// Simulate inspector set texture
 	PP::TextureResource::UseTexture("TEST_TEX");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
@@ -329,7 +327,7 @@ void Application::InitialiseDebugObjects()
 	pos = { -0.55f, 0.2f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
 	scale = { 0.1f, 0.1f, 0.1f };
-	child = m_ecs.CreateChild(entity.GetID(), "", pos, rot, scale);
+	child = m_activeECS->CreateChild(entity.GetID(), "", pos, rot, scale);
 	// Simulate inspector set texture
 	PP::TextureResource::UseTexture("TEST_TEX2");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
@@ -348,12 +346,12 @@ void Application::BindEvents()
 void Application::UpdateTransform(entt::entity _id, Transform& parent_transform)
 {
 	//update myself
-	auto& transform = m_ecs.GetReg().get<Transform>(_id);
+	auto& transform = m_activeECS->GetReg().get<Transform>(_id);
 
 	transform.updateModelMtx(parent_transform);
 
 	//update children
-	auto relationship = m_ecs.GetReg().try_get<Relationship>(_id);
+	auto relationship = m_activeECS->GetReg().try_get<Relationship>(_id);
 	if (relationship)
 	{
 		for (auto& entity : relationship->m_children)
@@ -363,12 +361,12 @@ void Application::UpdateTransform(entt::entity _id, Transform& parent_transform)
 
 void Application::UpdateTransforms(float _Dt)
 {
-	auto camView = m_ecs.GetReg().view<Transform, Camera>();
+	auto camView = m_activeECS->GetReg().view<Transform, Camera>();
 	{
 		for (auto& entity : camView)
 		{
-			auto& camera = m_ecs.GetReg().get<Camera>(entity);
-			auto& transform = m_ecs.GetReg().get<Transform>(entity);
+			auto& camera = m_activeECS->GetReg().get<Camera>(entity);
+			auto& transform = m_activeECS->GetReg().get<Transform>(entity);
 
 			// If active update its projection & view;
 			if (camera.m_Active)
@@ -383,12 +381,12 @@ void Application::UpdateTransforms(float _Dt)
 	}
 
 	// Update particle system
-	auto particleView = m_ecs.GetReg().view<Transform, ParticleSystem>();
+	auto particleView = m_activeECS->GetReg().view<Transform, ParticleSystem>();
 	{
 		for (auto& entity : particleView)
 		{
-			auto& transform = m_ecs.GetReg().get<Transform>(entity);
-			auto& pSys = m_ecs.GetReg().get<ParticleSystem>(entity);
+			auto& transform = m_activeECS->GetReg().get<Transform>(entity);
+			auto& pSys = m_activeECS->GetReg().get<ParticleSystem>(entity);
 
 			// Burst vs constant spawn
 			if (!pSys.m_Burst)
@@ -464,8 +462,8 @@ void Application::UpdateTransforms(float _Dt)
 	}
 
 	/// Height map example GAB refer to this hehe xd
-	auto hmd_view = m_ecs.GetReg().view<Transform, HeightMapDebugger>();
-	auto heightMap_view = m_ecs.GetReg().view<Transform, PrimitiveRender>();
+	auto hmd_view = m_activeECS->GetReg().view<Transform, HeightMapDebugger>();
+	auto heightMap_view = m_activeECS->GetReg().view<Transform, PrimitiveRender>();
 	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
 	for (auto hm : heightMap_view)
 	{
@@ -480,12 +478,12 @@ void Application::UpdateTransforms(float _Dt)
 	}
 
 	//Update transform matrix of all gameobject
-	auto view = m_ecs.GetReg().view<Transform>();
+	auto view = m_activeECS->GetReg().view<Transform>();
 	for (auto entity : view)
 	{
 		auto& transform = view.get<Transform>(entity);
 
-		auto relationship = m_ecs.GetReg().try_get<Relationship>(entity);
+		auto relationship = m_activeECS->GetReg().try_get<Relationship>(entity);
 		if (relationship && relationship->m_parent == entt::null)
 		{
 			transform.updateModelMtx();
@@ -499,7 +497,7 @@ void Application::UpdateTransforms(float _Dt)
 	}
 
 	// Canvas
-	auto canvasView = m_ecs.GetReg().view<Transform, Canvas>();
+	auto canvasView = m_activeECS->GetReg().view<Transform, Canvas>();
 	for (auto it : canvasView)
 	{
 		auto& transform = canvasView.get<Transform>(it);
@@ -541,11 +539,11 @@ void Application::DrawCommon()
 	if (currIdx != entt::null)
 	{
 		//renderOjbect = GO_Resource::m_GO_Container[currIdx].m_RenderObject;
-		renderOjbect = m_ecs.GetReg().try_get<Renderer>(currIdx);
+		renderOjbect = m_activeECS->GetReg().try_get<Renderer>(currIdx);
 	}
 
 	// Common, since directional
-	PP::Renderer::ShadowPass(m_ecs.GetReg());
+	PP::Renderer::ShadowPass(m_activeECS->GetReg());
 }
 
 void Application::DrawEditor()
@@ -553,16 +551,16 @@ void Application::DrawEditor()
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw(m_ecs.GetReg(), nullptr, true);
+	PP::Renderer::Draw(m_activeECS->GetReg(), nullptr, true);
 	PP::Renderer::EndBuffer();
 
 	// Where to draw the gpass FB to
 	PP::Renderer::PostProcess();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::GLightPass(m_ecs.GetReg(), true);
+	PP::Renderer::GLightPass(m_activeECS->GetReg(), true);
 	PP::Renderer::EndBuffer();
 
-	PP::Renderer::DebugPass(m_ecs.GetReg());
+	PP::Renderer::DebugPass(m_activeECS->GetReg());
 	//PP::Renderer::BlurPass();
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();
@@ -572,18 +570,18 @@ void Application::DrawEditor()
 
 void Application::DrawGame()
 {
-	auto results = m_ecs.GetReg().view<Renderer>();
+	auto results = m_activeECS->GetReg().view<Renderer>();
 
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw(m_ecs.GetReg(), nullptr, false);
+	PP::Renderer::Draw(m_activeECS->GetReg(), nullptr, false);
 	PP::Renderer::EndBuffer();
 
 	// Where to draw the gpass FB to
 	PP::Renderer::PostProcess();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::GLightPass(m_ecs.GetReg(), false);
+	PP::Renderer::GLightPass(m_activeECS->GetReg(), false);
 	PP::Renderer::EndBuffer();
 
 	PP::Renderer::BlurPass();

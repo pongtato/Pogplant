@@ -28,6 +28,7 @@ namespace PogplantDriver
 	struct ImguiHelper
 	{
 		static bool InitImgui(ECS* ecs);
+		static void RelinkECS(ECS* ecs);
 		static void DrawImgui();
 		static void DrawDock();
 		static void CleanUpImgui();

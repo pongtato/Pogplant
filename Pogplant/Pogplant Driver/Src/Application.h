@@ -4,7 +4,7 @@
 #define APPLICATION_H_
 
 #define PPD_EDITOR_BUILD //If defined, will mean this is in editor mode, remove for final game
-#define PPD_UPDATE_EDITOR_AS_GAME //Defines if stuff should update as a game even in editor state
+//#define PPD_UPDATE_EDITOR_AS_GAME //Defines if stuff should update as a game even in editor state
 #define PPD_DEBUG_OBJECTS //Whether we should spawn those random debug stuff we using
 
 #define NOMINMAX
@@ -107,7 +107,10 @@ namespace PogplantDriver
 		* s tag being system
 		* 
 		**************************/
-		ECS m_ecs;
+		ECS m_editorECS;
+		ECS m_playECS;
+		ECS* m_activeECS;
+
 		GeneralSystem m_sGeneralSystem;
 		PhysicsSystem m_sPhysicsSystem;
 		ScriptSystem m_sScriptSystem;

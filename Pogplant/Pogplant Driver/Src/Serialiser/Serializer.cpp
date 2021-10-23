@@ -10,7 +10,8 @@
 using namespace Components;
 namespace PogplantDriver
 {
-	Serializer::Serializer() : 
+	Serializer::Serializer(ECS& ecs) :
+	m_ecs{ ecs },
 	m_child_counter()
 	{
 	}
@@ -47,7 +48,7 @@ namespace PogplantDriver
 			Json::Value root;
 			Json::Value subroot = SaveComponents(id);
 			root[i] = subroot;
-			auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
+			auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
 			if (relationship_component)
 			{
 				RecurSaveChild(root, id, ++i);
@@ -78,7 +79,7 @@ namespace PogplantDriver
 			Json::Value root;
 			int  i = 0;
 			
-			auto entities = ImguiHelper::m_ecs->GetReg().view<Transform>();
+			auto entities = m_ecs.GetReg().view<Transform>();
 			for(auto entity = entities.rbegin(); entity != entities.rend() ; ++entity)
 			{
 				Json::Value subroot = SaveComponents(*entity);
@@ -103,9 +104,9 @@ namespace PogplantDriver
 
 		//Get all pointers to all components
 
-		auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
-		auto render_component = ImguiHelper::m_ecs->GetReg().try_get<Renderer>(id);
-		auto script_component = ImguiHelper::m_ecs->GetReg().try_get<Scriptable>(id);
+		auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
+		auto render_component = m_ecs.GetReg().try_get<Renderer>(id);
+		auto script_component = m_ecs.GetReg().try_get<Scriptable>(id);
 
 		Try_Save_Component<Transform>(subroot, id);
 		Try_Save_Component<Name>(subroot, id);
@@ -172,7 +173,7 @@ namespace PogplantDriver
 				Json::Value subroot = root[iter.index()];
 
 				// Load components
-				LoadComponents(subroot, ImguiHelper::m_ecs->GetReg().create());
+				LoadComponents(subroot, m_ecs.GetReg().create());
 
 				++iter;
 			}
@@ -201,7 +202,7 @@ namespace PogplantDriver
 
 		if (relationship)
 		{
-			auto& new_relation = ImguiHelper::m_ecs->GetReg().emplace<Relationship>(id);
+			auto& new_relation = m_ecs.GetReg().emplace<Relationship>(id);
 			int child = relationship.asInt();
 			//Starting case
 			if (child != 0 && m_parent_id.empty())
@@ -212,7 +213,7 @@ namespace PogplantDriver
 			//Base Child only case, Seek parent
 			else if (child == 0 && !m_parent_id.empty())
 			{
-				auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(m_parent_id.top());
+				auto relationship_component = m_ecs.GetReg().try_get<Relationship>(m_parent_id.top());
 				relationship_component->m_children.insert(id);
 				new_relation.m_parent = m_parent_id.top();
 
@@ -221,7 +222,7 @@ namespace PogplantDriver
 			//Case the child is also of a parent of another child
 			else 
 			{
-				auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(m_parent_id.top());
+				auto relationship_component = m_ecs.GetReg().try_get<Relationship>(m_parent_id.top());
 				relationship_component->m_children.insert(id);
 				new_relation.m_parent = m_parent_id.top();
 				--m_child_counter.top();
@@ -268,7 +269,7 @@ namespace PogplantDriver
 				}
 			}
 
-			ImguiHelper::m_ecs->GetReg().emplace<Renderer>(
+			m_ecs.GetReg().emplace<Renderer>(
 				id,
 				glm::vec3{ render["ColorTint"][0].asFloat(),render["ColorTint"][1].asFloat(),render["ColorTint"][2].asFloat() },
 				model,
@@ -285,20 +286,20 @@ namespace PogplantDriver
 			{
 				temp_ScriptTypes.emplace(it->c_str(), scripting[*it].asBool());
 			}
-			ImguiHelper::m_ecs->GetReg().emplace<Scriptable>(id, temp_ScriptTypes);
+			m_ecs.GetReg().emplace<Scriptable>(id, temp_ScriptTypes);
 		}
 
 	}
 
 	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id,int counter)
 	{
-		auto relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(id);
+		auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
 		if (relationship_component)
 		{
 			for (auto& child : relationship_component->m_children)
 			{
 				_classroot[counter++] = SaveComponents(child);
-				auto child_relationship_component = ImguiHelper::m_ecs->GetReg().try_get<Relationship>(child);
+				auto child_relationship_component = m_ecs.GetReg().try_get<Relationship>(child);
 				if (child_relationship_component)
 				{
 					counter = RecurSaveChild(_classroot, child, counter);
