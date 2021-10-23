@@ -2,7 +2,9 @@
 #include <unordered_map>
 #include "ECS/entt_ecs/entt.hpp"
 #include "ContentBrowser.h"
+#include "SceneHierarchy.h"
 #include "Pogplant.h"
+
 class ECS;
 class Entity;
 
@@ -47,10 +49,9 @@ namespace PogplantDriver
 		static void SaveSceneAs();
 		static void NewScene();
 		static void OpenScene();
-		static void SavePrefab(entt::entity _object);
-		static void LoadPrefab();
 		
 		static Directory m_Directory;
+		static SceneHierarchy m_SceneHierarchy;
 	private:
 		//Recopy the Main-menu bar but change the ID stack
 		static bool ImGui_BeginMainStatusBar();

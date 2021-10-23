@@ -102,6 +102,7 @@ namespace PogplantDriver
 	entt::entity ImguiHelper::m_CurrentEntity = entt::null;
 	ECS* ImguiHelper::m_ecs = nullptr;
 	Directory ImguiHelper::m_Directory;
+	SceneHierarchy ImguiHelper::m_SceneHierarchy;
 
 	// Guizmo editor stuff
 	static ImGuizmo::OPERATION m_EditMode(ImGuizmo::TRANSLATE);
@@ -134,6 +135,8 @@ namespace PogplantDriver
 		ImGui_ImplOpenGL3_Init();
 
 		m_ecs = ecs;
+
+		m_SceneHierarchy.Init(m_ecs, m_CurrentEntity);
 
 		return true;
 	}
@@ -381,56 +384,7 @@ namespace PogplantDriver
 		}
 		ImGui::End();
 
-		ImGui::Begin("Scene Hierarchy");
-		{
-			auto results = m_ecs->GetReg().view<Components::Transform>();
-
-			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
-				m_CurrentEntity = entt::null;
-
-			std::for_each(results.rbegin(), results.rend(), [&results](auto entity) 
-				{
-					DrawEntityNode(entity);
-				});
-
-
-			if (m_CurrentEntity != entt::null)
-			{
-				if (ImGui::BeginPopupContextWindow("EntityPopup", ImGuiPopupFlags_MouseButtonRight))
-				{
-					if (ImGui::MenuItem("Create Child"))
-					{
-						m_ecs->CreateChild(m_CurrentEntity);
-					}
-
-					if (ImGui::MenuItem("Delete Entity"))
-					{
-						m_ecs->DestroyEntity(m_CurrentEntity);
-						m_CurrentEntity = entt::null;
-
-					}
-					if (ImGui::MenuItem("Save Prefab"))
-					{
-						SavePrefab(m_CurrentEntity);
-					}
-
-
-					ImGui::EndPopup();
-				}
-			}
-
-			// Right-click on blank space
-			if (ImGui::BeginPopupContextWindow("NoEntityPopup", 1, false))
-			{
-				if (ImGui::MenuItem("Create Empty Entity"))
-					m_ecs->CreateEntity();
-				if (ImGui::MenuItem("Load Prefab"))
-					LoadPrefab();
-
-				ImGui::EndPopup();
-			}
-		}
-		ImGui::End();
+		m_SceneHierarchy.RenderSceneHierarchy(m_CurrentEntity);
 
 		ImGui::Begin("Inspector");
 		{
@@ -994,30 +948,6 @@ namespace PogplantDriver
 			OpenScene(filepath);
 	}
 
-	void PogplantDriver::ImguiHelper::SavePrefab(entt::entity _object)
-	{
-		std::string filepath = Pogplant::FileDialogs::SaveFile("Json Files(*.json)\0*.json\0");
-		//Append .json 
-		if (filepath.find(".json") == std::string::npos)
-		{
-			filepath.append(".json");
-		}
-		if (!filepath.empty())
-		{
-			Serializer serialiser;
-			serialiser.SavePrefab(filepath, _object);
-		}
-	}
-
-	void PogplantDriver::ImguiHelper::LoadPrefab()
-	{
-		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
-		if (!filepath.empty())
-		{
-			Serializer serialiser;
-			serialiser.LoadPrefab(filepath);
-		}
-	}
 
 	bool PogplantDriver::ImguiHelper::ImGui_BeginMainStatusBar()
 	{
@@ -1288,52 +1218,6 @@ namespace PogplantDriver
 		}
 	}
 
-	bool ImguiHelper::DrawEntityNode(entt::entity entity, bool draw_childen)
-	{
-
-		auto _r = m_ecs->GetReg().try_get<Components::Relationship>(entity);
-
-		if (!draw_childen && _r && _r->m_parent != entt::null)
-			return false;
-
-		auto name = m_ecs->GetReg().get<Components::Name>(entity);
-		std::string obj_name = name.m_name;
-		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
-		if(_r && _r->m_children.size() != 0)
-			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_SpanAvailWidth;
-		else
-			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_SpanAvailWidth;
-
-		bool is_opened = ImGui::TreeNodeEx((void*)(uint64_t)entity, flags, obj_name.c_str());
-
-		if (ImGui::IsItemClicked() || ImGui::IsMouseClicked(1) && ImGui::IsItemHovered(ImGuiHoveredFlags_RectOnly))
-			m_CurrentEntity = entity;
-
-		bool is_deleted = false;
-
-		if (is_opened)
-		{
-			std::string c_name = "<no children>";
-
-			if (_r)
-			{
-				std::set<entt::entity> s = _r->m_children;
-				//int i = 0;
-				for (const auto& ent : s)
-				{
-					DrawEntityNode(ent, true);
-				}
-			}
-			else
-			{
-
-			}
-			ImGui::TreePop();
-
-		}
-
-		return is_deleted;
-	}
 
 	void ImguiHelper::OpenScene(const std::filesystem::path& path)
 	{
