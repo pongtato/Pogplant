@@ -24,14 +24,19 @@ namespace Scripting
     public class Scripting
     {
         // Add Script Types here
-        public static PlayerScript Player()
+        public static PlayerScript PlayerScript()
         {
             return new PlayerScript();
         }
 
-        public static EnemyScript Enemy()
+        public static EnemyScript EnemyScript()
         {
             return new EnemyScript();
+        }
+
+        public static FollowSpline FollowSpline()
+        {
+            return new FollowSpline();
         }
     }
 }

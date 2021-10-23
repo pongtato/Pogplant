@@ -192,7 +192,7 @@ void Application::InitialiseDebugObjects()
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
 	std::unordered_map<std::string, bool> shipScripts;
-	shipScripts["Player"] = false;
+	shipScripts["PlayerScript"] = false;
 	entity.AddComponent<Components::Scriptable>(shipScripts);
 	entity.AddComponent<Components::ParticleSystem>
 		(
@@ -225,7 +225,7 @@ void Application::InitialiseDebugObjects()
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
 	std::unordered_map<std::string, bool> enemyScripts;
-	enemyScripts["Enemy"] = false;
+	enemyScripts["EnemyScript"] = false;
 	entity.AddComponent<Components::Scriptable>(enemyScripts);
 	entity.GetComponent<Components::Name>().m_name = "Enemy";
 

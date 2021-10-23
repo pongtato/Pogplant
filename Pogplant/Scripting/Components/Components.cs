@@ -28,18 +28,18 @@ namespace Scripting
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector3
     {
-        public double X;
-        public double Y;
-        public double Z;
+        public Single X;
+        public Single Y;
+        public Single Z;
 
-        public Vector3(double x, double y, double z)
+        public Vector3(Single x, Single y, Single z)
         {
             X = x;
             Y = y;
             Z = z;
         }
 
-        public Vector3(double v)
+        public Vector3(Single v)
         {
             X = v;
             Y = v;

@@ -49,6 +49,8 @@ public:
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
 	void OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent);
 
+	std::vector<std::string> m_scriptNames;
+
 private:
 	// Call the Start function of every script needed for each object
 	//void Start();
@@ -66,6 +68,7 @@ private:
 	MonoDomain* m_ptrMonoDomain = nullptr;
 	MonoAssembly* m_ptrGameAssembly = nullptr;
 	MonoImage* m_ptrGameAssemblyImage = nullptr;
+	const std::string m_namespace{"Scripting"};
 	// Save all my mono objects here, key is the type of script.
 	//std::unordered_map<std::string, MonoObjectWithGC*> m_MonoObjects;
 	std::unordered_map<std::string, std::unique_ptr<MonoObjectWithGC>> m_MonoObjects;

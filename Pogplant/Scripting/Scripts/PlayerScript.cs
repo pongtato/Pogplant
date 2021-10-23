@@ -40,15 +40,15 @@ namespace Scripting
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            if(transform.Position.Y >= 10.0f)
-            {
-                rigidbody.AddForce(new Vector3(0, -3.0f, 0));
-            }
+            //if(transform.Position.Y >= 10.0f)
+            //{
+            //    rigidbody.AddForce(new Vector3(0, -3.0f, 0));
+            //}
 
-            if(transform.Position.Y < 10.0f)
-            {
-                rigidbody.AddForce(new Vector3(0, 3.0f, 0));
-            }
+            //if(transform.Position.Y < 10.0f)
+            //{
+            //    rigidbody.AddForce(new Vector3(0, 3.0f, 0));
+            //}
 
             if(InputUtility.onKeyHeld(KEY_ID.KEY_A))
             {
@@ -69,7 +69,6 @@ namespace Scripting
             float vertical_input = (InputUtility.onKeyHeld(KEY_ID.KEY_W) ? 1.0f : 0.0f) + (InputUtility.onKeyHeld(KEY_ID.KEY_S) ? -1.0f : 0.0f);
 
             Vector3 force_dir = new Vector3(horizontal_input, vertical_input, 0) * movement_speed * dt; // 32 is magic number
-
             transform.Position += force_dir;
 
             //if (rigidbody.velocity <= movement_speed)

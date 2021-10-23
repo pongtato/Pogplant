@@ -318,77 +318,52 @@ void ScriptSystem::LoadMemory()
 			{
 				BindFunctions();
 				
-				MonoClass* m_MonoClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "Scripting");
-				MonoClass* m_MonoPlayerClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "PlayerScript");
-				MonoClass* m_MonoEnemyClass = mono_class_from_name(m_ptrGameAssemblyImage, "Scripting", "EnemyScript");
+				MonoClass* monoMainClass = mono_class_from_name(m_ptrGameAssemblyImage, m_namespace.c_str(), "Scripting");
 
-				if (m_MonoPlayerClass && m_MonoClass)
+				if (monoMainClass)
 				{
-					// Main method describe
-					MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(".Scripting:Player()", false);
+					m_scriptNames.push_back("PlayerScript");
+					m_scriptNames.push_back("EnemyScript");
+					m_scriptNames.push_back("FollowSpline");
 
-					if (ptrMainMethodDesc)
+					for (auto& scriptName : m_scriptNames)
 					{
-						// Find the main in mainclass
-						MonoMethod* ptrMainMethod = mono_method_desc_search_in_class(ptrMainMethodDesc, m_MonoClass);
-						if (ptrMainMethod)
+						MonoClass* monoclass = mono_class_from_name(m_ptrGameAssemblyImage, m_namespace.c_str(), scriptName.c_str());
+
+						if (monoclass)
 						{
-							MonoObject* ptrExObject = nullptr;
-							MonoObject* m_ptrGameObject = mono_runtime_invoke(ptrMainMethod, nullptr, nullptr, &ptrExObject);
+							// Main method describe
+							std::string fullname = '.' + m_namespace + ':' + scriptName.c_str() + "()";
+							MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(fullname.c_str(), false);
 
-							if (m_ptrGameObject)
+							if (ptrMainMethodDesc)
 							{
-								// Garbage Collection Handle for the game object
-								uint32_t m_gameObjectGCHandle = mono_gchandle_new(m_ptrGameObject, false);
-								// Add to the map
-								m_MonoObjects["Player"] = std::make_unique<MonoObjectWithGC>(m_gameObjectGCHandle, m_ptrGameObject);
-
-								// Exception hit
-								if (ptrExObject)
+								// Find the main in mainclass
+								MonoMethod* ptrMainMethod = mono_method_desc_search_in_class(ptrMainMethodDesc, monoMainClass);
+								if (ptrMainMethod)
 								{
-									MonoString* exString = mono_object_to_string(ptrExObject, nullptr);
-									const char* exCString = mono_string_to_utf8(exString);
-									std::cout << exCString << std::endl;
+									MonoObject* ptrExObject = nullptr;
+									MonoObject* m_ptrGameObject = mono_runtime_invoke(ptrMainMethod, nullptr, nullptr, &ptrExObject);
+
+									if (m_ptrGameObject)
+									{
+										// Garbage Collection Handle for the game object
+										uint32_t m_gameObjectGCHandle = mono_gchandle_new(m_ptrGameObject, false);
+										// Add to the map
+										m_MonoObjects[scriptName.c_str()] = std::make_unique<MonoObjectWithGC>(m_gameObjectGCHandle, m_ptrGameObject);
+
+										// Exception hit
+										if (ptrExObject)
+										{
+											MonoString* exString = mono_object_to_string(ptrExObject, nullptr);
+											const char* exCString = mono_string_to_utf8(exString);
+											std::cout << exCString << std::endl;
+										}
+
+										// Free desc
+										mono_method_desc_free(ptrMainMethodDesc);
+									}
 								}
-
-								// Free desc
-								mono_method_desc_free(ptrMainMethodDesc);
-							}
-						}
-					}
-				}
-
-				if (m_MonoEnemyClass && m_MonoClass)
-				{
-					// Main method describe
-					MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(".Scripting:Enemy()", false);
-
-					if (ptrMainMethodDesc)
-					{
-						// Find the main in mainclass
-						MonoMethod* ptrMainMethod = mono_method_desc_search_in_class(ptrMainMethodDesc, m_MonoClass);
-						if (ptrMainMethod)
-						{
-							MonoObject* ptrExObject = nullptr;
-							MonoObject* m_ptrGameObject = mono_runtime_invoke(ptrMainMethod, nullptr, nullptr, &ptrExObject);
-
-							if (m_ptrGameObject)
-							{
-								// Garbage Collection Handle for the game object
-								uint32_t m_gameObjectGCHandle = mono_gchandle_new(m_ptrGameObject, false);
-								// Add to the map
-								m_MonoObjects["Enemy"] = std::make_unique<MonoObjectWithGC>(m_gameObjectGCHandle, m_ptrGameObject);
-
-								// Exception hit
-								if (ptrExObject)
-								{
-									MonoString* exString = mono_object_to_string(ptrExObject, nullptr);
-									const char* exCString = mono_string_to_utf8(exString);
-									std::cout << exCString << std::endl;
-								}
-
-								// Free desc
-								mono_method_desc_free(ptrMainMethodDesc);
 							}
 						}
 					}

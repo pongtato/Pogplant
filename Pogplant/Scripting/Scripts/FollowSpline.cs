@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace Scripting
 {
-    class FollowSpline : MonoBehaviour
+    public class FollowSpline : MonoBehaviour
     {
         private CatmullRomSpline catmullRom = new CatmullRomSpline();
 
@@ -28,13 +28,17 @@ namespace Scripting
 
         private float rotation_speed = 10.0f;
 
-
         private Vector3[] waypoints = null; // Array of waypoints we get from running the CatmullRomSpline script.
         private uint current_waypoint_index = 1; // Initiallized to 2 so that skip the first 3 waypoints in waypoints array.
         private float alpha = 0.0f; // Clamped between [0,1], this value is used to interpolate between 2 waypoints.
         private float d_alpha = 0.0f; // This is the rate of change of alpha, determined by the distance between the 2 waypoints and the follow_speed (Essentially the time it takes to go between 2 waypoints)
         private bool isEnd = false; //  This is true when we have arrived a the end of the path
         private float time_between_waypoint = 0.0f;
+
+        public FollowSpline()
+        {
+
+        }
 
         // Start is called before the first frame update
         public override void Start()
@@ -91,6 +95,10 @@ namespace Scripting
 
             if (current_waypoint_index == waypoints.Length - 2)
                 isEnd = true;
+        }
+
+        public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
+        {
         }
     }
 }

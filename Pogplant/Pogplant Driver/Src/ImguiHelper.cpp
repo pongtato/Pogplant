@@ -840,8 +840,9 @@ namespace PogplantDriver
 					{
 						std::vector<std::string> totalScripts;
 						// I have to hard code the script names for now until I figure out a better solution.
-						totalScripts.push_back("Player");
-						totalScripts.push_back("Enemy");
+						totalScripts.push_back("PlayerScript");
+						totalScripts.push_back("EnemyScript");
+						totalScripts.push_back("FollowSpline");
 
 						for (auto& scriptName : totalScripts)
 						{
