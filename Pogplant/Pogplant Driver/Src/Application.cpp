@@ -323,6 +323,13 @@ void Application::InitialiseDebugObjects()
 	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
 	ConstructModel(entity, cubeModel, &cubeModel->m_Meshes.begin()->second, color, false, true);
 	entity.GetComponent<Components::Name>().m_name = "Game Camera";
+
+	/// Canvas test
+	pos = { 0.5f, 0.5f, 0.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	entity = m_ecs.CreateEntity("", pos, rot, scale);
+	entity.AddComponent<Components::Canvas>(Canvas{ {color,1.0f}, -1 });
+	entity.GetComponent<Components::Name>().m_name = "Canvas Image";
 }
 #endif
 
@@ -370,7 +377,6 @@ void Application::UpdateTransforms(float _Dt)
 		}
 	}
 
-	PP::MeshInstance::ResetCount();
 	// Update particle system
 	auto particleView = m_ecs.GetReg().view<Transform, ParticleSystem>();
 	{
@@ -426,7 +432,6 @@ void Application::UpdateTransforms(float _Dt)
 					}
 
 					float t = it.m_Life / it.m_BaseLife;
-					it.m_Scale = t * it.m_BaseScale;
 					// Update position
 					if (it.m_Gravity)
 					{
@@ -447,12 +452,11 @@ void Application::UpdateTransforms(float _Dt)
 					glm::mat4 model = glm::mat4{ 1 };
 					model = glm::translate(model, it.m_Position);
 					model = glm::scale(model, it.m_Scale);
-					PP::MeshInstance::SetInstance(PP::InstanceData{ model, it.m_Color, -1, 0 });
+					PP::MeshInstance::SetInstance(PP::InstanceData{ model, it.m_Color, it.m_TexID, false });
 				}
 			}
 		}
 	}
-	PP::MeshBuilder::RebindQuad();
 
 	/// Height map example GAB refer to this hehe xd
 	auto hmd_view = m_ecs.GetReg().view<Transform, HeightMapDebugger>();
@@ -487,6 +491,15 @@ void Application::UpdateTransforms(float _Dt)
 		{
 			transform.updateModelMtx();
 		}
+	}
+
+	// Canvas
+	auto canvasView = m_ecs.GetReg().view<Transform, Canvas>();
+	for (auto it : canvasView)
+	{
+		auto& transform = canvasView.get<Transform>(it);
+		auto& canvas = canvasView.get<Canvas>(it);
+		PP::MeshInstance::SetInstance(PP::InstanceData{ transform.m_ModelMtx, canvas.m_Color, canvas.m_TexID, true });
 	}
 }
 

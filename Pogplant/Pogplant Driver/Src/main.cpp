@@ -9,7 +9,8 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	PogplantDriver::Application::GetInstance().Init();
-	PogplantDriver::Application::GetInstance().Run();
-	PogplantDriver::Application::GetInstance().Exit();
+	PogplantDriver::Application& instance = PogplantDriver::Application::GetInstance();
+	instance.Init();
+	instance.Run();
+	instance.Exit();
 }

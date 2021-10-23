@@ -17,6 +17,8 @@ namespace Pogplant
 		static std::vector<glm::vec3> m_DebugVerts;
 		static float m_LineWidth;
 		static float m_GridWidth;
+		static float m_GridIntervalWidth;
+		static int m_GridInterval;
 
 	private:
 		static glm::vec3 CircleWrapper(float _Angle, float _Radius, glm::vec3 _Axis1, glm::vec3 _Axis2);

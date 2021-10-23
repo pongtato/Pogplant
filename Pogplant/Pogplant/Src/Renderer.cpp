@@ -10,7 +10,7 @@
 #include "MeshBuilder.h"
 #include "DebugDraw.h"
 #include "Logger.h"
-
+#include "MeshInstance.h"
 #include "FontResource.h"
 #include "CameraResource.h"
 #include "MeshResource.h"
@@ -354,9 +354,11 @@ namespace Pogplant
 
 		// Render G pass objects first
 		ShaderLinker::Use("BASIC");
+		MeshBuilder::RebindQuad();
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
+		MeshInstance::ResetCount();
 		ShaderLinker::UnUse();
 
 		ShaderLinker::Use("MODEL");
@@ -462,20 +464,51 @@ namespace Pogplant
 			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
 			glBindVertexArray(0);
 
-			/// Grid
+			/// Grid - thin
 			// Clear for grid
 			DebugDraw::NewFrame();
 
 			// Debug grid size
 			glLineWidth(DebugDraw::m_GridWidth);
 
-			int camFar = static_cast<int>(currCam->GetCameraConfig().m_Far) + 1;
+			int camFar = static_cast<int>(currCam->GetCameraConfig().m_Far);
 
-			for (int i = -camFar; i < camFar; i++)
+			for (int i = -camFar; i <= camFar; i++)
+			{
+				if (i % DebugDraw::m_GridInterval != 0)
+				{
+					DebugDraw::DebugLine(glm::vec3{ i,0,-camFar }, glm::vec3{ i,0,camFar });
+				}
+			}
+			for (int i = -camFar; i <= camFar; i++)
+			{
+				if (i % DebugDraw::m_GridInterval != 0)
+				{
+					DebugDraw::DebugLine(glm::vec3{ -camFar,0,i }, glm::vec3{ camFar,0,i });
+				}
+			}
+
+			// Update verts to mesh
+			MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
+
+			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.42f, 0.42f, 0.42f });
+
+			glBindVertexArray(lineMesh->m_VAO);
+			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
+			glBindVertexArray(0);
+
+			/// Grid - thicc
+			// Clear for grid
+			DebugDraw::NewFrame();
+
+			// Debug grid size
+			glLineWidth(DebugDraw::m_GridIntervalWidth);
+
+			for (int i = -camFar; i <= camFar; i += DebugDraw::m_GridInterval)
 			{
 				DebugDraw::DebugLine(glm::vec3{ i,0,-camFar }, glm::vec3{ i,0,camFar });
 			}
-			for (int i = -camFar; i < camFar; i++)
+			for (int i = -camFar; i <= camFar; i+=DebugDraw::m_GridInterval)
 			{
 				DebugDraw::DebugLine(glm::vec3{ -camFar,0,i }, glm::vec3{ camFar,0,i });
 			}
@@ -483,8 +516,7 @@ namespace Pogplant
 			// Update verts to mesh
 			MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
 
-			// Debug color default to gree for now
-			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.7f, 0.7f, 0.7f });
+			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.69f, 0.69f, 0.69f });
 
 			glBindVertexArray(lineMesh->m_VAO);
 			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);

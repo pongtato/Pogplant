@@ -304,6 +304,12 @@ namespace Components
 		bool m_LerpSpeed;
 	};
 
+	struct Canvas
+	{
+		glm::vec4 m_Color;
+		int m_TexID;
+	};
+
 	//Temporary
 	struct CharacterController
 	{
@@ -315,7 +321,6 @@ namespace Components
 	{
 		float currHeight = 0.0f;
 	};
-
 }
 
 #endif // !GENERICCOMPONENTS_H_
