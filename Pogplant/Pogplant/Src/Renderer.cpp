@@ -355,6 +355,16 @@ namespace Pogplant
 		// Render G pass objects first
 		ShaderLinker::Use("BASIC");
 		MeshBuilder::RebindQuad();
+
+		// Bind textures
+		for (const auto& it : TextureResource::m_UsedTextures)
+		{
+			std::string uniformStr = "Textures[" + std::to_string(it.second) + "]";
+			ShaderLinker::SetUniform(uniformStr.c_str(), it.second);
+			glActiveTexture(GL_TEXTURE0 + it.second);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.first]);
+		}
+
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);

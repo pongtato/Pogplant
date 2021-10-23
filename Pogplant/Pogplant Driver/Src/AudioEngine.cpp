@@ -96,7 +96,7 @@ namespace PPA
 
 			ss << "Unable to load audio file \"" << fileName << "\"";
 			PP::Logger::Log(
-				PP::LogEntry{ "AudioEngine::LoadAudio", PP::LogEntry::TYPE::ERROR, ss.str() }, true);
+				PP::LogEntry{ "AudioEngine::LoadAudio", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
 
 			return false;
 		}
@@ -104,7 +104,7 @@ namespace PPA
 		std::stringstream ss;
 		ss << "Successfully loaded: \"" << fileName << "\"";
 		PP::Logger::Log(
-			PP::LogEntry{ "AudioEngine::LoadAudio", PP::LogEntry::TYPE::SUCCESS, ss.str() }, true);
+			PP::LogEntry{ "AudioEngine::LoadAudio", PP::LogEntry::LOGTYPE::SUCCESS, ss.str() }, true);
 
 		return true;
 	}
@@ -145,7 +145,7 @@ namespace PPA
 			PP::Logger::Log(
 				PP::LogEntry{
 					"AudioEngine::UpdateAudio",
-					PP::LogEntry::TYPE::ERROR,
+					PP::LogEntry::LOGTYPE::ERROR,
 					"Unable to update sound, might not have loaded properly" }, true);//*/
 			return;
 		}
@@ -184,7 +184,7 @@ namespace PPA
 			PP::Logger::Log(
 				PP::LogEntry{
 					"AudioEngine::PlaySound",
-					PP::LogEntry::TYPE::ERROR,
+					PP::LogEntry::LOGTYPE::ERROR,
 					ss.str() }, true);//*/
 			return -1;
 		}
@@ -316,7 +316,7 @@ namespace PPA
 			PP::Logger::Log(
 				PP::LogEntry{
 					"AudioEngine::xFMOD",
-					PP::LogEntry::TYPE::ERROR,
+					PP::LogEntry::LOGTYPE::ERROR,
 					"Error initialising FMOD" });
 		}
 	}
