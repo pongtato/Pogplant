@@ -54,7 +54,7 @@ void Application::UpdateEditorState(float c_dt)
 			m_accumulatedFixedTime -= m_minFixedUpdateTime;
 		}
 	}
-	m_sScriptSystem.Update();
+	m_sScriptSystem.Update(c_dt);
 	m_sScriptSystem.LateUpdate();
 #else
 	m_sPhysicsSystem.UpdateEditor();

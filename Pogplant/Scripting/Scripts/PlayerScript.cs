@@ -21,13 +21,16 @@ using System.Threading.Tasks;
 namespace Scripting
 {
     // Player script class
-    public class PlayerScript
+    public class PlayerScript : MonoBehaviour
     {
+
+        public float movement_speed = 50.0f;
+
         public PlayerScript()
         {
         }
 
-        public void Start()
+        public override void Start()
         {
         }
 
@@ -35,7 +38,7 @@ namespace Scripting
         {
         }
 
-        public void Update(ref Transform transform, ref Rigidbody rigidbody)
+        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
             if(transform.Position.Y >= 10.0f)
             {
@@ -62,20 +65,15 @@ namespace Scripting
                 //Console.WriteLine("S key is released");
             }
 
-            //if (InputUtility.onKeyHeld("RIGHT"))
-            //{
-            //    Console.WriteLine("D key is held down");
-            //}
+            float horizontal_input = (InputUtility.onKeyHeld("LEFT") ? -1.0f : 0.0f) + (InputUtility.onKeyHeld("RIGHT") ? 1.0f : 0.0f);
+            float vertical_input = (InputUtility.onKeyHeld(KEY_ID.KEY_W) ? 1.0f : 0.0f) + (InputUtility.onKeyHeld(KEY_ID.KEY_S) ? -1.0f : 0.0f);
 
-            //if (InputUtility.onKeyTriggered("RIGHT"))
-            //{
-            //    Console.WriteLine("D key is triggered");
-            //}
+            Vector3 force_dir = new Vector3(horizontal_input, vertical_input, 0) * movement_speed * dt; // 32 is magic number
 
-            //if (InputUtility.onKeyReleased("MENUUP"))
-            //{
-            //    Console.WriteLine("W key is released");
-            //}
+            transform.Position += force_dir;
+
+            //if (rigidbody.velocity <= movement_speed)
+
         }
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)

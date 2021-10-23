@@ -21,13 +21,13 @@ using System.Threading.Tasks;
 namespace Scripting
 {
     // Enemy script class
-    public class EnemyScript
+    public class EnemyScript : MonoBehaviour
     {
         public EnemyScript()
         {
         }
 
-        public void Start()
+        public override void Start()
         {
         }
 
@@ -35,7 +35,7 @@ namespace Scripting
         {
         }
 
-        public void Update(ref Transform transform, ref Rigidbody rigidbody)
+        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
             if (transform.Position.X >= 10.0f)
             {

@@ -42,7 +42,7 @@ public:
 	// Initialize mono and scripts
 	void Init(ECS* ecs);
 	// Update loop
-	void Update();
+	void Update(float dt);
 	void LateUpdate();
 	static void SetReload(bool _isReload);
 

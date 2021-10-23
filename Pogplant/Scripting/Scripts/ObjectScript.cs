@@ -22,10 +22,15 @@ using System.Runtime.CompilerServices;
 namespace Scripting
 {
     // This is mainly for testing purposes
-    public class ObjectScript
+    public class ObjectScript : MonoBehaviour
     {
         // Fetch something from CPP, in this example I'll fetch a string
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static string getRandomWord();
+
+        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        { }
+
+        public override void Start() { }
     }
 }

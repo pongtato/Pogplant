@@ -59,7 +59,7 @@ void ScriptSystem::Init(ECS* ecs)
 	m_registry = ecs;
 }
 
-void ScriptSystem::Update()
+void ScriptSystem::Update(float dt)
 {
 	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
@@ -96,7 +96,7 @@ void ScriptSystem::Update()
 			}
 
 			MonoMethod* updateMethod = FindMethod(klass, "Update");
-			void* args[] = { &transform, &rigidbody };
+			void* args[] = { &transform, &rigidbody, &dt };
 			mono_runtime_invoke(updateMethod, monoObj, args, nullptr);
 		}
 	}
