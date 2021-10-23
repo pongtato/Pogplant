@@ -54,13 +54,14 @@ void Application::UpdateEditorState(float c_dt)
 			m_accumulatedFixedTime -= m_minFixedUpdateTime;
 		}
 	}
+	m_sScriptSystem.Update();
+	m_sScriptSystem.LateUpdate();
 #else
 	m_sPhysicsSystem.UpdateEditor();
 #endif // PPD_UPDATE_EDITOR_AS_GAME
 
 
 	m_sGeneralSystem.Update();
-	m_sScriptSystem.Update();
 	PPF::FileHandler& fh = fh.GetInstance();
 	fh.UpdateModels();
 

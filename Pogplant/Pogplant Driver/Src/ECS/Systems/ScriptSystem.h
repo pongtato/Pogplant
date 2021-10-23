@@ -42,6 +42,7 @@ public:
 	void Init(ECS* ecs);
 	// Update loop
 	void Update();
+	void LateUpdate();
 	static void SetReload(bool _isReload);
 
 private:
@@ -51,11 +52,10 @@ private:
 	// Helper function to find the monomethod in monoclass
 	MonoMethod* FindMethod(MonoClass* klass, std::string methodName, int params = -1);
 	void Reload();
-	void Load();
 	void LoadMemory();
 	void Cleanup();
-
 	void Unload();
+	void BindFunctions();
 
 	ECS* m_registry;
 	// Mono Stuff to save

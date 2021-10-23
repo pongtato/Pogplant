@@ -17,6 +17,8 @@
 
 #include <glfw3.h>
 #include <unordered_map>
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
 
 namespace PPI
 {
@@ -29,8 +31,11 @@ namespace PPI
 		void setControllerLayout(int layout);
 
 		bool onKeyHeld(std::string keyID);
+		static bool onKeyHeldMono(MonoString* keyID);
 		bool onKeyTriggered(std::string keyID);
+		static bool onKeyTriggeredMono(MonoString* keyID);
 		bool onKeyReleased(std::string keyID);
+		static bool onKeyReleasedMono(MonoString* keyID);
 
 		//float getKeyAxis(std::string keyID);
 

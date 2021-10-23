@@ -51,6 +51,11 @@ namespace Scripting
             }
         }
 
+        public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
+        {
+
+        }
+
         public void FixedUpdate()
         {
         }

@@ -58,6 +58,7 @@ void Application::UpdatePlayState(float c_dt)
 
 	m_sGeneralSystem.Update();
 	m_sScriptSystem.Update();
+	m_sScriptSystem.LateUpdate();
 	PPF::FileHandler& fh = fh.GetInstance();
 	fh.UpdateModels();
 

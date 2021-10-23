@@ -179,6 +179,12 @@ namespace PPI
 		return it->second.triggered;
 	}
 
+	// Mono function
+	bool GLFWInputManager::onKeyTriggeredMono(int key)
+	{
+		return Instance()->onKeyTriggered(key);
+	}
+
 	/******************************************************************************/
 	/*!
 	\brief
@@ -198,6 +204,12 @@ namespace PPI
 		return it->second.released;
 	}
 
+	// Mono function
+	bool GLFWInputManager::onKeyReleasedMono(int key)
+	{
+		return Instance()->onKeyReleased(key);
+	}
+
 	/******************************************************************************/
 	/*!
 	\brief
@@ -211,6 +223,12 @@ namespace PPI
 	bool GLFWInputManager::onKeyHeld(int key) const
 	{
 		return m_activeKeys.find(key) != m_activeKeys.cend();
+	}
+
+	// Mono function
+	bool GLFWInputManager::onKeyHeldMono(int key)
+	{
+		return Instance()->onKeyHeld(key);
 	}
 
 	/******************************************************************************/

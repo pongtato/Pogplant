@@ -48,8 +48,11 @@ namespace PPI
 		void pollEvents();
 
 		bool onKeyTriggered(int key) const;
+		static bool onKeyTriggeredMono(int key);
 		bool onKeyReleased(int key) const;
+		static bool onKeyReleasedMono(int key);
 		bool onKeyHeld(int key) const;
+		static bool onKeyHeldMono(int key);
 
 		bool onControllerTriggered(int key) const;
 		bool onControllerReleased(int key) const;

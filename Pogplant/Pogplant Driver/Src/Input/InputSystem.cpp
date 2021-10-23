@@ -35,7 +35,6 @@ namespace PPI
 
 		InputSystem::Instance()->appendKey("LEFT", GLFW_KEY_A);
 		InputSystem::Instance()->appendKey("RIGHT", GLFW_KEY_D);
-
 		InputSystem::Instance()->appendKey("DOWN", GLFW_KEY_S, GLFW_GAMEPAD_AXIS_LEFT_Y + JOYSTICKOSET);
 
 		//SaveFileHandler::Instance()->assignData<unsigned short>(SaveFileHandler::S_CONTROL_JUMP, keyGetter, GLFW_KEY_SPACE, false);
@@ -131,6 +130,13 @@ namespace PPI
 		return false;
 	}
 
+	// For Mono
+	bool InputSystem::onKeyHeldMono(MonoString* keyID)
+	{
+		const char* _keyID = mono_string_to_utf8(keyID);
+		return Instance()->onKeyHeld(_keyID);
+	}
+
 	/******************************************************************************/
 	/*!
 	\brief
@@ -156,6 +162,13 @@ namespace PPI
 		return false;
 	}
 
+	// For Mono
+	bool InputSystem::onKeyTriggeredMono(MonoString* keyID)
+	{
+		const char* _keyID = mono_string_to_utf8(keyID);
+		return Instance()->onKeyTriggered(_keyID);
+	}
+
 	/******************************************************************************/
 	/*!
 	\brief
@@ -179,6 +192,13 @@ namespace PPI
 				return true;
 		}
 		return false;
+	}
+
+	// For Mono
+	bool InputSystem::onKeyReleasedMono(MonoString* keyID)
+	{
+		const char* _keyID = mono_string_to_utf8(keyID);
+		return Instance()->onKeyReleased(_keyID);
 	}
 
 	void InputSystem::appendKey(std::string keyID, int keyboardKey, int controllerKey)

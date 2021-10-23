@@ -49,6 +49,41 @@ namespace Scripting
             {
                 rigidbody.AddForce(new Vector3(0, 3.0f, 0));
             }
+
+            if(InputUtility.onKeyHeld(KEY_ID.KEY_A))
+            {
+                //Console.WriteLine("A key is held down");
+            }
+
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
+            {
+                //Console.WriteLine("D key is triggered");
+            }
+
+            if (InputUtility.onKeyReleased(KEY_ID.KEY_S))
+            {
+                //Console.WriteLine("S key is released");
+            }
+
+            //if (InputUtility.onKeyHeld("RIGHT"))
+            //{
+            //    Console.WriteLine("D key is held down");
+            //}
+
+            //if (InputUtility.onKeyTriggered("RIGHT"))
+            //{
+            //    Console.WriteLine("D key is triggered");
+            //}
+
+            //if (InputUtility.onKeyReleased("MENUUP"))
+            //{
+            //    Console.WriteLine("W key is released");
+            //}
+        }
+
+        public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
+        {
+
         }
 
         public void FixedUpdate()
