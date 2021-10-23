@@ -17,7 +17,7 @@ namespace Pogplant
 	{
 		if(m_ShaderProfiles.find(_ShaderProfile.m_ProgramID) != m_ShaderProfiles.end())
 		{
-			Logger::Log({ "PP::SHADER",LogEntry::ERROR,"Duplicate shader profile ID" });
+			Logger::Log({ "PP::SHADER",LogEntry::LOGTYPE::ERROR,"Duplicate shader profile ID" });
 		}
 		m_ShaderProfiles[_ShaderProfile.m_ProgramID] = _ShaderProfile;
 	}

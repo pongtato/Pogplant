@@ -1,9 +1,11 @@
 #include "TextureResource.h"
 #include "TextureLoader.h"
+#include "Logger.h"
 
 namespace Pogplant
 {
 	std::unordered_map<std::string, unsigned int> TextureResource::m_TexturePool;
+    std::unordered_map<std::string, int> TextureResource::m_UsedTextures;
 
 	void TextureResource::InitResource()
 	{
@@ -143,5 +145,37 @@ namespace Pogplant
 			"grass_rough.dds",
 			"Resources/Textures/Grass"
 		);
+
+        m_TexturePool["TEST_TEX"] = TexLoader::LoadTexture
+        (
+            "rocks_diff.dds",
+            "Resources/Textures/Rocks"
+        );
+
+        m_TexturePool["TEST_TEX2"] = TexLoader::LoadTexture
+        (
+            "snow_diff.dds",
+            "Resources/Textures/Snow"
+        );
 	}
+
+    void TextureResource::UseTexture(std::string _TexName)
+    {
+        // Dont overwrite
+        if (m_UsedTextures.find(_TexName) == m_UsedTextures.end())
+        {
+            m_UsedTextures[_TexName] = static_cast<int>(m_UsedTextures.size());
+        }
+    }
+
+    int TextureResource::GetUsedTextureID(std::string _TexName)
+    {
+        if (m_UsedTextures.find(_TexName) != m_UsedTextures.end())
+        {
+            return m_UsedTextures[_TexName];
+        }
+
+        Logger::Log(LogEntry("TEXLOADER", LogEntry::LOGTYPE::ERROR, "This texture is unused"));
+        return -1;
+    }
 }

@@ -345,19 +345,19 @@ namespace PogplantDriver
 					const char* typeText;
 					switch (it.m_Type)
 					{
-					case PP::LogEntry::ERROR:
+					case PP::LogEntry::LOGTYPE::ERROR:
 						ImGui::PushStyleColor(0, ImVec4{ 0.75f,0.0f,0.0f,1.0f });
 						typeText = "ERROR";
 						break;
-					case PP::LogEntry::SUCCESS:
+					case PP::LogEntry::LOGTYPE::SUCCESS:
 						ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1.0f });
 						typeText = "SUCCESS";
 						break;
-					case PP::LogEntry::WARNING:
+					case PP::LogEntry::LOGTYPE::WARNING:
 						ImGui::PushStyleColor(0, ImVec4{ 1.0f,1.0f,0.0f,1.0f });
 						typeText = "WARNING";
 						break;
-					case PP::LogEntry::DEBUG_TEXT:
+					case PP::LogEntry::LOGTYPE::DEBUG_TEXT:
 						ImGui::PushStyleColor(0, ImVec4{ 1.0f,1.0f,1.0f,1.0f });
 						typeText = "LOG";
 						break;

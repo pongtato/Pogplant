@@ -44,7 +44,7 @@ namespace Pogplant
         /// Assert
         if (mesh == nullptr)
         {
-            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Quad resource is NULL" });
+            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Quad resource is NULL" });
             return;
         }
 
@@ -108,7 +108,7 @@ namespace Pogplant
 
         if (mesh == nullptr)
         {
-            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Screen resource is NULL" });
+            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Screen resource is NULL" });
             return;
         }
 
@@ -126,7 +126,7 @@ namespace Pogplant
         /// Assert
         if (mesh == nullptr)
         {
-            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Quad resource is NULL" });
+            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Quad resource is NULL" });
             return;
         }
 
@@ -166,7 +166,7 @@ namespace Pogplant
         /// Assert
         if (mesh == nullptr)
         {
-            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Quad resource is NULL" });
+            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Quad resource is NULL" });
             return;
         }
 
@@ -256,7 +256,7 @@ namespace Pogplant
 
         if (mesh == nullptr)
         {
-            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Screen resource is NULL" });
+            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Screen resource is NULL" });
             return;
         }
 
@@ -278,7 +278,7 @@ namespace Pogplant
         /// Assert
         if (mesh == nullptr)
         {
-            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Screen resource is NULL" });
+            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Screen resource is NULL" });
             return;
         }
 
@@ -421,14 +421,14 @@ namespace Pogplant
         Mesh* mesh = MeshResource::m_MeshPool[MT::HEIGHTMAP];
         if (mesh == nullptr)
         {
-            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Heightmap resource is NULL" });
+            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Heightmap resource is NULL" });
             return;
         }
 
         // Get heightmap
         if (!TexLoader::LoadHeightMap("Heightmap.raw", "Resources/Textures/Heightmap", mesh->m_Heightmap, mesh->m_HeightMapDim))
         {
-            Logger::Log({ "PP::MESH",LogEntry::ERROR,"Bad heightmap" });
+            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Bad heightmap" });
             return;
         }
 

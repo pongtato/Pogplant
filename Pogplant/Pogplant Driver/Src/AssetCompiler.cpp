@@ -56,7 +56,7 @@ namespace PPC
 			DWORD error = GetLastError();
 			std::stringstream ss;
 			ss << error;
-			PP::Logger::Log(PP::LogEntry{"PP::PROCESS", PP::LogEntry::TYPE::ERROR, ss.str()});
+			PP::Logger::Log(PP::LogEntry{"PP::PROCESS", PP::LogEntry::LOGTYPE::ERROR, ss.str()});
 			return;
 		}
 		m_processHandle[GetFileName(param)] = pi.hProcess;

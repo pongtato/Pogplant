@@ -95,7 +95,7 @@ namespace Pogplant
 				// Assert
 				if (failFlag)
 				{
-					Logger::Log({ "PP::FONT", LogEntry::ERROR, "Fail to load Character" });
+					Logger::Log({ "PP::FONT", LogEntry::LOGTYPE::ERROR, "Fail to load Character" });
 				}
 
 				// Update map
@@ -112,7 +112,7 @@ namespace Pogplant
 		auto splitPos = _FilePath.find_first_of(".");
 		if (_FilePath.empty() || splitPos >= _FilePath.size())
 		{
-			Logger::Log({ "PP::FONT", LogEntry::ERROR, "Fail to load font, bad ID or Path" });
+			Logger::Log({ "PP::FONT", LogEntry::LOGTYPE::ERROR, "Fail to load font, bad ID or Path" });
 			return;
 		}
 		// Get font ID to save 
@@ -156,7 +156,7 @@ namespace Pogplant
 				Json::Value subroot = root[iter.index()];
 				if (newFont->m_ImageW == 0 || newFont->m_ImageH == 0)
 				{
-					Logger::Log({ "PP::FONT", LogEntry::ERROR, "Bad atlas size" });
+					Logger::Log({ "PP::FONT", LogEntry::LOGTYPE::ERROR, "Bad atlas size" });
 					break;
 				}
 				// Update the bearings of each char

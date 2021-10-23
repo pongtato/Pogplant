@@ -307,7 +307,7 @@ namespace Pogplant
             {
                 std::string err = "Texture failed to load at ";
                 err += _Directory + '/' + _Path;
-                Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+                Logger::Log({ "PP::TEXURE LOADER",LogEntry::LOGTYPE::ERROR, err });
             }
             else
             {
@@ -315,7 +315,7 @@ namespace Pogplant
                 {
                     std::string err = "LoadGLTexture failed to load at ";
                     err += _Directory + '/' + _Path;
-                    Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+                    Logger::Log({ "PP::TEXURE LOADER",LogEntry::LOGTYPE::ERROR, err });
                 }
             }
         }
@@ -344,13 +344,13 @@ namespace Pogplant
 
                 stbi_image_free(data);
 
-                Logger::Log({ "PP::TEXURE LOADER",LogEntry::WARNING, "LOAD USING .DDS" });
+                Logger::Log({ "PP::TEXURE LOADER", LogEntry::LOGTYPE::WARNING, "LOAD USING .DDS" });
             }
             else
             {
                 std::string err = "Texture failed to load at ";
                 err += _Directory + '/' + _Path;
-                Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+                Logger::Log({ "PP::TEXURE LOADER",LogEntry::LOGTYPE::ERROR, err });
                 stbi_image_free(data);
             }
         }
@@ -400,7 +400,7 @@ namespace Pogplant
         {
             std::string err = "Texture failed to load at ";
             err += _Directory + '/' + _Path;
-            Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+            Logger::Log({ "PP::TEXURE LOADER",LogEntry::LOGTYPE::ERROR, err });
         }
 
         return textureID;
@@ -436,7 +436,7 @@ namespace Pogplant
         {
             std::string err = "Texture failed to load at ";
             err += _Directory + '/' + _Path;
-            Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+            Logger::Log({ "PP::TEXURE LOADER",LogEntry::LOGTYPE::ERROR, err });
         }
 
         return textureID;
@@ -479,7 +479,7 @@ namespace Pogplant
             {
                 std::string err = "Texture failed to load at ";
                 err += _Directory + '/' + _Paths[i];
-                Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+                Logger::Log({ "PP::TEXURE LOADER",LogEntry::LOGTYPE::ERROR, err });
                 //stbi_image_free(data);
             }
         }
@@ -502,7 +502,7 @@ namespace Pogplant
         {
             std::string err = "Heightmap failed to load at ";
             err += filename;
-            Logger::Log({ "PP::TEXURE LOADER",LogEntry::ERROR, err });
+            Logger::Log({ "PP::TEXURE LOADER",LogEntry::LOGTYPE::ERROR, err });
             return false;
         }
 

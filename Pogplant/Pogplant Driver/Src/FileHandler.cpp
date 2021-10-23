@@ -103,7 +103,7 @@ namespace PPF
                     if (!std::filesystem::exists(it1->first))
                     {
                         //std::cout << "[PP::FILEHANDLER] " << it1->first << " ERASED" << std::endl;
-                        PP::Logger::Log(PP::LogEntry{"PP::FILEHANDLER", PP::LogEntry::TYPE::SUCCESS, it->first + " erased."});
+                        PP::Logger::Log(PP::LogEntry{"PP::FILEHANDLER", PP::LogEntry::LOGTYPE::SUCCESS, it->first + " erased."});
                         it1 = it->second.erase(it1);
                     }
                     else
@@ -132,7 +132,7 @@ namespace PPF
                         it->second[filePath] = current_file_last_write_time;
                         // Implement whatever logic for file creation
                         //std::cout << "[PP::FILEHANDLER] " << filePath << " CREATED" << std::endl;
-                        PP::Logger::Log(PP::LogEntry{ "PP::FILEHANDLER", PP::LogEntry::TYPE::SUCCESS, filePath + " created."});
+                        PP::Logger::Log(PP::LogEntry{ "PP::FILEHANDLER", PP::LogEntry::LOGTYPE::SUCCESS, filePath + " created."});
 
                         // File type is a compiled model
                         if (extension.compare(".kek") == 0)
@@ -163,7 +163,7 @@ namespace PPF
                             it->second[filePath] = current_file_last_write_time;
                             // Implement whatever logic for file modification
                             //std::cout << "[PP::FILEHANDLER] " << filePath << " MODIFIED" << std::endl;
-                            PP::Logger::Log(PP::LogEntry{ "PP::FILEHANDLER", PP::LogEntry::TYPE::SUCCESS, filePath + " modified." });
+                            PP::Logger::Log(PP::LogEntry{ "PP::FILEHANDLER", PP::LogEntry::LOGTYPE::SUCCESS, filePath + " modified." });
 
                             // File type is a compiled model
                             if (extension.compare(".kek") == 0)

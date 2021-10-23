@@ -43,7 +43,7 @@ void Application::OnTriggerEnterEventTest(std::shared_ptr<PPE::OnTriggerEnterEve
 		<< (uint32_t)onTriggerEnterEvent->m_entity2;
 
 	PP::Logger::Log(
-		PP::LogEntry{ "Application::OnTriggerEnterEventTest", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
+		PP::LogEntry{ "Application::OnTriggerEnterEventTest", PP::LogEntry::LOGTYPE::DEBUG_TEXT, ss.str() }, true);
 }
 
 void Application::OnTriggerExitEventTest(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent)
@@ -54,7 +54,7 @@ void Application::OnTriggerExitEventTest(std::shared_ptr<PPE::OnTriggerExitEvent
 		<< (uint32_t)onTriggerExitEvent->m_entity2;
 
 	PP::Logger::Log(
-		PP::LogEntry{ "Application::OnTriggerExitEventTest", PP::LogEntry::TYPE::DEBUG_TEXT, ss.str() }, true);
+		PP::LogEntry{ "Application::OnTriggerExitEventTest", PP::LogEntry::LOGTYPE::DEBUG_TEXT, ss.str() }, true);
 }
 
 /****************************END OF TEMPORARY STUFF TO MOVE***************************/
@@ -304,17 +304,17 @@ void Application::InitialiseDebugObjects()
 
 	/// FONT
 	pos = { 0.0f, 10.0, -10.0f };
-	rot = { 0.0f, 0.0f,0.0f };
-	scale = { 42.0f,42.0f,42.0f };
+	rot = { 0.0f, 0.0f, 0.0f };
+	scale = { 42.0f, 42.0f, 42.0f };
 	entity = m_ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,0.0f}, "Ruda", "This is a very big text", false });
+	entity.AddComponent<Components::Text>(Text{ {1.0f, 0.0f, 0.0f}, "Ruda", "This is a very big text", false });
 	entity.GetComponent<Components::Name>().m_name = "World font";
 
 	pos = { -1.0f, 0.85f, 0.0f };
-	rot = { 0.0f, 0.0f,0.0f };
-	scale = { 1.0f,1.0f,1.0f };
+	rot = { 0.0f, 0.0f, 0.0f };
+	scale = { 1.0f, 1.0f, 1.0f };
 	entity = m_ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Text>(Text{ {1.0f,0.0f,1.0f}, "Ruda", "Screen Font", true });
+	entity.AddComponent<Components::Text>(Text{ {1.0f, 0.0f, 1.0f}, "Ruda", "Screen Font", true });
 	entity.GetComponent<Components::Name>().m_name = "Screen font";
 
 	/// Camera
@@ -326,11 +326,28 @@ void Application::InitialiseDebugObjects()
 	entity.GetComponent<Components::Name>().m_name = "Game Camera";
 
 	/// Canvas test
-	pos = { 0.5f, 0.5f, 0.0f };
-	color = { 1.0f, 1.0f, 1.0f };
+	pos = { 0.0f, 0.0f, -1.0f };
+	scale = { 1.0f, 1.0f, 1.0f };
 	entity = m_ecs.CreateEntity("", pos, rot, scale);
-	entity.AddComponent<Components::Canvas>(Canvas{ {color,1.0f}, -1 });
-	entity.GetComponent<Components::Name>().m_name = "Canvas Image";
+	entity.GetComponent<Components::Name>().m_name = "Canvas";
+	pos = { -0.55f, 0.3f, 0.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	scale = { 0.1f, 0.1f, 0.1f };
+	auto child = m_ecs.CreateChild(entity.GetID(), "", pos, rot, scale);
+	// Simulate inspector set texture
+	PP::TextureResource::UseTexture("TEST_TEX");
+	child.GetComponent<Components::Transform>() = { pos,rot,scale };
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("TEST_TEX")});
+	child.GetComponent<Components::Name>().m_name = "Canvas Image 1";
+	pos = { -0.55f, 0.2f, 0.0f };
+	color = { 1.0f, 1.0f, 1.0f };
+	scale = { 0.1f, 0.1f, 0.1f };
+	child = m_ecs.CreateChild(entity.GetID(), "", pos, rot, scale);
+	// Simulate inspector set texture
+	PP::TextureResource::UseTexture("TEST_TEX2");
+	child.GetComponent<Components::Transform>() = { pos,rot,scale };
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("TEST_TEX2") });
+	child.GetComponent<Components::Name>().m_name = "Canvas Image 2";
 }
 #endif
 
