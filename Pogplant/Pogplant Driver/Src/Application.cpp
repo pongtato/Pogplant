@@ -85,6 +85,7 @@ void Application::Init()
 	fh.AddNewWatchPath("Resources/KekFiles");
 	fh.AddNewWatchPath("Resources/DLL");
 	fh.AddNewWatchPath("Resources/Prefabs");
+	fh.AddNewWatchPath("Resources/Audio");
 
 #ifdef PPD_DEBUG_OBJECTS
 	InitialiseDebugObjects();
@@ -337,6 +338,8 @@ void Application::BindEvents()
 {
 	m_eventBus->listen(this, &Application::OnTriggerEnterEventTest);
 	m_eventBus->listen(this, &Application::OnTriggerExitEventTest);
+	m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerEnterEvent);
+	m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerExitEvent);
 }
 
 //recursion call

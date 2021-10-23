@@ -25,17 +25,14 @@ namespace Scripting
     {
         public EnemyScript()
         {
-
         }
 
         public void Start()
         {
-            //Console.WriteLine("C# PRINTOUT: Enemy Script Started.");
         }
 
         public void Awake()
         {
-
         }
 
         public void Update(ref Transform transform, ref Rigidbody rigidbody)
@@ -53,7 +50,6 @@ namespace Scripting
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
         {
-
         }
 
         public void FixedUpdate()

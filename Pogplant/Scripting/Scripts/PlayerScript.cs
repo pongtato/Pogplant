@@ -25,17 +25,14 @@ namespace Scripting
     {
         public PlayerScript()
         {
-
         }
 
         public void Start()
         {
-            //Console.WriteLine("C# PRINTOUT: Player Script Started.");
         }
 
         public void Awake()
         {
-
         }
 
         public void Update(ref Transform transform, ref Rigidbody rigidbody)
@@ -83,11 +80,20 @@ namespace Scripting
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
         {
-
         }
 
         public void FixedUpdate()
         {
+        }
+
+        public void OnTriggerEnter()
+        {
+            Console.WriteLine("OnTriggerEnter");
+        }
+
+        public void OnTriggerExit()
+        {
+            Console.WriteLine("OnTriggerExit");
         }
     }
 }

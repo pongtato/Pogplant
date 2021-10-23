@@ -22,6 +22,7 @@
 #include "../ECS.h"
 #include "../ScriptBinder.h"
 #include "../Components/ScriptComponents.h"
+#include "../../Events/Events.h"
 
 class ECS;
 
@@ -45,12 +46,15 @@ public:
 	void LateUpdate();
 	static void SetReload(bool _isReload);
 
+	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
+	void OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent);
+
 private:
 	// Call the Start function of every script needed for each object
 	//void Start();
 	//void Start(MonoObject* object, MonoClass* klass);
 	// Helper function to find the monomethod in monoclass
-	MonoMethod* FindMethod(MonoClass* klass, std::string methodName, int params = -1);
+	MonoMethod* FindMethod(MonoClass* klass,const std::string& methodName, int params = -1);
 	void Reload();
 	void LoadMemory();
 	void Cleanup();

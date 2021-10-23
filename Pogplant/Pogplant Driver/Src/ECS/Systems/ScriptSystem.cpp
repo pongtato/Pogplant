@@ -164,14 +164,135 @@ void ScriptSystem::SetReload(bool _isReload)
 	isReload = _isReload;
 }
 
-MonoMethod* ScriptSystem::FindMethod(MonoClass* klass, std::string methodName, int params)
+void ScriptSystem::OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
+{
+	auto script1 = m_registry->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity1);
+	auto script2 = m_registry->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity2);
+
+	if (script1)
+	{
+		for (auto& scripts : script1->m_ScriptTypes)
+		{
+			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
+			if (!monoObj)
+			{
+				// Maybe log something here
+				std::cout << "Script: " << scripts.first << " not found" << std::endl;
+				continue;
+			}
+
+			MonoClass* klass = mono_object_get_class(monoObj);
+			if (!klass)
+			{
+				// Maybe log something here
+				std::cout << "MonoClass not found" << std::endl;
+			}
+
+			MonoMethod* startMethod = FindMethod(klass, "OnTriggerEnter");
+			if (startMethod)
+			{
+				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
+			}
+		}
+	}
+
+	if (script2)
+	{
+		for (auto& scripts : script2->m_ScriptTypes)
+		{
+			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
+			if (!monoObj)
+			{
+				// Maybe log something here
+				std::cout << "Script: " << scripts.first << " not found" << std::endl;
+				continue;
+			}
+
+			MonoClass* klass = mono_object_get_class(monoObj);
+			if (!klass)
+			{
+				// Maybe log something here
+				std::cout << "MonoClass not found" << std::endl;
+			}
+
+			MonoMethod* startMethod = FindMethod(klass, "OnTriggerEnter");
+			if (startMethod)
+			{
+				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
+			}
+		}
+	}
+}
+
+void ScriptSystem::OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent)
+{
+	auto script1 = m_registry->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity1);
+	auto script2 = m_registry->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity2);
+
+	if (script1)
+	{
+		for (auto& scripts : script1->m_ScriptTypes)
+		{
+			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
+			if (!monoObj)
+			{
+				// Maybe log something here
+				std::cout << "Script: " << scripts.first << " not found" << std::endl;
+				continue;
+			}
+
+			MonoClass* klass = mono_object_get_class(monoObj);
+			if (!klass)
+			{
+				// Maybe log something here
+				std::cout << "MonoClass not found" << std::endl;
+			}
+
+			MonoMethod* startMethod = FindMethod(klass, "OnTriggerExit");
+			if (startMethod)
+			{
+				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
+			}
+		}
+	}
+
+	if (script2)
+	{
+		for (auto& scripts : script2->m_ScriptTypes)
+		{
+			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
+			if (!monoObj)
+			{
+				// Maybe log something here
+				std::cout << "Script: " << scripts.first << " not found" << std::endl;
+				continue;
+			}
+
+			MonoClass* klass = mono_object_get_class(monoObj);
+			if (!klass)
+			{
+				// Maybe log something here
+				std::cout << "MonoClass not found" << std::endl;
+			}
+
+			MonoMethod* startMethod = FindMethod(klass, "OnTriggerExit");
+			if (startMethod)
+			{
+				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
+			}
+		}
+	}
+}
+
+MonoMethod* ScriptSystem::FindMethod(MonoClass* klass,const std::string& methodName, int params)
 {
 	MonoMethod* method = mono_class_get_method_from_name(klass, methodName.c_str(), params);
 
 	if (!method)
 	{
-		return NULL;
+		return nullptr;
 	}
+
 	return method;
 }
 
