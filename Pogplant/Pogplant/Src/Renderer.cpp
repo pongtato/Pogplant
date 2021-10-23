@@ -70,7 +70,7 @@ namespace Pogplant
 
 					if (failFlag)
 					{
-						Logger::Log({ "PP::RENDERER", LogEntry::TYPE::WARNING, "No active game cameras!" });
+						Logger::Log({ "PP::RENDERER", LogEntry::LOGTYPE::WARNING, "No active game cameras!" });
 					}
 				}
 
@@ -82,7 +82,7 @@ namespace Pogplant
 			}
 			else
 			{
-				Logger::Log({ "PP::RENDERER", LogEntry::TYPE::ERROR, "No game camera found, default to editor camera" });
+				Logger::Log({ "PP::RENDERER", LogEntry::LOGTYPE::ERROR, "No game camera found, default to editor camera" });
 			}
 		}
 

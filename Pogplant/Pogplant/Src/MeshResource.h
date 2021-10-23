@@ -11,7 +11,7 @@ namespace Pogplant
 
 	struct MeshResource
 	{
-		enum MESH_TYPE
+		enum class MESH_TYPE
 		{
 			QUAD,
 			TEXT_QUAD,

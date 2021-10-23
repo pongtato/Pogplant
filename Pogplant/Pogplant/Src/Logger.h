@@ -9,7 +9,7 @@ namespace Pogplant
 {
 	struct LogEntry
 	{
-		enum TYPE
+		enum class LOGTYPE
 		{
 			ERROR,
 			SUCCESS,
@@ -19,7 +19,7 @@ namespace Pogplant
 		};
 
 		std::string m_Source;
-		TYPE m_Type;
+		LOGTYPE m_Type;
 		std::string m_Description;
 	};
 

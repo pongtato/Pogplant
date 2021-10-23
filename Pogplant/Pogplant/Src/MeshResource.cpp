@@ -10,7 +10,7 @@ namespace Pogplant
 
 	void MeshResource::InitResource()
 	{
-		for (size_t i = 0; i < COUNT_2D; ++i)
+		for (size_t i = 0; i < static_cast<size_t>(MESH_TYPE::COUNT_2D); ++i)
 		{
 			m_MeshPool[static_cast<MESH_TYPE>(i)] = new Mesh();
 		}

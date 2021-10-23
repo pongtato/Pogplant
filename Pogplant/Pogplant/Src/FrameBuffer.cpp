@@ -22,7 +22,7 @@ namespace Pogplant
 
 		if (passFlag)
 		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::SUCCESS, "Framebuffers init complete" });
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::SUCCESS, "Framebuffers init complete" });
 		}
 	}
 
@@ -148,7 +148,7 @@ namespace Pogplant
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Editor Framebuffer init failed" });
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"Editor Framebuffer init failed" });
 			passFlag = false;
 		}
 
@@ -189,7 +189,7 @@ namespace Pogplant
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Game Framebuffer init failed" });
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"Game Framebuffer init failed" });
 			passFlag = false;
 		}
 
@@ -225,7 +225,7 @@ namespace Pogplant
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Debug Framebuffer init failed" });
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"Debug Framebuffer init failed" });
 			passFlag = false;
 		}
 
@@ -265,7 +265,7 @@ namespace Pogplant
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Post Processing Framebuffer init failed" });
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"Post Processing Framebuffer init failed" });
 			passFlag = false;
 		}
 
@@ -338,7 +338,7 @@ namespace Pogplant
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"G Framebuffer init failed" });
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"G Framebuffer init failed" });
 			passFlag = false;
 		}
 
@@ -372,7 +372,7 @@ namespace Pogplant
 		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Shadow Framebuffer init failed" });
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"Shadow Framebuffer init failed" });
 			passFlag = false;
 		}
 
@@ -421,7 +421,7 @@ namespace Pogplant
 		// also check if framebuffers are complete (no need for depth buffer)
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
-			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::ERROR,"Blur Framebuffer init failed" });
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"Blur Framebuffer init failed" });
 			passFlag = false;
 		}
 
