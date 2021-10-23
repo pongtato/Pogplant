@@ -79,13 +79,15 @@ void Application::Init()
 	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
 
 #ifdef PPD_EDITOR_BUILD
+
+#ifdef PPD_DEBUG_OBJECTS
+	m_activeECS = &m_editorECS;
+	InitialiseDebugObjects();
+#endif
+
 	m_appState = Application::APPLICATIONSTATE::EDITOR;
 	m_nextAppState = Application::APPLICATIONSTATE::EDITOR;
 	EnterEditorState();
-
-#ifdef PPD_DEBUG_OBJECTS
-	InitialiseDebugObjects();
-#endif
 
 #else
 	m_appState = Application::APPLICATIONSTATE::PLAY;
@@ -280,8 +282,7 @@ void Application::InitialiseDebugObjects()
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color);
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
-	entity.AddComponent<Components::CharacterController>();
-	entity.GetComponent<Components::Name>().m_name = "Test movableObject";
+	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody2";
 	entity.AddComponent<Components::AudioSource>();
 	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
 		Components::AudioSource::AudioClip{ "Resources/Audio/test.ogg", 0.2f, true, true, true }

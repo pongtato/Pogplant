@@ -310,12 +310,6 @@ namespace Components
 		int m_TexID;
 	};
 
-	//Temporary
-	struct CharacterController
-	{
-		float force = 2.f;
-	};
-
 	// For reference for Gab 
 	struct HeightMapDebugger
 	{

@@ -117,5 +117,6 @@ void Application::RenderPlayState()
 /******************************************************************************/
 void Application::LeavePlayState()
 {
+	PPA::AudioEngine::StopPlayingAll();
 	m_playECS.GetReg().clear();
 }

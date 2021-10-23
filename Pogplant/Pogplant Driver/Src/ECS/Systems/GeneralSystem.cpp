@@ -87,43 +87,4 @@ void GeneralSystem::Update()
 				audioSource.m_audioSources[i].c_playing = PPA::AudioEngine::UpdateChannel3DPosition(audioSource.m_audioSources[i].c_channelID, transform.m_position);
 		}
 	}
-
-	auto characters = m_registry->GetReg().view<Transform, Rigidbody, Components::CharacterController>();
-
-	for (auto entity : characters)
-	{
-		auto& character = characters.get<Components::CharacterController>(entity);
-		auto& rigidBody = characters.get<Components::Rigidbody>(entity);
-
-		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_UP))
-		{
-			rigidBody.AddForce({ 0.f, 0.f, -character.force });
-		}
-
-		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_DOWN))
-		{
-			rigidBody.AddForce({ 0.f, 0.f, character.force });
-		}
-
-		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_LEFT))
-		{
-			rigidBody.AddForce({ -character.force, 0.f, 0.f });
-		}
-
-		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_RIGHT))
-		{
-			rigidBody.AddForce({ character.force, 0.f, 0.f });
-		}
-
-		if (PPI::GLFWInputManager::Instance()->onKeyTriggered(GLFW_KEY_SPACE))
-		{
-			rigidBody.AddImpulseForce({ 0.f, 10.f, 0.f });
-		}
-
-		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_PAGE_UP))
-			rigidBody.mass = 3.f;
-
-		if (PPI::GLFWInputManager::Instance()->onKeyHeld(GLFW_KEY_PAGE_DOWN))
-			rigidBody.mass = 0.5f;
-	}
 }

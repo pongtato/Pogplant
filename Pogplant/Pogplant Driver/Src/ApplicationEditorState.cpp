@@ -112,6 +112,8 @@ void Application::LeaveEditorState()
 {
 	//std::cout << "Leaving Editor State" << std::endl;
 
+	PPA::AudioEngine::StopPlayingAll();
+
 	Serializer serialiser{ m_editorECS };
 	serialiser.Save("Resources/tmp");
 }

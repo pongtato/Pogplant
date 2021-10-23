@@ -233,6 +233,16 @@ namespace PPA
 		}
 	}
 
+	void AudioEngine::StopPlayingAll()
+	{
+		auto c_instance = AudioEngine::Instance();
+
+		for (auto& channel : c_instance->xFmod.m_channelMap)
+		{
+			channel.second->stop();
+		}
+	}
+
 	/***************************************************************************/
 	/*!
 	\brief
