@@ -107,6 +107,7 @@ namespace PogplantDriver
 		auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
 		auto render_component = m_ecs.GetReg().try_get<Renderer>(id);
 		auto script_component = m_ecs.GetReg().try_get<Scriptable>(id);
+		auto audio_component = m_ecs.GetReg().try_get<AudioSource>(id);
 
 		Try_Save_Component<Transform>(subroot, id);
 		Try_Save_Component<Name>(subroot, id);
@@ -153,6 +154,25 @@ namespace PogplantDriver
 			subroot["Scripting"] = classroot;
 		}
 
+		if (audio_component)
+		{
+			Json::Value classRoot;
+
+			for (size_t i = 0; i < audio_component->m_audioSources.size(); i++)
+			{
+				Json::Value clipRoot;
+				
+				clipRoot["UpdatePos"] = audio_component->m_audioSources[0].m_update3DPosition;
+				clipRoot["Volume"] = audio_component->m_audioSources[0].m_volume;
+				clipRoot["Dir"] = audio_component->m_audioSources[0].m_fileDir;
+
+				std::stringstream ss;
+				ss << "Clip" << i;
+				classRoot[ss.str()] = clipRoot;
+			}
+
+			subroot["AudioSource"] = classRoot;
+		}
 
 		return subroot;
 	}
@@ -188,7 +208,7 @@ namespace PogplantDriver
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
 		auto& scripting = root["Scripting"];
-
+		auto& audioSource = root["AudioSource"];
 
 		Try_Load_Component<Transform>(root, "Transform", id);
 		Try_Load_Component<Directional_Light>(root, "Directional_Light", id);
@@ -289,6 +309,55 @@ namespace PogplantDriver
 			m_ecs.GetReg().emplace<Scriptable>(id, temp_ScriptTypes);
 		}
 
+		if (audioSource)
+		{
+			auto& audioComponent = m_ecs.GetReg().emplace<AudioSource>(id);
+			
+			std::stringstream ss;
+			
+			size_t i = 0;
+			ss << "Clip" << i;
+
+			do
+			{
+				
+				if (audioSource[ss.str()] != Json::nullValue)
+				{
+					AudioSource::AudioObject audioObject;
+					audioObject.m_update3DPosition = audioSource[ss.str()]["UpdatePos"].asBool();
+					audioObject.m_volume = audioSource[ss.str()]["Volume"].asFloat();
+					audioObject.m_fileDir = audioSource[ss.str()]["Dir"].asString();
+
+					if(audioObject.Init())
+						audioComponent.m_audioSources.push_back(audioObject);
+				}
+
+				++i;
+				ss.str("");
+				ss.clear();
+				ss << "Clip" << i;
+			} while (audioSource[ss.str()] != Json::nullValue);
+
+			/*if (audio_component)
+		{
+			Json::Value classRoot;
+
+			for (size_t i = 0; i < audio_component->m_audioSources.size(); i++)
+			{
+				Json::Value clipRoot;
+				
+				clipRoot["UpdatePos"] = audio_component->m_audioSources[0].m_update3DPosition;
+				clipRoot["Volume"] = audio_component->m_audioSources[0].m_volume;
+				clipRoot["Dir"] = audio_component->m_audioSources[0].m_fileDir;
+
+				std::stringstream ss;
+				ss << "Clip" << i;
+				classRoot[ss.str()] = clipRoot;
+			}
+
+			subroot["AudioSource"] = classRoot;
+		}*/
+		}
 	}
 
 	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id,int counter)

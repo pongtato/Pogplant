@@ -19,6 +19,7 @@
 #include <fmod.hpp>
 #include <glm.hpp>
 
+#include <mutex>
 #include <vector>
 #include <string>
 #include <map>
@@ -28,10 +29,10 @@ namespace PPA
 	class AudioEngine
 	{
 	public:
-		
-		static AudioEngine* Instance();
+		~AudioEngine() = default;
+
+		static AudioEngine& Instance();
 		static void Update();
-		static void Destroy();
 		
 		static bool LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed);
 		static void UnloadAudio(const std::string& fileName);
@@ -48,8 +49,7 @@ namespace PPA
 		static void UpdateListenerPosition(const glm::vec3& position, const glm::vec3& forwardVec, const glm::vec3& upVec, const glm::vec3& velocity);
 	private:
 		AudioEngine() = default;
-		~AudioEngine() = default;
-
+		
 		struct xFMOD
 		{
 			xFMOD();
@@ -70,7 +70,51 @@ namespace PPA
 
 		static FMOD_VECTOR GLMToFMODVec3(const glm::vec3& vec);
 
-		static AudioEngine* m_instance;
+		static std::unique_ptr<AudioEngine> m_instance;
+		static std::once_flag m_onceFlag;
+	};
+
+	class AudioResource
+	{
+	public:
+		~AudioResource();
+
+		struct AudioClip
+		{
+			inline AudioClip(
+				bool is3D = true,
+				bool isLooping = false,
+				bool isStreamed = false,
+				bool enableDoppler = false)
+				:
+				m_is3D{ is3D },
+				m_isLooping{ isLooping },
+				m_isStreamed{ isStreamed },
+				m_enableDopplerEffect{ enableDoppler }
+			{
+
+			}
+
+			~AudioClip() = default;
+
+			bool m_is3D = true;
+			bool m_isLooping = false;
+			bool m_isStreamed = false;
+			bool m_enableDopplerEffect = false;
+		};
+
+		static bool LoadAudio(const std::string& fileName);
+
+		static AudioResource& Instance();
+		static std::map<std::string, AudioClip>& AudioPool();
+
+	private:
+		AudioResource() = default;
+
+		std::map<std::string, AudioClip> m_audioPool;
+
+		static std::unique_ptr<AudioResource> m_instance;
+		static std::once_flag m_onceFlag;
 	};
 }
 

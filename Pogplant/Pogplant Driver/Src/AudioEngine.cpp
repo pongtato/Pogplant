@@ -14,8 +14,14 @@
 /******************************************************************************/
 #include "AudioEngine.h"
 #include "Pogplant.h"
+#include <fstream>
+#include <filesystem>
 
-PPA::AudioEngine* PPA::AudioEngine::m_instance = nullptr;
+std::unique_ptr<PPA::AudioEngine> PPA::AudioEngine::m_instance = nullptr;
+std::once_flag PPA::AudioEngine::m_onceFlag;
+
+std::unique_ptr<PPA::AudioResource> PPA::AudioResource::m_instance = nullptr;
+std::once_flag PPA::AudioResource::m_onceFlag;
 
 namespace PPA
 {
@@ -25,12 +31,13 @@ namespace PPA
 		Gets the AudioEngine singleton instance
 	*/
 	/***************************************************************************/
-	AudioEngine* AudioEngine::Instance()
+	AudioEngine& AudioEngine::Instance()
 	{
-		if (!m_instance)
-			m_instance = new AudioEngine();
+		std::call_once(m_onceFlag, [] {
+			m_instance.reset(new AudioEngine);
+			});
 
-		return m_instance;
+		return *m_instance.get();
 	}
 
 	/***************************************************************************/
@@ -41,22 +48,7 @@ namespace PPA
 	/***************************************************************************/
 	void AudioEngine::Update()
 	{
-		AudioEngine::Instance()->xFmod.Update();
-	}
-
-	/***************************************************************************/
-	/*!
-	\brief
-		Destroys the AudioEngine singleton instance
-	*/
-	/***************************************************************************/
-	void AudioEngine::Destroy()
-	{
-		if (m_instance)
-		{
-			delete m_instance;
-			m_instance = nullptr;
-		}
+		AudioEngine::Instance().xFmod.Update();
 	}
 
 	/***************************************************************************/
@@ -73,7 +65,7 @@ namespace PPA
 	/***************************************************************************/
 	bool AudioEngine::LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed)
 	{
-		auto c_instance = AudioEngine::Instance();
+		auto c_instance = &AudioEngine::Instance();
 
 		auto soundItr = c_instance->xFmod.m_soundMap.find(fileName);
 		if (soundItr != c_instance->xFmod.m_soundMap.end())
@@ -119,7 +111,7 @@ namespace PPA
 	/***************************************************************************/
 	void AudioEngine::UnloadAudio(const std::string& fileName)
 	{
-		auto c_instance = AudioEngine::Instance();
+		auto c_instance = &AudioEngine::Instance();
 
 		auto soundItr = c_instance->xFmod.m_soundMap.find(fileName);
 		if (soundItr == c_instance->xFmod.m_soundMap.end())
@@ -137,7 +129,7 @@ namespace PPA
 
 	void AudioEngine::UpdateAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed)
 	{
-		auto c_instance = AudioEngine::Instance();
+		auto c_instance = &AudioEngine::Instance();
 
 		auto soundItr = c_instance->xFmod.m_soundMap.find(fileName);
 		if (soundItr == c_instance->xFmod.m_soundMap.end())
@@ -174,7 +166,7 @@ namespace PPA
 	/***************************************************************************/
 	int AudioEngine::PlaySound(const std::string& fileName, float volume, const glm::vec3& position)
 	{
-		auto c_instance = AudioEngine::Instance();
+		auto c_instance = &AudioEngine::Instance();
 
 		auto soundItr = c_instance->xFmod.m_soundMap.find(fileName);
 		if (soundItr == c_instance->xFmod.m_soundMap.end())
@@ -202,7 +194,6 @@ namespace PPA
 			if (mode & FMOD_3D)
 			{
 				FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
-
 				channel->set3DAttributes(&fvPosition, nullptr);
 			}
 
@@ -223,7 +214,7 @@ namespace PPA
 	/***************************************************************************/
 	void AudioEngine::StopPlayingChannel(int channelID)
 	{
-		auto c_instance = AudioEngine::Instance();
+		auto c_instance = &AudioEngine::Instance();
 
 		auto channelItr = c_instance->xFmod.m_channelMap.find(channelID);
 
@@ -235,7 +226,7 @@ namespace PPA
 
 	void AudioEngine::StopPlayingAll()
 	{
-		auto c_instance = AudioEngine::Instance();
+		auto c_instance = &AudioEngine::Instance();
 
 		for (auto& channel : c_instance->xFmod.m_channelMap)
 		{
@@ -257,7 +248,7 @@ namespace PPA
 	/***************************************************************************/
 	bool AudioEngine::UpdateChannel3DPosition(int channelID, const glm::vec3& position)
 	{
-		auto c_instance = AudioEngine::Instance();
+		auto c_instance = &AudioEngine::Instance();
 
 		auto channelItr = c_instance->xFmod.m_channelMap.find(channelID);
 
@@ -274,7 +265,7 @@ namespace PPA
 
 	void AudioEngine::UpdateChannelVolume(int channelID, float volume)
 	{
-		auto c_instance = AudioEngine::Instance();
+		auto c_instance = &AudioEngine::Instance();
 
 		auto channelItr = c_instance->xFmod.m_channelMap.find(channelID);
 
@@ -291,7 +282,7 @@ namespace PPA
 		auto fvUp = GLMToFMODVec3(upVec);
 		auto fvVelo = GLMToFMODVec3(velocity);
 
-		AudioEngine::Instance()->xFmod.m_system->set3DListenerAttributes(0, &fvPosition, nullptr, &fvForward, &fvUp);
+		AudioEngine::Instance().xFmod.m_system->set3DListenerAttributes(0, &fvPosition, nullptr, &fvForward, &fvUp);
 	}
 
 	FMOD_VECTOR AudioEngine::GLMToFMODVec3(const glm::vec3& vec)
@@ -370,5 +361,60 @@ namespace PPA
 			m_channelMap.erase(it);
 
 		m_studioSystem->update();
+	}
+
+	AudioResource::~AudioResource()
+	{
+		for (auto audioClip : m_audioPool)
+		{
+			std::ofstream fileStream{ audioClip.first + ".mamamia",
+					std::ios::out | std::ios::binary | std::ios::trunc };
+
+			if (fileStream.is_open())
+			{
+				fileStream.write(reinterpret_cast<const char*>(&audioClip.second), sizeof(AudioClip));
+			}
+			else
+			{
+				assert(false);
+			}
+		}
+	}
+
+	bool AudioResource::LoadAudio(const std::string& fileName)
+	{
+		AudioClip newAudioClip;
+
+		if (std::filesystem::exists(fileName + ".mamamia"))
+		{
+			std::ifstream fileStream{ fileName + ".mamamia", std::ios::binary };
+
+			if (fileStream.is_open())
+				fileStream.read(reinterpret_cast<char*>(&newAudioClip), sizeof(AudioClip));
+		}
+
+		auto ret = AudioEngine::LoadAudio(fileName, true, false, false);
+		
+		if (ret)
+		{
+			AudioResource::Instance().m_audioPool[fileName] = newAudioClip;
+			AudioEngine::UpdateAudio(fileName, newAudioClip.m_is3D, newAudioClip.m_isLooping, newAudioClip.m_isStreamed);
+		}
+
+		return ret;
+	}
+
+	AudioResource& AudioResource::Instance()
+	{
+		std::call_once(m_onceFlag, [] {
+			m_instance.reset(new AudioResource);
+			});
+
+		return *m_instance.get();
+	}
+
+	std::map<std::string, AudioResource::AudioClip>& AudioResource::AudioPool()
+	{
+		return Instance().m_audioPool;
 	}
 }

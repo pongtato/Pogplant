@@ -34,22 +34,6 @@ GeneralSystem::~GeneralSystem()
 void GeneralSystem::Init(ECS* ecs)
 {
 	m_registry = ecs;
-
-	auto audios = m_registry->GetReg().view<Components::AudioSource>();
-
-	for (auto& audioEntity : audios)
-	{
-		auto& audioSource = audios.get<Components::AudioSource>(audioEntity);
-
-		for (size_t i = 0; i < audioSource.m_audioSources.size(); i++)
-		{
-			PPA::AudioEngine::LoadAudio(
-				audioSource.m_audioSources[i].m_fileDir,
-				audioSource.m_audioSources[i].m_is3D,
-				audioSource.m_audioSources[i].m_isLooping,
-				audioSource.m_audioSources[i].m_isStreamed);
-		}
-	}
 }
 
 void GeneralSystem::Update()

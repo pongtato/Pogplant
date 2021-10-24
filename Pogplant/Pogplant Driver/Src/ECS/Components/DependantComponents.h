@@ -107,79 +107,79 @@ namespace Components
 
 	struct AudioSource
 	{
-		struct AudioClip
+		struct AudioObject
 		{
-			inline AudioClip(const std::string& fileDir,
+			AudioObject() = default;
+
+			inline AudioObject(const std::string& fileDir,
 				float volume = 1.f,
-				bool is3D = true,
-				bool isLooping = false,
-				bool isStreamed = false,
-				bool enableDoppler = false,
 				bool followTransformPosition = true)
 				:
 				m_fileDir{ fileDir },
 				m_volume{ volume },
-				m_is3D{ is3D },
-				m_isLooping{ isLooping },
-				m_isStreamed{ isStreamed },
-				m_enableDopplerEffect{ enableDoppler },
 				m_update3DPosition{ followTransformPosition }
 			{
-
+				Init();
 			}
 
-			~AudioClip() = default;
+			~AudioObject() = default;
+
+			inline bool Init()
+			{
+				auto itr = PPA::AudioResource::AudioPool().find(m_fileDir);
+
+				if (itr != PPA::AudioResource::AudioPool().end())
+				{
+					m_audioClip = &itr->second;
+					return true;
+				}
+
+				return false;
+			}
+
 
 			/**> Relative file directory of the audio file*/
 			std::string m_fileDir;
 			float m_volume = 1.f;
-			bool m_is3D = true;
-			bool m_isLooping = false;
-			bool m_isStreamed = false;
-			bool m_enableDopplerEffect = false;
+
 			bool m_update3DPosition = true;
 
-
 			/**> Runtime variables, do not serialise*/
+			PPA::AudioResource::AudioClip* m_audioClip;
 			int c_channelID;
 			bool c_playing;
 		};
 
-		std::vector<AudioClip> m_audioSources;
-
-		inline bool LoadAudioToFMOD(size_t id)
-		{
-			if (m_audioSources.size() > id)
-			{
-				return PPA::AudioEngine::LoadAudio(
-					m_audioSources[id].m_fileDir,
-					m_audioSources[id].m_is3D,
-					m_audioSources[id].m_isLooping,
-					m_audioSources[id].m_isStreamed);
-			}
-
-			return false;
-		}
+		std::vector<AudioObject> m_audioSources;
 
 		inline void UpdateAudioSettings(size_t id)
 		{
 			if (m_audioSources.size() > id)
 			{
+				if (!m_audioSources[id].m_audioClip)
+					return;
+
 				PPA::AudioEngine::StopPlayingChannel(m_audioSources[id].c_channelID);
 				m_audioSources[id].c_playing = false;
 
 				PPA::AudioEngine::UpdateAudio(
 					m_audioSources[id].m_fileDir,
-					m_audioSources[id].m_is3D,
-					m_audioSources[id].m_isLooping,
-					m_audioSources[id].m_isStreamed);
+					m_audioSources[id].m_audioClip->m_is3D,
+					m_audioSources[id].m_audioClip->m_isLooping,
+					m_audioSources[id].m_audioClip->m_isStreamed);
 			}
-		}
+		}//*/
 
 		inline void PlayAudio(size_t id, const glm::vec3& pos = PhysicsDLC::Vector::Zero)
 		{
 			if (m_audioSources.size() > id)
 			{
+				if (!m_audioSources[id].m_audioClip)
+					return;
+
+				if(m_audioSources[id].c_playing)
+					PPA::AudioEngine::StopPlayingChannel(m_audioSources[id].c_channelID);
+
 				m_audioSources[id].c_channelID = PPA::AudioEngine::PlaySound(
 					m_audioSources[id].m_fileDir,
 					m_audioSources[id].m_volume,
@@ -195,19 +195,6 @@ namespace Components
 			{
 				PPA::AudioEngine::StopPlayingChannel(m_audioSources[id].c_channelID);
 				m_audioSources[id].c_playing = false;
-			}
-		}
-
-		//Don't actually need to use it as the audio engine
-		//will auto clear up if anything is not freed
-		inline void UnloadResources()
-		{
-			for (size_t i = 0; i < m_audioSources.size(); i++)
-			{
-				if (m_audioSources[i].c_playing)
-					PPA::AudioEngine::StopPlayingChannel(m_audioSources[i].c_channelID);
-
-				PPA::AudioEngine::UnloadAudio(m_audioSources[i].m_fileDir);
 			}
 		}
 	};

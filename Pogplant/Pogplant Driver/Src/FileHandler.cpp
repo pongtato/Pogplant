@@ -16,6 +16,7 @@
 #include "AssetCompiler.h"
 #include "Logger.h"
 #include "ECS/Systems/ScriptSystem.h"
+#include "AudioEngine.h"
 
 namespace PPF
 {
@@ -72,6 +73,10 @@ namespace PPF
                     PPC::AssetCompiler& ac = ac.GetInstance();
                     ac.RunExecutable("Pogplant Compiler.exe", filePath);
                     ac.WaitForSingleProcess(key);
+                }
+                else if (extension.compare(".ogg") == 0)
+                {
+                    PPA::AudioResource::LoadAudio(filePath);
                 }
             }
         }
@@ -153,6 +158,10 @@ namespace PPF
                                 ac.RunExecutable("Pogplant Compiler.exe", filePath);
                                 ac.WaitForSingleProcess(key);
                             }
+                        }
+                        else if (extension.compare(".ogg") == 0)
+                        {
+                            PPA::AudioResource::LoadAudio(filePath);
                         }
                     }
                     // File modification

@@ -271,7 +271,7 @@ void Application::InitialiseDebugObjects()
 	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
 	entity.AddComponent<Components::AudioSource>();
 	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
-		Components::AudioSource::AudioClip{ "Resources/Audio/test2.ogg", 0.2f, true, true, true }
+		Components::AudioSource::AudioObject{ "Resources/Audio\\test2.ogg", 0.2f, true }
 	);
 
 	//Test movable controllable body
@@ -285,7 +285,7 @@ void Application::InitialiseDebugObjects()
 	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody2";
 	entity.AddComponent<Components::AudioSource>();
 	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
-		Components::AudioSource::AudioClip{ "Resources/Audio/test.ogg", 0.2f, true, true, true }
+		Components::AudioSource::AudioObject{ "Resources/Audio\\test.ogg", 0.2f, true }
 	);
 
 	/// FONT
@@ -711,7 +711,6 @@ void Application::Exit()
 
 	PPD::ImguiHelper::CleanUpImgui();
 	PP::Entry::Cleanup();
-	PPA::AudioEngine::Destroy();
 	PPI::InputSystem::Destroy();
 
 	PPF::FileHandler& fh = fh.GetInstance();
