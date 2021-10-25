@@ -46,10 +46,15 @@ namespace Scripting
             // Initialize waypoint array
             waypoints = catmullRom.CalculateCatmullRomChain().ToArray();
 
+            for (int i = 0; i < waypoints.Length; ++i)
+                Console.WriteLine("waypoint " + i + " is at: x = " + waypoints[i].X + ", y = " + waypoints[i].Y + ", z = " + waypoints[i].Z);
+
             // Initialize d_alpha for first waypoint
             // Calculate d_alpha from follow_speed and distance between current and next waypoint
             float distance = Vector3.Distance(waypoints[current_waypoint_index - 1], waypoints[current_waypoint_index]);
             d_alpha = 1.0f / (distance / follow_speed);
+
+            //Console.WriteLine("alpha is" + d_alpha);
 
             // Initialize starting position and rotation of the play area
             //transform.Position = waypoints[current_waypoint_index];

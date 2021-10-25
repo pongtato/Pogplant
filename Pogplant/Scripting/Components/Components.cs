@@ -87,6 +87,15 @@ namespace Scripting
         {
             return (float)Math.Sqrt((X * X) + (Y * Y) + (Z * Z));
         }
+
+        public static Vector3 one()
+        {
+            return new Vector3(1, 1, 1);
+        }
+        public static Vector3 zero()
+        {
+            return new Vector3(0, 0, 0);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -95,6 +104,12 @@ namespace Scripting
         public Vector3 Position;
         public Vector3 Rotation;
         public Vector3 Scale;
+
+        public void SetPositionAndRotatation(Vector3 position, Vector3 rotation)
+        {
+            Position = position;
+            Rotation = rotation;
+        }
     }
 
     [StructLayout(LayoutKind.Sequential)]

@@ -22,15 +22,25 @@ namespace Scripting
 {
     class CatmullRomSpline
 	{
-        public Transform[] controlPointsList = new Transform[4];
+        public Transform[] controlPointsList = new Transform[8];
 
-		public bool isLooping = true;
+		public bool isLooping = false;
 
-		public float step_size = 0.02f;
+		public float step_size = 0.2f;
 
 		public CatmullRomSpline()
         {
-        }
+			// Test spline constructed here
+
+			controlPointsList[0].SetPositionAndRotatation(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+			controlPointsList[1].SetPositionAndRotatation(new Vector3(20.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+			controlPointsList[2].SetPositionAndRotatation(new Vector3(40.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+			controlPointsList[3].SetPositionAndRotatation(new Vector3(80.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+			controlPointsList[4].SetPositionAndRotatation(new Vector3(100.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+			controlPointsList[5].SetPositionAndRotatation(new Vector3(120.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+			controlPointsList[6].SetPositionAndRotatation(new Vector3(140.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+			controlPointsList[7].SetPositionAndRotatation(new Vector3(160.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+		}
 
 		//Display a spline between 2 points derived with the Catmull-Rom spline algorithm
 		void DisplayCatmullRomSpline(int pos)
@@ -73,7 +83,7 @@ namespace Scripting
 			// Resulting waypoint of the entire spline chain
 			List<Vector3> waypoints = new List<Vector3>();
 			int remove_range = (int)(10 / (step_size * 10));
-			for (int i = 0; i < controlPointsList.Length; i++)
+			for (int i = 1; i < controlPointsList.Length; i++)
 			{
 				if ((i == controlPointsList.Length - 1) && !isLooping)
 				{
