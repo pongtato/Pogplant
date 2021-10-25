@@ -83,3 +83,33 @@ void ECS::DestroyEntity(entt::entity entity)
 	m_registry.destroy(entity, 0);
 
 }
+
+//returns the first entity with the name
+entt::entity ECS::FindEntityWithName(std::string& _name)
+{
+	auto view = m_registry.view<Name>();
+
+	for (auto& entity : view)
+	{
+		auto name = view.get<Name>(entity);
+		if (name.m_name == _name)
+			return entity;
+	}
+
+	return entt::null;
+}
+
+std::vector<entt::entity> ECS::FindAllEntityWithName(std::string& _name)
+{
+	auto view = m_registry.view<Name>();
+	std::vector<entt::entity> return_vec;
+
+	for (auto& entity : view)
+	{
+		auto name = view.get<Name>(entity);
+		if (name.m_name == _name)
+			return_vec.push_back(entity);
+	}
+
+	return return_vec;
+}

@@ -38,6 +38,9 @@ public:
 
 	entt::registry& GetReg();
 
+	entt::entity FindEntityWithName(std::string& _name);
+	std::vector<entt::entity> FindAllEntityWithName(std::string& _name);
+
 private:
 	entt::registry m_registry;
 
