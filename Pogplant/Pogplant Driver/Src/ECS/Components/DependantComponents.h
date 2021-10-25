@@ -70,6 +70,7 @@ namespace Components
 
 		bool isTrigger = false;
 		int collisionLayer = 0;
+		RTTR_ENABLE();
 	};
 
 	struct BoxCollider : public Collider
@@ -83,6 +84,7 @@ namespace Components
 		glm::vec3 centre;
 
 		PhysicsDLC::Collision::Shapes::AABB aabb;
+		RTTR_ENABLE(Collider);
 	};
 
 	struct SphereCollider : public Collider
@@ -96,6 +98,7 @@ namespace Components
 		glm::vec3 centre;
 
 		PhysicsDLC::Collision::Shapes::Sphere sphere;
+		RTTR_ENABLE(Collider);
 	};
 
 	/*struct HeightMapCollider : public Collider

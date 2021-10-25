@@ -421,15 +421,12 @@ namespace PogplantDriver
 		for (int i = 0; i < 16; ++i)
 		{
 			if (!_data[i])
-			{
-				//Assert here 
 				return glm::mat4{};
-			}
 		}
-		return glm::mat4{ _data[0].asFloat(), _data[1].asFloat(), _data[2].asFloat(), _data[3].asFloat(),
-											_data[4].asFloat(), _data[5].asFloat(), _data[6].asFloat(), _data[7].asFloat(),
-											_data[8].asFloat(), _data[9].asFloat(), _data[10].asFloat(), _data[11].asFloat(),
-											_data[12].asFloat(), _data[13].asFloat(), _data[14].asFloat(), _data[15].asFloat() };
+		return glm::mat4{ _data[0].asFloat(),	_data[1].asFloat(), _data[2].asFloat(), _data[3].asFloat(),
+												_data[4].asFloat(), _data[5].asFloat(), _data[6].asFloat(), _data[7].asFloat(),
+												_data[8].asFloat(), _data[9].asFloat(), _data[10].asFloat(), _data[11].asFloat(),
+												_data[12].asFloat(), _data[13].asFloat(), _data[14].asFloat(), _data[15].asFloat() };
 	}
 
 	Json::Value Serializer::Reflect_Serialization(Json::Value& _root, rttr::instance _obj)
@@ -438,7 +435,7 @@ namespace PogplantDriver
 		const auto component_name = obj.get_type().get_raw_type().get_name().to_string();
 
 		auto prop_list = obj.get_derived_type().get_properties();
-
+		
 		Json::Value root;
 
 		for (auto prop : prop_list)

@@ -42,6 +42,10 @@ namespace Components
 			.property("isKinematic", &Rigidbody::isKinematic)
 			.property("useGravity", &Rigidbody::useGravity);
 
+		rttr::registration::class_<Collider>("Collider")
+			.property("isTrigger", &Collider::isTrigger)
+			.property("collisionLayer", &Collider::collisionLayer);
+
 		rttr::registration::class_<BoxCollider>("BoxCollider")
 			.property("extends", &BoxCollider::extends)
 			.property("centre", &BoxCollider::centre);
