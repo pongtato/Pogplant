@@ -15,18 +15,31 @@
 #ifndef INPUT_SYSTEM_H_
 #define INPUT_SYSTEM_H_
 
+#include "../Panels.h"
+
 #include <glfw3.h>
 #include <unordered_map>
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
+
+#include <memory>
+#include <mutex>
 
 namespace PPI
 {
 	class InputSystem
 	{
 	public:
-		void Init(GLFWwindow* window);
-		void pollEvents();
+		struct keyCode
+		{
+			int keyboard;
+			int controller;
+		};
+
+		~InputSystem() = default;
+
+		static void Init(GLFWwindow* window);
+		static void PollEvents();
 
 		void setControllerLayout(int layout);
 
@@ -39,25 +52,24 @@ namespace PPI
 
 		//float getKeyAxis(std::string keyID);
 
-		void appendKey(std::string keyID, int keyboardKey, int controllerKey = -1);
+		static void AppendKey(std::string keyID, int keyboardKey, int controllerKey = -1);
+		static void ClearBindings();
 
-		bool controllerConnected();
+		inline static std::unordered_map<std::string, keyCode>& GetInputMap()
+		{
+			return Instance().m_inputMap;
+		}
 
-		static InputSystem* Instance();
-		static void Destroy();
+		static bool ControllerConnected();
+
+		static InputSystem& Instance();
 
 	private:
 		InputSystem() = default;
-		~InputSystem() = default;
-
-		struct keyCode
-		{
-			int keyboard;
-			int controller;
-		};
-
+		
 		/**> singleton instance*/
-		static InputSystem* m_instance;
+		static std::unique_ptr<InputSystem> m_instance;
+		static std::once_flag m_onceFlag;
 
 		std::unordered_map<std::string, keyCode> m_inputMap;
 	};

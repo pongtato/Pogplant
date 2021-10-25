@@ -380,6 +380,8 @@ void PhysicsSystem::Update(float c_dt)
 						std::get<1>(queuedAction)
 						)
 				);
+
+				std::cout << "Triggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
 			}
 			else
 			{
@@ -389,6 +391,8 @@ void PhysicsSystem::Update(float c_dt)
 						std::get<1>(queuedAction)
 						)
 				);
+
+				std::cout << "UnTriggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
 			}
 
 			m_triggerQueue.pop_back();

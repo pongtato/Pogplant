@@ -18,6 +18,7 @@
 #include "Serialiser/Serializer.h"
 #include "SceneHierarchy.h"
 #include "Debugger.h"
+#include "Panels/InputPanel.h"
 #include <algorithm>
 #include <execution>
 
@@ -140,6 +141,7 @@ namespace PogplantDriver
 
 		m_ecs = ecs;
 		
+		m_Panels.push_back(std::make_unique<PPP::InputPanel>());
 		m_Panels.push_back(std::make_unique<Debugger>());
 		m_Panels.push_back(std::make_unique<SceneHierarchy>());
 		for (auto& Panel : m_Panels)

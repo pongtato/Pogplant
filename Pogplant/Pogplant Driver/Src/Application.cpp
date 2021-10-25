@@ -76,7 +76,7 @@ void Application::Init()
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 
-	PPI::InputSystem::Instance()->Init(PP::Window::GetWindow());
+	PPI::InputSystem::Init(PP::Window::GetWindow());
 
 #ifdef PPD_EDITOR_BUILD
 
@@ -652,7 +652,7 @@ void Application::Run()
 
 
 		PPA::AudioEngine::Update();
-		PPI::InputSystem::Instance()->pollEvents();
+		PPI::InputSystem::PollEvents();
 		PP::Renderer::SwapBuffer();
 
 		if (m_nextAppState != m_appState)
@@ -711,7 +711,6 @@ void Application::Exit()
 
 	PPD::ImguiHelper::CleanUpImgui();
 	PP::Entry::Cleanup();
-	PPI::InputSystem::Destroy();
 
 	PPF::FileHandler& fh = fh.GetInstance();
 	fh.Stop();

@@ -21,7 +21,8 @@
 
 namespace PPI
 {
-	GLFWInputManager* GLFWInputManager::m_instance = nullptr;
+	std::unique_ptr<GLFWInputManager> GLFWInputManager::m_instance = nullptr;
+	std::once_flag GLFWInputManager::m_onceFlag;
 
 	/******************************************************************************/
 	/*!
@@ -182,7 +183,7 @@ namespace PPI
 	// Mono function
 	bool GLFWInputManager::onKeyTriggeredMono(int key)
 	{
-		return Instance()->onKeyTriggered(key);
+		return Instance().onKeyTriggered(key);
 	}
 
 	/******************************************************************************/
@@ -207,7 +208,7 @@ namespace PPI
 	// Mono function
 	bool GLFWInputManager::onKeyReleasedMono(int key)
 	{
-		return Instance()->onKeyReleased(key);
+		return Instance().onKeyReleased(key);
 	}
 
 	/******************************************************************************/
@@ -228,7 +229,7 @@ namespace PPI
 	// Mono function
 	bool GLFWInputManager::onKeyHeldMono(int key)
 	{
-		return Instance()->onKeyHeld(key);
+		return Instance().onKeyHeld(key);
 	}
 
 	/******************************************************************************/
@@ -406,25 +407,13 @@ namespace PPI
 		returns a GLFWInputManager instance
 	*/
 	/******************************************************************************/
-	GLFWInputManager* GLFWInputManager::Instance()
+	GLFWInputManager& GLFWInputManager::Instance()
 	{
-		if (!m_instance)
-			m_instance = new GLFWInputManager;
+		std::call_once(m_onceFlag, [] {
+			m_instance.reset(new GLFWInputManager);
+			});
 
-		return m_instance;
-	}
-
-	/******************************************************************************/
-	/*!
-	\brief
-		Destroys the singleton instance of GLFWInputManager
-	*/
-	/******************************************************************************/
-	void GLFWInputManager::Destroy()
-	{
-		if (m_instance)
-			delete m_instance;
-		m_instance = nullptr;
+		return *m_instance.get();
 	}
 
 	/******************************************************************************/

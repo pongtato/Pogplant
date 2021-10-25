@@ -19,6 +19,8 @@
 #include <set>
 #include <array>
 #include <glm.hpp>
+#include <memory>
+#include <mutex>
 
 namespace PPI
 {
@@ -32,7 +34,6 @@ namespace PPI
 	class GLFWInputManager
 	{
 	public:
-		GLFWInputManager() = default;
 		~GLFWInputManager() = default;
 
 		struct Key
@@ -79,9 +80,11 @@ namespace PPI
 		static void joystick_callback(int jid, int event);
 
 		static void SetActiveWindow(GLFWwindow* window);
-		static GLFWInputManager* Instance();
-		static void Destroy();
+		static GLFWInputManager& Instance();
+
 	private:
+		GLFWInputManager() = default;
+
 		/**> Current GLFW window*/
 		GLFWwindow* m_glfwWindow = nullptr;
 
@@ -91,7 +94,8 @@ namespace PPI
 		int m_mainController = 0;
 
 		/**> singleton instance*/
-		static GLFWInputManager* m_instance;
+		static std::unique_ptr<GLFWInputManager> m_instance;
+		static std::once_flag m_onceFlag;
 
 		/**> active keys map*/
 		std::unordered_map<int, Key> m_activeKeys;

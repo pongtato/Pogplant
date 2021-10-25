@@ -21,7 +21,8 @@
 
 namespace PPI
 {
-	InputSystem* InputSystem::m_instance = nullptr;
+	std::unique_ptr<InputSystem> InputSystem::m_instance = nullptr;
+	std::once_flag InputSystem::m_onceFlag;
 
 	/******************************************************************************/
 	/*!
@@ -33,23 +34,23 @@ namespace PPI
 	{
 		//All this control initialisation should be done in the editor eventually as an endgame
 
-		InputSystem::Instance()->appendKey("LEFT", GLFW_KEY_A);
-		InputSystem::Instance()->appendKey("RIGHT", GLFW_KEY_D);
-		InputSystem::Instance()->appendKey("DOWN", GLFW_KEY_S, GLFW_GAMEPAD_AXIS_LEFT_Y + JOYSTICKOSET);
+		InputSystem::Instance().AppendKey("LEFT", GLFW_KEY_A);
+		InputSystem::Instance().AppendKey("RIGHT", GLFW_KEY_D);
+		InputSystem::Instance().AppendKey("DOWN", GLFW_KEY_S, GLFW_GAMEPAD_AXIS_LEFT_Y + JOYSTICKOSET);
 
-		//SaveFileHandler::Instance()->assignData<unsigned short>(SaveFileHandler::S_CONTROL_JUMP, keyGetter, GLFW_KEY_SPACE, false);
-		setControllerLayout(1);
+		//SaveFileHandler::Instance().assignData<unsigned short>(SaveFileHandler::S_CONTROL_JUMP, keyGetter, GLFW_KEY_SPACE, false);
+		InputSystem::Instance().setControllerLayout(1);
 
 		/*Set menu buttons*/
-		InputSystem::Instance()->appendKey("ESCAPE", GLFW_KEY_ESCAPE, GLFW_GAMEPAD_BUTTON_START);
-		InputSystem::Instance()->appendKey("MENUSELECT", GLFW_KEY_ENTER, GLFW_GAMEPAD_BUTTON_A);
-		InputSystem::Instance()->appendKey("MENUBACK", GLFW_KEY_BACKSPACE, GLFW_GAMEPAD_BUTTON_B);
-		InputSystem::Instance()->appendKey("MENUUP", GLFW_KEY_W, GLFW_GAMEPAD_BUTTON_DPAD_UP);
-		InputSystem::Instance()->appendKey("MENUDOWN", GLFW_KEY_S, GLFW_GAMEPAD_BUTTON_DPAD_DOWN);
-		InputSystem::Instance()->appendKey("MENULEFT", GLFW_KEY_A, GLFW_GAMEPAD_BUTTON_DPAD_LEFT);
-		InputSystem::Instance()->appendKey("MENURIGHT", GLFW_KEY_D, GLFW_GAMEPAD_BUTTON_DPAD_RIGHT);
+		InputSystem::Instance().AppendKey("ESCAPE", GLFW_KEY_ESCAPE, GLFW_GAMEPAD_BUTTON_START);
+		InputSystem::Instance().AppendKey("MENUSELECT", GLFW_KEY_ENTER, GLFW_GAMEPAD_BUTTON_A);
+		InputSystem::Instance().AppendKey("MENUBACK", GLFW_KEY_BACKSPACE, GLFW_GAMEPAD_BUTTON_B);
+		InputSystem::Instance().AppendKey("MENUUP", GLFW_KEY_W, GLFW_GAMEPAD_BUTTON_DPAD_UP);
+		InputSystem::Instance().AppendKey("MENUDOWN", GLFW_KEY_S, GLFW_GAMEPAD_BUTTON_DPAD_DOWN);
+		InputSystem::Instance().AppendKey("MENULEFT", GLFW_KEY_A, GLFW_GAMEPAD_BUTTON_DPAD_LEFT);
+		InputSystem::Instance().AppendKey("MENURIGHT", GLFW_KEY_D, GLFW_GAMEPAD_BUTTON_DPAD_RIGHT);
 
-		GLFWInputManager::Instance()->SetActiveWindow(window);
+		GLFWInputManager::Instance().SetActiveWindow(window);
 
 		glfwSetKeyCallback(window, GLFWInputManager::key_cb);
 		glfwSetMouseButtonCallback(window, GLFWInputManager::mousebutton_cb);
@@ -69,16 +70,16 @@ namespace PPI
 		Update booleans to correctly reflect triggered/release behaviour
 	*/
 	/******************************************************************************/
-	void InputSystem::pollEvents()
+	void InputSystem::PollEvents()
 	{
 		/*static int layout = 1;
-		if (GLFWInputManager::Instance()->onControllerTriggered(GLFW_GAMEPAD_BUTTON_BACK))
+		if (GLFWInputManager::Instance().onControllerTriggered(GLFW_GAMEPAD_BUTTON_BACK))
 		{
 			++layout;
 			layout = Quark::Math::WrapAround(layout, 0, 1);
 			setControllerLayout(layout);
 		}//*/
-		GLFWInputManager::Instance()->pollEvents();
+		GLFWInputManager::Instance().pollEvents();
 	}
 
 	void InputSystem::setControllerLayout(int layout)
@@ -87,20 +88,20 @@ namespace PPI
 		{
 		default:
 		case 0:
-			InputSystem::Instance()->appendKey("JUMP", GLFW_KEY_SPACE, GLFW_GAMEPAD_BUTTON_A);
-			InputSystem::Instance()->appendKey("SPRINT", GLFW_KEY_LEFT_SHIFT, GLFW_GAMEPAD_BUTTON_X);
-			InputSystem::Instance()->appendKey("ATTACK", GLFW_MOUSE_BUTTON_LEFT, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER + JOYSTICKOSET);
-			InputSystem::Instance()->appendKey("RECALL", GLFW_MOUSE_BUTTON_RIGHT, GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER);
-			InputSystem::Instance()->appendKey("HEAL", GLFW_KEY_Q, GLFW_GAMEPAD_BUTTON_B);
-			InputSystem::Instance()->appendKey("COUNTER", GLFW_KEY_E, GLFW_GAMEPAD_AXIS_LEFT_TRIGGER + JOYSTICKOSET);
+			InputSystem::Instance().AppendKey("JUMP", GLFW_KEY_SPACE, GLFW_GAMEPAD_BUTTON_A);
+			InputSystem::Instance().AppendKey("SPRINT", GLFW_KEY_LEFT_SHIFT, GLFW_GAMEPAD_BUTTON_X);
+			InputSystem::Instance().AppendKey("ATTACK", GLFW_MOUSE_BUTTON_LEFT, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER + JOYSTICKOSET);
+			InputSystem::Instance().AppendKey("RECALL", GLFW_MOUSE_BUTTON_RIGHT, GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER);
+			InputSystem::Instance().AppendKey("HEAL", GLFW_KEY_Q, GLFW_GAMEPAD_BUTTON_B);
+			InputSystem::Instance().AppendKey("COUNTER", GLFW_KEY_E, GLFW_GAMEPAD_AXIS_LEFT_TRIGGER + JOYSTICKOSET);
 			break;
 		case 1:
-			InputSystem::Instance()->appendKey("JUMP", GLFW_KEY_SPACE, GLFW_GAMEPAD_BUTTON_A);
-			InputSystem::Instance()->appendKey("SPRINT", GLFW_KEY_LEFT_SHIFT, GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER);
-			InputSystem::Instance()->appendKey("ATTACK", GLFW_MOUSE_BUTTON_LEFT, GLFW_GAMEPAD_BUTTON_B);
-			InputSystem::Instance()->appendKey("RECALL", GLFW_MOUSE_BUTTON_RIGHT, GLFW_GAMEPAD_BUTTON_Y);
-			InputSystem::Instance()->appendKey("HEAL", GLFW_KEY_Q, GLFW_GAMEPAD_BUTTON_X);
-			InputSystem::Instance()->appendKey("COUNTER", GLFW_KEY_E, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER + JOYSTICKOSET);
+			InputSystem::Instance().AppendKey("JUMP", GLFW_KEY_SPACE, GLFW_GAMEPAD_BUTTON_A);
+			InputSystem::Instance().AppendKey("SPRINT", GLFW_KEY_LEFT_SHIFT, GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER);
+			InputSystem::Instance().AppendKey("ATTACK", GLFW_MOUSE_BUTTON_LEFT, GLFW_GAMEPAD_BUTTON_B);
+			InputSystem::Instance().AppendKey("RECALL", GLFW_MOUSE_BUTTON_RIGHT, GLFW_GAMEPAD_BUTTON_Y);
+			InputSystem::Instance().AppendKey("HEAL", GLFW_KEY_Q, GLFW_GAMEPAD_BUTTON_X);
+			InputSystem::Instance().AppendKey("COUNTER", GLFW_KEY_E, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER + JOYSTICKOSET);
 			break;
 		}
 	}
@@ -121,10 +122,10 @@ namespace PPI
 		{
 			keyCode& button = m_inputMap[keyID];
 
-			if (button.controller >= 0 && GLFWInputManager::Instance()->onControllerHeld(button.controller))
+			if (button.controller >= 0 && GLFWInputManager::Instance().onControllerHeld(button.controller))
 				return true;
 
-			if (GLFWInputManager::Instance()->onKeyHeld(button.keyboard))
+			if (GLFWInputManager::Instance().onKeyHeld(button.keyboard))
 				return true;
 		}
 		return false;
@@ -134,7 +135,7 @@ namespace PPI
 	bool InputSystem::onKeyHeldMono(MonoString* keyID)
 	{
 		const char* _keyID = mono_string_to_utf8(keyID);
-		return Instance()->onKeyHeld(_keyID);
+		return Instance().onKeyHeld(_keyID);
 	}
 
 	/******************************************************************************/
@@ -153,10 +154,10 @@ namespace PPI
 		{
 			keyCode& button = m_inputMap[keyID];
 
-			if (button.controller >= 0 && GLFWInputManager::Instance()->onControllerTriggered(button.controller))
+			if (button.controller >= 0 && GLFWInputManager::Instance().onControllerTriggered(button.controller))
 				return true;
 
-			if (GLFWInputManager::Instance()->onKeyTriggered(button.keyboard))
+			if (GLFWInputManager::Instance().onKeyTriggered(button.keyboard))
 				return true;
 		}
 		return false;
@@ -166,7 +167,7 @@ namespace PPI
 	bool InputSystem::onKeyTriggeredMono(MonoString* keyID)
 	{
 		const char* _keyID = mono_string_to_utf8(keyID);
-		return Instance()->onKeyTriggered(_keyID);
+		return Instance().onKeyTriggered(_keyID);
 	}
 
 	/******************************************************************************/
@@ -185,10 +186,10 @@ namespace PPI
 		{
 			keyCode& button = m_inputMap[keyID];
 
-			if (button.controller >= 0 && GLFWInputManager::Instance()->onControllerReleased(button.controller))
+			if (button.controller >= 0 && GLFWInputManager::Instance().onControllerReleased(button.controller))
 				return true;
 
-			if (GLFWInputManager::Instance()->onKeyReleased(button.keyboard))
+			if (GLFWInputManager::Instance().onKeyReleased(button.keyboard))
 				return true;
 		}
 		return false;
@@ -198,12 +199,17 @@ namespace PPI
 	bool InputSystem::onKeyReleasedMono(MonoString* keyID)
 	{
 		const char* _keyID = mono_string_to_utf8(keyID);
-		return Instance()->onKeyReleased(_keyID);
+		return Instance().onKeyReleased(_keyID);
 	}
 
-	void InputSystem::appendKey(std::string keyID, int keyboardKey, int controllerKey)
+	void InputSystem::AppendKey(std::string keyID, int keyboardKey, int controllerKey)
 	{
-		m_inputMap[keyID] = keyCode{ keyboardKey, controllerKey };
+		Instance().m_inputMap[keyID] = keyCode{ keyboardKey, controllerKey };
+	}
+
+	void InputSystem::ClearBindings()
+	{
+		Instance().m_inputMap.clear();
 	}
 
 	/******************************************************************************/
@@ -214,9 +220,9 @@ namespace PPI
 		returns true if there is more than 1 controller
 	*/
 	/******************************************************************************/
-	bool InputSystem::controllerConnected()
+	bool InputSystem::ControllerConnected()
 	{
-		return (GLFWInputManager::Instance()->controllersConnected() > 0);
+		return (GLFWInputManager::Instance().controllersConnected() > 0);
 	}
 
 	/******************************************************************************/
@@ -228,26 +234,12 @@ namespace PPI
 		returns a InputSystem instance
 	*/
 	/******************************************************************************/
-	InputSystem* InputSystem::Instance()
+	InputSystem& InputSystem::Instance()
 	{
-		if (!m_instance)
-			m_instance = new InputSystem;
+		std::call_once(m_onceFlag, [] {
+			m_instance.reset(new InputSystem);
+			});
 
-		return m_instance;
-	}
-
-	/******************************************************************************/
-	/*!
-	\brief
-		Destroys the singleton instance of InputSystem
-	*/
-	/******************************************************************************/
-	void InputSystem::Destroy()
-	{
-		GLFWInputManager::Destroy();
-
-		if (m_instance)
-			delete m_instance;
-		m_instance = nullptr;
+		return *m_instance.get();
 	}
 }
