@@ -86,7 +86,7 @@ namespace Scripting
             if (!isEnd)
             {
                 UpdateCurrentWaypoint(alpha);
-                //time_between_waypoint += Time.deltaTime;
+                time_between_waypoint += dt;
                 alpha = d_alpha * time_between_waypoint; // Calculate the current alpha between the 2 waypoints
                 transform.Position += (Vector3.Lerp(waypoints[current_waypoint_index - 1], waypoints[current_waypoint_index], alpha) - transform.Position) * lerpSpeed * dt;
                 //transform.Position = Vector3.MoveTowards(transform.Position, waypoints[current_waypoint_index], follow_speed * dt);
@@ -102,7 +102,6 @@ namespace Scripting
                 float distance = Vector3.Distance(waypoints[current_waypoint_index], waypoints[++current_waypoint_index]);
                 d_alpha = 1.0f / (distance / follow_speed);
 
-                alpha = 0.0f; // Reset alpha
                 time_between_waypoint = 0.0f; // Reset current time between waypoints
             }
 
