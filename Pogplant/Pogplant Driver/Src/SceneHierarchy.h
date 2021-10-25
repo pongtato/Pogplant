@@ -1,25 +1,22 @@
 #pragma once
 #include <filesystem>
+#include "Panels.h"
 #include "../Src/ECS/ECS.h"
 #include "ECS/entt_ecs/entt.hpp"
 
 
 namespace PogplantDriver
 {
-
-	class SceneHierarchy
+	class SceneHierarchy : public Panels
 	{
 	public:
-		SceneHierarchy();
-		void Init(ECS*  ecs, entt::entity& current_entity);
-		void RenderSceneHierarchy(entt::entity& current_entity);
+		SceneHierarchy() = default;
+		void Init(ECS* ecs, entt::entity& current_entity) override;
+		void Render(entt::entity& current_entity) override;
 
 		bool DrawEntityNode(entt::entity  entity, bool draw_childen = false);
-		static void SavePrefab(entt::entity _object);
-		static void LoadPrefab();
-	private:
-		ECS* m_ECS;
-		entt::entity m_CurrentEntity;
+		void SavePrefab(entt::entity _object);
+	  void LoadPrefab();
 
 	};
 }

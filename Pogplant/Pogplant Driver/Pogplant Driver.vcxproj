@@ -150,6 +150,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClCompile Include="Src\ApplicationPlayState.cpp" />
     <ClCompile Include="Src\AssetCompiler.cpp" />
     <ClCompile Include="Src\ContentBrowser.cpp" />
+    <ClCompile Include="Src\Debugger.cpp" />
     <ClCompile Include="Src\ECS\ECS.cpp" />
     <ClCompile Include="Src\ECS\Entity.cpp" />
     <ClCompile Include="Src\ECS\Systems\GeneralSystem.cpp" />
@@ -184,6 +185,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\Application.h" />
     <ClInclude Include="Src\AssetCompiler.h" />
     <ClInclude Include="Src\ContentBrowser.h" />
+    <ClInclude Include="Src\Debugger.h" />
     <ClInclude Include="Src\ECS\Components\Components.h" />
     <ClInclude Include="Src\ECS\Components\GenericComponents.h" />
     <ClInclude Include="Src\ECS\Components\DependantComponents.h" />
@@ -201,6 +203,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\ImguiHelper.h" />
     <ClInclude Include="Src\Input\GLFWInput.h" />
     <ClInclude Include="Src\Input\InputSystem.h" />
+    <ClInclude Include="Src\Panels.h" />
     <ClInclude Include="Src\SceneHierarchy.h" />
     <ClInclude Include="Src\ScriptBinder.h" />
     <ClInclude Include="Src\Serialiser\Serializer.h" />

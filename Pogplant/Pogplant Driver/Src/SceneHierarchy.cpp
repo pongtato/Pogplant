@@ -10,15 +10,12 @@
 
 namespace PogplantDriver
 {
-	SceneHierarchy::SceneHierarchy() : m_ECS(nullptr), m_CurrentEntity(entt::null)
-	{
-	}
 	void SceneHierarchy::Init(ECS* ecs, entt::entity& current_entity)
 	{
 		m_ECS = ecs;
 		m_CurrentEntity = current_entity;
 	}
-	void SceneHierarchy::RenderSceneHierarchy(entt::entity& current_entity)
+	void SceneHierarchy::Render(entt::entity& current_entity)
 	{
 		m_CurrentEntity = current_entity;
 		ImGui::Begin("Scene Hierarchy");
@@ -134,7 +131,7 @@ namespace PogplantDriver
 		}
 		if (!filepath.empty())
 		{
-			Serializer serialiser{ (*ImguiHelper::m_ecs) };
+			Serializer serialiser{ *m_ECS };
 			serialiser.SavePrefab(filepath, _object);
 		}
 	}
@@ -144,7 +141,7 @@ namespace PogplantDriver
 		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
 		if (!filepath.empty())
 		{
-			Serializer serialiser{ (*ImguiHelper::m_ecs) };
+			Serializer serialiser{ *m_ECS };
 			serialiser.LoadPrefab(filepath);
 		}
 	}

@@ -1,9 +1,11 @@
 #pragma once
 #include <unordered_map>
+#include <vector>
+#include <memory>
 #include "ECS/entt_ecs/entt.hpp"
 #include "ContentBrowser.h"
-#include "SceneHierarchy.h"
 #include "Pogplant.h"
+#include "Panels.h"
 
 class ECS;
 class Entity;
@@ -52,7 +54,7 @@ namespace PogplantDriver
 		static void OpenScene();
 		
 		static Directory m_Directory;
-		static SceneHierarchy m_SceneHierarchy;
+		static std::vector<std::unique_ptr<Panels>> m_Panels;
 	private:
 		//Recopy the Main-menu bar but change the ID stack
 		static bool ImGui_BeginMainStatusBar();

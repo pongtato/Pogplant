@@ -3,7 +3,6 @@
 
 #include "../ECS/Entity.h"
 #include "../../Libs/json/include/json.h"
-#include "../ImguiHelper.h"
 #include <string>
 #include <stack>
 #include <filesystem>
@@ -56,14 +55,14 @@ namespace PogplantDriver
 			{
 				T _component;
 				Reflect_Deserialization(_component, _root[_name]);
-				ImguiHelper::m_ecs->GetReg().emplace<T>(_id, _component);
+				m_ecs.GetReg().emplace<T>(_id, _component);
 			}
 		}
 
 		template <typename T>
 		void Try_Save_Component(Json::Value& _root, entt::entity _id)
 		{
-			T* _component = ImguiHelper::m_ecs->GetReg().try_get<T>(_id);
+			T* _component = m_ecs.GetReg().try_get<T>(_id);
 
 			if (_component)
 				Reflect_Serialization(_root, _component);
