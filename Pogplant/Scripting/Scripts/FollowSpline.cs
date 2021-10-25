@@ -46,8 +46,8 @@ namespace Scripting
             // Initialize waypoint array
             waypoints = catmullRom.CalculateCatmullRomChain().ToArray();
 
-            for (int i = 0; i < waypoints.Length; ++i)
-                Console.WriteLine("waypoint " + i + " is at: x = " + waypoints[i].X + ", y = " + waypoints[i].Y + ", z = " + waypoints[i].Z);
+            //for (int i = 0; i < waypoints.Length; ++i)
+            //    Console.WriteLine("waypoint " + i + " is at: x = " + waypoints[i].X + ", y = " + waypoints[i].Y + ", z = " + waypoints[i].Z);
 
             // Initialize d_alpha for first waypoint
             // Calculate d_alpha from follow_speed and distance between current and next waypoint
@@ -70,7 +70,11 @@ namespace Scripting
 
             //temp debug
             //for (int i = 0; i < waypoints.Length; ++i)
-            //    DebugDraw.DebugSphere(waypoints[i], Vector3.zero(), 0.2f, 26);
+            //    DebugDraw.DebugSphere(waypoints[i].X, waypoints[i].Y, waypoints[i].Z, 0.0f, 0.0f, 0.0f, 0.2f);
+
+            for (int i = 0; i < waypoints.Length; ++i)
+                DebugDraw.DebugSphere(waypoints[i], Vector3.Zero(), 0.2f, 36);
+
         }
 
         private float lerpSpeed = 5.0f;

@@ -58,17 +58,17 @@ ScriptSystem::~ScriptSystem()
 void ScriptSystem::Init(ECS* ecs)
 {
 	m_registry = ecs;
-}
 
-void ScriptSystem::Update(float dt)
-{
 	// Ghetto until I figure out CBs
 	if (isReload == true)
 	{
 		Reload();
 		isReload = false;
 	}
+}
 
+void ScriptSystem::Update(float dt)
+{
 	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
@@ -112,13 +112,6 @@ void ScriptSystem::Update(float dt)
 
 void ScriptSystem::LateUpdate()
 {
-	// Ghetto until I figure out CBs
-	if (isReload == true)
-	{
-		Reload();
-		isReload = false;
-	}
-
 	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
@@ -413,7 +406,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.InputUtility::onKeyHeld(string)", &PPI::InputSystem::onKeyHeldMono);
 
 	// Debug Draw
-	//mono_add_internal_call("Scripting.DebugDraw::DebugSphere(Vector3,Vector3,float,uint)", &Pogplant::DebugDraw::DebugSphere);
+	mono_add_internal_call("Scripting.DebugDraw::DebugSphere", &Pogplant::DebugDraw::DebugSphere);
 }
 
 void ScriptSystem::Reload()

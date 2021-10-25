@@ -113,6 +113,44 @@ namespace Pogplant
 		DebugCircle(_Position, _Radius, right, up, _Segments);
 	}
 
+	void DebugDraw::DebugSphereMono(float pos_x, float pos_y, float pos_z, float camdir_x, float camdir_y, float camdir_z, float _Radius, size_t _Segments)
+	{
+		glm::vec3 _Position{ pos_x, pos_y, pos_z };
+		glm::vec3 _CamDirection{ camdir_x, camdir_y, camdir_z };
+
+		DebugCircle(_Position, _Radius, { 1,0,0 }, { 0,1,0 }, _Segments);
+		DebugCircle(_Position, _Radius, { 1,0,0 }, { 0,0,1 }, _Segments);
+		DebugCircle(_Position, _Radius, { 0,1,0 }, { 0,0,1 }, _Segments);
+
+		// View circle
+		const float d = glm::length(_CamDirection);
+		const float l = sqrtf(d * d - _Radius * _Radius);
+		// r prime
+		const float r_p = (_Radius * l) / d;
+		const float z = sqrtf(_Radius * _Radius - r_p * r_p);
+		const glm::vec3 norm_dir = glm::normalize(_CamDirection);
+		// c prime
+		const glm::vec3 c_p = _Position - norm_dir * z;
+
+		// Perpendicular vectors for disc
+		glm::vec3 right = glm::vec3{ 0 };
+		glm::vec3 up = glm::vec3{ 0 };
+		right = glm::cross(norm_dir, glm::vec3{ 0.0f,1.0f,0.0f });
+		// This occurs if you cross against another vector that is 0,1,0
+		if (glm::length(right) > 0)
+		{
+			right = glm::normalize(right);
+		}
+		// If that is the case assume right to be 0,0,1
+		else
+		{
+			right = glm::vec3{ 0.0f, 0.0f, 1.0f };
+		}
+		up = glm::normalize(glm::cross(right, _CamDirection));
+
+		DebugCircle(_Position, _Radius, right, up, _Segments);
+	}
+
 	void DebugDraw::DebugFrustum(glm::vec3 _Position, float _Zoom, float _Aspect, float _Near, float _Far, glm::vec3 _Right, glm::vec3 _Up, glm::vec3 _Front)
 	{
 		float Wnear = 2 * tan(_Zoom) * _Near;
