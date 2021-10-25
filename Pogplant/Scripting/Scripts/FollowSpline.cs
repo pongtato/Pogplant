@@ -67,6 +67,10 @@ namespace Scripting
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
             FollowWaypoints(ref transform, ref dt);
+
+            //temp debug
+            //for (int i = 0; i < waypoints.Length; ++i)
+            //    DebugDraw.DebugSphere(waypoints[i], Vector3.zero(), 0.2f, 26);
         }
 
         private float lerpSpeed = 5.0f;

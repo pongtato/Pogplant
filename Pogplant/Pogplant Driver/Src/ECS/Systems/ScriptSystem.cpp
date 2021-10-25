@@ -17,6 +17,7 @@
 #include "ScriptSystem.h"
 #include "../../Input/InputSystem.h"
 #include "../../Input/GLFWInput.h"
+#include "../../Pogplant/Src/DebugDraw.h"
 
 bool ScriptSystem::isReload = false;
 
@@ -410,6 +411,9 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.InputUtility::onKeyTriggered(string)", &PPI::InputSystem::onKeyTriggeredMono);
 	mono_add_internal_call("Scripting.InputUtility::onKeyReleased(string)", &PPI::InputSystem::onKeyReleasedMono);
 	mono_add_internal_call("Scripting.InputUtility::onKeyHeld(string)", &PPI::InputSystem::onKeyHeldMono);
+
+	// Debug Draw
+	//mono_add_internal_call("Scripting.DebugDraw::DebugSphere(Vector3,Vector3,float,uint)", &Pogplant::DebugDraw::DebugSphere);
 }
 
 void ScriptSystem::Reload()
