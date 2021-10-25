@@ -61,6 +61,13 @@ void ScriptSystem::Init(ECS* ecs)
 
 void ScriptSystem::Update(float dt)
 {
+	// Ghetto until I figure out CBs
+	if (isReload == true)
+	{
+		Reload();
+		isReload = false;
+	}
+
 	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
@@ -100,17 +107,17 @@ void ScriptSystem::Update(float dt)
 			mono_runtime_invoke(updateMethod, monoObj, args, nullptr);
 		}
 	}
+}
 
+void ScriptSystem::LateUpdate()
+{
 	// Ghetto until I figure out CBs
 	if (isReload == true)
 	{
 		Reload();
 		isReload = false;
 	}
-}
 
-void ScriptSystem::LateUpdate()
-{
 	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
@@ -149,13 +156,6 @@ void ScriptSystem::LateUpdate()
 			void* args[] = { &transform, &rigidbody };
 			mono_runtime_invoke(updateMethod, monoObj, args, nullptr);
 		}
-	}
-
-	// Ghetto until I figure out CBs
-	if (isReload == true)
-	{
-		Reload();
-		isReload = false;
 	}
 }
 
@@ -415,6 +415,7 @@ void ScriptSystem::BindFunctions()
 void ScriptSystem::Reload()
 {
 	std::cout << "Reloading Scripts" << std::endl;
+	m_scriptNames.clear();
 	Unload();
 	LoadMemory();
 }

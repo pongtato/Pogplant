@@ -32,7 +32,8 @@ namespace Scripting
         {
 			// Test spline constructed here
 
-			controlPointsList[0].SetPositionAndRotatation(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+			//controlPointsList[0].SetPositionAndRotatation(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+			controlPointsList[0].SetPositionAndRotatation(Vector3.Zero(), Vector3.Zero());
 			controlPointsList[1].SetPositionAndRotatation(new Vector3(20.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
 			controlPointsList[2].SetPositionAndRotatation(new Vector3(40.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
 			controlPointsList[3].SetPositionAndRotatation(new Vector3(80.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
@@ -110,6 +111,11 @@ namespace Scripting
 			Vector3 p2 = controlPointsList[ClampListPos(pos + 1)].Position;
 			Vector3 p3 = controlPointsList[ClampListPos(pos + 2)].Position;
 
+			//Console.WriteLine("p " + 0 + " is at: x = " + p0.X + ", y = " + p0.Y + ", z = " + p0.Z);
+			//Console.WriteLine("p " + 1 + " is at: x = " + p1.X + ", y = " + p1.Y + ", z = " + p1.Z);
+			//Console.WriteLine("p " + 2 + " is at: x = " + p2.X + ", y = " + p2.Y + ", z = " + p2.Z);
+			//Console.WriteLine("p " + 3 + " is at: x = " + p3.X + ", y = " + p3.Y + ", z = " + p3.Z);
+
 			//The start position of the line
 			Vector3 lastPos = p1;
 
@@ -126,6 +132,8 @@ namespace Scripting
 
 				//Find the coordinate between the end points with a Catmull-Rom spline
 				Vector3 newPos = GetCatmullRomPosition(t, p0, p1, p2, p3);
+
+				//Console.WriteLine("waypoint " + i + " is at: x = " + newPos.X + ", y = " + newPos.Y + ", z = " + newPos.Z);
 
 				waypoints.Add(newPos);
 
@@ -159,14 +167,28 @@ namespace Scripting
 		//http://www.iquilezles.org/www/articles/minispline/minispline.htm
 		Vector3 GetCatmullRomPosition(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
 		{
-			//The coefficients of the cubic polynomial (except the 0.5f * which I added later for performance)
-			Vector3 a = 2f * p1;
+            //The coefficients of the cubic polynomial (except the 0.5f * which I added later for performance)
+            //Console.WriteLine("p " + 0 + " is at: x = " + p0.X + ", y = " + p0.Y + ", z = " + p0.Z);
+            //Console.WriteLine("p " + 1 + " is at: x = " + p1.X + ", y = " + p1.Y + ", z = " + p1.Z);
+            //Console.WriteLine("p " + 2 + " is at: x = " + p2.X + ", y = " + p2.Y + ", z = " + p2.Z);
+            //Console.WriteLine("p " + 3 + " is at: x = " + p3.X + ", y = " + p3.Y + ", z = " + p3.Z);
+
+            Vector3 a = 2f * p1;
 			Vector3 b = p2 - p0;
-			Vector3 c = 2f * p0 - 5f * p1 + 4f * p2 - p3;
-			Vector3 d = -p0 + 3f * p1 - 3f * p2 + p3;
+			//Vector3 c = 2f * p0 - 5f * p1 + 4f * p2 - p3;
+			Vector3 c = (2f * p0) - (5f * p1) + (4f * p2) - p3;
+			//Vector3 d = -p0 + 3f * p1 - 3f * p2 + p3;
+			Vector3 d = -p0 + (3f * p1) - (3f * p2) + p3;
+
+			//Console.WriteLine("a "  + " is at: x = " + a.X + ", y = " + a.Y + ", z = " + a.Z);
+			//Console.WriteLine("b "  + " is at: x = " + b.X + ", y = " + b.Y + ", z = " + b.Z);
+			//Console.WriteLine("c "  + " is at: x = " + c.X + ", y = " + c.Y + ", z = " + c.Z);
+			//Console.WriteLine("d "  + " is at: x = " + d.X + ", y = " + d.Y + ", z = " + d.Z);
 
 			//The cubic polynomial: a + b * t + c * t^2 + d * t^3
-			Vector3 pos = 0.5f * (a + (b * t) + (c * t * t) + (d * t * t * t));
+			//Vector3 pos = 0.5f * (a + (b * t) + (c * t * t) + (d * (t * t * t)));
+
+			Vector3 pos = 0.5f * (a + (b * t) + (c * (t * t)) + (d * (t * t * t)));
 
 			return pos;
 		}

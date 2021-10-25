@@ -45,6 +45,7 @@ namespace Scripting
             Y = v;
             Z = v;
         }
+
         public static Vector3 operator -(Vector3 a)
         {
             return a = a * -1.0f;
@@ -66,10 +67,7 @@ namespace Scripting
         }
         public static Vector3 operator -(Vector3 a, Vector3 b)
         {
-            Vector3 result = new Vector3();
-            result = a;
-            result = b + (-result);
-            return result;
+            return new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         }
 
         public static float Distance(Vector3 a, Vector3 b)
@@ -88,13 +86,13 @@ namespace Scripting
             return (float)Math.Sqrt((X * X) + (Y * Y) + (Z * Z));
         }
 
-        public static Vector3 one()
+        public static Vector3 One()
         {
-            return new Vector3(1, 1, 1);
+            return new Vector3(1.0f, 1.0f, 1.0f);
         }
-        public static Vector3 zero()
+        public static Vector3 Zero()
         {
-            return new Vector3(0, 0, 0);
+            return new Vector3(0.0f, 0.0f, 0.0f);
         }
     }
 
