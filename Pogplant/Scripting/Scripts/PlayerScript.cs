@@ -71,6 +71,36 @@ namespace Scripting
             Vector3 force_dir = new Vector3(horizontal_input, vertical_input, 0) * movement_speed * dt; // 32 is magic number
             transform.Position += force_dir;
 
+            switch(GameUtilities.CheckBounds(transform.Position))
+            {
+                //Out of X bounds
+                case 1:
+                    {
+                        Console.WriteLine("OUTOFBOUNDDDDxxxx");
+                        float newX = transform.Position.X - force_dir.X;
+                        transform.Position = new Vector3(newX, transform.Position.Y, transform.Position.Z);
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.WriteLine("OUTOFBOUNDDDDyyyy");
+                        float newY = transform.Position.Y - force_dir.Y;
+                        transform.Position = new Vector3(transform.Position.X, newY, transform.Position.Z);
+                        break;
+                    }
+                case 3:
+                    {
+                        float newX = transform.Position.X - force_dir.X;
+                        float newY = transform.Position.Y - force_dir.Y;
+                        transform.Position = new Vector3(newX, newY, transform.Position.Z);
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Nothing");
+                        break;
+                    }
+            }
             //if (rigidbody.velocity <= movement_speed)
 
         }

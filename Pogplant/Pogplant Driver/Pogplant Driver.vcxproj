@@ -159,6 +159,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClCompile Include="Src\ECS\Systems\ScriptSystem.cpp" />
     <ClCompile Include="Src\FileHandler.cpp" />
     <ClCompile Include="Src\AudioEngine.cpp" />
+    <ClCompile Include="Src\GameScript.cpp" />
     <ClCompile Include="Src\ImguiHelper.cpp" />
     <ClCompile Include="Src\Input\GLFWInput.cpp" />
     <ClCompile Include="Src\Input\InputSystem.cpp" />
@@ -201,6 +202,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\Events\EventSystem.h" />
     <ClInclude Include="Src\FileHandler.h" />
     <ClInclude Include="Src\AudioEngine.h" />
+    <ClInclude Include="Src\GameScript.h" />
     <ClInclude Include="Src\ImguiHelper.h" />
     <ClInclude Include="Src\Input\GLFWInput.h" />
     <ClInclude Include="Src\Input\InputSystem.h" />

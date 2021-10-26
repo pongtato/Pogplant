@@ -18,6 +18,7 @@
 #include "../../Input/InputSystem.h"
 #include "../../Input/GLFWInput.h"
 #include "../../Pogplant/Src/DebugDraw.h"
+#include "../../GameScript.h"
 
 bool ScriptSystem::isReload = false;
 
@@ -407,6 +408,9 @@ void ScriptSystem::BindFunctions()
 
 	// Debug Draw
 	mono_add_internal_call("Scripting.DebugDraw::DebugSphere", &Pogplant::DebugDraw::DebugSphere);
+
+	//Game Utils
+	mono_add_internal_call("Scripting.GameUtilities::CheckBounds", &Scripting::CheckBounds);
 }
 
 void ScriptSystem::Reload()
