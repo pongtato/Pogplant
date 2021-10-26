@@ -99,6 +99,21 @@ entt::entity ECS::FindEntityWithName(std::string& _name)
 	return entt::null;
 }
 
+//returns the first entity with the tag
+entt::entity ECS::FindEntityWithTag(std::string& _tag)
+{
+	auto view = m_registry.view<Tag>();
+
+	for (auto& entity : view)
+	{
+		auto tag = view.get<Tag>(entity);
+		if (tag.m_tag == _tag)
+			return entity;
+	}
+
+	return entt::null;
+}
+
 std::vector<entt::entity> ECS::FindAllEntityWithName(std::string& _name)
 {
 	auto view = m_registry.view<Name>();

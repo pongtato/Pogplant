@@ -20,6 +20,7 @@
 #include <mono/metadata/debug-helpers.h>
 
 #include "../ECS.h"
+//#include "../Entity.h"
 #include "../ScriptBinder.h"
 #include "../Components/ScriptComponents.h"
 #include "../../Events/Events.h"
@@ -63,7 +64,16 @@ private:
 	void Unload();
 	void BindFunctions();
 
-	ECS* m_registry;
+	// WRAPPER FUNCTIONS FOR ECS, entt::entity is an unsigned int
+	//std::uint32_t CreateEntity(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
+	//typedef std::uint32_t(ScriptSystem::* CreateEntityPtr)(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
+	static std::uint32_t CreateEntity(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
+	static void DestroyEntity(std::uint32_t entityID);
+	static std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
+	static std::uint32_t FindEntityWithTag(MonoString* name);
+
+	//ECS* m_registry;
+	static ECS* m_ecs;
 	// Mono Stuff to save
 	MonoDomain* m_ptrMonoDomain = nullptr;
 	MonoAssembly* m_ptrGameAssembly = nullptr;

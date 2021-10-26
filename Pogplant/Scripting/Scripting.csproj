@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Components.cs" />
+    <Compile Include="ECS\ECS.cs" />
+    <Compile Include="ECS\Entity.cs" />
     <Compile Include="Scripts\CatmullRomSpline.cs" />
     <Compile Include="Scripts\FollowSpline.cs" />
     <Compile Include="Scripts\MonoBehaviour.cs" />

@@ -21,6 +21,7 @@
 #include "../../GameScript.h"
 
 bool ScriptSystem::isReload = false;
+ECS* ScriptSystem::m_ecs = nullptr;
 
 // Helper to read binary data
 std::vector<char> ReadRawBin(const std::string& filePath)
@@ -58,7 +59,7 @@ ScriptSystem::~ScriptSystem()
 
 void ScriptSystem::Init(ECS* ecs)
 {
-	m_registry = ecs;
+	m_ecs = ecs;
 
 	// Ghetto until I figure out CBs
 	if (isReload == true)
@@ -70,7 +71,7 @@ void ScriptSystem::Init(ECS* ecs)
 
 void ScriptSystem::Update(float dt)
 {
-	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
+	auto entities = m_ecs->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
 	{
@@ -113,7 +114,7 @@ void ScriptSystem::Update(float dt)
 
 void ScriptSystem::LateUpdate()
 {
-	auto entities = m_registry->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
+	auto entities = m_ecs->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
 	{
@@ -161,8 +162,8 @@ void ScriptSystem::SetReload(bool _isReload)
 
 void ScriptSystem::OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
 {
-	auto script1 = m_registry->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity1);
-	auto script2 = m_registry->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity2);
+	auto script1 = m_ecs->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity1);
+	auto script2 = m_ecs->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity2);
 
 	if (script1)
 	{
@@ -221,8 +222,8 @@ void ScriptSystem::OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent>
 
 void ScriptSystem::OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent)
 {
-	auto script1 = m_registry->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity1);
-	auto script2 = m_registry->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity2);
+	auto script1 = m_ecs->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity1);
+	auto script2 = m_ecs->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity2);
 
 	if (script1)
 	{
@@ -411,6 +412,14 @@ void ScriptSystem::BindFunctions()
 
 	//Game Utils
 	mono_add_internal_call("Scripting.GameUtilities::CheckBounds", &Scripting::CheckBounds);
+
+	//CreateEntityPtr CEPtr = &ScriptSystem::CreateEntity;
+	//mono_add_internal_call("Scripting.ECS::CreateEntity", &CEPtr);
+	mono_add_internal_call("Scripting.ECS::CreateEntity", &this->CreateEntity);
+	mono_add_internal_call("Scripting.ECS::DestroyEntity", &this->DestroyEntity);
+	mono_add_internal_call("Scripting.ECS::CreateChild", &this->CreateChild);
+	mono_add_internal_call("Scripting.ECS::FindEntityWithTag", &this->FindEntityWithTag);
+
 }
 
 void ScriptSystem::Reload()

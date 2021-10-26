@@ -168,6 +168,9 @@
     <ClCompile Include="Src\GameScript.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\ECS\Systems\ScriptSystemECSWrapper.cpp">
+      <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">

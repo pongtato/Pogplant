@@ -26,6 +26,11 @@ namespace Scripting
 
         public float movement_speed = 50.0f;
 
+        // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
+        public List<uint> entityIDList = new List<uint>();
+        // parentID first, childID second
+        public List<Tuple<uint, uint>> childIDList = new List<Tuple<uint, uint>>();
+
         public PlayerScript()
         {
         }
@@ -58,6 +63,53 @@ namespace Scripting
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
             {
                 //Console.WriteLine("D key is triggered");
+            }
+
+            // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_Z))
+            {
+                uint entityID = ECS.CreateEntity("Testing123", Vector3.Zero(), Vector3.Zero(), Vector3.Zero());
+                entityIDList.Add(entityID);
+                Console.WriteLine("Entity ID created: " + entityID);
+            }
+
+            // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_X))
+            {
+                if (entityIDList.Count > 0)
+                {
+                    uint entity = entityIDList[0];
+                    ECS.DestroyEntity(entity);
+                    entityIDList.RemoveAt(0);
+                    Console.WriteLine("Entity ID destroyed: " + entity);
+                }
+                else
+                {
+                    Console.WriteLine("EntityID list is empty");
+                }
+            }
+
+            // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_C))
+            {
+                if (entityIDList.Count > 0)
+                {
+                    uint parentID = entityIDList[0];
+                    uint entityID = ECS.CreateChild(parentID, "Child123", Vector3.Zero(), Vector3.Zero(), Vector3.Zero());
+                    childIDList.Add(new Tuple<uint, uint>(parentID, entityID));
+                    Console.WriteLine("Child ID created: " + entityID + " Parent ID: " + parentID);
+                }
+                else
+                {
+                    Console.WriteLine("EntityID list is empty");
+                }
+            }
+
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_V))
+            {
+                string exampleName = "Testing123";
+                uint entityID = ECS.FindEntityWithTag(exampleName);
+                Console.WriteLine("EntityID with name " + exampleName + ": " + entityID);
             }
 
             if (InputUtility.onKeyReleased(KEY_ID.KEY_S))
@@ -97,7 +149,7 @@ namespace Scripting
                     }
                 default:
                     {
-                        Console.WriteLine("Nothing");
+                        //Console.WriteLine("Nothing");
                         break;
                     }
             }

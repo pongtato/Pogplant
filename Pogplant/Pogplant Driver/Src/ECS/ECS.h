@@ -39,6 +39,7 @@ public:
 	entt::registry& GetReg();
 
 	entt::entity FindEntityWithName(std::string& _name);
+	entt::entity FindEntityWithTag(std::string& _tag);
 	std::vector<entt::entity> FindAllEntityWithName(std::string& _name);
 
 private:
