@@ -22,7 +22,7 @@ namespace Scripting
 {
     public class FollowSpline : MonoBehaviour
     {
-        private CatmullRomSpline catmullRom = new CatmullRomSpline();
+        private CatmullRomSpline catmullRom = null;
 
         private float follow_speed = 44.0f;
 
@@ -35,16 +35,16 @@ namespace Scripting
         private bool isEnd = false; //  This is true when we have arrived a the end of the path
         private float time_between_waypoint = 0.0f;
 
-        public FollowSpline()
-        {
-
-        }
-
         // Start is called before the first frame update
         public override void Start()
         {
             // Initialize waypoint array
+
+            catmullRom = new CatmullRomSpline();
+            catmullRom.InitializeSpline();
+
             waypoints = catmullRom.CalculateCatmullRomChain().ToArray();
+            Console.WriteLine(waypoints.Length);
 
             //for (int i = 0; i < waypoints.Length; ++i)
             //    Console.WriteLine("waypoint " + i + " is at: x = " + waypoints[i].X + ", y = " + waypoints[i].Y + ", z = " + waypoints[i].Z);

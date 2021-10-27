@@ -13,6 +13,7 @@
 */
 /******************************************************************************/
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,152 +22,163 @@ using System.Threading.Tasks;
 namespace Scripting
 {
     class CatmullRomSpline
-	{
-        public Transform[] controlPointsList = new Transform[8];
+    {
+        public List<Transform> controlPointsList = new List<Transform>();
 
-		public bool isLooping = false;
+        public bool isLooping = false;
 
-		public float step_size = 0.2f;
+        public float step_size = 0.2f;
 
-		public CatmullRomSpline()
+        public CatmullRomSpline()
         {
-			// Test spline constructed here
+            // Test spline constructed here
 
-			//controlPointsList[0].SetPositionAndRotatation(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-			controlPointsList[0].SetPositionAndRotatation(Vector3.Zero(), Vector3.Zero());
-			controlPointsList[1].SetPositionAndRotatation(new Vector3(20.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-			controlPointsList[2].SetPositionAndRotatation(new Vector3(40.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-			controlPointsList[3].SetPositionAndRotatation(new Vector3(80.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-			controlPointsList[4].SetPositionAndRotatation(new Vector3(100.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-			controlPointsList[5].SetPositionAndRotatation(new Vector3(120.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-			controlPointsList[6].SetPositionAndRotatation(new Vector3(140.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-			controlPointsList[7].SetPositionAndRotatation(new Vector3(160.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-		}
+            //controlPointsList[0].SetPositionAndRotatation(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+            //controlPointsList[0].SetPositionAndRotatation(Vector3.Zero(), Vector3.Zero());
+            //controlPointsList[1].SetPositionAndRotatation(new Vector3(20.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+            //controlPointsList[2].SetPositionAndRotatation(new Vector3(40.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+            //controlPointsList[3].SetPositionAndRotatation(new Vector3(80.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+            //controlPointsList[4].SetPositionAndRotatation(new Vector3(100.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+            //controlPointsList[5].SetPositionAndRotatation(new Vector3(120.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+            //controlPointsList[6].SetPositionAndRotatation(new Vector3(140.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
+            //controlPointsList[7].SetPositionAndRotatation(new Vector3(160.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
 
-		//Display a spline between 2 points derived with the Catmull-Rom spline algorithm
-		void DisplayCatmullRomSpline(int pos)
-		{
-			//The 4 points we need to form a spline between p1 and p2
-			Vector3 p0 = controlPointsList[ClampListPos(pos - 1)].Position;
-			Vector3 p1 = controlPointsList[pos].Position;
-			Vector3 p2 = controlPointsList[ClampListPos(pos + 1)].Position;
-			Vector3 p3 = controlPointsList[ClampListPos(pos + 2)].Position;
+            // Read from file
 
-			//The start position of the line
-			Vector3 lastPos = p1;
+            
+        }
 
-			//The spline's resolution
-			//Make sure it's is adding up to 1, so 0.3 will give a gap, but 0.2 will work
+        public void InitializeSpline()
+        {
+            ReadControlPointsFromFile("Control_Points_Curved.txt");
+            Console.WriteLine(controlPointsList.Count);
+        }
 
-			//How many times should we loop?
-			int loops = (int)(1f / step_size);
+        //Display a spline between 2 points derived with the Catmull-Rom spline algorithm
+        void DisplayCatmullRomSpline(int pos)
+        {
+            //The 4 points we need to form a spline between p1 and p2
+            Vector3 p0 = controlPointsList[ClampListPos(pos - 1)].Position;
+            Vector3 p1 = controlPointsList[pos].Position;
+            Vector3 p2 = controlPointsList[ClampListPos(pos + 1)].Position;
+            Vector3 p3 = controlPointsList[ClampListPos(pos + 2)].Position;
 
-			for (int i = 1; i <= loops; i++)
-			{
-				//Which t position are we at?
-				float t = i * step_size;
+            //The start position of the line
+            Vector3 lastPos = p1;
 
-				//Find the coordinate between the end points with a Catmull-Rom spline
-				Vector3 newPos = GetCatmullRomPosition(t, p0, p1, p2, p3);
+            //The spline's resolution
+            //Make sure it's is adding up to 1, so 0.3 will give a gap, but 0.2 will work
 
-				//Draw this line segment
-				//Gizmos.DrawLine(lastPos, newPos);
-				//DrawSphere(newPos, 0.1f);
+            //How many times should we loop?
+            int loops = (int)(1f / step_size);
 
-				//Save this pos so we can draw the next line segment
-				lastPos = newPos;
-			}
-		}
+            for (int i = 1; i <= loops; i++)
+            {
+                //Which t position are we at?
+                float t = i * step_size;
 
-		// Links a series of splines into chains and returns their waypoints.
-		public List<Vector3> CalculateCatmullRomChain()
-		{
-			// Resulting waypoint of the entire spline chain
-			List<Vector3> waypoints = new List<Vector3>();
-			int remove_range = (int)(10 / (step_size * 10));
-			for (int i = 1; i < controlPointsList.Length; i++)
-			{
-				if ((i == controlPointsList.Length - 1) && !isLooping)
-				{
-					continue;
-				}
-				// Calculate the waypoints for one spline section 
-				// and add it to the waypoints.
-				waypoints.AddRange(CalculateCatmullRomSpline(i));
-			}
-			// Cull the start and end of the waypoint array because they are screwed up
-			waypoints.RemoveRange(0, remove_range);
-			//for (int i = 0; i < remove_range; ++i)
-			//	waypoints.RemoveAt(waypoints.Count);
-			return waypoints;
-		}
+                //Find the coordinate between the end points with a Catmull-Rom spline
+                Vector3 newPos = GetCatmullRomPosition(t, p0, p1, p2, p3);
 
-		// Given a starting index, this generates a spline section of the entire chain and returns a series of waypoints.
-		List<Vector3> CalculateCatmullRomSpline(int pos)
-		{
-			List<Vector3> waypoints = new List<Vector3>();
-			//The 4 points we need to form a spline between p1 and p2
-			Vector3 p0 = controlPointsList[ClampListPos(pos - 1)].Position;
-			Vector3 p1 = controlPointsList[pos].Position;
-			Vector3 p2 = controlPointsList[ClampListPos(pos + 1)].Position;
-			Vector3 p3 = controlPointsList[ClampListPos(pos + 2)].Position;
+                //Draw this line segment
+                //Gizmos.DrawLine(lastPos, newPos);
+                //DrawSphere(newPos, 0.1f);
 
-			//Console.WriteLine("p " + 0 + " is at: x = " + p0.X + ", y = " + p0.Y + ", z = " + p0.Z);
-			//Console.WriteLine("p " + 1 + " is at: x = " + p1.X + ", y = " + p1.Y + ", z = " + p1.Z);
-			//Console.WriteLine("p " + 2 + " is at: x = " + p2.X + ", y = " + p2.Y + ", z = " + p2.Z);
-			//Console.WriteLine("p " + 3 + " is at: x = " + p3.X + ", y = " + p3.Y + ", z = " + p3.Z);
+                //Save this pos so we can draw the next line segment
+                lastPos = newPos;
+            }
+        }
 
-			//The start position of the line
-			Vector3 lastPos = p1;
+        // Links a series of splines into chains and returns their waypoints.
+        public List<Vector3> CalculateCatmullRomChain()
+        {
+            Console.WriteLine("CalculateChain called");
+            // Resulting waypoint of the entire spline chain
+            List<Vector3> waypoints = new List<Vector3>();
+            int remove_range = (int)(10 / (step_size * 10));
+            for (int i = 1; i < controlPointsList.Count; i++)
+            {
+                if ((i == controlPointsList.Count - 1) && !isLooping)
+                {
+                    continue;
+                }
+                // Calculate the waypoints for one spline section 
+                // and add it to the waypoints.
+                waypoints.AddRange(CalculateCatmullRomSpline(i));
+            }
+            // Cull the start and end of the waypoint array because they are screwed up
+            waypoints.RemoveRange(0, remove_range);
+            //for (int i = 0; i < remove_range; ++i)
+            //	waypoints.RemoveAt(waypoints.Count);
+            return waypoints;
+        }
 
-			//The spline's resolution
-			//Make sure it's is adding up to 1, so 0.3 will give a gap, but 0.2 will work
+        // Given a starting index, this generates a spline section of the entire chain and returns a series of waypoints.
+        List<Vector3> CalculateCatmullRomSpline(int pos)
+        {
+            List<Vector3> waypoints = new List<Vector3>();
+            //The 4 points we need to form a spline between p1 and p2
+            Vector3 p0 = controlPointsList[ClampListPos(pos - 1)].Position;
+            Vector3 p1 = controlPointsList[pos].Position;
+            Vector3 p2 = controlPointsList[ClampListPos(pos + 1)].Position;
+            Vector3 p3 = controlPointsList[ClampListPos(pos + 2)].Position;
 
-			//How many times should we loop?
-			int loops = (int)(1f / step_size);
+            //Console.WriteLine("p " + 0 + " is at: x = " + p0.X + ", y = " + p0.Y + ", z = " + p0.Z);
+            //Console.WriteLine("p " + 1 + " is at: x = " + p1.X + ", y = " + p1.Y + ", z = " + p1.Z);
+            //Console.WriteLine("p " + 2 + " is at: x = " + p2.X + ", y = " + p2.Y + ", z = " + p2.Z);
+            //Console.WriteLine("p " + 3 + " is at: x = " + p3.X + ", y = " + p3.Y + ", z = " + p3.Z);
 
-			for (int i = 1; i <= loops; i++)
-			{
-				//Which t position are we at?
-				float t = i * step_size;
+            //The start position of the line
+            Vector3 lastPos = p1;
 
-				//Find the coordinate between the end points with a Catmull-Rom spline
-				Vector3 newPos = GetCatmullRomPosition(t, p0, p1, p2, p3);
+            //The spline's resolution
+            //Make sure it's is adding up to 1, so 0.3 will give a gap, but 0.2 will work
 
-				//Console.WriteLine("waypoint " + i + " is at: x = " + newPos.X + ", y = " + newPos.Y + ", z = " + newPos.Z);
+            //How many times should we loop?
+            int loops = (int)(1f / step_size);
 
-				waypoints.Add(newPos);
+            for (int i = 1; i <= loops; i++)
+            {
+                //Which t position are we at?
+                float t = i * step_size;
 
-				//Save this pos so we can draw the next line segment
-				lastPos = newPos;
-			}
-			return waypoints;
-		}
+                //Find the coordinate between the end points with a Catmull-Rom spline
+                Vector3 newPos = GetCatmullRomPosition(t, p0, p1, p2, p3);
 
-		//Clamp the list positions to allow looping
-		int ClampListPos(int pos)
-		{
-			if (pos < 0)
-			{
-				pos = controlPointsList.Length - 1;
-			}
+                //Console.WriteLine("waypoint " + i + " is at: x = " + newPos.X + ", y = " + newPos.Y + ", z = " + newPos.Z);
 
-			if (pos > controlPointsList.Length)
-			{
-				pos = 1;
-			}
-			else if (pos > controlPointsList.Length - 1)
-			{
-				pos = 0;
-			}
+                waypoints.Add(newPos);
 
-			return pos;
-		}
+                //Save this pos so we can draw the next line segment
+                lastPos = newPos;
+            }
+            return waypoints;
+        }
 
-		//Returns a position between 4 Vector3 with Catmull-Rom spline algorithm
-		//http://www.iquilezles.org/www/articles/minispline/minispline.htm
-		Vector3 GetCatmullRomPosition(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
-		{
+        //Clamp the list positions to allow looping
+        int ClampListPos(int pos)
+        {
+            if (pos < 0)
+            {
+                pos = controlPointsList.Count - 1;
+            }
+
+            if (pos > controlPointsList.Count)
+            {
+                pos = 1;
+            }
+            else if (pos > controlPointsList.Count - 1)
+            {
+                pos = 0;
+            }
+
+            return pos;
+        }
+
+        //Returns a position between 4 Vector3 with Catmull-Rom spline algorithm
+        //http://www.iquilezles.org/www/articles/minispline/minispline.htm
+        Vector3 GetCatmullRomPosition(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+        {
             //The coefficients of the cubic polynomial (except the 0.5f * which I added later for performance)
             //Console.WriteLine("p " + 0 + " is at: x = " + p0.X + ", y = " + p0.Y + ", z = " + p0.Z);
             //Console.WriteLine("p " + 1 + " is at: x = " + p1.X + ", y = " + p1.Y + ", z = " + p1.Z);
@@ -174,23 +186,95 @@ namespace Scripting
             //Console.WriteLine("p " + 3 + " is at: x = " + p3.X + ", y = " + p3.Y + ", z = " + p3.Z);
 
             Vector3 a = 2f * p1;
-			Vector3 b = p2 - p0;
-			//Vector3 c = 2f * p0 - 5f * p1 + 4f * p2 - p3;
-			Vector3 c = (2f * p0) - (5f * p1) + (4f * p2) - p3;
-			//Vector3 d = -p0 + 3f * p1 - 3f * p2 + p3;
-			Vector3 d = -p0 + (3f * p1) - (3f * p2) + p3;
+            Vector3 b = p2 - p0;
+            //Vector3 c = 2f * p0 - 5f * p1 + 4f * p2 - p3;
+            Vector3 c = (2f * p0) - (5f * p1) + (4f * p2) - p3;
+            //Vector3 d = -p0 + 3f * p1 - 3f * p2 + p3;
+            Vector3 d = -p0 + (3f * p1) - (3f * p2) + p3;
 
-			//Console.WriteLine("a "  + " is at: x = " + a.X + ", y = " + a.Y + ", z = " + a.Z);
-			//Console.WriteLine("b "  + " is at: x = " + b.X + ", y = " + b.Y + ", z = " + b.Z);
-			//Console.WriteLine("c "  + " is at: x = " + c.X + ", y = " + c.Y + ", z = " + c.Z);
-			//Console.WriteLine("d "  + " is at: x = " + d.X + ", y = " + d.Y + ", z = " + d.Z);
+            //Console.WriteLine("a "  + " is at: x = " + a.X + ", y = " + a.Y + ", z = " + a.Z);
+            //Console.WriteLine("b "  + " is at: x = " + b.X + ", y = " + b.Y + ", z = " + b.Z);
+            //Console.WriteLine("c "  + " is at: x = " + c.X + ", y = " + c.Y + ", z = " + c.Z);
+            //Console.WriteLine("d "  + " is at: x = " + d.X + ", y = " + d.Y + ", z = " + d.Z);
 
-			//The cubic polynomial: a + b * t + c * t^2 + d * t^3
-			//Vector3 pos = 0.5f * (a + (b * t) + (c * t * t) + (d * (t * t * t)));
+            //The cubic polynomial: a + b * t + c * t^2 + d * t^3
+            //Vector3 pos = 0.5f * (a + (b * t) + (c * t * t) + (d * (t * t * t)));
 
-			Vector3 pos = 0.5f * (a + (b * t) + (c * (t * t)) + (d * (t * t * t)));
+            Vector3 pos = 0.5f * (a + (b * t) + (c * (t * t)) + (d * (t * t * t)));
 
-			return pos;
-		}
-	}
+            return pos;
+        }
+
+        string TransformToString(Transform data)
+        {
+            string result = null;
+            result += data.Position.X + " ";
+            result += data.Position.Y + " ";
+            result += data.Position.Z + " ";
+
+            result += data.Rotation.X + " ";
+            result += data.Rotation.Y + " ";
+            result += data.Rotation.Z + " ";
+
+            return result;
+        }
+
+        Transform StringToTransform(string data)
+        {
+            Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
+            string[] result = data.Split(' ');
+
+            transform.Position.X = float.Parse(result[0]);
+            transform.Position.Y = float.Parse(result[1]);
+            transform.Position.Z = float.Parse(result[2]);
+
+            transform.Rotation.X = float.Parse(result[3]);
+            transform.Rotation.Y = float.Parse(result[4]);
+            transform.Rotation.Z = float.Parse(result[5]);
+            return transform;
+        }
+
+        // Write control points transform to file
+        public void WriteControlPointsToFile()
+        {
+            string filePath = Directory.GetCurrentDirectory() + "temp_name" + ".txt";
+
+            if (!File.Exists(filePath))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(filePath))
+                {
+                    foreach (var item in controlPointsList)
+                        sw.WriteLine(TransformToString(item));
+                }
+            }
+        }
+
+        // Write control points transform to file
+        void ReadControlPointsFromFile(string filePath)
+        {
+            string abs_path = "Resources\\" + filePath;
+
+            Console.WriteLine(abs_path);
+            //using (StreamReader sr = File.OpenText(abs_path))
+            //{
+            //    string s;
+            //    while ((s = sr.ReadLine()) != null)
+            //    {
+            //        var data = StringToTransform(s);
+            //        controlPointsList.Add(new Transform(new Vector3(data[0], data[1], data[2]), new Vector3(data[4], data[5], data[6]), Vector3.One()));
+            //    }
+            //    Console.WriteLine("control point list size: " + controlPointsList.Count);
+            //}
+
+            string[] lines = System.IO.File.ReadAllLines(abs_path);
+
+            foreach (string data in lines)
+            {
+                controlPointsList.Add(StringToTransform(data));
+            }
+
+            Console.WriteLine(controlPointsList.Count);
+        }
+    }
 }
