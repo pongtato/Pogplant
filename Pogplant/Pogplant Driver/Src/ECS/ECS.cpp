@@ -11,29 +11,27 @@ ECS::~ECS()
 {
 }
 
-Entity ECS::CreateEntity(std::string str, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale)
+Entity ECS::CreateEntity(std::string _name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, std::string _tag)
 {
 	Entity entity = { m_registry.create(), this };
-	entity.AddComponent<Tag>(str);
+
+	entity.AddComponent<Name>(_name);
+	entity.AddComponent<Tag>(_tag);
 	entity.AddComponent<Transform>(pos, rot, scale);
-	entity.AddComponent<Name>("Entity");
 	return entity;
 }
 
 Entity ECS::CreateChild(entt::entity parent,
-						std::string str,
+						std::string child_name,
 						glm::vec3 pos,
 						glm::vec3 rot,
-						glm::vec3 scale)
+						glm::vec3 scale,
+						std::string child_tag)
 {
 	auto _p_r = m_registry.try_get<Relationship>(parent);
 
-	(void)pos;
-	(void)rot;
-	(void)scale;
-
 	//create child
-	auto _child = CreateEntity();
+	auto _child = CreateEntity(child_name, pos, rot, scale, child_tag);
 
 	//child relationship component
 	auto& _c_r = m_registry.emplace<Relationship>(_child.GetID());
@@ -85,7 +83,7 @@ void ECS::DestroyEntity(entt::entity entity)
 }
 
 //returns the first entity with the name
-entt::entity ECS::FindEntityWithName(std::string& _name)
+entt::entity ECS::FindEntityWithName(std::string _name)
 {
 	auto view = m_registry.view<Name>();
 
@@ -100,7 +98,7 @@ entt::entity ECS::FindEntityWithName(std::string& _name)
 }
 
 //returns the first entity with the tag
-entt::entity ECS::FindEntityWithTag(std::string& _tag)
+entt::entity ECS::FindEntityWithTag(std::string _tag)
 {
 	auto view = m_registry.view<Tag>();
 
@@ -114,17 +112,17 @@ entt::entity ECS::FindEntityWithTag(std::string& _tag)
 	return entt::null;
 }
 
-std::vector<entt::entity> ECS::FindAllEntityWithName(std::string& _name)
-{
-	auto view = m_registry.view<Name>();
-	std::vector<entt::entity> return_vec;
-
-	for (auto& entity : view)
-	{
-		auto name = view.get<Name>(entity);
-		if (name.m_name == _name)
-			return_vec.push_back(entity);
-	}
-
-	return return_vec;
-}
+//std::vector<entt::entity> ECS::FindAllEntityWithName(std::string& _name)
+//{
+//	auto view = m_registry.view<Name>();
+//	std::vector<entt::entity> return_vec;
+//
+//	for (auto& entity : view)
+//	{
+//		auto name = view.get<Name>(entity);
+//		if (name.m_name == _name)
+//			return_vec.push_back(entity);
+//	}
+//
+//	return return_vec;
+//}

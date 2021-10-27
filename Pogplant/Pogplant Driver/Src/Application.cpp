@@ -22,9 +22,8 @@ void Application::ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D*
 {
 	if (!_FirstIt)
 	{
-		auto child = m_activeECS->CreateChild(_Entity.GetID());
+		auto child = m_activeECS->CreateChild(_Entity.GetID(), _Mesh3D->m_Name);
 		child.AddComponent<Components::Renderer>(Renderer{ _Color, _Model, _Mesh3D, _UseLight, _EditorOnly });
-		child.GetComponent<Components::Name>().m_name = _Mesh3D->m_Name;
 		auto& transform = child.GetComponent<Components::Transform>();
 		transform.m_position = _Mesh3D->m_Translate;
 		transform.m_rotation = _Mesh3D->m_Rotate;
@@ -137,11 +136,10 @@ void Application::InitialiseDebugObjects()
 	scale = { 2.0f,2.0f,2.0f };
 	//GO_Resource::m_GO_Container.push_back(GameObject(pos, rot, scale, &GO_Resource::m_Render_Container[1]));
 
-	auto entity = m_activeECS->CreateEntity("", pos, rot, scale);
+	auto entity = m_activeECS->CreateEntity("Height Map Debugger", pos, rot, scale);
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color);
 	entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{ 0 }, 1.0f });
 	entity.AddComponent<Components::HeightMapDebugger>(0.0f);
-	entity.GetComponent<Components::Name>().m_name = "Height Map Debugger";
 
 	//entity.AddComponent<Components::Name>(Name{ "Sphere Test" });
 
@@ -155,7 +153,7 @@ void Application::InitialiseDebugObjects()
 	pos = { 0.0f, -10.0f, 0.0f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 210.0f,30.0f,210.0f };
-	entity = m_activeECS->CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("Floor", pos, rot, scale);
 	//entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
 	entity.AddComponent<Components::PrimitiveRender>(PrimitiveRender
 	(
@@ -167,14 +165,12 @@ void Application::InitialiseDebugObjects()
 		4.0f,
 		true
 	));
-	entity.GetComponent<Components::Name>().m_name = "Floor";
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.1f, 0.1f, 0.1f }, {0.f, 0.f, 0.f} });
 
 	pos = { 15.0f, 15.0f, 10.f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 1.0f,1.0f,1.0f };
-
-	entity = m_activeECS->CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("Ship", pos, rot, scale);
 	ConstructModel(entity, shipModel, &shipModel->m_Meshes.begin()->second);
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
@@ -201,20 +197,18 @@ void Application::InitialiseDebugObjects()
 				true	// Lerp speed
 			)
 			);
-	entity.GetComponent<Components::Name>().m_name = "Ship";
 
 	pos = { 7.5f, 7.5f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 1.0f,1.0f,1.0f };
 
-	entity = m_activeECS->CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("Enemy", pos, rot, scale);
 	ConstructModel(entity, enemyModel, &enemyModel->m_Meshes.begin()->second);
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
 	std::unordered_map<std::string, bool> enemyScripts;
 	enemyScripts["EnemyScript"] = false;
 	entity.AddComponent<Components::Scriptable>(enemyScripts);
-	entity.GetComponent<Components::Name>().m_name = "Enemy";
 
 	/// Light
 	pos = { 7.5f, 15.0f, 20.0f };
@@ -222,53 +216,47 @@ void Application::InitialiseDebugObjects()
 	scale = { 1.0f,1.0f,1.0f }; // Affects light model and not the actual light size
 	color = { 0.2f, 0.2f, 0.15f };
 	float intensity = 13.0f;
-	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("Directional Light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
-	entity.GetComponent<Components::Name>().m_name = "Directional Light";
 
 	intensity = 1.0f;
 	pos = { 15.0f, 22.0f, 19.0f };
 	color = { 1.0f, 1.0f, 1.0f };
 	const float linear = 0.00069f;
 	const float quadratic = 0.0042f;
-	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("White point light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
-	entity.GetComponent<Components::Name>().m_name = "White point light";
 
 	intensity = 4.2f;
 	pos = { 26.0f, 10.0f, -16.5f };
 	color = { 0.0f, 0.0f, 1.0f };
-	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("Blue light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
-	entity.GetComponent<Components::Name>().m_name = "Blue light";
 
 	pos = { 21.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
-	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("Red light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
-	entity.GetComponent<Components::Name>().m_name = "Red light";
 
 	pos = { -12.5, 10.0f, -10.0f };
 	color = { 0.0f, 1.0f, 0.0f };
-	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("Green light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
-	entity.GetComponent<Components::Name>().m_name = "Green light";
 
 	//Test Object with body
 	pos = { 3.0f, 1.f, 0.0f };
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
-	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("Test Rigidbody", pos, glm::vec3{ 0 }, scale);
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color);
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	//entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{0.f}, 1.f });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
-	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody";
 	entity.AddComponent<Components::AudioSource>();
 	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
 		Components::AudioSource::AudioObject{ "Resources/Audio\\test2.ogg", 0.2f, true }
@@ -278,11 +266,10 @@ void Application::InitialiseDebugObjects()
 	pos = { -3.0f, 1.f, 0.0f };
 	color = { 0.0f, 1.0f, 1.0f };
 	scale = { 0.5f, 0.5f, 0.5f };
-	entity = m_activeECS->CreateEntity("", pos, glm::vec3{ 0 }, scale);
+	entity = m_activeECS->CreateEntity("Test Rigidbody2", pos, glm::vec3{ 0 }, scale);
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color);
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
-	entity.GetComponent<Components::Name>().m_name = "Test Rigidbody2";
 	entity.AddComponent<Components::AudioSource>();
 	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
 		Components::AudioSource::AudioObject{ "Resources/Audio\\test.ogg", 0.2f, true }
@@ -292,48 +279,44 @@ void Application::InitialiseDebugObjects()
 	pos = { 0.0f, 10.0, -10.0f };
 	rot = { 0.0f, 0.0f, 0.0f };
 	scale = { 42.0f, 42.0f, 42.0f };
-	entity = m_activeECS->CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("World font", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f, 0.0f, 0.0f}, "Ruda", "This is a very big text", false });
-	entity.GetComponent<Components::Name>().m_name = "World font";
 
 	pos = { -1.0f, 0.85f, 0.0f };
 	rot = { 0.0f, 0.0f, 0.0f };
 	scale = { 1.0f, 1.0f, 1.0f };
-	entity = m_activeECS->CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("Screen font", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f, 0.0f, 1.0f}, "Ruda", "Screen Font", true });
-	entity.GetComponent<Components::Name>().m_name = "Screen font";
 
 	/// Camera
 	pos = { 15.0f, 10.0f, 45.0f };
 	color = { 0.9f, 0.5f, 0.2f };
-	entity = m_activeECS->CreateEntity("", pos, rot, scale);
+	entity = m_activeECS->CreateEntity("Game Camera", pos, rot, scale);
 	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
 	ConstructModel(entity, cubeModel, &cubeModel->m_Meshes.begin()->second, color, false, true);
-	entity.GetComponent<Components::Name>().m_name = "Game Camera";
 
 	/// Canvas test
 	pos = { 0.0f, 0.0f, -1.0f };
 	scale = { 1.0f, 1.0f, 1.0f };
-	entity = m_activeECS->CreateEntity("", pos, rot, scale);
-	entity.GetComponent<Components::Name>().m_name = "Canvas";
+	entity = m_activeECS->CreateEntity("Canvas", pos, rot, scale);
+
 	pos = { -0.55f, 0.3f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
 	scale = { 0.1f, 0.1f, 0.1f };
-	auto child = m_activeECS->CreateChild(entity.GetID(), "", pos, rot, scale);
+	auto child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 1", pos, rot, scale);
 	// Simulate inspector set texture
 	PP::TextureResource::UseTexture("TEST_TEX");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
 	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("TEST_TEX")});
-	child.GetComponent<Components::Name>().m_name = "Canvas Image 1";
+
 	pos = { -0.55f, 0.2f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
 	scale = { 0.1f, 0.1f, 0.1f };
-	child = m_activeECS->CreateChild(entity.GetID(), "", pos, rot, scale);
+	child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 2", pos, rot, scale);
 	// Simulate inspector set texture
 	PP::TextureResource::UseTexture("TEST_TEX2");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
 	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("TEST_TEX2") });
-	child.GetComponent<Components::Name>().m_name = "Canvas Image 2";
 }
 #endif
 
@@ -362,6 +345,8 @@ void Application::UpdateTransform(entt::entity _id, Transform& parent_transform)
 
 void Application::UpdateTransforms(float _Dt)
 {
+	auto lol_id = m_activeECS->FindEntityWithName("Green light");
+
 	auto camView = m_activeECS->GetReg().view<Transform, Camera>();
 	{
 		for (auto& entity : camView)
