@@ -112,6 +112,8 @@ entt::entity ECS::FindEntityWithTag(std::string _tag)
 	return entt::null;
 }
 
+
+
 //std::vector<entt::entity> ECS::FindAllEntityWithName(std::string& _name)
 //{
 //	auto view = m_registry.view<Name>();

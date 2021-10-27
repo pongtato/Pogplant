@@ -26,10 +26,13 @@ namespace Scripting
 
         public float movement_speed = 50.0f;
 
-        // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
-        public List<uint> entityIDList = new List<uint>();
-        // parentID first, childID second
-        public List<Tuple<uint, uint>> childIDList = new List<Tuple<uint, uint>>();
+        //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
+        //public List<uint> entityIDList = new List<uint>();
+        //// parentID first, childID second
+        //public List<Tuple<uint, uint>> childIDList = new List<Tuple<uint, uint>>();
+
+        public List<GameObject> entityList = new List<GameObject>();
+        public List<Tuple<GameObject, GameObject>> childList = new List<Tuple<GameObject, GameObject>>();
 
         public PlayerScript()
         {
@@ -68,49 +71,68 @@ namespace Scripting
             // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_Z))
             {
-                uint entityID = ECS.CreateEntity("Testing123", Vector3.Zero(), Vector3.Zero(), Vector3.Zero());
-                entityIDList.Add(entityID);
-                Console.WriteLine("Entity ID created: " + entityID);
+                //uint entityID = ECS.CreateEntity("Testing123", Vector3.Zero(), Vector3.Zero(), Vector3.Zero());
+                //entityIDList.Add(entityID);
+
+                GameObject GO = ECS.CreateEntity("RandomNamexD", new Transform(Vector3.One(), Vector3.One(), Vector3.One()));
+                //GO.AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
+                entityList.Add(GO);
+
+                Console.WriteLine("Entity ID created: " + GO.id);
+                //Console.WriteLine("Test Mass Is: " + GO.GetComponent<Rigidbody>().mass);
             }
 
             // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_X))
             {
-                if (entityIDList.Count > 0)
+                if (entityList.Count > 0)
                 {
-                    uint entity = entityIDList[0];
+                    uint entity = entityList[0].id;
                     Console.WriteLine("Trying Entity ID destroyed: " + entity);
                     ECS.DestroyEntity(entity);
-                    entityIDList.RemoveAt(0);
+                    entityList.RemoveAt(0);
                     Console.WriteLine("Entity ID destroyed: " + entity);
                 }
                 else
                 {
-                    Console.WriteLine("EntityID list is empty");
+                    Console.WriteLine("Entity list is empty");
                 }
             }
 
             // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_C))
             {
-                if (entityIDList.Count > 0)
+                if (entityList.Count > 0)
                 {
-                    uint parentID = entityIDList[0];
-                    uint entityID = ECS.CreateChild(parentID, "Child123", Vector3.Zero(), Vector3.Zero(), Vector3.Zero());
-                    childIDList.Add(new Tuple<uint, uint>(parentID, entityID));
-                    Console.WriteLine("Child ID created: " + entityID + " Parent ID: " + parentID);
+                    GameObject GOParent = entityList[0];
+                    GameObject GOChild = ECS.CreateChild(GOParent.id, "Child123", new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.Zero()));
+                    childList.Add(new Tuple<GameObject, GameObject>(GOParent, GOChild));
+                    Console.WriteLine("Child ID created: " + GOChild.id + " Parent ID: " + GOParent.id);
                 }
                 else
                 {
-                    Console.WriteLine("EntityID list is empty");
+                    Console.WriteLine("Entity list is empty");
                 }
             }
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_V))
             {
-                string exampleName = "Testing123";
+                string exampleName = "RandomNamexD";
                 uint entityID = ECS.FindEntityWithName(exampleName);
                 Console.WriteLine("EntityID with name " + exampleName + ": " + entityID);
+            }
+
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_B))
+            {
+                if (entityList.Count > 0)
+                {
+                    entityList[0].AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
+                    Console.WriteLine("Test Mass Is: " + entityList[0].GetComponent<Rigidbody>().mass);
+                }
+                else 
+                {
+                    Console.WriteLine("Entity list is empty");
+                }
             }
 
             if (InputUtility.onKeyReleased(KEY_ID.KEY_S))

@@ -12,16 +12,26 @@
 */
 /*****************************************************************************/
 
-#include "../Components/Components.h"
-#include "../Components/DependantComponents.h"
 #include "ScriptSystem.h"
 #include "../../Input/InputSystem.h"
 #include "../../Input/GLFWInput.h"
 #include "../../Pogplant/Src/DebugDraw.h"
 #include "../../GameScript.h"
+#include "../Components/Components.h"
+#include "../Components/DependantComponents.h"
 
 bool ScriptSystem::isReload = false;
 ECS* ScriptSystem::m_ecs = nullptr;
+
+void AddComponentTransform(unsigned int id, Components::Transform transform)
+{
+	ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Transform>(static_cast<entt::entity>(id), transform);
+}
+
+void AddComponentRigidbody(unsigned int id, Components::Rigidbody rigidbody)
+{
+	ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Rigidbody>(static_cast<entt::entity>(id), rigidbody);
+}
 
 // Helper to read binary data
 std::vector<char> ReadRawBin(const std::string& filePath)
@@ -421,6 +431,11 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::CreateChild", &this->CreateChild);
 	mono_add_internal_call("Scripting.ECS::FindEntityWithName", &this->FindEntityWithName);
 
+	//mono_add_internal_call("Scripting.GameObject::AddComponentTransform", &this->AddComponentTransform);
+	//mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", &this->AddComponentRigidbody);
+
+	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", AddComponentTransform);
+	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", AddComponentRigidbody);
 }
 
 void ScriptSystem::Reload()

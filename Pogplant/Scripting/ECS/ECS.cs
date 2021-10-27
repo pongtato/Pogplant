@@ -21,5 +21,19 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint FindEntityWithName(string name);
+
+        public static GameObject CreateEntity(string name, Transform transform, string tag = "Untagged")
+        {
+            uint entityID = CreateEntity(name, transform.Position, transform.Rotation, transform.Scale);
+            GameObject GO = new GameObject(entityID, transform, tag);
+            return GO;
+        }
+
+        public static GameObject CreateChild(uint parentID, string name, Transform transform, string tag = "Untagged")
+        {
+            uint entityID = CreateChild(parentID, name, transform.Position, transform.Rotation, transform.Scale);
+            GameObject GO = new GameObject(entityID, transform, tag);
+            return GO;
+        }
     }
 }

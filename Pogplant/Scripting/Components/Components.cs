@@ -24,84 +24,18 @@ using System.Runtime.CompilerServices;
 
 namespace Scripting
 {
-    // All the components needed for the scripts
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Vector3
-    {
-        public Single X;
-        public Single Y;
-        public Single Z;
-
-        public Vector3(Single x, Single y, Single z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
-
-        public Vector3(Single v)
-        {
-            X = v;
-            Y = v;
-            Z = v;
-        }
-
-        public static Vector3 operator -(Vector3 a)
-        {
-            return a = a * -1.0f;
-        }
-
-        public static Vector3 operator *(Vector3 a, float b)
-        {
-            return new Vector3(a.X * b, a.Y * b, a.Z * b);
-        }
-
-        public static Vector3 operator *(float b, Vector3 a)
-        {
-            return new Vector3(a.X * b, a.Y * b, a.Z * b);
-        }
-
-        public static Vector3 operator +(Vector3 a, Vector3 b)
-        {
-            return new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
-        }
-        public static Vector3 operator -(Vector3 a, Vector3 b)
-        {
-            return new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
-        }
-
-        public static float Distance(Vector3 a, Vector3 b)
-        {
-            Vector3 result = a - b;
-            return result.magnitude();
-        }
-
-        public static Vector3 Lerp(Vector3 start, Vector3 end, float t)
-        {
-            return (1 - t) * start + t * end;
-        }
-
-        public float magnitude()
-        {
-            return (float)Math.Sqrt((X * X) + (Y * Y) + (Z * Z));
-        }
-
-        public static Vector3 One()
-        {
-            return new Vector3(1.0f, 1.0f, 1.0f);
-        }
-        public static Vector3 Zero()
-        {
-            return new Vector3(0.0f, 0.0f, 0.0f);
-        }
-    }
-
     [StructLayout(LayoutKind.Sequential)]
     public struct Transform
     {
         public Vector3 Position;
         public Vector3 Rotation;
         public Vector3 Scale;
+        public Transform(Vector3 pos, Vector3 rot, Vector3 scale)
+        {
+            Position = pos;
+            Rotation = rot;
+            Scale = scale;
+        }
 
         public void SetPositionAndRotatation(Vector3 position, Vector3 rotation)
         {
@@ -122,6 +56,38 @@ namespace Scripting
         public Vector3 acceleration;
         public Vector3 impulseAcceleration;
         public Vector3 newPosition;
+
+        // Inputting 0 parameters doesn't seem to work even with default
+        public Rigidbody(Vector3 _velocity = new Vector3(),
+                         Vector3 _acceleration = new Vector3(),
+                         Vector3 _impulseAcceleration= new Vector3(),
+                         Vector3 _newPosition = new Vector3(),
+                         bool _isKinematic = false,
+                         bool _useGravity = false,
+                         float _mass = 1.0f,
+                         float _drag = 0.0f)
+        {
+            velocity = _velocity;
+            acceleration = _acceleration;
+            impulseAcceleration = _impulseAcceleration;
+            newPosition = _newPosition;
+            isKinematic = _isKinematic;
+            useGravity = _useGravity;
+            mass = _mass;
+            drag = _drag;
+        }
+
+        public Rigidbody(Vector3 _velocity)
+        {
+            velocity = _velocity;
+            acceleration = new Vector3();
+            impulseAcceleration = new Vector3();
+            newPosition = new Vector3();
+            isKinematic = false;
+            useGravity = false;
+            mass = 1.0f;            
+            drag = 0.0f;
+        }
 
         public void AddForce(Vector3 direction)
         {

@@ -517,8 +517,13 @@ void Application::DrawCommon()
 	// If something is selected choose it to be highlighted
 	Renderer* renderOjbect = nullptr;
 
+	if (!m_activeECS->GetReg().valid(PPD::ImguiHelper::m_CurrentEntity))
+		PPD::ImguiHelper::m_CurrentEntity = entt::null;
+
 	//const int currIdx = PPD::ImguiHelper::m_CurrentGOIdx;
 	entt::entity currIdx = PPD::ImguiHelper::m_CurrentEntity;
+
+
 
 	//if (currIdx >= 0)
 	if (currIdx != entt::null)

@@ -51,6 +51,7 @@ public:
 	void OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent);
 
 	std::vector<std::string> m_scriptNames;
+	static ECS* GetECS() { return m_ecs; }
 
 private:
 	// Call the Start function of every script needed for each object
@@ -71,6 +72,11 @@ private:
 	static void DestroyEntity(std::uint32_t entityID);
 	static std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	static std::uint32_t FindEntityWithName(MonoString* name);
+	//template<typename Type, typename ...Args>
+	//static void AddComponent(unsigned int id, Args && ...args);
+
+	//static void AddComponentTransform(unsigned int id, Components::Transform transform);
+	//static void AddComponentRigidbody(unsigned int id, Components::Rigidbody rigidbody);
 
 	//ECS* m_registry;
 	static ECS* m_ecs;
@@ -83,6 +89,7 @@ private:
 	//std::unordered_map<std::string, MonoObjectWithGC*> m_MonoObjects;
 	std::unordered_map<std::string, std::unique_ptr<MonoObjectWithGC>> m_MonoObjects;
 	static bool isReload;
+
 };
 
 #endif // _SCRIPT_SYSTEM_H_
