@@ -11,15 +11,15 @@ namespace Scripting
     class ECS
     {
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static uint CreateEntity(string str, Vector3 pos, Vector3 rot, Vector3 scale);
+        public extern static uint CreateEntity(string name, Vector3 pos, Vector3 rot, Vector3 scale, string tag = "Untagged");
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void DestroyEntity(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static uint CreateChild(uint parentID, string str, Vector3 pos, Vector3 rot, Vector3 scale);
+        public extern static uint CreateChild(uint parentID, string name, Vector3 pos, Vector3 rot, Vector3 scale, string tag = "Untagged");
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static uint FindEntityWithTag(string str);
+        public extern static uint FindEntityWithName(string name);
     }
 }

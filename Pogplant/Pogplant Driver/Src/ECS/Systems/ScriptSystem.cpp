@@ -48,6 +48,7 @@ ScriptSystem::ScriptSystem()
 	mono_set_dirs("..\\Libs\\Mono\\lib", "..\\Libs\\Mono\\etc");
 	// Root domain
 	m_ptrMonoDomain = mono_jit_init("ScriptSystem");
+
 	// Load dll into memory
 	LoadMemory();
 }
@@ -418,7 +419,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::CreateEntity", &this->CreateEntity);
 	mono_add_internal_call("Scripting.ECS::DestroyEntity", &this->DestroyEntity);
 	mono_add_internal_call("Scripting.ECS::CreateChild", &this->CreateChild);
-	mono_add_internal_call("Scripting.ECS::FindEntityWithTag", &this->FindEntityWithTag);
+	mono_add_internal_call("Scripting.ECS::FindEntityWithName", &this->FindEntityWithName);
 
 }
 

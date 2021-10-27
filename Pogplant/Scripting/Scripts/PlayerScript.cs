@@ -79,6 +79,7 @@ namespace Scripting
                 if (entityIDList.Count > 0)
                 {
                     uint entity = entityIDList[0];
+                    Console.WriteLine("Trying Entity ID destroyed: " + entity);
                     ECS.DestroyEntity(entity);
                     entityIDList.RemoveAt(0);
                     Console.WriteLine("Entity ID destroyed: " + entity);
@@ -108,7 +109,7 @@ namespace Scripting
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_V))
             {
                 string exampleName = "Testing123";
-                uint entityID = ECS.FindEntityWithTag(exampleName);
+                uint entityID = ECS.FindEntityWithName(exampleName);
                 Console.WriteLine("EntityID with name " + exampleName + ": " + entityID);
             }
 

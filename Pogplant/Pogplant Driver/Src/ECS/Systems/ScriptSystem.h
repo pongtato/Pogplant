@@ -67,10 +67,10 @@ private:
 	// WRAPPER FUNCTIONS FOR ECS, entt::entity is an unsigned int
 	//std::uint32_t CreateEntity(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
 	//typedef std::uint32_t(ScriptSystem::* CreateEntityPtr)(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
-	static std::uint32_t CreateEntity(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
+	static std::uint32_t CreateEntity(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	static void DestroyEntity(std::uint32_t entityID);
-	static std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
-	static std::uint32_t FindEntityWithTag(MonoString* name);
+	static std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
+	static std::uint32_t FindEntityWithName(MonoString* name);
 
 	//ECS* m_registry;
 	static ECS* m_ecs;

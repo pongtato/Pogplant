@@ -69,7 +69,6 @@ void Application::Init()
 	// Model has to be before KekFiles
 	fh.AddNewWatchPath("Resources/Models");
 	fh.AddNewWatchPath("Resources/KekFiles");
-	fh.AddNewWatchPath("Resources/DLL");
 	fh.AddNewWatchPath("Resources/Prefabs");
 	fh.AddNewWatchPath("Resources/Audio");
 

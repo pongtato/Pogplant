@@ -36,6 +36,9 @@ void Application::EnterPlayState()
 
 	m_sGeneralSystem.Init(&m_playECS);
 	m_sPhysicsSystem.Init(&m_playECS, m_eventBus);
+
+	// Ensure that the scripts are reloaded.
+	m_sScriptSystem.SetReload(true);
 	m_sScriptSystem.Init(&m_playECS);
 
 	//This is where it'll be code when transitioning to play state

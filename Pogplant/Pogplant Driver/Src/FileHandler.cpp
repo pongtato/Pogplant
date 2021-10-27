@@ -191,13 +191,6 @@ namespace PPF
                                 ac.RunExecutable("Pogplant Compiler.exe", filePath);
                                 ac.WaitForSingleProcess(key);
                             }
-                            else if (extension.compare(".dll") == 0)
-                            {
-                                if (key.compare("Scripting") == 0)
-                                {
-                                    ScriptSystem::SetReload(true);
-                                }
-                            }
                         }
                     }
                 }
