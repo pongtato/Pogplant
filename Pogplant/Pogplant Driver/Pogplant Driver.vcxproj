@@ -191,6 +191,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\ContentBrowser.h" />
     <ClInclude Include="Src\Debugger.h" />
     <ClInclude Include="Src\ECS\Components\Components.h" />
+    <ClInclude Include="Src\ECS\Components\GameplayComponents.h" />
     <ClInclude Include="Src\ECS\Components\GenericComponents.h" />
     <ClInclude Include="Src\ECS\Components\DependantComponents.h" />
     <ClInclude Include="Src\ECS\Components\Reflection_for_components.h" />

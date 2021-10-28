@@ -308,5 +308,8 @@
     <ClInclude Include="Src\ECS\Systems\ScriptSystemHelper.h">
       <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
     </ClInclude>
+    <ClInclude Include="Src\ECS\Components\GameplayComponents.h">
+      <Filter>Source Files\ECS\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,4 +11,5 @@
 
 #include "GenericComponents.h"
 #include "ScriptComponents.h"
+#include "GameplayComponents.h"
 #endif

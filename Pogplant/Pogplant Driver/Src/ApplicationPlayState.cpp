@@ -70,7 +70,7 @@ void Application::UpdatePlayState(float c_dt)
 		}
 	}
 
-	m_sGeneralSystem.Update();
+	m_sGeneralSystem.Update(c_dt);
 	m_sScriptSystem.Update(c_dt);
 	m_sScriptSystem.LateUpdate();
 	PPF::FileHandler& fh = fh.GetInstance();

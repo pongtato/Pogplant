@@ -28,7 +28,7 @@ public:
 	~GeneralSystem();
 
 	void Init(ECS* ecs);
-	void Update();
+	void Update(float c_dt);
 
 private:
 	ECS* m_registry;

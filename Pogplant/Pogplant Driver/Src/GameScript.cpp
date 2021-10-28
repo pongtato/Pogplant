@@ -1,7 +1,9 @@
 #include "Pogplant.h"
 #include "../Src/ImguiHelper.h"
+#include "../Src/ECS/Entity.h"
 #include "../Src/ECS/Components/Components.h"
 #include "../Src/ECS/Components/DependantComponents.h"
+#include "GameScript.h"
 
 
 
@@ -27,5 +29,18 @@ namespace Scripting
 			return value;
 		}
 		return 0;
+	}
+	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _Rotation)
+	{
+		auto new_bullet = PPD::ImguiHelper::m_ecs->CreateEntity("Bullet", _Position, _Rotation);
+		new_bullet.AddComponent<Projectile>(3.f, 10.f, Components::Projectile::OwnerType::Player);
+		new_bullet.AddComponent<Renderer>(glm::vec3{ 0 }, PP::ModelResource::m_ModelPool["sphere"], &PP::ModelResource::m_ModelPool["sphere"]->m_Meshes.begin()->second);
+		auto sp_collider = new_bullet.AddComponent<SphereCollider>();
+		sp_collider.isTrigger = true;
+		new_bullet.AddComponent<Rigidbody>();
+
+		auto body = new_bullet.GetComponent<Rigidbody>();
+		body.AddForce({ 0.f,100.f,10.f });
+
 	}
 }

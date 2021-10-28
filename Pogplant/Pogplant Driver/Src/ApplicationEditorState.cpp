@@ -69,7 +69,7 @@ void Application::UpdateEditorState(float c_dt)
 #endif // PPD_UPDATE_EDITOR_AS_GAME
 
 
-	m_sGeneralSystem.Update();
+	m_sGeneralSystem.Update(c_dt);
 	PPF::FileHandler& fh = fh.GetInstance();
 	fh.UpdateModels();
 

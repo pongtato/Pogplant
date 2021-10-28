@@ -17,6 +17,7 @@
 #include "GeneralSystem.h"
 #include "../Entity.h"
 
+#include "../Components/GameplayComponents.h"
 #include "../Components/DependantComponents.h"
 #include "../../Input/GLFWInput.h"
 #include "../../AudioEngine.h"
@@ -36,7 +37,7 @@ void GeneralSystem::Init(ECS* ecs)
 	m_registry = ecs;
 }
 
-void GeneralSystem::Update()
+void GeneralSystem::Update(float c_dt)
 {
 	/*//entities will be a container of objects with it
 	//get all entities with the imaginary_object component
@@ -57,6 +58,22 @@ void GeneralSystem::Update()
 
 		(void)imaginary_component;
 	}//*/
+	auto projectiles = m_registry->GetReg().view<Components::Transform, Components::Projectile,Components::SphereCollider, Components::Rigidbody>();
+	for (auto& projectileEntity : projectiles)
+	{
+		auto& projectile = projectiles.get<Components::Projectile>(projectileEntity);
+		auto& transform = projectiles.get<Components::Transform>(projectileEntity);
+		auto& rigidbody = projectiles.get<Components::Rigidbody>(projectileEntity);
+
+		glm::vec3 move = { 0.f,0.f,projectile.m_Speed * c_dt };
+		transform.m_position += move;
+		projectile.m_CurentLifetime += c_dt;
+
+		if (projectile.m_CurentLifetime > projectile.m_Lifetime)
+			m_registry->DestroyEntity(projectileEntity);
+	}
+
+
 
 	auto audios = m_registry->GetReg().view<Components::Transform, Components::AudioSource>();
 
