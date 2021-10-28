@@ -6,6 +6,7 @@
 namespace Pogplant
 {
 	class Model;
+	struct Mesh3D;
 
 	struct ModelResource
 	{
@@ -18,5 +19,6 @@ namespace Pogplant
 		static void LoadModel(std::unordered_map<std::string, Model*>& _ModelPool, std::string _ModelID, std::string _Path,unsigned int _PrimitiveType = 0x0004);
 		static void UpdateModel(std::unordered_map<std::string, Model*>& _ModelPool, std::string _ModelID, std::string _Path,unsigned int _PrimitiveType = 0x0004);
 		static std::unordered_map<std::string, Model*> m_ModelPool;
+		//static std::unordered_map<std::string, Mesh3D*> m_UsedMeshes;
 	};
 }

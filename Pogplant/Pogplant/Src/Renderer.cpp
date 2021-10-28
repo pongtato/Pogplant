@@ -237,15 +237,12 @@ namespace Pogplant
 		glClear(GL_DEPTH_BUFFER_BIT);
 
 		/// Draw
-		auto results = registry.view<Components::Renderer, Components::Transform>();
-		for (const auto& e : results)
+		// 3D Instanced
+		for (auto& model : ModelResource::m_ModelPool)
 		{
-			const auto& it = results.get<const Components::Renderer>(e);
-			const auto& it_trans = results.get<const Components::Transform>(e);
-			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
-			if (it.m_UseLight)
+			for (auto& mesh : model.second->m_Meshes)
 			{
-				it.m_Mesh->Draw(false);
+				mesh.second.DrawInstanced(false);
 			}
 		}
 
@@ -371,30 +368,16 @@ namespace Pogplant
 		MeshInstance::ResetCount();
 		ShaderLinker::UnUse();
 
-		ShaderLinker::Use("MODEL");
+		// 3D models
+		ShaderLinker::Use("MODEL_I");
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
-
-		auto results = registry.view<Components::Renderer, Components::Transform>();
-		for (const auto& e : results)
+		ShaderLinker::SetUniform("i_EditorMode", static_cast<int>(_EditorMode));
+		for (auto& model : ModelResource::m_ModelPool)
 		{
-			const auto& it = results.get<const Components::Renderer>(e);
-			const auto& it_trans = results.get<const Components::Transform>(e);
-
-			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
-			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
-			ShaderLinker::SetUniform("useLight", it.m_UseLight);
-			if (!it.m_EditorDrawOnly || it.m_EditorDrawOnly && _EditorMode)
+			for (auto& mesh : model.second->m_Meshes)
 			{
-				if (it.m_Mesh->m_Textures.size() == 0)
-				{
-					ShaderLinker::SetUniform("noTex", true);
-				}
-				else
-				{
-					ShaderLinker::SetUniform("noTex", false);
-				}
-				it.m_Mesh->Draw(true);
+				mesh.second.DrawInstanced(true);
 			}
 		}
 		ShaderLinker::UnUse();
@@ -449,95 +432,6 @@ namespace Pogplant
 		}
 		ShaderLinker::UnUse();
 
-		// Debug boxes
-		if (_EditorMode)
-		{
-			Camera* currCam = CameraResource::GetCamera("EDITOR");
-			
-			/// Debug
-			// Debug line size
-			glLineWidth(DebugDraw::m_LineWidth);
-
-			// Update verts to mesh
-			MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
-
-			ShaderLinker::Use("LINE");
-			ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-			ShaderLinker::SetUniform("m4_View", currCam->GetView());
-			ShaderLinker::SetUniform("m4_Model", glm::mat4{ 1 });
-
-			// Debug color default to gree for now
-			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.0f, 1.0f, 0.0f });
-		
-			Mesh* lineMesh = MeshResource::m_MeshPool[MeshResource::MESH_TYPE::LINE];
-			glBindVertexArray(lineMesh->m_VAO);
-			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
-			glBindVertexArray(0);
-
-			/// Grid - thin
-			// Clear for grid
-			DebugDraw::NewFrame();
-
-			// Debug grid size
-			glLineWidth(DebugDraw::m_GridWidth);
-
-			int camFar = static_cast<int>(currCam->GetCameraConfig().m_Far);
-
-			for (int i = -camFar; i <= camFar; i++)
-			{
-				if (i % DebugDraw::m_GridInterval != 0)
-				{
-					DebugDraw::DebugLine(glm::vec3{ i,0,-camFar }, glm::vec3{ i,0,camFar });
-				}
-			}
-			for (int i = -camFar; i <= camFar; i++)
-			{
-				if (i % DebugDraw::m_GridInterval != 0)
-				{
-					DebugDraw::DebugLine(glm::vec3{ -camFar,0,i }, glm::vec3{ camFar,0,i });
-				}
-			}
-
-			// Update verts to mesh
-			MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
-
-			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.42f, 0.42f, 0.42f });
-
-			glBindVertexArray(lineMesh->m_VAO);
-			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
-			glBindVertexArray(0);
-
-			/// Grid - thicc
-			// Clear for grid
-			DebugDraw::NewFrame();
-
-			// Debug grid size
-			glLineWidth(DebugDraw::m_GridIntervalWidth);
-
-			for (int i = -camFar; i <= camFar; i += DebugDraw::m_GridInterval)
-			{
-				DebugDraw::DebugLine(glm::vec3{ i,0,-camFar }, glm::vec3{ i,0,camFar });
-			}
-			for (int i = -camFar; i <= camFar; i+=DebugDraw::m_GridInterval)
-			{
-				DebugDraw::DebugLine(glm::vec3{ -camFar,0,i }, glm::vec3{ camFar,0,i });
-			}
-
-			// Update verts to mesh
-			MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
-
-			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.69f, 0.69f, 0.69f });
-
-			glBindVertexArray(lineMesh->m_VAO);
-			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
-			glBindVertexArray(0);
-
-			ShaderLinker::UnUse();
-
-			// Call this after or all points will be cleared
-			DebugDraw::NewFrame();
-		}
-
 		// Skybox
 		glDepthFunc(GL_LEQUAL);
 		ShaderLinker::Use("SKYBOX");
@@ -551,52 +445,16 @@ namespace Pogplant
 
 		DrawText(registry, _EditorMode);
 
-		//ShaderLinker::Use("BASIC");
-		//ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-		//ShaderLinker::SetUniform("m4_View", currCam->GetView());
-		//MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
-		//ShaderLinker::UnUse();
-
-		//// Edge
-		//if (_Selected != nullptr)
-		//{
-		//	// Test against the selected object
-		//	glStencilFunc(GL_ALWAYS, 1, 0xFF);
-		//	glStencilMask(0xFF);
-
-		//	// Drawn seperately 
-		//	ShaderLinker::Use("MODEL");
-		//	ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-		//	ShaderLinker::SetUniform("m4_View", currCam->GetView());
-		//	ShaderLinker::SetUniform("m4_Model", _Selected->m_Model);
-		//	_Selected->m_RenderModel->Draw();
-		//	ShaderLinker::UnUse();
-
-		//	// Get the edge
-		//	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-		//	glStencilMask(0x00);
-		//	glDisable(GL_DEPTH_TEST);
-
-		//	ShaderLinker::Use("EDGE");
-		//	ShaderLinker::SetUniform("f_Thicc", 0.05f);
-		//	ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-		//	ShaderLinker::SetUniform("m4_View", currCam->GetView());
-		//	ShaderLinker::SetUniform("m4_Model", _Selected->m_Model);
-		//	_Selected->m_RenderModel->Draw();
-		//	ShaderLinker::UnUse();
-
-		//	glStencilMask(0xFF);
-		//	glStencilFunc(GL_ALWAYS, 0, 0xFF);
-		//	glEnable(GL_DEPTH_TEST);
-		//}
+		if (_EditorMode)
+		{
+			DrawDebug(registry, nullptr);
+		}
 
 		glDisable(GL_CULL_FACE);
 	}
 
 	void Renderer::DrawDebug(const entt::registry& registry, Components::Renderer* _Selected)
 	{
-		glEnable(GL_CULL_FACE);
-
 		// Outline edge thing will be solved later
 		(void)_Selected;
 
@@ -607,8 +465,8 @@ namespace Pogplant
 		glm::mat4 projection = currCam->GetPerspective();
 		glm::mat4 view = currCam->GetView();
 
-		// Render G pass objects first
-		ShaderLinker::Use("DEBUG");
+		/// What does this do again i cant rmb lmao
+		/*ShaderLinker::Use("DEBUG");
 		ShaderLinker::SetUniform("m4_Projection", projection);
 		ShaderLinker::SetUniform("m4_View", view);
 
@@ -622,9 +480,90 @@ namespace Pogplant
 			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
 			it.m_Mesh->Draw(false);
 		}
+		ShaderLinker::UnUse();*/
+
+		/// Debug
+		// Debug line size
+		glLineWidth(DebugDraw::m_LineWidth);
+
+		// Update verts to mesh
+		MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
+
+		ShaderLinker::Use("LINE");
+		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
+		ShaderLinker::SetUniform("m4_View", currCam->GetView());
+		ShaderLinker::SetUniform("m4_Model", glm::mat4{ 1 });
+
+		// Debug color default to green for now
+		ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.0f, 1.0f, 0.0f });
+
+		Mesh* lineMesh = MeshResource::m_MeshPool[MeshResource::MESH_TYPE::LINE];
+		glBindVertexArray(lineMesh->m_VAO);
+		glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
+		glBindVertexArray(0);
+
+		/// Grid - thin
+		// Clear for grid
+		DebugDraw::NewFrame();
+
+		// Debug grid size
+		glLineWidth(DebugDraw::m_GridWidth);
+
+		int camFar = static_cast<int>(currCam->GetCameraConfig().m_Far);
+
+		for (int i = -camFar; i <= camFar; i++)
+		{
+			if (i % DebugDraw::m_GridInterval != 0)
+			{
+				DebugDraw::DebugLine(glm::vec3{ i,0,-camFar }, glm::vec3{ i,0,camFar });
+			}
+		}
+		for (int i = -camFar; i <= camFar; i++)
+		{
+			if (i % DebugDraw::m_GridInterval != 0)
+			{
+				DebugDraw::DebugLine(glm::vec3{ -camFar,0,i }, glm::vec3{ camFar,0,i });
+			}
+		}
+
+		// Update verts to mesh
+		MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
+
+		ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.42f, 0.42f, 0.42f });
+
+		glBindVertexArray(lineMesh->m_VAO);
+		glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
+		glBindVertexArray(0);
+
+		/// Grid - thicc
+		// Clear for grid
+		DebugDraw::NewFrame();
+
+		// Debug grid size
+		glLineWidth(DebugDraw::m_GridIntervalWidth);
+
+		for (int i = -camFar; i <= camFar; i += DebugDraw::m_GridInterval)
+		{
+			DebugDraw::DebugLine(glm::vec3{ i,0,-camFar }, glm::vec3{ i,0,camFar });
+		}
+		for (int i = -camFar; i <= camFar; i += DebugDraw::m_GridInterval)
+		{
+			DebugDraw::DebugLine(glm::vec3{ -camFar,0,i }, glm::vec3{ camFar,0,i });
+		}
+
+		// Update verts to mesh
+		MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
+
+		ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.69f, 0.69f, 0.69f });
+
+		glBindVertexArray(lineMesh->m_VAO);
+		glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
+		glBindVertexArray(0);
+
 		ShaderLinker::UnUse();
 
-		glDisable(GL_CULL_FACE);
+		// Call this after or all points will be cleared
+		DebugDraw::NewFrame();
 	}
 
 	void Renderer::Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16])

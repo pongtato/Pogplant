@@ -102,10 +102,10 @@ namespace Components
 		}
 
 		glm::vec3 m_ColorTint;
-		int m_UseLight = true;
-		bool m_EditorDrawOnly = false;
 		Pogplant::Model* m_RenderModel;
 		Pogplant::Mesh3D* m_Mesh;
+		int m_UseLight = true;
+		int m_EditorDrawOnly = false;
 	};
 
 	struct PrimitiveRender : public Renderer

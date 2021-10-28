@@ -316,6 +316,26 @@ void Application::InitialiseDebugObjects()
 	PP::TextureResource::UseTexture("TEST_TEX2");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
 	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("TEST_TEX2") });
+
+	/// Instancing test
+	//pos = { 0.0f, 0.0f, 0.0f };
+	//rot = { 0.0f,0.0f,0.0f };
+	//scale = { 1.0f,1.0f,1.0f };
+	//entity = m_activeECS->CreateEntity("Instancing Test", pos, rot, scale);
+
+	//int counter = 1;
+	//for (int i = -12; i < 12; i ++)
+	//{
+	//	for (int j = -12; j < 12; j ++)
+	//	{
+	//		const std::string name = "Child " + std::to_string(counter);
+	//		child = m_activeECS->CreateChild(entity.GetID(), name, pos, rot, scale);
+	//		glm::vec3 cPos = { i * 8, 100.0f, j * 8 };
+	//		child.GetComponent<Components::Transform>() = { cPos,rot,scale };
+	//		ConstructModel(child, shipModel, &shipModel->m_Meshes.begin()->second);
+	//		counter++;
+	//	}
+	//}
 }
 #endif
 
@@ -344,8 +364,9 @@ void Application::UpdateTransform(entt::entity _id, Transform& parent_transform)
 
 void Application::UpdateTransforms(float _Dt)
 {
-	auto lol_id = m_activeECS->FindEntityWithName("Green light");
+	//auto lol_id = m_activeECS->FindEntityWithName("Green light");
 
+	/// Camera tranforms
 	auto camView = m_activeECS->GetReg().view<Transform, Camera>();
 	{
 		for (auto& entity : camView)
@@ -365,7 +386,70 @@ void Application::UpdateTransforms(float _Dt)
 		}
 	}
 
-	// Update particle system
+	/// Height map transform
+	auto hmd_view = m_activeECS->GetReg().view<Transform, HeightMapDebugger>();
+	auto heightMap_view = m_activeECS->GetReg().view<Transform, PrimitiveRender>();
+	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
+	for (auto hm : heightMap_view)
+	{
+		auto& hmT = heightMap_view.get<Transform>(hm);
+		for (auto entity : hmd_view)
+		{
+			auto& debugObjectT = hmd_view.get<Transform>(entity);
+			glm::vec3 mappedPos = glm::vec3(debugObjectT.m_position.x / hmT.m_scale.x, 0.0f, debugObjectT.m_position.z / hmT.m_scale.z);
+			// Factor height * heightmap scale + heightmaps relative position then + the size of object
+			debugObjectT.m_position.y = floorMesh->GetHeight(mappedPos) * hmT.m_scale.y + hmT.m_position.y + debugObjectT.m_scale.y;
+		}
+	}
+
+	//Update transform matrix of all gameobject
+	auto view = m_activeECS->GetReg().view<Transform>();
+	for (auto entity : view)
+	{
+		auto& transform = view.get<Transform>(entity);
+
+		auto relationship = m_activeECS->GetReg().try_get<Relationship>(entity);
+		if (relationship && relationship->m_parent == entt::null)
+		{
+			transform.updateModelMtx();
+			for (auto& ent : relationship->m_children)
+				UpdateTransform(ent, transform);
+		}
+		else if (relationship == nullptr)
+		{
+			transform.updateModelMtx();
+		}
+	}
+
+	/// 3D instance transforms
+	// Clear old instance data
+	for (auto& model : PP::ModelResource::m_ModelPool)
+	{
+		for (auto& mesh : model.second->m_Meshes)
+		{
+			mesh.second.m_Instances.clear();
+		}
+	}
+	// Set instance data
+	auto instanceView = m_activeECS->GetReg().view<Transform, Renderer>();
+	for (auto& entity : instanceView)
+	{
+		auto& renderer = m_activeECS->GetReg().get<Renderer>(entity);
+		auto& transform = m_activeECS->GetReg().get<Transform>(entity);
+		auto* mesh = renderer.m_Mesh;
+		int useTex = mesh->m_Textures.size() == 0 ? 0 : 1;
+		mesh->m_Instances.push_back({ transform.m_ModelMtx, renderer.m_ColorTint, renderer.m_UseLight, useTex, renderer.m_EditorDrawOnly });
+	}
+	// Update meshes
+	for (auto& model : PP::ModelResource::m_ModelPool)
+	{
+		for (auto& mesh : model.second->m_Meshes)
+		{
+			mesh.second.RebindMesh3D();
+		}
+	}
+
+	/// Particle transforms
 	auto particleView = m_activeECS->GetReg().view<Transform, ParticleSystem>();
 	{
 		for (auto& entity : particleView)
@@ -446,42 +530,7 @@ void Application::UpdateTransforms(float _Dt)
 		}
 	}
 
-	/// Height map example GAB refer to this hehe xd
-	auto hmd_view = m_activeECS->GetReg().view<Transform, HeightMapDebugger>();
-	auto heightMap_view = m_activeECS->GetReg().view<Transform, PrimitiveRender>();
-	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
-	for (auto hm : heightMap_view)
-	{
-		auto& hmT = heightMap_view.get<Transform>(hm);
-		for (auto entity : hmd_view)
-		{
-			auto& debugObjectT = hmd_view.get<Transform>(entity);
-			glm::vec3 mappedPos = glm::vec3(debugObjectT.m_position.x / hmT.m_scale.x, 0.0f, debugObjectT.m_position.z / hmT.m_scale.z);
-			// Factor height * heightmap scale + heightmaps relative position then + the size of object
-			debugObjectT.m_position.y = floorMesh->GetHeight(mappedPos) * hmT.m_scale.y + hmT.m_position.y + debugObjectT.m_scale.y;
-		}
-	}
-
-	//Update transform matrix of all gameobject
-	auto view = m_activeECS->GetReg().view<Transform>();
-	for (auto entity : view)
-	{
-		auto& transform = view.get<Transform>(entity);
-
-		auto relationship = m_activeECS->GetReg().try_get<Relationship>(entity);
-		if (relationship && relationship->m_parent == entt::null)
-		{
-			transform.updateModelMtx();
-			for (auto& ent : relationship->m_children)
-				UpdateTransform(ent, transform);
-		}
-		else if (relationship == nullptr)
-		{
-			transform.updateModelMtx();
-		}
-	}
-
-	// Canvas
+	/// Canvas
 	auto canvasView = m_activeECS->GetReg().view<Transform, Canvas>();
 	for (auto it : canvasView)
 	{
@@ -493,26 +542,6 @@ void Application::UpdateTransforms(float _Dt)
 
 void Application::DrawCommon()
 {
-	/// TEMP - Old reference code for instancing
-
-//PP::MeshInstance::ResetCount();
-//// 3D object background to see orientation
-////glm::mat4 Model = glm::mat4{ 1 };
-////Model = glm::translate(Model, glm::vec3(0.0f, 0.0f, -40.0f));
-////Model = glm::scale(Model, glm::vec3(20.0f, 20.0f, 20.0f));
-////PP::MeshInstance::SetInstance(PP::InstanceData{ Model, glm::vec4{0.69f,0.69f,0.69f,1}, glm::vec2{1}, glm::vec2{0}, -1, 0, 0 });
-
-// Debug draws
-
-	////for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
-	////{
-	////	const auto& go = GO_Resource::m_GO_Container[i];
-	////	go.m_RenderObject->m_Model = glm::make_mat4(go.m_ModelMtx);
-	////	DebugCubes(go);
-	////}
-
-	//PP::MeshBuilder::RebindQuad();
-
 	/// For all draws
 	// If something is selected choose it to be highlighted
 	Renderer* renderOjbect = nullptr;
@@ -522,8 +551,6 @@ void Application::DrawCommon()
 
 	//const int currIdx = PPD::ImguiHelper::m_CurrentGOIdx;
 	entt::entity currIdx = PPD::ImguiHelper::m_CurrentEntity;
-
-
 
 	//if (currIdx >= 0)
 	if (currIdx != entt::null)
@@ -550,7 +577,7 @@ void Application::DrawEditor()
 	PP::Renderer::GLightPass(m_activeECS->GetReg(), true);
 	PP::Renderer::EndBuffer();
 
-	PP::Renderer::DebugPass(m_activeECS->GetReg());
+	//PP::Renderer::DebugPass(m_activeECS->GetReg());
 	//PP::Renderer::BlurPass();
 	PP::Renderer::StartEditorBuffer();
 	PP::Renderer::ClearBuffer();

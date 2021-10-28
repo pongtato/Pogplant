@@ -5,6 +5,7 @@
 namespace Pogplant
 {
 	std::unordered_map<std::string, Model*> ModelResource::m_ModelPool;
+	//std::unordered_map<std::string, Mesh3D*> ModelResource::m_UsedMeshes;
 
 	void ModelResource::InitResource()
 	{

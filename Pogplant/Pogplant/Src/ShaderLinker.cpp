@@ -18,6 +18,7 @@ namespace Pogplant
 		ShaderResource::AddShaderProfile(ShaderProfile("BASIC", dir, "Basic.vert", "Basic.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("SCREEN", dir, "Screen.vert", "Screen.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("MODEL", dir, "Model.vert", "Model.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("MODEL_I", dir, "Model_I.vert", "Model_I.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("EDGE", dir, "Edge.vert", "Edge.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("SKYBOX", dir, "Skybox.vert", "Skybox.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("GPASS", dir, "GPass.vert", "GPass.frag"));

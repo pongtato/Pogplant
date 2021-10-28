@@ -59,31 +59,33 @@ namespace Pogplant
         // m_Color
         glEnableVertexAttribArray(2);
         glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Color));
+        glVertexAttribDivisor(2, 1);
 
         // Model
         glEnableVertexAttribArray(3);
         glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Model));
+        glVertexAttribDivisor(3, 1);
+
         glEnableVertexAttribArray(4);
         glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)(sizeof(glm::vec4)));
+        glVertexAttribDivisor(4, 1);
+
         glEnableVertexAttribArray(5);
         glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)(2 * sizeof(glm::vec4)));
+        glVertexAttribDivisor(5, 1);
+
         glEnableVertexAttribArray(6);
         glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)(3 * sizeof(glm::vec4)));
+        glVertexAttribDivisor(6, 1);
 
         // Tex ID
         glEnableVertexAttribArray(7);
         glVertexAttribIPointer(7, 1, GL_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_TexID));
+        glVertexAttribDivisor(7, 1);
 
         // Ortho
         glEnableVertexAttribArray(8);
         glVertexAttribIPointer(8, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Ortho));
-
-        glVertexAttribDivisor(2, 1);
-        glVertexAttribDivisor(3, 1);
-        glVertexAttribDivisor(4, 1);
-        glVertexAttribDivisor(5, 1);
-        glVertexAttribDivisor(6, 1);
-        glVertexAttribDivisor(7, 1);
         glVertexAttribDivisor(8, 1);
 
         // Unbind
@@ -207,40 +209,8 @@ namespace Pogplant
         glVertexArrayElementBuffer(mesh->m_VAO, mesh->m_EBO);
 
         // Instanced data
-        const size_t instDatSize = sizeof(InstanceData);
-
         glCreateBuffers(1, &mesh->m_IBO);
-        glBufferData(GL_ARRAY_BUFFER, instDatSize, MeshResource::m_MeshInstances.data(), GL_DYNAMIC_DRAW);
-
-        // m_Color
-        glEnableVertexAttribArray(2);
-        glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Color));
-
-        // Model
-        glEnableVertexAttribArray(3);
-        glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Model));
-        glEnableVertexAttribArray(4);
-        glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)(sizeof(glm::vec4)));
-        glEnableVertexAttribArray(5);
-        glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)(2 * sizeof(glm::vec4)));
-        glEnableVertexAttribArray(6);
-        glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, instDatSize, (void*)(3 * sizeof(glm::vec4)));
-
-        // Tex ID
-        glEnableVertexAttribArray(7);
-        glVertexAttribIPointer(7, 1, GL_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_TexID));
-
-        // Ortho
-        glEnableVertexAttribArray(8);
-        glVertexAttribIPointer(8, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Ortho));
-
-        glVertexAttribDivisor(2, 1);
-        glVertexAttribDivisor(3, 1);
-        glVertexAttribDivisor(4, 1);
-        glVertexAttribDivisor(5, 1);
-        glVertexAttribDivisor(6, 1);
-        glVertexAttribDivisor(7, 1);
-        glVertexAttribDivisor(8, 1);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(InstanceData), MeshResource::m_MeshInstances.data(), GL_DYNAMIC_DRAW);
 
         glBindVertexArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);

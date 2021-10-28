@@ -24,6 +24,15 @@ namespace Pogplant
 		std::string m_Path;
 	};
 
+	struct InstanceData3D
+	{
+		glm::mat4 m_Model;
+		glm::vec3 m_Color;
+		int m_UseLight;
+		int m_UseTexture;
+		int m_EditorOnly;
+	};
+
 	struct Mesh3D
 	{
 		Mesh3D() = default;
@@ -42,7 +51,10 @@ namespace Pogplant
 		);
 
 		void Draw(bool _BindTex) const;
+		void DrawInstanced(bool _BindTex) const;
+		void RebindMesh3D();
 
+		std::vector<InstanceData3D> m_Instances;
 		std::vector<Vertex> m_Vertices;
 		std::vector<uint> m_Indices;
 		std::vector<Texture> m_Textures;
@@ -54,6 +66,7 @@ namespace Pogplant
 		uint m_VAO;
 		uint m_VBO;
 		uint m_EBO;
+		uint m_IBO;
 		uint m_PrimitiveType;
 
 	private:
