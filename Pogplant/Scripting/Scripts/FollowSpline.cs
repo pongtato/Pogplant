@@ -35,6 +35,8 @@ namespace Scripting
         private bool isEnd = false; //  This is true when we have arrived a the end of the path
         private float time_between_waypoint = 0.0f;
 
+        private bool lockRotation = false;
+
         // Start is called before the first frame update
         public override void Start()
         {
@@ -57,8 +59,6 @@ namespace Scripting
             //Console.WriteLine("alpha is" + d_alpha);
 
             // Initialize starting position and rotation of the play area
-            //transform.Position = waypoints[current_waypoint_index];
-            //transform.Rotation = Quaternion.LookRotation(waypoints[current_waypoint_index + 1] - transform.position, Vector3.up);
 
             //start_time = Time.realtimeSinceStartup;
         }
@@ -92,6 +92,12 @@ namespace Scripting
                 //transform.Position = Vector3.MoveTowards(transform.Position, waypoints[current_waypoint_index], follow_speed * dt);
                 //if (transform.Position != waypoints[current_waypoint_index])
                 //    transform.Rotation = Quaternion.Slerp(transform.Rotation, Quaternion.LookRotation(waypoints[current_waypoint_index + 1] - transform.Position), rotation_speed * Time.deltaTime);
+
+                if (lockRotation)
+                {
+                    Vector3 targetRotation = waypoints[current_waypoint_index + 1] - transform.Position;
+                    transform.Rotation = Vector3.Lerp(transform.Rotation, targetRotation, lerpSpeed * dt);
+                }
             }
         }
         void UpdateCurrentWaypoint(float alpha)
@@ -107,6 +113,11 @@ namespace Scripting
 
             if (current_waypoint_index == waypoints.Length - 2)
                 isEnd = true;
+        }
+
+        public void SetLockRotation (bool isLock)
+        {
+            lockRotation = isLock;
         }
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
