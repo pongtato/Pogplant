@@ -94,12 +94,12 @@ namespace Scripting
             isFiring = true;
         }
 
-        //public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
-        //{
-        //}
+        public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
+        {
+        }
 
-        //public void FixedUpdate()
-        //{
-        //}
+        public void FixedUpdate()
+        {
+        }
     }
 }

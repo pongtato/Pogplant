@@ -31,21 +31,6 @@ namespace Scripting
 
         public CatmullRomSpline()
         {
-            // Test spline constructed here
-
-            //controlPointsList[0].SetPositionAndRotatation(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-            //controlPointsList[0].SetPositionAndRotatation(Vector3.Zero(), Vector3.Zero());
-            //controlPointsList[1].SetPositionAndRotatation(new Vector3(20.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-            //controlPointsList[2].SetPositionAndRotatation(new Vector3(40.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-            //controlPointsList[3].SetPositionAndRotatation(new Vector3(80.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-            //controlPointsList[4].SetPositionAndRotatation(new Vector3(100.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-            //controlPointsList[5].SetPositionAndRotatation(new Vector3(120.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-            //controlPointsList[6].SetPositionAndRotatation(new Vector3(140.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-            //controlPointsList[7].SetPositionAndRotatation(new Vector3(160.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f));
-
-            // Read from file
-
-            
         }
 
         public void InitializeSpline()
