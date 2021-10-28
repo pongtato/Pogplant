@@ -75,6 +75,7 @@ namespace Scripting
                 //entityIDList.Add(entityID);
 
                 GameObject GO = ECS.CreateEntity("RandomNamexD", new Transform(Vector3.One(), Vector3.One(), Vector3.One()));
+                ECS.AddModel(GO.id, "Sphere", Vector3.One(), true, false, true);
                 //GO.AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
                 entityList.Add(GO);
 

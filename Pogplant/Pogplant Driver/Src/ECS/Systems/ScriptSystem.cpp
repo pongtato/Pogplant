@@ -430,6 +430,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::DestroyEntity", &this->DestroyEntity);
 	mono_add_internal_call("Scripting.ECS::CreateChild", &this->CreateChild);
 	mono_add_internal_call("Scripting.ECS::FindEntityWithName", &this->FindEntityWithName);
+	mono_add_internal_call("Scripting.ECS::AddModel", &this->AddModel);
 
 	//mono_add_internal_call("Scripting.GameObject::AddComponentTransform", &this->AddComponentTransform);
 	//mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", &this->AddComponentRigidbody);

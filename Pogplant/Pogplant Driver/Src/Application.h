@@ -138,15 +138,16 @@ namespace PogplantDriver
 
 	public:
 		static Application& GetInstance();
-
-	private:
-
 		/**************************
 		*
 		* TO BE REMOVED
 		*
 		**************************/
 		void ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D* _Mesh3D, const glm::vec3& _Color = glm::vec3{ 1 }, bool _UseLight = true, bool _EditorOnly = false, bool _FirstIt = true);
+	private:
+
+
+	
 	};
 }
 

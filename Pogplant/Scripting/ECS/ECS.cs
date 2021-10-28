@@ -22,6 +22,9 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint FindEntityWithName(string name);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void AddModel(uint _Entity, string _Model, Vector3 _Color, bool _UseLight, bool _EditorOnly, bool _FirstIt);
+
         public static GameObject CreateEntity(string name, Transform transform, string tag = "Untagged")
         {
             uint entityID = CreateEntity(name, transform.Position, transform.Rotation, transform.Scale);
