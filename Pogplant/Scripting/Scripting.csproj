@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\ComponentHelper.cs" />
     <Compile Include="Components\Components.cs" />
     <Compile Include="ECS\ECS.cs" />
     <Compile Include="ECS\GameObject.cs" />

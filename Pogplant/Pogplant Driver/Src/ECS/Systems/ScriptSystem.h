@@ -63,6 +63,7 @@ private:
 	void LoadMemory();
 	void Cleanup();
 	void Unload();
+	
 	void BindFunctions();
 
 	// WRAPPER FUNCTIONS FOR ECS, entt::entity is an unsigned int
@@ -73,6 +74,7 @@ private:
 	static std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	static std::uint32_t FindEntityWithName(MonoString* name);
 	static void AddModel(std::uint32_t _Entity, MonoString* _Model, glm::vec3 _Color = glm::vec3{ 1 }, bool _UseLight = true, bool _EditorOnly = false, bool _FirstIt = true);
+
 	//template<typename Type, typename ...Args>
 	//static void AddComponent(unsigned int id, Args && ...args);
 
@@ -85,6 +87,7 @@ private:
 	MonoDomain* m_ptrMonoDomain = nullptr;
 	MonoAssembly* m_ptrGameAssembly = nullptr;
 	MonoImage* m_ptrGameAssemblyImage = nullptr;
+
 	const std::string m_namespace{"Scripting"};
 	// Save all my mono objects here, key is the type of script.
 	//std::unordered_map<std::string, MonoObjectWithGC*> m_MonoObjects;

@@ -171,6 +171,9 @@
     <ClCompile Include="Src\ECS\Systems\ScriptSystemECSWrapper.cpp">
       <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
     </ClCompile>
+    <ClCompile Include="Src\ECS\Systems\ScriptSystemHelper.cpp">
+      <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
@@ -301,6 +304,9 @@
     </ClInclude>
     <ClInclude Include="Src\GameScript.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\Systems\ScriptSystemHelper.h">
+      <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

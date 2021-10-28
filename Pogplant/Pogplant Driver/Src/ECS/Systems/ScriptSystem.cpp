@@ -13,25 +13,14 @@
 /*****************************************************************************/
 
 #include "ScriptSystem.h"
+#include "ScriptSystemHelper.h"
 #include "../../Input/InputSystem.h"
 #include "../../Input/GLFWInput.h"
 #include "../../Pogplant/Src/DebugDraw.h"
 #include "../../GameScript.h"
-#include "../Components/Components.h"
-#include "../Components/DependantComponents.h"
 
 bool ScriptSystem::isReload = false;
 ECS* ScriptSystem::m_ecs = nullptr;
-
-void AddComponentTransform(unsigned int id, Components::Transform transform)
-{
-	ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Transform>(static_cast<entt::entity>(id), transform);
-}
-
-void AddComponentRigidbody(unsigned int id, Components::Rigidbody rigidbody)
-{
-	ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Rigidbody>(static_cast<entt::entity>(id), rigidbody);
-}
 
 // Helper to read binary data
 std::vector<char> ReadRawBin(const std::string& filePath)
@@ -406,6 +395,20 @@ void ScriptSystem::Unload()
 	//mono_domain_unload(m_ptrMonoDomain);
 }
 
+//void ScriptSystem::GetModelKeys()
+//{
+//	MonoMethod* updateModelKeys = mono_class_get_method_from_name(m_componentHelperClass, "GetModelKeys", -1);
+//	MonoArray* data = mono_array_new(mono_domain_get(), mono_get_int32_class(), Pogplant::ModelResource::m_ModelPool.size());
+//	
+//	for (int i = 0; i < Pogplant::ModelResource::m_ModelPool.size(); ++i)
+//	{
+//		mono_array_set(data, int32_t, i, i);
+//	}
+//	void* args[1] = { data };
+//
+//	MonoObject* result = mono_runtime_invoke(updateModelKeys, nullptr, args, nullptr );
+//}
+
 void ScriptSystem::BindFunctions()
 {
 	// GLFW calls
@@ -435,8 +438,11 @@ void ScriptSystem::BindFunctions()
 	//mono_add_internal_call("Scripting.GameObject::AddComponentTransform", &this->AddComponentTransform);
 	//mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", &this->AddComponentRigidbody);
 
-	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", AddComponentTransform);
-	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", AddComponentRigidbody);
+	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
+	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
+	mono_add_internal_call("Scripting.GameObject::AddComponentRenderer", SSH::AddComponentRenderer);
+
+	mono_add_internal_call("Scripting.ComponentHelper::GetModelKeysIC", SSH::GetModelKeysIC);
 }
 
 void ScriptSystem::Reload()

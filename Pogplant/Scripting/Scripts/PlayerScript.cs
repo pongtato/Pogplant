@@ -68,22 +68,24 @@ namespace Scripting
                 //Console.WriteLine("D key is triggered");
             }
 
-            // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
+            // Create Entity Example
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_Z))
             {
                 //uint entityID = ECS.CreateEntity("Testing123", Vector3.Zero(), Vector3.Zero(), Vector3.Zero());
                 //entityIDList.Add(entityID);
 
                 GameObject GO = ECS.CreateEntity("RandomNamexD", new Transform(Vector3.One(), Vector3.One(), Vector3.One()));
-                ECS.AddModel(GO.id, "Sphere", Vector3.One(), true, false, true);
-                //GO.AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
+                GO.AddComponent<Renderer>(new Renderer("Player_Ship"));
+                //ECS.AddModel(GO.id, "Sphere", Vector3.One(), true, false, true);
+
+
                 entityList.Add(GO);
 
                 Console.WriteLine("Entity ID created: " + GO.id);
                 //Console.WriteLine("Test Mass Is: " + GO.GetComponent<Rigidbody>().mass);
             }
 
-            // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
+            // Destroy Entity Example
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_X))
             {
                 if (entityList.Count > 0)
@@ -100,7 +102,7 @@ namespace Scripting
                 }
             }
 
-            // THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
+            // Create Child Example
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_C))
             {
                 if (entityList.Count > 0)
@@ -115,7 +117,8 @@ namespace Scripting
                     Console.WriteLine("Entity list is empty");
                 }
             }
-
+            
+            // Get EntityID example
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_V))
             {
                 string exampleName = "RandomNamexD";
@@ -123,14 +126,29 @@ namespace Scripting
                 Console.WriteLine("EntityID with name " + exampleName + ": " + entityID);
             }
 
+            // Get component example
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_B))
             {
                 if (entityList.Count > 0)
                 {
-                    entityList[0].AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
                     Console.WriteLine("Test Mass Is: " + entityList[0].GetComponent<Rigidbody>().mass);
+                    Console.WriteLine("Test Model Name Is: " + entityList[0].GetComponent<Renderer>().modelName);
                 }
                 else 
+                {
+                    Console.WriteLine("Entity list is empty");
+                }
+            }
+
+            // Add component example
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_N))
+            {
+                if(entityList.Count > 0)
+                {
+                    entityList[0].AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
+                    entityList[0].AddComponent<Renderer>(new Renderer("Player_Ship"));
+                }
+                else
                 {
                     Console.WriteLine("Entity list is empty");
                 }

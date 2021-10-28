@@ -24,6 +24,7 @@ using System.Runtime.CompilerServices;
 
 namespace Scripting
 {
+
     [StructLayout(LayoutKind.Sequential)]
     public struct Transform
     {
@@ -104,5 +105,42 @@ namespace Scripting
     public class Time
     {
         public static double deltaTime;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Renderer
+    {
+        public Vector3 colorTint;
+        public int useLight; // true
+        public bool editorDrawOnly; // false
+        public string modelName;
+
+        public Renderer(string _modelName = "", Vector3 _colorTint = new Vector3(), int _useLight = 1, bool _editorDrawOnly = false)
+        {
+            colorTint = _colorTint;
+            useLight = _useLight;
+            editorDrawOnly = _editorDrawOnly;
+
+            // I can't use .Contains here for some reason, not sure why so do this.
+            bool found = false;
+            for(int i = 0; i < ComponentHelper.ModelKeys.Length; ++i)
+            {
+                if(ComponentHelper.ModelKeys[i] == _modelName)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if(found)
+            {
+                modelName = _modelName;
+            }
+            else
+            {
+                Console.WriteLine("Model: '" + _modelName + "' not found in modelpool, using default: '" + ComponentHelper.ModelKeys[0] +"'");
+                modelName = ComponentHelper.ModelKeys[0];
+            }
+        }
     }
 }

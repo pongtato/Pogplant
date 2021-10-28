@@ -158,6 +158,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClCompile Include="Src\ECS\Systems\PhysicsSystemCollision.cpp" />
     <ClCompile Include="Src\ECS\Systems\ScriptSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\ScriptSystemECSWrapper.cpp" />
+    <ClCompile Include="Src\ECS\Systems\ScriptSystemHelper.cpp" />
     <ClCompile Include="Src\FileHandler.cpp" />
     <ClCompile Include="Src\AudioEngine.cpp" />
     <ClCompile Include="Src\GameScript.cpp" />
@@ -199,6 +200,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\ECS\Systems\GeneralSystem.h" />
     <ClInclude Include="Src\ECS\Systems\PhysicsSystem.h" />
     <ClInclude Include="Src\ECS\Systems\ScriptSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\ScriptSystemHelper.h" />
     <ClInclude Include="Src\Events\Events.h" />
     <ClInclude Include="Src\Events\EventSystem.h" />
     <ClInclude Include="Src\FileHandler.h" />

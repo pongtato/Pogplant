@@ -34,10 +34,11 @@ namespace Scripting
         public uint id;
         public string name;
         public string tag;
-        //public Transform transform;
+        
+        // Components here
         public Nullable<Transform> transform;
-        //public Rigidbody rigidbody;
         public Nullable<Rigidbody> rigidbody;
+        public Nullable<Renderer> renderer;
 
         // For now let's just seperate each component 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -46,9 +47,15 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void AddComponentRigidbody(uint id, Rigidbody rigidbody);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void AddComponentRenderer(uint id, Vector3 colorTint, int uselight, bool editordrawonly, string modelName);
+
+        //[MethodImplAttribute(MethodImplOptions.InternalCall)]
+        //public extern static void AddComponentRenderer(uint id, Vector3 colorTint, int uselight, bool editordrawonly);
+
         public T AddComponent<T>(T component)
         {
-            if(typeof(T) == typeof(Transform))
+            if (typeof(T) == typeof(Transform))
             {
                 if(transform.HasValue == false)
                 {
@@ -70,6 +77,19 @@ namespace Scripting
                 else
                 {
                     Console.WriteLine("Rigidbody component already exists.");
+                }
+            }
+            else if(typeof(T) == typeof(Renderer))
+            {
+                if (renderer.HasValue == false)
+                {
+                    renderer = (Renderer)(object)component;
+                    AddComponentRenderer(id, renderer.Value.colorTint, renderer.Value.useLight, renderer.Value.editorDrawOnly, renderer.Value.modelName);
+                    //AddComponentRenderer(id, renderer.Value.colorTint, renderer.Value.useLight, renderer.Value.editorDrawOnly);
+                }
+                else
+                {
+                    Console.WriteLine("Renderer component already exists.");
                 }
             }
             else 
@@ -101,6 +121,17 @@ namespace Scripting
                 else
                 {
                     Console.WriteLine("Rigidbody component doesn't exist.");
+                }
+            }
+            else if(typeof(T) == typeof(Renderer))
+            {
+                if (renderer.HasValue == true)
+                {
+                    return (T)(object)renderer.Value;
+                }
+                else
+                {
+                    Console.WriteLine("Renderer component doesn't exist.");
                 }
             }
             else
