@@ -63,6 +63,27 @@ namespace PPE
 		Callback m_callback;
 	};
 
+	// Specialized EventHandlers that takes in static functions as callbacks.
+	template < class EventType>
+	class StaticFnEventHandler : public BaseEventHandler
+	{
+	public:
+		using Callback = void(*)(std::shared_ptr<EventType>);
+
+		StaticFnEventHandler(Callback callback)
+			: m_callback{ callback }
+		{
+		}
+		~StaticFnEventHandler() = default;
+		virtual void call(EventPtr event) override
+		{
+			(*m_callback)(std::static_pointer_cast<EventType>(event));
+		}
+
+	private:
+		Callback m_callback;
+	};
+
 	// This EventBus class registers EventHandlers and handles events.
 	class EventBus
 	{
@@ -101,6 +122,22 @@ namespace PPE
 			}
 
 			event_handlers->push_back(std::make_shared<MemberFnEventHandler<T, EventType>>(instance, callback));
+		}
+
+		// This function registers an EventHandler for a certain event type.
+		template <class EventType>
+		void listen(void (*callback)(std::shared_ptr<EventType>))
+		{
+			EventHandlerListPtr event_handlers = m_eventListeners[typeid(EventType)];
+
+			// if event handlers list is empty initialize a new list
+			if (event_handlers == nullptr)
+			{
+				event_handlers = std::make_shared<EventHandlerList>();
+				m_eventListeners[typeid(EventType)] = event_handlers;
+			}
+
+			event_handlers->push_back(std::make_shared<StaticFnEventHandler<EventType>>(callback));
 		}
 
 		EventBus() = default;

@@ -344,6 +344,7 @@ void Application::BindEvents()
 {
 	m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerEnterEvent);
 	m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerExitEvent);
+	m_eventBus->listen(&Scripting::OnTriggerEnterEvent);
 }
 
 //recursion call

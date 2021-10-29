@@ -48,6 +48,7 @@ namespace Scripting
 	}
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
 	{
+		std::cout << "yodayo" << std::endl;
 		//auto script1 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity1);
 		//auto script2 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity2);
 	}
