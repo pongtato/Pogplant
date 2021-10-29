@@ -11,7 +11,9 @@ uniform sampler2D gPosition;
 uniform sampler2D gNormal;
 uniform sampler2D gAlbedoSpec;
 uniform sampler2D gNoLight;
+uniform sampler2D gEmissive;
 uniform sampler2D gShadow;
+
 
 struct Light 
 {
@@ -128,9 +130,11 @@ void main()
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
 
     // Output bright bixels for bloom
-    float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
-    if(brightness > 0.69f)
-        brightColor = vec4(outColor.rgb,1.0);
-    else
-        brightColor = vec4(0.0, 0.0, 0.0, 1.0);
+    //float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+    //if(brightness > 0.69f)
+    //    brightColor = vec4(outColor.rgb,1.0);
+    //else
+    //    brightColor = vec4(0.0, 0.0, 0.0, 1.0);
+
+    brightColor = vec4(texture(gEmissive, TexCoords).rgb,1.0);
 }

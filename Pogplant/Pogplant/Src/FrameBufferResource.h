@@ -26,6 +26,7 @@ namespace Pogplant
 		G_NORMAL_BUFFER,
 		G_COLOR_BUFFER,
 		G_NOLIGHT_BUFFER,
+		G_EMISSIVE_BUFFER,
 		G_DEPTH,
 
 		// Shadow pass

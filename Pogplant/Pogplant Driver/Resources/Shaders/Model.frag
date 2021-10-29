@@ -6,6 +6,7 @@ layout (location = 0) out vec3 gPosition;
 layout (location = 1) out vec3 gNormal;
 layout (location = 2) out vec4 gAlbedoSpec;
 layout (location = 3) out vec4 gNoLight;
+layout (location = 4) out vec3 gEmissive;
 
 in vec2 TexCoords;
 in vec3 FragPos;
@@ -16,6 +17,7 @@ struct Material
     sampler2D texture_diffuse[3];
     sampler2D texture_specular[3];
     sampler2D texture_normal[3];
+    sampler2D texture_emissive[3];
     sampler2D texture_height[3];
 };
 
@@ -47,4 +49,7 @@ void main()
         gNormal = vec3(0.0f);
         gAlbedoSpec = vec4(colorTint,0.0f);
     }
+
+    // Regardless of light or not
+    gEmissive = texture(material.texture_emissive[0], TexCoords).rgb;
 }
