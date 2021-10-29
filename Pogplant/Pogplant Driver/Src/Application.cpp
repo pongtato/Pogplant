@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <Pogplant.h>
+#include "GameScript.h"
 
 namespace PPD = PogplantDriver;
 using namespace Components;

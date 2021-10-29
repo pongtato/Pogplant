@@ -13,6 +13,7 @@
 /******************************************************************************/
 #include "Application.h"
 #include "Serialiser/Serializer.h"
+#include "GameScript.h"
 
 namespace PPD = PogplantDriver;
 using namespace Components;
@@ -27,6 +28,7 @@ using namespace PogplantDriver;
 void Application::EnterPlayState()
 {
 	m_activeECS = &m_playECS;
+	Scripting::GameplayECS::m_GameScriptECS = &m_playECS;
 
 	PPD::ImguiHelper::RelinkECS(&m_playECS);
 

@@ -6,7 +6,7 @@
 #include "GameScript.h"
 
 
-
+ECS* Scripting::GameplayECS::m_GameScriptECS;
 namespace PPD = PogplantDriver;
 using namespace Components;
 namespace Scripting
@@ -15,10 +15,10 @@ namespace Scripting
 	int CheckBounds(glm::vec3 _Position)
 	{
 		std::string parent{ "PlayerBox" };
-		entt::entity parent_box = PPD::ImguiHelper::m_ecs->FindEntityWithName(parent);
+		entt::entity parent_box = GameplayECS::m_GameScriptECS->FindEntityWithName(parent);
 		if (parent_box != entt::null)
 		{
-			auto boxcollider_comp = PPD::ImguiHelper::m_ecs->GetReg().try_get<BoxCollider>(parent_box);
+			auto boxcollider_comp = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(parent_box);
 			glm::vec3 max_bound = boxcollider_comp->extends;
 			glm::vec3 min_bound = -(max_bound);
 			int value = 0;
@@ -32,15 +32,24 @@ namespace Scripting
 	}
 	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _Rotation)
 	{
-		auto new_bullet = PPD::ImguiHelper::m_ecs->CreateEntity("Bullet", _Position, _Rotation);
+		auto new_bullet = GameplayECS::m_GameScriptECS->CreateEntity("Bullet", _Position, _Rotation);
 		new_bullet.AddComponent<Projectile>(3.f, 10.f, Components::Projectile::OwnerType::Player);
 		new_bullet.AddComponent<Renderer>(glm::vec3{ 0 }, PP::ModelResource::m_ModelPool["sphere"], &PP::ModelResource::m_ModelPool["sphere"]->m_Meshes.begin()->second);
-		auto sp_collider = new_bullet.AddComponent<SphereCollider>();
+		auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
+		auto&identi = new_bullet.AddComponent<Components::ColliderIdentifier>();
+		identi.colliderType = ColliderIdentifier::COLLIDER_TYPE::CT_BOX;
+		identi.isTrigger = true;
 		sp_collider.isTrigger = true;
-		new_bullet.AddComponent<Rigidbody>();
+		new_bullet.AddComponent<Rigidbody>(1.f);
 
-		auto body = new_bullet.GetComponent<Rigidbody>();
-		body.AddForce({ 0.f,100.f,10.f });
+		auto& body = new_bullet.GetComponent<Rigidbody>();
+		body.AddImpulseForce({ 0.f,0.f,10.f });
 
 	}
+	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
+	{
+		//auto script1 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity1);
+		//auto script2 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity2);
+	}
+
 }

@@ -17,6 +17,8 @@ namespace PPP
 
 	void InputPanel::Render(entt::entity& current_entity)
 	{
+		(void)current_entity;
+
 		ImGui::Begin("Input Editor");
 		{
 			if (ImGui::CollapsingHeader(ICON_FA_COG"  Mappings", ImGuiTreeNodeFlags_DefaultOpen))

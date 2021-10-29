@@ -15,11 +15,21 @@ namespace Components
 			Player,
 			Enemy
 		};
+		enum class ProjectileType
+		{
+			Player,
+			True,
+			False
+		};
+
+		bool m_Homing;
 		float m_Lifetime;
 		float m_CurentLifetime;
 		float m_Speed;
 		float m_Damage;
 		OwnerType m_Ownertype;
+		ProjectileType m_Type;
+
 		Projectile(float lifetime, float speed,  OwnerType ownertype, float damage = 0.f) :
 			m_Lifetime(lifetime), m_CurentLifetime(0.f), m_Speed(speed), m_Damage(damage), m_Ownertype(ownertype) {};
 	};
