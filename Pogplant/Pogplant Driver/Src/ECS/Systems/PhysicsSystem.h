@@ -73,6 +73,7 @@ private:
 	bool SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 
 	std::binary_semaphore m_hasJob;
+	std::binary_semaphore m_shouldContinue;
 	std::atomic<bool> t_EXIT_THREADS;
 	std::vector<std::thread> m_threads;
 	std::mutex m_mTriggerQueueMutex;

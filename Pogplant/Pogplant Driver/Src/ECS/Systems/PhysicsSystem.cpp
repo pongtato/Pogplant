@@ -27,6 +27,7 @@ PhysicsSystem::PhysicsSystem()
 	:
 	m_registry{ nullptr },
 	m_hasJob{ 0 },
+	m_shouldContinue{ 0 },
 	t_EXIT_THREADS{ false }
 {
 	m_threads.push_back(std::thread{ &PhysicsSystem::TriggerUpdate, std::ref(*this) });
@@ -149,9 +150,8 @@ void PhysicsSystem::TriggerUpdate()
 	while (!t_EXIT_THREADS)
 	{
 		//perform busy wait LOL
-		m_hasJob.acquire();
-
-		if (!t_EXIT_THREADS)
+		
+		if (!t_EXIT_THREADS && m_hasJob.try_acquire())
 		{
 			auto collidableEntities = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
 			auto movableEntities = m_registry->GetReg().view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
@@ -205,6 +205,8 @@ void PhysicsSystem::TriggerUpdate()
 					}
 				}
 			}
+
+			m_shouldContinue.release();
 		}
 	}
 }
@@ -374,21 +376,30 @@ void PhysicsSystem::Update(float c_dt)
 
 			if (std::get<2>(queuedAction))
 			{
-				m_eventBus->emit(
-					std::make_shared<PPE::OnTriggerEnterEvent>(
-						std::get<0>(queuedAction),
-						std::get<1>(queuedAction)
-						)
-				);
+				auto& entity1 = std::get<0>(queuedAction);
+				auto& entity2 = std::get<1>(queuedAction);
+
+				if (m_registry->GetReg().valid(entity1) && m_registry->GetReg().valid(entity2))
+					m_eventBus->emit(
+						std::make_shared<PPE::OnTriggerEnterEvent>(
+							entity1,
+							entity2
+							)
+					);
 
 				std::cout << "Triggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
 			}
 			else
 			{
+				auto& entity1 = std::get<0>(queuedAction);
+				auto& entity2 = std::get<1>(queuedAction);
+
+				if (m_registry->GetReg().valid(entity1) && m_registry->GetReg().valid(entity2))
+
 				m_eventBus->emit(
 					std::make_shared<PPE::OnTriggerExitEvent>(
-						std::get<0>(queuedAction),
-						std::get<1>(queuedAction)
+						entity1,
+						entity2
 						)
 				);
 
@@ -399,6 +410,10 @@ void PhysicsSystem::Update(float c_dt)
 		}
 
 		m_mTriggerQueueMutex.unlock();
+	}
+
+	while (!m_shouldContinue.try_acquire())
+	{
 	}
 }
 
