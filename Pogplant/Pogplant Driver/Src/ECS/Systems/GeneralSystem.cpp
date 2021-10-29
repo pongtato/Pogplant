@@ -62,8 +62,8 @@ void GeneralSystem::Update(float c_dt)
 	for (auto& projectileEntity : projectiles)
 	{
 		auto& projectile = projectiles.get<Components::Projectile>(projectileEntity);
-		auto& transform = projectiles.get<Components::Transform>(projectileEntity);
-		auto& rigidbody = projectiles.get<Components::Rigidbody>(projectileEntity);
+		//auto& transform = projectiles.get<Components::Transform>(projectileEntity);
+		//auto& rigidbody = projectiles.get<Components::Rigidbody>(projectileEntity);
 
 		//glm::vec3 move = { 0.f,0.f,projectile.m_Speed * c_dt };
 		//transform.m_position += move;

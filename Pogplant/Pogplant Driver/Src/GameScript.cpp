@@ -48,9 +48,26 @@ namespace Scripting
 	}
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
 	{
-		std::cout << "yodayo" << std::endl;
-		//auto script1 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity1);
-		//auto script2 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity2);
+		auto enter1 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(onTriggerEnterEvent->m_entity1);
+		auto enter2 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent->m_entity2);
+
+		if (enter1 && enter2)
+		{
+			bool enemy = enter2->m_ScriptTypes.contains("EnemyScript");
+			if (enter1->m_Ownertype == Projectile::OwnerType::Player && enemy)
+			{
+				GameplayECS::m_GameScriptECS->DestroyEntity(onTriggerEnterEvent->m_entity1);
+			}
+		}
+
+
+
+
+
+
+
+
+
 	}
 
 }
