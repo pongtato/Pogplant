@@ -51,20 +51,26 @@ namespace Pogplant
                 std::string number;
                 std::string name = m_Textures[i].m_Type;
                 if (name == "texture_diffuse")
+                {
                     number = std::to_string(diffuseNr++);
+                }
                 else if (name == "texture_specular")
-                    number = std::to_string(specularNr++); // transfer unsigned int to stream
+                {
+                    number = std::to_string(specularNr++);
+                }
                 else if (name == "texture_normal")
-                    number = std::to_string(normalNr++); // transfer unsigned int to stream
+                {
+                    number = std::to_string(normalNr++);
+                }
                 else if (name == "texture_emissive")
                 {
-                    number = std::to_string(emissiveNr++); 
+                    number = std::to_string(emissiveNr++);
                     ShaderLinker::SetUniform("material.emissive_count", emissiveNr);
                 }
-                else if (name == "texture_height")
-                    number = std::to_string(heightNr++); // transfer unsigned int to stream
                 else
+                {
                     Logger::Log({ "PP::ERROR::MESH3D",LogEntry::LOGTYPE::ERROR , "Unsupported texture type" + name });
+                }
 
                 //std::cout << ("material." + name + "[" + number + "]") << std::endl;
                 ShaderLinker::SetUniform(("material." + name + "[" + number + "]").c_str(), static_cast<float>(i));
@@ -86,7 +92,6 @@ namespace Pogplant
         int specularNr = 0;
         int normalNr = 0;
         int emissiveNr = 0;
-        int heightNr = 0;
 
         if (m_Textures.size() > 0 && _BindTex)
         {
@@ -97,23 +102,29 @@ namespace Pogplant
                 std::string number;
                 std::string name = m_Textures[i].m_Type;
                 if (name == "texture_diffuse")
+                {
                     number = std::to_string(diffuseNr++);
+                }
                 else if (name == "texture_specular")
-                    number = std::to_string(specularNr++); // transfer unsigned int to stream
+                {
+                    number = std::to_string(specularNr++);
+                }
                 else if (name == "texture_normal")
-                    number = std::to_string(normalNr++); // transfer unsigned int to stream
+                {
+                    number = std::to_string(normalNr++);
+                }
                 else if (name == "texture_emissive")
                 {
                     number = std::to_string(emissiveNr++);
                     ShaderLinker::SetUniform("material.emissive_count", emissiveNr);
                 }
-                else if (name == "texture_height")
-                    number = std::to_string(heightNr++); // transfer unsigned int to stream
                 else
+                {
                     Logger::Log({ "PP::ERROR::MESH3D",LogEntry::LOGTYPE::ERROR , "Unsupported texture type" + name });
+                }
 
                 //std::cout << ("material." + name + "[" + number + "]") << std::endl;
-                ShaderLinker::SetUniform(("material." + name + "[" + number + "]").c_str(), static_cast<float>(i));
+                ShaderLinker::SetUniform(("material." + name + "[" + number + "]").c_str(), static_cast<GLint>(i));
                 //glBindTexture(GL_TEXTURE_2D, m_Textures[i].m_Id);
                 glBindTextureUnit(static_cast<GLint>(i), m_Textures[i].m_Id);
             }

@@ -29,6 +29,8 @@ void main()
         outColor = vec4(hdrColor.rgb, 1.0);
     }
 
+    //outColor = bloomColor;
+
     if(length(debugColor.rgb) > 0)
     {
         outColor = debugColor;

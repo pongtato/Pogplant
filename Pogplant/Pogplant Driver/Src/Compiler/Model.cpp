@@ -56,7 +56,7 @@ void Model::LoadModel(std::string _Path)
     // check for errors
     if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
     {
-        Logger::Log({ "PP::ASSIMP",LogEntry::ERROR, importer.GetErrorString() });
+        Logger::Log({ "PP::ASSIMP",LogEntry::LOGTYPE::ERROR, importer.GetErrorString() });
         return;
     }
 
@@ -121,6 +121,7 @@ void Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, Mes
             vector.z = _Mesh->mNormals[i].z;
             vertex.m_Normal = vector;
         }
+
         // texture coordinates
         if (_Mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
         {
@@ -130,11 +131,13 @@ void Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, Mes
             vec.x = _Mesh->mTextureCoords[0][i].x;
             vec.y = _Mesh->mTextureCoords[0][i].y;
             vertex.m_TexCoords = vec;
+
             // tangent
             vector.x = _Mesh->mTangents[i].x;
             vector.y = _Mesh->mTangents[i].y;
             vector.z = _Mesh->mTangents[i].z;
             vertex.m_Tangent = vector;
+
             // bitangent
             vector.x = _Mesh->mBitangents[i].x;
             vector.y = _Mesh->mBitangents[i].y;
@@ -146,31 +149,43 @@ void Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, Mes
 
         vertices.push_back(vertex);
     }
-    // now wak through each of the mesh's faces (a face is a mesh its triangle) and retrieve the corresponding vertex indices.
+    // now walk through each of the mesh's faces (a face is a mesh its triangle) and retrieve the corresponding vertex indices.
     for (unsigned int i = 0; i < _Mesh->mNumFaces; i++)
     {
         aiFace face = _Mesh->mFaces[i];
         // retrieve all indices of the face and store them in the indices vector
         for (unsigned int j = 0; j < face.mNumIndices; j++)
+        {
             indices.push_back(face.mIndices[j]);
+        }
     }
+
     // process materials
     aiMaterial* material = _Scene->mMaterials[_Mesh->mMaterialIndex];
+
     // 1. Diffuse
     std::vector<Texture> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
     textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+    //if(diffuseMaps.size() > 0)
+    //    std::cout << "Diffuse maps: " << diffuseMaps.size() << std::endl;
+
     // 2. Specular
     std::vector<Texture> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
     textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-    // 3. Normal
-    std::vector<Texture> normalMaps = LoadMaterialTextures(material, aiTextureType_NORMALS, "texture_normal");
+    //if (specularMaps.size() > 0)
+    //    std::cout << "Specular maps: " << specularMaps.size() << std::endl;
+
+    // 3. Normal - Just using the index for shininess since we stored it at this index for the 3d model
+    std::vector<Texture> normalMaps = LoadMaterialTextures(material, aiTextureType_SHININESS, "texture_normal");
     textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+    //if (normalMaps.size() > 0)
+    //    std::cout << "Normal maps: " << normalMaps.size() << std::endl;
+
     // 4. Emissive
     std::vector<Texture> emissiveMaps = LoadMaterialTextures(material, aiTextureType_EMISSIVE, "texture_emissive");
     textures.insert(textures.end(), emissiveMaps.begin(), emissiveMaps.end());
-    // 5. Height
-    std::vector<Texture> heightMaps = LoadMaterialTextures(material, aiTextureType_HEIGHT, "texture_height");
-    textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+    //if (emissiveMaps.size() > 0)
+    //    std::cout << "Emissive maps: " << emissiveMaps.size() << std::endl;
 
     // Find longest edge - General usage no ritter's
     float lenX = std::fabsf(m_Bounds.maxX) + std::fabsf(m_Bounds.minX);
@@ -208,6 +223,7 @@ void Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, Mes
 std::vector<Texture> Model::LoadMaterialTextures(aiMaterial* _Material, aiTextureType _Type, std::string _TypeName)
 {
     std::vector<Texture> textures;
+
     for (unsigned int i = 0; i < _Material->GetTextureCount(_Type); i++)
     {
         aiString str;

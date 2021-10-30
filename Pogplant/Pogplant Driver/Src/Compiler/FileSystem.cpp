@@ -49,7 +49,7 @@ bool FileSystem::ProcessInput(std::string& input)
 	// Check if input is empty
 	if (input.empty())
 	{
-		Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Input is empty" });
+		Logger::Log({ "PP::COMPILER", LogEntry::LOGTYPE::ERROR, "Input is empty" });
 		return false;
 	}
 
@@ -101,7 +101,7 @@ bool FileSystem::GetFileNameExt(std::string& filePath)
 	}
 	else
 	{
-		Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Unable to extract file extension" });
+		Logger::Log({ "PP::COMPILER", LogEntry::LOGTYPE::ERROR, "Unable to extract file extension" });
 		result = false;
 	}
 
@@ -119,7 +119,7 @@ void FileSystem::WriteToBin(std::string& fileName)
 
 	if (outBuffer.fail())
 	{
-		Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Unable to write file"});
+		Logger::Log({ "PP::COMPILER", LogEntry::LOGTYPE::ERROR, "Unable to write file"});
 		return;
 	}
 
@@ -137,7 +137,7 @@ void FileSystem::WriteToBin(std::string& fileName)
 	outBuffer.close();
 	std::filesystem::rename(filePath.c_str(), filePath.c_str());
 	std::string succ = "Finished compiling " + m_file.m_name + '.' + m_file.m_ext + "to " + m_Ext + " format";
-	Logger::Log({ "PP::COMPILER", LogEntry::SUCCESS, succ });
+	Logger::Log({ "PP::COMPILER", LogEntry::LOGTYPE::SUCCESS, succ });
 }
 
 void FileSystem::ReadRawBin(std::string& filePath)
@@ -147,7 +147,7 @@ void FileSystem::ReadRawBin(std::string& filePath)
 
 	if (inBuffer.fail())
 	{
-		Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Unable to read file" });
+		Logger::Log({ "PP::COMPILER", LogEntry::LOGTYPE::ERROR, "Unable to read file" });
 		return;
 	}
 
@@ -174,6 +174,6 @@ bool FileSystem::Exists(std::string& filePath)
 		return true;
 	}
 
-	Logger::Log({ "PP::COMPILER", LogEntry::ERROR, "Unable to find file" });
+	Logger::Log({ "PP::COMPILER", LogEntry::LOGTYPE::ERROR, "Unable to find file" });
 	return false;
 }

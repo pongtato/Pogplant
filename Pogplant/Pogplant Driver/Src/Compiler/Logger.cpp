@@ -46,22 +46,22 @@ void Logger::Print()
 		std::string type;
 		switch (logs.m_Type)
 		{
-			case LogEntry::ERROR:
+		case LogEntry::LOGTYPE::ERROR:
 			{
 				type = "::ERROR";
 			}
 			break;
-			case LogEntry::SUCCESS:
+			case LogEntry::LOGTYPE::SUCCESS:
 			{
 				type = "::SUCCESS";
 			}
 			break;
-			case LogEntry::WARNING:
+			case LogEntry::LOGTYPE::WARNING:
 			{
 				type = "::WARNING";
 			}
 			break;
-			case LogEntry::DEBUG_TEXT:
+			case LogEntry::LOGTYPE::DEBUG_TEXT:
 			{
 				type = "::DEBUG_TEXT";
 			}

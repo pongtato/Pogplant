@@ -379,6 +379,7 @@ namespace Pogplant
 		{
 			for (auto& mesh : model.second->m_Meshes)
 			{
+				ShaderLinker::SetUniform("material.emissive_count", 0);
 				mesh.second.DrawInstanced(true);
 			}
 		}
@@ -441,7 +442,7 @@ namespace Pogplant
 		ret.m_View = glm::mat4(glm::mat3(ret.m_View));
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
-		Skybox::Draw(TextureResource::m_TexturePool["SKYBOX"]);
+		Skybox::Draw(TextureResource::m_TexturePool["Skybox"]);
 		ShaderLinker::UnUse();
 		glDepthFunc(GL_LESS);
 

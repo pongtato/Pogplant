@@ -27,7 +27,7 @@ void Application::ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D*
 		child.AddComponent<Components::Renderer>(Renderer{ _Color, _Model, _Mesh3D, _UseLight, _EditorOnly });
 		auto& transform = child.GetComponent<Components::Transform>();
 		transform.m_position = _Mesh3D->m_Translate;
-		transform.m_rotation = _Mesh3D->m_Rotate;
+		transform.m_rotation = _Mesh3D->m_Rotate * 90.0f;
 		transform.m_scale = _Mesh3D->m_Scale;
 		for (auto it : _Mesh3D->m_SubMeshIDs)
 		{
@@ -157,10 +157,10 @@ void Application::InitialiseDebugObjects()
 	//entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
 	entity.AddComponent<Components::PrimitiveRender>(PrimitiveRender
 	(
-		{ "MUD_DIFF", "GRASS_DIFF" },
-		{ "MUD_BUMP", "GRASS_BUMP" },
-		{ "MUD_NORM", "GRASS_NORM" },
-		{ "MUD_SPEC", "GRASS_SPEC" },
+		{ "mud_diff.dds", "grass_diff.dds" },
+		{ "mud_bump.dds", "grass_bump.dds" },
+		{ "mud_norm.dds", "grass_norm.dds" },
+		{ "mud_rough.dds", "grass_rough.dds" },
 		floorMesh,
 		4.0f,
 		true
@@ -305,18 +305,18 @@ void Application::InitialiseDebugObjects()
 	scale = { 0.1f, 0.1f, 0.1f };
 	auto child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 1", pos, rot, scale);
 	// Simulate inspector set texture
-	PP::TextureResource::UseTexture("TEST_TEX");
+	PP::TextureResource::UseTexture("rocks_diff.dds");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("TEST_TEX")});
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds")});
 
 	pos = { -0.55f, 0.2f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
 	scale = { 0.1f, 0.1f, 0.1f };
 	child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 2", pos, rot, scale);
 	// Simulate inspector set texture
-	PP::TextureResource::UseTexture("TEST_TEX2");
+	PP::TextureResource::UseTexture("snow_diff.dds");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("TEST_TEX2") });
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
 
 	/// Instancing test
 	//pos = { 0.0f, 0.0f, 0.0f };

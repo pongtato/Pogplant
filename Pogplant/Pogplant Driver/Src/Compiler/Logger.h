@@ -23,7 +23,7 @@
 
 struct LogEntry
 {
-	enum TYPE
+	enum class LOGTYPE
 	{
 		ERROR,
 		SUCCESS,
@@ -33,7 +33,7 @@ struct LogEntry
 	};
 
 	std::string m_Source;
-	TYPE m_Type;
+	LOGTYPE m_Type;
 	std::string m_Description;
 };
 

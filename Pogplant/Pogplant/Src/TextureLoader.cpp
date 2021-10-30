@@ -1,4 +1,5 @@
 #include "TextureLoader.h"
+#include "TextureResource.h"
 #include "Logger.h"
 
 #include <fstream>
@@ -13,6 +14,8 @@
 
 namespace Pogplant
 {
+    using TR = TextureResource;
+
     // Helpers for the tinyDDSloader
     struct GLSwizzle {
         GLenum m_r, m_g, m_b, m_a;
@@ -291,9 +294,22 @@ namespace Pogplant
     // Load texture using STB
     unsigned int TexLoader::LoadTexture(std::string _Path, std::string _Directory)
 	{
-        std::string filename = _Directory + '/' + _Path;
-        size_t found = _Path.find_last_of('.');
-        std::string ext = _Path.substr(found + 1, _Path.length() - found - 1);
+        auto index = _Path.find_last_of('\\');
+        std::string extractedPath = _Path;
+        if (index < _Path.size())
+        {
+            extractedPath = extractedPath.substr(index);
+        }
+
+        // If exist, just return
+        if (TR::m_TexturePool.find(extractedPath) != TR::m_TexturePool.end())
+        {
+            return TR::m_TexturePool[extractedPath];
+        }
+
+        std::string filename = _Directory + '/' + extractedPath;
+        size_t found = extractedPath.find_last_of('.');
+        std::string ext = extractedPath.substr(found + 1, extractedPath.length() - found - 1);
 
         unsigned int textureID;
         glGenTextures(1, &textureID);
@@ -355,14 +371,29 @@ namespace Pogplant
             }
         }
 
+        // Update resource pool
+        TR::m_TexturePool[extractedPath] = textureID;
         return textureID;
 	}
 
     unsigned int TexLoader::LoadTextureSRGB(std::string _Path, std::string _Directory, bool _Alpha)
     {
+        auto index = _Path.find_last_of('\\');
+        std::string extractedPath = _Path;
+        if (index < _Path.size())
+        {
+            extractedPath = extractedPath.substr(index+1);
+        }
+
+        // If exist, just return
+        if (TR::m_TexturePool.find(extractedPath) != TR::m_TexturePool.end())
+        {
+            return TR::m_TexturePool[extractedPath];
+        }
+
         const GLint format = _Alpha ? GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT : GL_COMPRESSED_SRGB_S3TC_DXT1_EXT;
 
-        std::string filename = _Directory + '/' + _Path;
+        std::string filename = _Directory + '/' + extractedPath;
 
         tinyddsloader::DDSFile dds;
         dds.Load(filename.c_str());
@@ -403,11 +434,26 @@ namespace Pogplant
             Logger::Log({ "PP::TEXURE LOADER",LogEntry::LOGTYPE::ERROR, err });
         }
 
+        // Update resource pool
+        TR::m_TexturePool[extractedPath] = textureID;
         return textureID;
     }
 
     unsigned int TexLoader::LoadUncompressedTexture(std::string _Path, std::string _Directory, bool _Alpha)
     {
+        auto index = _Path.find_last_of('\\');
+        std::string extractedPath = _Path;
+        if (index < _Path.size())
+        {
+            extractedPath = extractedPath.substr(index + 1);
+        }
+
+        // If exist, just return
+        if (TR::m_TexturePool.find(extractedPath) != TR::m_TexturePool.end())
+        {
+            return TR::m_TexturePool[extractedPath];
+        }
+        
         const GLint format = _Alpha ? GL_RGBA : GL_RGB;
 
         std::string filename = _Directory + '/' + _Path;
@@ -439,11 +485,26 @@ namespace Pogplant
             Logger::Log({ "PP::TEXURE LOADER",LogEntry::LOGTYPE::ERROR, err });
         }
 
+        // Update resource pool
+        TR::m_TexturePool[extractedPath] = textureID;
         return textureID;
     }
 
     unsigned int TexLoader::LoadCubemap(std::vector<std::string> _Paths, std::string _Directory)
     {
+        auto index = _Directory.find_last_of('\\');
+        std::string extractedDir = _Directory;
+        if (index < _Directory.size())
+        {
+            extractedDir = extractedDir.substr(index + 1);
+        }
+
+        // If exist, just return
+        if (TR::m_TexturePool.find(extractedDir) != TR::m_TexturePool.end())
+        {
+            return TR::m_TexturePool[extractedDir];
+        }
+
         unsigned int textureID;
         glGenTextures(1, &textureID);
         glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
@@ -491,6 +552,8 @@ namespace Pogplant
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
         glBindTexture(GL_TEXTURE_2D, 0);
 
+        // Update resource pool
+        TR::m_TexturePool[extractedDir] = textureID;
         return textureID;
     }
 
@@ -517,6 +580,7 @@ namespace Pogplant
 
         return true;
     }
+
     float TexLoader::GetHeight(int _X, int _Z, size_t _Dim, const std::vector<unsigned char>& _HeightMap)
     {
         if (_X < 0 || _X >= _Dim || _Z < 0 || _Z >= _Dim)

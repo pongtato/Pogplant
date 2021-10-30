@@ -293,10 +293,25 @@ namespace Pogplant
 		}
 		if (!skip)
 		{
+			auto index = _Material.find_last_of('\\');
+			std::string extractedPath = _Material;
+			if (index < _Material.size())
+			{
+				extractedPath = extractedPath.substr(index + 1);
+			}
+
 			Texture texture;
-			texture.m_Id = TexLoader::LoadTexture(_Material, this->m_Directory);
+			// Convert to linear space
+			if (_TypeName == "texture_diffuse")
+			{
+				texture.m_Id = TexLoader::LoadTextureSRGB(extractedPath, this->m_Directory);
+			}
+			else
+			{
+				texture.m_Id = TexLoader::LoadTexture(extractedPath, this->m_Directory);
+			}
 			texture.m_Type = _TypeName;
-			texture.m_Path = _Material;
+			texture.m_Path = extractedPath;
 			textures.push_back(texture);
 			// To not load dupes
 			m_TexturesLoaded.push_back(texture);

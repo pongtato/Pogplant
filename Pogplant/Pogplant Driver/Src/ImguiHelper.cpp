@@ -454,6 +454,76 @@ namespace PogplantDriver
 							ImGui::EndCombo();
 						}
 
+						// Textures
+						ImGui::NewLine();
+						if (ImGui::TreeNode("Textures"))
+						{
+							if (ImGui::TreeNode("Diffuse"))
+							{
+								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
+								{
+									if (renderer->m_Mesh->m_Textures[i].m_Type != "texture_diffuse")
+									{
+										continue;
+									}
+									ImGui::BulletText(renderer->m_Mesh->m_Textures[i].m_Path.c_str());
+									ImGui::SameLine();
+									ImGui::Text(std::to_string(renderer->m_Mesh->m_Textures[i].m_Id).c_str());
+								}
+								ImGui::TreePop();
+							}
+
+							// Spec
+							if (ImGui::TreeNode("Specular"))
+							{
+								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
+								{
+									if (renderer->m_Mesh->m_Textures[i].m_Type != "texture_specular")
+									{
+										continue;
+									}
+									ImGui::BulletText(renderer->m_Mesh->m_Textures[i].m_Path.c_str());
+									ImGui::SameLine();
+									ImGui::Text(std::to_string(renderer->m_Mesh->m_Textures[i].m_Id).c_str());
+								}
+								ImGui::TreePop();
+							}
+
+							// Normal
+							if (ImGui::TreeNode("Normal"))
+							{
+								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
+								{
+									if (renderer->m_Mesh->m_Textures[i].m_Type != "texture_normal")
+									{
+										continue;
+									}
+									ImGui::BulletText(renderer->m_Mesh->m_Textures[i].m_Path.c_str());
+									ImGui::SameLine();
+									ImGui::Text(std::to_string(renderer->m_Mesh->m_Textures[i].m_Id).c_str());
+								}
+								ImGui::TreePop();
+							}
+
+							// Emi
+							if (ImGui::TreeNode("Emissive"))
+							{
+								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
+								{
+									if (renderer->m_Mesh->m_Textures[i].m_Type != "texture_emissive")
+									{
+										continue;
+									}
+									ImGui::BulletText(renderer->m_Mesh->m_Textures[i].m_Path.c_str());
+									ImGui::SameLine();
+									ImGui::Text(std::to_string(renderer->m_Mesh->m_Textures[i].m_Id).c_str());
+								}
+								ImGui::TreePop();
+							}
+							ImGui::TreePop();
+						}
+						ImGui::NewLine();
+
 						ImGui::Text("Color Editor");
 						ImGui::ColorEdit3("###RenderColor", glm::value_ptr(renderer->m_ColorTint));
 

@@ -51,5 +51,13 @@ void main()
     }
 
     // Regardless of light or not
-    gEmissive = texture(material.texture_emissive[0], TexCoords).rgb;
+    if(material.emissive_count > 0)
+    {
+        // If not data from other samples would be used
+        gEmissive = texture(material.texture_emissive[0], TexCoords).rgb;
+    }
+    else
+    {
+        gEmissive = vec3(0.0f);
+    }
 }
