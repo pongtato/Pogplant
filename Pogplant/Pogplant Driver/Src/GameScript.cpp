@@ -34,7 +34,7 @@ namespace Scripting
 	{
 		auto new_bullet = GameplayECS::m_GameScriptECS->CreateEntity("Bullet", _Position, _Rotation);
 		new_bullet.AddComponent<Projectile>(3.f, 10.f, Components::Projectile::OwnerType::Player);
-		new_bullet.AddComponent<Renderer>(glm::vec3{ 0 }, PP::ModelResource::m_ModelPool["sphere"], &PP::ModelResource::m_ModelPool["sphere"]->m_Meshes.begin()->second);
+		new_bullet.AddComponent<Renderer>(glm::vec3{ 1.0f }, glm::vec3{ 1.0f }, PP::ModelResource::m_ModelPool["sphere"], &PP::ModelResource::m_ModelPool["sphere"]->m_Meshes.begin()->second);
 		auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
 		auto&identi = new_bullet.AddComponent<Components::ColliderIdentifier>();
 		identi.colliderType = ColliderIdentifier::COLLIDER_TYPE::CT_BOX;

@@ -92,16 +92,26 @@ namespace Components
 	struct Renderer
 	{
 		Renderer() {};
-		Renderer(glm::vec3 ColorTint, Pogplant::Model* RenderModel, Pogplant::Mesh3D* Mesh, int UseLight = 1, bool EditorDrawOnly = false)
-			: m_ColorTint(ColorTint)
-			, m_RenderModel(RenderModel)
-			, m_Mesh(Mesh)
-			, m_UseLight(UseLight)
-			, m_EditorDrawOnly(EditorDrawOnly)
+		Renderer
+		(
+			glm::vec3 _ColorTint, 
+			glm::vec3 _EmissiveTint, 
+			Pogplant::Model* _RenderModel, 
+			Pogplant::Mesh3D* _Mesh, 
+			int _UseLight = 1, 
+			bool _EditorDrawOnly = false
+		)
+			: m_ColorTint(_ColorTint)
+			, m_EmissiveTint(_EmissiveTint)
+			, m_RenderModel(_RenderModel)
+			, m_Mesh(_Mesh)
+			, m_UseLight(_UseLight)
+			, m_EditorDrawOnly(_EditorDrawOnly)
 		{
 		}
 
 		glm::vec3 m_ColorTint;
+		glm::vec3 m_EmissiveTint;
 		Pogplant::Model* m_RenderModel;
 		Pogplant::Mesh3D* m_Mesh;
 		int m_UseLight = true;

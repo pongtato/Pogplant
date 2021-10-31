@@ -129,6 +129,7 @@ namespace PogplantDriver
 			Json::Value classroot;
 
 			AddVec3To(classroot, "ColorTint", render_component->m_ColorTint);
+			AddVec3To(classroot, "EmissiveTint", render_component->m_EmissiveTint);
 
 			classroot["UseLight"] = render_component->m_UseLight;
 
@@ -292,6 +293,7 @@ namespace PogplantDriver
 			m_ecs.GetReg().emplace<Renderer>(
 				id,
 				glm::vec3{ render["ColorTint"][0].asFloat(),render["ColorTint"][1].asFloat(),render["ColorTint"][2].asFloat() },
+				glm::vec3{ render["EmissiveTint"][0].asFloat(),render["EmissiveTint"][1].asFloat(),render["EmissiveTint"][2].asFloat() },
 				model,
 				mesh,
 				render["UseLight"].asInt()

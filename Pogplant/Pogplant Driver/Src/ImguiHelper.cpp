@@ -44,12 +44,14 @@ namespace PogplantDriver
 		if (ImGui::BeginMenu("3D Render"))
 		{
 			glm::vec3 color = { 0.835f,0.921f,0.905f };
+			glm::vec3 emissiveTint = glm::vec3{ 1.0f };
 			for (const auto& model : PP::ModelResource::m_ModelPool)
 			{
 				if (ImGui::MenuItem(model.first.c_str(), NULL, false, adding_enabled))
 				{
 					(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Renderer>(PPD::ImguiHelper::m_CurrentEntity,
 						color,
+						emissiveTint,
 						model.second,
 						&model.second->m_Meshes.begin()->second);
 				}
@@ -462,13 +464,16 @@ namespace PogplantDriver
 							{
 								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
 								{
-									if (renderer->m_Mesh->m_Textures[i].m_Type != "texture_diffuse")
+									PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
+									if (currTexture.m_Type != "texture_diffuse")
 									{
 										continue;
 									}
-									ImGui::BulletText(renderer->m_Mesh->m_Textures[i].m_Path.c_str());
+									ImGui::BulletText(currTexture.m_Path.c_str());
 									ImGui::SameLine();
-									ImGui::Text(std::to_string(renderer->m_Mesh->m_Textures[i].m_Id).c_str());
+									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
+									ImGui::SameLine();
+									ImGui::ColorEdit3("###Diffuse Color", glm::value_ptr(renderer->m_ColorTint), ImGuiColorEditFlags_NoInputs);
 								}
 								ImGui::TreePop();
 							}
@@ -478,13 +483,14 @@ namespace PogplantDriver
 							{
 								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
 								{
-									if (renderer->m_Mesh->m_Textures[i].m_Type != "texture_specular")
+									PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
+									if (currTexture.m_Type != "texture_specular")
 									{
 										continue;
 									}
-									ImGui::BulletText(renderer->m_Mesh->m_Textures[i].m_Path.c_str());
+									ImGui::BulletText(currTexture.m_Path.c_str());
 									ImGui::SameLine();
-									ImGui::Text(std::to_string(renderer->m_Mesh->m_Textures[i].m_Id).c_str());
+									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
 								}
 								ImGui::TreePop();
 							}
@@ -494,13 +500,14 @@ namespace PogplantDriver
 							{
 								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
 								{
-									if (renderer->m_Mesh->m_Textures[i].m_Type != "texture_normal")
+									PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
+									if (currTexture.m_Type != "texture_normal")
 									{
 										continue;
 									}
-									ImGui::BulletText(renderer->m_Mesh->m_Textures[i].m_Path.c_str());
+									ImGui::BulletText(currTexture.m_Path.c_str());
 									ImGui::SameLine();
-									ImGui::Text(std::to_string(renderer->m_Mesh->m_Textures[i].m_Id).c_str());
+									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
 								}
 								ImGui::TreePop();
 							}
@@ -510,22 +517,22 @@ namespace PogplantDriver
 							{
 								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
 								{
-									if (renderer->m_Mesh->m_Textures[i].m_Type != "texture_emissive")
+									PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
+									if (currTexture.m_Type != "texture_emissive")
 									{
 										continue;
 									}
-									ImGui::BulletText(renderer->m_Mesh->m_Textures[i].m_Path.c_str());
+									ImGui::BulletText(currTexture.m_Path.c_str());
 									ImGui::SameLine();
-									ImGui::Text(std::to_string(renderer->m_Mesh->m_Textures[i].m_Id).c_str());
+									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
+									ImGui::SameLine();
+									ImGui::ColorEdit3("###Emi Color", glm::value_ptr(renderer->m_EmissiveTint), ImGuiColorEditFlags_NoInputs);					
 								}
 								ImGui::TreePop();
 							}
 							ImGui::TreePop();
 						}
 						ImGui::NewLine();
-
-						ImGui::Text("Color Editor");
-						ImGui::ColorEdit3("###RenderColor", glm::value_ptr(renderer->m_ColorTint));
 
 						ImGui::Text("RLighting");
 						bool temp_light = renderer->m_UseLight;

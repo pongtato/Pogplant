@@ -14,13 +14,13 @@ namespace SSH
 		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Rigidbody>(static_cast<entt::entity>(id), rigidbody);
 	}
 
-	void AddComponentRenderer(unsigned int id, glm::vec3 colorTint, int useLight, bool editorDrawOnly, MonoString* name)
+	void AddComponentRenderer(unsigned int id, glm::vec3 colorTint, glm::vec3 emissiveTint, int useLight, bool editorDrawOnly, MonoString* name)
 	{
 		std::string modelName = mono_string_to_utf8(name);
 		Pogplant::Model* model = Pogplant::ModelResource::m_ModelPool[modelName];
 		Pogplant::Mesh3D* mesh3d = &model->m_Meshes.begin()->second;
 
-		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Renderer>(static_cast<entt::entity>(id), Components::Renderer{ colorTint, model, mesh3d, useLight, editorDrawOnly });
+		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Renderer>(static_cast<entt::entity>(id), Components::Renderer{ colorTint, emissiveTint, model, mesh3d, useLight, editorDrawOnly });
 	}
 
 	MonoArray* GetModelKeysIC()

@@ -40,7 +40,6 @@ namespace Pogplant
         int specularNr = 0;
         int normalNr = 0;
         int emissiveNr = 0;
-        int heightNr = 0;
 
         if (m_Textures.size() > 0 && _BindTex)
         {
@@ -162,23 +161,28 @@ namespace Pogplant
 
         // Color tint
         glEnableVertexAttribArray(9);
-        glVertexAttribPointer(9, 3, GL_FLOAT, GL_FALSE, sizeof(InstanceData3D), (void*)offsetof(InstanceData3D, InstanceData3D::m_Color));
+        glVertexAttribPointer(9, 3, GL_FLOAT, GL_FALSE, sizeof(InstanceData3D), (void*)offsetof(InstanceData3D, InstanceData3D::m_ColorTint));
         glVertexAttribDivisor(9, 1);
 
-        // Affect by light?
+        // Emissive tint
         glEnableVertexAttribArray(10);
-        glVertexAttribIPointer(10, 1, GL_INT, sizeof(InstanceData3D), (void*)offsetof(InstanceData3D, InstanceData3D::m_UseLight));
+        glVertexAttribPointer(10, 3, GL_FLOAT, GL_FALSE, sizeof(InstanceData3D), (void*)offsetof(InstanceData3D, InstanceData3D::m_EmissiveTint));
         glVertexAttribDivisor(10, 1);
 
-        // Use texture or not
+        // Affect by light?
         glEnableVertexAttribArray(11);
-        glVertexAttribIPointer(11, 1, GL_INT, sizeof(InstanceData3D), (void*)offsetof(InstanceData3D, InstanceData3D::m_UseTexture));
+        glVertexAttribIPointer(11, 1, GL_INT, sizeof(InstanceData3D), (void*)offsetof(InstanceData3D, InstanceData3D::m_UseLight));
         glVertexAttribDivisor(11, 1);
 
-        // Only to be drawn in editor
+        // Use texture or not
         glEnableVertexAttribArray(12);
-        glVertexAttribIPointer(12, 1, GL_INT, sizeof(InstanceData3D), (void*)offsetof(InstanceData3D, InstanceData3D::m_EditorOnly));
+        glVertexAttribIPointer(12, 1, GL_INT, sizeof(InstanceData3D), (void*)offsetof(InstanceData3D, InstanceData3D::m_UseTexture));
         glVertexAttribDivisor(12, 1);
+
+        // Only to be drawn in editor
+        glEnableVertexAttribArray(13);
+        glVertexAttribIPointer(13, 1, GL_INT, sizeof(InstanceData3D), (void*)offsetof(InstanceData3D, InstanceData3D::m_EditorOnly));
+        glVertexAttribDivisor(13, 1);
 
         // Unbind
         glBindVertexArray(0);

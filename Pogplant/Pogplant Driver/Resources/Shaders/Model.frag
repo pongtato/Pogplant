@@ -19,6 +19,7 @@ struct Material
     sampler2D texture_normal[3];
     sampler2D texture_emissive[3];
     sampler2D texture_height[3];
+    int emissive_count;
 };
 
 uniform Material material;

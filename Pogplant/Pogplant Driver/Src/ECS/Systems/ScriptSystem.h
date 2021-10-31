@@ -73,7 +73,7 @@ private:
 	static void DestroyEntity(std::uint32_t entityID);
 	static std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	static std::uint32_t FindEntityWithName(MonoString* name);
-	static void AddModel(std::uint32_t _Entity, MonoString* _Model, glm::vec3 _Color = glm::vec3{ 1 }, bool _UseLight = true, bool _EditorOnly = false, bool _FirstIt = true);
+	static void AddModel(std::uint32_t _Entity, MonoString* _Model, glm::vec3 _Color = glm::vec3{ 1 }, glm::vec3 _Emissive = glm::vec3{ 1 }, bool _UseLight = true, bool _EditorOnly = false, bool _FirstIt = true);
 
 	//template<typename Type, typename ...Args>
 	//static void AddComponent(unsigned int id, Args && ...args);

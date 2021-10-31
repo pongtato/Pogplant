@@ -19,27 +19,27 @@ std::once_flag Application::m_onceFlag;
 
 /****************************TEMPORARY STUFF TO MOVE***************************/
 // This has to be moved to a model loading or smth
-void Application::ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D* _Mesh3D, const glm::vec3& _Color, bool _UseLight, bool _EditorOnly, bool _FirstIt)
+void Application::ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D* _Mesh3D, const glm::vec3& _Color, const glm::vec3& _Emissive, bool _UseLight, bool _EditorOnly, bool _FirstIt)
 {
 	if (!_FirstIt)
 	{
 		auto child = m_activeECS->CreateChild(_Entity.GetID(), _Mesh3D->m_Name);
-		child.AddComponent<Components::Renderer>(Renderer{ _Color, _Model, _Mesh3D, _UseLight, _EditorOnly });
+		child.AddComponent<Components::Renderer>(Renderer{ _Color, _Emissive, _Model, _Mesh3D, _UseLight, _EditorOnly });
 		auto& transform = child.GetComponent<Components::Transform>();
 		transform.m_position = _Mesh3D->m_Translate;
 		transform.m_rotation = _Mesh3D->m_Rotate * 90.0f;
 		transform.m_scale = _Mesh3D->m_Scale;
 		for (auto it : _Mesh3D->m_SubMeshIDs)
 		{
-			ConstructModel(child, _Model, &_Model->m_Meshes[it], _Color, _UseLight, _EditorOnly, false);
+			ConstructModel(child, _Model, &_Model->m_Meshes[it], _Color, _Emissive, _UseLight, _EditorOnly, false);
 		}
 	}
 	else
 	{
-		_Entity.AddComponent<Components::Renderer>(Renderer{ _Color, _Model, _Mesh3D, _UseLight, _EditorOnly });
+		_Entity.AddComponent<Components::Renderer>(Renderer{ _Color, _Emissive, _Model, _Mesh3D, _UseLight, _EditorOnly });
 		for (auto it : _Mesh3D->m_SubMeshIDs)
 		{
-			ConstructModel(_Entity, _Model, &_Model->m_Meshes[it], _Color, _UseLight, _EditorOnly, false);
+			ConstructModel(_Entity, _Model, &_Model->m_Meshes[it], _Color, _Emissive, _UseLight, _EditorOnly, false);
 		}
 	}
 }
@@ -218,7 +218,7 @@ void Application::InitialiseDebugObjects()
 	float intensity = 13.0f;
 	entity = m_activeECS->CreateEntity("Directional Light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Directional_Light>(Directional_Light{ color, intensity, direction , 0.42f, 0.69f });
-	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
+	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, glm::vec3(1.0f), false, true);
 
 	intensity = 1.0f;
 	pos = { 15.0f, 22.0f, 19.0f };
@@ -227,26 +227,26 @@ void Application::InitialiseDebugObjects()
 	const float quadratic = 0.0042f;
 	entity = m_activeECS->CreateEntity("White point light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
+	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, glm::vec3(1.0f), false, true);
 
 	intensity = 4.2f;
 	pos = { 26.0f, 10.0f, -16.5f };
 	color = { 0.0f, 0.0f, 1.0f };
 	entity = m_activeECS->CreateEntity("Blue light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
+	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, glm::vec3(1.0f), false, true);
 
 	pos = { 21.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
 	entity = m_activeECS->CreateEntity("Red light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
+	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, glm::vec3(1.0f), false, true);
 
 	pos = { -12.5, 10.0f, -10.0f };
 	color = { 0.0f, 1.0f, 0.0f };
 	entity = m_activeECS->CreateEntity("Green light", pos, glm::vec3{ 0 }, scale);
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
-	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, false, true);
+	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, glm::vec3(1.0f), false, true);
 
 	//Test Object with body
 	pos = { 3.0f, 1.f, 0.0f };
@@ -293,7 +293,7 @@ void Application::InitialiseDebugObjects()
 	color = { 0.9f, 0.5f, 0.2f };
 	entity = m_activeECS->CreateEntity("Game Camera", pos, rot, scale);
 	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
-	ConstructModel(entity, cubeModel, &cubeModel->m_Meshes.begin()->second, color, false, true);
+	ConstructModel(entity, cubeModel, &cubeModel->m_Meshes.begin()->second, color, glm::vec3(1.0f), false, true);
 
 	/// Canvas test
 	pos = { 0.0f, 0.0f, -1.0f };
@@ -440,7 +440,7 @@ void Application::UpdateTransforms(float _Dt)
 		auto& transform = m_activeECS->GetReg().get<Transform>(entity);
 		auto* mesh = renderer.m_Mesh;
 		int useTex = mesh->m_Textures.size() == 0 ? 0 : 1;
-		mesh->m_Instances.push_back({ transform.m_ModelMtx, renderer.m_ColorTint, renderer.m_UseLight, useTex, renderer.m_EditorDrawOnly });
+		mesh->m_Instances.push_back({ transform.m_ModelMtx, renderer.m_ColorTint, renderer.m_EmissiveTint, renderer.m_UseLight, useTex, renderer.m_EditorDrawOnly });
 	}
 	// Update meshes
 	for (auto& model : PP::ModelResource::m_ModelPool)

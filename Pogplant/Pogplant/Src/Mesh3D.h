@@ -27,7 +27,8 @@ namespace Pogplant
 	struct InstanceData3D
 	{
 		glm::mat4 m_Model;
-		glm::vec3 m_Color;
+		glm::vec3 m_ColorTint;
+		glm::vec3 m_EmissiveTint;
 		int m_UseLight;
 		int m_UseTexture;
 		int m_EditorOnly;

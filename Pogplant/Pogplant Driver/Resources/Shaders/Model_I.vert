@@ -5,13 +5,15 @@ layout (location = 1) in vec3 v3_Normal;
 layout (location = 4) in vec2 v2_TexCoords;
 layout (location = 5) in mat4 m4_Model;
 layout (location = 9) in vec3 v3_Color;
-layout (location = 10) in int i_UseLight;
-layout (location = 11) in int i_UseTexture;
-layout (location = 12) in int i_EditorOnly;
+layout (location = 10) in vec3 v3_EmissiveColor;
+layout (location = 11) in int i_UseLight;
+layout (location = 12) in int i_UseTexture;
+layout (location = 13) in int i_EditorOnly;
 
 out vec3 FragPos;
 out vec3 Normal;
 out vec3 ColorTint;
+out vec3 EmissiveTint;
 out vec2 TexCoords;
 flat out int UseLight;
 flat out int UseTexture;
@@ -33,6 +35,7 @@ void main()
     }
 
     ColorTint = v3_Color;
+    EmissiveTint = v3_EmissiveColor;
     UseLight = i_UseLight;
     UseTexture = i_UseTexture;
 

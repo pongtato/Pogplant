@@ -11,6 +11,7 @@ layout (location = 4) out vec3 gEmissive;
 in vec3 FragPos;
 in vec3 Normal;
 in vec3 ColorTint;
+in vec3 EmissiveTint;
 in vec2 TexCoords;
 flat in int UseLight;
 flat in int UseTexture;
@@ -41,7 +42,7 @@ void main()
         gNormal = normalize(Normal);
         if(UseTexture == 1)
         {
-            gAlbedoSpec.rgb = texture(material.texture_diffuse[0], TexCoords).rgb * ColorTint.rgb;
+            gAlbedoSpec.rgb = texture(material.texture_diffuse[0], TexCoords).rgb * ColorTint;
             gAlbedoSpec.a = texture(material.texture_specular[0], TexCoords).r;
         }
         else
@@ -61,7 +62,7 @@ void main()
     if(material.emissive_count > 0)
     {
         // If not data from other samples would be used
-        gEmissive = texture(material.texture_emissive[0], TexCoords).rgb;
+        gEmissive = texture(material.texture_emissive[0], TexCoords).rgb * EmissiveTint;
     }
     else
     {

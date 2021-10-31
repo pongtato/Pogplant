@@ -30,7 +30,7 @@ std::uint32_t ScriptSystem::FindEntityWithName(MonoString* name)
 	return static_cast<std::uint32_t>(m_ecs->FindEntityWithName(_name));
 }
 
-void ScriptSystem::AddModel(std::uint32_t _Entity, MonoString* _Model, glm::vec3 _Color, bool _UseLight, bool _EditorOnly, bool _FirstIt)
+void ScriptSystem::AddModel(std::uint32_t _Entity, MonoString* _Model, glm::vec3 _Color, glm::vec3 _Emissive, bool _UseLight, bool _EditorOnly, bool _FirstIt)
 {
 
 	entt::entity value = static_cast<entt::entity>(_Entity);
@@ -45,7 +45,7 @@ void ScriptSystem::AddModel(std::uint32_t _Entity, MonoString* _Model, glm::vec3
 	PogplantDriver::Application& instance = PogplantDriver::Application::GetInstance();
 	if (model)
 	{
-		instance.ConstructModel(id, model, &model->m_Meshes.begin()->second, _Color, _UseLight, _EditorOnly, _FirstIt);
+		instance.ConstructModel(id, model, &model->m_Meshes.begin()->second, _Color, _Emissive, _UseLight, _EditorOnly, _FirstIt);
 	}
 }
 
