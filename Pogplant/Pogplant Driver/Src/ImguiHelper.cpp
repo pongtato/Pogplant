@@ -460,6 +460,7 @@ namespace PogplantDriver
 						ImGui::NewLine();
 						if (ImGui::TreeNode("Textures"))
 						{
+							// Diffuse
 							if (ImGui::TreeNode("Diffuse"))
 							{
 								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
@@ -469,16 +470,18 @@ namespace PogplantDriver
 									{
 										continue;
 									}
-									ImGui::BulletText(currTexture.m_Path.c_str());
+									ImGui::Text(currTexture.m_Path.c_str());
 									ImGui::SameLine();
 									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
 									ImGui::SameLine();
 									ImGui::ColorEdit3("###Diffuse Color", glm::value_ptr(renderer->m_ColorTint), ImGuiColorEditFlags_NoInputs);
+									TextureSelectHelper("Texture Selection", &renderer->m_Mesh->m_Textures[i]);
 								}
 								ImGui::TreePop();
 							}
 
 							// Spec
+							ImGui::NewLine();
 							if (ImGui::TreeNode("Specular"))
 							{
 								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
@@ -488,14 +491,16 @@ namespace PogplantDriver
 									{
 										continue;
 									}
-									ImGui::BulletText(currTexture.m_Path.c_str());
+									ImGui::Text(currTexture.m_Path.c_str());
 									ImGui::SameLine();
 									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
+									TextureSelectHelper("Texture Selection", &renderer->m_Mesh->m_Textures[i]);
 								}
 								ImGui::TreePop();
 							}
 
 							// Normal
+							ImGui::NewLine();
 							if (ImGui::TreeNode("Normal"))
 							{
 								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
@@ -505,14 +510,17 @@ namespace PogplantDriver
 									{
 										continue;
 									}
-									ImGui::BulletText(currTexture.m_Path.c_str());
+									ImGui::Text(currTexture.m_Path.c_str());
 									ImGui::SameLine();
 									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
+									TextureSelectHelper("Texture Selection", &renderer->m_Mesh->m_Textures[i]);
+
 								}
 								ImGui::TreePop();
 							}
 
 							// Emi
+							ImGui::NewLine();
 							if (ImGui::TreeNode("Emissive"))
 							{
 								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
@@ -522,11 +530,12 @@ namespace PogplantDriver
 									{
 										continue;
 									}
-									ImGui::BulletText(currTexture.m_Path.c_str());
+									ImGui::Text(currTexture.m_Path.c_str());
 									ImGui::SameLine();
 									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
 									ImGui::SameLine();
-									ImGui::ColorEdit3("###Emi Color", glm::value_ptr(renderer->m_EmissiveTint), ImGuiColorEditFlags_NoInputs);					
+									ImGui::ColorEdit3("###Emi Color", glm::value_ptr(renderer->m_EmissiveTint), ImGuiColorEditFlags_NoInputs);
+									TextureSelectHelper("Texture Selection", &renderer->m_Mesh->m_Textures[i]);
 								}
 								ImGui::TreePop();
 							}
@@ -1389,6 +1398,75 @@ namespace PogplantDriver
 
 		ImguiBlankSeperator(1);
 		ImGui::Separator();
+	}
+
+	void ImguiHelper::TextureSelectHelper(const char* _Label, Pogplant::Texture* _CurrTex)
+	{
+		// Texture picker
+		if (ImGui::ImageButton(_CurrTex->m_Id, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+		{
+			ImGui::OpenPopup(_Label);
+		}
+
+		// Always center this window when appearing
+		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+		/// Texture select pop up
+		if (ImGui::BeginPopupModal(_Label, NULL, ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			size_t it_count = 0;
+			for (const auto& it : PP::TextureResource::m_TexturePool)
+			{
+				if (ImGui::ImageButton(it.second, ImVec2(64, 64), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+				{
+					_CurrTex->m_Id = it.second;
+					_CurrTex->m_Path = it.first;
+					ImGui::CloseCurrentPopup();
+				}
+
+				// Formatting
+				if ((it_count + 1) % 5 != 0)
+				{
+					ImGui::SameLine();
+				}
+
+				it_count++;
+			}
+
+			//const auto textureContainers = assetContext.GetAssetsByType(AssetType::TEXTURE);
+			//for (size_t i = 0; i < textureContainers.size(); i++)
+			//{
+			//	const auto texturePtr = std::static_pointer_cast<TextureAsset>(textureContainers[i]);
+			//	const auto texture = texturePtr->GetTexture();
+			//	// Update current tex
+			//	if (ImGui::ImageButton(texture.m_ID, ImVec2(64, 64), uv0, uv1, frame_padding, bg_col, tint_col))
+			//	{
+			//		m_TexName = texturePtr->GetAssetName();
+			//		glm::ivec2 texSize = { texture.m_Width, texture.m_Height };
+			//		m_Width = texSize.x;
+			//		m_Height = texSize.y;
+			//		UpdateFrameInfo();
+			//		ImGui::CloseCurrentPopup();
+			//	}
+
+			//	// Formatting
+			//	if ((i + 1) % 5 != 0)
+			//	{
+			//		ImGui::SameLine();
+			//	}
+			//}
+
+			// So wont be on the same line as prev
+			ImGui::Dummy({ 0,0 });
+			if (ImGui::Button("Cancel", ImVec2(120, 0)))
+			{
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::SetItemDefaultFocus();
+			ImGui::SameLine();
+			ImGui::EndPopup();
+		}
 	}
 
 }

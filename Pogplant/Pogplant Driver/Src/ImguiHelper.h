@@ -78,7 +78,8 @@ namespace PogplantDriver
 		//imgui reflection functions
 		static void Reflect_ImGui(rttr::instance _obj);
 
-
+		// Helper for texture selection
+		static void TextureSelectHelper(const char* _Label, Pogplant::Texture* _CurrTex);
 	};
 
 }

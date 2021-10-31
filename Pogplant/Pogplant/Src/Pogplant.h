@@ -15,6 +15,7 @@
 #include "DebugDraw.h"
 #include "MeshResource.h"
 #include "Mesh.h"
+#include "Mesh3D.h"
 #include "PP_Entry.h"
 
 namespace PP = Pogplant;

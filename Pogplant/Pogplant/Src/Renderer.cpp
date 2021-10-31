@@ -283,8 +283,8 @@ namespace Pogplant
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_BRIGHT]);
 
 		bool first_it = true;
-		const float blur_increment = 0.25f;
-		for (int i = 1; i <= 3; i++)
+		const float blur_increment = 0.15f;
+		for (int i = 1; i <= 5; i++)
 		{
 			ShaderLinker::SetUniform("targetWidth", Window::m_Width * blur_increment * i);
 			ShaderLinker::SetUniform("targetHeight", Window::m_Height * blur_increment * i);
