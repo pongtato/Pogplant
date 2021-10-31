@@ -129,6 +129,7 @@ namespace Components
 			, m_Blend{ _Blend }
 			, m_Heightmap{ _Heightmap }
 		{
+			m_ColorTint = glm::vec4{ 1.0f };
 		}
 
 		std::vector<std::string> m_DiffTex;

@@ -63,7 +63,7 @@ void main()
     // Set
     gNormal = normalize(TBN * (normalBlend * 2.0 - 1.0));
     gPosition = FragPos;
-    gAlbedoSpec.rgb = difflBlend;
+    gAlbedoSpec.rgb = difflBlend * Color;
     gAlbedoSpec.a = 1.0f - specBlend;
     gNoLight = vec4(0.0f);
 }

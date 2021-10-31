@@ -397,166 +397,8 @@ namespace PogplantDriver
 					Reflect_ImGui(transform);
 				}
 
-				auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(m_CurrentEntity);
-				if (renderer)
-				{
-					bool enable_render = true;
-
-					if (ImGui::CollapsingHeader(ICON_FA_TH "  Renderer", &enable_render, ImGuiTreeNodeFlags_DefaultOpen))
-					{
-						// Model
-						ImGuiComboFlags flag = 0;
-						flag |= ImGuiComboFlags_PopupAlignLeft;
-						auto model_itr = PP::ModelResource::m_ModelPool.begin();
-						for (auto it = PP::ModelResource::m_ModelPool.begin(); it != PP::ModelResource::m_ModelPool.end(); ++it)
-						{
-							if (it->second == renderer->m_RenderModel)
-								model_itr = it;
-						}
-
-						ImGui::Text("Model");
-						if (ImGui::BeginCombo("###Mdl", model_itr->first.c_str(), flag))
-						{
-							for (auto it = PP::ModelResource::m_ModelPool.begin(); it != PP::ModelResource::m_ModelPool.end(); ++it)
-							{
-								const bool is_selected = (model_itr == it);
-								if (ImGui::Selectable(it->first.c_str(), is_selected))
-								{
-									model_itr = it;
-									renderer->m_RenderModel = model_itr->second;
-									// Update mesh as well
-									renderer->m_Mesh = &model_itr->second->m_Meshes.begin()->second;
-								}
-
-								if (is_selected)
-									ImGui::SetItemDefaultFocus();
-
-							}
-							ImGui::EndCombo();
-						}
-
-						// Mesh
-						std::string select = renderer->m_Mesh->m_Name;
-						ImGui::Text("Mesh");
-						if (ImGui::BeginCombo("###Msh", select.c_str(), flag))
-						{
-							for (auto it = model_itr->second->m_Meshes.begin(); it != model_itr->second->m_Meshes.end(); ++it)
-							{
-								const bool is_selected = (select == it->first.c_str());
-								if (ImGui::Selectable(it->first.c_str(), is_selected))
-								{
-									select = it->first;
-									renderer->m_Mesh = &model_itr->second->m_Meshes[select];
-								}
-
-								if (is_selected)
-									ImGui::SetItemDefaultFocus();
-
-							}
-							ImGui::EndCombo();
-						}
-
-						// Textures
-						ImGui::NewLine();
-						if (ImGui::TreeNode("Textures"))
-						{
-							// Diffuse
-							if (ImGui::TreeNode("Diffuse"))
-							{
-								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
-								{
-									PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
-									if (currTexture.m_Type != "texture_diffuse")
-									{
-										continue;
-									}
-									ImGui::Text(currTexture.m_Path.c_str());
-									ImGui::SameLine();
-									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
-									ImGui::SameLine();
-									ImGui::ColorEdit3("###Diffuse Color", glm::value_ptr(renderer->m_ColorTint), ImGuiColorEditFlags_NoInputs);
-									TextureSelectHelper("Texture Selection", &renderer->m_Mesh->m_Textures[i]);
-								}
-								ImGui::TreePop();
-							}
-
-							// Spec
-							ImGui::NewLine();
-							if (ImGui::TreeNode("Specular"))
-							{
-								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
-								{
-									PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
-									if (currTexture.m_Type != "texture_specular")
-									{
-										continue;
-									}
-									ImGui::Text(currTexture.m_Path.c_str());
-									ImGui::SameLine();
-									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
-									TextureSelectHelper("Texture Selection", &renderer->m_Mesh->m_Textures[i]);
-								}
-								ImGui::TreePop();
-							}
-
-							// Normal
-							ImGui::NewLine();
-							if (ImGui::TreeNode("Normal"))
-							{
-								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
-								{
-									PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
-									if (currTexture.m_Type != "texture_normal")
-									{
-										continue;
-									}
-									ImGui::Text(currTexture.m_Path.c_str());
-									ImGui::SameLine();
-									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
-									TextureSelectHelper("Texture Selection", &renderer->m_Mesh->m_Textures[i]);
-
-								}
-								ImGui::TreePop();
-							}
-
-							// Emi
-							ImGui::NewLine();
-							if (ImGui::TreeNode("Emissive"))
-							{
-								for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
-								{
-									PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
-									if (currTexture.m_Type != "texture_emissive")
-									{
-										continue;
-									}
-									ImGui::Text(currTexture.m_Path.c_str());
-									ImGui::SameLine();
-									ImGui::Text(std::to_string(currTexture.m_Id).c_str());
-									ImGui::SameLine();
-									ImGui::ColorEdit3("###Emi Color", glm::value_ptr(renderer->m_EmissiveTint), ImGuiColorEditFlags_NoInputs);
-									TextureSelectHelper("Texture Selection", &renderer->m_Mesh->m_Textures[i]);
-								}
-								ImGui::TreePop();
-							}
-							ImGui::TreePop();
-						}
-						ImGui::NewLine();
-
-						ImGui::Text("RLighting");
-						bool temp_light = renderer->m_UseLight;
-						ImGui::Checkbox("Use Light", &temp_light);
-						if (temp_light != static_cast<bool>(renderer->m_UseLight))
-							renderer->m_UseLight = temp_light;
-
-						ImguiBlankSeperator(1);
-						ImGui::Separator();
-					}
-					if (!enable_render)
-					{
-						m_ecs->GetReg().remove<Components::Renderer>(m_CurrentEntity);
-					}
-				}
+				RendererComponentHelper();
+				PRendererComponentHelper();
 
 				auto point_light = m_ecs->GetReg().try_get<Components::Point_Light>(m_CurrentEntity);
 				if (point_light)
@@ -1400,21 +1242,235 @@ namespace PogplantDriver
 		ImGui::Separator();
 	}
 
+	void ImguiHelper::RendererComponentHelper()
+	{
+		auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(m_CurrentEntity);
+		if (renderer)
+		{
+			bool enable_render = true;
+
+			if (ImGui::CollapsingHeader(ICON_FA_TH "  Renderer", &enable_render, ImGuiTreeNodeFlags_DefaultOpen))
+			{
+				// Model
+				ImGuiComboFlags flag = 0;
+				flag |= ImGuiComboFlags_PopupAlignLeft;
+				auto model_itr = PP::ModelResource::m_ModelPool.begin();
+				for (auto it = PP::ModelResource::m_ModelPool.begin(); it != PP::ModelResource::m_ModelPool.end(); ++it)
+				{
+					if (it->second == renderer->m_RenderModel)
+						model_itr = it;
+				}
+
+				ImGui::Text("Model");
+				if (ImGui::BeginCombo("###Mdl", model_itr->first.c_str(), flag))
+				{
+					for (auto it = PP::ModelResource::m_ModelPool.begin(); it != PP::ModelResource::m_ModelPool.end(); ++it)
+					{
+						const bool is_selected = (model_itr == it);
+						if (ImGui::Selectable(it->first.c_str(), is_selected))
+						{
+							model_itr = it;
+							renderer->m_RenderModel = model_itr->second;
+							// Update mesh as well
+							renderer->m_Mesh = &model_itr->second->m_Meshes.begin()->second;
+						}
+
+						if (is_selected)
+							ImGui::SetItemDefaultFocus();
+
+					}
+					ImGui::EndCombo();
+				}
+
+				// Mesh
+				std::string select = renderer->m_Mesh->m_Name;
+				ImGui::Text("Mesh");
+				if (ImGui::BeginCombo("###Msh", select.c_str(), flag))
+				{
+					for (auto it = model_itr->second->m_Meshes.begin(); it != model_itr->second->m_Meshes.end(); ++it)
+					{
+						const bool is_selected = (select == it->first.c_str());
+						if (ImGui::Selectable(it->first.c_str(), is_selected))
+						{
+							select = it->first;
+							renderer->m_Mesh = &model_itr->second->m_Meshes[select];
+						}
+
+						if (is_selected)
+							ImGui::SetItemDefaultFocus();
+
+					}
+					ImGui::EndCombo();
+				}
+
+				// Textures
+				ImGui::NewLine();
+				if (ImGui::TreeNode("Textures"))
+				{
+					static PP::Texture* selectedTex = nullptr;
+					const char* popuplabel = "Texture Selection";
+
+					// Diffuse
+					if (ImGui::TreeNode("Diffuse"))
+					{
+						// Diffuse color picker
+						ImGui::Dummy(ImVec2(0.0f, 2.0f));
+						ImGui::PushID("REND");
+						ImGui::Text("Color Tint");
+						ImGui::ColorEdit3("###Diffuse Color", glm::value_ptr(renderer->m_ColorTint));
+						ImGui::PopID();
+						ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+						for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
+						{
+							PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
+							if (currTexture.m_Type != "texture_diffuse")
+							{
+								continue;
+							}
+							ImGui::Text(currTexture.m_Path.c_str());
+							ImGui::SameLine();
+							ImGui::Text(std::to_string(currTexture.m_Id).c_str());
+
+							// Texture picker
+							if (ImGui::ImageButton(currTexture.m_Id, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							{
+								selectedTex = &renderer->m_Mesh->m_Textures[i];
+								ImGui::OpenPopup(popuplabel);
+							}
+							ImGui::Dummy(ImVec2(0.0f, 0.5f));
+						}
+						TextureSelectHelper("Texture Selection", selectedTex);
+						ImGui::TreePop();
+					}
+
+					// Spec
+					ImGui::Dummy(ImVec2(0.0f, 1.0f));
+					if (ImGui::TreeNode("Specular"))
+					{
+						ImGui::Dummy(ImVec2(0.0f, 2.0f));
+						for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
+						{
+							PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
+							if (currTexture.m_Type != "texture_specular")
+							{
+								continue;
+							}
+							ImGui::Text(currTexture.m_Path.c_str());
+							ImGui::SameLine();
+							ImGui::Text(std::to_string(currTexture.m_Id).c_str());
+							// Texture picker
+							if (ImGui::ImageButton(currTexture.m_Id, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							{
+								selectedTex = &renderer->m_Mesh->m_Textures[i];
+								ImGui::OpenPopup(popuplabel);
+							}
+							ImGui::Dummy(ImVec2(0.0f, 0.5f));
+						}
+						TextureSelectHelper("Texture Selection", selectedTex);
+						ImGui::TreePop();
+					}
+
+					// Normal
+					ImGui::Dummy(ImVec2(0.0f, 1.0f));
+					if (ImGui::TreeNode("Normal"))
+					{
+						ImGui::Dummy(ImVec2(0.0f, 2.0f));
+						for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
+						{
+							PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
+							if (currTexture.m_Type != "texture_normal")
+							{
+								continue;
+							}
+							ImGui::Text(currTexture.m_Path.c_str());
+							ImGui::SameLine();
+							ImGui::Text(std::to_string(currTexture.m_Id).c_str());
+							// Texture picker
+							if (ImGui::ImageButton(currTexture.m_Id, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							{
+								selectedTex = &renderer->m_Mesh->m_Textures[i];
+								ImGui::OpenPopup(popuplabel);
+							}
+							ImGui::Dummy(ImVec2(0.0f, 0.5f));
+						}
+						TextureSelectHelper("Texture Selection", selectedTex);
+						ImGui::TreePop();
+					}
+
+					// Emi
+					ImGui::Dummy(ImVec2(0.0f, 1.0f));
+					if (ImGui::TreeNode("Emissive"))
+					{
+						// Emission color picker
+						ImGui::Dummy(ImVec2(0.0f, 2.0f));
+						ImGui::PushID("REND");
+						ImGui::Text("Emission Tint");
+						ImGui::ColorEdit3("###Emi Color", glm::value_ptr(renderer->m_EmissiveTint));
+						ImGui::PopID();
+						ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+						for (size_t i = 0; i < renderer->m_Mesh->m_Textures.size(); i++)
+						{
+							PP::Texture& currTexture = renderer->m_Mesh->m_Textures[i];
+							if (currTexture.m_Type != "texture_emissive")
+							{
+								continue;
+							}
+							ImGui::Text(currTexture.m_Path.c_str());
+							ImGui::SameLine();
+							ImGui::Text(std::to_string(currTexture.m_Id).c_str());
+
+							// Texture picker
+							if (ImGui::ImageButton(currTexture.m_Id, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							{
+								selectedTex = &renderer->m_Mesh->m_Textures[i];
+								ImGui::OpenPopup(popuplabel);
+							}
+							ImGui::Dummy(ImVec2(0.0f, 0.5f));
+						}
+						TextureSelectHelper("Texture Selection", selectedTex);
+						ImGui::TreePop();
+					}
+					ImGui::TreePop();
+				}
+				ImGui::NewLine();
+
+				ImGui::Text("RLighting");
+				bool temp_light = renderer->m_UseLight;
+				ImGui::Checkbox("Use Light", &temp_light);
+				if (temp_light != static_cast<bool>(renderer->m_UseLight))
+					renderer->m_UseLight = temp_light;
+
+				ImguiBlankSeperator(1);
+				ImGui::Separator();
+			}
+			if (!enable_render)
+			{
+				m_ecs->GetReg().remove<Components::Renderer>(m_CurrentEntity);
+			}
+		}
+	}
+
 	void ImguiHelper::TextureSelectHelper(const char* _Label, Pogplant::Texture* _CurrTex)
 	{
-		// Texture picker
-		if (ImGui::ImageButton(_CurrTex->m_Id, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
-		{
-			ImGui::OpenPopup(_Label);
-		}
-
 		// Always center this window when appearing
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
 		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+		static std::string currentPath = "";
+		static bool hovered = false;
 
 		/// Texture select pop up
 		if (ImGui::BeginPopupModal(_Label, NULL, ImGuiWindowFlags_AlwaysAutoResize))
 		{
+			assert(_CurrTex != nullptr);
+			ImGui::Text(currentPath.c_str());
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			// Clear hover flag after printing to detect hover stop
+			hovered = false;
+			currentPath = "";
+
 			size_t it_count = 0;
 			for (const auto& it : PP::TextureResource::m_TexturePool)
 			{
@@ -1423,6 +1479,11 @@ namespace PogplantDriver
 					_CurrTex->m_Id = it.second;
 					_CurrTex->m_Path = it.first;
 					ImGui::CloseCurrentPopup();
+				}
+				if (ImGui::IsItemHovered())
+				{
+					currentPath = it.first;
+					hovered = true;
 				}
 
 				// Formatting
@@ -1434,31 +1495,8 @@ namespace PogplantDriver
 				it_count++;
 			}
 
-			//const auto textureContainers = assetContext.GetAssetsByType(AssetType::TEXTURE);
-			//for (size_t i = 0; i < textureContainers.size(); i++)
-			//{
-			//	const auto texturePtr = std::static_pointer_cast<TextureAsset>(textureContainers[i]);
-			//	const auto texture = texturePtr->GetTexture();
-			//	// Update current tex
-			//	if (ImGui::ImageButton(texture.m_ID, ImVec2(64, 64), uv0, uv1, frame_padding, bg_col, tint_col))
-			//	{
-			//		m_TexName = texturePtr->GetAssetName();
-			//		glm::ivec2 texSize = { texture.m_Width, texture.m_Height };
-			//		m_Width = texSize.x;
-			//		m_Height = texSize.y;
-			//		UpdateFrameInfo();
-			//		ImGui::CloseCurrentPopup();
-			//	}
-
-			//	// Formatting
-			//	if ((i + 1) % 5 != 0)
-			//	{
-			//		ImGui::SameLine();
-			//	}
-			//}
-
 			// So wont be on the same line as prev
-			ImGui::Dummy({ 0,0 });
+			ImGui::Dummy(ImVec2(0.0f, 0.0f));
 			if (ImGui::Button("Cancel", ImVec2(120, 0)))
 			{
 				ImGui::CloseCurrentPopup();
@@ -1466,6 +1504,183 @@ namespace PogplantDriver
 			ImGui::SetItemDefaultFocus();
 			ImGui::SameLine();
 			ImGui::EndPopup();
+		}
+	}
+
+	void ImguiHelper::TextureSelectHelper(const char* _Label, std::string* _Path)
+	{
+		// Always center this window when appearing
+		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+		static std::string currentPath = "";
+		static bool hovered = false;
+
+		/// Texture select pop up
+		if (ImGui::BeginPopupModal(_Label, NULL, ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			assert(_Path != nullptr);
+			ImGui::Text(currentPath.c_str());
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			// Clear hover flag after printing to detect hover stop
+			hovered = false;
+			currentPath = "";
+			
+			size_t it_count = 0;
+			for (const auto& it : PP::TextureResource::m_TexturePool)
+			{
+				if (ImGui::ImageButton(it.second, ImVec2(64, 64), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+				{
+					*_Path = it.first;
+					ImGui::CloseCurrentPopup();
+				}
+				if (ImGui::IsItemHovered())
+				{
+					currentPath = it.first;
+					hovered = true;
+				}
+
+				// Formatting
+				if ((it_count + 1) % 5 != 0)
+				{
+					ImGui::SameLine();
+				}
+
+				it_count++;
+			}
+
+			// So wont be on the same line as prev
+			ImGui::Dummy(ImVec2(0.0f, 0.0f));
+			if (ImGui::Button("Cancel", ImVec2(120, 0)))
+			{
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::SetItemDefaultFocus();
+			ImGui::SameLine();
+			ImGui::EndPopup();
+		}
+	}
+
+	void ImguiHelper::PRendererComponentHelper()
+	{
+		auto prenderer = m_ecs->GetReg().try_get<Components::PrimitiveRender>(m_CurrentEntity);
+		if (prenderer)
+		{
+			bool enableRenderer = true;
+			if (ImGui::CollapsingHeader(ICON_FA_TH "  Primitive Renderer", &enableRenderer, ImGuiTreeNodeFlags_DefaultOpen))
+			{
+				// Textures
+				if (ImGui::TreeNode("Textures"))
+				{
+					static std::string* currPath = nullptr;
+					const char* popuplabel = "Texture Selection";
+
+					// Diffuse
+					if (ImGui::TreeNode("Diffuse"))
+					{
+						// Diffuse color picker
+						ImGui::Dummy(ImVec2(0.0f, 2.0f));
+						ImGui::PushID("PREND");
+						ImGui::Text("Color Tint");
+						ImGui::ColorEdit3("###Color Tint", glm::value_ptr(prenderer->m_ColorTint));
+						ImGui::PopID();
+						ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+						// Show current textures
+						for (size_t i = 0; i < prenderer->m_DiffTex.size(); i++)
+						{
+							std::string* currTexID = &prenderer->m_DiffTex[i];
+							ImGui::Text(currTexID->c_str());
+							ImGui::SameLine();
+							ImGui::Text(std::to_string(PP::TextureResource::m_TexturePool[*currTexID]).c_str());
+							// Texture picker
+							if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[*currTexID], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							{
+								currPath = currTexID;
+								ImGui::OpenPopup(popuplabel);
+							}
+							ImGui::Dummy(ImVec2(0.0f, 0.5f));
+						}
+						// Pop up window
+						TextureSelectHelper(popuplabel, currPath);
+						ImGui::TreePop();
+					}
+
+					// Spec
+					ImGui::Dummy(ImVec2(0.0f, 1.0f));
+					if (ImGui::TreeNode("Specular"))
+					{
+						ImGui::Dummy(ImVec2(0.0f, 2.0f));
+						for (size_t i = 0; i < prenderer->m_SpecTex.size(); i++)
+						{
+							std::string* currTexID = &prenderer->m_SpecTex[i];
+							ImGui::Text(currTexID->c_str());
+							ImGui::SameLine();
+							ImGui::Text(std::to_string(PP::TextureResource::m_TexturePool[*currTexID]).c_str());
+							
+							// Texture picker
+							if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[*currTexID], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							{
+								currPath = currTexID;
+								ImGui::OpenPopup(popuplabel);
+							}
+							ImGui::Dummy(ImVec2(0.0f, 0.5f));
+						}
+						TextureSelectHelper(popuplabel, currPath);
+						ImGui::TreePop();
+					}
+
+					// Normal
+					ImGui::Dummy(ImVec2(0.0f, 1.0f));
+					if (ImGui::TreeNode("Normal"))
+					{
+						ImGui::Dummy(ImVec2(0.0f, 2.0f));
+						for (size_t i = 0; i < prenderer->m_NormTex.size(); i++)
+						{
+							std::string* currTexID = &prenderer->m_NormTex[i];
+							ImGui::Text(currTexID->c_str());
+							ImGui::SameLine();
+							ImGui::Text(std::to_string(PP::TextureResource::m_TexturePool[*currTexID]).c_str());
+
+							// Texture picker
+							if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[*currTexID], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							{
+								currPath = currTexID;
+								ImGui::OpenPopup(popuplabel);
+							}
+							ImGui::Dummy(ImVec2(0.0f, 0.5f));
+						}
+						TextureSelectHelper(popuplabel, currPath);
+						ImGui::TreePop();
+					}
+
+					// Emi
+					ImGui::Dummy(ImVec2(0.0f, 1.0f));
+					if (ImGui::TreeNode("Bump"))
+					{
+						ImGui::Dummy(ImVec2(0.0f, 2.0f));
+						for (size_t i = 0; i < prenderer->m_BumpTex.size(); i++)
+						{
+							std::string* currTexID = &prenderer->m_BumpTex[i];
+							ImGui::Text(currTexID->c_str());
+							ImGui::SameLine();
+							ImGui::Text(std::to_string(PP::TextureResource::m_TexturePool[*currTexID]).c_str());
+
+							// Texture picker
+							if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[*currTexID], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							{
+								currPath = currTexID;
+								ImGui::OpenPopup(popuplabel);
+							}
+							ImGui::Dummy(ImVec2(0.0f, 0.5f));
+						}
+						TextureSelectHelper(popuplabel, currPath);
+						ImGui::TreePop();
+					}
+					ImGui::TreePop();
+				}
+				ImGui::NewLine();
+			}
 		}
 	}
 
