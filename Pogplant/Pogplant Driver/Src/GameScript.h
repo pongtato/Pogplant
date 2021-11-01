@@ -16,6 +16,8 @@ namespace Scripting
 
 	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _Rotation);
 
+	void FireEnemyBullet(glm::vec3 _Position, glm::vec3 _Rotation);
+
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
 }
 

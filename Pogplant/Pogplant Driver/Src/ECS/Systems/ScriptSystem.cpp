@@ -427,6 +427,7 @@ void ScriptSystem::BindFunctions()
 	//Game Utils
 	mono_add_internal_call("Scripting.GameUtilities::CheckBounds", &Scripting::CheckBounds);
 	mono_add_internal_call("Scripting.GameUtilities::FirePlayerBullet", &Scripting::FirePlayerBullet);
+	mono_add_internal_call("Scripting.GameUtilities::FireEnemyBullet", &Scripting::FireEnemyBullet);
 
 	//CreateEntityPtr CEPtr = &ScriptSystem::CreateEntity;
 	//mono_add_internal_call("Scripting.ECS::CreateEntity", &CEPtr);

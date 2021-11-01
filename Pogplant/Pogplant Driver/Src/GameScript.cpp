@@ -46,6 +46,27 @@ namespace Scripting
 		body.AddImpulseForce({ 0.f,0.f,10.f });
 
 	}
+	void FireEnemyBullet(glm::vec3 _Position, glm::vec3 _Rotation)
+	{
+		auto new_bullet = GameplayECS::m_GameScriptECS->CreateEntity("Bullet", _Position, _Rotation);
+		new_bullet.AddComponent<Projectile>(3.f, 10.f, Components::Projectile::OwnerType::Enemy);
+		new_bullet.GetComponent<Projectile>().m_Type = Projectile::ProjectileType::False;
+
+		
+		new_bullet.AddComponent<Renderer>(glm::vec3{ 1.0f }, glm::vec3{ 1.0f }, PP::ModelResource::m_ModelPool["sphere"], &PP::ModelResource::m_ModelPool["sphere"]->m_Meshes.begin()->second);
+		auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
+		auto& col_identifier = new_bullet.AddComponent<Components::ColliderIdentifier>();
+		
+		col_identifier.colliderType = ColliderIdentifier::COLLIDER_TYPE::CT_BOX;
+		col_identifier.isTrigger = true;
+		sp_collider.isTrigger = true;
+		
+		new_bullet.AddComponent<Rigidbody>(1.f);
+
+		auto& body = new_bullet.GetComponent<Rigidbody>();
+		body.AddImpulseForce({ 0.f,0.f,10.f });
+
+	}
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
 	{
 		auto enter1 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(onTriggerEnterEvent->m_entity1);

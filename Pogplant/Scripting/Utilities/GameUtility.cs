@@ -15,6 +15,9 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void FirePlayerBullet(Vector3 _Position, Vector3 _Rotation);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void FireEnemyBullet(Vector3 _Position, Vector3 _Rotation);
         //[MethodImplAttribute(MethodImplOptions.InternalCall)]
         //public extern static void DebugSphere(float pos_x, float pos_y, float pos_z, float camdir_x, float camdir_y, float camdit_z, float _Radius);
     }

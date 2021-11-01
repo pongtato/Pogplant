@@ -31,24 +31,25 @@ namespace Scripting
         float fireRate;
         float fire_timer = 0.0f;
         float fire_duration = 0.0f;
+        float current_fireDuration = 0.0f;
 
         bool isFiring = false;
 
         int trueBulletInterval;
         int currentBulletInterval = 0;
 
+        bool isInit = false;
         public EnemyScript()
         {
             // initialize private variables here
 
-            fireRate = 1 / 3.0f;
+            fireRate = 1 / 5.0f;
             trueBulletInterval = -1;
-            fire_duration = 3.0f;
+            fire_duration = current_fireDuration = 1.0f;
         }
 
         public override void Start()
         {
-
         }
 
         public void Awake()
@@ -57,41 +58,40 @@ namespace Scripting
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            //if (transform.Position.X >= 10.0f)
-            //{
-            //    rigidbody.AddForce(new Vector3(-3.0f, 0, 0));
-            //}
+            //Start(ref transform);
 
-            //if (transform.Position.X < 10.0f)
-            //{
-            //    rigidbody.AddForce(new Vector3(3.0f, 0, 0));
-            //}
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+                StartFiring();
 
             if (isFiring)
             {
-                fire_duration -= dt;
-                if (fire_duration <= 0.0f)
+                current_fireDuration -= dt;
+                if (current_fireDuration <= 0.0f)
+                {
                     isFiring = false;
+                    current_fireDuration = fire_duration;
+                }
 
                 fire_timer += dt;
 
                 if (fire_timer >= fireRate)
                 {
+                    for (int i = 0; i < muzzle_transforms.Length; ++i)
+                    {
+                        // Call C++ side bullet firing
+                        GameUtilities.FireEnemyBullet(transform.Position, transform.Rotation);
+                    }
                     fire_timer = 0.0f;
                 }
 
-                for (int i = 0; i < muzzle_transforms.Length; ++i)
-                {
-                    // Call C++ side bullet firing
-                    // FireEnemyBullet(muzzle_transforms[i])
-                }
             }
         }
 
         // Call this function to make this enemy start firing
         public void StartFiring()
         {
-            isFiring = true;
+            if (!isFiring)
+                isFiring = true;
         }
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
@@ -100,6 +100,11 @@ namespace Scripting
 
         public void FixedUpdate()
         {
+        }
+
+        public void OnTriggerEnter()
+        {
+            //StartFiring();
         }
     }
 }
