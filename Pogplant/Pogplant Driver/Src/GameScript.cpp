@@ -36,7 +36,7 @@ namespace Scripting
 		new_bullet.AddComponent<Projectile>(3.f, 10.f, Components::Projectile::OwnerType::Player);
 		new_bullet.AddComponent<Renderer>(glm::vec3{ 1.0f }, glm::vec3{ 1.0f }, PP::ModelResource::m_ModelPool["sphere"], &PP::ModelResource::m_ModelPool["sphere"]->m_Meshes.begin()->second);
 		auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
-		auto&identi = new_bullet.AddComponent<Components::ColliderIdentifier>();
+		auto& identi = new_bullet.AddComponent<Components::ColliderIdentifier>();
 		identi.colliderType = ColliderIdentifier::COLLIDER_TYPE::CT_BOX;
 		identi.isTrigger = true;
 		sp_collider.isTrigger = true;
@@ -52,43 +52,42 @@ namespace Scripting
 		new_bullet.AddComponent<Projectile>(3.f, 10.f, Components::Projectile::OwnerType::Enemy);
 		new_bullet.GetComponent<Projectile>().m_Type = Projectile::ProjectileType::False;
 
-		
+
 		new_bullet.AddComponent<Renderer>(glm::vec3{ 1.0f }, glm::vec3{ 1.0f }, PP::ModelResource::m_ModelPool["sphere"], &PP::ModelResource::m_ModelPool["sphere"]->m_Meshes.begin()->second);
 		auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
 		auto& col_identifier = new_bullet.AddComponent<Components::ColliderIdentifier>();
-		
+
 		col_identifier.colliderType = ColliderIdentifier::COLLIDER_TYPE::CT_BOX;
 		col_identifier.isTrigger = true;
 		sp_collider.isTrigger = true;
-		
+
 		new_bullet.AddComponent<Rigidbody>(1.f);
 
 		auto& body = new_bullet.GetComponent<Rigidbody>();
 		body.AddImpulseForce({ 0.f,0.f,10.f });
 
 	}
-	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
-	{
-		auto enter1 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(onTriggerEnterEvent->m_entity1);
-		auto enter2 = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent->m_entity2);
 
-		if (enter1 && enter2)
+	void PlayerProjectileCollision(entt::entity& object, entt::entity& other)
+	{
+		auto player_projectile_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(object);
+		auto enemy_object_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(other);
+
+		if (player_projectile_script && enemy_object_script)
 		{
-			bool enemy = enter2->m_ScriptTypes.contains("EnemyScript");
-			if (enter1->m_Ownertype == Projectile::OwnerType::Player && enemy)
+			bool enemy = enemy_object_script->m_ScriptTypes.contains("EnemyScript");
+			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy)
 			{
-				GameplayECS::m_GameScriptECS->DestroyEntity(onTriggerEnterEvent->m_entity1);
+				GameplayECS::m_GameScriptECS->DestroyEntity(object);
 			}
 		}
-
-
-
-
-
-
-
-
-
 	}
 
+	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
+	{
+		auto& object = onTriggerEnterEvent->m_entity1;
+		auto& other = onTriggerEnterEvent->m_entity2;
+
+		PlayerProjectileCollision(object, other);
+	}
 }
