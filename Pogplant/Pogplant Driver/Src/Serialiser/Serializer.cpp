@@ -92,6 +92,7 @@ namespace PogplantDriver
 					RecurSaveChild(root, *entity, ++i);
 				}
 			}
+			m_saved.clear();
 			Json::StreamWriterBuilder builder;
 			Json::StreamWriter* writer = builder.newStreamWriter();
 
