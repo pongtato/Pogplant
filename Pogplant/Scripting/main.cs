@@ -38,5 +38,10 @@ namespace Scripting
         {
             return new FollowSpline();
         }
+
+        public static PlayerFire PlayerFire()
+        {
+            return new PlayerFire();
+        }
     }
 }

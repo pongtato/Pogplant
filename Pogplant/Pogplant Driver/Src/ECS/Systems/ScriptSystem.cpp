@@ -323,6 +323,7 @@ void ScriptSystem::LoadMemory()
 					m_scriptNames.push_back("PlayerScript");
 					m_scriptNames.push_back("EnemyScript");
 					m_scriptNames.push_back("FollowSpline");
+					m_scriptNames.push_back("PlayerFire");
 
 					for (auto& scriptName : m_scriptNames)
 					{

@@ -747,6 +747,8 @@ namespace PogplantDriver
 						totalScripts.push_back("PlayerScript");
 						totalScripts.push_back("EnemyScript");
 						totalScripts.push_back("FollowSpline");
+						totalScripts.push_back("PlayerFire");
+						
 
 						for (auto& scriptName : totalScripts)
 						{

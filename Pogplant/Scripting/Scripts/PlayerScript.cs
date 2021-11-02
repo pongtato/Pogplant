@@ -68,11 +68,7 @@ namespace Scripting
                 //Console.WriteLine("D key is triggered");
             }
 
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_T))
-            {
-                GameUtilities.FirePlayerBullet(transform.Position, transform.Rotation);
-                //Console.WriteLine("D key is triggered");
-            }
+
 
             // Create Entity Example
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_Z))
@@ -220,7 +216,7 @@ namespace Scripting
 
         public void OnTriggerExit()
         {
-            Console.WriteLine("OnTriggerExit");
+            
         }
     }
 }

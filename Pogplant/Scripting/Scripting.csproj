@@ -54,6 +54,7 @@
     <Compile Include="Scripts\CatmullRomSpline.cs" />
     <Compile Include="Scripts\FollowSpline.cs" />
     <Compile Include="Scripts\MonoBehaviour.cs" />
+    <Compile Include="Scripts\PlayerFire.cs" />
     <Compile Include="Utilities\Vector3.cs" />
     <Compile Include="Utilities\DebugDraw.cs" />
     <Compile Include="Utilities\GameUtility.cs" />

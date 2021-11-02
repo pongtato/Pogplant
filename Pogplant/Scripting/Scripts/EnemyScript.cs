@@ -106,5 +106,10 @@ namespace Scripting
         {
             //StartFiring();
         }
+        public void OnTriggerExit()
+        {
+          
+        }
+
     }
 }
