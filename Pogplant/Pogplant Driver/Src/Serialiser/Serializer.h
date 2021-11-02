@@ -24,7 +24,8 @@ namespace PogplantDriver
 		void LoadPrefab(const std::string& File);
 	private:
 		ECS& m_ecs;
-
+		
+		std::set<entt::entity> m_saved;
 		std::stack<int> m_child_counter;
 		std::stack<entt::entity> m_parent_id;
 
