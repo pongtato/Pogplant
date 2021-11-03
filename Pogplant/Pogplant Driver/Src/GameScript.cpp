@@ -31,6 +31,16 @@ namespace Scripting
 		}
 		return 0;
 	}
+
+	void FollowPlayerCam(glm::vec3 _Position)
+	{
+		entt::entity player_cam = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerCam");
+		if (player_cam != entt::null)
+		{
+		  auto cam_pos =  GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_cam);
+			cam_pos->m_position += _Position;
+		}
+	}
 	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _Rotation)
 	{
 		auto new_bullet = GameplayECS::m_GameScriptECS->CreateEntity("Bullet", _Position, _Rotation);

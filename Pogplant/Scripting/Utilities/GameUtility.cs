@@ -14,6 +14,9 @@ namespace Scripting
         public extern static int CheckBounds(Vector3 _Position);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void FollowPlayerCam(Vector3 _Position);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void FirePlayerBullet(Vector3 _Position, Vector3 _Rotation);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

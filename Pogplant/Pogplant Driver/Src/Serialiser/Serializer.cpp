@@ -78,20 +78,43 @@ namespace PogplantDriver
 		{
 			Json::Value root;
 			int  i = 0;
-			
+			entt::entity parent = entt::null;
+			entt::entity prev = entt::null;
+			Components::Relationship* parentptr;
 			auto entities = m_ecs.GetReg().view<Transform>();
 			for(auto entity = entities.rbegin(); entity != entities.rend() ; ++entity)
 			{
 				if (m_saved.contains(*entity))
 					continue;
-				Json::Value subroot = SaveComponents(*entity);
-				root[i] = subroot;
 				auto relationship_component = m_ecs.GetReg().try_get<Relationship>(*entity);
-				if (relationship_component)
+				//The object saved is a child first due to ENTT deletion policy, seek the head(parent)
+				if (relationship_component && relationship_component->m_parent != entt::null)
 				{
-					i = RecurSaveChild(root, *entity, ++i);
+					parent = relationship_component->m_parent;
+					parentptr = relationship_component;
+					while (parentptr && parentptr->m_parent != entt::null)
+					{
+						prev = parent;
+						parentptr = m_ecs.GetReg().try_get<Relationship>(parent);
+						parent = parentptr->m_parent;
+					}
+					Json::Value subroot = SaveComponents(prev);
+					root[i] = subroot;
+					m_saved.insert(prev);
+					i = RecurSaveChild(root, prev, ++i);
 					continue;
 				}
+				//Standard save from parent
+				else
+				{
+						Json::Value subroot = SaveComponents(*entity);
+						root[i] = subroot;
+						i = RecurSaveChild(root, *entity, ++i);
+						continue;
+				}
+				//Standard no relationship
+				Json::Value subroot = SaveComponents(*entity);
+				root[i] = subroot;
 				++i;
 			}
 
@@ -233,6 +256,7 @@ namespace PogplantDriver
 
 		if (relationship)
 		{
+			bool is_another_parent = false;
 			auto& new_relation = m_ecs.GetReg().emplace<Relationship>(id);
 			int child = relationship.asInt();
 			//Starting case
@@ -257,14 +281,17 @@ namespace PogplantDriver
 				relationship_component->m_children.insert(id);
 				new_relation.m_parent = m_parent_id.top();
 				--m_child_counter.top();
-			
-				m_child_counter.push(child);
-				m_parent_id.push(id);
+				is_another_parent = true;
 			}
 			if (!m_child_counter.empty() && m_child_counter.top() <= 0)
 			{
 				m_child_counter.pop();
 				m_parent_id.pop();
+			}
+			if (is_another_parent)
+			{
+				m_child_counter.push(child);
+				m_parent_id.push(id);
 			}
 		}
 
