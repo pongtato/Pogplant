@@ -513,6 +513,8 @@ void Application::UpdateTransforms(float _Dt)
 					{
 						pSys.m_ActiveCount--;
 						std::swap(it, pSys.m_ParticlePool[pSys.m_ActiveCount]);
+						// Since we swapped got to update at this index again, else the particle will "flicker"
+						i--;
 						continue;
 					}
 
@@ -524,7 +526,7 @@ void Application::UpdateTransforms(float _Dt)
 					// Lerp
 					const float speedCalc = it.m_Speed.m_Max * (1 - curveSpeed) + it.m_Speed.m_Min * curveSpeed;
 					const float scaleCalc = it.m_Scale.m_Max * (1 - curveScale) + it.m_Scale.m_Min * curveScale;
-					const glm::vec3 scale = glm::vec3{ scaleCalc,scaleCalc,scaleCalc } *it.m_Scale.m_Multiplier;
+					const glm::vec3 scale = glm::vec3{ scaleCalc,scaleCalc,scaleCalc } * it.m_Scale.m_Multiplier;
 
 					// Update position
 					it.m_Velocity += _Dt* it.m_Force;
