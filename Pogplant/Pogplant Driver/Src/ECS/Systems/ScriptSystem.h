@@ -21,7 +21,6 @@
 
 #include "../ECS.h"
 //#include "../Entity.h"
-//#include "../ScriptBinder.h"
 #include "../Components/ScriptComponents.h"
 #include "../../Events/Events.h"
 
@@ -39,7 +38,7 @@ public:
 	void Init(ECS* ecs);
 	// Update loop
 	void Update(float dt);
-	void LateUpdate();
+	void LateUpdate(float dt);
 	static void SetReload(bool _isReload);
 
 	static ECS* GetECS() { return m_ecs; }

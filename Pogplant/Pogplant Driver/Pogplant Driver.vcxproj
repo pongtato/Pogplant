@@ -168,7 +168,6 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\Panels\InputPanel.cpp" />
     <ClCompile Include="Src\SceneHierarchy.cpp" />
-    <ClCompile Include="Src\ScriptBinder.cpp" />
     <ClCompile Include="Src\Serialiser\Serializer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -215,7 +214,6 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\Panels.h" />
     <ClInclude Include="Src\Panels\InputPanel.h" />
     <ClInclude Include="Src\SceneHierarchy.h" />
-    <ClInclude Include="Src\ScriptBinder.h" />
     <ClInclude Include="Src\Serialiser\Serializer.h" />
     <ClInclude Include="Src\Utils\ChronoTimer.h" />
     <ClInclude Include="Src\Utils\ChronoTimer.hpp">

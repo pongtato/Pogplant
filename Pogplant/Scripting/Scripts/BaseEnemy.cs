@@ -368,6 +368,11 @@ namespace Scripting
             //Destroy(this);
         }
 
+        public override void Init(ref uint _entityID)
+        {
+            entityID = _entityID;
+        }
+
         // Start is called before the first frame update
         public override void Start()
         {
@@ -379,7 +384,7 @@ namespace Scripting
         { }
 
         // Update is called once per frame
-        void LateUpdate()
+        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
             if (my_info == null)
                 Console.WriteLine("No enemy template info is found!");

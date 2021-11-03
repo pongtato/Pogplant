@@ -48,6 +48,11 @@ namespace Scripting
             fire_duration = current_fireDuration = 1.0f;
         }
 
+        public override void Init(ref uint _entityID)
+        {
+            entityID = _entityID;
+        }
+
         public override void Start()
         {
         }
@@ -110,11 +115,14 @@ namespace Scripting
         {
             Console.WriteLine("Turret has died");
 
+
             // This is a hardcoded way of destroying this instance, need to be replaced!
-            ECS.DestroyEntity(ECS.FindEntityWithName("Enemy"));
+
+            Console.WriteLine("Destroyed:" + entityID);
+            ECS.DestroyEntity(entityID);
         }
 
-        public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
+        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
         }
 

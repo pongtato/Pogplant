@@ -129,6 +129,11 @@ namespace Scripting
         public EnemyManager enemyManager { get; private set; }
         private float current_time = 0.0f;
         // Start is called before the first frame update
+        public override void Init(ref uint _entityID)
+        {
+            entityID = _entityID;
+        }
+
         public override void Start()
         {
             //enemyManager = GetComponent<EnemyManager>();
@@ -141,6 +146,11 @@ namespace Scripting
             current_time += dt;
             UpdateEncounterTimeline();
             UpdateSpawnedEncounters(dt);
+        }
+
+        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        {
+
         }
 
         public void AddEncounter(Encounter encounter)

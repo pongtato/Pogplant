@@ -37,6 +37,11 @@ namespace Scripting
 
         private bool lockRotation = false;
 
+        public override void Init(ref uint _entityID)
+        {
+            entityID = _entityID;
+        }
+
         // Start is called before the first frame update
         public override void Start()
         {
@@ -74,6 +79,11 @@ namespace Scripting
 
             for (int i = 0; i < waypoints.Length; ++i)
                 DebugDraw.DebugSphere(waypoints[i], Vector3.Zero(), 0.2f, 36);
+
+        }
+
+        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        {
 
         }
 

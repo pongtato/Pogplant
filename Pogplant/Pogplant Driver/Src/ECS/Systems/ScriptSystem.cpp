@@ -87,6 +87,7 @@ void ScriptSystem::Update(float dt)
 		{
 			if (scripts.second == false)
 			{
+				SSH::InvokeFunction(scripts.first, "Init", entity, static_cast<std::uint32_t>(entity));
 				SSH::InvokeFunction(scripts.first, "Start", entity);
 				scripts.second = true;
 				std::cout << "Entity [" << name.m_name << "] has started script [" << scripts.first << "]" << std::endl;
@@ -97,7 +98,7 @@ void ScriptSystem::Update(float dt)
 	}
 }
 
-void ScriptSystem::LateUpdate()
+void ScriptSystem::LateUpdate(float dt)
 {
 	auto entities = m_ecs->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
@@ -112,12 +113,13 @@ void ScriptSystem::LateUpdate()
 		{
 			if (scripts.second == false)
 			{
+				SSH::InvokeFunction(scripts.first, "Init", entity, static_cast<std::uint32_t>(entity));
 				SSH::InvokeFunction(scripts.first, "Start", entity);
 				scripts.second = true;
 				std::cout << "Entity [" << name.m_name << "] has started script [" << scripts.first << "]" << std::endl;
 			}
 
-			SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, rigidbody);
+			SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, rigidbody, dt);
 		}
 	}
 }

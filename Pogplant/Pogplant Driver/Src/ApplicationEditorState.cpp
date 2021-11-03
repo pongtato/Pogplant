@@ -61,7 +61,7 @@ void Application::UpdateEditorState(float c_dt)
 		}
 	}
 	m_sScriptSystem.Update(c_dt);
-	m_sScriptSystem.LateUpdate();
+	m_sScriptSystem.LateUpdate(c_dt);
 #else
 
 	m_sPhysicsSystem.UpdateEditor();

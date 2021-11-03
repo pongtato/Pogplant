@@ -42,6 +42,11 @@ namespace Scripting
             p_fireRate = 1 / 3.0f;
         }
 
+        public override void Init(ref uint _entityID)
+        {
+            entityID = _entityID;
+        }
+
         public override void Start()
         {
         }
@@ -212,7 +217,7 @@ namespace Scripting
             }
         }
 
-        public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
+        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
         }
 

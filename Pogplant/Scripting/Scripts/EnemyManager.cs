@@ -38,6 +38,11 @@ namespace Scripting
         public GameObject[] turret_false_bullet_pool; // object pool for false bullets.
         private Dictionary<string, Transform> waypoint_map; // a string to vector3 map for waypoints.
 
+        public override void Init(ref uint _entityID)
+        {
+            entityID = _entityID;
+        }
+
         // Start is called before the first frame update
         public override void Start()
         {
@@ -161,6 +166,10 @@ namespace Scripting
         }
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        {
+
+        }
+        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         { }
 
         // Given a location, enemy template and name of the enemy prefab this function will spawn an instance of an enemy.

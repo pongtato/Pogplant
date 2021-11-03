@@ -22,7 +22,11 @@ namespace Scripting
 {
     public abstract class MonoBehaviour
     {
+        public uint entityID;
+
+        public abstract void Init(ref uint _entityID);
         public abstract void Start();
         public abstract void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt);
+        public abstract void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt);
     }
 }
