@@ -179,25 +179,32 @@ void Application::InitialiseDebugObjects()
 	shipScripts["PlayerScript"] = false;
 	entity.AddComponent<Components::Scriptable>(shipScripts);
 	entity.AddComponent<Components::ParticleSystem>
+	(
+		ParticleSystem
 		(
-			ParticleSystem
-			(
-				glm::vec4{ 1,0,1,1 },
-				glm::vec3{ 0,0,0 },
-				0.005f, // Delay
-				0.69f,	// Min Life
-				1.00f,	// Max Life
-				0.42f,	// Min Scale
-				0.69f,	// Max Scale
+			glm::vec4{ 1,0,1,1 },
+			glm::vec3{ 0,0,0 },
+			glm::vec3{ 0,9.81f,0 },
+			0.005f, // Delay
+			0.69f,	// Min Life
+			1.00f,	// Max Life
+			{
 				21.0f,	// Min Speed
 				42.0f,	// Max Speed
-				420,	// Spawn Count
-				true,	// Loop
-				false,	// Gravity
-				true,	// Burst
-				true	// Lerp speed
-			)
-			);
+				1.0f,	// Min Speed Mult
+				4.2f,	// Max Speed Mult
+			},
+			{
+				0.42f,	// Min Scale
+				0.69f,	// Max Scale
+				1.0f,	// Min Scale Mult
+				4.2f,	// Max Scale Mult
+			},
+			420,	// Spawn Count
+			true,	// Loop
+			true 	// Burst
+		)
+	);
 
 	pos = { 7.5f, 7.5f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -308,7 +315,7 @@ void Application::InitialiseDebugObjects()
 	// Simulate inspector set texture
 	PP::TextureResource::UseTexture("rocks_diff.dds");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds")});
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
 
 	pos = { -0.55f, 0.2f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
@@ -348,7 +355,6 @@ void Application::BindEvents()
 
 	m_eventBus->listen(&SSH::OnTriggerEnterEvent);
 	m_eventBus->listen(&SSH::OnTriggerExitEvent);
-
 	m_eventBus->listen(&Scripting::OnTriggerEnterEvent);
 }
 
@@ -510,27 +516,25 @@ void Application::UpdateTransforms(float _Dt)
 						continue;
 					}
 
-					float t = it.m_Life / it.m_BaseLife;
+					float t = 1.0f - it.m_Life / it.m_BaseLife;
+					size_t index = static_cast<size_t>(t / it.m_IndexCalc);
+					const float curveSpeed = (*it.m_SpeedCurve)[index];
+					const float curveScale = (*it.m_ScaleCurve)[index];
+
+					// Lerp
+					const float speedCalc = it.m_Speed.m_Max * (1 - curveSpeed) + it.m_Speed.m_Min * curveSpeed;
+					const float scaleCalc = it.m_Scale.m_Max * (1 - curveScale) + it.m_Scale.m_Min * curveScale;
+					const glm::vec3 scale = glm::vec3{ scaleCalc,scaleCalc,scaleCalc } *it.m_Scale.m_Multiplier;
+
 					// Update position
-					if (it.m_Gravity)
-					{
-						it.m_Velocity.y -= _Dt * 9.81f;
-					}
-
+					it.m_Velocity += _Dt* it.m_Force;
 					glm::vec3 currVel = it.m_Velocity;
-					// Update lerp speed
-					if (it.m_LerpSpeed)
-					{
-						// Ease in
-						t = sinf(t * 3.14f * 0.25f);
-						currVel = it.m_MinVelocity * (1 - t) + it.m_Velocity * t;
-					}
 
-					it.m_Position += currVel * _Dt;
+					it.m_Position += currVel * _Dt * speedCalc * it.m_Speed.m_Multiplier; // Speed here is the multiplier randomned 
 
 					glm::mat4 model = glm::mat4{ 1 };
 					model = glm::translate(model, it.m_Position);
-					model = glm::scale(model, it.m_Scale);
+					model = glm::scale(model, scale);
 					PP::MeshInstance::SetInstance(PP::InstanceData{ model, it.m_Color, it.m_TexID, false });
 				}
 			}

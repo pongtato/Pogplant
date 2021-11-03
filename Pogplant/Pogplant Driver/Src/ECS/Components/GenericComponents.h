@@ -211,70 +211,98 @@ namespace Components
 
 	struct Particle
 	{
+		struct CurveVariable
+		{
+			float m_Min;
+			float m_Max;
+			float m_Multiplier;
+		};
+
+		// Reference to particle system to determine curve
+		std::vector <float>* m_SpeedCurve;
+		std::vector <float>* m_ScaleCurve;
 		glm::vec4 m_Color;
 		glm::vec3 m_Position;
 		glm::vec3 m_Velocity;
 		glm::vec3 m_MinVelocity;
-		glm::vec3 m_BaseScale;
-		glm::vec3 m_Scale;
+		glm::vec3 m_Force;
+		CurveVariable m_Speed;
+		CurveVariable m_Scale;
 		int m_TexID;
 		float m_BaseLife;
 		float m_Life;
-		bool m_Gravity;
-		bool m_LerpSpeed;
+		float m_IndexCalc;
 	};
 
 	struct ParticleSystem
 	{
+		struct CurveVariable
+		{
+			CurveVariable(float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax)
+				: m_CurveData{}
+				, m_CurvePoints{}
+				, m_CurveMin{ _CurveMin }
+				, m_CurveMax{ _CurveMax }
+				, m_MultiplierMin{ _MultiMin }
+				, m_MultiplierMax{ _MultiMax }
+			{
+			};
+
+			enum { m_MaxPoints = 9, m_DataPoints = 128 };
+			std::vector<float> m_CurveData;
+			// For editor
+			ImVec2 m_CurvePoints[m_MaxPoints];
+
+			float m_MultiplierMin;
+			float m_MultiplierMax;
+
+			float m_CurveMin;
+			float m_CurveMax;
+		};
+
 		ParticleSystem
 		(
 			glm::vec4 _Color,
 			glm::vec3 _SpawnDir,
+			glm::vec3 _Force,
 			float _Delay,
 			float _MinLife,
 			float _MaxLife,
-			float _MinScale,
-			float _MaxScale,
-			float _MinSpeed,
-			float _MaxSpeed,
+			CurveVariable _Speed,
+			CurveVariable _Scale,
 			int _SpawnCount,
 			bool _Loop,
-			bool _Gravity,
-			bool _Burst,
-			bool _LerpSpeed
-		) 
+			bool _Burst
+		)
 			: m_Color{ _Color }
 			, m_SpawnDirection{ _SpawnDir }
+			, m_Force{ _Force }
+			, m_Speed{ _Speed }
+			, m_Scale{ _Scale }
 			, m_Delay{ _Delay }
 			, m_Timer{ 0 }
 			, m_MinLife{ _MinLife }
 			, m_MaxLife{ _MaxLife }
-			, m_MinScale{ _MinScale }
-			, m_MaxScale{ _MaxScale }
-			, m_MinSpeed{ _MinSpeed }
-			, m_MaxSpeed{ _MaxSpeed }
 			, m_ActiveCount{ 0 }
 			, m_SpawnCount{ _SpawnCount }
-			, m_Gravity{ _Gravity }
 			, m_Loop{ _Loop }
 			, m_Done{ false }
 			, m_Burst{ _Burst }
-			, m_LerpSpeed{ _LerpSpeed }
 		{
-			const size_t second_last = m_MaxPoints - 1;
+			const size_t second_last = _Speed.m_MaxPoints - 2;
 			const float increment = 1.0f / second_last;
 			// Init curve vertices
 			for (size_t i = 0; i < second_last; i++)
 			{
 				float currX = i * increment;
-				m_SpeedCurvePoints[i] = { currX, 1.0f };
-				m_ScaleCurvePoints[i] = { currX, 1.0f };
+				m_Speed.m_CurvePoints[i] = { currX, 1.0f };
+				m_Scale.m_CurvePoints[i] = { currX, 1.0f };
 			}
-			m_SpeedCurvePoints[second_last] = { 1.0f, 1.0f };
-			m_ScaleCurvePoints[second_last] = { 1.0f, 1.0f };
+			m_Speed.m_CurvePoints[second_last] = { 1.0f, 1.0f };
+			m_Scale.m_CurvePoints[second_last] = { 1.0f, 1.0f };
 
-			m_SpeedCurveData.resize(m_DataPoints);
-			m_ScaleCurveData.resize(m_DataPoints);
+			m_Speed.m_CurveData.resize(m_Speed.m_DataPoints);
+			m_Scale.m_CurveData.resize(m_Scale.m_DataPoints);
 		}
 
 		void Spawn(glm::vec3 _Position, glm::vec3 _Direction)
@@ -285,53 +313,55 @@ namespace Components
 				m_ParticlePool.resize(m_ParticlePool.size() + 1 * 2);
 			}
 
-			float speed = glm::linearRand(m_MinSpeed, m_MaxSpeed);
+			float speedMult = glm::linearRand(m_Speed.m_MultiplierMin, m_Speed.m_MultiplierMax);
 			float life = glm::linearRand(m_MinLife, m_MaxLife);
-			float scale = glm::linearRand(m_MinScale, m_MaxScale);
+			float scaleMult = glm::linearRand(m_Scale.m_MultiplierMin, m_Scale.m_MultiplierMax);
 
 			// Update at end of pool
 			m_ParticlePool[m_ActiveCount] =
 				Particle
 			{
+				&m_Speed.m_CurveData,
+				&m_Scale.m_CurveData,
 				m_Color,
 				_Position,
-				_Direction * speed,
+				_Direction,
 				glm::vec3{0},
-				glm::vec3{scale},
-				glm::vec3{scale},
+				m_Force,
+				{
+					m_Speed.m_CurveMin,
+					m_Speed.m_CurveMax,
+					speedMult
+				},
+				{
+					m_Scale.m_CurveMin,
+					m_Scale.m_CurveMax,
+					scaleMult
+				},
 				-1,
 				life,
 				life,
-				m_Gravity,
-				m_LerpSpeed,
+				1.0f / m_Speed.m_CurveData.size(),
 			};
 
 			m_ActiveCount++;
 		}
 
-		enum { m_MaxPoints = 8, m_DataPoints = 128 };
 		std::vector<Particle> m_ParticlePool;
-		std::vector<float> m_SpeedCurveData;
-		std::vector<float> m_ScaleCurveData;
 		glm::vec4 m_Color;
 		glm::vec3 m_SpawnDirection;
-		ImVec2 m_SpeedCurvePoints[m_MaxPoints];
-		ImVec2 m_ScaleCurvePoints[m_MaxPoints];
+		glm::vec3 m_Force;
+		CurveVariable m_Speed;
+		CurveVariable m_Scale;
 		float m_Delay;
 		float m_Timer;
 		float m_MinLife;
 		float m_MaxLife;
-		float m_MinScale;
-		float m_MaxScale;
-		float m_MinSpeed;
-		float m_MaxSpeed;
 		int m_ActiveCount;
 		int m_SpawnCount;
-		bool m_Gravity;
 		bool m_Loop;
 		bool m_Done;
 		bool m_Burst;
-		bool m_LerpSpeed;
 	};
 
 	struct Canvas

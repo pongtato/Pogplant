@@ -462,7 +462,7 @@ namespace ImGui
         return points[left].y + (points[left + 1].y - points[left].y) * d;
     }
 
-    int Curve(const char *label, const ImVec2& size, const int maxpoints, ImVec2 *points, std::vector<float>& weights)
+    int Curve(const char *label, const ImVec2& size, const int maxpoints, ImVec2 *points, std::vector<float>& weights, int& item)
     {
         int modified = 0;
         int i;
@@ -479,7 +479,6 @@ namespace ImGui
         }
 
         ImGuiWindow* window = GetCurrentWindow();
-        //ImGuiState& g = *GImGui;
 
         ImGuiContext& g = *ImGui::GetCurrentContext();
         const ImGuiStyle& style = g.Style;
@@ -488,11 +487,14 @@ namespace ImGui
             return 0;
 
         ImRect bb(window->DC.CursorPos, window->DC.CursorPos + size);
-        ItemSize(bb);
+        ImRect windowScaled = bb;
+        // Slightly larger clickable area
+        windowScaled.Expand({ 20.0f,10.0f });
+        ItemSize(windowScaled);
         if (!ItemAdd(bb, NULL))
             return 0;
 
-        const bool hovered = ImGui::ItemHoverable(bb, id);
+        const bool hovered = ImGui::ItemHoverable(windowScaled, id);
 
         int max = 0;
         while (max < maxpoints && points[max].x >= 0) max++;
@@ -528,8 +530,18 @@ namespace ImGui
         float ht = bb.Max.y - bb.Min.y;
         float wd = bb.Max.x - bb.Min.x;
 
+        char buf[128];
+        const char* str = "Pos: _ , _";
+
         if (hovered)
         {
+            if( hovered ) 
+            {
+                //ImVec2 pos = (g.IO.MousePos - bb.Min) / (bb.Max - bb.Min);
+                //pos.y = 1 - pos.y;
+
+            }
+
             SetHoveredID(id);
             if (g.IO.MouseDown[0])
             {
@@ -548,6 +560,14 @@ namespace ImGui
                 int sel = -1;
                 if (p1d < (1 / 16.0)) sel = left;
                 if (p2d < (1 / 16.0)) sel = left + 1;
+
+                pos.x = pos.x <= 0 ? 0 : pos.x;
+                pos.y = pos.y <= 0 ? 0 : pos.y;
+                pos.x = pos.x >= 1 ? 1 : pos.x;
+                pos.y = pos.y >= 1 ? 1 : pos.y;
+
+                sprintf(buf, "Pos: %f , %f", pos.x, pos.y);
+                str = buf;
 
                 if (sel != -1)
                 {
@@ -613,10 +633,10 @@ namespace ImGui
             float qy = 1 - CurveValueSmooth(qx, maxpoints, points);
             ImVec2 p( px * (bb.Max.x - bb.Min.x) + bb.Min.x, py * (bb.Max.y - bb.Min.y) + bb.Min.y);
             ImVec2 q( qx * (bb.Max.x - bb.Min.x) + bb.Min.x, qy * (bb.Max.y - bb.Min.y) + bb.Min.y);
-            window->DrawList->AddLine(p, q, GetColorU32(ImGuiCol_PlotLines));
+            window->DrawList->AddLine(p, q, GetColorU32(ImGuiCol_CheckMark), 2.0f);
             weights[i] = qy;
         } 
-
+        
         // lines
         for (i = 1; i < max; i++)
         {
@@ -626,7 +646,7 @@ namespace ImGui
             b.y = 1 - b.y;
             a = a * (bb.Max - bb.Min) + bb.Min;
             b = b * (bb.Max - bb.Min) + bb.Min;
-            window->DrawList->AddLine(a, b, GetColorU32(ImGuiCol_PlotLinesHovered));
+            window->DrawList->AddLine(a, b, GetColorU32(ImGuiCol_PlotLines), 0.5f);
         }
 
         if (hovered)
@@ -637,21 +657,8 @@ namespace ImGui
                 ImVec2 p = points[i];
                 p.y = 1 - p.y;
                 p = p * (bb.Max - bb.Min) + bb.Min;
-                ImVec2 a = p - ImVec2(8, 8);
-                ImVec2 b = p + ImVec2(8, 8);
-                window->DrawList->AddRect(a, b, GetColorU32(ImGuiCol_PlotLinesHovered));
+                window->DrawList->AddCircle(p, 10.0f, GetColorU32(ImGuiCol_CheckMark));
             }
-        }
-
-        char buf[128];
-        const char *str = "Pos: -,-";
-
-        if( hovered ) {
-            ImVec2 pos = (g.IO.MousePos - bb.Min) / (bb.Max - bb.Min);
-            pos.y = 1 - pos.y;              
-
-            sprintf(buf, "Pos: %f,%f", pos.x, pos.y );
-            str = buf;
         }
 
         RenderTextClipped(ImVec2(bb.Min.x, bb.Min.y + style.FramePadding.y), bb.Max, "0,1", NULL, NULL, { 0.0,0.0 });
@@ -715,7 +722,6 @@ namespace ImGui
             "SinPi2",
             "Swing"
         };
-        static int item = 0;
         if (modified) {
             item = 0;
         }

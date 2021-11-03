@@ -1720,16 +1720,23 @@ namespace PogplantDriver
 
 				ImGui::Dummy(ImVec2(0.0f, 1.0f));
 				ImGui::Text("Min. Life");
-				ImGui::DragFloat("###Min. Life", &pSystem->m_MinLife);
+				ImGui::DragFloat("###Min. Life", &pSystem->m_MinLife, 0.01f);
 				ImGui::Text("Max. Life");
-				ImGui::DragFloat("###Max. Life", &pSystem->m_MaxLife);
+				ImGui::DragFloat("###Max. Life", &pSystem->m_MaxLife, 0.01f);
 				ImGui::NewLine();
 
 				// Direction
 				ImGui::Text("Direction");
 				toolTip = "Spawn direction. that particles will move in";
 				ToolTipHelper(toolTip.c_str(), true);
-				ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x);
+				ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
+				ImGui::NewLine();
+
+				// Force
+				ImGui::Text("Force");
+				toolTip = "Force applied over time";
+				ToolTipHelper(toolTip.c_str(), true);
+				ImGui::DragFloat3("###Force Direction", &pSystem->m_Force.x, 0.01f);
 				ImGui::NewLine();
 
 				// Delay
@@ -1738,11 +1745,6 @@ namespace PogplantDriver
 				ToolTipHelper(toolTip.c_str(), true);
 				ImGui::DragFloat("###SetDelay", &pSystem->m_Delay, 0.01f, 0.0f);
 				ImGui::NewLine();
-
-				// Gravity
-				ImGui::Text("Gravity");
-				ImGui::SameLine();
-				ImGui::Checkbox("###UseGravity", &pSystem->m_Gravity);
 
 				// Loop
 				ImGui::Text("Loop");
@@ -1763,12 +1765,17 @@ namespace PogplantDriver
 
 					ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					ImGui::Text("Min. Speed");
-					ImGui::DragFloat("###Min. Speed", &pSystem->m_MinSpeed);
+					ImGui::InputFloat("###Min. Speed", &pSystem->m_Speed.m_CurveMin, 0.01f);
 					ImGui::Text("Max. Speed");
-					ImGui::DragFloat("###Max. Speed", &pSystem->m_MaxSpeed);
+					ImGui::InputFloat("###Max. Speed", &pSystem->m_Speed.m_CurveMax, 0.01f);
+					ImGui::Text("Min. Speed Multiplier");
+					ImGui::DragFloat("###Min. Speed Multiplier", &pSystem->m_Speed.m_MultiplierMin, 0.01f);
+					ImGui::Text("Max. Speed Multiplier");
+					ImGui::DragFloat("###Max. Speed Multiplier", &pSystem->m_Speed.m_MultiplierMax, 0.01f);
 					ImGui::Text("Speed Curve");
 					ImGui::Dummy(ImVec2(0.0f, 1.0f));
-					ImGui::Curve("Speed", { ImGui::GetContentRegionMax().x * 0.85f,256 }, pSystem->m_MaxPoints, pSystem->m_SpeedCurvePoints, pSystem->m_SpeedCurveData);
+					static int speedItem = 0;
+					ImGui::Curve("Speed", { ImGui::GetContentRegionMax().x * 0.85f,256 }, pSystem->m_Speed.m_MaxPoints - 1, pSystem->m_Speed.m_CurvePoints, pSystem->m_Speed.m_CurveData, speedItem);
 					ImGui::TreePop();
 					ImGui::NewLine();
 				}
@@ -1785,12 +1792,17 @@ namespace PogplantDriver
 
 					ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					ImGui::Text("Min. Scale");
-					ImGui::DragFloat("###Min. Scale", &pSystem->m_MinScale);
+					ImGui::DragFloat("###Min. Scale", &pSystem->m_Scale.m_CurveMin, 0.01f);
 					ImGui::Text("Max. Scale");
-					ImGui::DragFloat("###Max. Scale", &pSystem->m_MaxScale);
+					ImGui::DragFloat("###Max. Scale", &pSystem->m_Scale.m_CurveMax, 0.01f);
+					ImGui::Text("Min. Scale Multiplier");
+					ImGui::DragFloat("###Min. Scale Multiplier", &pSystem->m_Scale.m_MultiplierMin, 0.01f);
+					ImGui::Text("Max. Scale Multiplier");
+					ImGui::DragFloat("###Max. Scale Multiplier", &pSystem->m_Scale.m_MultiplierMax, 0.01f);
 					ImGui::Text("Scale Curve");
 					ImGui::Dummy(ImVec2(0.0f, 1.0f));
-					ImGui::Curve("Scale", { ImGui::GetContentRegionMax().x * 0.85f,256 }, pSystem->m_MaxPoints, pSystem->m_ScaleCurvePoints, pSystem->m_ScaleCurveData);
+					static int scaleItem = 0;
+					ImGui::Curve("Scale", { ImGui::GetContentRegionMax().x * 0.85f,256 }, pSystem->m_Scale.m_MaxPoints - 1, pSystem->m_Scale.m_CurvePoints, pSystem->m_Scale.m_CurveData, scaleItem);
 					ImGui::TreePop();
 				}
 				else
