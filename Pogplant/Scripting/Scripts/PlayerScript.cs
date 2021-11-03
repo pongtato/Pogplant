@@ -25,6 +25,9 @@ namespace Scripting
     {
 
         public float movement_speed = 50.0f;
+        //Player Firing 
+        float p_fireRate;
+        float p_fire_timer = 0.0f;
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
         //public List<uint> entityIDList = new List<uint>();
@@ -36,6 +39,7 @@ namespace Scripting
 
         public PlayerScript()
         {
+            p_fireRate = 1 / 3.0f;
         }
 
         public override void Start()
@@ -195,6 +199,16 @@ namespace Scripting
                         GameUtilities.FollowPlayerCam(force_dir);
                         break;
                     }
+            }
+            p_fire_timer += dt;
+            if ((InputUtility.onKeyTriggered(KEY_ID.KEY_T) || (InputUtility.onKeyHeld(KEY_ID.KEY_T))))
+            {
+                if (p_fire_timer >= p_fireRate)
+                {
+                    // Call C++ side bullet firing
+                    GameUtilities.FirePlayerBullet(transform.Position, transform.Rotation);
+                    p_fire_timer = 0.0f;
+                }
             }
         }
 

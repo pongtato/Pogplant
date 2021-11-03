@@ -39,11 +39,6 @@ namespace Scripting
             return new FollowSpline();
         }
 
-        public static PlayerFire PlayerFire()
-        {
-            return new PlayerFire();
-        }
-
         public static EnemyManager EnemyManager()
         {
             return new EnemyManager();

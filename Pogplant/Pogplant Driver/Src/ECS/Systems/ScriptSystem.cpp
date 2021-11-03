@@ -167,7 +167,6 @@ void ScriptSystem::LoadMemory()
 				{
 					ScriptResource::m_scriptNames.push_back("PlayerScript");
 					ScriptResource::m_scriptNames.push_back("FollowSpline");
-					ScriptResource::m_scriptNames.push_back("PlayerFire");
 					ScriptResource::m_scriptNames.push_back("EnemyManager");
 					ScriptResource::m_scriptNames.push_back("EncounterManager");
 					ScriptResource::m_scriptNames.push_back("BaseTurret");
