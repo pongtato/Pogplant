@@ -159,7 +159,7 @@ namespace Scripting
                 //Console.WriteLine("S key is released");
             }
 
-            float horizontal_input = (InputUtility.onKeyHeld("LEFT") ? -1.0f : 0.0f) + (InputUtility.onKeyHeld("RIGHT") ? 1.0f : 0.0f);
+            float horizontal_input = (InputUtility.onKeyHeld("RIGHT") ? -1.0f : 0.0f) + (InputUtility.onKeyHeld("LEFT") ? 1.0f : 0.0f);
             float vertical_input = (InputUtility.onKeyHeld(KEY_ID.KEY_W) ? 1.0f : 0.0f) + (InputUtility.onKeyHeld(KEY_ID.KEY_S) ? -1.0f : 0.0f);
 
             Vector3 force_dir = new Vector3(horizontal_input, vertical_input, 0) * movement_speed * dt; // 32 is magic number
@@ -170,16 +170,16 @@ namespace Scripting
                 //Out of X bounds
                 case 1:
                     {
-                        Console.WriteLine("OUTOFBOUNDDDDxxxx");
                         float newX = transform.Position.X - force_dir.X;
                         transform.Position = new Vector3(newX, transform.Position.Y, transform.Position.Z);
+                        GameUtilities.FollowPlayerCam(new Vector3(0, force_dir.Y, 0));
                         break;
                     }
                 case 2:
                     {
-                        Console.WriteLine("OUTOFBOUNDDDDyyyy");
                         float newY = transform.Position.Y - force_dir.Y;
                         transform.Position = new Vector3(transform.Position.X, newY, transform.Position.Z);
+                        GameUtilities.FollowPlayerCam(new Vector3(force_dir.X, 0, 0));
                         break;
                     }
                 case 3:
@@ -187,16 +187,15 @@ namespace Scripting
                         float newX = transform.Position.X - force_dir.X;
                         float newY = transform.Position.Y - force_dir.Y;
                         transform.Position = new Vector3(newX, newY, transform.Position.Z);
+                        GameUtilities.FollowPlayerCam(new Vector3(0));
                         break;
                     }
                 default:
                     {
-                        //Console.WriteLine("Nothing");
+                        GameUtilities.FollowPlayerCam(force_dir);
                         break;
                     }
             }
-            //if (rigidbody.velocity <= movement_speed)
-
         }
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
