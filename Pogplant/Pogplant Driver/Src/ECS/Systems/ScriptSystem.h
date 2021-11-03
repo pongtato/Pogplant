@@ -39,10 +39,10 @@ public:
 	// Update loop
 	void Update(float dt);
 	void LateUpdate(float dt);
-	static void SetReload(bool _isReload);
 
+	static void SetReload(bool _isReload);
 	static ECS* GetECS() { return m_ecs; }
-	
+
 private:
 
 	// Helper function to find the monomethod in monoclass
@@ -53,11 +53,14 @@ private:
 	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params = -1);
 	void BindFunctions();
 
+	void AddScriptToEntity(const entt::entity& entity);
+
 	static ECS* m_ecs;
 	// Mono Stuff to save
 	MonoDomain* m_ptrMonoDomain = nullptr;
 	MonoAssembly* m_ptrGameAssembly = nullptr;
 	MonoImage* m_ptrGameAssemblyImage = nullptr;
+	MonoClass* m_ptrMainEntryClass = nullptr;
 
 	const std::string m_namespace{ "Scripting" };
 	static bool isReload;

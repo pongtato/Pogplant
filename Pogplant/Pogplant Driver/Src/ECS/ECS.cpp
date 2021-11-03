@@ -1,5 +1,6 @@
 #include "ECS.h"
 #include "Entity.h"
+#include "Systems/ScriptResource.h"
 
 using namespace Components;
 
@@ -53,7 +54,7 @@ entt::registry& ECS::GetReg()
 void ECS::DestroyEntity(entt::entity entity)
 {
 	auto _r = m_registry.try_get<Relationship>(entity);
-
+	auto _s = m_registry.try_get<Scriptable>(entity);
 	//destory childrens first
 	if (_r)
 	{
@@ -77,6 +78,12 @@ void ECS::DestroyEntity(entt::entity entity)
 		}
 	}
 
+	// Clear from the Script resource pool
+	if (_s)
+	{
+		ScriptResource::RemoveEntity(entity);
+	}
+	
 	//destroy itself
 	m_registry.destroy(entity, 0);
 

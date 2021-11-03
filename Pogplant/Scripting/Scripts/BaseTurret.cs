@@ -51,6 +51,7 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+            Console.WriteLine("Enemy ID:" + entityID);
         }
 
         public override void Start()
@@ -108,7 +109,7 @@ namespace Scripting
             if (health <= 0)
                 HandleDeath();
 
-            Console.WriteLine("Turret took damage, health is now: " + health);
+            Console.WriteLine("Turret took damage, health is now: " + health + "Entity ID: " + entityID);
         }
 
         void HandleDeath()
@@ -124,6 +125,7 @@ namespace Scripting
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
+            //Console.WriteLine("MY CURRENT ID IS:" + entityID);
         }
 
         public void FixedUpdate()

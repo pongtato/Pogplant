@@ -105,12 +105,12 @@ namespace PogplantDriver
 					continue;
 				}
 				//Standard save from parent
-				else
+				else if(relationship_component)
 				{
-						Json::Value subroot = SaveComponents(*entity);
-						root[i] = subroot;
-						i = RecurSaveChild(root, *entity, ++i);
-						continue;
+					Json::Value subroot = SaveComponents(*entity);
+					root[i] = subroot;
+					i = RecurSaveChild(root, *entity, ++i);
+					continue;
 				}
 				//Standard no relationship
 				Json::Value subroot = SaveComponents(*entity);

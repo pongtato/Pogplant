@@ -308,5 +308,8 @@
     <ClInclude Include="..\Libs\IMGUI\imgui_curve.hpp">
       <Filter>Source Files\Imgui</Filter>
     </ClInclude>
+    <ClInclude Include="Src\ECS\Systems\ScriptSystemHelper.hpp">
+      <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

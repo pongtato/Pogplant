@@ -745,7 +745,7 @@ namespace PogplantDriver
 
 					if (ImGui::CollapsingHeader(ICON_FA_SCROLL "  Active Scripts", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
 					{	
-						for (auto& scriptName : ScriptResource::m_scriptNames)
+						for (auto& scriptName : ScriptResource::m_allScriptNames)
 						{
 							bool hasScript = scripts_com->m_ScriptTypes.contains(scriptName);
 							bool setScript = hasScript;

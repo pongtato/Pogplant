@@ -82,8 +82,8 @@ namespace Scripting
 
 	void PlayerProjectileCollision(entt::entity& object, entt::entity& other)
 	{
-		auto player_projectile_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(object);
-		auto enemy_object_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(other);
+		const auto& player_projectile_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(object);
+		const auto& enemy_object_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(other);
 
 		if (player_projectile_script && enemy_object_script)
 		{

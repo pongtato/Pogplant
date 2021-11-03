@@ -76,7 +76,7 @@ namespace SSH
 
 	void InvokeFunction(const std::string& scriptName, const std::string& funcName, const entt::entity& entity)
 	{
-		MonoObject* monoObj = ScriptResource::m_MonoObjects[scriptName]->m_MonoObject;
+		MonoObject* monoObj = ScriptResource::m_MonoObjects[entity][scriptName]->m_MonoObject;
 		if (!monoObj)
 		{
 			// Maybe log something here

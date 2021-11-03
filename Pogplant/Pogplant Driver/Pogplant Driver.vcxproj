@@ -203,6 +203,10 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\ECS\Systems\PhysicsSystem.h" />
     <ClInclude Include="Src\ECS\Systems\ScriptSystem.h" />
     <ClInclude Include="Src\ECS\Systems\ScriptSystemHelper.h" />
+    <ClInclude Include="Src\ECS\Systems\ScriptSystemHelper.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Src\Events\Events.h" />
     <ClInclude Include="Src\Events\EventSystem.h" />
     <ClInclude Include="Src\FileHandler.h" />
