@@ -1,6 +1,6 @@
 ﻿/*****************************************************************************/
 /*!
-\file	EnemyScript.cs
+\file	BaseTurret.cs
 \author Clarence Chye Min Liang
 \par	email: chye.m\@digipen.edu
 \author Ng Tian Kiat
@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 namespace Scripting
 {
     // Enemy script class
-    public class EnemyScript : MonoBehaviour
+    public class BaseTurret : MonoBehaviour
     {
         public Transform[] muzzle_transforms = new Transform[4];
         public float health = 20;
@@ -39,7 +39,7 @@ namespace Scripting
         int currentBulletInterval = 0;
 
         bool isInit = false;
-        public EnemyScript()
+        public BaseTurret()
         {
             // initialize private variables here
 
@@ -79,7 +79,9 @@ namespace Scripting
                     for (int i = 0; i < muzzle_transforms.Length; ++i)
                     {
                         // Call C++ side bullet firing
-                        GameUtilities.FireEnemyBullet(transform.Position, transform.Rotation);
+                        // hard coded muzzle position
+                        Vector3 offset = new Vector3(0.0f, -1.076f, 0.454f);
+                        GameUtilities.FireEnemyBullet(transform.Position + offset, transform.Rotation);
                     }
                     fire_timer = 0.0f;
                 }
@@ -92,6 +94,19 @@ namespace Scripting
         {
             if (!isFiring)
                 isFiring = true;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            if (health > 0)
+                health -= damage;
+            if (health <= 0)
+                HandleDeath();
+        }
+
+        void HandleDeath()
+        {
+            Console.WriteLine("Turret has died");
         }
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)

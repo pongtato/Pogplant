@@ -280,6 +280,39 @@ void ScriptSystem::OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> o
 	}
 }
 
+void ScriptSystem::CallTakeDamageFunction(float damage, entt::entity& target)
+{
+	auto scriptable = m_ecs->GetReg().try_get<Components::Scriptable>(target);
+
+	if (scriptable)
+	{
+		for (auto& scripts : scriptable->m_ScriptTypes)
+		{
+			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
+			if (!monoObj)
+			{
+				// Maybe log something here
+				std::cout << "Script: " << scripts.first << " not found" << std::endl;
+				continue;
+			}
+
+			MonoClass* klass = mono_object_get_class(monoObj);
+			if (!klass)
+			{
+				// Maybe log something here
+				std::cout << "MonoClass not found" << std::endl;
+			}
+
+			MonoMethod* method = FindMethod(klass, "TakeDamage");
+			if (method)
+			{
+				void* args[] = { &damage };
+				mono_runtime_invoke(method, monoObj, args, nullptr);
+			}
+		}
+	}
+}
+
 MonoMethod* ScriptSystem::FindMethod(MonoClass* klass,const std::string& methodName, int params)
 {
 	MonoMethod* method = mono_class_get_method_from_name(klass, methodName.c_str(), params);
@@ -321,7 +354,7 @@ void ScriptSystem::LoadMemory()
 				if (monoMainClass)
 				{
 					m_scriptNames.push_back("PlayerScript");
-					m_scriptNames.push_back("EnemyScript");
+					m_scriptNames.push_back("BaseTurret");
 					m_scriptNames.push_back("FollowSpline");
 					m_scriptNames.push_back("PlayerFire");
 

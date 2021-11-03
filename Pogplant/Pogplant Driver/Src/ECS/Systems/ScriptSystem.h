@@ -50,6 +50,8 @@ public:
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
 	void OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent);
 
+	void CallTakeDamageFunction(float damage, entt::entity& target);
+
 	std::vector<std::string> m_scriptNames;
 	static ECS* GetECS() { return m_ecs; }
 

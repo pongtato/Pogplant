@@ -68,6 +68,7 @@ namespace Scripting
 
 	}
 
+
 	void PlayerProjectileCollision(entt::entity& object, entt::entity& other)
 	{
 		auto player_projectile_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(object);
@@ -75,10 +76,11 @@ namespace Scripting
 
 		if (player_projectile_script && enemy_object_script)
 		{
-			bool enemy = enemy_object_script->m_ScriptTypes.contains("EnemyScript");
+			bool enemy = enemy_object_script->m_ScriptTypes.contains("BaseTurret");
 			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy)
 			{
 				GameplayECS::m_GameScriptECS->DestroyEntity(object);
+				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
 			}
 		}
 	}

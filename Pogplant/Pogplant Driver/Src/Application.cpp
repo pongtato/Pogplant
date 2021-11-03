@@ -207,7 +207,7 @@ void Application::InitialiseDebugObjects()
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
 	std::unordered_map<std::string, bool> enemyScripts;
-	enemyScripts["EnemyScript"] = false;
+	enemyScripts["BaseTurret"] = false;
 	entity.AddComponent<Components::Scriptable>(enemyScripts);
 
 	/// Light

@@ -29,9 +29,9 @@ namespace Scripting
             return new PlayerScript();
         }
 
-        public static EnemyScript EnemyScript()
+        public static BaseTurret BaseTurret()
         {
-            return new EnemyScript();
+            return new BaseTurret();
         }
 
         public static FollowSpline FollowSpline()
