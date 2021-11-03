@@ -166,9 +166,12 @@ void ScriptSystem::LoadMemory()
 				if (monoMainClass)
 				{
 					ScriptResource::m_scriptNames.push_back("PlayerScript");
-					ScriptResource::m_scriptNames.push_back("BaseTurret");
 					ScriptResource::m_scriptNames.push_back("FollowSpline");
 					ScriptResource::m_scriptNames.push_back("PlayerFire");
+					ScriptResource::m_scriptNames.push_back("EnemyManager");
+					ScriptResource::m_scriptNames.push_back("EncounterManager");
+					ScriptResource::m_scriptNames.push_back("BaseTurret");
+					ScriptResource::m_scriptNames.push_back("BaseEnemy");
 
 					for (auto& scriptName : ScriptResource::m_scriptNames)
 					{

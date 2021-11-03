@@ -51,8 +51,11 @@
     <Compile Include="Components\Components.cs" />
     <Compile Include="ECS\ECS.cs" />
     <Compile Include="ECS\GameObject.cs" />
+    <Compile Include="Scripts\BaseEnemy.cs" />
     <Compile Include="Scripts\BaseTurret.cs" />
     <Compile Include="Scripts\CatmullRomSpline.cs" />
+    <Compile Include="Scripts\EncounterManager.cs" />
+    <Compile Include="Scripts\EnemyManager.cs" />
     <Compile Include="Scripts\FollowSpline.cs" />
     <Compile Include="Scripts\MonoBehaviour.cs" />
     <Compile Include="Scripts\PlayerFire.cs" />

@@ -102,11 +102,16 @@ namespace Scripting
                 health -= damage;
             if (health <= 0)
                 HandleDeath();
+
+            Console.WriteLine("Turret took damage, health is now: " + health);
         }
 
         void HandleDeath()
         {
             Console.WriteLine("Turret has died");
+
+            // This is a hardcoded way of destroying this instance, need to be replaced!
+            ECS.DestroyEntity(ECS.FindEntityWithName("Enemy"));
         }
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)

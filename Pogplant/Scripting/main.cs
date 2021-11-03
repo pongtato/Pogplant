@@ -43,5 +43,20 @@ namespace Scripting
         {
             return new PlayerFire();
         }
+
+        public static EnemyManager EnemyManager()
+        {
+            return new EnemyManager();
+        }
+
+        public static BaseEnemy BaseEnemy()
+        {
+            return new BaseEnemy();
+        }
+
+        public static EncounterManager EncounterManager()
+        {
+            return new EncounterManager();
+        }
     }
 }
