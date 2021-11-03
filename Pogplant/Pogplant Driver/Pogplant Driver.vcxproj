@@ -180,6 +180,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="..\Libs\IMGUI\imconfig.h" />
     <ClInclude Include="..\Libs\IMGUI\imgui.h" />
     <ClInclude Include="..\Libs\IMGUI\ImGuiExtraStyles.h" />
+    <ClInclude Include="..\Libs\IMGUI\imgui_curve.hpp" />
     <ClInclude Include="..\Libs\IMGUI\imgui_impl_glfw.h" />
     <ClInclude Include="..\Libs\IMGUI\imgui_impl_opengl3.h" />
     <ClInclude Include="..\Libs\IMGUI\imgui_internal.h" />

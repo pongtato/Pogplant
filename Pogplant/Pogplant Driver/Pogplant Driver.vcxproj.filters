@@ -314,5 +314,8 @@
     <ClInclude Include="Src\ECS\Systems\ScriptResource.h">
       <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
     </ClInclude>
+    <ClInclude Include="..\Libs\IMGUI\imgui_curve.hpp">
+      <Filter>Source Files\Imgui</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

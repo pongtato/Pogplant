@@ -261,6 +261,20 @@ namespace Components
 			, m_Burst{ _Burst }
 			, m_LerpSpeed{ _LerpSpeed }
 		{
+			const size_t second_last = m_MaxPoints - 1;
+			const float increment = 1.0f / second_last;
+			// Init curve vertices
+			for (size_t i = 0; i < second_last; i++)
+			{
+				float currX = i * increment;
+				m_SpeedCurvePoints[i] = { currX, 1.0f };
+				m_ScaleCurvePoints[i] = { currX, 1.0f };
+			}
+			m_SpeedCurvePoints[second_last] = { 1.0f, 1.0f };
+			m_ScaleCurvePoints[second_last] = { 1.0f, 1.0f };
+
+			m_SpeedCurveData.resize(m_DataPoints);
+			m_ScaleCurveData.resize(m_DataPoints);
 		}
 
 		void Spawn(glm::vec3 _Position, glm::vec3 _Direction)
@@ -294,10 +308,15 @@ namespace Components
 
 			m_ActiveCount++;
 		}
-		
+
+		enum { m_MaxPoints = 8, m_DataPoints = 128 };
 		std::vector<Particle> m_ParticlePool;
+		std::vector<float> m_SpeedCurveData;
+		std::vector<float> m_ScaleCurveData;
 		glm::vec4 m_Color;
 		glm::vec3 m_SpawnDirection;
+		ImVec2 m_SpeedCurvePoints[m_MaxPoints];
+		ImVec2 m_ScaleCurvePoints[m_MaxPoints];
 		float m_Delay;
 		float m_Timer;
 		float m_MinLife;

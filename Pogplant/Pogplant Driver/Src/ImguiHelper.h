@@ -78,13 +78,21 @@ namespace PogplantDriver
 		//imgui reflection functions
 		static void Reflect_ImGui(rttr::instance _obj);
 
-		// Renderer
-		static void RendererComponentHelper();
+		// Tool tip helper
+		static void ToolTipHelper(const char* _Label, bool _SameLine = false);
+
 		// Helper for texture selection
 		static void TextureSelectHelper(const char* _Label, Pogplant::Texture* _CurrTex);
 		static void TextureSelectHelper(const char* _Label, std::string* _Path);
+		
+		// Renderer
+		static void RendererComponentHelper();
+
 		// Primitive Renderer
 		static void PRendererComponentHelper();
+		
+		// Particles 
+		static void ParticlesHelper();
 	};
 
 }
