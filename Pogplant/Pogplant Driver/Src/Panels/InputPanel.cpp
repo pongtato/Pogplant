@@ -78,21 +78,6 @@ namespace PPP
 							ImGui::EndCombo();
 						}
 
-						static char name_stuff[256] = "";
-
-						ImGui::InputText("Rename", name_stuff, IM_ARRAYSIZE(name_stuff));
-
-						if (ImGui::Button(ICON_FA_CHECK_CIRCLE" Apply"))
-						{
-							auto Node = inputMap.extract(itr);
-							Node.key() = std::string(name_stuff);
-
-							inputMap.insert(std::move(Node));
-
-							ImGui::TreePop();
-							break;
-						}
-
 						if (ImGui::Button(ICON_FA_MINUS_CIRCLE " Remove"))
 						{
 							inputMap.erase(itr);
@@ -104,9 +89,12 @@ namespace PPP
 					}
 				}
 
+				static char name_stuff[256] = "";
+				ImGui::InputText("New Key Name", name_stuff, IM_ARRAYSIZE(name_stuff));
+
 				if (ImGui::Button(ICON_FA_PLUS_CIRCLE " Add key"))
 				{
-
+					inputMap.insert({ std::string(name_stuff), PPI::InputSystem::keyCode{-1, -1} });
 				}
 			}
 		}

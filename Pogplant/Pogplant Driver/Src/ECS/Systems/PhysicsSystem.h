@@ -39,7 +39,6 @@ public:
 	void UpdateEditor();
 	void Update(float c_dt);
 	void DrawColliders();
-	void DrawImGUI();
 
 	void CleanUp();
 
@@ -47,7 +46,7 @@ public:
 	Components::Collider::COLLISION_RULE GetCollisionRule(int collisionLayer1, int collisionLayer2);
 
 	std::map<std::pair<int, int>, int> m_collisionMatrix;
-
+	std::vector<std::string> m_collisionLayers;
 private:
 	ECS* m_registry;
 	std::shared_ptr<PPE::EventBus> m_eventBus;

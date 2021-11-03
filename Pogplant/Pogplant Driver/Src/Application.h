@@ -100,7 +100,7 @@ namespace PogplantDriver
 		void LeavePlayState();
 
 		
-
+	public:
 		/**************************
 		* 
 		* ECS + SYSTEMS
@@ -116,6 +116,7 @@ namespace PogplantDriver
 		ScriptSystem m_sScriptSystem;
 		std::shared_ptr<PPE::EventBus> m_eventBus;
 
+	private:
 		/**************************
 		*
 		* Variables

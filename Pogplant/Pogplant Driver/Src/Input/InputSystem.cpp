@@ -36,7 +36,8 @@ namespace PPI
 
 		InputSystem::Instance().AppendKey("LEFT", GLFW_KEY_A);
 		InputSystem::Instance().AppendKey("RIGHT", GLFW_KEY_D);
-		InputSystem::Instance().AppendKey("DOWN", GLFW_KEY_S, GLFW_GAMEPAD_AXIS_LEFT_Y + JOYSTICKOSET);
+		InputSystem::Instance().AppendKey("DOWN", GLFW_KEY_S);
+		InputSystem::Instance().AppendKey("UP", GLFW_KEY_W);
 
 		//SaveFileHandler::Instance().assignData<unsigned short>(SaveFileHandler::S_CONTROL_JUMP, keyGetter, GLFW_KEY_SPACE, false);
 		InputSystem::Instance().setControllerLayout(1);

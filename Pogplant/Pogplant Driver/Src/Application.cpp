@@ -633,7 +633,6 @@ void Application::DrawImGUI()
 {
 	PP::Renderer::ClearBuffer();
 	PPD::ImguiHelper::DrawImgui();
-	m_sPhysicsSystem.DrawImGUI();
 }
 
 /******************************************************************************/

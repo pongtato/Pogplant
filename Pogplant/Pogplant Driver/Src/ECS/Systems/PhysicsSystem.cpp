@@ -30,6 +30,7 @@ PhysicsSystem::PhysicsSystem()
 	m_shouldContinue{ 0 },
 	t_EXIT_THREADS{ false }
 {
+	m_collisionLayers.push_back("DEFAULT");
 	m_threads.push_back(std::thread{ &PhysicsSystem::TriggerUpdate, std::ref(*this) });
 }
 
@@ -171,7 +172,12 @@ void PhysicsSystem::TriggerUpdate()
 					if (_1entity == _2entity)
 						continue;
 
+
 					auto& _2collider = movableEntities.get<Components::BoxCollider>(_2entity);
+
+					auto collisionRule = GetCollisionRule(_1collider.collisionLayer, _2collider.collisionLayer);
+					if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE)
+						continue;
 
 					if (PhysicsDLC::Collision::StaticAABBAABB(_1collider.aabb, _2collider.aabb))
 					{
@@ -386,8 +392,7 @@ void PhysicsSystem::Update(float c_dt)
 							entity2
 							)
 					);
-
-				std::cout << "Triggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
+				//std::cout << "Triggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
 			}
 			else
 			{
@@ -402,8 +407,7 @@ void PhysicsSystem::Update(float c_dt)
 						entity2
 						)
 				);
-
-				std::cout << "UnTriggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
+				//std::cout << "UnTriggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
 			}
 
 			m_triggerQueue.pop_back();
@@ -415,9 +419,4 @@ void PhysicsSystem::Update(float c_dt)
 	while (!m_shouldContinue.try_acquire())
 	{
 	}
-}
-
-void PhysicsSystem::DrawImGUI()
-{
-
 }
