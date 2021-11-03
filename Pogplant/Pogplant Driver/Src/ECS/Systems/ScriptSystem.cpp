@@ -14,10 +14,13 @@
 
 #include "ScriptSystem.h"
 #include "ScriptSystemHelper.h"
+#include "ScriptResource.h"
+
 #include "../../Input/InputSystem.h"
 #include "../../Input/GLFWInput.h"
 #include "../../Pogplant/Src/DebugDraw.h"
 #include "../../GameScript.h"
+
 
 bool ScriptSystem::isReload = false;
 ECS* ScriptSystem::m_ecs = nullptr;
@@ -82,32 +85,14 @@ void ScriptSystem::Update(float dt)
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
-			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-			if (!monoObj)
-			{
-				// Maybe log something here
-				std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				continue;
-			}
-
-			MonoClass* klass = mono_object_get_class(monoObj);
-			if (!klass)
-			{
-				// Maybe log something here
-				std::cout << "MonoClass not found" << std::endl;
-			}
-
 			if (scripts.second == false)
 			{
-				MonoMethod* startMethod = FindMethod(klass, "Start");
-				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
+				SSH::InvokeFunction(scripts.first, "Start", entity);
 				scripts.second = true;
 				std::cout << "Entity [" << name.m_name << "] has started script [" << scripts.first << "]" << std::endl;
 			}
 
-			MonoMethod* updateMethod = FindMethod(klass, "Update");
-			void* args[] = { &transform, &rigidbody, &dt };
-			mono_runtime_invoke(updateMethod, monoObj, args, nullptr);
+			SSH::InvokeFunction(scripts.first, "Update", entity, transform, rigidbody, dt);
 		}
 	}
 }
@@ -125,32 +110,14 @@ void ScriptSystem::LateUpdate()
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
-			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-			if (!monoObj)
-			{
-				// Maybe log something here
-				std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				continue;
-			}
-
-			MonoClass* klass = mono_object_get_class(monoObj);
-			if (!klass)
-			{
-				// Maybe log something here
-				std::cout << "MonoClass not found" << std::endl;
-			}
-
 			if (scripts.second == false)
 			{
-				MonoMethod* startMethod = FindMethod(klass, "Start");
-				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
+				SSH::InvokeFunction(scripts.first, "Start", entity);
 				scripts.second = true;
 				std::cout << "Entity [" << name.m_name << "] has started script [" << scripts.first << "]" << std::endl;
 			}
 
-			MonoMethod* updateMethod = FindMethod(klass, "LateUpdate");
-			void* args[] = { &transform, &rigidbody };
-			mono_runtime_invoke(updateMethod, monoObj, args, nullptr);
+			SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, rigidbody);
 		}
 	}
 }
@@ -160,168 +127,13 @@ void ScriptSystem::SetReload(bool _isReload)
 	isReload = _isReload;
 }
 
-void ScriptSystem::OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
-{
-	auto script1 = m_ecs->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity1);
-	auto script2 = m_ecs->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity2);
-
-	if (script1)
-	{
-		for (auto& scripts : script1->m_ScriptTypes)
-		{
-			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-			if (!monoObj)
-			{
-				// Maybe log something here
-				std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				continue;
-			}
-
-			MonoClass* klass = mono_object_get_class(monoObj);
-			if (!klass)
-			{
-				// Maybe log something here
-				std::cout << "MonoClass not found" << std::endl;
-			}
-
-			MonoMethod* startMethod = FindMethod(klass, "OnTriggerEnter");
-			if (startMethod)
-			{
-				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
-			}
-		}
-	}
-
-	if (script2)
-	{
-		for (auto& scripts : script2->m_ScriptTypes)
-		{
-			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-			if (!monoObj)
-			{
-				// Maybe log something here
-				std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				continue;
-			}
-
-			MonoClass* klass = mono_object_get_class(monoObj);
-			if (!klass)
-			{
-				// Maybe log something here
-				std::cout << "MonoClass not found" << std::endl;
-			}
-
-			MonoMethod* startMethod = FindMethod(klass, "OnTriggerEnter");
-			if (startMethod)
-			{
-				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
-			}
-		}
-	}
-}
-
-void ScriptSystem::OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent)
-{
-	auto script1 = m_ecs->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity1);
-	auto script2 = m_ecs->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity2);
-
-	if (script1)
-	{
-		for (auto& scripts : script1->m_ScriptTypes)
-		{
-			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-			if (!monoObj)
-			{
-				// Maybe log something here
-				std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				continue;
-			}
-
-			MonoClass* klass = mono_object_get_class(monoObj);
-			if (!klass)
-			{
-				// Maybe log something here
-				std::cout << "MonoClass not found" << std::endl;
-			}
-
-			MonoMethod* startMethod = FindMethod(klass, "OnTriggerExit");
-			if (startMethod)
-			{
-				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
-			}
-		}
-	}
-
-	if (script2)
-	{
-		for (auto& scripts : script2->m_ScriptTypes)
-		{
-			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-			if (!monoObj)
-			{
-				// Maybe log something here
-				std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				continue;
-			}
-
-			MonoClass* klass = mono_object_get_class(monoObj);
-			if (!klass)
-			{
-				// Maybe log something here
-				std::cout << "MonoClass not found" << std::endl;
-			}
-
-			MonoMethod* startMethod = FindMethod(klass, "OnTriggerExit");
-			if (startMethod)
-			{
-				mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
-			}
-		}
-	}
-}
-
-void ScriptSystem::CallTakeDamageFunction(float damage, entt::entity& target)
-{
-	auto scriptable = m_ecs->GetReg().try_get<Components::Scriptable>(target);
-
-	if (scriptable)
-	{
-		for (auto& scripts : scriptable->m_ScriptTypes)
-		{
-			MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-			if (!monoObj)
-			{
-				// Maybe log something here
-				std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				continue;
-			}
-
-			MonoClass* klass = mono_object_get_class(monoObj);
-			if (!klass)
-			{
-				// Maybe log something here
-				std::cout << "MonoClass not found" << std::endl;
-			}
-
-			MonoMethod* method = FindMethod(klass, "TakeDamage");
-			if (method)
-			{
-				void* args[] = { &damage };
-				mono_runtime_invoke(method, monoObj, args, nullptr);
-			}
-		}
-	}
-}
-
-MonoMethod* ScriptSystem::FindMethod(MonoClass* klass,const std::string& methodName, int params)
+MonoMethod* ScriptSystem::FindMethod(MonoClass* klass, const std::string& methodName, int params)
 {
 	MonoMethod* method = mono_class_get_method_from_name(klass, methodName.c_str(), params);
-
 	if (!method)
 	{
 		return nullptr;
 	}
-
 	return method;
 }
 
@@ -346,19 +158,19 @@ void ScriptSystem::LoadMemory()
 			if (m_ptrGameAssembly && status == MONO_IMAGE_OK)
 			{
 				BindFunctions();
-				
+
 				MonoClass* monoMainClass = mono_class_from_name(m_ptrGameAssemblyImage, m_namespace.c_str(), "Scripting");
 
 				assert(monoMainClass && "MonoClass* monoMainClass does not exist, this means that the main function is bogged in c#.");
 
 				if (monoMainClass)
 				{
-					m_scriptNames.push_back("PlayerScript");
-					m_scriptNames.push_back("BaseTurret");
-					m_scriptNames.push_back("FollowSpline");
-					m_scriptNames.push_back("PlayerFire");
+					ScriptResource::m_scriptNames.push_back("PlayerScript");
+					ScriptResource::m_scriptNames.push_back("BaseTurret");
+					ScriptResource::m_scriptNames.push_back("FollowSpline");
+					ScriptResource::m_scriptNames.push_back("PlayerFire");
 
-					for (auto& scriptName : m_scriptNames)
+					for (auto& scriptName : ScriptResource::m_scriptNames)
 					{
 						MonoClass* monoclass = mono_class_from_name(m_ptrGameAssemblyImage, m_namespace.c_str(), scriptName.c_str());
 						std::string excep = "MonoClass* monoclass does not exist, this means that function " + scriptName + " is bogged in c#.";
@@ -384,7 +196,8 @@ void ScriptSystem::LoadMemory()
 						// Garbage Collection Handle for the game object
 						uint32_t m_gameObjectGCHandle = mono_gchandle_new(ptrGameObject, false);
 						// Add to the map
-						m_MonoObjects[scriptName.c_str()] = std::make_unique<MonoObjectWithGC>(m_gameObjectGCHandle, ptrGameObject);
+						//m_MonoObjects[scriptName.c_str()] = std::make_unique<MonoObjectWithGC>(m_gameObjectGCHandle, ptrGameObject);
+						ScriptResource::m_MonoObjects[scriptName.c_str()] = std::make_unique<MonoObjectWithGC>(m_gameObjectGCHandle, ptrGameObject);
 
 						// Exception hit
 						if (ptrExObject)
@@ -405,11 +218,6 @@ void ScriptSystem::LoadMemory()
 
 void ScriptSystem::Cleanup()
 {
-	for (auto& monoObj : m_MonoObjects)
-	{
-		mono_gchandle_free(monoObj.second->m_GCHandle);
-	}
-
 	if (m_ptrMonoDomain)
 	{
 		mono_jit_cleanup(m_ptrMonoDomain);
@@ -428,20 +236,6 @@ void ScriptSystem::Unload()
 	}
 	//mono_domain_unload(m_ptrMonoDomain);
 }
-
-//void ScriptSystem::GetModelKeys()
-//{
-//	MonoMethod* updateModelKeys = mono_class_get_method_from_name(m_componentHelperClass, "GetModelKeys", -1);
-//	MonoArray* data = mono_array_new(mono_domain_get(), mono_get_int32_class(), Pogplant::ModelResource::m_ModelPool.size());
-//	
-//	for (int i = 0; i < Pogplant::ModelResource::m_ModelPool.size(); ++i)
-//	{
-//		mono_array_set(data, int32_t, i, i);
-//	}
-//	void* args[1] = { data };
-//
-//	MonoObject* result = mono_runtime_invoke(updateModelKeys, nullptr, args, nullptr );
-//}
 
 void ScriptSystem::BindFunctions()
 {
@@ -463,16 +257,11 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::FirePlayerBullet", &Scripting::FirePlayerBullet);
 	mono_add_internal_call("Scripting.GameUtilities::FireEnemyBullet", &Scripting::FireEnemyBullet);
 
-	//CreateEntityPtr CEPtr = &ScriptSystem::CreateEntity;
-	//mono_add_internal_call("Scripting.ECS::CreateEntity", &CEPtr);
-	mono_add_internal_call("Scripting.ECS::CreateEntity", &this->CreateEntity);
-	mono_add_internal_call("Scripting.ECS::DestroyEntity", &this->DestroyEntity);
-	mono_add_internal_call("Scripting.ECS::CreateChild", &this->CreateChild);
-	mono_add_internal_call("Scripting.ECS::FindEntityWithName", &this->FindEntityWithName);
-	mono_add_internal_call("Scripting.ECS::AddModel", &this->AddModel);
-
-	//mono_add_internal_call("Scripting.GameObject::AddComponentTransform", &this->AddComponentTransform);
-	//mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", &this->AddComponentRigidbody);
+	// ECS & Component st
+	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);
+	mono_add_internal_call("Scripting.ECS::DestroyEntity", SSH::DestroyEntity);
+	mono_add_internal_call("Scripting.ECS::CreateChild", SSH::CreateChild);
+	mono_add_internal_call("Scripting.ECS::FindEntityWithName", SSH::FindEntityWithName);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
@@ -484,7 +273,7 @@ void ScriptSystem::BindFunctions()
 void ScriptSystem::Reload()
 {
 	std::cout << "Reloading Scripts" << std::endl;
-	m_scriptNames.clear();
+	ScriptResource::m_scriptNames.clear();
 	Unload();
 	LoadMemory();
 }

@@ -3,6 +3,7 @@
 #include "../Src/ECS/Entity.h"
 #include "../Src/ECS/Components/Components.h"
 #include "../Src/ECS/Components/DependantComponents.h"
+#include "../Src/ECS/Systems/ScriptSystemHelper.h"
 #include "GameScript.h"
 
 
@@ -81,6 +82,7 @@ namespace Scripting
 			{
 				GameplayECS::m_GameScriptECS->DestroyEntity(object);
 				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
+				SSH::InvokeFunction("BaseTurret", "TakeDamage", other, player_projectile_script->m_Damage);
 			}
 		}
 	}

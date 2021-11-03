@@ -78,8 +78,6 @@ namespace Scripting
 
                 GameObject GO = ECS.CreateEntity("RandomNamexD", new Transform(Vector3.One(), Vector3.One(), Vector3.One()));
                 GO.AddComponent<Renderer>(new Renderer("Player_Ship"));
-                //ECS.AddModel(GO.id, "Sphere", Vector3.One(), true, false, true);
-
 
                 entityList.Add(GO);
 

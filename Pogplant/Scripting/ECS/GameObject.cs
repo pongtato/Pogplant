@@ -48,7 +48,7 @@ namespace Scripting
         public extern static void AddComponentRigidbody(uint id, Rigidbody rigidbody);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void AddComponentRenderer(uint id, Vector3 colorTint, int uselight, bool editordrawonly, string modelName);
+        public extern static void AddComponentRenderer(uint id, Vector3 colorTint, Vector3 emissiveTint, int uselight, bool editordrawonly, string modelName);
 
         //[MethodImplAttribute(MethodImplOptions.InternalCall)]
         //public extern static void AddComponentRenderer(uint id, Vector3 colorTint, int uselight, bool editordrawonly);
@@ -84,7 +84,7 @@ namespace Scripting
                 if (renderer.HasValue == false)
                 {
                     renderer = (Renderer)(object)component;
-                    AddComponentRenderer(id, renderer.Value.colorTint, renderer.Value.useLight, renderer.Value.editorDrawOnly, renderer.Value.modelName);
+                    AddComponentRenderer(id, renderer.Value.colorTint, renderer.Value.emissiveTint, renderer.Value.useLight, renderer.Value.editorDrawOnly, renderer.Value.modelName);
                     //AddComponentRenderer(id, renderer.Value.colorTint, renderer.Value.useLight, renderer.Value.editorDrawOnly);
                 }
                 else

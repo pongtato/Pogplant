@@ -168,10 +168,10 @@
     <ClCompile Include="Src\GameScript.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\ECS\Systems\ScriptSystemECSWrapper.cpp">
+    <ClCompile Include="Src\ECS\Systems\ScriptSystemHelper.cpp">
       <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Src\ECS\Systems\ScriptSystemHelper.cpp">
+    <ClCompile Include="Src\ECS\Systems\ScriptResource.cpp">
       <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
     </ClCompile>
   </ItemGroup>
@@ -310,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="Src\ECS\Components\GameplayComponents.h">
       <Filter>Source Files\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ECS\Systems\ScriptResource.h">
+      <Filter>Source Files\ECS\Systems\ScriptSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -30,7 +30,7 @@ namespace Components
 		OwnerType m_Ownertype;
 		ProjectileType m_Type;
 
-		Projectile(float lifetime, float speed,  OwnerType ownertype, float damage = 0.f) :
+		Projectile(float lifetime, float speed,  OwnerType ownertype, float damage = 10.f) :
 			m_Lifetime(lifetime), m_CurentLifetime(0.f), m_Speed(speed), m_Damage(damage), m_Ownertype(ownertype) {};
 	};
 

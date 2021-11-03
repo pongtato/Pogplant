@@ -26,7 +26,7 @@ namespace Scripting
     public class BaseTurret : MonoBehaviour
     {
         public Transform[] muzzle_transforms = new Transform[4];
-        public float health = 20;
+        public float health = 20.0f;
 
         float fireRate;
         float fire_timer = 0.0f;

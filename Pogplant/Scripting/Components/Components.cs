@@ -111,13 +111,15 @@ namespace Scripting
     public struct Renderer
     {
         public Vector3 colorTint;
+        public Vector3 emissiveTint;
         public int useLight; // true
         public bool editorDrawOnly; // false
         public string modelName;
 
-        public Renderer(string _modelName = "", Vector3 _colorTint = new Vector3(), int _useLight = 1, bool _editorDrawOnly = false)
+        public Renderer(string _modelName = "", Vector3 _colorTint = new Vector3(), Vector3 _emissiveTint = new Vector3(), int _useLight = 1, bool _editorDrawOnly = false)
         {
             colorTint = _colorTint;
+            emissiveTint = _emissiveTint;
             useLight = _useLight;
             editorDrawOnly = _editorDrawOnly;
 
@@ -139,6 +141,35 @@ namespace Scripting
             else
             {
                 Console.WriteLine("Model: '" + _modelName + "' not found in modelpool, using default: '" + ComponentHelper.ModelKeys[0] +"'");
+                modelName = ComponentHelper.ModelKeys[0];
+            }
+        }
+
+        public Renderer(string _modelName)
+        {
+            colorTint = Vector3.One();
+            emissiveTint = Vector3.One();
+            useLight = 1;
+            editorDrawOnly = false;
+
+            // I can't use .Contains here for some reason, not sure why so do this.
+            bool found = false;
+            for (int i = 0; i < ComponentHelper.ModelKeys.Length; ++i)
+            {
+                if (ComponentHelper.ModelKeys[i] == _modelName)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found)
+            {
+                modelName = _modelName;
+            }
+            else
+            {
+                Console.WriteLine("Model: '" + _modelName + "' not found in modelpool, using default: '" + ComponentHelper.ModelKeys[0] + "'");
                 modelName = ComponentHelper.ModelKeys[0];
             }
         }

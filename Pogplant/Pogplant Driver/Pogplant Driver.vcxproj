@@ -154,10 +154,10 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClCompile Include="Src\ECS\ECS.cpp" />
     <ClCompile Include="Src\ECS\Entity.cpp" />
     <ClCompile Include="Src\ECS\Systems\GeneralSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\ScriptResource.cpp" />
     <ClCompile Include="Src\ECS\Systems\PhysicsSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\PhysicsSystemCollision.cpp" />
     <ClCompile Include="Src\ECS\Systems\ScriptSystem.cpp" />
-    <ClCompile Include="Src\ECS\Systems\ScriptSystemECSWrapper.cpp" />
     <ClCompile Include="Src\ECS\Systems\ScriptSystemHelper.cpp" />
     <ClCompile Include="Src\FileHandler.cpp" />
     <ClCompile Include="Src\AudioEngine.cpp" />
@@ -199,6 +199,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\ECS\ECS.h" />
     <ClInclude Include="Src\ECS\Entity.h" />
     <ClInclude Include="Src\ECS\Systems\GeneralSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\ScriptResource.h" />
     <ClInclude Include="Src\ECS\Systems\PhysicsSystem.h" />
     <ClInclude Include="Src\ECS\Systems\ScriptSystem.h" />
     <ClInclude Include="Src\ECS\Systems\ScriptSystemHelper.h" />

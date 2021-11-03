@@ -19,6 +19,7 @@
 #include "SceneHierarchy.h"
 #include "Debugger.h"
 #include "Panels/InputPanel.h"
+#include "ECS/Systems/ScriptResource.h"
 #include <algorithm>
 #include <execution>
 
@@ -741,16 +742,8 @@ namespace PogplantDriver
 					bool enable_scripts_com = true;
 
 					if (ImGui::CollapsingHeader(ICON_FA_SCROLL "  Active Scripts", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
-					{
-						std::vector<std::string> totalScripts;
-						// I have to hard code the script names for now until I figure out a better solution.
-						totalScripts.push_back("PlayerScript");
-						totalScripts.push_back("BaseTurret");
-						totalScripts.push_back("FollowSpline");
-						totalScripts.push_back("PlayerFire");
-						
-
-						for (auto& scriptName : totalScripts)
+					{	
+						for (auto& scriptName : ScriptResource::m_scriptNames)
 						{
 							bool hasScript = scripts_com->m_ScriptTypes.contains(scriptName);
 							bool setScript = hasScript;

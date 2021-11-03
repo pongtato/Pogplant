@@ -9,6 +9,7 @@
 #include <iostream>
 #include <Pogplant.h>
 #include "GameScript.h"
+#include "ECS/Systems/ScriptSystemHelper.h"
 
 namespace PPD = PogplantDriver;
 using namespace Components;
@@ -342,8 +343,12 @@ void Application::InitialiseDebugObjects()
 
 void Application::BindEvents()
 {
-	m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerEnterEvent);
-	m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerExitEvent);
+	//m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerEnterEvent);
+	//m_eventBus->listen(&m_sScriptSystem, &ScriptSystem::OnTriggerExitEvent);
+
+	m_eventBus->listen(&SSH::OnTriggerEnterEvent);
+	m_eventBus->listen(&SSH::OnTriggerExitEvent);
+
 	m_eventBus->listen(&Scripting::OnTriggerEnterEvent);
 }
 
