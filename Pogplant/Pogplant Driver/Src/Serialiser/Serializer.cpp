@@ -54,7 +54,7 @@ namespace PogplantDriver
 				RecurSaveChild(root, id, ++i);
 			}
 
-
+			m_saved.clear();
 			Json::StreamWriterBuilder builder;
 			Json::StreamWriter* writer = builder.newStreamWriter();
 
@@ -80,7 +80,7 @@ namespace PogplantDriver
 			int  i = 0;
 			
 			auto entities = m_ecs.GetReg().view<Transform>();
-			for(auto entity = entities.rbegin(); entity != entities.rend() ; ++entity, ++i)
+			for(auto entity = entities.rbegin(); entity != entities.rend() ; ++entity)
 			{
 				if (m_saved.contains(*entity))
 					continue;
@@ -89,9 +89,12 @@ namespace PogplantDriver
 				auto relationship_component = m_ecs.GetReg().try_get<Relationship>(*entity);
 				if (relationship_component)
 				{
-					RecurSaveChild(root, *entity, ++i);
+					i = RecurSaveChild(root, *entity, ++i);
+					continue;
 				}
+				++i;
 			}
+
 			m_saved.clear();
 			Json::StreamWriterBuilder builder;
 			Json::StreamWriter* writer = builder.newStreamWriter();
