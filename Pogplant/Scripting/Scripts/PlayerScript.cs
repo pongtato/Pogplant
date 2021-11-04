@@ -36,8 +36,8 @@ namespace Scripting
 
         public float max_rotate_angle = 12.5f;
         public float rotation_speed_horizontal = 1.0f;
-        public float rotation_speed_vertical = 1.0f;
-        public float revert_speed = 20.0f;
+        public float rotation_speed_vertical = 1.0f; 
+        public float revert_speed = 2.0f; // changed from 20
         public float max_dampening_speed = 100.0f;
 
         public float dampening_reduction = 1.0f;
@@ -45,8 +45,6 @@ namespace Scripting
 
         private float current_vertical_dampening;
         private float current_horizontal_dampening;
-        private float vertical_delta;
-        private float horizontal_delta;
 
         private float timeCount;
         public float ship_follow_rot_speed;
@@ -234,16 +232,7 @@ namespace Scripting
                     }
             }
 
-            p_fire_timer += dt;
-            if ((InputUtility.onKeyTriggered(KEY_ID.KEY_T) || (InputUtility.onKeyHeld(KEY_ID.KEY_T))))
-            {
-                if (p_fire_timer >= p_fireRate)
-                {
-                    // Call C++ side bullet firing
-                    GameUtilities.FirePlayerBullet(transform.Position, transform.Rotation);
-                    p_fire_timer = 0.0f;
-                }
-            }
+
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
@@ -279,7 +268,8 @@ namespace Scripting
 
             if (vertical_input == 0.0f && horizontal_input == 0.0f)
             {
-                transform.Rotation = Vector3.RotateTowards(transform.Rotation, new Vector3(0.0f,0.01f,0.0f), revert_speed * dt);
+                //Harcoded for now, if the box changes the rotation then i will edit this
+                transform.Rotation = Vector3.RotateTowards(transform.Rotation, new Vector3(0.0f,0.0f,0.01f), revert_speed * dt);
             }
 
 
@@ -294,8 +284,18 @@ namespace Scripting
             //    transform.rotation = FollowTarget.transform.rotation;
             //}
 
-
             GameUtilities.FollowPlayerCam(transform.Position, transform.Rotation);
+
+            p_fire_timer += dt;
+            if ((InputUtility.onKeyTriggered(KEY_ID.KEY_T) || (InputUtility.onKeyHeld(KEY_ID.KEY_T))))
+            {
+                if (p_fire_timer >= p_fireRate)
+                {
+                    // Call C++ side bullet firing
+                    GameUtilities.FirePlayerBullet(transform.Position, transform.Rotation);
+                    p_fire_timer = 0.0f;
+                }
+            }
         }
 
         public void FixedUpdate()

@@ -93,6 +93,7 @@ namespace Scripting
             float mag_b = b.magnitude();
             if (mag_a == 0.0f || mag_b == 0.0f)
                 return 0.0f;
+            //RETURNS IN RADIANS
             return (float)Math.Acos(dot / (a.magnitude() * b.magnitude()));
 
         }
