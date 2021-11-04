@@ -32,15 +32,26 @@ namespace Scripting
 		return 0;
 	}
 
-	void FollowPlayerCam(glm::vec3 _Position)
+	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation)
 	{
+		//Offset the camera based on the box world position
+
 		entt::entity player_cam = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerCam");
-		if (player_cam != entt::null)
+		entt::entity player_box = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerBox");
+		if (player_cam != entt::null && player_box != entt::null)
 		{
+			auto box_pos = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_box);
+			auto box_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(player_box);
+			//Natural Z forward offset
+			glm::vec3 offset = glm::vec3{ 0,0,3.f };
+			//Concatanate the offsets
+			offset += _Position;
+
 		  auto cam_pos =  GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_cam);
-			cam_pos->m_position += _Position;
+			cam_pos->m_position = box_pos->m_position + offset;
 		}
 	}
+
 	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _Rotation)
 	{
 		auto new_bullet = GameplayECS::m_GameScriptECS->CreateEntity("Bullet", _Position, _Rotation);

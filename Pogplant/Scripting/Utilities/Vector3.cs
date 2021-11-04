@@ -78,5 +78,34 @@ namespace Scripting
         {
             return new Vector3(0.0f, 0.0f, 0.0f);
         }
+
+        //Dot product for vector3
+        public static float Dot(Vector3 a, Vector3 b)
+        {
+            return (a.X * b.X) + (a.Y * b.Y) + (a.Z * b.Z);
+        }
+
+        public static float Angle(Vector3 a, Vector3 b)
+        {
+            float dot  = Dot(a, b);
+            //Account for Divide by 0
+            float mag_a = a.magnitude();
+            float mag_b = b.magnitude();
+            if (mag_a == 0.0f || mag_b == 0.0f)
+                return 0.0f;
+            return (float)Math.Acos(dot / (a.magnitude() * b.magnitude()));
+
+        }
+
+        public static Vector3 RotateTowards (Vector3 from, Vector3 to, float maxDegreesDelta)
+        {
+            float angle = Angle(from, to);
+            if (angle == 0.0f)
+            {
+                return to;
+            }
+            float  t = Math.Min(1f, maxDegreesDelta / angle);
+            return Lerp(from, to, t);
+        }
     }
 }

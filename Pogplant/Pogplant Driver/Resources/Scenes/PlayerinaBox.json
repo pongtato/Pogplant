@@ -17,10 +17,16 @@
 			],
 			"isTrigger" : false
 		},
-		"Children" : 2,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "PlayerBox"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
 		},
 		"Transform" : 
 		{
@@ -97,7 +103,6 @@
 		},
 		"Scripting" : 
 		{
-			"PlayerFire" : true,
 			"PlayerScript" : true
 		},
 		"Transform" : 
@@ -132,7 +137,6 @@
 			"m_Yaw" : 90.0,
 			"m_Zoom" : 45.0
 		},
-		"Children" : 0,
 		"Name" : 
 		{
 			"m_Name" : "PlayerCam"
@@ -141,9 +145,9 @@
 		{
 			"m_position" : 
 			[
-				34.0,
-				29.0,
-				2.0
+				33.981189727783203,
+				29.021877288818359,
+				2.1503362655639648
 			],
 			"m_rotation" : 
 			[
