@@ -1368,6 +1368,59 @@ namespace PogplantDriver
 		}
 	}
 
+	void ImguiHelper::TextureSelectHelper(const char* _Label, int& _TexID)
+	{
+		// Always center this window when appearing
+		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+		static std::string currentPath = "";
+		static bool hovered = false;
+
+		/// Texture select pop up
+		if (ImGui::BeginPopupModal(_Label, NULL, ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			ImGui::Text(currentPath.c_str());
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			// Clear hover flag after printing to detect hover stop
+			hovered = false;
+			currentPath = "";
+
+			size_t it_count = 0;
+			for (const auto& it : PP::TextureResource::m_TexturePool)
+			{
+				if (ImGui::ImageButton(it.second, ImVec2(64, 64), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+				{
+					_TexID = it.second;
+					ImGui::CloseCurrentPopup();
+				}
+				if (ImGui::IsItemHovered())
+				{
+					currentPath = it.first;
+					hovered = true;
+				}
+
+				// Formatting
+				if ((it_count + 1) % 5 != 0)
+				{
+					ImGui::SameLine();
+				}
+
+				it_count++;
+			}
+
+			// So wont be on the same line as prev
+			ImGui::Dummy(ImVec2(0.0f, 0.0f));
+			if (ImGui::Button("Cancel", ImVec2(120, 0)))
+			{
+				ImGui::CloseCurrentPopup();
+			}
+			ImGui::SetItemDefaultFocus();
+			ImGui::SameLine();
+			ImGui::EndPopup();
+		}
+	}
+
 	void ImguiHelper::RendererComponentHelper()
 	{
 		assert(m_CurrentEntity != entt::null);
@@ -1714,6 +1767,24 @@ namespace PogplantDriver
 			{	
 				// To be used throughout this inspector component
 				std::string toolTip = "";
+				const char* popuplabel = "Particles Texture Selection";
+
+				// Color
+				ImGui::Dummy(ImVec2(0.0f, 2.0f));
+				ImGui::PushID("PHelper");
+				ImGui::Text("Color Tint");
+				ImGui::ColorEdit3("###Color Tint", glm::value_ptr(pSystem->m_Color));
+				ImGui::PopID();
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+				// Texture
+				ImGui::Text("Texture");
+				if (ImGui::ImageButton(pSystem->m_TexID, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+				{
+					ImGui::OpenPopup(popuplabel);
+				}
+				ImGui::Dummy(ImVec2(0.0f, 0.5f));
+				TextureSelectHelper(popuplabel, pSystem->m_TexID);
 
 				// Life
 				ImGui::Text("Life");

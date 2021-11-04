@@ -270,6 +270,7 @@ namespace Components
 			float _MaxLife,
 			CurveVariable _Speed,
 			CurveVariable _Scale,
+			int _TexID,
 			int _SpawnCount,
 			bool _Loop,
 			bool _Burst
@@ -283,6 +284,7 @@ namespace Components
 			, m_Timer{ 0 }
 			, m_MinLife{ _MinLife }
 			, m_MaxLife{ _MaxLife }
+			, m_TexID{ _TexID }
 			, m_ActiveCount{ 0 }
 			, m_SpawnCount{ _SpawnCount }
 			, m_Loop{ _Loop }
@@ -338,7 +340,7 @@ namespace Components
 					m_Scale.m_CurveMax,
 					scaleMult
 				},
-				-1,
+				m_TexID,
 				life,
 				life,
 				1.0f / m_Speed.m_CurveData.size(),
@@ -357,6 +359,7 @@ namespace Components
 		float m_Timer;
 		float m_MinLife;
 		float m_MaxLife;
+		int m_TexID;
 		int m_ActiveCount;
 		int m_SpawnCount;
 		bool m_Loop;

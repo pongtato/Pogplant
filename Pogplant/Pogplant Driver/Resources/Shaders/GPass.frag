@@ -14,7 +14,6 @@ uniform sampler2D gNoLight;
 uniform sampler2D gEmissive;
 uniform sampler2D gShadow;
 
-
 struct Light 
 {
     vec3 Position;
@@ -75,7 +74,7 @@ float Shadow()
     }
     else
     {
-        return shadow /= 9.0;
+        return shadow /= 12.0;
     }
 }
 

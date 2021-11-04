@@ -84,6 +84,7 @@ namespace PogplantDriver
 		// Helper for texture selection
 		static void TextureSelectHelper(const char* _Label, Pogplant::Texture* _CurrTex);
 		static void TextureSelectHelper(const char* _Label, std::string* _Path);
+		static void TextureSelectHelper(const char* _Label, int& _TexID);
 		
 		// Renderer
 		static void RendererComponentHelper();

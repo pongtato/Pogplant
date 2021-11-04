@@ -182,15 +182,15 @@ void Application::InitialiseDebugObjects()
 	(
 		ParticleSystem
 		(
-			glm::vec4{ 1,0,1,1 },
+			glm::vec4{ 1,1,1,1 },
 			glm::vec3{ 0,0,0 },
-			glm::vec3{ 0,9.81f,0 },
+			glm::vec3{ 0,0.981f,0 },
 			0.005f, // Delay
 			0.69f,	// Min Life
 			1.00f,	// Max Life
 			{
-				21.0f,	// Min Speed
-				42.0f,	// Max Speed
+				1.0f,	// Min Speed
+				2.0f,	// Max Speed
 				1.0f,	// Min Speed Mult
 				4.2f,	// Max Speed Mult
 			},
@@ -200,6 +200,7 @@ void Application::InitialiseDebugObjects()
 				1.0f,	// Min Scale Mult
 				4.2f,	// Max Scale Mult
 			},
+			PP::TextureResource::m_TexturePool["ParticleTest.dds"],		// TexID
 			420,	// Spawn Count
 			true,	// Loop
 			true 	// Burst
@@ -308,23 +309,25 @@ void Application::InitialiseDebugObjects()
 	scale = { 1.0f, 1.0f, 1.0f };
 	entity = m_activeECS->CreateEntity("Canvas", pos, rot, scale);
 
-	pos = { -0.55f, 0.3f, 0.0f };
+	pos = { -0.8, 0.5f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
 	scale = { 0.1f, 0.1f, 0.1f };
 	auto child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 1", pos, rot, scale);
 	// Simulate inspector set texture
-	PP::TextureResource::UseTexture("rocks_diff.dds");
+	//PP::TextureResource::UseTexture("rocks_diff.dds");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
+	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, static_cast<int>(PP::TextureResource::m_TexturePool["rocks_diff.dds"]) });
 
-	pos = { -0.55f, 0.2f, 0.0f };
+	pos = { -0.8, 0.7f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
 	scale = { 0.1f, 0.1f, 0.1f };
 	child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 2", pos, rot, scale);
 	// Simulate inspector set texture
-	PP::TextureResource::UseTexture("snow_diff.dds");
+	//PP::TextureResource::UseTexture("snow_diff.dds");
 	child.GetComponent<Components::Transform>() = { pos,rot,scale };
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
+	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, static_cast<int>(PP::TextureResource::m_TexturePool["snow_diff.dds"]) });
 
 	/// Instancing test
 	//pos = { 0.0f, 0.0f, 0.0f };
@@ -436,6 +439,7 @@ void Application::UpdateTransforms(float _Dt)
 
 	/// 3D instance transforms
 	// Clear old instance data
+	PP::MeshInstance::ResetCount();
 	for (auto& model : PP::ModelResource::m_ModelPool)
 	{
 		for (auto& mesh : model.second->m_Meshes)
@@ -520,6 +524,8 @@ void Application::UpdateTransforms(float _Dt)
 
 					float t = 1.0f - it.m_Life / it.m_BaseLife;
 					size_t index = static_cast<size_t>(t / it.m_IndexCalc);
+					// For some reason it exceeds the index size
+					index = index >= it.m_SpeedCurve->size() ? it.m_SpeedCurve->size() - 1 : index;
 					const float curveSpeed = (*it.m_SpeedCurve)[index];
 					const float curveScale = (*it.m_ScaleCurve)[index];
 

@@ -14,6 +14,7 @@ flat out int TexID;
 
 uniform mat4 m4_Projection;
 uniform mat4 m4_View;
+uniform float f_Aspect;
 
 void main() 
 {
@@ -25,8 +26,9 @@ void main()
     mat4 view = m4_View;
     if(b_Ortho == 1)
     {
+        proj = mat4(1.0f);
         view = mat4(1.0f);
     }
 
-    gl_Position = proj * view * m4_Model * vec4(v2_Pos, 0.0f, 1.0f);
+    gl_Position = proj * view * m4_Model * vec4(v2_Pos.x, v2_Pos.y * f_Aspect, 0.0f, 1.0f);
 }

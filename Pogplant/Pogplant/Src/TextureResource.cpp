@@ -5,7 +5,7 @@
 namespace Pogplant
 {
 	std::unordered_map<std::string, unsigned int> TextureResource::m_TexturePool;
-    std::unordered_map<std::string, int> TextureResource::m_UsedTextures;
+    //std::unordered_map<std::string, int> TextureResource::m_UsedTextures;
 
 	void TextureResource::InitResource()
 	{
@@ -23,6 +23,12 @@ namespace Pogplant
         );
 
         // Must group all SRGB together
+
+        TexLoader::LoadTextureSRGB
+        (
+            "ParticleTest.dds",
+            "Resources/Textures/Particle"
+        );
 
         TexLoader::LoadTextureSRGB
         (
@@ -87,23 +93,23 @@ namespace Pogplant
         );
 	}
 
-    void TextureResource::UseTexture(std::string _TexName)
-    {
-        // Dont overwrite
-        if (m_UsedTextures.find(_TexName) == m_UsedTextures.end())
-        {
-            m_UsedTextures[_TexName] = static_cast<int>(m_UsedTextures.size());
-        }
-    }
+    //void TextureResource::UseTexture(std::string _TexName)
+    //{
+    //    // Dont overwrite
+    //    if (m_UsedTextures.find(_TexName) == m_UsedTextures.end())
+    //    {
+    //        m_UsedTextures[_TexName] = static_cast<int>(m_UsedTextures.size());
+    //    }
+    //}
 
-    int TextureResource::GetUsedTextureID(std::string _TexName)
-    {
-        if (m_UsedTextures.find(_TexName) != m_UsedTextures.end())
-        {
-            return m_UsedTextures[_TexName];
-        }
+    //int TextureResource::GetUsedTextureID(std::string _TexName)
+    //{
+    //    if (m_UsedTextures.find(_TexName) != m_UsedTextures.end())
+    //    {
+    //        return m_UsedTextures[_TexName];
+    //    }
 
-        Logger::Log(LogEntry("TEXLOADER", LogEntry::LOGTYPE::ERROR, "This texture is unused"));
-        return -1;
-    }
+    //    Logger::Log(LogEntry("TEXLOADER", LogEntry::LOGTYPE::ERROR, "This texture is unused"));
+    //    return -1;
+    //}
 }

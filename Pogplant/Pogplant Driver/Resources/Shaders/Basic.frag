@@ -20,12 +20,12 @@ void main()
         gNoLight = ColorCoords;
     }  
 
-    if(gNoLight.a > 0)
+    if(gNoLight.a < 1.0f)
     {
-        // Emissive pass
+         discard;
     }
     else
     {
-         discard;
+         // Emissive pass
     }
 }

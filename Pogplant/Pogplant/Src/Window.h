@@ -21,5 +21,6 @@ namespace Pogplant
 		static int m_Width;
 		static int m_Height;
 		static bool m_VSync;
+		static float m_Aspect;
 	};
 }

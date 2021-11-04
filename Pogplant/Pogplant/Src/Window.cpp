@@ -11,6 +11,7 @@ namespace Pogplant
 	GLFWwindow* Window::m_Window = nullptr;
 	int Window::m_Width = 0;
 	int Window::m_Height = 0;
+	float Window::m_Aspect = 0.0f;
 	bool Window::m_VSync = false;
 
 	void WindowSizeCallback(GLFWwindow*, int _Width, int _Height)
@@ -46,6 +47,7 @@ namespace Pogplant
 	{
 		m_Width = _Width;
 		m_Height = _Height;
+		m_Aspect = static_cast<float>(m_Width) / m_Height;
 
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -125,6 +127,7 @@ namespace Pogplant
 	{
 		m_Width = _Width;
 		m_Height = _Height;
+		m_Aspect = static_cast<float>(m_Width) / m_Height;
 	}
 
 	void Window::SetVSync(bool _State)

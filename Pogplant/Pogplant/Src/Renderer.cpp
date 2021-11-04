@@ -356,18 +356,18 @@ namespace Pogplant
 		MeshBuilder::RebindQuad();
 
 		// Bind textures
-		for (const auto& it : TextureResource::m_UsedTextures)
+		for (const auto& it : TextureResource::m_TexturePool)
 		{
 			std::string uniformStr = "Textures[" + std::to_string(it.second) + "]";
-			ShaderLinker::SetUniform(uniformStr.c_str(), it.second);
+			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(it.second));
 			glActiveTexture(GL_TEXTURE0 + it.second);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.first]);
+			glBindTexture(GL_TEXTURE_2D, it.second);
 		}
 
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
+		ShaderLinker::SetUniform("f_Aspect", Pogplant::Window::m_Aspect);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
-		MeshInstance::ResetCount();
 		ShaderLinker::UnUse();
 
 		// 3D models
