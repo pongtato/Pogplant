@@ -376,6 +376,7 @@ namespace Scripting
             ////destroy script so any keyed actions will not occur
             //Destroy(this);
 
+            em.DeleteEnemyInstance(entityID);
             ECS.DestroyEntity(entityID);
         }
 

@@ -40,6 +40,8 @@ namespace Scripting
         public GameObject[] turret_false_bullet_pool; // object pool for false bullets.
         private Dictionary<string, Transform> waypoint_map; // a string to vector3 map for waypoints.
 
+        private List<GameObject> enemy_instances = new List<GameObject>();
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -181,6 +183,7 @@ namespace Scripting
             instance.AddComponent<Rigidbody>(new Rigidbody());
             //instance.AddComponent<BaseEnemy>(new BaseEnemy());
 
+            enemy_instances.Add(instance);
             return instance;
         }
 
@@ -193,9 +196,21 @@ namespace Scripting
             Transform transform = instance.GetComponent<Transform>();
             transform.Position = location.Position;
             transform.Rotation = new Vector3(0, 180, 0);
-            BaseEnemy comp = instance.GetComponent<BaseEnemy>();
-            comp.SetTemplate(enemy_template);
-            comp.SetManager(this);
+            //BaseEnemy comp = instance.GetComponent<BaseEnemy>();
+            //comp.SetTemplate(enemy_template);
+            //comp.SetManager(this);
+        }
+
+        public void DeleteEnemyInstance(uint id)
+        {
+            foreach (var item in enemy_instances)
+            {
+                if (item.id == id)
+                {
+                    enemy_instances.Remove(item);
+                    return;
+                }
+            }
         }
 
     }
