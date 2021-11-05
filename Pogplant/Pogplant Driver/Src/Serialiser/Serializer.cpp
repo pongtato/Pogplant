@@ -48,11 +48,17 @@ namespace PogplantDriver
 			Json::Value root;
 			Json::Value subroot = SaveComponents(id);
 			root[i] = subroot;
-			auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
+
+			auto &transform = m_ecs.GetReg().get<Transform>(id);
+
+			if (!transform.m_children.empty())
+				RecurSaveChild(root, id, ++i);
+
+			/*auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
 			if (relationship_component)
 			{
 				RecurSaveChild(root, id, ++i);
-			}
+			}//*/
 
 			m_saved.clear();
 			Json::StreamWriterBuilder builder;
@@ -80,7 +86,49 @@ namespace PogplantDriver
 			int  i = 0;
 			entt::entity parent = entt::null;
 			entt::entity prev = entt::null;
-			Components::Relationship* parentptr;
+
+			Components::Transform* parentPtr;
+			auto entities = m_ecs.GetReg().view<Transform>();
+			for (auto entity = entities.rbegin(); entity != entities.rend(); ++entity)
+			{
+				if (m_saved.contains(*entity))
+					continue;
+
+				auto& transform = m_ecs.GetReg().get<Transform>(*entity);
+				if (transform.m_parent != entt::null)
+				{
+					parent = transform.m_parent;
+					parentPtr = &transform;
+
+					while (parentPtr && parentPtr->m_parent != entt::null)
+					{
+						prev = parent;
+						parentPtr = &m_ecs.GetReg().get<Transform>(parent);
+						parent = parentPtr->m_parent;
+					}
+
+					Json::Value subroot = SaveComponents(prev);
+					root[i] = subroot;
+					m_saved.insert(prev);
+					i = RecurSaveChild(root, prev, ++i);
+					continue;
+				}
+				else if (!transform.m_children.empty())
+				{
+					Json::Value subroot = SaveComponents(*entity);
+					root[i] = subroot;
+					i = RecurSaveChild(root, *entity, ++i);
+					continue;
+				}
+				
+				//Standard no relationship
+				Json::Value subroot = SaveComponents(*entity);
+				root[i] = subroot;
+				++i;
+			}
+
+
+			/*Components::Relationship* parentptr;
 			auto entities = m_ecs.GetReg().view<Transform>();
 			for(auto entity = entities.rbegin(); entity != entities.rend() ; ++entity)
 			{
@@ -116,7 +164,7 @@ namespace PogplantDriver
 				Json::Value subroot = SaveComponents(*entity);
 				root[i] = subroot;
 				++i;
-			}
+			}*/
 
 			m_saved.clear();
 			Json::StreamWriterBuilder builder;
@@ -137,7 +185,7 @@ namespace PogplantDriver
 
 		//Get all pointers to all components
 
-		auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
+		auto& transform_component = m_ecs.GetReg().get<Transform>(id);
 		auto render_component = m_ecs.GetReg().try_get<Renderer>(id);
 		auto script_component = m_ecs.GetReg().try_get<Scriptable>(id);
 		auto audio_component = m_ecs.GetReg().try_get<AudioSource>(id);
@@ -152,9 +200,9 @@ namespace PogplantDriver
 		Try_Save_Component<Camera>(subroot, id);
 		Try_Save_Component<Rigidbody>(subroot, id);
 
-		if (relationship_component)
+		if (!transform_component.m_children.empty())
 		{
-			subroot["Children"] = relationship_component->m_children.size();
+			subroot["Children"] = transform_component.m_children.size();
 		}
 
 		if (render_component)
@@ -257,6 +305,49 @@ namespace PogplantDriver
 		if (relationship)
 		{
 			bool is_another_parent = false;
+			auto& transform = m_ecs.GetReg().get<Transform>(id);
+			int child = relationship.asInt();
+
+			//Starting case
+			if (child != 0 && m_parent_id.empty())
+			{
+				m_child_counter.push(child);
+				m_parent_id.push(id);
+			}
+			//Base Child only case, Seek parent
+			else if (child == 0 && !m_parent_id.empty())
+			{
+				auto& relationship = m_ecs.GetReg().get<Transform>(m_parent_id.top());
+				relationship.m_children.insert(id);
+				transform.m_parent = m_parent_id.top();
+
+				--m_child_counter.top();
+			}
+			else
+			{
+				auto& relationship = m_ecs.GetReg().get<Transform>(m_parent_id.top());
+				relationship.m_children.insert(id);
+				transform.m_parent = m_parent_id.top();
+
+				--m_child_counter.top();
+
+				is_another_parent = true;
+			}
+			if (!m_child_counter.empty() && m_child_counter.top() <= 0)
+			{
+				m_child_counter.pop();
+				m_parent_id.pop();
+			}
+			if (is_another_parent)
+			{
+				m_child_counter.push(child);
+				m_parent_id.push(id);
+			}
+		}
+
+		/*if (relationship)
+		{
+			bool is_another_parent = false;
 			auto& new_relation = m_ecs.GetReg().emplace<Relationship>(id);
 			int child = relationship.asInt();
 			//Starting case
@@ -293,7 +384,7 @@ namespace PogplantDriver
 				m_child_counter.push(child);
 				m_parent_id.push(id);
 			}
-		}
+		}*/
 
 		if (render)
 		{
@@ -401,7 +492,21 @@ namespace PogplantDriver
 
 	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id,int counter)
 	{
-		auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
+		auto& transform = m_ecs.GetReg().get<Transform>(id);
+		if (!transform.m_children.empty())
+		{
+			for (auto& child : transform.m_children)
+			{
+				_classroot[counter++] = SaveComponents(child);
+				m_saved.insert(child);
+
+				auto& childTransform = m_ecs.GetReg().get<Transform>(child);
+
+				counter = RecurSaveChild(_classroot, child, counter);
+			}
+		}
+
+		/*auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
 		if (relationship_component)
 		{
 			for (auto& child : relationship_component->m_children)
@@ -414,7 +519,7 @@ namespace PogplantDriver
 					counter = RecurSaveChild(_classroot, child, counter);
 				}
 			}
-		}
+		}*/
 		return counter;
 	}
 

@@ -370,12 +370,19 @@ void Application::UpdateTransform(entt::entity _id, Transform& parent_transform)
 	transform.updateModelMtx(parent_transform);
 
 	//update children
-	auto relationship = m_activeECS->GetReg().try_get<Relationship>(_id);
+	if (!transform.m_children.empty())
+	{
+		for (auto& entity : transform.m_children)
+			UpdateTransform(entity, transform);
+	}
+
+	//update children
+	/*auto relationship = m_activeECS->GetReg().try_get<Relationship>(_id);
 	if (relationship)
 	{
 		for (auto& entity : relationship->m_children)
 			UpdateTransform(entity, transform);
-	}
+	}*/
 }
 
 void Application::UpdateTransforms(float _Dt)
@@ -424,7 +431,16 @@ void Application::UpdateTransforms(float _Dt)
 	{
 		auto& transform = view.get<Transform>(entity);
 
-		auto relationship = m_activeECS->GetReg().try_get<Relationship>(entity);
+		transform.updateModelMtx();
+
+		if (transform.m_parent == entt::null)
+		{
+			for (auto& ent : transform.m_children)
+				UpdateTransform(ent, transform);
+		}
+
+
+		/*auto relationship = m_activeECS->GetReg().try_get<Relationship>(entity);
 		if (relationship && relationship->m_parent == entt::null)
 		{
 			transform.updateModelMtx();
@@ -434,7 +450,7 @@ void Application::UpdateTransforms(float _Dt)
 		else if (relationship == nullptr)
 		{
 			transform.updateModelMtx();
-		}
+		}*/
 	}
 
 	/// 3D instance transforms

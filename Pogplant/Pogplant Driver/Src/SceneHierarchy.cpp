@@ -74,19 +74,31 @@ namespace PogplantDriver
 
 	bool SceneHierarchy::DrawEntityNode(entt::entity entity, bool draw_childen)
 	{
+		auto& _transform = m_ECS->GetReg().get<Components::Transform>(entity);
 
-		auto _r = m_ECS->GetReg().try_get<Components::Relationship>(entity);
+		if (!draw_childen && _transform.m_parent != entt::null)
+			return false;
+
+		/*auto _r = m_ECS->GetReg().try_get<Components::Relationship>(entity);
 
 		if (!draw_childen && _r && _r->m_parent != entt::null)
-			return false;
+			return false;//*/
+
 
 		auto name = m_ECS->GetReg().get<Components::Name>(entity);
 		std::string obj_name = name.m_name;
 		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
-		if (_r && _r->m_children.size() != 0)
+		
+		if(!_transform.m_children.empty())
 			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_SpanAvailWidth;
 		else
 			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_SpanAvailWidth;
+
+		/*if (_r && _r->m_children.size() != 0)
+			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_SpanAvailWidth;
+		else
+			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_SpanAvailWidth;
+		*/
 
 		bool is_opened = ImGui::TreeNodeEx((void*)(uint64_t)entity, flags, obj_name.c_str());
 
@@ -97,9 +109,15 @@ namespace PogplantDriver
 
 		if (is_opened)
 		{
-			std::string c_name = "<no children>";
+			if (!_transform.m_children.empty())
+			{
+				for (const auto& ent : _transform.m_children)
+				{
+					DrawEntityNode(ent, true);
+				}
+			}
 
-			if (_r)
+			/*if (_r)
 			{
 				std::set<entt::entity> s = _r->m_children;
 				//int i = 0;
@@ -107,11 +125,8 @@ namespace PogplantDriver
 				{
 					DrawEntityNode(ent, true);
 				}
-			}
-			else
-			{
+			}*/
 
-			}
 			ImGui::TreePop();
 
 		}

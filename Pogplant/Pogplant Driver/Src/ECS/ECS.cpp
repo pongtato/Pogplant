@@ -29,19 +29,20 @@ Entity ECS::CreateChild(entt::entity parent,
 						glm::vec3 scale,
 						std::string child_tag)
 {
-	auto _p_r = m_registry.try_get<Relationship>(parent);
+	//auto _p_r = m_registry.try_get<Relationship>(parent);
+	auto& transform = m_registry.get<Transform>(parent);
+
 
 	//create child
 	auto _child = CreateEntity(child_name, pos, rot, scale, child_tag);
 
 	//child relationship component
-	auto& _c_r = m_registry.emplace<Relationship>(_child.GetID());
-	_c_r.m_parent = parent;
+	//auto& _c_r = m_registry.emplace<Relationship>(_child.GetID());
+	//_c_r.m_parent = parent;
+	auto& childTransform = m_registry.get<Transform>(_child.GetID());
+	childTransform.m_parent = parent;
 
-	if (_p_r)
-		_p_r->m_children.insert(_child.GetID());
-	else
-		m_registry.emplace<Relationship>(parent).m_children.insert(_child.GetID());
+	transform.m_children.insert(_child.GetID());
 
 	return _child;
 }
@@ -53,10 +54,31 @@ entt::registry& ECS::GetReg()
 
 void ECS::DestroyEntity(entt::entity entity)
 {
-	auto _r = m_registry.try_get<Relationship>(entity);
-	auto _s = m_registry.try_get<Scriptable>(entity);
+	//auto _r = m_registry.try_get<Relationship>(entity);
+	
+	auto& _transform = m_registry.get<Transform>(entity);
+
+	//Destroy all children
+	auto copy_set = _transform.m_children;
+	for (auto child : copy_set)
+	{
+		DestroyEntity(child);
+	}
+
+	//remove parent connection
+	if (_transform.m_parent != entt::null)
+	{
+		auto& _parentTrans = m_registry.get<Transform>(_transform.m_parent);
+		
+		if (_parentTrans.m_children.erase(entity) == 0)
+		{
+			//If this is hit means that parent linking is not synced properly somewhere
+			assert(false);
+		}
+	}
+
 	//destory childrens first
-	if (_r)
+	/*if (_r)
 	{
 		//if it's a parent, delete all children
 		auto copy_set = _r->m_children;
@@ -76,7 +98,9 @@ void ECS::DestroyEntity(entt::entity entity)
 					printf("Tried to delete a child that didn't exist\n");
 			}
 		}
-	}
+	}*/
+
+	auto _s = m_registry.try_get<Scriptable>(entity);
 
 	// Clear from the Script resource pool
 	if (_s)

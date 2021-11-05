@@ -1051,7 +1051,7 @@ namespace PogplantDriver
 		//}
 		//else
 		{
-			auto transform = m_ecs->GetReg().get<Components::Transform>(_id);
+			auto& transform = m_ecs->GetReg().get<Components::Transform>(_id);
 			return transform.m_ModelMtx;
 		}
 	}
@@ -1075,8 +1075,22 @@ namespace PogplantDriver
 			glm::mat4 parent_pos;
 			glm::mat4 matrix_delta;
 			bool parent = false;
+
+			if (transform.m_parent != entt::null)
+			{
+				parent = true;
+				parent_pos = get_parent_transform(transform.m_parent);
+			}
+			//else
+			{
+				ImGuizmo::RecomposeMatrixFromComponents(
+					glm::value_ptr(transform.m_position),
+					glm::value_ptr(transform.m_rotation),
+					glm::value_ptr(transform.m_scale),
+					glm::value_ptr(matrix_delta));
+			}
 			
-			auto relationship = m_ecs->GetReg().try_get<Components::Relationship>(m_CurrentEntity);
+			/*auto relationship = m_ecs->GetReg().try_get<Components::Relationship>(m_CurrentEntity);
 
 			if (relationship && relationship->m_parent != entt::null)
 			{
@@ -1092,7 +1106,7 @@ namespace PogplantDriver
 														glm::value_ptr(transform.m_rotation),
 														glm::value_ptr(transform.m_scale),
 														glm::value_ptr(matrix_delta));
-			}
+			}*/
 
 
 			if (parent)

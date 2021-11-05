@@ -32,13 +32,6 @@ namespace Components
 		short m_index;
 	};
 
-	struct Relationship
-	{
-		entt::entity m_parent = entt::null;
-		std::set<entt::entity> m_children;
-
-	};
-
 	struct Transform
 	{
 		glm::vec3 m_position;
@@ -47,6 +40,9 @@ namespace Components
 
 		glm::mat4 m_ModelMtx;// has been multiplied by parent matrix
 		glm::mat4 actual_m_ModelMtx;
+
+		entt::entity m_parent = entt::null;
+		std::set<entt::entity> m_children;
 
 		Transform() = default;
 		Transform(const Transform&) = default;
