@@ -24,7 +24,7 @@ namespace Scripting
     {
         private CatmullRomSpline catmullRom = null;
 
-        private float follow_speed = 44.0f;
+        private float follow_speed = 66.0f;
 
         private float rotation_speed = 10.0f;
 
