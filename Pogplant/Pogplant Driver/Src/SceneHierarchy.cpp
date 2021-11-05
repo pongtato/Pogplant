@@ -233,7 +233,7 @@ namespace PogplantDriver
 			for (auto& it : Pogplant::ModelResource::m_ModelPool)
 			{
 				// Center object
-				ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x * 0.5f - 146.0f);
+				//ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x * 0.5f - 146.0f);
 				if(ImGui::Button(it.first.c_str(), ImVec2(300,00)))
 				{
 					auto entity = m_ECS->CreateEntity(it.first);
