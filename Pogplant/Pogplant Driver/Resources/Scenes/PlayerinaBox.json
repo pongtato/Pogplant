@@ -103,7 +103,7 @@
 		},
 		"Scripting" : 
 		{
-			"PlayerScript" : true
+			"PlayerScript" : false
 		},
 		"Transform" : 
 		{

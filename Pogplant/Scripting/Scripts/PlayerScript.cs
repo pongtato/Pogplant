@@ -90,7 +90,7 @@ namespace Scripting
             //    rigidbody.AddForce(new Vector3(0, 3.0f, 0));
             //}
 
-            if(InputUtility.onKeyHeld(KEY_ID.KEY_A))
+            if (InputUtility.onKeyHeld(KEY_ID.KEY_A))
             {
                 //Console.WriteLine("A key is held down");
             }
@@ -186,14 +186,18 @@ namespace Scripting
                 }
             }
 
-            if (InputUtility.onKeyReleased(KEY_ID.KEY_S))
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_M))
             {
+                GameObject GO = ECS.CreateEntity("Player2", new Transform(Vector3.One(), Vector3.One(), Vector3.One()));
+                GO.AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
+                GO.AddComponent<Renderer>(new Renderer("Player_Ship"));
+                GO.AddComponent<PlayerScript>(new PlayerScript());
+
                 //Console.WriteLine("S key is released");
             }
 
 
-
-            horizontal_input = (InputUtility.onKeyHeld("LEFT") ? -1.0f : 0.0f) + (InputUtility.onKeyHeld("RIGHT") ? 1.0f : 0.0f);
+            horizontal_input = (InputUtility.onKeyHeld("RIGHT") ? -1.0f : 0.0f) + (InputUtility.onKeyHeld("LEFT") ? 1.0f : 0.0f);
             vertical_input = (InputUtility.onKeyHeld("UP") ? 1.0f : 0.0f) + (InputUtility.onKeyHeld("DOWN") ? -1.0f : 0.0f);
 
             Vector3 force_dir = new Vector3(horizontal_input, vertical_input, 0) * movement_speed * dt; // 32 is magic number
@@ -292,7 +296,7 @@ namespace Scripting
                 if (p_fire_timer >= p_fireRate)
                 {
                     // Call C++ side bullet firing
-                    GameUtilities.FirePlayerBullet(transform.Position, transform.Rotation);
+                    GameUtilities.FirePlayerBullet(entityID, transform.Position, transform.Rotation);
                     p_fire_timer = 0.0f;
                 }
             }

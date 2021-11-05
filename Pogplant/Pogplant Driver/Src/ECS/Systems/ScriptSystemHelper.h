@@ -16,6 +16,7 @@ namespace SSH
 	void AddComponentTransform(unsigned int id, Components::Transform transform);
 	void AddComponentRigidbody(unsigned int id, Components::Rigidbody rigidbody);
 	void AddComponentRenderer(unsigned int id, glm::vec3 colorTint, glm::vec3 emissiveTint, int useLight, bool editorDrawOnly, MonoString* name);
+	void AddScript(unsigned int id, MonoString* _scriptName);
 	MonoArray* GetModelKeysIC();
 
 	void InvokeFunction(const std::string& scriptName, const std::string& funcName, const entt::entity& entity);

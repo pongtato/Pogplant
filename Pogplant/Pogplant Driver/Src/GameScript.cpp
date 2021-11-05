@@ -60,10 +60,12 @@ namespace Scripting
 		}
 	}
 
-	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _Rotation)
+	void FirePlayerBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation)
 	{
 		//Need to find player ship transform 
-		entt::entity player_ship = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerShip");
+		//entt::entity player_ship = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerShip");
+		entt::entity player_ship = static_cast<entt::entity>(entityID);
+
 		glm::mat4 decompose{ 0 };
 		glm::vec3 position{ 0 };
 		if (player_ship != entt::null)
@@ -97,7 +99,7 @@ namespace Scripting
 		auto new_bullet = GameplayECS::m_GameScriptECS->CreateEntity("Bullet", position, _Rotation);
 		new_bullet.AddComponent<Projectile>(3.f, 10.f, Components::Projectile::OwnerType::Player);
 
-		new_bullet.AddComponent<Renderer>(glm::vec3{ 1.0f }, glm::vec3{ 1.0f }, PP::ModelResource::m_ModelPool["sphere"], &PP::ModelResource::m_ModelPool["sphere"]->m_Meshes.begin()->second);
+		new_bullet.AddComponent<Renderer>(glm::vec3{ 1.0f }, glm::vec3{ 1.0f }, PP::ModelResource::m_ModelPool["Player_Bullet"], &PP::ModelResource::m_ModelPool["Player_Bullet"]->m_Meshes.begin()->second);
 		
 		auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
 		auto& identi = new_bullet.AddComponent<Components::ColliderIdentifier>();
