@@ -39,20 +39,35 @@ namespace Components
 		glm::vec3 m_scale;
 
 		glm::mat4 m_ModelMtx;// has been multiplied by parent matrix
-		glm::mat4 actual_m_ModelMtx;
+		glm::mat4 m_ModelMtxLocal;
+
+		/**> Matrix to get local from world */
+		glm::mat4 m_worldToLocal;
 
 		entt::entity m_parent = entt::null;
 		std::set<entt::entity> m_children;
 
 		Transform() = default;
 		Transform(const Transform&) = default;
-		Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scale)
-			: m_position(pos), m_rotation(rot), m_scale(scale)
+		Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, entt::entity parent = entt::null)
+			: m_position(pos), m_rotation(rot), m_scale(scale), m_parent{ parent }
 		{
 			init();
 		}
 
-		void init(void)
+		inline Transform& operator=(const Transform& rhs)
+		{
+			if (this != &rhs)
+			{
+				m_position = rhs.m_position;
+				m_rotation = rhs.m_rotation;
+				m_scale = rhs.m_scale;
+			}
+
+			return *this;
+		}
+
+		inline void init(void)
 		{
 			//ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(m_position),
 			//										glm::value_ptr(m_rotation),
@@ -67,19 +82,19 @@ namespace Components
 			m_ModelMtx = glm::scale(m_ModelMtx, m_scale);
 		}
 
-		void updateModelMtx(void)
+		inline void updateModelMtx(void)
 		{
-
 			ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(m_position),
 													glm::value_ptr(m_rotation),
 													glm::value_ptr(m_scale),
 													glm::value_ptr(m_ModelMtx));
+
+			m_ModelMtxLocal = m_ModelMtx;
 		}
 
-		void updateModelMtx(Transform _transform)
+		inline void updateModelMtx(Transform _transform)
 		{
 			updateModelMtx();
-			actual_m_ModelMtx = m_ModelMtx;
 			m_ModelMtx = _transform.m_ModelMtx * m_ModelMtx;
 		}
 	};

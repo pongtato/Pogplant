@@ -1072,47 +1072,31 @@ namespace PogplantDriver
 			auto& transform = m_ecs->GetReg().get<Components::Transform>(m_CurrentEntity);
 
 			//glm::mat4& pos = transform.m_ModelMtx;
-			glm::mat4 parent_pos;
-			glm::mat4 matrix_delta;
-			bool parent = false;
+			glm::mat4 parent_matrix;
+
+			glm::mat4 xxTTVMatrix69x;//A temporary matrix used for child/parent transformation
+			bool hasParent = false;
 
 			if (transform.m_parent != entt::null)
 			{
-				parent = true;
-				parent_pos = get_parent_transform(transform.m_parent);
+				hasParent = true;
+				parent_matrix = get_parent_transform(transform.m_parent);
 			}
-			//else
-			{
-				ImGuizmo::RecomposeMatrixFromComponents(
-					glm::value_ptr(transform.m_position),
-					glm::value_ptr(transform.m_rotation),
-					glm::value_ptr(transform.m_scale),
-					glm::value_ptr(matrix_delta));
-			}
-			
-			/*auto relationship = m_ecs->GetReg().try_get<Components::Relationship>(m_CurrentEntity);
 
-			if (relationship && relationship->m_parent != entt::null)
-			{
-				parent = true;
-				parent_pos = get_parent_transform(relationship->m_parent);
-				////pos += parent_pos;
-				//pos = parent_pos * pos;
-			}
-			//else
-			{
-				//Gizmo transform, matrix to components & back
-				ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(transform.m_position),
-														glm::value_ptr(transform.m_rotation),
-														glm::value_ptr(transform.m_scale),
-														glm::value_ptr(matrix_delta));
-			}*/
+			ImGuizmo::RecomposeMatrixFromComponents(
+				glm::value_ptr(transform.m_position),
+				glm::value_ptr(transform.m_rotation),
+				glm::value_ptr(transform.m_scale),
+				glm::value_ptr(xxTTVMatrix69x));
 
+			//At this point, xxTTVMatrix69x is a matrix that is purely local space
 
-			if (parent)
+			if (hasParent)
 			{
-				matrix_delta = parent_pos * matrix_delta;
+				//This computes the local to world matrix
+				xxTTVMatrix69x = parent_matrix * xxTTVMatrix69x;
 			}
+
 			ImGuizmo::Manipulate
 			(
 				m_GoEditing,
@@ -1120,37 +1104,23 @@ namespace PogplantDriver
 				glm::value_ptr(_CurrCam->GetPerspective()),
 				m_EditMode,
 				ImGuizmo::LOCAL,
-				glm::value_ptr(matrix_delta),
+				glm::value_ptr(xxTTVMatrix69x),
 				NULL,
 				m_UseSnap ? m_SnapStep : NULL,
 				m_BoundSizing ? m_BoundsPos : NULL,
 				m_UseBoundsSnap ? m_BoundsSnapStep : NULL
 			);
 
-			if (parent)
+			if (hasParent)
 			{
-				auto iasd = inverse(parent_pos);
-				matrix_delta = iasd * matrix_delta;
-				//ImGuizmo::DecomposeMatrixToComponents(	glm::value_ptr(matrix_delta),
-				//										glm::value_ptr(transform.m_position),
-				//										glm::value_ptr(transform.m_rotation),
-				//										glm::value_ptr(transform.m_scale));
-			}
-			//else
-			{
-
-				ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(matrix_delta),
-														glm::value_ptr(transform.m_position),
-														glm::value_ptr(transform.m_rotation),
-														glm::value_ptr(transform.m_scale));
+				//This translates from local relative to world, to local relative to parent
+				xxTTVMatrix69x = inverse(parent_matrix) * xxTTVMatrix69x;
 			}
 
-
-
-
-
-			//transform.m_position = pos;
-
+			ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(xxTTVMatrix69x),
+				glm::value_ptr(transform.m_position),
+				glm::value_ptr(transform.m_rotation),
+				glm::value_ptr(transform.m_scale));
 		}
 	}
 

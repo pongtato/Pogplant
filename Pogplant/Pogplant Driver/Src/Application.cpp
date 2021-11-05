@@ -315,7 +315,6 @@ void Application::InitialiseDebugObjects()
 	auto child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 1", pos, rot, scale);
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("rocks_diff.dds");
-	child.GetComponent<Components::Transform>() = { pos,rot,scale };
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
 	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, static_cast<int>(PP::TextureResource::m_TexturePool["rocks_diff.dds"]) });
 
@@ -325,7 +324,6 @@ void Application::InitialiseDebugObjects()
 	child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 2", pos, rot, scale);
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("snow_diff.dds");
-	child.GetComponent<Components::Transform>() = { pos,rot,scale };
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
 	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, static_cast<int>(PP::TextureResource::m_TexturePool["snow_diff.dds"]) });
 
