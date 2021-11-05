@@ -20,7 +20,6 @@ using System.Threading.Tasks;
 
 namespace Scripting
 {
-
     // Abstract action class that all enemy actions will derive from.
     public abstract class BaseAction
     {
@@ -57,19 +56,21 @@ namespace Scripting
 
             current_time += dt;
 
-            //if (transform == null && owner != null)
-            //{
-            //    transform = owner.transform;
-            //}
+            if (owner != null)
+            {
+                transform = owner.transform.Value;
+            }
 
-            //if (start_position != end_position)
-            //    transform.position = Vector3.Lerp(start_position.position, end_position.position, progress);
+            const float Epsilon = 0.001f;
 
-            //if (current_time >= duration)
-            //{
-            //    is_finished = true;
-            //    transform.SetParent(end_position);
-            //}
+            if ((start_position.Position - end_position.Position).magnitude() < Epsilon)
+                transform.Position = Vector3.Lerp(start_position.Position, end_position.Position, progress);
+
+            if (current_time >= duration)
+            {
+                is_finished = true;
+                //transform.SetParent(end_position);
+            }
 
             return is_finished;
         }
@@ -151,19 +152,19 @@ namespace Scripting
             fire_timer += dt;
 
             // Play animation once, runtime initialization
-            //if (animator == null && owner != null)
-            //{
-            //    animator = owner.GetComponentInChildren<Animator>();
-            //    em = manager;
-            //    animator.Play(attack_animation);
+            if (owner != null)
+            {
+                //animator = owner.GetComponentInChildren<Animator>();
+                //em = manager;
+                //animator.Play(attack_animation);
 
-            //    muzzle_transforms = owner.GetComponent<BaseEnemy>().muzzles;
+                muzzle_transforms = owner.GetComponent<BaseEnemy>().muzzles;
 
-            //    //resets primer and reset
-            //    is_primed = false;
-            //    is_reseting = false;
-            //    primer_timer = primer_time;
-            //}
+                //resets primer and reset
+                is_primed = false;
+                is_reseting = false;
+                primer_timer = primer_time;
+            }
 
             //countdown for attack to prime itself
             primer_timer -= dt;
@@ -187,13 +188,15 @@ namespace Scripting
                     {
                         current_interval = 0;
 
-                        FireBullet(em.GetBullet(true), i);
+                        //FireBullet(em.GetBullet(true), i);
+                        GameUtilities.FireEnemyBullet(muzzle_transforms[i].Position, muzzle_transforms[i].Rotation);
                         //Debug.Log("Firing true bullet");
                     }
                     else
                     {
                         ++current_interval;
-                        FireBullet(em.GetBullet(false), i);
+                        //FireBullet(em.GetBullet(false), i);
+                        GameUtilities.FireEnemyBullet(muzzle_transforms[i].Position, muzzle_transforms[i].Rotation);
                         //Debug.Log("Firing false bullet");
                     }
                 }
@@ -219,6 +222,9 @@ namespace Scripting
             //    Projectile prj_comp = bullet.GetComponent<Projectile>();
             //    prj_comp.InitBullet();
             //}
+
+            // Use C++ fire bullet now
+            //GameUtilities.FireEnemyBullet(muzzle_transforms[muzzleIndex].Position, muzzle_transforms[muzzleIndex].Rotation);
         }
 
         public AttackAction MakeCopy()
@@ -323,6 +329,7 @@ namespace Scripting
 
         EnemyTemplate my_info;
         EnemyManager em;
+        GameObject gameObject;
         public Transform[] muzzles;
 
         private float current_lifetime = 0.0f;
@@ -333,9 +340,10 @@ namespace Scripting
 
         }
 
-        public BaseEnemy(EnemyTemplate template)
+        public BaseEnemy(EnemyTemplate template, GameObject go)
         {
             SetTemplate(template);
+            gameObject = go;
         }
 
         public void SetTemplate(EnemyTemplate template)
@@ -361,11 +369,15 @@ namespace Scripting
         private void HandleDeath()
         {
             is_alive = false;
-            //GetComponent<Destructible_Actor>().HandleDeath();
+
+            //gameObject.GetComponent<Destructible_Actor>().HandleDeath();
             //FirstPersonFiringSystem.Instance.RemoveEnemyFromListOfTargets(gameObject);
 
             ////destroy script so any keyed actions will not occur
             //Destroy(this);
+
+            em.DeleteEnemyInstance(entityID);
+            ECS.DestroyEntity(entityID);
         }
 
         public override void Init(ref uint _entityID)
@@ -393,19 +405,19 @@ namespace Scripting
             // Execute the actions like a sequence node in a BT
             foreach (BaseAction action in my_info.commands)
             {
-                //if (!action.Execute(Time.deltaTime, gameObject, em))
-                //    break;
+                if (!action.Execute(dt, gameObject, em))
+                    break;
             }
 
             if (is_alive)
             {
-                //current_lifetime += Time.deltaTime;
-                //if (current_lifetime >= my_info.life_time)
-                //{
-                //    FirstPersonFiringSystem.Instance.RemoveEnemyFromListOfTargets(gameObject);
-                //    Destroy(gameObject);
-                //    //HandleDeath();
-                //}
+                current_lifetime += dt;
+                if (current_lifetime >= my_info.life_time)
+                {
+                    //FirstPersonFiringSystem.Instance.RemoveEnemyFromListOfTargets(gameObject);
+                    //Destroy(gameObject);
+                    HandleDeath();
+                }
             }
         }
     }

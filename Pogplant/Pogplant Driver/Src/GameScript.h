@@ -17,7 +17,7 @@ namespace Scripting
 	//Only works via checking for  "name" PlayerCam together with PlayerScript
 	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation);
 
-	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _Rotation);
+	void FirePlayerBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation);
 
 	void FireEnemyBullet(glm::vec3 _Position, glm::vec3 _Rotation);
 

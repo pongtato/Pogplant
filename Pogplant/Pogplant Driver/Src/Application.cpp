@@ -19,7 +19,7 @@ std::unique_ptr<Application> Application::m_instance = nullptr;
 std::once_flag Application::m_onceFlag;
 
 /****************************TEMPORARY STUFF TO MOVE***************************/
-// This has to be moved to a model loading or smth
+// Remove the one in application when model loading from json works
 void Application::ConstructModel(Entity& _Entity, PP::Model* _Model, PP::Mesh3D* _Mesh3D, const glm::vec3& _Color, const glm::vec3& _Emissive, bool _UseLight, bool _EditorOnly, bool _FirstIt)
 {
 	if (!_FirstIt)

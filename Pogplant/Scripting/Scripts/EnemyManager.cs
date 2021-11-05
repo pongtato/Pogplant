@@ -25,6 +25,8 @@ namespace Scripting
         //singleton
         public static EnemyManager Instance;
 
+        public static int enemy_counter = 0;
+
         public Transform parent;
 
         public GameObject true_bullet_prefab;
@@ -37,6 +39,8 @@ namespace Scripting
         public GameObject[] turret_true_bullet_pool; // object pool for true bullets.
         public GameObject[] turret_false_bullet_pool; // object pool for false bullets.
         private Dictionary<string, Transform> waypoint_map; // a string to vector3 map for waypoints.
+
+        private List<GameObject> enemy_instances = new List<GameObject>();
 
         public override void Init(ref uint _entityID)
         {
@@ -171,18 +175,44 @@ namespace Scripting
         }
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         { }
+        GameObject CreateEnemyInstance(Transform location)
+        {
+            GameObject instance = ECS.CreateEntity("Enemy (" + enemy_counter + ")", location);
+
+            instance.AddComponent<Renderer>(new Renderer("Enemy_01"));
+            instance.AddComponent<Rigidbody>(new Rigidbody());
+            //instance.AddComponent<BaseEnemy>(new BaseEnemy());
+
+            enemy_instances.Add(instance);
+            return instance;
+        }
 
         // Given a location, enemy template and name of the enemy prefab this function will spawn an instance of an enemy.
         public void InstantiateEnemy(Transform location, EnemyTemplate enemy_template, string prefab_object)
         {
             //GameObject prefab = Resources.Load(prefab_object) as GameObject;
             //GameObject instance = Instantiate(prefab, parent, false);
-            //instance.transform.position = location.position;
-            //instance.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            GameObject instance = CreateEnemyInstance(location);
+            Transform transform = instance.GetComponent<Transform>();
+            transform.Position = location.Position;
+            transform.Rotation = new Vector3(0, 180, 0);
             //BaseEnemy comp = instance.GetComponent<BaseEnemy>();
             //comp.SetTemplate(enemy_template);
             //comp.SetManager(this);
         }
+
+        public void DeleteEnemyInstance(uint id)
+        {
+            foreach (var item in enemy_instances)
+            {
+                if (item.id == id)
+                {
+                    enemy_instances.Remove(item);
+                    return;
+                }
+            }
+        }
+
     }
 
 }

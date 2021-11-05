@@ -39,6 +39,9 @@ namespace Scripting
         public Nullable<Transform> transform;
         public Nullable<Rigidbody> rigidbody;
         public Nullable<Renderer> renderer;
+        public BaseEnemy baseEnemy;
+        public FollowSpline followSpline;
+        public PlayerScript playerScript;
 
         // For now let's just seperate each component 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -50,8 +53,8 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void AddComponentRenderer(uint id, Vector3 colorTint, Vector3 emissiveTint, int uselight, bool editordrawonly, string modelName);
 
-        //[MethodImplAttribute(MethodImplOptions.InternalCall)]
-        //public extern static void AddComponentRenderer(uint id, Vector3 colorTint, int uselight, bool editordrawonly);
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void AddScript(uint id, string name);
 
         public T AddComponent<T>(T component)
         {
@@ -90,6 +93,42 @@ namespace Scripting
                 else
                 {
                     Console.WriteLine("Renderer component already exists.");
+                }
+            }
+            else if(typeof(T) == typeof(BaseEnemy))
+            {
+                if (baseEnemy == null)
+                {
+                    baseEnemy = (BaseEnemy)(object)component;
+                    AddScript(id, "BaseEnemy");
+                }
+                else
+                {
+                    Console.WriteLine("Follow spline script already exists.");
+                }
+            }
+            else if(typeof(T) == typeof(FollowSpline))
+            {
+                if (followSpline == null)
+                {
+                    followSpline = (FollowSpline)(object)component;
+                    AddScript(id, "FollowSpline");
+                }
+                else
+                {
+                    Console.WriteLine("Follow spline script already exists.");
+                }
+            }
+            else if (typeof(T) == typeof(PlayerScript))
+            {
+                if (playerScript == null)
+                {
+                    playerScript = (PlayerScript)(object)component;
+                    AddScript(id, "PlayerScript");
+                }
+                else
+                {
+                    Console.WriteLine("Player script already exists.");
                 }
             }
             else 
@@ -132,6 +171,39 @@ namespace Scripting
                 else
                 {
                     Console.WriteLine("Renderer component doesn't exist.");
+                }
+            }
+            else if(typeof(T) == typeof(BaseEnemy))
+            {
+                if(baseEnemy != null)
+                {
+                    return (T)(object)baseEnemy;
+                }
+                else
+                {
+                    Console.WriteLine("Base Enemy component doesn't exist.");
+                }
+            }
+            else if (typeof(T) == typeof(FollowSpline))
+            {
+                if (followSpline != null)
+                {
+                    return (T)(object)followSpline;
+                }
+                else
+                {
+                    Console.WriteLine("Follow Spline script doesn't exist.");
+                }
+            }
+            else if (typeof(T) == typeof(PlayerScript))
+            {
+                if (playerScript != null)
+                {
+                    return (T)(object)playerScript;
+                }
+                else
+                {
+                    Console.WriteLine("Player script doesn't exist.");
                 }
             }
             else

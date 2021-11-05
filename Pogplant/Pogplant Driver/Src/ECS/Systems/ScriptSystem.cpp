@@ -329,6 +329,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRenderer", SSH::AddComponentRenderer);
+	mono_add_internal_call("Scripting.GameObject::AddScript", SSH::AddScript);
 
 	mono_add_internal_call("Scripting.ComponentHelper::GetModelKeysIC", SSH::GetModelKeysIC);
 }

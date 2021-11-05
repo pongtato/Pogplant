@@ -183,7 +183,7 @@ namespace PogplantDriver
 		// Draw the entire UI
 		DrawDock();
 
-		//ImGui::ShowDemoWindow();
+		ImGui::ShowDemoWindow();
 
 		// Render dear imgui into screen
 		ImGui::Render();
@@ -1318,6 +1318,8 @@ namespace PogplantDriver
 
 			// So wont be on the same line as prev
 			ImGui::Dummy(ImVec2(0.0f, 0.0f));
+			// Center object
+			ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x * 0.5f - 56.0f);
 			if (ImGui::Button("Cancel", ImVec2(120, 0)))
 			{
 				ImGui::CloseCurrentPopup();
@@ -1372,6 +1374,8 @@ namespace PogplantDriver
 
 			// So wont be on the same line as prev
 			ImGui::Dummy(ImVec2(0.0f, 0.0f));
+			// Center object
+			ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x * 0.5f - 56.0f);
 			if (ImGui::Button("Cancel", ImVec2(120, 0)))
 			{
 				ImGui::CloseCurrentPopup();
@@ -1425,6 +1429,8 @@ namespace PogplantDriver
 
 			// So wont be on the same line as prev
 			ImGui::Dummy(ImVec2(0.0f, 0.0f));
+			// Center object
+			ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x * 0.5f - 56.0f);
 			if (ImGui::Button("Cancel", ImVec2(120, 0)))
 			{
 				ImGui::CloseCurrentPopup();
@@ -1534,7 +1540,7 @@ namespace PogplantDriver
 							}
 							ImGui::Dummy(ImVec2(0.0f, 0.5f));
 						}
-						TextureSelectHelper("Texture Selection", selectedTex);
+						TextureSelectHelper(popuplabel, selectedTex);
 						ImGui::TreePop();
 						ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					}
@@ -1561,7 +1567,7 @@ namespace PogplantDriver
 							}
 							ImGui::Dummy(ImVec2(0.0f, 0.5f));
 						}
-						TextureSelectHelper("Texture Selection", selectedTex);
+						TextureSelectHelper(popuplabel, selectedTex);
 						ImGui::TreePop();
 						ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					}
@@ -1588,7 +1594,7 @@ namespace PogplantDriver
 							}
 							ImGui::Dummy(ImVec2(0.0f, 0.5f));
 						}
-						TextureSelectHelper("Texture Selection", selectedTex);
+						TextureSelectHelper(popuplabel, selectedTex);
 						ImGui::TreePop();
 						ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					}
@@ -1623,7 +1629,7 @@ namespace PogplantDriver
 							}
 							ImGui::Dummy(ImVec2(0.0f, 0.5f));
 						}
-						TextureSelectHelper("Texture Selection", selectedTex);
+						TextureSelectHelper(popuplabel, selectedTex);
 						ImGui::TreePop();
 					}
 					ImGui::TreePop();

@@ -24,11 +24,12 @@ namespace Scripting
     {
         private CatmullRomSpline catmullRom = null;
 
-        private float follow_speed = 44.0f;
+        private float follow_speed = 66.0f;
 
         private float rotation_speed = 10.0f;
 
-
+        public float DelayToStart;
+        private bool m_HasStarted = false;
 
         private Transform[] waypoints = null; // Array of waypoints we get from running the CatmullRomSpline script.
         private uint current_waypoint_index = 1; // Initiallized to 2 so that skip the first 3 waypoints in waypoints array.
@@ -87,6 +88,11 @@ namespace Scripting
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
 
+        }
+
+        public void UpdateSpeed(float speed)
+        {
+            follow_speed = speed;
         }
 
         private float lerpSpeed = 5.0f;

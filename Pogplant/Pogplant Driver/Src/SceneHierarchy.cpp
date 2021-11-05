@@ -4,12 +4,15 @@
 #include <imgui.h>
 
 #include "../../Pogplant/Src/Utils/FileDialogs.h"
+#include "../../Pogplant/Src/ModelResource.h"
 #include "ECS/Components/Components.h"
 #include "ECS/Components/DependantComponents.h"
 #include "Serialiser/Serializer.h"
 
 namespace PogplantDriver
 {
+	bool SceneHierarchy::m_Loading = false;
+
 	void SceneHierarchy::Init(ECS* ecs, entt::entity& current_entity)
 	{
 		m_ECS = ecs;
@@ -63,9 +66,14 @@ namespace PogplantDriver
 					m_ECS->CreateEntity();
 				if (ImGui::MenuItem("Load Prefab"))
 					LoadPrefab();
+				if (ImGui::MenuItem("Load Model"))
+					m_Loading = true;
 
 				ImGui::EndPopup();
 			}
+
+			// This has to be done this way due to how imgui handles IDs, it will have been popped in the context window above
+			LoadModel();
 		}
 		current_entity = m_CurrentEntity;
 		ImGui::End();
@@ -158,6 +166,86 @@ namespace PogplantDriver
 		{
 			Serializer serialiser{ *m_ECS };
 			serialiser.LoadPrefab(filepath);
+		}
+	}
+
+	/****************************TEMPORARY STUFF TO MOVE***************************/
+	// Prolly have to be moved again when prefab
+	// This has to be moved to a model loading or smth
+	void SceneHierarchy::ConstructModel
+	(
+		Entity& _Entity,
+		Pogplant::Model* _Model,
+		Pogplant::Mesh3D* _Mesh3D,
+		const glm::vec3& _Color,
+		const glm::vec3& _Emissive,
+		bool _UseLight,
+		bool _EditorOnly,
+		bool _FirstIt
+	)
+	{
+		if (!_FirstIt)
+		{
+			auto child = m_ECS->CreateChild(_Entity.GetID(), _Mesh3D->m_Name);
+			child.AddComponent<Components::Renderer>(Components::Renderer{ _Color, _Emissive, _Model, _Mesh3D, _UseLight, _EditorOnly });
+			auto& transform = child.GetComponent<Components::Transform>();
+			transform.m_position = _Mesh3D->m_Translate;
+			transform.m_rotation = _Mesh3D->m_Rotate * 90.0f;
+			transform.m_scale = _Mesh3D->m_Scale;
+			for (auto it : _Mesh3D->m_SubMeshIDs)
+			{
+				ConstructModel(child, _Model, &_Model->m_Meshes[it], _Color, _Emissive, _UseLight, _EditorOnly, false);
+			}
+		}
+		else
+		{
+			_Entity.AddComponent<Components::Renderer>(Components::Renderer{ _Color, _Emissive, _Model, _Mesh3D, _UseLight, _EditorOnly });
+			for (auto it : _Mesh3D->m_SubMeshIDs)
+			{
+				ConstructModel(_Entity, _Model, &_Model->m_Meshes[it], _Color, _Emissive, _UseLight, _EditorOnly, false);
+			}
+		}
+	}
+
+	/****************************END OF TEMPORARY STUFF TO MOVE***************************/
+
+	void SceneHierarchy::LoadModel()
+	{
+		const char* label = "Load Model";
+		if (m_Loading)
+		{
+			ImGui::OpenPopup(label);
+		}
+
+		// Always center this window when appearing
+		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+		if (ImGui::BeginPopupModal(label, NULL, ImGuiWindowFlags_AlwaysAutoResize))
+		{
+			for (auto& it : Pogplant::ModelResource::m_ModelPool)
+			{
+				// Center object
+				ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x * 0.5f - 146.0f);
+				if(ImGui::Button(it.first.c_str(), ImVec2(300,00)))
+				{
+					auto entity = m_ECS->CreateEntity(it.first);
+					ConstructModel(entity, it.second, &it.second->m_Meshes.begin()->second, glm::vec4 { 1 });
+					// Done loading
+					m_Loading = false;
+					ImGui::CloseCurrentPopup();
+				}
+			}
+
+			ImGui::SetItemDefaultFocus();
+			// Center object
+			ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x * 0.5f - 56.0f);
+			if (ImGui::Button("Cancel", ImVec2(120, 0))) 
+			{
+				m_Loading = false;
+				ImGui::CloseCurrentPopup(); 
+			}
+			ImGui::EndPopup();
 		}
 	}
 }

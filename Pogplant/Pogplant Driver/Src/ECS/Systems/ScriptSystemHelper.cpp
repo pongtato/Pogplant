@@ -62,6 +62,22 @@ namespace SSH
 		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Renderer>(static_cast<entt::entity>(id), Components::Renderer{ colorTint, emissiveTint, model, mesh3d, useLight, editorDrawOnly });
 	}
 
+	void AddScript(unsigned int id, MonoString* _scriptName)
+	{
+		std::string scriptName = mono_string_to_utf8(_scriptName);
+		const auto& scriptComp = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(id));
+		if (scriptComp)
+		{
+			scriptComp->m_ScriptTypes[scriptName] = false;
+		}
+		else
+		{
+			std::unordered_map <std::string, bool> scripts;
+			scripts[scriptName] = false;
+			ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Scriptable>(static_cast<entt::entity>(id), Components::Scriptable{ scripts });
+		}
+	}
+
 	MonoArray* GetModelKeysIC()
 	{
 		MonoArray* data = mono_array_new(mono_domain_get(), mono_get_string_class(), Pogplant::ModelResource::m_ModelPool.size());
@@ -107,27 +123,6 @@ namespace SSH
 			for (auto& scripts : script1->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity1);
-				//MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-				//MonoObject* monoObj = ScriptResource::m_MonoObjects[scripts.first]->m_MonoObject;
-				//if (!monoObj)
-				//{
-				//	// Maybe log something here
-				//	std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				//	continue;
-				//}
-
-				//MonoClass* klass = mono_object_get_class(monoObj);
-				//if (!klass)
-				//{
-				//	// Maybe log something here
-				//	std::cout << "MonoClass not found" << std::endl;
-				//}
-
-				//MonoMethod* startMethod = FindMethod(klass, "OnTriggerEnter");
-				//if (startMethod)
-				//{
-				//	mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
-				//}
 			}
 		}
 
@@ -136,27 +131,6 @@ namespace SSH
 			for (auto& scripts : script2->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity2);
-				//MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-				//MonoObject* monoObj = ScriptResource::m_MonoObjects[scripts.first]->m_MonoObject;
-				//if (!monoObj)
-				//{
-				//	// Maybe log something here
-				//	std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				//	continue;
-				//}
-
-				//MonoClass* klass = mono_object_get_class(monoObj);
-				//if (!klass)
-				//{
-				//	// Maybe log something here
-				//	std::cout << "MonoClass not found" << std::endl;
-				//}
-
-				//MonoMethod* startMethod = FindMethod(klass, "OnTriggerEnter");
-				//if (startMethod)
-				//{
-				//	mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
-				//}
 			}
 		}
 	}
@@ -171,27 +145,6 @@ namespace SSH
 			for (auto& scripts : script1->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity1);
-				//MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-				//MonoObject* monoObj = ScriptResource::m_MonoObjects[scripts.first]->m_MonoObject;
-				//if (!monoObj)
-				//{
-				//	// Maybe log something here
-				//	std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				//	continue;
-				//}
-
-				//MonoClass* klass = mono_object_get_class(monoObj);
-				//if (!klass)
-				//{
-				//	// Maybe log something here
-				//	std::cout << "MonoClass not found" << std::endl;
-				//}
-
-				//MonoMethod* startMethod = FindMethod(klass, "OnTriggerExit");
-				//if (startMethod)
-				//{
-				//	mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
-				//}
 			}
 		}
 
@@ -200,27 +153,6 @@ namespace SSH
 			for (auto& scripts : script2->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2);
-				//MonoObject* monoObj = m_MonoObjects[scripts.first]->m_MonoObject;
-				//MonoObject* monoObj = ScriptResource::m_MonoObjects[scripts.first]->m_MonoObject;
-				//if (!monoObj)
-				//{
-				//	// Maybe log something here
-				//	std::cout << "Script: " << scripts.first << " not found" << std::endl;
-				//	continue;
-				//}
-
-				//MonoClass* klass = mono_object_get_class(monoObj);
-				//if (!klass)
-				//{
-				//	// Maybe log something here
-				//	std::cout << "MonoClass not found" << std::endl;
-				//}
-
-				//MonoMethod* startMethod = FindMethod(klass, "OnTriggerExit");
-				//if (startMethod)
-				//{
-				//	mono_runtime_invoke(startMethod, monoObj, nullptr, nullptr);
-				//}
 			}
 		}
 	}
