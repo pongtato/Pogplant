@@ -49,7 +49,7 @@ namespace PogplantDriver
 			Json::Value subroot = SaveComponents(id);
 			root[i] = subroot;
 
-			auto &transform = m_ecs.GetReg().get<Transform>(id);
+			auto& transform = m_ecs.GetReg().get<Transform>(id);
 
 			if (!transform.m_children.empty())
 				RecurSaveChild(root, id, ++i);
@@ -200,7 +200,7 @@ namespace PogplantDriver
 		Try_Save_Component<Camera>(subroot, id);
 		Try_Save_Component<Rigidbody>(subroot, id);
 
-		if (!transform_component.m_children.empty())
+		if (!transform_component.m_children.empty() || transform_component.m_parent != entt::null)
 		{
 			subroot["Children"] = transform_component.m_children.size();
 		}
@@ -317,16 +317,16 @@ namespace PogplantDriver
 			//Base Child only case, Seek parent
 			else if (child == 0 && !m_parent_id.empty())
 			{
-				auto& relationship = m_ecs.GetReg().get<Transform>(m_parent_id.top());
-				relationship.m_children.insert(id);
+				auto& relationshipTrans = m_ecs.GetReg().get<Transform>(m_parent_id.top());
+				relationshipTrans.m_children.insert(id);
 				transform.m_parent = m_parent_id.top();
 
 				--m_child_counter.top();
 			}
 			else
 			{
-				auto& relationship = m_ecs.GetReg().get<Transform>(m_parent_id.top());
-				relationship.m_children.insert(id);
+				auto& relationshipTrans = m_ecs.GetReg().get<Transform>(m_parent_id.top());
+				relationshipTrans.m_children.insert(id);
 				transform.m_parent = m_parent_id.top();
 
 				--m_child_counter.top();
@@ -502,7 +502,8 @@ namespace PogplantDriver
 
 				auto& childTransform = m_ecs.GetReg().get<Transform>(child);
 
-				counter = RecurSaveChild(_classroot, child, counter);
+				if(!childTransform.m_children.empty())
+					counter = RecurSaveChild(_classroot, child, counter);
 			}
 		}
 
