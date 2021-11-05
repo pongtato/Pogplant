@@ -38,6 +38,10 @@ namespace Components
 		glm::vec3 m_rotation;
 		glm::vec3 m_scale;
 
+		glm::vec3 m_localPosition;
+		glm::vec3 m_localRotation;
+		glm::vec3 m_localScale;
+
 		glm::mat4 m_ModelMtx;// has been multiplied by parent matrix
 		glm::mat4 m_ModelMtxLocal;
 
@@ -84,18 +88,35 @@ namespace Components
 
 		inline void updateModelMtx(void)
 		{
-			ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(m_position),
-													glm::value_ptr(m_rotation),
-													glm::value_ptr(m_scale),
-													glm::value_ptr(m_ModelMtx));
+			ImGuizmo::RecomposeMatrixFromComponents(
+				glm::value_ptr(m_position),
+				glm::value_ptr(m_rotation),
+				glm::value_ptr(m_scale),
+				glm::value_ptr(m_ModelMtx));
 
 			m_ModelMtxLocal = m_ModelMtx;
 		}
 
+		/**> Updates local matrix based off local variables*/
+		inline void UpdateLocalMtx()
+		{
+			ImGuizmo::RecomposeMatrixFromComponents(
+				glm::value_ptr(m_localPosition),
+				glm::value_ptr(m_localRotation),
+				glm::value_ptr(m_localScale),
+				glm::value_ptr(m_ModelMtxLocal));
+		}
+
+		inline void UpdateLocalVariables()
+		{
+
+		}
+
 		inline void updateModelMtx(Transform _transform)
 		{
-			updateModelMtx();
+			UpdateLocalMtx();
 			m_ModelMtx = _transform.m_ModelMtx * m_ModelMtx;
+			m_worldToLocal = _transform.m_ModelMtx;
 		}
 	};
 
@@ -105,11 +126,11 @@ namespace Components
 		Renderer() {};
 		Renderer
 		(
-			glm::vec3 _ColorTint, 
-			glm::vec3 _EmissiveTint, 
-			Pogplant::Model* _RenderModel, 
-			Pogplant::Mesh3D* _Mesh, 
-			int _UseLight = 1, 
+			glm::vec3 _ColorTint,
+			glm::vec3 _EmissiveTint,
+			Pogplant::Model* _RenderModel,
+			Pogplant::Mesh3D* _Mesh,
+			int _UseLight = 1,
 			bool _EditorDrawOnly = false
 		)
 			: m_ColorTint(_ColorTint)
