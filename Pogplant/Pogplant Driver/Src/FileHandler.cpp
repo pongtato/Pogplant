@@ -26,7 +26,7 @@ namespace PPF
     std::thread FileHandler::m_thread;
     bool FileHandler::m_Modified = false;
     bool FileHandler::m_ShouldUpdate = false;
-    std::string FileHandler::m_UpdatedName = "";
+    std::vector<std::string> FileHandler::m_UpdatedName = {};
 
     FileHandler& FileHandler::GetInstance()
     {
@@ -186,7 +186,7 @@ namespace PPF
                                     m_modelUpdate.push({ key, filePath });
                                     // Container to be modified
                                     m_Modified = true;
-                                    m_UpdatedName = key;
+                                    m_UpdatedName.push_back(key);
                                 }
                             }
                             // File type is an uncompiled model

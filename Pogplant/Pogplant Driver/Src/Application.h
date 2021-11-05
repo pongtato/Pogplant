@@ -79,7 +79,7 @@ namespace PogplantDriver
 
 		void UpdateTransform(entt::entity _id, Components::Transform& parent_transform);
 		void UpdateTransforms(float _Dt);
-		bool UpdateModelRef(std::string _CurrentModel);
+		void UpdateModelRef(std::vector<std::string>& _EditedModels);
 
 		//Drawing
 		void DrawCommon();

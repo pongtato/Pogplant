@@ -89,7 +89,7 @@ namespace PPF
 		// Flag for when the ecs has cleared references
 		static bool m_ShouldUpdate;
 		// Current id
-		static std::string m_UpdatedName;
+		static std::vector<std::string> m_UpdatedName;
 	};
 }
 

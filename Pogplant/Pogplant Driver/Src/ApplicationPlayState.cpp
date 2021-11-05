@@ -83,6 +83,8 @@ void Application::UpdatePlayState(float c_dt)
 	if (fh.m_Modified)
 	{
 		UpdateModelRef(fh.m_UpdatedName);
+		fh.m_Modified = false;
+		fh.m_ShouldUpdate = true;
 	}
 	fh.UpdateModels();
 

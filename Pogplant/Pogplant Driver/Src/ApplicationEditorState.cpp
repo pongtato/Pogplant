@@ -73,11 +73,9 @@ void Application::UpdateEditorState(float c_dt)
 	PPF::FileHandler& fh = fh.GetInstance();
 	if (fh.m_Modified)
 	{
-		if (UpdateModelRef(fh.m_UpdatedName))
-		{
-			fh.m_Modified = false;
-			fh.m_ShouldUpdate = true;
-		}
+		UpdateModelRef(fh.m_UpdatedName);
+		fh.m_Modified = false;
+		fh.m_ShouldUpdate = true;
 	}
 	fh.UpdateModels();
 

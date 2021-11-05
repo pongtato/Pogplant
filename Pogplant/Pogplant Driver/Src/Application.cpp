@@ -578,22 +578,25 @@ void Application::UpdateTransforms(float _Dt)
 	}
 }
 
-bool Application::UpdateModelRef(std::string _CurrentModel)
+void Application::UpdateModelRef(std::vector<std::string>& _EditedModels)
 {
 	auto results = m_activeECS->GetReg().view<Components::Renderer>();
+
+	// Over all edited objects
+	for (auto it : _EditedModels)
 	{
 		for (const auto& e : results)
 		{
 			// Clear previous meshes to null, since new model might not have that many meshes
 			auto& it_Rend = results.get<Components::Renderer>(e);
-			if (it_Rend.m_RenderModel->m_Model_key == _CurrentModel)
+			if (it_Rend.m_RenderModel->m_Model_key == it)
 			{
 				it_Rend.m_Mesh = nullptr;
 			}
 		}
 	}
-
-	return true;
+	// When done
+	_EditedModels.clear();
 }
 
 void Application::DrawCommon()
