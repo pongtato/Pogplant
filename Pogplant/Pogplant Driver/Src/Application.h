@@ -79,6 +79,7 @@ namespace PogplantDriver
 
 		void UpdateTransform(entt::entity _id, Components::Transform& parent_transform);
 		void UpdateTransforms(float _Dt);
+		bool UpdateModelRef(std::string _CurrentModel);
 
 		//Drawing
 		void DrawCommon();
@@ -86,7 +87,6 @@ namespace PogplantDriver
 		void DrawGame();
 		void DrawScreen();
 		void DrawImGUI();
-
 
 		//Editor/play
 		void EnterEditorState();

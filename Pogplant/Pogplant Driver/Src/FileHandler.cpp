@@ -24,6 +24,9 @@ namespace PPF
     std::once_flag FileHandler::m_onceFlag;;
     std::filesystem::path FileHandler::m_defaultpath;
     std::thread FileHandler::m_thread;
+    bool FileHandler::m_Modified = false;
+    bool FileHandler::m_ShouldUpdate = false;
+    std::string FileHandler::m_UpdatedName = "";
 
     FileHandler& FileHandler::GetInstance()
     {
@@ -181,6 +184,9 @@ namespace PPF
                                 if (PP::ModelResource::m_ModelPool.contains(key))
                                 {
                                     m_modelUpdate.push({ key, filePath });
+                                    // Container to be modified
+                                    m_Modified = true;
+                                    m_UpdatedName = key;
                                 }
                             }
                             // File type is an uncompiled model
@@ -218,11 +224,15 @@ namespace PPF
             m_modelNew.pop();
         }
 
-        while (!m_modelUpdate.empty())
+        if (m_ShouldUpdate)
         {
-            auto& modelUpdate = m_modelUpdate.top();
-            PP::ModelResource::UpdateModel(PP::ModelResource::m_ModelPool, modelUpdate.m_key, modelUpdate.m_filepath);
-            m_modelUpdate.pop();
+            m_ShouldUpdate = false;
+            while (!m_modelUpdate.empty())
+            {
+                auto& modelUpdate = m_modelUpdate.top();
+                PP::ModelResource::UpdateModel(PP::ModelResource::m_ModelPool, modelUpdate.m_key, modelUpdate.m_filepath);
+                m_modelUpdate.pop();
+            }
         }
     }
 }

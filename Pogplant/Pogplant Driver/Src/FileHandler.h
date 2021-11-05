@@ -83,6 +83,13 @@ namespace PPF
 		void UpdateModels();
 		// Call for cleanup of thread
 		void Stop();
+
+		// Flag for when hot reloaded
+		static bool m_Modified;
+		// Flag for when the ecs has cleared references
+		static bool m_ShouldUpdate;
+		// Current id
+		static std::string m_UpdatedName;
 	};
 }
 

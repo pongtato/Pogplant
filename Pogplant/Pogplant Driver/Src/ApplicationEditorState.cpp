@@ -71,6 +71,14 @@ void Application::UpdateEditorState(float c_dt)
 
 	m_sGeneralSystem.Update(c_dt);
 	PPF::FileHandler& fh = fh.GetInstance();
+	if (fh.m_Modified)
+	{
+		if (UpdateModelRef(fh.m_UpdatedName))
+		{
+			fh.m_Modified = false;
+			fh.m_ShouldUpdate = true;
+		}
+	}
 	fh.UpdateModels();
 
 	/// Most of this should be moved to other files when the engine is developed

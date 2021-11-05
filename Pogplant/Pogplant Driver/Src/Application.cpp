@@ -469,9 +469,12 @@ void Application::UpdateTransforms(float _Dt)
 	{
 		auto& renderer = m_activeECS->GetReg().get<Renderer>(entity);
 		auto& transform = m_activeECS->GetReg().get<Transform>(entity);
-		auto* mesh = renderer.m_Mesh;
-		int useTex = mesh->m_Textures.size() == 0 ? 0 : 1;
-		mesh->m_Instances.push_back({ transform.m_ModelMtx, renderer.m_ColorTint, renderer.m_EmissiveTint, renderer.m_UseLight, useTex, renderer.m_EditorDrawOnly });
+		if (renderer.m_Mesh != nullptr)
+		{
+			auto* mesh = renderer.m_Mesh;
+			int useTex = mesh->m_Textures.size() == 0 ? 0 : 1;
+			mesh->m_Instances.push_back({ transform.m_ModelMtx, renderer.m_ColorTint, renderer.m_EmissiveTint, renderer.m_UseLight, useTex, renderer.m_EditorDrawOnly });
+		}
 	}
 	// Update meshes
 	for (auto& model : PP::ModelResource::m_ModelPool)
@@ -573,6 +576,24 @@ void Application::UpdateTransforms(float _Dt)
 		auto& canvas = canvasView.get<Canvas>(it);
 		PP::MeshInstance::SetInstance(PP::InstanceData{ transform.m_ModelMtx, canvas.m_Color, canvas.m_TexID, true });
 	}
+}
+
+bool Application::UpdateModelRef(std::string _CurrentModel)
+{
+	auto results = m_activeECS->GetReg().view<Components::Renderer>();
+	{
+		for (const auto& e : results)
+		{
+			// Clear previous meshes to null, since new model might not have that many meshes
+			auto& it_Rend = results.get<Components::Renderer>(e);
+			if (it_Rend.m_RenderModel->m_Model_key == _CurrentModel)
+			{
+				it_Rend.m_Mesh = nullptr;
+			}
+		}
+	}
+
+	return true;
 }
 
 void Application::DrawCommon()

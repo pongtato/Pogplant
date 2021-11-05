@@ -80,6 +80,10 @@ void Application::UpdatePlayState(float c_dt)
 	m_sScriptSystem.Update(c_dt);
 	m_sScriptSystem.LateUpdate(c_dt);
 	PPF::FileHandler& fh = fh.GetInstance();
+	if (fh.m_Modified)
+	{
+		UpdateModelRef(fh.m_UpdatedName);
+	}
 	fh.UpdateModels();
 
 	/// Most of this should be moved to other files when the engine is developed

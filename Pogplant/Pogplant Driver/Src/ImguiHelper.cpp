@@ -1483,7 +1483,11 @@ namespace PogplantDriver
 				}
 
 				// Mesh
-				std::string select = renderer->m_Mesh->m_Name;
+				std::string select = "NULL";
+				if (renderer->m_Mesh != nullptr)
+				{
+					select = renderer->m_Mesh->m_Name;
+				}
 				ImGui::Text("Mesh");
 				if (ImGui::BeginCombo("###Msh", select.c_str(), flag))
 				{
