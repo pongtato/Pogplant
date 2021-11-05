@@ -75,11 +75,11 @@ namespace Scripting
         }
 
         // Links a series of splines into chains and returns their waypoints.
-        public List<Vector3> CalculateCatmullRomChain()
+        public List<Transform> CalculateCatmullRomChain()
         {
             Console.WriteLine("CalculateChain called");
             // Resulting waypoint of the entire spline chain
-            List<Vector3> waypoints = new List<Vector3>();
+            List<Transform> waypoints = new List<Transform>();
             int remove_range = (int)(10 / (step_size * 10));
             for (int i = 1; i < controlPointsList.Count; i++)
             {
@@ -99,9 +99,9 @@ namespace Scripting
         }
 
         // Given a starting index, this generates a spline section of the entire chain and returns a series of waypoints.
-        List<Vector3> CalculateCatmullRomSpline(int pos)
+        List<Transform> CalculateCatmullRomSpline(int pos)
         {
-            List<Vector3> waypoints = new List<Vector3>();
+            List<Transform> waypoints = new List<Transform>();
             //The 4 points we need to form a spline between p1 and p2
             Vector3 p0 = controlPointsList[ClampListPos(pos - 1)].Position;
             Vector3 p1 = controlPointsList[pos].Position;
@@ -132,7 +132,7 @@ namespace Scripting
 
                 //Console.WriteLine("waypoint " + i + " is at: x = " + newPos.X + ", y = " + newPos.Y + ", z = " + newPos.Z);
 
-                waypoints.Add(newPos);
+                waypoints.Add(new Transform(newPos, controlPointsList[pos].Rotation, Vector3.Zero()));
 
                 //Save this pos so we can draw the next line segment
                 lastPos = newPos;
