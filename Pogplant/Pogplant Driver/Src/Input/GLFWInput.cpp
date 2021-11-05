@@ -171,10 +171,10 @@ namespace PPI
 		returns true if key is triggered
 	*/
 	/******************************************************************************/
-	bool GLFWInputManager::onKeyTriggered(int key) const
+	bool GLFWInputManager::onKeyTriggered(int key)
 	{
-		auto it = m_activeKeys.find(key);
-		if (it == m_activeKeys.cend())
+		auto it = Instance().m_activeKeys.find(key);
+		if (it == Instance().m_activeKeys.cend())
 			return false;
 
 		return it->second.triggered;
@@ -196,10 +196,10 @@ namespace PPI
 		returns true if key is released
 	*/
 	/******************************************************************************/
-	bool GLFWInputManager::onKeyReleased(int key) const
+	bool GLFWInputManager::onKeyReleased(int key)
 	{
-		auto it = m_activeKeys.find(key);
-		if (it == m_activeKeys.cend())
+		auto it = Instance().m_activeKeys.find(key);
+		if (it == Instance().m_activeKeys.cend())
 			return false;
 
 		return it->second.released;
@@ -221,9 +221,9 @@ namespace PPI
 		returns true if key is held down
 	*/
 	/******************************************************************************/
-	bool GLFWInputManager::onKeyHeld(int key) const
+	bool GLFWInputManager::onKeyHeld(int key)
 	{
-		return m_activeKeys.find(key) != m_activeKeys.cend();
+		return Instance().m_activeKeys.find(key) != Instance().m_activeKeys.cend();
 	}
 
 	// Mono function
@@ -242,10 +242,10 @@ namespace PPI
 		returns true if key is triggered
 	*/
 	/******************************************************************************/
-	bool GLFWInputManager::onControllerTriggered(int key) const
+	bool GLFWInputManager::onControllerTriggered(int key)
 	{
-		auto it = m_activeControllerKeys.find(key);
-		if (it == m_activeControllerKeys.cend())
+		auto it = Instance().m_activeControllerKeys.find(key);
+		if (it == Instance().m_activeControllerKeys.cend())
 			return false;
 
 		return it->second.triggered;
@@ -261,10 +261,10 @@ namespace PPI
 		returns true if key is released
 	*/
 	/******************************************************************************/
-	bool GLFWInputManager::onControllerReleased(int key) const
+	bool GLFWInputManager::onControllerReleased(int key)
 	{
-		auto it = m_activeControllerKeys.find(key);
-		if (it == m_activeControllerKeys.cend())
+		auto it = Instance().m_activeControllerKeys.find(key);
+		if (it == Instance().m_activeControllerKeys.cend())
 			return false;
 
 		return it->second.released;
@@ -280,93 +280,30 @@ namespace PPI
 		returns true if key is held down
 	*/
 	/******************************************************************************/
-	bool GLFWInputManager::onControllerHeld(int key) const
+	bool GLFWInputManager::onControllerHeld(int key)
 	{
-		return m_activeControllerKeys.find(key) != m_activeControllerKeys.cend();
+		return Instance().m_activeControllerKeys.find(key) != Instance().m_activeControllerKeys.cend();
 	}
 
 	/******************************************************************************/
 	/*!
 	\brief
-		Gets the controller axis for the left thumbstick,
-		range [-1, 1]
+		Gets the controller axis
+	\param axisKey
+		The key of the axis
 	\returns
-		Vector 2 of the controller axis
+		float value controller axis
 	*/
 	/******************************************************************************/
-	glm::vec2 GLFWInputManager::getLeftThumbAxis()
+	float GLFWInputManager::GetControllerAxis(int axisKey)
 	{
-		float X = m_controllerAxis[GLFW_GAMEPAD_AXIS_LEFT_X];
-		float Y = m_controllerAxis[GLFW_GAMEPAD_AXIS_LEFT_Y];
-
-		if (fabs(X) < m_thumbStickDeadzone)
-			X = 0.f;
-
-		if (fabs(Y) < m_thumbStickDeadzone)
-			Y = 0.f;
-
-		return { X, Y };
-	}
-
-	/******************************************************************************/
-	/*!
-	\brief
-		Gets the controller axis for the right thumbstick,
-		range [-1, 1]
-	\returns
-		Vector 2 of the controller axis
-	*/
-	/******************************************************************************/
-	glm::vec2 GLFWInputManager::getRightThumbAxis()
-	{
-		float X = m_controllerAxis[GLFW_GAMEPAD_AXIS_RIGHT_X];
-		float Y = m_controllerAxis[GLFW_GAMEPAD_AXIS_RIGHT_Y];
-
-		if (fabs(X) < m_thumbStickDeadzone)
-			X = 0.f;
-
-		if (fabs(Y) < m_thumbStickDeadzone)
-			Y = 0.f;
-
-		return { X, Y };
-	}
-
-	/******************************************************************************/
-	/*!
-	\brief
-		Gets the left trigger position
-		range [0, 1]
-	\returns
-		Float value of the left trigger position
-	*/
-	/******************************************************************************/
-	float GLFWInputManager::getLeftTrigger()
-	{
-		return m_controllerAxis[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER];
-	}
-
-	/******************************************************************************/
-	/*!
-	\brief
-		Gets the right trigger position
-		range [0, 1]
-	\returns
-		Float value of the right trigger position
-	*/
-	/******************************************************************************/
-	float GLFWInputManager::getRightTrigger()
-	{
-		return m_controllerAxis[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER];
+		assert(axisKey < GLFW_GAMEPAD_AXIS_LAST + 1);
+		return Instance().m_controllerAxis[axisKey];
 	}
 
 	void GLFWInputManager::setActiveController(int controllerID)
 	{
 		m_mainController = controllerID;
-	}
-
-	void GLFWInputManager::setThumbDeadzone(float value)
-	{
-		m_thumbStickDeadzone = value;
 	}
 
 	/******************************************************************************/
