@@ -183,7 +183,7 @@ namespace PogplantDriver
 		// Draw the entire UI
 		DrawDock();
 
-		ImGui::ShowDemoWindow();
+		//ImGui::ShowDemoWindow();
 
 		// Render dear imgui into screen
 		ImGui::Render();
