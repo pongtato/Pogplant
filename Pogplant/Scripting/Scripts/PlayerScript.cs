@@ -179,6 +179,8 @@ namespace Scripting
                 {
                     entityList[0].AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
                     entityList[0].AddComponent<Renderer>(new Renderer("Player_Ship"));
+                    entityList[0].AddComponent<SphereCollider>(new SphereCollider());
+                    entityList[0].AddComponent<BoxCollider>(new BoxCollider());
                 }
                 else
                 {

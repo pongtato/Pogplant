@@ -17,6 +17,10 @@ namespace SSH
 	void AddComponentRigidbody(unsigned int id, Components::Rigidbody rigidbody);
 	void AddComponentRenderer(unsigned int id, glm::vec3 colorTint, glm::vec3 emissiveTint, int useLight, bool editorDrawOnly, MonoString* name);
 	void AddScript(unsigned int id, MonoString* _scriptName);
+	void AddComponentBoxCollider(unsigned int id, bool isTrigger, int collisionLayer, glm::vec3 extends, glm::vec3 centre);
+	//void AddComponentBoxCollider(unsigned int id, Components::BoxCollider);
+	void AddComponentSphereCollider(unsigned int id, bool isTrigger, int collisionLayer, float radius, glm::vec3 centre);
+	//void AddComponentSphereCollider(unsigned int id, Components::SphereCollider);
 	MonoArray* GetModelKeysIC();
 
 	void InvokeFunction(const std::string& scriptName, const std::string& funcName, const entt::entity& entity);

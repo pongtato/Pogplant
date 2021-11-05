@@ -174,4 +174,49 @@ namespace Scripting
             }
         }
     }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class Collider
+    {
+        public bool isTrigger = false;
+        public int collisionLayer = 0;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class BoxCollider : Collider
+    {
+        public Vector3 extends;
+        public Vector3 centre;
+
+        public BoxCollider()
+        {
+            extends = Vector3.One();
+            centre = Vector3.Zero();
+        }
+
+        public BoxCollider(Vector3 _extends, Vector3 _centre)
+        {
+            extends = _extends;
+            centre = _centre;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class SphereCollider : Collider
+    {
+        public float radius;
+        public Vector3 centre;
+
+        public SphereCollider()
+        {
+            radius = 1.0f;
+            centre = Vector3.Zero();
+        }
+
+        public SphereCollider(float _radius, Vector3 _centre)
+        {
+            radius = _radius;
+            centre = _centre;
+        }
+    }
 }

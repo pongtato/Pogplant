@@ -39,6 +39,8 @@ namespace Scripting
         public Nullable<Transform> transform;
         public Nullable<Rigidbody> rigidbody;
         public Nullable<Renderer> renderer;
+        public BoxCollider boxCollider;
+        public SphereCollider sphereCollider;
         public BaseEnemy baseEnemy;
         public FollowSpline followSpline;
         public PlayerScript playerScript;
@@ -52,6 +54,18 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void AddComponentRenderer(uint id, Vector3 colorTint, Vector3 emissiveTint, int uselight, bool editordrawonly, string modelName);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void AddComponentBoxCollider(uint id, bool isTrigger, int collisionLayer, Vector3 extends, Vector3 centre);
+
+        //[MethodImplAttribute(MethodImplOptions.InternalCall)]
+        //public extern static void AddComponentBoxCollider(uint id, BoxCollider boxCollider);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void AddComponentSphereCollider(uint id, bool isTrigger, int collisionLayer, float radius, Vector3 centre);
+
+        //[MethodImplAttribute(MethodImplOptions.InternalCall)]
+        //public extern static void AddComponentSphereCollider(uint id, SphereCollider sphereCollider);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void AddScript(uint id, string name);
@@ -131,6 +145,32 @@ namespace Scripting
                     Console.WriteLine("Player script already exists.");
                 }
             }
+            else if(typeof(T) == typeof(BoxCollider))
+            {
+                if (boxCollider == null)
+                {
+                    boxCollider = (BoxCollider)(object)component;
+                    AddComponentBoxCollider(id, boxCollider.isTrigger, boxCollider.collisionLayer, boxCollider.extends, boxCollider.centre);
+                    //AddComponentBoxCollider(id, boxCollider);
+                }
+                else
+                {
+                    Console.WriteLine("Box collider already exists.");
+                }
+            }
+            else if (typeof(T) == typeof(SphereCollider))
+            {
+                if (sphereCollider == null)
+                {
+                    sphereCollider = (SphereCollider)(object)component;
+                    AddComponentSphereCollider(id, sphereCollider.isTrigger, sphereCollider.collisionLayer, sphereCollider.radius, sphereCollider.centre);
+                    //AddComponentSphereCollider(id, sphereCollider);
+                }
+                else
+                {
+                    Console.WriteLine("Box collider already exists.");
+                }
+            }
             else 
             {
                 Console.WriteLine("Creating Unknown Component");
@@ -204,6 +244,28 @@ namespace Scripting
                 else
                 {
                     Console.WriteLine("Player script doesn't exist.");
+                }
+            }
+            else if(typeof(T) == typeof(BoxCollider))
+            {
+                if(boxCollider != null)
+                {
+                    return (T)(object)boxCollider;
+                }
+                else
+                {
+                    Console.WriteLine("Box Collider doesn't exist.");
+                }
+            }
+            else if(typeof(T) == typeof(SphereCollider))
+            {
+                if(sphereCollider != null)
+                {
+                    return (T)(object)sphereCollider;
+                }
+                else 
+                {
+                    Console.WriteLine("Sphere Collider doesn't exist.");
                 }
             }
             else

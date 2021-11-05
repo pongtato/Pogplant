@@ -82,7 +82,6 @@ namespace Components
 
 		glm::vec3 extends = glm::vec3{ 1.f, 1.f, 1.f };
 		glm::vec3 centre;
-
 		PhysicsDLC::Collision::Shapes::AABB aabb;
 		RTTR_ENABLE(Collider);
 	};

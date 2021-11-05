@@ -78,6 +78,30 @@ namespace SSH
 		}
 	}
 
+	//void AddComponentBoxCollider(unsigned int id, glm::vec3 extends, glm::vec3 centre)
+	//{
+	//	ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::BoxCollider>(static_cast<entt::entity>(id), Components::BoxCollider{extends, centre});
+	//}
+
+	void AddComponentBoxCollider(unsigned int id, bool isTrigger, int collisionLayer, glm::vec3 extends, glm::vec3 centre)
+	{
+		(void)isTrigger;
+		(void)collisionLayer;
+		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::BoxCollider>(static_cast<entt::entity>(id), Components::BoxCollider{ extends, centre });
+	}
+
+	//void AddComponentSphereCollider(unsigned int id, float radius, glm::vec3 centre)
+	//{
+	//	ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::SphereCollider>(static_cast<entt::entity>(id), Components::SphereCollider{ centre, radius});
+	//}
+
+	void AddComponentSphereCollider(unsigned int id, bool isTrigger, int collisionLayer, float radius, glm::vec3 centre)
+	{
+		(void)isTrigger;
+		(void)collisionLayer;
+		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::SphereCollider>(static_cast<entt::entity>(id), Components::SphereCollider{ centre, radius });
+	}
+
 	MonoArray* GetModelKeysIC()
 	{
 		MonoArray* data = mono_array_new(mono_domain_get(), mono_get_string_class(), Pogplant::ModelResource::m_ModelPool.size());
