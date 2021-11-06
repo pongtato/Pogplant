@@ -41,7 +41,7 @@ namespace Components
 		glm::mat4 m_ModelMtx;// has been multiplied by parent matrix
 
 		/**> Matrix to get local from world */
-		glm::mat4 m_worldToLocal;
+		glm::mat4 m_ModelMtxLocal;
 		glm::mat4 m_localToWorld;
 
 		entt::entity m_parent = entt::null;
@@ -99,8 +99,6 @@ namespace Components
 
 		inline void updateModelMtx(void)
 		{
-			m_localUpdated = false;
-
 			//if (m_parent == entt::null)
 			{
 				ImGuizmo::RecomposeMatrixFromComponents(
@@ -108,6 +106,10 @@ namespace Components
 					glm::value_ptr(m_rotation),
 					glm::value_ptr(m_scale),
 					glm::value_ptr(m_ModelMtx));
+
+				m_ModelMtxLocal = m_ModelMtx;
+
+				computedLocal = false;
 			}
 		}
 
@@ -119,167 +121,20 @@ namespace Components
 			m_ModelMtx = _transform.m_ModelMtx * m_ModelMtx;
 		}
 
-		inline glm::vec3 GetLocalPosition()
-		{
-			if (m_parent == entt::null)
-				return m_position;
+		void SetGlobalPosition(const glm::vec3& globalPos);
+		void SetGlobalRotation(const glm::vec3& globalRot);
+		void SetGlobalScale(const glm::vec3& globalScale);
 
-			if (!m_localUpdated)
-				UpdateLocalVariables();
-
-			return m_localPosition;
-		}
-
-		inline glm::vec3 GetLocalRotation()
-		{
-			if (m_parent == entt::null)
-				return m_rotation;
-
-			if (!m_localUpdated)
-				UpdateLocalVariables();
-
-			return m_localRotation;
-		}
-
-		inline glm::vec3 GetLocalScale()
-		{
-			if (m_parent == entt::null)
-				return m_scale;
-
-			if (!m_localUpdated)
-				UpdateLocalVariables();
-
-			return m_localScale;
-		}
-
-		inline void SetLocalPosition(const glm::vec3& localPos)
-		{
-			if (m_parent == entt::null)
-			{
-				m_position = localPos;
-				return;
-			}
-
-			if (!m_localUpdated)
-				UpdateLocalVariables();
-			
-
-			m_localPosition = localPos;
-
-			glm::mat4 tmpMat;
-
-			ImGuizmo::RecomposeMatrixFromComponents(
-				glm::value_ptr(m_localPosition),
-				glm::value_ptr(m_localRotation),
-				glm::value_ptr(m_localScale),
-				glm::value_ptr(tmpMat)
-			);
-
-			tmpMat = m_localToWorld * tmpMat;
-
-			ImGuizmo::DecomposeMatrixToComponents(
-				glm::value_ptr(tmpMat),
-				glm::value_ptr(m_position),
-				nullptr,
-				nullptr
-			);
-		}
-
-		inline void SetLocalRotation(const glm::vec3& localRot)
-		{
-			if (m_parent == entt::null)
-			{
-				m_rotation = localRot;
-				return;
-			}
-
-			if (!m_localUpdated)
-				UpdateLocalVariables();
-
-
-			m_localRotation = localRot;
-
-			glm::mat4 tmpMat;
-
-			ImGuizmo::RecomposeMatrixFromComponents(
-				glm::value_ptr(m_localPosition),
-				glm::value_ptr(m_localRotation),
-				glm::value_ptr(m_localScale),
-				glm::value_ptr(tmpMat)
-			);
-
-			tmpMat = m_localToWorld * tmpMat;
-
-			ImGuizmo::DecomposeMatrixToComponents(
-				glm::value_ptr(tmpMat),
-				nullptr,
-				glm::value_ptr(m_rotation),
-				nullptr
-			);
-		}
-
-		inline void SetLocalScale(const glm::vec3& localScale)
-		{
-			if (m_parent == entt::null)
-			{
-				m_scale = localScale;
-				return;
-			}
-
-			if (!m_localUpdated)
-				UpdateLocalVariables();
-
-
-			m_localScale = localScale;
-
-			glm::mat4 tmpMat;
-
-			ImGuizmo::RecomposeMatrixFromComponents(
-				glm::value_ptr(m_localPosition),
-				glm::value_ptr(m_localRotation),
-				glm::value_ptr(m_localScale),
-				glm::value_ptr(tmpMat)
-			);
-
-			tmpMat = m_localToWorld * tmpMat;
-
-			ImGuizmo::DecomposeMatrixToComponents(
-				glm::value_ptr(tmpMat),
-				nullptr,
-				nullptr,
-				glm::value_ptr(m_scale)
-			);
-		}
+		glm::vec3 GetGlobalPosition();
+		glm::vec3 GetGlobalRotation();
+		glm::vec3 GetGlobalScale();
 
 	private:
-		inline void UpdateLocalVariables()
-		{
-			m_localUpdated = true;
+		bool computedLocal = false;
 
-			if (m_parent == entt::null)
-			{
-				m_localPosition = m_position;
-				m_localRotation = m_rotation;
-				m_localScale = m_scale;
-				return;
-			}
+		glm::mat4 m_midddleMatrix;
 
-			m_worldToLocal = glm::inverse(m_localToWorld);
-
-			auto tmp = m_worldToLocal * m_ModelMtx;
-
-			ImGuizmo::DecomposeMatrixToComponents(
-				glm::value_ptr(tmp),
-				glm::value_ptr(m_localPosition),
-				glm::value_ptr(m_localRotation),
-				glm::value_ptr(m_localScale));
-		}
-
-		glm::vec3 m_localPosition = { 0.f, 0.f, 0.f };
-		glm::vec3 m_localRotation = { 0.f, 0.f, 0.f };
-		glm::vec3 m_localScale = { 1.f, 1.f, 1.f };
-
-		bool m_localUpdated = false;
+		void ComputeLocalMtxes();
 	};
 
 
