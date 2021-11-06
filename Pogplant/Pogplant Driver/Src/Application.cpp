@@ -526,8 +526,7 @@ void Application::UpdateTransforms(float _Dt)
 				}
 			}
 
-			// Offset cause pepega atan2f
-			constexpr float rotate_offset = glm::radians(90.0f);
+			constexpr glm::vec3 particle_dir = glm::vec3{ 0,0,1 };
 			// Update particles
 			for (int i = 0; i < pSys.m_ActiveCount; i++)
 			{
@@ -566,17 +565,29 @@ void Application::UpdateTransforms(float _Dt)
 
 					glm::mat4 model = glm::mat4{ 1 };
 					model = glm::translate(model, it.m_Position);
-
 					/// This depends on the camera transform update above to save access calculation for billboarding
-					// 2D billboarding only xz plane
 					glm::vec3 targetDir = gameCamPos - it.m_Position;
 					if (targetDir.length() > 0)
 					{
-						targetDir = glm::normalize(targetDir);
-						const float rad = atan2f(-targetDir.z, targetDir.x) + rotate_offset;
-						model = glm::rotate(model, rad, { 0,1,0 });
-					};
+						// 2D billboarding only xz plane
+						glm::vec3 targetDirXZ = { targetDir.x,0,targetDir.z };
+						targetDirXZ = glm::normalize(targetDirXZ);
+						const glm::vec3 up = glm::cross(particle_dir, targetDirXZ);
+						float rad = glm::acos(glm::dot(particle_dir, targetDirXZ));
+						model = glm::rotate(model, rad, up);
 
+						// Spherical portion
+						targetDir = glm::normalize(targetDir);
+						rad = glm::acos(glm::dot(targetDir, targetDirXZ));
+						if (targetDir.y < 0)
+						{
+							model = glm::rotate(model, rad, { 1,0,0 });
+						}
+						else
+						{
+							model = glm::rotate(model, rad, { -1,0,0 });
+						}
+					};
 					model = glm::scale(model, scale);
 
 					PP::MeshInstance::SetInstance(PP::InstanceData{ model, it.m_Color, it.m_TexID, false });
