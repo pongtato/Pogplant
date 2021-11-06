@@ -32,8 +32,10 @@ namespace PogplantDriver
 			std::for_each(results.rbegin(), results.rend(), [&results,this](auto entity)
 				{
 					DrawEntityNode(entity);
-				});
+				}); 
 
+			ImGui::Text("");
+			ImGui::Text("");
 
 			if (m_CurrentEntity != entt::null)
 			{
@@ -72,6 +74,9 @@ namespace PogplantDriver
 
 				ImGui::EndPopup();
 			}
+
+			if (ImGui::GetScrollY() >= ImGui::GetScrollMaxY())
+				ImGui::SetScrollHereY(1.0f);
 
 			// This has to be done this way due to how imgui handles IDs, it will have been popped in the context window above
 			LoadModel();
