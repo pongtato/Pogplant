@@ -34,6 +34,7 @@ namespace Pogplant
 		// Draw screen buffer
 		static void DrawScreen();
 		static void BindTexture(int _Location, unsigned _TexID);
+		static bool m_RenderGrid;
 	private:
 		static void DrawText(const entt::registry& registry, bool _EditorMode);
 	};

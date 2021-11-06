@@ -28,6 +28,8 @@
 
 namespace Pogplant
 {
+	bool Renderer::m_RenderGrid = false;
+
 	struct CameraReturnData
 	{
 		glm::mat4 m_Projection;
@@ -505,65 +507,68 @@ namespace Pogplant
 		glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
 		glBindVertexArray(0);
 
-		/// Grid - thin
-		// Clear for grid
-		DebugDraw::NewFrame();
-
-		// Debug grid size
-		glLineWidth(DebugDraw::m_GridWidth);
-
-		int camFar = static_cast<int>(currCam->GetCameraConfig().m_Far);
-
-		for (int i = -camFar; i <= camFar; i++)
+		if (m_RenderGrid)
 		{
-			if (i % DebugDraw::m_GridInterval != 0)
+			/// Grid - thin
+			// Clear for grid
+			DebugDraw::NewFrame();
+
+			// Debug grid size
+			glLineWidth(DebugDraw::m_GridWidth);
+
+			int camFar = static_cast<int>(currCam->GetCameraConfig().m_Far);
+
+			for (int i = -camFar; i <= camFar; i++)
+			{
+				if (i % DebugDraw::m_GridInterval != 0)
+				{
+					DebugDraw::DebugLine(glm::vec3{ i,0,-camFar }, glm::vec3{ i,0,camFar });
+				}
+			}
+			for (int i = -camFar; i <= camFar; i++)
+			{
+				if (i % DebugDraw::m_GridInterval != 0)
+				{
+					DebugDraw::DebugLine(glm::vec3{ -camFar,0,i }, glm::vec3{ camFar,0,i });
+				}
+			}
+
+			// Update verts to mesh
+			MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
+
+			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.42f, 0.42f, 0.42f });
+
+			glBindVertexArray(lineMesh->m_VAO);
+			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
+			glBindVertexArray(0);
+
+			/// Grid - thicc
+			// Clear for grid
+			DebugDraw::NewFrame();
+
+			// Debug grid size
+			glLineWidth(DebugDraw::m_GridIntervalWidth);
+
+			for (int i = -camFar; i <= camFar; i += DebugDraw::m_GridInterval)
 			{
 				DebugDraw::DebugLine(glm::vec3{ i,0,-camFar }, glm::vec3{ i,0,camFar });
 			}
-		}
-		for (int i = -camFar; i <= camFar; i++)
-		{
-			if (i % DebugDraw::m_GridInterval != 0)
+			for (int i = -camFar; i <= camFar; i += DebugDraw::m_GridInterval)
 			{
 				DebugDraw::DebugLine(glm::vec3{ -camFar,0,i }, glm::vec3{ camFar,0,i });
 			}
+
+			// Update verts to mesh
+			MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
+
+			ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.69f, 0.69f, 0.69f });
+
+			glBindVertexArray(lineMesh->m_VAO);
+			glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
+			glBindVertexArray(0);
+
+			ShaderLinker::UnUse();
 		}
-
-		// Update verts to mesh
-		MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
-
-		ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.42f, 0.42f, 0.42f });
-
-		glBindVertexArray(lineMesh->m_VAO);
-		glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
-		glBindVertexArray(0);
-
-		/// Grid - thicc
-		// Clear for grid
-		DebugDraw::NewFrame();
-
-		// Debug grid size
-		glLineWidth(DebugDraw::m_GridIntervalWidth);
-
-		for (int i = -camFar; i <= camFar; i += DebugDraw::m_GridInterval)
-		{
-			DebugDraw::DebugLine(glm::vec3{ i,0,-camFar }, glm::vec3{ i,0,camFar });
-		}
-		for (int i = -camFar; i <= camFar; i += DebugDraw::m_GridInterval)
-		{
-			DebugDraw::DebugLine(glm::vec3{ -camFar,0,i }, glm::vec3{ camFar,0,i });
-		}
-
-		// Update verts to mesh
-		MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
-
-		ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.69f, 0.69f, 0.69f });
-
-		glBindVertexArray(lineMesh->m_VAO);
-		glDrawArrays(GL_LINES, 0, lineMesh->m_IndicesCount);
-		glBindVertexArray(0);
-
-		ShaderLinker::UnUse();
 
 		// Call this after or all points will be cleared
 		DebugDraw::NewFrame();

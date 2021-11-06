@@ -374,6 +374,9 @@ namespace PogplantDriver
 			//Snap when editing
 			ImGui::SameLine();
 			ImGui::Checkbox("Snap Bounds", &m_UseBoundsSnap);
+			//If to draw grid
+			ImGui::SameLine();
+			ImGui::Checkbox("Draw Grid", &PP::Renderer::m_RenderGrid);
 
 			ImGui_EndMainStatusBar();
 		}
