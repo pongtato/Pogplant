@@ -36,28 +36,45 @@ namespace PPI
 			int controller;
 		};
 
+		struct ControllerAxis
+		{
+			int axisID;
+
+			bool UseMiddleDeadzone = false;
+			bool UseBoundedDeadzone = true;
+
+			float lowerDeadzone = 0.1f;
+			float upperDeadzone = 0.1f;
+		};
+
 		~InputSystem() = default;
 
 		static void Init(GLFWwindow* window);
 		static void PollEvents();
 
-		void setControllerLayout(int layout);
-
-		bool onKeyHeld(std::string keyID);
+		static bool onKeyHeld(std::string keyID);
 		static bool onKeyHeldMono(MonoString* keyID);
-		bool onKeyTriggered(std::string keyID);
+		static bool onKeyTriggered(std::string keyID);
 		static bool onKeyTriggeredMono(MonoString* keyID);
-		bool onKeyReleased(std::string keyID);
+		static bool onKeyReleased(std::string keyID);
 		static bool onKeyReleasedMono(MonoString* keyID);
+
+		static float GetAxis(const std::string& axisID);
 
 		//float getKeyAxis(std::string keyID);
 
-		static void AppendKey(std::string keyID, int keyboardKey, int controllerKey = -1);
+		static void AppendKey(const std::string& keyID, int keyboardKey, int controllerKey = -1);
+		static void AppendAxis(const std::string& keyID, int axisID, bool enableBoundDeadzone = false, bool enableMiddleDeadzone = false, float lowerBound = 0.1f, float upperBound = 0.1f);
 		static void ClearBindings();
 
 		inline static std::unordered_map<std::string, keyCode>& GetInputMap()
 		{
 			return Instance().m_inputMap;
+		}
+
+		inline static std::unordered_map<std::string, ControllerAxis>& GetAxisMap()
+		{
+			return Instance().m_axisMap;
 		}
 
 		static bool ControllerConnected();
@@ -72,6 +89,7 @@ namespace PPI
 		static std::once_flag m_onceFlag;
 
 		std::unordered_map<std::string, keyCode> m_inputMap;
+		std::unordered_map<std::string, ControllerAxis> m_axisMap;
 	};
 }
 

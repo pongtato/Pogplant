@@ -171,6 +171,9 @@
     <ClCompile Include="Src\Panels\CollisionLayerPanel.cpp">
       <Filter>Source Files\ImguiPanels</Filter>
     </ClCompile>
+    <ClCompile Include="Src\ECS\Components\GenericComponents.cpp">
+      <Filter>Source Files\ECS\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">

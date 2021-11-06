@@ -40,6 +40,7 @@ void main()
     {
         gPosition = FragPos;
         gNormal = normalize(Normal);
+        gNoLight = vec4(0.0f);
         if(UseTexture == 1)
         {
             gAlbedoSpec.rgb = texture(material.texture_diffuse[0], TexCoords).rgb * ColorTint;
@@ -52,10 +53,17 @@ void main()
     }
     else
     {
-        gNoLight = vec4(ColorTint,1.0f);
         gPosition = vec3(0.0f);
         gNormal = vec3(0.0f);
-        gAlbedoSpec = vec4(ColorTint,0.0f);
+        gAlbedoSpec = vec4(0.0f);
+        if(UseTexture == 1)
+        {
+            gNoLight = vec4(texture(material.texture_diffuse[0], TexCoords).rgb * ColorTint,1.0);
+        }
+        else
+        {
+            gNoLight = vec4(ColorTint,1.0f);
+        }
     }
     
     // Regardless of light or not

@@ -38,22 +38,17 @@ namespace Components
 		glm::vec3 m_rotation;
 		glm::vec3 m_scale;
 
-		glm::vec3 m_localPosition;
-		glm::vec3 m_localRotation;
-		glm::vec3 m_localScale;
-
 		glm::mat4 m_ModelMtx;// has been multiplied by parent matrix
-		glm::mat4 m_ModelMtxLocal;
 
 		/**> Matrix to get local from world */
 		glm::mat4 m_worldToLocal;
+		glm::mat4 m_localToWorld;
 
 		entt::entity m_parent = entt::null;
 		std::set<entt::entity> m_children;
 
-		Transform() = default;
 		Transform(const Transform&) = default;
-		Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, entt::entity parent = entt::null)
+		Transform(glm::vec3 pos = { 0,0,0 }, glm::vec3 rot = { 0,0,0 }, glm::vec3 scale = { 0,0,0 }, entt::entity parent = entt::null)
 			: m_position(pos), m_rotation(rot), m_scale(scale), m_parent{ parent }
 		{
 			init();
@@ -66,6 +61,22 @@ namespace Components
 				m_position = rhs.m_position;
 				m_rotation = rhs.m_rotation;
 				m_scale = rhs.m_scale;
+				m_parent = rhs.m_parent;
+				m_children = rhs.m_children;
+			}
+
+			return *this;
+		}
+
+		inline Transform& operator=(Transform&& rhs)
+		{
+			if (this != &rhs)
+			{
+				m_position = std::move(rhs.m_position);
+				m_rotation = std::move(rhs.m_rotation);
+				m_scale = std::move(rhs.m_scale);
+				m_parent = std::move(rhs.m_parent);
+				m_children = std::move(rhs.m_children);
 			}
 
 			return *this;
@@ -88,36 +99,187 @@ namespace Components
 
 		inline void updateModelMtx(void)
 		{
-			ImGuizmo::RecomposeMatrixFromComponents(
-				glm::value_ptr(m_position),
-				glm::value_ptr(m_rotation),
-				glm::value_ptr(m_scale),
-				glm::value_ptr(m_ModelMtx));
+			m_localUpdated = false;
 
-			m_ModelMtxLocal = m_ModelMtx;
-		}
-
-		/**> Updates local matrix based off local variables*/
-		inline void UpdateLocalMtx()
-		{
-			ImGuizmo::RecomposeMatrixFromComponents(
-				glm::value_ptr(m_localPosition),
-				glm::value_ptr(m_localRotation),
-				glm::value_ptr(m_localScale),
-				glm::value_ptr(m_ModelMtxLocal));
-		}
-
-		inline void UpdateLocalVariables()
-		{
-
+			//if (m_parent == entt::null)
+			{
+				ImGuizmo::RecomposeMatrixFromComponents(
+					glm::value_ptr(m_position),
+					glm::value_ptr(m_rotation),
+					glm::value_ptr(m_scale),
+					glm::value_ptr(m_ModelMtx));
+			}
 		}
 
 		inline void updateModelMtx(Transform _transform)
 		{
-			UpdateLocalMtx();
+			m_localToWorld = _transform.m_ModelMtx;
+
+			updateModelMtx();
 			m_ModelMtx = _transform.m_ModelMtx * m_ModelMtx;
-			m_worldToLocal = _transform.m_ModelMtx;
 		}
+
+		inline glm::vec3 GetLocalPosition()
+		{
+			if (m_parent == entt::null)
+				return m_position;
+
+			if (!m_localUpdated)
+				UpdateLocalVariables();
+
+			return m_localPosition;
+		}
+
+		inline glm::vec3 GetLocalRotation()
+		{
+			if (m_parent == entt::null)
+				return m_rotation;
+
+			if (!m_localUpdated)
+				UpdateLocalVariables();
+
+			return m_localRotation;
+		}
+
+		inline glm::vec3 GetLocalScale()
+		{
+			if (m_parent == entt::null)
+				return m_scale;
+
+			if (!m_localUpdated)
+				UpdateLocalVariables();
+
+			return m_localScale;
+		}
+
+		inline void SetLocalPosition(const glm::vec3& localPos)
+		{
+			if (m_parent == entt::null)
+			{
+				m_position = localPos;
+				return;
+			}
+
+			if (!m_localUpdated)
+				UpdateLocalVariables();
+			
+
+			m_localPosition = localPos;
+
+			glm::mat4 tmpMat;
+
+			ImGuizmo::RecomposeMatrixFromComponents(
+				glm::value_ptr(m_localPosition),
+				glm::value_ptr(m_localRotation),
+				glm::value_ptr(m_localScale),
+				glm::value_ptr(tmpMat)
+			);
+
+			tmpMat = m_localToWorld * tmpMat;
+
+			ImGuizmo::DecomposeMatrixToComponents(
+				glm::value_ptr(tmpMat),
+				glm::value_ptr(m_position),
+				nullptr,
+				nullptr
+			);
+		}
+
+		inline void SetLocalRotation(const glm::vec3& localRot)
+		{
+			if (m_parent == entt::null)
+			{
+				m_rotation = localRot;
+				return;
+			}
+
+			if (!m_localUpdated)
+				UpdateLocalVariables();
+
+
+			m_localRotation = localRot;
+
+			glm::mat4 tmpMat;
+
+			ImGuizmo::RecomposeMatrixFromComponents(
+				glm::value_ptr(m_localPosition),
+				glm::value_ptr(m_localRotation),
+				glm::value_ptr(m_localScale),
+				glm::value_ptr(tmpMat)
+			);
+
+			tmpMat = m_localToWorld * tmpMat;
+
+			ImGuizmo::DecomposeMatrixToComponents(
+				glm::value_ptr(tmpMat),
+				nullptr,
+				glm::value_ptr(m_rotation),
+				nullptr
+			);
+		}
+
+		inline void SetLocalScale(const glm::vec3& localScale)
+		{
+			if (m_parent == entt::null)
+			{
+				m_scale = localScale;
+				return;
+			}
+
+			if (!m_localUpdated)
+				UpdateLocalVariables();
+
+
+			m_localScale = localScale;
+
+			glm::mat4 tmpMat;
+
+			ImGuizmo::RecomposeMatrixFromComponents(
+				glm::value_ptr(m_localPosition),
+				glm::value_ptr(m_localRotation),
+				glm::value_ptr(m_localScale),
+				glm::value_ptr(tmpMat)
+			);
+
+			tmpMat = m_localToWorld * tmpMat;
+
+			ImGuizmo::DecomposeMatrixToComponents(
+				glm::value_ptr(tmpMat),
+				nullptr,
+				nullptr,
+				glm::value_ptr(m_scale)
+			);
+		}
+
+	private:
+		inline void UpdateLocalVariables()
+		{
+			m_localUpdated = true;
+
+			if (m_parent == entt::null)
+			{
+				m_localPosition = m_position;
+				m_localRotation = m_rotation;
+				m_localScale = m_scale;
+				return;
+			}
+
+			m_worldToLocal = glm::inverse(m_localToWorld);
+
+			auto tmp = m_worldToLocal * m_ModelMtx;
+
+			ImGuizmo::DecomposeMatrixToComponents(
+				glm::value_ptr(tmp),
+				glm::value_ptr(m_localPosition),
+				glm::value_ptr(m_localRotation),
+				glm::value_ptr(m_localScale));
+		}
+
+		glm::vec3 m_localPosition = { 0.f, 0.f, 0.f };
+		glm::vec3 m_localRotation = { 0.f, 0.f, 0.f };
+		glm::vec3 m_localScale = { 1.f, 1.f, 1.f };
+
+		bool m_localUpdated = false;
 	};
 
 
@@ -264,21 +426,14 @@ namespace Components
 		float m_BaseLife;
 		float m_Life;
 		float m_IndexCalc;
+		float m_Rotation;
 	};
 
 	struct ParticleSystem
 	{
 		struct CurveVariable
 		{
-			CurveVariable(float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax)
-				: m_CurveData{}
-				, m_CurvePoints{}
-				, m_CurveMin{ _CurveMin }
-				, m_CurveMax{ _CurveMax }
-				, m_MultiplierMin{ _MultiMin }
-				, m_MultiplierMax{ _MultiMax }
-			{
-			};
+			CurveVariable(float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax);
 
 			enum { m_MaxPoints = 9, m_DataPoints = 128 };
 			std::vector<float> m_CurveData;
@@ -297,6 +452,7 @@ namespace Components
 			glm::vec4 _Color,
 			glm::vec3 _SpawnDir,
 			glm::vec3 _Force,
+			float _SpawnRadius,
 			float _Delay,
 			float _MinLife,
 			float _MaxLife,
@@ -305,81 +461,12 @@ namespace Components
 			int _TexID,
 			int _SpawnCount,
 			bool _Loop,
-			bool _Burst
-		)
-			: m_Color{ _Color }
-			, m_SpawnDirection{ _SpawnDir }
-			, m_Force{ _Force }
-			, m_Speed{ _Speed }
-			, m_Scale{ _Scale }
-			, m_Delay{ _Delay }
-			, m_Timer{ 0 }
-			, m_MinLife{ _MinLife }
-			, m_MaxLife{ _MaxLife }
-			, m_TexID{ _TexID }
-			, m_ActiveCount{ 0 }
-			, m_SpawnCount{ _SpawnCount }
-			, m_Loop{ _Loop }
-			, m_Done{ false }
-			, m_Burst{ _Burst }
-		{
-			const size_t second_last = _Speed.m_MaxPoints - 2;
-			const float increment = 1.0f / second_last;
-			// Init curve vertices
-			for (size_t i = 0; i < second_last; i++)
-			{
-				float currX = i * increment;
-				m_Speed.m_CurvePoints[i] = { currX, 1.0f };
-				m_Scale.m_CurvePoints[i] = { currX, 1.0f };
-			}
-			m_Speed.m_CurvePoints[second_last] = { 1.0f, 1.0f };
-			m_Scale.m_CurvePoints[second_last] = { 1.0f, 1.0f };
-
-			m_Speed.m_CurveData.resize(m_Speed.m_DataPoints);
-			m_Scale.m_CurveData.resize(m_Scale.m_DataPoints);
-		}
-
-		void Spawn(glm::vec3 _Position, glm::vec3 _Direction)
-		{
-			// Scale up if need more
-			if (m_ActiveCount >= m_ParticlePool.size())
-			{
-				m_ParticlePool.resize(m_ParticlePool.size() + 1 * 2);
-			}
-
-			float speedMult = glm::linearRand(m_Speed.m_MultiplierMin, m_Speed.m_MultiplierMax);
-			float life = glm::linearRand(m_MinLife, m_MaxLife);
-			float scaleMult = glm::linearRand(m_Scale.m_MultiplierMin, m_Scale.m_MultiplierMax);
-
-			// Update at end of pool
-			m_ParticlePool[m_ActiveCount] =
-				Particle
-			{
-				&m_Speed.m_CurveData,
-				&m_Scale.m_CurveData,
-				m_Color,
-				_Position,
-				_Direction,
-				glm::vec3{0},
-				m_Force,
-				{
-					m_Speed.m_CurveMin,
-					m_Speed.m_CurveMax,
-					speedMult
-				},
-				{
-					m_Scale.m_CurveMin,
-					m_Scale.m_CurveMax,
-					scaleMult
-				},
-				m_TexID,
-				life,
-				life,
-				1.0f / m_Speed.m_CurveData.size(),
-			};
-
-			m_ActiveCount++;
-		}
+			bool _Burst,
+			bool _RandomRotate
+		);
+		void Spawn(glm::vec3 _Position, glm::vec3 _Direction);
+		void Clear();
+		void UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos);
 
 		std::vector<Particle> m_ParticlePool;
 		glm::vec4 m_Color;
@@ -387,6 +474,7 @@ namespace Components
 		glm::vec3 m_Force;
 		CurveVariable m_Speed;
 		CurveVariable m_Scale;
+		float m_SpawnRadius;
 		float m_Delay;
 		float m_Timer;
 		float m_MinLife;
@@ -397,6 +485,9 @@ namespace Components
 		bool m_Loop;
 		bool m_Done;
 		bool m_Burst;
+		bool m_RandomRotate;
+		bool m_Play;
+		bool m_Pause;
 	};
 
 	struct Canvas

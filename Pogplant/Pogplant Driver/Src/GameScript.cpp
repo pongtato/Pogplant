@@ -5,6 +5,7 @@
 #include "../Src/ECS/Components/Components.h"
 #include "../Src/ECS/Components/DependantComponents.h"
 #include "../Src/ECS/Systems/ScriptSystemHelper.h"
+#include "../Src/Serialiser/Serializer.h"
 #include "GameScript.h"
 
 ECS* Scripting::GameplayECS::m_GameScriptECS;
@@ -12,6 +13,17 @@ namespace PPD = PogplantDriver;
 using namespace Components;
 namespace Scripting
 {
+	std::uint32_t Instantiate(MonoString* name, glm::vec3 _Position, glm::vec3 _Rotation)
+	{
+		std::string _name = mono_string_to_utf8(name);
+
+		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
+		entt::entity new_entitiy = serial.Instantiate(_name, _Position, _Rotation);
+
+		return std::uint32_t(new_entitiy);
+	}
+
+
 	// Only checking the bound for player to it's parent and will not work anywhere else
 	int CheckBounds(glm::vec3 _Position)
 	{
@@ -63,7 +75,6 @@ namespace Scripting
 	void FirePlayerBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation)
 	{
 		//Need to find player ship transform 
-		//entt::entity player_ship = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerShip");
 		entt::entity player_ship = static_cast<entt::entity>(entityID);
 
 		glm::mat4 decompose{ 0 };
@@ -96,28 +107,28 @@ namespace Scripting
 			decompose[2][2] /= scale_z;
 		}
 		//std::cout << "Position" << position.x << ", " << position.y << ", " << position.z << std::endl;
-		auto new_bullet = GameplayECS::m_GameScriptECS->CreateEntity("Bullet", position, _Rotation);
-		new_bullet.AddComponent<Projectile>(3.f, 10.f, Components::Projectile::OwnerType::Player);
+		PogplantDriver::Serializer serial( *GameplayECS::m_GameScriptECS );
 
-		new_bullet.AddComponent<Renderer>(glm::vec3{ 1.0f }, glm::vec3{ 1.0f }, PP::ModelResource::m_ModelPool["Player_Bullet"], &PP::ModelResource::m_ModelPool["Player_Bullet"]->m_Meshes.begin()->second);
-		
-		auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
-		auto& identi = new_bullet.AddComponent<Components::ColliderIdentifier>();
-		identi.colliderType = ColliderIdentifier::COLLIDER_TYPE::CT_BOX;
-		identi.isTrigger = true;
-		sp_collider.isTrigger = true;
-		new_bullet.AddComponent<Rigidbody>(1.f);
+		entt::entity bullet = serial.Instantiate("Bullet", position, _Rotation);
+		GameplayECS::m_GameScriptECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Player);
+
+			//auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
+			//auto& identi = new_bullet.AddComponent<Components::ColliderIdentifier>();
+			//identi.colliderType = ColliderIdentifier::COLLIDER_TYPE::CT_BOX;
+			//identi.isTrigger = true;
+			//sp_collider.isTrigger = true;
+			//new_bullet.AddComponent<Rigidbody>(1.f);
 
 
 
-		auto& body = new_bullet.GetComponent<Rigidbody>();
+		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
 		glm::vec4 forward{ 0.f,0.f,1.f ,1.f};
 		glm::vec3 forward_vec = decompose * forward;
 		//std::cout << "Forward_vec" << forward_vec.x << ", " << forward_vec.y << ", " << forward_vec.z << std::endl;
 		//Add power to the shots
 		forward_vec *= 100.f; 
-		body.AddImpulseForce(forward_vec);
+		body->AddImpulseForce(forward_vec);
 
 	}
 	void FireEnemyBullet(glm::vec3 _Position, glm::vec3 _Rotation)

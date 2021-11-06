@@ -185,6 +185,7 @@ void Application::InitialiseDebugObjects()
 			glm::vec4{ 1,1,1,1 },
 			glm::vec3{ 0,0,0 },
 			glm::vec3{ 0,0.981f,0 },
+			1.0f,	// SpawnRadius
 			0.005f, // Delay
 			0.69f,	// Min Life
 			1.00f,	// Max Life
@@ -203,7 +204,8 @@ void Application::InitialiseDebugObjects()
 			PP::TextureResource::m_TexturePool["ParticleTest.dds"],		// TexID
 			420,	// Spawn Count
 			true,	// Loop
-			true 	// Burst
+			true, 	// Burst
+			true	// Randomly rotate particles?
 		)
 	);
 
@@ -388,6 +390,7 @@ void Application::UpdateTransforms(float _Dt)
 	//auto lol_id = m_activeECS->FindEntityWithName("Green light");
 
 	/// Camera tranforms
+	glm::vec3 gameCamPos = glm::vec3{ 0.0f };
 	auto camView = m_activeECS->GetReg().view<Transform, Camera>();
 	{
 		for (auto& entity : camView)
@@ -398,6 +401,7 @@ void Application::UpdateTransforms(float _Dt)
 			// If active update its projection & view;
 			if (camera.m_Active)
 			{
+				gameCamPos = transform.m_position;
 				const glm::vec2 windowSize = { PP::Window::m_Width, PP::Window::m_Height };
 				PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
 				PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
@@ -406,6 +410,9 @@ void Application::UpdateTransforms(float _Dt)
 			}
 		}
 	}
+
+	// Debug with editor cam
+	//gameCamPos = PP::CameraResource::GetCamera("EDITOR")->m_Position;
 
 	/// Height map transform
 	auto hmd_view = m_activeECS->GetReg().view<Transform, HeightMapDebugger>();
@@ -491,6 +498,16 @@ void Application::UpdateTransforms(float _Dt)
 			auto& transform = m_activeECS->GetReg().get<Transform>(entity);
 			auto& pSys = m_activeECS->GetReg().get<ParticleSystem>(entity);
 
+			if (!pSys.m_Play || pSys.m_Pause)
+			{
+				// Just update render
+				for (int i = 0; i < pSys.m_ActiveCount; i++)
+				{
+					pSys.UpdateInstance(pSys.m_ParticlePool[i], 0.0, gameCamPos);
+				}
+				continue;
+			}
+
 			// Burst vs constant spawn
 			if (!pSys.m_Burst)
 			{
@@ -508,16 +525,20 @@ void Application::UpdateTransforms(float _Dt)
 				// Only spawn when everything has despawned
 				if (pSys.m_ActiveCount == 0)
 				{
-					for (int i = 0; i < pSys.m_SpawnCount; i++)
+					// To loop or not
+					if (!pSys.m_Loop)
 					{
-						pSys.Spawn(transform.m_position, glm::sphericalRand(1.0f));
+						pSys.m_Done = true;
+						pSys.m_Play = false;
+						pSys.m_Pause = false;
 					}
-				}
-
-				// To loop or not
-				if (!pSys.m_Loop)
-				{
-					pSys.m_Done = true;
+					else
+					{
+						for (int i = 0; i < pSys.m_SpawnCount; i++)
+						{
+							pSys.Spawn(transform.m_position, glm::sphericalRand(1.0f));
+						}
+					}
 				}
 			}
 
@@ -539,28 +560,7 @@ void Application::UpdateTransforms(float _Dt)
 						continue;
 					}
 
-					float t = 1.0f - it.m_Life / it.m_BaseLife;
-					size_t index = static_cast<size_t>(t / it.m_IndexCalc);
-					// For some reason it exceeds the index size
-					index = index >= it.m_SpeedCurve->size() ? it.m_SpeedCurve->size() - 1 : index;
-					const float curveSpeed = (*it.m_SpeedCurve)[index];
-					const float curveScale = (*it.m_ScaleCurve)[index];
-
-					// Lerp
-					const float speedCalc = it.m_Speed.m_Max * (1 - curveSpeed) + it.m_Speed.m_Min * curveSpeed;
-					const float scaleCalc = it.m_Scale.m_Max * (1 - curveScale) + it.m_Scale.m_Min * curveScale;
-					const glm::vec3 scale = glm::vec3{ scaleCalc,scaleCalc,scaleCalc } * it.m_Scale.m_Multiplier;
-
-					// Update position
-					it.m_Velocity += _Dt* it.m_Force;
-					glm::vec3 currVel = it.m_Velocity;
-
-					it.m_Position += currVel * _Dt * speedCalc * it.m_Speed.m_Multiplier; // Speed here is the multiplier randomned 
-
-					glm::mat4 model = glm::mat4{ 1 };
-					model = glm::translate(model, it.m_Position);
-					model = glm::scale(model, scale);
-					PP::MeshInstance::SetInstance(PP::InstanceData{ model, it.m_Color, it.m_TexID, false });
+					pSys.UpdateInstance(pSys.m_ParticlePool[i], _Dt, gameCamPos);
 				}
 			}
 		}

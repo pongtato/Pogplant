@@ -33,9 +33,10 @@ void main()
     {
         gPosition = FragPos;
         gNormal = normalize(Normal);
+        gNoLight = vec4(0.0f);
         if(!noTex)
         {
-            gAlbedoSpec.rgb = texture(material.texture_diffuse[0], TexCoords).rgb;
+            gAlbedoSpec.rgb = texture(material.texture_diffuse[0], TexCoords).rgb * colorTint;
             gAlbedoSpec.a = texture(material.texture_specular[0], TexCoords).r;
         }
         else
@@ -45,10 +46,17 @@ void main()
     }
     else
     {
-        gNoLight = vec4(colorTint,1.0f);
         gPosition = vec3(0.0f);
         gNormal = vec3(0.0f);
-        gAlbedoSpec = vec4(colorTint,0.0f);
+        gAlbedoSpec = vec4(0.0f);
+        if(!noTex)
+        {
+            gNoLight = vec4(texture(material.texture_diffuse[0], TexCoords).rgb * colorTint,1.0);
+        }
+        else
+        {
+            gNoLight = vec4(colorTint,1.0f);
+        }
     }
 
     // Regardless of light or not

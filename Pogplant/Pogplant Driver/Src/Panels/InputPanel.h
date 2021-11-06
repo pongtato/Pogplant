@@ -20,6 +20,9 @@ namespace PPP
 
 		std::string GetControllerString(int glfwControllerCode);
 		bool IsValidControllerKey(int glfwKeyCode);
+
+		std::string GetAxisString(int glfwControllerCode);
+		bool IsValidAxisKey(int glfwKeyCode);
 	};
 }
 

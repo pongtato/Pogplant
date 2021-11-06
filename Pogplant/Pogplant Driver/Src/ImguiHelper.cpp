@@ -399,6 +399,18 @@ namespace PogplantDriver
 				if (transform && ImGui::CollapsingHeader(ICON_FA_SLIDERS_H "  Transform", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					Reflect_ImGui(transform);
+
+					/*glm::vec3 pos = transform->GetLocalPosition();
+					glm::vec3 rot = transform->GetLocalRotation();
+					glm::vec3 scale = transform->GetLocalScale();
+					
+					CreateDragFloat3("Position", glm::value_ptr(pos));
+					CreateDragFloat3("Rotation", glm::value_ptr(rot));
+					CreateDragFloat3("Scale", glm::value_ptr(scale));*/
+
+					//transform->SetLocalPosition(pos);
+					//transform->SetLocalRotation(rot);
+					//transform->SetLocalScale(scale);
 				}
 
 				RendererComponentHelper();
@@ -616,20 +628,16 @@ namespace PogplantDriver
 						ImGui::Checkbox("Active?", &camera_com->m_Active);
 
 						ImGui::Text("Yaw");
-						ImGui::InputFloat("###yaw", &camera_com->m_Yaw, 0.1f, 1.0f, "%.3f");
-
+						ImGui::DragFloat("###yaw", &camera_com->m_Yaw, 1.0f);
 						ImGui::Text("Pitch");
-						ImGui::InputFloat("###pitch", &camera_com->m_Pitch, 0.1f, 1.0f, "%.3f");
+						ImGui::DragFloat("###pitch", &camera_com->m_Pitch, 1.0f);
 
 						ImGui::Text("Near");
-						ImGui::InputFloat("###near", &camera_com->m_Near, 0.1f, 1.0f, "%.3f");
-
+						ImGui::DragFloat("###near", &camera_com->m_Near, 1.0f);
 						ImGui::Text("Far");
-						ImGui::InputFloat("###far", &camera_com->m_Far, 1.f, 1.0f, "%.3f");
-
+						ImGui::DragFloat("###far", &camera_com->m_Far, 1.0f);
 						ImGui::Text("Zoom");
-						ImGui::InputFloat("###zoom", &camera_com->m_Zoom, 1.f, 1.0f, "%.3f");
-
+						ImGui::DragFloat("###zoom", &camera_com->m_Zoom, 1.0f);
 
 						ImguiBlankSeperator(1);
 						ImGui::Separator();
@@ -1095,7 +1103,7 @@ namespace PogplantDriver
 			{
 				//This computes the local to world matrix
 				xxTTVMatrix69x = parent_matrix * xxTTVMatrix69x;
-			}
+			}//*/
 
 			ImGuizmo::Manipulate
 			(
@@ -1115,7 +1123,7 @@ namespace PogplantDriver
 			{
 				//This translates from local relative to world, to local relative to parent
 				xxTTVMatrix69x = inverse(parent_matrix) * xxTTVMatrix69x;
-			}
+			}//*/
 
 			ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(xxTTVMatrix69x),
 				glm::value_ptr(transform.m_position),
@@ -1183,7 +1191,7 @@ namespace PogplantDriver
 		return std::string{ name_stuff };
 	}
 
-	void ImguiHelper::CreateDragFloat3(std::string& _label, float* _value, float increment_speed, float min_val, float max_val)
+	void ImguiHelper::CreateDragFloat3(const std::string& _label, float* _value, float increment_speed, float min_val, float max_val)
 	{
 		ImGui::Text(_label.c_str());
 		ImGui::PushID(_label.c_str());
@@ -1763,8 +1771,44 @@ namespace PogplantDriver
 				std::string toolTip = "";
 				const char* popuplabel = "Particles Texture Selection";
 
-				// Color
+				// Buttons
 				ImGui::Dummy(ImVec2(0.0f, 2.0f));
+				if (pSystem->m_Play)
+				{
+					if (pSystem->m_Pause)
+					{
+						if (ImGui::Button("Resume"))
+						{
+							pSystem->m_Pause = false;
+						}
+					}
+					else
+					{
+						if(ImGui::Button("Pause"))
+						{
+							pSystem->m_Pause = true;
+						}
+					}
+				}
+				else
+				{
+					if (ImGui::Button("Play"))
+					{
+						pSystem->m_Play = true;
+						pSystem->m_Done = false;
+					}
+				}
+				ImGui::SameLine();
+				if (ImGui::Button("Stop"))
+				{
+					pSystem->m_Play = false;
+					pSystem->m_Pause = false;
+					pSystem->Clear();
+					pSystem->m_Done = false;
+				}
+
+				// Color
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
 				ImGui::PushID("PHelper");
 				ImGui::Text("Color Tint");
 				ImGui::ColorEdit3("###Color Tint", glm::value_ptr(pSystem->m_Color));
@@ -1799,6 +1843,13 @@ namespace PogplantDriver
 				ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
 				ImGui::NewLine();
 
+				// Spawn radius
+				ImGui::Text("Spawn Radius");
+				toolTip = "Random spawn within sphere of specified radius";
+				ToolTipHelper(toolTip.c_str(), true);
+				ImGui::DragFloat("###Spawn Radius", &pSystem->m_SpawnRadius, 0.01f);
+				ImGui::NewLine();
+
 				// Force
 				ImGui::Text("Force");
 				toolTip = "Force applied over time";
@@ -1813,15 +1864,27 @@ namespace PogplantDriver
 				ImGui::DragFloat("###SetDelay", &pSystem->m_Delay, 0.01f, 0.0f);
 				ImGui::NewLine();
 
-				// Loop
-				ImGui::Text("Loop");
+				// Random rotate to make it look diff
+				ImGui::Text("Randomly Rotate");
 				ImGui::SameLine();
-				ImGui::Checkbox("###UseLoop", &pSystem->m_Loop);
+				ImGui::Checkbox("###UseRand", &pSystem->m_RandomRotate);
 
 				// Burst or constant
 				ImGui::Text("Burst");
 				ImGui::SameLine();
 				ImGui::Checkbox("###UseBurst", &pSystem->m_Burst);
+
+				if (pSystem->m_Burst)
+				{
+					// Loop
+					ImGui::Text("Loop");
+					ImGui::SameLine();
+					ImGui::Checkbox("###UseLoop", &pSystem->m_Loop);
+
+					// Burst amount
+					ImGui::Text("Burst Spawn Count");
+					ImGui::DragInt("###Burst Count", &pSystem->m_SpawnCount);
+				}
 				ImGui::NewLine();
 
 				// Speed

@@ -1,9 +1,10 @@
 #include "Serializer.h"
 
-
+#include "Logger.h"
 #include "../ECS/Components/Components.h"
 #include "ModelResource.h"
 #include <typeinfo>
+#include <filesystem>
 
 #include "../ECS/Components/Reflection_for_components.h"
 
@@ -74,6 +75,52 @@ namespace PogplantDriver
 	void Serializer::LoadPrefab(const std::string& File)
 	{
 		LoadObjects(File);
+	}
+
+	entt::entity Serializer::Instantiate(const std::string& Filename, glm::vec3 _Position, glm::vec3 _Rotation)
+	{
+		std::filesystem::path path = std::filesystem::current_path();
+		path += "\\Resources\\Prefabs\\" + Filename + ".prefab";
+		std::ifstream istream(path, std::ios::in);
+		entt::entity first_entity = entt::null;
+		if (istream.is_open())
+		{
+			Json::Value root;
+			istream >> root;
+			first_entity = m_ecs.GetReg().create();
+
+			Json::ValueIterator iter = root.begin();
+			bool isfirst = true;
+
+			while (iter != root.end())
+			{
+				Json::Value subroot = root[iter.index()];
+
+				if (isfirst)
+				{
+					LoadComponents(subroot, first_entity);
+					isfirst = false;
+				}
+				else
+				{
+					LoadComponents(subroot, m_ecs.GetReg().create());
+				}
+				// Load components
+				++iter;
+			}
+			istream.close();
+
+			//Instantiate given position, rotation
+			auto transform = m_ecs.GetReg().try_get<Transform>(first_entity);
+			transform->m_position = _Position;
+			transform->m_rotation = _Rotation;
+		}
+		else
+		{
+			Pogplant::Logger::Log({ "Serialiser::Instantiate",Pogplant::LogEntry::LOGTYPE::ERROR, "Failed to Instantiate prefab" });
+			assert(first_entity == entt::null && "Failed to Instantiate prefab");
+		}
+		return first_entity;
 	}
 
 	void Serializer::SaveObjects(const std::string& File)
@@ -293,6 +340,17 @@ namespace PogplantDriver
 		auto& audioSource = root["AudioSource"];
 
 		Try_Load_Component<Transform>(root, "Transform", id);
+
+		/*if (root["Transform"])
+		{
+			auto& transform = m_ecs.GetReg().emplace<Transform>(id);
+
+			transform.SetLocalPosition(CreateVec3(root["Transform"]["m_position"]));
+			transform.SetLocalRotation(CreateVec3(root["Transform"]["m_rotation"]));
+			transform.SetLocalScale(CreateVec3(root["Transform"]["m_scale"]));
+		}//*/
+
+
 		Try_Load_Component<Directional_Light>(root, "Directional_Light", id);
 		Try_Load_Component<Point_Light>(root, "Point_Light", id);
 		Try_Load_Component<Name>(root, "Name", id);

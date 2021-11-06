@@ -622,11 +622,13 @@ namespace Pogplant
 			{
 				ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 				ShaderLinker::SetUniform("m4_View", ret.m_View);
+				ShaderLinker::SetUniform("f_Aspect", 1.0f);
 			}
 			else
 			{
 				ShaderLinker::SetUniform("m4_Projection", glm::mat4{ 1 });
 				ShaderLinker::SetUniform("m4_View", glm::mat4{ 1 });
+				ShaderLinker::SetUniform("f_Aspect", Window::m_Aspect);
 			}
 
 			glm::mat4 model = glm::mat4{ 1 };

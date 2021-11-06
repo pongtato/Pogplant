@@ -48,21 +48,18 @@ namespace PPI
 		//member functions
 		void pollEvents();
 
-		bool onKeyTriggered(int key) const;
+		static bool onKeyTriggered(int key);
 		static bool onKeyTriggeredMono(int key);
-		bool onKeyReleased(int key) const;
+		static bool onKeyReleased(int key);
 		static bool onKeyReleasedMono(int key);
-		bool onKeyHeld(int key) const;
+		static bool onKeyHeld(int key);
 		static bool onKeyHeldMono(int key);
 
-		bool onControllerTriggered(int key) const;
-		bool onControllerReleased(int key) const;
-		bool onControllerHeld(int key) const;
+		static bool onControllerTriggered(int key);
+		static bool onControllerReleased(int key);
+		static bool onControllerHeld(int key);
 
-		glm::vec2 getLeftThumbAxis();
-		glm::vec2 getRightThumbAxis();
-		float getLeftTrigger();
-		float getRightTrigger();
+		static float GetControllerAxis(int axisKey);
 
 		inline size_t controllersConnected()
 		{
@@ -70,8 +67,6 @@ namespace PPI
 		}
 
 		void setActiveController(int controllerID);
-
-		void setThumbDeadzone(float value);
 
 		void getMouse(double& x, double& y);
 
@@ -87,9 +82,6 @@ namespace PPI
 
 		/**> Current GLFW window*/
 		GLFWwindow* m_glfwWindow = nullptr;
-
-		/**> Controller thumbstick deadzone*/
-		float m_thumbStickDeadzone = 0.15f;
 
 		int m_mainController = 0;
 
