@@ -388,6 +388,7 @@ void Application::UpdateTransforms(float _Dt)
 	//auto lol_id = m_activeECS->FindEntityWithName("Green light");
 
 	/// Camera tranforms
+	glm::vec3 gameCamPos = glm::vec3{ 0.0f };
 	auto camView = m_activeECS->GetReg().view<Transform, Camera>();
 	{
 		for (auto& entity : camView)
@@ -398,6 +399,7 @@ void Application::UpdateTransforms(float _Dt)
 			// If active update its projection & view;
 			if (camera.m_Active)
 			{
+				gameCamPos = transform.m_position;
 				const glm::vec2 windowSize = { PP::Window::m_Width, PP::Window::m_Height };
 				PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
 				PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
@@ -406,6 +408,9 @@ void Application::UpdateTransforms(float _Dt)
 			}
 		}
 	}
+
+	// Debug with editor cam
+	//gameCamPos = PP::CameraResource::GetCamera("EDITOR")->m_Position;
 
 	/// Height map transform
 	auto hmd_view = m_activeECS->GetReg().view<Transform, HeightMapDebugger>();
@@ -521,6 +526,8 @@ void Application::UpdateTransforms(float _Dt)
 				}
 			}
 
+			// Offset cause pepega atan2f
+			constexpr float rotate_offset = glm::radians(90.0f);
 			// Update particles
 			for (int i = 0; i < pSys.m_ActiveCount; i++)
 			{
@@ -559,7 +566,19 @@ void Application::UpdateTransforms(float _Dt)
 
 					glm::mat4 model = glm::mat4{ 1 };
 					model = glm::translate(model, it.m_Position);
+
+					/// This depends on the camera transform update above to save access calculation for billboarding
+					// 2D billboarding only xz plane
+					glm::vec3 targetDir = gameCamPos - it.m_Position;
+					if (targetDir.length() > 0)
+					{
+						targetDir = glm::normalize(targetDir);
+						const float rad = atan2f(-targetDir.z, targetDir.x) + rotate_offset;
+						model = glm::rotate(model, rad, { 0,1,0 });
+					};
+
 					model = glm::scale(model, scale);
+
 					PP::MeshInstance::SetInstance(PP::InstanceData{ model, it.m_Color, it.m_TexID, false });
 				}
 			}

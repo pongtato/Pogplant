@@ -616,20 +616,16 @@ namespace PogplantDriver
 						ImGui::Checkbox("Active?", &camera_com->m_Active);
 
 						ImGui::Text("Yaw");
-						ImGui::InputFloat("###yaw", &camera_com->m_Yaw, 0.1f, 1.0f, "%.3f");
-
+						ImGui::DragFloat("###yaw", &camera_com->m_Yaw, 1.0f);
 						ImGui::Text("Pitch");
-						ImGui::InputFloat("###pitch", &camera_com->m_Pitch, 0.1f, 1.0f, "%.3f");
+						ImGui::DragFloat("###pitch", &camera_com->m_Pitch, 1.0f);
 
 						ImGui::Text("Near");
-						ImGui::InputFloat("###near", &camera_com->m_Near, 0.1f, 1.0f, "%.3f");
-
+						ImGui::DragFloat("###near", &camera_com->m_Near, 1.0f);
 						ImGui::Text("Far");
-						ImGui::InputFloat("###far", &camera_com->m_Far, 1.f, 1.0f, "%.3f");
-
+						ImGui::DragFloat("###far", &camera_com->m_Far, 1.0f);
 						ImGui::Text("Zoom");
-						ImGui::InputFloat("###zoom", &camera_com->m_Zoom, 1.f, 1.0f, "%.3f");
-
+						ImGui::DragFloat("###zoom", &camera_com->m_Zoom, 1.0f);
 
 						ImguiBlankSeperator(1);
 						ImGui::Separator();
