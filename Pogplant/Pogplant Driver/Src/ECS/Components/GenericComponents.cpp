@@ -3,6 +3,207 @@
 
 namespace Components
 {
+	void Transform::SetGlobalPosition(const glm::vec3& globalPos)
+	{
+		if (m_parent == entt::null)
+		{
+			m_position = globalPos;
+			return;
+		}
+
+		if (!computedLocal)
+			ComputeLocalMtxes();
+
+		glm::vec3 pos;
+		glm::vec3 rot;
+		glm::vec3 scale;
+
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			glm::value_ptr(m_midddleMatrix),
+			glm::value_ptr(pos),
+			glm::value_ptr(rot),
+			glm::value_ptr(scale)
+		);
+
+		pos = globalPos;
+
+		ImGuizmo::RecomposeMatrixFromComponents
+		(
+			glm::value_ptr(pos),
+			glm::value_ptr(rot),
+			glm::value_ptr(scale),
+			glm::value_ptr(m_midddleMatrix)
+		);
+
+		m_ModelMtxLocal = glm::inverse(m_localToWorld) * m_midddleMatrix;
+
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			glm::value_ptr(m_ModelMtxLocal),
+			glm::value_ptr(m_position),
+			glm::value_ptr(m_rotation),
+			glm::value_ptr(m_scale)
+		);
+	}
+
+	void Transform::SetGlobalRotation(const glm::vec3& globalRot)
+	{
+		if (m_parent == entt::null)
+		{
+			m_rotation = globalRot;
+			return;
+		}
+
+		if (!computedLocal)
+			ComputeLocalMtxes();
+
+		glm::vec3 pos;
+		glm::vec3 rot;
+		glm::vec3 scale;
+
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			glm::value_ptr(m_midddleMatrix),
+			glm::value_ptr(pos),
+			glm::value_ptr(rot),
+			glm::value_ptr(scale)
+		);
+
+		rot = globalRot;
+
+		ImGuizmo::RecomposeMatrixFromComponents
+		(
+			glm::value_ptr(pos),
+			glm::value_ptr(rot),
+			glm::value_ptr(scale),
+			glm::value_ptr(m_midddleMatrix)
+		);
+
+		m_ModelMtxLocal = glm::inverse(m_localToWorld) * m_midddleMatrix;
+
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			glm::value_ptr(m_ModelMtxLocal),
+			glm::value_ptr(m_position),
+			glm::value_ptr(m_rotation),
+			glm::value_ptr(m_scale)
+		);
+	}
+
+	void Transform::SetGlobalScale(const glm::vec3& globalScale)
+	{
+		if (m_parent == entt::null)
+		{
+			m_scale = globalScale;
+			return;
+		}
+
+		if (!computedLocal)
+			ComputeLocalMtxes();
+
+		glm::vec3 pos;
+		glm::vec3 rot;
+		glm::vec3 scale;
+
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			glm::value_ptr(m_midddleMatrix),
+			glm::value_ptr(pos),
+			glm::value_ptr(rot),
+			glm::value_ptr(scale)
+		);
+
+		scale = globalScale;
+
+		ImGuizmo::RecomposeMatrixFromComponents
+		(
+			glm::value_ptr(pos),
+			glm::value_ptr(rot),
+			glm::value_ptr(scale),
+			glm::value_ptr(m_midddleMatrix)
+		);
+
+		m_ModelMtxLocal = glm::inverse(m_localToWorld) * m_midddleMatrix;
+
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			glm::value_ptr(m_ModelMtxLocal),
+			glm::value_ptr(m_position),
+			glm::value_ptr(m_rotation),
+			glm::value_ptr(m_scale)
+		);
+	}
+
+	glm::vec3 Transform::GetGlobalPosition()
+	{
+		if (m_parent == entt::null)
+			return m_position;
+
+		if (!computedLocal)
+			ComputeLocalMtxes();
+
+		glm::vec3 pos;
+
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			glm::value_ptr(m_midddleMatrix),
+			glm::value_ptr(pos),
+			nullptr,
+			nullptr
+		);
+
+		return pos;
+	}
+
+	glm::vec3 Transform::GetGlobalRotation()
+	{
+		if (m_parent == entt::null)
+			return m_rotation;
+
+		if (!computedLocal)
+			ComputeLocalMtxes();
+
+		glm::vec3 rot;
+
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			glm::value_ptr(m_midddleMatrix),
+			nullptr,
+			glm::value_ptr(rot),
+			nullptr
+		);
+
+		return rot;
+	}
+	
+	glm::vec3 Transform::GetGlobalScale()
+	{
+		if (m_parent == entt::null)
+			 return m_scale;
+
+		if (!computedLocal)
+			ComputeLocalMtxes();
+
+		glm::vec3 scale;
+
+		ImGuizmo::DecomposeMatrixToComponents
+		(
+			glm::value_ptr(m_midddleMatrix),
+			nullptr,
+			nullptr,
+			glm::value_ptr(scale)
+		);
+
+		return scale;
+	}
+
+	void Transform::ComputeLocalMtxes()
+	{
+		computedLocal = true;
+		m_midddleMatrix = m_localToWorld * m_ModelMtxLocal;
+	}
+
 	ParticleSystem::ParticleSystem
 	(
 		glm::vec4 _Color,

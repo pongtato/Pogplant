@@ -48,7 +48,7 @@ namespace PhysicsDLC
 		}
 
 		void ResolveAABBAABBDynamic(
-			glm::vec3& _1pos,
+			const glm::vec3& _1pos,
 			Rigidbody& _1rigidbody,
 			Rigidbody* _2rigidbody,
 			Collision::Shapes::AABB& _1aabb,
@@ -179,7 +179,7 @@ namespace PhysicsDLC
 		}
 
 		void ResolveSphereSphereDynamic(
-			vec3& _1pos,
+			const vec3& _1pos,
 			Rigidbody& _1rigidbody,
 			Rigidbody* _2rigidbody,
 			Collision::Shapes::Sphere& _1sphere,

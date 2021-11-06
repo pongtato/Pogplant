@@ -403,17 +403,17 @@ namespace PogplantDriver
 				{
 					Reflect_ImGui(transform);
 
-					/*glm::vec3 pos = transform->GetLocalPosition();
-					glm::vec3 rot = transform->GetLocalRotation();
-					glm::vec3 scale = transform->GetLocalScale();
-					
-					CreateDragFloat3("Position", glm::value_ptr(pos));
-					CreateDragFloat3("Rotation", glm::value_ptr(rot));
-					CreateDragFloat3("Scale", glm::value_ptr(scale));*/
+					/*if (ImGui::Button("TESTLMAO"))
+					{
+						transform->SetGlobalPosition({ 0.f, 0.f, 0.f });
+					}
+					auto tmpPos = transform->GetGlobalPosition();
+					auto tmpRot = transform->GetGlobalRotation();
+					auto tmpScale = transform->GetGlobalScale();
 
-					//transform->SetLocalPosition(pos);
-					//transform->SetLocalRotation(rot);
-					//transform->SetLocalScale(scale);
+					CreateDragFloat3("Position", glm::value_ptr(tmpPos));
+					CreateDragFloat3("Rotation", glm::value_ptr(tmpRot));
+					CreateDragFloat3("Scale", glm::value_ptr(tmpScale));//*/
 				}
 
 				RendererComponentHelper();

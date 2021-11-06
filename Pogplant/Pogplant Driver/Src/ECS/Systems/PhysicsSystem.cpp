@@ -86,7 +86,7 @@ void PhysicsSystem::InitPlayState()
 				boxCollider.collisionLayer);
 		}
 
-		boxCollider.aabb.CalculateAABBFromExtends(transform.m_position + boxCollider.centre, boxCollider.extends * transform.m_scale);
+		boxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider.centre, boxCollider.extends * transform.GetGlobalScale());
 	}
 
 	for (auto& collidable : sphereColliders)
@@ -104,8 +104,9 @@ void PhysicsSystem::InitPlayState()
 				sphereCollider.collisionLayer);
 		}
 
-		sphereCollider.sphere.m_pos = transform.m_position + sphereCollider.centre;
-		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
+		auto tmpScale = transform.GetGlobalScale();
+		sphereCollider.sphere.m_pos = transform.GetGlobalPosition() + sphereCollider.centre;
+		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
 	}
 
 
@@ -251,7 +252,7 @@ void PhysicsSystem::UpdateEditor()
 			colliderIdentifier->collisionLayer = boxCollider.collisionLayer;
 		}
 
-		boxCollider.aabb.CalculateAABBFromExtends(transform.m_position + boxCollider.centre, boxCollider.extends * transform.m_scale);
+		boxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider.centre, boxCollider.extends * transform.GetGlobalScale());
 	}
 
 	for (auto& collidable : sphereColliders)
@@ -274,8 +275,9 @@ void PhysicsSystem::UpdateEditor()
 			colliderIdentifier->collisionLayer = sphereCollider.collisionLayer;
 		}
 
-		sphereCollider.sphere.m_pos = transform.m_position + sphereCollider.centre;
-		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
+		auto tmpScale = transform.GetGlobalScale();
+		sphereCollider.sphere.m_pos = transform.GetGlobalPosition() + sphereCollider.centre;
+		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
 	}
 }
 
@@ -308,13 +310,13 @@ void PhysicsSystem::Update(float c_dt)
 		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
 		{
 			auto boxCollider = m_registry->GetReg().try_get<Components::BoxCollider>(movableColliders);
-			boxCollider->aabb.CalculateAABBFromExtends(transform.m_position + boxCollider->centre, boxCollider->extends * transform.m_scale);
+			boxCollider->aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider->centre, boxCollider->extends * transform.GetGlobalScale());
 			break;
 		}
 		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
 		{
 			auto sphereCollider = m_registry->GetReg().try_get<Components::SphereCollider>(movableColliders);
-			sphereCollider->sphere.m_pos = transform.m_position + sphereCollider->centre;
+			sphereCollider->sphere.m_pos = transform.GetGlobalPosition() + sphereCollider->centre;
 			break;
 		}
 		default:
@@ -347,7 +349,7 @@ void PhysicsSystem::Update(float c_dt)
 		_1rigidbody.velocity += _1rigidbody.acceleration * c_dt + _1rigidbody.impulseAcceleration;
 		_1rigidbody.acceleration = PhysicsDLC::Vector::Zero;
 		_1rigidbody.impulseAcceleration = PhysicsDLC::Vector::Zero;
-		_1rigidbody.newPosition = _1transform.m_position + _1rigidbody.velocity * c_dt;
+		_1rigidbody.newPosition = _1transform.GetGlobalPosition() + _1rigidbody.velocity * c_dt;
 
 		if (!_1colliderIdentifier.isTrigger)
 		{
@@ -368,8 +370,7 @@ void PhysicsSystem::Update(float c_dt)
 			}
 		}
 
-		_1transform.m_position = _1rigidbody.newPosition;
-
+		_1transform.SetGlobalPosition(_1rigidbody.newPosition);
 	}
 
 	if (!m_triggerQueue.empty())
@@ -392,6 +393,7 @@ void PhysicsSystem::Update(float c_dt)
 							entity2
 							)
 					);
+
 				//std::cout << "Triggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
 			}
 			else
@@ -407,6 +409,7 @@ void PhysicsSystem::Update(float c_dt)
 						entity2
 						)
 				);
+
 				//std::cout << "UnTriggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
 			}
 
