@@ -340,6 +340,17 @@ namespace PogplantDriver
 		auto& audioSource = root["AudioSource"];
 
 		Try_Load_Component<Transform>(root, "Transform", id);
+
+		/*if (root["Transform"])
+		{
+			auto& transform = m_ecs.GetReg().emplace<Transform>(id);
+
+			transform.SetLocalPosition(CreateVec3(root["Transform"]["m_position"]));
+			transform.SetLocalRotation(CreateVec3(root["Transform"]["m_rotation"]));
+			transform.SetLocalScale(CreateVec3(root["Transform"]["m_scale"]));
+		}//*/
+
+
 		Try_Load_Component<Directional_Light>(root, "Directional_Light", id);
 		Try_Load_Component<Point_Light>(root, "Point_Light", id);
 		Try_Load_Component<Name>(root, "Name", id);

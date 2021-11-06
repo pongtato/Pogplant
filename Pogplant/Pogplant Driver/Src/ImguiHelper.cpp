@@ -399,6 +399,18 @@ namespace PogplantDriver
 				if (transform && ImGui::CollapsingHeader(ICON_FA_SLIDERS_H "  Transform", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					Reflect_ImGui(transform);
+
+					/*glm::vec3 pos = transform->GetLocalPosition();
+					glm::vec3 rot = transform->GetLocalRotation();
+					glm::vec3 scale = transform->GetLocalScale();
+					
+					CreateDragFloat3("Position", glm::value_ptr(pos));
+					CreateDragFloat3("Rotation", glm::value_ptr(rot));
+					CreateDragFloat3("Scale", glm::value_ptr(scale));*/
+
+					//transform->SetLocalPosition(pos);
+					//transform->SetLocalRotation(rot);
+					//transform->SetLocalScale(scale);
 				}
 
 				RendererComponentHelper();
@@ -1091,7 +1103,7 @@ namespace PogplantDriver
 			{
 				//This computes the local to world matrix
 				xxTTVMatrix69x = parent_matrix * xxTTVMatrix69x;
-			}
+			}//*/
 
 			ImGuizmo::Manipulate
 			(
@@ -1111,7 +1123,7 @@ namespace PogplantDriver
 			{
 				//This translates from local relative to world, to local relative to parent
 				xxTTVMatrix69x = inverse(parent_matrix) * xxTTVMatrix69x;
-			}
+			}//*/
 
 			ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(xxTTVMatrix69x),
 				glm::value_ptr(transform.m_position),
@@ -1179,7 +1191,7 @@ namespace PogplantDriver
 		return std::string{ name_stuff };
 	}
 
-	void ImguiHelper::CreateDragFloat3(std::string& _label, float* _value, float increment_speed, float min_val, float max_val)
+	void ImguiHelper::CreateDragFloat3(const std::string& _label, float* _value, float increment_speed, float min_val, float max_val)
 	{
 		ImGui::Text(_label.c_str());
 		ImGui::PushID(_label.c_str());

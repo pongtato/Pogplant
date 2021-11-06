@@ -38,7 +38,7 @@ namespace PPI
 		InputSystem::Instance().AppendKey("RIGHT", GLFW_KEY_D, GLFW_GAMEPAD_BUTTON_DPAD_RIGHT);
 		InputSystem::Instance().AppendKey("DOWN", GLFW_KEY_S, GLFW_GAMEPAD_BUTTON_DPAD_UP);
 		InputSystem::Instance().AppendKey("UP", GLFW_KEY_W, GLFW_GAMEPAD_BUTTON_DPAD_DOWN);
-		InputSystem::Instance().AppendKey("SHOOT", GLFW_KEY_SPACE, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER);
+		InputSystem::Instance().AppendKey("SHOOT", GLFW_KEY_SPACE, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER + JOYSTICKOSET);
 
 		/*Set menu buttons*/
 		InputSystem::Instance().AppendKey("ESCAPE", GLFW_KEY_ESCAPE, GLFW_GAMEPAD_BUTTON_START);
