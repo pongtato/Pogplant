@@ -47,7 +47,7 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 			//auto& _2transform = collidableEntities.get<Components::Transform>(_2entity);
 			if (PhysicsDLC::Collision::StaticAABBAABB(_1collider->aabb, _2collider->aabb))
 			{
-				PhysicsDLC::Physics::ResolveAABBAABBDynamic(c_1transform.m_position, c_1rigidbody, c_2rigidbody, _1collider->aabb, _2collider->aabb, 0.f, c_dt);
+				PhysicsDLC::Physics::ResolveAABBAABBDynamic(c_1transform.GetGlobalPosition(), c_1rigidbody, c_2rigidbody, _1collider->aabb, _2collider->aabb, 0.f, c_dt);
 			}
 			else
 			{
@@ -61,7 +61,7 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 				if (collisionResult)
 				{
 					//std::cout << "COLLIDE: " << c_dt << std::endl;
-					PhysicsDLC::Physics::ResolveAABBAABBDynamic(c_1transform.m_position, c_1rigidbody, c_2rigidbody, _1collider->aabb, _2collider->aabb, collisionResult.collisionTime, c_dt);
+					PhysicsDLC::Physics::ResolveAABBAABBDynamic(c_1transform.GetGlobalPosition(), c_1rigidbody, c_2rigidbody, _1collider->aabb, _2collider->aabb, collisionResult.collisionTime, c_dt);
 				}
 			}
 
@@ -101,11 +101,14 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 			if (PhysicsDLC::Collision::StaticSphereSphere(_1collider->sphere, _2collider->sphere))
 			{
 				PhysicsDLC::Collision::CollisionResults collisionResult;
-				collisionResult.collisionNormal = glm::normalize(c_2transform.m_position - c_1transform.m_position);
+
+				auto trans1Pos = c_1transform.GetGlobalPosition();
+
+				collisionResult.collisionNormal = glm::normalize(c_2transform.GetGlobalPosition() - trans1Pos);
 				collisionResult.collisionTime = 0.f;
 
 				PhysicsDLC::Physics::ResolveSphereSphereDynamic(
-					c_1transform.m_position,
+					trans1Pos,
 					c_1rigidbody,
 					c_2rigidbody,
 					_1collider->sphere,
@@ -126,7 +129,7 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 				{
 					std::cout << "COLLIDE: " << c_dt << std::endl;
 					PhysicsDLC::Physics::ResolveSphereSphereDynamic(
-						c_1transform.m_position,
+						c_1transform.GetGlobalPosition(),
 						c_1rigidbody,
 						c_2rigidbody,
 						_1collider->sphere,
