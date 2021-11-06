@@ -293,7 +293,7 @@ void Application::InitialiseDebugObjects()
 	entity = m_activeECS->CreateEntity("World font", pos, rot, scale);
 	entity.AddComponent<Components::Text>(Text{ {1.0f, 0.0f, 0.0f}, "Ruda", "This is a very big text", false });
 
-	pos = { -1.0f, 0.85f, 0.0f };
+	pos = { -1.0f, 0.8f, 0.0f };
 	rot = { 0.0f, 0.0f, 0.0f };
 	scale = { 1.0f, 1.0f, 1.0f };
 	entity = m_activeECS->CreateEntity("Screen font", pos, rot, scale);

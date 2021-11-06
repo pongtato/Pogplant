@@ -11,6 +11,6 @@ namespace Pogplant
 		glm::vec3 m_Rotation;
 		glm::vec3 m_Scale;
 		std::string m_Text;
-		FontResource::FONTS m_FontID;
+		//FontResource::FONTS m_FontID;
 	};
 }

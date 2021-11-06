@@ -632,8 +632,7 @@ namespace Pogplant
 			}
 
 			glm::mat4 model = glm::mat4{ 1 };
-			// Magic padding to shift font down lmao
-			model = glm::translate(model, { it_Trans.m_position.x,it_Trans.m_position.y - it_Trans.m_scale.y * 0.85f, it_Trans.m_position.z });
+			model = glm::translate(model, { it_Trans.m_position.x,it_Trans.m_position.y, it_Trans.m_position.z });
 			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.x), glm::vec3{ 1.0f,0.0f,0.0f });
 			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.y), glm::vec3{ 0.0f,1.0f,0.0f });
 			model = glm::rotate(model, glm::radians(it_Trans.m_rotation.z), glm::vec3{ 0.0f,0.0f,1.0f });
@@ -645,13 +644,16 @@ namespace Pogplant
 
 			//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 			float xAccumulate = 0;
+			// Use this as the basis for all offsets
+			const  auto& refChar = currFont->m_Font['A'];
+			const float yOffset = -(refChar.m_Size.y - refChar.m_Offsets.y);
 			for (const auto& it : it_Text.m_Text)
 			{
 				const auto& currChar = currFont->m_Font[it];
 				ShaderLinker::SetUniform("offset", currChar.m_TexCoords);
 
 				const float xPos = xAccumulate + currChar.m_Offsets.x;
-				const float yPos = -(currChar.m_Size.y - currChar.m_Offsets.y);
+				float yPos = -(currChar.m_Size.y - currChar.m_Offsets.y) - yOffset;
 				//const float yPos = 0.0f; // By line
 
 				const float width = currChar.m_Size.x;
