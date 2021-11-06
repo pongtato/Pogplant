@@ -1759,8 +1759,44 @@ namespace PogplantDriver
 				std::string toolTip = "";
 				const char* popuplabel = "Particles Texture Selection";
 
-				// Color
+				// Buttons
 				ImGui::Dummy(ImVec2(0.0f, 2.0f));
+				if (pSystem->m_Play)
+				{
+					if (pSystem->m_Pause)
+					{
+						if (ImGui::Button("Resume"))
+						{
+							pSystem->m_Pause = false;
+						}
+					}
+					else
+					{
+						if(ImGui::Button("Pause"))
+						{
+							pSystem->m_Pause = true;
+						}
+					}
+				}
+				else
+				{
+					if (ImGui::Button("Play"))
+					{
+						pSystem->m_Play = true;
+						pSystem->m_Done = false;
+					}
+				}
+				ImGui::SameLine();
+				if (ImGui::Button("Stop"))
+				{
+					pSystem->m_Play = false;
+					pSystem->m_Pause = false;
+					pSystem->Clear();
+					pSystem->m_Done = false;
+				}
+
+				// Color
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
 				ImGui::PushID("PHelper");
 				ImGui::Text("Color Tint");
 				ImGui::ColorEdit3("###Color Tint", glm::value_ptr(pSystem->m_Color));
@@ -1795,6 +1831,13 @@ namespace PogplantDriver
 				ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
 				ImGui::NewLine();
 
+				// Spawn radius
+				ImGui::Text("Spawn Radius");
+				toolTip = "Random spawn within sphere of specified radius";
+				ToolTipHelper(toolTip.c_str(), true);
+				ImGui::DragFloat("###Spawn Radius", &pSystem->m_SpawnRadius, 0.01f);
+				ImGui::NewLine();
+
 				// Force
 				ImGui::Text("Force");
 				toolTip = "Force applied over time";
@@ -1809,15 +1852,27 @@ namespace PogplantDriver
 				ImGui::DragFloat("###SetDelay", &pSystem->m_Delay, 0.01f, 0.0f);
 				ImGui::NewLine();
 
-				// Loop
-				ImGui::Text("Loop");
+				// Random rotate to make it look diff
+				ImGui::Text("Randomly Rotate");
 				ImGui::SameLine();
-				ImGui::Checkbox("###UseLoop", &pSystem->m_Loop);
+				ImGui::Checkbox("###UseRand", &pSystem->m_RandomRotate);
 
 				// Burst or constant
 				ImGui::Text("Burst");
 				ImGui::SameLine();
 				ImGui::Checkbox("###UseBurst", &pSystem->m_Burst);
+
+				if (pSystem->m_Burst)
+				{
+					// Loop
+					ImGui::Text("Loop");
+					ImGui::SameLine();
+					ImGui::Checkbox("###UseLoop", &pSystem->m_Loop);
+
+					// Burst amount
+					ImGui::Text("Burst Spawn Count");
+					ImGui::DragInt("###Burst Count", &pSystem->m_SpawnCount);
+				}
 				ImGui::NewLine();
 
 				// Speed
