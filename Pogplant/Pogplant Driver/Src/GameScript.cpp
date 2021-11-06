@@ -13,6 +13,17 @@ namespace PPD = PogplantDriver;
 using namespace Components;
 namespace Scripting
 {
+	std::uint32_t Instantiate(MonoString* name, glm::vec3 _Position, glm::vec3 _Rotation)
+	{
+		std::string _name = mono_string_to_utf8(name);
+
+		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
+		entt::entity new_entitiy = serial.Instantiate(_name, _Position, _Rotation);
+
+		return std::uint32_t(new_entitiy);
+	}
+
+
 	// Only checking the bound for player to it's parent and will not work anywhere else
 	int CheckBounds(glm::vec3 _Position)
 	{

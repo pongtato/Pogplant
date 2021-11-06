@@ -90,17 +90,21 @@ namespace Scripting
             //    rigidbody.AddForce(new Vector3(0, 3.0f, 0));
             //}
 
-            if (InputUtility.onKeyHeld(KEY_ID.KEY_A))
-            {
-                //Console.WriteLine("A key is held down");
-            }
+            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_Y))
+            //{
+            //    uint test = GameUtilities.Instantiate("Enemy", transform.Position, transform.Rotation);
+            //    Console.WriteLine("New Test" + test);
+            //}
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
             {
                 //Console.WriteLine("D key is triggered");
             }
 
-
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
+            {
+                //Console.WriteLine("D key is triggered");
+            }
 
             // Create Entity Example
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_Z))

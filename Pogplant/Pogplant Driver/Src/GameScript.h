@@ -4,6 +4,9 @@
 #include <gtc/type_ptr.hpp>
 #include "Events/Events.h"
 
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
+
 namespace Scripting
 {
 	struct GameplayECS
@@ -11,7 +14,9 @@ namespace Scripting
 		static ECS* m_GameScriptECS;
 	};
 
-	// Only checking the bound for player to it's parent and will not work anywhere else
+	//Wrapper for instantiate due to monostring calls
+	std::uint32_t Instantiate(MonoString* name , glm::vec3 _Position, glm::vec3 _Rotation);
+
 	int CheckBounds(glm::vec3 _Position);
 
 	//Only works via checking for  "name" PlayerCam together with PlayerScript
