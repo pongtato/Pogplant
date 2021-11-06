@@ -61,6 +61,22 @@ namespace Components
 				m_position = rhs.m_position;
 				m_rotation = rhs.m_rotation;
 				m_scale = rhs.m_scale;
+				m_parent = rhs.m_parent;
+				m_children = rhs.m_children;
+			}
+
+			return *this;
+		}
+
+		inline Transform& operator=(Transform&& rhs)
+		{
+			if (this != &rhs)
+			{
+				m_position = std::move(rhs.m_position);
+				m_rotation = std::move(rhs.m_rotation);
+				m_scale = std::move(rhs.m_scale);
+				m_parent = std::move(rhs.m_parent);
+				m_children = std::move(rhs.m_children);
 			}
 
 			return *this;
