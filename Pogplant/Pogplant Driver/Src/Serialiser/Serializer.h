@@ -22,6 +22,7 @@ namespace PogplantDriver
 		//
 		void SavePrefab(const std::string& File, entt::entity id);
 		void LoadPrefab(const std::string& File);
+		entt::entity Instantiate(const std::string& Filename, glm::vec3 _Position, glm::vec3 _Rotation);
 	private:
 		ECS& m_ecs;
 		

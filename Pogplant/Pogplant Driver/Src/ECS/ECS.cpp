@@ -55,7 +55,9 @@ entt::registry& ECS::GetReg()
 void ECS::DestroyEntity(entt::entity entity)
 {
 	//auto _r = m_registry.try_get<Relationship>(entity);
-	
+	if (!m_registry.valid(entity))
+		return;
+
 	auto& _transform = m_registry.get<Transform>(entity);
 
 	//Destroy all children

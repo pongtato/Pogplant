@@ -47,9 +47,8 @@ namespace Components
 		entt::entity m_parent = entt::null;
 		std::set<entt::entity> m_children;
 
-		Transform() = default;
 		Transform(const Transform&) = default;
-		Transform(glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, entt::entity parent = entt::null)
+		Transform(glm::vec3 pos = { 0,0,0 }, glm::vec3 rot = { 0,0,0 }, glm::vec3 scale = { 0,0,0 }, entt::entity parent = entt::null)
 			: m_position(pos), m_rotation(rot), m_scale(scale), m_parent{ parent }
 		{
 			init();
