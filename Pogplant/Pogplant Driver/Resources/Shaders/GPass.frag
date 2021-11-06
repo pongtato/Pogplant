@@ -74,7 +74,7 @@ float Shadow()
     }
     else
     {
-        return shadow /= 12.0;
+        return shadow /= 4.2;
     }
 }
 

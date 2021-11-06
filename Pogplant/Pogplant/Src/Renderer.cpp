@@ -232,8 +232,7 @@ namespace Pogplant
 		glm::mat4 lightView = glm::lookAt(lightPos, glm::vec3{ 0 }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 		ShadowCFG::m_LightProj = orthogalProj * lightView;
 
-		ShaderLinker::Use("SHADOW");
-		ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
+	
 
 		glEnable(GL_DEPTH_TEST);
 		glViewport(0, 0, ShadowCFG::m_ShadowMapW, ShadowCFG::m_ShadowMapH);
@@ -241,6 +240,8 @@ namespace Pogplant
 		glClear(GL_DEPTH_BUFFER_BIT);
 
 		/// Draw
+		ShaderLinker::Use("SHADOW_I");
+		ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
 		// 3D Instanced
 		for (auto& model : ModelResource::m_ModelPool)
 		{
@@ -249,7 +250,10 @@ namespace Pogplant
 				mesh.second.DrawInstanced(false);
 			}
 		}
+		ShaderLinker::UnUse();
 
+		ShaderLinker::Use("SHADOW");
+		ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
 		auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
 		for (const auto& e : p_results)
 		{
@@ -258,12 +262,12 @@ namespace Pogplant
 			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			it.m_Mesh->Draw();
 		}
+		ShaderLinker::UnUse();
 		///
 
 		glDisable(GL_DEPTH_TEST);
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		ShaderLinker::UnUse();
 
 		glViewport(0, 0, Window::m_Width, Window::m_Height);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
