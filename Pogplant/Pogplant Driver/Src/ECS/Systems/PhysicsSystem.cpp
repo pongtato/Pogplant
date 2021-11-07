@@ -30,7 +30,7 @@ PhysicsSystem::PhysicsSystem()
 	m_shouldContinue{ 0 },
 	t_EXIT_THREADS{ false }
 {
-	m_collisionLayers.push_back("DEFAULT");
+	m_collisionLayers["DEFAULT"] = 0;
 	m_threads.push_back(std::thread{ &PhysicsSystem::TriggerUpdate, std::ref(*this) });
 }
 

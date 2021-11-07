@@ -45,8 +45,11 @@ public:
 	void SetCollisionRule(int collisionLayer1, int collisionLayer2, Components::Collider::COLLISION_RULE collisionRule);
 	Components::Collider::COLLISION_RULE GetCollisionRule(int collisionLayer1, int collisionLayer2);
 
+	bool CreateCollisionLayer(const std::string& name);
+	void DestroyCollisionLayer(const std::string& name);
+
 	std::map<std::pair<int, int>, int> m_collisionMatrix;
-	std::vector<std::string> m_collisionLayers;
+	std::map<std::string, int> m_collisionLayers;
 private:
 	ECS* m_registry;
 	std::shared_ptr<PPE::EventBus> m_eventBus;

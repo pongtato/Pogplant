@@ -226,6 +226,30 @@ Components::Collider::COLLISION_RULE PhysicsSystem::GetCollisionRule(int collisi
 	return static_cast<Components::Collider::COLLISION_RULE>((*itr).second);
 }
 
+bool PhysicsSystem::CreateCollisionLayer(const std::string& name)
+{
+	if (m_collisionLayers.find(name) != m_collisionLayers.end())
+		return false;
+
+	int ID = 0;
+
+	for (auto itr = m_collisionLayers.begin(); itr != m_collisionLayers.end(); ++itr)
+	{
+		if (itr->second >= ID)
+			ID = itr->second + 1;
+	}
+
+	m_collisionLayers[name] = ID;
+}
+
+void PhysicsSystem::DestroyCollisionLayer(const std::string& name)
+{
+	auto itr = m_collisionLayers.find(name);
+
+	if (itr != m_collisionLayers.end())
+		m_collisionLayers.erase(itr);
+}
+
 decltype(auto) PhysicsSystem::GetTriggered(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
 {
 	auto objects = m_triggerList.equal_range(c_triggerEntity);
