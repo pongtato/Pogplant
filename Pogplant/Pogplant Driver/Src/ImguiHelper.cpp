@@ -27,6 +27,8 @@
 
 #include "Application.h"
 
+//#define ECS_DEBUG
+
 namespace PogplantDriver
 {
 	//Adds blank text as seperator text to make things look nicer
@@ -392,6 +394,36 @@ namespace PogplantDriver
 		{
 			if (m_CurrentEntity != entt::null)
 			{
+				//debug stuffs for ECS data
+#ifdef ECS_DEBUG
+				if (ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  ECS_debug_info", ImGuiTreeNodeFlags_DefaultOpen))
+				{
+					ImGui::Text("ID: %d", m_CurrentEntity);
+
+					auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);
+					if (transform)
+					{
+						if (transform->m_parent == entt::null)
+							ImGui::Text("Parent: None");
+						else
+							ImGui::Text("Parent: %d", transform->m_parent);
+
+						auto m_children = transform->m_children;
+
+						if (!m_children.empty())
+						{
+							if(ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  Children", ImGuiTreeNodeFlags_DefaultOpen))
+								for (auto child : m_children)
+									ImGui::Text("ID: %d", child);
+						}
+					}
+
+					ImguiBlankSeperator(1);
+					ImGui::Separator();
+				}
+#endif
+
+
 				auto naming = m_ecs->GetReg().try_get<Components::Name>(m_CurrentEntity);
 				if (naming && ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  Name", ImGuiTreeNodeFlags_DefaultOpen))
 				{

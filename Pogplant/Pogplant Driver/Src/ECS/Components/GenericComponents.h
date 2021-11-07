@@ -356,6 +356,23 @@ namespace Components
 	{
 		float currHeight = 0.0f;
 	};
+
+
+	struct GUID
+	{
+
+	};
+
+	struct Prefab
+	{
+
+	};
+
+	struct PrefabInstance
+	{
+		
+	};
+
 }
 
 #endif // !GENERICCOMPONENTS_H_

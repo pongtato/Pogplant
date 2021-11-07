@@ -142,22 +142,9 @@ entt::entity ECS::FindEntityWithTag(std::string _tag)
 			return entity;
 	}
 
+
+	auto results = m_registry.view<Transform, Renderer>();
 	return entt::null;
 }
 
 
-
-//std::vector<entt::entity> ECS::FindAllEntityWithName(std::string& _name)
-//{
-//	auto view = m_registry.view<Name>();
-//	std::vector<entt::entity> return_vec;
-//
-//	for (auto& entity : view)
-//	{
-//		auto name = view.get<Name>(entity);
-//		if (name.m_name == _name)
-//			return_vec.push_back(entity);
-//	}
-//
-//	return return_vec;
-//}

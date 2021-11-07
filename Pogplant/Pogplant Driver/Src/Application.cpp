@@ -329,6 +329,17 @@ void Application::InitialiseDebugObjects()
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
 	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, static_cast<int>(PP::TextureResource::m_TexturePool["snow_diff.dds"]) });
 
+
+
+	//Vinceen testing code
+	//auto _ra = m_activeECS->view<Transform>(entt::exclude_t<Renderer>());
+	//for (auto ent : _ra)
+	//{
+	//	std::cout << (entt::id_type)ent << std::endl;
+	//}
+
+
+	//int k = 0;
 	/// Instancing test
 	//pos = { 0.0f, 0.0f, 0.0f };
 	//rot = { 0.0f,0.0f,0.0f };

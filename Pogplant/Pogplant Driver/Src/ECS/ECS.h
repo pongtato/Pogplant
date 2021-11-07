@@ -10,6 +10,11 @@
 
 class Entity;
 
+namespace Components
+{
+	struct Prefab;
+}
+
 class ECS
 {
 public:
@@ -30,12 +35,6 @@ public:
 						std::string tag = "Untagged");
 
 	void DestroyEntity(	entt::entity entity);
-	//template<typename... Type>
-	//auto& GetEntitiesWith()
-	//{
-	//	return 0;
-	//}
-
 
 
 	entt::registry& GetReg();
@@ -44,6 +43,11 @@ public:
 	entt::entity FindEntityWithTag(std::string _tag);
 	//std::vector<entt::entity> FindAllEntityWithName(std::string& _name);
 
+	template<typename... Component, typename... Exclude>
+	auto view(entt::exclude_t<Exclude...> _exclude = {})
+	{
+		return m_registry.view<Component...>(entt::exclude_t<Exclude..., Components::Prefab>());
+	}
 private:
 	entt::registry m_registry;
 
