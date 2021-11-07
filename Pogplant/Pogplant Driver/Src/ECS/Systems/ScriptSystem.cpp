@@ -80,7 +80,7 @@ void ScriptSystem::Init(ECS* ecs)
 
 void ScriptSystem::Update(float dt)
 {
-	auto entities = m_ecs->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
+	auto entities = m_ecs->view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
 	{
@@ -107,7 +107,7 @@ void ScriptSystem::Update(float dt)
 
 void ScriptSystem::LateUpdate(float dt)
 {
-	auto entities = m_ecs->GetReg().view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
+	auto entities = m_ecs->view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
 	{
@@ -175,7 +175,7 @@ void ScriptSystem::LoadMemory()
 
 				if (m_ptrMainEntryClass)
 				{
-					auto entities = m_ecs->GetReg().view<Components::Scriptable, Components::Transform, Components::Name>();
+					auto entities = m_ecs->view<Components::Scriptable, Components::Transform, Components::Name>();
 					for (auto& entity : entities)
 					{
 						AddScriptToEntity(entity);

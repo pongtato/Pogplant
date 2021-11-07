@@ -59,8 +59,8 @@ void PhysicsSystem::Init(ECS* ecs, std::shared_ptr<PPE::EventBus>& eventBus)
 void PhysicsSystem::InitPlayState()
 {
 	//Update all colliders
-	auto boxColliders = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
-	auto sphereColliders = m_registry->GetReg().view<Components::Transform, Components::SphereCollider>();
+	auto boxColliders = m_registry->view<Components::Transform, Components::BoxCollider>();
+	auto sphereColliders = m_registry->view<Components::Transform, Components::SphereCollider>();
 
 	/*auto combinedView = boxColliders | sphereColliders;
 
@@ -112,8 +112,8 @@ void PhysicsSystem::InitPlayState()
 
 
 	/// Height map example GAB refer to this hehe xd
-	/*auto hmd_view = ecs.GetReg().view<Transform, HeightMapDebugger>();
-	auto heightMap_view = ecs.GetReg().view<Transform, PrimitiveRender>();
+	/*auto hmd_view = ecs.view<Transform, HeightMapDebugger>();
+	auto heightMap_view = ecs.view<Transform, PrimitiveRender>();
 	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
 	for (auto hm : heightMap_view)
 	{
@@ -128,7 +128,7 @@ void PhysicsSystem::InitPlayState()
 		}
 	}//*/
 
-	/*auto heightMap_view = m_registry->GetReg().view<Components::Transform, Components::PrimitiveRender, Components::HeightMapCollider>();
+	/*auto heightMap_view = m_registry->view<Components::Transform, Components::PrimitiveRender, Components::HeightMapCollider>();
 	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
 	for (auto& heightMap : heightMap_view)
 	{
@@ -155,8 +155,8 @@ void PhysicsSystem::TriggerUpdate()
 		
 		if (!t_EXIT_THREADS && m_hasJob.try_acquire())
 		{
-			auto collidableEntities = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
-			auto movableEntities = m_registry->GetReg().view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
+			auto collidableEntities = m_registry->view<Components::Transform, Components::BoxCollider>();
+			auto movableEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
 
 			for (auto _1entity : collidableEntities)
 			{
@@ -229,8 +229,8 @@ void PhysicsSystem::TriggerUpdate()
 void PhysicsSystem::UpdateEditor()
 {
 	//Update all colliders
-	auto boxColliders = m_registry->GetReg().view<Components::Transform, Components::BoxCollider>();
-	auto sphereColliders = m_registry->GetReg().view<Components::Transform, Components::SphereCollider>();
+	auto boxColliders = m_registry->view<Components::Transform, Components::BoxCollider>();
+	auto sphereColliders = m_registry->view<Components::Transform, Components::SphereCollider>();
 
 	for (auto& collidable : boxColliders)
 	{
@@ -291,8 +291,8 @@ void PhysicsSystem::UpdateEditor()
 /******************************************************************************/
 void PhysicsSystem::Update(float c_dt)
 {
-	auto rigidBodyEntities = m_registry->GetReg().view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
-	auto collidableEntities = m_registry->GetReg().view<Components::Transform, Components::ColliderIdentifier>();
+	auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
+	auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
 
 	//Update colliders that move
 	for (auto& movableColliders : rigidBodyEntities)

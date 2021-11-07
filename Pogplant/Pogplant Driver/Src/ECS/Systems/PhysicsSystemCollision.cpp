@@ -169,14 +169,14 @@ void PhysicsSystem::DrawColliders()
 {
 	glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->GetPosition();
 
-	auto boxColliders = m_registry->GetReg().view<Components::BoxCollider>();
+	auto boxColliders = m_registry->view<Components::BoxCollider>();
 	for (auto collidable : boxColliders)
 	{
 		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
 		PP::DebugDraw::DebugCube(boxCollider.aabb.m_min, boxCollider.aabb.m_max);
 	}
 
-	auto sphereColliders = m_registry->GetReg().view<Components::SphereCollider>();
+	auto sphereColliders = m_registry->view<Components::SphereCollider>();
 	for (auto collidable : sphereColliders)
 	{
 		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
@@ -184,7 +184,7 @@ void PhysicsSystem::DrawColliders()
 	}
 
 	// haha xd
-	auto cameras = m_registry->GetReg().view<Components::Camera, Components::Transform>();
+	auto cameras = m_registry->view<Components::Camera, Components::Transform>();
 	const float aspect = static_cast<float>(PP::Window::m_Height) / PP::Window::m_Width;
 	for (auto it : cameras)
 	{

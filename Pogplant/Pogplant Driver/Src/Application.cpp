@@ -402,7 +402,7 @@ void Application::UpdateTransforms(float _Dt)
 
 	/// Camera tranforms
 	glm::vec3 gameCamPos = glm::vec3{ 0.0f };
-	auto camView = m_activeECS->GetReg().view<Transform, Camera>();
+	auto camView = m_activeECS->view<Transform, Camera>();
 	{
 		for (auto& entity : camView)
 		{
@@ -426,8 +426,8 @@ void Application::UpdateTransforms(float _Dt)
 	//gameCamPos = PP::CameraResource::GetCamera("EDITOR")->m_Position;
 
 	/// Height map transform
-	auto hmd_view = m_activeECS->GetReg().view<Transform, HeightMapDebugger>();
-	auto heightMap_view = m_activeECS->GetReg().view<Transform, PrimitiveRender>();
+	auto hmd_view = m_activeECS->view<Transform, HeightMapDebugger>();
+	auto heightMap_view = m_activeECS->view<Transform, PrimitiveRender>();
 	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
 	for (auto hm : heightMap_view)
 	{
@@ -442,7 +442,7 @@ void Application::UpdateTransforms(float _Dt)
 	}
 
 	//Update transform matrix of all gameobject
-	auto view = m_activeECS->GetReg().view<Transform>();
+	auto view = m_activeECS->view<Transform>();
 	for (auto entity : view)
 	{
 		auto& transform = view.get<Transform>(entity);
@@ -480,7 +480,7 @@ void Application::UpdateTransforms(float _Dt)
 		}
 	}
 	// Set instance data
-	auto instanceView = m_activeECS->GetReg().view<Transform, Renderer>();
+	auto instanceView = m_activeECS->view<Transform, Renderer>();
 	for (auto& entity : instanceView)
 	{
 		auto& renderer = m_activeECS->GetReg().get<Renderer>(entity);
@@ -502,7 +502,7 @@ void Application::UpdateTransforms(float _Dt)
 	}
 
 	/// Particle transforms
-	auto particleView = m_activeECS->GetReg().view<Transform, ParticleSystem>();
+	auto particleView = m_activeECS->view<Transform, ParticleSystem>();
 	{
 		for (auto& entity : particleView)
 		{
@@ -578,7 +578,7 @@ void Application::UpdateTransforms(float _Dt)
 	}
 
 	/// Canvas
-	auto canvasView = m_activeECS->GetReg().view<Transform, Canvas>();
+	auto canvasView = m_activeECS->view<Transform, Canvas>();
 	for (auto it : canvasView)
 	{
 		auto& transform = canvasView.get<Transform>(it);
@@ -589,7 +589,7 @@ void Application::UpdateTransforms(float _Dt)
 
 void Application::UpdateModelRef(std::vector<std::string>& _EditedModels)
 {
-	auto results = m_activeECS->GetReg().view<Components::Renderer>();
+	auto results = m_activeECS->view<Components::Renderer>();
 
 	// Over all edited objects
 	for (auto it : _EditedModels)
@@ -655,7 +655,7 @@ void Application::DrawEditor()
 
 void Application::DrawGame()
 {
-	auto results = m_activeECS->GetReg().view<Renderer>();
+	auto results = m_activeECS->view<Renderer>();
 
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();

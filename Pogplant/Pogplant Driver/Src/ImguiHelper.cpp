@@ -27,8 +27,6 @@
 
 #include "Application.h"
 
-//#define ECS_DEBUG
-
 namespace PogplantDriver
 {
 	//Adds blank text as seperator text to make things look nicer
@@ -422,7 +420,6 @@ namespace PogplantDriver
 					ImGui::Separator();
 				}
 #endif
-
 
 				auto naming = m_ecs->GetReg().try_get<Components::Name>(m_CurrentEntity);
 				if (naming && ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  Name", ImGuiTreeNodeFlags_DefaultOpen))

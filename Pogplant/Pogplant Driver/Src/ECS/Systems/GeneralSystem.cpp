@@ -41,13 +41,13 @@ void GeneralSystem::Update(float c_dt)
 {
 	/*//entities will be a container of objects with it
 	//get all entities with the imaginary_object component
-	auto entities = m_registry->GetReg().view<Imaginary_object, Transform, Tag>();
+	auto entities = m_registry->view<Imaginary_object, Transform, Tag>();
 
 	//get all entities with more than 1 component
-	//auto entities = m_registry->GetReg().view<Imaginary_object, Transform, Tag>();
+	//auto entities = m_registry->view<Imaginary_object, Transform, Tag>();
 
 	//exclude entities with certain component
-	//auto entities = m_registry->GetReg().view<Transform>(entt::exclude<Imaginary_object>);
+	//auto entities = m_registry->view<Transform>(entt::exclude<Imaginary_object>);
 
 
 	for (auto entity : entities)
@@ -58,7 +58,7 @@ void GeneralSystem::Update(float c_dt)
 
 		(void)imaginary_component;
 	}//*/
-	auto projectiles = m_registry->GetReg().view<Components::Transform, Components::Projectile, Components::Rigidbody>();
+	auto projectiles = m_registry->view<Components::Transform, Components::Projectile, Components::Rigidbody>();
 	for (auto& projectileEntity : projectiles)
 	{
 		auto& projectile = projectiles.get<Components::Projectile>(projectileEntity);
@@ -76,7 +76,7 @@ void GeneralSystem::Update(float c_dt)
 
 
 
-	auto audios = m_registry->GetReg().view<Components::Transform, Components::AudioSource>();
+	auto audios = m_registry->view<Components::Transform, Components::AudioSource>();
 
 	for (auto& audioEntity : audios)
 	{

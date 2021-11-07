@@ -24,7 +24,14 @@ namespace PogplantDriver
 		m_CurrentEntity = current_entity;
 		ImGui::Begin("Scene Hierarchy");
 		{
-			auto results = m_ECS->GetReg().view<Components::Transform>();
+
+#ifdef SHOW_PREFAB
+			auto results = m_ECS->view_SHOW_PREFAB<Components::Transform>();
+#else
+
+			auto results = m_ECS->view<Components::Transform>();
+#endif // SHOW_PREFAB
+
 
 			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
 				m_CurrentEntity = entt::null;

@@ -135,7 +135,7 @@ namespace PogplantDriver
 			entt::entity prev = entt::null;
 
 			Components::Transform* parentPtr;
-			auto entities = m_ecs.GetReg().view<Transform>();
+			auto entities = m_ecs.view<Transform>();
 			for (auto entity = entities.rbegin(); entity != entities.rend(); ++entity)
 			{
 				if (m_saved.contains(*entity))
@@ -176,7 +176,7 @@ namespace PogplantDriver
 
 
 			/*Components::Relationship* parentptr;
-			auto entities = m_ecs.GetReg().view<Transform>();
+			auto entities = m_ecs.view<Transform>();
 			for(auto entity = entities.rbegin(); entity != entities.rend() ; ++entity)
 			{
 				if (m_saved.contains(*entity))
