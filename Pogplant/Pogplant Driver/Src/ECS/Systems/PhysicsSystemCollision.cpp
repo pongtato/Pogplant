@@ -240,6 +240,8 @@ bool PhysicsSystem::CreateCollisionLayer(const std::string& name)
 	}
 
 	m_collisionLayers[name] = ID;
+
+	return true;
 }
 
 void PhysicsSystem::DestroyCollisionLayer(const std::string& name)

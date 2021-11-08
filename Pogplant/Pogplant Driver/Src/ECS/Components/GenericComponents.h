@@ -369,7 +369,8 @@ namespace Components
 
 	struct Prefab
 	{
-
+		//lol entt don't like to create empty structs
+		char i = 0;
 	};
 
 	struct PrefabInstance

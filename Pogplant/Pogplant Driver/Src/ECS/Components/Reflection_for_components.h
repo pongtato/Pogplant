@@ -77,7 +77,7 @@ namespace Components
 			.property("m_Scale", &ParticleSystem::m_Scale)
 			.property("m_SpawnRadius", &ParticleSystem::m_SpawnRadius)
 			.property("m_Delay", &ParticleSystem::m_Delay)
-			//.property("m_TexID", &ParticleSystem::m_TexID)
+			.property("m_TexName", &ParticleSystem::m_TexName)
 			.property("m_SpawnCount", &ParticleSystem::m_SpawnCount)
 			.property("m_Loop", &ParticleSystem::m_Loop)
 			.property("m_Burst", &ParticleSystem::m_Burst)
@@ -85,8 +85,8 @@ namespace Components
 			.property("m_Play", &ParticleSystem::m_Play);
 
 		rttr::registration::class_<Canvas>("Canvas")
-			.property("m_Color", &Canvas::m_Color);
-			//.property("m_TexID", &Canvas::m_TexID);
+			.property("m_Color", &Canvas::m_Color)
+			.property("m_TexName", &Canvas::m_TexName);
 	}
 }
 
