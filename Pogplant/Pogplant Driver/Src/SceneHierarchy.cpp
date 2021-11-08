@@ -108,6 +108,11 @@ namespace PogplantDriver
 
 		auto name = m_ECS->GetReg().get<Components::Name>(entity);
 		std::string obj_name = name.m_name;
+
+		auto _p = m_ECS->GetReg().try_get<Components::Prefab>(entity);
+		if (_p)
+			obj_name.append(" (Prefab)");
+
 		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
 		
 		if(!_transform.m_children.empty())
@@ -184,7 +189,7 @@ namespace PogplantDriver
 				return;
 			}
 			Serializer serialiser{ *m_ECS };
-			serialiser.LoadPrefab(filepath);
+			serialiser.LoadPrefab(filepath, true);
 		}
 	}
 

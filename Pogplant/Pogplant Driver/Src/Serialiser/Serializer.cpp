@@ -72,9 +72,9 @@ namespace PogplantDriver
 		}
 	}
 
-	void Serializer::LoadPrefab(const std::string& File)
+	void Serializer::LoadPrefab(const std::string& File, bool IsPrefab)
 	{
-		LoadObjects(File);
+		LoadObjects(File, IsPrefab);
 	}
 
 	entt::entity Serializer::Instantiate(const std::string& Filename, glm::vec3 _Position, glm::vec3 _Rotation)
@@ -306,7 +306,7 @@ namespace PogplantDriver
 		return subroot;
 	}
 
-	void Serializer::LoadObjects(const std::string& File)
+	void Serializer::LoadObjects(const std::string& File, bool IsPrefab)
 	{
 		std::ifstream istream(File, std::ios::in);
 
@@ -322,7 +322,7 @@ namespace PogplantDriver
 				Json::Value subroot = root[iter.index()];
 
 				// Load components
-				LoadComponents(subroot, m_ecs.GetReg().create());
+				LoadComponents(subroot, m_ecs.GetReg().create(), IsPrefab);
 
 				++iter;
 			}
@@ -331,13 +331,18 @@ namespace PogplantDriver
 		}
 	}
 
-	void Serializer::LoadComponents(const Json::Value& root, entt::entity id)
+	void Serializer::LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab)
 	{
 
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
 		auto& scripting = root["Scripting"];
 		auto& audioSource = root["AudioSource"];
+
+		if (IsPrefab)
+		{
+			m_ecs.GetReg().emplace<Prefab>(id);
+		}
 
 		Try_Load_Component<Transform>(root, "Transform", id);
 

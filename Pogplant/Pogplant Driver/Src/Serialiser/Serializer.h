@@ -21,7 +21,7 @@ namespace PogplantDriver
 		bool Load(const std::string& File);
 		//
 		void SavePrefab(const std::string& File, entt::entity id);
-		void LoadPrefab(const std::string& File);
+		void LoadPrefab(const std::string& File, bool IsPrefab = false);
 		entt::entity Instantiate(const std::string& Filename, glm::vec3 _Position, glm::vec3 _Rotation);
 	private:
 		ECS& m_ecs;
@@ -32,8 +32,8 @@ namespace PogplantDriver
 
 		void SaveObjects(const std::string& File);
 		Json::Value SaveComponents(entt::entity id);
-		void LoadObjects(const std::string& File);
-		void LoadComponents(const Json::Value& root, entt::entity id);
+		void LoadObjects(const std::string& File, bool IsPrefab = false);
+		void LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab = false);
 		int RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter);
 
 

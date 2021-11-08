@@ -111,7 +111,8 @@ void ECS::DestroyEntity(entt::entity entity)
 	}
 	
 	//destroy itself
-	m_registry.destroy(entity, 0);
+	//m_registry.destroy(entity, 0);
+	m_registry.destroy(entity);
 
 }
 

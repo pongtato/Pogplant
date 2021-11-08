@@ -941,10 +941,10 @@ public:
             }
             
             //original code
-            //each([this](const auto entity) { release_entity(entity, entity_traits::to_version(entity) + 1u); });
+            each([this](const auto entity) { release_entity(entity, entity_traits::to_version(entity) + 1u); });
 
-            //overwrides the version, idk why he didn't have an overloaded function
-            each([this](const auto entity) { release_entity(entity, 0); });
+            ////overwrides the version, idk why he didn't have an overloaded function
+            //each([this](const auto entity) { release_entity(entity, 0); });
         } else {
             (assure<Component>()->clear(this), ...);
         }
