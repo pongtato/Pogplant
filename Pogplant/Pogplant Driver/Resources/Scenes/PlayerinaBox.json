@@ -28,10 +28,7 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
-		"Scripting" : 
-		{
-			"FollowSpline" : false
-		},
+		"Scripting" : null,
 		"Transform" : 
 		{
 			"m_position" : 
@@ -102,7 +99,7 @@
 		"Rigidbody" : 
 		{
 			"isKinematic" : false,
-			"mass" : 10.0,
+			"mass" : 1.0,
 			"useGravity" : false
 		},
 		"Scripting" : 
