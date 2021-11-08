@@ -126,7 +126,7 @@ namespace Scripting
     public class EncounterManager : MonoBehaviour
     {
         private List<Encounter> encounters = null;
-        public EnemyManager enemyManager { get; private set; }
+        public EnemyManager enemyManager = new EnemyManager();
         private float current_time = 0.0f;
         // Start is called before the first frame update
         public override void Init(ref uint _entityID)
@@ -136,7 +136,7 @@ namespace Scripting
 
         public override void Start()
         {
-            //enemyManager = GetComponent<EnemyManager>();
+            enemyManager.Start();
             encounters = new List<Encounter>();
         }
 

@@ -36,7 +36,23 @@ namespace Scripting
         public void InitializeSpline()
         {
             ReadControlPointsFromFile("Control_Points_Curved.txt");
+            CreateGameObjectsFromCPList();
             Console.WriteLine(controlPointsList.Count);
+        }
+
+        void CreateGameObjectsFromCPList()
+        {
+            Transform parent_transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
+            GameObject parent = ECS.CreateEntity("Control_points_parent", parent_transform);
+            parent.AddComponent<Renderer>(new Renderer("sphere"));
+            List<GameObject> control_points = new List<GameObject>();
+            int counter = 0;
+            foreach (Transform cp in controlPointsList)
+            {
+                GameObject result = ECS.CreateChild(parent.id, "ControlPoint_" + counter++, cp);
+                result.AddComponent<Renderer>(new Renderer("sphere"));
+                control_points.Add(result);
+            }
         }
 
         //Display a spline between 2 points derived with the Catmull-Rom spline algorithm
@@ -132,7 +148,7 @@ namespace Scripting
 
                 //Console.WriteLine("waypoint " + i + " is at: x = " + newPos.X + ", y = " + newPos.Y + ", z = " + newPos.Z);
 
-                waypoints.Add(new Transform(newPos, controlPointsList[pos].Rotation, Vector3.Zero()));
+                waypoints.Add(new Transform(newPos, controlPointsList[pos].Rotation, Vector3.One() * 100.0f));
 
                 //Save this pos so we can draw the next line segment
                 lastPos = newPos;

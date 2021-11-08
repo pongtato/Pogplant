@@ -12,6 +12,7 @@
 */
 /******************************************************************************/
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Scripting
         public GameObject true_bullet_prefab;
         public GameObject false_bullet_prefab;
 
-        public Transform[] waypoints;
+        public List<GameObject> waypoints;
 
         private GameObject[] true_bullet_pool; // object pool for true bullets.
         private GameObject[] false_bullet_pool; // object pool for false bullets.
@@ -51,6 +52,7 @@ namespace Scripting
         public override void Start()
         {
             // Initialize waypoint dictionary
+            waypoints = InitWaypointGroups();
             InitMap();
 
             // Initialize bullet pools
@@ -58,44 +60,64 @@ namespace Scripting
             true_bullet_pool = new GameObject[pool_size];
             false_bullet_pool = new GameObject[pool_size];
 
-            //GameObject folder = new GameObject("Enemy_Projectile_Folder");
-            ////folder.transform.SetParent(parent);
-            //for (int i = 0; i < pool_size; ++i)
-            //{
-            //    true_bullet_pool[i] = Instantiate(true_bullet_prefab, folder.transform);
-            //    true_bullet_pool[i].SetActive(false);
-            //}
-
-            //for (int i = 0; i < pool_size; ++i)
-            //{
-            //    false_bullet_pool[i] = Instantiate(false_bullet_prefab, folder.transform);
-            //    false_bullet_pool[i].SetActive(false);
-            //}
-
-
-            ////InitMap turret bullets
-            //turret_true_bullet_pool = new GameObject[pool_size];
-            //turret_false_bullet_pool = new GameObject[pool_size];
-
-            //for (int i = 0; i < pool_size; ++i)
-            //{
-            //    turret_true_bullet_pool[i] = Instantiate(true_bullet_prefab);
-            //    turret_true_bullet_pool[i].SetActive(false);
-            //}
-
-            //for (int i = 0; i < pool_size; ++i)
-            //{
-            //    turret_false_bullet_pool[i] = Instantiate(false_bullet_prefab);
-            //    turret_false_bullet_pool[i].SetActive(false);
-            //}
 
             Instance = this;
+        }
+
+        List<GameObject> CreateParentedWaypoints(string waypointFile, uint parent)
+        {
+            string[] data = System.IO.File.ReadAllLines(waypointFile);
+
+            List<GameObject> waypointGroup = new List<GameObject>();
+
+            foreach (string waypointData in data)
+            {
+                string[] tokens = waypointData.Split(' ');
+                string name = tokens[0];
+
+                Transform transform = new Transform();
+                transform.Position = new Vector3(float.Parse(tokens[1]), float.Parse(tokens[2]), float.Parse(tokens[3]));
+                transform.Rotation = new Vector3(0.0f, 0.0f, 0.0f);
+                transform.Scale = new Vector3(1.0f, 1.0f, 1.0f);
+
+                waypointGroup.Add(ECS.CreateChild(parent, name, transform));
+
+                Console.WriteLine("Creating waypoint " + name + " at location: " + transform.Position.X + ", " + +transform.Position.Y + ", " + +transform.Position.Z);
+            }
+
+            return waypointGroup;
+        }
+
+        // this function creates the waypoint groups from reading text files
+        List<GameObject> InitWaypointGroups()
+        {
+            List<GameObject> waypointList = new List<GameObject>();
+            int numberOfGroups = 5;
+            // create filepaths to read the data from
+            string directory = "Resources\\";
+            string fileName = "GAM300_TakoFactory_Prototype_Enemy_WaypointGroup_";
+            string[] fileNames = new string[numberOfGroups];
+
+            for (int i = 0; i < fileNames.Length; ++i)
+                fileNames[i] = directory + fileName + "(" + i + ")";
+
+            // Find 5 waypoint group parents here
+            uint[] parent_ids = new uint[numberOfGroups];
+            for (int i = 0; i < numberOfGroups; ++i)
+            {
+                string parentName = "enemy_waypoint_group_" + i;
+                parent_ids[i] = ECS.FindEntityWithName(parentName);
+                waypointList.AddRange(CreateParentedWaypoints(fileNames[i], parent_ids[i]));
+                Console.WriteLine("Created " + parentName + " waypoint group.");
+            }
+
+            return waypointList;
         }
 
         // This initializes the dictionary for string to vector3 conversion.
         void InitMap()
         {
-            if (waypoints.Length == 0)
+            if (waypoints.Count == 0)
             {
                 Console.WriteLine("No waypoints assigned!");
                 return;
@@ -103,11 +125,11 @@ namespace Scripting
 
             waypoint_map = new Dictionary<string, Transform>();
 
-            for (int i = 0; i < waypoints.Length; ++i)
+            for (int i = 0; i < waypoints.Count; ++i)
             {
-                //string code = waypoints[i].name;
-                //code.Trim(',');
-                //waypoint_map.Add(code, waypoints[i]);
+                string code = waypoints[i].name;
+                code.Trim(',');
+                waypoint_map.Add(code, waypoints[i].GetComponent<Transform>());
             }
         }
 
@@ -123,48 +145,16 @@ namespace Scripting
         // Given a "true bullet" boolean, this function returns a instance of a true/false bullet.
         public GameObject GetBullet(bool isTrueBullet)
         {
-            if (isTrueBullet)
-            {
-                for (int i = 0; i < true_bullet_pool.Length; ++i)
-                {
-                    //find inactive bullet to shoot
-                    //if (!true_bullet_pool[i].activeSelf)
-                    //    return true_bullet_pool[i];
-                }
-            }
-            else
-            {
-                for (int i = 0; i < false_bullet_pool.Length; ++i)
-                {
-                    //find inactive bullet to shoot
-                    //if (!false_bullet_pool[i].activeSelf)
-                    //    return false_bullet_pool[i];
-                }
-            }
+            // This function is deprecated, it is shifted to C++
+
             Console.WriteLine("Cannot find anymore bullets in pool!");
             return null;
         }
         //get turret bullets that are not parented
         public GameObject GetTurretBullet(bool isTrueBullet)
         {
-            if (isTrueBullet)
-            {
-                for (int i = 0; i < turret_true_bullet_pool.Length; ++i)
-                {
-                    //find inactive bullet to shoot
-                    //if (!turret_true_bullet_pool[i].activeSelf)
-                    //    return turret_true_bullet_pool[i];
-                }
-            }
-            else
-            {
-                for (int i = 0; i < turret_false_bullet_pool.Length; ++i)
-                {
-                    //find inactive bullet to shoot
-                    //if (!turret_false_bullet_pool[i].activeSelf)
-                    //    return turret_false_bullet_pool[i];
-                }
-            }
+            // This function is deprecated, it is shifted to C++
+
             Console.WriteLine("Cannot find anymore bullets in pool!");
             return null;
         }
@@ -175,14 +165,9 @@ namespace Scripting
         }
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         { }
-        GameObject CreateEnemyInstance(Transform location)
+        GameObject CreateEnemyInstance(string prefab_name, Transform location)
         {
-            GameObject instance = ECS.CreateEntity("Enemy (" + enemy_counter + ")", location);
-
-            instance.AddComponent<Renderer>(new Renderer("Enemy_01"));
-            instance.AddComponent<Rigidbody>(new Rigidbody());
-            //instance.AddComponent<BaseEnemy>(new BaseEnemy());
-
+            GameObject instance = GameUtilities.InstantiateObject(prefab_name, location.Position, location.Rotation);
             enemy_instances.Add(instance);
             return instance;
         }
@@ -190,15 +175,13 @@ namespace Scripting
         // Given a location, enemy template and name of the enemy prefab this function will spawn an instance of an enemy.
         public void InstantiateEnemy(Transform location, EnemyTemplate enemy_template, string prefab_object)
         {
-            //GameObject prefab = Resources.Load(prefab_object) as GameObject;
-            //GameObject instance = Instantiate(prefab, parent, false);
-            GameObject instance = CreateEnemyInstance(location);
+            GameObject instance = CreateEnemyInstance(prefab_object, location);
             Transform transform = instance.GetComponent<Transform>();
             transform.Position = location.Position;
             transform.Rotation = new Vector3(0, 180, 0);
-            //BaseEnemy comp = instance.GetComponent<BaseEnemy>();
-            //comp.SetTemplate(enemy_template);
-            //comp.SetManager(this);
+            BaseEnemy comp = instance.GetComponent<BaseEnemy>();
+            comp.SetTemplate(enemy_template);
+            comp.SetManager(this);
         }
 
         public void DeleteEnemyInstance(uint id)
