@@ -28,5 +28,8 @@ namespace Scripting
         public abstract void Start();
         public abstract void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt);
         public abstract void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt);
+
+        public abstract void OnTriggerEnter(uint id);
+        public abstract void OnTriggerExit(uint id);
     }
 }

@@ -80,8 +80,8 @@ namespace Scripting
             //for (int i = 0; i < waypoints.Length; ++i)
             //    DebugDraw.DebugSphere(waypoints[i].X, waypoints[i].Y, waypoints[i].Z, 0.0f, 0.0f, 0.0f, 0.2f);
 
-            for (int i = 0; i < waypoints.Length; ++i)
-                DebugDraw.DebugSphere(waypoints[i].Position, Vector3.Zero(), 0.2f, 36);
+            //for (int i = 0; i < waypoints.Length; ++i)
+            //    DebugDraw.DebugSphere(waypoints[i].Position, Vector3.Zero(), 0.2f, 36);
 
         }
 
@@ -113,7 +113,10 @@ namespace Scripting
 
                 //if (lockRotation)
                 //{
-                    transform.Rotation = Vector3.Lerp(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
+                //transform.Rotation = Vector3.Lerp(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
+                //Console.WriteLine("Rotation: " + transform.Rotation.X + ", " + transform.Rotation.Y + ", " + transform.Rotation.Z);
+                transform.Rotation = Vector3.RotateTowards(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
+                //Console.WriteLine("Rotation: " + transform.Rotation.X + ", " + transform.Rotation.Y + ", " + transform.Rotation.Z);
                 //}
             }
         }
@@ -139,6 +142,15 @@ namespace Scripting
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
         {
+        }
+
+        public override void OnTriggerEnter(uint id)
+        {
+
+        }
+        public override void OnTriggerExit(uint id)
+        {
+
         }
     }
 }

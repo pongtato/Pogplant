@@ -70,6 +70,16 @@ namespace Scripting
             return (float)Math.Sqrt((X * X) + (Y * Y) + (Z * Z));
         }
 
+        public static Vector3 Normalise(Vector3 a)
+        {
+            float mag = a.magnitude();
+            a.X /= mag;
+            a.Y /= mag;
+            a.Z /= mag;
+
+            return a;
+        }
+
         public static Vector3 One()
         {
             return new Vector3(1.0f, 1.0f, 1.0f);
@@ -88,13 +98,24 @@ namespace Scripting
         public static float Angle(Vector3 a, Vector3 b)
         {
             float dot  = Dot(a, b);
+            //Console.WriteLine("dot value:" + dot);
             //Account for Divide by 0
             float mag_a = a.magnitude();
             float mag_b = b.magnitude();
-            if (mag_a == 0.0f || mag_b == 0.0f)
+
+           // Console.WriteLine("mag a:" + mag_a);
+            //Console.WriteLine("mag b:" + mag_b);
+            
+            if (Math.Abs(mag_a) < float.Epsilon || Math.Abs(mag_b) < float.Epsilon)
                 return 0.0f;
             //RETURNS IN RADIANS
-            return (float)Math.Acos(dot / (a.magnitude() * b.magnitude()));
+            float input = dot / (mag_a * mag_b);
+            if (input > 1.0f || input < -1.0f || float.IsNaN(input))
+                return 0.0f;
+            //Console.WriteLine("Input:" + input);
+            float test = (float)Math.Acos(input);
+            //Console.WriteLine("Test:" + test);
+            return test;
 
         }
 

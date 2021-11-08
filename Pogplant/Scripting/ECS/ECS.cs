@@ -25,6 +25,9 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void GetTransformECS(uint entityID, ref Vector3 pos, ref Vector3 rot, ref Vector3 scale);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetTransformECS(uint entityID, ref Vector3 pos, ref Vector3 rot, ref Vector3 scale);
+
         public static GameObject CreateEntity(string name, Transform transform, string tag = "Untagged")
         {
             uint entityID = CreateEntity(name, transform.Position, transform.Rotation, transform.Scale);

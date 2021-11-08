@@ -3,6 +3,9 @@
 
 namespace Components
 {
+	size_t ParticleSystem::CurveVariable::m_MaxPoints = 9;
+	size_t ParticleSystem::CurveVariable::m_DataPoints = 128;
+
 	void Transform::SetGlobalPosition(const glm::vec3& globalPos)
 	{
 		if (m_parent == entt::null)
@@ -242,21 +245,6 @@ namespace Components
 		, m_Pause{ false }
 	{
 		m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
-
-		const size_t second_last = _Speed.m_MaxPoints - 2;
-		const float increment = 1.0f / second_last;
-		// Init curve vertices
-		for (size_t i = 0; i < second_last; i++)
-		{
-			float currX = i * increment;
-			m_Speed.m_CurvePoints[i] = { currX, 1.0f };
-			m_Scale.m_CurvePoints[i] = { currX, 1.0f };
-		}
-		m_Speed.m_CurvePoints[second_last] = { 1.0f, 1.0f };
-		m_Scale.m_CurvePoints[second_last] = { 1.0f, 1.0f };
-
-		m_Speed.m_CurveData.resize(m_Speed.m_DataPoints);
-		m_Scale.m_CurveData.resize(m_Scale.m_DataPoints);
 	}
 
 	void ParticleSystem::Spawn(glm::vec3 _Position, glm::vec3 _Direction)
@@ -379,14 +367,15 @@ namespace Components
 		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, static_cast<int>(_Particle.m_TexID), false });
 	}
 
-	ParticleSystem::CurveVariable::CurveVariable(float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax)
+	ParticleSystem::CurveVariable::CurveVariable(const std::vector<ImVec2>& _CurvePoints, float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax)
 		: m_CurveData{}
-		, m_CurvePoints{}
+		, m_CurvePoints{ _CurvePoints }
 		, m_CurveMin{ _CurveMin }
 		, m_CurveMax{ _CurveMax }
 		, m_MultiplierMin{ _MultiMin }
 		, m_MultiplierMax{ _MultiMax }
 	{
+		m_CurveData.resize(m_DataPoints);
 	};
 
 	Canvas::Canvas(const glm::vec4& _Color, std::string _TexName)

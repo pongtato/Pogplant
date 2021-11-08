@@ -288,12 +288,18 @@ namespace Components
 	{
 		struct CurveVariable
 		{
-			CurveVariable(float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax);
+			CurveVariable() = default;
+			CurveVariable(const std::vector<ImVec2>& _CurvePoints, float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax);
 
-			enum { m_MaxPoints = 9, m_DataPoints = 128 };
+			//enum { m_MaxPoints = 9, m_DataPoints = 128 };
+
+			static size_t m_MaxPoints;
+			static size_t m_DataPoints;
+
 			std::vector<float> m_CurveData;
 			// For editor
-			ImVec2 m_CurvePoints[m_MaxPoints];
+			//ImVec2 m_CurvePoints[m_MaxPoints];
+			std::vector<ImVec2> m_CurvePoints;
 
 			float m_MultiplierMin;
 			float m_MultiplierMax;
@@ -301,6 +307,8 @@ namespace Components
 			float m_CurveMin;
 			float m_CurveMax;
 		};
+
+		ParticleSystem() = default;
 
 		ParticleSystem
 		(

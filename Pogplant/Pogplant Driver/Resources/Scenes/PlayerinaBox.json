@@ -28,6 +28,10 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
+		"Scripting" : 
+		{
+			"FollowSpline" : false
+		},
 		"Transform" : 
 		{
 			"m_position" : 
@@ -55,8 +59,8 @@
 		{
 			"centre" : 
 			[
-				34.0,
-				29.0,
+				0.0,
+				0.0,
 				0.0
 			],
 			"collisionLayer" : 0,

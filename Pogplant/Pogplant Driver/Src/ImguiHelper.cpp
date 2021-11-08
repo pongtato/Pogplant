@@ -841,8 +841,11 @@ namespace PogplantDriver
 		{
 			ImGui::PushItemWidth(69.0f);
 			ImGui::DragFloat("Exposure", &PP::Renderer::m_Exposure, 0.05f);
-			ImGui::PushItemWidth(69.0f);
 			ImGui::DragFloat("Gamma", &PP::Renderer::m_Gamma, 0.05f);
+			auto* camera = PP::CameraResource::GetCamera("EDITOR");
+			ImGui::DragFloat("Editor Cam Near", &camera->m_CameraConfig.m_Near);
+			ImGui::DragFloat("Editor Cam Far", &camera->m_CameraConfig.m_Far);
+			ImGui::PopItemWidth();
 		}
 		ImGui::End();
 
@@ -1947,7 +1950,14 @@ namespace PogplantDriver
 					ImGui::Text("Speed Curve");
 					ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					static int speedItem = 0;
-					ImGui::Curve("Speed", { ImGui::GetContentRegionMax().x * 0.85f,256 }, pSystem->m_Speed.m_MaxPoints - 1, pSystem->m_Speed.m_CurvePoints, pSystem->m_Speed.m_CurveData, speedItem);
+					ImGui::Curve
+					(
+						"Speed",
+						{ ImGui::GetContentRegionMax().x * 0.85f,256 },
+						static_cast<int>(pSystem->m_Speed.m_MaxPoints - 1),
+						pSystem->m_Speed.m_CurvePoints.data(),
+						pSystem->m_Speed.m_CurveData, speedItem
+					);
 					ImGui::TreePop();
 					ImGui::NewLine();
 				}
@@ -1974,7 +1984,14 @@ namespace PogplantDriver
 					ImGui::Text("Scale Curve");
 					ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					static int scaleItem = 0;
-					ImGui::Curve("Scale", { ImGui::GetContentRegionMax().x * 0.85f,256 }, pSystem->m_Scale.m_MaxPoints - 1, pSystem->m_Scale.m_CurvePoints, pSystem->m_Scale.m_CurveData, scaleItem);
+					ImGui::Curve
+					(
+						"Scale",
+						{ ImGui::GetContentRegionMax().x * 0.85f,256 },
+						static_cast<int>(pSystem->m_Scale.m_MaxPoints - 1),
+						pSystem->m_Scale.m_CurvePoints.data(),
+						pSystem->m_Scale.m_CurveData, scaleItem
+					);
 					ImGui::TreePop();
 				}
 				else

@@ -168,6 +168,17 @@ void Application::InitialiseDebugObjects()
 	));
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.1f, 0.1f, 0.1f }, {0.f, 0.f, 0.f} });
 
+	const size_t second_last = Components::ParticleSystem::CurveVariable::m_MaxPoints - 2;
+	const float increment = 1.0f / second_last;
+	std::vector<ImVec2> curvePoints = {};
+	// Init curve vertices
+	for (size_t i = 0; i < second_last; i++)
+	{
+		float currX = i * increment;
+		curvePoints.push_back({ currX, 1.0f });
+	}
+	curvePoints.push_back({ 1.0f, 1.0f });
+
 	pos = { 15.0f, 15.0f, 10.f };
 	rot = { 0.0f,0.0f,0.0f };
 	scale = { 1.0f,1.0f,1.0f };
@@ -190,12 +201,14 @@ void Application::InitialiseDebugObjects()
 			0.69f,	// Min Life
 			1.00f,	// Max Life
 			{
+				curvePoints, // Curve points
 				1.0f,	// Min Speed
 				2.0f,	// Max Speed
 				1.0f,	// Min Speed Mult
 				4.2f,	// Max Speed Mult
 			},
 			{
+				curvePoints,  // Curve points
 				0.42f,	// Min Scale
 				0.69f,	// Max Scale
 				1.0f,	// Min Scale Mult

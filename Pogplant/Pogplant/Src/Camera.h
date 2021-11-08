@@ -71,6 +71,7 @@ namespace Pogplant
 		glm::vec3 m_Front;
 		glm::vec3 m_Up;
 		glm::vec3 m_Right;
+		CameraConfig m_CameraConfig;
 
 	private:
 
@@ -78,7 +79,6 @@ namespace Pogplant
 		void MouseUpdate(float _Dt);
 		void LerpUpdate(float _Dt);
 
-		CameraConfig m_CameraConfig;
 		CameraLerp m_CameraLerp;
 		Ray m_Ray;
 		glm::mat4 m_Ortho;
