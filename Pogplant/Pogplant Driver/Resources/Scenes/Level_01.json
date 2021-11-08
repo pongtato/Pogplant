@@ -263,15 +263,15 @@
 			],
 			"EmissiveTint" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				1.0,
+				1.0,
+				1.0
 			],
 			"RenderModel" : 
 			[
-				"Player_Ship",
-				"Resources/Models\\Ship",
-				"Player_Ship_Base"
+				"CockPit",
+				"Resources/Models\\Level",
+				"CockPit_Body"
 			],
 			"UseLight" : 1
 		},
@@ -290,8 +290,8 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
-				0.0
+				-0.15999984741210938,
+				0.15000000596046448
 			],
 			"m_rotation" : 
 			[
