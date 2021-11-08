@@ -189,7 +189,7 @@ namespace PogplantDriver
 				return;
 			}
 			Serializer serialiser{ *m_ECS };
-			serialiser.LoadPrefab(filepath, true);
+			serialiser.LoadPrefab(filepath);
 		}
 	}
 
