@@ -29,6 +29,8 @@ void Application::EnterEditorState()
 	m_activeECS = &m_editorECS;
 	PPD::ImguiHelper::RelinkECS(&m_editorECS);
 	m_sGeneralSystem.Init(&m_editorECS);
+	m_sGeneralSystem.UpdateTransforms();
+
 	m_sPhysicsSystem.Init(&m_editorECS, m_eventBus);
 	m_sScriptSystem.Init(&m_editorECS);
 }

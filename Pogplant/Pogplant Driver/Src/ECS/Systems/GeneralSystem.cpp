@@ -14,13 +14,14 @@
 			written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-#include "GeneralSystem.h"
 #include "../Entity.h"
 
 #include "../Components/GameplayComponents.h"
 #include "../Components/DependantComponents.h"
 #include "../../Input/GLFWInput.h"
 #include "../../AudioEngine.h"
+
+#include "GeneralSystem.h"
 
 using namespace Components;
 
@@ -88,5 +89,38 @@ void GeneralSystem::Update(float c_dt)
 			if (audioSource.m_audioSources[i].m_update3DPosition && audioSource.m_audioSources[i].c_playing)
 				audioSource.m_audioSources[i].c_playing = PPA::AudioEngine::UpdateChannel3DPosition(audioSource.m_audioSources[i].c_channelID, transform.m_position);
 		}
+	}
+}
+
+void GeneralSystem::UpdateTransforms()
+{
+	auto view = m_registry->view<Transform>();
+	for (auto entity : view)
+	{
+		auto& transform = view.get<Transform>(entity);
+
+		transform.updateModelMtx();
+
+		if (transform.m_parent == entt::null)
+		{
+			for (auto& ent : transform.m_children)
+				UpdateTransform(ent, transform);
+		}
+	}
+}
+
+//Recursive update transform function
+void GeneralSystem::UpdateTransform(entt::entity _id, Components::Transform& parent_transform)
+{
+	//update myself
+	auto& transform = m_registry->GetReg().get<Transform>(_id);
+
+	transform.updateModelMtx(parent_transform);
+
+	//update children
+	if (!transform.m_children.empty())
+	{
+		for (auto& entity : transform.m_children)
+			UpdateTransform(entity, transform);
 	}
 }

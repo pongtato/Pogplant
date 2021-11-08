@@ -38,11 +38,11 @@ namespace Components
 		glm::vec3 m_rotation;
 		glm::vec3 m_scale;
 
-		glm::mat4 m_ModelMtx;// has been multiplied by parent matrix
+		glm::mat4 m_ModelMtx = glm::mat4{ 1 };// has been multiplied by parent matrix
 
 		/**> Matrix to get local from world */
-		glm::mat4 m_ModelMtxLocal;
-		glm::mat4 m_localToWorld;
+		glm::mat4 m_ModelMtxLocal = glm::mat4{ 1 };
+		glm::mat4 m_localToWorld = glm::mat4{ 1 };
 
 		entt::entity m_parent = entt::null;
 		std::set<entt::entity> m_children;

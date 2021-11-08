@@ -29,9 +29,12 @@ public:
 
 	void Init(ECS* ecs);
 	void Update(float c_dt);
+	void UpdateTransforms();
 
 private:
 	ECS* m_registry;
+
+	void UpdateTransform(entt::entity _id, Components::Transform& parent_transform);
 
 };
 

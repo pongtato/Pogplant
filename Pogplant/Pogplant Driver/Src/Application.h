@@ -77,7 +77,6 @@ namespace PogplantDriver
 #endif
 		void BindEvents();
 
-		void UpdateTransform(entt::entity _id, Components::Transform& parent_transform);
 		void UpdateTransforms(float _Dt);
 		void UpdateModelRef(std::vector<std::string>& _EditedModels);
 

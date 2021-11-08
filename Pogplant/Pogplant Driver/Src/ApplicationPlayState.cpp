@@ -37,6 +37,8 @@ void Application::EnterPlayState()
 		assert(false);
 
 	m_sGeneralSystem.Init(&m_playECS);
+	m_sGeneralSystem.UpdateTransforms();
+
 	m_sPhysicsSystem.Init(&m_playECS, m_eventBus);
 
 	// Ensure that the scripts are reloaded.

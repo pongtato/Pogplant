@@ -372,30 +372,6 @@ void Application::BindEvents()
 	m_eventBus->listen(&Scripting::OnTriggerEnterEvent);
 }
 
-//recursion call
-void Application::UpdateTransform(entt::entity _id, Transform& parent_transform)
-{
-	//update myself
-	auto& transform = m_activeECS->GetReg().get<Transform>(_id);
-
-	transform.updateModelMtx(parent_transform);
-
-	//update children
-	if (!transform.m_children.empty())
-	{
-		for (auto& entity : transform.m_children)
-			UpdateTransform(entity, transform);
-	}
-
-	//update children
-	/*auto relationship = m_activeECS->GetReg().try_get<Relationship>(_id);
-	if (relationship)
-	{
-		for (auto& entity : relationship->m_children)
-			UpdateTransform(entity, transform);
-	}*/
-}
-
 void Application::UpdateTransforms(float _Dt)
 {
 	//auto lol_id = m_activeECS->FindEntityWithName("Green light");
@@ -442,32 +418,7 @@ void Application::UpdateTransforms(float _Dt)
 	}
 
 	//Update transform matrix of all gameobject
-	auto view = m_activeECS->view<Transform>();
-	for (auto entity : view)
-	{
-		auto& transform = view.get<Transform>(entity);
-
-		transform.updateModelMtx();
-
-		if (transform.m_parent == entt::null)
-		{
-			for (auto& ent : transform.m_children)
-				UpdateTransform(ent, transform);
-		}
-
-
-		/*auto relationship = m_activeECS->GetReg().try_get<Relationship>(entity);
-		if (relationship && relationship->m_parent == entt::null)
-		{
-			transform.updateModelMtx();
-			for (auto& ent : relationship->m_children)
-				UpdateTransform(ent, transform);
-		}
-		else if (relationship == nullptr)
-		{
-			transform.updateModelMtx();
-		}*/
-	}
+	m_sGeneralSystem.UpdateTransforms();
 
 	/// 3D instance transforms
 	// Clear old instance data
