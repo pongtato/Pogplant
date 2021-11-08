@@ -14,6 +14,14 @@ uniform mat4 m4_LightProjection;
 
 void main()
 {
-    vec4 worldPos = m4_Model * vec4(v3_Pos, 1.0);
-    gl_Position = m4_LightProjection * worldPos;
+    // Dont cast shadows for such objects
+    if(i_EditorOnly == 1)
+    {
+        gl_Position = vec4(0);
+    }
+    else
+    {
+        vec4 worldPos = m4_Model * vec4(v3_Pos, 1.0);
+        gl_Position = m4_LightProjection * worldPos;
+    }
 }

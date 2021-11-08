@@ -837,6 +837,15 @@ namespace PogplantDriver
 		}
 		ImGui::End();
 
+		ImGui::Begin("Globals");
+		{
+			ImGui::PushItemWidth(69.0f);
+			ImGui::DragFloat("Exposure", &PP::Renderer::m_Exposure, 0.05f);
+			ImGui::PushItemWidth(69.0f);
+			ImGui::DragFloat("Gamma", &PP::Renderer::m_Gamma, 0.05f);
+		}
+		ImGui::End();
+
 		ImGui::Begin("Scene");
 		{
 			SceneWindow();

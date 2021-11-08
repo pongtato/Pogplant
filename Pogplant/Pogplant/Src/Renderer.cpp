@@ -29,6 +29,8 @@
 namespace Pogplant
 {
 	bool Renderer::m_RenderGrid = false;
+	float Renderer::m_Exposure = 1.0f;
+	float Renderer::m_Gamma = 2.2f;
 
 	struct CameraReturnData
 	{
@@ -323,6 +325,8 @@ namespace Pogplant
 		ShaderLinker::SetUniform("bloomBlur", 1);
 		ShaderLinker::SetUniform("debug", 2);
 		ShaderLinker::SetUniform("bloom", _Bloom);
+		ShaderLinker::SetUniform("exposure", m_Exposure);
+		ShaderLinker::SetUniform("gamma", m_Gamma);
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_NORMAL]);
@@ -456,7 +460,7 @@ namespace Pogplant
 
 		if (_EditorMode)
 		{
-			DrawDebug(registry, nullptr);
+			//DrawDebug(registry, nullptr);
 		}
 
 		glDisable(GL_CULL_FACE);

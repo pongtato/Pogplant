@@ -159,8 +159,8 @@ namespace Components
 		{
 		}
 
-		glm::vec3 m_ColorTint;
-		glm::vec3 m_EmissiveTint;
+		glm::vec3 m_ColorTint;		// Save
+		glm::vec3 m_EmissiveTint;	// Save
 		Pogplant::Model* m_RenderModel;
 		Pogplant::Mesh3D* m_Mesh;
 		int m_UseLight = true;
@@ -181,13 +181,13 @@ namespace Components
 			m_ColorTint = glm::vec4{ 1.0f };
 		}
 
-		std::vector<std::string> m_DiffTex;
-		std::vector<std::string> m_BumpTex;
-		std::vector<std::string> m_NormTex;
-		std::vector<std::string> m_SpecTex;
-		Pogplant::Mesh* m_Mesh;
-		float m_Blend;
-		bool m_Heightmap;
+		std::vector<std::string> m_DiffTex;		// Save
+		std::vector<std::string> m_BumpTex;		// Save
+		std::vector<std::string> m_NormTex;		// Save
+		std::vector<std::string> m_SpecTex;		// Save
+		Pogplant::Mesh* m_Mesh;					// Save
+		float m_Blend;							// Save
+		bool m_Heightmap;						// Save
 	};
 
 	struct DebugRender : public Renderer
