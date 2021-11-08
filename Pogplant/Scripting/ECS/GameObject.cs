@@ -15,11 +15,11 @@ namespace Scripting
         {
         }
 
-        public GameObject(uint _id, Transform _transform, string _tag)
+        public GameObject(uint _id, Transform _transform, string _name)
         {
             id = _id;
             transform = _transform;
-            tag = _tag;
+            name = _name;
         }
 
         public GameObject(uint _id, string _name, Transform _transform, Rigidbody _rigidbody, string _tag)
