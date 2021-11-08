@@ -32,9 +32,17 @@ void Application::EnterPlayState()
 
 	PPD::ImguiHelper::RelinkECS(&m_playECS);
 
+#ifdef PPD_EDITOR_BUILD
 	Serializer serialiser{ m_playECS };
 	if (!serialiser.Load("Resources/tmp"))
 		assert(false);
+#else
+
+	//Change the default level here
+	Serializer serialiser{ m_playECS };
+	if (!serialiser.Load("Resources/Scenes/Level_01.json"))
+		assert(false);
+#endif
 
 	m_sGeneralSystem.Init(&m_playECS);
 	m_sGeneralSystem.UpdateTransforms();
