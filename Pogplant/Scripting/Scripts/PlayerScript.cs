@@ -24,9 +24,11 @@ namespace Scripting
     public class PlayerScript : MonoBehaviour
     {
 
-        public float movement_speed = 10.0f;
+        public float movement_speed = 1000.0f;
         private float horizontal_input = 0;
         private float vertical_input = 0;
+        private float slowForce = 2.0f;
+        private float maxSpeed = 10.0f;
 
         //Player Firing 
         float p_fireRate;
@@ -208,33 +210,40 @@ namespace Scripting
             horizontal_input = (InputUtility.onKeyHeld("RIGHT") ? -1.0f : 0.0f) + (InputUtility.onKeyHeld("LEFT") ? 1.0f : 0.0f);
             vertical_input = (InputUtility.onKeyHeld("UP") ? 1.0f : 0.0f) + (InputUtility.onKeyHeld("DOWN") ? -1.0f : 0.0f);
 
-            Vector3 force_dir = new Vector3(horizontal_input, vertical_input, 0) * movement_speed * dt; // 32 is magic number
-            transform.Position += force_dir;
+            //if(rigidbody.velocity.X < maxSpeed && horizontal_input > 0.0f || rigidbody.velocity.X > -maxSpeed && horizontal_input < 0.0f)
+            //{
+            //    rigidbody.AddForce(new Vector3(horizontal_input, 0.0f, 0.0f));
+            //}
+            Vector3 direc_vector = new Vector3(horizontal_input, vertical_input, 0);
+            direc_vector = Vector3.Normalise(direc_vector);
+            Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
+            //transform.Position += force_dir;
+            rigidbody.AddForce(force_dir);
 
             switch(GameUtilities.CheckBounds(transform.Position))
             {
                 //Out of X bounds
                 case 1:
                     {
-                        float newX = transform.Position.X - force_dir.X;
-                        transform.Position = new Vector3(newX, transform.Position.Y, transform.Position.Z);
-                        //Assuming camera steals the local positon of the child ship
-                        // GameUtilities.FollowPlayerCam(new Vector3(0, force_dir.Y, 0));
+                        //force_dir.X = 0;
+                        //force_dir.Y = 0;
+                        //force_dir.Z = 0;
+                        //rigidbody.AddImpulseForce(force_dir);
+                        //float newX = transform.Position.X - force_dir.X;
+                        //transform.Position = new Vector3(newX, transform.Position.Y, transform.Position.Z);
                         break;
                     }
                 case 2:
                     {
-                        float newY = transform.Position.Y - force_dir.Y;
-                        transform.Position = new Vector3(transform.Position.X, newY, transform.Position.Z);
-                        // GameUtilities.FollowPlayerCam(new Vector3(force_dir.X,0, 0)));
+                        //float newY = transform.Position.Y - force_dir.Y;
+                       //transform.Position = new Vector3(transform.Position.X, newY, transform.Position.Z);
                         break;
                     }
                 case 3:
                     {
-                        float newX = transform.Position.X - force_dir.X;
-                        float newY = transform.Position.Y - force_dir.Y;
-                        transform.Position = new Vector3(newX, newY, transform.Position.Z);
-                        //GameUtilities.FollowPlayerCam(0);
+                        //float newX = transform.Position.X - force_dir.X;
+                        //float newY = transform.Position.Y - force_dir.Y;
+                        //transform.Position = new Vector3(newX, newY, transform.Position.Z);
                         break;
                     }
                 default:
@@ -245,6 +254,16 @@ namespace Scripting
             }
 
 
+            float maxslowforce = rigidbody.velocity.magnitude();
+            if (Math.Abs(maxslowforce) <= float.Epsilon)
+                maxslowforce = 0.0f;
+            else
+            {
+                maxslowforce = 1 / maxslowforce;
+
+                Vector3 SlowDownVec = rigidbody.velocity * maxslowforce;
+                rigidbody.velocity -= SlowDownVec * Math.Min(maxslowforce, (1 / maxslowforce) * slowForce * dt);
+            }
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
@@ -312,6 +331,7 @@ namespace Scripting
 
         public void FixedUpdate()
         {
+
         }
 
         public override void OnTriggerEnter(uint id)

@@ -73,6 +73,8 @@ namespace Scripting
         public static Vector3 Normalise(Vector3 a)
         {
             float mag = a.magnitude();
+            if (Math.Abs(mag) <= float.Epsilon)
+                return a;
             a.X /= mag;
             a.Y /= mag;
             a.Z /= mag;

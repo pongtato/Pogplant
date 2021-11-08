@@ -67,6 +67,8 @@ void Application::UpdatePlayState(float c_dt)
 	if (m_accumulatedFixedTime < m_minFixedUpdateTime)
 	{
 		m_sPhysicsSystem.Update(m_accumulatedFixedTime);
+		m_sScriptSystem.Update(m_accumulatedFixedTime);
+		m_sScriptSystem.LateUpdate(m_accumulatedFixedTime);
 		m_accumulatedFixedTime = 0.f;
 	}
 	else
@@ -74,13 +76,15 @@ void Application::UpdatePlayState(float c_dt)
 		while (m_accumulatedFixedTime > m_minFixedUpdateTime)
 		{
 			m_sPhysicsSystem.Update(m_minFixedUpdateTime);
+			m_sScriptSystem.Update(m_minFixedUpdateTime);
+			m_sScriptSystem.LateUpdate(m_minFixedUpdateTime);
 			m_accumulatedFixedTime -= m_minFixedUpdateTime;
 		}
 	}
 
 	m_sGeneralSystem.Update(c_dt);
-	m_sScriptSystem.Update(c_dt);
-	m_sScriptSystem.LateUpdate(c_dt);
+	//m_sScriptSystem.Update(c_dt);
+	//m_sScriptSystem.LateUpdate(c_dt);
 	PPF::FileHandler& fh = fh.GetInstance();
 	if (fh.m_Modified)
 	{

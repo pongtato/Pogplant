@@ -52,9 +52,10 @@ namespace Scripting
 		if (player_cam != entt::null && player_box != entt::null)
 		{
 			auto box_pos = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_box);
+			//std::cout << "Rotation: " << box_pos->m_rotation.x << ", " << box_pos->m_rotation.y << ", " << box_pos->m_rotation.z << std::endl;
 			auto box_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(player_box);
 			//Natural Z forward offset
-			glm::vec3 offset = glm::vec3{ 0,0,3.f };
+			glm::vec3 offset = glm::vec3{ 0,0,-2.f };
 			//Concatanate the offsets
 			offset += _Position;
 
@@ -65,8 +66,18 @@ namespace Scripting
 			//Account for the offset 0.01f that is hardcoded
 
 			//Hardcoded until i find a better way to save the inspector camera variables
-			cam_comp->m_Yaw = box_pos->m_rotation.y +  90.f + -_Rotation.y - 0.01f;
-			cam_comp->m_Pitch  = box_pos->m_rotation.x +  0 + -_Rotation.x;			
+			//cam_comp->m_Yaw = -box_pos->m_rotation.y + 90.f + -_Rotation.y;
+			//cam_comp->m_Pitch  = -box_pos->m_rotation.x +  0 + -_Rotation.x;
+
+
+			//Only leave positive values in the Values
+			auto box_x_rot = box_pos->m_rotation.x - 180.f;
+			//Turns the camera left,right (-180, 180);
+			auto box_y_rot = box_pos->m_rotation.y;
+
+			cam_comp->m_Yaw = box_y_rot - 90.f;
+			//std::cout << "Yaw: " << cam_comp->m_Yaw << std::endl;
+			cam_comp->m_Pitch = box_x_rot;
 
 
 		}
@@ -76,6 +87,7 @@ namespace Scripting
 	{
 		//Need to find player ship transform 
 		entt::entity player_ship = static_cast<entt::entity>(entityID);
+		auto ship_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_ship);
 
 		glm::mat4 decompose{ 0 };
 		glm::vec3 position{ 0 };
@@ -107,24 +119,16 @@ namespace Scripting
 			decompose[2][2] /= scale_z;
 		}
 		//std::cout << "Position" << position.x << ", " << position.y << ", " << position.z << std::endl;
+
 		PogplantDriver::Serializer serial( *GameplayECS::m_GameScriptECS );
-
-		entt::entity bullet = serial.Instantiate("Bullet", position, _Rotation);
+		entt::entity bullet = serial.Instantiate("Bullet", ship_trans->GetGlobalPosition(), _Rotation);
 		GameplayECS::m_GameScriptECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Player);
-
-			//auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
-			//auto& identi = new_bullet.AddComponent<Components::ColliderIdentifier>();
-			//identi.colliderType = ColliderIdentifier::COLLIDER_TYPE::CT_BOX;
-			//identi.isTrigger = true;
-			//sp_collider.isTrigger = true;
-			//new_bullet.AddComponent<Rigidbody>(1.f);
-
-
 
 		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
-		glm::vec4 forward{ 0.f,0.f,1.f ,1.f};
+		glm::vec4 forward{ 0.f,0.f,1.f ,0.f};
 		glm::vec3 forward_vec = decompose * forward;
+
 		//std::cout << "Forward_vec" << forward_vec.x << ", " << forward_vec.y << ", " << forward_vec.z << std::endl;
 		//Add power to the shots
 		forward_vec *= 100.f; 
