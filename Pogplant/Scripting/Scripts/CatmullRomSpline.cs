@@ -35,15 +35,17 @@ namespace Scripting
 
         public void InitializeSpline()
         {
-            ReadControlPointsFromFile("Control_Points_Curved.txt");
+            //ReadControlPointsFromFile("Control_Points_Curved.txt");
+            ReadControlPointsFromFile("Transform_CPs.txt");
             CreateGameObjectsFromCPList();
-            WriteControlPointsToFile();
+            //WriteControlPointsToFile();
             //Console.WriteLine(controlPointsList.Count);
         }
 
         void CreateGameObjectsFromCPList()
         {
-            Transform parent_transform = new Transform(Vector3.Zero(), new Vector3(0.0f, 180.0f, 0.0f), Vector3.One() * 0.1f);
+            //Transform parent_transform = new Transform(Vector3.Zero(), new Vector3(0.0f, 180.0f, 0.0f), Vector3.One() * 0.1f);
+            Transform parent_transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
             GameObject parent = ECS.CreateEntity("Control_points_parent", parent_transform);
             //parent.AddComponent<Renderer>(new Renderer("sphere"));
             
@@ -208,32 +210,22 @@ namespace Scripting
             return pos;
         }
 
-        string PositionToString(Vector3 position)
+        string Vector3ToString(Vector3 position)
         {
             string result = null;
-            result += position.X + " ";
-            result += position.Y + " ";
-            result += position.Z + " ";
-
-            return result;
-        }
-
-        string RotationToString(Vector3 rotation)
-        {
-            string result = null;
-            result += rotation.X + " ";
-            result += rotation.Y + " ";
-            result += rotation.Z + " ";
+            result += position.X.ToString("0.000") + " ";
+            result += position.Y.ToString("0.000") + " ";
+            result += position.Z.ToString("0.000");
 
             return result;
         }
 
         Transform StringToTransform(string data)
         {
-            Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One() * 5.0f);
+            Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
             string[] result = data.Split(' ');
 
-            transform.Position.X = -float.Parse(result[0]);
+            transform.Position.X = float.Parse(result[0]);
             transform.Position.Y = float.Parse(result[1]);
             transform.Position.Z = float.Parse(result[2]);
 
@@ -254,9 +246,10 @@ namespace Scripting
             {
                 Console.WriteLine(control_points[i].id);
                 Vector3 gpos = ECS.GetGlobalPosition(control_points[i].id);
-                string line = PositionToString(gpos) + '\n';
+                Vector3 grot = ECS.GetGlobalRotation(control_points[i].id);
+                string line = Vector3ToString(gpos) + " " + Vector3ToString(grot) + '\n';
                 text += line;
-                Console.WriteLine(gpos.X + ", " + gpos.Y + ", " + gpos.Z);
+                //Console.WriteLine(gpos.X + ", " + gpos.Y + ", " + gpos.Z);
             }
             File.WriteAllText(filePath, text);
         }
@@ -275,7 +268,7 @@ namespace Scripting
                 controlPointsList.Add(StringToTransform(data));
             }
 
-            Console.WriteLine(controlPointsList.Count);
+            //Console.WriteLine(controlPointsList.Count);
         }
     }
 }

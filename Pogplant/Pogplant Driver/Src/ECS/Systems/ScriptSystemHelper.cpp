@@ -64,6 +64,11 @@ namespace SSH
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalPosition();
 	}
 
+	glm::vec3 GetGlobalRotation(std::uint32_t entityID)
+	{
+		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalRotation();
+	}
+
 	void AddComponentTransform(unsigned int id, Components::Transform transform)
 	{
 		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Transform>(static_cast<entt::entity>(id), transform);

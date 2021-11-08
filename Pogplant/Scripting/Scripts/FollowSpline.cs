@@ -76,6 +76,9 @@ namespace Scripting
         {
             FollowWaypoints(ref transform, ref dt);
 
+            
+            //catmullRom.WriteControlPointsToFile();
+
             //temp debug
             //for (int i = 0; i < waypoints.Length; ++i)
             //    DebugDraw.DebugSphere(waypoints[i].X, waypoints[i].Y, waypoints[i].Z, 0.0f, 0.0f, 0.0f, 0.2f);
