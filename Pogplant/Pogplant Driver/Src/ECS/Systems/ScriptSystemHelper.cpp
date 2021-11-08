@@ -51,6 +51,16 @@ namespace SSH
 		scale = trans->m_scale;
 	}
 
+	void SetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale)
+	{
+		auto trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
+		trans->m_position = pos;
+		trans->m_rotation = rot;
+		trans->m_scale = scale;
+	}
+
+
+
 	void AddComponentTransform(unsigned int id, Components::Transform transform)
 	{
 		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Transform>(static_cast<entt::entity>(id), transform);
@@ -154,7 +164,7 @@ namespace SSH
 		{
 			for (auto& scripts : script1->m_ScriptTypes)
 			{
-				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity1);
+				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity1, onTriggerEnterEvent.get()->m_entity2);
 			}
 		}
 
@@ -162,7 +172,7 @@ namespace SSH
 		{
 			for (auto& scripts : script2->m_ScriptTypes)
 			{
-				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity2);
+				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity2, onTriggerEnterEvent.get()->m_entity1);
 			}
 		}
 	}
@@ -176,7 +186,7 @@ namespace SSH
 		{
 			for (auto& scripts : script1->m_ScriptTypes)
 			{
-				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity1);
+				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity1, onTriggerExitEvent.get()->m_entity2);
 			}
 		}
 
@@ -184,7 +194,7 @@ namespace SSH
 		{
 			for (auto& scripts : script2->m_ScriptTypes)
 			{
-				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2);
+				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2, onTriggerExitEvent.get()->m_entity1);
 			}
 		}
 	}

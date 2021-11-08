@@ -314,12 +314,12 @@ namespace Scripting
         {
         }
 
-        public void OnTriggerEnter()
+        public override void OnTriggerEnter(uint id)
         {
-            Console.WriteLine("OnTriggerEnter");
+            //Console.WriteLine(" Other ID" + id);
         }
 
-        public void OnTriggerExit()
+        public override void OnTriggerExit(uint id)
         {
             
         }

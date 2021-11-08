@@ -132,14 +132,17 @@ namespace Scripting
         {
         }
 
-        public void OnTriggerEnter()
+        public override void OnTriggerEnter(uint id)
         {
-            //StartFiring();
+
         }
         public void OnTriggerExit()
         {
           
         }
+        public override void OnTriggerExit(uint id)
+        {
 
+        }
     }
 }

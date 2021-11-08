@@ -196,6 +196,17 @@ namespace Scripting
             }
         }
 
+        public override void OnTriggerEnter(uint id)
+        {
+
+        }
+        public override void OnTriggerExit(uint id)
+        {
+
+        }
+
     }
+
+
 
 }
