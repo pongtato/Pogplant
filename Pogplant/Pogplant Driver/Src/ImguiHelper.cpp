@@ -448,6 +448,7 @@ namespace PogplantDriver
 				RendererComponentHelper();
 				PRendererComponentHelper();
 				ParticlesHelper();
+				CanvasHelper();
 
 				auto point_light = m_ecs->GetReg().try_get<Components::Point_Light>(m_CurrentEntity);
 				if (point_light)
@@ -1998,6 +1999,40 @@ namespace PogplantDriver
 				{
 					ToolTipHelper(toolTip.c_str(), true);
 				}
+
+				ImguiBlankSeperator(1);
+				ImGui::Separator();
+			}
+		}
+	}
+
+	void ImguiHelper::CanvasHelper()
+	{
+		assert(m_CurrentEntity != entt::null);
+		auto canvas = m_ecs->GetReg().try_get<Components::Canvas>(m_CurrentEntity);
+		if (canvas)
+		{
+			bool enableCanvas = true;
+			if (ImGui::CollapsingHeader(ICON_FA_VIRUS "  Canvas 2D", &enableCanvas, ImGuiTreeNodeFlags_DefaultOpen))
+			{
+				const char* popuplabel = "Texture Selection";
+
+				// Diffuse color picker
+				ImGui::Dummy(ImVec2(0.0f, 2.0f));
+				ImGui::PushID("CANVAS");
+				ImGui::Text("Color Tint");
+				ImGui::ColorEdit3("###Color Tint", glm::value_ptr(canvas->m_Color));
+				ImGui::PopID();
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+				// Texture
+				ImGui::Text("Texture");
+				if (ImGui::ImageButton(canvas->m_TexID, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+				{
+					ImGui::OpenPopup(popuplabel);
+				}
+				ImGui::Dummy(ImVec2(0.0f, 0.5f));
+				TextureSelectHelper(popuplabel, canvas->m_TexName, canvas->m_TexID);
 
 				ImguiBlankSeperator(1);
 				ImGui::Separator();
