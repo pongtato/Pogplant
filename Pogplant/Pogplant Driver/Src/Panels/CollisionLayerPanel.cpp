@@ -91,13 +91,6 @@ namespace PPP
 					}//*/
 				}
 				ImGui::EndTable();
-
-				for (auto it = physicsSystem.m_collisionMatrix.begin(); it != physicsSystem.m_collisionMatrix.end(); ++it)
-				{
-					it->first.first;//1
-					it->first.second;//2
-					it->second;//Behaviour
-				}
 			}
 
 			if (ImGui::CollapsingHeader(ICON_FA_LAYER_GROUP"  Collision Layers", ImGuiTreeNodeFlags_DefaultOpen))

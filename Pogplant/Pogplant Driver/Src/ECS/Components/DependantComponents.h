@@ -69,7 +69,7 @@ namespace Components
 		};
 
 		bool isTrigger = false;
-		int collisionLayer = 0;
+		std::string collisionLayer;
 		RTTR_ENABLE();
 	};
 
@@ -199,6 +199,11 @@ namespace Components
 				m_audioSources[id].c_playing = false;
 			}
 		}
+	};
+
+	struct PhysicsSerialiser
+	{
+		
 	};
 }
 

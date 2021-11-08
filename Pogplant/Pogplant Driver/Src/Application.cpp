@@ -642,10 +642,9 @@ void Application::DrawGame()
 
 void Application::DrawScreen()
 {
-	PP::Renderer::PostProcess();
+	PP::Renderer::EndBuffer();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::DrawScreen();
-	PP::Renderer::EndBuffer();
 }
 
 void Application::DrawImGUI()

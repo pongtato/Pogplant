@@ -568,7 +568,7 @@ namespace PogplantDriver
 					if (ImGui::CollapsingHeader(ICON_FA_SKIING  "RigidBody", &enable_rigid, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGui::Text("Mass");
-						ImGui::InputFloat("###", &rigid->mass , 0.1f, 1.0f, "%.3f");
+						ImGui::InputFloat("###Mass", &rigid->mass , 0.1f, 1.0f, "%.3f");
 						ImGui::Checkbox("Kinematic", &rigid->isKinematic);
 						ImGui::SameLine();
 						ImGui::Checkbox("Gravity", &rigid->useGravity);
@@ -606,6 +606,34 @@ namespace PogplantDriver
 						if (identifier)
 							identifier->isTrigger = box_collider->isTrigger;
 
+						/**Collision Layer editor**/
+						ImguiBlankSeperator(1);
+
+						auto& collisionLayers = Application::GetInstance().m_sPhysicsSystem.m_collisionLayers;
+
+						ImGui::Text(ICON_FA_LAYER_GROUP " Collision Layer");
+						if (ImGui::BeginCombo("###AxisKeys", box_collider->collisionLayer.c_str(), ImGuiComboFlags_PopupAlignLeft))
+						{
+							for (auto itr = collisionLayers.begin(); itr != collisionLayers.end(); ++itr)
+							{
+								const bool isSelected = (itr->first == box_collider->collisionLayer);
+
+								if (ImGui::Selectable(itr->first.c_str(), isSelected))
+								{
+									box_collider->collisionLayer = itr->first;
+
+									if (identifier)
+										identifier->collisionLayer = itr->second;
+								}
+
+								if (isSelected)
+									ImGui::SetItemDefaultFocus();
+							}
+
+							ImGui::EndCombo();
+						}
+						/****/
+
 						ImguiBlankSeperator(1);
 						ImGui::Separator();
 					}
@@ -636,6 +664,35 @@ namespace PogplantDriver
 						auto identifier = m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity);
 						if (identifier)
 							identifier->isTrigger = sphere_collider->isTrigger;
+
+						/**Collision Layer editor**/
+						ImguiBlankSeperator(1);
+
+						auto& collisionLayers = Application::GetInstance().m_sPhysicsSystem.m_collisionLayers;
+
+						ImGui::Text(ICON_FA_LAYER_GROUP " Collision Layer");
+						if (ImGui::BeginCombo("###AxisKeys", sphere_collider->collisionLayer.c_str(), ImGuiComboFlags_PopupAlignLeft))
+						{
+							for (auto itr = collisionLayers.begin(); itr != collisionLayers.end(); ++itr)
+							{
+								const bool isSelected = (itr->first == sphere_collider->collisionLayer);
+
+								if (ImGui::Selectable(itr->first.c_str(), isSelected))
+								{
+									sphere_collider->collisionLayer = itr->first;
+
+									if (identifier)
+										identifier->collisionLayer = itr->second;
+								}
+
+								if (isSelected)
+									ImGui::SetItemDefaultFocus();
+							}
+
+							ImGui::EndCombo();
+						}
+						/****/
+
 
 						ImguiBlankSeperator(1);
 						ImGui::Separator();

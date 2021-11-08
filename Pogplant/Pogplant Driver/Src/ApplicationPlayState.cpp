@@ -124,9 +124,11 @@ void Application::RenderPlayState()
 	///
 
 #else
-	//To do
+	
 	DrawCommon();
-	DrawGame() // only this?
+	DrawGame();
+	DrawScreen();
+
 #endif // PPD_EDITOR_BUILD
 }
 

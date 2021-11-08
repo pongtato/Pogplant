@@ -84,17 +84,7 @@ namespace Components
 
 		inline void init(void)
 		{
-			//ImGuizmo::RecomposeMatrixFromComponents(glm::value_ptr(m_position),
-			//										glm::value_ptr(m_rotation),
-			//										glm::value_ptr(m_scale),
-			//										glm::value_ptr(m_ModelMtx));
-
-			m_ModelMtx = glm::mat4{ 1 };
-			m_ModelMtx = glm::translate(m_ModelMtx, m_position);
-			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[0], { 1,0,0 });
-			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[1], { 0,1,0 });
-			m_ModelMtx = glm::rotate(m_ModelMtx, m_rotation[2], { 0,0,1 });
-			m_ModelMtx = glm::scale(m_ModelMtx, m_scale);
+			updateModelMtx();
 		}
 
 		inline void updateModelMtx(void)

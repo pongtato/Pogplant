@@ -31,6 +31,22 @@ PhysicsSystem::PhysicsSystem()
 	t_EXIT_THREADS{ false }
 {
 	m_collisionLayers["DEFAULT"] = 0;
+
+	//Temporary
+	CreateCollisionLayer("PLAYER");
+	CreateCollisionLayer("ENEMY");
+	CreateCollisionLayer("PLAYER PROJECTILES");
+	CreateCollisionLayer("ENEMY PROJECTILES");
+
+	SetCollisionRule(GetCollisionLayer("PLAYER"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("ENEMY"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("PLAYER"), GetCollisionLayer("PLAYER PROJECTILES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("ENEMY PROJECTILES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("ENEMY PROJECTILES"), GetCollisionLayer("ENEMY PROJECTILES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("PLAYER PROJECTILES"), GetCollisionLayer("PLAYER PROJECTILES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	
+
 	m_threads.push_back(std::thread{ &PhysicsSystem::TriggerUpdate, std::ref(*this) });
 }
 
@@ -83,7 +99,7 @@ void PhysicsSystem::InitPlayState()
 				collidable,
 				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
 				boxCollider.isTrigger,
-				boxCollider.collisionLayer);
+				GetCollisionLayer(boxCollider.collisionLayer));
 		}
 
 		boxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider.centre, boxCollider.extends * transform.GetGlobalScale());
@@ -101,15 +117,13 @@ void PhysicsSystem::InitPlayState()
 				collidable,
 				Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE,
 				sphereCollider.isTrigger,
-				sphereCollider.collisionLayer);
+				GetCollisionLayer(sphereCollider.collisionLayer));
 		}
 
 		auto tmpScale = transform.GetGlobalScale();
 		sphereCollider.sphere.m_pos = transform.GetGlobalPosition() + sphereCollider.centre;
 		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
 	}
-
-
 
 	/// Height map example GAB refer to this hehe xd
 	/*auto hmd_view = ecs.view<Transform, HeightMapDebugger>();
@@ -152,8 +166,8 @@ void PhysicsSystem::TriggerUpdate()
 	while (!t_EXIT_THREADS)
 	{
 		//perform busy wait LOL
-		
-		if (!t_EXIT_THREADS && m_hasJob.try_acquire())
+		m_hasJob.acquire();
+		if (!t_EXIT_THREADS /*&& m_hasJob.try_acquire()*/)
 		{
 			auto collidableEntities = m_registry->view<Components::Transform, Components::BoxCollider>();
 			auto movableEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
@@ -176,7 +190,7 @@ void PhysicsSystem::TriggerUpdate()
 
 					auto& _2collider = movableEntities.get<Components::BoxCollider>(_2entity);
 
-					auto collisionRule = GetCollisionRule(_1collider.collisionLayer, _2collider.collisionLayer);
+					auto collisionRule = GetCollisionRule(m_collisionLayers[_1collider.collisionLayer], m_collisionLayers[_2collider.collisionLayer]);
 					if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE)
 						continue;
 
@@ -244,12 +258,12 @@ void PhysicsSystem::UpdateEditor()
 				collidable,
 				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
 				boxCollider.isTrigger,
-				boxCollider.collisionLayer);
+				GetCollisionLayer(boxCollider.collisionLayer));
 		}
 		else
 		{
 			colliderIdentifier->isTrigger = boxCollider.isTrigger;
-			colliderIdentifier->collisionLayer = boxCollider.collisionLayer;
+			colliderIdentifier->collisionLayer = GetCollisionLayer(boxCollider.collisionLayer);
 		}
 
 		boxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider.centre, boxCollider.extends * transform.GetGlobalScale());
@@ -267,12 +281,12 @@ void PhysicsSystem::UpdateEditor()
 				collidable,
 				Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE,
 				sphereCollider.isTrigger,
-				sphereCollider.collisionLayer);
+				GetCollisionLayer(sphereCollider.collisionLayer));
 		}
 		else
 		{
 			colliderIdentifier->isTrigger = sphereCollider.isTrigger;
-			colliderIdentifier->collisionLayer = sphereCollider.collisionLayer;
+			colliderIdentifier->collisionLayer = GetCollisionLayer(sphereCollider.collisionLayer);
 		}
 
 		auto tmpScale = transform.GetGlobalScale();

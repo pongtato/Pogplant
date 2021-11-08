@@ -210,7 +210,7 @@ void PhysicsSystem::SetCollisionRule(int collisionLayer1, int collisionLayer2, C
 	if (collisionLayer1 > collisionLayer2)
 		std::swap(collisionLayer1, collisionLayer2);
 
-	m_collisionMatrix[std::make_pair(collisionLayer1, collisionLayer2)] = collisionRule;
+	m_collisionMatrix[collisionLayer1][collisionLayer2] = collisionRule;
 }
 
 Components::Collider::COLLISION_RULE PhysicsSystem::GetCollisionRule(int collisionLayer1, int collisionLayer2)
@@ -218,18 +218,22 @@ Components::Collider::COLLISION_RULE PhysicsSystem::GetCollisionRule(int collisi
 	if (collisionLayer1 > collisionLayer2)
 		std::swap(collisionLayer1, collisionLayer2);
 
-	auto itr = m_collisionMatrix.find(std::make_pair(collisionLayer1, collisionLayer2));
+	auto itr1 = m_collisionMatrix.find(collisionLayer1);
 
-	if (itr == m_collisionMatrix.end())
+	if (itr1 == m_collisionMatrix.end())
 		return Components::Collider::COLLISION_RULE::CR_COLLIDE;
 
-	return static_cast<Components::Collider::COLLISION_RULE>((*itr).second);
+	auto itr2 = itr1->second.find(collisionLayer2);
+	if (itr2 == itr1->second.end())
+		return Components::Collider::COLLISION_RULE::CR_COLLIDE;
+
+	return static_cast<Components::Collider::COLLISION_RULE>((*itr2).second);
 }
 
-bool PhysicsSystem::CreateCollisionLayer(const std::string& name)
+int PhysicsSystem::CreateCollisionLayer(const std::string& name)
 {
 	if (m_collisionLayers.find(name) != m_collisionLayers.end())
-		return false;
+		return m_collisionLayers[name];
 
 	int ID = 0;
 
@@ -241,7 +245,7 @@ bool PhysicsSystem::CreateCollisionLayer(const std::string& name)
 
 	m_collisionLayers[name] = ID;
 
-	return true;
+	return ID;
 }
 
 void PhysicsSystem::DestroyCollisionLayer(const std::string& name)
@@ -250,6 +254,18 @@ void PhysicsSystem::DestroyCollisionLayer(const std::string& name)
 
 	if (itr != m_collisionLayers.end())
 		m_collisionLayers.erase(itr);
+}
+
+int PhysicsSystem::GetCollisionLayer(const std::string& layerName)
+{
+	auto itr = m_collisionLayers.find(layerName);
+
+	if (itr != m_collisionLayers.end())
+	{
+		return itr->second;
+	}
+
+	return CreateCollisionLayer(layerName);
 }
 
 decltype(auto) PhysicsSystem::GetTriggered(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
