@@ -24,7 +24,7 @@ namespace Scripting
     class CatmullRomSpline
     {
         public List<Transform> controlPointsList = new List<Transform>();
-
+        public List<GameObject> control_points = new List<GameObject>();
         public bool isLooping = false;
 
         public float step_size = 0.2f;
@@ -37,15 +37,16 @@ namespace Scripting
         {
             ReadControlPointsFromFile("Control_Points_Curved.txt");
             CreateGameObjectsFromCPList();
+            WriteControlPointsToFile();
             Console.WriteLine(controlPointsList.Count);
         }
 
         void CreateGameObjectsFromCPList()
         {
-            Transform parent_transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
+            Transform parent_transform = new Transform(Vector3.Zero(), new Vector3(0.0f, 180.0f, 0.0f), Vector3.One() * 0.1f);
             GameObject parent = ECS.CreateEntity("Control_points_parent", parent_transform);
-            parent.AddComponent<Renderer>(new Renderer("sphere"));
-            List<GameObject> control_points = new List<GameObject>();
+            //parent.AddComponent<Renderer>(new Renderer("sphere"));
+            
             int counter = 0;
             foreach (Transform cp in controlPointsList)
             {
@@ -59,10 +60,10 @@ namespace Scripting
         void DisplayCatmullRomSpline(int pos)
         {
             //The 4 points we need to form a spline between p1 and p2
-            Vector3 p0 = controlPointsList[ClampListPos(pos - 1)].Position;
-            Vector3 p1 = controlPointsList[pos].Position;
-            Vector3 p2 = controlPointsList[ClampListPos(pos + 1)].Position;
-            Vector3 p3 = controlPointsList[ClampListPos(pos + 2)].Position;
+            Vector3 p0 = control_points[ClampListPos(pos - 1)].GetComponent<Transform>().Position;
+            Vector3 p1 = control_points[pos].GetComponent<Transform>().Position;
+            Vector3 p2 = control_points[ClampListPos(pos + 1)].GetComponent<Transform>().Position;
+            Vector3 p3 = control_points[ClampListPos(pos + 2)].GetComponent<Transform>().Position;
 
             //The start position of the line
             Vector3 lastPos = p1;
@@ -119,10 +120,10 @@ namespace Scripting
         {
             List<Transform> waypoints = new List<Transform>();
             //The 4 points we need to form a spline between p1 and p2
-            Vector3 p0 = controlPointsList[ClampListPos(pos - 1)].Position;
-            Vector3 p1 = controlPointsList[pos].Position;
-            Vector3 p2 = controlPointsList[ClampListPos(pos + 1)].Position;
-            Vector3 p3 = controlPointsList[ClampListPos(pos + 2)].Position;
+            Vector3 p0 = control_points[ClampListPos(pos - 1)].GetComponent<Transform>().Position;
+            Vector3 p1 = control_points[pos].GetComponent<Transform>().Position;
+            Vector3 p2 = control_points[ClampListPos(pos + 1)].GetComponent<Transform>().Position;
+            Vector3 p3 = control_points[ClampListPos(pos + 2)].GetComponent<Transform>().Position;
 
             //Console.WriteLine("p " + 0 + " is at: x = " + p0.X + ", y = " + p0.Y + ", z = " + p0.Z);
             //Console.WriteLine("p " + 1 + " is at: x = " + p1.X + ", y = " + p1.Y + ", z = " + p1.Z);
@@ -148,7 +149,7 @@ namespace Scripting
 
                 //Console.WriteLine("waypoint " + i + " is at: x = " + newPos.X + ", y = " + newPos.Y + ", z = " + newPos.Z);
 
-                waypoints.Add(new Transform(newPos, controlPointsList[pos].Rotation, Vector3.One() * 100.0f));
+                waypoints.Add(new Transform(newPos, controlPointsList[pos].Rotation, Vector3.One()));
 
                 //Save this pos so we can draw the next line segment
                 lastPos = newPos;
@@ -206,26 +207,40 @@ namespace Scripting
             return pos;
         }
 
-        string TransformToString(Transform data)
+        string PositionToString(Vector3 position)
         {
             string result = null;
-            result += data.Position.X + " ";
-            result += data.Position.Y + " ";
-            result += data.Position.Z + " ";
+            result += position.X + " ";
+            result += position.Y + " ";
+            result += position.Z + " ";
 
-            result += data.Rotation.X + " ";
-            result += data.Rotation.Y + " ";
-            result += data.Rotation.Z + " ";
+            //result += data.Rotation.X + " ";
+            //result += data.Rotation.Y + " ";
+            //result += data.Rotation.Z + " ";
+
+            return result;
+        }
+
+        string RotationToString(Vector3 rotation)
+        {
+            string result = null;
+            result += rotation.X + " ";
+            result += rotation.Y + " ";
+            result += rotation.Z + " ";
+
+            //result += data.Rotation.X + " ";
+            //result += data.Rotation.Y + " ";
+            //result += data.Rotation.Z + " ";
 
             return result;
         }
 
         Transform StringToTransform(string data)
         {
-            Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
+            Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One() * 5.0f);
             string[] result = data.Split(' ');
 
-            transform.Position.X = float.Parse(result[0]);
+            transform.Position.X = -float.Parse(result[0]);
             transform.Position.Y = float.Parse(result[1]);
             transform.Position.Z = float.Parse(result[2]);
 
@@ -238,15 +253,19 @@ namespace Scripting
         // Write control points transform to file
         public void WriteControlPointsToFile()
         {
-            string filePath = Directory.GetCurrentDirectory() + "temp_name" + ".txt";
+            string filePath = Directory.GetCurrentDirectory() + "\\Resources\\" + "Transform_CPs" + ".txt";
 
             if (!File.Exists(filePath))
             {
                 // Create a file to write to.
                 using (StreamWriter sw = File.CreateText(filePath))
                 {
-                    foreach (var item in controlPointsList)
-                        sw.WriteLine(TransformToString(item));
+                    foreach (var item in control_points)
+                    {
+                        string line = "";// PositionToString(ECS.GetGlobalPosition(item.GetComponent<Transform>()));
+
+                        sw.WriteLine(line);
+                    }
                 }
             }
         }

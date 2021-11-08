@@ -39,6 +39,9 @@ namespace Scripting
             return GO;
         }
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetGlobalPosition(Transform transform);
+
         public static T GetComponent<T>(uint entityID)
         {
             if(typeof(T) == typeof(Transform))

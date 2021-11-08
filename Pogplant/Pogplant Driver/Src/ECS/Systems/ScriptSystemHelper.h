@@ -16,6 +16,8 @@ namespace SSH
 	std::uint32_t FindEntityWithName(MonoString* name);
 	void GetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
 
+	glm::vec3 GetGlobalPosition(Components::Transform transform);
+
 	// Components for GambObject
 	void AddComponentTransform(unsigned int id, Components::Transform transform);
 	void AddComponentRigidbody(unsigned int id, Components::Rigidbody rigidbody);

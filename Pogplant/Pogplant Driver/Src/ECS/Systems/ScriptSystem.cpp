@@ -20,6 +20,7 @@
 #include "../../Input/GLFWInput.h"
 #include "../../Pogplant/Src/DebugDraw.h"
 #include "../../GameScript.h"
+#include "../Components/GenericComponents.h"
 
 
 bool ScriptSystem::isReload = false;
@@ -238,6 +239,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::CreateChild", SSH::CreateChild);
 	mono_add_internal_call("Scripting.ECS::FindEntityWithName", SSH::FindEntityWithName);
 	mono_add_internal_call("Scripting.ECS::GetTransformECS", SSH::GetTransformECS);
+	mono_add_internal_call("Scripting.ECS::GetGlobalPosition", SSH::GetGlobalPosition);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);

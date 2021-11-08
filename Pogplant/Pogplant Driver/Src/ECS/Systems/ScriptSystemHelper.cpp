@@ -34,7 +34,7 @@ namespace SSH
 		std::string _name = mono_string_to_utf8(name);
 		std::string _tag = mono_string_to_utf8(tag);
 
-		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->CreateChild(static_cast<entt::entity>(parentID), _name, pos, rot, scale, _tag));
+		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->CreateChild(static_cast<entt::entity>(parentID), _name, pos, rot, scale, _tag).GetID());
 	}
 
 	std::uint32_t FindEntityWithName(MonoString* name)
@@ -49,6 +49,11 @@ namespace SSH
 		pos = trans->m_position;
 		rot = trans->m_rotation;
 		scale = trans->m_scale;
+	}
+
+	glm::vec3 GetGlobalPosition(Components::Transform transform)
+	{
+		return transform.GetGlobalPosition();
 	}
 
 	void AddComponentTransform(unsigned int id, Components::Transform transform)

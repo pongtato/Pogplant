@@ -33,7 +33,7 @@ namespace Pogplant
 				45.0f,	// Zoom 
 				16.9f,	// Speed 
 				0.1f,	// Near
-				200.0f,	// Far
+				2000.0f,// Far
 				0.21f,	// Mouse look sens
 				20.0f,	// Key input look sens
 				0.1f	// Pan speed
