@@ -288,6 +288,7 @@ namespace Components
 	{
 		struct CurveVariable
 		{
+			CurveVariable() = default;
 			CurveVariable(float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax);
 
 			enum { m_MaxPoints = 9, m_DataPoints = 128 };
@@ -301,6 +302,8 @@ namespace Components
 			float m_CurveMin;
 			float m_CurveMax;
 		};
+
+		ParticleSystem() = default;
 
 		ParticleSystem
 		(
