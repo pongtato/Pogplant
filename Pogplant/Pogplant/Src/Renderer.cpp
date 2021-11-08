@@ -460,7 +460,7 @@ namespace Pogplant
 
 		if (_EditorMode)
 		{
-			//DrawDebug(registry, nullptr);
+			DrawDebug(registry, nullptr);
 		}
 
 		glDisable(GL_CULL_FACE);
