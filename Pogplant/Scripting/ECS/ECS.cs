@@ -43,7 +43,7 @@ namespace Scripting
         }
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static Vector3 GetGlobalPosition(Transform transform);
+        public extern static Vector3 GetGlobalPosition(uint entityID);
 
         public static T GetComponent<T>(uint entityID)
         {

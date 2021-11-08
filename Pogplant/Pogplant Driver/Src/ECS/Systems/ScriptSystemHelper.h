@@ -17,7 +17,7 @@ namespace SSH
 	void GetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
 	void SetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
 
-	glm::vec3 GetGlobalPosition(Components::Transform transform);
+	glm::vec3 GetGlobalPosition(std::uint32_t entityID);
 
 	// Components for GambObject
 	void AddComponentTransform(unsigned int id, Components::Transform transform);

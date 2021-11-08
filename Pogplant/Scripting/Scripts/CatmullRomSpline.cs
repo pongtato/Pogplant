@@ -38,7 +38,7 @@ namespace Scripting
             ReadControlPointsFromFile("Control_Points_Curved.txt");
             CreateGameObjectsFromCPList();
             WriteControlPointsToFile();
-            Console.WriteLine(controlPointsList.Count);
+            //Console.WriteLine(controlPointsList.Count);
         }
 
         void CreateGameObjectsFromCPList()
@@ -53,6 +53,7 @@ namespace Scripting
                 GameObject result = ECS.CreateChild(parent.id, "ControlPoint_" + counter++, cp);
                 result.AddComponent<Renderer>(new Renderer("sphere"));
                 control_points.Add(result);
+                //Console.WriteLine(result.id);
             }
         }
 
@@ -260,10 +261,12 @@ namespace Scripting
                 // Create a file to write to.
                 using (StreamWriter sw = File.CreateText(filePath))
                 {
-                    foreach (var item in control_points)
+                    for (int i = 0; i < control_points.Count; ++i)
                     {
-                        string line = "";// PositionToString(ECS.GetGlobalPosition(item.GetComponent<Transform>()));
-
+                        Console.WriteLine(control_points[i].id);
+                        Vector3 gpos = ECS.GetGlobalPosition(control_points[i].id);
+                        string line = PositionToString(gpos);
+                        Console.WriteLine(gpos.X + ", " + gpos.Y + ", " + gpos.Z);
                         sw.WriteLine(line);
                     }
                 }
