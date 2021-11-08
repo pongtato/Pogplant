@@ -215,10 +215,6 @@ namespace Scripting
             result += position.Y + " ";
             result += position.Z + " ";
 
-            //result += data.Rotation.X + " ";
-            //result += data.Rotation.Y + " ";
-            //result += data.Rotation.Z + " ";
-
             return result;
         }
 
@@ -228,10 +224,6 @@ namespace Scripting
             result += rotation.X + " ";
             result += rotation.Y + " ";
             result += rotation.Z + " ";
-
-            //result += data.Rotation.X + " ";
-            //result += data.Rotation.Y + " ";
-            //result += data.Rotation.Z + " ";
 
             return result;
         }
@@ -256,21 +248,17 @@ namespace Scripting
         {
             string filePath = Directory.GetCurrentDirectory() + "\\Resources\\" + "Transform_CPs" + ".txt";
 
-            if (!File.Exists(filePath))
+            // Create a file to write to.
+            string text = "";
+            for (int i = 0; i < control_points.Count; ++i)
             {
-                // Create a file to write to.
-                using (StreamWriter sw = File.CreateText(filePath))
-                {
-                    for (int i = 0; i < control_points.Count; ++i)
-                    {
-                        Console.WriteLine(control_points[i].id);
-                        Vector3 gpos = ECS.GetGlobalPosition(control_points[i].id);
-                        string line = PositionToString(gpos);
-                        Console.WriteLine(gpos.X + ", " + gpos.Y + ", " + gpos.Z);
-                        sw.WriteLine(line);
-                    }
-                }
+                Console.WriteLine(control_points[i].id);
+                Vector3 gpos = ECS.GetGlobalPosition(control_points[i].id);
+                string line = PositionToString(gpos) + '\n';
+                text += line;
+                Console.WriteLine(gpos.X + ", " + gpos.Y + ", " + gpos.Z);
             }
+            File.WriteAllText(filePath, text);
         }
 
         // Write control points transform to file
@@ -279,16 +267,6 @@ namespace Scripting
             string abs_path = "Resources\\" + filePath;
 
             Console.WriteLine(abs_path);
-            //using (StreamReader sr = File.OpenText(abs_path))
-            //{
-            //    string s;
-            //    while ((s = sr.ReadLine()) != null)
-            //    {
-            //        var data = StringToTransform(s);
-            //        controlPointsList.Add(new Transform(new Vector3(data[0], data[1], data[2]), new Vector3(data[4], data[5], data[6]), Vector3.One()));
-            //    }
-            //    Console.WriteLine("control point list size: " + controlPointsList.Count);
-            //}
 
             string[] lines = System.IO.File.ReadAllLines(abs_path);
 
