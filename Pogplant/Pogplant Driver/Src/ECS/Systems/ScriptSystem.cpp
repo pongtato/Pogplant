@@ -237,6 +237,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::DestroyEntity", SSH::DestroyEntity);
 	mono_add_internal_call("Scripting.ECS::CreateChild", SSH::CreateChild);
 	mono_add_internal_call("Scripting.ECS::FindEntityWithName", SSH::FindEntityWithName);
+	mono_add_internal_call("Scripting.ECS::GetTransformECS", SSH::GetTransformECS);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);

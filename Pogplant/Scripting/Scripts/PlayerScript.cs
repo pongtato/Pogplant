@@ -167,8 +167,10 @@ namespace Scripting
             {
                 if (entityList.Count > 0)
                 {
-                    Console.WriteLine("Test Mass Is: " + entityList[0].GetComponent<Rigidbody>().mass);
-                    Console.WriteLine("Test Model Name Is: " + entityList[0].GetComponent<Renderer>().modelName);
+                    //Console.WriteLine("Test Mass Is: " + entityList[0].GetComponent<Rigidbody>().mass);
+                    //Console.WriteLine("Test Model Name Is: " + entityList[0].GetComponent<Renderer>().modelName);
+                    Transform transform1 = ECS.GetComponent<Transform>(entityList[0].id);
+                    Console.WriteLine("Test Transforms are: " + transform1.Position.X + transform1.Position.Y + transform1.Position.Z);
                 }
                 else 
                 {

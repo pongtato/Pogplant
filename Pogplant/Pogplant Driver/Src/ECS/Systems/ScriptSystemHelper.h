@@ -9,10 +9,14 @@
 
 namespace SSH
 {
+	// ECS for C# side
 	std::uint32_t CreateEntity(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	void DestroyEntity(std::uint32_t entityID);
 	std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	std::uint32_t FindEntityWithName(MonoString* name);
+	void GetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
+
+	// Components for GambObject
 	void AddComponentTransform(unsigned int id, Components::Transform transform);
 	void AddComponentRigidbody(unsigned int id, Components::Rigidbody rigidbody);
 	void AddComponentRenderer(unsigned int id, glm::vec3 colorTint, glm::vec3 emissiveTint, int useLight, bool editorDrawOnly, MonoString* name);
