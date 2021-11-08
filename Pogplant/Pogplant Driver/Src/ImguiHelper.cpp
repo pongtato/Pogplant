@@ -1396,7 +1396,7 @@ namespace PogplantDriver
 		}
 	}
 
-	void ImguiHelper::TextureSelectHelper(const char* _Label, int& _TexID)
+	void ImguiHelper::TextureSelectHelper(const char* _Label, std::string& _Path, int& _TexID)
 	{
 		// Always center this window when appearing
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
@@ -1419,6 +1419,7 @@ namespace PogplantDriver
 			{
 				if (ImGui::ImageButton(it.second, ImVec2(64, 64), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
+					_Path = it.first;
 					_TexID = it.second;
 					ImGui::CloseCurrentPopup();
 				}
@@ -1854,7 +1855,7 @@ namespace PogplantDriver
 					ImGui::OpenPopup(popuplabel);
 				}
 				ImGui::Dummy(ImVec2(0.0f, 0.5f));
-				TextureSelectHelper(popuplabel, pSystem->m_TexID);
+				TextureSelectHelper(popuplabel, pSystem->m_TexName, pSystem->m_TexID);
 
 				// Life
 				ImGui::Text("Life");

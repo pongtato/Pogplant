@@ -215,7 +215,7 @@ namespace Components
 		float _MaxLife,
 		CurveVariable _Speed,
 		CurveVariable _Scale,
-		int _TexID,
+		std::string _TexName,
 		int _SpawnCount,
 		bool _Loop,
 		bool _Burst,
@@ -231,7 +231,7 @@ namespace Components
 		, m_Timer{ 0 }
 		, m_MinLife{ _MinLife }
 		, m_MaxLife{ _MaxLife }
-		, m_TexID{ _TexID }
+		, m_TexName{ _TexName }
 		, m_ActiveCount{ 0 }
 		, m_SpawnCount{ _SpawnCount }
 		, m_Loop{ _Loop }
@@ -241,6 +241,8 @@ namespace Components
 		, m_Play{ false }
 		, m_Pause{ false }
 	{
+		m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
+
 		const size_t second_last = _Speed.m_MaxPoints - 2;
 		const float increment = 1.0f / second_last;
 		// Init curve vertices
@@ -374,7 +376,7 @@ namespace Components
 		};
 		model = glm::scale(model, scale);
 
-		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, _Particle.m_TexID, false });
+		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, static_cast<int>(_Particle.m_TexID), false });
 	}
 
 	ParticleSystem::CurveVariable::CurveVariable(float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax)
@@ -386,4 +388,12 @@ namespace Components
 		, m_MultiplierMax{ _MultiMax }
 	{
 	};
+
+	Canvas::Canvas(const glm::vec4& _Color, std::string _TexName)
+		: m_Color {_Color}
+		, m_TexName {_TexName}
+		, m_TexID {0}
+	{
+		m_TexID = static_cast<unsigned int>(PP::TextureResource::m_TexturePool[_TexName]);
+	}
 }

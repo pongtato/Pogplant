@@ -313,7 +313,7 @@ namespace Components
 			float _MaxLife,
 			CurveVariable _Speed,
 			CurveVariable _Scale,
-			int _TexID,
+			std::string _TexID,
 			int _SpawnCount,
 			bool _Loop,
 			bool _Burst,
@@ -334,6 +334,7 @@ namespace Components
 		float m_Timer;
 		float m_MinLife;
 		float m_MaxLife;
+		std::string m_TexName;
 		int m_TexID;
 		int m_ActiveCount;
 		int m_SpawnCount;
@@ -347,7 +348,10 @@ namespace Components
 
 	struct Canvas
 	{
+		Canvas(const glm::vec4& _Color, std::string _TexName);
+
 		glm::vec4 m_Color;
+		std::string m_TexName;
 		int m_TexID;
 	};
 

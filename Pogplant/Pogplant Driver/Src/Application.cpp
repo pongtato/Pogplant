@@ -201,7 +201,7 @@ void Application::InitialiseDebugObjects()
 				1.0f,	// Min Scale Mult
 				4.2f,	// Max Scale Mult
 			},
-			PP::TextureResource::m_TexturePool["ParticleTest.dds"],		// TexID
+			"ParticleTest.dds",		// TexID
 			420,	// Spawn Count
 			true,	// Loop
 			true, 	// Burst
@@ -318,7 +318,7 @@ void Application::InitialiseDebugObjects()
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("rocks_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, static_cast<int>(PP::TextureResource::m_TexturePool["rocks_diff.dds"]) });
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "rocks_diff.dds"});
 
 	pos = { -0.8, 0.7f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
@@ -327,7 +327,7 @@ void Application::InitialiseDebugObjects()
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("snow_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, static_cast<int>(PP::TextureResource::m_TexturePool["snow_diff.dds"]) });
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "snow_diff.dds"});
 
 
 
