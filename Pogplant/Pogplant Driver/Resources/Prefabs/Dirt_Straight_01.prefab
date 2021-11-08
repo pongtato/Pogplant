@@ -1,0 +1,51 @@
+[
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Straight_01"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Straight_01",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				25.035934448242188,
+				-0.60573506355285645,
+				-37.454849243164063
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

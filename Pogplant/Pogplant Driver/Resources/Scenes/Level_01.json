@@ -1,0 +1,590 @@
+[
+	{
+		"Name" : 
+		{
+			"m_Name" : "Level_Grass"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_Grass",
+				"Resources/Models\\Level",
+				"Grass_Blade_LOD_2_87"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Straight_01"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Straight_01",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				27.604507446289063,
+				-3.5731587409973145,
+				-37.454849243164063
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Straight_02"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Straight_02",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-22.426603317260742,
+				-2.3485128879547119,
+				-38.995048522949219
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-5.0089556680177338e-06,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999916553497314,
+				0.99999797344207764,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Straight_01"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Straight_01",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				34.271461486816406,
+				-3.6852221488952637,
+				-96.595352172851563
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Straight_02"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Straight_02",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-15.265851974487305,
+				-3.4058632850646973,
+				-98.82318115234375
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-5.0089556680177338e-06,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Bend_01"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Bend_01",
+				"Resources/Models\\Level",
+				"Soil_Bend_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				40.745048522949219,
+				-1.0538550615310669,
+				-131.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Straight_01"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Straight_01",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				96.028083801269531,
+				-2.3221700191497803,
+				-88.284156799316406
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-87.999984741210938,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999922513961792,
+				1.0,
+				0.99999922513961792
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Straight_02"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Straight_02",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				116.15403747558594,
+				-3.7507100105285645,
+				-127.71636199951172
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				85.999969482421875,
+				5.0089561227650847e-06
+			],
+			"m_scale" : 
+			[
+				0.99999970197677612,
+				1.0,
+				0.99999970197677612
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Bend_01"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Bend_01",
+				"Resources/Models\\Level",
+				"Soil_Bend_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				146.7449951171875,
+				-0.26079630851745605,
+				-131.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				66.999961853027344,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999992847442627,
+				1.0,
+				0.9999992847442627
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Straight_01"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Straight_01",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				177.54154968261719,
+				-2.8737783432006836,
+				-200.4034423828125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Straight_02"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Straight_02",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				126.83708953857422,
+				-2.5188164710998535,
+				-200.0
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-39.999984741210938,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999958276748657,
+				1.0,
+				0.99999958276748657
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Bend_01"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Bend_01",
+				"Resources/Models\\Level",
+				"Soil_Bend_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				142.7449951171875,
+				-3.0,
+				-245.0
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				21.999996185302734,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				1.0,
+				0.99999988079071045
+			]
+		}
+	}
+]

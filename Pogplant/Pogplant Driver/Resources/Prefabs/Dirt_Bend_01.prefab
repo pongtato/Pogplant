@@ -1,0 +1,51 @@
+[
+	{
+		"Name" : 
+		{
+			"m_Name" : "Dirt_Bend_01"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Dirt_Bend_01",
+				"Resources/Models\\Level",
+				"Soil_Bend_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				40.745048522949219,
+				-1.0538550615310669,
+				-131.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]
