@@ -247,6 +247,13 @@ namespace Components
 		m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
 	}
 
+	void ParticleSystem::init()
+	{
+		Clear();
+		m_Pause = false;
+		m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[m_TexName]);
+	}
+
 	void ParticleSystem::Spawn(glm::vec3 _Position, glm::vec3 _Direction)
 	{
 		// Scale up if need more

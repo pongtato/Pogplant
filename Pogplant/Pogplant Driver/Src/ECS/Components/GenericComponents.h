@@ -149,8 +149,8 @@ namespace Components
 		{
 		}
 
-		glm::vec3 m_ColorTint;		// Save
-		glm::vec3 m_EmissiveTint;	// Save
+		glm::vec3 m_ColorTint;
+		glm::vec3 m_EmissiveTint;
 		Pogplant::Model* m_RenderModel;
 		Pogplant::Mesh3D* m_Mesh;
 		int m_UseLight = true;
@@ -296,6 +296,11 @@ namespace Components
 
 			float m_CurveMin;
 			float m_CurveMax;
+
+			inline void init(void)
+			{
+				m_CurveData.resize(m_MaxPoints);
+			}
 		};
 
 		ParticleSystem() = default;
@@ -320,6 +325,7 @@ namespace Components
 		void Spawn(glm::vec3 _Position, glm::vec3 _Direction);
 		void Clear();
 		void UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos);
+		void init();
 
 		std::vector<Particle> m_ParticlePool;
 		glm::vec4 m_Color;

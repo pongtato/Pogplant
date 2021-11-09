@@ -18,18 +18,6 @@ namespace PogplantDriver
 	}
 	void Serializer::Save(const std::string& File)
 	{
-		//std::ofstream ostream(File, std::ios::out);
-		//if (ostream.is_open())
-		//{
-		//	Json::Value root;
-		//	Json::StreamWriterBuilder builder;
-		//	Json::StreamWriter* writer = builder.newStreamWriter();
-
-		//	writer->write(root, &ostream);
-
-		//	delete writer;
-		//	ostream.close();
-		//}
 		SaveObjects(File);
 	}
 
@@ -54,12 +42,6 @@ namespace PogplantDriver
 
 			if (!transform.m_children.empty())
 				RecurSaveChild(root, id, ++i);
-
-			/*auto relationship_component = m_ecs.GetReg().try_get<Relationship>(id);
-			if (relationship_component)
-			{
-				RecurSaveChild(root, id, ++i);
-			}//*/
 
 			m_saved.clear();
 			Json::StreamWriterBuilder builder;
@@ -173,45 +155,6 @@ namespace PogplantDriver
 				root[i] = subroot;
 				++i;
 			}
-
-
-			/*Components::Relationship* parentptr;
-			auto entities = m_ecs.view<Transform>();
-			for(auto entity = entities.rbegin(); entity != entities.rend() ; ++entity)
-			{
-				if (m_saved.contains(*entity))
-					continue;
-				auto relationship_component = m_ecs.GetReg().try_get<Relationship>(*entity);
-				//The object saved is a child first due to ENTT deletion policy, seek the head(parent)
-				if (relationship_component && relationship_component->m_parent != entt::null)
-				{
-					parent = relationship_component->m_parent;
-					parentptr = relationship_component;
-					while (parentptr && parentptr->m_parent != entt::null)
-					{
-						prev = parent;
-						parentptr = m_ecs.GetReg().try_get<Relationship>(parent);
-						parent = parentptr->m_parent;
-					}
-					Json::Value subroot = SaveComponents(prev);
-					root[i] = subroot;
-					m_saved.insert(prev);
-					i = RecurSaveChild(root, prev, ++i);
-					continue;
-				}
-				//Standard save from parent
-				else if(relationship_component)
-				{
-					Json::Value subroot = SaveComponents(*entity);
-					root[i] = subroot;
-					i = RecurSaveChild(root, *entity, ++i);
-					continue;
-				}
-				//Standard no relationship
-				Json::Value subroot = SaveComponents(*entity);
-				root[i] = subroot;
-				++i;
-			}*/
 
 			m_saved.clear();
 			Json::StreamWriterBuilder builder;
@@ -347,16 +290,6 @@ namespace PogplantDriver
 		Try_Load_Component<ParticleSystem>(root, "ParticleSystem", id);
 
 		Try_Load_Component<Transform>(root, "Transform", id);
-
-		/*if (root["Transform"])
-		{
-			auto& transform = m_ecs.GetReg().emplace<Transform>(id);
-
-			transform.SetLocalPosition(CreateVec3(root["Transform"]["m_position"]));
-			transform.SetLocalRotation(CreateVec3(root["Transform"]["m_rotation"]));
-			transform.SetLocalScale(CreateVec3(root["Transform"]["m_scale"]));
-		}//*/
-
 
 		Try_Load_Component<Directional_Light>(root, "Directional_Light", id);
 		Try_Load_Component<Point_Light>(root, "Point_Light", id);
@@ -536,6 +469,17 @@ namespace PogplantDriver
 
 	}
 
+	ImVec2 Serializer::CreateImVec2(const Json::Value& _data)
+	{
+		if (_data[0] && _data[1])
+			return ImVec2{ _data[0].asFloat(), _data[1].asFloat() };
+
+		std::cout << _data.asCString() << " is not a vec 2" << std::endl;
+
+		return ImVec2{};
+
+	}
+
 	void Serializer::AddVec3To(Json::Value& _classroot, std::string _string, glm::vec3& _vec3)
 	{
 		static Json::Value data(Json::arrayValue);
@@ -576,7 +520,6 @@ namespace PogplantDriver
 
 	glm::vec4 Serializer::CreateVec4(const Json::Value& _data)
 	{
-		int k = _data.size();
 		if (_data[0] && _data[1] && _data[2] && _data[3])
 			return glm::vec4{ _data[0].asFloat(), _data[1].asFloat(), _data[2].asFloat(), _data[3].asFloat() };
 
@@ -611,14 +554,10 @@ namespace PogplantDriver
 												_data[12].asFloat(), _data[13].asFloat(), _data[14].asFloat(), _data[15].asFloat() };
 	}
 
-	Json::Value Serializer::Reflect_Serialization(Json::Value& _root, rttr::instance _obj)
+	Json::Value Serializer::Reflect_Serialization(Json::Value& _root, rttr::instance _obj, bool save_comp_name)
 	{
 		rttr::instance obj = _obj.get_type().get_raw_type().is_wrapper() ? _obj.get_wrapped_instance() : _obj;
 		const auto component_name = obj.get_type().get_raw_type().get_name().to_string();
-
-
-		if (component_name == "ParticleSystem")
-			int k = 0;
 
 		auto prop_list = obj.get_derived_type().get_properties();
 		
@@ -640,15 +579,14 @@ namespace PogplantDriver
 			if (prop_value.is_sequential_container())
 			{
 				WriteSeqContainer(prop_value.create_sequential_view(), root[name]);
-				int k = 0;
 			}
 			else if (prop_value.is_associative_container())
 			{
-				int k = 0;
+				std::cout << "no support for associative container yet" << std::endl;
 			}
 			else if (prop_value.is_type<ParticleSystem::CurveVariable>())
 			{
-				Reflect_Serialization(root[name], prop_value.get_value<ParticleSystem::CurveVariable>());
+				Reflect_Serialization(root[name], prop_value.get_value<ParticleSystem::CurveVariable>(), false);
 			}
 			else if (prop_value.is_type<glm::vec2>())
 			{
@@ -681,7 +619,10 @@ namespace PogplantDriver
 			}
 		}
 
-		return _root[component_name] = root;
+		if(save_comp_name)
+			return _root[component_name] = root;
+		else
+			return _root = root;
 	}
 
 	void Serializer::Reflect_Deserialization(rttr::instance _obj, const Json::Value& _data)
@@ -690,6 +631,11 @@ namespace PogplantDriver
 		const auto component_name = obj.get_type().get_raw_type().get_name().to_string();
 
 		auto prop_list = obj.get_derived_type().get_properties();
+
+
+		//if (component_name == "ParticleSystem")
+		//	int k = 0;
+
 
 		for (auto prop : prop_list)
 		{
@@ -707,7 +653,13 @@ namespace PogplantDriver
 
 			if (_data[name])
 			{
-				if (prop_value.is_type<glm::vec2>())
+				if (prop_value.is_type<ParticleSystem::CurveVariable>())
+				{
+					auto temp_obj = prop_value.get_value<ParticleSystem::CurveVariable>();
+					Reflect_Deserialization(temp_obj, _data[name]);
+					prop.set_value(obj, temp_obj);
+				}
+				else if (prop_value.is_type<glm::vec2>())
 				{
 					prop.set_value(obj, CreateVec2(_data[name]));
 				}
@@ -728,9 +680,26 @@ namespace PogplantDriver
 					if (!Load_arithmetic(variable_type, prop, obj, _data[name]))
 						std::cout << name << " is an unsupported arithmetic type" << std::endl;
 				}
+				else if (prop_value.is_sequential_container())
+				{
+					rttr::variant var = prop.get_value(obj);
+					auto view = var.create_sequential_view();
+
+					CreateSeqContainer(view, _data[name]);
+					//for (const auto& item : view)
+					//{
+					//	std::cout << "data: " << item.convert<ImVec2>().x << ", " << item.convert<ImVec2>().y << std::endl;
+					//}
+					prop.set_value(obj, var);
+
+				}
+				else if (prop_value.is_associative_container())
+				{
+					//int k = 0;
+				}
 				else
 				{
-					std::cout << "type not supported" << std::endl;
+					std::cout << name << "'s type is not supported" << std::endl;
 				}
 			}
 		}
@@ -773,7 +742,7 @@ namespace PogplantDriver
 		return true;
 	}
 
-	//basically checking all the basic types lol
+	//basically checking all the basic types but for array
 	bool Serializer::Save_arithmetic_array(Json::Value& _root, const std::string& _name, rttr::type _type, rttr::variant& _value)
 	{
 		if (_type == rttr::type::get<bool>())
@@ -888,6 +857,87 @@ namespace PogplantDriver
 			}
 		}
 		return _root;
+	}
+
+
+	rttr::variant extract_basic_types(const Json::Value& json_value)
+	{
+		switch (json_value.type())
+		{
+		case Json::stringValue:
+		{
+			return std::string(json_value.asString());
+			break;
+		}
+		case Json::nullValue:     break;
+		case Json::booleanValue:
+		{
+			return json_value.asBool();
+			break;
+		}
+		case Json::intValue:
+		{
+			return json_value.asInt();
+			break;
+		}
+		case Json::uintValue:
+		{
+			return json_value.asUInt();
+			break;
+		}
+		case Json::realValue:
+		{
+			return json_value.asDouble();
+			break;
+		}
+		// we handle only the basic types here
+		case Json::objectValue:
+		case Json::arrayValue: 
+			return rttr::variant();
+		}
+		return rttr::variant();
+
+	}
+
+	void Serializer::CreateSeqContainer(rttr::variant_sequential_view& view, const Json::Value& json_array_value)
+	{
+		Json::ArrayIndex max = json_array_value.size();
+
+		view.set_size(max);
+		const rttr::type array_value_type = view.get_rank_type(1);
+		const rttr::type array_value_type2 = view.get_rank_type(0);
+		for (Json::ArrayIndex i = 0; i < max; i++)
+		{
+			auto& json_index_value = json_array_value[i];
+			if (json_index_value.isArray())
+			{
+				auto test = view.get_value(i);
+
+				if (test.can_convert<ImVec2>())
+					view.set_value(i, CreateImVec2(json_index_value));
+
+				auto sub_array_view = test.create_sequential_view();
+
+			}
+			else if (json_index_value.isObject())
+			{
+				std::cout << "CreateSeqContainer does not support isObject" << std::endl;
+				//rttr::variant var_tmp = view.get_value(i);
+				//rttr::variant wrapped_var = var_tmp.extract_wrapped_value();
+				//fromjson_recursively(wrapped_var, json_index_value);
+				//view.set_value(i, wrapped_var);
+			}
+			else
+			{
+				rttr::variant extracted_value = extract_basic_types(json_index_value);
+				//auto asd = json_index_value.type();
+				//if (extracted_value.convert(array_value_type))
+				if (!view.set_value(i, extracted_value))
+					int k = 0;
+			}
+		}
+
+		//int k = 0;
 	}
 }
 

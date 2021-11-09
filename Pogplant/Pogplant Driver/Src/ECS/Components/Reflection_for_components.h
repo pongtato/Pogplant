@@ -63,6 +63,7 @@ namespace Components
 			.property("m_Zoom", &Camera::m_Zoom);
 
 		rttr::registration::class_<ParticleSystem::CurveVariable>("CurveVariable")
+			.method("init", &ParticleSystem::CurveVariable::init)
 			.property("m_CurvePoints", &ParticleSystem::CurveVariable::m_CurvePoints)
 			.property("m_MultiplierMin", &ParticleSystem::CurveVariable::m_MultiplierMin)
 			.property("m_MultiplierMax", &ParticleSystem::CurveVariable::m_MultiplierMax)
@@ -70,6 +71,7 @@ namespace Components
 			.property("m_CurveMax", &ParticleSystem::CurveVariable::m_CurveMax);
 
 		rttr::registration::class_<ParticleSystem>("ParticleSystem")
+			.method("init", &ParticleSystem::init)
 			.property("m_Color", &ParticleSystem::m_Color)
 			.property("m_SpawnDirection", &ParticleSystem::m_SpawnDirection)
 			.property("m_Force", &ParticleSystem::m_Force)
@@ -77,6 +79,8 @@ namespace Components
 			.property("m_Scale", &ParticleSystem::m_Scale)
 			.property("m_SpawnRadius", &ParticleSystem::m_SpawnRadius)
 			.property("m_Delay", &ParticleSystem::m_Delay)
+			.property("m_MinLife", &ParticleSystem::m_MinLife)
+			.property("m_MaxLife", &ParticleSystem::m_MaxLife)
 			.property("m_TexName", &ParticleSystem::m_TexName)
 			.property("m_SpawnCount", &ParticleSystem::m_SpawnCount)
 			.property("m_Loop", &ParticleSystem::m_Loop)
@@ -87,6 +91,10 @@ namespace Components
 		rttr::registration::class_<Canvas>("Canvas")
 			.property("m_Color", &Canvas::m_Color)
 			.property("m_TexName", &Canvas::m_TexName);
+
+		rttr::registration::class_<ImVec2>("ImVec2")
+			.property("m_x", &ImVec2::x)
+			.property("m_y", &ImVec2::y);
 	}
 }
 
