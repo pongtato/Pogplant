@@ -189,14 +189,14 @@ namespace Scripting
                         current_interval = 0;
 
                         //FireBullet(em.GetBullet(true), i);
-                        GameUtilities.FireEnemyBullet(muzzle_transforms[i].Position, muzzle_transforms[i].Rotation);
+                        GameUtilities.FireEnemyBullet(owner.id, owner.transform.Value.Position, owner.transform.Value.Rotation, true);
                         //Debug.Log("Firing true bullet");
                     }
                     else
                     {
                         ++current_interval;
                         //FireBullet(em.GetBullet(false), i);
-                        GameUtilities.FireEnemyBullet(muzzle_transforms[i].Position, muzzle_transforms[i].Rotation);
+                        GameUtilities.FireEnemyBullet(owner.id, owner.transform.Value.Position, owner.transform.Value.Rotation);
                         //Debug.Log("Firing false bullet");
                     }
                 }
@@ -368,16 +368,18 @@ namespace Scripting
 
         private void HandleDeath()
         {
-            is_alive = false;
+            if (is_alive)
+            {
+                //gameObject.GetComponent<Destructible_Actor>().HandleDeath();
+                //FirstPersonFiringSystem.Instance.RemoveEnemyFromListOfTargets(gameObject);
 
-            //gameObject.GetComponent<Destructible_Actor>().HandleDeath();
-            //FirstPersonFiringSystem.Instance.RemoveEnemyFromListOfTargets(gameObject);
+                ////destroy script so any keyed actions will not occur
+                //Destroy(this);
 
-            ////destroy script so any keyed actions will not occur
-            //Destroy(this);
-
-            em.DeleteEnemyInstance(entityID);
-            ECS.DestroyEntity(entityID);
+                em.DeleteEnemyInstance(entityID);
+                ECS.DestroyEntity(entityID);
+                is_alive = false;
+            }
         }
 
         public override void Init(ref uint _entityID)

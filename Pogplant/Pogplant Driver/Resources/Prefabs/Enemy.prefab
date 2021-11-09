@@ -8,14 +8,14 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : 0,
+			"collisionLayer" : "0",
 			"extends" : 
 			[
 				1.0,
 				1.0,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 3,
 		"Name" : 
@@ -46,7 +46,7 @@
 		},
 		"Rigidbody" : 
 		{
-			"isKinematic" : false,
+			"isKinematic" : true,
 			"mass" : 10.0,
 			"useGravity" : false
 		},
@@ -77,60 +77,10 @@
 		}
 	},
 	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Exhaust_Main"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_01",
-				"Resources/Models\\Enemy",
-				"Exhaust_Main"
-			],
-			"UseLight" : 1
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.54856771230697632,
-				-0.33528086543083191
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Exhaust_Fins"
+			"m_Name" : "Spinning_Disk"
 		},
 		"Render" : 
 		{
@@ -150,7 +100,7 @@
 			[
 				"Enemy_01",
 				"Resources/Models\\Enemy",
-				"Exhaust_Fins"
+				"Spinning_Disk"
 			],
 			"UseLight" : 1
 		},
@@ -159,12 +109,12 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
-				0.0
+				-0.95851993560791016,
+				4.76837158203125e-07
 			],
 			"m_rotation" : 
 			[
-				-90.0,
+				0.0,
 				0.0,
 				0.0
 			],
@@ -211,6 +161,106 @@
 				0.0,
 				-0.46447297930717468,
 				3.0826777219772339e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Alien_Arms"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.3621978759765625,
+				0.61234688758850098,
+				0.14358304440975189
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Mohawk"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Mohawk"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				8.9406967163085938e-08,
+				1.4248909950256348,
+				-8.6519867181777954e-07
 			],
 			"m_rotation" : 
 			[
@@ -330,7 +380,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Laser_Fins"
+			"m_Name" : "Laser_Studs"
 		},
 		"Render" : 
 		{
@@ -350,7 +400,7 @@
 			[
 				"Enemy_01",
 				"Resources/Models\\Enemy",
-				"Laser_Fins"
+				"Laser_Studs"
 			],
 			"UseLight" : 1
 		},
@@ -358,9 +408,9 @@
 		{
 			"m_position" : 
 			[
-				7.4505805969238281e-08,
-				0.35675576329231262,
-				1.4333814382553101
+				8.9406967163085938e-08,
+				0.3567543625831604,
+				0.60498690605163574
 			],
 			"m_rotation" : 
 			[
@@ -430,7 +480,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Laser_Studs"
+			"m_Name" : "Laser_Fins"
 		},
 		"Render" : 
 		{
@@ -450,7 +500,7 @@
 			[
 				"Enemy_01",
 				"Resources/Models\\Enemy",
-				"Laser_Studs"
+				"Laser_Fins"
 			],
 			"UseLight" : 1
 		},
@@ -458,9 +508,59 @@
 		{
 			"m_position" : 
 			[
-				8.9406967163085938e-08,
-				0.3567543625831604,
-				0.60498690605163574
+				7.4505805969238281e-08,
+				0.35675576329231262,
+				1.4333814382553101
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.54856771230697632,
+				-0.33528086543083191
 			],
 			"m_rotation" : 
 			[
@@ -480,7 +580,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Mohawk"
+			"m_Name" : "Exhaust_Fins"
 		},
 		"Render" : 
 		{
@@ -500,121 +600,21 @@
 			[
 				"Enemy_01",
 				"Resources/Models\\Enemy",
-				"Mohawk"
+				"Exhaust_Fins"
 			],
 			"UseLight" : 1
 		},
 		"Transform" : 
 		{
 			"m_position" : 
-			[
-				8.9406967163085938e-08,
-				1.4248909950256348,
-				-8.6519867181777954e-07
-			],
-			"m_rotation" : 
 			[
 				0.0,
 				0.0,
 				0.0
 			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Alien_Arms"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_01",
-				"Resources/Models\\Enemy",
-				"Alien_Arms"
-			],
-			"UseLight" : 1
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.3621978759765625,
-				0.61234688758850098,
-				0.14358304440975189
-			],
 			"m_rotation" : 
 			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Spinning_Disk"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_01",
-				"Resources/Models\\Enemy",
-				"Spinning_Disk"
-			],
-			"UseLight" : 1
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.95851993560791016,
-				4.76837158203125e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
+				-90.0,
 				0.0,
 				0.0
 			],

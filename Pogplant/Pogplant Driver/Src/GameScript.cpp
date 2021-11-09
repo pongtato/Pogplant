@@ -135,26 +135,67 @@ namespace Scripting
 		body->AddImpulseForce(forward_vec);
 
 	}
-	void FireEnemyBullet(glm::vec3 _Position, glm::vec3 _Rotation)
+	void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, bool isTrue)
 	{
-		auto new_bullet = GameplayECS::m_GameScriptECS->CreateEntity("Bullet", _Position, _Rotation);
-		new_bullet.AddComponent<Projectile>(3.f, 10.f, Components::Projectile::OwnerType::Enemy);
-		new_bullet.GetComponent<Projectile>().m_Type = Projectile::ProjectileType::False;
+		//Get enemy transform 
+		entt::entity enemy = static_cast<entt::entity>(entityID);
+		auto enemy_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(enemy);
 
+		glm::mat4 decompose{ 0 };
+		glm::vec3 position{ 0 };
+		if (enemy != entt::null)
+		{
+			auto enemy_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(enemy);
+			decompose = enemy_trans->m_ModelMtx; // Modlemtx = world.
+			position.x = decompose[3][0];
+			position.y = decompose[3][1];
+			position.z = decompose[3][2];
 
-		new_bullet.AddComponent<Renderer>(glm::vec3{ 1.0f }, glm::vec3{ 1.0f }, PP::ModelResource::m_ModelPool["sphere"], &PP::ModelResource::m_ModelPool["sphere"]->m_Meshes.begin()->second);
-		auto& sp_collider = new_bullet.AddComponent<BoxCollider>();
-		auto& col_identifier = new_bullet.AddComponent<Components::ColliderIdentifier>();
+			decompose[3][0] = 0.f;
+			decompose[3][1] = 0.f;
+			decompose[3][2] = 0.f;
+			float scale_x = glm::length(decompose[0]);
+			float scale_y = glm::length(decompose[1]);
+			float scale_z = glm::length(decompose[2]);
 
-		col_identifier.colliderType = ColliderIdentifier::COLLIDER_TYPE::CT_BOX;
-		col_identifier.isTrigger = true;
-		sp_collider.isTrigger = true;
+			decompose[0][0] /= scale_x;
+			decompose[0][1] /= scale_x;
+			decompose[0][2] /= scale_x;
 
-		new_bullet.AddComponent<Rigidbody>(1.f);
+			decompose[1][0] /= scale_y;
+			decompose[1][1] /= scale_y;
+			decompose[1][2] /= scale_y;
 
-		auto& body = new_bullet.GetComponent<Rigidbody>();
-		body.AddImpulseForce({ 0.f,0.f,10.f });
+			decompose[2][0] /= scale_z;
+			decompose[2][1] /= scale_z;
+			decompose[2][2] /= scale_z;
+		}
+		//std::cout << "Position" << position.x << ", " << position.y << ", " << position.z << std::endl;
 
+		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
+		entt::entity bullet;
+		if (isTrue)
+		{
+			bullet = serial.Instantiate("TrueBullet", enemy_trans->GetGlobalPosition(), _Rotation);
+			//std::cout << "spawned true bullet" << std::endl;
+		}
+		else
+		{
+			bullet = serial.Instantiate("FalseBullet", enemy_trans->GetGlobalPosition(), _Rotation);
+			//std::cout << "spawned false bullet" << std::endl;
+		}
+
+		GameplayECS::m_GameScriptECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Enemy);
+
+		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
+		//Hardcoded for now
+		glm::vec4 forward{ 0.f,0.f,-1.f ,0.f };
+		glm::vec3 forward_vec = decompose * forward;
+
+		//std::cout << "Forward_vec" << forward_vec.x << ", " << forward_vec.y << ", " << forward_vec.z << std::endl;
+		//Add power to the shots
+		forward_vec *= 25.f;
+		body->AddImpulseForce(forward_vec);
 	}
 
 

@@ -168,7 +168,7 @@ namespace Scripting
         GameObject CreateEnemyInstance(string prefab_name, Transform location)
         {
             GameObject instance = GameUtilities.InstantiateObject(prefab_name, location.Position, location.Rotation);
-            enemy_instances.Add(instance);
+            //enemy_instances.Add(instance);
             return instance;
         }
 
@@ -194,7 +194,7 @@ namespace Scripting
             ECS.SetTransformParent(instance.id, parent);
 
             //transform.Position = location.Position;
-            transform.Rotation = new Vector3(0, 180, 0);
+            transform.Rotation = new Vector3(0, 0, 0);
             BaseTurret comp = instance.GetComponent<BaseTurret>();
         }
 

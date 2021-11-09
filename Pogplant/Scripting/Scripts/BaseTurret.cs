@@ -39,26 +39,22 @@ namespace Scripting
 
         bool isFiring = false;
 
-        int trueBulletInterval;
-        int currentBulletInterval = 0;
-
-        bool isInit = false;
+        bool isAlive = true;
         public BaseTurret()
         {
             // initialize private variables here
 
             fireRate = 1 / 5.0f;
-            trueBulletInterval = -1;
             fire_duration = current_fireDuration = 1.0f;
 
             var rand = new Random();
-            fire_delay = rand.Next() * 5.0f;
+            fire_delay = ((float)rand.Next() / int.MaxValue)  * 5.0f;
         }
 
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-            Console.WriteLine("Enemy ID:" + entityID);
+            Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
         }
 
         public override void Start()
@@ -72,14 +68,11 @@ namespace Scripting
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
 
-            if ((fire_delay_accumulator += dt) > fire_delay && !isFiring)
+            if ((fire_delay_accumulator += dt) > fire_delay)
                 StartFiring();
 
-            if (fire_delay_accumulator > 10.0f)
-            {
-                ECS.DestroyEntity(entityID);
-                return;
-            }
+            if (fire_delay_accumulator >= 10.0f)
+                HandleDeath();
 
             if (isFiring)
             {
@@ -99,7 +92,7 @@ namespace Scripting
                         // Call C++ side bullet firing
                         // hard coded muzzle position
                         Vector3 offset = new Vector3(0.0f, -1.076f, 0.454f);
-                        GameUtilities.FireEnemyBullet(transform.Position + offset, transform.Rotation);
+                        GameUtilities.FireEnemyBullet(entityID, transform.Position + offset, transform.Rotation);
                     }
                     fire_timer = 0.0f;
                 }
@@ -126,13 +119,14 @@ namespace Scripting
 
         void HandleDeath()
         {
-            Console.WriteLine("Turret has died");
-
 
             // This is a hardcoded way of destroying this instance, need to be replaced!
-
-            Console.WriteLine("Destroyed:" + entityID);
-            ECS.DestroyEntity(entityID);
+            if (isAlive)
+            {
+                Console.WriteLine("Turret (id: " + entityID + ") has died");
+                ECS.DestroyEntity(entityID);
+                isAlive = false;
+            }    
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)

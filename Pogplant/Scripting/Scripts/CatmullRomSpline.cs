@@ -53,7 +53,7 @@ namespace Scripting
             foreach (Transform cp in controlPointsList)
             {
                 GameObject result = ECS.CreateChild(parent.id, "ControlPoint_" + counter++, cp);
-                result.AddComponent<Renderer>(new Renderer("sphere"));
+                //result.AddComponent<Renderer>(new Renderer("sphere"));
                 control_points.Add(result);
                 //Console.WriteLine(result.id);
             }
@@ -225,9 +225,11 @@ namespace Scripting
             Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
             string[] result = data.Split(' ');
 
-            transform.Position.X = float.Parse(result[0]);
-            transform.Position.Y = float.Parse(result[1]);
-            transform.Position.Z = float.Parse(result[2]);
+            Vector3 offset = new Vector3(0, 1.0f, 0);
+
+            transform.Position.X = float.Parse(result[0]) + offset.X;
+            transform.Position.Y = float.Parse(result[1]) + offset.Y;
+            transform.Position.Z = float.Parse(result[2]) + offset.Z;
 
             transform.Rotation.X = float.Parse(result[3]);
             transform.Rotation.Y = float.Parse(result[4]);
