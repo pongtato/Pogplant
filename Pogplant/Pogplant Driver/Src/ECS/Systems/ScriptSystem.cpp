@@ -104,6 +104,8 @@ void ScriptSystem::Update(float dt)
 			SSH::InvokeFunction(scripts.first, "Update", entity, transform, rigidbody, dt);
 		}
 	}
+
+	SSH::UpdateDestroyedEntities();
 }
 
 void ScriptSystem::LateUpdate(float dt)
@@ -131,6 +133,8 @@ void ScriptSystem::LateUpdate(float dt)
 			SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, rigidbody, dt);
 		}
 	}
+
+	SSH::UpdateDestroyedEntities();
 }
 
 void ScriptSystem::SetReload(bool _isReload)

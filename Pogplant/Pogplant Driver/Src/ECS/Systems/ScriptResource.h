@@ -25,6 +25,7 @@ struct ScriptResource
 	//static std::unordered_map<std::string, std::unique_ptr<MonoObjectWithGC>> m_MonoObjects;
 	// Lookup via entityID, second will be the name of scripts and the mono object.
 	static std::unordered_map<entt::entity, std::unordered_map<std::string, std::unique_ptr<MonoObjectWithGC>>> m_MonoObjects;
+	static std::vector<entt::entity> m_EntitiesToDelete;
 };
 
 #endif // _MONO_OBJECT_RESOURCE_H

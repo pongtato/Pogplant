@@ -16,7 +16,7 @@ namespace Pogplant
 
 	void ShaderResource::AddShaderProfile(const ShaderProfile& _ShaderProfile)
 	{
-		assert(m_ShaderProfiles.find(_ShaderProfile.m_ProgramID) != m_ShaderProfiles.end() && "Duplicate shader profile ID");
+		assert(m_ShaderProfiles.find(_ShaderProfile.m_ProgramID) == m_ShaderProfiles.end() && "Duplicate shader profile ID");
 		/*if(m_ShaderProfiles.find(_ShaderProfile.m_ProgramID) != m_ShaderProfiles.end())
 		{
 			Logger::Log({ "PP::SHADER",LogEntry::LOGTYPE::ERROR,"Duplicate shader profile ID" });

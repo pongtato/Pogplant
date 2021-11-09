@@ -26,7 +26,18 @@ namespace SSH
 
 	void DestroyEntity(std::uint32_t entityID)
 	{
-		ScriptSystem::GetECS()->DestroyEntity(static_cast<entt::entity>(entityID));
+		ScriptResource::m_EntitiesToDelete.push_back(static_cast<entt::entity>(entityID));
+		//ScriptSystem::GetECS()->DestroyEntity(static_cast<entt::entity>(entityID));
+	}
+
+	void UpdateDestroyedEntities()
+	{
+		for (auto entityID : ScriptResource::m_EntitiesToDelete)
+		{
+			ScriptSystem::GetECS()->DestroyEntity(static_cast<entt::entity>(entityID));
+		}
+
+		ScriptResource::m_EntitiesToDelete.clear();
 	}
 
 	std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag)

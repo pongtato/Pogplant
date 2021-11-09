@@ -12,6 +12,7 @@ namespace SSH
 	// ECS for C# side
 	std::uint32_t CreateEntity(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	void DestroyEntity(std::uint32_t entityID);
+	void UpdateDestroyedEntities();
 	std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	std::uint32_t FindEntityWithName(MonoString* name);
 	void GetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
