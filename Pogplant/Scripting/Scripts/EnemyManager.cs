@@ -184,6 +184,20 @@ namespace Scripting
             comp.SetManager(this);
         }
 
+        public void InstantiateTempEnemy(Transform location, string prefab_object, string parentName)
+        {
+            GameObject instance = CreateEnemyInstance(prefab_object, location);
+            Transform transform = instance.GetComponent<Transform>();
+
+            // Set parent here
+            uint parent = ECS.FindEntityWithName(parentName);
+            ECS.SetTransformParent(instance.id, parent);
+
+            //transform.Position = location.Position;
+            transform.Rotation = new Vector3(0, 180, 0);
+            BaseTurret comp = instance.GetComponent<BaseTurret>();
+        }
+
         public void DeleteEnemyInstance(uint id)
         {
             foreach (var item in enemy_instances)

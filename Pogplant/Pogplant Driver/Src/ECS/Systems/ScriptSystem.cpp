@@ -240,6 +240,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::FindEntityWithName", SSH::FindEntityWithName);
 	mono_add_internal_call("Scripting.ECS::GetTransformECS", SSH::GetTransformECS);
 	mono_add_internal_call("Scripting.ECS::SetTransformECS", SSH::SetTransformECS);
+	mono_add_internal_call("Scripting.ECS::SetTransformParent", SSH::SetTransformParent);
 	mono_add_internal_call("Scripting.ECS::GetGlobalPosition", SSH::GetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::GetGlobalRotation", SSH::GetGlobalRotation);
 

@@ -33,6 +33,10 @@ namespace Scripting
         float fire_duration = 0.0f;
         float current_fireDuration = 0.0f;
 
+        // temp variables
+        float fire_delay;
+        float fire_delay_accumulator = 0.0f;
+
         bool isFiring = false;
 
         int trueBulletInterval;
@@ -46,6 +50,9 @@ namespace Scripting
             fireRate = 1 / 5.0f;
             trueBulletInterval = -1;
             fire_duration = current_fireDuration = 1.0f;
+
+            var rand = new Random();
+            fire_delay = rand.Next() * 5.0f;
         }
 
         public override void Init(ref uint _entityID)
@@ -64,10 +71,15 @@ namespace Scripting
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            //Start(ref transform);
 
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+            if ((fire_delay_accumulator += dt) > fire_delay && !isFiring)
                 StartFiring();
+
+            if (fire_delay_accumulator > 10.0f)
+            {
+                ECS.DestroyEntity(entityID);
+                return;
+            }
 
             if (isFiring)
             {

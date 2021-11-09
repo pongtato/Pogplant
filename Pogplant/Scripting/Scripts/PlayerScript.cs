@@ -59,6 +59,7 @@ namespace Scripting
 
         public List<GameObject> entityList = new List<GameObject>();
         public List<Tuple<GameObject, GameObject>> childList = new List<Tuple<GameObject, GameObject>>();
+        EnemyManager enemyManager = new EnemyManager();
 
         public PlayerScript()
         {
@@ -92,11 +93,18 @@ namespace Scripting
             //    rigidbody.AddForce(new Vector3(0, 3.0f, 0));
             //}
 
-            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_Y))
-            //{
-            //    uint test = GameUtilities.Instantiate("Enemy", transform.Position, transform.Rotation);
-            //    Console.WriteLine("New Test" + test);
-            //}
+            // Fake enemy encounter press Y to spawn random enemy infront of player
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_Y))
+            {
+                var rand = new Random();
+                Transform location = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
+                //location.Position = ECS.GetGlobalPosition(entityID);
+                //location.Position.X += (rand.Next() * 3.0f - 1.5f);
+                //location.Position.Y += (rand.Next() * 3.0f - 1.5f);
+                location.Position.Z = 10.0f;
+
+                enemyManager.InstantiateTempEnemy(location, "Enemy", "PlayerBox");
+            }
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
             {

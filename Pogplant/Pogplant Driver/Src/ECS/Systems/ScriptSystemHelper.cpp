@@ -59,6 +59,15 @@ namespace SSH
 		trans->m_scale = scale;
 	}
 
+	void SetTransformParent(std::uint32_t childID, std::uint32_t parentID)
+	{
+		auto child = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(childID));
+		auto parent = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(parentID));
+
+		child->m_parent = static_cast<entt::entity>(parentID);
+		parent->m_children.insert(static_cast<entt::entity>(childID));
+	}
+
 	glm::vec3 GetGlobalPosition(std::uint32_t entityID)
 	{
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalPosition();

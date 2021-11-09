@@ -16,6 +16,8 @@ namespace SSH
 	std::uint32_t FindEntityWithName(MonoString* name);
 	void GetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
 	void SetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
+	void SetTransformParent(std::uint32_t childID, std::uint32_t parentID);
+
 
 	glm::vec3 GetGlobalPosition(std::uint32_t entityID);
 	glm::vec3 GetGlobalRotation(std::uint32_t entityID);
