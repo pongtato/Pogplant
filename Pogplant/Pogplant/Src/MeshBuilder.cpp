@@ -42,11 +42,12 @@ namespace Pogplant
         Mesh* mesh = MeshResource::m_MeshPool[MT::QUAD];
 
         /// Assert
-        if (mesh == nullptr)
-        {
-            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Quad resource is NULL" });
-            return;
-        }
+        assert(mesh != nullptr && "Quad resource is NULL");
+        //if (mesh == nullptr)
+        //{
+        //    Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Quad resource is NULL" });
+        //    return;
+        //}
 
         // Instanced data
         const size_t instDatSize = sizeof(InstanceData);
@@ -94,8 +95,11 @@ namespace Pogplant
     }
 
     void MeshBuilder::RebindTextQuad(float _X, float _Y, float _Width, float _Height, float _UVx, float _UVy)
-    {
-        float vertices[6][4] = 
+    {  
+        Mesh* mesh = MeshResource::m_MeshPool[MT::TEXT_QUAD];
+        assert(mesh != nullptr && "Text quad resource is NULL");
+
+        float vertices[6][4] =
         {
            { _X         , _Y + _Height  , 0.0f, 0.0f },
            { _X         , _Y            , 0.0f, _UVy },
@@ -106,13 +110,11 @@ namespace Pogplant
            { _X + _Width, _Y + _Height  , _UVx, 0.0f }
         };
 
-        Mesh* mesh = MeshResource::m_MeshPool[MT::TEXT_QUAD];
-
-        if (mesh == nullptr)
+        /*if (mesh == nullptr)
         {
             Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Screen resource is NULL" });
             return;
-        }
+        }*/
 
         glBindVertexArray(mesh->m_VAO);
         glBindBuffer(GL_ARRAY_BUFFER, mesh->m_VBO);
@@ -126,11 +128,12 @@ namespace Pogplant
         Mesh* mesh = MeshResource::m_MeshPool[MT::LINE];
 
         /// Assert
-        if (mesh == nullptr)
-        {
-            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Quad resource is NULL" });
-            return;
-        }
+        assert(mesh != nullptr && "Quad resource is NULL");
+        //if (mesh == nullptr)
+        //{
+        //    Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Quad resource is NULL" });
+        //    return;
+        //}
 
         size_t poxVtxSize = sizeof(glm::vec3) * _Points.size();
 
@@ -166,11 +169,12 @@ namespace Pogplant
         Mesh* mesh = MeshResource::m_MeshPool[MT::QUAD];
 
         /// Assert
-        if (mesh == nullptr)
-        {
-            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Quad resource is NULL" });
-            return;
-        }
+        assert(mesh != nullptr && "Quad resource is NULL");
+        //if (mesh == nullptr)
+        //{
+        //    Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Quad resource is NULL" });
+        //    return;
+        //}
 
         mesh->m_VertexData =
         {
@@ -224,11 +228,12 @@ namespace Pogplant
     {
         Mesh* mesh = MeshResource::m_MeshPool[MT::TEXT_QUAD];
 
-        if (mesh == nullptr)
-        {
-            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Screen resource is NULL" });
-            return;
-        }
+        assert(mesh != nullptr && "Text quad resource is NULL");
+        //if (mesh == nullptr)
+        //{
+        //    Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Screen resource is NULL" });
+        //    return;
+        //}
 
         glGenVertexArrays(1, &mesh->m_VAO);
         glGenBuffers(1, &mesh->m_VBO);
@@ -246,11 +251,12 @@ namespace Pogplant
         Mesh* mesh = MeshResource::m_MeshPool[MT::SCREEN];
 
         /// Assert
-        if (mesh == nullptr)
-        {
-            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Screen resource is NULL" });
-            return;
-        }
+        assert(mesh != nullptr && "Screen quad resource is NULL");
+        //if (mesh == nullptr)
+        //{
+        //    Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Screen resource is NULL" });
+        //    return;
+        //}
 
         mesh->m_VertexData =
         {
@@ -359,6 +365,8 @@ namespace Pogplant
     {
         Mesh* mesh = MeshResource::m_MeshPool[MT::LINE];
 
+        assert(mesh != nullptr && "Line resource is NULL");
+
         std::vector<glm::vec3> temp;
         temp.resize(10);
         size_t poxVtxSize = sizeof(glm::vec3) * temp.size();
@@ -389,11 +397,14 @@ namespace Pogplant
     {
         // Get mesh
         Mesh* mesh = MeshResource::m_MeshPool[MT::HEIGHTMAP];
-        if (mesh == nullptr)
-        {
-            Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Heightmap resource is NULL" });
-            return;
-        }
+
+        assert(mesh != nullptr && "Heightmap resource is NULL");
+
+        //if (mesh == nullptr)
+        //{
+        //    Logger::Log({ "PP::MESH",LogEntry::LOGTYPE::ERROR,"Heightmap resource is NULL" });
+        //    return;
+        //}
 
         // Get heightmap
         if (!TexLoader::LoadHeightMap("Heightmap.raw", "Resources/Textures/Heightmap", mesh->m_Heightmap, mesh->m_HeightMapDim))

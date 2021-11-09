@@ -17,11 +17,13 @@ namespace Pogplant
     using TR = TextureResource;
 
     // Helpers for the tinyDDSloader
-    struct GLSwizzle {
+    struct GLSwizzle 
+    {
         GLenum m_r, m_g, m_b, m_a;
     };
 
-    struct GLFormat {
+    struct GLFormat 
+    {
         tinyddsloader::DDSFile::DXGIFormat m_dxgiFormat;
         GLenum m_type;
         GLenum m_format;
@@ -39,6 +41,7 @@ namespace Pogplant
             {GL_RED, GL_ZERO, GL_ZERO, GL_ZERO},
             {GL_RED, GL_GREEN, GL_ZERO, GL_ZERO},
         };
+
         using DXGIFmt = tinyddsloader::DDSFile::DXGIFormat;
         static const GLFormat formats[] = 
         {

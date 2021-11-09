@@ -1,5 +1,6 @@
 #include "ShaderResource.h"
 #include "Logger.h"
+#include <assert.h>
 
 namespace Pogplant
 {
@@ -15,10 +16,11 @@ namespace Pogplant
 
 	void ShaderResource::AddShaderProfile(const ShaderProfile& _ShaderProfile)
 	{
-		if(m_ShaderProfiles.find(_ShaderProfile.m_ProgramID) != m_ShaderProfiles.end())
+		assert(m_ShaderProfiles.find(_ShaderProfile.m_ProgramID) != m_ShaderProfiles.end() && "Duplicate shader profile ID");
+		/*if(m_ShaderProfiles.find(_ShaderProfile.m_ProgramID) != m_ShaderProfiles.end())
 		{
 			Logger::Log({ "PP::SHADER",LogEntry::LOGTYPE::ERROR,"Duplicate shader profile ID" });
-		}
+		}*/
 		m_ShaderProfiles[_ShaderProfile.m_ProgramID] = _ShaderProfile;
 	}
 }
