@@ -57,12 +57,13 @@ namespace Scripting
 			//std::cout << "Rotation: " << box_pos->m_rotation.x << ", " << box_pos->m_rotation.y << ", " << box_pos->m_rotation.z << std::endl;
 			auto box_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(player_box);
 			//Natural Z forward offset
-			glm::vec3 offset = glm::vec3{ 0,0,-2.f };
+			glm::vec3 offset = glm::vec3{ 0,0,-0.f };
+
 			//Concatanate the offsets
 			offset += _Position;
 
-		  auto cam_pos =  GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_cam);
-			cam_pos->m_position = box_pos->m_position + offset;
+			auto cam_pos = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_cam);
+			cam_pos->m_position = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerShip"))->GetGlobalPosition();// +_Position;// +offset;
 
 			auto cam_comp = GameplayECS::m_GameScriptECS->GetReg().try_get<Camera>(player_cam);
 			//Account for the offset 0.01f that is hardcoded
@@ -73,13 +74,13 @@ namespace Scripting
 
 
 			//Only leave positive values in the Values
-			auto box_x_rot = box_pos->m_rotation.x - 180.f;
+			auto box_x_rot = box_pos->m_rotation.x;
 			//Turns the camera left,right (-180, 180);
 			auto box_y_rot = box_pos->m_rotation.y;
 
-			cam_comp->m_Yaw = box_y_rot - 90.f + -_Rotation.y;
+			cam_comp->m_Yaw = -box_y_rot - 90.f + _Rotation.y;
 			//std::cout << "Yaw: " << cam_comp->m_Yaw << std::endl;
-			cam_comp->m_Pitch = box_x_rot + -_Rotation.x;
+			cam_comp->m_Pitch = box_x_rot + _Rotation.x;
 
 
 		}
@@ -122,18 +123,19 @@ namespace Scripting
 		}
 		//std::cout << "Position" << position.x << ", " << position.y << ", " << position.z << std::endl;
 
-		PogplantDriver::Serializer serial( *GameplayECS::m_GameScriptECS );
+		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
 		entt::entity bullet = serial.Instantiate("Bullet", ship_trans->GetGlobalPosition(), _Rotation);
 		GameplayECS::m_GameScriptECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Player);
 
 		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
-		glm::vec4 forward{ 0.f,0.f,1.f ,0.f};
+		glm::vec4 forward{ 0.f, 0.f, -1.f, 0.f };
 		glm::vec3 forward_vec = decompose * forward;
 
 		//std::cout << "Forward_vec" << forward_vec.x << ", " << forward_vec.y << ", " << forward_vec.z << std::endl;
 		//Add power to the shots
-		forward_vec *= 100.f; 
+		forward_vec *= 100.f;
+		forward_vec.y *= -1.0f;
 		body->AddImpulseForce(forward_vec);
 
 	}

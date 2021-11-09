@@ -193,8 +193,6 @@ namespace Scripting
             uint parent = ECS.FindEntityWithName(parentName);
             ECS.SetTransformParent(instance.id, parent);
 
-            //transform.Position = location.Position;
-            transform.Rotation = new Vector3(0, 0, 0);
             BaseTurret comp = instance.GetComponent<BaseTurret>();
         }
 

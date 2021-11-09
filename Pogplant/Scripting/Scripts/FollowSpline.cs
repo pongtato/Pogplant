@@ -116,9 +116,11 @@ namespace Scripting
 
                 //if (lockRotation)
                 //{
-                //transform.Rotation = Vector3.Lerp(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
+
+                transform.Rotation = Vector3.Lerp(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
+                //transform.Rotation.Y *= -1.0f;
                 //Console.WriteLine("Rotation: " + transform.Rotation.X + ", " + transform.Rotation.Y + ", " + transform.Rotation.Z);
-                transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * lerpSpeed * dt;
+                //transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * lerpSpeed * dt;
                 //transform.Rotation = Vector3.RotateTowards(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
 
                 //Console.WriteLine("Rotation: " + transform.Rotation.X + ", " + transform.Rotation.Y + ", " + transform.Rotation.Z);

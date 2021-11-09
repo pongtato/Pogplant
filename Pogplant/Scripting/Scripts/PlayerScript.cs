@@ -24,7 +24,7 @@ namespace Scripting
     public class PlayerScript : MonoBehaviour
     {
 
-        public float movement_speed = 1000.0f;
+        public float movement_speed = 20000.0f;
         private float horizontal_input = 0;
         private float vertical_input = 0;
         private float slowForce = 2.0f;
@@ -63,7 +63,7 @@ namespace Scripting
 
         public PlayerScript()
         {
-            p_fireRate = 1 / 3.0f;
+            p_fireRate = 1 / 5.0f;
 
 
         }
@@ -99,11 +99,10 @@ namespace Scripting
                 var rand = new Random();
                 Transform location = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
                 //location.Position = ECS.GetGlobalPosition(entityID);
-                location.Position.X += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
-                location.Position.Y += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
+                //location.Position.X += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
+                //location.Position.Y += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
                 location.Position.Z = 30.0f;
-
-                
+                location.Rotation.Y = 180.0f;
 
                 enemyManager.InstantiateTempEnemy(location, "Enemy", "PlayerBox");
             }
@@ -225,7 +224,7 @@ namespace Scripting
             //    rigidbody.AddForce(new Vector3(horizontal_input, 0.0f, 0.0f));
             //}
             //transform.Position += force_dir;
-            Vector3 direc_vector = new Vector3(horizontal_input, vertical_input, 0);
+            Vector3 direc_vector = new Vector3(-horizontal_input, vertical_input, 0);
             direc_vector = Vector3.Normalise(direc_vector);
 
             //Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
@@ -295,7 +294,7 @@ namespace Scripting
             if ((adjustedAngle > -max_rotate_angle && vertical_input > 0) || (adjustedAngle < max_rotate_angle && vertical_input < 0))
             {
                 Vector3 Rotatation_Vertical = new Vector3((max_rotate_angle * vertical_input * -current_vertical_dampening * rotation_speed_vertical * dt), 0.0f, 0.0f);
-                Rotation_Concat  += Rotatation_Vertical;
+                Rotation_Concat += Rotatation_Vertical;
                 timeCount = 0;
             }
 
@@ -317,11 +316,11 @@ namespace Scripting
             //timeCount += dt * ship_follow_rot_speed;
             //ship_transform.localRotation = Vector3.Lerp(ship_transform.localRotation, transform.localRotation, timeCount);
 
-            if (vertical_input == 0.0f && horizontal_input == 0.0f)
-            {
-                //Harcoded for now, if the box changes the rotation then i will edit this
-                transform.Rotation = Vector3.RotateTowards(transform.Rotation, new Vector3(0.0f,0.0f,0.01f), revert_speed * dt);
-            }
+            //if (vertical_input == 0.0f && horizontal_input == 0.0f)
+            //{
+            //    //Harcoded for now, if the box changes the rotation then i will edit this
+            //    transform.Rotation = Vector3.RotateTowards(transform.Rotation, new Vector3(0.0f,0.0f,0.01f), revert_speed * dt);
+            //}
 
 
             //m_Distance = Vector3.Distance(FollowTarget.transform.position, transform.position);
@@ -338,7 +337,7 @@ namespace Scripting
             GameUtilities.FollowPlayerCam(transform.Position, transform.Rotation);
 
             p_fire_timer += dt;
-            if ((InputUtility.onKeyTriggered(KEY_ID.KEY_T) || (InputUtility.onKeyHeld(KEY_ID.KEY_T))))
+            if ((InputUtility.onKeyTriggered("SHOOT") || (InputUtility.onKeyHeld("SHOOT"))))
             {
                 if (p_fire_timer >= p_fireRate)
                 {

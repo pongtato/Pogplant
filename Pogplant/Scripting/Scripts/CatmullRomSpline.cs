@@ -36,10 +36,62 @@ namespace Scripting
         public void InitializeSpline()
         {
             //ReadControlPointsFromFile("Control_Points_Curved.txt");
-            ReadControlPointsFromFile("Transform_CPs.txt");
+            ReadControlPointsFromFile("Transform_CPs_2.txt");
+            //CopyRotation();
+            ModCPFile();
             CreateGameObjectsFromCPList();
             //WriteControlPointsToFile();
             //Console.WriteLine(controlPointsList.Count);
+        }
+
+        void ModCPFile()
+        {
+            string[] old_data = File.ReadAllLines("Resources\\Transform_CPs.txt");
+
+            string[] new_lines = new string[old_data.Length];
+
+            for (int i = 0; i < old_data.Length; ++i)
+            {
+                string[] old_values = old_data[i].Split(' ');
+
+                string new_line = old_values[0] + " ";
+                new_line += old_values[1] + " ";
+                new_line += old_values[2] + " ";
+
+                new_line += "0.00" + " ";
+                new_line += old_values[4] + " ";
+                new_line += "0.00";
+
+                new_lines[i] = new_line;
+            }
+
+            File.WriteAllLines("Resources\\Transform_CPs_2.txt", new_lines);
+        }
+
+        void CopyRotation()
+        {
+            string[] old_data = File.ReadAllLines("Resources\\Control_Points_Curved.txt");
+            string[] new_data = File.ReadAllLines("Resources\\Transform_CPs.txt");
+
+            string[] new_lines = new string[new_data.Length];
+
+            for (int i = 0; i < old_data.Length; ++i)
+            {
+                string[] old_values = old_data[i].Split(' ');
+                string[] new_values = new_data[i].Split(' ');
+
+                string new_line = new_values[0] + " ";
+                new_line += new_values[1] + " ";
+                new_line += new_values[2] + " ";
+
+                new_line += old_values[3] + " ";
+                new_line += (float.Parse(old_values[4]) - 180.0f).ToString() + " ";
+                new_line += old_values[5];
+
+                new_lines[i] = new_line;
+            }
+
+            File.WriteAllLines("Resources\\New_CP_data.txt", new_lines);
         }
 
         void CreateGameObjectsFromCPList()
@@ -225,14 +277,14 @@ namespace Scripting
             Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
             string[] result = data.Split(' ');
 
-            Vector3 offset = new Vector3(0, 1.0f, 0);
+            Vector3 offset = new Vector3(0, 5.0f, 0);
 
             transform.Position.X = float.Parse(result[0]) + offset.X;
             transform.Position.Y = float.Parse(result[1]) + offset.Y;
             transform.Position.Z = float.Parse(result[2]) + offset.Z;
 
             transform.Rotation.X = float.Parse(result[3]);
-            transform.Rotation.Y = float.Parse(result[4]);
+            transform.Rotation.Y = 180.0f - float.Parse(result[4]);
             transform.Rotation.Z = float.Parse(result[5]);
             return transform;
         }

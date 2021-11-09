@@ -8,7 +8,7 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : "0",
+			"collisionLayer" : "ENEMY PROJECTILES",
 			"extends" : 
 			[
 				0.10000000149011612,
@@ -32,7 +32,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.91969680786132813,
+				0.91969680786132812,
 				0.40465116500854492
 			],
 			"RenderModel" : 

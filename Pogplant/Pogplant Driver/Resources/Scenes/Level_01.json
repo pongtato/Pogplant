@@ -269,9 +269,9 @@
 			],
 			"RenderModel" : 
 			[
-				"CockPit",
-				"Resources/Models\\Level",
-				"CockPit_Body"
+				"Player_Ship",
+				"Resources/Models\\Ship",
+				"Player_Ship_Base"
 			],
 			"UseLight" : 1
 		},
@@ -295,9 +295,9 @@
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				179.99989318847656,
+				0.93061387538909912,
+				179.99989318847656
 			],
 			"m_scale" : 
 			[
