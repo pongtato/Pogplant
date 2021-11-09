@@ -25,7 +25,7 @@ namespace Scripting
 
 
 	// Only checking the bound for player to it's parent and will not work anywhere else
-	int CheckBounds(glm::vec3 _Position)
+	int CheckBounds(glm::vec3 _Position, glm::vec3 _Velocity)
 	{
 		std::string parent{ "PlayerBox" };
 		entt::entity parent_box = GameplayECS::m_GameScriptECS->FindEntityWithName(parent);
@@ -35,9 +35,11 @@ namespace Scripting
 			glm::vec3 max_bound = boxcollider_comp->extends;
 			glm::vec3 min_bound = -(max_bound);
 			int value = 0;
-			if (_Position.x > max_bound.x || _Position.x < min_bound.x)
+			//Check to position + input velocity + current velocity together
+			glm::vec3 future_pos = _Position + _Velocity;
+			if (future_pos.x > max_bound.x || future_pos.x < min_bound.x)
 				value |= 1;
-			if (_Position.y > max_bound.y || _Position.y < min_bound.y)
+			if (future_pos.y > max_bound.y || future_pos.y < min_bound.y)
 				value |= 2;
 			return value;
 		}
@@ -75,9 +77,9 @@ namespace Scripting
 			//Turns the camera left,right (-180, 180);
 			auto box_y_rot = box_pos->m_rotation.y;
 
-			cam_comp->m_Yaw = box_y_rot - 90.f;
+			cam_comp->m_Yaw = box_y_rot - 90.f + -_Rotation.y;
 			//std::cout << "Yaw: " << cam_comp->m_Yaw << std::endl;
-			cam_comp->m_Pitch = box_x_rot;
+			cam_comp->m_Pitch = box_x_rot + -_Rotation.x;
 
 
 		}

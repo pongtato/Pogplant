@@ -11,7 +11,7 @@ namespace Scripting
     class GameUtilities
     {
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static int CheckBounds(Vector3 _Position);
+        public extern static int CheckBounds(Vector3 _Position, Vector3 _Velocity);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint Instantiate(string name, Vector3 _Position, Vector3 _Rotation);

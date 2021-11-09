@@ -224,29 +224,34 @@ namespace Scripting
             //{
             //    rigidbody.AddForce(new Vector3(horizontal_input, 0.0f, 0.0f));
             //}
+            //transform.Position += force_dir;
             Vector3 direc_vector = new Vector3(horizontal_input, vertical_input, 0);
             direc_vector = Vector3.Normalise(direc_vector);
-            Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
-            //transform.Position += force_dir;
-            rigidbody.AddForce(force_dir);
 
-            switch(GameUtilities.CheckBounds(transform.Position))
+            //Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
+            //rigidbody.AddForce(force_dir);
+
+            switch(GameUtilities.CheckBounds(transform.Position, Vector3.Normalise(rigidbody.velocity) + direc_vector))
             {
                 //Out of X bounds
                 case 1:
                     {
-                        //force_dir.X = 0;
-                        //force_dir.Y = 0;
-                        //force_dir.Z = 0;
-                        //rigidbody.AddImpulseForce(force_dir);
                         //float newX = transform.Position.X - force_dir.X;
                         //transform.Position = new Vector3(newX, transform.Position.Y, transform.Position.Z);
+                        rigidbody.velocity.X = 0f;
+                        direc_vector.X = 0;
+                        Vector3 y_force_dir = direc_vector * movement_speed * dt; // 32 is magic number
+                        rigidbody.AddForce(y_force_dir);
                         break;
                     }
                 case 2:
                     {
                         //float newY = transform.Position.Y - force_dir.Y;
-                       //transform.Position = new Vector3(transform.Position.X, newY, transform.Position.Z);
+                        //transform.Position = new Vector3(transform.Position.X, newY, transform.Position.Z);
+                        rigidbody.velocity.Y = 0f;
+                        direc_vector.Y = 0;
+                        Vector3 x_force_dir = direc_vector * movement_speed * dt; // 32 is magic number
+                        rigidbody.AddForce(x_force_dir);
                         break;
                     }
                 case 3:
@@ -254,11 +259,16 @@ namespace Scripting
                         //float newX = transform.Position.X - force_dir.X;
                         //float newY = transform.Position.Y - force_dir.Y;
                         //transform.Position = new Vector3(newX, newY, transform.Position.Z);
+                        rigidbody.velocity.X = 0f;
+                        rigidbody.velocity.Y = 0f;
+                        direc_vector.X = 0;
+                        direc_vector.Y = 0;
                         break;
                     }
                 default:
                     {
-                        
+                        Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
+                        rigidbody.AddForce(force_dir);
                         break;
                     }
             }
