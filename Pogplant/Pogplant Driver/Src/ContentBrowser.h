@@ -10,8 +10,16 @@ namespace PogplantDriver
 		Directory();
 		void RenderDirectory();
 	private:
+		float pad;
+		float thumbsize;
+		float cellsize;
+		float panelsize;
+		int col_count;
+
 		std::filesystem::path m_AssetPath;
 		std::filesystem::path m_CurrentPath;
+
+		void DrawIndividual(const std::filesystem::directory_entry& _entry);
 
 	};
 }

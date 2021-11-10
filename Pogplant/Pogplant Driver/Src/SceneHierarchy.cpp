@@ -79,6 +79,11 @@ namespace PogplantDriver
 				if (ImGui::MenuItem("Load Model"))
 					m_Loading = true;
 
+				////testing stuffs for new prefab load
+				//if (ImGui::MenuItem("Load Prefab 2(test)"))
+				//	LoadPrefab2();
+
+
 				ImGui::EndPopup();
 			}
 
@@ -190,6 +195,22 @@ namespace PogplantDriver
 			}
 			Serializer serialiser{ *m_ECS };
 			serialiser.LoadPrefab(filepath);
+		}
+	}
+
+	void SceneHierarchy::LoadPrefab2()
+	{
+		std::string filepath = Pogplant::FileDialogs::OpenFile("Prefab Files(*.prefab)\0*.prefab\0");
+		if (!filepath.empty())
+		{
+			if (filepath.find(".prefab") == std::string::npos)
+			{
+				std::cout << "Failed to find.prefab file" << std::endl;
+				Pogplant::Logger::Log({ "SceneHiearchy::LoadPreFab",Pogplant::LogEntry::LOGTYPE::ERROR, "Failed to find .prefab file" });
+				return;
+			}
+			Serializer serialiser{ *m_ECS };
+			serialiser.LoadPrefab(filepath, true);
 		}
 	}
 

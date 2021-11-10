@@ -20,6 +20,9 @@ namespace PogplantDriver
 		void SavePrefab(entt::entity _object);
 		void LoadPrefab();
 		void LoadModel();
+
+		//test code for GUID prefab system
+		void LoadPrefab2();
 	private:
 		static bool m_Loading;
 		void ConstructModel
