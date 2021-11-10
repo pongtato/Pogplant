@@ -201,6 +201,12 @@ namespace Components
 		return scale;
 	}
 
+	glm::vec3 Transform::GetForwardVector()
+	{
+		glm::mat4 inverted = glm::inverse(m_ModelMtx);
+		return normalize(glm::vec3(-inverted[2].x, -inverted[2].y, inverted[2].z));
+	}
+
 	void Transform::ComputeLocalMtxes()
 	{
 		computedLocal = true;
