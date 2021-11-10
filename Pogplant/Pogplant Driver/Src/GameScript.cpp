@@ -249,11 +249,27 @@ namespace Scripting
 	float GetPlayerHealth()
 	{
 		entt::entity player = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerShip");
-		float health = SSH::InvokeFunctionWithReturn<float>("PlayerScript", "GetPlayerHealth", player);
+		float health = 0.f;
+		if (player != entt::null)
+		{
+			health = SSH::InvokeFunctionWithReturn<float>("PlayerScript", "GetPlayerHealth", player);
+		}
 		return health;
 	}
 
-	void SetPlayerHealth_UI()
+	float GetPlayerMaxHealth()
+	{
+		entt::entity player = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerShip");
+		float health = 0.f;
+		if (player != entt::null)
+		{
+			health = SSH::InvokeFunctionWithReturn<float>("PlayerScript", "GetPlayerMaxHealth", player);
+		}
+		return health;
+	}
+
+	// Updates the player health UI
+	void UpdatePlayerHealth_UI()
 	{
 		entt::entity hpBar = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("HP_Bar");
 		if (hpBar != entt::null)
@@ -261,19 +277,11 @@ namespace Scripting
 			auto hpTrans = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get< Transform>(hpBar);
 			if (hpTrans != nullptr)
 			{
-				static bool firstRun = true;
-				static float targetScale = 0.0f;
-				static float maxHealth = 0.0f;
-				if (firstRun)
-				{
-					targetScale = hpTrans->m_scale.x;
-					maxHealth = GetPlayerHealth();
-				}
-				else
-				{
-					float healthCalc = GetPlayerHealth() / maxHealth * targetScale;
-					hpTrans->m_scale.x = healthCalc;
-				}
+				static float targetScale = 0.805f;
+				static float maxHealth = GetPlayerMaxHealth();
+				float healthCalc = GetPlayerHealth() / maxHealth * targetScale;
+
+				hpTrans->m_scale.x = healthCalc;
 			}
 		}
 	}

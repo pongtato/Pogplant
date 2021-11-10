@@ -27,6 +27,9 @@ namespace Scripting
         //[MethodImplAttribute(MethodImplOptions.InternalCall)]
         //public extern static void DebugSphere(float pos_x, float pos_y, float pos_z, float camdir_x, float camdir_y, float camdit_z, float _Radius);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void UpdatePlayerHealth_UI();
+
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")
         {
             var id = Instantiate(prefabName, position, rotation);
