@@ -7,6 +7,7 @@ layout (location = 1) out vec3 gNormal;
 layout (location = 2) out vec4 gAlbedoSpec;
 layout (location = 3) out vec4 gNoLight;
 layout (location = 4) out vec3 gEmissive;
+layout (location = 5) out vec3 gShaft;
 
 in vec3 FragPos;
 in vec3 Normal;
@@ -76,4 +77,7 @@ void main()
     {
         gEmissive = vec3(0.0f);
     }
+
+    // Block the light which is using the shaft shader 
+    gShaft = vec3(0.0f);
 }

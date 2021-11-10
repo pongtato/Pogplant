@@ -13,6 +13,7 @@ uniform sampler2D gAlbedoSpec;
 uniform sampler2D gNoLight;
 uniform sampler2D gEmissive;
 uniform sampler2D gShadow;
+uniform sampler2D gShaft;
 
 struct Light 
 {
@@ -39,6 +40,14 @@ uniform DirectionalLight directLight;
 uniform vec3 viewPos;
 uniform int activeLights;
 uniform mat4 m4_LightProjection;
+
+uniform float Decay     = 0.69;
+uniform float Exposure  = 1.0;
+uniform float Density   = 5.0;
+uniform float Weight    = 0.69;
+uniform vec2 ScreenSize;
+uniform vec2 LightScreenPos;
+int NUM_SAMPLES = 100;
 
 float Shadow()
 {
@@ -76,6 +85,43 @@ float Shadow()
     {
         return shadow /= 4.2;
     }
+}
+
+vec4 Shaft()
+{
+    vec2 shaftTex = gl_FragCoord.xy / ScreenSize;
+
+    // Calculate vector from pixel to light source in screen space.
+    vec2 deltaTexCoord = (shaftTex - LightScreenPos);
+
+    // Divide by number of samples and scale by control factor.
+    deltaTexCoord *= 1.0f / NUM_SAMPLES * Density;
+
+    // Store initial sample.
+    vec4 color = texture(gShaft, shaftTex);
+
+    // Set up illumination decay factor.
+    float illuminationDecay = 1.0f;
+
+    // Evaluate summation from Equation 3 NUM_SAMPLES iterations.
+    for (int i = 0; i < NUM_SAMPLES; i++)
+    {
+      // Step sample location along ray.
+      shaftTex -= deltaTexCoord;
+
+      // Retrieve sample at new location.
+      vec4 colorSample = texture(gShaft, shaftTex);
+
+      // Apply sample attenuation scale/decay factors.
+      colorSample *= illuminationDecay * Weight;
+
+      // Accumulate combined color.
+      color += colorSample;
+
+      // Update exponential decay factor.
+      illuminationDecay *= Decay;
+    }
+    return color * Exposure;
 }
 
 void main()
@@ -127,13 +173,14 @@ void main()
     lighting += diffuse + specular;
 
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
+    //outColor += Shaft();
 
     // Output bright bixels for bloom
-    //float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
-    //if(brightness > 0.69f)
-    //    brightColor = vec4(outColor.rgb,1.0);
-    //else
-    //    brightColor = vec4(0.0, 0.0, 0.0, 1.0);
+    float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+    if(brightness > 1.1f)
+        brightColor = vec4(outColor.rgb,1.0);
+    else
+        brightColor = vec4(0.0, 0.0, 0.0, 1.0);
 
-    brightColor = vec4(texture(gEmissive, TexCoords).rgb,1.0);
+    brightColor += vec4(texture(gEmissive, TexCoords).rgb,1.0);
 }
