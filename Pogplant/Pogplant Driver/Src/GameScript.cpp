@@ -195,7 +195,7 @@ namespace Scripting
 
 		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
-		glm::vec4 forward{ 0.f,0.f,-1.f ,0.f };
+		glm::vec4 forward{ 0.f,0.f,1.f ,0.f };
 		glm::vec3 forward_vec = decompose * forward;
 
 		//std::cout << "Forward_vec" << forward_vec.x << ", " << forward_vec.y << ", " << forward_vec.z << std::endl;

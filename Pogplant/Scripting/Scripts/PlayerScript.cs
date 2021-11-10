@@ -99,8 +99,8 @@ namespace Scripting
                 var rand = new Random();
                 Transform location = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
                 //location.Position = ECS.GetGlobalPosition(entityID);
-                //location.Position.X += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
-                //location.Position.Y += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
+                location.Position.X += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
+                location.Position.Y += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
                 location.Position.Z = 30.0f;
                 location.Rotation.Y = 180.0f;
 
