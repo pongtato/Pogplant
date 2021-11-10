@@ -26,11 +26,19 @@
 
 #include <iostream>
 
+#pragma comment(lib, "glu32.lib")
+
 namespace Pogplant
 {
 	bool Renderer::m_RenderGrid = false;
 	float Renderer::m_Exposure = 1.0f;
 	float Renderer::m_Gamma = 2.2f;
+	float Renderer::m_LightShaftDecay = 0.9f;
+	float Renderer::m_LightShaftExposure = 0.2f;
+	float Renderer::m_LightShaftDensity = 0.69f;
+	float Renderer::m_LightShaftWeight = 0.3f;
+	glm::vec3 Renderer::m_LightShaftPos = { -500.0f,500.0f,0.0f };
+	float Renderer::m_LightShaftScale = 10.0f;
 
 	struct CameraReturnData
 	{
@@ -155,8 +163,23 @@ namespace Pogplant
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
 		glActiveTexture(GL_TEXTURE4);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_EMISSIVE_BUFFER]);
-		glActiveTexture(GL_TEXTURE5);
+	/*	glActiveTexture(GL_TEXTURE5);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_SHAFT_BUFFER]);*/
+		glActiveTexture(GL_TEXTURE6);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+
+		/// Shaft pos screen
+		// Editor cam by default;
+		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
+		//auto clipSpace = ret.m_Projection * (ret.m_View * glm::vec4(m_LightShaftPos,1.0f));
+		//auto ndc = glm::vec3{ clipSpace.x,clipSpace.y,clipSpace.z } / clipSpace.w;
+		//auto windowSpace = glm::vec2{ ndc.x + 1.0f, ndc.y + 1.0f } / 2.0f;
+		//ShaderLinker::SetUniform("ScreenSize", glm::vec2{ Window::m_Width, Window::m_Height });
+		//ShaderLinker::SetUniform("LightScreenPos", windowSpace);
+		//ShaderLinker::SetUniform("Decay", m_LightShaftDecay);
+		//ShaderLinker::SetUniform("Exposure", m_LightShaftExposure);
+		//ShaderLinker::SetUniform("Density", m_LightShaftDensity);
+		//ShaderLinker::SetUniform("Weight", m_LightShaftWeight);
 
 		/// Lights
 		// Directional
@@ -200,9 +223,6 @@ namespace Pogplant
 			light_it++;
 		}
 
-		/// Editor cam by default;
-		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
-
 		ShaderLinker::SetUniform("viewPos", ret.m_Position);
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
 		ShaderLinker::UnUse();
@@ -233,8 +253,6 @@ namespace Pogplant
 		glm::mat4 orthogalProj = glm::ortho(-ret.m_Far, ret.m_Far, -ret.m_Far, ret.m_Far, ret.m_Near, ret.m_Far);
 		glm::mat4 lightView = glm::lookAt(lightPos, glm::vec3{ 0 }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 		ShadowCFG::m_LightProj = orthogalProj * lightView;
-
-	
 
 		glEnable(GL_DEPTH_TEST);
 		glViewport(0, 0, ShadowCFG::m_ShadowMapW, ShadowCFG::m_ShadowMapH);
@@ -380,6 +398,9 @@ namespace Pogplant
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();
 
+		// lol xd
+		//glDisable(GL_CULL_FACE);
+		
 		// 3D models
 		ShaderLinker::Use("MODEL_I");
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
@@ -394,6 +415,7 @@ namespace Pogplant
 			}
 		}
 		ShaderLinker::UnUse();
+		//glEnable(GL_CULL_FACE);
 
 		// Primitive shapes
 		ShaderLinker::Use("PRIMITIVE");

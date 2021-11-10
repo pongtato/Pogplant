@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
-
+#include <glm.hpp>
 #include "../../Pogplant Driver/Src/ECS/entt_ecs/entt.hpp"
 
 namespace Components 
@@ -37,6 +37,12 @@ namespace Pogplant
 		static bool m_RenderGrid;
 		static float m_Exposure;
 		static float m_Gamma;
+		static float m_LightShaftDecay;
+		static float m_LightShaftExposure;
+		static float m_LightShaftDensity;
+		static float m_LightShaftWeight;
+		static glm::vec3 m_LightShaftPos;
+		static float m_LightShaftScale;
 	private:
 		static void DrawText(const entt::registry& registry, bool _EditorMode);
 	};

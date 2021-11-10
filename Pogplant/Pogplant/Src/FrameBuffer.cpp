@@ -51,6 +51,8 @@ namespace Pogplant
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_EMISSIVE_BUFFER]);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_SHAFT_BUFFER]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
 		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::G_DEPTH]);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, Window::m_Width, Window::m_Height);
 
@@ -102,6 +104,7 @@ namespace Pogplant
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::G_COLOR_BUFFER]);
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::G_EMISSIVE_BUFFER]);
+		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::G_SHAFT_BUFFER]);
 		glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::G_DEPTH]);
 
 		glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::SHADOW_BUFFER]);
@@ -285,7 +288,8 @@ namespace Pogplant
 		ShaderLinker::SetUniform("gAlbedoSpec", 2);
 		ShaderLinker::SetUniform("gNoLight", 3);
 		ShaderLinker::SetUniform("gEmissive", 4);
-		ShaderLinker::SetUniform("gShadow", 5);
+		//ShaderLinker::SetUniform("gShaft", 5);
+		ShaderLinker::SetUniform("gShadow", 6);
 		ShaderLinker::UnUse();
 
 		unsigned int* frameBuffer = &FBR::m_FrameBuffers[BufferType::G_BUFFER];
@@ -335,9 +339,25 @@ namespace Pogplant
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT4, GL_TEXTURE_2D, *gEmissive, 0);
 
+		unsigned int* gShaft = &FBR::m_FrameBuffers[BufferType::G_SHAFT_BUFFER];
+		glGenTextures(1, gShaft);
+		glBindTexture(GL_TEXTURE_2D, *gShaft);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT5, GL_TEXTURE_2D, *gShaft, 0);
+
 		// tell OpenGL which color attachments we'll use (of this framebuffer) for rendering 
-		unsigned int attachments[5] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3, GL_COLOR_ATTACHMENT4 };
-		glDrawBuffers(5, attachments);
+		unsigned int attachments[6] = 
+		{ 
+			GL_COLOR_ATTACHMENT0,
+			GL_COLOR_ATTACHMENT1,
+			GL_COLOR_ATTACHMENT2,
+			GL_COLOR_ATTACHMENT3,
+			GL_COLOR_ATTACHMENT4,
+			GL_COLOR_ATTACHMENT5
+		};
+		glDrawBuffers(6, attachments);
 
 		// create and attach depth buffer (renderbuffer)
 		unsigned int* rboDepth = &FBR::m_FrameBuffers[BufferType::G_DEPTH];
