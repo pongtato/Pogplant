@@ -400,7 +400,12 @@ namespace Components
 		, m_TexName {_TexName}
 		, m_TexID {0}
 	{
-		auto rawID = PP::TextureResource::m_TexturePool[_TexName];
+		init();
+	}
+
+	void Canvas::init()
+	{
+		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
 		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
 	}
 }
