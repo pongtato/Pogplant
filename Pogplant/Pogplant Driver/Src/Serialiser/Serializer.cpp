@@ -963,8 +963,9 @@ namespace PogplantDriver
 				rttr::variant extracted_value = extract_basic_types(json_index_value);
 				//auto asd = json_index_value.type();
 				//if (extracted_value.convert(array_value_type))
-				if (!view.set_value(i, extracted_value))
-					int k = 0;
+				view.set_value(i, extracted_value);
+				//if (!view.set_value(i, extracted_value))
+				//	int k = 0;
 			}
 		}
 

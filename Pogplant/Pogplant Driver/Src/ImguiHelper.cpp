@@ -420,8 +420,7 @@ namespace PogplantDriver
 
 		if (ImGui::Begin("Prefab"))
 		{
-			int panelsize = ImGui::GetContentRegionAvail().x;
-			int col_count = (int)(panelsize / 80.f);
+			int col_count = (int)(ImGui::GetContentRegionAvail().x / 80.f);
 
 			if (col_count < 1)
 				col_count = 1;
