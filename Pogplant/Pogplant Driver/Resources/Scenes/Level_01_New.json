@@ -308,6 +308,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\ttd.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.50199997425079346
+			}
+		},
 		"Camera" : 
 		{
 			"m_Active" : true,
@@ -332,9 +341,9 @@
 			],
 			"m_rotation" : 
 			[
-				1.9150501184839186e-09,
+				4.4814774113888234e-09,
 				-0.0,
-				-4.6550798771249902e-08
+				-6.3493132529401919e-08
 			],
 			"m_scale" : 
 			[

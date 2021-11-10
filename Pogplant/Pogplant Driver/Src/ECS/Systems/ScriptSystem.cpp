@@ -248,6 +248,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetTransformParent", SSH::SetTransformParent);
 	mono_add_internal_call("Scripting.ECS::GetGlobalPosition", SSH::GetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::GetGlobalRotation", SSH::GetGlobalRotation);
+	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);

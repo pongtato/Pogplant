@@ -71,6 +71,7 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+            ECS.PlayAudio(ECS.FindEntityWithName("PlayerCam"), 0);
         }
 
         public override void Start()

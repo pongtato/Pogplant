@@ -31,6 +31,9 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint SetTransformParent(uint childID, uint parentID);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static uint PlayAudio(uint entityID, uint index);
+
         public static GameObject CreateEntity(string name, Transform transform, string tag = "Untagged")
         {
             uint entityID = CreateEntity(name, transform.Position, transform.Rotation, transform.Scale);

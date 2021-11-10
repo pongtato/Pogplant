@@ -124,6 +124,12 @@ namespace SSH
 		}
 	}
 
+	void PlayAudio(std::uint32_t entity, std::uint32_t index)
+	{
+		const auto& audio_comp = ScriptSystem::GetECS()->GetReg().try_get<Components::AudioSource>(static_cast<entt::entity>(entity));
+		audio_comp->PlayAudio(index);
+	}
+
 	//void AddComponentBoxCollider(unsigned int id, glm::vec3 extends, glm::vec3 centre)
 	//{
 	//	ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::BoxCollider>(static_cast<entt::entity>(id), Components::BoxCollider{extends, centre});
