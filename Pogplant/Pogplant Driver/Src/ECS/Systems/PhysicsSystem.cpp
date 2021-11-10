@@ -313,8 +313,8 @@ void PhysicsSystem::Update(float c_dt)
 	{
 		auto& rigidbody = rigidBodyEntities.get<Components::Rigidbody>(movableColliders);
 
-		if (rigidbody.isKinematic)
-			continue;
+		//if (rigidbody.isKinematic)
+		//	continue;
 
 		auto& transform = rigidBodyEntities.get<Components::Transform>(movableColliders);
 		auto& colliderIdentifier = rigidBodyEntities.get<Components::ColliderIdentifier>(movableColliders);

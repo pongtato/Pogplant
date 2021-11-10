@@ -6,6 +6,7 @@
 #include <typeinfo>
 #include <filesystem>
 
+#include "../Application.h"
 #include "../ECS/Components/Reflection_for_components.h"
 
 using namespace Components;
@@ -425,9 +426,37 @@ namespace PogplantDriver
 				ss << "Clip" << i;
 			} while (audioSource[ss.str()] != Json::nullValue);
 		}
+
+		auto& transform = m_ecs.GetReg().get<Components::Transform>(id);
+		auto boxCollider = m_ecs.GetReg().try_get<Components::BoxCollider>(id);
+		auto sphereCollider = m_ecs.GetReg().try_get<Components::SphereCollider>(id);
+
+		if (boxCollider)
+		{
+			m_ecs.GetReg().emplace<Components::ColliderIdentifier>(
+				id,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
+				boxCollider->isTrigger,
+				Application::GetInstance().m_sPhysicsSystem.GetCollisionLayer(boxCollider->collisionLayer));
+
+			boxCollider->aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider->centre, boxCollider->extends * transform.GetGlobalScale());
+		}
+
+		if (sphereCollider)
+		{
+			m_ecs.GetReg().emplace<Components::ColliderIdentifier>(
+				id,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE,
+				sphereCollider->isTrigger,
+				Application::GetInstance().m_sPhysicsSystem.GetCollisionLayer(sphereCollider->collisionLayer));
+
+			auto tmpScale = transform.GetGlobalScale();
+			sphereCollider->sphere.m_pos = transform.GetGlobalPosition() + sphereCollider->centre;
+			sphereCollider->sphere.m_radius = sphereCollider->radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
+		}
 	}
 
-	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id,int counter)
+	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter)
 	{
 		auto& transform = m_ecs.GetReg().get<Transform>(id);
 		if (!transform.m_children.empty())
