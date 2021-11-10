@@ -38,7 +38,7 @@ namespace Scripting
 
         public float max_rotate_angle = 12.5f;
         public float rotation_speed_horizontal = 1.0f;
-        public float rotation_speed_vertical = 1.0f; 
+        public float rotation_speed_vertical = 1.0f;
         public float revert_speed = 2.0f; // changed from 20
         public float max_dampening_speed = 100.0f;
 
@@ -97,15 +97,7 @@ namespace Scripting
             // Fake enemy encounter press Y to spawn random enemy infront of player
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_Y))
             {
-                var rand = new Random();
-                Transform location = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
-                //location.Position = ECS.GetGlobalPosition(entityID);
-                location.Position.X += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
-                location.Position.Y += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
-                location.Position.Z = 30.0f;
-                location.Rotation.Y = 180.0f;
-
-                enemyManager.InstantiateTempEnemy(location, "Enemy", "PlayerBox");
+                SpawnWave();
             }
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
@@ -165,7 +157,7 @@ namespace Scripting
                     Console.WriteLine("Entity list is empty");
                 }
             }
-            
+
             // Get EntityID example
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_V))
             {
@@ -184,7 +176,7 @@ namespace Scripting
                     Transform transform1 = ECS.GetComponent<Transform>(entityList[0].id);
                     Console.WriteLine("Test Transforms are: " + transform1.Position.X + transform1.Position.Y + transform1.Position.Z);
                 }
-                else 
+                else
                 {
                     Console.WriteLine("Entity list is empty");
                 }
@@ -193,7 +185,7 @@ namespace Scripting
             // Add component example
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_N))
             {
-                if(entityList.Count > 0)
+                if (entityList.Count > 0)
                 {
                     entityList[0].AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
                     entityList[0].AddComponent<Renderer>(new Renderer("Player_Ship"));
@@ -334,6 +326,47 @@ namespace Scripting
             }
         }
 
+        public void SpawnWave()
+        {
+            //var rand = new Random();
+            //Transform location = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
+            //location.Position.X += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
+            //location.Position.Y += (((float)rand.Next() / int.MaxValue) * 10.0f - 5.0f);
+            //location.Position.Z = 30.0f;
+            //location.Rotation.Y = 180.0f;
+
+            Console.WriteLine("Spawn Wave called!");
+
+            float z_value = 30.0f;
+
+            int max_spawns = 3;
+
+            for (int x = -5; x <= 5; x+=2)
+            {
+                for (int y = -5; y <= 5; y+=2)
+                {
+                    if (x != 0 && y != 0 && GetRandFloat() > 0.85f && max_spawns-- >= 0)
+                    {
+                        Transform location = new Transform();
+                        location.Rotation.Y = 180.0f;
+                        location.Position.X = x;
+                        location.Position.Y = y;
+                        location.Position.Z = z_value;
+                        enemyManager.InstantiateTempEnemy(location, "Enemy", "PlayerBox");
+                    }
+                }
+                z_value -= 2.0f;
+            }
+
+        }
+
+        // return float between zero and one
+        float GetRandFloat()
+        {
+            var rand = new Random();
+            return (float)rand.Next() / int.MaxValue;
+        }
+
         public void FixedUpdate()
         {
 
@@ -346,7 +379,7 @@ namespace Scripting
 
         public override void OnTriggerExit(uint id)
         {
-            
+
         }
     }
 }

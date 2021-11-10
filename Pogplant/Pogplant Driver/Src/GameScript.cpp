@@ -180,12 +180,27 @@ namespace Scripting
 		}
 	}
 
+	void TriggerWave(entt::entity& object, entt::entity& other)
+	{
+		const auto& player_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::BoxCollider>(object);
+		const auto& other_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::BoxCollider>(other);
+
+		if (player_collider && other_collider)
+		{
+			if (other_collider->collisionLayer == "PLAYER" && player_collider->collisionLayer == "TRIGGERS")
+			{
+				SSH::InvokeFunction("PlayerScript", "SpawnWave", other);
+			}
+		}
+	}
+
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
 	{
 		auto& object = onTriggerEnterEvent->m_entity1;
 		auto& other = onTriggerEnterEvent->m_entity2;
 
 		PlayerProjectileCollision(object, other);
+		TriggerWave(object, other);
 	}
 	glm::vec3 GetForwardVector(std::uint32_t entityID)
 	{

@@ -37,6 +37,7 @@ PhysicsSystem::PhysicsSystem()
 	CreateCollisionLayer("ENEMY");
 	CreateCollisionLayer("PLAYER PROJECTILES");
 	CreateCollisionLayer("ENEMY PROJECTILES");
+	CreateCollisionLayer("TRIGGERS");
 
 	SetCollisionRule(GetCollisionLayer("PLAYER"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_IGNORE);
@@ -45,7 +46,11 @@ PhysicsSystem::PhysicsSystem()
 	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("ENEMY PROJECTILES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("ENEMY PROJECTILES"), GetCollisionLayer("ENEMY PROJECTILES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("PLAYER PROJECTILES"), GetCollisionLayer("PLAYER PROJECTILES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
-	
+
+	SetCollisionRule(GetCollisionLayer("TRIGGERS"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("PLAYER PROJECTILES"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("ENEMY PROJECTILES"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 
 	m_threads.push_back(std::thread{ &PhysicsSystem::TriggerUpdate, std::ref(*this) });
 }

@@ -25,7 +25,7 @@ namespace Scripting
     // Enemy script class
     public class BaseTurret : MonoBehaviour
     {
-        public Transform[] muzzle_transforms = new Transform[3];
+        public Transform[] muzzle_transforms = new Transform[2];
         public float health = 20.0f;
 
         float fireRate;
@@ -44,7 +44,7 @@ namespace Scripting
         {
             // initialize private variables here
 
-            fireRate = 1 / 3.0f;
+            fireRate = 1 / 2.0f;
             fire_duration = current_fireDuration = 1.0f;
 
             var rand = new Random();
