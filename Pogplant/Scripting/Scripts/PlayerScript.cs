@@ -328,6 +328,7 @@ namespace Scripting
                 {
                     // Call C++ side bullet firing
                     GameUtilities.FirePlayerBullet(entityID, transform.Position, transform.Rotation);
+                    ECS.PlayAudio(ECS.FindEntityWithName("PlayerCam"), 1);
                     p_fire_timer = 0.0f;
                 }
             }

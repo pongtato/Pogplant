@@ -234,9 +234,9 @@ namespace PogplantDriver
 			{
 				Json::Value clipRoot;
 				
-				clipRoot["UpdatePos"] = audio_component->m_audioSources[0].m_update3DPosition;
-				clipRoot["Volume"] = audio_component->m_audioSources[0].m_volume;
-				clipRoot["Dir"] = audio_component->m_audioSources[0].m_fileDir;
+				clipRoot["UpdatePos"] = audio_component->m_audioSources[i].m_update3DPosition;
+				clipRoot["Volume"] = audio_component->m_audioSources[i].m_volume;
+				clipRoot["Dir"] = audio_component->m_audioSources[i].m_fileDir;
 
 				std::stringstream ss;
 				ss << "Clip" << i;
