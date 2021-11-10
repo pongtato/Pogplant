@@ -17,7 +17,7 @@ namespace Scripting
 	//Wrapper for instantiate due to monostring calls
 	std::uint32_t Instantiate(MonoString* name , glm::vec3 _Position, glm::vec3 _Rotation);
 
-	int CheckBounds(glm::vec3 _Position, glm::vec3 _Velocity);
+	int CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity);
 
 	//Only works via checking for  "name" PlayerCam together with PlayerScript
 	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation);

@@ -25,15 +25,17 @@ namespace Scripting
 
 
 	// Only checking the bound for player to it's parent and will not work anywhere else
-	int CheckBounds(glm::vec3 _Position, glm::vec3 _Velocity)
+	int CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity)
 	{
 		std::string parent{ "PlayerBox" };
 		entt::entity parent_box = GameplayECS::m_GameScriptECS->FindEntityWithName(parent);
 		if (parent_box != entt::null)
 		{
+			//GET AND COMPARE GLOBAL DUE TO LOCAL FUNKYNESS
+			auto boxtransform = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(parent_box);
 			auto boxcollider_comp = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(parent_box);
-			glm::vec3 max_bound = boxcollider_comp->extends;
-			glm::vec3 min_bound = -(max_bound);
+			glm::vec3 max_bound = boxtransform->GetGlobalPosition() + boxcollider_comp->extends;
+			glm::vec3 min_bound = boxtransform->GetGlobalPosition() - boxcollider_comp->extends;
 			int value = 0;
 			//Check to position + input velocity + current velocity together
 			glm::vec3 future_pos = _Position + _Velocity;

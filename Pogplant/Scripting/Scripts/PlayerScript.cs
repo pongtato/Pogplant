@@ -230,7 +230,8 @@ namespace Scripting
             //Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
             //rigidbody.AddForce(force_dir);
 
-            switch(GameUtilities.CheckBounds(transform.Position, Vector3.Normalise(rigidbody.velocity) + direc_vector))
+            //Vector3 Override = new Vector3(-transform.Position.X, transform.Position.Y, transform.Position.Z);
+            switch (GameUtilities.CheckBounds(ECS.GetGlobalPosition(entityID), Vector3.Normalise(rigidbody.velocity) + direc_vector))
             {
                 //Out of X bounds
                 case 1:
@@ -287,30 +288,30 @@ namespace Scripting
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            Vector3 Rotation_Concat = Vector3.Zero();
+            //Vector3 Rotation_Concat = Vector3.Zero();
 
-            float adjustedAngle = transform.Rotation.X > 180.0f ? transform.Rotation.X - 360.0f : transform.Rotation.X;
-            current_vertical_dampening = max_rotate_angle / (Math.Abs(adjustedAngle) + (dampening_reduction * dampening_modifier)) * 2f;
-            if ((adjustedAngle > -max_rotate_angle && vertical_input > 0) || (adjustedAngle < max_rotate_angle && vertical_input < 0))
-            {
-                Vector3 Rotatation_Vertical = new Vector3((max_rotate_angle * vertical_input * -current_vertical_dampening * rotation_speed_vertical * dt), 0.0f, 0.0f);
-                Rotation_Concat += Rotatation_Vertical;
-                timeCount = 0;
-            }
+            //float adjustedAngle = transform.Rotation.X > 180.0f ? transform.Rotation.X - 360.0f : transform.Rotation.X;
+            //current_vertical_dampening = max_rotate_angle / (Math.Abs(adjustedAngle) + (dampening_reduction * dampening_modifier)) * 2f;
+            //if ((adjustedAngle > -max_rotate_angle && vertical_input > 0) || (adjustedAngle < max_rotate_angle && vertical_input < 0))
+            //{
+            //    Vector3 Rotatation_Vertical = new Vector3((max_rotate_angle * vertical_input * -current_vertical_dampening * rotation_speed_vertical * dt), 0.0f, 0.0f);
+            //    Rotation_Concat += Rotatation_Vertical;
+            //    timeCount = 0;
+            //}
 
-            adjustedAngle = transform.Rotation.Y > 180.0f ? transform.Rotation.Y - 360.0f : transform.Rotation.Y;
-            current_horizontal_dampening = max_rotate_angle / (Math.Abs(adjustedAngle) + (dampening_reduction * dampening_modifier));
+            //adjustedAngle = transform.Rotation.Y > 180.0f ? transform.Rotation.Y - 360.0f : transform.Rotation.Y;
+            //current_horizontal_dampening = max_rotate_angle / (Math.Abs(adjustedAngle) + (dampening_reduction * dampening_modifier));
 
-            if ((adjustedAngle > -max_rotate_angle && horizontal_input < 0) || (adjustedAngle < max_rotate_angle && horizontal_input > 0))
-            {
-                Vector3 Rotatation_Horizontal = new Vector3(0.0f, (max_rotate_angle * horizontal_input * current_horizontal_dampening * rotation_speed_horizontal * dt), 0.0f);
-                Rotation_Concat += Rotatation_Horizontal;
-                timeCount = 0;
-            }
+            //if ((adjustedAngle > -max_rotate_angle && horizontal_input < 0) || (adjustedAngle < max_rotate_angle && horizontal_input > 0))
+            //{
+            //    Vector3 Rotatation_Horizontal = new Vector3(0.0f, (max_rotate_angle * horizontal_input * current_horizontal_dampening * rotation_speed_horizontal * dt), 0.0f);
+            //    Rotation_Concat += Rotatation_Horizontal;
+            //    timeCount = 0;
+            //}
 
-            transform.Rotation += Rotation_Concat;
-            float adjustedRoll = (transform.Rotation.Y > 180.0f ? transform.Rotation.Y - 360.0f : transform.Rotation.Y) * camera_roll;
-            transform.Rotation = new Vector3(transform.Rotation.X, transform.Rotation.Y, adjustedRoll);
+            //transform.Rotation += Rotation_Concat;
+            //float adjustedRoll = (transform.Rotation.Y > 180.0f ? transform.Rotation.Y - 360.0f : transform.Rotation.Y) * camera_roll;
+            //transform.Rotation = new Vector3(transform.Rotation.X, transform.Rotation.Y, adjustedRoll);
 
 
             //timeCount += dt * ship_follow_rot_speed;
