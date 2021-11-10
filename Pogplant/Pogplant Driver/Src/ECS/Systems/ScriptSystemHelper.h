@@ -16,7 +16,7 @@ namespace SSH
 	std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	std::uint32_t FindEntityWithName(MonoString* name);
 	std::uint32_t FindChildEntityWithName(std::uint32_t parentID, MonoString* name);
-	void GetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
+	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
 	void SetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
 	void SetTransformParent(std::uint32_t childID, std::uint32_t parentID);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index);

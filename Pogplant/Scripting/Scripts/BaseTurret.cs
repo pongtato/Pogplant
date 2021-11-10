@@ -40,6 +40,8 @@ namespace Scripting
         bool isFiring = false;
 
         bool isAlive = true;
+
+        uint disc_id;
         public BaseTurret()
         {
             // initialize private variables here
@@ -54,6 +56,9 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+
+            disc_id = ECS.FindChildEntityWithName(entityID, "Spinning_Disk");
+
             Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
         }
 
@@ -98,6 +103,12 @@ namespace Scripting
                 }
 
             }
+
+            // spin disk
+            Transform disk_transform = ECS.GetComponent<Transform>(disc_id);
+            Vector3 disk_rotation = disk_transform.Rotation;
+            disk_rotation.Y += 90.0f * dt;
+            ECS.SetTransformECS(disc_id, ref disk_transform.Position, ref disk_rotation, ref disk_transform.Scale);
         }
 
         // Call this function to make this enemy start firing
