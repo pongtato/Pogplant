@@ -64,7 +64,6 @@ namespace PogplantDriver
 						SavePrefab(m_CurrentEntity);
 					}
 
-
 					ImGui::EndPopup();
 				}
 			}
@@ -79,7 +78,7 @@ namespace PogplantDriver
 				if (ImGui::MenuItem("Load Model"))
 					m_Loading = true;
 
-				////testing stuffs for new prefab load
+				//testing stuffs for new prefab load
 				//if (ImGui::MenuItem("Load Prefab 2(test)"))
 				//	LoadPrefab2();
 

@@ -26,7 +26,7 @@
 #include <execution>
 
 #include "Application.h"
-
+#include <IconsMaterialDesign.h>
 namespace PogplantDriver
 {
 	//Adds blank text as seperator text to make things look nicer
@@ -417,6 +417,43 @@ namespace PogplantDriver
 		{
 			Panel.get()->Render(m_CurrentEntity);
 		}
+
+		if (ImGui::Begin("Prefab"))
+		{
+			int panelsize = ImGui::GetContentRegionAvail().x;
+			int col_count = (int)(panelsize / 80.f);
+
+			if (col_count < 1)
+				col_count = 1;
+
+			auto _view = m_ecs->view_SHOW_PREFAB<Components::Prefab, Components::Name>();
+
+
+			if (ImGui::BeginTable("##DirectoryTable", col_count))
+			{
+				for (auto& ent : _view)
+				{
+					ImGui::TableNextColumn();
+					ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, { 0.f ,1.f });
+					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
+					ImGui::PushID(6969);
+
+					ImGui::Button(ICON_MD_DESCRIPTION, { 64.f, 64.f });
+
+					ImGui::PopID();
+					ImGui::PopStyleColor();
+					ImGui::PopStyleVar();
+
+					const auto& _name = _view.get<Components::Name>(ent);
+
+					ImGui::TextWrapped(_name.m_name.c_str());
+				}
+
+				ImGui::EndTable();
+			}
+		}
+		ImGui::End();
+
 
 		ImGui::Begin("Inspector");
 		{

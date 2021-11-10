@@ -30,8 +30,8 @@ namespace PogplantDriver
 		ImGui::Button(entry.is_directory() ? ICON_MD_FOLDER : ICON_MD_DESCRIPTION, { thumbsize,thumbsize });
 	
 		ImGui::PopID();
-		ImGui::PopStyleVar();
 		ImGui::PopStyleColor();
+		ImGui::PopStyleVar();
 
 
 		if (ImGui::IsItemHovered() && ImGui::IsMouseDoubleClicked(ImGuiMouseButton_Left))
@@ -73,20 +73,12 @@ namespace PogplantDriver
 				DrawIndividual(entry);
 			}
 
-
 			for (auto& entry : asd)
 				DrawIndividual(entry);
 
 			ImGui::EndTable();
 		}
 		ImGui::End();
-
-		if (ImGui::Begin("Prefab"))
-		{
-
-		}
-		ImGui::End();
-
 	}
 
 
