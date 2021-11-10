@@ -348,6 +348,32 @@ namespace PogplantDriver
 			ImGui_EndMainStatusBar();
 		}
 
+		//Pause button
+		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,6.f });
+		if (ImGui_BeginMainStatusBar())
+		{
+			ImGui::PopStyleVar();
+			ImGui::SetCursorPosY(ImGui::GetFrameHeight() * 0.16f);
+
+			switch (Application::GetInstance().GetPlayState())
+			{
+			case Application::PLAYSTATE::PLAY:
+				if (ImGui::Button(ICON_FA_PAUSE_CIRCLE " Pause"))
+					Application::GetInstance().SetPlayState(Application::PLAYSTATE::PAUSE);
+				break;
+			default:
+				if (ImGui::Button(ICON_FA_PAUSE " Paused"))
+					Application::GetInstance().SetPlayState(Application::PLAYSTATE::PLAY);
+			}
+
+			if (ImGui::Button(ICON_FA_ARROW_CIRCLE_RIGHT " Step"))
+			{
+				Application::GetInstance().SetPlayState(Application::PLAYSTATE::STEPNEXT);
+			}
+
+			ImGui_EndMainStatusBar();
+		}
+
 		//Secondary bar
 		ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, { 0,6.f });
 		if (ImGui_BeginMainStatusBar())

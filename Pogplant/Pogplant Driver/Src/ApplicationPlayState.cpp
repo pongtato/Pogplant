@@ -67,44 +67,57 @@ void Application::UpdatePlayState(float c_dt)
 {
 #ifdef PPD_EDITOR_BUILD
 	m_sPhysicsSystem.UpdateEditor();
+
+	if (m_playState == PLAYSTATE::PLAY || (m_playState == PLAYSTATE::STEPNEXT))
 #endif // PPD_EDITOR_BUILD
-	
-	//Physics dynamic update until fps drops below 30fps
-	m_accumulatedFixedTime += c_dt;
+	{
+		//Physics dynamic update until fps drops below 30fps
+		m_accumulatedFixedTime += c_dt;
 
-	if (m_accumulatedFixedTime < m_minFixedUpdateTime)
-	{
-		m_sPhysicsSystem.Update(m_accumulatedFixedTime);
-		m_sScriptSystem.Update(m_accumulatedFixedTime);
-		m_sScriptSystem.LateUpdate(m_accumulatedFixedTime);
-		m_accumulatedFixedTime = 0.f;
-	}
-	else
-	{
-		while (m_accumulatedFixedTime > m_minFixedUpdateTime)
+		if (m_accumulatedFixedTime < m_minFixedUpdateTime)
 		{
-			m_sPhysicsSystem.Update(m_minFixedUpdateTime);
-			m_sScriptSystem.Update(m_minFixedUpdateTime);
-			m_sScriptSystem.LateUpdate(m_minFixedUpdateTime);
-			m_accumulatedFixedTime -= m_minFixedUpdateTime;
+			m_sPhysicsSystem.Update(m_accumulatedFixedTime);
+			m_sScriptSystem.Update(m_accumulatedFixedTime);
+			m_sScriptSystem.LateUpdate(m_accumulatedFixedTime);
+			m_accumulatedFixedTime = 0.f;
 		}
+		else
+		{
+			while (m_accumulatedFixedTime > m_minFixedUpdateTime)
+			{
+				m_sPhysicsSystem.Update(m_minFixedUpdateTime);
+				m_sScriptSystem.Update(m_minFixedUpdateTime);
+				m_sScriptSystem.LateUpdate(m_minFixedUpdateTime);
+				m_accumulatedFixedTime -= m_minFixedUpdateTime;
+			}
+		}
+
+		m_sGeneralSystem.Update(c_dt);
+		//m_sScriptSystem.Update(c_dt);
+		//m_sScriptSystem.LateUpdate(c_dt);
+		PPF::FileHandler& fh = fh.GetInstance();
+		if (fh.m_Modified)
+		{
+			UpdateModelRef(fh.m_UpdatedName);
+			fh.m_Modified = false;
+			fh.m_ShouldUpdate = true;
+		}
+		fh.UpdateModels();
+
+		/// Most of this should be moved to other files when the engine is developed
+		// Update the transform before drawing
+		UpdateTransforms(c_dt);
+
+#ifdef PPD_EDITOR_BUILD
+		if (m_playState == PLAYSTATE::STEPNEXT)
+			m_playState = PLAYSTATE::PAUSE;
+#endif // PPD_EDITOR_BUILD
 	}
 
-	m_sGeneralSystem.Update(c_dt);
-	//m_sScriptSystem.Update(c_dt);
-	//m_sScriptSystem.LateUpdate(c_dt);
-	PPF::FileHandler& fh = fh.GetInstance();
-	if (fh.m_Modified)
-	{
-		UpdateModelRef(fh.m_UpdatedName);
-		fh.m_Modified = false;
-		fh.m_ShouldUpdate = true;
-	}
-	fh.UpdateModels();
-
-	/// Most of this should be moved to other files when the engine is developed
-	// Update the transform before drawing
-	UpdateTransforms(ImGui::GetIO().DeltaTime);
+#ifdef PPD_EDITOR_BUILD
+	if (m_playState == PLAYSTATE::PAUSE)
+		UpdateTransforms(0.f);
+#endif
 }
 
 /******************************************************************************/
