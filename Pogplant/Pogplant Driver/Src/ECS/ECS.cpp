@@ -123,7 +123,7 @@ entt::entity ECS::FindEntityWithName(std::string _name)
 
 	for (auto& entity : view)
 	{
-		auto name = view.get<Name>(entity);
+		auto& name = view.get<Name>(entity);
 		if (name.m_name == _name)
 			return entity;
 	}
@@ -137,9 +137,11 @@ entt::entity ECS::FindChildEntityWithName(entt::entity parentID, const std::stri
 	auto& transform = m_registry.get<Transform>(parentID);
 	for (auto& entity : transform.m_children)
 	{
-		auto name = m_registry.get<Name>(entity);
+		auto& name = m_registry.get<Name>(entity);
 		if (name.m_name == _name)
-			return FindChildEntityWithName(entity, _name);
+			return entity;
+		else
+			FindChildEntityWithName(entity, _name);
 	}
 
 	return entt::null;
