@@ -222,7 +222,7 @@ namespace Scripting
             bool downPushed = InputUtility.onKeyHeld("DOWN");
 
             if (rightPushed || leftPushed)
-                horizontal_input = (rightPushed ? -1.0f : 0.0f) + (leftPushed ? 1.0f : 0.0f);
+                horizontal_input = (rightPushed ? 1.0f : 0.0f) + (leftPushed ? -1.0f : 0.0f);
             else
                 horizontal_input = -InputUtility.GetAxis("MOVEX");
 

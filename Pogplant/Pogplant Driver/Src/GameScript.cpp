@@ -74,10 +74,9 @@ namespace Scripting
 			//Turns the camera left,right (-180, 180);
 			auto box_y_rot = box_pos->m_rotation.y;
 
-			cam_comp->m_Yaw = -box_y_rot - 90.f + _Rotation.y;
+			cam_comp->m_Yaw = -box_y_rot + 90.f;
 			//std::cout << "Yaw: " << cam_comp->m_Yaw << std::endl;
-			cam_comp->m_Pitch = box_x_rot + _Rotation.x;
-
+			cam_comp->m_Pitch = box_x_rot;
 
 		}
 	}
@@ -88,51 +87,16 @@ namespace Scripting
 		entt::entity player_ship = static_cast<entt::entity>(entityID);
 		auto ship_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_ship);
 
-		glm::mat4 decompose{ 0 };
-		glm::vec3 position{ 0 };
-		if (player_ship != entt::null)
-		{
-			auto ship_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_ship);
-			decompose = ship_trans->m_ModelMtx; // Modlemtx = world.
-			position.x = decompose[3][0];
-			position.y = decompose[3][1];
-			position.z = decompose[3][2];
-
-			decompose[3][0] = 0.f;
-			decompose[3][1] = 0.f;
-			decompose[3][2] = 0.f;
-			float scale_x = glm::length(decompose[0]);
-			float scale_y = glm::length(decompose[1]);
-			float scale_z = glm::length(decompose[2]);
-
-			decompose[0][0] /= scale_x;
-			decompose[0][1] /= scale_x;
-			decompose[0][2] /= scale_x;
-
-			decompose[1][0] /= scale_y;
-			decompose[1][1] /= scale_y;
-			decompose[1][2] /= scale_y;
-
-			decompose[2][0] /= scale_z;
-			decompose[2][1] /= scale_z;
-			decompose[2][2] /= scale_z;
-		}
-		//std::cout << "Position" << position.x << ", " << position.y << ", " << position.z << std::endl;
-
 		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
-		entt::entity bullet = serial.Instantiate("Bullet", ship_trans->GetGlobalPosition(), _Rotation);
+		glm::vec3 forward = ship_trans->GetForwardVector();
+		entt::entity bullet = serial.Instantiate("Bullet", ship_trans->GetGlobalPosition() - glm::vec3{ 0,2.f,0 }, ship_trans->GetGlobalRotation());
 		GameplayECS::m_GameScriptECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Player);
 
 		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
-		//Hardcoded for now
-		glm::vec4 forward{ 0.f, 0.f, -1.f, 0.f };
-		glm::vec3 forward_vec = decompose * forward;
 
-		//std::cout << "Forward_vec" << forward_vec.x << ", " << forward_vec.y << ", " << forward_vec.z << std::endl;
 		//Add power to the shots
-		forward_vec *= 100.f;
-		forward_vec.y *= -1.0f;
-		body->AddImpulseForce(forward_vec);
+		forward *= 100.f;
+		body->AddImpulseForce(forward);
 
 	}
 	void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, bool isTrue)
