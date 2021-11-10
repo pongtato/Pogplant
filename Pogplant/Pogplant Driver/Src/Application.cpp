@@ -186,9 +186,6 @@ void Application::InitialiseDebugObjects()
 	ConstructModel(entity, shipModel, &shipModel->m_Meshes.begin()->second);
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
-	std::unordered_map<std::string, bool> shipScripts;
-	shipScripts["PlayerScript"] = false;
-	entity.AddComponent<Components::Scriptable>(shipScripts);
 	entity.AddComponent<Components::ParticleSystem>
 	(
 		ParticleSystem
@@ -230,9 +227,6 @@ void Application::InitialiseDebugObjects()
 	ConstructModel(entity, enemyModel, &enemyModel->m_Meshes.begin()->second);
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
-	std::unordered_map<std::string, bool> enemyScripts;
-	enemyScripts["BaseTurret"] = false;
-	entity.AddComponent<Components::Scriptable>(enemyScripts);
 
 	/// Light
 	pos = { 7.5f, 15.0f, 20.0f };

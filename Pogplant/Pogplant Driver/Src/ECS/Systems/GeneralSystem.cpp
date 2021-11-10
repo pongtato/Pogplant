@@ -87,7 +87,7 @@ void GeneralSystem::Update(float c_dt)
 		for (size_t i = 0; i < audioSource.m_audioSources.size(); i++)
 		{
 			if (audioSource.m_audioSources[i].m_update3DPosition && audioSource.m_audioSources[i].c_playing)
-				audioSource.m_audioSources[i].c_playing = PPA::AudioEngine::UpdateChannel3DPosition(audioSource.m_audioSources[i].c_channelID, transform.m_position);
+				audioSource.m_audioSources[i].c_playing = PPA::AudioEngine::UpdateChannel3DPosition(audioSource.m_audioSources[i].c_channelID, transform.GetGlobalPosition());
 		}
 	}
 }
