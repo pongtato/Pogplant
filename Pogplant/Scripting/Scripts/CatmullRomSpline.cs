@@ -39,7 +39,7 @@ namespace Scripting
             ReadControlPointsFromFile("Transform_CPs_2.txt");
             //CopyRotation();
             ModCPFile();
-            CreateGameObjectsFromCPList();
+            //CreateGameObjectsFromCPList();
             //WriteControlPointsToFile();
             //Console.WriteLine(controlPointsList.Count);
         }
@@ -115,10 +115,10 @@ namespace Scripting
         void DisplayCatmullRomSpline(int pos)
         {
             //The 4 points we need to form a spline between p1 and p2
-            Vector3 p0 = control_points[ClampListPos(pos - 1)].GetComponent<Transform>().Position;
-            Vector3 p1 = control_points[pos].GetComponent<Transform>().Position;
-            Vector3 p2 = control_points[ClampListPos(pos + 1)].GetComponent<Transform>().Position;
-            Vector3 p3 = control_points[ClampListPos(pos + 2)].GetComponent<Transform>().Position;
+            Vector3 p0 = controlPointsList[ClampListPos(pos - 1)].Position;
+            Vector3 p1 = controlPointsList[pos].Position;
+            Vector3 p2 = controlPointsList[ClampListPos(pos + 1)].Position;
+            Vector3 p3 = controlPointsList[ClampListPos(pos + 2)].Position;
 
             //The start position of the line
             Vector3 lastPos = p1;
@@ -175,10 +175,10 @@ namespace Scripting
         {
             List<Transform> waypoints = new List<Transform>();
             //The 4 points we need to form a spline between p1 and p2
-            Vector3 p0 = control_points[ClampListPos(pos - 1)].GetComponent<Transform>().Position;
-            Vector3 p1 = control_points[pos].GetComponent<Transform>().Position;
-            Vector3 p2 = control_points[ClampListPos(pos + 1)].GetComponent<Transform>().Position;
-            Vector3 p3 = control_points[ClampListPos(pos + 2)].GetComponent<Transform>().Position;
+            Vector3 p0 = controlPointsList[ClampListPos(pos - 1)].Position;
+            Vector3 p1 = controlPointsList[pos].Position;
+            Vector3 p2 = controlPointsList[ClampListPos(pos + 1)].Position;
+            Vector3 p3 = controlPointsList[ClampListPos(pos + 2)].Position;
 
             //Console.WriteLine("p " + 0 + " is at: x = " + p0.X + ", y = " + p0.Y + ", z = " + p0.Z);
             //Console.WriteLine("p " + 1 + " is at: x = " + p1.X + ", y = " + p1.Y + ", z = " + p1.Z);
