@@ -166,5 +166,8 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static bool onKeyReleased(string keyID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static float GetAxis(string axisID);
     }
 }

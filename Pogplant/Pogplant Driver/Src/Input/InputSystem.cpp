@@ -243,6 +243,12 @@ namespace PPI
 		return 0.0f;
 	}
 
+	float InputSystem::GetAxisMono(MonoString* axisID)
+	{
+		const char* _axisID = mono_string_to_utf8(axisID);
+		return GetAxis(_axisID);
+	}
+
 	/******************************************************************************/
 	/*!
 	\brief

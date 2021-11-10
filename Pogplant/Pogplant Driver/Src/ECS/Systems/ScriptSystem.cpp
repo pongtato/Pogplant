@@ -226,6 +226,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.InputUtility::onKeyTriggered(string)", &PPI::InputSystem::onKeyTriggeredMono);
 	mono_add_internal_call("Scripting.InputUtility::onKeyReleased(string)", &PPI::InputSystem::onKeyReleasedMono);
 	mono_add_internal_call("Scripting.InputUtility::onKeyHeld(string)", &PPI::InputSystem::onKeyHeldMono);
+	mono_add_internal_call("Scripting.InputUtility::GetAxis(string)", &PPI::InputSystem::GetAxisMono);
 
 	// Debug Draw
 	mono_add_internal_call("Scripting.DebugDraw::DebugSphere", &Pogplant::DebugDraw::DebugSphere);

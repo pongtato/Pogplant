@@ -436,6 +436,9 @@ namespace PogplantDriver
 				{
 					Reflect_ImGui(transform);
 
+					//auto Forward = transform->GetForwardVector();
+					//CreateDragFloat3("Forward", glm::value_ptr(Forward));
+
 					/*if (ImGui::Button("TESTLMAO"))
 					{
 						transform->SetGlobalPosition({ 0.f, 0.f, 0.f });

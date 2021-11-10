@@ -53,7 +53,7 @@ void Application::EnterPlayState()
 	m_sScriptSystem.SetReload(true);
 	m_sScriptSystem.Init(&m_playECS);
 
-	//This is where it'll be code when transitioning to play state
+	//This is where code is when transitioning to play state
 	m_sPhysicsSystem.InitPlayState();
 }
 
