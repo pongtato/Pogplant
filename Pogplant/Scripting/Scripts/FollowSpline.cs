@@ -98,7 +98,7 @@ namespace Scripting
             follow_speed = speed;
         }
 
-        private float lerpSpeed = 5.0f;
+        private float lerpSpeed = 10.0f;
 
         // This function interpolates the gameobjects transform between the current and next waypoint.
         private void FollowWaypoints(ref Transform transform, ref float dt)

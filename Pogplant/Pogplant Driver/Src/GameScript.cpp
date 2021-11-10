@@ -48,6 +48,7 @@ namespace Scripting
 		return 0;
 	}
 
+	// Position is the player local position, Rotation is player local rotation
 	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation)
 	{
 		//Offset the camera based on the box world position
