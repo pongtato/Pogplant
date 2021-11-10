@@ -24,7 +24,7 @@ namespace Scripting
     public class PlayerScript : MonoBehaviour
     {
 
-        public float movement_speed = 20000.0f;
+        public float movement_speed = 30000.0f;
         private float horizontal_input = 0;
         private float vertical_input = 0;
         private float slowForce = 2.0f;
@@ -67,7 +67,7 @@ namespace Scripting
 
         public PlayerScript()
         {
-            p_fireRate = 1 / 5.0f;
+            p_fireRate = 1 / 10.0f;
 
 
         }
@@ -343,11 +343,11 @@ namespace Scripting
 
             float z_value = 30.0f;
 
-            int max_spawns = 3;
+            int max_spawns = 4;
 
-            for (int x = -5; x <= 5; x+=2)
+            for (int x = -10; x <= 10; x+=5)
             {
-                for (int y = -5; y <= 5; y+=2)
+                for (int y = -10; y <= 10; y+=5)
                 {
                     if (x != 0 && y != 0 && GetRandFloat() > 0.85f && max_spawns-- >= 0)
                     {

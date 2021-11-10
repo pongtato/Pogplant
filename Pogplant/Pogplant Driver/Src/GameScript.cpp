@@ -96,7 +96,7 @@ namespace Scripting
 		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
 
 		//Add power to the shots
-		forward *= 100.f;
+		forward *= 1000.f;
 		body->AddImpulseForce(forward);
 
 	}

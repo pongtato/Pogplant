@@ -277,9 +277,9 @@ namespace Scripting
             Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
             string[] result = data.Split(' ');
 
-            Vector3 offset = new Vector3(0, 5.0f, 0);
+            Vector3 offset = new Vector3(0, 2.0f, 0);
 
-            float scale = 1.0f;
+            float scale = 10.0f;
 
             transform.Position.X = (float.Parse(result[0]) + offset.X) * scale;
             transform.Position.Y = (float.Parse(result[1]) + offset.Y) * scale;

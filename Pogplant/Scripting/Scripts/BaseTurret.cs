@@ -25,7 +25,7 @@ namespace Scripting
     // Enemy script class
     public class BaseTurret : MonoBehaviour
     {
-        public Transform[] muzzle_transforms = new Transform[2];
+        public Transform[] muzzle_transforms = new Transform[1];
         public float health = 20.0f;
 
         float fireRate;
