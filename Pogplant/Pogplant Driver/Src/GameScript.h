@@ -29,6 +29,8 @@ namespace Scripting
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
 
 	glm::vec3 GetForwardVector(std::uint32_t entityID);
+
+	float GetPlayerHealth();
 }
 
 #endif

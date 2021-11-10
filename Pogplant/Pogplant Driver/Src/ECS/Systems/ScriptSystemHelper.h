@@ -37,9 +37,15 @@ namespace SSH
 
 	void InvokeFunction(const std::string& scriptName, const std::string& funcName, const entt::entity& entity);
 
+	template <typename T>
+	T InvokeFunctionWithReturn(const std::string& scriptName, const std::string& funcName, const entt::entity& entity);
+
 	// Please check if the entity exists with scriptable component before calling this function
 	template<typename ...Args>
 	inline void InvokeFunction(const std::string& scriptName, const std::string& funcName, const entt::entity& entity, Args&&... args);
+
+	template<typename T, typename ...Args>
+	inline T InvokeFunctionWithReturn(const std::string& scriptName, const std::string& funcName, const entt::entity& entity, Args&&... args);
 
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
 	void OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent);

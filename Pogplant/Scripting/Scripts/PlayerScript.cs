@@ -50,6 +50,7 @@ namespace Scripting
 
         private float timeCount;
         public float ship_follow_rot_speed;
+        public float health = 100.0f;
 
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
@@ -380,6 +381,11 @@ namespace Scripting
         public override void OnTriggerExit(uint id)
         {
 
+        }
+
+        public float GetPlayerHealth()
+        {
+            return health;
         }
     }
 }

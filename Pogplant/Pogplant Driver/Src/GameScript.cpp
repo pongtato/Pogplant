@@ -28,6 +28,7 @@ namespace Scripting
 	// Only checking the bound for player to it's parent and will not work anywhere else
 	int CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity)
 	{
+		std::cout << "Player Health Is: " << GetPlayerHealth() << std::endl;
 		std::string parent{ "PlayerBox" };
 		entt::entity parent_box = GameplayECS::m_GameScriptECS->FindEntityWithName(parent);
 		if (parent_box != entt::null)
@@ -205,7 +206,20 @@ namespace Scripting
 	glm::vec3 GetForwardVector(std::uint32_t entityID)
 	{
 		auto transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(static_cast<entt::entity>(entityID));
-		glm::vec3 fv = transform->GetForwardVector();
+		glm::vec3 fv{ 0.f };
+
+		if (transform)
+		{
+			fv = transform->GetForwardVector();
+		}
+		
 		return fv;
+	}
+
+	float GetPlayerHealth()
+	{
+		entt::entity player = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerShip");
+		float health = SSH::InvokeFunctionWithReturn<float>("PlayerScript", "GetPlayerHealth", player);
+		return health;
 	}
 }
