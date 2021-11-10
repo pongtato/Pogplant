@@ -7,6 +7,7 @@
 #include "../Src/ECS/Systems/ScriptSystemHelper.h"
 #include "../Src/Serialiser/Serializer.h"
 #include "GameScript.h"
+#include "Application.h"
 
 ECS* Scripting::GameplayECS::m_GameScriptECS;
 namespace PPD = PogplantDriver;
@@ -34,15 +35,14 @@ namespace Scripting
 			//GET AND COMPARE GLOBAL DUE TO LOCAL FUNKYNESS
 			auto boxtransform = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(parent_box);
 			auto boxcollider_comp = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(parent_box);
-			glm::vec3 max_bound = boxtransform->GetGlobalPosition() + boxcollider_comp->extends;
-			glm::vec3 min_bound = boxtransform->GetGlobalPosition() - boxcollider_comp->extends;
 			int value = 0;
-			//Check to position + input velocity + current velocity together
 			glm::vec3 future_pos = _Position + _Velocity;
-			if (future_pos.x > max_bound.x || future_pos.x < min_bound.x)
+			if (future_pos.x > boxcollider_comp->aabb.m_max.x || future_pos.x < boxcollider_comp->aabb.m_min.x)
 				value |= 1;
-			if (future_pos.y > max_bound.y || future_pos.y < min_bound.y)
+			if (future_pos.y > boxcollider_comp->aabb.m_max.y || future_pos.y < boxcollider_comp->aabb.m_min.y)
 				value |= 2;
+			if (future_pos.z > boxcollider_comp->aabb.m_max.z || future_pos.z < boxcollider_comp->aabb.m_min.z)
+				value |= 4;
 			return value;
 		}
 		return 0;
@@ -228,5 +228,11 @@ namespace Scripting
 		auto& other = onTriggerEnterEvent->m_entity2;
 
 		PlayerProjectileCollision(object, other);
+	}
+	glm::vec3 GetForwardVector(std::uint32_t entityID)
+	{
+		auto transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(static_cast<entt::entity>(entityID));
+		glm::vec3 fv = transform->GetForwardVector();
+		return fv;
 	}
 }

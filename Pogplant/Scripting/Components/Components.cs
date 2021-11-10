@@ -43,6 +43,9 @@ namespace Scripting
             Position = position;
             Rotation = rotation;
         }
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetForwardVector(uint entityID);
     }
 
     [StructLayout(LayoutKind.Sequential)]

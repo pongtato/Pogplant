@@ -215,64 +215,47 @@ namespace Scripting
                 //Console.WriteLine("S key is released");
             }
 
+            bool rightPushed = InputUtility.onKeyHeld("RIGHT");
+            bool leftPushed = InputUtility.onKeyHeld("LEFT");
+            bool upPushed = InputUtility.onKeyHeld("UP");
+            bool downPushed = InputUtility.onKeyHeld("DOWN");
 
-            horizontal_input = (InputUtility.onKeyHeld("RIGHT") ? -1.0f : 0.0f) + (InputUtility.onKeyHeld("LEFT") ? 1.0f : 0.0f);
-            vertical_input = (InputUtility.onKeyHeld("UP") ? 1.0f : 0.0f) + (InputUtility.onKeyHeld("DOWN") ? -1.0f : 0.0f);
+            if (rightPushed || leftPushed)
+                horizontal_input = (rightPushed ? -1.0f : 0.0f) + (leftPushed ? 1.0f : 0.0f);
+            else
+                horizontal_input = -InputUtility.GetAxis("MOVEX");
 
-            //if(rigidbody.velocity.X < maxSpeed && horizontal_input > 0.0f || rigidbody.velocity.X > -maxSpeed && horizontal_input < 0.0f)
-            //{
-            //    rigidbody.AddForce(new Vector3(horizontal_input, 0.0f, 0.0f));
-            //}
-            //transform.Position += force_dir;
-            Vector3 direc_vector = new Vector3(-horizontal_input, vertical_input, 0);
-            direc_vector = Vector3.Normalise(direc_vector);
+            if (upPushed || downPushed)
+                vertical_input = (upPushed ? 1.0f : 0.0f) + (downPushed ? -1.0f : 0.0f);
+            else
+                vertical_input = -InputUtility.GetAxis("MOVEY");
 
-            //Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
-            //rigidbody.AddForce(force_dir);
+            Vector3 up_vec = new Vector3(0.0f, 1.0f, 0.0f);
+            Vector3 direc_vector = Vector3.CrossProduct(Transform.GetForwardVector(entityID), up_vec) * horizontal_input;
+            direc_vector += (up_vec * vertical_input);
 
-            //Vector3 Override = new Vector3(-transform.Position.X, transform.Position.Y, transform.Position.Z);
-            switch (GameUtilities.CheckBounds(ECS.GetGlobalPosition(entityID), Vector3.Normalise(rigidbody.velocity) + direc_vector))
+            int result = GameUtilities.CheckBounds(ECS.GetGlobalPosition(entityID), Vector3.Normalise(rigidbody.velocity) + direc_vector);
+
+            if ((result&1) != 0)
             {
-                //Out of X bounds
-                case 1:
-                    {
-                        //float newX = transform.Position.X - force_dir.X;
-                        //transform.Position = new Vector3(newX, transform.Position.Y, transform.Position.Z);
-                        rigidbody.velocity.X = 0f;
-                        direc_vector.X = 0;
-                        Vector3 y_force_dir = direc_vector * movement_speed * dt; // 32 is magic number
-                        rigidbody.AddForce(y_force_dir);
-                        break;
-                    }
-                case 2:
-                    {
-                        //float newY = transform.Position.Y - force_dir.Y;
-                        //transform.Position = new Vector3(transform.Position.X, newY, transform.Position.Z);
-                        rigidbody.velocity.Y = 0f;
-                        direc_vector.Y = 0;
-                        Vector3 x_force_dir = direc_vector * movement_speed * dt; // 32 is magic number
-                        rigidbody.AddForce(x_force_dir);
-                        break;
-                    }
-                case 3:
-                    {
-                        //float newX = transform.Position.X - force_dir.X;
-                        //float newY = transform.Position.Y - force_dir.Y;
-                        //transform.Position = new Vector3(newX, newY, transform.Position.Z);
-                        rigidbody.velocity.X = 0f;
-                        rigidbody.velocity.Y = 0f;
-                        direc_vector.X = 0;
-                        direc_vector.Y = 0;
-                        break;
-                    }
-                default:
-                    {
-                        Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
-                        rigidbody.AddForce(force_dir);
-                        break;
-                    }
+                rigidbody.velocity.X = 0f;
+                direc_vector.X = 0;
             }
 
+            if ((result & 2) != 0)
+            {
+                rigidbody.velocity.Y = 0f;
+                direc_vector.Y = 0;
+            }
+
+            if ((result & 4) != 0)
+            {
+                rigidbody.velocity.Z = 0f;
+                direc_vector.Z = 0;
+            }
+
+            Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
+            rigidbody.AddForce(force_dir);
 
             float maxslowforce = rigidbody.velocity.magnitude();
             if (Math.Abs(maxslowforce) <= float.Epsilon)

@@ -256,7 +256,10 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameObject::AddComponentSphereCollider", SSH::AddComponentSphereCollider);
 	mono_add_internal_call("Scripting.GameObject::AddScript", SSH::AddScript);
 
+	// For Components
 	mono_add_internal_call("Scripting.ComponentHelper::GetModelKeysIC", SSH::GetModelKeysIC);
+	mono_add_internal_call("Scripting.Transform::GetForwardVector", Scripting::GetForwardVector);
+	
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)

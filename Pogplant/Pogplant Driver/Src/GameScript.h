@@ -27,6 +27,8 @@ namespace Scripting
 	void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, bool isTrue = false);
 
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
+
+	glm::vec3 GetForwardVector(std::uint32_t entityID);
 }
 
 #endif

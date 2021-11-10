@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace Scripting
 {
@@ -130,6 +131,17 @@ namespace Scripting
             }
             float  t = Math.Min(1f, maxDegreesDelta / angle);
             return Lerp(from, to, t);
+        }
+
+        public static Vector3 CrossProduct(Vector3 v1, Vector3 v2)
+        {
+            Single x, y, z;
+            x = v1.Y * v2.Z - v2.Y * v1.Z;
+            y = (v1.X * v2.Z - v2.X * v1.Z) * -1;
+            z = v1.X * v2.Y - v2.X * v1.Y;
+
+            var rtnvector = new Vector3(x, y, z);
+            return rtnvector;
         }
     }
 }
