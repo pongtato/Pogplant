@@ -50,7 +50,7 @@ namespace Scripting
 
         private float timeCount;
         public float ship_follow_rot_speed;
-        public float health = 100.0f;
+        public float health = 300.0f;
 
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
@@ -61,6 +61,8 @@ namespace Scripting
         public List<GameObject> entityList = new List<GameObject>();
         public List<Tuple<GameObject, GameObject>> childList = new List<Tuple<GameObject, GameObject>>();
         EnemyManager enemyManager = new EnemyManager();
+
+        bool isAlive = true;
 
         public PlayerScript()
         {
@@ -386,6 +388,28 @@ namespace Scripting
         public float GetPlayerHealth()
         {
             return health;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            if (health > 0)
+                health -= damage;
+            if (health <= 0)
+                HandleDeath();
+
+            Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
+        }
+
+        void HandleDeath()
+        {
+
+            // This is a hardcoded way of destroying this instance, need to be replaced!
+            if (isAlive)
+            {
+                Console.WriteLine("Player (id: " + entityID + ") has died");
+                ECS.DestroyEntity(entityID);
+                isAlive = false;
+            }
         }
     }
 }

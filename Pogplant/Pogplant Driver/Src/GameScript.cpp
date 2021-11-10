@@ -166,6 +166,9 @@ namespace Scripting
 
 	void PlayerProjectileCollision(entt::entity& object, entt::entity& other)
 	{
+		if (!GameplayECS::m_GameScriptECS->GetReg().valid(object) || !GameplayECS::m_GameScriptECS->GetReg().valid(other))
+			return;
+
 		const auto& player_projectile_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(object);
 		const auto& enemy_object_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(other);
 
@@ -181,8 +184,31 @@ namespace Scripting
 		}
 	}
 
+	void EnemyProjectileCollision(entt::entity& object, entt::entity& other)
+	{
+		if (!GameplayECS::m_GameScriptECS->GetReg().valid(object) || !GameplayECS::m_GameScriptECS->GetReg().valid(other))
+			return;
+
+		const auto& enemy_projectile_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(object);
+		const auto& player_object_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(other);
+
+		if (enemy_projectile_script && player_object_script)
+		{
+			bool player = player_object_script->m_ScriptTypes.contains("PlayerScript");
+			if (enemy_projectile_script->m_Ownertype == Projectile::OwnerType::Enemy && player)
+			{
+				GameplayECS::m_GameScriptECS->DestroyEntity(object);
+				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
+				SSH::InvokeFunction("PlayerScript", "TakeDamage", other, enemy_projectile_script->m_Damage);
+			}
+		}
+	}
+
 	void TriggerWave(entt::entity& object, entt::entity& other)
 	{
+		if (!GameplayECS::m_GameScriptECS->GetReg().valid(object) || !GameplayECS::m_GameScriptECS->GetReg().valid(other))
+			return;
+
 		const auto& player_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::BoxCollider>(object);
 		const auto& other_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::BoxCollider>(other);
 
@@ -197,10 +223,14 @@ namespace Scripting
 
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
 	{
+		if (!GameplayECS::m_GameScriptECS->GetReg().valid(onTriggerEnterEvent->m_entity1) || !GameplayECS::m_GameScriptECS->GetReg().valid(onTriggerEnterEvent->m_entity2))
+			return;
+
 		auto& object = onTriggerEnterEvent->m_entity1;
 		auto& other = onTriggerEnterEvent->m_entity2;
 
 		PlayerProjectileCollision(object, other);
+		EnemyProjectileCollision(object, other);
 		TriggerWave(object, other);
 	}
 	glm::vec3 GetForwardVector(std::uint32_t entityID)
