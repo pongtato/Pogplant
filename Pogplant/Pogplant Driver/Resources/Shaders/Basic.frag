@@ -6,7 +6,7 @@ in vec4 ColorCoords;
 in vec2 TexCoords;
 flat in int TexID;
 
-uniform sampler2D Textures[64];
+uniform sampler2D Textures[32];
 
 void main() 
 {

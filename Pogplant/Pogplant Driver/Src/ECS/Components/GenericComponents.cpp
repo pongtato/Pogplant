@@ -250,14 +250,18 @@ namespace Components
 		, m_Play{ false }
 		, m_Pause{ false }
 	{
-		m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
+		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
+		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
+		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
 	}
 
 	void ParticleSystem::init()
 	{
 		Clear();
 		m_Pause = false;
-		m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[m_TexName]);
+		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[m_TexName]);
+		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
+		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
 	}
 
 	void ParticleSystem::Spawn(glm::vec3 _Position, glm::vec3 _Direction)
@@ -396,6 +400,7 @@ namespace Components
 		, m_TexName {_TexName}
 		, m_TexID {0}
 	{
-		m_TexID = static_cast<unsigned int>(PP::TextureResource::m_TexturePool[_TexName]);
+		auto rawID = PP::TextureResource::m_TexturePool[_TexName];
+		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
 	}
 }

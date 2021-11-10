@@ -386,9 +386,10 @@ namespace Pogplant
 		// Bind textures
 		for (const auto& it : TextureResource::m_TexturePool)
 		{
-			std::string uniformStr = "Textures[" + std::to_string(it.second) + "]";
-			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(it.second));
-			glActiveTexture(GL_TEXTURE0 + it.second);
+			auto mapped_id = TextureResource::m_UsedTextures[it.second];
+			std::string uniformStr = "Textures[" + std::to_string(mapped_id) + "]";
+			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(mapped_id));
+			glActiveTexture(GL_TEXTURE0 + mapped_id);
 			glBindTexture(GL_TEXTURE_2D, it.second);
 		}
 

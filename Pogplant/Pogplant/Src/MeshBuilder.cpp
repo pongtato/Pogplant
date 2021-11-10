@@ -6,6 +6,7 @@
 #include "Logger.h"
 #include "ModelResource.h"
 #include "TextureLoader.h"
+#include "TextureResource.h"
 #include "Skybox.h"
 
 #include <glew.h>

@@ -11,6 +11,6 @@ namespace Pogplant
 		//static void UseTexture(std::string _TexName);
 		//static int GetUsedTextureID(std::string _TexName);
 		static std::unordered_map<std::string, unsigned int> m_TexturePool;
-		//static std::unordered_map<std::string, int> m_UsedTextures;
+		static std::unordered_map<unsigned int, int> m_UsedTextures;
 	};
 }

@@ -1533,7 +1533,7 @@ namespace PogplantDriver
 				if (ImGui::ImageButton(it.second, ImVec2(64, 64), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
 					_Path = it.first;
-					_TexID = it.second;
+					_TexID = PP::TextureResource::m_UsedTextures[it.second];
 					ImGui::CloseCurrentPopup();
 				}
 				if (ImGui::IsItemHovered())
@@ -1812,9 +1812,11 @@ namespace PogplantDriver
 							std::string* currTexID = &prenderer->m_DiffTex[i];
 							ImGui::Text(currTexID->c_str());
 							ImGui::SameLine();
-							ImGui::Text(std::to_string(PP::TextureResource::m_TexturePool[*currTexID]).c_str());
+							auto rawID = PP::TextureResource::m_TexturePool[*currTexID];
+							ImGui::Text(std::to_string(rawID).c_str());
+
 							// Texture picker
-							if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[*currTexID], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							if (ImGui::ImageButton(rawID, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 							{
 								currPath = currTexID;
 								ImGui::OpenPopup(popuplabel);
@@ -1836,10 +1838,11 @@ namespace PogplantDriver
 							std::string* currTexID = &prenderer->m_SpecTex[i];
 							ImGui::Text(currTexID->c_str());
 							ImGui::SameLine();
-							ImGui::Text(std::to_string(PP::TextureResource::m_TexturePool[*currTexID]).c_str());
+							auto rawID = PP::TextureResource::m_TexturePool[*currTexID];
+							ImGui::Text(std::to_string(rawID).c_str());
 							
 							// Texture picker
-							if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[*currTexID], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							if (ImGui::ImageButton(rawID, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 							{
 								currPath = currTexID;
 								ImGui::OpenPopup(popuplabel);
@@ -1860,10 +1863,11 @@ namespace PogplantDriver
 							std::string* currTexID = &prenderer->m_NormTex[i];
 							ImGui::Text(currTexID->c_str());
 							ImGui::SameLine();
-							ImGui::Text(std::to_string(PP::TextureResource::m_TexturePool[*currTexID]).c_str());
+							auto rawID = PP::TextureResource::m_TexturePool[*currTexID];
+							ImGui::Text(std::to_string(rawID).c_str());
 
 							// Texture picker
-							if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[*currTexID], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							if (ImGui::ImageButton(rawID, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 							{
 								currPath = currTexID;
 								ImGui::OpenPopup(popuplabel);
@@ -1884,10 +1888,11 @@ namespace PogplantDriver
 							std::string* currTexID = &prenderer->m_BumpTex[i];
 							ImGui::Text(currTexID->c_str());
 							ImGui::SameLine();
-							ImGui::Text(std::to_string(PP::TextureResource::m_TexturePool[*currTexID]).c_str());
+							auto rawID = PP::TextureResource::m_TexturePool[*currTexID];
+							ImGui::Text(std::to_string(rawID).c_str());
 
 							// Texture picker
-							if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[*currTexID], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+							if (ImGui::ImageButton(rawID, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 							{
 								currPath = currTexID;
 								ImGui::OpenPopup(popuplabel);
@@ -1963,7 +1968,8 @@ namespace PogplantDriver
 
 				// Texture
 				ImGui::Text("Texture");
-				if (ImGui::ImageButton(pSystem->m_TexID, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+				//auto mappedID = PP::TextureResource::m_UsedTextures[pSystem->m_TexID];
+				if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[pSystem->m_TexName], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
 					ImGui::OpenPopup(popuplabel);
 				}
@@ -2127,7 +2133,7 @@ namespace PogplantDriver
 
 				// Texture
 				ImGui::Text("Texture");
-				if (ImGui::ImageButton(canvas->m_TexID, ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
+				if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[canvas->m_TexName], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
 					ImGui::OpenPopup(popuplabel);
 				}

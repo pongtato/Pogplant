@@ -394,7 +394,6 @@ namespace Pogplant
             return TR::m_TexturePool[extractedPath];
         }
 
-       
         const GLint format = _Alpha ? GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT : GL_COMPRESSED_SRGB_S3TC_DXT1_EXT;
 
         std::string filename = _Directory + '/' + extractedPath;

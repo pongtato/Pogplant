@@ -5,7 +5,7 @@
 namespace Pogplant
 {
 	std::unordered_map<std::string, unsigned int> TextureResource::m_TexturePool;
-    //std::unordered_map<std::string, int> TextureResource::m_UsedTextures;
+    std::unordered_map<unsigned int, int> TextureResource::m_UsedTextures;
 
 	void TextureResource::InitResource()
 	{
@@ -56,13 +56,13 @@ namespace Pogplant
 
         TexLoader::LoadTexture
         (
-            "HP_Inner.dds",
+            "HP_Outer.dds",
             "Resources/Textures/UI"
         );
 
         TexLoader::LoadTexture
         (
-            "HP_Outer.dds",
+            "HP_Inner.dds",
             "Resources/Textures/UI"
         );
 
@@ -119,6 +119,12 @@ namespace Pogplant
             "snow_diff.dds",
             "Resources/Textures/Snow"
         );
+
+        // Compact to index 0
+        for (auto& it : m_TexturePool)
+        {
+            m_UsedTextures[it.second] = static_cast<int>(m_UsedTextures.size());
+        }
 	}
 
     //void TextureResource::UseTexture(std::string _TexName)
