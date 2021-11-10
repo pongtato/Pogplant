@@ -40,7 +40,7 @@ namespace Scripting
         bool isFiring = false;
 
         bool isAlive = true;
-
+        float deathAnimationTime = 4.0f; // seconds
         uint disc_id;
         public BaseTurret()
         {
@@ -109,6 +109,29 @@ namespace Scripting
             Vector3 disk_rotation = disk_transform.Rotation;
             disk_rotation.Y += 90.0f * dt;
             ECS.SetTransformECS(disc_id, ref disk_transform.Position, ref disk_rotation, ref disk_transform.Scale);
+
+            if (!isAlive)
+            {
+                if (deathAnimationTime == 4.0f)
+                {
+                    var rand = new Random();
+                    Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 1000.0f;
+                    rigidbody.useGravity = true;
+                    rigidbody.AddImpulseForce(dir);
+                }
+                deathAnimationTime -= dt;
+                if (deathAnimationTime > 0.0f)
+                {
+                    transform.Rotation.X += 180.0f * dt;
+                    transform.Rotation.Y += 90.0f * dt;
+                    transform.Rotation.Z += 270.0f * dt;
+                }
+                else
+                {
+                    Console.WriteLine("Turret (id: " + entityID + ") has died");
+                    ECS.DestroyEntity(entityID);
+                }
+            }
         }
 
         // Call this function to make this enemy start firing
@@ -134,10 +157,8 @@ namespace Scripting
             // This is a hardcoded way of destroying this instance, need to be replaced!
             if (isAlive)
             {
-                Console.WriteLine("Turret (id: " + entityID + ") has died");
-                ECS.DestroyEntity(entityID);
                 isAlive = false;
-            }    
+            }
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
