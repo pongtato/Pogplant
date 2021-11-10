@@ -38,6 +38,7 @@ PhysicsSystem::PhysicsSystem()
 	CreateCollisionLayer("PLAYER PROJECTILES");
 	CreateCollisionLayer("ENEMY PROJECTILES");
 	CreateCollisionLayer("TRIGGERS");
+	CreateCollisionLayer("OBSTACLES");
 
 	SetCollisionRule(GetCollisionLayer("PLAYER"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_IGNORE);
@@ -51,6 +52,8 @@ PhysicsSystem::PhysicsSystem()
 	SetCollisionRule(GetCollisionLayer("PLAYER PROJECTILES"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("ENEMY PROJECTILES"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+
+	SetCollisionRule(GetCollisionLayer("OBSTACLES"), GetCollisionLayer("OBSTACLES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 
 	m_threads.push_back(std::thread{ &PhysicsSystem::TriggerUpdate, std::ref(*this) });
 }
@@ -75,6 +78,11 @@ void PhysicsSystem::Init(ECS* ecs, std::shared_ptr<PPE::EventBus>& eventBus)
 {
 	m_registry = ecs;
 	m_eventBus = eventBus;
+
+	m_mTriggerQueueMutex.lock();
+	m_triggerList.clear();
+	m_triggerQueue.clear();
+	m_mTriggerQueueMutex.unlock();
 }
 
 void PhysicsSystem::InitPlayState()
@@ -172,16 +180,18 @@ void PhysicsSystem::TriggerUpdate()
 	{
 		//perform busy wait LOL
 		m_hasJob.acquire();
+
+
 		if (!t_EXIT_THREADS /*&& m_hasJob.try_acquire()*/)
 		{
-			auto collidableEntities = m_registry->view<Components::Transform, Components::BoxCollider>();
-			auto movableEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
+			auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
+			auto movableEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
 
 			for (auto _1entity : collidableEntities)
 			{
-				auto& _1collider = collidableEntities.get<Components::BoxCollider>(_1entity);
+				auto& _1colliderIdentifier = collidableEntities.get<Components::ColliderIdentifier>(_1entity);
 
-				if (!_1collider.isTrigger)
+				if (!_1colliderIdentifier.isTrigger)
 					continue;
 
 				//Get list of entities triggered with this
@@ -193,13 +203,16 @@ void PhysicsSystem::TriggerUpdate()
 						continue;
 
 
-					auto& _2collider = movableEntities.get<Components::BoxCollider>(_2entity);
+					auto& _2colliderIdentifier = movableEntities.get<Components::ColliderIdentifier>(_2entity);
 
-					auto collisionRule = GetCollisionRule(m_collisionLayers[_1collider.collisionLayer], m_collisionLayers[_2collider.collisionLayer]);
+					auto collisionRule = GetCollisionRule(_1colliderIdentifier.collisionLayer, _2colliderIdentifier.collisionLayer);
 					if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE)
 						continue;
 
-					if (PhysicsDLC::Collision::StaticAABBAABB(_1collider.aabb, _2collider.aabb))
+					auto _1collider = m_registry->GetReg().try_get<Components::BoxCollider>(_1entity);
+					auto _2collider = m_registry->GetReg().try_get<Components::BoxCollider>(_2entity);
+
+					if (_1collider && _2collider && PhysicsDLC::Collision::StaticAABBAABB(_1collider->aabb, _2collider->aabb))
 					{
 						//If not in the list trigger
 						if (objects.first == objects.second)
@@ -234,6 +247,73 @@ void PhysicsSystem::TriggerUpdate()
 
 			m_shouldContinue.release();
 		}
+
+
+		//if (!t_EXIT_THREADS /*&& m_hasJob.try_acquire()*/)
+		//{
+		//	auto collidableEntities = m_registry->view<Components::Transform, Components::BoxCollider>();
+		//	auto movableEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::BoxCollider>();
+
+		//	for (auto _1entity : collidableEntities)
+		//	{
+		//		auto& _1collider = collidableEntities.get<Components::BoxCollider>(_1entity);
+
+		//		if (!_1collider.isTrigger)
+		//			continue;
+
+		//		//Get list of entities triggered with this
+		//		auto objects = m_triggerList.equal_range(_1entity);
+
+		//		for (auto _2entity : movableEntities)
+		//		{
+		//			if (_1entity == _2entity)
+		//				continue;
+
+
+		//			auto& _2collider = movableEntities.get<Components::BoxCollider>(_2entity);
+
+		//			auto _1identifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(_1entity);
+		//			auto _2identifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(_2entity);
+
+		//			auto collisionRule = GetCollisionRule(_1identifier->collisionLayer, _2identifier->collisionLayer);
+		//			if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE)
+		//				continue;
+
+		//			if (PhysicsDLC::Collision::StaticAABBAABB(_1collider.aabb, _2collider.aabb))
+		//			{
+		//				//If not in the list trigger
+		//				if (objects.first == objects.second)
+		//				{
+		//					SetTrigger(_1entity, _2entity);
+		//				}
+		//				else
+		//				{
+		//					bool shouldCall = true;
+		//					//Find through
+		//					for (auto it = objects.first; it != objects.second; ++it)
+		//					{
+		//						if ((*it).second == _2entity)
+		//						{
+		//							shouldCall = false;
+		//							break;
+		//						}
+		//					}
+
+		//					//Can't find so trigger
+		//					if (shouldCall)
+		//						SetTrigger(_1entity, _2entity);
+		//				}
+		//			}
+		//			else if (objects.first != objects.second)
+		//			{
+		//				if (SetUntrigger(_1entity, _2entity))
+		//					objects = m_triggerList.equal_range(_1entity);
+		//			}
+		//		}
+		//	}
+
+		//	m_shouldContinue.release();
+		//}
 	}
 }
 
@@ -404,16 +484,13 @@ void PhysicsSystem::Update(float c_dt)
 		{
 			auto& queuedAction = m_triggerQueue.back();
 
-			if (std::get<2>(queuedAction))
+			if (queuedAction.onEnter)
 			{
-				auto& entity1 = std::get<0>(queuedAction);
-				auto& entity2 = std::get<1>(queuedAction);
-
-				if (m_registry->GetReg().valid(entity1) && m_registry->GetReg().valid(entity2))
+				if (m_registry->GetReg().valid(queuedAction.entity1) && m_registry->GetReg().valid(queuedAction.entity2))
 					m_eventBus->emit(
 						std::make_shared<PPE::OnTriggerEnterEvent>(
-							entity1,
-							entity2
+							queuedAction.entity1,
+							queuedAction.entity2
 							)
 					);
 
@@ -421,17 +498,13 @@ void PhysicsSystem::Update(float c_dt)
 			}
 			else
 			{
-				auto& entity1 = std::get<0>(queuedAction);
-				auto& entity2 = std::get<1>(queuedAction);
-
-				if (m_registry->GetReg().valid(entity1) && m_registry->GetReg().valid(entity2))
-
-				m_eventBus->emit(
-					std::make_shared<PPE::OnTriggerExitEvent>(
-						entity1,
-						entity2
-						)
-				);
+				if (m_registry->GetReg().valid(queuedAction.entity1) && m_registry->GetReg().valid(queuedAction.entity2))
+					m_eventBus->emit(
+						std::make_shared<PPE::OnTriggerExitEvent>(
+							queuedAction.entity1,
+							queuedAction.entity2
+							)
+					);
 
 				//std::cout << "UnTriggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
 			}

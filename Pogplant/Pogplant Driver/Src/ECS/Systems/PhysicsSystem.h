@@ -53,10 +53,18 @@ public:
 	std::unordered_map<int, std::unordered_map<int, int>> m_collisionMatrix;
 	std::map<std::string, int> m_collisionLayers;
 private:
+	struct QueuedTriggerAction
+	{
+		entt::entity entity1;
+		entt::entity entity2;
+		bool onEnter;
+	};
+
+
 	ECS* m_registry;
 	std::shared_ptr<PPE::EventBus> m_eventBus;
 
-	std::vector<std::tuple<entt::entity, entt::entity, bool>> m_triggerQueue;
+	std::vector<QueuedTriggerAction> m_triggerQueue;
 
 	float m_gravityAcc = -9.81f;
 

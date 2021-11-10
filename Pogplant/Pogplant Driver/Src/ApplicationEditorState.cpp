@@ -83,7 +83,7 @@ void Application::UpdateEditorState(float c_dt)
 
 	/// Most of this should be moved to other files when the engine is developed
 	// Update the transform before drawing
-	UpdateTransforms(ImGui::GetIO().DeltaTime);
+	UpdateTransforms(c_dt);
 }
 
 /******************************************************************************/

@@ -69,7 +69,7 @@ namespace Components
 		};
 
 		bool isTrigger = false;
-		std::string collisionLayer;
+		std::string collisionLayer = "DEFAULT";
 		RTTR_ENABLE();
 	};
 
