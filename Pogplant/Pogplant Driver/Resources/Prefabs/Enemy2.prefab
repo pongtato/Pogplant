@@ -8,7 +8,7 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : 0,
+			"collisionLayer" : "ENEMY",
 			"extends" : 
 			[
 				1.0,
@@ -77,60 +77,10 @@
 		}
 	},
 	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Exhaust_Main"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_01",
-				"Resources/Models\\Enemy",
-				"Exhaust_Main"
-			],
-			"UseLight" : 1
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.54856771230697632,
-				-0.33528086543083191
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Exhaust_Fins"
+			"m_Name" : "Spinning_Disk"
 		},
 		"Render" : 
 		{
@@ -150,7 +100,7 @@
 			[
 				"Enemy_01",
 				"Resources/Models\\Enemy",
-				"Exhaust_Fins"
+				"Spinning_Disk"
 			],
 			"UseLight" : 1
 		},
@@ -159,12 +109,12 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
-				0.0
+				-0.95851993560791016,
+				4.76837158203125e-07
 			],
 			"m_rotation" : 
 			[
-				-90.0,
+				0.0,
 				0.0,
 				0.0
 			],
@@ -211,256 +161,6 @@
 				0.0,
 				-0.46447297930717468,
 				3.0826777219772339e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 4,
-		"Name" : 
-		{
-			"m_Name" : "Gun_Vertical_Pivot"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_01",
-				"Resources/Models\\Enemy",
-				"Gun_Vertical_Pivot"
-			],
-			"UseLight" : 1
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.224241703748703,
-				0.91790628433227539
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Body"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_01",
-				"Resources/Models\\Enemy",
-				"Laser_Body"
-			],
-			"UseLight" : 1
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.9406967163085938e-08,
-				0.59131288528442383,
-				-0.140483558177948
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Fins"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_01",
-				"Resources/Models\\Enemy",
-				"Laser_Fins"
-			],
-			"UseLight" : 1
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				7.4505805969238281e-08,
-				0.35675576329231262,
-				1.4333814382553101
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Rod"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_01",
-				"Resources/Models\\Enemy",
-				"Laser_Rod"
-			],
-			"UseLight" : 1
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				9.0338289737701416e-08,
-				0.59131324291229248,
-				0.34042263031005859
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Studs"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_01",
-				"Resources/Models\\Enemy",
-				"Laser_Studs"
-			],
-			"UseLight" : 1
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.9406967163085938e-08,
-				0.3567543625831604,
-				0.60498690605163574
 			],
 			"m_rotation" : 
 			[
@@ -577,10 +277,10 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 4,
 		"Name" : 
 		{
-			"m_Name" : "Spinning_Disk"
+			"m_Name" : "Gun_Vertical_Pivot"
 		},
 		"Render" : 
 		{
@@ -600,7 +300,7 @@
 			[
 				"Enemy_01",
 				"Resources/Models\\Enemy",
-				"Spinning_Disk"
+				"Gun_Vertical_Pivot"
 			],
 			"UseLight" : 1
 		},
@@ -609,12 +309,312 @@
 			"m_position" : 
 			[
 				0.0,
-				-0.95851993560791016,
-				4.76837158203125e-07
+				0.224241703748703,
+				0.91790628433227539
 			],
 			"m_rotation" : 
 			[
 				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Studs"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Laser_Studs"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				8.9406967163085938e-08,
+				0.3567543625831604,
+				0.60498690605163574
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Rod"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Laser_Rod"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.0338289737701416e-08,
+				0.59131324291229248,
+				0.34042263031005859
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Fins"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Laser_Fins"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				7.4505805969238281e-08,
+				0.35675576329231262,
+				1.4333814382553101
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Body"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Laser_Body"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				8.9406967163085938e-08,
+				0.59131288528442383,
+				-0.140483558177948
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.54856771230697632,
+				-0.33528086543083191
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Fins"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Exhaust_Fins"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-90.0,
 				0.0,
 				0.0
 			],

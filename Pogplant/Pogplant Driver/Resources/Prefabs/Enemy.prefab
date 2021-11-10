@@ -8,7 +8,7 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : "0",
+			"collisionLayer" : "ENEMY",
 			"extends" : 
 			[
 				1.0,
