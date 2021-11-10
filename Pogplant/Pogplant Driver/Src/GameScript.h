@@ -31,6 +31,8 @@ namespace Scripting
 	glm::vec3 GetForwardVector(std::uint32_t entityID);
 
 	float GetPlayerHealth();
+
+	void SetPlayerHealth_UI();
 }
 
 #endif
