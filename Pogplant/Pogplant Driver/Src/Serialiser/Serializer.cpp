@@ -179,6 +179,8 @@ namespace PogplantDriver
 		auto render_component = m_ecs.GetReg().try_get<Renderer>(id);
 		auto script_component = m_ecs.GetReg().try_get<Scriptable>(id);
 		auto audio_component = m_ecs.GetReg().try_get<AudioSource>(id);
+		// To reflect save
+		auto canvas_component = m_ecs.GetReg().try_get<Canvas>(id);
 
 		Try_Save_Component<Transform>(subroot, id);
 		Try_Save_Component<Name>(subroot, id);
@@ -247,6 +249,21 @@ namespace PogplantDriver
 			subroot["AudioSource"] = classRoot;
 		}
 
+		if (canvas_component)
+		{
+			Json::Value canvasroot;
+			Json::Value data(Json::arrayValue);
+
+			data.append(canvas_component->m_Color.x);
+			data.append(canvas_component->m_Color.y);
+			data.append(canvas_component->m_Color.z);
+			data.append(canvas_component->m_Color.w);
+
+			canvasroot["m_Color"] = data;
+			canvasroot["m_TexName"] = canvas_component->m_TexName;
+
+			subroot["Canvas"] = canvasroot;
+		}
 		return subroot;
 	}
 
@@ -282,6 +299,7 @@ namespace PogplantDriver
 		auto& relationship = root["Children"];
 		auto& scripting = root["Scripting"];
 		auto& audioSource = root["AudioSource"];
+		auto& canvas = root["Canvas"];
 
 		if (IsPrefab)
 		{
@@ -453,6 +471,15 @@ namespace PogplantDriver
 			auto tmpScale = transform.GetGlobalScale();
 			sphereCollider->sphere.m_pos = transform.GetGlobalPosition() + sphereCollider->centre;
 			sphereCollider->sphere.m_radius = sphereCollider->radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
+		}
+
+		if (canvas)
+		{
+			glm::vec4 color = CreateVec4(canvas["m_Color"]);
+			std::string text = canvas["m_TexName"].asString();
+
+			
+			m_ecs.GetReg().emplace<Components::Canvas>(id, color, text);
 		}
 	}
 
