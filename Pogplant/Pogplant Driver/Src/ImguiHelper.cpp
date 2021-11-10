@@ -100,10 +100,14 @@ namespace PogplantDriver
 			}
 			
 		}
-
 		if (ImGui::MenuItem("Audio Source", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::AudioSource>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+		if (ImGui::MenuItem("Canvas", NULL, false, adding_enabled))
+		{
+			glm::vec4 color { 1.f,1.f,1.f,1.f };
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "snow_diff.dds");
 		}
 	}
 
