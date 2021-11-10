@@ -6,13 +6,13 @@ in vec4 ColorCoords;
 in vec2 TexCoords;
 flat in int TexID;
 
-uniform sampler2D Textures[32];
+uniform sampler2D Textures[64];
 
 void main() 
 {
     if(TexID >= 0)
     {
-        gNoLight = texture(Textures[int(TexID)],TexCoords);
+        gNoLight = texture(Textures[int(TexID)],vec2(TexCoords.x,1-TexCoords.y));
         gNoLight.rgb *= ColorCoords.rgb;
     }
     else
@@ -20,7 +20,7 @@ void main()
         gNoLight = ColorCoords;
     }  
 
-    if(gNoLight.a < 1.0f)
+    if(gNoLight.a < 0.9f)
     {
          discard;
     }

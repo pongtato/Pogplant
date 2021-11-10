@@ -24,25 +24,53 @@ namespace Pogplant
 
         // Must group all SRGB together
 
-        TexLoader::LoadTextureSRGB
+        TexLoader::LoadTexture
         (
             "ParticleTest.dds",
             "Resources/Textures/Particle"
         );
 
-        TexLoader::LoadTextureSRGB
+        TexLoader::LoadTexture
         (
             "grass_diff.dds",
             "Resources/Textures/Grass"
         );
 
-        TexLoader::LoadTextureSRGB
+        TexLoader::LoadTexture
         (
             "mud_diff.dds",
             "Resources/Textures/Mud"
         );
 
-        // 
+        TexLoader::LoadTexture
+        (
+            "Small_Reticle.dds",
+            "Resources/Textures/UI"
+        );
+
+        TexLoader::LoadTexture
+        (
+            "Hp_Icon.dds",
+            "Resources/Textures/UI"
+        );
+
+        TexLoader::LoadTexture
+        (
+            "HP_Inner.dds",
+            "Resources/Textures/UI"
+        );
+
+        TexLoader::LoadTexture
+        (
+            "HP_Outer.dds",
+            "Resources/Textures/UI"
+        );
+
+        TexLoader::LoadTexture
+        (
+            "Large_Reticle.dds",
+            "Resources/Textures/UI"
+        );
 
         TexLoader::LoadTexture
         (
