@@ -132,7 +132,7 @@ entt::entity ECS::FindEntityWithName(std::string _name)
 }
 
 //returns the first entity with the name
-entt::entity ECS::FindChildEntityWithName(entt::entity parentID, std::string _name)
+entt::entity ECS::FindChildEntityWithName(entt::entity parentID, const std::string& _name)
 {
 	auto& transform = m_registry.get<Transform>(parentID);
 	for (auto& entity : transform.m_children)
@@ -140,6 +140,8 @@ entt::entity ECS::FindChildEntityWithName(entt::entity parentID, std::string _na
 		auto name = m_registry.get<Name>(entity);
 		if (name.m_name == _name)
 			return entity;
+		else
+			FindChildEntityWithName(entity, _name);
 	}
 
 	return entt::null;
