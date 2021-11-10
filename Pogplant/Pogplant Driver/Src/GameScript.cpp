@@ -59,14 +59,7 @@ namespace Scripting
 			auto box_pos = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_box);
 			//std::cout << "Rotation: " << box_pos->m_rotation.x << ", " << box_pos->m_rotation.y << ", " << box_pos->m_rotation.z << std::endl;
 			auto box_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(player_box);
-			//Natural Z forward offset
-			glm::vec3 offset = glm::vec3{ 0,0,-0.f };
-
-			//Concatanate the offsets
-			offset += _Position;
-
-			auto cam_pos = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_cam);
-			cam_pos->m_position = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerShip"))->GetGlobalPosition();// +_Position;// +offset;
+			
 
 			auto cam_comp = GameplayECS::m_GameScriptECS->GetReg().try_get<Camera>(player_cam);
 			//Account for the offset 0.01f that is hardcoded

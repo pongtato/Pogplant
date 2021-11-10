@@ -165,6 +165,7 @@ namespace PPP
 						if (itr->second.UseMiddleDeadzone)
 						{
 							ImGui::SliderFloat("Inner deadzone", &itr->second.lowerDeadzone, 0.001f, 1.f);
+							ImGui::SliderFloat("Outer deadzone", &itr->second.upperDeadzone, 0.001f, 1.f);
 						}
 
 						//Show axis values

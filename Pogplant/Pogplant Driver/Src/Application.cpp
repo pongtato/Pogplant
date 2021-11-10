@@ -389,28 +389,6 @@ void Application::UpdateTransforms(float _Dt)
 {
 	//auto lol_id = m_activeECS->FindEntityWithName("Green light");
 
-	/// Camera tranforms
-	glm::vec3 gameCamPos = glm::vec3{ 0.0f };
-	auto camView = m_activeECS->view<Transform, Camera>();
-	{
-		for (auto& entity : camView)
-		{
-			auto& camera = m_activeECS->GetReg().get<Camera>(entity);
-			auto& transform = m_activeECS->GetReg().get<Transform>(entity);
-
-			// If active update its projection & view;
-			if (camera.m_Active)
-			{
-				gameCamPos = transform.m_position;
-				const glm::vec2 windowSize = { PP::Window::m_Width, PP::Window::m_Height };
-				PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
-				PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
-				PP::Camera::GetUpdatedView(transform.m_position, transform.m_position + camera.m_Front, camera.m_Up, camera.m_View);
-				PPA::AudioEngine::UpdateListenerPosition(transform.m_position, camera.m_Front, camera.m_Up, PhysicsDLC::Vector::Zero);
-			}
-		}
-	}
-
 	// Debug with editor cam
 	//gameCamPos = PP::CameraResource::GetCamera("EDITOR")->m_Position;
 
@@ -432,6 +410,28 @@ void Application::UpdateTransforms(float _Dt)
 
 	//Update transform matrix of all gameobject
 	m_sGeneralSystem.UpdateTransforms();
+
+	/// Camera tranforms
+	glm::vec3 gameCamPos = glm::vec3{ 0.0f };
+	auto camView = m_activeECS->view<Transform, Camera>();
+	{
+		for (auto& entity : camView)
+		{
+			auto& camera = m_activeECS->GetReg().get<Camera>(entity);
+			auto& transform = m_activeECS->GetReg().get<Transform>(entity);
+
+			// If active update its projection & view;
+			if (camera.m_Active)
+			{
+				gameCamPos = transform.GetGlobalPosition();
+				const glm::vec2 windowSize = { PP::Window::m_Width, PP::Window::m_Height };
+				PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
+				PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
+				PP::Camera::GetUpdatedView(gameCamPos, gameCamPos + camera.m_Front, camera.m_Up, camera.m_View);
+				PPA::AudioEngine::UpdateListenerPosition(gameCamPos, camera.m_Front, camera.m_Up, PhysicsDLC::Vector::Zero);
+			}
+		}
+	}
 
 	/// 3D instance transforms
 	// Clear old instance data

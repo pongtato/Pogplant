@@ -49,11 +49,11 @@ namespace PPI
 		InputSystem::Instance().AppendKey("MENULEFT", GLFW_KEY_A, GLFW_GAMEPAD_BUTTON_DPAD_LEFT);
 		InputSystem::Instance().AppendKey("MENURIGHT", GLFW_KEY_D, GLFW_GAMEPAD_BUTTON_DPAD_RIGHT);
 
-		InputSystem::Instance().AppendAxis("MOVEX", GLFW_GAMEPAD_AXIS_LEFT_X, false, true, 0.1f, 0.f);
-		InputSystem::Instance().AppendAxis("MOVEY", GLFW_GAMEPAD_AXIS_LEFT_Y, false, true, 0.1f, 0.f);
+		InputSystem::Instance().AppendAxis("MOVEX", GLFW_GAMEPAD_AXIS_LEFT_X, false, true, 0.2f, 0.f);
+		InputSystem::Instance().AppendAxis("MOVEY", GLFW_GAMEPAD_AXIS_LEFT_Y, false, true, 0.2f, 0.f);
 
-		InputSystem::Instance().AppendAxis("AIMX", GLFW_GAMEPAD_AXIS_RIGHT_X, false, true, 0.1f, 0.f);
-		InputSystem::Instance().AppendAxis("AIMY", GLFW_GAMEPAD_AXIS_RIGHT_Y, false, true, 0.1f, 0.f);
+		InputSystem::Instance().AppendAxis("AIMX", GLFW_GAMEPAD_AXIS_RIGHT_X, false, true, 0.2f, 0.f);
+		InputSystem::Instance().AppendAxis("AIMY", GLFW_GAMEPAD_AXIS_RIGHT_Y, false, true, 0.2f, 0.f);
 
 		GLFWInputManager::Instance().SetActiveWindow(window);
 
@@ -226,19 +226,20 @@ namespace PPI
 			{
 				if (rawAxis < -(*axis).second.lowerDeadzone)
 				{
-					rawAxis *= 2 / (2 - (*axis).second.lowerDeadzone - (*axis).second.lowerDeadzone);
+					rawAxis *= (1.f + ((*axis).second.upperDeadzone + (*axis).second.lowerDeadzone));
 					rawAxis += (*axis).second.lowerDeadzone;
 				}
 				else if (rawAxis > (*axis).second.lowerDeadzone)
 				{
-					rawAxis *= 2 / (2 - (*axis).second.lowerDeadzone - (*axis).second.lowerDeadzone);
+					rawAxis *= (1.f + ((*axis).second.upperDeadzone + (*axis).second.lowerDeadzone));
 					rawAxis -= (*axis).second.lowerDeadzone;
+					
 				}
 				else
 					return 0.0f;
 			}
 
-			return rawAxis;
+			return glm::clamp(rawAxis, -1.f, 1.f);
 		}
 		return 0.0f;
 	}
