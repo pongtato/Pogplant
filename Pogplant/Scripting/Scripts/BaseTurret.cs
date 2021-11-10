@@ -115,9 +115,10 @@ namespace Scripting
                 if (deathAnimationTime == 4.0f)
                 {
                     var rand = new Random();
-                    Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 1000.0f;
-                    rigidbody.useGravity = true;
+                    Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 800.0f;
                     rigidbody.AddImpulseForce(dir);
+                    rigidbody.useGravity = true;
+                    rigidbody.mass = 5000.0f;
                 }
                 deathAnimationTime -= dt;
                 if (deathAnimationTime > 0.0f)

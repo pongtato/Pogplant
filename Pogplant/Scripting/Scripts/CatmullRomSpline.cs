@@ -279,9 +279,11 @@ namespace Scripting
 
             Vector3 offset = new Vector3(0, 5.0f, 0);
 
-            transform.Position.X = float.Parse(result[0]) + offset.X;
-            transform.Position.Y = float.Parse(result[1]) + offset.Y;
-            transform.Position.Z = float.Parse(result[2]) + offset.Z;
+            float scale = 1.0f;
+
+            transform.Position.X = (float.Parse(result[0]) + offset.X) * scale;
+            transform.Position.Y = (float.Parse(result[1]) + offset.Y) * scale;
+            transform.Position.Z = (float.Parse(result[2]) + offset.Z) * scale;
 
             transform.Rotation.X = float.Parse(result[3]);
             transform.Rotation.Y = 180.0f - float.Parse(result[4]);
