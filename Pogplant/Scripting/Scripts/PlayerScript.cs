@@ -50,7 +50,8 @@ namespace Scripting
 
         private float timeCount;
         public float ship_follow_rot_speed;
-        public float health = 300.0f;
+        static public float maxHealth = 300.0f;
+        public float health = maxHealth;
 
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
@@ -390,13 +391,24 @@ namespace Scripting
             return health;
         }
 
+        public float GetPlayerMaxHealth()
+        {
+            return maxHealth;
+        }
+
         public void TakeDamage(float damage)
         {
             if (health > 0)
+            {
                 health -= damage;
-            if (health <= 0)
-                HandleDeath();
+            }
 
+            GameUtilities.UpdatePlayerHealth_UI();
+
+            if (health <= 0)
+            {
+                HandleDeath();
+            }
             Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
         }
 

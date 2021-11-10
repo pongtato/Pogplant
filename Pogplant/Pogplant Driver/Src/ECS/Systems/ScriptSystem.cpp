@@ -237,6 +237,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::FollowPlayerCam", &Scripting::FollowPlayerCam);
 	mono_add_internal_call("Scripting.GameUtilities::FirePlayerBullet", &Scripting::FirePlayerBullet);
 	mono_add_internal_call("Scripting.GameUtilities::FireEnemyBullet", &Scripting::FireEnemyBullet);
+	mono_add_internal_call("Scripting.GameUtilities::UpdatePlayerHealth_UI", &Scripting::UpdatePlayerHealth_UI);
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);

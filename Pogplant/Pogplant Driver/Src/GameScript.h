@@ -30,9 +30,12 @@ namespace Scripting
 
 	glm::vec3 GetForwardVector(std::uint32_t entityID);
 
+	// Get the player healths
 	float GetPlayerHealth();
+	float GetPlayerMaxHealth();
 
-	void SetPlayerHealth_UI();
+	// Updates the player health UI
+	void UpdatePlayerHealth_UI();
 }
 
 #endif
