@@ -46,11 +46,28 @@ namespace PogplantDriver
 			PLAY
 		};
 
+		enum class PLAYSTATE
+		{
+			PLAY,
+			PAUSE,
+			STEPNEXT
+		};
+
 		void TransitionApplicationState(APPLICATIONSTATE c_newState);
+		
+		inline void SetPlayState(PLAYSTATE c_playState)
+		{
+			m_playState = c_playState;
+		}
 
 		inline APPLICATIONSTATE GetState() const
 		{
 			return m_appState;
+		}
+
+		inline PLAYSTATE GetPlayState() const
+		{
+			return m_playState;
 		}
 
 	private:
@@ -124,6 +141,7 @@ namespace PogplantDriver
 
 		APPLICATIONSTATE m_appState = APPLICATIONSTATE::UNDEFINED;
 		APPLICATIONSTATE m_nextAppState = APPLICATIONSTATE::EDITOR;
+		PLAYSTATE m_playState = PLAYSTATE::PLAY;
 		float m_accumulatedFixedTime = 0.f;
 		static constexpr float m_minFixedUpdateTime = 1 / 30.f;
 
