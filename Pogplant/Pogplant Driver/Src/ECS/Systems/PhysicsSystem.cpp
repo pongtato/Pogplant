@@ -387,6 +387,10 @@ void PhysicsSystem::Update(float c_dt)
 		_1transform.SetGlobalPosition(_1rigidbody.newPosition);
 	}
 
+	while (!m_shouldContinue.try_acquire())
+	{
+	}
+
 	if (!m_triggerQueue.empty())
 	{
 		m_mTriggerQueueMutex.lock();
@@ -431,9 +435,5 @@ void PhysicsSystem::Update(float c_dt)
 		}
 
 		m_mTriggerQueueMutex.unlock();
-	}
-
-	while (!m_shouldContinue.try_acquire())
-	{
 	}
 }
