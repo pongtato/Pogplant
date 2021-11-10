@@ -46,6 +46,7 @@ public:
 
 	entt::entity FindEntityWithName(std::string _name);
 	entt::entity FindEntityWithTag(std::string _tag);
+	entt::entity FindChildEntityWithName(entt::entity parentID, std::string _name);
 	//std::vector<entt::entity> FindAllEntityWithName(std::string& _name);
 
 	template<typename... Component, typename... Exclude>

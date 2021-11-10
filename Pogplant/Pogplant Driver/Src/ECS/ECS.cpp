@@ -131,6 +131,21 @@ entt::entity ECS::FindEntityWithName(std::string _name)
 	return entt::null;
 }
 
+//returns the first entity with the name
+entt::entity ECS::FindChildEntityWithName(entt::entity parentID, std::string _name)
+{
+	auto& transform = m_registry.get<Transform>(parentID);
+	for (auto& entity : transform.m_children)
+	{
+		auto name = m_registry.get<Name>(entity);
+		if (name.m_name == _name)
+			return entity;
+	}
+
+	return entt::null;
+}
+
+
 //returns the first entity with the tag
 entt::entity ECS::FindEntityWithTag(std::string _tag)
 {

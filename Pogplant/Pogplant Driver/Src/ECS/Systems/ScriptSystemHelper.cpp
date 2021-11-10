@@ -54,6 +54,12 @@ namespace SSH
 		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->FindEntityWithName(_name));
 	}
 
+	std::uint32_t FindChildEntityWithName(std::uint32_t parentID, MonoString* name)
+	{
+		std::string _name = mono_string_to_utf8(name);
+		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->FindChildEntityWithName(static_cast<entt::entity>(parentID), _name));
+	}
+
 	void GetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale)
 	{
 		auto trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
