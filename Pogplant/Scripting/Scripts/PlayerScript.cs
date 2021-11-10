@@ -237,7 +237,7 @@ namespace Scripting
 
             int result = GameUtilities.CheckBounds(ECS.GetGlobalPosition(entityID), Vector3.Normalise(rigidbody.velocity) + direc_vector);
 
-            if ((result&1) != 0)
+            if ((result & 1) != 0)
             {
                 rigidbody.velocity.X = 0f;
                 direc_vector.X = 0;
@@ -322,7 +322,7 @@ namespace Scripting
             GameUtilities.FollowPlayerCam(transform.Position, transform.Rotation);
 
             p_fire_timer += dt;
-            if ((InputUtility.onKeyTriggered("SHOOT") || (InputUtility.onKeyHeld("SHOOT"))))
+            if ((InputUtility.onKeyHeld("SHOOT")))
             {
                 if (p_fire_timer >= p_fireRate)
                 {

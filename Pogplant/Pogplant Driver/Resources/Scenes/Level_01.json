@@ -187,9 +187,9 @@
 			"collisionLayer" : "0",
 			"extends" : 
 			[
-				10.0,
-				10.0,
-				10.0
+				5.0,
+				6.0,
+				5.0
 			],
 			"isTrigger" : true
 		},
@@ -248,7 +248,7 @@
 			],
 			"isTrigger" : true
 		},
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "PlayerShip"
@@ -269,9 +269,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Player_Ship",
+				"CockPit",
 				"Resources/Models\\Ship",
-				"Player_Ship_Base"
+				"CockPit"
 			],
 			"UseLight" : 1
 		},
@@ -295,19 +295,34 @@
 			],
 			"m_rotation" : 
 			[
-				179.99989318847656,
-				0.93061387538909912,
-				179.99989318847656
+				-0.00012931735545862466,
+				-0.0,
+				-6.3981329731177539e-05
 			],
 			"m_scale" : 
 			[
+				1.0000001192092896,
 				1.0,
-				1.0,
-				1.0
+				1.0000001192092896
 			]
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\chineserapperwow.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.50199997425079346
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Player_Shoot.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.50199997425079346
+			}
+		},
 		"Camera" : 
 		{
 			"m_Active" : true,
@@ -317,6 +332,7 @@
 			"m_Yaw" : -90.0,
 			"m_Zoom" : 45.0
 		},
+		"Children" : 0,
 		"Name" : 
 		{
 			"m_Name" : "PlayerCam"
@@ -325,15 +341,15 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				15.0,
-				0.0
+				9.4436109066009521e-07,
+				0.44000053405761719,
+				-2.0999999046325684
 			],
 			"m_rotation" : 
 			[
-				0.0,
+				3.7232741334491948e-08,
 				-0.0,
-				0.0
+				-1.5391238150641584e-07
 			],
 			"m_scale" : 
 			[
