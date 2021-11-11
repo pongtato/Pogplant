@@ -89,6 +89,7 @@ namespace Components
 			.property("m_Play", &ParticleSystem::m_Play);
 
 		rttr::registration::class_<Canvas>("Canvas")
+			.method("init", &Canvas::init)
 			.property("m_Color", &Canvas::m_Color)
 			.property("m_TexName", &Canvas::m_TexName);
 

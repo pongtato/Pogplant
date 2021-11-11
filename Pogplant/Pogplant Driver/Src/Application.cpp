@@ -402,7 +402,6 @@ void Application::UpdateTransforms(float _Dt)
 		}
 	}
 
-
 	///// TEMP FIX FOR CANVAS ID
 	//auto b_results = m_activeECS->view<Components::Canvas, Components::Transform>();
 	//for (auto& e : b_results)
