@@ -396,11 +396,6 @@ void PhysicsSystem::Update(float c_dt)
 	//Update colliders that move
 	for (auto& movableColliders : rigidBodyEntities)
 	{
-		auto& rigidbody = rigidBodyEntities.get<Components::Rigidbody>(movableColliders);
-
-		//if (rigidbody.isKinematic)
-		//	continue;
-
 		auto& transform = rigidBodyEntities.get<Components::Transform>(movableColliders);
 		auto& colliderIdentifier = rigidBodyEntities.get<Components::ColliderIdentifier>(movableColliders);
 

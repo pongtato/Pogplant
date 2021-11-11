@@ -34,7 +34,6 @@ namespace Scripting
 		if (parent_box != entt::null)
 		{
 			//GET AND COMPARE GLOBAL DUE TO LOCAL FUNKYNESS
-			auto boxtransform = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(parent_box);
 			auto boxcollider_comp = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(parent_box);
 			int value = 0;
 			glm::vec3 future_pos = _Position + _Velocity;

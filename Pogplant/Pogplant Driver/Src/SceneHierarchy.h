@@ -19,6 +19,7 @@ namespace PogplantDriver
 		bool DrawEntityNode(entt::entity  entity, bool draw_childen = false);
 		void SavePrefab(entt::entity _object);
 		void LoadPrefab();
+		void LoadPrefabChild();
 		void LoadModel();
 
 		//test code for GUID prefab system

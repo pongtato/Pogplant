@@ -10,11 +10,11 @@ namespace Scripting
     {
         bool Trigger1 = false;
         uint Trigger1_ID = 0;
-        bool Trigger2 = false;
-        uint Trigger2_ID = 0;
+        //bool Trigger2 = false;
+        //uint Trigger2_ID = 0;
         //List of object you want to move together
         List<uint> Trigger1_parent = new List<uint>();
-        List<uint> Trigger2_parent = new List<uint>();
+        //List<uint> Trigger2_parent = new List<uint>();
         //Map trigger for multiple parents
         Dictionary<uint, List<uint>> Movable = new Dictionary<uint, List<uint>>();
         Vector3 End_Pos_Flock_1 = new Vector3(0);
@@ -96,8 +96,8 @@ namespace Scripting
             Console.WriteLine("Enter");
             if (entityID == Trigger1_ID)
                 Trigger1 = true;
-            if (entityID == Trigger2_ID)
-                Trigger2 = true;
+            //if (entityID == Trigger2_ID)
+            //    Trigger2 = true;
 
         }
         public override void OnTriggerExit(uint id)

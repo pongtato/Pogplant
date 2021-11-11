@@ -4,7 +4,7 @@ namespace SSH
 	template<typename T>
 	T InvokeFunctionWithReturn(const std::string& scriptName, const std::string& funcName, const entt::entity& entity)
 	{
-		T result;
+		T result = NULL;
 		MonoObject* monoObj = ScriptResource::m_MonoObjects[entity][scriptName]->m_MonoObject;
 		if (!monoObj)
 		{
@@ -63,7 +63,7 @@ namespace SSH
 	template<typename T, typename ...Args>
 	inline T InvokeFunctionWithReturn(const std::string& scriptName, const std::string& funcName, const entt::entity& entity, Args&&... args)
 	{
-		T result;
+		T result = NULL;
 		MonoObject* monoObj = ScriptResource::m_MonoObjects[entity][scriptName]->m_MonoObject;
 		if (!monoObj)
 		{
