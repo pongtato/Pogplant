@@ -57,7 +57,6 @@ namespace Scripting
                 foreach(uint parent_id in temp)
                 {
                     Transform id = ECS.GetComponent<Transform>(parent_id);
-                    Console.WriteLine("Anything?" + id.Position.X + "<"+ id.Position.Y + "<" + id.Position.Z);
                     //Do changes
                     id.Rotation.Z += 1.0f;
                     ECS.SetTransformECS(parent_id,ref id.Position, ref id.Rotation,ref id.Scale);
