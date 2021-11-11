@@ -110,12 +110,12 @@ namespace Scripting
 		entt::entity bullet;
 		if (isTrue)
 		{
-			bullet = serial.Instantiate("TrueBullet", enemy_trans->GetGlobalPosition(), enemy_trans->GetGlobalRotation());
+			bullet = serial.Instantiate("TrueBullet", _Position, enemy_trans->GetGlobalRotation());
 			//std::cout << "spawned true bullet" << std::endl;
 		}
 		else
 		{
-			bullet = serial.Instantiate("FalseBullet", enemy_trans->GetGlobalPosition(), enemy_trans->GetGlobalRotation());
+			bullet = serial.Instantiate("FalseBullet", _Position, enemy_trans->GetGlobalRotation());
 			//std::cout << "spawned false bullet" << std::endl;
 		}
 

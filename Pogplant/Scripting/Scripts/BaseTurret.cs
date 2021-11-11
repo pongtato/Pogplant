@@ -122,8 +122,8 @@ namespace Scripting
                         {
                             // Call C++ side bullet firing
                             // hard coded muzzle position
-                            Vector3 offset = new Vector3(0.0f, -1.076f, 0.454f);
-                            GameUtilities.FireEnemyBullet(entityID, transform.Position + offset, transform.Rotation);
+                            
+                            GameUtilities.FireEnemyBullet(entityID, ECS.GetGlobalPosition(entityID) + Transform.GetForwardVector(entityID) * 5f, transform.Rotation);
                         }
                         fire_timer = 0.0f;
                     }
@@ -134,6 +134,10 @@ namespace Scripting
                 Transform disk_transform = ECS.GetComponent<Transform>(disc_id);
                 Vector3 disk_rotation = disk_transform.Rotation;
                 disk_rotation.Y += 90.0f * dt;
+
+                if (disk_rotation.Y > 360f)
+                    disk_rotation.Y -= 360f;
+
                 ECS.SetTransformECS(disc_id, ref disk_transform.Position, ref disk_rotation, ref disk_transform.Scale);
 
                 sineMovement(ref transform, ref dt);

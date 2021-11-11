@@ -40,7 +40,7 @@ void Application::EnterPlayState()
 
 	//Change the default level here
 	Serializer serialiser{ m_playECS };
-	if (!serialiser.Load("Resources/Scenes/Level_01.json"))
+	if (!serialiser.Load("Resources/Scenes/Level_01_Bigger.json"))
 		assert(false);
 #endif
 
