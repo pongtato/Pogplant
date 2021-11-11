@@ -55,12 +55,13 @@ namespace Scripting
 		//Offset the camera based on the box world position
 		entt::entity player_cam = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerCam");
 		entt::entity player_box = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerBox");
+		entt::entity playerShip = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerShip");
 		if (player_cam != entt::null && player_box != entt::null)
 		{
 			auto box_pos = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_box);
 			//std::cout << "Rotation: " << box_pos->m_rotation.x << ", " << box_pos->m_rotation.y << ", " << box_pos->m_rotation.z << std::endl;
-			auto box_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(player_box);
 			
+			auto playerTransform = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(playerShip);
 
 			auto cam_comp = GameplayECS::m_GameScriptECS->GetReg().try_get<Camera>(player_cam);
 			//Account for the offset 0.01f that is hardcoded
@@ -73,7 +74,7 @@ namespace Scripting
 			//Only leave positive values in the Values
 			auto box_x_rot = box_pos->m_rotation.x;
 			//Turns the camera left,right (-180, 180);
-			auto box_y_rot = box_pos->m_rotation.y;
+			auto box_y_rot = box_pos->m_rotation.y + playerTransform->m_rotation.y;
 
 			cam_comp->m_Yaw = -box_y_rot + 90.f;
 			//std::cout << "Yaw: " << cam_comp->m_Yaw << std::endl;
