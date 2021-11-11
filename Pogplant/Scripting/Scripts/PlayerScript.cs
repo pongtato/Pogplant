@@ -332,9 +332,12 @@ namespace Scripting
             }
 
 
-            //Temporary
+            //Ship tilter
+            float relativeVelX = Vector3.Dot(right_vec, rigidbody.velocity);
+            transform.Rotation.Y = -relativeVelX * 0.1f;
+            transform.Rotation.Z = relativeVelX * 0.055f;
+            transform.Rotation.X = -rigidbody.velocity.Y * 0.2f;
 
-            transform.Rotation.Y = -rigidbody.velocity.X * 0.1f;
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
@@ -386,7 +389,7 @@ namespace Scripting
             //    transform.rotation = FollowTarget.transform.rotation;
             //}
 
-            GameUtilities.FollowPlayerCam(transform.Position, transform.Rotation);
+            GameUtilities.FollowPlayerCam(transform.Position, transform.Rotation, dt);
 
             p_fire_timer += dt;
             if ((InputUtility.onKeyHeld("SHOOT")))

@@ -153,5 +153,11 @@ namespace Scripting
 
             return new Vector3(x, y, z);
         }
+
+        //temp for Y only
+        public static Vector3 GetRotationFromVector(Vector3 v1)
+		{
+            return new Vector3(0, -(float)Math.Atan2(v1.Z, v1.X) * 180f/(float)Math.PI + 90f, 0);
+		}
     }
 }

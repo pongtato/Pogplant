@@ -17,7 +17,7 @@ namespace Scripting
         public extern static uint Instantiate(string name, Vector3 _Position, Vector3 _Rotation);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void FollowPlayerCam(Vector3 _Position, Vector3 _Rotation);
+        public extern static void FollowPlayerCam(Vector3 _Position, Vector3 _Rotation, float _deltaTime);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void FirePlayerBullet(uint entityID, Vector3 _Position, Vector3 _Rotation);

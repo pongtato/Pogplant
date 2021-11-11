@@ -20,7 +20,7 @@ namespace Scripting
 	int CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity);
 
 	//Only works via checking for  "name" PlayerCam together with PlayerScript
-	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation);
+	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime);
 
 	void FirePlayerBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation);
 

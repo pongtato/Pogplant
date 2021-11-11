@@ -121,7 +121,6 @@ namespace Scripting
                         for (int i = 0; i < muzzle_transforms.Length; ++i)
                         {
                             // Call C++ side bullet firing
-                            // hard coded muzzle position
                             
                             GameUtilities.FireEnemyBullet(entityID, ECS.GetGlobalPosition(entityID) + Transform.GetForwardVector(entityID) * 5f, transform.Rotation);
                         }
@@ -137,6 +136,8 @@ namespace Scripting
 
                 if (disk_rotation.Y > 360f)
                     disk_rotation.Y -= 360f;
+
+                //transform.Rotation.Y += 120f * dt;
 
                 ECS.SetTransformECS(disc_id, ref disk_transform.Position, ref disk_rotation, ref disk_transform.Scale);
 

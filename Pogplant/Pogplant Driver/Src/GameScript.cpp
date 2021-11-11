@@ -49,7 +49,7 @@ namespace Scripting
 	}
 
 	// Position is the player local position, Rotation is player local rotation
-	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation)
+	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime)
 	{
 		//Offset the camera based on the box world position
 		entt::entity player_cam = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerCam");
@@ -70,14 +70,13 @@ namespace Scripting
 			//cam_comp->m_Pitch  = -box_pos->m_rotation.x +  0 + -_Rotation.x;
 
 
-			//Only leave positive values in the Values
-			auto box_x_rot = box_pos->m_rotation.x;
-			//Turns the camera left,right (-180, 180);
-			auto box_y_rot = box_pos->m_rotation.y + playerTransform->m_rotation.y;
 
-			cam_comp->m_Yaw = -box_y_rot + 90.f;
+			//Turns the camera left,right (-180, 180);
+			auto box_y_rot = -(box_pos->m_rotation.y + playerTransform->m_rotation.y) + 90.f;
+
+			cam_comp->m_Yaw += (box_y_rot - cam_comp->m_Yaw) * _deltaTime * 20.f;
 			//std::cout << "Yaw: " << cam_comp->m_Yaw << std::endl;
-			cam_comp->m_Pitch = box_x_rot;
+			cam_comp->m_Pitch += ((box_pos->m_rotation.x - playerTransform->m_rotation.x) - cam_comp->m_Pitch) * _deltaTime * 20.f;
 
 		}
 	}

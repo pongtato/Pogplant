@@ -116,11 +116,18 @@ namespace Scripting
                 //transform.Rotation = Vector3.Lerp(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
                 //transform.Rotation.Y *= -1.0f;
                 //Console.WriteLine("Rotation: " + transform.Rotation.X + ", " + transform.Rotation.Y + ", " + transform.Rotation.Z);
-                transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
+                //transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
                 //transform.Rotation = Vector3.RotateTowards(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
 
                 //Console.WriteLine("Rotation: " + transform.Rotation.X + ", " + transform.Rotation.Y + ", " + transform.Rotation.Z);
                 //}
+
+
+                //original
+                transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
+
+                //Replacement rotation code
+                //transform.Rotation += (Vector3.GetRotationFromVector(waypoints[current_waypoint_index + 1].Position - waypoints[current_waypoint_index].Position) - transform.Rotation) * rotation_lerp_speed * dt;
             }
         }
         void UpdateCurrentWaypoint(float alpha)
