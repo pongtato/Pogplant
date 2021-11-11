@@ -333,7 +333,8 @@ namespace Components
 		// Lerp
 		const float speedCalc = _Particle.m_Speed.m_Max * (1 - curveSpeed) + _Particle.m_Speed.m_Min * curveSpeed;
 		const float scaleCalc = _Particle.m_Scale.m_Max * (1 - curveScale) + _Particle.m_Scale.m_Min * curveScale;
-		const glm::vec3 scale = glm::vec3{ scaleCalc,scaleCalc,scaleCalc } * _Particle.m_Scale.m_Multiplier;
+		const auto scaleMult = scaleCalc * _Particle.m_Scale.m_Multiplier;
+		const glm::vec3 scale = glm::vec3{ scaleMult,scaleMult,scaleMult };
 
 		// Update position
 		_Particle.m_Velocity += _Dt * _Particle.m_Force;

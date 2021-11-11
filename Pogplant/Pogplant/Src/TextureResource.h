@@ -8,6 +8,7 @@ namespace Pogplant
 	struct TextureResource
 	{
 		static void InitResource();
+		static void ReloadTextures();
 		//static void UseTexture(std::string _TexName);
 		//static int GetUsedTextureID(std::string _TexName);
 		static std::unordered_map<std::string, unsigned int> m_TexturePool;

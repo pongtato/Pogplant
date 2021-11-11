@@ -54,8 +54,7 @@ namespace Pogplant
             {DXGIFmt::BC4_UNorm, 0, GL_COMPRESSED_RED_RGTC1_EXT, sws[0]},
             {DXGIFmt::BC4_SNorm, 0, GL_COMPRESSED_SIGNED_RED_RGTC1_EXT, sws[0]},
             {DXGIFmt::BC5_UNorm, 0, GL_COMPRESSED_RED_GREEN_RGTC2_EXT, sws[0]},
-            {DXGIFmt::BC5_SNorm, 0, GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT,
-             sws[0]},
+            {DXGIFmt::BC5_SNorm, 0, GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT, sws[0]},
         };
         for (const auto& format : formats) 
         {
@@ -394,7 +393,7 @@ namespace Pogplant
             return TR::m_TexturePool[extractedPath];
         }
 
-        const GLint format = _Alpha ? GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT : GL_COMPRESSED_SRGB_S3TC_DXT1_EXT;
+        const GLint format = _Alpha ? GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT : GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT;
 
         std::string filename = _Directory + '/' + extractedPath;
 
@@ -403,27 +402,48 @@ namespace Pogplant
         //dds.Flip();
         tinyddsloader::DDSFile::ImageData imageData;
         ExtractTextureData(dds, imageData);
-        unsigned int textureID;
+
+        unsigned int textureID = 0;
         glGenTextures(1, &textureID);
+
+        GLFormat e_format;
+        TranslateFormat(dds.GetFormat(), &e_format);
 
         if (imageData.m_width != 0 && imageData.m_height != 0)
         {
-            glBindTexture(GL_TEXTURE_2D, textureID);
-            //glTexImage2D(GL_TEXTURE_2D, 0, format, imageData.m_width, imageData.m_height, 0, format, GL_UNSIGNED_BYTE, imageData.m_mem);
+			glBindTexture(GL_TEXTURE_2D, textureID);
+			//glTexImage2D(GL_TEXTURE_2D, 0, format, imageData.m_width, imageData.m_height, 0, format, GL_UNSIGNED_BYTE, imageData.m_mem);
+			/*  glCompressedTexImage2D
+			  (
+				  GL_TEXTURE_2D,
+				  0,
+				  format,
+				  imageData.m_width,
+				  imageData.m_height,
+				  0,
+				  imageData.m_memSlicePitch,
+				  imageData.m_mem
+			 );*/
 
-            glCompressedTexImage2D
-            (
-                GL_TEXTURE_2D,
-                0,
-                format,
-                imageData.m_width,
-                imageData.m_height,
-                0,
-                imageData.m_memSlicePitch,
-                imageData.m_mem
-            );
-
-            glGenerateMipmap(GL_TEXTURE_2D);
+            glTexStorage2D(GL_TEXTURE_2D, dds.GetMipCount(), format, dds.GetWidth(), dds.GetHeight());
+            for (uint32_t level = 0; level < dds.GetMipCount(); level++)
+            {
+                auto mip_data = dds.GetImageData(level, 0);
+                glCompressedTexSubImage2D
+                (
+                    GL_TEXTURE_2D,
+                    static_cast<int>(level),
+                    0,
+                    0,
+                    mip_data->m_width,
+                    mip_data->m_height,
+                    format,
+                    mip_data->m_memSlicePitch,
+                    mip_data->m_mem
+                );
+            }
+            
+            //glGenerateMipmap(GL_TEXTURE_2D);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
@@ -594,5 +614,15 @@ namespace Pogplant
         {
             return _HeightMap[_Z * _Dim + _X];
         }
+    }
+
+    void TexLoader::ClearTextures()
+    {
+        for (auto& it : TextureResource::m_TexturePool)
+        {
+            glDeleteTextures(1, &it.second);
+        }
+        TextureResource::m_TexturePool.clear();
+        TextureResource::m_UsedTextures.clear();
     }
 }

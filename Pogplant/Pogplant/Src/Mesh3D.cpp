@@ -111,6 +111,8 @@ namespace Pogplant
                 else if (name == "texture_normal")
                 {
                     number = std::to_string(normalNr++);
+                    /// SKIP NORMALS TEMP
+                    continue;
                 }
                 else if (name == "texture_emissive")
                 {

@@ -81,7 +81,7 @@ namespace Pogplant
 		else
 		{
 			std::stringstream logEntry;
-			logEntry << "Uniform variable " << _Name << " doesn't exist";
+			logEntry << "Uniform variable " << _Name << " doesn't exist ~ " << glGetError();
 			Logger::Log({ "PP::SHADER",LogEntry::LOGTYPE::WARNING, logEntry.str() });
 		}
 	}

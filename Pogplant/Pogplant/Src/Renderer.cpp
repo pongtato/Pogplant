@@ -380,6 +380,8 @@ namespace Pogplant
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
 
 		// Render G pass objects first
+		//glEnable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		ShaderLinker::Use("BASIC");
 		MeshBuilder::RebindQuad();
 		// Bind textures
@@ -397,6 +399,7 @@ namespace Pogplant
 		ShaderLinker::SetUniform("f_Aspect", Pogplant::Window::m_Aspect);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();
+		//glDisable(GL_BLEND);
 
 		// lol xd
 		//glDisable(GL_CULL_FACE);
@@ -625,12 +628,12 @@ namespace Pogplant
 
 	void Renderer::BindTexture(int _Location, unsigned _TexID)
 	{
-		ShaderLinker::Use("BASIC");
+		/*ShaderLinker::Use("BASIC");
 		std::string append = "Textures[";
 		append = append + std::to_string(_Location) + "]";
 		ShaderLinker::SetUniform(append.c_str(), _Location);
 		glBindTextureUnit(static_cast<GLint>(_Location), _TexID);
-		ShaderLinker::UnUse();
+		ShaderLinker::UnUse();*/
 	}
 
 	void Renderer::DrawText(const entt::registry& registry, bool _EditorMode)

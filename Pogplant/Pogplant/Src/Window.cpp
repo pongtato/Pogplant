@@ -1,6 +1,7 @@
 #include "Window.h"
 #include "FrameBuffer.h"
 #include "CameraResource.h"
+#include "TextureResource.h"
 
 #include <glfw3.h>
 #include <iostream>
@@ -20,6 +21,7 @@ namespace Pogplant
 		glViewport(0, 0, _Width, _Height);
 		FrameBuffer::ResizeFrameBuffer();
 		CameraResource::UpdateAllProjection();
+		//TextureResource::ReloadTextures();
 	}
 
 	void WindowScrollCallback(GLFWwindow*, double _XOffset, double _YOffset)

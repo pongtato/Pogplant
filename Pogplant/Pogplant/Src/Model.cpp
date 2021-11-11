@@ -304,7 +304,7 @@ namespace Pogplant
 			// Convert to linear space
 			if (_TypeName == "texture_diffuse")
 			{
-				texture.m_Id = TexLoader::LoadTextureSRGB(extractedPath, this->m_Directory);
+				texture.m_Id = TexLoader::LoadTextureSRGB(extractedPath, this->m_Directory, false);
 			}
 			else
 			{

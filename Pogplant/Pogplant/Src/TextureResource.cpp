@@ -22,73 +22,74 @@ namespace Pogplant
             , "Resources\\Textures\\Skybox"
         );
 
-        // Must group all SRGB together
-
-        TexLoader::LoadTexture
-        (
-            "ParticleTest.dds",
-            "Resources/Textures/Particle"
-        );
-
-        TexLoader::LoadTexture
-        (
-            "grass_diff.dds",
-            "Resources/Textures/Grass"
-        );
-
-        TexLoader::LoadTexture
-        (
-            "mud_diff.dds",
-            "Resources/Textures/Mud"
-        );
-
-        TexLoader::LoadTexture
-        (
-            "Small_Reticle.dds",
-            "Resources/Textures/UI"
-        );
-
-        TexLoader::LoadTexture
-        (
-            "Hp_Icon.dds",
-            "Resources/Textures/UI"
-        );
-
-        TexLoader::LoadTexture
-        (
-            "HP_Outer.dds",
-            "Resources/Textures/UI"
-        );
-
-        TexLoader::LoadTexture
-        (
-            "HP_Inner.dds",
-            "Resources/Textures/UI"
-        );
-
-        TexLoader::LoadTexture
+		// Must group all SRGB together
+        TexLoader::LoadTextureSRGB
         (
             "Large_Reticle.dds",
             "Resources/Textures/UI"
         );
 
-        TexLoader::LoadTexture
+        TexLoader::LoadTextureSRGB
         (
-            "mud_bump.dds",
-            "Resources/Textures/Mud"
+            "HP_Inner.dds",
+            "Resources/Textures/UI"
         );
 
-        TexLoader::LoadTexture
+        TexLoader::LoadTextureSRGB
         (
-            "mud_norm.dds",
-            "Resources/Textures/Mud"
+            "Small_Reticle.dds",
+            "Resources/Textures/UI"
         );
 
-        TexLoader::LoadTexture
+        TexLoader::LoadTextureSRGB
         (
-            "mud_rough.dds",
-            "Resources/Textures/Mud"
+            "Hp_Icon.dds",
+            "Resources/Textures/UI"
         );
+
+        TexLoader::LoadTextureSRGB
+        (
+            "HP_Outer.dds",
+            "Resources/Textures/UI"
+        );
+
+		TexLoader::LoadTextureSRGB
+		(
+			"ParticleTest.dds",
+			"Resources/Textures/Particle"
+		);
+
+		TexLoader::LoadTextureSRGB
+		(
+			"grass_diff.dds",
+			"Resources/Textures/Grass",
+			false
+		);
+
+		TexLoader::LoadTextureSRGB
+		(
+			"mud_diff.dds",
+			"Resources/Textures/Mud",
+			false
+		);
+
+		TexLoader::LoadTexture
+		(
+			"mud_bump.dds",
+			"Resources/Textures/Mud"
+		);
+
+		TexLoader::LoadTexture
+		(
+			"mud_norm.dds",
+			"Resources/Textures/Mud"
+		);
+
+		TexLoader::LoadTexture
+		(
+			"mud_rough.dds",
+			"Resources/Textures/Mud"
+		);
 
 		TexLoader::LoadTexture
 		(
@@ -108,23 +109,29 @@ namespace Pogplant
 			"Resources/Textures/Grass"
 		);
 
-        TexLoader::LoadTexture
-        (
-            "rocks_diff.dds",
-            "Resources/Textures/Rocks"
-        );
+		TexLoader::LoadTexture
+		(
+			"rocks_diff.dds",
+			"Resources/Textures/Rocks"
+		);
 
-        TexLoader::LoadTexture
-        (
-            "snow_diff.dds",
-            "Resources/Textures/Snow"
-        );
-
+		TexLoader::LoadTexture
+		(
+			"snow_diff.dds",
+			"Resources/Textures/Snow"
+		);
+    
         // Compact to index 0
         for (auto& it : m_TexturePool)
         {
             m_UsedTextures[it.second] = static_cast<int>(m_UsedTextures.size());
         }
+	}
+
+	void TextureResource::ReloadTextures()
+	{
+		TexLoader::ClearTextures();
+		InitResource();
 	}
 
     //void TextureResource::UseTexture(std::string _TexName)

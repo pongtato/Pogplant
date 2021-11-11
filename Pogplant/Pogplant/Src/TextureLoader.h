@@ -14,6 +14,7 @@ namespace Pogplant
 		static unsigned int LoadCubemap(std::vector<std::string> _Paths, std::string _Directory);
 		static bool LoadHeightMap(std::string _Path, std::string _Directory, std::vector<unsigned char>& _HeightMap, size_t& _Dim);
 		static float GetHeight(int _X, int _Z, size_t _Dim, const std::vector<unsigned char>& _HeightMap);
+		static void ClearTextures();
 	};
 
 }
