@@ -59,6 +59,7 @@ ScriptSystem::ScriptSystem()
 	ScriptResource::m_allScriptNames.push_back("EncounterManager");
 	ScriptResource::m_allScriptNames.push_back("BaseTurret");
 	ScriptResource::m_allScriptNames.push_back("BaseEnemy");
+	ScriptResource::m_allScriptNames.push_back("MoveStuff");
 	// Load dll into memory
 	//LoadMemory();
 }

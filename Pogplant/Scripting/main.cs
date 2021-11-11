@@ -53,5 +53,10 @@ namespace Scripting
         {
             return new EncounterManager();
         }
+
+        public static MoveStuff MoveStuff()
+        {
+            return new MoveStuff();
+        }
     }
 }
