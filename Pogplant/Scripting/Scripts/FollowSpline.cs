@@ -26,10 +26,7 @@ namespace Scripting
 
         private float follow_speed = 60.0f;
 
-        private float rotation_speed = 10.0f;
-
         public float DelayToStart;
-        private bool m_HasStarted = false;
 
         private Transform[] waypoints = null; // Array of waypoints we get from running the CatmullRomSpline script.
         private uint current_waypoint_index = 1; // Initiallized to 2 so that skip the first 3 waypoints in waypoints array.

@@ -123,7 +123,7 @@ namespace Scripting
 
         //private Animator animator = null;
         private Transform[] muzzle_transforms;
-        private EnemyManager em;
+        //private EnemyManager em;
         private float current_time;
         private int current_interval = 0;
         private float fire_timer = 0.0f;
