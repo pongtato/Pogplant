@@ -24,10 +24,10 @@ namespace Scripting
     public class PlayerScript : MonoBehaviour
     {
 
-        public float movement_speed = 30000.0f;
+        public float movement_speed = 5000.0f;
         private float horizontal_input = 0;
         private float vertical_input = 0;
-        private float slowForce = 2.0f;
+        private float slowForce = 8.0f;
         private float maxSpeed = 10.0f;
 
         //Player Firing 
@@ -53,6 +53,8 @@ namespace Scripting
         static public float maxHealth = 300.0f;
         public float health = maxHealth;
 
+        uint shipCameraEntity;
+
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
         //public List<uint> entityIDList = new List<uint>();
@@ -75,7 +77,8 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-            ECS.PlayAudio(ECS.FindEntityWithName("PlayerCam"), 0);
+            shipCameraEntity = ECS.FindEntityWithName("PlayerCam");
+            ECS.PlayAudio(shipCameraEntity, 0);
         }
 
         public override void Start()
@@ -259,25 +262,25 @@ namespace Scripting
 
                 if (dotproduct > 0.0f)
                 {
-                    rigidbody.AddImpulseForce(right_vec * -rigidbody.mass);
+                    rigidbody.AddImpulseForce(right_vec * -dotproduct * 50f);
                     Console.WriteLine("Exceed +X bounds");
                 }
                 else
                 {
-                    rigidbody.AddImpulseForce(right_vec * rigidbody.mass);
+                    rigidbody.AddImpulseForce(right_vec * -dotproduct * 50f);
                     Console.WriteLine("Exceed -X bounds");
                 }
             }
 
             if(transform.Position.Y > boxCollider.extends.Y)
             {
-                rigidbody.AddImpulseForce(up_vec * -rigidbody.mass);
+                rigidbody.AddImpulseForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 2f);
                 Console.WriteLine("Exceed +Y bounds");
             }
 
             if(transform.Position.Y < -boxCollider.extends.Y)
             {
-                rigidbody.AddImpulseForce(up_vec * rigidbody.mass);
+                rigidbody.AddImpulseForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 2f);
                 Console.WriteLine("Exceed -Y bounds");
             }
 
@@ -311,7 +314,12 @@ namespace Scripting
             //    direc_vector.Z = 0;
             //}
 
-            Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
+            float directionalMag = direc_vector.magnitude();
+
+            if (directionalMag > 1.0f)
+                direc_vector *= 1 / directionalMag;
+
+            Vector3 force_dir = direc_vector * movement_speed;
             rigidbody.AddForce(force_dir);
 
             float maxslowforce = rigidbody.velocity.magnitude();
@@ -319,11 +327,14 @@ namespace Scripting
                 maxslowforce = 0.0f;
             else
             {
-                maxslowforce = 1 / maxslowforce;
-
-                Vector3 SlowDownVec = rigidbody.velocity * maxslowforce;
-                rigidbody.velocity -= SlowDownVec * Math.Min(maxslowforce, (1 / maxslowforce) * slowForce * dt);
+                Vector3 SlowDownVec = -rigidbody.velocity * (1/ maxslowforce);
+                rigidbody.velocity += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
             }
+
+
+            //Temporary
+
+            transform.Rotation.Y = -rigidbody.velocity.X * 0.1f;
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
