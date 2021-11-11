@@ -402,7 +402,7 @@ namespace Pogplant
 		//glDisable(GL_BLEND);
 
 		// lol xd
-		//glDisable(GL_CULL_FACE);
+		glDisable(GL_CULL_FACE);
 		
 		// 3D models
 		ShaderLinker::Use("MODEL_I");
@@ -418,7 +418,7 @@ namespace Pogplant
 			}
 		}
 		ShaderLinker::UnUse();
-		//glEnable(GL_CULL_FACE);
+		glEnable(GL_CULL_FACE);
 
 		// Primitive shapes
 		ShaderLinker::Use("PRIMITIVE");
