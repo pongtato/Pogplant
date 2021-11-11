@@ -228,28 +228,88 @@ namespace Scripting
                 vertical_input = -InputUtility.GetAxis("MOVEY");
 
             Vector3 up_vec = new Vector3(0.0f, 1.0f, 0.0f);
-            Vector3 direc_vector = Vector3.CrossProduct(Transform.GetForwardVector(entityID), up_vec) * horizontal_input;
-            direc_vector += (up_vec * vertical_input);
+            Vector3 forward_vec = Transform.GetForwardVector(entityID);
+            Vector3 right_vec = Vector3.CrossProduct(forward_vec, up_vec);
+            Vector3 direc_vector = (right_vec * horizontal_input) + (up_vec * vertical_input);
 
-            int result = GameUtilities.CheckBounds(ECS.GetGlobalPosition(entityID), Vector3.Normalise(rigidbody.velocity) + direc_vector);
+            uint boxEntityID = ECS.FindEntityWithName("PlayerBox");
+            BoxCollider boxCollider =  ECS.GetComponent<BoxCollider>(boxEntityID);
+            Transform boxTransform = ECS.GetComponent<Transform>(boxEntityID);
+            float length = transform.Position.magnitude();
 
-            if ((result & 1) != 0)
+            Vector3 playerGlobalPos = ECS.GetGlobalPosition(entityID);
+            Vector3 boxGlobalPos = ECS.GetGlobalPosition(ECS.FindEntityWithName("PlayerBox"));
+
+            //Console.WriteLine("playerGlobalPos Vector: " + playerGlobalPos.X + " | " + playerGlobalPos.Y + " | " + playerGlobalPos.Z);
+            //Console.WriteLine("boxGlobalPos Vector: " + boxGlobalPos.X + " | " + boxGlobalPos.Y + " | " + boxGlobalPos.Z);
+
+            if (length > boxCollider.extends.X)
             {
-                rigidbody.velocity.X = 0f;
-                direc_vector.X = 0;
+                Vector3 newPosNoY = new Vector3(playerGlobalPos.X, 0.0f, playerGlobalPos.Z);
+                Vector3 newForwardNoY = new Vector3(forward_vec.X, 0.0f, forward_vec.Z);
+                Vector3 newBoxPosNoY = new Vector3(boxGlobalPos.X, 0.0f, boxGlobalPos.Z);
+                Vector3 boxtoplayer = Vector3.Normalise(newPosNoY - newBoxPosNoY);
+
+                float dotproduct = Vector3.Dot(right_vec, boxtoplayer);
+
+                //Console.WriteLine("BoxToPlayer Vector: " + boxtoplayer.X + " | " + boxtoplayer.Y + " | " + boxtoplayer.Z);
+                //Console.WriteLine("Forward Vector: " + newForwardNoY.X + " | " + newForwardNoY.Y + " | " + newForwardNoY.Z);
+                //Console.WriteLine("Right Vector: " + right_vec.X + " | " + right_vec.Y + " | " + right_vec.Z);
+                //Console.WriteLine("Dot Product: " + dotproduct);
+
+                if (dotproduct > 0.0f)
+                {
+                    rigidbody.AddImpulseForce(right_vec * -rigidbody.mass);
+                    Console.WriteLine("Exceed +X bounds");
+                }
+                else
+                {
+                    rigidbody.AddImpulseForce(right_vec * rigidbody.mass);
+                    Console.WriteLine("Exceed -X bounds");
+                }
             }
 
-            if ((result & 2) != 0)
+            if(transform.Position.Y > boxCollider.extends.Y)
             {
-                rigidbody.velocity.Y = 0f;
-                direc_vector.Y = 0;
+                rigidbody.AddImpulseForce(up_vec * -rigidbody.mass);
+                Console.WriteLine("Exceed +Y bounds");
             }
 
-            if ((result & 4) != 0)
+            if(transform.Position.Y < -boxCollider.extends.Y)
             {
-                rigidbody.velocity.Z = 0f;
-                direc_vector.Z = 0;
+                rigidbody.AddImpulseForce(up_vec * rigidbody.mass);
+                Console.WriteLine("Exceed -Y bounds");
             }
+
+            //if(forward_vec.Z > boxCollider.extends.Z)
+            //{
+            //    Console.WriteLine("Exceed +Z bounds");
+            //}
+
+            //if(forward_vec.Z < -boxCollider.extends.Z)
+            //{
+            //    Console.WriteLine("Exceed -Z bounds");
+            //}
+
+            //int result = GameUtilities.CheckBounds(ECS.GetGlobalPosition(entityID), Vector3.Normalise(rigidbody.velocity) + direc_vector);
+
+            //if ((result & 1) != 0)
+            //{
+            //    rigidbody.velocity.X = 0f;
+            //    direc_vector.X = 0;
+            //}
+
+            //if ((result & 2) != 0)
+            //{
+            //    rigidbody.velocity.Y = 0f;
+            //    direc_vector.Y = 0;
+            //}
+
+            //if ((result & 4) != 0)
+            //{
+            //    rigidbody.velocity.Z = 0f;
+            //    direc_vector.Z = 0;
+            //}
 
             Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
             rigidbody.AddForce(force_dir);
@@ -328,6 +388,7 @@ namespace Scripting
                     p_fire_timer = 0.0f;
                 }
             }
+
         }
 
         public void SpawnWave()

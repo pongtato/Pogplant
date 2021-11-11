@@ -182,7 +182,7 @@ namespace Scripting
     public class Collider
     {
         public bool isTrigger = false;
-        public int collisionLayer = 0;
+        public string collisionLayer = "DEFAULT";
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

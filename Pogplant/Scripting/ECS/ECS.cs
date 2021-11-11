@@ -35,6 +35,9 @@ namespace Scripting
         public extern static uint SetTransformParent(uint childID, uint parentID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void GetBoxColliderECS(uint entityID, ref string collisionLayer, ref bool isTrigger, ref Vector3 centre, ref Vector3 extends);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint PlayAudio(uint entityID, uint index);
 
         public static GameObject CreateEntity(string name, Transform transform, string tag = "Untagged")
@@ -64,6 +67,12 @@ namespace Scripting
                 Transform transform = new Transform();
                 GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
                 return (T)(object)transform;
+            }
+            else if (typeof(T) == typeof(BoxCollider))
+            {
+                BoxCollider boxCollider = new BoxCollider();
+                GetBoxColliderECS(entityID, ref boxCollider.collisionLayer, ref boxCollider.isTrigger, ref boxCollider.centre, ref boxCollider.extends);
+                return (T)(object)boxCollider;
             }
             else 
             {

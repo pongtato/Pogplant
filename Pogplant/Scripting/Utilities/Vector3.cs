@@ -143,5 +143,15 @@ namespace Scripting
             var rtnvector = new Vector3(x, y, z);
             return rtnvector;
         }
+
+        public static Vector3 Abs(Vector3 v1)
+        {
+            Single x, y, z;
+            x = Math.Abs(v1.X);
+            y = Math.Abs(v1.Y);
+            z = Math.Abs(v1.Z);
+
+            return new Vector3(x, y, z);
+        }
     }
 }

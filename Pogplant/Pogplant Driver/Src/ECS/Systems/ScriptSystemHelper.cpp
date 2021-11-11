@@ -85,6 +85,19 @@ namespace SSH
 		parent->m_children.insert(static_cast<entt::entity>(childID));
 	}
 
+	void GetBoxColliderECS(std::uint32_t entityID, MonoString* collisionLayer, bool& isTrigger, glm::vec3& centre, glm::vec3& extends)
+	{
+		const auto& boxCollider = ScriptSystem::GetECS()->GetReg().try_get<Components::BoxCollider>(static_cast<entt::entity>(entityID));
+
+		if (boxCollider)
+		{
+			collisionLayer = mono_string_new(mono_domain_get(), boxCollider->collisionLayer.c_str());
+			isTrigger = boxCollider->isTrigger;
+			centre = boxCollider->centre;
+			extends = boxCollider->extends;
+		}
+	}
+
 	glm::vec3 GetGlobalPosition(std::uint32_t entityID)
 	{
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalPosition();
@@ -136,24 +149,14 @@ namespace SSH
 		audio_comp->PlayAudio(index);
 	}
 
-	//void AddComponentBoxCollider(unsigned int id, glm::vec3 extends, glm::vec3 centre)
-	//{
-	//	ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::BoxCollider>(static_cast<entt::entity>(id), Components::BoxCollider{extends, centre});
-	//}
-
-	void AddComponentBoxCollider(unsigned int id, bool isTrigger, int collisionLayer, glm::vec3 extends, glm::vec3 centre)
+	void AddComponentBoxCollider(unsigned int id, bool isTrigger, MonoString* collisionLayer, glm::vec3 extends, glm::vec3 centre)
 	{
 		(void)isTrigger;
 		(void)collisionLayer;
 		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::BoxCollider>(static_cast<entt::entity>(id), Components::BoxCollider{ extends, centre });
 	}
 
-	//void AddComponentSphereCollider(unsigned int id, float radius, glm::vec3 centre)
-	//{
-	//	ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::SphereCollider>(static_cast<entt::entity>(id), Components::SphereCollider{ centre, radius});
-	//}
-
-	void AddComponentSphereCollider(unsigned int id, bool isTrigger, int collisionLayer, float radius, glm::vec3 centre)
+	void AddComponentSphereCollider(unsigned int id, bool isTrigger, MonoString* collisionLayer, float radius, glm::vec3 centre)
 	{
 		(void)isTrigger;
 		(void)collisionLayer;

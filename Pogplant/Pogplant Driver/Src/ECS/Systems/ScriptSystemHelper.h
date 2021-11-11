@@ -19,6 +19,7 @@ namespace SSH
 	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
 	void SetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
 	void SetTransformParent(std::uint32_t childID, std::uint32_t parentID);
+	void GetBoxColliderECS(std::uint32_t entityID, MonoString* collisionLayer, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index);
 
 
@@ -30,9 +31,9 @@ namespace SSH
 	void AddComponentRigidbody(unsigned int id, Components::Rigidbody rigidbody);
 	void AddComponentRenderer(unsigned int id, glm::vec3 colorTint, glm::vec3 emissiveTint, int useLight, bool editorDrawOnly, MonoString* name);
 	void AddScript(unsigned int id, MonoString* _scriptName);
-	void AddComponentBoxCollider(unsigned int id, bool isTrigger, int collisionLayer, glm::vec3 extends, glm::vec3 centre);
+	void AddComponentBoxCollider(unsigned int id, bool isTrigger, MonoString* collisionLayer, glm::vec3 extends, glm::vec3 centre);
 	//void AddComponentBoxCollider(unsigned int id, Components::BoxCollider);
-	void AddComponentSphereCollider(unsigned int id, bool isTrigger, int collisionLayer, float radius, glm::vec3 centre);
+	void AddComponentSphereCollider(unsigned int id, bool isTrigger, MonoString* collisionLayer, float radius, glm::vec3 centre);
 	//void AddComponentSphereCollider(unsigned int id, Components::SphereCollider);
 	MonoArray* GetModelKeysIC();
 

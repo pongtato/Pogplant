@@ -56,13 +56,13 @@ namespace Scripting
         public extern static void AddComponentRenderer(uint id, Vector3 colorTint, Vector3 emissiveTint, int uselight, bool editordrawonly, string modelName);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void AddComponentBoxCollider(uint id, bool isTrigger, int collisionLayer, Vector3 extends, Vector3 centre);
+        public extern static void AddComponentBoxCollider(uint id, bool isTrigger, string collisionLayer, Vector3 extends, Vector3 centre);
 
         //[MethodImplAttribute(MethodImplOptions.InternalCall)]
         //public extern static void AddComponentBoxCollider(uint id, BoxCollider boxCollider);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void AddComponentSphereCollider(uint id, bool isTrigger, int collisionLayer, float radius, Vector3 centre);
+        public extern static void AddComponentSphereCollider(uint id, bool isTrigger, string collisionLayer, float radius, Vector3 centre);
 
         //[MethodImplAttribute(MethodImplOptions.InternalCall)]
         //public extern static void AddComponentSphereCollider(uint id, SphereCollider sphereCollider);
