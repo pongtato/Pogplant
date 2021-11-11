@@ -42,6 +42,14 @@ namespace Scripting
         bool isAlive = true;
         float deathAnimationTime = 4.0f; // seconds
         uint disc_id;
+
+        //Temporary sine wave movement to smoke
+        Vector3 m_initialPos;
+        Vector3 m_sineOffset;
+        float m_sineTimer;
+        Vector3 m_sineScale;
+        Vector3 m_sineSpeed;
+
         public BaseTurret()
         {
             // initialize private variables here
@@ -60,6 +68,22 @@ namespace Scripting
             disc_id = ECS.FindChildEntityWithName(entityID, "Spinning_Disk");
 
             Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
+
+            //Temporary sine wave movement
+            var rand = new Random();
+            m_initialPos = ECS.GetComponent<Transform>(entityID).Position;
+            m_sineOffset.X = (float)rand.NextDouble();
+            m_sineOffset.Y = (float)rand.NextDouble();
+            m_sineOffset.Z = (float)rand.NextDouble();
+
+
+            m_sineTimer = 0f;
+            m_sineScale.X = (float)rand.NextDouble() * 2.0f + 1.0f;
+            m_sineScale.Y = (float)rand.NextDouble() * 3.0f + 1.0f;
+            m_sineScale.Z = (float)rand.NextDouble() * 5.0f + 1.0f;
+            m_sineSpeed.X = (float)rand.NextDouble() * 1.0f + 0.5f;
+            m_sineSpeed.Y = (float)rand.NextDouble() * 1.5f + 0.5f;
+            m_sineSpeed.Z = (float)rand.NextDouble() * 1.5f + 0.5f;
         }
 
         public override void Start()
@@ -133,7 +157,18 @@ namespace Scripting
                     ECS.DestroyEntity(entityID);
                 }
             }
+
+            sineMovement(ref transform, ref dt);
         }
+
+        public void sineMovement(ref Transform transform, ref float dt)
+		{
+            m_sineTimer += dt;
+
+            transform.Position.X = (float)Math.Sin(m_sineOffset.X + m_sineTimer * m_sineSpeed.X) * m_sineScale.X + m_initialPos.Y;
+            transform.Position.Y = (float)Math.Sin(m_sineOffset.Y + m_sineTimer * m_sineSpeed.Y) * m_sineScale.Y + m_initialPos.Y;
+            transform.Position.Z = (float)Math.Sin(m_sineOffset.Z + m_sineTimer * m_sineSpeed.Z) * m_sineScale.Z + m_initialPos.Z;
+		}
 
         // Call this function to make this enemy start firing
         public void StartFiring()

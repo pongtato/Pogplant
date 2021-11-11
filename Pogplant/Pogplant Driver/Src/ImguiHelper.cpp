@@ -274,6 +274,8 @@ namespace PogplantDriver
 		{
 			if (ImGui::BeginMenu("File"))
 			{
+				Application::GetInstance().TransitionApplicationState(Application::APPLICATIONSTATE::EDITOR);
+				Application::GetInstance().SetPlayState(Application::PLAYSTATE::PLAY);
 				// Save scene
 				if (ImGui::MenuItem(ICON_FA_FILE "  New"))
 					NewScene();
