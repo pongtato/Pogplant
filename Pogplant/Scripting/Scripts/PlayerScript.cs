@@ -28,13 +28,13 @@ namespace Scripting
         private float horizontal_input = 0;
         private float vertical_input = 0;
         private float slowForce = 8.0f;
-        private float maxSpeed = 10.0f;
+        //private float maxSpeed = 10.0f;
 
         //Player Firing 
         float p_fireRate;
         float p_fire_timer = 0.0f;
         //Player Rotation movement (Camera duplicates this effect)
-        float camera_roll = -1.5f;
+        //float camera_roll = -1.5f;
 
         public float max_rotate_angle = 12.5f;
         public float rotation_speed_horizontal = 1.0f;
@@ -45,10 +45,10 @@ namespace Scripting
         public float dampening_reduction = 1.0f;
         public float dampening_modifier = 4.0f;
 
-        private float current_vertical_dampening;
-        private float current_horizontal_dampening;
+        //private float current_vertical_dampening;
+        //private float current_horizontal_dampening;
 
-        private float timeCount;
+        //private float timeCount;
         public float ship_follow_rot_speed;
         static public float maxHealth = 300.0f;
         public float health = maxHealth;
