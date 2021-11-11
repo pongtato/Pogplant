@@ -163,13 +163,13 @@ namespace Pogplant
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
 		glActiveTexture(GL_TEXTURE4);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_EMISSIVE_BUFFER]);
-	/*	glActiveTexture(GL_TEXTURE5);
-		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_SHAFT_BUFFER]);*/
+		//glActiveTexture(GL_TEXTURE5);
+		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_SHAFT_BUFFER]);
 		glActiveTexture(GL_TEXTURE6);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
 
-		/// Shaft pos screen
-		// Editor cam by default;
+		///// Shaft pos screen
+		//// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
 		//auto clipSpace = ret.m_Projection * (ret.m_View * glm::vec4(m_LightShaftPos,1.0f));
 		//auto ndc = glm::vec3{ clipSpace.x,clipSpace.y,clipSpace.z } / clipSpace.w;
@@ -401,8 +401,23 @@ namespace Pogplant
 		ShaderLinker::UnUse();
 		//glDisable(GL_BLEND);
 
+		/*ShaderLinker::Use("SHAFT");
+		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
+		ShaderLinker::SetUniform("m4_View", ret.m_View);
+		glm::mat4 model = glm::mat4{ 1 };
+		model = glm::translate(model, m_LightShaftPos);
+		model = glm::rotate(model, glm::radians(180.0f), { 0,1,0 });
+		model = glm::scale(model, { m_LightShaftScale,m_LightShaftScale,m_LightShaftScale });
+		ShaderLinker::SetUniform("m4_Model", model);
+		ShaderLinker::SetUniform("S2D_Texture", 0);
+		ShaderLinker::SetUniform("colorTint", glm::vec3{ 0.9f,0.82f,0.565f });
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool["ParticleTest.dds"]);
+		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN);
+		ShaderLinker::UnUse();*/
+
 		// lol xd
-		glDisable(GL_CULL_FACE);
+		//glDisable(GL_CULL_FACE);
 		
 		// 3D models
 		ShaderLinker::Use("MODEL_I");
@@ -418,7 +433,7 @@ namespace Pogplant
 			}
 		}
 		ShaderLinker::UnUse();
-		glEnable(GL_CULL_FACE);
+		//glEnable(GL_CULL_FACE);
 
 		// Primitive shapes
 		ShaderLinker::Use("PRIMITIVE");

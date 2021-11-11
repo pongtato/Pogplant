@@ -173,7 +173,8 @@ void main()
     lighting += diffuse + specular;
 
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
-    //outColor += Shaft();
+    //float brightness = dot(outColor.rgb * Shaft().rgb, vec3(0.2126, 0.7152, 0.0722));
+    //outColor = mix(outColor * Shaft(),outColor, brightness);
 
     // Output bright bixels for bloom
     float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));

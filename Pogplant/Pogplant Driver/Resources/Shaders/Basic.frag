@@ -1,6 +1,7 @@
 #version 450 core
 
 layout (location = 3) out vec4 gNoLight;
+layout (location = 5) out vec3 gShaft;
 
 in vec4 ColorCoords;
 in vec2 TexCoords;
@@ -28,4 +29,6 @@ void main()
     {
         //discard;
     }
+
+    gShaft = vec3(0);
 }

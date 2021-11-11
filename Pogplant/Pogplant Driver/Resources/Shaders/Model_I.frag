@@ -79,5 +79,5 @@ void main()
     }
 
     // Block the light which is using the shaft shader 
-    gShaft = vec3(0.0f);
+    gShaft = vec3(0.2f);
 }

@@ -13,8 +13,9 @@ in vec2 TexCoords;
 void main()
 {   
     gNoLight = texture(S2D_Texture, vec2(TexCoords.x,1-TexCoords.y));
+    //gNoLight = vec4(colorTint,1.0);
 
-    if(gNoLight.a < 1.0f)
+    if(gNoLight.a < 0.42f)
     {
          discard;
     }
