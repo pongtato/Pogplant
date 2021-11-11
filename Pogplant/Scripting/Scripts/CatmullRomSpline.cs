@@ -149,7 +149,7 @@ namespace Scripting
         // Links a series of splines into chains and returns their waypoints.
         public List<Transform> CalculateCatmullRomChain()
         {
-            Console.WriteLine("CalculateChain called");
+            //Console.WriteLine("CalculateChain called");
             // Resulting waypoint of the entire spline chain
             List<Transform> waypoints = new List<Transform>();
             int remove_range = (int)(10 / (step_size * 10));
@@ -315,7 +315,7 @@ namespace Scripting
         {
             string abs_path = "Resources\\" + filePath;
 
-            Console.WriteLine(abs_path);
+            //Console.WriteLine(abs_path);
 
             string[] lines = System.IO.File.ReadAllLines(abs_path);
 

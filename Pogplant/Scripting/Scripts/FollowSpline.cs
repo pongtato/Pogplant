@@ -55,7 +55,7 @@ namespace Scripting
             catmullRom.InitializeSpline();
 
             waypoints = catmullRom.CalculateCatmullRomChain().ToArray();
-            Console.WriteLine(waypoints.Length);
+            //Console.WriteLine(waypoints.Length);
 
             //for (int i = 0; i < waypoints.Length; ++i)
             //    Console.WriteLine("waypoint " + i + " is at: x = " + waypoints[i].X + ", y = " + waypoints[i].Y + ", z = " + waypoints[i].Z);

@@ -82,7 +82,7 @@ namespace Scripting
 
                 waypointGroup.Add(ECS.CreateChild(parent, name, transform));
 
-                Console.WriteLine("Creating waypoint " + name + " at location: " + transform.Position.X + ", " + +transform.Position.Y + ", " + +transform.Position.Z);
+                //Console.WriteLine("Creating waypoint " + name + " at location: " + transform.Position.X + ", " + +transform.Position.Y + ", " + +transform.Position.Z);
             }
 
             return waypointGroup;
@@ -108,7 +108,7 @@ namespace Scripting
                 string parentName = "enemy_waypoint_group_" + i;
                 parent_ids[i] = ECS.FindEntityWithName(parentName);
                 waypointList.AddRange(CreateParentedWaypoints(fileNames[i], parent_ids[i]));
-                Console.WriteLine("Created " + parentName + " waypoint group.");
+                //Console.WriteLine("Created " + parentName + " waypoint group.");
             }
 
             return waypointList;

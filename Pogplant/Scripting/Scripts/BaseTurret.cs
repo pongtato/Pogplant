@@ -58,7 +58,7 @@ namespace Scripting
             fire_duration = current_fireDuration = 1.0f;
 
             var rand = new Random();
-            fire_delay = ((float)rand.Next() / int.MaxValue)  * 5.0f;
+            fire_delay = ((float)rand.Next() / int.MaxValue) * 5.0f;
         }
 
         public override void Init(ref uint _entityID)
@@ -67,7 +67,7 @@ namespace Scripting
 
             disc_id = ECS.FindChildEntityWithName(entityID, "Spinning_Disk");
 
-            Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
+            //Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
 
             //Temporary sine wave movement
             var rand = new Random();
@@ -97,52 +97,57 @@ namespace Scripting
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
 
-            if ((fire_delay_accumulator += dt) > fire_delay)
-                StartFiring();
-
-            if (fire_delay_accumulator >= 10.0f)
-                HandleDeath();
-
-            if (isFiring)
+            if (isAlive)
             {
-                current_fireDuration -= dt;
-                if (current_fireDuration <= 0.0f)
-                {
-                    isFiring = false;
-                    current_fireDuration = fire_duration;
-                }
+                if ((fire_delay_accumulator += dt) > fire_delay)
+                    StartFiring();
 
-                fire_timer += dt;
+                if (fire_delay_accumulator >= 10.0f)
+                    HandleDeath();
 
-                if (fire_timer >= fireRate)
+                if (isFiring)
                 {
-                    for (int i = 0; i < muzzle_transforms.Length; ++i)
+                    current_fireDuration -= dt;
+                    if (current_fireDuration <= 0.0f)
                     {
-                        // Call C++ side bullet firing
-                        // hard coded muzzle position
-                        Vector3 offset = new Vector3(0.0f, -1.076f, 0.454f);
-                        GameUtilities.FireEnemyBullet(entityID, transform.Position + offset, transform.Rotation);
+                        isFiring = false;
+                        current_fireDuration = fire_duration;
                     }
-                    fire_timer = 0.0f;
+
+                    fire_timer += dt;
+
+                    if (fire_timer >= fireRate)
+                    {
+                        for (int i = 0; i < muzzle_transforms.Length; ++i)
+                        {
+                            // Call C++ side bullet firing
+                            // hard coded muzzle position
+                            Vector3 offset = new Vector3(0.0f, -1.076f, 0.454f);
+                            GameUtilities.FireEnemyBullet(entityID, transform.Position + offset, transform.Rotation);
+                        }
+                        fire_timer = 0.0f;
+                    }
+
                 }
+
+                // spin disk
+                Transform disk_transform = ECS.GetComponent<Transform>(disc_id);
+                Vector3 disk_rotation = disk_transform.Rotation;
+                disk_rotation.Y += 90.0f * dt;
+                ECS.SetTransformECS(disc_id, ref disk_transform.Position, ref disk_rotation, ref disk_transform.Scale);
+
+                sineMovement(ref transform, ref dt);
 
             }
-
-            // spin disk
-            Transform disk_transform = ECS.GetComponent<Transform>(disc_id);
-            Vector3 disk_rotation = disk_transform.Rotation;
-            disk_rotation.Y += 90.0f * dt;
-            ECS.SetTransformECS(disc_id, ref disk_transform.Position, ref disk_rotation, ref disk_transform.Scale);
-
-            if (!isAlive)
+            else
             {
                 if (deathAnimationTime == 4.0f)
                 {
                     var rand = new Random();
-                    Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 800.0f;
+                    Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 1000.0f;
                     rigidbody.AddImpulseForce(dir);
                     rigidbody.useGravity = true;
-                    rigidbody.mass = 5000.0f;
+                    rigidbody.mass = 100.0f;
                 }
                 deathAnimationTime -= dt;
                 if (deathAnimationTime > 0.0f)
@@ -153,22 +158,21 @@ namespace Scripting
                 }
                 else
                 {
-                    Console.WriteLine("Turret (id: " + entityID + ") has died");
+                    //Console.WriteLine("Turret (id: " + entityID + ") has died");
                     ECS.DestroyEntity(entityID);
                 }
             }
 
-            sineMovement(ref transform, ref dt);
         }
 
         public void sineMovement(ref Transform transform, ref float dt)
-		{
+        {
             m_sineTimer += dt;
 
             transform.Position.X = (float)Math.Sin(m_sineOffset.X + m_sineTimer * m_sineSpeed.X) * m_sineScale.X + m_initialPos.Y;
             transform.Position.Y = (float)Math.Sin(m_sineOffset.Y + m_sineTimer * m_sineSpeed.Y) * m_sineScale.Y + m_initialPos.Y;
             transform.Position.Z = (float)Math.Sin(m_sineOffset.Z + m_sineTimer * m_sineSpeed.Z) * m_sineScale.Z + m_initialPos.Z;
-		}
+        }
 
         // Call this function to make this enemy start firing
         public void StartFiring()
@@ -184,7 +188,7 @@ namespace Scripting
             if (health <= 0)
                 HandleDeath();
 
-            Console.WriteLine("Turret took damage, health is now: " + health + "Entity ID: " + entityID);
+            //Console.WriteLine("Turret took damage, health is now: " + health + "Entity ID: " + entityID);
         }
 
         void HandleDeath()
@@ -194,6 +198,7 @@ namespace Scripting
             if (isAlive)
             {
                 isAlive = false;
+                isFiring = false;
             }
         }
 
@@ -212,7 +217,7 @@ namespace Scripting
         }
         public void OnTriggerExit()
         {
-          
+
         }
         public override void OnTriggerExit(uint id)
         {

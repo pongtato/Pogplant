@@ -343,13 +343,13 @@ namespace Scripting
 
             float z_value = 30.0f;
 
-            int max_spawns = 4;
+            int max_spawns = 5;
 
             for (int x = -10; x <= 10; x+=5)
             {
                 for (int y = -10; y <= 10; y+=5)
                 {
-                    if (x != 0 && y != 0 && GetRandFloat() > 0.85f && max_spawns-- >= 0)
+                    if (x != 0 && y != 0 && GetRandFloat() > 0.80f && max_spawns-- >= 0)
                     {
                         Transform location = new Transform();
                         location.Rotation.Y = 180.0f;
