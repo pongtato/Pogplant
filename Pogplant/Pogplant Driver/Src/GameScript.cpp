@@ -106,47 +106,16 @@ namespace Scripting
 		entt::entity enemy = static_cast<entt::entity>(entityID);
 		auto enemy_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(enemy);
 
-		glm::mat4 decompose{ 0 };
-		glm::vec3 position{ 0 };
-		if (enemy != entt::null)
-		{
-			auto enemy_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(enemy);
-			decompose = enemy_trans->m_ModelMtx; // Modlemtx = world.
-			position.x = decompose[3][0];
-			position.y = decompose[3][1];
-			position.z = decompose[3][2];
-
-			decompose[3][0] = 0.f;
-			decompose[3][1] = 0.f;
-			decompose[3][2] = 0.f;
-			float scale_x = glm::length(decompose[0]);
-			float scale_y = glm::length(decompose[1]);
-			float scale_z = glm::length(decompose[2]);
-
-			decompose[0][0] /= scale_x;
-			decompose[0][1] /= scale_x;
-			decompose[0][2] /= scale_x;
-
-			decompose[1][0] /= scale_y;
-			decompose[1][1] /= scale_y;
-			decompose[1][2] /= scale_y;
-
-			decompose[2][0] /= scale_z;
-			decompose[2][1] /= scale_z;
-			decompose[2][2] /= scale_z;
-		}
-		//std::cout << "Position" << position.x << ", " << position.y << ", " << position.z << std::endl;
-
 		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
 		entt::entity bullet;
 		if (isTrue)
 		{
-			bullet = serial.Instantiate("TrueBullet", enemy_trans->GetGlobalPosition(), _Rotation);
+			bullet = serial.Instantiate("TrueBullet", enemy_trans->GetGlobalPosition(), enemy_trans->GetGlobalRotation());
 			//std::cout << "spawned true bullet" << std::endl;
 		}
 		else
 		{
-			bullet = serial.Instantiate("FalseBullet", enemy_trans->GetGlobalPosition(), _Rotation);
+			bullet = serial.Instantiate("FalseBullet", enemy_trans->GetGlobalPosition(), enemy_trans->GetGlobalRotation());
 			//std::cout << "spawned false bullet" << std::endl;
 		}
 
@@ -154,10 +123,8 @@ namespace Scripting
 
 		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
-		glm::vec4 forward{ 0.f,0.f,1.f ,0.f };
-		glm::vec3 forward_vec = decompose * forward;
+		glm::vec3 forward_vec = enemy_trans->GetForwardVector();
 
-		//std::cout << "Forward_vec" << forward_vec.x << ", " << forward_vec.y << ", " << forward_vec.z << std::endl;
 		//Add power to the shots
 		forward_vec *= 25.f;
 		body->AddImpulseForce(forward_vec);
