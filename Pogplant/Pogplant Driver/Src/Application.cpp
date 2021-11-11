@@ -402,6 +402,16 @@ void Application::UpdateTransforms(float _Dt)
 		}
 	}
 
+
+	///// TEMP FIX FOR CANVAS ID
+	//auto b_results = m_activeECS->view<Components::Canvas, Components::Transform>();
+	//for (auto& e : b_results)
+	//{
+	//	auto& canvas = b_results.get<Components::Canvas>(e);
+	//	auto rawID = PP::TextureResource::m_TexturePool[canvas.m_TexName];
+	//	canvas.m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+	//}
+
 	//Update transform matrix of all gameobject
 	m_sGeneralSystem.UpdateTransforms();
 

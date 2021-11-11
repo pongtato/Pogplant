@@ -382,7 +382,6 @@ namespace Pogplant
 		// Render G pass objects first
 		ShaderLinker::Use("BASIC");
 		MeshBuilder::RebindQuad();
-
 		// Bind textures
 		for (const auto& it : TextureResource::m_TexturePool)
 		{

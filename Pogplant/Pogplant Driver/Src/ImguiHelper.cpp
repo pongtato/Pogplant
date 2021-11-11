@@ -973,7 +973,14 @@ namespace PogplantDriver
 			ImGui::DragFloat("Editor Cam Near", &camera->m_CameraConfig.m_Near);
 			ImGui::DragFloat("Editor Cam Far", &camera->m_CameraConfig.m_Far);
 			ImGui::Dummy({ 0,2.0f });
-			ImGui::Text("Light Shaft");
+
+			ImGui::Text("Camera config");
+			ImGui::PushItemWidth(207.0f);
+			ImGui::DragFloat3("Camera Pos", &camera->m_Position.x);
+			ImGui::PopItemWidth();
+			ImGui::DragFloat("Camera Speed", &camera->m_CameraConfig.m_Speed);
+
+		/*	ImGui::Text("Light Shaft");
 			ImGui::PushItemWidth(207.0f);
 			ImGui::DragFloat3("Position", &PP::Renderer::m_LightShaftPos.x);
 			ImGui::PopItemWidth();
@@ -982,7 +989,8 @@ namespace PogplantDriver
 			ImGui::DragFloat("Exposure", &PP::Renderer::m_LightShaftExposure);
 			ImGui::DragFloat("Density", &PP::Renderer::m_LightShaftDensity);
 			ImGui::DragFloat("Weight", &PP::Renderer::m_LightShaftWeight);
-			ImGui::PopItemWidth();
+			ImGui::PopItemWidth();*/
+
 		}
 		ImGui::End();
 
