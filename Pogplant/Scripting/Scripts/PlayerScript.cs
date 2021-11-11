@@ -24,17 +24,17 @@ namespace Scripting
     public class PlayerScript : MonoBehaviour
     {
 
-        public float movement_speed = 30000.0f;
+        public float movement_speed = 5000.0f;
         private float horizontal_input = 0;
         private float vertical_input = 0;
-        private float slowForce = 2.0f;
-        //private float maxSpeed = 10.0f;
+        private float slowForce = 8.0f;
+        private float maxSpeed = 10.0f;
 
         //Player Firing 
         float p_fireRate;
         float p_fire_timer = 0.0f;
         //Player Rotation movement (Camera duplicates this effect)
-        //float camera_roll = -1.5f;
+        float camera_roll = -1.5f;
 
         public float max_rotate_angle = 12.5f;
         public float rotation_speed_horizontal = 1.0f;
@@ -45,12 +45,15 @@ namespace Scripting
         public float dampening_reduction = 1.0f;
         public float dampening_modifier = 4.0f;
 
-        //private float current_vertical_dampening;
-        //private float current_horizontal_dampening;
+        private float current_vertical_dampening;
+        private float current_horizontal_dampening;
 
+        private float timeCount;
         public float ship_follow_rot_speed;
         static public float maxHealth = 300.0f;
         public float health = maxHealth;
+
+        uint shipCameraEntity;
 
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
@@ -74,7 +77,8 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-            ECS.PlayAudio(ECS.FindEntityWithName("PlayerCam"), 0);
+            shipCameraEntity = ECS.FindEntityWithName("PlayerCam");
+            ECS.PlayAudio(shipCameraEntity, 0);
         }
 
         public override void Start()
@@ -125,6 +129,7 @@ namespace Scripting
                 entityList.Add(GO);
 
                 Console.WriteLine("Entity ID created: " + GO.id);
+                //Console.WriteLine("Test Mass Is: " + GO.GetComponent<Rigidbody>().mass);
             }
 
             // Destroy Entity Example
@@ -218,7 +223,7 @@ namespace Scripting
             if (rightPushed || leftPushed)
                 horizontal_input = (rightPushed ? 1.0f : 0.0f) + (leftPushed ? -1.0f : 0.0f);
             else
-                horizontal_input = -InputUtility.GetAxis("MOVEX");
+                horizontal_input = InputUtility.GetAxis("MOVEX");
 
             if (upPushed || downPushed)
                 vertical_input = (upPushed ? 1.0f : 0.0f) + (downPushed ? -1.0f : 0.0f);
@@ -238,6 +243,8 @@ namespace Scripting
             Vector3 playerGlobalPos = ECS.GetGlobalPosition(entityID);
             Vector3 boxGlobalPos = ECS.GetGlobalPosition(ECS.FindEntityWithName("PlayerBox"));
 
+            //Console.WriteLine("playerGlobalPos Vector: " + playerGlobalPos.X + " | " + playerGlobalPos.Y + " | " + playerGlobalPos.Z);
+            //Console.WriteLine("boxGlobalPos Vector: " + boxGlobalPos.X + " | " + boxGlobalPos.Y + " | " + boxGlobalPos.Z);
 
             if (length > boxCollider.extends.X)
             {
@@ -248,25 +255,33 @@ namespace Scripting
 
                 float dotproduct = Vector3.Dot(right_vec, boxtoplayer);
 
+                //Console.WriteLine("BoxToPlayer Vector: " + boxtoplayer.X + " | " + boxtoplayer.Y + " | " + boxtoplayer.Z);
+                //Console.WriteLine("Forward Vector: " + newForwardNoY.X + " | " + newForwardNoY.Y + " | " + newForwardNoY.Z);
+                //Console.WriteLine("Right Vector: " + right_vec.X + " | " + right_vec.Y + " | " + right_vec.Z);
+                //Console.WriteLine("Dot Product: " + dotproduct);
 
                 if (dotproduct > 0.0f)
                 {
-                    rigidbody.AddImpulseForce(right_vec * -rigidbody.mass);
+                    rigidbody.AddImpulseForce(right_vec * -dotproduct * 50f);
+                    //Console.WriteLine("Exceed +X bounds");
                 }
                 else
                 {
-                    rigidbody.AddImpulseForce(right_vec * rigidbody.mass);
+                    rigidbody.AddImpulseForce(right_vec * -dotproduct * 50f);
+                    //Console.WriteLine("Exceed -X bounds");
                 }
             }
 
             if(transform.Position.Y > boxCollider.extends.Y)
             {
-                rigidbody.AddImpulseForce(up_vec * -rigidbody.mass);
+                rigidbody.AddImpulseForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 2f);
+                //Console.WriteLine("Exceed +Y bounds");
             }
 
             if(transform.Position.Y < -boxCollider.extends.Y)
             {
-                rigidbody.AddImpulseForce(up_vec * rigidbody.mass);
+                rigidbody.AddImpulseForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 2f);
+                //Console.WriteLine("Exceed -Y bounds");
             }
 
             //if(forward_vec.Z > boxCollider.extends.Z)
@@ -299,7 +314,12 @@ namespace Scripting
             //    direc_vector.Z = 0;
             //}
 
-            Vector3 force_dir = direc_vector * movement_speed * dt; // 32 is magic number
+            float directionalMag = direc_vector.magnitude();
+
+            if (directionalMag > 1.0f)
+                direc_vector *= 1 / directionalMag;
+
+            Vector3 force_dir = direc_vector * movement_speed;
             rigidbody.AddForce(force_dir);
 
             float maxslowforce = rigidbody.velocity.magnitude();
@@ -307,11 +327,14 @@ namespace Scripting
                 maxslowforce = 0.0f;
             else
             {
-                maxslowforce = 1 / maxslowforce;
-
-                Vector3 SlowDownVec = rigidbody.velocity * maxslowforce;
-                rigidbody.velocity -= SlowDownVec * Math.Min(maxslowforce, (1 / maxslowforce) * slowForce * dt);
+                Vector3 SlowDownVec = -rigidbody.velocity * (1/ maxslowforce);
+                rigidbody.velocity += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
             }
+
+
+            //Temporary
+
+            transform.Rotation.Y = -rigidbody.velocity.X * 0.1f;
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
@@ -458,7 +481,7 @@ namespace Scripting
             {
                 HandleDeath();
             }
-            //Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
+            Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
         }
 
         void HandleDeath()
@@ -467,7 +490,7 @@ namespace Scripting
             // This is a hardcoded way of destroying this instance, need to be replaced!
             if (isAlive)
             {
-               // Console.WriteLine("Player (id: " + entityID + ") has died");
+                Console.WriteLine("Player (id: " + entityID + ") has died");
                 ECS.DestroyEntity(entityID);
                 isAlive = false;
             }
