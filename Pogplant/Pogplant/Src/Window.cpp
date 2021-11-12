@@ -56,7 +56,9 @@ namespace Pogplant
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, glfwGetPrimaryMonitor(), NULL);
+		//m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, glfwGetPrimaryMonitor(), NULL);
+		m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, NULL, NULL);
+		
 		if (m_Window == NULL)
 		{
 			std::cout << "[PP::WINDOW] Failed to create GLFW window" << std::endl;

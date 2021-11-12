@@ -265,7 +265,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -315,7 +315,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -330,7 +330,7 @@
 		"Camera" : 
 		{
 			"m_Active" : true,
-			"m_Far" : 420.0,
+			"m_Far" : 100.0,
 			"m_Near" : 0.10000000149011612,
 			"m_Pitch" : 0.0,
 			"m_Yaw" : 0.0,
@@ -371,7 +371,7 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : "DEFAULT",
+			"collisionLayer" : "OBSTACLES",
 			"extends" : 
 			[
 				0.5,
@@ -382,7 +382,7 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "DEFAULT"
+			"m_Name" : "OBSTACLES"
 		},
 		"Render" : 
 		{
@@ -437,7 +437,7 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : "OBSTACLES",
+			"collisionLayer" : "PLAYER",
 			"extends" : 
 			[
 				0.5,
@@ -448,7 +448,7 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "OBSTACLES"
+			"m_Name" : "PLAYER"
 		},
 		"Render" : 
 		{
@@ -586,7 +586,7 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "pepe"
+			"m_Name" : "TRIGGERS"
 		},
 		"Render" : 
 		{
@@ -629,6 +629,327 @@
 				10.0,
 				0.5,
 				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				0.5,
+				0.5,
+				0.5
+			],
+			"isTrigger" : false
+		},
+		"Name" : 
+		{
+			"m_Name" : "Floor"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cube",
+				"Resources/Models\\cube",
+				"Box001"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-7.4635105133056641,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				100.0,
+				1.0,
+				100.0
+			]
+		}
+	},
+	{
+		"Directional_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.15000000596046448
+			],
+			"m_Diffuse" : 0.41999998688697815,
+			"m_Direction" : 
+			[
+				-0.28734788298606873,
+				-0.57469576597213745,
+				-0.76626098155975342
+			],
+			"m_Intensity" : 13.0,
+			"m_Specular" : 0.68999999761581421
+		},
+		"Name" : 
+		{
+			"m_Name" : "Directional Light"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.15000000596046448
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"sphere",
+				"Resources/Models\\sphere",
+				"Sphere001"
+			],
+			"UseLight" : 0
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				7.5,
+				15.0,
+				20.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"isTrigger" : false
+		},
+		"Name" : 
+		{
+			"m_Name" : "Ship"
+		},
+		"ParticleSystem" : 
+		{
+			"m_Burst" : true,
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Delay" : 0.004999999888241291,
+			"m_Force" : 
+			[
+				0.0,
+				0.98100000619888306,
+				0.0
+			],
+			"m_Loop" : true,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 0.10000000149011612,
+			"m_Play" : false,
+			"m_RandomRotate" : true,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 0.68999999761581421,
+				"m_CurveMin" : 0.41999998688697815,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 4.1999998092651367,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 420,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_SpawnRadius" : 0.5,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.0
+					],
+					[
+						0.1428571492433548,
+						0.37026241421699524
+					],
+					[
+						0.28571429848670959,
+						0.63556855916976929
+					],
+					[
+						0.4285714328289032,
+						0.81341105699539185
+					],
+					[
+						0.57142859697341919,
+						0.92128282785415649
+					],
+					[
+						0.71428573131561279,
+						0.97667640447616577
+					],
+					[
+						0.8571428656578064,
+						0.99708455801010132
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 4.1999998092651367,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_TexName" : "Small_Reticle.dds"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Player_Ship",
+				"Resources/Models\\Ship",
+				"Player_Ship_Base"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : true
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.2592861652374268,
+				1.5985639095306396,
+				17.777549743652344
+			],
+			"m_rotation" : 
+			[
+				0.00010427404049551114,
+				-89.0,
+				0.00010427404049551114
+			],
+			"m_scale" : 
+			[
+				0.99999970197677612,
+				0.99999964237213135,
+				0.99999970197677612
 			]
 		}
 	}

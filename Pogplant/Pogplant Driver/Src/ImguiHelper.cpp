@@ -109,6 +109,11 @@ namespace PogplantDriver
 			glm::vec4 color { 1.f,1.f,1.f,1.f };
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "snow_diff.dds");
 		}
+
+		if (ImGui::MenuItem("Particle System", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::ParticleSystem>(PPD::ImguiHelper::m_CurrentEntity);
+		}
 	}
 
 	bool ImguiHelper::m_FirstRun = true;

@@ -704,6 +704,7 @@ void Application::Run()
 		PPI::InputSystem::PollEvents();
 		PP::Renderer::SwapBuffer();
 
+#ifdef PPD_EDITOR_BUILD
 		if (m_nextAppState != m_appState)
 		{
 			switch (m_appState)
@@ -722,6 +723,7 @@ void Application::Run()
 
 			m_appState = m_nextAppState;
 		}
+#endif
 
 		c_deltaTime = c_dtTimer.getElapsedTimePrecise();
 	}
