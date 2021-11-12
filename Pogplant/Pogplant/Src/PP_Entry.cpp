@@ -13,8 +13,8 @@ namespace Pogplant
 	{
 		Window::InitWindow
 		(
-			1280,					// Width
-			720,					// Height
+			1920,					// Width
+			1080,					// Height
 			"BogosBinted"			// Window name
 		);
 

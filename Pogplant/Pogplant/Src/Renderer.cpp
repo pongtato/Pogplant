@@ -250,6 +250,7 @@ namespace Pogplant
 		// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, false);
 
+		//ret.m_Far = 200.0f;
 		glm::mat4 orthogalProj = glm::ortho(-ret.m_Far, ret.m_Far, -ret.m_Far, ret.m_Far, ret.m_Near, ret.m_Far);
 		glm::mat4 lightView = glm::lookAt(lightPos, glm::vec3{ 0 }, glm::vec3{ 0.0f, 1.0f, 0.0f });
 		ShadowCFG::m_LightProj = orthogalProj * lightView;
