@@ -54,11 +54,13 @@
     <Compile Include="Scripts\BaseEnemy.cs" />
     <Compile Include="Scripts\BaseTurret.cs" />
     <Compile Include="Scripts\CatmullRomSpline.cs" />
+    <Compile Include="Scripts\DummyScript.cs" />
     <Compile Include="Scripts\EncounterManager.cs" />
     <Compile Include="Scripts\EnemyManager.cs" />
     <Compile Include="Scripts\FollowSpline.cs" />
     <Compile Include="Scripts\MonoBehaviour.cs" />
     <Compile Include="Scripts\MoveStuff.cs" />
+    <Compile Include="Utilities\ScriptsContainer.cs" />
     <Compile Include="Utilities\Vector3.cs" />
     <Compile Include="Utilities\DebugDraw.cs" />
     <Compile Include="Utilities\GameUtility.cs" />

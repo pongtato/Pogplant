@@ -32,7 +32,7 @@ void Application::EnterEditorState()
 	m_sGeneralSystem.UpdateTransforms();
 
 	m_sPhysicsSystem.Init(&m_editorECS, m_eventBus);
-	m_sScriptSystem.Init(&m_editorECS);
+	m_sScriptSystem.InitEditor(&m_editorECS);
 }
 
 /******************************************************************************/
@@ -121,7 +121,7 @@ void Application::LeaveEditorState()
 	//std::cout << "Leaving Editor State" << std::endl;
 
 	PPA::AudioEngine::StopPlayingAll();
-
+	m_sScriptSystem.Unload();
 	Serializer serialiser{ m_editorECS };
 	serialiser.Save("Resources/tmp");
 }

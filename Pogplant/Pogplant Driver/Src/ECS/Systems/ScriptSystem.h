@@ -35,7 +35,9 @@ public:
 	// Cleanup mono
 	~ScriptSystem();
 	// Initialize mono and scripts
-	void Init(ECS* ecs);
+	void InitEditor(ECS* ecs);
+	void InitPlayState(ECS* ecs);
+	void Unload();
 	// Update loop
 	void Update(float dt);
 	void LateUpdate(float dt);
@@ -48,8 +50,8 @@ private:
 	// Helper function to find the monomethod in monoclass
 	void Reload();
 	void LoadMemory();
+	void InitLoad();
 	void Cleanup();
-	void Unload();
 	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params = -1);
 	void BindFunctions();
 

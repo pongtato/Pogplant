@@ -24,6 +24,15 @@ namespace Scripting
     public class Scripting
     {
         // Add Script Types here
+        public static ScriptsContainer ScriptsContainer()
+        {
+            return new ScriptsContainer();
+        }
+
+        public static DummyScript DummyScript()
+        {
+            return new DummyScript();
+        }
         public static PlayerScript PlayerScript()
         {
             return new PlayerScript();

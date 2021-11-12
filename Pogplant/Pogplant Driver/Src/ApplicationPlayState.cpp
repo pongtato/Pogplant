@@ -51,7 +51,7 @@ void Application::EnterPlayState()
 
 	// Ensure that the scripts are reloaded.
 	m_sScriptSystem.SetReload(true);
-	m_sScriptSystem.Init(&m_playECS);
+	m_sScriptSystem.InitPlayState(&m_playECS);
 
 	//This is where code is when transitioning to play state
 	m_sPhysicsSystem.InitPlayState();
@@ -162,5 +162,6 @@ void Application::RenderPlayState()
 void Application::LeavePlayState()
 {
 	PPA::AudioEngine::StopPlayingAll();
+	m_sScriptSystem.Unload();
 	m_playECS.GetReg().clear();
 }
