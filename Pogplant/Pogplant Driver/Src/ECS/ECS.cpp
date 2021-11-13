@@ -224,7 +224,7 @@ std::string ECS::GenerateGUID(void)
 	UuidCreate(&uuid);
 	char* str;
 	UuidToStringA(&uuid, (RPC_CSTR*)&str);
-	std::string ret_str{ str }
+	std::string ret_str{ str };
 	RpcStringFreeA((RPC_CSTR*)&str);
 	return str;
 }
