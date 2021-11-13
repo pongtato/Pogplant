@@ -26,6 +26,10 @@
 		{
 			"m_Name" : "PlayerBox"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\player_ship_box.prefab"
+		},
 		"Rigidbody" : 
 		{
 			"isKinematic" : false,
@@ -80,6 +84,10 @@
 		"Name" : 
 		{
 			"m_Name" : "PlayerShip"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\player_ship_box.prefab"
 		},
 		"Render" : 
 		{

@@ -11,8 +11,8 @@ namespace PogplantDriver
 	Directory::Directory() : 
 		pad(16.f), thumbsize(64.f), cellsize( pad + thumbsize),
 		panelsize(0), col_count(0),
-		m_AssetPath{"..//Pogplant Driver//Resources"},
-		m_CurrentPath{"..//Pogplant Driver//Resources"}
+		m_AssetPath{ "Resources"},
+		m_CurrentPath{"Resources"}
 
 	{
 	}
@@ -45,7 +45,7 @@ namespace PogplantDriver
 			if (entry.path().extension() == ".prefab")
 				current_file = path;
 		}
-		//else
+		//else if (!ImGui::IsItemHovered() && ImGui::IsMouseClicked(ImGuiMouseButton_Right))
 		//{
 		//	current_file = "";
 		//}
@@ -73,6 +73,9 @@ namespace PogplantDriver
 
 		if (ImGui::BeginTable("##DirectoryTable", col_count))
 		{
+			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+				current_file = "";
+
 			std::vector<std::filesystem::directory_entry> asd;
 			for (const auto& entry : std::filesystem::directory_iterator(m_CurrentPath))
 			{
@@ -86,6 +89,7 @@ namespace PogplantDriver
 
 			for (auto& entry : asd)
 				DrawIndividual(entry);
+
 
 			ImGui::EndTable();
 		}

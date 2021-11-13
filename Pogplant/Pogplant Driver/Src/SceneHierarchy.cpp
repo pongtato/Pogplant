@@ -81,8 +81,8 @@ namespace PogplantDriver
 			{
 				if (ImGui::MenuItem("Create Empty Entity"))
 					m_ECS->CreateEntity();
-				if (ImGui::MenuItem("Load Prefab"))
-					LoadPrefab();
+				//if (ImGui::MenuItem("Load Prefab"))
+				//	LoadPrefab2();
 				if (ImGui::MenuItem("Load Model"))
 					m_Loading = true;
 
@@ -176,7 +176,14 @@ namespace PogplantDriver
 		if (!filepath.empty())
 		{
 			Serializer serialiser{ *m_ECS };
-			serialiser.SavePrefab(filepath, _object);
+
+			//creates a copy of the entity and save as a prefab type
+			auto copy_of_entity = m_ECS->CopyEntity(_object);
+
+			serialiser.SavePrefab(filepath, copy_of_entity);
+
+			//current copy becomes a prefab instnace
+			m_ECS->GetReg().emplace<Components::PrefabInstance>(_object, m_ECS->GetReg().get<Components::Guid>(copy_of_entity).m_guid);
 		}
 	}
 

@@ -155,7 +155,6 @@ namespace PogplantDriver
 		float m_accumulatedFixedTime = 0.f;
 		static constexpr float m_minFixedUpdateTime = 1 / 30.f;
 
-
 		/**************************
 		*
 		* Singleton

@@ -22,9 +22,9 @@ namespace PogplantDriver
 		SaveObjects(File);
 	}
 
-	bool Serializer::Load(const std::string& File)
+	bool Serializer::Load(const std::string& File, bool remove_prefab_tag)
 	{
-		LoadObjects(File);
+		LoadObjects(File, false, remove_prefab_tag);
 		return true;
 	}
 
@@ -35,14 +35,17 @@ namespace PogplantDriver
 		int i = 0;
 		if (ostream.is_open())
 		{
+			//adds a GUID
+			if(!m_ecs.GetReg().try_get<Guid>(id))
+				m_ecs.GetReg().emplace<Components::Guid>(id, m_ecs.GenerateGUID());
+			if (!m_ecs.GetReg().try_get<Prefab>(id))
+				m_ecs.GetReg().emplace<Components::Prefab>(id, File);
+
 			Json::Value root;
 			Json::Value subroot = SaveComponents(id);
 			root[i] = subroot;
 
 			auto& transform = m_ecs.GetReg().get<Transform>(id);
-			//adds a GUID
-			m_ecs.GetReg().emplace<Components::Guid>(id, m_ecs.GenerateGUID());
-
 			if (!transform.m_children.empty())
 				RecurSaveChild(root, id, ++i);
 
@@ -64,48 +67,68 @@ namespace PogplantDriver
 
 	entt::entity Serializer::Instantiate(const std::string& Filename, glm::vec3 _Position, glm::vec3 _Rotation)
 	{
-		std::filesystem::path path = std::filesystem::current_path();
-		path += "\\Resources\\Prefabs\\" + Filename + ".prefab";
-		std::ifstream istream(path, std::ios::in);
-		entt::entity first_entity = entt::null;
-		if (istream.is_open())
+		//std::filesystem::path path = std::filesystem::current_path();
+		std::filesystem::path path = "Resources\\Prefabs\\" + Filename + ".prefab";
+		std::string current_file = path.string();
+
+		auto m_ecs = Application::GetInstance().m_activeECS;
+		if (!m_ecs->m_prefab_map.contains(current_file))
 		{
-			Json::Value root;
-			istream >> root;
-			first_entity = m_ecs.GetReg().create();
-
-			Json::ValueIterator iter = root.begin();
-			bool isfirst = true;
-
-			while (iter != root.end())
-			{
-				Json::Value subroot = root[iter.index()];
-
-				if (isfirst)
-				{
-					LoadComponents(subroot, first_entity);
-					isfirst = false;
-				}
-				else
-				{
-					LoadComponents(subroot, m_ecs.GetReg().create());
-				}
-				// Load components
-				++iter;
-			}
-			istream.close();
-
-			//Instantiate given position, rotation
-			auto transform = m_ecs.GetReg().try_get<Transform>(first_entity);
-			transform->m_position = _Position;
-			transform->m_rotation = _Rotation;
+			Serializer serialiser{ *Application::GetInstance().m_activeECS };
+ 			serialiser.LoadPrefab(current_file, true);
 		}
-		else
-		{
-			Pogplant::Logger::Log({ "Serialiser::Instantiate",Pogplant::LogEntry::LOGTYPE::ERROR, "Failed to Instantiate prefab" });
-			assert(first_entity == entt::null && "Failed to Instantiate prefab");
-		}
-		return first_entity;
+
+		assert(m_ecs->m_prefab_map.contains(current_file));
+
+		auto _entity = m_ecs->CopyEntity(m_ecs->m_prefab_map[current_file]);
+		auto _prefab = m_ecs->GetReg().get<Components::Guid>(m_ecs->m_prefab_map[current_file]);
+		m_ecs->GetReg().emplace<Components::PrefabInstance>(_entity, _prefab.m_guid);
+
+		auto& transform = m_ecs->GetReg().get<Transform>(_entity);
+		transform.m_position = _Position;
+		transform.m_rotation = _Rotation;
+
+
+		//std::ifstream istream(path, std::ios::in);
+		//entt::entity first_entity = entt::null;
+		//if (istream.is_open())
+		//{
+		//	Json::Value root;
+		//	istream >> root;
+		//	first_entity = m_ecs.GetReg().create();
+
+		//	Json::ValueIterator iter = root.begin();
+		//	bool isfirst = true;
+
+		//	while (iter != root.end())
+		//	{
+		//		Json::Value subroot = root[iter.index()];
+
+		//		if (isfirst)
+		//		{
+		//			LoadComponents(subroot, first_entity, true, path.string());
+		//			isfirst = false;
+		//		}
+		//		else
+		//		{
+		//			LoadComponents(subroot, m_ecs.GetReg().create(), true, path.string());
+		//		}
+		//		// Load components
+		//		++iter;
+		//	}
+		//	istream.close();
+
+		//	//Instantiate given position, rotation
+		//	auto transform = m_ecs.GetReg().try_get<Transform>(first_entity);
+		//	transform->m_position = _Position;
+		//	transform->m_rotation = _Rotation;
+		//}
+		//else
+		//{
+		//	Pogplant::Logger::Log({ "Serialiser::Instantiate",Pogplant::LogEntry::LOGTYPE::ERROR, "Failed to Instantiate prefab" });
+		//	assert(first_entity == entt::null && "Failed to Instantiate prefab");
+		//}
+		return _entity;
 	}
 
 	void Serializer::SaveObjects(const std::string& File)
@@ -168,7 +191,6 @@ namespace PogplantDriver
 			delete writer;
 			ostream.close();
 		}
-
 	}
 
 	Json::Value Serializer::SaveComponents(entt::entity id)
@@ -257,9 +279,11 @@ namespace PogplantDriver
 		return subroot;
 	}
 
-	void Serializer::LoadObjects(const std::string& File, bool IsPrefab)
+	entt::entity Serializer::LoadObjects(const std::string& File, bool IsPrefab, bool remove_prefab_tag)
 	{
 		std::ifstream istream(File, std::ios::in);
+
+		entt::entity p_id = entt::null;
 
 		if (istream.is_open())
 		{
@@ -280,14 +304,13 @@ namespace PogplantDriver
 				else
 				{
 					auto entity_id = m_ecs.GetReg().create();
-					LoadComponents(subroot, entity_id, IsPrefab, File);
+					LoadComponents(subroot, entity_id, IsPrefab, File, remove_prefab_tag);
 					if (IsPrefab && load_parent)
 					{
 						m_ecs.m_prefab_map[File] = entity_id;
 
-						//m_ecs.GetReg().emplace<Components::Prefab>(entity_id, File);
-
 						load_parent = false;
+						p_id = entity_id;
 					}
 				}
 
@@ -296,23 +319,23 @@ namespace PogplantDriver
 
 			istream.close();
 		}
+
+		//assert(p_id != entt::null);
+		return p_id;
 	}
 
-	void Serializer::LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab, std::string _filepath)
+	void Serializer::LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab, std::string _filepath, bool remove_prefab_tag)
 	{
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
 		auto& scripting = root["Scripting"];
 		auto& audioSource = root["AudioSource"];
 
-		if (IsPrefab)
-		{
-			m_ecs.GetReg().emplace<Prefab>(id, _filepath);
-		}
 
 		Try_Load_Component<ParticleSystem>(root, "ParticleSystem", id);
 		Try_Load_Component<Canvas>(root, "Canvas", id);
 		Try_Load_Component<Transform>(root, "Transform", id);
+
 
 		Try_Load_Component<Directional_Light>(root, "Directional_Light", id);
 		Try_Load_Component<Point_Light>(root, "Point_Light", id);
@@ -324,8 +347,12 @@ namespace PogplantDriver
 		Try_Load_Component<Rigidbody>(root, "Rigidbody", id);
 
 		Try_Load_Component<Components::Guid>(root, "Guid", id);
-		Try_Load_Component<Prefab>(root, "Prefab", id);
+		if(!remove_prefab_tag)
+			Try_Load_Component<Prefab>(root, "Prefab", id);
 		Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);
+
+
+
 
 		if (relationship)
 		{
@@ -369,6 +396,13 @@ namespace PogplantDriver
 				m_parent_id.push(id);
 			}
 		}
+
+		//code to convert old prefab to the new ones, don't use this lol
+		//if (IsPrefab)
+		//{
+		//	if (m_ecs.GetReg().get<Transform>(id).m_parent == entt::null)
+		//		m_ecs.GetReg().emplace<Prefab>(id, _filepath);
+		//}
 
 		if (render)
 		{
@@ -485,10 +519,13 @@ namespace PogplantDriver
 	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter)
 	{
 		auto& transform = m_ecs.GetReg().get<Transform>(id);
+		auto _prefab = m_ecs.GetReg().try_get<Prefab>(id);
 		if (!transform.m_children.empty())
 		{
 			for (auto& child : transform.m_children)
 			{
+				if (_prefab)
+					m_ecs.GetReg().emplace<Prefab>(child, _prefab->file_path);
 				_classroot[counter++] = SaveComponents(child);
 				m_saved.insert(child);
 

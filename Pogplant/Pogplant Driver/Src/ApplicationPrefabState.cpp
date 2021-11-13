@@ -29,7 +29,7 @@ void Application::EnterPrefabState()
 	m_activeECS = &m_playECS;
 
 	Serializer serialiser{ m_playECS };
-	if (!serialiser.Load(m_prefabFilePath))
+	if (!serialiser.Load(m_prefabFilePath, true))
 		assert(false);
 
 	PPD::ImguiHelper::RelinkECS(&m_playECS);
@@ -94,23 +94,52 @@ void Application::RenderPrefabState()
 /******************************************************************************/
 void Application::LeavePrefabState()
 {
-	//adding guid to existing prefab files
-	auto view =	m_playECS.view<Transform>();
+	entt::entity _id = entt::null;
+	auto view = m_playECS.view<Transform>();
 	for (auto& ent : view)
 	{
-		auto& transform = view.get<Transform>(ent);
-		//add GUID to parent only
-		if (transform.m_parent == entt::null)
-			m_playECS.GetReg().emplace<Components::Guid>(ent, m_playECS.GenerateGUID());
+		if (view.get<Transform>(ent).m_parent == entt::null)
+		{
+			_id = ent;
+			m_playECS.GetReg().emplace_or_replace<Components::Prefab>(_id, m_prefabFilePath);
+			break;
+		}
 	}
 
+	assert(_id != entt::null);
+
 	Serializer serialiser{ m_playECS };
-	serialiser.Save(m_prefabFilePath);
+	serialiser.SavePrefab(m_prefabFilePath, _id);
 
 	//update all existing prefab using this GUID
+	if (m_editorECS.m_prefab_map.contains(m_prefabFilePath))
+	{
+		//delete current
+		m_editorECS.DestroyEntity(m_editorECS.m_prefab_map[m_prefabFilePath]);
+		//load the new file
+		
+		m_editorECS.m_prefab_map.erase(m_prefabFilePath);
+		Serializer serialiser_2{ m_editorECS };
+		serialiser_2.LoadPrefab(m_prefabFilePath, true);
 
+		assert(m_editorECS.m_prefab_map.contains(m_prefabFilePath));
+		entt::entity e_id = m_editorECS.m_prefab_map[m_prefabFilePath];
 
+		auto _view = m_editorECS.view<PrefabInstance>();
 
+		for (auto ent : _view)
+		{
+			auto& prefab = m_editorECS.GetReg().get<Guid>(e_id);
+			auto& prefab_instance = _view.get<PrefabInstance>(ent);
+
+			if (prefab.m_guid == prefab_instance.prefab_GUID)
+			{
+				m_editorECS.DestroyEntity(ent);
+				auto _ent = m_editorECS.CopyEntity(m_editorECS.m_prefab_map[m_prefabFilePath]);
+				m_editorECS.GetReg().emplace<PrefabInstance>(_ent, m_prefabFilePath);
+			}
+		}
+	}
 
 	PPA::AudioEngine::StopPlayingAll();
 	m_sScriptSystem.Unload();

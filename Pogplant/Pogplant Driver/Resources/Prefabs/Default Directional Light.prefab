@@ -26,6 +26,10 @@
 		{
 			"m_Name" : "Directional Light"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Default Directional Light.prefab"
+		},
 		"Render" : 
 		{
 			"ColorTint" : 

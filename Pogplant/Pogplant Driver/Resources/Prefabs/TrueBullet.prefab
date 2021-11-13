@@ -25,6 +25,10 @@
 		{
 			"m_Name" : "True_Bullet"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrueBullet.prefab"
+		},
 		"Render" : 
 		{
 			"ColorTint" : 
@@ -36,7 +40,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.91969680786132812,
+				0.91969680786132813,
 				0.40465116500854492
 			],
 			"RenderModel" : 

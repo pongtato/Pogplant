@@ -8,6 +8,10 @@
 		{
 			"m_Name" : "Dirt_Bend_01"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Dirt_Bend_01.prefab"
+		},
 		"Render" : 
 		{
 			"ColorTint" : 

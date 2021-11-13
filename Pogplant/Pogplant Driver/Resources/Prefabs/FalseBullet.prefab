@@ -25,6 +25,10 @@
 		{
 			"m_Name" : "False_Bullet"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FalseBullet.prefab"
+		},
 		"Render" : 
 		{
 			"ColorTint" : 

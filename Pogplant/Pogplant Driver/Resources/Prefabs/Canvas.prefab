@@ -9,6 +9,10 @@
 		{
 			"m_Name" : "CanvasParent"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Canvas.prefab"
+		},
 		"Transform" : 
 		{
 			"m_position" : 
@@ -28,45 +32,6 @@
 				1.0,
 				1.0,
 				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_TexName" : "Large_Reticle.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HP_Large"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.05000000074505806,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.20000000298023224,
-				0.20000000298023224,
-				0.20000000298023224
 			]
 		}
 	},
@@ -86,6 +51,10 @@
 		"Name" : 
 		{
 			"m_Name" : "HP_Bar"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Canvas.prefab"
 		},
 		"Transform" : 
 		{
@@ -126,6 +95,10 @@
 		{
 			"m_Name" : "HP_BarFrame"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Canvas.prefab"
+		},
 		"Transform" : 
 		{
 			"m_position" : 
@@ -164,6 +137,10 @@
 		"Name" : 
 		{
 			"m_Name" : "HP_Icon"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Canvas.prefab"
 		},
 		"Transform" : 
 		{
@@ -204,6 +181,10 @@
 		{
 			"m_Name" : "Crosshair"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Canvas.prefab"
+		},
 		"Transform" : 
 		{
 			"m_position" : 
@@ -223,6 +204,49 @@
 				0.20000000298023224,
 				0.20000000298023224,
 				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Large_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HP_Large"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Canvas.prefab"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.05000000074505806,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.20000000298023224
 			]
 		}
 	}

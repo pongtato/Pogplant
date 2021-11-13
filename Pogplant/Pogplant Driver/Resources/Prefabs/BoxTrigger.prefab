@@ -25,6 +25,10 @@
 		{
 			"m_Name" : "Box Trigger"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\BoxTrigger.prefab"
+		},
 		"Transform" : 
 		{
 			"m_position" : 

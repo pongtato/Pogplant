@@ -17,6 +17,10 @@
 		{
 			"m_Name" : "PlayerCam"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\player_camera.prefab"
+		},
 		"Transform" : 
 		{
 			"m_position" : 

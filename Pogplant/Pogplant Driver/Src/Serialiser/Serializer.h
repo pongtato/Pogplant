@@ -18,7 +18,7 @@ namespace PogplantDriver
 		// Save scene
 		void Save(const std::string& File);
 		// Load scene
-		bool Load(const std::string& File);
+		bool Load(const std::string& File, bool remove_prefab_tag = false);
 		//
 		void SavePrefab(const std::string& File, entt::entity id);
 		void LoadPrefab(const std::string& File, bool IsPrefab = false);
@@ -32,8 +32,8 @@ namespace PogplantDriver
 
 		void SaveObjects(const std::string& File);
 		Json::Value SaveComponents(entt::entity id);
-		void LoadObjects(const std::string& File, bool IsPrefab = false);
-		void LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab = false, std::string _filepath = {});
+		entt::entity LoadObjects(const std::string& File, bool IsPrefab = false, bool remove_prefab_tag = false);
+		void LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab = false, std::string _filepath = {}, bool remove_prefab_tag = false);
 		int RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter);
 
 

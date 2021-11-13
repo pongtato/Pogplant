@@ -25,6 +25,10 @@
 		{
 			"m_Name" : "Player_Bullet"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Bullet.prefab"
+		},
 		"Render" : 
 		{
 			"ColorTint" : 

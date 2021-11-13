@@ -8,6 +8,10 @@
 		{
 			"m_Name" : "Dirt_Straight_02"
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Dirt_Straight_02.prefab"
+		},
 		"Render" : 
 		{
 			"ColorTint" : 

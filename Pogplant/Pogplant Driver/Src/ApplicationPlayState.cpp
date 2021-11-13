@@ -164,4 +164,5 @@ void Application::LeavePlayState()
 	PPA::AudioEngine::StopPlayingAll();
 	m_sScriptSystem.Unload();
 	m_playECS.GetReg().clear();
+	m_playECS.m_prefab_map.clear();
 }
