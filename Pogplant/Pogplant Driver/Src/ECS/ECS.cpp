@@ -1,6 +1,7 @@
 #include "ECS.h"
 #include "Entity.h"
 #include "Systems/ScriptResource.h"
+#include "../ECS/Components/DependantComponents.h"
 
 using namespace Components;
 
@@ -194,6 +195,17 @@ entt::entity ECS::CopyEntity(entt::entity _target)
 	Try_Copy<ParticleSystem>(new_entity, _target);
 	Try_Copy<Canvas>(new_entity, _target);
 	Try_Copy<GUID>(new_entity, _target);
+
+	//DependantComponents
+	Try_Copy<BoxCollider>(new_entity, _target);
+	Try_Copy<SphereCollider>(new_entity, _target);
+	Try_Copy<AudioSource>(new_entity, _target);
+	Try_Copy<Rigidbody>(new_entity, _target);
+
+	Try_Copy<Projectile>(new_entity, _target);
+
+	Try_Copy<Scriptable>(new_entity, _target);
+	//Try_Copy<>(new_entity, _target);
 	//Try_Copy<Prefab>(new_entity, _target);
 	//Try_Copy<PrefabInstance>(new_entity, _target);
 

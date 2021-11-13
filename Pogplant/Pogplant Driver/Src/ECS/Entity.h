@@ -12,18 +12,6 @@ public:
 	Entity(entt::entity id, ECS* ecs);
 	~Entity();
 
-	//template<typename Type>
-	//Type* HasComponent();
-
-	//template<typename Type, typename... Args>
-	//Type& AddComponent(Args&&... args);
-
-	//template<typename Type>
-	//Type& GetComponent();
-
-	//template<typename Type>
-	//Type& RemoveComponent();
-
 	template<typename Type>
 	Type* HasComponent()
 	{
