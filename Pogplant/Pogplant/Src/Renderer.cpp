@@ -26,8 +26,6 @@
 
 #include <iostream>
 
-#pragma comment(lib, "glu32.lib")
-
 namespace Pogplant
 {
 	bool Renderer::m_RenderGrid = false;
@@ -99,14 +97,28 @@ namespace Pogplant
 		}
 
 		// Default to editor cam
-		Camera* currCam = CameraResource::GetCamera("EDITOR");
+		//Camera* currCam = CameraResource::GetCamera("EDITOR");
+
+		Camera4D* currQCam = &CameraResource::m_QuatCam;
+		//std::cout << "@" << currQCam->m_Projection.length() << std::endl;
+		//std::cout << "@" << currQCam->m_View.length() << std::endl;
+		//std::cout << "@" << currQCam->m_Position.x << "|" << currQCam->m_Position.y << "|" << currQCam->m_Position.z << std::endl;
+		//std::cout << "@" << currQCam->m_Near << std::endl;
+		//std::cout << "@" << currQCam->m_Far << std::endl;
+		//std::cout << currQCam->m_Pitch << "|" << currQCam->m_Heading << std::endl;
+
 		return CameraReturnData
 		{
-			currCam->GetPerspective(),
+			/*currCam->GetPerspective(),
 			currCam->GetView(),
 			currCam->GetPosition(),
 			currCam->GetCameraConfig().m_Near,
-			currCam->GetCameraConfig().m_Far,
+			currCam->GetCameraConfig().m_Far,*/
+			currQCam->m_Projection,
+			currQCam->GetView(),
+			currQCam->m_Position,
+			currQCam->m_Near,
+			currQCam->m_Far,
 		};
 	}
 
@@ -513,10 +525,13 @@ namespace Pogplant
 		(void)_Selected;
 
 		/// Editor cam by default, dont need to search for gam cam since this only appears in debug
-		Camera* currCam = CameraResource::GetCamera("EDITOR");
+		//Camera* currCam = CameraResource::GetCamera("EDITOR");
+		Camera4D* currCam = &CameraResource::m_QuatCam;
 		// Try to get game camera
 		auto cam_results = registry.view<Components::Camera>();
-		glm::mat4 projection = currCam->GetPerspective();
+		//glm::mat4 projection = currCam->GetPerspective();
+		//glm::mat4 view = currCam->GetView();
+		glm::mat4 projection = currCam->m_Projection;
 		glm::mat4 view = currCam->GetView();
 
 		/// What does this do again i cant rmb lmao
@@ -544,8 +559,8 @@ namespace Pogplant
 		MeshBuilder::RebindLines(DebugDraw::m_DebugVerts);
 
 		ShaderLinker::Use("LINE");
-		ShaderLinker::SetUniform("m4_Projection", currCam->GetPerspective());
-		ShaderLinker::SetUniform("m4_View", currCam->GetView());
+		ShaderLinker::SetUniform("m4_Projection", projection);
+		ShaderLinker::SetUniform("m4_View", view);
 		ShaderLinker::SetUniform("m4_Model", glm::mat4{ 1 });
 
 		// Debug color default to green for now
@@ -565,7 +580,7 @@ namespace Pogplant
 			// Debug grid size
 			glLineWidth(DebugDraw::m_GridWidth);
 
-			int camFar = static_cast<int>(currCam->GetCameraConfig().m_Far);
+			int camFar = static_cast<int>(currCam->m_Far);
 
 			for (int i = -camFar; i <= camFar; i++)
 			{

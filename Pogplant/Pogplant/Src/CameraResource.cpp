@@ -5,6 +5,7 @@ namespace Pogplant
 	std::unordered_map<const char*, size_t> CameraResource::m_CameraKeys;
 	std::vector<Camera*> CameraResource::m_CameraPool;
 	Camera* CameraResource::m_ActiveCamera = nullptr;
+	Camera4D CameraResource::m_QuatCam = Camera4D();
 
 	void CameraResource::InitBaseCameras(const glm::vec3& _EditorPosition, CameraConfig _CameraConfig)
 	{
@@ -74,6 +75,9 @@ namespace Pogplant
 		{
 			it->UpdateProjection();
 		}
+
+		/// QUAT
+		CameraResource::m_QuatCam.UpdateProjection();
 	}
 	void CameraResource::UpdateActiveCamera(float _Dt)
 	{
@@ -81,6 +85,9 @@ namespace Pogplant
 		{
 			m_ActiveCamera->Update(_Dt);
 		}
+
+		/// QUAT
+		CameraResource::m_QuatCam.Update(_Dt);
 	}
 
 	void CameraResource::ImGUIWindowSizeOverride(const glm::vec2& _ImGuiWinSize)
@@ -89,5 +96,8 @@ namespace Pogplant
 		{
 			m_ActiveCamera->UpdateProjection(_ImGuiWinSize);
 		}
+
+		/// QUAT
+		CameraResource::m_QuatCam.UpdateProjection(_ImGuiWinSize);
 	}
 }

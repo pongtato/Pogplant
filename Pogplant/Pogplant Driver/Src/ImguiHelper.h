@@ -59,9 +59,9 @@ namespace PogplantDriver
 		//Recopy the Main-menu bar but change the ID stack
 		static bool ImGui_BeginMainStatusBar();
 		static void ImGui_EndMainStatusBar();
-		static void Scene_GOPick(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
-		static void Scene_GOEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
-		static void Scene_ViewEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
+		static void Scene_GOPick(Pogplant::Camera4D* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
+		static void Scene_GOEdit(Pogplant::Camera4D* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
+		static void Scene_ViewEdit(Pogplant::Camera4D* _CurrCam, ImVec2 _VMin, ImVec2 _VMax);
 
 		//to fix issue of IMGUIGIZMO
 		static glm::mat4 get_parent_transform(entt::entity _id);

@@ -1,5 +1,6 @@
 #pragma once
 #include "Camera.h"
+#include "Camera4D.h"
 
 #include <vector>
 #include <unordered_map>
@@ -23,6 +24,8 @@ namespace Pogplant
 		static void UpdateAllProjection();
 		static void UpdateActiveCamera(float _Dt);
 		static void ImGUIWindowSizeOverride(const glm::vec2& _ImGuiWinSize);
+
+		static Camera4D m_QuatCam;
 
 	private:
 		static std::unordered_map<const char*, size_t> m_CameraKeys;

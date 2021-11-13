@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Camera.h" />
+    <ClInclude Include="Src\Camera4D.h" />
     <ClInclude Include="Src\CameraResource.h" />
     <ClInclude Include="Src\Character.h" />
     <ClInclude Include="Src\DebugDraw.h" />
@@ -43,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Camera.cpp" />
+    <ClCompile Include="Src\Camera4D.cpp" />
     <ClCompile Include="Src\CameraResource.cpp" />
     <ClCompile Include="Src\Character.cpp" />
     <ClCompile Include="Src\DebugDraw.cpp" />

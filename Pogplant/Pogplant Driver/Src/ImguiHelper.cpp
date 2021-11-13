@@ -1040,16 +1040,16 @@ namespace PogplantDriver
 			ImGui::PushItemWidth(69.0f);
 			ImGui::DragFloat("Exposure", &PP::Renderer::m_Exposure, 0.05f);
 			ImGui::DragFloat("Gamma", &PP::Renderer::m_Gamma, 0.05f);
-			auto* camera = PP::CameraResource::GetCamera("EDITOR");
-			ImGui::DragFloat("Editor Cam Near", &camera->m_CameraConfig.m_Near);
-			ImGui::DragFloat("Editor Cam Far", &camera->m_CameraConfig.m_Far);
+			auto* camera = &PP::CameraResource::m_QuatCam;
+			ImGui::DragFloat("Editor Cam Near", &camera->m_Near);
+			ImGui::DragFloat("Editor Cam Far", &camera->m_Far);
 			ImGui::Dummy({ 0,2.0f });
 
 			ImGui::Text("Camera config");
 			ImGui::PushItemWidth(207.0f);
 			ImGui::DragFloat3("Camera Pos", &camera->m_Position.x);
 			ImGui::PopItemWidth();
-			ImGui::DragFloat("Camera Speed", &camera->m_CameraConfig.m_Speed);
+			ImGui::DragFloat("Camera Speed", &camera->m_Speed);
 
 		/*	ImGui::Text("Light Shaft");
 			ImGui::PushItemWidth(207.0f);
@@ -1109,8 +1109,11 @@ namespace PogplantDriver
 		ImVec2 vMax = ImGui::GetWindowContentRegionMax();
 
 		// Aspect ratio update
-		Pogplant::Camera* currCam = PP::CameraResource::GetCamera("EDITOR");
-		currCam->UpdateProjection({ vMax.x, vMax.y });
+		//Pogplant::Camera* currCam = PP::CameraResource::GetCamera("EDITOR");
+		//currCam->UpdateProjection({ vMax.x, vMax.y });
+
+		PP::Camera4D& currQuatCam = PP::CameraResource::m_QuatCam;
+		currQuatCam.UpdateProjection({ vMax.x, vMax.y });
 
 		// Account for position of window
 		vMin.x += ImGui::GetWindowPos().x;
@@ -1119,13 +1122,13 @@ namespace PogplantDriver
 		vMax.y += ImGui::GetWindowPos().y;
 
 		/// GUIZMO GO EDIT
-		Scene_GOEdit(currCam, vMin, vMax);
+		Scene_GOEdit(&currQuatCam, vMin, vMax);
 
 		/// Picker
-		Scene_GOPick(currCam, vMin, vMax);
+		Scene_GOPick(&currQuatCam, vMin, vMax);
 
 		/// GUIZMO VIEW EDIT
-		Scene_ViewEdit(currCam, vMin, vMax);
+		Scene_ViewEdit(&currQuatCam, vMin, vMax);
 	}
 
 	void ImguiHelper::GameWindow()
@@ -1223,7 +1226,7 @@ namespace PogplantDriver
 		ImGui::End();
 	}
 
-	void ImguiHelper::Scene_GOPick(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
+	void ImguiHelper::Scene_GOPick(Pogplant::Camera4D* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
 		if (!ImGui::IsWindowFocused() || !ImGui::IsItemHovered())
 		{
@@ -1235,12 +1238,12 @@ namespace PogplantDriver
 			glm::vec2 min = { _VMin.x,_VMin.y };
 			glm::vec2 max = { _VMax.x,_VMax.y };
 			glm::vec2 cursor = { ImGui::GetMousePos().x,ImGui::GetMousePos().y };
+
 			_CurrCam->UpdateRayConfig({ min,max,max - min,cursor });
 			_CurrCam->RayCast();
 
 			// Ray for picking
-			const PP::Ray ray = _CurrCam->GetRay();
-
+			const PP::Ray& ray = _CurrCam->m_Ray;
 			float shortestTime = std::numeric_limits<float>::max();
 			entt::entity chosenObject = entt::null;
 
@@ -1315,7 +1318,7 @@ namespace PogplantDriver
 	}
 
 
-	void ImguiHelper::Scene_GOEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
+	void ImguiHelper::Scene_GOEdit(Pogplant::Camera4D* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
 		// Draw view manipulate only in editor scene
 		ImGuizmo::SetDrawlist();
@@ -1359,7 +1362,7 @@ namespace PogplantDriver
 			(
 				m_GoEditing,
 				glm::value_ptr(_CurrCam->GetView()),
-				glm::value_ptr(_CurrCam->GetPerspective()),
+				glm::value_ptr(_CurrCam->m_Projection),
 				m_EditMode,
 				ImGuizmo::LOCAL,
 				glm::value_ptr(xxTTVMatrix69x),
@@ -1382,20 +1385,21 @@ namespace PogplantDriver
 		}
 	}
 
-	void ImguiHelper::Scene_ViewEdit(Pogplant::Camera* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
+	void ImguiHelper::Scene_ViewEdit(Pogplant::Camera4D* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
 		float view[16] = { 0 };
 		float projection[16] = { 0 };
 		float front[3] = { 0 };
-		memcpy(view, glm::value_ptr(_CurrCam->View()), sizeof(_CurrCam->View()));
-		memcpy(projection, glm::value_ptr(_CurrCam->Perspective()), sizeof(_CurrCam->Perspective()));
+		const glm::mat4& cView = _CurrCam->GetView();
+		memcpy(view, glm::value_ptr(cView), sizeof(cView));
+		memcpy(projection, glm::value_ptr(_CurrCam->m_Projection), sizeof(_CurrCam->m_Projection));
 		// After clickng on gizmo update yaw pitch accordingly
 		if (ImGuizmo::ViewManipulate(view, 1.0f, ImVec2(_VMax.x - 128, _VMin.y), ImVec2(128, 128), 0x0, front))
 		{
 			_CurrCam->UpdateFront(front);
 		}
-		// Updated view from gizmo
-		_CurrCam->View() = glm::make_mat4(view);
+		//// Updated view from gizmo
+		//_CurrCam->View() = glm::make_mat4(view);
 
 		// Make sure begin is being called before this function
 		// This ensures the input for camera only works when the Scene window is focused

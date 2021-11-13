@@ -39,6 +39,13 @@ namespace Pogplant
 				0.1f	// Pan speed
 			}
 		);
+
+		// Ghetto init
+		auto& quatCam = CameraResource::m_QuatCam;
+		quatCam.m_Position = glm::vec3{ 0,0,5.0f };
+		quatCam.m_Near = 0.1f;
+		quatCam.m_Far = 2000.0f;
+		quatCam.m_Fov = 45.0f;
 	}
 
 	void Entry::Cleanup()

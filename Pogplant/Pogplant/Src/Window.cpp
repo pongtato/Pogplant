@@ -33,6 +33,9 @@ namespace Pogplant
 		{
 			activeCam->UpdateZoom(_YOffset);
 		}
+
+		/// QUAT
+		CameraResource::m_QuatCam.UpdateZoom(_YOffset);
 	}
 
 	void WindowMouseCallback(GLFWwindow*, double _XPos, double _YPos)
@@ -43,6 +46,9 @@ namespace Pogplant
 			activeCam->UpdateYawPitch(_XPos, _YPos);
 			activeCam->UpdateCameraPan(_XPos, _YPos);
 		}
+
+		/// QUAT
+		CameraResource::m_QuatCam.MouseInput(static_cast<float>(_XPos), static_cast<float>(_YPos));
 	}
 
 	int Window::InitWindow(int _Width, int _Height, const char* _Window_Name)
