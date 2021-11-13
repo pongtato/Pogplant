@@ -2,6 +2,8 @@
 #include "Entity.h"
 #include "Systems/ScriptResource.h"
 #include "../ECS/Components/DependantComponents.h"
+#include <rpc.h>
+#include <rpcdce.h>
 
 using namespace Components;
 
@@ -214,4 +216,15 @@ entt::entity ECS::CopyEntity(entt::entity _target)
 	//Try_Copy<Prefab>(new_entity, _target);
 
 	return new_entity;
+}
+
+std::string ECS::GenerateGUID(void)
+{
+	UUID uuid;
+	UuidCreate(&uuid);
+	char* str;
+	UuidToStringA(&uuid, (RPC_CSTR*)&str);
+	std::string ret_str{ str }
+	RpcStringFreeA((RPC_CSTR*)&str);
+	return str;
 }

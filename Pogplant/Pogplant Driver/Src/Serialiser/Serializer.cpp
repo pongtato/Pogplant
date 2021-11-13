@@ -8,7 +8,6 @@
 
 #include "../Application.h"
 #include "../ECS/Components/Reflection_for_components.h"
-#include <rpcdce.h>
 
 using namespace Components;
 namespace PogplantDriver
@@ -193,6 +192,9 @@ namespace PogplantDriver
 		Try_Save_Component<Rigidbody>(subroot, id);
 		Try_Save_Component<ParticleSystem>(subroot, id);
 		Try_Save_Component<Canvas>(subroot, id);
+		Try_Save_Component<Components::Guid>(subroot, id);
+		Try_Save_Component<Prefab>(subroot, id);
+		Try_Save_Component<PrefabInstance>(subroot, id);
 
 		if (!transform_component.m_children.empty() || transform_component.m_parent != entt::null)
 		{
@@ -281,13 +283,13 @@ namespace PogplantDriver
 					{
 						m_ecs.m_prefab_map[File] = entity_id;
 						
-						UUID uuid;
-						UuidCreate(&uuid);
-						char* str;
-						UuidToStringA(&uuid, (RPC_CSTR*)&str);
-						std::cout << str << std::endl;
-						m_ecs.GetReg().emplace<Components::GUID>(entity_id, std::string{ str });
-						RpcStringFreeA((RPC_CSTR*)&str);
+						//UUID uuid;
+						//UuidCreate(&uuid);
+						//char* str;
+						//UuidToStringA(&uuid, (RPC_CSTR*)&str);
+						////std::cout << str << std::endl;
+						//m_ecs.GetReg().emplace<Components::GUID>(entity_id, std::string{ str });
+						//RpcStringFreeA((RPC_CSTR*)&str);
 
 						load_parent = false;
 					}

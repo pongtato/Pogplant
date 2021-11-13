@@ -11,7 +11,7 @@
 //debug flags
 
 #define ECS_DEBUG //shows entity ID, parent ID and child ID in inspector
-#define SHOW_PREFAB //Show Prefab in SceneHeirachy, ASK VINCEEN IF UNSURE
+//#define SHOW_PREFAB //Show Prefab in SceneHeirachy, ASK VINCEEN IF UNSURE
 
 class Entity;
 
@@ -65,7 +65,10 @@ public:
 		return m_registry.view<Component...>(_exclude);
 	}
 
+	std::string GenerateGUID(void);
+
 	//prefab map
+	//file path to entity id
 	std::unordered_map<std::string, entt::entity> m_prefab_map;
 	bool m_edit_prefab = false;
 

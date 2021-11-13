@@ -96,6 +96,15 @@ namespace Components
 		rttr::registration::class_<ImVec2>("ImVec2")
 			.property("m_x", &ImVec2::x)
 			.property("m_y", &ImVec2::y);
+
+		rttr::registration::class_<Guid>("Guid")
+			.property("m_guid", &Guid::m_guid);
+
+		rttr::registration::class_<Prefab>("Prefab")
+			.property("file_path", &Prefab::file_path);
+
+		rttr::registration::class_<PrefabInstance>("PrefabInstance")
+			.property("prefab_GUID", &PrefabInstance::prefab_GUID);
 	}
 }
 

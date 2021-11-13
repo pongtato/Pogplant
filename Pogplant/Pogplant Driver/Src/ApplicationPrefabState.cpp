@@ -94,12 +94,23 @@ void Application::RenderPrefabState()
 /******************************************************************************/
 void Application::LeavePrefabState()
 {
+	//adding guid to existing prefab files
+	auto view =	m_playECS.view<Transform>();
+	for (auto& ent : view)
+	{
+		auto& transform = view.get<Transform>(ent);
+		//add GUID to parent only
+		if (transform.m_parent == entt::null)
+			m_playECS.GetReg().emplace<Components::Guid>(ent, m_playECS.GenerateGUID());
+	}
+
 	Serializer serialiser{ m_playECS };
 	serialiser.Save(m_prefabFilePath);
 
 	PPA::AudioEngine::StopPlayingAll();
 	m_sScriptSystem.Unload();
 	m_activeECS->GetReg().clear();
+
 }
 
 /******************************************************************************/

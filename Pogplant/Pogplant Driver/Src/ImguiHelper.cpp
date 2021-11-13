@@ -244,7 +244,7 @@ namespace PogplantDriver
 
 				// The windows below need to match the window names here
 				ImGui::DockBuilderDockWindow("Directory", m_DockIDs["DIRECTORY"]);
-				ImGui::DockBuilderDockWindow("Prefab", m_DockIDs["EXPLORER"]);
+				ImGui::DockBuilderDockWindow("Prefab_Loaded", m_DockIDs["EXPLORER"]);
 				ImGui::DockBuilderDockWindow("Debug", m_DockIDs["EXPLORER"]);
 				ImGui::DockBuilderDockWindow("Scene Hierarchy", m_DockIDs["LEFT_DOCK"]);
 				ImGui::DockBuilderDockWindow("Inspector", m_DockIDs["RIGHT_DOCK"]);
@@ -433,7 +433,7 @@ namespace PogplantDriver
 			Panel.get()->Render(m_CurrentEntity);
 		}
 
-		if (ImGui::Begin("Prefab"))
+		if (ImGui::Begin("Prefab_Loaded"))
 		{
 			int col_count = (int)(ImGui::GetContentRegionAvail().x / 80.f);
 
@@ -482,19 +482,18 @@ namespace PogplantDriver
 				{
 					if (ImGui::MenuItem("Add to scene"))
 					{
-						auto _prefab = m_ecs->GetReg().get<Components::GUID>(m_CurrentEntity);
+						auto _prefab = m_ecs->GetReg().get<Components::Guid>(m_CurrentEntity);
 						m_ecs->GetReg().emplace<Components::PrefabInstance>(m_ecs->CopyEntity(m_CurrentEntity), _prefab.m_guid);
 					}
-
 					if (ImGui::MenuItem("Edit prefab"))
 					{
 						const auto& prefab = _view.get<Components::Prefab>(m_CurrentEntity);
-						OpenScene(prefab.file_path);
+						Application::GetInstance().StartPrefabEditing(prefab.file_path);
 					}
 
 					if (ImGui::MenuItem("Save prefab"))
 					{
-						m_ecs->m_edit_prefab = false;
+						Application::GetInstance().ExitPrefabEditing();
 					}
 
 					if (ImGui::MenuItem("Unload prefab"))
@@ -537,7 +536,7 @@ namespace PogplantDriver
 									ImGui::Text("ID: %d", child);
 						}
 					}
-					auto _guid = m_ecs->GetReg().try_get<Components::GUID>(m_CurrentEntity);
+					auto _guid = m_ecs->GetReg().try_get<Components::Guid>(m_CurrentEntity);
 					if (_guid)
 					{
 						std::string str{ "GUID: " };

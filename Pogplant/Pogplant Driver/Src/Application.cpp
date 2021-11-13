@@ -722,7 +722,7 @@ void Application::Run()
 				LeavePlayState();
 				break;
 			case PogplantDriver::Application::APPLICATIONSTATE::PREFAB_EDITOR:
-				LeaveEditorState();
+				LeavePrefabState();
 				break;
 			default:
 				assert(false);

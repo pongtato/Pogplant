@@ -368,21 +368,25 @@ namespace Components
 	};
 
 
-	struct GUID
+	struct Guid
 	{
-		GUID() = default;
-		GUID(std::string _str) : m_guid(_str) {};
+		Guid() = default;
+		Guid(std::string _str) : m_guid(_str) {};
 		std::string m_guid;
 	};
 
 	struct Prefab
 	{
 		//lol entt don't like to create empty structs
+		Prefab() = default;
+		Prefab(std::string _str) : file_path(_str) {};
 		std::string file_path;
 	};
 
 	struct PrefabInstance
 	{
+		PrefabInstance() = default;
+		PrefabInstance(std::string _str) : prefab_GUID(_str) {};
 		std::string prefab_GUID;
 	};
 

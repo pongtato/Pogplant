@@ -16,6 +16,8 @@ namespace PogplantDriver
 		float panelsize;
 		int col_count;
 
+		std::string current_file;
+
 		std::filesystem::path m_AssetPath;
 		std::filesystem::path m_CurrentPath;
 

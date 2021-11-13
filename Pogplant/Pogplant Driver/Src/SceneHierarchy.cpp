@@ -86,9 +86,9 @@ namespace PogplantDriver
 				if (ImGui::MenuItem("Load Model"))
 					m_Loading = true;
 
-				//testing stuffs for new prefab load
-				if (ImGui::MenuItem("Load Prefab 2(test)"))
-					LoadPrefab2();
+				////testing stuffs for new prefab load
+				//if (ImGui::MenuItem("Load Prefab 2(test)"))
+				//	LoadPrefab2();
 
 
 				ImGui::EndPopup();
