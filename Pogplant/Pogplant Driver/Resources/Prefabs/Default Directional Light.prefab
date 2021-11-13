@@ -18,6 +18,10 @@
 			"m_Intensity" : 13.0,
 			"m_Specular" : 0.68999999761581421
 		},
+		"Guid" : 
+		{
+			"m_guid" : "ca4a26ee-b321-47e4-8bb2-d36df1cf9336"
+		},
 		"Name" : 
 		{
 			"m_Name" : "Directional Light"

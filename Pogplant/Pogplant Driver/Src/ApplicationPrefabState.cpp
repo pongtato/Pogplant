@@ -107,6 +107,11 @@ void Application::LeavePrefabState()
 	Serializer serialiser{ m_playECS };
 	serialiser.Save(m_prefabFilePath);
 
+	//update all existing prefab using this GUID
+
+
+
+
 	PPA::AudioEngine::StopPlayingAll();
 	m_sScriptSystem.Unload();
 	m_activeECS->GetReg().clear();

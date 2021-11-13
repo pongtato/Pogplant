@@ -17,6 +17,10 @@
 			],
 			"isTrigger" : true
 		},
+		"Guid" : 
+		{
+			"m_guid" : "f90c590d-454a-4155-98ee-60aaa02d893e"
+		},
 		"Name" : 
 		{
 			"m_Name" : "False_Bullet"

@@ -40,6 +40,8 @@ namespace PogplantDriver
 			root[i] = subroot;
 
 			auto& transform = m_ecs.GetReg().get<Transform>(id);
+			//adds a GUID
+			m_ecs.GetReg().emplace<Components::Guid>(id, m_ecs.GenerateGUID());
 
 			if (!transform.m_children.empty())
 				RecurSaveChild(root, id, ++i);
@@ -282,14 +284,8 @@ namespace PogplantDriver
 					if (IsPrefab && load_parent)
 					{
 						m_ecs.m_prefab_map[File] = entity_id;
-						
-						//UUID uuid;
-						//UuidCreate(&uuid);
-						//char* str;
-						//UuidToStringA(&uuid, (RPC_CSTR*)&str);
-						////std::cout << str << std::endl;
-						//m_ecs.GetReg().emplace<Components::GUID>(entity_id, std::string{ str });
-						//RpcStringFreeA((RPC_CSTR*)&str);
+
+						//m_ecs.GetReg().emplace<Components::Prefab>(entity_id, File);
 
 						load_parent = false;
 					}
@@ -326,6 +322,10 @@ namespace PogplantDriver
 		Try_Load_Component<SphereCollider>(root, "SphereCollider", id);
 		Try_Load_Component<Camera>(root, "Camera", id);
 		Try_Load_Component<Rigidbody>(root, "Rigidbody", id);
+
+		Try_Load_Component<Components::Guid>(root, "Guid", id);
+		Try_Load_Component<Prefab>(root, "Prefab", id);
+		Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);
 
 		if (relationship)
 		{

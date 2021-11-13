@@ -17,6 +17,10 @@
 			],
 			"isTrigger" : true
 		},
+		"Guid" : 
+		{
+			"m_guid" : "51512c81-98c3-43ce-8cea-e943a903d6c9"
+		},
 		"Name" : 
 		{
 			"m_Name" : "Box Trigger"

@@ -220,11 +220,17 @@ entt::entity ECS::CopyEntity(entt::entity _target)
 
 std::string ECS::GenerateGUID(void)
 {
-	UUID uuid;
-	UuidCreate(&uuid);
-	char* str;
-	UuidToStringA(&uuid, (RPC_CSTR*)&str);
-	std::string ret_str{ str };
-	RpcStringFreeA((RPC_CSTR*)&str);
-	return str;
+	//while (true)
+	//{
+		UUID uuid;
+		UuidCreate(&uuid);
+		char* str;
+		UuidToStringA(&uuid, (RPC_CSTR*)&str);
+		std::string ret_str{ str };
+		RpcStringFreeA((RPC_CSTR*)&str);
+
+
+	//}
+
+	return ret_str;
 }

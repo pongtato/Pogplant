@@ -1,6 +1,10 @@
 [
 	{
 		"Children" : 5,
+		"Guid" : 
+		{
+			"m_guid" : "edc7283a-6132-40db-8ca3-a3af6b4770d7"
+		},
 		"Name" : 
 		{
 			"m_Name" : "CanvasParent"

@@ -9,6 +9,10 @@
 			"m_Yaw" : 90.0,
 			"m_Zoom" : 45.0
 		},
+		"Guid" : 
+		{
+			"m_guid" : "acabf12e-b504-4e1e-9957-d361801216f8"
+		},
 		"Name" : 
 		{
 			"m_Name" : "PlayerCam"

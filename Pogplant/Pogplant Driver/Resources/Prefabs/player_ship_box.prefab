@@ -8,7 +8,7 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : 0,
+			"collisionLayer" : "0",
 			"extends" : 
 			[
 				10.0,
@@ -18,6 +18,10 @@
 			"isTrigger" : false
 		},
 		"Children" : 1,
+		"Guid" : 
+		{
+			"m_guid" : "c30ac407-3d2e-4a5b-ab86-43f7f0260291"
+		},
 		"Name" : 
 		{
 			"m_Name" : "PlayerBox"
@@ -63,7 +67,7 @@
 				29.0,
 				0.0
 			],
-			"collisionLayer" : 0,
+			"collisionLayer" : "0",
 			"extends" : 
 			[
 				2.0,

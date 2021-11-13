@@ -17,6 +17,10 @@
 			],
 			"isTrigger" : true
 		},
+		"Guid" : 
+		{
+			"m_guid" : "57b04a36-ec29-4796-98be-635b689b28e8"
+		},
 		"Name" : 
 		{
 			"m_Name" : "Player_Bullet"
