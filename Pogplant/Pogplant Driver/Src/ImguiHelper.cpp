@@ -1053,7 +1053,7 @@ namespace PogplantDriver
 		if (m_FirstRun)
 		{
 			//ImGui::SetWindowFocus("Prefab");
-			//ImGui::SetWindowFocus("Scene");
+			ImGui::SetWindowFocus("Scene");
 			ImGui::SetWindowFocus("Inspector");
 			m_FirstRun = false;
 		}
