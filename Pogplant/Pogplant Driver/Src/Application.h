@@ -43,7 +43,8 @@ namespace PogplantDriver
 		{
 			UNDEFINED,
 			EDITOR,
-			PLAY
+			PLAY,
+			PREFAB_EDITOR
 		};
 
 		enum class PLAYSTATE
@@ -52,6 +53,9 @@ namespace PogplantDriver
 			PAUSE,
 			STEPNEXT
 		};
+
+		void StartPrefabEditing(const std::string& filePath);
+		void ExitPrefabEditing();
 
 		void TransitionApplicationState(APPLICATIONSTATE c_newState);
 		
@@ -110,6 +114,11 @@ namespace PogplantDriver
 		void RenderEditorState();
 		void LeaveEditorState();
 
+		void EnterPrefabState();
+		void UpdatePrefabState(float);
+		void RenderPrefabState();
+		void LeavePrefabState();
+
 		void EnterPlayState();
 		void UpdatePlayState(float);
 		void RenderPlayState();
@@ -142,6 +151,7 @@ namespace PogplantDriver
 		APPLICATIONSTATE m_appState = APPLICATIONSTATE::UNDEFINED;
 		APPLICATIONSTATE m_nextAppState = APPLICATIONSTATE::EDITOR;
 		PLAYSTATE m_playState = PLAYSTATE::PLAY;
+		std::string m_prefabFilePath;
 		float m_accumulatedFixedTime = 0.f;
 		static constexpr float m_minFixedUpdateTime = 1 / 30.f;
 

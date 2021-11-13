@@ -1,9 +1,9 @@
 /******************************************************************************/
 /*!
-\file	ApplicationEditorState.cpp
+\file	ApplicationPrefabState.cpp
 \details
 
-	This file contains the editor state behaviour
+	This file contains the prefab editing state behaviour
 
 \copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
 			or disclosure of this file or its contents without the prior
@@ -20,19 +20,24 @@ using namespace PogplantDriver;
 /******************************************************************************/
 /*!
 \brief
-	The function called when the engine enters editor state
+	The function called when the engine enters prefab editor state
 */
 /******************************************************************************/
-void Application::EnterEditorState()
+void Application::EnterPrefabState()
 {
 	//std::cout << "Entering Editor State" << std::endl;
-	m_activeECS = &m_editorECS;
-	PPD::ImguiHelper::RelinkECS(&m_editorECS);
-	m_sGeneralSystem.Init(&m_editorECS);
+	m_activeECS = &m_playECS;
+
+	Serializer serialiser{ m_playECS };
+	if (!serialiser.Load(m_prefabFilePath))
+		assert(false);
+
+	PPD::ImguiHelper::RelinkECS(&m_playECS);
+	m_sGeneralSystem.Init(&m_playECS);
 	m_sGeneralSystem.UpdateTransforms();
 
-	m_sPhysicsSystem.Init(&m_editorECS, m_eventBus);
-	m_sScriptSystem.InitEditor(&m_editorECS);
+	m_sPhysicsSystem.Init(&m_playECS, m_eventBus);
+	m_sScriptSystem.InitEditor(&m_playECS);
 }
 
 /******************************************************************************/
@@ -41,37 +46,12 @@ void Application::EnterEditorState()
 	Updates editor state
 */
 /******************************************************************************/
-void Application::UpdateEditorState(float c_dt)
+void Application::UpdatePrefabState(float c_dt)
 {
-#ifdef PPD_UPDATE_EDITOR_AS_GAME
 	m_sPhysicsSystem.UpdateEditor();
-
-	//Physics dynamic update until fps drops below 30fps
-	m_accumulatedFixedTime += c_dt;
-
-	if (m_accumulatedFixedTime < m_minFixedUpdateTime)
-	{
-		m_sPhysicsSystem.Update(m_accumulatedFixedTime);
-		m_accumulatedFixedTime = 0.f;
-	}
-	else
-	{
-		while (m_accumulatedFixedTime > m_minFixedUpdateTime)
-		{
-			m_sPhysicsSystem.Update(m_minFixedUpdateTime);
-			m_accumulatedFixedTime -= m_minFixedUpdateTime;
-		}
-	}
-	m_sScriptSystem.Update(c_dt);
-	m_sScriptSystem.LateUpdate(c_dt);
-#else
-
-	m_sPhysicsSystem.UpdateEditor();
-
-#endif // PPD_UPDATE_EDITOR_AS_GAME
-
 
 	m_sGeneralSystem.Update(c_dt);
+
 	PPF::FileHandler& fh = fh.GetInstance();
 	if (fh.m_Modified)
 	{
@@ -88,10 +68,10 @@ void Application::UpdateEditorState(float c_dt)
 /******************************************************************************/
 /*!
 \brief
-	Renders editor state
+	Renders prefab state
 */
 /******************************************************************************/
-void Application::RenderEditorState()
+void Application::RenderPrefabState()
 {
 	// Debug draw colliders
 	m_sPhysicsSystem.DrawColliders();
@@ -109,15 +89,49 @@ void Application::RenderEditorState()
 /******************************************************************************/
 /*!
 \brief
-	The function called when the engine leaves editor state
+	The function called when the engine leaves prefab state
 */
 /******************************************************************************/
-void Application::LeaveEditorState()
+void Application::LeavePrefabState()
 {
-	//std::cout << "Leaving Editor State" << std::endl;
+	Serializer serialiser{ m_playECS };
+	serialiser.Save(m_prefabFilePath);
 
 	PPA::AudioEngine::StopPlayingAll();
 	m_sScriptSystem.Unload();
-	Serializer serialiser{ m_editorECS };
-	serialiser.Save("Resources/tmp");
+	m_activeECS->GetReg().clear();
+}
+
+/******************************************************************************/
+/*!
+\brief
+	Function to trigger application to edit a particular prefab
+\param filePath
+	The file path to the prefab
+*/
+/******************************************************************************/
+void Application::StartPrefabEditing(const std::string& filePath)
+{
+	if (m_appState == Application::APPLICATIONSTATE::PREFAB_EDITOR)
+	{
+		LeavePrefabState();
+		m_prefabFilePath = filePath;
+		EnterPrefabState();
+	}
+	else
+	{
+		m_prefabFilePath = filePath;
+		TransitionApplicationState(Application::APPLICATIONSTATE::PREFAB_EDITOR);
+	}
+}
+
+/******************************************************************************/
+/*!
+\brief
+	Function to trigger application to exit the prefab editor
+*/
+/******************************************************************************/
+void Application::ExitPrefabEditing()
+{
+	TransitionApplicationState(Application::APPLICATIONSTATE::EDITOR);
 }

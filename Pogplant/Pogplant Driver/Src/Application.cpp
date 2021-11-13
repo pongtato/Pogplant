@@ -691,6 +691,12 @@ void Application::Run()
 			RenderPlayState();
 		}
 		break;
+		case PogplantDriver::Application::APPLICATIONSTATE::PREFAB_EDITOR:
+		{
+			UpdatePrefabState(c_deltaTime);
+			RenderEditorState();
+		}
+		break;
 		default:
 			assert(false);
 		}
@@ -711,11 +717,27 @@ void Application::Run()
 			{
 			case PogplantDriver::Application::APPLICATIONSTATE::EDITOR:
 				LeaveEditorState();
-				EnterPlayState();
 				break;
 			case PogplantDriver::Application::APPLICATIONSTATE::PLAY:
 				LeavePlayState();
+				break;
+			case PogplantDriver::Application::APPLICATIONSTATE::PREFAB_EDITOR:
+				LeaveEditorState();
+				break;
+			default:
+				assert(false);
+			}
+
+			switch (m_nextAppState)
+			{
+			case PogplantDriver::Application::APPLICATIONSTATE::EDITOR:
 				EnterEditorState();
+				break;
+			case PogplantDriver::Application::APPLICATIONSTATE::PLAY:
+				EnterPlayState();
+				break;
+			case PogplantDriver::Application::APPLICATIONSTATE::PREFAB_EDITOR:
+				EnterPrefabState();
 				break;
 			default:
 				assert(false);
@@ -727,6 +749,10 @@ void Application::Run()
 
 		c_deltaTime = c_dtTimer.getElapsedTimePrecise();
 	}
+}
+
+void PogplantDriver::Application::StartPrefabEditing(const std::string& filePath)
+{
 }
 
 /******************************************************************************/
@@ -750,6 +776,7 @@ void Application::Exit()
 {
 	switch (m_appState)
 	{
+	case PogplantDriver::Application::APPLICATIONSTATE::PREFAB_EDITOR:
 	case PogplantDriver::Application::APPLICATIONSTATE::EDITOR:
 		LeaveEditorState();
 		break;

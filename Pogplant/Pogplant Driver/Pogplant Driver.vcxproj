@@ -148,6 +148,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClCompile Include="Src\Application.cpp" />
     <ClCompile Include="Src\ApplicationEditorState.cpp" />
     <ClCompile Include="Src\ApplicationPlayState.cpp" />
+    <ClCompile Include="Src\ApplicationPrefabState.cpp" />
     <ClCompile Include="Src\AssetCompiler.cpp" />
     <ClCompile Include="Src\ContentBrowser.cpp" />
     <ClCompile Include="Src\Debugger.cpp" />
