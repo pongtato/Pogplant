@@ -435,14 +435,17 @@ namespace PogplantDriver
 			auto _view = m_ecs->view_SHOW_PREFAB<Components::Prefab, Components::Name>();
 
 
-			if (ImGui::BeginTable("##DirectoryTable", col_count))
+			if (ImGui::BeginTable("PrefabWindow", col_count))
 			{
+				if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+					m_CurrentEntity = entt::null;
+
 				for (auto& ent : _view)
 				{
 					ImGui::TableNextColumn();
 					ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, { 0.f ,1.f });
 					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
-					ImGui::PushID(6969);
+					ImGui::PushID((int)ent);
 
 					ImGui::Button(ICON_MD_DESCRIPTION, { 64.f, 64.f });
 
@@ -450,12 +453,45 @@ namespace PogplantDriver
 					ImGui::PopStyleColor();
 					ImGui::PopStyleVar();
 
+					if (ImGui::IsItemClicked() || ImGui::IsMouseClicked(1) && ImGui::IsItemHovered())
+						m_CurrentEntity = ent;
+
 					const auto& _name = _view.get<Components::Name>(ent);
 
 					ImGui::TextWrapped(_name.m_name.c_str());
 				}
 
 				ImGui::EndTable();
+			}
+
+			if (m_CurrentEntity != entt::null)
+			{
+				if (ImGui::BeginPopupContextWindow("PrefabWindowPopup", ImGuiPopupFlags_MouseButtonRight))
+				{
+					if (ImGui::MenuItem("Add to scene"))
+					{
+						const auto& prefab = _view.get<Components::Prefab>(m_CurrentEntity);
+						OpenScene(prefab.file_path);
+					}
+
+					if (ImGui::MenuItem("Edit prefab"))
+					{
+						m_ecs->m_edit_prefab = true;
+					}
+
+					if (ImGui::MenuItem("Save prefab"))
+					{
+						m_ecs->m_edit_prefab = false;
+					}
+
+					if (ImGui::MenuItem("Unload prefab"))
+					{
+						m_ecs->DestroyEntity(m_CurrentEntity);
+						m_CurrentEntity = entt::null;
+					}
+
+					ImGui::EndPopup();
+				}
 			}
 		}
 		ImGui::End();
@@ -1016,8 +1052,9 @@ namespace PogplantDriver
 		// Focus select windows on first run
 		if (m_FirstRun)
 		{
-			ImGui::SetWindowFocus("Prefab");
-			ImGui::SetWindowFocus("Scene");
+			//ImGui::SetWindowFocus("Prefab");
+			//ImGui::SetWindowFocus("Scene");
+			ImGui::SetWindowFocus("Inspector");
 			m_FirstRun = false;
 		}
 	}
@@ -1245,19 +1282,8 @@ namespace PogplantDriver
 
 	glm::mat4 ImguiHelper::get_parent_transform(entt::entity _id)
 	{
-		//auto relationship = m_ecs->GetReg().try_get<Components::Relationship>(_id);
-
-		//if (relationship && relationship->m_parent != entt::null)
-		//{
-		//	auto transform = m_ecs->GetReg().get<Components::Transform>(_id);
-		//	//return get_parent_transform(relationship->m_parent) * transform.m_ModelMtx;
-		//	return transform.m_ModelMtx * get_parent_transform(relationship->m_parent);
-		//}
-		//else
-		{
-			auto& transform = m_ecs->GetReg().get<Components::Transform>(_id);
-			return transform.m_ModelMtx;
-		}
+		auto& transform = m_ecs->GetReg().get<Components::Transform>(_id);
+		return transform.m_ModelMtx;
 	}
 
 
@@ -1358,12 +1384,12 @@ namespace PogplantDriver
 
 	void ImguiHelper::OpenScene(const std::filesystem::path& path)
 	{
-		if (path.extension().string() != ".json")
-		{
-			//ASSET HERE
-			//("Could not load {0} - not a scene file", path.filename().string());
-			return;
-		}
+		//if (path.extension().string() != ".json")
+		//{
+		//	//ASSET HERE
+		//	//("Could not load {0} - not a scene file", path.filename().string());
+		//	return;
+		//}
 		NewScene();
 		Serializer serialiser{ (*m_ecs) };
 		if(!serialiser.Load(path.string()))

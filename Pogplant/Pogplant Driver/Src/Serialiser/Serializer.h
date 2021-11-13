@@ -33,7 +33,7 @@ namespace PogplantDriver
 		void SaveObjects(const std::string& File);
 		Json::Value SaveComponents(entt::entity id);
 		void LoadObjects(const std::string& File, bool IsPrefab = false);
-		void LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab = false);
+		void LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab = false, std::string _filepath = {});
 		int RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter);
 
 

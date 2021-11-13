@@ -268,7 +268,16 @@ namespace PogplantDriver
 				Json::Value subroot = root[iter.index()];
 
 				// Load components
-				LoadComponents(subroot, m_ecs.GetReg().create(), IsPrefab);
+				bool loaded = m_ecs.m_prefab_map.contains(File);
+				if (loaded && IsPrefab)
+					std::cout << "has already been loaded\n";
+				else
+				{
+					auto entity_id = m_ecs.GetReg().create();
+					LoadComponents(subroot, entity_id, IsPrefab, File);
+					if(IsPrefab)
+						m_ecs.m_prefab_map[File] = entity_id;
+				}
 
 				++iter;
 			}
@@ -277,9 +286,8 @@ namespace PogplantDriver
 		}
 	}
 
-	void Serializer::LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab)
+	void Serializer::LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab, std::string _filepath)
 	{
-
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
 		auto& scripting = root["Scripting"];
@@ -287,7 +295,7 @@ namespace PogplantDriver
 
 		if (IsPrefab)
 		{
-			m_ecs.GetReg().emplace<Prefab>(id);
+			m_ecs.GetReg().emplace<Prefab>(id, _filepath);
 		}
 
 		Try_Load_Component<ParticleSystem>(root, "ParticleSystem", id);

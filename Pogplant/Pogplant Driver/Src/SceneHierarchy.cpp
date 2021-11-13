@@ -32,7 +32,6 @@ namespace PogplantDriver
 			auto results = m_ECS->view<Components::Transform>();
 #endif // SHOW_PREFAB
 
-
 			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
 				m_CurrentEntity = entt::null;
 
@@ -70,6 +69,9 @@ namespace PogplantDriver
 						SavePrefab(m_CurrentEntity);
 					}
 
+					if (ImGui::MenuItem("Duplicate Entity"))
+						m_ECS->CopyEntity(m_CurrentEntity);
+
 					ImGui::EndPopup();
 				}
 			}
@@ -85,8 +87,8 @@ namespace PogplantDriver
 					m_Loading = true;
 
 				//testing stuffs for new prefab load
-				//if (ImGui::MenuItem("Load Prefab 2(test)"))
-				//	LoadPrefab2();
+				if (ImGui::MenuItem("Load Prefab 2(test)"))
+					LoadPrefab2();
 
 
 				ImGui::EndPopup();
@@ -152,16 +154,6 @@ namespace PogplantDriver
 					DrawEntityNode(ent, true);
 				}
 			}
-
-			/*if (_r)
-			{
-				std::set<entt::entity> s = _r->m_children;
-				//int i = 0;
-				for (const auto& ent : s)
-				{
-					DrawEntityNode(ent, true);
-				}
-			}*/
 
 			ImGui::TreePop();
 

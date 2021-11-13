@@ -49,21 +49,37 @@ public:
 	entt::entity FindChildEntityWithName(entt::entity parentID, const std::string& _name);
 	//std::vector<entt::entity> FindAllEntityWithName(std::string& _name);
 
+
+	entt::entity CopyEntity(entt::entity _target);
+
 	template<typename... Component, typename... Exclude>
-	inline auto view(entt::exclude_t<Exclude...> _exclude = {})
+	auto view(entt::exclude_t<Exclude...> _exclude = {})
 	{
 		return m_registry.view<Component...>(entt::exclude_t<Exclude..., Components::Prefab>());
 	}
 
 	//dont use this unless you really know lol
 	template<typename... Component, typename... Exclude>
-	inline auto view_SHOW_PREFAB(entt::exclude_t<Exclude...> _exclude = {})
+	auto view_SHOW_PREFAB(entt::exclude_t<Exclude...> _exclude = {})
 	{
 		return m_registry.view<Component...>(_exclude);
 	}
 
+	//prefab map
+	std::unordered_map<std::string, entt::entity> m_prefab_map;
+	bool m_edit_prefab = false;
+
+
 private:
 	entt::registry m_registry;
+
+	template<typename T>
+	void Try_Copy(entt::entity _new_entity, entt::entity _target)
+	{
+		const auto& component = m_registry.try_get<T>(_target);
+		if (component)
+			m_registry.emplace_or_replace<T>(_new_entity, m_registry.get<T>(_target));
+	}
 
 	friend Entity;
 };

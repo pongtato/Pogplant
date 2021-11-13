@@ -370,13 +370,13 @@ namespace Components
 
 	struct GUID
 	{
-
+		long m_guid;
 	};
 
 	struct Prefab
 	{
 		//lol entt don't like to create empty structs
-		char i = 0;
+		std::string file_path;
 	};
 
 	struct PrefabInstance

@@ -160,9 +160,42 @@ entt::entity ECS::FindEntityWithTag(std::string _tag)
 			return entity;
 	}
 
-
 	auto results = m_registry.view<Transform, Renderer>();
 	return entt::null;
 }
 
+entt::entity ECS::CopyEntity(entt::entity _target)
+{
+	const auto& transform = m_registry.get<Transform>(_target);
+	entt::entity new_entity = m_registry.create();
 
+	auto& new_transform = m_registry.emplace_or_replace<Transform>(new_entity, transform.m_position, transform.m_rotation, transform.m_scale);
+	for (const auto& ent : transform.m_children)
+	{
+		//creates a new entity first
+		entt::entity new_child = ECS::CopyEntity(ent);
+		//set up the parent child relationship
+		new_transform.m_children.insert(new_child);
+		//set child's parent
+		m_registry.get<Transform>(new_child).m_parent = new_entity;
+
+	}
+
+	Try_Copy<Tag>(new_entity, _target);
+	Try_Copy<Name>(new_entity, _target);
+	Try_Copy<PositionList>(new_entity, _target);
+	Try_Copy<Renderer>(new_entity, _target);
+	Try_Copy<PrimitiveRender>(new_entity, _target);
+	Try_Copy<DebugRender>(new_entity, _target);
+	Try_Copy<Point_Light>(new_entity, _target);
+	Try_Copy<Directional_Light>(new_entity, _target);
+	Try_Copy<Text>(new_entity, _target);
+	Try_Copy<Camera>(new_entity, _target);
+	Try_Copy<ParticleSystem>(new_entity, _target);
+	Try_Copy<Canvas>(new_entity, _target);
+	Try_Copy<GUID>(new_entity, _target);
+	//Try_Copy<Prefab>(new_entity, _target);
+	//Try_Copy<PrefabInstance>(new_entity, _target);
+
+	return new_entity;
+}
