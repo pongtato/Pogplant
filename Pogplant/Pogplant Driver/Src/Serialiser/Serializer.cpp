@@ -8,6 +8,7 @@
 
 #include "../Application.h"
 #include "../ECS/Components/Reflection_for_components.h"
+#include <rpcdce.h>
 
 using namespace Components;
 namespace PogplantDriver
@@ -262,6 +263,7 @@ namespace PogplantDriver
 			istream >> root;
 
 			Json::ValueIterator iter = root.begin();
+			bool load_parent = true;
 
 			while (iter != root.end())
 			{
@@ -269,14 +271,26 @@ namespace PogplantDriver
 
 				// Load components
 				bool loaded = m_ecs.m_prefab_map.contains(File);
-				if (loaded && IsPrefab)
+				if (loaded && IsPrefab && load_parent)
 					std::cout << "has already been loaded\n";
 				else
 				{
 					auto entity_id = m_ecs.GetReg().create();
 					LoadComponents(subroot, entity_id, IsPrefab, File);
-					if(IsPrefab)
+					if (IsPrefab && load_parent)
+					{
 						m_ecs.m_prefab_map[File] = entity_id;
+						
+						UUID uuid;
+						UuidCreate(&uuid);
+						char* str;
+						UuidToStringA(&uuid, (RPC_CSTR*)&str);
+						std::cout << str << std::endl;
+						m_ecs.GetReg().emplace<Components::GUID>(entity_id, std::string{ str });
+						RpcStringFreeA((RPC_CSTR*)&str);
+
+						load_parent = false;
+					}
 				}
 
 				++iter;

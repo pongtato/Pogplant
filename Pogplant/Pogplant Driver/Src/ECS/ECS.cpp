@@ -61,6 +61,11 @@ void ECS::DestroyEntity(entt::entity entity)
 
 	auto& _transform = m_registry.get<Transform>(entity);
 
+	//if it's a prefab, remove from map
+	const auto& _prefab = m_registry.try_get<Prefab>(entity);
+	if (_prefab && m_prefab_map.contains(_prefab->file_path))
+		m_prefab_map.extract(_prefab->file_path);
+
 	//Destroy all children
 	auto copy_set = _transform.m_children;
 	for (auto child : copy_set)
@@ -179,7 +184,6 @@ entt::entity ECS::CopyEntity(entt::entity _target)
 		new_transform.m_children.insert(new_child);
 		//set child's parent
 		m_registry.get<Transform>(new_child).m_parent = new_entity;
-
 	}
 
 	Try_Copy<Tag>(new_entity, _target);
@@ -194,7 +198,8 @@ entt::entity ECS::CopyEntity(entt::entity _target)
 	Try_Copy<Camera>(new_entity, _target);
 	Try_Copy<ParticleSystem>(new_entity, _target);
 	Try_Copy<Canvas>(new_entity, _target);
-	Try_Copy<GUID>(new_entity, _target);
+	//Try_Copy<GUID>(new_entity, _target);	//GUID should not be copied
+	Try_Copy<PrefabInstance>(new_entity, _target);
 
 	//DependantComponents
 	Try_Copy<BoxCollider>(new_entity, _target);
@@ -207,7 +212,6 @@ entt::entity ECS::CopyEntity(entt::entity _target)
 	Try_Copy<Scriptable>(new_entity, _target);
 	//Try_Copy<>(new_entity, _target);
 	//Try_Copy<Prefab>(new_entity, _target);
-	//Try_Copy<PrefabInstance>(new_entity, _target);
 
 	return new_entity;
 }

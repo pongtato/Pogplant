@@ -370,7 +370,9 @@ namespace Components
 
 	struct GUID
 	{
-		long m_guid;
+		GUID() = default;
+		GUID(std::string _str) : m_guid(_str) {};
+		std::string m_guid;
 	};
 
 	struct Prefab
@@ -381,7 +383,7 @@ namespace Components
 
 	struct PrefabInstance
 	{
-		
+		std::string prefab_GUID;
 	};
 
 }

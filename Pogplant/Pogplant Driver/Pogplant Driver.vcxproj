@@ -70,7 +70,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;PhysicsDLC.lib;Pogplant_D.lib;assimp-vc142-mtd.lib;jsoncpp_d.lib;rttr_core_d.lib;fmodL_vc.lib;fmodstudioL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;PhysicsDLC.lib;Pogplant_D.lib;assimp-vc142-mtd.lib;jsoncpp_d.lib;rttr_core_d.lib;fmodL_vc.lib;fmodstudioL_vc.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PreBuildEvent>

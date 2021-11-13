@@ -124,7 +124,9 @@ namespace PogplantDriver
 		auto _p = m_ECS->GetReg().try_get<Components::Prefab>(entity);
 		if (_p)
 			obj_name.append(" (Prefab)");
-
+		auto _pi = m_ECS->GetReg().try_get<Components::PrefabInstance>(entity);
+		if (_pi)
+			obj_name.append(" (Instance)");
 		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
 		
 		if(!_transform.m_children.empty())

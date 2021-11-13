@@ -442,6 +442,10 @@ namespace PogplantDriver
 
 				for (auto& ent : _view)
 				{
+					auto _transform = m_ecs->GetReg().get<Components::Transform>(ent);
+					if (_transform.m_parent != entt::null)
+						continue;
+
 					ImGui::TableNextColumn();
 					ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, { 0.f ,1.f });
 					ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
@@ -470,13 +474,14 @@ namespace PogplantDriver
 				{
 					if (ImGui::MenuItem("Add to scene"))
 					{
-						const auto& prefab = _view.get<Components::Prefab>(m_CurrentEntity);
-						OpenScene(prefab.file_path);
+						auto _prefab = m_ecs->GetReg().get<Components::GUID>(m_CurrentEntity);
+						m_ecs->GetReg().emplace<Components::PrefabInstance>(m_ecs->CopyEntity(m_CurrentEntity), _prefab.m_guid);
 					}
 
 					if (ImGui::MenuItem("Edit prefab"))
 					{
-						m_ecs->m_edit_prefab = true;
+						const auto& prefab = _view.get<Components::Prefab>(m_CurrentEntity);
+						OpenScene(prefab.file_path);
 					}
 
 					if (ImGui::MenuItem("Save prefab"))
@@ -524,7 +529,21 @@ namespace PogplantDriver
 									ImGui::Text("ID: %d", child);
 						}
 					}
+					auto _guid = m_ecs->GetReg().try_get<Components::GUID>(m_CurrentEntity);
+					if (_guid)
+					{
+						std::string str{ "GUID: " };
+						str.append(_guid->m_guid);
+						ImGui::Text(str.c_str());
+					}
 
+					auto _prefabinstance = m_ecs->GetReg().try_get<Components::PrefabInstance>(m_CurrentEntity);
+					if (_prefabinstance)
+					{
+						std::string str{ "Instance of: " };
+						str.append(_prefabinstance->prefab_GUID);
+						ImGui::Text(str.c_str());
+					}
 					ImguiBlankSeperator(1);
 					ImGui::Separator();
 				}

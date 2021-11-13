@@ -267,6 +267,9 @@ void ScriptSystem::InitLoad()
 					// Garbage Collection Handle for the game object
 					uint32_t m_gameObjectGCHandle = mono_gchandle_new(ptrGameObject, false);
 
+					//remove warning, idk dude
+					(void)m_gameObjectGCHandle;
+
 					// Exception hit
 					if (ptrExObject)
 					{
