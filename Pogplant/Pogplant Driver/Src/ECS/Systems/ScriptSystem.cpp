@@ -48,7 +48,7 @@ std::vector<char> ReadRawBin(const std::string& filePath)
 
 ScriptSystem::ScriptSystem()
 {
-	mono_set_dirs("..\\Libs\\Mono\\lib", "..\\Libs\\Mono\\etc");
+	mono_set_dirs("Mono\\lib", "Mono\\etc");
 	// Root domain
 	m_ptrMonoDomain = mono_jit_init("ScriptSystem");
 

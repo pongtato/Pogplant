@@ -74,7 +74,19 @@
       <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PreBuildEvent>
-      <Command>copy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(TargetDir)"
+      <Command>mkdir "$(TargetDir)\Resources"
+mkdir "$(TargetDir)\Mono"
+mkdir "$(TargetDir)\Mono\lib"
+mkdir "$(TargetDir)\Mono\etc"
+mkdir "$(SolutionDir)Pogplant Driver\Mono"
+mkdir "$(SolutionDir)Pogplant Driver\Mono\lib"
+mkdir "$(SolutionDir)Pogplant Driver\Mono\etc"
+xcopy /E /Y /d "$(SolutionDir)Pogplant Driver\Resources" "$(TargetDir)Resources"
+xcopy /E /Y /d "$(SolutionDir)Libs\Mono\lib" "$(TargetDir)Mono\lib"
+xcopy /E /Y /d "$(SolutionDir)Libs\Mono\etc" "$(TargetDir)Mono\lib"
+xcopy /E /Y /d "$(SolutionDir)Libs\Mono\lib" "$(SolutionDir)Pogplant Driver\Mono\lib"
+xcopy /E /Y /d "$(SolutionDir)Libs\Mono\etc" "$(SolutionDir)Pogplant Driver\Mono\etc"
+copy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mtd.dll" "$(TargetDir)"
 copy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(TargetDir)"
 copy "$(SolutionDir)Libs\json\lib\jsoncpp_d.dll" "$(TargetDir)jsoncpp.dll" /Y
 copy "$(SolutionDir)Libs\RTTR\lib\rttr_core_d.dll" "$(TargetDir)"
@@ -114,7 +126,19 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
       <AdditionalDependencies>glfw3.lib;opengl32.lib;glew32.lib;mono-2.0-sgen.lib;PhysicsDLC.lib;Pogplant.lib;assimp-vc142-mt.lib;jsoncpp_r.lib;rttr_core.lib;fmod_vc.lib;fmodstudio_vc.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>copy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(TargetDir)"
+      <Command>mkdir "$(TargetDir)\Resources"
+mkdir "$(TargetDir)\Mono"
+mkdir "$(TargetDir)\Mono\lib"
+mkdir "$(TargetDir)\Mono\etc"
+mkdir "$(SolutionDir)Pogplant Driver\Mono"
+mkdir "$(SolutionDir)Pogplant Driver\Mono\lib"
+mkdir "$(SolutionDir)Pogplant Driver\Mono\etc"
+xcopy /E /Y /d "$(SolutionDir)Pogplant Driver\Resources" "$(TargetDir)Resources"
+xcopy /E /Y /d "$(SolutionDir)Libs\Mono\lib" "$(TargetDir)Mono\lib"
+xcopy /E /Y /d "$(SolutionDir)Libs\Mono\etc" "$(TargetDir)Mono\lib"
+xcopy /E /Y /d "$(SolutionDir)Libs\Mono\lib" "$(SolutionDir)Pogplant Driver\Mono\lib"
+xcopy /E /Y /d "$(SolutionDir)Libs\Mono\etc" "$(SolutionDir)Pogplant Driver\Mono\etc"
+copy "$(SolutionDir)Libs\ASSIMP\lib\assimp-vc142-mt.dll" "$(TargetDir)"
 copy "$(SolutionDir)Libs\GLEW\lib\glew32.dll" "$(TargetDir)"
 copy "$(SolutionDir)Libs\json\lib\jsoncpp_r.dll" "$(TargetDir)jsoncpp.dll" /Y
 copy "$(SolutionDir)Libs\RTTR\lib\rttr_core.dll" "$(TargetDir)"

@@ -247,6 +247,8 @@ namespace PogplantDriver
 				ImGui::DockBuilderDockWindow("Prefab_Loaded", m_DockIDs["EXPLORER"]);
 				ImGui::DockBuilderDockWindow("Debug", m_DockIDs["EXPLORER"]);
 				ImGui::DockBuilderDockWindow("Scene Hierarchy", m_DockIDs["LEFT_DOCK"]);
+				ImGui::DockBuilderDockWindow("Input Editor", m_DockIDs["RIGHT_DOCK"]);
+				ImGui::DockBuilderDockWindow("Collision Layer Editor", m_DockIDs["RIGHT_DOCK"]);
 				ImGui::DockBuilderDockWindow("Inspector", m_DockIDs["RIGHT_DOCK"]);
 				ImGui::DockBuilderDockWindow("Scene", m_DockIDs["TOP_DOCK"]);
 				ImGui::DockBuilderDockWindow("Game", m_DockIDs["TOP_DOCK"]);
