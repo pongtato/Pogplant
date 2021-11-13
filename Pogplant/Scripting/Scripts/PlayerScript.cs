@@ -54,7 +54,7 @@ namespace Scripting
         public float health = maxHealth;
 
         uint shipCameraEntity;
-
+        uint boxEntityID;
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
         //public List<uint> entityIDList = new List<uint>();
@@ -78,6 +78,7 @@ namespace Scripting
         {
             entityID = _entityID;
             shipCameraEntity = ECS.FindEntityWithName("PlayerCam");
+            boxEntityID = ECS.FindEntityWithName("PlayerBox");
             ECS.PlayAudio(shipCameraEntity, 0);
         }
 
@@ -91,7 +92,7 @@ namespace Scripting
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            //if(transform.Position.Y >= 10.0f)
+            /*//if(transform.Position.Y >= 10.0f)
             //{
             //    rigidbody.AddForce(new Vector3(0, -3.0f, 0));
             //}
@@ -214,6 +215,7 @@ namespace Scripting
 
                 //Console.WriteLine("S key is released");
             }
+            //*/
 
             bool rightPushed = InputUtility.onKeyHeld("RIGHT");
             bool leftPushed = InputUtility.onKeyHeld("LEFT");
@@ -235,13 +237,12 @@ namespace Scripting
             Vector3 right_vec = Vector3.CrossProduct(forward_vec, up_vec);
             Vector3 direc_vector = (right_vec * horizontal_input) + (up_vec * vertical_input);
 
-            uint boxEntityID = ECS.FindEntityWithName("PlayerBox");
             BoxCollider boxCollider =  ECS.GetComponent<BoxCollider>(boxEntityID);
             Transform boxTransform = ECS.GetComponent<Transform>(boxEntityID);
             float length = transform.Position.magnitude();
 
             Vector3 playerGlobalPos = ECS.GetGlobalPosition(entityID);
-            Vector3 boxGlobalPos = ECS.GetGlobalPosition(ECS.FindEntityWithName("PlayerBox"));
+            Vector3 boxGlobalPos = ECS.GetGlobalPosition(boxEntityID);
 
             //Console.WriteLine("playerGlobalPos Vector: " + playerGlobalPos.X + " | " + playerGlobalPos.Y + " | " + playerGlobalPos.Z);
             //Console.WriteLine("boxGlobalPos Vector: " + boxGlobalPos.X + " | " + boxGlobalPos.Y + " | " + boxGlobalPos.Z);
@@ -262,25 +263,25 @@ namespace Scripting
 
                 if (dotproduct > 0.0f)
                 {
-                    rigidbody.AddImpulseForce(right_vec * -dotproduct * 50f);
+                    rigidbody.AddForce(right_vec * -dotproduct * 5000f);
                     //Console.WriteLine("Exceed +X bounds");
                 }
                 else
                 {
-                    rigidbody.AddImpulseForce(right_vec * -dotproduct * 50f);
+                    rigidbody.AddForce(right_vec * -dotproduct * 5000f);
                     //Console.WriteLine("Exceed -X bounds");
                 }
             }
 
             if(transform.Position.Y > boxCollider.extends.Y)
             {
-                rigidbody.AddImpulseForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 2f);
+                rigidbody.AddForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 200f);
                 //Console.WriteLine("Exceed +Y bounds");
             }
 
             if(transform.Position.Y < -boxCollider.extends.Y)
             {
-                rigidbody.AddImpulseForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 2f);
+                rigidbody.AddForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 500f);
                 //Console.WriteLine("Exceed -Y bounds");
             }
 
@@ -398,7 +399,7 @@ namespace Scripting
                 {
                     // Call C++ side bullet firing
                     GameUtilities.FirePlayerBullet(entityID, transform.Position, transform.Rotation);
-                    ECS.PlayAudio(ECS.FindEntityWithName("PlayerCam"), 1);
+                    ECS.PlayAudio(shipCameraEntity, 1);
                     p_fire_timer = 0.0f;
                 }
             }

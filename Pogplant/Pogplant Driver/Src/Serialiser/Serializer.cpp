@@ -71,20 +71,19 @@ namespace PogplantDriver
 		std::filesystem::path path = "Resources\\Prefabs\\" + Filename + ".prefab";
 		std::string current_file = path.string();
 
-		auto m_ecs = Application::GetInstance().m_activeECS;
-		if (!m_ecs->m_prefab_map.contains(current_file))
+		if (!m_ecs.m_prefab_map.contains(current_file))
 		{
 			Serializer serialiser{ *Application::GetInstance().m_activeECS };
  			serialiser.LoadPrefab(current_file, true);
 		}
 
-		assert(m_ecs->m_prefab_map.contains(current_file));
+		assert(m_ecs.m_prefab_map.contains(current_file));
 
-		auto _entity = m_ecs->CopyEntity(m_ecs->m_prefab_map[current_file]);
-		auto _prefab = m_ecs->GetReg().get<Components::Guid>(m_ecs->m_prefab_map[current_file]);
-		m_ecs->GetReg().emplace<Components::PrefabInstance>(_entity, _prefab.m_guid);
+		auto _entity = m_ecs.CopyEntity(m_ecs.m_prefab_map[current_file]);
+		auto _prefab = m_ecs.GetReg().get<Components::Guid>(m_ecs.m_prefab_map[current_file]);
+		m_ecs.GetReg().emplace<Components::PrefabInstance>(_entity, _prefab.m_guid);
 
-		auto& transform = m_ecs->GetReg().get<Transform>(_entity);
+		auto& transform = m_ecs.GetReg().get<Transform>(_entity);
 		transform.m_position = _Position;
 		transform.m_rotation = _Rotation;
 
