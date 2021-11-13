@@ -348,6 +348,14 @@ namespace PogplantDriver
 					}
 				}
 				break;
+				case Application::APPLICATIONSTATE::PREFAB_EDITOR:
+				{
+					if (ImGui::Button(ICON_FA_STEP_BACKWARD " Exit Prefab Editor"))
+					{
+						Application::GetInstance().ExitPrefabEditing();
+					}
+				}
+				break;
 				default:
 					assert(false);
 			}

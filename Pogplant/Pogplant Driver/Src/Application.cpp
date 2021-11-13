@@ -751,10 +751,6 @@ void Application::Run()
 	}
 }
 
-void PogplantDriver::Application::StartPrefabEditing(const std::string& filePath)
-{
-}
-
 /******************************************************************************/
 /*!
 \brief
