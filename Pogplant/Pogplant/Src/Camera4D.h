@@ -40,9 +40,12 @@ namespace Pogplant
 		float m_Fov;
 		float m_Near;
 		float m_Far;
+		float m_Flip;
 
 		bool m_RMB;
 
 		Ray m_Ray;
+	private:
+		void YawPitchFlip();
 	};
 }

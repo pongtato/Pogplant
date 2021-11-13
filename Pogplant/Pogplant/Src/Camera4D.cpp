@@ -24,6 +24,7 @@ namespace Pogplant
 		, m_Fov{ 45.0f }
 		, m_Near{ 0.1f }
 		, m_Far{ 420.0f }
+		, m_Flip{ 1.0f }
 		, m_RMB{ false }
 	{
 		UpdateVectors();
@@ -38,9 +39,18 @@ namespace Pogplant
 	{
 		auto quatFront = m_Orientation * glm::quat(0, 0, 0, -1) * glm::conjugate(m_Orientation);
 		m_Front = glm::vec3{ quatFront.x, quatFront.y, quatFront.z };
+		if (m_Front.length() > 0)
+		{
+			m_Front = glm::normalize(m_Front);
+		}
 		m_Right = glm::cross(m_Front, m_Up);
+		if (m_Right.length() > 0)
+		{
+			m_Right = glm::normalize(m_Right);
+		}
 
 		KeyInput(_Dt);
+		YawPitchFlip();
 	}
 
 	void Camera4D::UpdateVectors()
@@ -86,13 +96,13 @@ namespace Pogplant
 		// Left
 		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_A) == GLFW_PRESS)
 		{
-			m_Position -= m_Right * m_Speed * _Dt;
+			m_Position -= m_Right * m_Speed * _Dt * m_Flip;
 		}
 
 		// Right
 		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_D) == GLFW_PRESS)
 		{
-			m_Position += m_Right * m_Speed * _Dt;
+			m_Position += m_Right * m_Speed * _Dt * m_Flip;
 		}
 
 		// Up
@@ -188,6 +198,29 @@ namespace Pogplant
 	void Camera4D::UpdateZoom(double _ScrollAmount)
 	{
 		m_Position += m_Front * static_cast<float>(_ScrollAmount);
+	}
+
+	void Camera4D::YawPitchFlip()
+	{
+		//std::cout << m_Pitch << "|" << m_Yaw << std::endl;
+
+		if (m_Pitch < 0)
+		{
+			m_Pitch += 360.0f;
+		}
+		else if(m_Pitch > 360.0f)
+		{
+			m_Pitch -= 360.0f;
+		}
+
+		if (m_Pitch >= 90.0f && m_Pitch <= 270.0f)
+		{
+			m_Flip = -1.0f;
+		}
+		else
+		{
+			m_Flip = 1.0f;
+		}
 	}
 
 }
