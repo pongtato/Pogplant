@@ -38,6 +38,11 @@ namespace Pogplant
 	glm::vec3 Renderer::m_LightShaftPos = { -500.0f,500.0f,0.0f };
 	float Renderer::m_LightShaftScale = 10.0f;
 
+	/// QUAT TEST
+	glm::vec3 Renderer::m_QuatTestPos;
+	glm::vec3 Renderer::m_QuatTestRot;
+	glm::vec3 Renderer::m_QuatTestScale;
+
 	struct CameraReturnData
 	{
 		glm::mat4 m_Projection;
@@ -432,6 +437,28 @@ namespace Pogplant
 		// lol xd
 		//glDisable(GL_CULL_FACE);
 		
+		/// QUAT TEST
+		ShaderLinker::Use("MODEL");
+		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
+		ShaderLinker::SetUniform("m4_View", ret.m_View);
+		ShaderLinker::SetUniform("noTex", true);
+		ShaderLinker::SetUniform("useLight", true);
+		ShaderLinker::SetUniform("colorTint", glm::vec3{ 1,1,1 });
+
+		glm::mat4 t = glm::translate( glm::mat4{1}, m_QuatTestPos );
+
+		glm::quat xR = glm::angleAxis(glm::radians(m_QuatTestRot.x), glm::vec3{ 1,0,0 });
+		glm::quat yR = glm::angleAxis(glm::radians(m_QuatTestRot.y), glm::vec3{ 0,1,0 });
+		glm::quat zR = glm::angleAxis(glm::radians(m_QuatTestRot.z), glm::vec3{ 0,0,1 });
+		glm::mat4 r = glm::mat4_cast(zR * yR * xR);
+		glm::mat4 s = glm::scale(glm::mat4{ 1 }, m_QuatTestScale);
+
+		ShaderLinker::SetUniform("m4_Model", t * r * s);
+		auto it = std::next(ModelResource::m_ModelPool.begin(),23);
+		it->second->Draw(false);
+		ShaderLinker::UnUse();
+		///
+
 		// 3D models
 		ShaderLinker::Use("MODEL_I");
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);

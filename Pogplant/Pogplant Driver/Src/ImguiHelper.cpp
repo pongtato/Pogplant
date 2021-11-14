@@ -1062,6 +1062,15 @@ namespace PogplantDriver
 			ImGui::DragFloat("Weight", &PP::Renderer::m_LightShaftWeight);
 			ImGui::PopItemWidth();*/
 
+			ImGui::PushItemWidth(207.0f);
+			ImGui::Text("Quat Pos");
+			ImGui::DragFloat3("###Quat Pos", &PP::Renderer::m_QuatTestPos .x);
+			ImGui::Text("Quat Rot");
+			ImGui::DragFloat3("###Quat Rot", &PP::Renderer::m_QuatTestRot.x);
+			ImGui::Text("Quat Scale");
+			ImGui::DragFloat3("###Quat Scale", &PP::Renderer::m_QuatTestScale.x);
+			ImGui::PopItemWidth();
+
 		}
 		ImGui::End();
 

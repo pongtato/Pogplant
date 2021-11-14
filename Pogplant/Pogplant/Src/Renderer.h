@@ -43,6 +43,10 @@ namespace Pogplant
 		static float m_LightShaftWeight;
 		static glm::vec3 m_LightShaftPos;
 		static float m_LightShaftScale;
+
+		static glm::vec3 m_QuatTestPos;
+		static glm::vec3 m_QuatTestRot;
+		static glm::vec3 m_QuatTestScale;
 	private:
 		static void DrawText(const entt::registry& registry, bool _EditorMode);
 	};
