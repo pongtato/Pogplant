@@ -39,9 +39,9 @@ namespace Pogplant
 	float Renderer::m_LightShaftScale = 10.0f;
 
 	/// QUAT TEST
-	glm::vec3 Renderer::m_QuatTestPos;
-	glm::vec3 Renderer::m_QuatTestRot;
-	glm::vec3 Renderer::m_QuatTestScale;
+	glm::vec3 Renderer::m_QuatTestPos = glm::vec3{ 0 };;
+	glm::vec3 Renderer::m_QuatTestRot = glm::vec3{ 0 };;
+	glm::vec3 Renderer::m_QuatTestScale = glm::vec3{ 1 };
 
 	struct CameraReturnData
 	{
@@ -454,7 +454,7 @@ namespace Pogplant
 		glm::mat4 s = glm::scale(glm::mat4{ 1 }, m_QuatTestScale);
 
 		ShaderLinker::SetUniform("m4_Model", t * r * s);
-		auto it = std::next(ModelResource::m_ModelPool.begin(),23);
+		auto it = std::next(ModelResource::m_ModelPool.begin(),1);
 		it->second->Draw(false);
 		ShaderLinker::UnUse();
 		///
