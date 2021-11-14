@@ -17,7 +17,7 @@ namespace Pogplant
 		m_ActiveCamera->UpdateView();
 
 		// Back to editor since game should be offloaded to application camera instead of Pogplant camera
-		SetActiveCam("EDITOR");
+		//SetActiveCam("EDITOR");
 	}
 
 	void CameraResource::AddCamera(const char* _ID)

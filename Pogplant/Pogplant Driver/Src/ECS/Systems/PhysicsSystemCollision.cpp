@@ -167,7 +167,8 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 /******************************************************************************/
 void PhysicsSystem::DrawColliders()
 {
-	glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->GetPosition();
+	//glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->GetPosition();
+	glm::vec3 camPos = PP::CameraResource::m_QuatCam.m_Position;
 
 	auto boxColliders = m_registry->view<Components::BoxCollider>();
 	for (auto collidable : boxColliders)
