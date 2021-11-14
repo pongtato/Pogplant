@@ -326,9 +326,21 @@ namespace Components
 		float t = 1.0f - _Particle.m_Life / _Particle.m_BaseLife;
 		size_t index = static_cast<size_t>(t / _Particle.m_IndexCalc);
 		// For some reason it exceeds the index size
-		index = index >= _Particle.m_SpeedCurve->size() ? _Particle.m_SpeedCurve->size() - 1 : index;
-		const float curveSpeed = (*_Particle.m_SpeedCurve)[index];
-		const float curveScale = (*_Particle.m_ScaleCurve)[index];
+
+		//Change if needed, I defaulted it to 1.f for both first
+		float curveSpeed;
+		float curveScale;
+		if (!_Particle.m_SpeedCurve->empty())
+		{
+			index = index >= _Particle.m_SpeedCurve->size() ? _Particle.m_SpeedCurve->size() - 1 : index;
+			curveSpeed = (*_Particle.m_SpeedCurve)[index];
+			curveScale = (*_Particle.m_ScaleCurve)[index];
+		}
+		else
+		{
+			curveSpeed = 1.f;
+			curveScale = 1.f;
+		}
 
 		// Lerp
 		const float speedCalc = _Particle.m_Speed.m_Max * (1 - curveSpeed) + _Particle.m_Speed.m_Min * curveSpeed;
