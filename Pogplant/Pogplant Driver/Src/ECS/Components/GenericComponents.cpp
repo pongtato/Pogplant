@@ -213,6 +213,30 @@ namespace Components
 		m_midddleMatrix = m_localToWorld * m_ModelMtxLocal;
 	}
 
+	ParticleSystem::ParticleSystem()
+		: m_Color{ glm::vec4{1} }
+		, m_SpawnDirection{ glm::vec3{0,1,0} }
+		, m_Force{ 1.0f }
+		, m_Speed{ }
+		, m_Scale{ }
+		, m_SpawnRadius{ 1.0f }
+		, m_Delay{ 1.0f }
+		, m_Timer{ 0 }
+		, m_MinLife{ 1.0f }
+		, m_MaxLife{ 1.0f }
+		, m_TexName{ "" }
+		, m_ActiveCount{ 0 }
+		, m_SpawnCount{ 100 }
+		, m_Loop{ false }
+		, m_Done{ false }
+		, m_Burst{ false }
+		, m_RandomRotate{ false }
+		, m_Play{ false }
+		, m_Pause{ false }
+	{
+		m_TexID = -1;
+	}
+
 	ParticleSystem::ParticleSystem
 	(
 		glm::vec4 _Color,
@@ -396,6 +420,29 @@ namespace Components
 
 		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, static_cast<int>(_Particle.m_TexID), false });
 	}
+
+	ParticleSystem::CurveVariable::CurveVariable()
+		: m_CurveData{}
+		, m_CurvePoints{ }
+		, m_CurveMin{ 0.0f }
+		, m_CurveMax{ 1.0f }
+		, m_MultiplierMin{ 1.0f }
+		, m_MultiplierMax{ 1.0f }
+	{
+		//m_CurvePoints.resize(m_MaxPoints);
+
+		const size_t second_last = m_MaxPoints - 2;
+		const float increment = 1.0f / second_last;
+		// Init curve vertices
+		for (size_t i = 0; i < second_last; i++)
+		{
+			float currX = i * increment;
+			m_CurvePoints.push_back({ currX, 1.0f });
+		}
+		m_CurvePoints.push_back({ 1.0f, 1.0f });
+
+		m_CurveData.resize(m_DataPoints);
+	};
 
 	ParticleSystem::CurveVariable::CurveVariable(const std::vector<ImVec2>& _CurvePoints, float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax)
 		: m_CurveData{}

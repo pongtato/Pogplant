@@ -279,7 +279,7 @@ namespace Components
 	{
 		struct CurveVariable
 		{
-			CurveVariable() = default;
+			CurveVariable();
 			CurveVariable(const std::vector<ImVec2>& _CurvePoints, float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax);
 
 			//enum { m_MaxPoints = 9, m_DataPoints = 128 };
@@ -304,7 +304,7 @@ namespace Components
 			}
 		};
 
-		ParticleSystem() = default;
+		ParticleSystem();
 
 		ParticleSystem
 		(
