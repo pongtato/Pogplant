@@ -275,10 +275,6 @@ void Application::InitialiseDebugObjects()
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	//entity.AddComponent<Components::SphereCollider>(SphereCollider{ glm::vec3{0.f}, 1.f });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
-	entity.AddComponent<Components::AudioSource>();
-	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
-		Components::AudioSource::AudioObject{ "Resources/Audio\\test2.ogg", 0.2f, true }
-	);
 
 	//Test movable controllable body
 	pos = { -3.0f, 1.f, 0.0f };
@@ -288,10 +284,6 @@ void Application::InitialiseDebugObjects()
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color);
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1.f, 1.f, 1.f}, glm::vec3{0.f, 0.f, 0.f} });
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{ 1.f, 0.f, false, true });
-	entity.AddComponent<Components::AudioSource>();
-	entity.GetComponent<Components::AudioSource>().m_audioSources.push_back(
-		Components::AudioSource::AudioObject{ "Resources/Audio\\test.ogg", 0.2f, true }
-	);
 
 	/// FONT
 	pos = { 0.0f, 10.0, -10.0f };

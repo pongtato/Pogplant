@@ -335,9 +335,9 @@ namespace Scripting
 
             //Ship tilter
             float relativeVelX = Vector3.Dot(right_vec, rigidbody.velocity);
-            transform.Rotation.Y = -relativeVelX * 0.1f;
-            transform.Rotation.Z = relativeVelX * 0.055f;
-            transform.Rotation.X = -rigidbody.velocity.Y * 0.2f;
+            transform.Rotation.Y = -relativeVelX * 0.15f;
+            transform.Rotation.Z = relativeVelX * 0.15f;
+            transform.Rotation.X = -rigidbody.velocity.Y * 0.3f;
 
         }
 

@@ -66,11 +66,12 @@ void Application::EnterPlayState()
 void Application::UpdatePlayState(float c_dt)
 {
 #ifdef PPD_EDITOR_BUILD
-	m_sPhysicsSystem.UpdateEditor();
 
 	if (m_playState == PLAYSTATE::PLAY || (m_playState == PLAYSTATE::STEPNEXT))
 #endif // PPD_EDITOR_BUILD
 	{
+		m_sPhysicsSystem.UpdateEditor();
+
 		//Physics dynamic update until fps drops below 30fps
 		m_accumulatedFixedTime += c_dt;
 

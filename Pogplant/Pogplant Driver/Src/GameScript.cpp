@@ -72,12 +72,11 @@ namespace Scripting
 
 
 			//Turns the camera left,right (-180, 180);
-			auto box_y_rot = -(box_pos->m_rotation.y + playerTransform->m_rotation.y) + 90.f;
+			auto box_y_rot = (box_pos->m_rotation.y + playerTransform->m_rotation.y) + 180.f;
 
+			//Lerps yaw and pitch over time
 			cam_comp->m_Yaw += (box_y_rot - cam_comp->m_Yaw) * _deltaTime * 20.f;
-			//std::cout << "Yaw: " << cam_comp->m_Yaw << std::endl;
 			cam_comp->m_Pitch += ((box_pos->m_rotation.x - playerTransform->m_rotation.x) - cam_comp->m_Pitch) * _deltaTime * 20.f;
-
 		}
 	}
 
