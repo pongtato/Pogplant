@@ -184,6 +184,43 @@ void PhysicsSystem::DrawColliders()
 		PP::DebugDraw::DebugSphere(sphereCollider.sphere.m_pos, (sphereCollider.sphere.m_pos - camPos), sphereCollider.sphere.m_radius);
 	}
 
+	auto obbBoxColliders = m_registry->view<Components::OBBBoxCollider>();
+	for (auto collidable : obbBoxColliders)
+	{
+		auto& boxCollider = obbBoxColliders.get<Components::OBBBoxCollider>(collidable);
+
+		const glm::vec3 v0 = boxCollider.obb.m_pos;
+		const glm::vec3 v1 = boxCollider.obb.m_pos + boxCollider.obb.m_extendX;
+		const glm::vec3 v2 = boxCollider.obb.m_pos + boxCollider.obb.m_extendZ;
+		const glm::vec3 v3 = boxCollider.obb.m_pos + boxCollider.obb.m_extendX + boxCollider.obb.m_extendZ;
+
+		const glm::vec3 v4 = boxCollider.obb.m_pos + boxCollider.obb.m_extendY;
+		const glm::vec3 v5 = boxCollider.obb.m_pos + boxCollider.obb.m_extendX + boxCollider.obb.m_extendY;
+		const glm::vec3 v6 = boxCollider.obb.m_pos + boxCollider.obb.m_extendZ + boxCollider.obb.m_extendY;
+		const glm::vec3 v7 = boxCollider.obb.m_pos + boxCollider.obb.m_extendX + boxCollider.obb.m_extendZ + boxCollider.obb.m_extendY;
+
+
+		//const glm::vec3 v5 = boxCollider.obb.m_pos + boxCollider.obb.m_extendY;
+		
+		//Bottom
+		PP::DebugDraw::DebugLine(v0, v1);
+		PP::DebugDraw::DebugLine(v0, v2);
+		PP::DebugDraw::DebugLine(v2, v3);
+		PP::DebugDraw::DebugLine(v1, v3);
+
+		//Top
+		PP::DebugDraw::DebugLine(v4, v5);
+		PP::DebugDraw::DebugLine(v4, v6);
+		PP::DebugDraw::DebugLine(v6, v7);
+		PP::DebugDraw::DebugLine(v5, v7);
+
+		//Sides
+		PP::DebugDraw::DebugLine(v0, v4);
+		PP::DebugDraw::DebugLine(v1, v5);
+		PP::DebugDraw::DebugLine(v2, v6);
+		PP::DebugDraw::DebugLine(v3, v7);
+	}
+
 	// haha xd
 	auto cameras = m_registry->view<Components::Camera, Components::Transform>();
 	const float aspect = static_cast<float>(PP::Window::m_Height) / PP::Window::m_Width;

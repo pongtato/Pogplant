@@ -2431,6 +2431,19 @@ namespace IMGUIZMO_NAMESPACE
       mat.v.position.Set(translation[0], translation[1], translation[2], 1.f);
    }
 
+   void RecomposeRotationMatrix(const float* rotation, float* matrix)
+   {
+       matrix_t& mat = *(matrix_t*)matrix;
+
+       matrix_t rot[3];
+       for (int i = 0; i < 3; i++)
+       {
+           rot[i].RotationAxis(directionUnary[i], rotation[i] * DEG2RAD);
+       }
+
+       mat = rot[0] * rot[1] * rot[2];
+   }
+
    void SetID(int id)
    {
       gContext.mActualID = id;

@@ -1,3 +1,16 @@
+/******************************************************************************/
+/*!
+\file	Collision.cpp
+\author Gabriel Wong Choon Jieh
+\par	email: c.wong\@digipen.edu
+\details
+	This file contains implementation of the collision detection functions
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
 #include "Collision.h"
 #include <gtx/norm.hpp>
 
@@ -12,34 +25,6 @@ namespace PhysicsDLC
 
 		bool RaySphere(const vec3& rayStart, const vec3& rayDir, const vec3& spherePos, float sphereRadius, float& collisionTime)
 		{
-			/*vec3 v0 = rayPos - spherePos;
-
-			float a = glm::length2(rayDir);
-			float b = 2.f * glm::dot(rayDir, v0);
-			float m = glm::length2(v0);
-
-			float c = m - sphereRadius * sphereRadius;
-
-			if (c < 0.f)//Ray in sphere
-			{
-				collisionTime = 0.f;
-				return true;
-			}
-			else if (b > 0.f)
-			{
-				return false;
-			}
-
-			float discriminant = b * b - 4.f * a * c;
-
-			if (discriminant >= 0.f)
-			{
-				collisionTime = (-b - sqrtf(discriminant)) / (2.f * a);
-				return true;
-			}
-
-			return false;//*/
-
 			vec3 v0 = rayStart - spherePos;
 
 			float rayProjection = glm::dot(rayDir, v0);

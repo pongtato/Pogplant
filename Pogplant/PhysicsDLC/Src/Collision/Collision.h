@@ -1,3 +1,16 @@
+/******************************************************************************/
+/*!
+\file	Collision.h
+\author Gabriel Wong Choon Jieh
+\par	email: c.wong\@digipen.edu
+\details
+	Header defining collision functions
+
+\copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
 #ifndef COLLISION_H_
 #define COLLISION_H_
 

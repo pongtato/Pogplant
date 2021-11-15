@@ -44,6 +44,7 @@ namespace Components
 			CT_UNDEFINED,
 			CT_BOX,
 			CT_SPHERE,
+			CT_OBBBOX,
 			CT_HEIGHTMAP
 		};
 
@@ -97,6 +98,21 @@ namespace Components
 		glm::vec3 centre;
 
 		PhysicsDLC::Collision::Shapes::Sphere sphere;
+		RTTR_ENABLE(Collider);
+	};
+
+	struct OBBBoxCollider : public Collider
+	{
+		OBBBoxCollider() = default;
+		inline OBBBoxCollider(glm::vec3 c_extends, glm::vec3 c_centre)
+			: extends{ c_extends }, centre{ c_centre }
+		{}
+
+		glm::vec3 extends = glm::vec3{ 1.f, 1.f, 1.f };
+		glm::vec3 centre;
+
+		PhysicsDLC::Collision::Shapes::OBB obb;
+		PhysicsDLC::Collision::Shapes::AABB aabb;
 		RTTR_ENABLE(Collider);
 	};
 

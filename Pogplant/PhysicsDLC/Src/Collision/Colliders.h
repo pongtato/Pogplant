@@ -62,8 +62,11 @@ namespace PhysicsDLC
 			struct OBB
 			{
 				vec3 m_pos;
-				vec3 m_extends;
-				vec3 m_rotation;
+				vec3 m_extendX;
+				vec3 m_extendY;
+				vec3 m_extendZ;
+
+				AABB CalculateAABB();
 			};
 
 			struct Plane

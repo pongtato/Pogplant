@@ -13,6 +13,7 @@
 */
 /******************************************************************************/
 #include "Colliders.h"
+#include <algorithm>
 #include <gtx/norm.hpp>
 
 using namespace PhysicsDLC::Collision::Shapes;
@@ -206,6 +207,28 @@ void AABB::CalculateAABBFromExtends(const vec3& position, const vec3& extends)
 	m_max = position + extends;
 }
 
+AABB OBB::CalculateAABB()
+{
+	AABB aabb;
+
+	aabb.m_min = m_pos;
+	aabb.m_max = m_pos;
+
+	vec3 edgeX = m_pos + m_extendX;
+	vec3 edgeY = m_pos + m_extendY;
+	vec3 edgeZ = m_pos + m_extendZ;
+
+	aabb.m_min.x = std::min<float>({aabb.m_min.x, edgeX.x, edgeY.x, edgeZ.z});
+	aabb.m_min.y = std::min<float>({aabb.m_min.y, edgeX.y, edgeY.y, edgeZ.y});
+	aabb.m_min.z = std::min<float>({aabb.m_min.z, edgeX.z, edgeY.z, edgeZ.z});
+
+	aabb.m_max.x = std::max<float>({ aabb.m_max.x, edgeX.x, edgeY.x, edgeZ.z });
+	aabb.m_max.y = std::max<float>({ aabb.m_max.y, edgeX.y, edgeY.y, edgeZ.y });
+	aabb.m_max.z = std::max<float>({ aabb.m_max.z, edgeX.z, edgeY.z, edgeZ.z });
+
+	return aabb;
+}
+
 Plane::Plane()
 	:
 	m_pos{ 0.f, 0.f, 0.f },
@@ -219,7 +242,6 @@ Plane::Plane(vec3 pos, vec3 normal)
 	m_normal{ normal }
 {
 }
-
 
 /******************************************************************************/
 /*!

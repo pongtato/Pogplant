@@ -85,6 +85,10 @@ namespace PogplantDriver
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::SphereCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
+		if (ImGui::MenuItem("OBBBoxCollider", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::OBBBoxCollider>(PPD::ImguiHelper::m_CurrentEntity);
+		}
 		if (ImGui::MenuItem(ICON_FA_CAMERA "  Camera", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Camera>(PPD::ImguiHelper::m_CurrentEntity);
@@ -786,6 +790,69 @@ namespace PogplantDriver
 					}
 				}
 
+				auto box_colliderOBB = m_ecs->GetReg().try_get <Components::OBBBoxCollider> (m_CurrentEntity);
+				if (box_colliderOBB)
+				{
+					bool enable_box_collider = true;
+
+					if (ImGui::CollapsingHeader(ICON_FA_BOXES "  Collider Box OBB", &enable_box_collider, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						ImGuiComboFlags flag = 0;
+						flag |= ImGuiComboFlags_PopupAlignLeft;
+
+						ImGui::Text("Extend");
+						ImGui::DragFloat3("###CExt", glm::value_ptr(box_colliderOBB->extends));
+
+						ImGui::Text("Centre");
+						ImGui::DragFloat3("###CCen", glm::value_ptr(box_colliderOBB->centre));
+
+						ImGui::Checkbox("Is Trigger?", &box_colliderOBB->isTrigger);
+
+						auto identifier = m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity);
+						if (identifier)
+							identifier->isTrigger = box_colliderOBB->isTrigger;
+
+						/**Collision Layer editor**/
+						ImguiBlankSeperator(1);
+
+						auto& collisionLayers = Application::GetInstance().m_sPhysicsSystem.m_collisionLayers;
+
+						ImGui::Text(ICON_FA_LAYER_GROUP " Collision Layer");
+						if (ImGui::BeginCombo("###AxisKeys", box_colliderOBB->collisionLayer.c_str(), ImGuiComboFlags_PopupAlignLeft))
+						{
+							for (auto itr = collisionLayers.begin(); itr != collisionLayers.end(); ++itr)
+							{
+								const bool isSelected = (itr->first == box_colliderOBB->collisionLayer);
+
+								if (ImGui::Selectable(itr->first.c_str(), isSelected))
+								{
+									box_colliderOBB->collisionLayer = itr->first;
+
+									if (identifier)
+										identifier->collisionLayer = itr->second;
+								}
+
+								if (isSelected)
+									ImGui::SetItemDefaultFocus();
+							}
+
+							ImGui::EndCombo();
+						}
+						/****/
+
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
+					}
+
+					if (!enable_box_collider)
+					{
+						m_ecs->GetReg().remove<Components::OBBBoxCollider>(m_CurrentEntity);
+
+						if (m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity))
+							m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
+					}
+				}
+
 				auto sphere_collider = m_ecs->GetReg().try_get<Components::SphereCollider>(m_CurrentEntity);
 				if (sphere_collider)
 				{
@@ -1252,7 +1319,7 @@ namespace PogplantDriver
 			_CurrCam->RayCast();
 
 			// Ray for picking
-			const PP::Ray& ray = _CurrCam->m_Ray;
+			PhysicsDLC::Collision::Shapes::Ray ray{ _CurrCam->m_Ray.m_Origin, _CurrCam->m_Ray.m_Direction };
 			float shortestTime = std::numeric_limits<float>::max();
 			entt::entity chosenObject = entt::null;
 
@@ -1262,9 +1329,37 @@ namespace PogplantDriver
 					
 				auto& transform = m_ecs->GetReg().get<Components::Transform>(entity);
 				auto renderer = m_ecs->GetReg().try_get<Components::Renderer>(entity);
+				auto boxCollider = m_ecs->GetReg().try_get<Components::BoxCollider>(entity);
+				auto sphereCollider = m_ecs->GetReg().try_get<Components::SphereCollider>(entity);
 				//auto debugRenderer = m_ecs->GetReg().try_get<Components::DebugRender>(entity);
 
-				if (renderer != nullptr)
+				if (boxCollider != nullptr)
+				{
+					float currentTime = std::numeric_limits<float>::max();
+
+					if (PhysicsDLC::Collision::RayAABB(ray, boxCollider->aabb, currentTime))
+					{
+						if (currentTime < shortestTime)
+						{
+							chosenObject = entity;
+							shortestTime = currentTime;
+						}
+					}
+				}
+				else if (sphereCollider != nullptr)
+				{
+					float currentTime = std::numeric_limits<float>::max();
+
+					if (PhysicsDLC::Collision::RaySphere(ray, sphereCollider->sphere, currentTime))
+					{
+						if (currentTime < shortestTime)
+						{
+							chosenObject = entity;
+							shortestTime = currentTime;
+						}
+					}
+				}
+				else if (renderer != nullptr)
 				{
 					// Naive approach
 					float largestScale = std::numeric_limits<float>::min();
@@ -1276,7 +1371,9 @@ namespace PogplantDriver
 
 					const float radius = renderer->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
 					float currentTime = std::numeric_limits<float>::max();
-					if (ray.CollideSphere(glm::make_vec3(transform.m_position), radius, currentTime))
+
+					//Largest sphere approach
+					if (PhysicsDLC::Collision::RaySphere(ray, PhysicsDLC::Collision::Shapes::Sphere{transform.m_position, radius}, currentTime))
 					{
 						if (currentTime < shortestTime)
 						{
@@ -1284,29 +1381,29 @@ namespace PogplantDriver
 							shortestTime = currentTime;
 						}
 					}
+
+					//aabb approach (not good for rotation)
+					/*PhysicsDLC::Collision::Shapes::AABB aabb{
+						{ renderer->m_RenderModel->m_Bounds.minX,
+						renderer->m_RenderModel->m_Bounds.minY,
+						renderer->m_RenderModel->m_Bounds.minZ },
+						{ renderer->m_RenderModel->m_Bounds.maxX,
+						renderer->m_RenderModel->m_Bounds.maxY,
+						renderer->m_RenderModel->m_Bounds.maxZ } };
+
+					aabb.m_min = aabb.m_min * transform.m_scale + transform.m_position;
+					aabb.m_max = aabb.m_max * transform.m_scale + transform.m_position;
+					
+					if (PhysicsDLC::Collision::RayAABB(ray, aabb, currentTime))
+					{
+						if (currentTime < shortestTime)
+						{
+							chosenObject = entity;
+							shortestTime = currentTime;
+						}
+					}//*/
 				}
 			});
-
-			//for (size_t i = 0; i < GO_Resource::m_GO_Container.size(); i++)
-			//{
-			//	GameObject& currGO = GO_Resource::m_GO_Container[i];
-			//	// Naive approach
-			//	float largestScale = std::numeric_limits<float>::min();
-			//	for (int j = 0; j < 3; j++)
-			//	{
-			//		largestScale = std::max(largestScale, currGO.m_Scale[i]);
-			//	}
-			//	const float radius = currGO.m_RenderObject->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
-			//	float currentTime = std::numeric_limits<float>::max();
-			//	if (ray.CollideSphere(glm::make_vec3(currGO.m_Position), radius, currentTime))
-			//	{
-			//		if (currentTime < shortestTime)
-			//		{
-			//			chosenObject = static_cast<int>(i);
-			//			shortestTime = currentTime;
-			//		}
-			//	}
-			//}
 
 			// Update object picked
 			if (chosenObject != entt::null)
