@@ -167,8 +167,8 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 /******************************************************************************/
 void PhysicsSystem::DrawColliders()
 {
-	//glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->GetPosition();
-	glm::vec3 camPos = PP::CameraResource::m_QuatCam.m_Position;
+	glm::vec3 camPos = PP::CameraResource::GetCamera("EDITOR")->m_Position;
+	//glm::vec3 camPos = PP::CameraResource::m_QuatCam.m_Position;
 
 	auto boxColliders = m_registry->view<Components::BoxCollider>();
 	for (auto collidable : boxColliders)
@@ -195,7 +195,7 @@ void PhysicsSystem::DrawColliders()
 		PP::DebugDraw::DebugFrustum
 		(
 			cam_trans.m_position,
-			glm::radians(cam.m_Zoom * 0.5f),
+			glm::radians(cam.m_Fov * 0.5f),
 			aspect,
 			cam.m_Near,
 			cam.m_Far,

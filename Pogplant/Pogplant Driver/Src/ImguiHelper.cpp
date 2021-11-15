@@ -866,8 +866,8 @@ namespace PogplantDriver
 						ImGui::DragFloat("###near", &camera_com->m_Near, 1.0f);
 						ImGui::Text("Far");
 						ImGui::DragFloat("###far", &camera_com->m_Far, 1.0f);
-						ImGui::Text("Zoom");
-						ImGui::DragFloat("###zoom", &camera_com->m_Zoom, 1.0f);
+						ImGui::Text("Fov");
+						ImGui::DragFloat("###fov", &camera_com->m_Fov, 1.0f);
 
 						ImguiBlankSeperator(1);
 						ImGui::Separator();
@@ -1037,19 +1037,20 @@ namespace PogplantDriver
 
 		ImGui::Begin("Globals");
 		{
+			Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
 			ImGui::PushItemWidth(69.0f);
 			ImGui::DragFloat("Exposure", &PP::Renderer::m_Exposure, 0.05f);
 			ImGui::DragFloat("Gamma", &PP::Renderer::m_Gamma, 0.05f);
-			auto* camera = &PP::CameraResource::m_QuatCam;
-			ImGui::DragFloat("Editor Cam Near", &camera->m_Near);
-			ImGui::DragFloat("Editor Cam Far", &camera->m_Far);
+			//auto* camera = &PP::CameraResource::m_QuatCam;
+			ImGui::DragFloat("Editor Cam Near", &currQuatCam->m_Near);
+			ImGui::DragFloat("Editor Cam Far", &currQuatCam->m_Far);
 			ImGui::Dummy({ 0,2.0f });
 
 			ImGui::Text("Camera config");
 			ImGui::PushItemWidth(207.0f);
-			ImGui::DragFloat3("Camera Pos", &camera->m_Position.x);
+			ImGui::DragFloat3("Camera Pos", &currQuatCam->m_Position.x);
 			ImGui::PopItemWidth();
-			ImGui::DragFloat("Camera Speed", &camera->m_Speed);
+			ImGui::DragFloat("Camera Speed", &currQuatCam->m_Speed);
 
 		/*	ImGui::Text("Light Shaft");
 			ImGui::PushItemWidth(207.0f);
@@ -1118,11 +1119,10 @@ namespace PogplantDriver
 		ImVec2 vMax = ImGui::GetWindowContentRegionMax();
 
 		// Aspect ratio update
-		//Pogplant::Camera* currCam = PP::CameraResource::GetCamera("EDITOR");
+		Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
 		//currCam->UpdateProjection({ vMax.x, vMax.y });
-
-		PP::Camera4D& currQuatCam = PP::CameraResource::m_QuatCam;
-		currQuatCam.UpdateProjection({ vMax.x, vMax.y });
+		//PP::Camera4D& currQuatCam = PP::CameraResource::m_QuatCam;
+		currQuatCam->UpdateProjection({ vMax.x, vMax.y });
 
 		// Account for position of window
 		vMin.x += ImGui::GetWindowPos().x;
@@ -1131,13 +1131,13 @@ namespace PogplantDriver
 		vMax.y += ImGui::GetWindowPos().y;
 
 		/// GUIZMO GO EDIT
-		Scene_GOEdit(&currQuatCam, vMin, vMax);
+		Scene_GOEdit(currQuatCam, vMin, vMax);
 
 		/// Picker
-		Scene_GOPick(&currQuatCam, vMin, vMax);
+		Scene_GOPick(currQuatCam, vMin, vMax);
 
 		/// GUIZMO VIEW EDIT
-		Scene_ViewEdit(&currQuatCam, vMin, vMax);
+		Scene_ViewEdit(currQuatCam, vMin, vMax);
 	}
 
 	void ImguiHelper::GameWindow()
@@ -1407,6 +1407,7 @@ namespace PogplantDriver
 		{
 			_CurrCam->UpdateFront(front);
 		}
+
 		//// Updated view from gizmo
 		//_CurrCam->View() = glm::make_mat4(view);
 
@@ -1421,7 +1422,6 @@ namespace PogplantDriver
 			PP::CameraResource::SetActiveCam("EDITOR");
 		}
 	}
-
 
 	void ImguiHelper::OpenScene(const std::filesystem::path& path)
 	{

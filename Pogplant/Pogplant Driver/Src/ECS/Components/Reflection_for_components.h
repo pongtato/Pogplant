@@ -60,7 +60,7 @@ namespace Components
 			.property("m_Pitch", &Camera::m_Pitch)
 			.property("m_Near", &Camera::m_Near)
 			.property("m_Far", &Camera::m_Far)
-			.property("m_Zoom", &Camera::m_Zoom);
+			.property("m_Fov", &Camera::m_Fov);
 
 		rttr::registration::class_<ParticleSystem::CurveVariable>("CurveVariable")
 			.method("init", &ParticleSystem::CurveVariable::init)

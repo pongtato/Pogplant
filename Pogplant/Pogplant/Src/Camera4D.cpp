@@ -31,6 +31,27 @@ namespace Pogplant
 		UpdateProjection();
 	}
 
+	Camera4D::Camera4D(CameraConfig _CamConfig)
+		: m_Orientation{ glm::quat{0,0,0,-1} }
+		, m_Projection{ glm::mat4{1} }
+		, m_Position{ _CamConfig.m_Position }
+		, m_Front{ glm::vec3{0,0,-1} }
+		, m_Right{ glm::vec3{1,0,0} }
+		, m_Up{ glm::vec3{0,1,0} }
+		, m_Pitch{ _CamConfig.m_Pitch }
+		, m_Yaw{ _CamConfig.m_Yaw }
+		, m_Speed{ _CamConfig.m_Speed }
+		, m_LookSpeed{ _CamConfig.m_LookSens }
+		, m_Fov{ _CamConfig.m_Fov }
+		, m_Near{ _CamConfig.m_Near }
+		, m_Far{ _CamConfig.m_Far }
+		, m_Flip{ 1.0f }
+		, m_RMB{ false }
+	{
+		UpdateVectors();
+		UpdateProjection();
+	}
+
 	Camera4D::~Camera4D()
 	{
 	}
@@ -198,6 +219,50 @@ namespace Pogplant
 	void Camera4D::UpdateZoom(double _ScrollAmount)
 	{
 		m_Position += m_Front * static_cast<float>(_ScrollAmount);
+	}
+
+	void Camera4D::UpdateVectors(float _Yaw, float _Pitch, glm::vec3& _Front, glm::vec3& _Right, glm::vec3& _Up, glm::quat& _Orientation)
+	{
+		glm::quat yRotate = glm::angleAxis(glm::radians(_Yaw), glm::vec3{ 0,1,0 });
+		glm::quat xRotate = glm::angleAxis(glm::radians(_Pitch), glm::vec3{ 1,0,0 });
+		_Orientation = yRotate * xRotate;
+
+		auto quatFront = _Orientation * glm::quat(0, 0, 0, -1) * glm::conjugate(_Orientation);
+		_Front = glm::vec3{ quatFront.x, quatFront.y, quatFront.z };
+		if (_Front.length() > 0)
+		{
+			_Front = glm::normalize(_Front);
+		}
+		_Right = glm::cross(_Front, glm::vec3{ 0,1,0 });
+		if (_Right.length() > 0)
+		{
+			_Right = glm::normalize(_Right);
+		}
+		_Up = glm::cross(_Front, _Right);
+	}
+
+	void Camera4D::UpdateProjection(glm::vec2 _WindowSize, float _Near, float _Far, float _Fov, glm::mat4& _Projection)
+	{
+		if (_WindowSize.y > 0.0f)
+		{
+			const float aspectR = _WindowSize.x / _WindowSize.y;
+			_Projection = glm::perspective(glm::radians(_Fov), aspectR, _Near, _Far);
+		}
+		else
+		{
+			const float aspectR = 1.0f;
+			_Projection = glm::perspective(glm::radians(_Fov), aspectR, _Near, _Far);
+		}
+	}
+
+	void Camera4D::GetView(const glm::vec3& _Position, const glm::quat& _Orientation, glm::mat4& _View)
+	{
+		glm::quat reverseOrient = glm::conjugate(_Orientation);
+		_View = glm::mat4_cast(reverseOrient);
+		_View[3][0] = -(_View[0][0] * _Position.x + _View[1][0] * _Position.y + _View[2][0] * _Position.z);
+		_View[3][1] = -(_View[0][1] * _Position.x + _View[1][1] * _Position.y + _View[2][1] * _Position.z);
+		_View[3][2] = -(_View[0][2] * _Position.x + _View[1][2] * _Position.y + _View[2][2] * _Position.z);
+		_View[3][3] = 1;
 	}
 
 	void Camera4D::YawPitchFlip()

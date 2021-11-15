@@ -39,8 +39,8 @@ namespace Pogplant
 	float Renderer::m_LightShaftScale = 10.0f;
 
 	/// QUAT TEST
-	glm::vec3 Renderer::m_QuatTestPos = glm::vec3{ 0 };;
-	glm::vec3 Renderer::m_QuatTestRot = glm::vec3{ 0 };;
+	glm::vec3 Renderer::m_QuatTestPos = glm::vec3{ 0 };
+	glm::vec3 Renderer::m_QuatTestRot = glm::vec3{ 0 };
 	glm::vec3 Renderer::m_QuatTestScale = glm::vec3{ 1 };
 
 	struct CameraReturnData
@@ -102,9 +102,9 @@ namespace Pogplant
 		}
 
 		// Default to editor cam
-		//Camera* currCam = CameraResource::GetCamera("EDITOR");
+		Camera4D* currCam = CameraResource::GetCamera("EDITOR");
 
-		Camera4D* currQCam = &CameraResource::m_QuatCam;
+		//Camera4D* currQCam = &CameraResource::m_QuatCam;
 		//std::cout << "@" << currQCam->m_Projection.length() << std::endl;
 		//std::cout << "@" << currQCam->m_View.length() << std::endl;
 		//std::cout << "@" << currQCam->m_Position.x << "|" << currQCam->m_Position.y << "|" << currQCam->m_Position.z << std::endl;
@@ -119,11 +119,11 @@ namespace Pogplant
 			currCam->GetPosition(),
 			currCam->GetCameraConfig().m_Near,
 			currCam->GetCameraConfig().m_Far,*/
-			currQCam->m_Projection,
-			currQCam->GetView(),
-			currQCam->m_Position,
-			currQCam->m_Near,
-			currQCam->m_Far,
+			currCam->m_Projection,
+			currCam->GetView(),
+			currCam->m_Position,
+			currCam->m_Near,
+			currCam->m_Far,
 		};
 	}
 
@@ -482,11 +482,11 @@ namespace Pogplant
 		auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
 		for (const auto& e : p_results)
 		{
-			const auto& it = p_results.get<const Components::PrimitiveRender>(e);
+			const auto& it_pRender = p_results.get<const Components::PrimitiveRender>(e);
 			const auto& it_trans = p_results.get<const Components::Transform>(e);
 
 			//ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
-			ShaderLinker::SetUniform("tile", it.m_Blend);
+			ShaderLinker::SetUniform("tile", it_pRender.m_Blend);
 			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
 			ShaderLinker::SetUniform("v3_ViewPosition", ret.m_Position);
 
@@ -503,25 +503,25 @@ namespace Pogplant
 			/// WIP, to be updated
 			// Tex 1
 			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_DiffTex[0]]);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[0]]);
 			glActiveTexture(GL_TEXTURE1);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_NormTex[0]]);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[0]]);
 			glActiveTexture(GL_TEXTURE2);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_BumpTex[0]]);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[0]]);
 			glActiveTexture(GL_TEXTURE3);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_SpecTex[0]]);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[0]]);
 
 			// Tex 2
 			glActiveTexture(GL_TEXTURE4);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_DiffTex[1]]);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[1]]);
 			glActiveTexture(GL_TEXTURE5);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_NormTex[1]]);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[1]]);
 			glActiveTexture(GL_TEXTURE6);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_BumpTex[1]]);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[1]]);
 			glActiveTexture(GL_TEXTURE7);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it.m_SpecTex[1]]);
+			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[1]]);
 
-			it.m_Mesh->Draw();
+			it_pRender.m_Mesh->Draw();
 		}
 		ShaderLinker::UnUse();
 
@@ -552,8 +552,8 @@ namespace Pogplant
 		(void)_Selected;
 
 		/// Editor cam by default, dont need to search for gam cam since this only appears in debug
-		//Camera* currCam = CameraResource::GetCamera("EDITOR");
-		Camera4D* currCam = &CameraResource::m_QuatCam;
+		Camera4D* currCam = CameraResource::GetCamera("EDITOR");
+		//Camera4D* currCam = &CameraResource::m_QuatCam;
 		// Try to get game camera
 		auto cam_results = registry.view<Components::Camera>();
 		//glm::mat4 projection = currCam->GetPerspective();

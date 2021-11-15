@@ -25,27 +25,19 @@ namespace Pogplant
 		FrameBuffer::InitFrameBuffer();
 		CameraResource::InitBaseCameras
 		(
-			glm::vec3{ 0,0,5.0f }, // Editor cam pos
 			CameraConfig
 			{
-				-90.0f, // Yaw
+				glm::vec3{ 0,0,5.0f }, // Editor cam pos
+				0.0f, // Yaw
 				0.0f,	// Pitch
 				45.0f,	// Zoom 
 				16.9f,	// Speed 
 				0.1f,	// Near
 				2000.0f,// Far
 				0.21f,	// Mouse look sens
-				20.0f,	// Key input look sens
 				0.1f	// Pan speed
 			}
 		);
-
-		// Ghetto init
-		auto& quatCam = CameraResource::m_QuatCam;
-		quatCam.m_Position = glm::vec3{ 0,0,5.0f };
-		quatCam.m_Near = 0.1f;
-		quatCam.m_Far = 2000.0f;
-		quatCam.m_Fov = 45.0f;
 	}
 
 	void Entry::Cleanup()

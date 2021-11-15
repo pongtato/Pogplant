@@ -28,27 +28,28 @@ namespace Pogplant
 	{
 		(void)_XOffset; // Unused unless your mouse scrolls sideways
 
-		Camera* activeCam = CameraResource::GetActiveCam();
+		Camera4D* activeCam = CameraResource::GetActiveCam();
 		if (activeCam)
 		{
 			activeCam->UpdateZoom(_YOffset);
 		}
 
 		/// QUAT
-		CameraResource::m_QuatCam.UpdateZoom(_YOffset);
+		//CameraResource::m_QuatCam.UpdateZoom(_YOffset);
 	}
 
 	void WindowMouseCallback(GLFWwindow*, double _XPos, double _YPos)
 	{
-		Camera* activeCam = CameraResource::GetActiveCam();
+		Camera4D* activeCam = CameraResource::GetActiveCam();
 		if (activeCam)
 		{
-			activeCam->UpdateYawPitch(_XPos, _YPos);
-			activeCam->UpdateCameraPan(_XPos, _YPos);
+			//activeCam->UpdateYawPitch(_XPos, _YPos);
+			//activeCam->UpdateCameraPan(_XPos, _YPos);
+			activeCam->MouseInput(static_cast<float>(_XPos), static_cast<float>(_YPos));
 		}
 
 		/// QUAT
-		CameraResource::m_QuatCam.MouseInput(static_cast<float>(_XPos), static_cast<float>(_YPos));
+		//CameraResource::m_QuatCam.MouseInput(static_cast<float>(_XPos), static_cast<float>(_YPos));
 	}
 
 	int Window::InitWindow(int _Width, int _Height, const char* _Window_Name)

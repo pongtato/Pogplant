@@ -310,7 +310,7 @@ void Application::InitialiseDebugObjects()
 	pos = { 15.0f, 10.0f, 45.0f };
 	color = { 0.9f, 0.5f, 0.2f };
 	entity = m_activeECS->CreateEntity("Game Camera", pos, rot, scale);
-	entity.AddComponent<Components::Camera>(Camera{ glm::mat4{1},glm::mat4{1}, glm::vec3{0}, glm::vec3{0}, glm::vec3{0}, -90.0f, 0.0, 45.0f, 0.1f, 200.0f, true });
+	entity.AddComponent<Components::Camera>();
 	ConstructModel(entity, cubeModel, &cubeModel->m_Meshes.begin()->second, color, glm::vec3(1.0f), false, true);
 
 	/// Canvas test
@@ -336,16 +336,13 @@ void Application::InitialiseDebugObjects()
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
 	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "snow_diff.dds"});
 
-
-
 	//Vinceen testing code
 	//auto _ra = m_activeECS->view<Transform>(entt::exclude_t<Renderer>());
 	//for (auto ent : _ra)
 	//{
 	//	std::cout << (entt::id_type)ent << std::endl;
 	//}
-
-
+	
 	//int k = 0;
 	/// Instancing test
 	//pos = { 0.0f, 0.0f, 0.0f };
@@ -428,9 +425,12 @@ void Application::UpdateTransforms(float _Dt)
 			{
 				gameCamPos = transform.GetGlobalPosition();
 				const glm::vec2 windowSize = { PP::Window::m_Width, PP::Window::m_Height };
-				PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
-				PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
-				PP::Camera::GetUpdatedView(gameCamPos, gameCamPos + camera.m_Front, camera.m_Up, camera.m_View);
+				//PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
+				//PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
+				//PP::Camera::GetUpdatedView(gameCamPos, gameCamPos + camera.m_Front, camera.m_Up, camera.m_View);
+				PP::Camera4D::UpdateVectors(camera.m_Yaw, camera.m_Pitch, camera.m_Front, camera.m_Right, camera.m_Up, camera.m_Orientation);
+				PP::Camera4D::UpdateProjection(windowSize, camera.m_Near, camera.m_Far, camera.m_Fov, camera.m_Projection);
+				PP::Camera4D::GetView(gameCamPos, camera.m_Orientation, camera.m_View);
 				PPA::AudioEngine::UpdateListenerPosition(gameCamPos, camera.m_Front, camera.m_Up, PhysicsDLC::Vector::Zero);
 			}
 		}

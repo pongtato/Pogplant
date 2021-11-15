@@ -236,6 +236,9 @@ namespace Components
 
 	struct Camera
 	{
+		Camera();
+
+		glm::quat m_Orientation;
 		glm::mat4 m_Projection;
 		glm::mat4 m_View;
 		glm::vec3 m_Up;
@@ -243,7 +246,7 @@ namespace Components
 		glm::vec3 m_Front;
 		float m_Yaw;
 		float m_Pitch;
-		float m_Zoom;
+		float m_Fov;
 		float m_Near;
 		float m_Far;
 		bool m_Active;

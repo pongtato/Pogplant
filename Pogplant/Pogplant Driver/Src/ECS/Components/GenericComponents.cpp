@@ -213,6 +213,20 @@ namespace Components
 		m_midddleMatrix = m_localToWorld * m_ModelMtxLocal;
 	}
 
+	Camera::Camera()
+		: m_Orientation{ glm::quat{0,0,0,-1} }
+		, m_Projection{ glm::mat4{1} }
+		, m_Front{ glm::vec3{0,0,-1} }
+		, m_Right{ glm::vec3{1,0,0} }
+		, m_Up{ glm::vec3{0,1,0} }
+		, m_Pitch{ 0.0f }
+		, m_Yaw{ 0.0f }
+		, m_Fov{ 45.0f }
+		, m_Near{ 0.1f }
+		, m_Far{ 420.0f }
+	{
+	}
+
 	ParticleSystem::ParticleSystem()
 		: m_Color{ glm::vec4{1} }
 		, m_SpawnDirection{ glm::vec3{0,1,0} }

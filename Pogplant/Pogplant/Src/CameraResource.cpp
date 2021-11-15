@@ -3,27 +3,25 @@
 namespace Pogplant
 {
 	std::unordered_map<const char*, size_t> CameraResource::m_CameraKeys;
-	std::vector<Camera*> CameraResource::m_CameraPool;
-	Camera* CameraResource::m_ActiveCamera = nullptr;
-	Camera4D CameraResource::m_QuatCam = Camera4D();
+	//std::vector<Camera*> CameraResource::m_CameraPool;
+	//Camera* CameraResource::m_ActiveCamera = nullptr;
+	//Camera4D CameraResource::m_QuatCam = Camera4D();
+	std::vector<Camera4D*> CameraResource::m_CameraPool;
+	Camera4D* CameraResource::m_ActiveCamera = nullptr;
 
-	void CameraResource::InitBaseCameras(const glm::vec3& _EditorPosition, CameraConfig _CameraConfig)
+	void CameraResource::InitBaseCameras(const CameraConfig& _CameraConfig)
 	{
 		// Editor
-		AddCamera("EDITOR");
+		AddCamera("EDITOR", _CameraConfig);
 		SetActiveCam("EDITOR");
-		m_ActiveCamera->InitCamera(_EditorPosition, _CameraConfig);
 		m_ActiveCamera->UpdateProjection();
-		m_ActiveCamera->UpdateView();
-
-		// Back to editor since game should be offloaded to application camera instead of Pogplant camera
-		//SetActiveCam("EDITOR");
+		m_ActiveCamera->UpdateVectors();
 	}
 
-	void CameraResource::AddCamera(const char* _ID)
+	void CameraResource::AddCamera(const char* _ID, const CameraConfig& _CameraConfig)
 	{
 		m_CameraKeys[_ID] = m_CameraPool.size();
-		m_CameraPool.push_back(new Camera());
+		m_CameraPool.push_back(new Camera4D(_CameraConfig));
 	}
 
 	void CameraResource::RemoveCamera(size_t _Index)
@@ -31,12 +29,12 @@ namespace Pogplant
 		m_CameraPool.erase(m_CameraPool.begin() + _Index);
 	}
 
-	Camera* CameraResource::GetCamera(const char* _ID)
+	Camera4D* CameraResource::GetCamera(const char* _ID)
 	{
 		return m_CameraPool[m_CameraKeys[_ID]];
 	}
 
-	Camera* CameraResource::GetCamera(size_t _Index)
+	Camera4D* CameraResource::GetCamera(size_t _Index)
 	{
 		return m_CameraPool[_Index];
 	}
@@ -56,7 +54,7 @@ namespace Pogplant
 		m_ActiveCamera = nullptr;
 	}
 
-	Camera* CameraResource::GetActiveCam()
+	Camera4D* CameraResource::GetActiveCam()
 	{
 		return m_ActiveCamera;
 	}
@@ -77,7 +75,7 @@ namespace Pogplant
 		}
 
 		/// QUAT
-		CameraResource::m_QuatCam.UpdateProjection();
+		//CameraResource::m_QuatCam.UpdateProjection();
 	}
 	void CameraResource::UpdateActiveCamera(float _Dt)
 	{
@@ -87,7 +85,7 @@ namespace Pogplant
 		}
 
 		/// QUAT
-		CameraResource::m_QuatCam.Update(_Dt);
+		//CameraResource::m_QuatCam.Update(_Dt);
 	}
 
 	void CameraResource::ImGUIWindowSizeOverride(const glm::vec2& _ImGuiWinSize)
@@ -98,6 +96,6 @@ namespace Pogplant
 		}
 
 		/// QUAT
-		CameraResource::m_QuatCam.UpdateProjection(_ImGuiWinSize);
+		//CameraResource::m_QuatCam.UpdateProjection(_ImGuiWinSize);
 	}
 }

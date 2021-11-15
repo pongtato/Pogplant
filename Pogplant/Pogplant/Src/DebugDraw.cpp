@@ -164,6 +164,9 @@ namespace Pogplant
 		glm::vec3 u = _Up * Hnear;
 		glm::vec3 f = _Front * _Near;
 
+		std::cout << _Up.x << "|" << _Up.y << "|" << _Up.z << std::endl;
+		std::cout << u.x << "|" << u.y << "|" << u.z << std::endl;
+
 		glm::vec3 nTL = _Position - r + u + f;
 		glm::vec3 nTR = _Position + r + u + f;
 		glm::vec3 nBL = _Position - r - u + f;
