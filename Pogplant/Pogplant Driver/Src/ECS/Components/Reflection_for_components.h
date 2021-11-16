@@ -32,7 +32,7 @@ namespace Components
 			.property("m_Name", &Name::m_name);
 
 		rttr::registration::class_<Tag>("Tag")
-			.property("m_Tag", &Tag::m_tag);
+			.property("m_tag", &Tag::m_tag);
 
 		rttr::registration::class_<Text>("Text")
 			.property("m_Color", &Text::m_Color)

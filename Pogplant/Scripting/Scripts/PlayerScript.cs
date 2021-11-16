@@ -33,6 +33,8 @@ namespace Scripting
         //Player Firing 
         float p_fireRate;
         float p_fire_timer = 0.0f;
+
+
         //Player Rotation movement (Camera duplicates this effect)
         //float camera_roll = -1.5f;
 
@@ -55,6 +57,7 @@ namespace Scripting
 
         uint shipCameraEntity;
         uint boxEntityID;
+
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
         //public List<uint> entityIDList = new List<uint>();
@@ -455,6 +458,8 @@ namespace Scripting
         public override void OnTriggerEnter(uint id)
         {
             //Console.WriteLine(" Other ID" + id);
+            //string tag =  ECS.GetComponent<Tag>(id);
+
         }
 
         public override void OnTriggerExit(uint id)

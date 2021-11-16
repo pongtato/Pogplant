@@ -22,7 +22,7 @@ namespace Scripting
             name = _name;
         }
 
-        public GameObject(uint _id, string _name, Transform _transform, Rigidbody _rigidbody, string _tag)
+        public GameObject(uint _id, string _name, Transform _transform, Rigidbody _rigidbody, Tag _tag)
         {
             id = _id;
             name = _name;
@@ -33,12 +33,12 @@ namespace Scripting
 
         public uint id;
         public string name;
-        public string tag;
         
         // Components here
         public Nullable<Transform> transform;
         public Nullable<Rigidbody> rigidbody;
         public Nullable<Renderer> renderer;
+        public Tag tag;
         public BoxCollider boxCollider;
         public SphereCollider sphereCollider;
         public BaseEnemy baseEnemy;
@@ -171,6 +171,7 @@ namespace Scripting
                     Console.WriteLine("Box collider already exists.");
                 }
             }
+
             else 
             {
                 Console.WriteLine("Creating Unknown Component");
@@ -180,7 +181,7 @@ namespace Scripting
 
         public T GetComponent<T>()
         {
-            if(typeof(T) ==  typeof(Transform))
+            if (typeof(T) ==  typeof(Transform))
             {
                 if (transform.HasValue == true)
                 {
@@ -266,6 +267,17 @@ namespace Scripting
                 else 
                 {
                     Console.WriteLine("Sphere Collider doesn't exist.");
+                }
+            }
+            else if (typeof(T) == typeof(Tag))
+            {
+                if (tag != null)
+                {
+                    return (T)(object)tag;
+                }
+                else
+                {
+                    Console.WriteLine("Tag doesn't exist.");
                 }
             }
             else

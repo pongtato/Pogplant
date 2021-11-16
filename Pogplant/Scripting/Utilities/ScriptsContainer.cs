@@ -20,6 +20,7 @@ namespace Scripting
             scriptNames.Add("BaseEnemy");
             scriptNames.Add("EncounterManager");
             scriptNames.Add("MoveStuff");
+            scriptNames.Add("FirstPersonFiringSystem");
             scriptNames.Add("DummyScript");
         }
 

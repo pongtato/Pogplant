@@ -347,12 +347,14 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetGlobalRotation", SSH::GetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);
 	mono_add_internal_call("Scripting.ECS::GetBoxColliderECS", SSH::GetBoxColliderECS);
+	mono_add_internal_call("Scripting.ECS::GetTagECS", SSH::GetTagECS);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRenderer", SSH::AddComponentRenderer);
 	mono_add_internal_call("Scripting.GameObject::AddComponentBoxCollider", SSH::AddComponentBoxCollider);
 	mono_add_internal_call("Scripting.GameObject::AddComponentSphereCollider", SSH::AddComponentSphereCollider);
+	
 	mono_add_internal_call("Scripting.GameObject::AddScript", SSH::AddScript);
 
 	// For Components

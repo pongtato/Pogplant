@@ -67,5 +67,11 @@ namespace Scripting
         {
             return new MoveStuff();
         }
+
+        public static FirstPersonFiringSystem FirstPersonFiringSystem()
+        {
+            return new FirstPersonFiringSystem();
+        }
+        
     }
 }

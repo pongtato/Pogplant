@@ -93,7 +93,6 @@ namespace Scripting
 
         public override void OnTriggerEnter(uint id)
         {
-            Console.WriteLine("Enter");
             if (entityID == Trigger1_ID)
                 Trigger1 = true;
             //if (entityID == Trigger2_ID)

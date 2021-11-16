@@ -62,6 +62,10 @@
 		{
 			"BaseTurret" : false
 		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
 		"Transform" : 
 		{
 			"m_position" : 

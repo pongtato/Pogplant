@@ -59,6 +59,7 @@
     <Compile Include="Scripts\EnemyManager.cs" />
     <Compile Include="Scripts\FollowSpline.cs" />
     <Compile Include="Scripts\MonoBehaviour.cs" />
+    <Compile Include="Scripts\FirstPersonFiringSystem.cs" />
     <Compile Include="Scripts\MoveStuff.cs" />
     <Compile Include="Utilities\ScriptsContainer.cs" />
     <Compile Include="Utilities\Vector3.cs" />

@@ -49,6 +49,12 @@ namespace Scripting
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    public class Tag
+    {
+        public string tag = "Nothing";
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct Rigidbody
     {
         public bool isKinematic;

@@ -38,6 +38,9 @@ namespace Scripting
         public extern static void GetBoxColliderECS(uint entityID, ref string collisionLayer, ref bool isTrigger, ref Vector3 centre, ref Vector3 extends);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static string GetTagECS(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint PlayAudio(uint entityID, uint index);
 
         public static GameObject CreateEntity(string name, Transform transform, string tag = "Untagged")
@@ -73,6 +76,12 @@ namespace Scripting
                 BoxCollider boxCollider = new BoxCollider();
                 GetBoxColliderECS(entityID, ref boxCollider.collisionLayer, ref boxCollider.isTrigger, ref boxCollider.centre, ref boxCollider.extends);
                 return (T)(object)boxCollider;
+            }
+            else if (typeof(T) == typeof(Tag))
+            {
+                Tag tagged = new Tag();
+                tagged.tag = GetTagECS(entityID);
+                return (T)(object)tagged;
             }
             else 
             {

@@ -20,6 +20,7 @@ namespace SSH
 	void SetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
 	void SetTransformParent(std::uint32_t childID, std::uint32_t parentID);
 	void GetBoxColliderECS(std::uint32_t entityID, MonoString* collisionLayer, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);
+	MonoString* GetTagECS(std::uint32_t entityID);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index);
 
 

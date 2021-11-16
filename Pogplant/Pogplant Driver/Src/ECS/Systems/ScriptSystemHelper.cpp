@@ -98,6 +98,17 @@ namespace SSH
 		}
 	}
 
+	MonoString* GetTagECS(std::uint32_t entityID)
+	{
+		const auto& tag = ScriptSystem::GetECS()->GetReg().try_get<Components::Tag>(static_cast<entt::entity>(entityID));
+		MonoString* ptr = nullptr;
+		if (tag)
+		{
+			ptr = mono_string_new(mono_domain_get(), tag->m_tag.c_str());
+		}
+		return ptr;
+	}
+
 	glm::vec3 GetGlobalPosition(std::uint32_t entityID)
 	{
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalPosition();
