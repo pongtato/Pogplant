@@ -19,6 +19,7 @@ namespace Pogplant
 		, m_Up{ glm::vec3{0,1,0} }
 		, m_Pitch{ 0.0f }
 		, m_Yaw{ 0.0f }
+		, m_Roll{ 0.0f }
 		, m_Speed{ 16.9f }
 		, m_LookSpeed{ 0.21f }
 		, m_Fov{ 45.0f }
@@ -40,6 +41,7 @@ namespace Pogplant
 		, m_Up{ glm::vec3{0,1,0} }
 		, m_Pitch{ _CamConfig.m_Pitch }
 		, m_Yaw{ _CamConfig.m_Yaw }
+		, m_Roll{ _CamConfig.m_Roll }
 		, m_Speed{ _CamConfig.m_Speed }
 		, m_LookSpeed{ _CamConfig.m_LookSens }
 		, m_Fov{ _CamConfig.m_Fov }
@@ -59,11 +61,13 @@ namespace Pogplant
 	void Camera4D::Update(float _Dt)
 	{
 		auto quatFront = m_Orientation * glm::quat(0, 0, 0, -1) * glm::conjugate(m_Orientation);
+
 		m_Front = glm::vec3{ quatFront.x, quatFront.y, quatFront.z };
 		if (m_Front.length() > 0)
 		{
 			m_Front = glm::normalize(m_Front);
 		}
+
 		m_Right = glm::cross(m_Front, m_Up);
 		if (m_Right.length() > 0)
 		{
@@ -76,9 +80,31 @@ namespace Pogplant
 
 	void Camera4D::UpdateVectors()
 	{
+		glm::quat zRotate = glm::angleAxis(glm::radians(m_Roll), m_Front);
+		//std::cout << m_Front.x << "|" << m_Front.y << "|" << m_Front.z << std::endl;
 		glm::quat yRotate = glm::angleAxis(glm::radians(m_Yaw), glm::vec3{ 0,1,0 });
 		glm::quat xRotate = glm::angleAxis(glm::radians(m_Pitch), glm::vec3{ 1,0,0 });
-		m_Orientation = yRotate * xRotate;
+
+		//const float u = glm::radians(m_Roll) * 0.5f;
+		//const float v = glm::radians(m_Pitch) * 0.5f;
+		//const float w = glm::radians(m_Yaw) * 0.5f;
+
+		//const float cU = cosf(u);
+		//const float sU = sinf(u);
+		//const float cV = cosf(v);
+		//const float sV = sinf(v);
+		//const float cW = cosf(w);
+		//const float sW = sinf(w);
+
+		//m_Orientation.x = cU * cV * cW + sU * sV * sW;
+
+		//m_Orientation.y = sU * cV * cW - cU * sV * sW;
+
+		//m_Orientation.z = cU * sV * cW + sU * cV * sW;
+
+		//m_Orientation.w = cU * cV * sW - sU * sV * cW;
+		
+		m_Orientation = zRotate * yRotate * xRotate;
 	}
 
 	void Camera4D::UpdateProjection()
@@ -136,6 +162,29 @@ namespace Pogplant
 		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_Q) == GLFW_PRESS)
 		{
 			m_Position -= m_Up * m_Speed * _Dt;
+		}
+
+		// Reset
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_R) == GLFW_PRESS)
+		{
+			m_Yaw = 0.0f;
+			m_Pitch = 0.0f;
+			m_Roll = 0.0f;
+			UpdateVectors();
+		}
+
+		// Tilt right
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_C) == GLFW_PRESS)
+		{
+			m_Roll += m_Speed * _Dt * 4.2f;
+			UpdateVectors();
+		}
+
+		// Tilt left
+		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_Z) == GLFW_PRESS)
+		{
+			m_Roll -= m_Speed * _Dt * 4.2f;
+			UpdateVectors();
 		}
 	}
 
@@ -221,8 +270,10 @@ namespace Pogplant
 		m_Position += m_Front * static_cast<float>(_ScrollAmount);
 	}
 
-	void Camera4D::UpdateVectors(float _Yaw, float _Pitch, glm::vec3& _Front, glm::vec3& _Right, glm::vec3& _Up, glm::quat& _Orientation)
+	void Camera4D::UpdateVectors(float _Yaw, float _Pitch, float _Roll, glm::vec3& _Front, glm::vec3& _Right, glm::vec3& _Up, glm::quat& _Orientation)
 	{
+		(void)_Roll;
+
 		glm::quat yRotate = glm::angleAxis(glm::radians(_Yaw), glm::vec3{ 0,1,0 });
 		glm::quat xRotate = glm::angleAxis(glm::radians(_Pitch), glm::vec3{ 1,0,0 });
 		_Orientation = yRotate * xRotate;
@@ -276,6 +327,15 @@ namespace Pogplant
 		else if(m_Pitch > 360.0f)
 		{
 			m_Pitch -= 360.0f;
+		}
+
+		if (m_Roll < 0)
+		{
+			m_Roll += 360.0f;
+		}
+		else if (m_Roll > 360.0f)
+		{
+			m_Roll -= 360.0f;
 		}
 
 		if (m_Pitch >= 90.0f && m_Pitch <= 270.0f)

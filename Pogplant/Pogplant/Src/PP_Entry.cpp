@@ -28,8 +28,9 @@ namespace Pogplant
 			CameraConfig
 			{
 				glm::vec3{ 0,0,5.0f }, // Editor cam pos
-				0.0f, // Yaw
+				0.0f,	// Yaw
 				0.0f,	// Pitch
+				0.0f,	// Roll
 				45.0f,	// Zoom 
 				16.9f,	// Speed 
 				0.1f,	// Near

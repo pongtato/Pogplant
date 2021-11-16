@@ -420,7 +420,7 @@ void Application::UpdateTransforms(float _Dt)
 				//PP::Camera::GetUpdatedVec(camera.m_Yaw, camera.m_Pitch, camera.m_Up, camera.m_Right, camera.m_Front);
 				//PP::Camera::GetUpdatedProjection(windowSize, camera.m_Zoom, camera.m_Near, camera.m_Far, camera.m_Projection);
 				//PP::Camera::GetUpdatedView(gameCamPos, gameCamPos + camera.m_Front, camera.m_Up, camera.m_View);
-				PP::Camera4D::UpdateVectors(camera.m_Yaw, camera.m_Pitch, camera.m_Front, camera.m_Right, camera.m_Up, camera.m_Orientation);
+				PP::Camera4D::UpdateVectors(camera.m_Yaw, camera.m_Pitch, camera.m_Roll, camera.m_Front, camera.m_Right, camera.m_Up, camera.m_Orientation);
 				PP::Camera4D::UpdateProjection(windowSize, camera.m_Near, camera.m_Far, camera.m_Fov, camera.m_Projection);
 				PP::Camera4D::GetView(gameCamPos, camera.m_Orientation, camera.m_View);
 				PPA::AudioEngine::UpdateListenerPosition(gameCamPos, camera.m_Front, camera.m_Up, PhysicsDLC::Vector::Zero);

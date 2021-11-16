@@ -221,6 +221,7 @@ namespace Components
 		, m_Up{ glm::vec3{0,1,0} }
 		, m_Pitch{ 0.0f }
 		, m_Yaw{ 0.0f }
+		, m_Roll{ 0.0f }
 		, m_Fov{ 45.0f }
 		, m_Near{ 0.1f }
 		, m_Far{ 420.0f }

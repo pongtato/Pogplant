@@ -246,6 +246,7 @@ namespace Components
 		glm::vec3 m_Front;
 		float m_Yaw;
 		float m_Pitch;
+		float m_Roll;
 		float m_Fov;
 		float m_Near;
 		float m_Far;
