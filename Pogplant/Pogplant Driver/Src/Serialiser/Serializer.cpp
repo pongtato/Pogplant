@@ -206,6 +206,7 @@ namespace PogplantDriver
 
 		Try_Save_Component<Transform>(subroot, id);
 		Try_Save_Component<Name>(subroot, id);
+		Try_Save_Component<Tag>(subroot, id);
 		Try_Save_Component<Point_Light>(subroot, id);
 		Try_Save_Component<Directional_Light>(subroot, id);
 		Try_Save_Component<Text>(subroot, id);
@@ -339,6 +340,7 @@ namespace PogplantDriver
 		Try_Load_Component<Directional_Light>(root, "Directional_Light", id);
 		Try_Load_Component<Point_Light>(root, "Point_Light", id);
 		Try_Load_Component<Name>(root, "Name", id);
+		Try_Load_Component<Tag>(root, "Tag", id);
 		Try_Load_Component<Text>(root, "Text", id);
 		Try_Load_Component<BoxCollider>(root, "BoxCollider", id);
 		Try_Load_Component<SphereCollider>(root, "SphereCollider", id);

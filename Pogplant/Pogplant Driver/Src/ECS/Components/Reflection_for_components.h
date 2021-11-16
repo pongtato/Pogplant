@@ -31,6 +31,9 @@ namespace Components
 		rttr::registration::class_<Name>("Name")
 			.property("m_Name", &Name::m_name);
 
+		rttr::registration::class_<Tag>("Tag")
+			.property("m_Tag", &Tag::m_tag);
+
 		rttr::registration::class_<Text>("Text")
 			.property("m_Color", &Text::m_Color)
 			.property("m_FontID", &Text::m_FontID)

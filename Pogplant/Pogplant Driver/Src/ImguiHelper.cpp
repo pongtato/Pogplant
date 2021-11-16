@@ -40,9 +40,16 @@ namespace PogplantDriver
 
 	void CurrentPopupComponents()
 	{
+
 		bool adding_enabled = false;
+
 		if (PPD::ImguiHelper::m_CurrentEntity != entt::null)
 			adding_enabled = true;
+
+		if (ImGui::MenuItem("Tag", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Tag>(PPD::ImguiHelper::m_CurrentEntity);
+		}
 
 		if (ImGui::BeginMenu("3D Render"))
 		{
@@ -566,6 +573,12 @@ namespace PogplantDriver
 				if (naming && ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  Name", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					Reflect_ImGui(naming);
+				}
+
+				auto tagging = m_ecs->GetReg().try_get<Components::Tag>(m_CurrentEntity);
+				if (tagging && ImGui::CollapsingHeader(ICON_FA_TAGS "  Tag", ImGuiTreeNodeFlags_DefaultOpen))
+				{
+					Reflect_ImGui(tagging);
 				}
 
 				auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);

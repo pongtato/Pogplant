@@ -12,6 +12,8 @@ namespace Components
 {
 	struct Tag
 	{
+		Tag() = default;
+		Tag(std::string tag) : m_tag(tag) {}
 		std::string m_tag;
 	};
 
