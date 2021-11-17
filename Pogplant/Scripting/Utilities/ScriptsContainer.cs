@@ -19,6 +19,7 @@ namespace Scripting
             scriptNames.Add("EnemyManager");
             scriptNames.Add("BaseEnemy");
             scriptNames.Add("EncounterManager");
+            scriptNames.Add("EncounterSystemDriver");
             scriptNames.Add("MoveStuff");
             scriptNames.Add("FirstPersonFiringSystem");
             scriptNames.Add("DummyScript");

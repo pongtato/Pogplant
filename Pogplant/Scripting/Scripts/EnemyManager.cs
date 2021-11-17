@@ -51,7 +51,7 @@ namespace Scripting
         {
             // Initialize waypoint dictionary
             waypoints = InitWaypointGroups();
-            //InitMap();
+            InitMap();
 
             // Initialize bullet pools
             const int pool_size = 500;

@@ -123,33 +123,24 @@ namespace Scripting
     }
 
     // This class manages a collection of encounter it handles activating and updating encounters.
-    public class EncounterManager : MonoBehaviour
+    public class EncounterManager
     {
         private List<Encounter> encounters = new List<Encounter>();
         public EnemyManager enemyManager = new EnemyManager();
         private float current_time = 0.0f;
         // Start is called before the first frame update
-        public override void Init(ref uint _entityID)
-        {
-            entityID = _entityID;
-        }
 
-        public override void Start()
+        public void Start()
         {
             enemyManager.Start();
         }
 
         // Update is called once per frame
-        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public void Update(float dt)
         {
             current_time += dt;
             UpdateEncounterTimeline();
             UpdateSpawnedEncounters(dt);
-        }
-
-        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
-        {
-
         }
 
         public void AddEncounter(Encounter encounter)
@@ -182,16 +173,6 @@ namespace Scripting
                 encounter.Update(dt);
             }
         }
-
-        public override void OnTriggerEnter(uint id)
-        {
-
-        }
-        public override void OnTriggerExit(uint id)
-        {
-
-        }
-
     }
 
 }

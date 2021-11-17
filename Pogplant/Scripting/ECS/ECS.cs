@@ -43,17 +43,17 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint PlayAudio(uint entityID, uint index);
 
-        public static GameObject CreateEntity(string name, Transform transform, string tag = "Untagged")
+        public static GameObject CreateEntity(string name, Transform transform)
         {
             uint entityID = CreateEntity(name, transform.Position, transform.Rotation, transform.Scale);
-            GameObject GO = new GameObject(entityID, transform, tag);
+            GameObject GO = new GameObject(entityID, transform, name);
             return GO;
         }
 
-        public static GameObject CreateChild(uint parentID, string name, Transform transform, string tag = "Untagged")
+        public static GameObject CreateChild(uint parentID, string name, Transform transform)
         {
             uint entityID = CreateChild(parentID, name, transform.Position, transform.Rotation, transform.Scale);
-            GameObject GO = new GameObject(entityID, transform, tag);
+            GameObject GO = new GameObject(entityID, transform, name);
             return GO;
         }
 

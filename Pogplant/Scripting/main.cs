@@ -63,6 +63,11 @@ namespace Scripting
             return new EncounterManager();
         }
 
+        public static EncounterSystemDriver EncounterSystemDriver()
+        {
+            return new EncounterSystemDriver();
+        }
+
         public static MoveStuff MoveStuff()
         {
             return new MoveStuff();

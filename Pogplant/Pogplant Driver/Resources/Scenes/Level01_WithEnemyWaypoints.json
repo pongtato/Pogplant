@@ -216,7 +216,7 @@
 		},
 		"Scripting" : 
 		{
-			"EncounterManager" : false,
+			"EncounterSystemDriver" : false,
 			"FollowSpline" : false
 		},
 		"Tag" : 
@@ -933,6 +933,84 @@
 				1.0,
 				1.0
 			],
+			"m_TexName" : "HP_Outer.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HP_BarFrame"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.875,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.40000000596046448,
+				0.30000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Small_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Crosshair"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.05000000074505806,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
 			"m_TexName" : "Hp_Icon.dds"
 		},
 		"Children" : 0,
@@ -1036,84 +1114,6 @@
 			[
 				0.80500000715255737,
 				0.30000001192092896,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_TexName" : "HP_Outer.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HP_BarFrame"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.875,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.40000000596046448,
-				0.30000001192092896,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_TexName" : "Small_Reticle.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Crosshair"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.05000000074505806,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.20000000298023224,
-				0.20000000298023224,
 				1.0
 			]
 		}
