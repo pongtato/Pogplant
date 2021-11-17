@@ -12,6 +12,7 @@
 
 #define ECS_DEBUG //shows entity ID, parent ID and child ID in inspector
 //#define SHOW_PREFAB //Show Prefab in SceneHeirachy, ASK VINCEEN IF UNSURE
+//#define SHOW_IMGUIDEMOWINDOW
 
 class Entity;
 
@@ -49,8 +50,19 @@ public:
 	entt::entity FindChildEntityWithName(entt::entity parentID, const std::string& _name);
 	//std::vector<entt::entity> FindAllEntityWithName(std::string& _name);
 
+	bool IsChildOf(entt::entity _parent, entt::entity _child);
+
+	void SetParent(entt::entity _parent, entt::entity _child);
+	entt::entity RemoveParentFrom(entt::entity _id);
+	void SetChild(entt::entity _parent, entt::entity _child);
+	void RemoveChildFrom(entt::entity _parent, entt::entity _child);
 
 	entt::entity CopyEntity(entt::entity _target);
+
+	std::string GenerateGUID();
+
+	//clears the ECS
+	void Clear();
 
 	template<typename... Component, typename... Exclude>
 	auto view(entt::exclude_t<Exclude...> _exclude = {})
@@ -65,7 +77,6 @@ public:
 		return m_registry.view<Component...>(_exclude);
 	}
 
-	std::string GenerateGUID(void);
 
 	//prefab map
 	//file path to entity id

@@ -1250,7 +1250,7 @@ namespace PogplantDriver
 	void ImguiHelper::NewScene()
 	{
 		m_CurrentEntity = entt::null;
-		m_ecs->GetReg().clear();
+		m_ecs->Clear();
 	}
 
 	void ImguiHelper::OpenScene()

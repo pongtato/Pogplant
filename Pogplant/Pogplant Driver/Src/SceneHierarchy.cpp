@@ -13,6 +13,9 @@
 namespace PogplantDriver
 {
 	bool SceneHierarchy::m_Loading = false;
+	bool SceneHierarchy::m_SH_LeftClickHeld = false;
+	entt::entity SceneHierarchy::m_ClickedOn = entt::null;
+	entt::entity SceneHierarchy::m_ReleasedOn = entt::null;
 
 	void SceneHierarchy::Init(ECS* ecs, entt::entity& current_entity)
 	{
@@ -24,6 +27,9 @@ namespace PogplantDriver
 		m_CurrentEntity = current_entity;
 		ImGui::Begin("Scene Hierarchy");
 		{
+#ifdef SHOW_IMGUIDEMOWINDOW
+			ImGui::ShowDemoWindow();
+#endif
 
 #ifdef SHOW_PREFAB
 			auto results = m_ECS->view_SHOW_PREFAB<Components::Transform>();
@@ -33,7 +39,9 @@ namespace PogplantDriver
 #endif // SHOW_PREFAB
 
 			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+			{
 				m_CurrentEntity = entt::null;
+			}
 
 			std::for_each(results.rbegin(), results.rend(), [&results,this](auto entity)
 				{
@@ -42,6 +50,8 @@ namespace PogplantDriver
 
 			ImGui::Text("");
 			ImGui::Text("");
+
+			CheckReparenting();
 
 			if (m_CurrentEntity != entt::null)
 			{
@@ -111,12 +121,6 @@ namespace PogplantDriver
 		if (!draw_childen && _transform.m_parent != entt::null)
 			return false;
 
-		/*auto _r = m_ECS->GetReg().try_get<Components::Relationship>(entity);
-
-		if (!draw_childen && _r && _r->m_parent != entt::null)
-			return false;//*/
-
-
 		auto name = m_ECS->GetReg().get<Components::Name>(entity);
 		std::string obj_name = name.m_name;
 
@@ -126,6 +130,7 @@ namespace PogplantDriver
 		auto _pi = m_ECS->GetReg().try_get<Components::PrefabInstance>(entity);
 		if (_pi)
 			obj_name.append(" (Instance)");
+
 		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
 		
 		if(!_transform.m_children.empty())
@@ -133,16 +138,24 @@ namespace PogplantDriver
 		else
 			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_SpanAvailWidth;
 
-		/*if (_r && _r->m_children.size() != 0)
-			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_SpanAvailWidth;
-		else
-			flags |= ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_SpanAvailWidth;
-		*/
-
 		bool is_opened = ImGui::TreeNodeEx((void*)(uint64_t)entity, flags, obj_name.c_str());
 
 		if (ImGui::IsItemClicked() || ImGui::IsMouseClicked(1) && ImGui::IsItemHovered(ImGuiHoveredFlags_RectOnly))
 			m_CurrentEntity = entity;
+		else if (ImGui::IsMouseDown(0) && ImGui::IsItemHovered(ImGuiHoveredFlags_RectOnly) &&
+			ImGui::IsItemFocused())
+		{
+			if (!m_SH_LeftClickHeld)
+			{
+				m_SH_LeftClickHeld = true;
+				m_ClickedOn = entity;
+				m_ReleasedOn = entt::null;
+			}
+		}
+		else if (ImGui::IsMouseReleased(0) && ImGui::IsItemHovered(ImGuiHoveredFlags_RectOnly))
+		{
+			m_ReleasedOn = entity;
+		}
 
 		bool is_deleted = false;
 
@@ -301,6 +314,45 @@ namespace PogplantDriver
 				ImGui::CloseCurrentPopup(); 
 			}
 			ImGui::EndPopup();
+		}
+	}
+
+
+	void SceneHierarchy::CheckReparenting()
+	{
+		//process reparenting
+		if (m_ClickedOn != entt::null && m_SH_LeftClickHeld)
+		{
+			if (!ImGui::IsMouseDragging(0, 0.f))
+			{
+				//std::cout << "Clicked on " << (uint32_t)m_ClickedOn << std::endl;
+				//std::cout << "Released on " << (uint32_t)m_ReleasedOn << std::endl;
+
+				//case 1
+				//clicked on entity and release on nothing
+				if (m_ClickedOn != entt::null && m_ReleasedOn == entt::null)
+				{
+					m_ECS->RemoveParentFrom(m_ClickedOn);
+				}
+				else if (m_ClickedOn != entt::null && m_ReleasedOn != entt::null && m_ClickedOn != m_ReleasedOn)
+				{
+					//ignore all immediate hierarchy(1 level)
+					//P
+					//- C
+					//  - D
+					//should ignore swapping for pair PC and CD.
+					if (!m_ECS->IsChildOf(m_ClickedOn, m_ReleasedOn) && !m_ECS->IsChildOf(m_ReleasedOn, m_ClickedOn))
+					{
+						//std::cout << "valid swap" << std::endl;
+						m_ECS->SetParent(m_ReleasedOn, m_ClickedOn);
+						m_ECS->SetChild(m_ReleasedOn, m_ClickedOn);
+					}
+
+				}
+
+				m_SH_LeftClickHeld = false;
+
+			}
 		}
 	}
 }

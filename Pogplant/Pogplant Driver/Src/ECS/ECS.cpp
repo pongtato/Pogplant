@@ -218,7 +218,7 @@ entt::entity ECS::CopyEntity(entt::entity _target)
 	return new_entity;
 }
 
-std::string ECS::GenerateGUID(void)
+std::string ECS::GenerateGUID()
 {
 	//while (true)
 	//{
@@ -233,4 +233,56 @@ std::string ECS::GenerateGUID(void)
 	//}
 
 	return ret_str;
+}
+
+void ECS::Clear()
+{
+	m_registry.clear();
+}
+
+void ECS::SetParent(entt::entity _parent, entt::entity _child)
+{
+	auto& _child_transform = m_registry.get<Transform>(_child);
+
+	if (_child_transform.m_parent != entt::null)
+	{
+		RemoveParentFrom(_child);
+	}
+	_child_transform.m_parent = _parent;
+}
+
+entt::entity ECS::RemoveParentFrom(entt::entity _id)
+{
+	auto& _TargetTransform = m_registry.get<Components::Transform>(_id);
+	entt::entity _parent_id = entt::null;
+	if (_TargetTransform.m_parent != entt::null)
+	{
+		RemoveChildFrom(_TargetTransform.m_parent, _id);
+		_parent_id = _TargetTransform.m_parent;
+		_TargetTransform.m_parent = entt::null;
+	}
+	return _parent_id;
+}
+
+void ECS::SetChild(entt::entity _parent, entt::entity _child)
+{
+	auto& _parent_transform = m_registry.get<Transform>(_parent);
+	_parent_transform.m_children.insert(_child);
+
+}
+
+void ECS::RemoveChildFrom(entt::entity _parent, entt::entity _child)
+{
+	auto& _parentTransform = m_registry.get<Components::Transform>(_parent);
+
+	//add parent transform to child transform or something to fix the local transform issue
+
+	_parentTransform.m_children.erase(_child);
+}
+
+bool ECS::IsChildOf(entt::entity _parent, entt::entity _child)
+{
+	const auto& _parentTransform = m_registry.get<Components::Transform>(_parent);
+
+	return _parentTransform.m_children.contains(_child);
 }

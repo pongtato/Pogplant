@@ -75,7 +75,6 @@ void Application::Init()
 	fh.AddNewWatchPath("Resources/Audio");
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
-
 	PPI::InputSystem::Init(PP::Window::GetWindow());
 
 #ifdef PPD_EDITOR_BUILD

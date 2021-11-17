@@ -24,6 +24,14 @@ namespace PogplantDriver
 
 		//test code for GUID prefab system
 		void LoadPrefab2();
+
+		//used for drag/drog reparenting
+		static bool m_SH_LeftClickHeld;
+		static entt::entity m_ClickedOn;
+		static entt::entity m_ReleasedOn;
+
+		void CheckReparenting();
+
 	private:
 		static bool m_Loading;
 		void ConstructModel

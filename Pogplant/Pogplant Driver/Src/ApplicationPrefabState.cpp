@@ -143,7 +143,8 @@ void Application::LeavePrefabState()
 
 	PPA::AudioEngine::StopPlayingAll();
 	m_sScriptSystem.Unload();
-	m_activeECS->GetReg().clear();
+
+	m_activeECS->Clear();
 
 }
 
