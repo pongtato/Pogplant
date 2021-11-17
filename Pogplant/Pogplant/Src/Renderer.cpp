@@ -732,7 +732,7 @@ namespace Pogplant
 			glm::quat rot_z = glm::angleAxis(glm::radians(it_Trans.m_rotation.z), glm::vec3{ 0.0f,0.0f,1.0f });
 			glm::quat rot_y = glm::angleAxis(glm::radians(it_Trans.m_rotation.y), glm::vec3{ 0.0f,1.0f,0.0f });
 			glm::quat rot_x = glm::angleAxis(glm::radians(it_Trans.m_rotation.x), glm::vec3{ 1.0f,0.0f,0.0f });
-			glm::mat4 m4_rot = glm::mat4_cast(rot_z * rot_y * rot_x);
+			glm::mat4 m4_rot = glm::mat4_cast(rot_y * rot_x * rot_z);
 			glm::mat4 m4_scale = glm::scale(glm::mat4{ 1 }, it_Trans.m_scale);
 
 			ShaderLinker::SetUniform("m4_Model", glm::mat4{ model * m4_rot * m4_scale });
