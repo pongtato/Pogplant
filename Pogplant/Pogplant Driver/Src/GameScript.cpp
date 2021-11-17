@@ -88,14 +88,14 @@ namespace Scripting
 
 		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
 		glm::vec3 forward = ship_trans->GetForwardVector();
-		entt::entity bullet = serial.Instantiate("Bullet", ship_trans->GetGlobalPosition() - glm::vec3{ 0,2.f,0 }, ship_trans->GetGlobalRotation());
+		entt::entity bullet = serial.Instantiate("Bullet", ship_trans->GetGlobalPosition() - glm::vec3{ 0,2.f,0 }, _Rotation);
 		GameplayECS::m_GameScriptECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Player);
 
 		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
 
 		//Add power to the shots
-		forward *= 1000.f;
-		body->AddImpulseForce(forward);
+		_Position *= 500.f;
+		body->AddImpulseForce(_Position);
 
 	}
 	void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, bool isTrue)

@@ -30,10 +30,6 @@ namespace Scripting
         private float slowForce = 8.0f;
         //private float maxSpeed = 10.0f;
 
-        //Player Firing 
-        float p_fireRate;
-        float p_fire_timer = 0.0f;
-
 
         //Player Rotation movement (Camera duplicates this effect)
         //float camera_roll = -1.5f;
@@ -72,8 +68,6 @@ namespace Scripting
 
         public PlayerScript()
         {
-            p_fireRate = 1 / 10.0f;
-
 
         }
 
@@ -395,17 +389,17 @@ namespace Scripting
 
             GameUtilities.FollowPlayerCam(transform.Position, transform.Rotation, dt);
 
-            p_fire_timer += dt;
-            if ((InputUtility.onKeyHeld("SHOOT")))
-            {
-                if (p_fire_timer >= p_fireRate)
-                {
-                    // Call C++ side bullet firing
-                    GameUtilities.FirePlayerBullet(entityID, transform.Position, transform.Rotation);
-                    ECS.PlayAudio(shipCameraEntity, 1);
-                    p_fire_timer = 0.0f;
-                }
-            }
+            //p_fire_timer += dt;
+            //if ((InputUtility.onKeyHeld("SHOOT")))
+            //{
+            //    if (p_fire_timer >= p_fireRate)s
+            //    {
+            //        // Call C++ side bullet firing
+            //        GameUtilities.FirePlayerBullet(entityID, transform.Position, transform.Rotation);
+            //        ECS.PlayAudio(shipCameraEntity, 1);
+            //        p_fire_timer = 0.0f;
+            //    }
+            //}
 
         }
 
