@@ -941,6 +941,8 @@ namespace PogplantDriver
 						ImGui::DragFloat("###yaw", &camera_com->m_Yaw, 1.0f);
 						ImGui::Text("Pitch");
 						ImGui::DragFloat("###pitch", &camera_com->m_Pitch, 1.0f);
+						ImGui::Text("Roll");
+						ImGui::DragFloat("###roll", &camera_com->m_Roll, 1.0f);
 
 						ImGui::Text("Near");
 						ImGui::DragFloat("###near", &camera_com->m_Near, 1.0f);

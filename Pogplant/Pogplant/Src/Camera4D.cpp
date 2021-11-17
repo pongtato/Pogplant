@@ -80,14 +80,13 @@ namespace Pogplant
 
 	void Camera4D::UpdateVectors()
 	{
-		glm::quat zRotate = glm::angleAxis(glm::radians(m_Roll), m_Front);
-		//std::cout << m_Front.x << "|" << m_Front.y << "|" << m_Front.z << std::endl;
+		glm::quat zRotate = glm::angleAxis(glm::radians(m_Roll), glm::vec3{ 0,0,1 });
 		glm::quat yRotate = glm::angleAxis(glm::radians(m_Yaw), glm::vec3{ 0,1,0 });
 		glm::quat xRotate = glm::angleAxis(glm::radians(m_Pitch), glm::vec3{ 1,0,0 });
 
-		//const float u = glm::radians(m_Roll) * 0.5f;
-		//const float v = glm::radians(m_Pitch) * 0.5f;
-		//const float w = glm::radians(m_Yaw) * 0.5f;
+		//const float u = glm::radians(m_Roll * 0.5f) ;
+		//const float v = glm::radians(m_Pitch * 0.5f);
+		//const float w = glm::radians(m_Yaw * 0.5f);
 
 		//const float cU = cosf(u);
 		//const float sU = sinf(u);
@@ -104,7 +103,7 @@ namespace Pogplant
 
 		//m_Orientation.w = cU * cV * sW - sU * sV * cW;
 		
-		m_Orientation = zRotate * yRotate * xRotate;
+		m_Orientation = yRotate * xRotate * zRotate;
 	}
 
 	void Camera4D::UpdateProjection()
@@ -239,7 +238,11 @@ namespace Pogplant
 	{
 		// Mouse position with offset
 		const RayConfig& rayCfg = m_Ray.m_RayConfig;
-		glm::vec2 mPos = { rayCfg.m_CursorPos.x - rayCfg.m_VP_Min.x , rayCfg.m_VP_Max.y - (rayCfg.m_VP_Max.y - rayCfg.m_CursorPos.y) - rayCfg.m_VP_Min.y };
+		glm::vec2 mPos = 
+		{ 
+			rayCfg.m_CursorPos.x - rayCfg.m_VP_Min.x , rayCfg.m_VP_Max.y 
+			- (rayCfg.m_VP_Max.y - rayCfg.m_CursorPos.y) - rayCfg.m_VP_Min.y 
+		};
 
 		// NDC
 		glm::vec3 screenToNDC = glm::vec3{ 0 };
@@ -272,11 +275,10 @@ namespace Pogplant
 
 	void Camera4D::UpdateVectors(float _Yaw, float _Pitch, float _Roll, glm::vec3& _Front, glm::vec3& _Right, glm::vec3& _Up, glm::quat& _Orientation)
 	{
-		(void)_Roll;
-
+		glm::quat zRotate = glm::angleAxis(glm::radians(_Roll), glm::vec3{ 0,0,1 });
 		glm::quat yRotate = glm::angleAxis(glm::radians(_Yaw), glm::vec3{ 0,1,0 });
 		glm::quat xRotate = glm::angleAxis(glm::radians(_Pitch), glm::vec3{ 1,0,0 });
-		_Orientation = yRotate * xRotate;
+		_Orientation = yRotate * xRotate * zRotate;
 
 		auto quatFront = _Orientation * glm::quat(0, 0, 0, -1) * glm::conjugate(_Orientation);
 		_Front = glm::vec3{ quatFront.x, quatFront.y, quatFront.z };
