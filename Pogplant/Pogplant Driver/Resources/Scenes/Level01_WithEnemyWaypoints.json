@@ -1,0 +1,3329 @@
+[
+	{
+		"Name" : 
+		{
+			"m_Name" : "Level_Grass"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_Grass",
+				"Resources/Models\\Level",
+				"Grass_Blade_LOD_2_87"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				100.0,
+				100.0,
+				100.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Box Trigger"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1511.1240234375,
+				83.416549682617188,
+				-1561.41845703125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				100.0,
+				100.0,
+				100.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Box Trigger"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				503.43817138671875,
+				100.5032958984375,
+				-1310.8162841796875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Level_Dirt"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_Dirt",
+				"Resources/Models\\Level",
+				"Soil_Straight_Type_01__1_"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYERBOX",
+			"extends" : 
+			[
+				50.0,
+				20.0,
+				50.0
+			],
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "PlayerBox"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"EncounterManager" : false,
+			"FollowSpline" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Player"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				15.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-5.0089556680177338e-06,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYER",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "PlayerShip"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"CockPit",
+				"Resources/Models\\Ship",
+				"CockPit"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"PlayerScript" : false
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.15999984741210938,
+				0.15000000596046448
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.0089556680177338e-06,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				0.99999696016311646,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\ttd.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.14599999785423279
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Player_Shoot.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.50199997425079346
+			}
+		},
+		"Camera" : 
+		{
+			"m_Active" : true,
+			"m_Far" : 450.0,
+			"m_Fov" : 90.0,
+			"m_Near" : 0.10000000149011612,
+			"m_Pitch" : 0.0,
+			"m_Yaw" : -90.0
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerCam"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.4959068519528955e-07,
+				0.54999923706054688,
+				-0.87999999523162842
+			],
+			"m_rotation" : 
+			[
+				3.7232741334491948e-08,
+				1.1545209504127546e-13,
+				-1.5391400154385337e-07
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Level_Branches"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_Branches",
+				"Resources/Models\\Level",
+				"Seg_01_Obst_01__2_"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-119.16114807128906,
+				6.9243278503417969,
+				-576.1123046875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				8.0,
+				0.5,
+				0.5
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_1_Collision"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.2234344482421875,
+				1.3522825241088867,
+				-2.3822555541992188
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_2_Collision"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				20.540569305419922,
+				4.5728683471679688,
+				-20.062938690185547
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.0,
+				2.0,
+				2.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_3_Collision_A"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				21.969722747802734,
+				-1.036376953125,
+				-39.650165557861328
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.0,
+				7.0,
+				1.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_3_Collision_B"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				19.012332916259766,
+				0.0,
+				-40.919155120849609
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				8.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_4_Collision_A"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				78.674812316894531,
+				1.5597646236419678,
+				-66.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_4_Collision_B"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				78.3624267578125,
+				3.8917207717895508,
+				-68.486175537109375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				8.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_5_Collision"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				109.8009033203125,
+				1.5496079921722412,
+				-54.258396148681641
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				6.0,
+				2.0,
+				2.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_6_Collision"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				160.13522338867188,
+				1.1720800399780273,
+				-86.665252685546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Directional_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.15000000596046448
+			],
+			"m_Diffuse" : 0.41999998688697815,
+			"m_Direction" : 
+			[
+				-0.28734788298606873,
+				-0.57469576597213745,
+				-0.76626098155975342
+			],
+			"m_Intensity" : 13.0,
+			"m_Specular" : 0.68999999761581421
+		},
+		"Name" : 
+		{
+			"m_Name" : "Directional Light"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.15000000596046448
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"sphere",
+				"Resources/Models\\sphere",
+				"Sphere001"
+			],
+			"UseLight" : 0
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				7.5,
+				15.0,
+				20.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				100.0,
+				100.0,
+				100.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Box Trigger"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				51.321556091308594,
+				59.199943542480469,
+				-540.89263916015625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999970197677612,
+				1.0,
+				0.99999970197677612
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "CanvasParent"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Hp_Icon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HP_Icon"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.25,
+				0.875,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Large_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LargeCrosshair"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.05000000074505806,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.20000000298023224
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "HP_Inner.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HP_Bar"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.19499999284744263,
+				0.875,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.00010427380038890988
+			],
+			"m_scale" : 
+			[
+				0.80500000715255737,
+				0.30000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "HP_Outer.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HP_BarFrame"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.875,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.40000000596046448,
+				0.30000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Small_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Crosshair"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.05000000074505806,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Flock_1"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Enemy_01_Base"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				202.9716796875,
+				82.960800170898438,
+				-1434.816162109375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-21.244104385375977,
+				0.0
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Spinning_Disk"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Spinning_Disk"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.95851993560791016,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.54856747388839722,
+				-0.3352811336517334
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Horizontal_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Horizontal_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.46447297930717468,
+				8.9406967163085938e-08
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Vertical_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Vertical_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.29326397180557251,
+				0.91790628433227539
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Alien_Arms"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.3621978759765625,
+				0.61234676837921143,
+				0.14358344674110413
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Flock_2"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Enemy_01_Base"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				211.39875793457031,
+				84.320198059082031,
+				-1463.826904296875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-24.114692687988281,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.9999996423721313,
+				2.0,
+				1.9999996423721313
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Horizontal_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Horizontal_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.46447297930717468,
+				8.9406967163085938e-08
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Alien_Arms"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.3621978759765625,
+				0.61234676837921143,
+				0.14358344674110413
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Vertical_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Vertical_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.29326397180557251,
+				0.91790628433227539
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.54856747388839722,
+				-0.3352811336517334
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Spinning_Disk"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Spinning_Disk"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.95851993560791016,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Flock_3"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Enemy_01_Base"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				186.02902221679688,
+				86.652565002441406,
+				-1448.2188720703125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-21.880334854125977,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.9999991655349731,
+				2.0,
+				1.9999991655349731
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Horizontal_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Horizontal_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.46447297930717468,
+				8.9406967163085938e-08
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Alien_Arms"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.3621978759765625,
+				0.61234676837921143,
+				0.14358344674110413
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Vertical_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Vertical_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.29326397180557251,
+				0.91790628433227539
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.54856747388839722,
+				-0.3352811336517334
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Spinning_Disk"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Spinning_Disk"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.95851993560791016,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Flock_4"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Enemy_01_Base"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				241.58836364746094,
+				86.375877380371094,
+				-1442.9410400390625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.7239861488342285,
+				0.0
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Horizontal_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Horizontal_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.46447297930717468,
+				8.9406967163085938e-08
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Alien_Arms"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.35018157958984375,
+				0.61234664916992188,
+				0.09222412109375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Vertical_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Vertical_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.29326397180557251,
+				0.91790628433227539
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.54856747388839722,
+				-0.3352811336517334
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Spinning_Disk"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Spinning_Disk"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.95851993560791016,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Flock_5"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Enemy_01_Base"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				216.75627136230469,
+				88.150901794433594,
+				-1435.70166015625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-22.402626037597656,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.9999991655349731,
+				2.0,
+				1.9999991655349731
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Horizontal_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Horizontal_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.46447297930717468,
+				8.9406967163085938e-08
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Alien_Arms"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.3621978759765625,
+				0.61234676837921143,
+				0.14358344674110413
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Vertical_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Vertical_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.29326397180557251,
+				0.91790628433227539
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.54856747388839722,
+				-0.3352811336517334
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Spinning_Disk"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Spinning_Disk"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.95851993560791016,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Flock_6"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Enemy_01_Base"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				173.05032348632813,
+				88.483757019042969,
+				-1462.73095703125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-23.843204498291016,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.9999996423721313,
+				2.0,
+				1.9999996423721313
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Horizontal_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Horizontal_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.46447297930717468,
+				8.9406967163085938e-08
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Alien_Arms"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.3621978759765625,
+				0.61234676837921143,
+				0.14358344674110413
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Gun_Vertical_Pivot"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Gun_Vertical_Pivot"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.29326397180557251,
+				0.91790628433227539
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				7.62939453125e-05,
+				-0.5485687255859375,
+				-0.33489990234375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				6.8301919782243203e-06,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999995231628418,
+				1.0,
+				0.9999995231628418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Spinning_Disk"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_01",
+				"Resources/Models\\Enemy",
+				"Spinning_Disk"
+			],
+			"UseLight" : 1
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.95851993560791016,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYER",
+			"extends" : 
+			[
+				100.0,
+				100.0,
+				10.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Flock_Collider_1"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"MoveStuff" : false
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				113.39701080322266,
+				0.0,
+				-1163.223388671875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				3.0,
+				3.0,
+				3.0
+			],
+			"isTrigger" : false
+		},
+		"Name" : 
+		{
+			"m_Name" : "Flock_End_Pos_1"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				62.414520263671875,
+				83.548347473144531,
+				-994.4271240234375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "enemy_waypoint_group_0"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3eee302b-1d67-40e1-ac26-f548effcd697"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"FollowSpline" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "WPG_0"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "enemy_waypoint_group_1"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3eee302b-1d67-40e1-ac26-f548effcd697"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"FollowSpline" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "WPG_1"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "enemy_waypoint_group_2"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3eee302b-1d67-40e1-ac26-f548effcd697"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"FollowSpline" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "WPG_2"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "enemy_waypoint_group_3"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3eee302b-1d67-40e1-ac26-f548effcd697"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"FollowSpline" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "WPG_3"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "enemy_waypoint_group_4"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3eee302b-1d67-40e1-ac26-f548effcd697"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"FollowSpline" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "WPG_4"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

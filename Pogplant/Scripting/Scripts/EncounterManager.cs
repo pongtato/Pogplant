@@ -125,7 +125,7 @@ namespace Scripting
     // This class manages a collection of encounter it handles activating and updating encounters.
     public class EncounterManager : MonoBehaviour
     {
-        private List<Encounter> encounters = null;
+        private List<Encounter> encounters = new List<Encounter>();
         public EnemyManager enemyManager = new EnemyManager();
         private float current_time = 0.0f;
         // Start is called before the first frame update
@@ -137,7 +137,6 @@ namespace Scripting
         public override void Start()
         {
             enemyManager.Start();
-            encounters = new List<Encounter>();
         }
 
         // Update is called once per frame
@@ -161,6 +160,8 @@ namespace Scripting
 
         void UpdateEncounterTimeline()
         {
+            if (encounters.Count == 0)
+                return;
             foreach (Encounter encounter in encounters)
             {
                 // Spawn encounter if it is time and it has not spawned yet
@@ -174,6 +175,8 @@ namespace Scripting
 
         void UpdateSpawnedEncounters(float dt)
         {
+            if (encounters.Count == 0)
+                return;
             foreach (Encounter encounter in encounters)
             {
                 encounter.Update(dt);

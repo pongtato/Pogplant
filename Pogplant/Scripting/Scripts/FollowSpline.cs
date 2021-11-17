@@ -26,7 +26,7 @@ namespace Scripting
 
         private float follow_speed = 60.0f;
 
-        public float DelayToStart;
+        public float DelayToStart = 0.0f;
 
         private Transform[] waypoints = null; // Array of waypoints we get from running the CatmullRomSpline script.
         private uint current_waypoint_index = 1; // Initiallized to 2 so that skip the first 3 waypoints in waypoints array.
@@ -35,12 +35,23 @@ namespace Scripting
         private bool isEnd = false; //  This is true when we have arrived a the end of the path
         private float time_between_waypoint = 0.0f;
 
-        private bool lockRotation = false;
-
         private bool isInit = false;
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+
+            if (ECS.GetTagECS(entityID) == "Player")
+                DelayToStart = 4.0f;
+            else if (ECS.GetTagECS(entityID) == "WPG_0")
+                 DelayToStart = 0.0f;
+            else if (ECS.GetTagECS(entityID) == "WPG_1")
+                 DelayToStart = 1.0f;
+            else if (ECS.GetTagECS(entityID) == "WPG_2")
+                 DelayToStart = 2.0f;
+            else if (ECS.GetTagECS(entityID) == "WPG_3")
+                DelayToStart = 3.0f;
+            else if (ECS.GetTagECS(entityID) == "WPG_4")
+                DelayToStart = 5.0f;
         }
 
         // Start is called before the first frame update
@@ -52,10 +63,6 @@ namespace Scripting
             catmullRom.InitializeSpline();
 
             waypoints = catmullRom.CalculateCatmullRomChain().ToArray();
-            //Console.WriteLine(waypoints.Length);
-
-            //for (int i = 0; i < waypoints.Length; ++i)
-            //    Console.WriteLine("waypoint " + i + " is at: x = " + waypoints[i].X + ", y = " + waypoints[i].Y + ", z = " + waypoints[i].Z);
 
             // Initialize d_alpha for first waypoint
             // Calculate d_alpha from follow_speed and distance between current and next waypoint
@@ -65,8 +72,6 @@ namespace Scripting
             //Console.WriteLine("alpha is" + d_alpha);
 
             // Initialize starting position and rotation of the play area
-
-            //start_time = Time.realtimeSinceStartup;
         }
 
         // Update is called once per frame
@@ -74,12 +79,14 @@ namespace Scripting
         {
             if (!isInit)
             {
+                // this is to initialize the starting position and rotation to te start of the spline
                 isInit = true;
                 transform.Position = waypoints[0].Position;
                 transform.Rotation = waypoints[0].Rotation;
             }
 
-            FollowWaypoints(ref transform, ref dt);
+            if ((DelayToStart -= dt) <= 0.0f)
+                FollowWaypoints(ref transform, ref dt);
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
@@ -105,24 +112,9 @@ namespace Scripting
                 time_between_waypoint += dt;
                 alpha = d_alpha * time_between_waypoint; // Calculate the current alpha between the 2 waypoints
                 transform.Position += (Vector3.Lerp(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position, alpha) - transform.Position) * translation_lerpSpeed * dt;
-                //transform.Position = Vector3.MoveTowards(transform.Position, waypoints[current_waypoint_index], follow_speed * dt);
-                //if (transform.Position != waypoints[current_waypoint_index])
-                //    transform.Rotation = Quaternion.Slerp(transform.Rotation, Quaternion.LookRotation(waypoints[current_waypoint_index + 1] - transform.Position), rotation_speed * Time.deltaTime);
 
-                //if (lockRotation)
-                //{
 
                 float rotation_lerp_speed = 0.4f;
-                //transform.Rotation = Vector3.Lerp(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
-                //transform.Rotation.Y *= -1.0f;
-                //Console.WriteLine("Rotation: " + transform.Rotation.X + ", " + transform.Rotation.Y + ", " + transform.Rotation.Z);
-                //transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
-                //transform.Rotation = Vector3.RotateTowards(transform.Rotation, waypoints[current_waypoint_index + 1].Rotation, lerpSpeed * dt);
-
-                //Console.WriteLine("Rotation: " + transform.Rotation.X + ", " + transform.Rotation.Y + ", " + transform.Rotation.Z);
-                //}
-
-
                 //original
                 transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
 
@@ -147,7 +139,7 @@ namespace Scripting
 
         public void SetLockRotation (bool isLock)
         {
-            lockRotation = isLock;
+            //lockRotation = isLock;
         }
 
         public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)

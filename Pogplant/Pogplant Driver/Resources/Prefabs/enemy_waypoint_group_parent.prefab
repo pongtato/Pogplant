@@ -1,0 +1,37 @@
+[
+	{
+		"Guid" : 
+		{
+			"m_guid" : "3eee302b-1d67-40e1-ac26-f548effcd697"
+		},
+		"Name" : 
+		{
+			"m_Name" : "enemy_waypoint_group_0"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\enemy_waypoint_group_parent.prefab"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

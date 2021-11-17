@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Scripting
 {
-    public class EnemyManager : MonoBehaviour
+    public class EnemyManager
     {
         //singleton
         public static EnemyManager Instance;
@@ -33,6 +33,8 @@ namespace Scripting
         public GameObject true_bullet_prefab;
         public GameObject false_bullet_prefab;
 
+        private string waypoint_group_name = "enemy_waypoint_group_";
+
         public List<GameObject> waypoints;
 
         private GameObject[] true_bullet_pool; // object pool for true bullets.
@@ -43,17 +45,13 @@ namespace Scripting
 
         private List<GameObject> enemy_instances = new List<GameObject>();
 
-        public override void Init(ref uint _entityID)
-        {
-            entityID = _entityID;
-        }
 
         // Start is called before the first frame update
-        public override void Start()
+        public void Start()
         {
             // Initialize waypoint dictionary
             waypoints = InitWaypointGroups();
-            InitMap();
+            //InitMap();
 
             // Initialize bullet pools
             const int pool_size = 500;
@@ -66,7 +64,17 @@ namespace Scripting
 
         List<GameObject> CreateParentedWaypoints(string waypointFile, uint parent)
         {
-            string[] data = System.IO.File.ReadAllLines(waypointFile);
+            string[] data;
+            try
+            {
+                data = System.IO.File.ReadAllLines(waypointFile);
+
+            }
+            catch (System.IO.FileNotFoundException e)
+            {
+                Console.WriteLine("Cannot read Waypoint files! Exception: " + e.Message);
+                throw;
+            }
 
             List<GameObject> waypointGroup = new List<GameObject>();
 
@@ -99,13 +107,13 @@ namespace Scripting
             string[] fileNames = new string[numberOfGroups];
 
             for (int i = 0; i < fileNames.Length; ++i)
-                fileNames[i] = directory + fileName + "(" + i + ")";
+                fileNames[i] = directory + fileName + "(" + i + ").txt";
 
             // Find 5 waypoint group parents here
             uint[] parent_ids = new uint[numberOfGroups];
             for (int i = 0; i < numberOfGroups; ++i)
             {
-                string parentName = "enemy_waypoint_group_" + i;
+                string parentName = waypoint_group_name + i;
                 parent_ids[i] = ECS.FindEntityWithName(parentName);
                 waypointList.AddRange(CreateParentedWaypoints(fileNames[i], parent_ids[i]));
                 //Console.WriteLine("Created " + parentName + " waypoint group.");
@@ -159,12 +167,6 @@ namespace Scripting
             return null;
         }
 
-        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
-        {
-
-        }
-        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
-        { }
         GameObject CreateEnemyInstance(string prefab_name, Transform location)
         {
             GameObject instance = GameUtilities.InstantiateObject(prefab_name, location.Position, location.Rotation);
@@ -207,16 +209,6 @@ namespace Scripting
                 }
             }
         }
-
-        public override void OnTriggerEnter(uint id)
-        {
-
-        }
-        public override void OnTriggerExit(uint id)
-        {
-
-        }
-
     }
 
 
