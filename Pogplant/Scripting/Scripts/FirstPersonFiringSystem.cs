@@ -18,6 +18,7 @@ namespace Scripting
 
         uint PlayerShip;
         uint shipCamera;
+        uint Turret1;
 
         //Player Firing 
         float p_fireRate = 1.0f;
@@ -30,6 +31,7 @@ namespace Scripting
             // initialize private variables here
             PlayerShip = ECS.FindEntityWithName("PlayerShip");
             shipCamera = ECS.FindEntityWithName("PlayerCam");
+            Turret1 = ECS.FindEntityWithName("PlayerTurret1");
             Aimshot = Vector3.Zero();
         }
 
@@ -65,7 +67,8 @@ namespace Scripting
                             //Get Player transform
                             Transform PlayerTrans = new Transform();
                             PlayerTrans.Position = ECS.GetGlobalPosition(PlayerShip);
-                            Aimshot = Vector3.Normalise(enemyTrans.Position - PlayerTrans.Position);
+                            Transform.LookAt(Turret1, Enemy);
+                            //Aimshot = Vector3.Normalise(enemyTrans.Position - PlayerTrans.Position);
                             onlytarget = false;
                         }
                     }
@@ -88,17 +91,17 @@ namespace Scripting
                 {
                     // Call C++ side bullet firing
                     Transform PlayerTrans = new Transform();
-                    Vector3 Forward = Transform.GetForwardVector(PlayerShip);
+                    Vector3 Forward = Transform.GetForwardVector(Turret1);
                     PlayerTrans.Position = ECS.GetGlobalPosition(PlayerShip);
                     PlayerTrans.Rotation = ECS.GetGlobalRotation(PlayerShip);
 
                     if (isStraight)
                     {
-                        GameUtilities.FirePlayerBullet(entityID, Forward, PlayerTrans.Rotation);
+                        GameUtilities.FirePlayerBullet(entityID, Transform.GetForwardVector(PlayerShip), PlayerTrans.Rotation);
                     }
                     else
                     {
-                        GameUtilities.FirePlayerBullet(entityID, Aimshot, PlayerTrans.Rotation);
+                        GameUtilities.FirePlayerBullet(entityID, Forward, PlayerTrans.Rotation);
                     }
 
                     ECS.PlayAudio(shipCamera, 1);
