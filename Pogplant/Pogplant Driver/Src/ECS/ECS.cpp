@@ -248,7 +248,20 @@ void ECS::SetParent(entt::entity _parent, entt::entity _child)
 	{
 		RemoveParentFrom(_child);
 	}
+
+	auto _translate = _child_transform.GetGlobalPosition();
+	auto _rotation = _child_transform.GetGlobalRotation();
+	auto _scale = _child_transform.GetGlobalScale();
+
 	_child_transform.m_parent = _parent;
+
+	auto& _parent_transform = m_registry.get<Transform>(_parent);
+	_child_transform.updateModelMtx(_parent_transform);
+
+	_child_transform.SetGlobalPosition(_translate);
+	_child_transform.SetGlobalRotation(_rotation);
+	_child_transform.SetGlobalScale(_scale);
+
 }
 
 entt::entity ECS::RemoveParentFrom(entt::entity _id)
@@ -257,9 +270,18 @@ entt::entity ECS::RemoveParentFrom(entt::entity _id)
 	entt::entity _parent_id = entt::null;
 	if (_TargetTransform.m_parent != entt::null)
 	{
+		//add parent transform to child transform or something to fix the local transform issue
+		auto _translate = _TargetTransform.GetGlobalPosition();
+		auto _rotation = _TargetTransform.GetGlobalRotation();
+		auto _scale = _TargetTransform.GetGlobalScale();
+
 		RemoveChildFrom(_TargetTransform.m_parent, _id);
 		_parent_id = _TargetTransform.m_parent;
 		_TargetTransform.m_parent = entt::null;
+
+		_TargetTransform.SetGlobalPosition(_translate);
+		_TargetTransform.SetGlobalRotation(_rotation);
+		_TargetTransform.SetGlobalScale(_scale);
 	}
 	return _parent_id;
 }
@@ -274,9 +296,6 @@ void ECS::SetChild(entt::entity _parent, entt::entity _child)
 void ECS::RemoveChildFrom(entt::entity _parent, entt::entity _child)
 {
 	auto& _parentTransform = m_registry.get<Components::Transform>(_parent);
-
-	//add parent transform to child transform or something to fix the local transform issue
-
 	_parentTransform.m_children.erase(_child);
 }
 

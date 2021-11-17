@@ -105,7 +105,7 @@ namespace Components
 			}
 		}
 
-		inline void updateModelMtx(Transform _transform)
+		inline void updateModelMtx(const Transform& _transform)
 		{
 			m_localToWorld = _transform.m_ModelMtx;
 
