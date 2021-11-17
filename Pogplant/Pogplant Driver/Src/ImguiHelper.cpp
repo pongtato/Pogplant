@@ -125,6 +125,11 @@ namespace PogplantDriver
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::ParticleSystem>(PPD::ImguiHelper::m_CurrentEntity);
 		}
+
+		if (ImGui::MenuItem("Transform Debugger", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::TransformDebugger>(PPD::ImguiHelper::m_CurrentEntity);
+		}
 	}
 
 	bool ImguiHelper::m_FirstRun = true;
@@ -585,21 +590,45 @@ namespace PogplantDriver
 				if (transform && ImGui::CollapsingHeader(ICON_FA_SLIDERS_H "  Transform", ImGuiTreeNodeFlags_DefaultOpen))
 				{
 					Reflect_ImGui(transform);
+				}
 
-					//auto Forward = transform->GetForwardVector();
-					//CreateDragFloat3("Forward", glm::value_ptr(Forward));
-
-					/*if (ImGui::Button("TESTLMAO"))
-					{
-						transform->SetGlobalPosition({ 0.f, 0.f, 0.f });
-					}
+				auto transformDebugger = m_ecs->GetReg().try_get<Components::TransformDebugger>(m_CurrentEntity);
+				if (transformDebugger && transform)
+				{
+					ImGui::PushID("##TDebugger");
 					auto tmpPos = transform->GetGlobalPosition();
 					auto tmpRot = transform->GetGlobalRotation();
 					auto tmpScale = transform->GetGlobalScale();
 
-					CreateDragFloat3("Position", glm::value_ptr(tmpPos));
-					CreateDragFloat3("Rotation", glm::value_ptr(tmpRot));
-					CreateDragFloat3("Scale", glm::value_ptr(tmpScale));//*/
+					CreateDragFloat3("Global Position", glm::value_ptr(tmpPos));
+					CreateDragFloat3("Global Rotation", glm::value_ptr(tmpRot));
+					CreateDragFloat3("Global Scale", glm::value_ptr(tmpScale));
+
+					transform->SetGlobalPosition(tmpPos);
+					transform->SetGlobalRotation(tmpRot);
+					transform->SetGlobalScale(tmpScale);
+
+					CreateDragFloat3("Local Position", glm::value_ptr(transform->m_position));
+					CreateDragFloat3("Local Rotation", glm::value_ptr(transform->m_rotation));
+					CreateDragFloat3("Local Scale", glm::value_ptr(transform->m_scale));
+
+					ImguiBlankSeperator(1);
+
+					ImGui::Checkbox("Draw Forward Vector", &transformDebugger->m_drawForwardVector);
+
+					if (transformDebugger->m_drawForwardVector)
+					{
+						ImGui::DragFloat("Vector Length", &transformDebugger->m_forwardVectorLength, 0.2f, 0.1f, 10.f);
+
+						Pogplant::DebugDraw::DebugLine(tmpPos, tmpPos + transform->GetForwardVector() * transformDebugger->m_forwardVectorLength);
+					}
+
+					if (ImGui::Button("Set LookAt to (0, 0, 0)"))
+					{
+						transform->LookAt(glm::vec3{ 0.f,0.f,0.f });
+					}
+
+					ImGui::PopID();
 				}
 
 				RendererComponentHelper();

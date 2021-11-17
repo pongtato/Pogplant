@@ -77,6 +77,7 @@ namespace Scripting
 			//Lerps yaw and pitch over time
 			cam_comp->m_Yaw += (box_y_rot - cam_comp->m_Yaw) * _deltaTime * 20.f;
 			cam_comp->m_Pitch += ((box_pos->m_rotation.x - playerTransform->m_rotation.x) - cam_comp->m_Pitch) * _deltaTime * 20.f;
+			cam_comp->m_Roll += (-playerTransform->m_rotation.z - cam_comp->m_Roll) * _deltaTime * 20.f;
 		}
 	}
 

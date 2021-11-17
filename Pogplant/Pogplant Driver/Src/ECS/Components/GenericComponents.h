@@ -34,6 +34,13 @@ namespace Components
 		short m_index;
 	};
 
+	//Just a component to debug transforms
+	struct TransformDebugger
+	{
+		float m_forwardVectorLength = 1.f;
+		bool m_drawForwardVector = true;
+	};
+
 	struct Transform
 	{
 		glm::vec3 m_position;
@@ -111,6 +118,23 @@ namespace Components
 
 			updateModelMtx();
 			m_ModelMtx = _transform.m_ModelMtx * m_ModelMtx;
+		}
+
+		inline void LookAt(const glm::vec3& target)
+		{
+			glm::vec3 directionalVector = target - GetGlobalPosition();
+
+			float angleX = glm::atan(
+				glm::sqrt(directionalVector.x * directionalVector.x + directionalVector.z * directionalVector.z),
+				directionalVector.y);
+
+			SetGlobalRotation(
+				glm::vec3{
+					glm::degrees(angleX) - 90.f,
+					glm::degrees(glm::atan(directionalVector.z, -directionalVector.x)) - 90.f,
+					0.f//Ignore roll for now
+				}
+			);
 		}
 
 		void SetGlobalPosition(const glm::vec3& globalPos);

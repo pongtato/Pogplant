@@ -204,8 +204,14 @@ namespace Components
 
 	glm::vec3 Transform::GetForwardVector()
 	{
-		glm::mat4 inverted = glm::inverse(m_ModelMtx);
-		return normalize(glm::vec3(-inverted[2].x, -inverted[2].y, inverted[2].z));
+		glm::vec3 rot = GetGlobalRotation();
+		glm::mat4 rotMtx;
+		ImGuizmo::RecomposeRotationMatrix(glm::value_ptr(rot), glm::value_ptr(rotMtx));
+
+		return rotMtx * glm::vec4{0.f, 0.f, 1.f, 0.f};
+
+		/*glm::mat4 inverted = glm::inverse(m_ModelMtx);
+		return normalize(glm::vec3(-inverted[2].x, -inverted[2].y, inverted[2].z));//*/
 	}
 
 	void Transform::ComputeLocalMtxes()
