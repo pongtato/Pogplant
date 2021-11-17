@@ -239,6 +239,7 @@ namespace Components
 	struct Camera
 	{
 		Camera();
+		Camera(bool _Active);
 
 		glm::quat m_Orientation;
 		glm::mat4 m_Projection;
@@ -268,7 +269,8 @@ namespace Components
 		std::vector <float>* m_SpeedCurve;
 		std::vector <float>* m_ScaleCurve;
 		glm::vec4 m_Color;
-		glm::vec3 m_Position;
+		glm::vec3 m_BasePosition;
+		glm::vec3 m_LocalPosition;
 		glm::vec3 m_Velocity;
 		glm::vec3 m_MinVelocity;
 		glm::vec3 m_Force;
@@ -327,11 +329,12 @@ namespace Components
 			int _SpawnCount,
 			bool _Loop,
 			bool _Burst,
-			bool _RandomRotate
+			bool _RandomRotate,
+			bool _FollowParent
 		);
 		void Spawn(glm::vec3 _Position, glm::vec3 _Direction);
 		void Clear();
-		void UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos);
+		void UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos, const glm::vec3& _ParentPos, bool _Parented);
 		void init();
 
 		std::vector<Particle> m_ParticlePool;
@@ -355,6 +358,7 @@ namespace Components
 		bool m_RandomRotate;
 		bool m_Play;
 		bool m_Pause;
+		bool m_FollowParent;
 	};
 
 	struct Canvas

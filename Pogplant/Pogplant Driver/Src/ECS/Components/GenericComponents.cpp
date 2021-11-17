@@ -1,5 +1,6 @@
 #include "Pogplant.h"
 #include "GenericComponents.h"
+#include <gtx/vector_angle.hpp>
 
 namespace Components
 {
@@ -216,6 +217,7 @@ namespace Components
 	Camera::Camera()
 		: m_Orientation{ glm::quat{0,0,0,-1} }
 		, m_Projection{ glm::mat4{1} }
+		, m_View{ glm::mat4{1} }
 		, m_Front{ glm::vec3{0,0,-1} }
 		, m_Right{ glm::vec3{1,0,0} }
 		, m_Up{ glm::vec3{0,1,0} }
@@ -225,7 +227,26 @@ namespace Components
 		, m_Fov{ 45.0f }
 		, m_Near{ 0.1f }
 		, m_Far{ 420.0f }
+		, m_Active{ false }
 	{
+	}
+
+	Camera::Camera(bool _Active)
+		: m_Orientation{ glm::quat{0,0,0,-1} }
+		, m_Projection{ glm::mat4{1} }
+		, m_View{ glm::mat4{1} }
+		, m_Front{ glm::vec3{0,0,-1} }
+		, m_Right{ glm::vec3{1,0,0} }
+		, m_Up{ glm::vec3{0,1,0} }
+		, m_Pitch{ 0.0f }
+		, m_Yaw{ 0.0f }
+		, m_Roll{ 0.0f }
+		, m_Fov{ 45.0f }
+		, m_Near{ 0.1f }
+		, m_Far{ 420.0f }
+		, m_Active{ false }
+	{
+		m_Active = _Active;
 	}
 
 	ParticleSystem::ParticleSystem()
@@ -248,6 +269,7 @@ namespace Components
 		, m_RandomRotate{ false }
 		, m_Play{ false }
 		, m_Pause{ false }
+		, m_FollowParent{ false }
 	{
 		m_TexID = -1;
 	}
@@ -267,7 +289,8 @@ namespace Components
 		int _SpawnCount,
 		bool _Loop,
 		bool _Burst,
-		bool _RandomRotate
+		bool _RandomRotate,
+		bool _FollowParent
 	)
 		: m_Color{ _Color }
 		, m_SpawnDirection{ _SpawnDir }
@@ -288,6 +311,7 @@ namespace Components
 		, m_RandomRotate{ _RandomRotate }
 		, m_Play{ false }
 		, m_Pause{ false }
+		, m_FollowParent{ _FollowParent }
 	{
 		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
 		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
@@ -316,10 +340,10 @@ namespace Components
 		float scaleMult = glm::linearRand(m_Scale.m_MultiplierMin, m_Scale.m_MultiplierMax);
 		float randRotate = glm::radians(m_RandomRotate ? glm::linearRand(0.0f, 360.0f) : 0.0f);
 
-		glm::vec3 randPos = _Position;
+		glm::vec3 randPos = glm::vec3{ 0 };
 		if (m_SpawnRadius > 0)
 		{
-			randPos += glm::sphericalRand(m_SpawnRadius);
+			randPos = glm::sphericalRand(m_SpawnRadius);
 		}
 
 		// Update at end of pool
@@ -329,6 +353,7 @@ namespace Components
 			&m_Speed.m_CurveData,
 			&m_Scale.m_CurveData,
 			m_Color,
+			_Position,
 			randPos,
 			_Direction,
 			glm::vec3{0},
@@ -359,9 +384,31 @@ namespace Components
 		m_ActiveCount = 0;
 	}
 
-	void ParticleSystem::UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos)
+	glm::quat RotateBetweenVector(const glm::vec3& _Start, const glm::vec3& _Dest)
 	{
-		constexpr glm::vec3 particleDir = { 0,0,1 };
+		float angle = glm::dot(_Start, _Dest);
+
+		// Parallel
+		if (angle < -1.0f + 0.001f)
+		{
+			glm::vec3 axis = glm::cross(glm::vec3{ 0,0,1 }, _Start);
+			if (axis.length() < 0.01f)
+			{
+				axis = glm::cross(glm::vec3{ 1,0,0 }, _Start);
+			}
+			axis = glm::normalize(axis);
+
+			return glm::angleAxis(glm::radians(180.0f), axis);
+		}
+
+		glm::vec3 axis = glm::cross(_Start, _Dest);
+		float s = sqrtf((1 + angle) * 2.0f);
+		float inverse = 1.0f / s;
+		return glm::quat{ s * 0.5f, axis.x * inverse, axis.y * inverse, axis.z * inverse };
+	}
+
+	void ParticleSystem::UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos, const glm::vec3& _ParentPos, bool _Parented)
+	{
 		float t = 1.0f - _Particle.m_Life / _Particle.m_BaseLife;
 		size_t index = static_cast<size_t>(t / _Particle.m_IndexCalc);
 		// For some reason it exceeds the index size
@@ -391,47 +438,28 @@ namespace Components
 		_Particle.m_Velocity += _Dt * _Particle.m_Force;
 		glm::vec3 currVel = _Particle.m_Velocity;
 
-		_Particle.m_Position += currVel * _Dt * speedCalc * _Particle.m_Speed.m_Multiplier; // Speed here is the multiplier randomned 
+		_Particle.m_LocalPosition += currVel * _Dt * speedCalc * _Particle.m_Speed.m_Multiplier; // Speed here is the multiplier randomned 
 
-		glm::mat4 model = glm::mat4{ 1 };
-		model = glm::translate(model, _Particle.m_Position);
-
-		// Particle local rot
-		model = glm::rotate(model, _Particle.m_Rotation, glm::vec3{ 0,0,1 });
-
+		const glm::vec3 posCalc = _Parented ? _ParentPos + _Particle.m_LocalPosition : _Particle.m_BasePosition + _Particle.m_LocalPosition;
 		/// This depends on the camera transform update above to save access calculation for billboarding
-		glm::vec3 targetDir = _CamPos - _Particle.m_Position;
+		glm::mat4 model = glm::translate(glm::mat4{ 1 }, posCalc);
+		glm::vec3 targetDir = _CamPos - posCalc;
+		constexpr glm::vec3 particleDir = { 0,0,1 };
 		if (targetDir.length() > 0)
 		{
-			// 2D billboarding only xz plane
-			glm::vec3 targetDirXZ = { targetDir.x,0,targetDir.z };
-			targetDirXZ = glm::normalize(targetDirXZ);
-			glm::vec3 up = glm::cross(particleDir, targetDirXZ);
-			float dot = glm::dot(particleDir, targetDirXZ);
-			// Dont rotate if parallel
-			if (dot < 1.0f || dot > 1.0f)
-			{
-				float xz_rad = glm::acos(dot);
-				model = glm::rotate(model, xz_rad, up);
-			}
-
-			// Spherical portion
 			targetDir = glm::normalize(targetDir);
-			dot = glm::dot(targetDir, targetDirXZ);
-			if (dot < 1.0f || dot > 1.0f)
-			{
-				float rad = glm::acos(dot);
-				if (targetDir.y < 0)
-				{
-					model = glm::rotate(model, rad, { 1,0,0 });
-				}
-				else
-				{
-					model = glm::rotate(model, rad, { -1,0,0 });
-				}
-			}
-		};
-		model = glm::scale(model, scale);
+			float angle = atan2f(targetDir.x, targetDir.z);
+			glm::quat yRotate = glm::angleAxis(angle, glm::vec3{ 0,1,0 });
+
+			int flip = targetDir.y < 0 ? 1 : -1;
+			glm::quat xRotate = glm::angleAxis(glm::angle(targetDir, { targetDir.x,0,targetDir.z }) * flip, glm::vec3{ 1,0,0 });
+
+			// Local
+			glm::quat zRotate = glm::angleAxis(_Particle.m_Rotation, glm::vec3{ 0,0,1 });
+			model *= glm::mat4_cast(yRotate * xRotate * zRotate);
+		}
+
+		model *= glm::scale(glm::mat4{ 1 }, scale);
 
 		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, static_cast<int>(_Particle.m_TexID), false });
 	}

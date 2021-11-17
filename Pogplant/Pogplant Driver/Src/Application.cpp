@@ -214,7 +214,8 @@ void Application::InitialiseDebugObjects()
 			420,	// Spawn Count
 			true,	// Loop
 			true, 	// Burst
-			true	// Randomly rotate particles?
+			true,	// Randomly rotate particles?
+			true    // Follow parent's position?
 		)
 	);
 
@@ -301,7 +302,7 @@ void Application::InitialiseDebugObjects()
 	pos = { 15.0f, 10.0f, 45.0f };
 	color = { 0.9f, 0.5f, 0.2f };
 	entity = m_activeECS->CreateEntity("Game Camera", pos, rot, scale);
-	entity.AddComponent<Components::Camera>();
+	entity.AddComponent<Components::Camera>(true);
 	ConstructModel(entity, cubeModel, &cubeModel->m_Meshes.begin()->second, color, glm::vec3(1.0f), false, true);
 
 	/// Canvas test
@@ -466,13 +467,14 @@ void Application::UpdateTransforms(float _Dt)
 		{
 			auto& transform = m_activeECS->GetReg().get<Transform>(entity);
 			auto& pSys = m_activeECS->GetReg().get<ParticleSystem>(entity);
+			const glm::vec3 globalPos = pSys.m_FollowParent ? transform.GetGlobalPosition() : glm::vec3{ 0 };
 
 			if (!pSys.m_Play || pSys.m_Pause)
 			{
 				// Just update render
 				for (int i = 0; i < pSys.m_ActiveCount; i++)
 				{
-					pSys.UpdateInstance(pSys.m_ParticlePool[i], 0.0, gameCamPos);
+					pSys.UpdateInstance(pSys.m_ParticlePool[i], 0.0, gameCamPos, globalPos, pSys.m_FollowParent);
 				}
 				continue;
 			}
@@ -528,8 +530,7 @@ void Application::UpdateTransforms(float _Dt)
 						i--;
 						continue;
 					}
-
-					pSys.UpdateInstance(pSys.m_ParticlePool[i], _Dt, gameCamPos);
+					pSys.UpdateInstance(pSys.m_ParticlePool[i], _Dt, gameCamPos, globalPos, pSys.m_FollowParent);
 				}
 			}
 		}

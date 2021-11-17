@@ -2256,6 +2256,11 @@ namespace PogplantDriver
 				ImGui::SameLine();
 				ImGui::Checkbox("###UseBurst", &pSystem->m_Burst);
 
+				// Follow parent?
+				ImGui::Text("Parented");
+				ImGui::SameLine();
+				ImGui::Checkbox("###UseParent", &pSystem->m_FollowParent);
+
 				if (pSystem->m_Burst)
 				{
 					// Loop
