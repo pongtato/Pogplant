@@ -258,7 +258,7 @@ namespace Scripting
 		auto test = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(id);
 		if (test)
 		{
-			isAlive = SSH::InvokeFunctionWithReturn<std::uint32_t>("BaseTurret", "GetTurretAlive", id);
+			isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseTurret", "GetTurretAlive", id);
 		}
 		return isAlive;
 	}
