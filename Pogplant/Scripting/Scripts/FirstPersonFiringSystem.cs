@@ -40,7 +40,13 @@ namespace Scripting
         {
             Tag other_tag = ECS.GetComponent<Tag>(id);
             if (other_tag.tag == "Targetable")
-                Console.WriteLine("Firingsystem Other ID" + id);
+            {
+                if(GameUtilities.GetTurretAlive(id))
+                {
+                    Console.WriteLine("Booya");
+                }
+            }
+
         }
         public override void OnTriggerExit(uint id)
         {

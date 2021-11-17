@@ -36,6 +36,10 @@ namespace Scripting
 
 	// Updates the player health UI
 	void UpdatePlayerHealth_UI();
+
+	//Get Enemy alive status(Only for base turret, can expand to others)
+	//Calling this for others is ???
+	bool GetTurretAlive(std::uint32_t entityID);
 }
 
 #endif

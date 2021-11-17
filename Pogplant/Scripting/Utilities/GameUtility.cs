@@ -30,6 +30,9 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void UpdatePlayerHealth_UI();
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static bool GetTurretAlive(uint entityID);
+
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")
         {
             var id = Instantiate(prefabName, position, rotation);

@@ -64,7 +64,6 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-
             disc_id = ECS.FindChildEntityWithName(entityID, "Spinning_Disk");
 
             //Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
@@ -210,6 +209,10 @@ namespace Scripting
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
             //Console.WriteLine("MY CURRENT ID IS:" + entityID);
+        }
+        bool GetTurretAlive()
+        {
+            return isAlive;
         }
 
         public void FixedUpdate()

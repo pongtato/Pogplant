@@ -250,4 +250,16 @@ namespace Scripting
 			}
 		}
 	}
+
+	bool Scripting::GetTurretAlive(std::uint32_t entityID)
+	{
+		entt::entity id = static_cast<entt::entity>(entityID);
+		bool isAlive = 0;
+		auto test = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(id);
+		if (test)
+		{
+			isAlive = SSH::InvokeFunctionWithReturn<std::uint32_t>("BaseTurret", "GetTurretAlive", id);
+		}
+		return isAlive;
+	}
 }
