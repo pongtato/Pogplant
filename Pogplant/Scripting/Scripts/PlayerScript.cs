@@ -414,7 +414,7 @@ namespace Scripting
 
             Console.WriteLine("Spawn Wave called!");
 
-            float z_value = 30.0f;
+            float z_value = 15.0f;
 
             int max_spawns = 5;
 
@@ -432,7 +432,7 @@ namespace Scripting
                         enemyManager.InstantiateTempEnemy(location, "Enemy", "PlayerBox");
                     }
                 }
-                z_value -= 2.0f;
+                z_value -= 0.2f;
             }
 
         }

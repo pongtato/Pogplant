@@ -41,17 +41,17 @@ namespace Scripting
             entityID = _entityID;
 
             if (ECS.GetTagECS(entityID) == "Player")
-                DelayToStart = 4.0f;
+                DelayToStart = 0.8f;
             else if (ECS.GetTagECS(entityID) == "WPG_0")
                  DelayToStart = 0.0f;
             else if (ECS.GetTagECS(entityID) == "WPG_1")
-                 DelayToStart = 1.0f;
+                 DelayToStart = 0.2f;
             else if (ECS.GetTagECS(entityID) == "WPG_2")
-                 DelayToStart = 2.0f;
+                 DelayToStart = 0.4f;
             else if (ECS.GetTagECS(entityID) == "WPG_3")
-                DelayToStart = 3.0f;
+                DelayToStart = 0.6f;
             else if (ECS.GetTagECS(entityID) == "WPG_4")
-                DelayToStart = 5.0f;
+                DelayToStart = 1.0f;
         }
 
         // Start is called before the first frame update
