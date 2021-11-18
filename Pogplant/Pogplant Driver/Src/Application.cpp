@@ -470,14 +470,13 @@ void Application::UpdateTransforms(float _Dt)
 		{
 			auto& transform = m_activeECS->GetReg().get<Transform>(entity);
 			auto& pSys = m_activeECS->GetReg().get<ParticleSystem>(entity);
-			const glm::vec3 globalPos = pSys.m_FollowParent ? transform.GetGlobalPosition() : glm::vec3{ 0 };
 
 			if (!pSys.m_Play || pSys.m_Pause)
 			{
 				// Just update render
 				for (int i = 0; i < pSys.m_ActiveCount; i++)
 				{
-					pSys.UpdateInstance(pSys.m_ParticlePool[i], 0.0, gameCamPos, globalPos, pSys.m_FollowParent);
+					pSys.UpdateInstance(pSys.m_ParticlePool[i], 0.0, gameCamPos, transform.m_ModelMtx, pSys.m_FollowParent);
 				}
 				continue;
 			}
@@ -556,6 +555,7 @@ void Application::UpdateTransforms(float _Dt)
 				if (pSys.m_Timer >= pSys.m_Delay)
 				{
 					pSys.m_Timer = 0.0f;
+					glm::diskRand(pSys.m_ConeRadius);
 					pSys.Spawn(transform.m_position, pSys.m_SpawnDirection);
 				}
 				break;
@@ -578,7 +578,7 @@ void Application::UpdateTransforms(float _Dt)
 						i--;
 						continue;
 					}
-					pSys.UpdateInstance(pSys.m_ParticlePool[i], _Dt, gameCamPos, globalPos, pSys.m_FollowParent);
+					pSys.UpdateInstance(pSys.m_ParticlePool[i], _Dt, gameCamPos, transform.m_ModelMtx, pSys.m_FollowParent);
 				}
 			}
 		}

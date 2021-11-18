@@ -422,7 +422,7 @@ namespace Components
 		return glm::quat{ s * 0.5f, axis.x * inverse, axis.y * inverse, axis.z * inverse };
 	}
 
-	void ParticleSystem::UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos, const glm::vec3& _ParentPos, bool _Parented)
+	void ParticleSystem::UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos, const glm::mat4& _ParentMtx, bool _Parented)
 	{
 		float t = 1.0f - _Particle.m_Life / _Particle.m_BaseLife;
 		size_t index = static_cast<size_t>(t / _Particle.m_IndexCalc);
@@ -455,11 +455,29 @@ namespace Components
 
 		_Particle.m_LocalPosition += currVel * _Dt * speedCalc * _Particle.m_Speed.m_Multiplier; // Speed here is the multiplier randomned 
 
-		const glm::vec3 posCalc = _Parented ? _ParentPos + _Particle.m_LocalPosition : _Particle.m_BasePosition + _Particle.m_LocalPosition;
-		/// This depends on the camera transform update above to save access calculation for billboarding
-		glm::mat4 model = glm::translate(glm::mat4{ 1 }, posCalc);
+		glm::vec3 posCalc = glm::vec3{ 1 };
+
+		// Billboard with rotation relative to parent
+		if (_Parented)
+		{
+			// Local
+			glm::mat4 localMtx = glm::translate(glm::mat4{ 1 }, _Particle.m_LocalPosition);
+			localMtx = glm::scale(localMtx, scale);
+
+			// Get global pos
+			glm::mat4 concat = _ParentMtx * localMtx;
+			ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(concat), glm::value_ptr(posCalc), nullptr, nullptr);
+		}
+		// Spawn and forget
+		else
+		{
+			posCalc = (_Particle.m_BasePosition + _Particle.m_LocalPosition);
+		}
+
+		// Billboard with new global position
 		glm::vec3 targetDir = _CamPos - posCalc;
 		constexpr glm::vec3 particleDir = { 0,0,1 };
+		glm::mat4 rotation = glm::mat4{ 1 };
 		if (targetDir.length() > 0)
 		{
 			targetDir = glm::normalize(targetDir);
@@ -471,10 +489,13 @@ namespace Components
 
 			// Local
 			glm::quat zRotate = glm::angleAxis(_Particle.m_Rotation, glm::vec3{ 0,0,1 });
-			model *= glm::mat4_cast(yRotate * xRotate * zRotate);
+			glm::mat4_cast(yRotate * xRotate * zRotate);
 		}
 
-		model *= glm::scale(glm::mat4{ 1 }, scale);
+		// Construct new matrix
+		glm::mat4 model = glm::translate(glm::mat4{ 1 }, posCalc);
+		model *= rotation;
+		model = glm::scale(model, scale);
 
 		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, static_cast<int>(_Particle.m_TexID), false });
 	}

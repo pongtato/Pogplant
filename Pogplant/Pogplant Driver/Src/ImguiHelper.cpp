@@ -2329,6 +2329,12 @@ namespace PogplantDriver
 					ToolTipHelper(toolTip.c_str(), true);
 					ImGui::DragFloat("###ConeRadius", &pSystem->m_ConeRadius);
 
+					// Direction
+					ImGui::Text("Direction");
+					toolTip = "Spawn direction. that particles will move in";
+					ToolTipHelper(toolTip.c_str(), true);
+					ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
+
 					// Min angle 
 					ImGui::Text("Min. Angle");
 					ImGui::DragFloat("###MinAngle", &pSystem->m_ConeAngleMin);

@@ -369,7 +369,7 @@ namespace Components
 		);
 		void Spawn(glm::vec3 _Position, glm::vec3 _Direction);
 		void Clear();
-		void UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos, const glm::vec3& _ParentPos, bool _Parented);
+		void UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos, const glm::mat4& _ParentMtx, bool _Parented);
 		void init();
 
 		std::vector<Particle> m_ParticlePool;
