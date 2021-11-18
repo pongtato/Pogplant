@@ -111,6 +111,13 @@ namespace Components
 
 		rttr::registration::class_<PrefabInstance>("PrefabInstance")
 			.property("prefab_GUID", &PrefabInstance::prefab_GUID);
+
+		rttr::registration::enumeration<ParticleSystem::EMITTER_TYPE>("EMITTER_TYPE")
+			(
+				rttr::value("GENERAL", ParticleSystem::EMITTER_TYPE::GENERAL),
+				rttr::value("BURST", ParticleSystem::EMITTER_TYPE::BURST),
+				rttr::value("CONE", ParticleSystem::EMITTER_TYPE::CONE)
+			);
 	}
 }
 

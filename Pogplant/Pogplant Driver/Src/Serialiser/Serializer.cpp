@@ -706,6 +706,26 @@ namespace PogplantDriver
 				if(!Save_arithmetic(root, name, variable_type, prop_value))
 					std::cout << name << " is an unsupported arithmetic type" << std::endl;
 			}
+			else if (variable_type.is_enumeration())
+			{
+				bool ok = false;
+				auto result = prop_value.to_string(&ok);
+				if (ok)
+				{
+					root[name] = result;
+				}
+				else
+				{
+					ok = false;
+					auto value = prop_value.to_uint64(&ok);
+
+					if (ok)
+						_root[name] = prop_value.to_uint64();
+					else
+						std::cout << name << " failed to save enum" << std::endl;
+					(void)value;
+				}
+			}
 			else
 			{
 				std::cout << name << " is somehow not supported" << std::endl;
@@ -742,7 +762,6 @@ namespace PogplantDriver
 
 			const auto name = prop.get_name().to_string();
 			auto variable_type = prop_value.get_type();
-
 
 			if (_data[name])
 			{
@@ -789,6 +808,14 @@ namespace PogplantDriver
 				else if (prop_value.is_associative_container())
 				{
 					//int k = 0;
+				}
+				else if (prop.is_enumeration())
+				{
+					rttr::variant asd = _data[name].asString();
+					const rttr::type value_t = prop.get_type();
+
+					if (asd.convert(value_t))
+						prop.set_value(obj, asd);
 				}
 				else
 				{
