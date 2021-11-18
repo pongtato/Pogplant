@@ -2274,20 +2274,6 @@ namespace PogplantDriver
 				ImGui::DragFloat("###Max. Life", &pSystem->m_MaxLife, 0.01f);
 				ImGui::NewLine();
 
-				// Direction
-				ImGui::Text("Direction");
-				toolTip = "Spawn direction. that particles will move in";
-				ToolTipHelper(toolTip.c_str(), true);
-				ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
-				ImGui::NewLine();
-
-				// Spawn radius
-				ImGui::Text("Spawn Radius");
-				toolTip = "Random spawn within sphere of specified radius";
-				ToolTipHelper(toolTip.c_str(), true);
-				ImGui::DragFloat("###Spawn Radius", &pSystem->m_SpawnRadius, 0.01f);
-				ImGui::NewLine();
-
 				// Force
 				ImGui::Text("Force");
 				toolTip = "Force applied over time";
@@ -2302,27 +2288,70 @@ namespace PogplantDriver
 				ImGui::DragFloat("###SetDelay", &pSystem->m_Delay, 0.01f, 0.0f);
 				ImGui::NewLine();
 
-				// Random rotate to make it look diff
-				ImGui::Text("Randomly Rotate");
-				ImGui::SameLine();
-				ImGui::Checkbox("###UseRand", &pSystem->m_RandomRotate);
-				
-				// Follow parent?
-				ImGui::Text("Parented");
-				ImGui::SameLine();
-				ImGui::Checkbox("###UseParent", &pSystem->m_FollowParent);
-
-				if (pSystem->m_EmitterType == Components::ParticleSystem::EMITTER_TYPE::BURST)
+				switch (pSystem->m_EmitterType)
 				{
-					// Loop
-					ImGui::Text("Loop");
-					ImGui::SameLine();
-					ImGui::Checkbox("###UseLoop", &pSystem->m_Loop);
+				case Components::ParticleSystem::EMITTER_TYPE::GENERAL:
+					// Spawn radius
+					ImGui::Text("Spawn Radius");
+					toolTip = "Random spawn within sphere of specified radius";
+					ToolTipHelper(toolTip.c_str(), true);
+					ImGui::DragFloat("###Spawn Radius", &pSystem->m_SpawnRadius, 0.01f);
+					ImGui::NewLine();
+
+					// Direction
+					ImGui::Text("Direction");
+					toolTip = "Spawn direction. that particles will move in";
+					ToolTipHelper(toolTip.c_str(), true);
+					ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
+					break;
+				case Components::ParticleSystem::EMITTER_TYPE::BURST:
+					// Spawn radius
+					ImGui::Text("Spawn Radius");
+					toolTip = "Random spawn within sphere of specified radius";
+					ToolTipHelper(toolTip.c_str(), true);
+					ImGui::DragFloat("###Spawn Radius", &pSystem->m_SpawnRadius, 0.01f);
+					ImGui::NewLine();
 
 					// Burst amount
 					ImGui::Text("Burst Spawn Count");
 					ImGui::DragInt("###Burst Count", &pSystem->m_SpawnCount);
-				}
+					ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+					// Loop
+					ImGui::Text("Loop");
+					ImGui::SameLine();
+					ImGui::Checkbox("###UseLoop", &pSystem->m_Loop);
+					break;
+				case Components::ParticleSystem::EMITTER_TYPE::CONE:
+					// Loop
+					ImGui::Text("Spawn Radius");
+					toolTip = "Random spawn within circle of specified radius";
+					ToolTipHelper(toolTip.c_str(), true);
+					ImGui::DragFloat("###ConeRadius", &pSystem->m_ConeRadius);
+
+					// Min angle 
+					ImGui::Text("Min. Angle");
+					ImGui::DragFloat("###MinAngle", &pSystem->m_ConeAngleMin);
+
+					// Max angle 
+					ImGui::Text("Max. Angle");
+					ImGui::DragFloat("###MaxAngle", &pSystem->m_ConeAngleMax);
+					break;
+				default:
+					break;
+				};
+				ImGui::NewLine();
+
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
+				// Random rotate to make it look diff
+				ImGui::Text("Randomly Rotate");
+				ImGui::SameLine();
+				ImGui::Checkbox("###UseRand", &pSystem->m_RandomRotate);
+
+				// Follow parent?
+				ImGui::Text("Parented");
+				ImGui::SameLine();
+				ImGui::Checkbox("###UseParent", &pSystem->m_FollowParent);
 				ImGui::NewLine();
 
 				// Speed

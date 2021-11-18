@@ -200,22 +200,22 @@ void Application::InitialiseDebugObjects()
 			0.69f,	// Min Life
 			1.00f,	// Max Life
 			{
-				curvePoints, // Curve points
-				1.0f,	// Min Speed
-				2.0f,	// Max Speed
-				1.0f,	// Min Speed Mult
-				4.2f,	// Max Speed Mult
+				curvePoints,	// Curve points
+				1.0f,			// Min Speed
+				2.0f,			// Max Speed
+				1.0f,			// Min Speed Mult
+				4.2f,			// Max Speed Mult
 			},
 			{
-				curvePoints,  // Curve points
-				0.42f,	// Min Scale
-				0.69f,	// Max Scale
-				1.0f,	// Min Scale Mult
-				4.2f,	// Max Scale Mult
+				curvePoints,	// Curve points
+				0.42f,			// Min Scale
+				0.69f,			// Max Scale
+				1.0f,			// Min Scale Mult
+				4.2f,			// Max Scale Mult
 			},
 			"ParticleTest.dds",		// TexID
 			420,	// Spawn Count
-			static_cast<int>(ParticleSystem::EMITTER_TYPE::BURST), // Emitter type, this was made an int for easy serialization idk kekw
+			static_cast<int>(ParticleSystem::EMITTER_TYPE::CONE), // Emitter type, this was made an int for easy serialization idk kekw
 			true,	// Loop
 			true,	// Randomly rotate particles?
 			true    // Follow parent's position?
@@ -482,9 +482,43 @@ void Application::UpdateTransforms(float _Dt)
 				continue;
 			}
 
-			// Burst vs constant spawn
-			if (pSys.m_EmitterType == ParticleSystem::EMITTER_TYPE::GENERAL)
+			//// Spawn based on mode
+			//if (pSys.m_EmitterType == ParticleSystem::EMITTER_TYPE::GENERAL)
+			//{
+			//	// Spawn delay
+			//	pSys.m_Timer += _Dt;
+			//	if (pSys.m_Timer >= pSys.m_Delay)
+			//	{
+			//		pSys.m_Timer = 0.0f;
+			//		pSys.Spawn(transform.m_position, pSys.m_SpawnDirection);
+			//	}
+			//}
+			//// Burst
+			//else if (!pSys.m_Done)
+			//{
+			//	// Only spawn when everything has despawned
+			//	if (pSys.m_ActiveCount == 0)
+			//	{
+			//		// To loop or not
+			//		if (!pSys.m_Loop)
+			//		{
+			//			pSys.m_Done = true;
+			//			pSys.m_Play = false;
+			//			pSys.m_Pause = false;
+			//		}
+			//		else
+			//		{
+			//			for (int i = 0; i < pSys.m_SpawnCount; i++)
+			//			{
+			//				pSys.Spawn(transform.m_position, glm::sphericalRand(1.0f));
+			//			}
+			//		}
+			//	}
+			//}
+
+			switch (pSys.m_EmitterType)
 			{
+			case ParticleSystem::EMITTER_TYPE::GENERAL:
 				// Spawn delay
 				pSys.m_Timer += _Dt;
 				if (pSys.m_Timer >= pSys.m_Delay)
@@ -492,28 +526,39 @@ void Application::UpdateTransforms(float _Dt)
 					pSys.m_Timer = 0.0f;
 					pSys.Spawn(transform.m_position, pSys.m_SpawnDirection);
 				}
-			}
-			// Burst
-			else if (!pSys.m_Done)
-			{
-				// Only spawn when everything has despawned
-				if (pSys.m_ActiveCount == 0)
+				break;
+			case ParticleSystem::EMITTER_TYPE::BURST:
+				if (!pSys.m_Done)
 				{
-					// To loop or not
-					if (!pSys.m_Loop)
+					// Only spawn when everything has despawned
+					if (pSys.m_ActiveCount == 0)
 					{
-						pSys.m_Done = true;
-						pSys.m_Play = false;
-						pSys.m_Pause = false;
-					}
-					else
-					{
-						for (int i = 0; i < pSys.m_SpawnCount; i++)
+						// To loop or not
+						if (!pSys.m_Loop)
 						{
-							pSys.Spawn(transform.m_position, glm::sphericalRand(1.0f));
+							pSys.m_Done = true;
+							pSys.m_Play = false;
+							pSys.m_Pause = false;
+						}
+						else
+						{
+							for (int i = 0; i < pSys.m_SpawnCount; i++)
+							{
+								pSys.Spawn(transform.m_position, glm::sphericalRand(1.0f));
+							}
 						}
 					}
 				}
+				break;
+			case ParticleSystem::EMITTER_TYPE::CONE:
+				// Spawn delay
+				pSys.m_Timer += _Dt;
+				if (pSys.m_Timer >= pSys.m_Delay)
+				{
+					pSys.m_Timer = 0.0f;
+					pSys.Spawn(transform.m_position, pSys.m_SpawnDirection);
+				}
+				break;
 			}
 
 			// Update particles
