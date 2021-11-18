@@ -22,7 +22,7 @@ namespace Scripting
 	//Only works via checking for  "name" PlayerCam together with PlayerScript
 	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime);
 
-	void FirePlayerBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation);
+	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation);
 
 	void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, bool isTrue = false);
 

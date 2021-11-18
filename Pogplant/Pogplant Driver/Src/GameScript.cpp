@@ -81,22 +81,22 @@ namespace Scripting
 		}
 	}
 
-	void FirePlayerBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation)
+	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation)
 	{
 		//Need to find player ship transform 
-		entt::entity player_ship = static_cast<entt::entity>(entityID);
-		auto ship_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_ship);
+		//entt::entity player_ship = static_cast<entt::entity>(entityID);
+		//auto ship_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_ship);
+		//glm::vec3 forward = ship_trans->GetForwardVector();
 
 		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
-		glm::vec3 forward = ship_trans->GetForwardVector();
-		entt::entity bullet = serial.Instantiate("Bullet", ship_trans->GetGlobalPosition() - glm::vec3{ 0,2.f,0 }, _Rotation);
+		entt::entity bullet = serial.Instantiate("Bullet", _Position, _Rotation);
 		GameplayECS::m_GameScriptECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Player);
 
 		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
 
 		//Add power to the shots
-		_Position *= 500.f;
-		body->AddImpulseForce(_Position);
+		glm::vec3 Powershot = _FowardVector * 500.f;
+		body->AddImpulseForce(Powershot);
 
 	}
 	void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, bool isTrue)

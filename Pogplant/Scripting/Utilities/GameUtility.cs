@@ -20,7 +20,8 @@ namespace Scripting
         public extern static void FollowPlayerCam(Vector3 _Position, Vector3 _Rotation, float _deltaTime);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void FirePlayerBullet(uint entityID, Vector3 _Position, Vector3 _Rotation);
+        //Get Global _Position for player bullet and Global _Rotation, use forwardvector to shoot
+        public extern static void FirePlayerBullet(Vector3 _Position, Vector3 _ForwardVector, Vector3 _Rotation);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void FireEnemyBullet(uint entityID, Vector3 _Position, Vector3 _Rotation, bool isTrue = false);

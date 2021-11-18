@@ -8,17 +8,14 @@ namespace Scripting
 {
     public class FirstPersonFiringSystem : MonoBehaviour
     {
-
+        List<uint> Turrets = new List<uint>();
         List<uint> enemy_in_range = new List<uint>();
+        List<uint> enemy_to_target = new List<uint>();
         List<uint> removal_list = new List<uint>();
-        // private GameObject[] target_enemy_arr;
-        private Vector3 Aimshot;
-        bool isStraight = true;
-        bool target = true;
 
         uint PlayerShip;
         uint shipCamera;
-        uint Turret1;
+        uint ShootingBox;
 
         //Player Firing 
         float p_fireRate = 1.0f;
@@ -31,8 +28,11 @@ namespace Scripting
             // initialize private variables here
             PlayerShip = ECS.FindEntityWithName("PlayerShip");
             shipCamera = ECS.FindEntityWithName("PlayerCam");
-            Turret1 = ECS.FindEntityWithName("PlayerTurret1");
-            Aimshot = Vector3.Zero();
+            ShootingBox = ECS.FindEntityWithName("ShootingBox");
+            uint Turret1 = ECS.FindEntityWithName("PlayerTurret1");
+            uint Turret2 = ECS.FindEntityWithName("PlayerTurret2");
+            Turrets.Add(Turret1);
+            Turrets.Add(Turret2);
         }
 
         public override void Init(ref uint _entityID)
@@ -47,39 +47,51 @@ namespace Scripting
         }
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            int i = 0;
-            bool onlytarget = true;
-            if(enemy_in_range.Count == 0)
+
+            //Add homing capablities
+            int lower_count = enemy_in_range.Count < Turrets.Count ? enemy_in_range.Count : Turrets.Count;
+            for (int i = 0; i < lower_count; ++i)
             {
-                isStraight = true;
-            }
-            else
-            {
-                isStraight = false;
-                foreach (var Enemy in enemy_in_range)
+                if (GameUtilities.GetTurretAlive(enemy_in_range[i]))
                 {
-                    if(GameUtilities.GetTurretAlive(Enemy))
-                    {
-                        if(onlytarget)
-                        {
-                            Transform enemyTrans = new Transform();
-                            enemyTrans.Position = ECS.GetGlobalPosition(Enemy);
-                            //Get Player transform
-                            Transform PlayerTrans = new Transform();
-                            PlayerTrans.Position = ECS.GetGlobalPosition(PlayerShip);
-                            Transform.LookAt(Turret1, Enemy);
-                            //Aimshot = Vector3.Normalise(enemyTrans.Position - PlayerTrans.Position);
-                            onlytarget = false;
-                        }
-                    }
-                    else
-                    {
-                        removal_list.Add(Enemy);
-                    }
+                    if (enemy_to_target.Contains(enemy_in_range[i]))
+                        continue;
+                    enemy_to_target.Add(enemy_in_range[i]);
+                }
+                else
+                {
+                    removal_list.Add(enemy_in_range[i]);
                 }
             }
             DoRemovalList();
+            if (enemy_to_target.Count == 0)
+            {
+                //Shoot straight if there is no enemy
+                foreach (var Turrret in Turrets)
+                {
+                    Transform TurretTrans = new Transform();
+                    ECS.GetTransformECS(Turrret, ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
+                    TurretTrans.Rotation = new Vector3(0, 0, 0);
+                    ECS.SetTransformECS(Turrret, ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
+                }
 
+            }
+            if (enemy_to_target.Count != 0)
+            {
+                int get_lower = enemy_to_target.Count < Turrets.Count ? enemy_to_target.Count : Turrets.Count;
+                for (int i = 0; i < get_lower; ++i)
+                {
+                    Transform.LookAt(Turrets[i], enemy_to_target[i]);
+                }
+                for (int j = get_lower; j < Turrets.Count; ++j)
+                {
+                    Transform TurretTrans = new Transform();
+                    ECS.GetTransformECS(Turrets[j], ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
+                    TurretTrans.Rotation = new Vector3(0, 0, 0);
+                    ECS.SetTransformECS(Turrets[j], ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
+                }
+
+            }
         }
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
@@ -90,18 +102,12 @@ namespace Scripting
                 if (p_fire_timer >= p_fireRate)
                 {
                     // Call C++ side bullet firing
-                    Transform PlayerTrans = new Transform();
-                    Vector3 Forward = Transform.GetForwardVector(Turret1);
-                    PlayerTrans.Position = ECS.GetGlobalPosition(PlayerShip);
-                    PlayerTrans.Rotation = ECS.GetGlobalRotation(PlayerShip);
-
-                    if (isStraight)
+                    foreach(var Turret in Turrets)
                     {
-                        GameUtilities.FirePlayerBullet(entityID, Transform.GetForwardVector(PlayerShip), PlayerTrans.Rotation);
-                    }
-                    else
-                    {
-                        GameUtilities.FirePlayerBullet(entityID, Forward, PlayerTrans.Rotation);
+                        Vector3 Forward = Transform.GetForwardVector(Turret);
+                        Vector3 Position = ECS.GetGlobalPosition(Turret);
+                        Vector3 Rotation = ECS.GetGlobalRotation(Turret);
+                        GameUtilities.FirePlayerBullet(Position, Forward, Rotation);
                     }
 
                     ECS.PlayAudio(shipCamera, 1);
@@ -117,10 +123,6 @@ namespace Scripting
             if (other_tag.tag == "Targetable")
             {
                 AddEnemyToListOfTargets(id);
-                //if (GameUtilities.GetTurretAlive(id))
-                //{
-                //    Console.WriteLine("Booya");
-                //}
             }
 
         }
@@ -147,6 +149,7 @@ namespace Scripting
             foreach (uint removable in removal_list)
             {
                 enemy_in_range.Remove(removable);
+                enemy_to_target.Remove(removable);
             }
             removal_list.Clear();
         }
@@ -163,7 +166,7 @@ namespace Scripting
         void CoutMyEnemy()
         {
             Console.Write("Start: ");
-            foreach (uint Enemy in enemy_in_range)
+            foreach (uint Enemy in enemy_to_target)
             {
                 Console.Write(Enemy + ", ");
             }
