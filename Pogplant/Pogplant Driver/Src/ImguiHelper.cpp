@@ -2262,6 +2262,13 @@ namespace PogplantDriver
 				}
 				ImGui::NewLine();
 
+				// Direction
+				ImGui::Text("Billboard Axis");
+				toolTip = "Which axis will the particle rotate to face the camera";
+				ToolTipHelper(toolTip.c_str(), true);
+				ImGui::DragFloat3("###BillboardAxis", &pSystem->m_BillboardAxis.x, 1.0f, 0.0f, 1.0f);
+				ImGui::NewLine();
+
 				// Life
 				ImGui::Text("Life");
 				toolTip = "Actual life duration will be a random value between Min. and Max.";
@@ -2324,10 +2331,16 @@ namespace PogplantDriver
 					break;
 				case Components::ParticleSystem::EMITTER_TYPE::CONE:
 					// Loop
-					ImGui::Text("Spawn Radius");
+					ImGui::Text("Spawn Radius Min.");
 					toolTip = "Random spawn within circle of specified radius";
 					ToolTipHelper(toolTip.c_str(), true);
-					ImGui::DragFloat("###ConeRadius", &pSystem->m_ConeRadius);
+					ImGui::DragFloat("###ConeRadiusMin", &pSystem->m_ConeRadiusMin);
+					ImGui::Text("Spawn Radius Max.");
+					ImGui::DragFloat("###ConeRadiusMax", &pSystem->m_ConeRadiusMax);
+
+					// Target cone size
+					ImGui::Text("Target Cone Scale");
+					ImGui::DragFloat("###MinAngle", &pSystem->m_TargetConeScale, 0.01f);
 
 					// Direction
 					ImGui::Text("Direction");
@@ -2335,13 +2348,22 @@ namespace PogplantDriver
 					ToolTipHelper(toolTip.c_str(), true);
 					ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
 
-					// Min angle 
-					ImGui::Text("Min. Angle");
-					ImGui::DragFloat("###MinAngle", &pSystem->m_ConeAngleMin);
+					// Burst amount
+					ImGui::Text("Spawn Count");
+					ImGui::DragInt("###Cone Spawn Count", &pSystem->m_SpawnCount);
 
-					// Max angle 
-					ImGui::Text("Max. Angle");
-					ImGui::DragFloat("###MaxAngle", &pSystem->m_ConeAngleMax);
+					// Loop
+					ImGui::Text("Trail");
+					ImGui::SameLine();
+					ImGui::Checkbox("###UseTrail", &pSystem->m_Trail);
+
+					// Burst amount
+					ImGui::Text("Trail Spawn Count");
+					ImGui::DragInt("###Trail Spawn Count", &pSystem->m_SubSpawnCount);
+
+					// Burst amount
+					ImGui::Text("Trail Delay");
+					ImGui::DragFloat("###Trail Spawn Delay", &pSystem->m_SubDelay);
 					break;
 				default:
 					break;

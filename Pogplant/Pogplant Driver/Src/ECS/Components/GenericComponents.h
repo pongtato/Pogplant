@@ -317,6 +317,19 @@ namespace Components
 			COUNT
 		};
 
+		// No need to serialize
+		struct SubEmitter
+		{
+			SubEmitter() = default;
+			SubEmitter(const glm::vec3& _Position, const glm::vec3& _Direction, int _Count);
+			bool Update(float _Dt, float _Delay);
+
+			glm::vec3 m_Position;
+			glm::vec3 m_Direction;
+			int m_Count;
+			float m_Timer;
+		};
+
 		struct CurveVariable
 		{
 			CurveVariable();
@@ -351,51 +364,61 @@ namespace Components
 			glm::vec4 _Color,
 			glm::vec3 _SpawnDir,
 			glm::vec3 _Force,
+			glm::vec3 _BillboardAxis,
 			float _SpawnRadius,
-			float _ConeRadius,
-			float _ConeAngleMin,
-			float _ConeAngleMax,
+			float _ConeRadiusMin,
+			float _ConeRadiusMax,
+			float _TargetConeScale,
 			float _Delay,
+			float _SubDelay, // Delay for each point to form a trail
 			float _MinLife,
 			float _MaxLife,
 			CurveVariable _Speed,
 			CurveVariable _Scale,
-			std::string _TexID,
+			std::string _TexName,
 			int _SpawnCount,
+			int _SubSpawnCount,
 			int _EmitterType,
 			bool _Loop,
 			bool _RandomRotate,
-			bool _FollowParent
+			bool _FollowParent,
+			bool _Trail
 		);
-		void Spawn(glm::vec3 _Position, glm::vec3 _Direction);
+
+		void Update(float _Dt, const Transform& _Transform, const glm::vec3& _CamPos);
+		void Spawn(glm::vec3 _BasePos, glm::vec3 _RandPos, glm::vec3 _Direction);
 		void Clear();
 		void UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos, const glm::mat4& _ParentMtx, bool _Parented);
 		void init();
 
 		std::vector<Particle> m_ParticlePool;
+		std::vector<SubEmitter> m_SubEmitters;
 		glm::vec4 m_Color;
 		glm::vec3 m_SpawnDirection;
 		glm::vec3 m_Force;
+		glm::vec3 m_BillboardAxis;
+
 		CurveVariable m_Speed;
 		CurveVariable m_Scale;
 
 		/// General emitter var
 		float m_SpawnRadius; 
 		/// Cone emitter var
-		float m_ConeRadius;
-		float m_ConeAngleMin;
-		float m_ConeAngleMax;
+		float m_ConeRadiusMin;
+		float m_ConeRadiusMax;
+		float m_TargetConeScale;
 		///
 		float m_Delay;
+		float m_SubDelay;
 		float m_Timer;
 		float m_MinLife;
 		float m_MaxLife;
 		std::string m_TexName;
 		int m_TexID;
 		int m_ActiveCount;
-		/// Burst emitter var
 		int m_SpawnCount;
-		///
+		int m_SubSpawnCount;
+		int m_SubActiveCount;
 		EMITTER_TYPE m_EmitterType;
 		bool m_Loop;
 		bool m_Done;
@@ -403,6 +426,7 @@ namespace Components
 		bool m_Play;
 		bool m_Pause;
 		bool m_FollowParent;
+		bool m_Trail; 
 	};
 
 	struct Canvas

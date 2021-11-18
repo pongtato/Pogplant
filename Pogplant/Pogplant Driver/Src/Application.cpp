@@ -189,36 +189,40 @@ void Application::InitialiseDebugObjects()
 	(
 		ParticleSystem
 		(
-			glm::vec4{ 1,1,1,1 },
-			glm::vec3{ 0,0,0 },
-			glm::vec3{ 0,0.981f,0 },
+			glm::vec4{ 1,1,1,1 },		// Color
+			glm::vec3{ 0,1,0 },			// Spawn dir
+			glm::vec3{ 0,0.0f,0 },		// Force
+			glm::vec3{ 1,1,1 },			// Billboard axis
 			1.0f,	// SpawnRadius
-			1.0f,	// Cone radius
-			0.0f,	// Cone min angle
-			45.0f,	// Cone max angle
-			0.005f, // Delay
-			0.69f,	// Min Life
+			3.5f,	// Cone radius min
+			4.2f,	// Cone radius max
+			1.05f,	// Cone target scale
+			0.42f,	// Delay
+			0.01f,	// SubDelay
+			1.00f,	// Min Life
 			1.00f,	// Max Life
 			{
 				curvePoints,	// Curve points
-				1.0f,			// Min Speed
-				2.0f,			// Max Speed
+				10.0f,			// Min Speed
+				10.0f,			// Max Speed
 				1.0f,			// Min Speed Mult
-				4.2f,			// Max Speed Mult
+				1.0f,			// Max Speed Mult
 			},
 			{
 				curvePoints,	// Curve points
-				0.42f,			// Min Scale
-				0.69f,			// Max Scale
+				0.2f,			// Min Scale
+				0.2f,			// Max Scale
 				1.0f,			// Min Scale Mult
-				4.2f,			// Max Scale Mult
+				1.0f,			// Max Scale Mult
 			},
-			"ParticleTest.dds",		// TexID
-			420,	// Spawn Count
+			"mud_rough.dds",		// TexID
+			1,	// Spawn Count
+			20, // Sub spawn count
 			static_cast<int>(ParticleSystem::EMITTER_TYPE::CONE), // Emitter type, this was made an int for easy serialization idk kekw
 			true,	// Loop
-			true,	// Randomly rotate particles?
-			true    // Follow parent's position?
+			false,	// Randomly rotate particles?
+			true,   // Follow parent's position?
+			true	// Leave "trails"
 		)
 	);
 
@@ -471,116 +475,7 @@ void Application::UpdateTransforms(float _Dt)
 			auto& transform = m_activeECS->GetReg().get<Transform>(entity);
 			auto& pSys = m_activeECS->GetReg().get<ParticleSystem>(entity);
 
-			if (!pSys.m_Play || pSys.m_Pause)
-			{
-				// Just update render
-				for (int i = 0; i < pSys.m_ActiveCount; i++)
-				{
-					pSys.UpdateInstance(pSys.m_ParticlePool[i], 0.0, gameCamPos, transform.m_ModelMtx, pSys.m_FollowParent);
-				}
-				continue;
-			}
-
-			//// Spawn based on mode
-			//if (pSys.m_EmitterType == ParticleSystem::EMITTER_TYPE::GENERAL)
-			//{
-			//	// Spawn delay
-			//	pSys.m_Timer += _Dt;
-			//	if (pSys.m_Timer >= pSys.m_Delay)
-			//	{
-			//		pSys.m_Timer = 0.0f;
-			//		pSys.Spawn(transform.m_position, pSys.m_SpawnDirection);
-			//	}
-			//}
-			//// Burst
-			//else if (!pSys.m_Done)
-			//{
-			//	// Only spawn when everything has despawned
-			//	if (pSys.m_ActiveCount == 0)
-			//	{
-			//		// To loop or not
-			//		if (!pSys.m_Loop)
-			//		{
-			//			pSys.m_Done = true;
-			//			pSys.m_Play = false;
-			//			pSys.m_Pause = false;
-			//		}
-			//		else
-			//		{
-			//			for (int i = 0; i < pSys.m_SpawnCount; i++)
-			//			{
-			//				pSys.Spawn(transform.m_position, glm::sphericalRand(1.0f));
-			//			}
-			//		}
-			//	}
-			//}
-
-			switch (pSys.m_EmitterType)
-			{
-			case ParticleSystem::EMITTER_TYPE::GENERAL:
-				// Spawn delay
-				pSys.m_Timer += _Dt;
-				if (pSys.m_Timer >= pSys.m_Delay)
-				{
-					pSys.m_Timer = 0.0f;
-					pSys.Spawn(transform.m_position, pSys.m_SpawnDirection);
-				}
-				break;
-			case ParticleSystem::EMITTER_TYPE::BURST:
-				if (!pSys.m_Done)
-				{
-					// Only spawn when everything has despawned
-					if (pSys.m_ActiveCount == 0)
-					{
-						// To loop or not
-						if (!pSys.m_Loop)
-						{
-							pSys.m_Done = true;
-							pSys.m_Play = false;
-							pSys.m_Pause = false;
-						}
-						else
-						{
-							for (int i = 0; i < pSys.m_SpawnCount; i++)
-							{
-								pSys.Spawn(transform.m_position, glm::sphericalRand(1.0f));
-							}
-						}
-					}
-				}
-				break;
-			case ParticleSystem::EMITTER_TYPE::CONE:
-				// Spawn delay
-				pSys.m_Timer += _Dt;
-				if (pSys.m_Timer >= pSys.m_Delay)
-				{
-					pSys.m_Timer = 0.0f;
-					glm::diskRand(pSys.m_ConeRadius);
-					pSys.Spawn(transform.m_position, pSys.m_SpawnDirection);
-				}
-				break;
-			}
-
-			// Update particles
-			for (int i = 0; i < pSys.m_ActiveCount; i++)
-			{
-				Particle& it = pSys.m_ParticlePool[i];
-				if (it.m_Life > 0.0f)
-				{
-					// Decrease life
-					it.m_Life -= _Dt;
-
-					if (it.m_Life <= 0.0f)
-					{
-						pSys.m_ActiveCount--;
-						std::swap(it, pSys.m_ParticlePool[pSys.m_ActiveCount]);
-						// Since we swapped got to update at this index again, else the particle will "flicker"
-						i--;
-						continue;
-					}
-					pSys.UpdateInstance(pSys.m_ParticlePool[i], _Dt, gameCamPos, transform.m_ModelMtx, pSys.m_FollowParent);
-				}
-			}
+			pSys.Update(_Dt, transform, gameCamPos);
 		}
 	}
 

@@ -259,19 +259,23 @@ namespace Components
 		: m_Color{ glm::vec4{1} }
 		, m_SpawnDirection{ glm::vec3{0,1,0} }
 		, m_Force{ 1.0f }
+		, m_BillboardAxis{ glm::vec3{1,1,1} }
 		, m_Speed{ }
 		, m_Scale{ }
 		, m_SpawnRadius{ 1.0f }
-		, m_ConeRadius{ 1.0f }
-		, m_ConeAngleMin{ 0.0f }
-		, m_ConeAngleMax{ 45.0f }
+		, m_ConeRadiusMin{ 1.0f }
+		, m_ConeRadiusMax{ 0.0f }
+		, m_TargetConeScale{ 45.0f }
 		, m_Delay{ 1.0f }
+		, m_SubDelay{1.0f}
 		, m_Timer{ 0 }
 		, m_MinLife{ 1.0f }
 		, m_MaxLife{ 1.0f }
 		, m_TexName{ "" }
 		, m_ActiveCount{ 0 }
-		, m_SpawnCount{ 100 }
+		, m_SpawnCount{ 1 }
+		, m_SubSpawnCount{ 1 }
+		, m_SubActiveCount{ 0 }
 		, m_EmitterType{ EMITTER_TYPE::GENERAL }
 		, m_Loop{ false }
 		, m_Done{ false }
@@ -279,6 +283,7 @@ namespace Components
 		, m_Play{ false }
 		, m_Pause{ false }
 		, m_FollowParent{ false }
+		, m_Trail{ false }
 	{
 		m_TexID = -1;
 	}
@@ -288,38 +293,46 @@ namespace Components
 		glm::vec4 _Color,
 		glm::vec3 _SpawnDir,
 		glm::vec3 _Force,
+		glm::vec3 _BillboardAxis,
 		float _SpawnRadius,
-		float _ConeRadius,
-		float _ConeAngleMin,
-		float _ConeAngleMax,
+		float _ConeRadiusMin,
+		float _ConeRadiusMax,
+		float _TargetConeScale,
 		float _Delay,
+		float _SubDelay, // Delay for each point to form a trail
 		float _MinLife,
 		float _MaxLife,
 		CurveVariable _Speed,
 		CurveVariable _Scale,
 		std::string _TexName,
 		int _SpawnCount,
+		int _SubSpawnCount,
 		int _EmitterType,
 		bool _Loop,
 		bool _RandomRotate,
-		bool _FollowParent
+		bool _FollowParent,
+		bool _Trail
 	)
 		: m_Color{ _Color }
 		, m_SpawnDirection{ _SpawnDir }
 		, m_Force{ _Force }
+		, m_BillboardAxis { _BillboardAxis }
 		, m_Speed{ _Speed }
 		, m_Scale{ _Scale }
 		, m_SpawnRadius{ _SpawnRadius }
-		, m_ConeRadius{ _ConeRadius }
-		, m_ConeAngleMin{ _ConeAngleMin }
-		, m_ConeAngleMax{ _ConeAngleMax }
+		, m_ConeRadiusMin{ _ConeRadiusMin }
+		, m_ConeRadiusMax{ _ConeRadiusMax }
+		, m_TargetConeScale{ _TargetConeScale }
 		, m_Delay{ _Delay }
+		, m_SubDelay{ _SubDelay }
 		, m_Timer{ 0 }
 		, m_MinLife{ _MinLife }
 		, m_MaxLife{ _MaxLife }
 		, m_TexName{ _TexName }
 		, m_ActiveCount{ 0 }
 		, m_SpawnCount{ _SpawnCount }
+		, m_SubSpawnCount{ _SubSpawnCount }
+		, m_SubActiveCount{ 0 }
 		, m_EmitterType{ static_cast<EMITTER_TYPE>(_EmitterType) }
 		, m_Loop{ _Loop }
 		, m_Done{ false }
@@ -327,6 +340,7 @@ namespace Components
 		, m_Play{ false }
 		, m_Pause{ false }
 		, m_FollowParent{ _FollowParent }
+		, m_Trail{ _Trail }
 	{
 		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
 		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
@@ -342,24 +356,158 @@ namespace Components
 		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
 	}
 
-	void ParticleSystem::Spawn(glm::vec3 _Position, glm::vec3 _Direction)
+	void ParticleSystem::Update(float _Dt, const Transform& _Transform, const glm::vec3& _CamPos)
+	{
+		if (!m_Play || m_Pause)
+		{
+			// Just update render
+			for (int i = 0; i < m_ActiveCount; i++)
+			{
+				UpdateInstance(m_ParticlePool[i], 0.0, _CamPos, _Transform.m_ModelMtx, m_FollowParent);
+			}
+			return;
+		}
+
+		switch (m_EmitterType)
+		{
+		case ParticleSystem::EMITTER_TYPE::GENERAL:
+			// Spawn delay
+			m_Timer += _Dt;
+			if (m_Timer >= m_Delay)
+			{
+				m_Timer = 0.0f;
+				Spawn(_Transform.m_position, glm::sphericalRand(m_SpawnRadius), m_SpawnDirection);
+			}
+			break;
+		case ParticleSystem::EMITTER_TYPE::BURST:
+			if (!m_Done)
+			{
+				// Only spawn when everything has despawned
+				if (m_ActiveCount == 0)
+				{
+					// To loop or not
+					if (!m_Loop)
+					{
+						m_Done = true;
+						m_Play = false;
+						m_Pause = false;
+					}
+					else
+					{
+						for (int i = 0; i < m_SpawnCount; i++)
+						{
+							Spawn(_Transform.m_position, glm::vec3{ 0 }, glm::sphericalRand(1.0f));
+						}
+					}
+				}
+			}
+			break;
+		case ParticleSystem::EMITTER_TYPE::CONE:
+			// Spawn delay
+			m_Timer += _Dt;
+			if (m_Timer >= m_Delay)
+			{
+				const float angle = glm::dot(m_SpawnDirection, glm::vec3{ 0,1,0 });
+				glm::vec3 right = glm::vec3{ 1 };
+				glm::vec3 up = glm::vec3{ 1 };
+				// XZ plane 
+				if (angle < -1.0f + 0.001f || angle > 1.0f - 0.001f)
+				{
+					right = glm::vec3{ 1,0,0 };
+					up = glm::vec3{ 0,0,1 };
+				}
+				else
+				{
+					right = glm::cross(m_SpawnDirection, glm::vec3{ 0,1,0 });
+					up = glm::cross(m_SpawnDirection, right);
+				}
+
+				m_Timer = 0.0f;
+				float length = 0.0f;
+				glm::vec2 offset = glm::vec2{ 0.0f };
+				while (m_ConeRadiusMin > 0.0f && length < m_ConeRadiusMin)
+				{
+					offset = glm::diskRand(m_ConeRadiusMax);
+					length = glm::length(offset);
+				}
+
+				const glm::vec3 resultantPos = right * offset.x + up * offset.y;
+				// "Outer ring" along direction to move outwards
+				const glm::vec3 targetPos = m_SpawnDirection * m_SpawnRadius + resultantPos * m_TargetConeScale;
+				const glm::vec3 resultantDir = glm::normalize(targetPos - resultantPos);
+
+				if (m_Trail)
+				{
+					// Scale up if need more
+					if (m_SubActiveCount >= m_SubEmitters.size())
+					{
+						m_SubEmitters.resize((m_SubEmitters.size() + 1) * 2);
+					}
+					m_SubEmitters[m_SubActiveCount] = SubEmitter(resultantPos, resultantDir, m_SubSpawnCount);
+					m_SubActiveCount++;
+				}
+				else
+				{
+					Spawn(_Transform.m_position, resultantPos, resultantDir);
+				}
+			}
+			break;
+		}
+
+		// Update sub emitters
+		for (int i = 0; i < m_SubActiveCount; i++)
+		{
+			auto& subEmi = m_SubEmitters[i];
+			if (subEmi.m_Count > 0)
+			{
+				if(subEmi.Update(_Dt, m_SubDelay))
+				{
+					Spawn(_Transform.m_position, subEmi.m_Position, subEmi.m_Direction);
+				}
+			}
+			else
+			{
+				m_SubActiveCount--;
+				std::swap(subEmi, m_SubEmitters[m_SubActiveCount]);
+				i--;
+				continue;
+			}
+		}
+
+		// Update particles
+		for (int i = 0; i < m_ActiveCount; i++)
+		{
+			Particle& it = m_ParticlePool[i];
+			if (it.m_Life > 0.0f)
+			{
+				// Decrease life
+				it.m_Life -= _Dt;
+
+				if (it.m_Life <= 0.0f)
+				{
+					m_ActiveCount--;
+					std::swap(it, m_ParticlePool[m_ActiveCount]);
+					// Since we swapped got to update at this index again, else the particle will "flicker"
+					i--;
+					continue;
+				}
+				UpdateInstance(m_ParticlePool[i], _Dt, _CamPos, _Transform.m_ModelMtx, m_FollowParent);
+			}
+		}
+	}
+
+	void ParticleSystem::Spawn(glm::vec3 _BasePos, glm::vec3 _RandPos, glm::vec3 _Direction)
 	{
 		// Scale up if need more
 		if (m_ActiveCount >= m_ParticlePool.size())
 		{
-			m_ParticlePool.resize(m_ParticlePool.size() + 1 * 2);
+			m_ParticlePool.resize((m_ParticlePool.size() + 1) * 2);
 		}
 
 		float speedMult = glm::linearRand(m_Speed.m_MultiplierMin, m_Speed.m_MultiplierMax);
 		float life = glm::linearRand(m_MinLife, m_MaxLife);
 		float scaleMult = glm::linearRand(m_Scale.m_MultiplierMin, m_Scale.m_MultiplierMax);
 		float randRotate = glm::radians(m_RandomRotate ? glm::linearRand(0.0f, 360.0f) : 0.0f);
-
-		glm::vec3 randPos = glm::vec3{ 0 };
-		if (m_SpawnRadius > 0)
-		{
-			randPos = glm::sphericalRand(m_SpawnRadius);
-		}
 
 		// Update at end of pool
 		m_ParticlePool[m_ActiveCount] =
@@ -368,8 +516,8 @@ namespace Components
 			&m_Speed.m_CurveData,
 			&m_Scale.m_CurveData,
 			m_Color,
-			_Position,
-			randPos,
+			_BasePos,
+			_RandPos,
 			_Direction,
 			glm::vec3{0},
 			m_Force,
@@ -482,14 +630,14 @@ namespace Components
 		{
 			targetDir = glm::normalize(targetDir);
 			float angle = atan2f(targetDir.x, targetDir.z);
-			glm::quat yRotate = glm::angleAxis(angle, glm::vec3{ 0,1,0 });
+			glm::quat yRotate = glm::angleAxis(angle, glm::vec3{ 0,m_BillboardAxis.y,0 });
 
 			int flip = targetDir.y < 0 ? 1 : -1;
-			glm::quat xRotate = glm::angleAxis(glm::angle(targetDir, { targetDir.x,0,targetDir.z }) * flip, glm::vec3{ 1,0,0 });
+			glm::quat xRotate = glm::angleAxis(glm::angle(targetDir, { targetDir.x,0,targetDir.z }) * flip, glm::vec3{ m_BillboardAxis.x,0,0 });
 
 			// Local
-			glm::quat zRotate = glm::angleAxis(_Particle.m_Rotation, glm::vec3{ 0,0,1 });
-			glm::mat4_cast(yRotate * xRotate * zRotate);
+			glm::quat zRotate = glm::angleAxis(_Particle.m_Rotation, glm::vec3{ 0,0,m_BillboardAxis.z });
+			rotation = glm::mat4_cast(yRotate * xRotate * zRotate);
 		}
 
 		// Construct new matrix
@@ -546,5 +694,26 @@ namespace Components
 	{
 		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
 		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+	}
+
+	ParticleSystem::SubEmitter::SubEmitter(const glm::vec3& _Position, const glm::vec3& _Direction, int _Count)
+		: m_Position { _Position }
+		, m_Direction { _Direction }
+		, m_Count { _Count }
+		, m_Timer {0.0f}
+	{
+	}
+
+	bool ParticleSystem::SubEmitter::Update(float _Dt, float _Delay)
+	{
+		m_Timer += _Dt;
+		if (m_Timer >= _Delay)
+		{
+			m_Timer = 0.0f;
+			m_Count--;
+			return true;
+		}
+
+		return false;
 	}
 }
