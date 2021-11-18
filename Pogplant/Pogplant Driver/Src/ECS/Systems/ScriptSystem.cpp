@@ -167,8 +167,29 @@ void ScriptSystem::LoadMemory()
 	// Create the mono domain
 	if (newDomain)
 	{
-		// Load from memory
+		// Used to check if loaded properly
 		MonoImageOpenStatus status;
+
+		// Have to manually load the system assemblies before loading the scripts
+		std::string sysPath = "Mono/lib/mono/4.5/System.dll";
+		std::string sysCorePath = "Mono/lib/mono/4.5/System.Core.dll";
+
+		std::vector<char> sysData = ReadRawBin(sysPath);
+		std::vector<char> sysCoreData = ReadRawBin(sysCorePath);
+
+		MonoImage* sysImg = mono_image_open_from_data_with_name(sysData.data(), static_cast<uint32_t>(sysData.size()), true, &status, false, sysPath.c_str());
+		assert(status == MONO_IMAGE_OK);
+		MonoAssembly* sysAssem = mono_assembly_load_from_full(sysImg, sysPath.c_str(), &status, false);
+		assert(status == MONO_IMAGE_OK);
+		(void)sysAssem;
+
+		MonoImage* sysCoreImg = mono_image_open_from_data_with_name(sysCoreData.data(), static_cast<uint32_t>(sysCoreData.size()), true, &status, false, sysCorePath.c_str());
+		assert(status == MONO_IMAGE_OK);
+		MonoAssembly* sysCoreAssem = mono_assembly_load_from_full(sysCoreImg, sysCorePath.c_str(), &status, false);
+		assert(status == MONO_IMAGE_OK);
+		(void)sysCoreAssem;
+
+		// Load from memory
 		std::string dllPath = "Resources/DLL/Scripting.dll";
 		std::vector<char> asmData = ReadRawBin(dllPath);
 		m_ptrGameAssemblyImage = mono_image_open_from_data_with_name(asmData.data(), static_cast<uint32_t>(asmData.size()), true, &status, false, dllPath.c_str());
