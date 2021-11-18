@@ -262,6 +262,9 @@ namespace Components
 		, m_Speed{ }
 		, m_Scale{ }
 		, m_SpawnRadius{ 1.0f }
+		, m_ConeRadius{ 1.0f }
+		, m_ConeAngleMin{ 0.0f }
+		, m_ConeAngleMax{ 45.0f }
 		, m_Delay{ 1.0f }
 		, m_Timer{ 0 }
 		, m_MinLife{ 1.0f }
@@ -269,9 +272,9 @@ namespace Components
 		, m_TexName{ "" }
 		, m_ActiveCount{ 0 }
 		, m_SpawnCount{ 100 }
+		, m_EmitterType{ EMITTER_TYPE::GENERAL }
 		, m_Loop{ false }
 		, m_Done{ false }
-		, m_Burst{ false }
 		, m_RandomRotate{ false }
 		, m_Play{ false }
 		, m_Pause{ false }
@@ -286,6 +289,9 @@ namespace Components
 		glm::vec3 _SpawnDir,
 		glm::vec3 _Force,
 		float _SpawnRadius,
+		float _ConeRadius,
+		float _ConeAngleMin,
+		float _ConeAngleMax,
 		float _Delay,
 		float _MinLife,
 		float _MaxLife,
@@ -293,8 +299,8 @@ namespace Components
 		CurveVariable _Scale,
 		std::string _TexName,
 		int _SpawnCount,
+		int _EmitterType,
 		bool _Loop,
-		bool _Burst,
 		bool _RandomRotate,
 		bool _FollowParent
 	)
@@ -304,6 +310,9 @@ namespace Components
 		, m_Speed{ _Speed }
 		, m_Scale{ _Scale }
 		, m_SpawnRadius{ _SpawnRadius }
+		, m_ConeRadius{ _ConeRadius }
+		, m_ConeAngleMin{ _ConeAngleMin }
+		, m_ConeAngleMax{ _ConeAngleMax }
 		, m_Delay{ _Delay }
 		, m_Timer{ 0 }
 		, m_MinLife{ _MinLife }
@@ -311,9 +320,9 @@ namespace Components
 		, m_TexName{ _TexName }
 		, m_ActiveCount{ 0 }
 		, m_SpawnCount{ _SpawnCount }
+		, m_EmitterType{ static_cast<EMITTER_TYPE>(_EmitterType) }
 		, m_Loop{ _Loop }
 		, m_Done{ false }
-		, m_Burst{ _Burst }
 		, m_RandomRotate{ _RandomRotate }
 		, m_Play{ false }
 		, m_Pause{ false }

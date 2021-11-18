@@ -193,6 +193,9 @@ void Application::InitialiseDebugObjects()
 			glm::vec3{ 0,0,0 },
 			glm::vec3{ 0,0.981f,0 },
 			1.0f,	// SpawnRadius
+			1.0f,	// Cone radius
+			0.0f,	// Cone min angle
+			45.0f,	// Cone max angle
 			0.005f, // Delay
 			0.69f,	// Min Life
 			1.00f,	// Max Life
@@ -212,8 +215,8 @@ void Application::InitialiseDebugObjects()
 			},
 			"ParticleTest.dds",		// TexID
 			420,	// Spawn Count
+			static_cast<int>(ParticleSystem::EMITTER_TYPE::BURST), // Emitter type, this was made an int for easy serialization idk kekw
 			true,	// Loop
-			true, 	// Burst
 			true,	// Randomly rotate particles?
 			true    // Follow parent's position?
 		)
@@ -480,7 +483,7 @@ void Application::UpdateTransforms(float _Dt)
 			}
 
 			// Burst vs constant spawn
-			if (!pSys.m_Burst)
+			if (pSys.m_EmitterType == ParticleSystem::EMITTER_TYPE::GENERAL)
 			{
 				// Spawn delay
 				pSys.m_Timer += _Dt;

@@ -331,10 +331,10 @@
 		{
 			"m_Active" : true,
 			"m_Far" : 100.0,
+			"m_Fov" : 90.0,
 			"m_Near" : 0.10000000149011612,
 			"m_Pitch" : 0.0,
-			"m_Yaw" : 0.0,
-			"m_Fov" : 90.0
+			"m_Yaw" : 0.0
 		},
 		"Name" : 
 		{
@@ -789,7 +789,6 @@
 		},
 		"ParticleSystem" : 
 		{
-			"m_Burst" : true,
 			"m_Color" : 
 			[
 				1.0,
@@ -797,6 +796,9 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ConeAngleMax" : 45.0,
+			"m_ConeAngleMin" : 0.0,
+			"m_ConeRadius" : 1.0,
 			"m_Delay" : 0.004999999888241291,
 			"m_Force" : 
 			[

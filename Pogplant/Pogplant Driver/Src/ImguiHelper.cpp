@@ -2235,6 +2235,33 @@ namespace PogplantDriver
 				ImGui::Dummy(ImVec2(0.0f, 0.5f));
 				TextureSelectHelper(popuplabel, pSystem->m_TexName, pSystem->m_TexID);
 
+				// Emitter type
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
+				constexpr int emitterTypeCount = static_cast<int>(Components::ParticleSystem::EMITTER_TYPE::COUNT);
+				const std::string emitterChoices[emitterTypeCount] = { "General", "Burst", "Cone" };
+				ImGui::Text("Emitter Type");
+				const int currID = static_cast<int>(pSystem->m_EmitterType);
+				std::string combo_label = emitterChoices[currID];  // Label to preview before opening the combo (technically it could be anything)
+				if (ImGui::BeginCombo("###Emitter selection", combo_label.c_str()))
+				{
+					for (int n = 0; n < IM_ARRAYSIZE(emitterChoices); n++)
+					{
+						const bool is_selected = (currID == n);
+						if (ImGui::Selectable(emitterChoices[n].c_str(), is_selected))
+						{
+							pSystem->m_EmitterType = static_cast<Components::ParticleSystem::EMITTER_TYPE>(n);
+						}
+
+						// Set the initial focus when opening the combo (scrolling + keyboard navigation focus)
+						if (is_selected)
+						{
+							ImGui::SetItemDefaultFocus();
+						}
+					}
+					ImGui::EndCombo();
+				}
+				ImGui::NewLine();
+
 				// Life
 				ImGui::Text("Life");
 				toolTip = "Actual life duration will be a random value between Min. and Max.";
@@ -2279,18 +2306,13 @@ namespace PogplantDriver
 				ImGui::Text("Randomly Rotate");
 				ImGui::SameLine();
 				ImGui::Checkbox("###UseRand", &pSystem->m_RandomRotate);
-
-				// Burst or constant
-				ImGui::Text("Burst");
-				ImGui::SameLine();
-				ImGui::Checkbox("###UseBurst", &pSystem->m_Burst);
-
+				
 				// Follow parent?
 				ImGui::Text("Parented");
 				ImGui::SameLine();
 				ImGui::Checkbox("###UseParent", &pSystem->m_FollowParent);
 
-				if (pSystem->m_Burst)
+				if (pSystem->m_EmitterType == Components::ParticleSystem::EMITTER_TYPE::BURST)
 				{
 					// Loop
 					ImGui::Text("Loop");

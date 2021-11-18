@@ -450,7 +450,7 @@ namespace Pogplant
 		glm::quat xR = glm::angleAxis(glm::radians(m_QuatTestRot.x), glm::vec3{ 1,0,0 });
 		glm::quat yR = glm::angleAxis(glm::radians(m_QuatTestRot.y), glm::vec3{ 0,1,0 });
 		glm::quat zR = glm::angleAxis(glm::radians(m_QuatTestRot.z), glm::vec3{ 0,0,1 });
-		glm::mat4 r = glm::mat4_cast(zR * yR * xR);
+		glm::mat4 r = glm::mat4_cast(yR * xR * zR);
 		glm::mat4 s = glm::scale(glm::mat4{ 1 }, m_QuatTestScale);
 
 		ShaderLinker::SetUniform("m4_Model", t * r * s);

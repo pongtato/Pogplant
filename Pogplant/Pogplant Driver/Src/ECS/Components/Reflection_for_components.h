@@ -81,13 +81,16 @@ namespace Components
 			.property("m_Speed", &ParticleSystem::m_Speed)
 			.property("m_Scale", &ParticleSystem::m_Scale)
 			.property("m_SpawnRadius", &ParticleSystem::m_SpawnRadius)
+			.property("m_ConeRadius", &ParticleSystem::m_ConeRadius)
+			.property("m_ConeAngleMin", &ParticleSystem::m_ConeAngleMin)
+			.property("m_ConeAngleMax", &ParticleSystem::m_ConeAngleMax)
 			.property("m_Delay", &ParticleSystem::m_Delay)
 			.property("m_MinLife", &ParticleSystem::m_MinLife)
 			.property("m_MaxLife", &ParticleSystem::m_MaxLife)
 			.property("m_TexName", &ParticleSystem::m_TexName)
 			.property("m_SpawnCount", &ParticleSystem::m_SpawnCount)
 			.property("m_Loop", &ParticleSystem::m_Loop)
-			.property("m_Burst", &ParticleSystem::m_Burst)
+			.property("_EmitterType", &ParticleSystem::m_EmitterType)
 			.property("m_RandomRotate", &ParticleSystem::m_RandomRotate)
 			.property("m_Play", &ParticleSystem::m_Play);
 

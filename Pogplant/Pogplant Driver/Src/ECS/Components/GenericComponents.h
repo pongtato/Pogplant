@@ -309,6 +309,14 @@ namespace Components
 
 	struct ParticleSystem
 	{
+		enum class EMITTER_TYPE
+		{
+			GENERAL,
+			BURST,
+			CONE,
+			COUNT
+		};
+
 		struct CurveVariable
 		{
 			CurveVariable();
@@ -344,6 +352,9 @@ namespace Components
 			glm::vec3 _SpawnDir,
 			glm::vec3 _Force,
 			float _SpawnRadius,
+			float _ConeRadius,
+			float _ConeAngleMin,
+			float _ConeAngleMax,
 			float _Delay,
 			float _MinLife,
 			float _MaxLife,
@@ -351,8 +362,8 @@ namespace Components
 			CurveVariable _Scale,
 			std::string _TexID,
 			int _SpawnCount,
+			int _EmitterType,
 			bool _Loop,
-			bool _Burst,
 			bool _RandomRotate,
 			bool _FollowParent
 		);
@@ -367,7 +378,14 @@ namespace Components
 		glm::vec3 m_Force;
 		CurveVariable m_Speed;
 		CurveVariable m_Scale;
-		float m_SpawnRadius;
+
+		/// General emitter var
+		float m_SpawnRadius; 
+		/// Cone emitter var
+		float m_ConeRadius;
+		float m_ConeAngleMin;
+		float m_ConeAngleMax;
+		///
 		float m_Delay;
 		float m_Timer;
 		float m_MinLife;
@@ -375,10 +393,12 @@ namespace Components
 		std::string m_TexName;
 		int m_TexID;
 		int m_ActiveCount;
+		/// Burst emitter var
 		int m_SpawnCount;
+		///
+		EMITTER_TYPE m_EmitterType;
 		bool m_Loop;
 		bool m_Done;
-		bool m_Burst;
 		bool m_RandomRotate;
 		bool m_Play;
 		bool m_Pause;
