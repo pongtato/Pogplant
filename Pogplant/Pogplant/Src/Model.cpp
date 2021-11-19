@@ -300,15 +300,17 @@ namespace Pogplant
 				extractedPath = extractedPath.substr(index + 1);
 			}
 
+			/// HARD FIXED DIRECTORY
+			const std::string fixedDir = "Resources/Textures/ModelTextures";
 			Texture texture;
 			// Convert to linear space
 			if (_TypeName == "texture_diffuse")
 			{
-				texture.m_Id = TexLoader::LoadTextureSRGB(extractedPath, this->m_Directory, false);
+				texture.m_Id = TexLoader::LoadTextureSRGB(extractedPath, fixedDir, false);
 			}
 			else
 			{
-				texture.m_Id = TexLoader::LoadTexture(extractedPath, this->m_Directory);
+				texture.m_Id = TexLoader::LoadTexture(extractedPath, fixedDir);
 			}
 			texture.m_Type = _TypeName;
 			texture.m_Path = extractedPath;
