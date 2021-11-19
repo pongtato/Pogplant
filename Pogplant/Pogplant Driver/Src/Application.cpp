@@ -485,7 +485,7 @@ void Application::UpdateTransforms(float _Dt)
 	{
 		auto& transform = canvasView.get<Transform>(it);
 		auto& canvas = canvasView.get<Canvas>(it);
-		PP::MeshInstance::SetInstance(PP::InstanceData{ transform.m_ModelMtx, canvas.m_Color, canvas.m_TexID, true });
+		PP::MeshInstance::SetInstance(PP::InstanceData{ transform.m_ModelMtx, canvas.m_Color, canvas.m_TexID, true, true });
 	}
 }
 

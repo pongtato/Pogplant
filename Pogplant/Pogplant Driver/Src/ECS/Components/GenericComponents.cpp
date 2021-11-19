@@ -645,7 +645,7 @@ namespace Components
 		model *= rotation;
 		model = glm::scale(model, scale);
 
-		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, static_cast<int>(_Particle.m_TexID), false });
+		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, static_cast<int>(_Particle.m_TexID), false, false });
 	}
 
 	ParticleSystem::CurveVariable::CurveVariable()

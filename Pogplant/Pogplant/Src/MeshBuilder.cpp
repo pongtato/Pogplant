@@ -90,6 +90,11 @@ namespace Pogplant
         glVertexAttribIPointer(8, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Ortho));
         glVertexAttribDivisor(8, 1);
 
+        // Ortho
+        glEnableVertexAttribArray(9);
+        glVertexAttribIPointer(9, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_GameOnly));
+        glVertexAttribDivisor(9, 1);
+
         // Unbind
         glBindVertexArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);

@@ -11,6 +11,7 @@ namespace Pogplant
 		int m_TexID;
 		// Cant be bool, GLSL does not have varying bool
 		unsigned int m_Ortho;
+		unsigned int m_GameOnly;
 	};
 
 	class MeshInstance
