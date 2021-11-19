@@ -27,8 +27,6 @@
 PhysicsSystem::PhysicsSystem()
 	:
 	m_registry{ nullptr },
-	m_hasJob{ 0 },
-	m_shouldContinue{ 0 },
 	t_EXIT_THREADS{ false }
 {
 	m_collisionLayers["DEFAULT"] = 0;
@@ -64,7 +62,13 @@ PhysicsSystem::PhysicsSystem()
 
 	SetCollisionRule(GetCollisionLayer("PLAYERBOX"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_COLLIDE);
 
-	m_threads.push_back(std::thread{ &PhysicsSystem::TriggerUpdate, std::ref(*this) });
+	for (int i = 0; i < NUM_TRIGGER_THREADS; i++)
+	{
+		m_hasJob[i] = std::make_unique<std::binary_semaphore>(0);
+		m_shouldContinue[i] = std::make_unique<std::binary_semaphore>(0);
+
+		m_threads.push_back(std::thread{ &PhysicsSystem::TriggerUpdate, std::ref(*this), i });
+	}
 }
 
 PhysicsSystem::~PhysicsSystem()
@@ -75,7 +79,11 @@ PhysicsSystem::~PhysicsSystem()
 void PhysicsSystem::CleanUp()
 {
 	t_EXIT_THREADS = true;
-	m_hasJob.release();
+
+	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
+	{
+		m_hasJob[i]->release();
+	}
 
 	for (auto& thread : m_threads)
 	{
@@ -200,6 +208,38 @@ void PhysicsSystem::InitPlayState()
 	}//*/
 }
 
+void PhysicsSystem::UpdateMovingObjects()
+{
+	/*auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
+	auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
+
+	//Update colliders that move
+	for (auto& movableColliders : rigidBodyEntities)
+	{
+		auto& transform = rigidBodyEntities.get<Components::Transform>(movableColliders);
+		auto& colliderIdentifier = rigidBodyEntities.get<Components::ColliderIdentifier>(movableColliders);
+
+		switch (colliderIdentifier.colliderType)
+		{
+		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
+		{
+			auto boxCollider = m_registry->GetReg().try_get<Components::BoxCollider>(movableColliders);
+			boxCollider->aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider->centre, boxCollider->extends * transform.GetGlobalScale());
+			break;
+		}
+		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
+		{
+			auto sphereCollider = m_registry->GetReg().try_get<Components::SphereCollider>(movableColliders);
+			sphereCollider->sphere.m_pos = transform.GetGlobalPosition() + sphereCollider->centre;
+			break;
+		}
+		default:
+			std::cerr << "PhysicsSystem::Update, unhandled collider update" << std::endl;
+			assert(false);
+		}
+	}//*/
+}
+
 /******************************************************************************/
 /*!
 \brief
@@ -207,12 +247,14 @@ void PhysicsSystem::InitPlayState()
 	performance
 */
 /******************************************************************************/
-void PhysicsSystem::TriggerUpdate()
+void PhysicsSystem::TriggerUpdate(int threadID)
 {
+	int entityIndex = 0;
+
 	while (!t_EXIT_THREADS)
 	{
 		//perform busy wait LOL
-		m_hasJob.acquire();
+		m_hasJob[threadID]->acquire();
 
 
 		if (!t_EXIT_THREADS /*&& m_hasJob.try_acquire()*/)
@@ -220,8 +262,14 @@ void PhysicsSystem::TriggerUpdate()
 			auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
 			auto movableEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
 
-			for (auto _1entity : collidableEntities)
+			entityIndex = -1;
+			for (auto& _1entity : collidableEntities)
 			{
+				++entityIndex;
+
+				if ((threadID + entityIndex) % NUM_TRIGGER_THREADS != 0)
+					continue;
+
 				auto& _1colliderIdentifier = collidableEntities.get<Components::ColliderIdentifier>(_1entity);
 
 				if (!_1colliderIdentifier.isTrigger)
@@ -230,7 +278,7 @@ void PhysicsSystem::TriggerUpdate()
 				//Get list of entities triggered with this
 				auto objects = m_triggerList.equal_range(_1entity);
 
-				for (auto _2entity : movableEntities)
+				for (auto& _2entity : movableEntities)
 				{
 					if (_1entity == _2entity)
 						continue;
@@ -278,7 +326,7 @@ void PhysicsSystem::TriggerUpdate()
 				}
 			}
 
-			m_shouldContinue.release();
+			m_shouldContinue[threadID]->release();
 		}
 	}
 }
@@ -385,37 +433,16 @@ void PhysicsSystem::UpdateEditor()
 /******************************************************************************/
 void PhysicsSystem::Update(float c_dt)
 {
-	auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
-	auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
+	UpdateMovingObjects();
 
-	//Update colliders that move
-	for (auto& movableColliders : rigidBodyEntities)
+	//Set the other threads to update trigger behavior
+	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
 	{
-		auto& transform = rigidBodyEntities.get<Components::Transform>(movableColliders);
-		auto& colliderIdentifier = rigidBodyEntities.get<Components::ColliderIdentifier>(movableColliders);
-
-		switch (colliderIdentifier.colliderType)
-		{
-		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
-		{
-			auto boxCollider = m_registry->GetReg().try_get<Components::BoxCollider>(movableColliders);
-			boxCollider->aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider->centre, boxCollider->extends * transform.GetGlobalScale());
-			break;
-		}
-		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
-		{
-			auto sphereCollider = m_registry->GetReg().try_get<Components::SphereCollider>(movableColliders);
-			sphereCollider->sphere.m_pos = transform.GetGlobalPosition() + sphereCollider->centre;
-			break;
-		}
-		default:
-			std::cerr << "PhysicsSystem::Update, unhandled collider update" << std::endl;
-			assert(false);
-		}
+		m_hasJob[i]->release();
 	}
 
-	//Set the 2nd thread to update trigger behavior
-	m_hasJob.release();
+	auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
+	auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
 
 	//O(n^2) probably not ideal, but will do for now
 	for (auto& _1entity : rigidBodyEntities)
@@ -442,7 +469,7 @@ void PhysicsSystem::Update(float c_dt)
 
 		if (!_1colliderIdentifier.isTrigger)
 		{
-			for (auto _2entity : collidableEntities)
+			for (auto& _2entity : collidableEntities)
 			{
 				if (_2entity == _1entity)
 					continue;
@@ -462,8 +489,12 @@ void PhysicsSystem::Update(float c_dt)
 		_1transform.SetGlobalPosition(_1rigidbody.newPosition);
 	}
 
-	while (!m_shouldContinue.try_acquire())
+	//wait for all threads to be done
+	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
 	{
+		while (!m_shouldContinue[i]->try_acquire())
+		{
+		}
 	}
 
 	if (!m_triggerQueue.empty())
@@ -484,7 +515,9 @@ void PhysicsSystem::Update(float c_dt)
 							)
 					);
 
-				//std::cout << "Triggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
+				m_triggerList.insert(std::make_pair(queuedAction.entity1, queuedAction.entity2));
+				
+				//std::cout << "Triggered" << (uint16_t)queuedAction.entity1 << " " << (uint16_t)queuedAction.entity2 << std::endl;
 			}
 			else
 			{
@@ -496,7 +529,18 @@ void PhysicsSystem::Update(float c_dt)
 							)
 					);
 
-				//std::cout << "UnTriggered" << (uint16_t)std::get<0>(queuedAction) << " " << (uint16_t)std::get<1>(queuedAction) << std::endl;
+				auto objects = m_triggerList.equal_range(queuedAction.entity1);
+
+				for (auto it = objects.first; it != objects.second; ++it)
+				{
+					if ((*it).second == queuedAction.entity2)
+					{
+						m_triggerList.erase(it);
+						break;
+					}
+				}
+
+				//std::cout << "UnTriggered" << (uint16_t)queuedAction.entity1 << " " << (uint16_t)queuedAction.entity2 << std::endl;
 			}
 
 			m_triggerQueue.pop_back();

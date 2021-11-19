@@ -25,6 +25,10 @@
 #include <mutex>
 #include <tuple>
 
+//Defines the number of threads that should be used to do triggers
+//Doesn't seem to improve much when you go higher, 2 already improves by abit
+#define NUM_TRIGGER_THREADS 2
+
 class ECS;
 
 class PhysicsSystem
@@ -68,7 +72,9 @@ private:
 
 	float m_gravityAcc = -9.81f;
 
-	void TriggerUpdate();
+	void UpdateMovingObjects();
+
+	void TriggerUpdate(int threadID);
 
 	void HandleCollision(const entt::entity& c_1entity,
 		const entt::entity& c_2entity,
@@ -84,8 +90,9 @@ private:
 	void SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 	bool SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 
-	std::binary_semaphore m_hasJob;
-	std::binary_semaphore m_shouldContinue;
+	std::unique_ptr<std::binary_semaphore> m_hasJob[NUM_TRIGGER_THREADS];
+	std::unique_ptr<std::binary_semaphore> m_shouldContinue[NUM_TRIGGER_THREADS];
+
 	std::atomic<bool> t_EXIT_THREADS;
 	std::vector<std::thread> m_threads;
 	std::mutex m_mTriggerQueueMutex;
