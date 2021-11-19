@@ -18,7 +18,7 @@ namespace Scripting
         uint ShootingBox;
 
         //Player Firing 
-        float p_fireRate = 1.0f;
+        float p_fireRate = 0.66f;
         float p_fire_timer = 0.0f;
 
 
@@ -160,6 +160,7 @@ namespace Scripting
             {
                 enemy_in_range.Remove(baseEnemy);
             }
+            enemy_to_target.Remove(baseEnemy);
             //UpdateReticleTargets();
         }
 
