@@ -47,6 +47,9 @@ namespace Scripting
         }
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
+            //float X = 0, Y = 0;
+            //GameUtilities.GetMousePos(ref X,ref  Y);
+            //Console.WriteLine("Mouse Pos: " + X + ", " + Y);
 
             //Add homing capablities
             int lower_count = enemy_in_range.Count < Turrets.Count ? enemy_in_range.Count : Turrets.Count;

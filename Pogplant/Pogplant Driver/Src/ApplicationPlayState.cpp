@@ -28,7 +28,6 @@ using namespace PogplantDriver;
 void Application::EnterPlayState()
 {
 	m_activeECS = &m_playECS;
-	Scripting::GameplayECS::m_GameScriptECS = &m_playECS;
 
 	PPD::ImguiHelper::RelinkECS(&m_playECS);
 

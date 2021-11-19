@@ -11,6 +11,9 @@ namespace Scripting
     class GameUtilities
     {
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void GetMousePos(ref float _X, ref float _Y);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static int CheckBounds(Vector3 _Position, Vector3 _Velocity);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

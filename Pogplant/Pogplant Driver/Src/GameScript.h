@@ -9,10 +9,8 @@
 
 namespace Scripting
 {
-	struct GameplayECS
-	{
-		static ECS* m_GameScriptECS;
-	};
+	//Utility Get Mouse using reference
+	void GetMousePos(float& _X, float& _Y);
 
 	//Wrapper for instantiate due to monostring calls
 	std::uint32_t Instantiate(MonoString* name , glm::vec3 _Position, glm::vec3 _Rotation);

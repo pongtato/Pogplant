@@ -9,16 +9,21 @@
 #include "GameScript.h"
 #include "Application.h"
 
-ECS* Scripting::GameplayECS::m_GameScriptECS;
 namespace PPD = PogplantDriver;
 using namespace Components;
 namespace Scripting
 {
+	void GetMousePos(float& _X, float& _Y)
+	{
+		_X = Pogplant::Window::m_GameplayMouseX;
+		_Y = Pogplant::Window::m_GameplayMouseY;
+	}
+
 	std::uint32_t Instantiate(MonoString* name, glm::vec3 _Position, glm::vec3 _Rotation)
 	{
 		std::string _name = mono_string_to_utf8(name);
 
-		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
+		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
 		entt::entity new_entitiy = serial.Instantiate(_name, _Position, _Rotation);
 
 		return std::uint32_t(new_entitiy);
@@ -30,11 +35,11 @@ namespace Scripting
 	{
 		//std::cout << "Player Health Is: " << GetPlayerHealth() << std::endl;
 		std::string parent{ "PlayerBox" };
-		entt::entity parent_box = GameplayECS::m_GameScriptECS->FindEntityWithName(parent);
+		entt::entity parent_box = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName(parent);
 		if (parent_box != entt::null)
 		{
 			//GET AND COMPARE GLOBAL DUE TO LOCAL FUNKYNESS
-			auto boxcollider_comp = GameplayECS::m_GameScriptECS->GetReg().try_get<BoxCollider>(parent_box);
+			auto boxcollider_comp = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<BoxCollider>(parent_box);
 			int value = 0;
 			glm::vec3 future_pos = _Position + _Velocity;
 			if (future_pos.x > boxcollider_comp->aabb.m_max.x || future_pos.x < boxcollider_comp->aabb.m_min.x)
@@ -52,17 +57,17 @@ namespace Scripting
 	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime)
 	{
 		//Offset the camera based on the box world position
-		entt::entity player_cam = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerCam");
-		entt::entity player_box = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerBox");
-		entt::entity playerShip = GameplayECS::m_GameScriptECS->FindEntityWithName("PlayerShip");
+		entt::entity player_cam = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerCam");
+		entt::entity player_box = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerBox");
+		entt::entity playerShip = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerShip");
 		if (player_cam != entt::null && player_box != entt::null)
 		{
-			auto box_pos = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_box);
+			auto box_pos = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(player_box);
 			//std::cout << "Rotation: " << box_pos->m_rotation.x << ", " << box_pos->m_rotation.y << ", " << box_pos->m_rotation.z << std::endl;
 			
-			auto playerTransform = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(playerShip);
+			auto playerTransform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(playerShip);
 
-			auto cam_comp = GameplayECS::m_GameScriptECS->GetReg().try_get<Camera>(player_cam);
+			auto cam_comp = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Camera>(player_cam);
 			//Account for the offset 0.01f that is hardcoded
 
 			//Hardcoded until i find a better way to save the inspector camera variables
@@ -85,17 +90,17 @@ namespace Scripting
 	{
 		//Need to find player ship transform 
 		//entt::entity player_ship = static_cast<entt::entity>(entityID);
-		//auto ship_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(player_ship);
+		//auto ship_trans = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(player_ship);
 		//glm::vec3 forward = ship_trans->GetForwardVector();
-
-		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
+		float speed = 500.f;
+		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
 		entt::entity bullet = serial.Instantiate("Bullet", _Position, _Rotation);
-		GameplayECS::m_GameScriptECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Player);
+		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, 3.f, speed, Components::Projectile::OwnerType::Player);
 
-		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
+		auto body = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(bullet);
 
 		//Add power to the shots
-		glm::vec3 Powershot = _FowardVector * 500.f;
+		glm::vec3 Powershot = _FowardVector * speed;
 		body->AddImpulseForce(Powershot);
 
 	}
@@ -103,9 +108,9 @@ namespace Scripting
 	{
 		//Get enemy transform 
 		entt::entity enemy = static_cast<entt::entity>(entityID);
-		auto enemy_trans = GameplayECS::m_GameScriptECS->GetReg().try_get<Transform>(enemy);
+		auto enemy_trans = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(enemy);
 
-		PogplantDriver::Serializer serial(*GameplayECS::m_GameScriptECS);
+		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
 		entt::entity bullet;
 		if (isTrue)
 		{
@@ -118,9 +123,9 @@ namespace Scripting
 			//std::cout << "spawned false bullet" << std::endl;
 		}
 
-		GameplayECS::m_GameScriptECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Enemy);
+		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Enemy);
 
-		auto body = GameplayECS::m_GameScriptECS->GetReg().try_get<Rigidbody>(bullet);
+		auto body = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
 		glm::vec3 forward_vec = enemy_trans->GetForwardVector();
 
@@ -132,18 +137,18 @@ namespace Scripting
 
 	void PlayerProjectileCollision(entt::entity& object, entt::entity& other)
 	{
-		if (!GameplayECS::m_GameScriptECS->GetReg().valid(object) || !GameplayECS::m_GameScriptECS->GetReg().valid(other))
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
 			return;
 
-		const auto& player_projectile_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(object);
-		const auto& enemy_object_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(other);
+		const auto& player_projectile_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Projectile>(object);
+		const auto& enemy_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(other);
 
 		if (player_projectile_script && enemy_object_script)
 		{
 			bool enemy = enemy_object_script->m_ScriptTypes.contains("BaseTurret");
 			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy)
 			{
-				GameplayECS::m_GameScriptECS->DestroyEntity(object);
+				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
 				SSH::InvokeFunction("BaseTurret", "TakeDamage", other, player_projectile_script->m_Damage);
 			}
@@ -152,18 +157,18 @@ namespace Scripting
 
 	void EnemyProjectileCollision(entt::entity& object, entt::entity& other)
 	{
-		if (!GameplayECS::m_GameScriptECS->GetReg().valid(object) || !GameplayECS::m_GameScriptECS->GetReg().valid(other))
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
 			return;
 
-		const auto& enemy_projectile_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Projectile>(object);
-		const auto& player_object_script = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::Scriptable>(other);
+		const auto& enemy_projectile_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Projectile>(object);
+		const auto& player_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(other);
 
 		if (enemy_projectile_script && player_object_script)
 		{
 			bool player = player_object_script->m_ScriptTypes.contains("PlayerScript");
 			if (enemy_projectile_script->m_Ownertype == Projectile::OwnerType::Enemy && player)
 			{
-				GameplayECS::m_GameScriptECS->DestroyEntity(object);
+				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
 				SSH::InvokeFunction("PlayerScript", "TakeDamage", other, enemy_projectile_script->m_Damage);
 			}
@@ -172,11 +177,11 @@ namespace Scripting
 
 	void TriggerWave(entt::entity& object, entt::entity& other)
 	{
-		if (!GameplayECS::m_GameScriptECS->GetReg().valid(object) || !GameplayECS::m_GameScriptECS->GetReg().valid(other))
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
 			return;
 
-		const auto& player_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::BoxCollider>(object);
-		const auto& other_collider = GameplayECS::m_GameScriptECS->GetReg().try_get<Components::BoxCollider>(other);
+		const auto& player_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(object);
+		const auto& other_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other);
 
 		if (player_collider && other_collider)
 		{
@@ -189,7 +194,7 @@ namespace Scripting
 
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
 	{
-		if (!GameplayECS::m_GameScriptECS->GetReg().valid(onTriggerEnterEvent->m_entity1) || !GameplayECS::m_GameScriptECS->GetReg().valid(onTriggerEnterEvent->m_entity2))
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(onTriggerEnterEvent->m_entity1) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(onTriggerEnterEvent->m_entity2))
 			return;
 
 		auto& object = onTriggerEnterEvent->m_entity1;
