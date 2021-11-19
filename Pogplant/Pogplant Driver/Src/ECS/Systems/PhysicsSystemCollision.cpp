@@ -328,7 +328,6 @@ void PhysicsSystem::SetTrigger(entt::entity c_triggerEntity, entt::entity c_trig
 	//Add to trigger queue
 	m_triggerQueue.push_back(QueuedTriggerAction{ c_triggerEntity, c_triggeringEntity, true });
 
-	m_triggerList.insert(std::make_pair(c_triggerEntity, c_triggeringEntity));
 	m_mTriggerQueueMutex.unlock();
 }
 
@@ -345,7 +344,7 @@ bool PhysicsSystem::SetUntrigger(entt::entity c_triggerEntity, entt::entity c_tr
 			//Add to trigger queue
 			m_triggerQueue.push_back(QueuedTriggerAction{ c_triggerEntity, c_triggeringEntity, false });
 
-			m_triggerList.erase(it);
+			//m_triggerList.erase(it);
 
 			m_mTriggerQueueMutex.unlock();
 			return true;
