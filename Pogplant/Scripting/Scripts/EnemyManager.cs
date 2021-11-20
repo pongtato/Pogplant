@@ -41,7 +41,7 @@ namespace Scripting
         private GameObject[] false_bullet_pool; // object pool for false bullets.
         public GameObject[] turret_true_bullet_pool; // object pool for true bullets.
         public GameObject[] turret_false_bullet_pool; // object pool for false bullets.
-        private Dictionary<string, Transform> waypoint_map; // a string to vector3 map for waypoints.
+        private Dictionary<string, GameObject> waypoint_map; // a string to vector3 map for waypoints.
 
         private List<GameObject> enemy_instances = new List<GameObject>();
 
@@ -133,21 +133,21 @@ namespace Scripting
                 return;
             }
 
-            waypoint_map = new Dictionary<string, Transform>();
+            waypoint_map = new Dictionary<string, GameObject>();
 
             for (int i = 0; i < waypoints.Count; ++i)
             {
                 string code = waypoints[i].name;
                 code.Trim(',');
-                waypoint_map.Add(code, waypoints[i].GetComponent<Transform>());
+                waypoint_map.Add(code, waypoints[i]);
             }
         }
 
         // Given a string name of the waypoint this function returns the corresponding local position of the waypoint.
-        public Transform GetWaypoint(string name)
+        public GameObject GetWaypoint(string name)
         {
             name.Trim(',');
-            Transform value;
+            GameObject value;
             waypoint_map.TryGetValue(name, out value);
             return value;
         }
@@ -177,11 +177,11 @@ namespace Scripting
         }
 
         // Given a location, enemy template and name of the enemy prefab this function will spawn an instance of an enemy.
-        public void InstantiateEnemy(Transform location, EnemyTemplate enemy_template, string prefab_object)
+        public void InstantiateEnemy(GameObject spawnWaypoint, EnemyTemplate enemy_template, string prefab_object)
         {
-            GameObject instance = CreateEnemyInstance(prefab_object, location);
+            GameObject instance = CreateEnemyInstance(prefab_object, spawnWaypoint.transform.Value);
             Transform transform = instance.GetComponent<Transform>();
-            transform.Position = location.Position;
+            transform.Position = ECS.GetGlobalPosition(spawnWaypoint.id);
             transform.Rotation = new Vector3(0, 180, 0);
             BaseEnemy comp = instance.GetComponent<BaseEnemy>();
             comp.SetTemplate(enemy_template);

@@ -109,13 +109,16 @@ namespace Scripting
         //this function will be called by the wave trigger boxes
         public void SpawnWave(string waveName)
         {
+            Console.WriteLine("EncounterSystemDriver.SpawnWave(string)");
             switch (waveName)
             {
                 case "SegmentTwo_A":
                     SegmentTwo_A();
+                    Console.WriteLine("SegmentTwo_A called.");
                     break;
                 case "SegmentTwo_B":
                     SegmentTwo_B();
+                    Console.WriteLine("SegmentTwo_B called.");
                     break;
                 case "SegmentFour_A":
                     SegmentFour_A();
@@ -125,6 +128,9 @@ namespace Scripting
                     break;
                 case "SegmentFour_C":
                     SegmentFour_C();
+                    break;
+                default:
+                    //Console.WriteLine("Unsupported wave name: \"" + waveName + "\"");
                     break;
             }
         }

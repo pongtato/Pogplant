@@ -25,15 +25,15 @@ namespace Scripting
     public class SpawnAction
     {
         public float spawn_time { get; private set; } // At what time this spawn action will activate
-        public Transform spawn_location { get; private set; } // Location of the spawn
+        public GameObject spawn_waypoint { get; private set; } // Location of the spawn
         public EnemyTemplate enemy_to_spawn { get; private set; } // the template of the enemy to spawn
         public string enemy_prefab_name { get; private set; } // the prefab name of the enemy to spawn
         public bool is_executed { get; set; } // whether this action has been executed
 
-        public SpawnAction(float spawnTime, Transform spawnLocation, EnemyTemplate enemyTemplate, string prefab_name)
+        public SpawnAction(float spawnTime, GameObject spawnWaypoint, EnemyTemplate enemyTemplate, string prefab_name)
         {
             spawn_time = spawnTime;
-            spawn_location = spawnLocation;
+            spawn_waypoint = spawnWaypoint;
             enemy_to_spawn = enemyTemplate;
             enemy_prefab_name = prefab_name;
 
@@ -100,7 +100,7 @@ namespace Scripting
                     {
                         action.is_executed = true;
                         // Spawn enemy at spawn location here
-                        enemyManager.InstantiateEnemy(action.spawn_location, action.enemy_to_spawn, action.enemy_prefab_name);
+                        enemyManager.InstantiateEnemy(action.spawn_waypoint, action.enemy_to_spawn, action.enemy_prefab_name);
                     }
 
                 }

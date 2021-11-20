@@ -187,7 +187,8 @@ namespace Scripting
 		{
 			if (other_collider->collisionLayer == "PLAYER" && player_collider->collisionLayer == "TRIGGERS")
 			{
-				SSH::InvokeFunction("PlayerScript", "SpawnWave", other);
+				MonoString* tag_mono = mono_string_new(mono_domain_get(), PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Tag>(object)->m_tag.c_str());
+				SSH::InvokeFunction("EncounterSystemDriver", "SpawnWave", other, tag_mono);
 			}
 		}
 	}

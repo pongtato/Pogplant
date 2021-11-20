@@ -30,15 +30,15 @@ namespace Scripting
     // This action moves an enemy from waypoint to waypoint in a given time
     public class MoveAction : BaseAction
     {
-        private Transform start_position; // starting location (local space)
-        private Transform end_position; // ending location (local space)
+        private GameObject start_position; // starting location (local space)
+        private GameObject end_position; // ending location (local space)
         private float duration; // duration of this action
 
         private float current_time;
         private bool is_finished = false;
         private Transform transform;
 
-        public MoveAction(Transform startPos, Transform endPos, float totalDuration)
+        public MoveAction(GameObject startPos, GameObject endPos, float totalDuration)
         {
             start_position = startPos;
             end_position = endPos;
@@ -49,7 +49,7 @@ namespace Scripting
         {
             float progress = current_time / duration;
 
-            //Debug.Log("Executing move action, current progress is: " + progress);
+            Console.WriteLine("Executing move action, current progress is: " + progress);
 
             if (is_finished)
                 return is_finished;
@@ -62,14 +62,15 @@ namespace Scripting
             }
 
             const float Epsilon = 0.001f;
-
-            if ((start_position.Position - end_position.Position).magnitude() < Epsilon)
-                transform.Position = Vector3.Lerp(start_position.Position, end_position.Position, progress);
+            Vector3 startPos = ECS.GetGlobalPosition(start_position.id);
+            Vector3 endPos = ECS.GetGlobalPosition(end_position.id);
+            if ((startPos - endPos).magnitude() < Epsilon)
+                transform.Position = Vector3.Lerp(startPos, endPos, progress);
 
             if (current_time >= duration)
             {
                 is_finished = true;
-                //transform.SetParent(end_position);
+                ECS.SetTransformParent(owner.id, end_position.id);
             }
 
             return is_finished;
@@ -143,8 +144,6 @@ namespace Scripting
         }
         public override bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
         {
-            //Debug.Log("Executing move action, current progress is: " + progress);
-
             if (is_finished)
                 return is_finished;
 
@@ -189,14 +188,14 @@ namespace Scripting
                         current_interval = 0;
 
                         //FireBullet(em.GetBullet(true), i);
-                        GameUtilities.FireEnemyBullet(owner.id, owner.transform.Value.Position, owner.transform.Value.Rotation, true);
+                        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id), true);
                         //Debug.Log("Firing true bullet");
                     }
                     else
                     {
                         ++current_interval;
                         //FireBullet(em.GetBullet(false), i);
-                        GameUtilities.FireEnemyBullet(owner.id, owner.transform.Value.Position, owner.transform.Value.Rotation);
+                        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id));
                         //Debug.Log("Firing false bullet");
                     }
                 }
@@ -274,13 +273,13 @@ namespace Scripting
     // This class is just data to create a real enemy gameobject from.
     public class EnemyTemplate
     {
-        public Transform start_location; // where the enemy will start
+        public GameObject start_location; // where the enemy will start
         public List<BaseAction> commands; // the list of instructions/actions the enemy will do after spawning
         public float life_time; // how long the enemy will stay active.
 
         public float health; // health of the enemy
 
-        public EnemyTemplate(Transform startLocation, float lifeTime, float startHealth, List<BaseAction> actions = null)
+        public EnemyTemplate(GameObject startLocation, float lifeTime, float startHealth, List<BaseAction> actions = null)
         {
             start_location = startLocation;
             life_time = lifeTime;

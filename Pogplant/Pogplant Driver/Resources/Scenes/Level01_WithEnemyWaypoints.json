@@ -70,6 +70,10 @@
 		{
 			"m_Name" : "Box Trigger"
 		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentFour_A"
+		},
 		"Transform" : 
 		{
 			"m_position" : 
@@ -113,6 +117,10 @@
 		"Name" : 
 		{
 			"m_Name" : "Box Trigger"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentTwo_B"
 		},
 		"Transform" : 
 		{
@@ -216,7 +224,6 @@
 		},
 		"Scripting" : 
 		{
-			"EncounterSystemDriver" : false,
 			"FollowSpline" : false
 		},
 		"Tag" : 
@@ -298,6 +305,7 @@
 		},
 		"Scripting" : 
 		{
+			"EncounterSystemDriver" : false,
 			"PlayerScript" : false
 		},
 		"Transform" : 
@@ -1039,6 +1047,10 @@
 		"Name" : 
 		{
 			"m_Name" : "Box Trigger"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentTwo_A"
 		},
 		"Transform" : 
 		{
@@ -2817,7 +2829,7 @@
 		{
 			"m_position" : 
 			[
-				173.05032348632812,
+				173.05032348632813,
 				88.483757019042969,
 				-1462.73095703125
 			],
