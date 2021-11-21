@@ -44,8 +44,9 @@ namespace PogplantDriver
 		bool adding_enabled = false;
 
 		if (PPD::ImguiHelper::m_CurrentEntity != entt::null)
+		{
 			adding_enabled = true;
-
+		}
 		if (ImGui::MenuItem("Tag", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Tag>(PPD::ImguiHelper::m_CurrentEntity);
@@ -505,8 +506,8 @@ namespace PogplantDriver
 					}
 					if (ImGui::MenuItem("Edit prefab"))
 					{
-						const auto& prefab = _view.get<Components::Prefab>(m_CurrentEntity);
-						Application::GetInstance().StartPrefabEditing(prefab.file_path);
+					const auto& prefab = _view.get<Components::Prefab>(m_CurrentEntity);
+					Application::GetInstance().StartPrefabEditing(prefab.file_path);
 					}
 
 					if (ImGui::MenuItem("Save prefab"))
@@ -549,7 +550,7 @@ namespace PogplantDriver
 
 						if (!m_children.empty())
 						{
-							if(ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  Children", ImGuiTreeNodeFlags_DefaultOpen))
+							if (ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  Children", ImGuiTreeNodeFlags_DefaultOpen))
 								for (auto child : m_children)
 									ImGui::Text("ID: %d", child);
 						}
@@ -581,9 +582,16 @@ namespace PogplantDriver
 				}
 
 				auto tagging = m_ecs->GetReg().try_get<Components::Tag>(m_CurrentEntity);
-				if (tagging && ImGui::CollapsingHeader(ICON_FA_TAGS "  Tag", ImGuiTreeNodeFlags_DefaultOpen))
+
+				if (tagging)
 				{
-					Reflect_ImGui(tagging);
+					bool enable_tagging = true;
+					if (ImGui::CollapsingHeader(ICON_FA_TAGS "  Tag", &enable_tagging, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						Reflect_ImGui(tagging);
+					}
+					if (!enable_tagging)
+						m_ecs->GetReg().remove<Components::Tag>(m_CurrentEntity);
 				}
 
 				auto transform = m_ecs->GetReg().try_get<Components::Transform>(m_CurrentEntity);
@@ -595,40 +603,46 @@ namespace PogplantDriver
 				auto transformDebugger = m_ecs->GetReg().try_get<Components::TransformDebugger>(m_CurrentEntity);
 				if (transformDebugger && transform)
 				{
-					ImGui::PushID("##TDebugger");
-					auto tmpPos = transform->GetGlobalPosition();
-					auto tmpRot = transform->GetGlobalRotation();
-					auto tmpScale = transform->GetGlobalScale();
-
-					CreateDragFloat3("Global Position", glm::value_ptr(tmpPos));
-					CreateDragFloat3("Global Rotation", glm::value_ptr(tmpRot));
-					CreateDragFloat3("Global Scale", glm::value_ptr(tmpScale));
-
-					transform->SetGlobalPosition(tmpPos);
-					transform->SetGlobalRotation(tmpRot);
-					transform->SetGlobalScale(tmpScale);
-
-					CreateDragFloat3("Local Position", glm::value_ptr(transform->m_position));
-					CreateDragFloat3("Local Rotation", glm::value_ptr(transform->m_rotation));
-					CreateDragFloat3("Local Scale", glm::value_ptr(transform->m_scale));
-
-					ImguiBlankSeperator(1);
-
-					ImGui::Checkbox("Draw Forward Vector", &transformDebugger->m_drawForwardVector);
-
-					if (transformDebugger->m_drawForwardVector)
+					bool enable_transformdebugger = true;
+					if (ImGui::CollapsingHeader("  Transform Debugger", &enable_transformdebugger, ImGuiTreeNodeFlags_DefaultOpen))
 					{
-						ImGui::DragFloat("Vector Length", &transformDebugger->m_forwardVectorLength, 0.2f, 0.1f, 10.f);
+						ImGui::PushID("##TDebugger");
+						auto tmpPos = transform->GetGlobalPosition();
+						auto tmpRot = transform->GetGlobalRotation();
+						auto tmpScale = transform->GetGlobalScale();
 
-						Pogplant::DebugDraw::DebugLine(tmpPos, tmpPos + transform->GetForwardVector() * transformDebugger->m_forwardVectorLength);
+						CreateDragFloat3("Global Position", glm::value_ptr(tmpPos));
+						CreateDragFloat3("Global Rotation", glm::value_ptr(tmpRot));
+						CreateDragFloat3("Global Scale", glm::value_ptr(tmpScale));
+
+						transform->SetGlobalPosition(tmpPos);
+						transform->SetGlobalRotation(tmpRot);
+						transform->SetGlobalScale(tmpScale);
+
+						CreateDragFloat3("Local Position", glm::value_ptr(transform->m_position));
+						CreateDragFloat3("Local Rotation", glm::value_ptr(transform->m_rotation));
+						CreateDragFloat3("Local Scale", glm::value_ptr(transform->m_scale));
+
+						ImguiBlankSeperator(1);
+
+						ImGui::Checkbox("Draw Forward Vector", &transformDebugger->m_drawForwardVector);
+
+						if (transformDebugger->m_drawForwardVector)
+						{
+							ImGui::DragFloat("Vector Length", &transformDebugger->m_forwardVectorLength, 0.2f, 0.1f, 10.f);
+
+							Pogplant::DebugDraw::DebugLine(tmpPos, tmpPos + transform->GetForwardVector() * transformDebugger->m_forwardVectorLength);
+						}
+
+						if (ImGui::Button("Set LookAt to (0, 0, 0)"))
+						{
+							transform->LookAt(glm::vec3{ 0.f,0.f,0.f });
+						}
+
+						ImGui::PopID();
+						if (!enable_transformdebugger)
+							m_ecs->GetReg().remove<Components::TransformDebugger>(m_CurrentEntity);
 					}
-
-					if (ImGui::Button("Set LookAt to (0, 0, 0)"))
-					{
-						transform->LookAt(glm::vec3{ 0.f,0.f,0.f });
-					}
-
-					ImGui::PopID();
 				}
 
 				RendererComponentHelper();
@@ -2165,6 +2179,8 @@ namespace PogplantDriver
 				}
 				ImGui::NewLine();
 			}
+			if(!enableRenderer)
+				m_ecs->GetReg().remove<Components::PrimitiveRender>(m_CurrentEntity);
 		}
 	}
 
@@ -2449,6 +2465,9 @@ namespace PogplantDriver
 					ToolTipHelper(toolTip.c_str(), true);
 				}
 
+				if(!enablePSystem)
+					m_ecs->GetReg().remove<Components::ParticleSystem>(m_CurrentEntity);
+
 				ImguiBlankSeperator(1);
 				ImGui::Separator();
 			}
@@ -2482,6 +2501,9 @@ namespace PogplantDriver
 				}
 				ImGui::Dummy(ImVec2(0.0f, 0.5f));
 				TextureSelectHelper(popuplabel, canvas->m_TexName, canvas->m_TexID);
+
+				if (!enableCanvas)
+					m_ecs->GetReg().remove<Components::Canvas>(m_CurrentEntity);
 
 				ImguiBlankSeperator(1);
 				ImGui::Separator();
