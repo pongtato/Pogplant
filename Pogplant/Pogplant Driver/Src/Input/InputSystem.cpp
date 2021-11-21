@@ -40,6 +40,8 @@ namespace PPI
 		InputSystem::Instance().AppendKey("UP", GLFW_KEY_W, GLFW_GAMEPAD_BUTTON_DPAD_DOWN);
 		InputSystem::Instance().AppendKey("SHOOT", GLFW_KEY_SPACE, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER + JOYSTICKOSET);
 
+
+
 		/*Set menu buttons*/
 		InputSystem::Instance().AppendKey("ESCAPE", GLFW_KEY_ESCAPE, GLFW_GAMEPAD_BUTTON_START);
 		InputSystem::Instance().AppendKey("MENUSELECT", GLFW_KEY_ENTER, GLFW_GAMEPAD_BUTTON_A);
@@ -54,6 +56,10 @@ namespace PPI
 
 		InputSystem::Instance().AppendAxis("AIMX", GLFW_GAMEPAD_AXIS_RIGHT_X, false, true, 0.2f, 0.f);
 		InputSystem::Instance().AppendAxis("AIMY", GLFW_GAMEPAD_AXIS_RIGHT_Y, false, true, 0.2f, 0.f);
+
+		//Temp buttons for mouse input test pelase clean up
+		InputSystem::Instance().AppendKey("RIGHTCLICK", GLFW_MOUSE_BUTTON_RIGHT);
+		InputSystem::Instance().AppendKey("LEFTCLICK", GLFW_MOUSE_BUTTON_LEFT);
 
 		GLFWInputManager::Instance().SetActiveWindow(window);
 

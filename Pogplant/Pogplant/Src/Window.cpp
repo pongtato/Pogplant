@@ -14,8 +14,6 @@ namespace Pogplant
 	int Window::m_Height = 0;
 	float Window::m_Aspect = 0.0f;
 	bool Window::m_VSync = false;
-	float Window::m_GameplayMouseX = 0.f;
-	float Window::m_GameplayMouseY = 0.f;
 
 	void WindowSizeCallback(GLFWwindow*, int _Width, int _Height)
 	{
@@ -49,8 +47,8 @@ namespace Pogplant
 			//activeCam->UpdateCameraPan(_XPos, _YPos);
 			activeCam->MouseInput(static_cast<float>(_XPos), static_cast<float>(_YPos));
 		}
-		Window::m_GameplayMouseX = static_cast<float>(_XPos);
-		Window::m_GameplayMouseY = static_cast<float>(_YPos);
+		//Window::m_GameplayMouseX = static_cast<float>(_XPos);
+		//Window::m_GameplayMouseY = static_cast<float>(_YPos);
 		/// QUAT
 		//CameraResource::m_QuatCam.MouseInput(static_cast<float>(_XPos), static_cast<float>(_YPos));
 	}

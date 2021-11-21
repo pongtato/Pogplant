@@ -22,8 +22,5 @@ namespace Pogplant
 		static int m_Height;
 		static bool m_VSync;
 		static float m_Aspect;
-		//For Input for gameplay side, float used as glm is still not defined here
-		static float m_GameplayMouseX;
-		static float m_GameplayMouseY;
 	};
 }

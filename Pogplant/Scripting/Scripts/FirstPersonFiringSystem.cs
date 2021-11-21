@@ -21,6 +21,16 @@ namespace Scripting
         float p_fireRate = 0.66f;
         float p_fire_timer = 0.0f;
 
+        //Player Crosshair(The smaller one)
+        uint Crosshair;
+        public float max_offset_value = 0.1f; // Canvas space is -1 to 1;
+        public float move_multipler = 0.0001f; // Need to MEGAREDUCE it
+        public float lerp_speed = 8.0f;
+        Vector3 current_offset_value; //Use only X,Y
+        Vector3 shooting_box_initial_pos;
+        Transform original_reticle_initial = new Transform();
+        Vector3 MousePos =  new Vector3(0, 0, 0);
+        bool onceFlag = false;
 
 
         public FirstPersonFiringSystem()
@@ -29,6 +39,7 @@ namespace Scripting
             PlayerShip = ECS.FindEntityWithName("PlayerShip");
             shipCamera = ECS.FindEntityWithName("PlayerCam");
             ShootingBox = ECS.FindEntityWithName("ShootingBox");
+            Crosshair = ECS.FindEntityWithName("Crosshair");
             uint Turret1 = ECS.FindEntityWithName("PlayerTurret1");
             uint Turret2 = ECS.FindEntityWithName("PlayerTurret2");
             Turrets.Add(Turret1);
@@ -37,8 +48,13 @@ namespace Scripting
 
         public override void Init(ref uint _entityID)
         {
-            entityID = _entityID;
+           entityID = _entityID;
             p_fireRate = 1 / 10.0f;
+            current_offset_value = new Vector3(0, 0, 0);
+
+            Transform burner = new Transform();
+            ECS.GetTransformECS(ShootingBox, ref shooting_box_initial_pos, ref burner.Rotation, ref burner.Scale);
+            ECS.GetTransformECS(Crosshair, ref original_reticle_initial.Position, ref original_reticle_initial.Rotation, ref original_reticle_initial.Scale);
         }
 
         public override void Start()
@@ -50,6 +66,7 @@ namespace Scripting
             //float X = 0, Y = 0;
             //GameUtilities.GetMousePos(ref X,ref  Y);
             //Console.WriteLine("Mouse Pos: " + X + ", " + Y);
+            UpdateReticleMovement(ref transform, ref dt);
 
             //Add homing capablities
             int lower_count = enemy_in_range.Count < Turrets.Count ? enemy_in_range.Count : Turrets.Count;
@@ -100,7 +117,7 @@ namespace Scripting
         {
 
             p_fire_timer += dt;
-            if ((InputUtility.onKeyHeld("SHOOT")))
+            if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK"))
             {
                 if (p_fire_timer >= p_fireRate)
                 {
@@ -165,6 +182,69 @@ namespace Scripting
             }
             enemy_to_target.Remove(baseEnemy);
             //UpdateReticleTargets();
+        }
+
+        void UpdateReticleMovement(ref Transform transform, ref float dt)
+        {
+            //Get mouse difference
+            //Using left to update first
+            Vector3 diff = new Vector3(0, 0, 0);
+            //Use this to test as we need to set mouse to the middle when in game
+            if (InputUtility.onKeyHeld("RIGHTCLICK") || InputUtility.onKeyTriggered("RIGHTCLICK"))
+            {
+                Vector3 newMousePos = new Vector3(0, 0, 0);
+                if (!onceFlag)
+                {
+                    GameUtilities.GetMousePos(ref MousePos.X, ref MousePos.Y);
+                    onceFlag = true; ;
+                    newMousePos = MousePos;
+                }
+                GameUtilities.GetMousePos(ref newMousePos.X, ref newMousePos.Y);
+                diff = newMousePos - MousePos;
+                MousePos = newMousePos;
+
+                if (InputUtility.onKeyReleased("RIGHTCLICK"))
+                {
+                    onceFlag = false;
+                }
+            }
+
+
+            //Need to flip Y
+            if (diff.X > 0 && current_offset_value.X < max_offset_value)
+                current_offset_value.X += (diff.X * move_multipler);
+            if(diff.X < 0 && current_offset_value.X > -max_offset_value)
+                current_offset_value.X += (diff.X * move_multipler);
+
+            if (diff.Y > 0 && current_offset_value.Y < max_offset_value)
+                current_offset_value.Y += (-diff.Y * move_multipler);
+            if (diff.Y < 0 && current_offset_value.Y > -max_offset_value)
+                current_offset_value.Y += (-diff.Y * move_multipler);
+
+
+            //Console.WriteLine("current_offset_value X: " + current_offset_value.X);
+            //Console.WriteLine("current_offset_value Y: " + current_offset_value.Y);
+
+            //Update the reticle and hitbox zone
+            Transform inner_ret = new Transform();
+            inner_ret.Position = new Vector3(0, 0, 0);
+            ECS.GetTransformECS(Crosshair, ref inner_ret.Position, ref inner_ret.Rotation, ref inner_ret.Scale);
+            inner_ret.Position = Vector3.Lerp(inner_ret.Position, original_reticle_initial.Position + current_offset_value, lerp_speed * dt);
+            ECS.SetTransformECS(Crosshair, ref inner_ret.Position, ref original_reticle_initial.Rotation, ref original_reticle_initial.Scale);
+            //ShootingBox
+            transform.Position = Vector3.Lerp(transform.Position, shooting_box_initial_pos + current_offset_value, lerp_speed * dt);
+
+            float dist = current_offset_value.magnitude();
+            //Clamp the reticle
+            if (dist > max_offset_value)
+            {
+                Vector3 maxRange = Vector3.Normalise(current_offset_value) * max_offset_value;
+                transform.Position = new Vector3(maxRange.X, maxRange.Y, transform.Position.Z);
+                inner_ret.Position = new Vector3(maxRange.X, maxRange.Y, original_reticle_initial.Position.Z);
+                ECS.SetTransformECS(Crosshair, ref inner_ret.Position, ref original_reticle_initial.Rotation, ref original_reticle_initial.Scale);
+            }
+
+
         }
 
         void CoutMyEnemy()

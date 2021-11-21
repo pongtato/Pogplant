@@ -1,5 +1,6 @@
 #include "Pogplant.h"
 
+#include "../Src/Input/GLFWInput.h"
 #include "../Src/ImguiHelper.h"
 #include "../Src/ECS/Entity.h"
 #include "../Src/ECS/Components/Components.h"
@@ -15,8 +16,11 @@ namespace Scripting
 {
 	void GetMousePos(float& _X, float& _Y)
 	{
-		_X = Pogplant::Window::m_GameplayMouseX;
-		_Y = Pogplant::Window::m_GameplayMouseY;
+		double castX = 0;
+		double castY = 0;
+		PPI::GLFWInputManager::Instance().getMouse(castX, castY);
+		_X = static_cast<float>(castX);
+		_Y = static_cast<float>(castY);
 	}
 
 	std::uint32_t Instantiate(MonoString* name, glm::vec3 _Position, glm::vec3 _Rotation)
