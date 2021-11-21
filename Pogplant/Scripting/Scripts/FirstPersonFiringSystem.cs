@@ -23,9 +23,9 @@ namespace Scripting
 
         //Player Crosshair(The smaller one)
         uint Crosshair;
-        public float max_offset_value = 0.1f; // Canvas space is -1 to 1;
-        public float move_multipler = 0.0001f; // Need to MEGAREDUCE it
-        public float lerp_speed = 8.0f;
+        public float max_offset_value = 5f; //
+        public float move_multipler = 0.1f; // Need to MEGAREDUCE it
+        public float lerp_speed = 20.0f; // Needs high lerp speed to be smooth
         Vector3 current_offset_value; //Use only X,Y
         Vector3 shooting_box_initial_pos;
         Transform original_reticle_initial = new Transform();
@@ -209,17 +209,17 @@ namespace Scripting
                 }
             }
 
-
-            //Need to flip Y
+            //Need to flip X and Y for world since mouse > is postive
+            diff *= -1.0f;
             if (diff.X > 0 && current_offset_value.X < max_offset_value)
                 current_offset_value.X += (diff.X * move_multipler);
             if(diff.X < 0 && current_offset_value.X > -max_offset_value)
                 current_offset_value.X += (diff.X * move_multipler);
 
             if (diff.Y > 0 && current_offset_value.Y < max_offset_value)
-                current_offset_value.Y += (-diff.Y * move_multipler);
+                current_offset_value.Y += (diff.Y * move_multipler);
             if (diff.Y < 0 && current_offset_value.Y > -max_offset_value)
-                current_offset_value.Y += (-diff.Y * move_multipler);
+                current_offset_value.Y += (diff.Y * move_multipler);
 
 
             //Console.WriteLine("current_offset_value X: " + current_offset_value.X);
