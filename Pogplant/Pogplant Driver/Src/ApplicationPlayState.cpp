@@ -161,6 +161,8 @@ void Application::RenderPlayState()
 /******************************************************************************/
 void Application::LeavePlayState()
 {
+	m_sPhysicsSystem.ExitState();
+
 	PPA::AudioEngine::StopPlayingAll();
 	m_sScriptSystem.Unload();
 	m_playECS.Clear();

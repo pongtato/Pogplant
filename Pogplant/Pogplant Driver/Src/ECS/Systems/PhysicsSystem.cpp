@@ -101,113 +101,13 @@ void PhysicsSystem::Init(ECS* ecs, std::shared_ptr<PPE::EventBus>& eventBus)
 	m_triggerQueue.clear();
 	m_mTriggerQueueMutex.unlock();
 
+
 	m_broadphase.SetNullObject(entt::null);
 }
 
 void PhysicsSystem::InitPlayState()
 {
-	//Update all colliders
-	auto boxColliders = m_registry->view<Components::Transform, Components::BoxCollider>();
-	auto obbBoxColliders = m_registry->view<Components::Transform, Components::OBBBoxCollider>();
-	auto sphereColliders = m_registry->view<Components::Transform, Components::SphereCollider>();
-
-	/*auto combinedView = boxColliders | sphereColliders;
-
-	for (auto collidable : combinedView)
-	{
-		auto& transform = combinedView.get<Components::Transform>(collidable);
-
-		transform.m_position;
-	}//*/
-
-	for (auto& collidable : boxColliders)
-	{
-		auto& transform = boxColliders.get<Components::Transform>(collidable);
-		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
-
-		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
-		if (!colliderIdentifier)
-		{
-			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
-				collidable,
-				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
-				boxCollider.isTrigger,
-				GetCollisionLayer(boxCollider.collisionLayer));
-		}
-
-		boxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider.centre, boxCollider.extends * transform.GetGlobalScale());
-	}
-
-	//CHANGE
-	for (auto& collidable : obbBoxColliders)
-	{
-		auto& transform = obbBoxColliders.get<Components::Transform>(collidable);
-		auto& obbBoxCollider = obbBoxColliders.get<Components::OBBBoxCollider>(collidable);
-
-		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
-		if (!colliderIdentifier)
-		{
-			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
-				collidable,
-				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
-				obbBoxCollider.isTrigger,
-				GetCollisionLayer(obbBoxCollider.collisionLayer));
-		}
-
-		obbBoxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + obbBoxCollider.centre, obbBoxCollider.extends * transform.GetGlobalScale());
-		obbBoxCollider.obb.m_pos = transform.m_position;
-		obbBoxCollider.obb.m_extendX = { 1, 0, 0 };
-		obbBoxCollider.obb.m_extendY = { 0, 1, 0 };
-		obbBoxCollider.obb.m_extendZ = { 0, 0, 1 };
-	}
-
-	for (auto& collidable : sphereColliders)
-	{
-		auto& transform = sphereColliders.get<Components::Transform>(collidable);
-		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
-
-		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
-		if (!colliderIdentifier)
-		{
-			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
-				collidable,
-				Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE,
-				sphereCollider.isTrigger,
-				GetCollisionLayer(sphereCollider.collisionLayer));
-		}
-
-		auto tmpScale = transform.GetGlobalScale();
-		sphereCollider.sphere.m_pos = transform.GetGlobalPosition() + sphereCollider.centre;
-		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
-	}
-
-	/// Height map example GAB refer to this hehe xd
-	/*auto hmd_view = ecs.view<Transform, HeightMapDebugger>();
-	auto heightMap_view = ecs.view<Transform, PrimitiveRender>();
-	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
-	for (auto hm : heightMap_view)
-	{
-		floorMesh->m_Heightmap;
-		auto& hmT = heightMap_view.get<Transform>(hm);
-		for (auto entity : hmd_view)
-		{
-			auto& debugObjectT = hmd_view.get<Transform>(entity);
-			glm::vec3 mappedPos = glm::vec3(debugObjectT.m_position.x / hmT.m_scale.x, 0.0f, debugObjectT.m_position.z / hmT.m_scale.z);
-			// Factor height * heightmap scale + heightmaps relative position then + the size of object
-			debugObjectT.m_position.y = floorMesh->GetHeight(mappedPos) * hmT.m_scale.y + hmT.m_position.y + debugObjectT.m_scale.y;
-		}
-	}//*/
-
-	/*auto heightMap_view = m_registry->view<Components::Transform, Components::PrimitiveRender, Components::HeightMapCollider>();
-	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
-	for (auto& heightMap : heightMap_view)
-	{
-		auto& heightMapTransform = heightMap_view.get<Components::Transform>(heightMap);
-		auto& heightMapCollider = heightMap_view.get<Components::HeightMapCollider>(heightMap);
-
-		heightMapCollider.heightMap.m_Heightmap = floorMesh->m_Heightmap;
-		heightMapCollider.heightMap.m_HeightMapDim = floorMesh->m_HeightMapDim;
-	}//*/
+	UpdateEditor();
 }
 
 void PhysicsSystem::UpdateMovingObjects()
@@ -350,22 +250,29 @@ void PhysicsSystem::UpdateEditor()
 		auto& transform = boxColliders.get<Components::Transform>(collidable);
 		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
 
+		boxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider.centre, boxCollider.extends * transform.GetGlobalScale());
+
 		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
 		if (!colliderIdentifier)
 		{
-			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+			auto& identifier = m_registry->GetReg().emplace<Components::ColliderIdentifier>(
 				collidable,
 				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
 				boxCollider.isTrigger,
 				GetCollisionLayer(boxCollider.collisionLayer));
+
+			m_broadphase.InsertData(&identifier.broadPhaseKey, collidable, boxCollider.aabb);
 		}
 		else
 		{
 			colliderIdentifier->isTrigger = boxCollider.isTrigger;
 			colliderIdentifier->collisionLayer = GetCollisionLayer(boxCollider.collisionLayer);
-		}
 
-		boxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider.centre, boxCollider.extends * transform.GetGlobalScale());
+			if(colliderIdentifier->broadPhaseKey)
+				m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, boxCollider.aabb);
+			else
+				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, boxCollider.aabb);
+		}
 	}
 
 	auto sphereColliders = m_registry->view<Components::Transform, Components::SphereCollider>();
@@ -442,6 +349,8 @@ void PhysicsSystem::Update(float c_dt)
 	//Query AABBTree
 	m_collisionQuery.Clear();
 	m_broadphase.QueryTree(m_collisionQuery);
+
+	std::cout << m_collisionQuery.m_query.size() << std::endl;
 
 	//Set the other threads to update trigger behavior
 	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
@@ -554,4 +463,18 @@ void PhysicsSystem::Update(float c_dt)
 
 		m_mTriggerQueueMutex.unlock();
 	}
+}
+
+void PhysicsSystem::ExitState()
+{
+	auto collidersList = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
+	for (auto& collidable : collidersList)
+	{
+		auto& collisionIdentifier = collidersList.get<Components::ColliderIdentifier>(collidable);
+
+		collisionIdentifier.broadPhaseKey = nullptr;
+	}
+
+	m_broadphase.Clear();
+	m_collisionQuery.Clear();
 }

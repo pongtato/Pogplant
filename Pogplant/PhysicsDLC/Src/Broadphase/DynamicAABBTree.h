@@ -26,8 +26,15 @@ namespace PhysicsDLC::Broadphase
 		DynamicAABBTree() = default;
 		~DynamicAABBTree();
 
+		void InsertData(void** key, const IDType& entityID, const Collision::Shapes::AABB& aabb);
+		void UpdateData(void** key, const IDType& entityID, const Collision::Shapes::AABB& aabb);
+		void RemoveData(void** key);
+
 		void QueryTree(BroadphaseQuery<IDType>& query);
 		void SetNullObject(const IDType& object);
+
+		std::vector<Collision::Shapes::AABB> GetAABBTreeBoxes();
+
 		void Clear();
 
 	private:
@@ -46,7 +53,7 @@ namespace PhysicsDLC::Broadphase
 			PhysicsDLC::Collision::Shapes::AABB m_aabb;
 			IDType m_entity;
 
-			size_t m_height = 0;
+			int m_height = 0;
 		};
 
 		/**>Root of the AABB Tree*/
@@ -56,7 +63,7 @@ namespace PhysicsDLC::Broadphase
 		const float m_AABBFatteningFactor = 1.1f;
 
 
-
+		void GetAABBTreeBoxes(std::vector<Collision::Shapes::AABB>& c_boxes, Node* c_curNode);
 		void SelfQueryTree(Node* c_node, BroadphaseQuery<IDType>& results);
 		void SelfQueryTree(Node* c_nodeA, Node* c_nodeB, BroadphaseQuery<IDType>& results);
 		void SplitNode(Node* c_nodeA, Node* c_nodeB, BroadphaseQuery<IDType>& results);

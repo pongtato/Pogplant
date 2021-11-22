@@ -1,3 +1,4 @@
+#include "DynamicAABBTree.h"
 /******************************************************************************/
 /*!
 \file	DynamicAABBTree.cpp
@@ -20,6 +21,107 @@ namespace PhysicsDLC::Broadphase
 		DeleteTree(m_treeRoot);
 	}
 
+	template <typename IDType>
+	void DynamicAABBTree<IDType>::InsertData(void** key, const IDType& entityID, const PhysicsDLC::Collision::Shapes::AABB& aabb)
+	{
+		Node* newNode = new Node;
+
+		*key = newNode;
+		newNode->m_entity = entityID;
+		newNode->m_aabb = aabb;
+		
+		//newNode->m_aabb.FattenAABB(m_AABBFatteningFactor);
+		
+
+		InsertNode(m_treeRoot, newNode);
+	}
+
+	template<typename IDType>
+	void DynamicAABBTree<IDType>::UpdateData(void** key, const IDType& entityID, const Collision::Shapes::AABB& aabb)
+	{
+		Node* updateNode = reinterpret_cast<Node*>(*key);
+
+		if (updateNode == nullptr)
+			return;
+
+		PhysicsDLC::Collision::Shapes::AABB fatterAABB = updateNode->m_parent->m_aabb;
+
+		fatterAABB.FattenAABB(m_AABBFatteningFactor);
+
+
+		if (!fatterAABB.Contains(aabb))
+		{
+			RemoveData(key);
+			InsertData(key, entityID, aabb);
+		}
+		else
+		{
+			updateNode->m_aabb = aabb;
+			updateNode->m_aabb.FattenAABB(m_AABBFatteningFactor);
+		}
+	}
+
+	template<typename IDType>
+	void DynamicAABBTree<IDType>::RemoveData(void** key)
+	{
+		Node* nodeToDelete = reinterpret_cast<Node*>(*key);
+
+		if (nodeToDelete == nullptr)
+			return;
+
+		if (nodeToDelete->m_height == 0)
+		{
+			//    [Parent]
+			//     /    \
+			// [newPar] [deleted]
+			if (!nodeToDelete->m_parent)
+			{
+				//Is tree root
+				delete nodeToDelete;
+				m_treeRoot = nullptr;
+				return;
+			}
+
+			Node* parentNode = nodeToDelete->m_parent;
+			Node* newParentNode = nullptr;
+
+			if (GetNodeLoc(parentNode, nodeToDelete) == NODELOCSTAT::N_LEFT)
+			{
+				newParentNode = parentNode->m_right;
+			}
+			else
+			{
+				newParentNode = parentNode->m_left;
+			}
+
+			//Relinking
+			newParentNode->m_parent = parentNode->m_parent;
+			if (parentNode->m_parent)
+			{
+				if (GetNodeLoc(parentNode->m_parent, parentNode) == NODELOCSTAT::N_LEFT)
+					parentNode->m_parent->m_left = newParentNode;
+				else
+					parentNode->m_parent->m_right = newParentNode;
+			}
+			else
+			{
+				//Parent is root
+				m_treeRoot = newParentNode;
+			}
+
+			delete nodeToDelete;
+			delete parentNode;
+
+			for (Node* traverse = newParentNode; traverse != nullptr; traverse = traverse->m_parent)
+			{
+				RecomputeHeight(traverse);
+				RecomputeAABB(traverse);
+			}
+
+			BalanceTree(newParentNode);
+		}
+	}
+
 	template<typename IDType>
 	void DynamicAABBTree<IDType>::QueryTree(BroadphaseQuery<IDType>& query)
 	{
@@ -33,9 +135,20 @@ namespace PhysicsDLC::Broadphase
 	}
 
 	template<typename IDType>
+	std::vector<Collision::Shapes::AABB> DynamicAABBTree<IDType>::GetAABBTreeBoxes()
+	{
+		std::vector<Collision::Shapes::AABB> aabbBoxes;
+
+		GetAABBTreeBoxes(aabbBoxes, m_treeRoot);
+
+		return aabbBoxes;
+	}
+
+	template<typename IDType>
 	void DynamicAABBTree<IDType>::Clear()
 	{
 		DeleteTree(m_treeRoot);
+		m_treeRoot = nullptr;
 	}
 
 	template<typename IDType>
@@ -86,8 +199,8 @@ namespace PhysicsDLC::Broadphase
 
 					traverse = restorePosition;
 
-					for (Node* traverse = c_curNode; traverse != nullptr; traverse = traverse->m_parent)
-						RecomputeHeight(traverse);
+					for (Node* traverse2 = c_curNode; traverse2 != nullptr; traverse2 = traverse2->m_parent)
+						RecomputeHeight(traverse2);
 				}
 			}
 
@@ -153,6 +266,22 @@ namespace PhysicsDLC::Broadphase
 		//Recompute aabb
 		RecomputeAABB(c_old);
 		RecomputeAABB(c_pivot);
+	}
+
+	template<typename IDType>
+	void DynamicAABBTree<IDType>::GetAABBTreeBoxes(std::vector<Collision::Shapes::AABB>& c_boxes, Node* c_curNode)
+	{
+		if (!c_curNode)
+			return;
+
+		if (c_curNode->m_entity == m_IDNullObj)
+			c_boxes.push_back(c_curNode->m_aabb);
+
+		if (c_curNode->m_left)
+			GetAABBTreeBoxes(c_boxes, c_curNode->m_left);
+
+		if (c_curNode->m_right)
+			GetAABBTreeBoxes(c_boxes, c_curNode->m_right);
 	}
 
 	/******************************************************************************/
@@ -267,6 +396,7 @@ namespace PhysicsDLC::Broadphase
 
 			//Create new parent node
 			Node* newParent = new Node{ c_curNode->m_parent, c_curNode, c_nodeToInsert };
+			newParent->m_entity = m_IDNullObj;
 
 			//Relink parent of curNode's left/right node to new parent
 			if (c_curNode->m_parent)
@@ -319,6 +449,7 @@ namespace PhysicsDLC::Broadphase
 		if (c_curNode->m_left && c_curNode->m_right)
 		{
 			c_curNode->m_aabb = PhysicsDLC::Collision::Shapes::AABB::Combine(c_curNode->m_left->m_aabb, c_curNode->m_right->m_aabb);
+			c_curNode->m_aabb.FattenAABB(m_AABBFatteningFactor);
 		}
 		else if (c_curNode->m_left)
 		{

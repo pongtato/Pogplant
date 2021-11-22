@@ -115,6 +115,7 @@ void Application::RenderEditorState()
 void Application::LeaveEditorState()
 {
 	//std::cout << "Leaving Editor State" << std::endl;
+	m_sPhysicsSystem.ExitState();
 
 	PPA::AudioEngine::StopPlayingAll();
 	m_sScriptSystem.Unload();

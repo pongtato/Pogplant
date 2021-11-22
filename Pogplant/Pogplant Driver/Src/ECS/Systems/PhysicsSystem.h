@@ -26,8 +26,7 @@
 #include <tuple>
 
 //Defines the number of threads that should be used to do triggers
-//Doesn't seem to improve much when you go higher, 2 already improves by abit
-#define NUM_TRIGGER_THREADS 2
+#define NUM_TRIGGER_THREADS 3
 
 class ECS;
 
@@ -53,6 +52,8 @@ public:
 	void DestroyCollisionLayer(const std::string& name);
 
 	int GetCollisionLayer(const std::string& layerName);
+
+	void ExitState();
 
 	std::unordered_map<int, std::unordered_map<int, int>> m_collisionMatrix;
 	std::map<std::string, int> m_collisionLayers;
