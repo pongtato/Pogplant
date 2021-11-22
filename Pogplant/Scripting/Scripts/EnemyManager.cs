@@ -92,7 +92,7 @@ namespace Scripting
                 transform.Scale = new Vector3(1.0f, 1.0f, 1.0f);
 
                 GameObject waypoint_GO = ECS.CreateChild(parent, name, transform);
-                //waypoint_GO.AddComponent<Renderer>(new Renderer("sphere"));
+                waypoint_GO.AddComponent<Renderer>(new Renderer("sphere"));
                 waypointGroup.Add(waypoint_GO);
 
                 //Console.WriteLine("Creating waypoint " + name + " at location: " + transform.Position.X + ", " + +transform.Position.Y + ", " + +transform.Position.Z);
@@ -187,7 +187,7 @@ namespace Scripting
             ECS.SetTransformParent(instance.id, ECS.GetTransformParent(spawnWaypoint.id));
 
             Transform transform = instance.GetComponent<Transform>();
-            transform.Rotation.Y = 90.0f;
+            transform.Rotation.Y = 180.0f;
             instance.AddComponent<BaseEnemy>(new BaseEnemy(enemy_template, instance));
             instance.GetComponent<BaseEnemy>().Start();
             instance.GetComponent<BaseEnemy>().SetManager(this);
@@ -249,6 +249,17 @@ namespace Scripting
             }
             Console.WriteLine("Enemy with ID: " + id + " could not be found!");
             return false;
+        }
+        public void TakeDamage(uint id, float damage)
+        {
+            foreach (var item in enemy_instances)
+            {
+                if (item.id == id)
+                {
+                    item.GetComponent<BaseEnemy>().TakeDamage(damage);
+                    break;
+                }
+            }
         }
     }
 

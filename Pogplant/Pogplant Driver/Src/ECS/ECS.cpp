@@ -262,6 +262,8 @@ void ECS::SetParent(entt::entity _parent, entt::entity _child)
 	_child_transform.SetGlobalRotation(_rotation);
 	_child_transform.SetGlobalScale(_scale);
 
+	_parent_transform.m_children.insert(_child);
+
 }
 
 entt::entity ECS::RemoveParentFrom(entt::entity _id)

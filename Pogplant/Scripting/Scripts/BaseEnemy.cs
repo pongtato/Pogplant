@@ -50,9 +50,9 @@ namespace Scripting
             float progress = current_time / duration;
             if (progress <= 0.0f)
             {
-                Console.WriteLine("Started moving enemy");
-                ECS.SetTransformECS(owner.id, ECS.GetGlobalPosition(start_position.id), start_position.transform.Value.Rotation, start_position.transform.Value.Scale);
+                //Console.WriteLine("Started moving enemy");
                 ECS.RemoveParentFrom(owner.id);
+                ECS.SetTransformECS(owner.id, ECS.GetGlobalPosition(start_position.id), start_position.transform.Value.Rotation, start_position.transform.Value.Scale);
             }
 
             if (is_finished)
@@ -72,14 +72,16 @@ namespace Scripting
 
             if (progress >= 1.0f)
             {
-                Console.WriteLine("Stopped moving enemy");
+                //Console.WriteLine("Stopped moving enemy");
                 is_finished = true;
-                ECS.SetTransformECS(owner.id, end_position.transform.Value.Position, end_position.transform.Value.Rotation, end_position.transform.Value.Scale);
+                //ECS.SetTransformECS(owner.id, end_position.transform.Value.Position, end_position.transform.Value.Rotation, end_position.transform.Value.Scale);
                 ECS.SetTransformParent(owner.id, ECS.GetTransformParent(end_position.id));
             }
             else
             {
-                ECS.SetTransformECS(owner.id, Vector3.Lerp(startPos, endPos, progress), owner.transform.Value.Rotation, owner.transform.Value.Scale);
+                Vector3 target_pos = Vector3.Lerp(startPos, endPos, progress);
+                //Console.WriteLine("Enemy " + owner.id + " target position: " + target_pos.X + ", " + target_pos.Y + ", " + target_pos.Z);
+                ECS.SetTransformECS(owner.id, target_pos, owner.transform.Value.Rotation, owner.transform.Value.Scale);
             }
 
             return is_finished;
@@ -132,10 +134,10 @@ namespace Scripting
         private float duration; // how long the enemy will attack for
 
         //private Animator animator = null;
-        private Transform[] muzzle_transforms;
+        private Transform[] muzzle_transforms = new Transform[1];
         //private EnemyManager em;
         private float current_time;
-        private int current_interval = 0;
+        //private int current_interval = 0;
         private float fire_timer = 0.0f;
         private bool is_finished = false;
 
@@ -150,14 +152,13 @@ namespace Scripting
             attack_animation = attackPattern;
             true_bullet_interval = trueBulletInterval;
             duration = totalDuration;
+
         }
         public override bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
         {
             if (is_finished)
                 return is_finished;
 
-            current_time += dt;
-            fire_timer += dt;
 
             // Play animation once, runtime initialization
             if (owner != null)
@@ -166,11 +167,16 @@ namespace Scripting
                 //em = manager;
                 //animator.Play(attack_animation);
 
-                muzzle_transforms = owner.GetComponent<BaseEnemy>().muzzles;
+                //muzzle_transforms = owner.GetComponent<BaseEnemy>().muzzles;
+                //is_primed = false;
+                //primer_timer = primer_time;
+            }
 
+            if (is_reseting)
+            {
                 //resets primer and reset
-                is_primed = false;
-                is_reseting = false;
+                //is_primed = false;
+                //is_reseting = false;
                 primer_timer = primer_time;
             }
 
@@ -179,35 +185,40 @@ namespace Scripting
             if (primer_timer <= 0.001f) is_primed = true;
 
             //checks for is_reseting
-            if (is_reseting == false)
-            {
-                float temp = current_time + primer_time;
-                if (temp >= duration) is_reseting = true;
-            }
+            //if (is_reseting == false)
+            //{
+            //    float temp = current_time + primer_time;
+            //    if (temp <= duration) is_reseting = true;
+            //}
+
+            current_time += dt;
+            fire_timer += dt;
 
             // Spawn bullets from enemy projectile pool
             if (fire_timer >= fire_rate && is_primed == true && is_reseting == false)
             {
                 fire_timer = 0.0f;
 
-                for (int i = 0; i < muzzle_transforms.Length; ++i)
-                {
-                    if (current_interval == true_bullet_interval)
-                    {
-                        current_interval = 0;
+                //for (int i = 0; i < muzzle_transforms.Length; ++i)
+                //{
+                //    if (current_interval == true_bullet_interval)
+                //    {
+                //        current_interval = 0;
 
-                        //FireBullet(em.GetBullet(true), i);
-                        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id), true);
-                        //Debug.Log("Firing true bullet");
-                    }
-                    else
-                    {
-                        ++current_interval;
-                        //FireBullet(em.GetBullet(false), i);
-                        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id));
-                        //Debug.Log("Firing false bullet");
-                    }
-                }
+                //        //FireBullet(em.GetBullet(true), i);
+                //        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id), true);
+                //        //Debug.Log("Firing true bullet");
+                //    }
+                //    else
+                //    {
+                //        ++current_interval;
+                //        //FireBullet(em.GetBullet(false), i);
+                //        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id));
+                //        //Debug.Log("Firing false bullet");
+                //    }
+                //}
+                //Console.WriteLine("Firing bullet");
+                GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 5f, owner.transform.Value.Rotation);
             }
 
             if (current_time >= duration)
@@ -341,7 +352,8 @@ namespace Scripting
         public Transform[] muzzles;
 
         private float current_lifetime = 0.0f;
-        private float deathAnimationTime = 4.0f;
+        private const float deathAnimTime = 2.0f;
+        private float deathAnimationTime = deathAnimTime;
         public bool is_alive;
 
         public BaseEnemy()
@@ -367,9 +379,10 @@ namespace Scripting
 
         public void TakeDamage(float damage)
         {
+            if (my_info.health >= 0)
             my_info.health -= damage;
 
-            //Debug.Log(damage + " damage taken by enemy!");
+            Console.WriteLine("Enemy with ID " + gameObject.id + " has taken " + damage + " damage, health is now " + my_info.health);
 
             if (my_info.health <= 0)
                 HandleDeath();
@@ -377,6 +390,7 @@ namespace Scripting
 
         private void HandleDeath()
         {
+            Console.WriteLine("Enemy with ID " + gameObject.id + " has called Handle death");
             if (is_alive)
             {
                 //gameObject.GetComponent<Destructible_Actor>().HandleDeath();
@@ -427,7 +441,7 @@ namespace Scripting
             }
             else
             {
-                if (deathAnimationTime == 4.0f)
+                if (deathAnimationTime == deathAnimTime)
                 {
                     //var rand = new Random();
                     //Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 1000.0f;

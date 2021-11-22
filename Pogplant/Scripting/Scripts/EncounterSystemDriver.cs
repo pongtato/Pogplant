@@ -1387,6 +1387,11 @@ namespace Scripting
         {
            return encounterManager.enemyManager.GetAlive(id);
         }
+
+        public void TakeDamage(uint id, float damage)
+        {
+            encounterManager.enemyManager.TakeDamage(id, damage);
+        }
     }
 
 }

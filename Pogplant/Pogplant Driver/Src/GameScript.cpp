@@ -68,7 +68,7 @@ namespace Scripting
 		{
 			auto box_pos = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(player_box);
 			//std::cout << "Rotation: " << box_pos->m_rotation.x << ", " << box_pos->m_rotation.y << ", " << box_pos->m_rotation.z << std::endl;
-			
+
 			auto playerTransform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(playerShip);
 
 			auto cam_comp = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Camera>(player_cam);
@@ -141,6 +141,7 @@ namespace Scripting
 
 	void PlayerProjectileCollision(entt::entity& object, entt::entity& other)
 	{
+		static entt::entity playerbox = entt::null;
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
 			return;
 
@@ -155,6 +156,21 @@ namespace Scripting
 				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
 				SSH::InvokeFunction("BaseTurret", "TakeDamage", other, player_projectile_script->m_Damage);
+			}
+		}
+		if (player_projectile_script)
+		{
+			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other)->collisionLayer == "ENEMY")
+			{
+				if (playerbox == entt::null)
+					playerbox = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithTag("Player");
+				else if (playerbox != entt::null)
+				{
+					const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(playerbox);
+					if (playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+						SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", playerbox, static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
+
+				}
 			}
 		}
 	}
@@ -192,7 +208,7 @@ namespace Scripting
 			if (other_collider->collisionLayer == "PLAYER" && player_collider->collisionLayer == "TRIGGERS")
 			{
 				MonoString* tag_mono = mono_string_new(mono_domain_get(), PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Tag>(object)->m_tag.c_str());
-				
+
 				auto parent_id = static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(other))->m_parent);
 				auto player_box_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(parent_id));
 
@@ -224,7 +240,7 @@ namespace Scripting
 		{
 			fv = transform->GetForwardVector();
 		}
-		
+
 		return fv;
 	}
 
