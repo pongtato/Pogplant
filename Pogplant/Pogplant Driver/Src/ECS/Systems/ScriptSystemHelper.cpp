@@ -92,6 +92,11 @@ namespace SSH
 		parent->m_children.insert(static_cast<entt::entity>(childID));
 	}
 
+	void RemoveParentFrom(std::uint32_t childID)
+	{
+		ScriptSystem::GetECS()->RemoveParentFrom(static_cast<entt::entity>(childID));
+	}
+
 	std::uint32_t GetTransformParent(std::uint32_t childID)
 	{
 		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(childID))->m_parent);

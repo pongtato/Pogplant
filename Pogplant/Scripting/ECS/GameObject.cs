@@ -114,7 +114,7 @@ namespace Scripting
                 if (baseEnemy == null)
                 {
                     baseEnemy = (BaseEnemy)(object)component;
-                    AddScript(id, "BaseEnemy");
+                    //AddScript(id, "BaseEnemy");
                 }
                 else
                 {

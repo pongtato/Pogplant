@@ -141,7 +141,9 @@ namespace Scripting
             current_time += dt;
             UpdateEncounterTimeline();
             UpdateSpawnedEncounters(dt);
-            //Console.WriteLine("Update Encounter Manager");
+
+            enemyManager.Update(dt);
+            //Console.WriteLine("End of EncounterManager.Update()");
         }
 
         public void AddEncounter(Encounter encounter)

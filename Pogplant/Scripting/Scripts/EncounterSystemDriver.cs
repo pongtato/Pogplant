@@ -339,27 +339,27 @@ namespace Scripting
             // 
             //GET SPAWN POINTS
             //
-            waveOne.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T1"), enemy1, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Far_T2"), enemy2, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Far_T3"), enemy3, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Far_T4"), enemy4, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Far_T4"), enemy5, "Enemy_01"));
+            waveOne.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T1"), enemy1, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Far_T2"), enemy2, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Far_T3"), enemy3, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Far_T4"), enemy4, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Far_T4"), enemy5, "Enemy_02"));
 
-            waveOne.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R1_Start"), enemy6, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R1_Start"), enemy7, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy8, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy9, "Enemy_01"));
+            waveOne.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R1_Start"), enemy6, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R1_Start"), enemy7, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy8, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy9, "Enemy_02"));
 
-            waveOne.AddSpawnAction(new SpawnAction(4.5f, enemyManager.GetWaypoint("Near_L2_Start"), enemy10, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(4.5f, enemyManager.GetWaypoint("Near_L2_Start"), enemy11, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(5.0f, enemyManager.GetWaypoint("Near_R2_Start"), enemy12, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(5.0f, enemyManager.GetWaypoint("Near_R2_Start"), enemy13, "Enemy_01"));
+            waveOne.AddSpawnAction(new SpawnAction(4.5f, enemyManager.GetWaypoint("Near_L2_Start"), enemy10, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(4.5f, enemyManager.GetWaypoint("Near_L2_Start"), enemy11, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(5.0f, enemyManager.GetWaypoint("Near_R2_Start"), enemy12, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(5.0f, enemyManager.GetWaypoint("Near_R2_Start"), enemy13, "Enemy_02"));
 
-            waveOne.AddSpawnAction(new SpawnAction(6.5f, enemyManager.GetWaypoint("Far_T1"), enemy14, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(6.75f, enemyManager.GetWaypoint("Far_T2"), enemy15, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(7.0f, enemyManager.GetWaypoint("Far_T3"), enemy16, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(7.25f, enemyManager.GetWaypoint("Far_T4"), enemy17, "Enemy_01"));
-            waveOne.AddSpawnAction(new SpawnAction(7.5f, enemyManager.GetWaypoint("Far_T4"), enemy18, "Enemy_01"));
+            waveOne.AddSpawnAction(new SpawnAction(6.5f, enemyManager.GetWaypoint("Far_T1"), enemy14, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(6.75f, enemyManager.GetWaypoint("Far_T2"), enemy15, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(7.0f, enemyManager.GetWaypoint("Far_T3"), enemy16, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(7.25f, enemyManager.GetWaypoint("Far_T4"), enemy17, "Enemy_02"));
+            waveOne.AddSpawnAction(new SpawnAction(7.5f, enemyManager.GetWaypoint("Far_T4"), enemy18, "Enemy_02"));
 
             encounterManager.AddEncounter(waveOne);
         }
@@ -545,31 +545,31 @@ namespace Scripting
             //
             // GET SPAWN POINTS
             //
-            waveTwo.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T5"), enemy1, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Far_T4"), enemy2, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Far_T3"), enemy3, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Far_T3"), enemy4, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Far_T5"), enemy5, "Enemy_01"));
+            waveTwo.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T5"), enemy1, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Far_T4"), enemy2, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Far_T3"), enemy3, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Far_T3"), enemy4, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Far_T5"), enemy5, "Enemy_02"));
 
-            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R1_Start"), enemy6, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy7, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy8, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy9, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy10, "Enemy_01"));
+            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R1_Start"), enemy6, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy7, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy8, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy9, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy10, "Enemy_02"));
 
-            waveTwo.AddSpawnAction(new SpawnAction(4.0f, enemyManager.GetWaypoint("Near_L2_Start"), enemy11, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(4.25f, enemyManager.GetWaypoint("Near_R2_Start"), enemy12, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(4.5f, enemyManager.GetWaypoint("Near_R2_Start"), enemy13, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(4.75f, enemyManager.GetWaypoint("Near_R2_Start"), enemy14, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(5.0f, enemyManager.GetWaypoint("Near_R2_Start"), enemy15, "Enemy_01"));
+            waveTwo.AddSpawnAction(new SpawnAction(4.0f, enemyManager.GetWaypoint("Near_L2_Start"), enemy11, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(4.25f, enemyManager.GetWaypoint("Near_R2_Start"), enemy12, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(4.5f, enemyManager.GetWaypoint("Near_R2_Start"), enemy13, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(4.75f, enemyManager.GetWaypoint("Near_R2_Start"), enemy14, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(5.0f, enemyManager.GetWaypoint("Near_R2_Start"), enemy15, "Enemy_02"));
 
-            waveTwo.AddSpawnAction(new SpawnAction(6.5f, enemyManager.GetWaypoint("Far_T3"), enemy16, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(6.75f, enemyManager.GetWaypoint("Far_T4"), enemy17, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(7.0f, enemyManager.GetWaypoint("Far_T3"), enemy18, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(7.0f, enemyManager.GetWaypoint("Far_T3"), enemy19, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(7.0f, enemyManager.GetWaypoint("Far_T4"), enemy20, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(6.75f, enemyManager.GetWaypoint("Far_T3"), enemy21, "Enemy_01"));
-            waveTwo.AddSpawnAction(new SpawnAction(6.5f, enemyManager.GetWaypoint("Far_T4"), enemy22, "Enemy_01"));
+            waveTwo.AddSpawnAction(new SpawnAction(6.5f, enemyManager.GetWaypoint("Far_T3"), enemy16, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(6.75f, enemyManager.GetWaypoint("Far_T4"), enemy17, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(7.0f, enemyManager.GetWaypoint("Far_T3"), enemy18, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(7.0f, enemyManager.GetWaypoint("Far_T3"), enemy19, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(7.0f, enemyManager.GetWaypoint("Far_T4"), enemy20, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(6.75f, enemyManager.GetWaypoint("Far_T3"), enemy21, "Enemy_02"));
+            waveTwo.AddSpawnAction(new SpawnAction(6.5f, enemyManager.GetWaypoint("Far_T4"), enemy22, "Enemy_02"));
 
             encounterManager.AddEncounter(waveTwo);
         }
@@ -692,21 +692,21 @@ namespace Scripting
             //
             // GET SPAWN POINTS
             //
-            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy1, "Enemy_01"));
-            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T1"), enemy2, "Enemy_01"));
-            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy3, "Enemy_01"));
-            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T1"), enemy4, "Enemy_01"));
+            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy1, "Enemy_02"));
+            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T1"), enemy2, "Enemy_02"));
+            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy3, "Enemy_02"));
+            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T1"), enemy4, "Enemy_02"));
 
-            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_R1_Start"), enemy5, "Enemy_01"));
-            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T5"), enemy6, "Enemy_01"));
-            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_R1_Start"), enemy7, "Enemy_01"));
-            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T5"), enemy8, "Enemy_01"));
+            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_R1_Start"), enemy5, "Enemy_02"));
+            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T5"), enemy6, "Enemy_02"));
+            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_R1_Start"), enemy7, "Enemy_02"));
+            waveThree.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T5"), enemy8, "Enemy_02"));
 
-            waveThree.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R1_Start"), enemy6, "Enemy_01"));
+            waveThree.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R1_Start"), enemy6, "Enemy_02"));
 
-            waveThree.AddSpawnAction(new SpawnAction(4.0f, enemyManager.GetWaypoint("Near_L2_Start"), enemy11, "Enemy_01"));
+            waveThree.AddSpawnAction(new SpawnAction(4.0f, enemyManager.GetWaypoint("Near_L2_Start"), enemy11, "Enemy_02"));
 
-            waveThree.AddSpawnAction(new SpawnAction(6.5f, enemyManager.GetWaypoint("Far_T3"), enemy16, "Enemy_01"));
+            waveThree.AddSpawnAction(new SpawnAction(6.5f, enemyManager.GetWaypoint("Far_T3"), enemy16, "Enemy_02"));
 
             encounterManager.AddEncounter(waveThree);
         }
@@ -777,13 +777,13 @@ namespace Scripting
             //
             // GET SPAWN POINTS
             //
-            segmentTwo_A.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_R1_Start"), enemy1, "Enemy_01"));
-            segmentTwo_A.AddSpawnAction(new SpawnAction(2.75f, enemyManager.GetWaypoint("Near_R1_Start"), enemy2, "Enemy_01"));
-            segmentTwo_A.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R2_Start"), enemy3, "Enemy_01"));
+            segmentTwo_A.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_R1_Start"), enemy1, "Enemy_02"));
+            segmentTwo_A.AddSpawnAction(new SpawnAction(2.75f, enemyManager.GetWaypoint("Near_R1_Start"), enemy2, "Enemy_02"));
+            segmentTwo_A.AddSpawnAction(new SpawnAction(2.5f, enemyManager.GetWaypoint("Near_R2_Start"), enemy3, "Enemy_02"));
 
-            segmentTwo_A.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L5_Start"), enemy4, "Enemy_01"));
-            segmentTwo_A.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_L6_Start"), enemy5, "Enemy_01"));
-            segmentTwo_A.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L6_Start"), enemy6, "Enemy_01"));
+            segmentTwo_A.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L5_Start"), enemy4, "Enemy_02"));
+            segmentTwo_A.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_L6_Start"), enemy5, "Enemy_02"));
+            segmentTwo_A.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L6_Start"), enemy6, "Enemy_02"));
 
             encounterManager.AddEncounter(segmentTwo_A);
         }
@@ -866,15 +866,15 @@ namespace Scripting
             //
             // GET SPAWN POINTS
             //
-            segmentTwo_B.AddSpawnAction(new SpawnAction(2.75f, enemyManager.GetWaypoint("Near_R0_Start"), enemy1, "Enemy_01"));
-            segmentTwo_B.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_R0_Start"), enemy2, "Enemy_01"));
-            segmentTwo_B.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_R0_Start"), enemy3, "Enemy_01"));
-            segmentTwo_B.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_R0_Start"), enemy4, "Enemy_01"));
+            segmentTwo_B.AddSpawnAction(new SpawnAction(2.75f, enemyManager.GetWaypoint("Near_R0_Start"), enemy1, "Enemy_02"));
+            segmentTwo_B.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_R0_Start"), enemy2, "Enemy_02"));
+            segmentTwo_B.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_R0_Start"), enemy3, "Enemy_02"));
+            segmentTwo_B.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_R0_Start"), enemy4, "Enemy_02"));
 
-            segmentTwo_B.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L4_Start"), enemy5, "Enemy_01"));
-            segmentTwo_B.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_L4_Start"), enemy6, "Enemy_01"));
-            segmentTwo_B.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L4_Start"), enemy7, "Enemy_01"));
-            segmentTwo_B.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_L4_Start"), enemy8, "Enemy_01"));
+            segmentTwo_B.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L4_Start"), enemy5, "Enemy_02"));
+            segmentTwo_B.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_L4_Start"), enemy6, "Enemy_02"));
+            segmentTwo_B.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L4_Start"), enemy7, "Enemy_02"));
+            segmentTwo_B.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_L4_Start"), enemy8, "Enemy_02"));
 
             encounterManager.AddEncounter(segmentTwo_B);
         }
@@ -969,17 +969,17 @@ namespace Scripting
             //
             // GET SPAWN POINTS
             //
-            segmentFour_A.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_T12_Start"), enemy1, "Enemy_01"));
-            segmentFour_A.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_T11_Start"), enemy2, "Enemy_01"));
-            segmentFour_A.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_T9_Start"), enemy3, "Enemy_01"));
-            segmentFour_A.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_T7_Start"), enemy4, "Enemy_01"));
-            segmentFour_A.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Near_T6_Start"), enemy5, "Enemy_01"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_T12_Start"), enemy1, "Enemy_02"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_T11_Start"), enemy2, "Enemy_02"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_T9_Start"), enemy3, "Enemy_02"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_T7_Start"), enemy4, "Enemy_02"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Near_T6_Start"), enemy5, "Enemy_02"));
 
-            segmentFour_A.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_T6_Start"), enemy6, "Enemy_01"));
-            segmentFour_A.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_T5_Start"), enemy7, "Enemy_01"));
-            segmentFour_A.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_T3_Start"), enemy8, "Enemy_01"));
-            segmentFour_A.AddSpawnAction(new SpawnAction(3.75f, enemyManager.GetWaypoint("Near_T1_Start"), enemy9, "Enemy_01"));
-            segmentFour_A.AddSpawnAction(new SpawnAction(4.0f, enemyManager.GetWaypoint("Near_T0_Start"), enemy10, "Enemy_01"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_T6_Start"), enemy6, "Enemy_02"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_T5_Start"), enemy7, "Enemy_02"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_T3_Start"), enemy8, "Enemy_02"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(3.75f, enemyManager.GetWaypoint("Near_T1_Start"), enemy9, "Enemy_02"));
+            segmentFour_A.AddSpawnAction(new SpawnAction(4.0f, enemyManager.GetWaypoint("Near_T0_Start"), enemy10, "Enemy_02"));
 
             encounterManager.AddEncounter(segmentFour_A);
         }
@@ -1068,16 +1068,16 @@ namespace Scripting
             //
             // GET SPAWN POINTS
             //
-            segmentFour_B.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T11"), enemy1, "Enemy_01"));
-            segmentFour_B.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Far_T9"), enemy2, "Enemy_01"));
-            segmentFour_B.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Far_T8"), enemy3, "Enemy_01"));
-            segmentFour_B.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Far_T7"), enemy4, "Enemy_01"));
+            segmentFour_B.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Far_T11"), enemy1, "Enemy_02"));
+            segmentFour_B.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Far_T9"), enemy2, "Enemy_02"));
+            segmentFour_B.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Far_T8"), enemy3, "Enemy_02"));
+            segmentFour_B.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Far_T7"), enemy4, "Enemy_02"));
 
-            segmentFour_B.AddSpawnAction(new SpawnAction(2.75f, enemyManager.GetWaypoint("Far_T6"), enemy5, "Enemy_01"));
-            segmentFour_B.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_L6_Start"), enemy6, "Enemy_01"));
-            segmentFour_B.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_L6_Start"), enemy7, "Enemy_01"));
-            segmentFour_B.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_L6_Start"), enemy8, "Enemy_01"));
-            segmentFour_B.AddSpawnAction(new SpawnAction(3.75f, enemyManager.GetWaypoint("Near_L5_Start"), enemy9, "Enemy_01"));
+            segmentFour_B.AddSpawnAction(new SpawnAction(2.75f, enemyManager.GetWaypoint("Far_T6"), enemy5, "Enemy_02"));
+            segmentFour_B.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_L6_Start"), enemy6, "Enemy_02"));
+            segmentFour_B.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_L6_Start"), enemy7, "Enemy_02"));
+            segmentFour_B.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_L6_Start"), enemy8, "Enemy_02"));
+            segmentFour_B.AddSpawnAction(new SpawnAction(3.75f, enemyManager.GetWaypoint("Near_L5_Start"), enemy9, "Enemy_02"));
             encounterManager.AddEncounter(segmentFour_B);
         }
 
@@ -1189,20 +1189,20 @@ namespace Scripting
             //
             // GET SPAWN POINTS
             //
-            segmentFour_C.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy1, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_L1_Start"), enemy2, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy3, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L2_Start"), enemy4, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_L2_Start"), enemy5, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_L3_Start"), enemy6, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Near_L3_Start"), enemy7, "Enemy_01"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy1, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_L1_Start"), enemy2, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L1_Start"), enemy3, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L2_Start"), enemy4, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_L2_Start"), enemy5, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_L3_Start"), enemy6, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Near_L3_Start"), enemy7, "Enemy_02"));
 
-            segmentFour_C.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_L5_Start"), enemy8, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_L5_Start"), enemy9, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_L6_Start"), enemy10, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_L6_Start"), enemy11, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_L7_Start"), enemy12, "Enemy_01"));
-            segmentFour_C.AddSpawnAction(new SpawnAction(3.75f, enemyManager.GetWaypoint("Near_L7_Start"), enemy13, "Enemy_01"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(3.0f, enemyManager.GetWaypoint("Near_L5_Start"), enemy8, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_L5_Start"), enemy9, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(3.25f, enemyManager.GetWaypoint("Near_L6_Start"), enemy10, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_L6_Start"), enemy11, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(3.5f, enemyManager.GetWaypoint("Near_L7_Start"), enemy12, "Enemy_02"));
+            segmentFour_C.AddSpawnAction(new SpawnAction(3.75f, enemyManager.GetWaypoint("Near_L7_Start"), enemy13, "Enemy_02"));
 
             encounterManager.AddEncounter(segmentFour_C);
         }
@@ -1258,10 +1258,10 @@ namespace Scripting
             //
             // GET SPAWN POINTS
             //
-            segmentFour_D.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_T5_Start"), enemy1, "Enemy_01"));
-            segmentFour_D.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_L5_Start"), enemy2, "Enemy_01"));
-            segmentFour_D.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_R5_Start"), enemy3, "Enemy_01"));
-            segmentFour_D.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_T9_Start"), enemy4, "Enemy_01"));
+            segmentFour_D.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_T5_Start"), enemy1, "Enemy_02"));
+            segmentFour_D.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_L5_Start"), enemy2, "Enemy_02"));
+            segmentFour_D.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_R5_Start"), enemy3, "Enemy_02"));
+            segmentFour_D.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_T9_Start"), enemy4, "Enemy_02"));
             segmentFour_D.AddSpawnAction(new SpawnAction(1.25f, enemyManager.GetWaypoint("Far_T7"), enemy5, "Enemy_03"));
 
             encounterManager.AddEncounter(segmentFour_D);

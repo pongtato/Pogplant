@@ -23,8 +23,6 @@ namespace Scripting
 {
     public class EnemyManager
     {
-        //singleton
-        public static EnemyManager Instance;
 
         public static int enemy_counter = 0;
 
@@ -45,6 +43,8 @@ namespace Scripting
 
         private List<GameObject> enemy_instances = new List<GameObject>();
 
+        private List<uint> enemies_to_delete = new List<uint>();
+
 
         // Start is called before the first frame update
         public void Start()
@@ -63,8 +63,6 @@ namespace Scripting
             //{
             //    Console.WriteLine(item.Key + " = " + item.Value);
             //}
-
-            Instance = this;
         }
 
         List<GameObject> CreateParentedWaypoints(string waypointFile, uint parent)
@@ -89,12 +87,12 @@ namespace Scripting
                 string name = tokens[0];
 
                 Transform transform = new Transform();
-                transform.Position = new Vector3(float.Parse(tokens[1]), float.Parse(tokens[2]), float.Parse(tokens[3]));
+                transform.Position = new Vector3(-float.Parse(tokens[1]), float.Parse(tokens[2]), float.Parse(tokens[3]));
                 transform.Rotation = new Vector3(0.0f, 0.0f, 0.0f);
                 transform.Scale = new Vector3(1.0f, 1.0f, 1.0f);
 
                 GameObject waypoint_GO = ECS.CreateChild(parent, name, transform);
-                waypoint_GO.AddComponent<Renderer>(new Renderer("sphere"));
+                //waypoint_GO.AddComponent<Renderer>(new Renderer("sphere"));
                 waypointGroup.Add(waypoint_GO);
 
                 //Console.WriteLine("Creating waypoint " + name + " at location: " + transform.Position.X + ", " + +transform.Position.Y + ", " + +transform.Position.Z);
@@ -177,7 +175,7 @@ namespace Scripting
         GameObject CreateEnemyInstance(string prefab_name, Transform location)
         {
             GameObject instance = GameUtilities.InstantiateObject(prefab_name, location.Position, location.Rotation);
-            //enemy_instances.Add(instance);
+            enemy_instances.Add(instance);
             return instance;
         }
 
@@ -185,13 +183,18 @@ namespace Scripting
         public void InstantiateEnemy(GameObject spawnWaypoint, EnemyTemplate enemy_template, string prefab_object)
         {
             GameObject instance = CreateEnemyInstance(prefab_object, spawnWaypoint.transform.Value);
-            //instance.AddComponent<BaseEnemy>(new BaseEnemy(enemy_template, instance));
+            //// Set parent here
+            ECS.SetTransformParent(instance.id, ECS.GetTransformParent(spawnWaypoint.id));
+
+            Transform transform = instance.GetComponent<Transform>();
+            transform.Rotation.Y = 90.0f;
+            instance.AddComponent<BaseEnemy>(new BaseEnemy(enemy_template, instance));
+            instance.GetComponent<BaseEnemy>().Start();
+            instance.GetComponent<BaseEnemy>().SetManager(this);
             //Transform transform = instance.GetComponent<Transform>();
 
-            //// Set parent here
-            //ECS.SetTransformParent(instance.id, ECS.GetTransformParent(spawnWaypoint.id));
 
-            Console.WriteLine("Number of actions: " + enemy_template.commands.Count);
+            //Console.WriteLine("Number of actions: " + enemy_template.commands.Count);
         }
 
         public void InstantiateTempEnemy(Transform location, string prefab_object, string parentName)
@@ -208,14 +211,33 @@ namespace Scripting
 
         public void DeleteEnemyInstance(uint id)
         {
+
+
+            enemies_to_delete.Add(id);
+        }
+
+        public void Update(float dt)
+        {
             foreach (var item in enemy_instances)
             {
-                if (item.id == id)
+                item.GetComponent<BaseEnemy>().Update(dt);
+            }
+            //Console.WriteLine("End of EnemyManager.Update()");
+
+            foreach (var go in enemies_to_delete)
+            {
+                foreach (var item in enemy_instances)
                 {
-                    enemy_instances.Remove(item);
-                    return;
+                    if (item.id == go)
+                    {
+
+                        enemy_instances.Remove(item);
+                        ECS.DestroyEntity(item.id);
+                        break;
+                    }
                 }
             }
+            enemies_to_delete.Clear();
         }
     }
 

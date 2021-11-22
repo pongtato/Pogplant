@@ -34,7 +34,7 @@ namespace Scripting
         private GameObject end_position; // ending location (local space)
         private float duration; // duration of this action
 
-        private float current_time;
+        private float current_time = 0.0f;
         private bool is_finished = false;
         private Transform transform;
 
@@ -48,29 +48,38 @@ namespace Scripting
         public override bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
         {
             float progress = current_time / duration;
-
-            Console.WriteLine("Executing move action, current progress is: " + progress);
+            if (progress <= 0.0f)
+            {
+                Console.WriteLine("Started moving enemy");
+                ECS.SetTransformECS(owner.id, ECS.GetGlobalPosition(start_position.id), start_position.transform.Value.Rotation, start_position.transform.Value.Scale);
+                ECS.RemoveParentFrom(owner.id);
+            }
 
             if (is_finished)
                 return is_finished;
 
+            //Console.WriteLine("Executing move action, current progress is: " + progress);
             current_time += dt;
+
 
             if (owner != null)
             {
                 transform = owner.transform.Value;
             }
 
-            const float Epsilon = 0.001f;
             Vector3 startPos = ECS.GetGlobalPosition(start_position.id);
             Vector3 endPos = ECS.GetGlobalPosition(end_position.id);
-            if ((startPos - endPos).magnitude() < Epsilon)
-                ECS.SetTransformECS(owner.id, Vector3.Lerp(startPos, endPos, progress), owner.transform.Value.Rotation, owner.transform.Value.Scale);
 
-            if (current_time >= duration)
+            if (progress >= 1.0f)
             {
+                Console.WriteLine("Stopped moving enemy");
                 is_finished = true;
+                ECS.SetTransformECS(owner.id, end_position.transform.Value.Position, end_position.transform.Value.Rotation, end_position.transform.Value.Scale);
                 ECS.SetTransformParent(owner.id, ECS.GetTransformParent(end_position.id));
+            }
+            else
+            {
+                ECS.SetTransformECS(owner.id, Vector3.Lerp(startPos, endPos, progress), owner.transform.Value.Rotation, owner.transform.Value.Scale);
             }
 
             return is_finished;
@@ -320,7 +329,7 @@ namespace Scripting
     }
 
     // This class defines enemy behaviour
-    public class BaseEnemy : MonoBehaviour
+    public class BaseEnemy
     {
         public GameObject m_DynamicExplosion_Trail;
         public GameObject m_StaticExplosionSmall;
@@ -332,6 +341,7 @@ namespace Scripting
         public Transform[] muzzles;
 
         private float current_lifetime = 0.0f;
+        private float deathAnimationTime = 4.0f;
         public bool is_alive;
 
         public BaseEnemy()
@@ -374,46 +384,39 @@ namespace Scripting
 
                 ////destroy script so any keyed actions will not occur
                 //Destroy(this);
-
-                em.DeleteEnemyInstance(entityID);
-                ECS.DestroyEntity(entityID);
                 is_alive = false;
             }
         }
 
-        public override void Init(ref uint _entityID)
-        {
-            entityID = _entityID;
-        }
-
         // Start is called before the first frame update
-        public override void Start()
+        public void Start()
         {
             current_lifetime = 0.0f;
             is_alive = true;
         }
 
-        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public void Update(float dt)
         {
             if (my_info == null)
             {
-                Console.WriteLine("No enemy template info is found!");
+                //Console.WriteLine("No enemy template info is found!");
                 return;
             }
             if (my_info.commands == null)
             {
-                Console.WriteLine("Enemy command list is null");
+                //Console.WriteLine("Enemy command list is null");
                 return;
-            }
-            // Execute the actions like a sequence node in a BT
-            foreach (BaseAction action in my_info.commands)
-            {
-                if (!action.Execute(dt, gameObject, em))
-                    break;
             }
 
             if (is_alive)
             {
+                // Execute the actions like a sequence node in a BT
+                foreach (BaseAction action in my_info.commands)
+                {
+                    if (!action.Execute(dt, gameObject, em))
+                        break;
+                }
+
                 current_lifetime += dt;
                 if (current_lifetime >= my_info.life_time)
                 {
@@ -422,20 +425,29 @@ namespace Scripting
                     HandleDeath();
                 }
             }
-        }
-
-        // Update is called once per frame
-        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
-        {
-        }
-
-        public override void OnTriggerEnter(uint id)
-        {
-
-        }
-        public override void OnTriggerExit(uint id)
-        {
-
+            else
+            {
+                if (deathAnimationTime == 4.0f)
+                {
+                    //var rand = new Random();
+                    //Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 1000.0f;
+                    //gameObject.GetComponent<Rigidbody>().AddImpulseForce(dir);
+                    //gameObject.GetComponent<Rigidbody>().useGravity = true;
+                    //gameObject.GetComponent<Rigidbody>().mass = 100.0f;
+                }
+                deathAnimationTime -= dt;
+                if (deathAnimationTime > 0.0f)
+                {
+                    //gameObject.GetComponent<Transform>().Rotation.X += 180.0f * dt;
+                    //gameObject.GetComponent<Transform>().Rotation.Y += 90.0f * dt;
+                    //gameObject.GetComponent<Transform>().Rotation.Z += 270.0f * dt;
+                }
+                else
+                {
+                    em.DeleteEnemyInstance(gameObject.id);
+                }
+            }
+            //Console.WriteLine("End of BaseEnemy.Update()");
         }
 
         public bool GetAlive()

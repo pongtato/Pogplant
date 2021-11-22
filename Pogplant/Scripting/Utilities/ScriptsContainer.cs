@@ -14,14 +14,14 @@ namespace Scripting
         public ScriptsContainer()
         {
             scriptNames.Add("PlayerScript");
-            scriptNames.Add("BaseTurret");
+            scriptNames.Add("FirstPersonFiringSystem");
+            scriptNames.Add("EncounterSystemDriver");
             scriptNames.Add("FollowSpline");
+            scriptNames.Add("EncounterManager");
             scriptNames.Add("EnemyManager");
             scriptNames.Add("BaseEnemy");
-            scriptNames.Add("EncounterManager");
-            scriptNames.Add("EncounterSystemDriver");
+            scriptNames.Add("BaseTurret");
             scriptNames.Add("MoveStuff");
-            scriptNames.Add("FirstPersonFiringSystem");
             scriptNames.Add("DummyScript");
         }
 

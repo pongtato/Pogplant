@@ -107,6 +107,12 @@ void ScriptSystem::Update(float dt)
 				std::cout << "Entity [" << name.m_name << "] has started script [" << scripts.first << "]" << std::endl;
 			}
 
+			if (static_cast<std::uint32_t>(entity) == 3722304989)
+			{
+				std::cout << "PlayerShip EntityID: " << static_cast<std::uint32_t>(m_ecs->FindEntityWithName("PlayerShip")) << std::endl;
+				continue;
+			}
+
 			SSH::InvokeFunction(scripts.first, "Update", entity, transform, rigidbody, dt);
 		}
 	}
@@ -367,6 +373,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetTransformECS", SSH::SetTransformECS);
 	mono_add_internal_call("Scripting.ECS::SetTransformParent", SSH::SetTransformParent);
 	mono_add_internal_call("Scripting.ECS::GetTransformParent", SSH::GetTransformParent);
+	mono_add_internal_call("Scripting.ECS::RemoveParentFrom", SSH::RemoveParentFrom);
 	mono_add_internal_call("Scripting.ECS::GetGlobalPosition", SSH::GetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::GetGlobalRotation", SSH::GetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);

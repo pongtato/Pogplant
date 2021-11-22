@@ -36,6 +36,8 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint GetTransformParent(uint childID);
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static uint RemoveParentFrom(uint childID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void GetBoxColliderECS(uint entityID, ref string collisionLayer, ref bool isTrigger, ref Vector3 centre, ref Vector3 extends);
