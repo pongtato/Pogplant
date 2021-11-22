@@ -68,13 +68,20 @@ private:
 	ECS* m_registry;
 	std::shared_ptr<PPE::EventBus> m_eventBus;
 
-	std::vector<QueuedTriggerAction> m_triggerQueue;
-
 	float m_gravityAcc = -9.81f;
+
+	
 
 	void UpdateMovingObjects();
 
-	void TriggerUpdate(int threadID);
+	/**************************
+	*
+	* Collision
+	*
+	**************************/
+	PhysicsDLC::Broadphase::DynamicAABBTree<entt::entity> m_broadphase;
+	PhysicsDLC::Broadphase::BroadphaseQuery<entt::entity> m_collisionQuery;
+
 
 	void HandleCollision(const entt::entity& c_1entity,
 		const entt::entity& c_2entity,
@@ -86,16 +93,32 @@ private:
 		const Components::ColliderIdentifier& c_2colliderIdentifier,
 		float c_dt);
 
+
+	/**************************
+	*
+	* Threading
+	*
+	**************************/
+	std::atomic<bool> t_EXIT_THREADS;
+	std::vector<std::thread> m_threads;
+	std::unique_ptr<std::binary_semaphore> m_hasTriggerJob[NUM_TRIGGER_THREADS];
+	std::unique_ptr<std::binary_semaphore> m_shouldContinue[NUM_TRIGGER_THREADS];
+	std::mutex m_mTriggerQueueMutex;
+
+	/**************************
+	*
+	* Trigger stuff
+	*
+	**************************/
+
+	void TriggerUpdate(int threadID);
+
 	decltype(auto) GetTriggered(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 	void SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 	bool SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
-
-	std::unique_ptr<std::binary_semaphore> m_hasJob[NUM_TRIGGER_THREADS];
-	std::unique_ptr<std::binary_semaphore> m_shouldContinue[NUM_TRIGGER_THREADS];
-
-	std::atomic<bool> t_EXIT_THREADS;
-	std::vector<std::thread> m_threads;
-	std::mutex m_mTriggerQueueMutex;
+	
+	std::vector<QueuedTriggerAction> m_triggerQueue;
+	
 
 	std::unordered_multimap<entt::entity, entt::entity> m_triggerList;
 };

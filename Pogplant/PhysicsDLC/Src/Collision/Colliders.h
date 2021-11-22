@@ -51,12 +51,18 @@ namespace PhysicsDLC
 			struct AABB
 			{
 				AABB();
-				AABB(vec3 min, vec3 max);
-
-				void CalculateAABBFromExtends(const vec3& position, const vec3& extends);
+				AABB(const vec3& min, const vec3& max);
 
 				vec3 m_min;
 				vec3 m_max;
+
+				void FattenAABB(float multiplier);
+				void CalculateAABBFromExtends(const vec3& position, const vec3& extends);
+				float GetSurfaceArea() const;
+				float GetVolume() const;
+				bool Contains(const AABB& aabb) const;
+
+				static AABB Combine(const AABB& aabb1, const AABB& aabb2);
 			};
 
 			struct OBB

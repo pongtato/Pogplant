@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{938fd04b-0340-470b-96bd-4c5a6e09b15a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Broadphase">
+      <UniqueIdentifier>{ea84013d-f18b-44ce-a76a-2ed65c5afb7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\PhysicsDLC.h">
@@ -36,13 +39,22 @@
     <ClInclude Include="Src\Physics\PhysicsResolvers.h">
       <Filter>Source Files\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Broadphase\DynamicAABBTree.h">
+      <Filter>Source Files\Broadphase</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Broadphase\DynamicAABBTree.hpp">
+      <Filter>Source Files\Broadphase</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Broadphase\BroadphaseQuery.h">
+      <Filter>Source Files\Broadphase</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Broadphase\BroadphaseQuery.hpp">
+      <Filter>Source Files\Broadphase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Collision\Colliders.cpp">
       <Filter>Source Files\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Testbed.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Collision\Collision.cpp">
       <Filter>Source Files\Collision</Filter>

@@ -64,7 +64,7 @@ PhysicsSystem::PhysicsSystem()
 
 	for (int i = 0; i < NUM_TRIGGER_THREADS; i++)
 	{
-		m_hasJob[i] = std::make_unique<std::binary_semaphore>(0);
+		m_hasTriggerJob[i] = std::make_unique<std::binary_semaphore>(0);
 		m_shouldContinue[i] = std::make_unique<std::binary_semaphore>(0);
 
 		m_threads.push_back(std::thread{ &PhysicsSystem::TriggerUpdate, std::ref(*this), i });
@@ -82,7 +82,7 @@ void PhysicsSystem::CleanUp()
 
 	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
 	{
-		m_hasJob[i]->release();
+		m_hasTriggerJob[i]->release();
 	}
 
 	for (auto& thread : m_threads)
@@ -100,6 +100,8 @@ void PhysicsSystem::Init(ECS* ecs, std::shared_ptr<PPE::EventBus>& eventBus)
 	m_triggerList.clear();
 	m_triggerQueue.clear();
 	m_mTriggerQueueMutex.unlock();
+
+	m_broadphase.SetNullObject(entt::null);
 }
 
 void PhysicsSystem::InitPlayState()
@@ -254,10 +256,10 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 	while (!t_EXIT_THREADS)
 	{
 		//perform busy wait LOL
-		m_hasJob[threadID]->acquire();
+		m_hasTriggerJob[threadID]->acquire();
 
 
-		if (!t_EXIT_THREADS /*&& m_hasJob.try_acquire()*/)
+		if (!t_EXIT_THREADS /*&& m_hasTriggerJob.try_acquire()*/)
 		{
 			auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
 			auto movableEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
@@ -435,11 +437,15 @@ void PhysicsSystem::Update(float c_dt)
 {
 	UpdateMovingObjects();
 
+	//Update AABBTree
+
+	//Query AABBTree
+	m_collisionQuery.Clear();
+	m_broadphase.QueryTree(m_collisionQuery);
+
 	//Set the other threads to update trigger behavior
 	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
-	{
-		m_hasJob[i]->release();
-	}
+		m_hasTriggerJob[i]->release();
 
 	auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
 	auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
