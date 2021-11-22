@@ -1382,6 +1382,11 @@ namespace Scripting
 
             encounterManager.AddEncounter(segmentFour_E);
         }
+
+        public bool GetAlive(uint id)
+        {
+           return encounterManager.enemyManager.GetAlive(id);
+        }
     }
 
 }

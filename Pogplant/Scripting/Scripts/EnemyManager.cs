@@ -239,6 +239,17 @@ namespace Scripting
             }
             enemies_to_delete.Clear();
         }
+
+        public bool GetAlive(uint id)
+        {
+            foreach (var item in enemy_instances)
+            {
+                if (item.id == id)
+                    return item.GetComponent<BaseEnemy>().GetAlive();
+            }
+            Console.WriteLine("Enemy with ID: " + id + " could not be found!");
+            return false;
+        }
     }
 
 

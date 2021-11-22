@@ -277,8 +277,8 @@ namespace Scripting
 		{
 			if (scriptable->m_ScriptTypes.contains("BaseTurret"))
 				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseTurret", "GetAlive", id);
-			else if (scriptable->m_ScriptTypes.contains("BaseEnemy"))
-				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseEnemy", "GetAlive", id);
+			else if (scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+				isAlive = SSH::InvokeFunctionWithReturn<bool>("EncounterSystemDriver", "GetAlive", id);
 		}
 		return isAlive;
 	}
