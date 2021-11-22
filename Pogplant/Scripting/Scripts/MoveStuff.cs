@@ -81,7 +81,7 @@ namespace Scripting
                     id.Position = Vector3.Lerp(id.Position, End_Pos_Flock_1, step);
 
                     //id.Rotation.Z += 1.0f;
-                    ECS.SetTransformECS(parent_id,ref id.Position, ref id.Rotation,ref id.Scale);
+                    ECS.SetTransformECS(parent_id,id.Position, id.Rotation, id.Scale);
                 }
 
             }

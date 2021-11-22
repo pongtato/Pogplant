@@ -41,7 +41,7 @@ namespace Scripting
         private GameObject[] false_bullet_pool; // object pool for false bullets.
         public GameObject[] turret_true_bullet_pool; // object pool for true bullets.
         public GameObject[] turret_false_bullet_pool; // object pool for false bullets.
-        private Dictionary<string, GameObject> waypoint_map; // a string to vector3 map for waypoints.
+        private static Dictionary<string, GameObject> waypoint_map; // a string to vector3 map for waypoints.
 
         private List<GameObject> enemy_instances = new List<GameObject>();
 
@@ -58,6 +58,11 @@ namespace Scripting
             true_bullet_pool = new GameObject[pool_size];
             false_bullet_pool = new GameObject[pool_size];
 
+            // print out map
+            //foreach (var item in waypoint_map)
+            //{
+            //    Console.WriteLine(item.Key + " = " + item.Value);
+            //}
 
             Instance = this;
         }
@@ -180,12 +185,13 @@ namespace Scripting
         public void InstantiateEnemy(GameObject spawnWaypoint, EnemyTemplate enemy_template, string prefab_object)
         {
             GameObject instance = CreateEnemyInstance(prefab_object, spawnWaypoint.transform.Value);
-            Transform transform = instance.GetComponent<Transform>();
-            transform.Position = ECS.GetGlobalPosition(spawnWaypoint.id);
-            transform.Rotation = new Vector3(0, 180, 0);
-            BaseEnemy comp = instance.GetComponent<BaseEnemy>();
-            comp.SetTemplate(enemy_template);
-            comp.SetManager(this);
+            //instance.AddComponent<BaseEnemy>(new BaseEnemy(enemy_template, instance));
+            //Transform transform = instance.GetComponent<Transform>();
+
+            //// Set parent here
+            //ECS.SetTransformParent(instance.id, ECS.GetTransformParent(spawnWaypoint.id));
+
+            Console.WriteLine("Number of actions: " + enemy_template.commands.Count);
         }
 
         public void InstantiateTempEnemy(Transform location, string prefab_object, string parentName)

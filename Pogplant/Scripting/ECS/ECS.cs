@@ -29,10 +29,13 @@ namespace Scripting
         public extern static void GetTransformECS(uint entityID, ref Vector3 pos, ref Vector3 rot, ref Vector3 scale);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void SetTransformECS(uint entityID, ref Vector3 pos, ref Vector3 rot, ref Vector3 scale);
+        public extern static void SetTransformECS(uint entityID, Vector3 pos, Vector3 rot, Vector3 scale);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint SetTransformParent(uint childID, uint parentID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static uint GetTransformParent(uint childID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void GetBoxColliderECS(uint entityID, ref string collisionLayer, ref bool isTrigger, ref Vector3 centre, ref Vector3 extends);

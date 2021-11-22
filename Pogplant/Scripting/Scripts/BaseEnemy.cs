@@ -65,12 +65,12 @@ namespace Scripting
             Vector3 startPos = ECS.GetGlobalPosition(start_position.id);
             Vector3 endPos = ECS.GetGlobalPosition(end_position.id);
             if ((startPos - endPos).magnitude() < Epsilon)
-                transform.Position = Vector3.Lerp(startPos, endPos, progress);
+                ECS.SetTransformECS(owner.id, Vector3.Lerp(startPos, endPos, progress), owner.transform.Value.Rotation, owner.transform.Value.Scale);
 
             if (current_time >= duration)
             {
                 is_finished = true;
-                ECS.SetTransformParent(owner.id, end_position.id);
+                ECS.SetTransformParent(owner.id, ECS.GetTransformParent(end_position.id));
             }
 
             return is_finished;
@@ -394,15 +394,17 @@ namespace Scripting
         }
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
-        { }
-
-        // Update is called once per frame
-        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
             if (my_info == null)
+            {
                 Console.WriteLine("No enemy template info is found!");
+                return;
+            }
             if (my_info.commands == null)
+            {
                 Console.WriteLine("Enemy command list is null");
+                return;
+            }
             // Execute the actions like a sequence node in a BT
             foreach (BaseAction action in my_info.commands)
             {
@@ -422,6 +424,11 @@ namespace Scripting
             }
         }
 
+        // Update is called once per frame
+        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        {
+        }
+
         public override void OnTriggerEnter(uint id)
         {
 
@@ -429,6 +436,11 @@ namespace Scripting
         public override void OnTriggerExit(uint id)
         {
 
+        }
+
+        public bool GetAlive()
+        {
+            return is_alive;
         }
     }
 }

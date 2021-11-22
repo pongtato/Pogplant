@@ -354,7 +354,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::FirePlayerBullet", &Scripting::FirePlayerBullet);
 	mono_add_internal_call("Scripting.GameUtilities::FireEnemyBullet", &Scripting::FireEnemyBullet);
 	mono_add_internal_call("Scripting.GameUtilities::UpdatePlayerHealth_UI", &Scripting::UpdatePlayerHealth_UI);
-	mono_add_internal_call("Scripting.GameUtilities::GetTurretAlive", &Scripting::GetTurretAlive);
+	mono_add_internal_call("Scripting.GameUtilities::GetAlive", &Scripting::GetAlive);
 	mono_add_internal_call("Scripting.GameUtilities::GetMousePos", &Scripting::GetMousePos);
 
 	// ECS & Component st
@@ -366,6 +366,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetTransformECS", SSH::GetTransformECS);
 	mono_add_internal_call("Scripting.ECS::SetTransformECS", SSH::SetTransformECS);
 	mono_add_internal_call("Scripting.ECS::SetTransformParent", SSH::SetTransformParent);
+	mono_add_internal_call("Scripting.ECS::GetTransformParent", SSH::GetTransformParent);
 	mono_add_internal_call("Scripting.ECS::GetGlobalPosition", SSH::GetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::GetGlobalRotation", SSH::GetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);

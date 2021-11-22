@@ -41,55 +41,10 @@ namespace Scripting
         }
 
         // Update is called once per frame
-        void Update()
-        {
-            //if (Input.GetKeyDown(KeyCode.Alpha1))
-            //{
-            //    SegmentTwo_A();
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.Alpha2))
-            //{
-            //    SegmentTwo_B();
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.Alpha3))
-            //{
-            //    SegmentFour_A();
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.Alpha4))
-            //{
-            //    SegmentFour_B();
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.Alpha5))
-            //{
-            //    SegmentFour_C();
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.Alpha6))
-            //{
-            //    SegmentFour_D();
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.Alpha7))
-            //{
-            //    SegmentFour_E();
-            //}
-
-            //if (Input.GetKeyDown(KeyCode.Alpha0))
-            //{
-            //    TestWave();
-            //}
-
-        }
-
-        // Update is called once per frame
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
+            //Console.WriteLine("EncounterSystemDriver.Update()");
             encounterManager.Update(dt);
-            Update();
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
@@ -113,12 +68,12 @@ namespace Scripting
             switch (waveName)
             {
                 case "SegmentTwo_A":
-                    SegmentTwo_A();
                     Console.WriteLine("SegmentTwo_A called.");
+                    SegmentTwo_A();
                     break;
                 case "SegmentTwo_B":
-                    SegmentTwo_B();
                     Console.WriteLine("SegmentTwo_B called.");
+                    SegmentTwo_B();
                     break;
                 case "SegmentFour_A":
                     SegmentFour_A();

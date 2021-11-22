@@ -75,7 +75,7 @@ namespace SSH
 		scale = trans->m_scale;
 	}
 
-	void SetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale)
+	void SetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale)
 	{
 		auto trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
 		trans->m_position = pos;
@@ -90,6 +90,11 @@ namespace SSH
 
 		child->m_parent = static_cast<entt::entity>(parentID);
 		parent->m_children.insert(static_cast<entt::entity>(childID));
+	}
+
+	std::uint32_t GetTransformParent(std::uint32_t childID)
+	{
+		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(childID))->m_parent);
 	}
 
 	void GetBoxColliderECS(std::uint32_t entityID, MonoString* collisionLayer, bool& isTrigger, glm::vec3& centre, glm::vec3& extends)

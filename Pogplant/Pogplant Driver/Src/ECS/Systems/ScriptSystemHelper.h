@@ -17,8 +17,9 @@ namespace SSH
 	std::uint32_t FindEntityWithName(MonoString* name);
 	std::uint32_t FindChildEntityWithName(std::uint32_t parentID, MonoString* name);
 	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
-	void SetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
+	void SetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
 	void SetTransformParent(std::uint32_t childID, std::uint32_t parentID);
+	std::uint32_t GetTransformParent(std::uint32_t childID);
 	void GetBoxColliderECS(std::uint32_t entityID, MonoString* collisionLayer, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);
 	MonoString* GetTagECS(std::uint32_t entityID);
 	void LookAt(std::uint32_t self_entityID, std::uint32_t other_entityID);

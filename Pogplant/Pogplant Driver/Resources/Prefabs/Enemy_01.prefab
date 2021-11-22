@@ -28,7 +28,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
 		},
 		"Render" : 
 		{
@@ -60,7 +60,7 @@
 		},
 		"Scripting" : 
 		{
-			"BaseTurret" : false
+			"BaseEnemy" : false
 		},
 		"Tag" : 
 		{
@@ -96,7 +96,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
 		},
 		"Render" : 
 		{
@@ -150,7 +150,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
 		},
 		"Render" : 
 		{
@@ -204,7 +204,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
 		},
 		"Render" : 
 		{
@@ -258,7 +258,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
 		},
 		"Render" : 
 		{
@@ -312,7 +312,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
 		},
 		"Render" : 
 		{

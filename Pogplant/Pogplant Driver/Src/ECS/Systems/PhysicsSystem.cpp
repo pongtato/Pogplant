@@ -517,7 +517,7 @@ void PhysicsSystem::Update(float c_dt)
 
 				m_triggerList.insert(std::make_pair(queuedAction.entity1, queuedAction.entity2));
 				
-				std::cout << "Triggered" << (uint16_t)queuedAction.entity1 << " " << (uint16_t)queuedAction.entity2 << std::endl;
+				//std::cout << "Triggered" << (uint16_t)queuedAction.entity1 << " " << (uint16_t)queuedAction.entity2 << std::endl;
 			}
 			else
 			{
@@ -540,7 +540,7 @@ void PhysicsSystem::Update(float c_dt)
 					}
 				}
 
-				std::cout << "UnTriggered" << (uint16_t)queuedAction.entity1 << " " << (uint16_t)queuedAction.entity2 << std::endl;
+				//std::cout << "UnTriggered" << (uint16_t)queuedAction.entity1 << " " << (uint16_t)queuedAction.entity2 << std::endl;
 			}
 
 			m_triggerQueue.pop_back();

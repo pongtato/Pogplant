@@ -138,7 +138,7 @@ namespace Scripting
 
                 //transform.Rotation.Y += 120f * dt;
 
-                ECS.SetTransformECS(disc_id, ref disk_transform.Position, ref disk_rotation, ref disk_transform.Scale);
+                ECS.SetTransformECS(disc_id, disk_transform.Position, disk_rotation, disk_transform.Scale);
 
                 sineMovement(ref transform, ref dt);
 
@@ -210,7 +210,7 @@ namespace Scripting
         {
             //Console.WriteLine("MY CURRENT ID IS:" + entityID);
         }
-        bool GetTurretAlive()
+        public bool GetAlive()
         {
             return isAlive;
         }

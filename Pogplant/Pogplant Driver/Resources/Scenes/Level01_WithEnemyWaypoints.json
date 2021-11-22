@@ -224,6 +224,7 @@
 		},
 		"Scripting" : 
 		{
+			"EncounterSystemDriver" : false,
 			"FollowSpline" : false
 		},
 		"Tag" : 
@@ -305,7 +306,6 @@
 		},
 		"Scripting" : 
 		{
-			"EncounterSystemDriver" : false,
 			"PlayerScript" : false
 		},
 		"Transform" : 
@@ -414,7 +414,7 @@
 			[
 				2.731234417296946e-05,
 				-0.010300636291503906,
-				35.016372680664062
+				35.016372680664063
 			],
 			"m_rotation" : 
 			[
@@ -2851,7 +2851,7 @@
 		{
 			"m_position" : 
 			[
-				173.05032348632812,
+				173.05032348632813,
 				88.483757019042969,
 				-1462.73095703125
 			],

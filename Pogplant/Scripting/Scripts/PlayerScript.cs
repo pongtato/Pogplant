@@ -62,7 +62,7 @@ namespace Scripting
 
         public List<GameObject> entityList = new List<GameObject>();
         public List<Tuple<GameObject, GameObject>> childList = new List<Tuple<GameObject, GameObject>>();
-        EnemyManager enemyManager = new EnemyManager();
+        //EnemyManager enemyManager = new EnemyManager();
 
         bool isAlive = true;
 
@@ -429,7 +429,7 @@ namespace Scripting
                         location.Position.X = x;
                         location.Position.Y = y;
                         location.Position.Z = z_value;
-                        enemyManager.InstantiateTempEnemy(location, "Enemy", "PlayerBox");
+                        //enemyManager.InstantiateTempEnemy(location, "Enemy", "PlayerBox");
                     }
                 }
                 z_value -= 0.2f;

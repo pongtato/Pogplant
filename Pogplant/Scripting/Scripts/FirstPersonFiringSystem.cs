@@ -72,7 +72,7 @@ namespace Scripting
             int lower_count = enemy_in_range.Count < Turrets.Count ? enemy_in_range.Count : Turrets.Count;
             for (int i = 0; i < lower_count; ++i)
             {
-                if (GameUtilities.GetTurretAlive(enemy_in_range[i]))
+                if (GameUtilities.GetAlive(enemy_in_range[i]))
                 {
                     if (enemy_to_target.Contains(enemy_in_range[i]))
                         continue;
@@ -92,7 +92,7 @@ namespace Scripting
                     Transform TurretTrans = new Transform();
                     ECS.GetTransformECS(Turrret, ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
                     TurretTrans.Rotation = new Vector3(0, 0, 0);
-                    ECS.SetTransformECS(Turrret, ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
+                    ECS.SetTransformECS(Turrret, TurretTrans.Position, TurretTrans.Rotation, TurretTrans.Scale);
                 }
 
             }
@@ -108,7 +108,7 @@ namespace Scripting
                     Transform TurretTrans = new Transform();
                     ECS.GetTransformECS(Turrets[j], ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
                     TurretTrans.Rotation = new Vector3(0, 0, 0);
-                    ECS.SetTransformECS(Turrets[j], ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
+                    ECS.SetTransformECS(Turrets[j], TurretTrans.Position, TurretTrans.Rotation, TurretTrans.Scale);
                 }
 
             }
@@ -230,7 +230,7 @@ namespace Scripting
             inner_ret.Position = new Vector3(0, 0, 0);
             ECS.GetTransformECS(Crosshair, ref inner_ret.Position, ref inner_ret.Rotation, ref inner_ret.Scale);
             inner_ret.Position = Vector3.Lerp(inner_ret.Position, original_reticle_initial.Position + current_offset_value, lerp_speed * dt);
-            ECS.SetTransformECS(Crosshair, ref inner_ret.Position, ref original_reticle_initial.Rotation, ref original_reticle_initial.Scale);
+            ECS.SetTransformECS(Crosshair, inner_ret.Position, original_reticle_initial.Rotation, original_reticle_initial.Scale);
             //ShootingBox
             transform.Position = Vector3.Lerp(transform.Position, shooting_box_initial_pos + current_offset_value, lerp_speed * dt);
 
@@ -241,7 +241,7 @@ namespace Scripting
                 Vector3 maxRange = Vector3.Normalise(current_offset_value) * max_offset_value;
                 transform.Position = new Vector3(maxRange.X, maxRange.Y, transform.Position.Z);
                 inner_ret.Position = new Vector3(maxRange.X, maxRange.Y, original_reticle_initial.Position.Z);
-                ECS.SetTransformECS(Crosshair, ref inner_ret.Position, ref original_reticle_initial.Rotation, ref original_reticle_initial.Scale);
+                ECS.SetTransformECS(Crosshair, inner_ret.Position, original_reticle_initial.Rotation, original_reticle_initial.Scale);
             }
 
 

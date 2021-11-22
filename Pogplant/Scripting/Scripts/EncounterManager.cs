@@ -141,6 +141,7 @@ namespace Scripting
             current_time += dt;
             UpdateEncounterTimeline();
             UpdateSpawnedEncounters(dt);
+            //Console.WriteLine("Update Encounter Manager");
         }
 
         public void AddEncounter(Encounter encounter)
@@ -158,6 +159,7 @@ namespace Scripting
                 // Spawn encounter if it is time and it has not spawned yet
                 if (!encounter.is_executed && current_time >= encounter.start_time)
                 {
+                    Console.WriteLine("Executing Encounter");
                     encounter.ExecuteEncounter();
                     break;
                 }

@@ -192,7 +192,13 @@ namespace Scripting
 			if (other_collider->collisionLayer == "PLAYER" && player_collider->collisionLayer == "TRIGGERS")
 			{
 				MonoString* tag_mono = mono_string_new(mono_domain_get(), PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Tag>(object)->m_tag.c_str());
-				SSH::InvokeFunction("EncounterSystemDriver", "SpawnWave", other, tag_mono);
+				
+				auto parent_id = static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(other))->m_parent);
+				auto player_box_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(parent_id));
+
+				if (player_box_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+					SSH::InvokeFunction("EncounterSystemDriver", "SpawnWave", ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(other))->m_parent, *tag_mono);
+				//SSH::InvokeFunction("PlayerScript", "SpawnWave", other);
 			}
 		}
 	}
@@ -262,14 +268,17 @@ namespace Scripting
 		}
 	}
 
-	bool Scripting::GetTurretAlive(std::uint32_t entityID)
+	bool Scripting::GetAlive(std::uint32_t entityID)
 	{
 		entt::entity id = static_cast<entt::entity>(entityID);
-		bool isAlive = 0;
-		auto test = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(id);
-		if (test)
+		bool isAlive = false;
+		auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(id);
+		if (scriptable)
 		{
-			isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseTurret", "GetTurretAlive", id);
+			if (scriptable->m_ScriptTypes.contains("BaseTurret"))
+				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseTurret", "GetAlive", id);
+			else if (scriptable->m_ScriptTypes.contains("BaseEnemy"))
+				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseEnemy", "GetAlive", id);
 		}
 		return isAlive;
 	}
