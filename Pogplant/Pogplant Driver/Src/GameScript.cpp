@@ -264,6 +264,12 @@ namespace Scripting
 		return health;
 	}
 
+	void PlayerTakeDamage(std::uint32_t Player_ID, float _Damage)
+	{
+		entt::entity player_id = static_cast<entt::entity>(Player_ID);
+		SSH::InvokeFunction("PlayerScript", "TakeDamage", player_id, _Damage);
+	}
+
 	// Updates the player health UI
 	void UpdatePlayerHealth_UI()
 	{

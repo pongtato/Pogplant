@@ -22,6 +22,7 @@ namespace Scripting
             scriptNames.Add("BaseEnemy");
             scriptNames.Add("BaseTurret");
             scriptNames.Add("MoveStuff");
+            scriptNames.Add("EnvDamage");
             scriptNames.Add("DummyScript");
         }
 

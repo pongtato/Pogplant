@@ -362,6 +362,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::UpdatePlayerHealth_UI", &Scripting::UpdatePlayerHealth_UI);
 	mono_add_internal_call("Scripting.GameUtilities::GetAlive", &Scripting::GetAlive);
 	mono_add_internal_call("Scripting.GameUtilities::GetMousePos", &Scripting::GetMousePos);
+	mono_add_internal_call("Scripting.GameUtilities::PlayerTakeDamage", &Scripting::PlayerTakeDamage);
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);

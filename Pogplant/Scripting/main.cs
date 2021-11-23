@@ -77,6 +77,10 @@ namespace Scripting
         {
             return new FirstPersonFiringSystem();
         }
-        
+
+        public static EnvDamage EnvDamage()
+        {
+            return new EnvDamage();
+        }
     }
 }

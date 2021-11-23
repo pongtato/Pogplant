@@ -58,6 +58,7 @@
     <Compile Include="Scripts\EncounterManager.cs" />
     <Compile Include="Scripts\EncounterSystemDriver.cs" />
     <Compile Include="Scripts\EnemyManager.cs" />
+    <Compile Include="Scripts\EnvDamage.cs" />
     <Compile Include="Scripts\FollowSpline.cs" />
     <Compile Include="Scripts\MonoBehaviour.cs" />
     <Compile Include="Scripts\FirstPersonFiringSystem.cs" />

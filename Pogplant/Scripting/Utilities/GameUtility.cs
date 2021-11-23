@@ -35,6 +35,9 @@ namespace Scripting
         public extern static void UpdatePlayerHealth_UI();
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void PlayerTakeDamage(uint Player_ID, float _Damage);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static bool GetAlive(uint entityID);
 
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")

@@ -31,7 +31,7 @@ namespace Scripting
 	// Get the player healths
 	float GetPlayerHealth();
 	float GetPlayerMaxHealth();
-
+	void PlayerTakeDamage(std::uint32_t Player_ID, float _Damage);
 	// Updates the player health UI
 	void UpdatePlayerHealth_UI();
 
