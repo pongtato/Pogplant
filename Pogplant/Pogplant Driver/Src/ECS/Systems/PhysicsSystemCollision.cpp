@@ -221,6 +221,13 @@ void PhysicsSystem::DrawColliders()
 		PP::DebugDraw::DebugLine(v3, v7);
 	}
 
+	//Draw dynamic aabbtree
+	auto boxes = m_broadphase.GetAABBTreeBoxes();
+	for (auto& box : boxes)
+	{
+		PP::DebugDraw::DebugCube(box.m_min, box.m_max);
+	}
+
 	// haha xd
 	auto cameras = m_registry->view<Components::Camera, Components::Transform>();
 	const float aspect = static_cast<float>(PP::Window::m_Height) / PP::Window::m_Width;

@@ -18,5 +18,7 @@
 #include "Collision/Collision.h"
 #include "Physics/PhysicsResolvers.h"
 
+#include "Broadphase/BroadphaseQuery.h"
+#include "Broadphase/DynamicAABBTree.h"
 
 #endif

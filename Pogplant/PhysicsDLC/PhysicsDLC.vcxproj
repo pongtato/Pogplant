@@ -11,6 +11,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Broadphase\BroadphaseQuery.h" />
+    <ClInclude Include="Src\Broadphase\BroadphaseQuery.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Src\Broadphase\DynamicAABBTree.h" />
+    <ClInclude Include="Src\Broadphase\DynamicAABBTree.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Src\Collision\Colliders.h" />
     <ClInclude Include="Src\Collision\Collision.h" />
     <ClInclude Include="Src\PhysicsDLC.h" />
@@ -21,10 +31,6 @@
     <ClCompile Include="Src\Collision\Colliders.cpp" />
     <ClCompile Include="Src\Collision\Collision.cpp" />
     <ClCompile Include="Src\Physics\PhysicsResolvers.cpp" />
-    <ClCompile Include="Src\Testbed.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

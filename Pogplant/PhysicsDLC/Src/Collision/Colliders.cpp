@@ -193,7 +193,7 @@ AABB::AABB()
 {
 }
 
-AABB::AABB(vec3 min, vec3 max)
+AABB::AABB(const vec3& min, const vec3& max)
 	:
 	m_min{ min },
 	m_max{ max }
@@ -201,10 +201,49 @@ AABB::AABB(vec3 min, vec3 max)
 
 }
 
+void AABB::FattenAABB(float multiplier)
+{
+	CalculateAABBFromExtends((m_max + m_min) * 0.5f, (m_max - m_min) * 0.5f * multiplier);
+}
+
 void AABB::CalculateAABBFromExtends(const vec3& position, const vec3& extends)
 {
 	m_min = position - extends;
 	m_max = position + extends;
+}
+
+float PhysicsDLC::Collision::Shapes::AABB::GetSurfaceArea() const
+{
+	vec3 length = m_max - m_min;
+
+	return ((length.x * length.y)
+		+ (length.y * length.z)
+		+ (length.x * length.z)) * 2.f;
+}
+
+float PhysicsDLC::Collision::Shapes::AABB::GetVolume() const
+{
+	return (m_max.x - m_min.x) * (m_max.y - m_min.y) * (m_max.z - m_min.z);
+}
+
+bool PhysicsDLC::Collision::Shapes::AABB::Contains(const AABB& aabb) const
+{
+	return m_min.x < aabb.m_min.x && m_max.x > aabb.m_max.x
+		&& m_min.y < aabb.m_min.y && m_max.y > aabb.m_max.y
+		&& m_min.z < aabb.m_min.z && m_max.z > aabb.m_max.z;
+}
+
+AABB PhysicsDLC::Collision::Shapes::AABB::Combine(const AABB& aabb1, const AABB& aabb2)
+{
+	return AABB{
+		{std::min(aabb1.m_min.x, aabb2.m_min.x),
+		std::min(aabb1.m_min.y, aabb2.m_min.y),
+		std::min(aabb1.m_min.z, aabb2.m_min.z)},
+
+		{std::max(aabb1.m_max.x, aabb2.m_max.x),
+		std::max(aabb1.m_max.y, aabb2.m_max.y),
+		std::max(aabb1.m_max.z, aabb2.m_max.z)}
+	};
 }
 
 AABB OBB::CalculateAABB()

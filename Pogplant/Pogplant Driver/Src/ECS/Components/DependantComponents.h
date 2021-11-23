@@ -51,6 +51,8 @@ namespace Components
 		COLLIDER_TYPE colliderType = COLLIDER_TYPE::CT_UNDEFINED;
 		bool isTrigger = false;
 		int collisionLayer = 0;
+
+		void* broadPhaseKey = nullptr;
 	};
 
 	/**************************************************************************/
@@ -215,11 +217,6 @@ namespace Components
 				m_audioSources[id].c_playing = false;
 			}
 		}
-	};
-
-	struct PhysicsSerialiser
-	{
-		
 	};
 }
 
