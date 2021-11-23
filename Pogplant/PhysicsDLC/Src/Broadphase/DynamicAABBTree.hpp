@@ -31,7 +31,7 @@ namespace PhysicsDLC::Broadphase
 		newNode->m_aabb = aabb;
 		
 		//newNode->m_aabb.FattenAABB(m_AABBFatteningFactor);
-		
+		m_IDmap[entityID] = newNode;
 
 		InsertNode(m_treeRoot, newNode);
 	}
@@ -123,6 +123,18 @@ namespace PhysicsDLC::Broadphase
 	}
 
 	template<typename IDType>
+	void DynamicAABBTree<IDType>::RemoveData(const IDType& entityID)
+	{
+		auto itr = m_IDmap.find(entityID);
+
+		if (itr != m_IDmap.end())
+		{
+			RemoveData(&itr->second);
+			m_IDmap.erase(entityID);
+		}
+	}
+
+	template<typename IDType>
 	void DynamicAABBTree<IDType>::QueryTree(BroadphaseQuery<IDType>& query)
 	{
 		SelfQueryTree(m_treeRoot, query);
@@ -148,6 +160,7 @@ namespace PhysicsDLC::Broadphase
 	void DynamicAABBTree<IDType>::Clear()
 	{
 		DeleteTree(m_treeRoot);
+		m_IDmap.clear();
 		m_treeRoot = nullptr;
 	}
 
@@ -377,6 +390,8 @@ namespace PhysicsDLC::Broadphase
 
 		//Nodes detached incorrectly
 		assert(false);
+
+		return NODELOCSTAT::N_LEFT;
 	}
 
 	template<typename IDType>

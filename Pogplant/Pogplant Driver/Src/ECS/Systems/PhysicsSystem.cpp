@@ -342,9 +342,8 @@ void PhysicsSystem::UpdateEditor()
 /******************************************************************************/
 void PhysicsSystem::Update(float c_dt)
 {
-	UpdateMovingObjects();
-
 	//Update AABBTree
+	UpdateMovingObjects();
 
 	//Query AABBTree
 	m_collisionQuery.Clear();
@@ -412,6 +411,7 @@ void PhysicsSystem::Update(float c_dt)
 		}
 	}
 
+	//Execute queued actions by the trigger
 	if (!m_triggerQueue.empty())
 	{
 		m_mTriggerQueueMutex.lock();
@@ -465,6 +465,12 @@ void PhysicsSystem::Update(float c_dt)
 	}
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Should be called when exiting a ecs/changing a scene
+*/
+/******************************************************************************/
 void PhysicsSystem::ExitState()
 {
 	auto collidersList = m_registry->view<Components::Transform, Components::ColliderIdentifier>();

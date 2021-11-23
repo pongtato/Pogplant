@@ -16,6 +16,7 @@
 #define DYNAMICAABBTREE_H_
 
 #include "../Collision/Colliders.h"
+#include <unordered_map>
 
 namespace PhysicsDLC::Broadphase
 {
@@ -28,7 +29,7 @@ namespace PhysicsDLC::Broadphase
 
 		void InsertData(void** key, const IDType& entityID, const Collision::Shapes::AABB& aabb);
 		void UpdateData(void** key, const IDType& entityID, const Collision::Shapes::AABB& aabb);
-		void RemoveData(void** key);
+		void RemoveData(const IDType& entityID);
 
 		void QueryTree(BroadphaseQuery<IDType>& query);
 		void SetNullObject(const IDType& object);
@@ -60,8 +61,12 @@ namespace PhysicsDLC::Broadphase
 		Node* m_treeRoot = nullptr;
 		IDType m_IDNullObj;
 
+		std::unordered_map<IDType, Node*> m_IDmap;
+
 		const float m_AABBFatteningFactor = 1.1f;
 
+
+		void RemoveData(void** key);
 
 		void GetAABBTreeBoxes(std::vector<Collision::Shapes::AABB>& c_boxes, Node* c_curNode);
 		void SelfQueryTree(Node* c_node, BroadphaseQuery<IDType>& results);
@@ -81,9 +86,6 @@ namespace PhysicsDLC::Broadphase
 
 		void RecomputeHeight(Node* c_curNode);
 		void RecomputeAABB(Node* c_curNode);
-
-
-
 
 		void DeleteTree(Node* c_curNode);
 	};
