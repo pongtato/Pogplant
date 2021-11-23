@@ -141,7 +141,6 @@ namespace Scripting
 
 	void PlayerProjectileCollision(entt::entity& object, entt::entity& other)
 	{
-		static entt::entity playerbox = entt::null;
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
 			return;
 
@@ -162,9 +161,8 @@ namespace Scripting
 		{
 			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other)->collisionLayer == "ENEMY")
 			{
-				if (playerbox == entt::null)
-					playerbox = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithTag("Player");
-				else if (playerbox != entt::null)
+				entt::entity playerbox = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithTag("Player");
+				if (playerbox != entt::null)
 				{
 					const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(playerbox);
 					if (playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
