@@ -84,6 +84,9 @@ public:
 	bool m_edit_prefab = false;
 
 
+	//used for delayed deleting of entites
+	std::set<entt::entity> m_EntitiesToDelete;
+	void TrulyDestroyEntity(entt::entity _id);
 private:
 	entt::registry m_registry;
 

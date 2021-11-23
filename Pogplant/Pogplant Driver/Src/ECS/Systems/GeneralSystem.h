@@ -30,7 +30,7 @@ public:
 	void Init(ECS* ecs);
 	void Update(float c_dt);
 	void UpdateTransforms();
-
+	void DeleteEntities();
 private:
 	ECS* m_registry;
 

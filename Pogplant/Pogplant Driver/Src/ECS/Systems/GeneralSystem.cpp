@@ -124,3 +124,16 @@ void GeneralSystem::UpdateTransform(entt::entity _id, Components::Transform& par
 			UpdateTransform(entity, transform);
 	}
 }
+
+//Used to delete entities, should be the last system in the update loop
+void GeneralSystem::DeleteEntities()
+{
+	const auto& set_of_entities = m_registry->m_EntitiesToDelete;
+
+	for (const auto& ent : set_of_entities)
+	{
+		m_registry->TrulyDestroyEntity(ent);
+	}
+
+	m_registry->m_EntitiesToDelete.clear();
+}

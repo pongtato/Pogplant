@@ -487,6 +487,11 @@ void Application::UpdateTransforms(float _Dt)
 		auto& canvas = canvasView.get<Canvas>(it);
 		PP::MeshInstance::SetInstance(PP::InstanceData{ transform.m_ModelMtx, canvas.m_Color, canvas.m_TexID, true, true });
 	}
+
+	
+
+	//delete entity in the delete set
+	m_sGeneralSystem.DeleteEntities();
 }
 
 void Application::UpdateModelRef(std::vector<std::string>& _EditedModels)
