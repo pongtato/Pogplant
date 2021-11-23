@@ -57,6 +57,11 @@ entt::registry& ECS::GetReg()
 
 void ECS::DestroyEntity(entt::entity entity)
 {
+	m_EntitiesToDelete.insert(entity);
+}
+
+void ECS::TrulyDestroyEntity(entt::entity entity)
+{
 	//auto _r = m_registry.try_get<Relationship>(entity);
 	if (!m_registry.valid(entity))
 		return;
@@ -72,7 +77,7 @@ void ECS::DestroyEntity(entt::entity entity)
 	auto copy_set = _transform.m_children;
 	for (auto child : copy_set)
 	{
-		DestroyEntity(child);
+		TrulyDestroyEntity(child);
 	}
 
 	//remove parent connection
@@ -86,29 +91,6 @@ void ECS::DestroyEntity(entt::entity entity)
 			assert(false);
 		}
 	}
-
-	//destory childrens first
-	/*if (_r)
-	{
-		//if it's a parent, delete all children
-		auto copy_set = _r->m_children;
-		for (auto child : copy_set)
-		{
-			DestroyEntity(child);
-		}
-
-		//remove parent's connection
-		if (_r->m_parent != entt::null)
-		{
-			auto _p_r = m_registry.try_get<Relationship>(_r->m_parent);
-
-			if (_p_r)
-			{
-				if (_p_r->m_children.erase(entity) == 0)
-					printf("Tried to delete a child that didn't exist\n");
-			}
-		}
-	}*/
 
 	auto _s = m_registry.try_get<Scriptable>(entity);
 
