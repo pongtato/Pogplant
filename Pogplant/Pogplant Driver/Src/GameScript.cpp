@@ -284,15 +284,20 @@ namespace Scripting
 
 	bool Scripting::GetAlive(std::uint32_t entityID)
 	{
+		//Get Playerboxwith EncounterSystemDriver
+		entt::entity player_id = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithTag("Player");
 		entt::entity id = static_cast<entt::entity>(entityID);
 		bool isAlive = false;
+
 		auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(id);
 		if (scriptable)
 		{
 			if (scriptable->m_ScriptTypes.contains("BaseTurret"))
 				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseTurret", "GetAlive", id);
-			else if (scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
-				isAlive = SSH::InvokeFunctionWithReturn<bool>("EncounterSystemDriver", "GetAlive", id);
+		}
+		if(!scriptable)
+		{
+			isAlive = SSH::InvokeFunctionWithReturn<bool>("EncounterSystemDriver", "GetAlive" , player_id, entityID);
 		}
 		return isAlive;
 	}

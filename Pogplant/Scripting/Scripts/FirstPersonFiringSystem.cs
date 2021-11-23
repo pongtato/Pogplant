@@ -69,6 +69,7 @@ namespace Scripting
             UpdateReticleMovement(ref transform, ref dt);
 
             //Add homing capablities
+            //CoutMyEnemy();
             int lower_count = enemy_in_range.Count < Turrets.Count ? enemy_in_range.Count : Turrets.Count;
             for (int i = 0; i < lower_count; ++i)
             {
@@ -138,7 +139,7 @@ namespace Scripting
 
         public override void OnTriggerEnter(uint id)
         {
-
+            
             Tag other_tag = ECS.GetComponent<Tag>(id);
             if (other_tag.tag == "Targetable")
             {
@@ -250,7 +251,7 @@ namespace Scripting
         void CoutMyEnemy()
         {
             Console.Write("Start: ");
-            foreach (uint Enemy in enemy_to_target)
+            foreach (uint Enemy in enemy_in_range)
             {
                 Console.Write(Enemy + ", ");
             }
