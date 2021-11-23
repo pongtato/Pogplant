@@ -1,3 +1,4 @@
+#include "../Application.h"
 #include "ECS.h"
 #include "Entity.h"
 #include "Systems/ScriptResource.h"
@@ -104,6 +105,7 @@ void ECS::TrulyDestroyEntity(entt::entity entity)
 	//m_registry.destroy(entity, 0);
 	m_registry.destroy(entity);
 
+	PogplantDriver::Application::GetInstance().m_sPhysicsSystem.RemoveEntityFromTree(entity);
 }
 
 //returns the first entity with the name
@@ -220,6 +222,9 @@ std::string ECS::GenerateGUID()
 void ECS::Clear()
 {
 	m_registry.clear();
+	m_prefab_map.clear();
+
+	PogplantDriver::Application::GetInstance().m_sPhysicsSystem.Clear();
 }
 
 void ECS::SetParent(entt::entity _parent, entt::entity _child)

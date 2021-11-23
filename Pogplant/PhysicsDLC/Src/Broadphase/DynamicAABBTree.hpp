@@ -44,6 +44,10 @@ namespace PhysicsDLC::Broadphase
 		if (updateNode == nullptr)
 			return;
 
+		//Only object in the tree
+		if (updateNode->m_parent == nullptr)
+			return;
+
 		PhysicsDLC::Collision::Shapes::AABB fatterAABB = updateNode->m_parent->m_aabb;
 
 		fatterAABB.FattenAABB(m_AABBFatteningFactor);
@@ -129,8 +133,8 @@ namespace PhysicsDLC::Broadphase
 
 		if (itr != m_IDmap.end())
 		{
-			RemoveData(&itr->second);
-			m_IDmap.erase(entityID);
+			RemoveData((void**)&itr->second);
+			m_IDmap.erase(itr);
 		}
 	}
 

@@ -78,6 +78,8 @@ PhysicsSystem::~PhysicsSystem()
 
 void PhysicsSystem::CleanUp()
 {
+	Clear();
+
 	t_EXIT_THREADS = true;
 
 	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
@@ -151,15 +153,88 @@ void PhysicsSystem::UpdateMovingObjects()
 /******************************************************************************/
 void PhysicsSystem::TriggerUpdate(int threadID)
 {
-	int entityIndex = 0;
-
+	//int entityIndex = 0;
 	while (!t_EXIT_THREADS)
 	{
 		//perform busy wait LOL
 		m_hasTriggerJob[threadID]->acquire();
 
-
 		if (!t_EXIT_THREADS /*&& m_hasTriggerJob.try_acquire()*/)
+		{
+			for (size_t i = 0; i < m_collisionQuery.m_query.size(); i++)
+			{
+				if ((threadID + i) % NUM_TRIGGER_THREADS != 0)
+					continue;
+
+				//std::cout << i << " of " << m_collisionQuery.m_query.size() << std::endl;
+
+				auto& query = m_collisionQuery.m_query[i];
+
+				auto& _1colliderIdentifier = m_registry->GetReg().get<Components::ColliderIdentifier>(query.m_ID1);
+				auto& _2colliderIdentifier = m_registry->GetReg().get<Components::ColliderIdentifier>(query.m_ID2);
+
+				//If no triggers ignore
+				if (_1colliderIdentifier.isTrigger || _2colliderIdentifier.isTrigger)
+				{
+					auto rigidbodyCheck = m_registry->GetReg().try_get<Components::Rigidbody>(query.m_ID1);
+
+					if(!rigidbodyCheck)
+						rigidbodyCheck = m_registry->GetReg().try_get<Components::Rigidbody>(query.m_ID2);
+
+					//If no rigidbody ignore
+					if (rigidbodyCheck)
+					{
+						auto collisionRule = GetCollisionRule(_1colliderIdentifier.collisionLayer, _2colliderIdentifier.collisionLayer);
+
+						if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE)
+							continue;
+
+						if (query.m_ID1 < query.m_ID2)
+							std::swap(query.m_ID1, query.m_ID2);
+
+						auto objects = m_triggerList.equal_range(query.m_ID1);
+
+						auto _1collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID1);
+						auto _2collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID2);
+
+						if (_1collider && _2collider && PhysicsDLC::Collision::StaticAABBAABB(_1collider->aabb, _2collider->aabb))
+						{
+							//If not in the list trigger
+							if (objects.first == objects.second)
+							{
+								SetTrigger(query.m_ID1, query.m_ID2);
+							}
+							else
+							{
+								bool shouldCall = true;
+								//Find through
+								for (auto it = objects.first; it != objects.second; ++it)
+								{
+									if ((*it).second == query.m_ID2)
+									{
+										shouldCall = false;
+										break;
+									}
+								}
+
+								//Can't find so trigger
+								if (shouldCall)
+									SetTrigger(query.m_ID1, query.m_ID2);
+							}
+						}
+						else if (objects.first != objects.second)
+						{
+							if (SetUntrigger(query.m_ID1, query.m_ID2))
+								objects = m_triggerList.equal_range(query.m_ID1);
+						}
+					}
+				}
+			}
+
+			m_shouldContinue[threadID]->release();
+		}
+
+		/*if (!t_EXIT_THREADS)
 		{
 			auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
 			auto movableEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
@@ -229,7 +304,7 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 			}
 
 			m_shouldContinue[threadID]->release();
-		}
+		}//*/
 	}
 }
 
@@ -345,11 +420,16 @@ void PhysicsSystem::Update(float c_dt)
 	//Update AABBTree
 	UpdateMovingObjects();
 
+	/*for (auto entity : m_registry->m_EntitiesToDelete)
+	{
+		m_broadphase.RemoveData(entity);
+	}//*/
+
 	//Query AABBTree
 	m_collisionQuery.Clear();
 	m_broadphase.QueryTree(m_collisionQuery);
 
-	std::cout << m_collisionQuery.m_query.size() << std::endl;
+	//std::cout << m_collisionQuery.m_query.size() << std::endl;
 
 	//Set the other threads to update trigger behavior
 	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
@@ -471,7 +551,7 @@ void PhysicsSystem::Update(float c_dt)
 	Should be called when exiting a ecs/changing a scene
 */
 /******************************************************************************/
-void PhysicsSystem::ExitState()
+void PhysicsSystem::Clear()
 {
 	auto collidersList = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
 	for (auto& collidable : collidersList)

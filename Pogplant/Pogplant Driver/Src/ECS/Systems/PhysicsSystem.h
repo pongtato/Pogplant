@@ -53,7 +53,12 @@ public:
 
 	int GetCollisionLayer(const std::string& layerName);
 
-	void ExitState();
+	void Clear();
+
+	inline void RemoveEntityFromTree(const entt::entity& entity)
+	{
+		m_broadphase.RemoveData(entity);
+	}
 
 	std::unordered_map<int, std::unordered_map<int, int>> m_collisionMatrix;
 	std::map<std::string, int> m_collisionLayers;

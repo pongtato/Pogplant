@@ -28,6 +28,7 @@ public:
 	~GeneralSystem();
 
 	void Init(ECS* ecs);
+	void UpdateGame(float c_dt);
 	void Update(float c_dt);
 	void UpdateTransforms();
 	void DeleteEntities();
