@@ -60,6 +60,11 @@ public:
 		m_broadphase.RemoveData(entity);
 	}
 
+	inline std::vector<PhysicsDLC::Collision::Shapes::AABB> GetAABBTreeBoxes()
+	{
+		return m_broadphase.GetAABBTreeBoxes();
+	}
+
 	std::unordered_map<int, std::unordered_map<int, int>> m_collisionMatrix;
 	std::map<std::string, int> m_collisionLayers;
 private:

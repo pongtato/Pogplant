@@ -123,6 +123,20 @@ namespace PPP
 				if (ImGui::Button(ICON_FA_PLUS_CIRCLE " Add layer"))
 					physicsSystem.CreateCollisionLayer(name);
 			}
+
+			static bool drawAABBtree = false;
+
+			ImGui::Checkbox("Enable AABB Tree Draw", &drawAABBtree);
+
+			if (drawAABBtree)
+			{
+				//Draw dynamic aabbtree
+				auto boxes = physicsSystem.GetAABBTreeBoxes();
+				for (auto& box : boxes)
+				{
+					PP::DebugDraw::DebugCube(box.m_min, box.m_max);
+				}
+			}
 		}
 		ImGui::End();
 	}
