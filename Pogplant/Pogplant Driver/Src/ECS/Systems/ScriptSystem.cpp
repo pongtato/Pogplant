@@ -89,7 +89,7 @@ void ScriptSystem::Update(float dt)
 {
 	auto entities = m_ecs->view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
 
-	for (auto& entity : entities)
+	for (auto entity : entities)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
 		auto& rigidbody = entities.get<Components::Rigidbody>(entity);

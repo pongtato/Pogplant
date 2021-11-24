@@ -214,6 +214,17 @@ namespace Scripting
 					SSH::InvokeFunction("EncounterSystemDriver", "SpawnWave", ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(other))->m_parent, *tag_mono);
 				//SSH::InvokeFunction("PlayerScript", "SpawnWave", other);
 			}
+			else if (player_collider->collisionLayer == "PLAYER" && other_collider->collisionLayer == "TRIGGERS")
+			{
+				MonoString* tag_mono = mono_string_new(mono_domain_get(), PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Tag>(other)->m_tag.c_str());
+
+				auto parent_id = static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(object))->m_parent);
+				auto player_box_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(parent_id));
+
+				if (player_box_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+					SSH::InvokeFunction("EncounterSystemDriver", "SpawnWave", ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(object))->m_parent, *tag_mono);
+				//SSH::InvokeFunction("PlayerScript", "SpawnWave", other);
+			}
 		}
 	}
 

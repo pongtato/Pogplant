@@ -432,7 +432,7 @@ namespace Scripting
                 }
 
                 current_lifetime += dt;
-                if (current_lifetime >= my_info.life_time)
+                if (current_lifetime >= my_info.life_time && is_alive)
                 {
                     //FirstPersonFiringSystem.Instance.RemoveEnemyFromListOfTargets(gameObject);
                     //Destroy(gameObject);
@@ -443,6 +443,7 @@ namespace Scripting
             {
                 if (deathAnimationTime == deathAnimTime)
                 {
+                    ECS.RemoveParentFrom(gameObject.id);
                     //var rand = new Random();
                     //Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 1000.0f;
                     //gameObject.GetComponent<Rigidbody>().AddImpulseForce(dir);
