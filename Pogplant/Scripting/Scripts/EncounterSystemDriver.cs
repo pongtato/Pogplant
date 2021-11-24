@@ -85,7 +85,7 @@ namespace Scripting
                     SegmentFour_C();
                     break;
                 default:
-                    //Console.WriteLine("Unsupported wave name: \"" + waveName + "\"");
+                    Console.WriteLine("Unsupported wave name: \"" + waveName + "\"");
                     break;
             }
         }

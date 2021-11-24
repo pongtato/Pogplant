@@ -88,7 +88,7 @@ namespace Scripting
 
                 Transform transform = new Transform();
                 transform.Position = new Vector3(-float.Parse(tokens[1]), float.Parse(tokens[2]), float.Parse(tokens[3]));
-                transform.Rotation = new Vector3(0.0f, 0.0f, 0.0f);
+                transform.Rotation = new Vector3(0.0f, 180.0f, 0.0f);
                 transform.Scale = new Vector3(1.0f, 1.0f, 1.0f);
 
                 GameObject waypoint_GO = ECS.CreateChild(parent, name, transform);

@@ -81,7 +81,7 @@ namespace Scripting
             {
                 Vector3 target_pos = Vector3.Lerp(startPos, endPos, progress);
                 //Console.WriteLine("Enemy " + owner.id + " target position: " + target_pos.X + ", " + target_pos.Y + ", " + target_pos.Z);
-                ECS.SetTransformECS(owner.id, target_pos, owner.transform.Value.Rotation, owner.transform.Value.Scale);
+                ECS.SetTransformECS(owner.id, target_pos, ECS.GetGlobalRotation(end_position.id), owner.transform.Value.Scale);
             }
 
             return is_finished;
