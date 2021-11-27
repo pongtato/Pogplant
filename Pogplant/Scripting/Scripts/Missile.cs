@@ -28,8 +28,12 @@ namespace Scripting
         bool explode_phase3 = false;
         bool set_explode_start = false;
         Vector3 start_scale;
-        float centre_shift_multiplier = 2.0f;
-        float final_scale_value = 8.0f;
+        Vector3 start_extends;
+        Vector3 start_centre;
+        float centre_shift_multiplier = 40.0f;
+        float extends_multiplier_Y = 40.0f;
+        float extends_multiplier_XZ = 20.0f;
+        float final_scale_value = 1.0f;
         float explosion_expand_multiplier = 1.0f;
         float accu_dt_expand = 0.0f;
         float linger_time = 0.0f;
@@ -50,6 +54,8 @@ namespace Scripting
             DropMissile = ECS.FindChildEntityWithName(entityID, "DropMissile");
             Explosion = ECS.FindChildEntityWithName(entityID, "Explosion");
             start_scale = ECS.GetComponent<Transform>(Explosion).Scale;
+            start_extends = ECS.GetComponent<BoxCollider>(Explosion).extends;
+            start_centre = ECS.GetComponent<BoxCollider>(Explosion).centre;
             start_ani = true;
         }
 
@@ -111,12 +117,12 @@ namespace Scripting
                 if (isBig)
                 {
                     //Set your enlargement scale
-                    scale = new Vector3(10, 3, 10);
+                    scale = new Vector3(1, 1, 1);
                 }
                 if (!isBig)
                 {
                     //Set minimizer scale
-                    scale = new Vector3(0.1f, 0.1f, 0.1f);
+                    scale = new Vector3(0.01f, 0.01f, 0.01f);
                 }
                 ECS.SetTransformECS(Indicator, blink.Position, blink.Rotation, scale);
                 isBig = !isBig;
@@ -124,7 +130,7 @@ namespace Scripting
             if (blink_phase_dt >= 5.0f)
             {
                 //Force set scale to small and initiate second phase
-                Vector3 force_scale = new Vector3(0.1f, 0.1f, 0.1f);
+                Vector3 force_scale = new Vector3(0.01f, 0.01f, 0.01f);
                 ECS.SetTransformECS(Indicator, blink.Position, blink.Rotation, force_scale);
                 blink_phase1 = false;
                 missle_drop_phase2 = true;
@@ -186,6 +192,9 @@ namespace Scripting
                 //Change the centre colliderbox position also
                 BoxCollider explosion_collider = ECS.GetComponent<BoxCollider>(Explosion);
                 explosion_collider.centre.Y = curr_scale.Y * centre_shift_multiplier;
+                explosion_collider.extends.Y = curr_scale.Y * extends_multiplier_Y;
+                explosion_collider.extends.Z = curr_scale.Y * extends_multiplier_XZ;
+                explosion_collider.extends.X = curr_scale.Y * extends_multiplier_XZ;
                 ECS.SetColliderBox(Explosion, ref explosion_collider.isTrigger, ref explosion_collider.centre, ref explosion_collider.extends);
             }
             //Once reach max value check how long you want to linger
@@ -197,7 +206,8 @@ namespace Scripting
                     //Clear everything/reset
                     ECS.SetTransformECS(Explosion, explode.Position, explode.Rotation, start_scale);
                     BoxCollider end_explosion_collider = ECS.GetComponent<BoxCollider>(Explosion);
-                    end_explosion_collider.centre.Y = start_scale.Y * centre_shift_multiplier;
+                    end_explosion_collider.centre = start_centre;
+                    end_explosion_collider.extends = start_extends;
                     ECS.SetColliderBox(Explosion, ref end_explosion_collider.isTrigger, ref end_explosion_collider.centre, ref end_explosion_collider.extends);
                     explode_phase3 = false;
                 }
