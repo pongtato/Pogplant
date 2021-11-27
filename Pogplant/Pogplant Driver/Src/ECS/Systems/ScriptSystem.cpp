@@ -380,6 +380,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);
 	mono_add_internal_call("Scripting.ECS::GetBoxColliderECS", SSH::GetBoxColliderECS);
 	mono_add_internal_call("Scripting.ECS::GetTagECS", SSH::GetTagECS);
+	mono_add_internal_call("Scripting.ECS::SetColliderBox", SSH::SetColliderBox);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);

@@ -82,5 +82,10 @@ namespace Scripting
         {
             return new EnvDamage();
         }
+
+        public static Missile Missile()
+        {
+            return new Missile();
+        }
     }
 }

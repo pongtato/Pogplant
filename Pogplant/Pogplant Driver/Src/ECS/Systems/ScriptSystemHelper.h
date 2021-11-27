@@ -19,6 +19,7 @@ namespace SSH
 	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
 	void SetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
 	void SetTransformParent(std::uint32_t childID, std::uint32_t parentID);
+	void SetColliderBox(std::uint32_t entityID, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);
 	void RemoveParentFrom(std::uint32_t _id);
 
 	std::uint32_t GetTransformParent(std::uint32_t childID);

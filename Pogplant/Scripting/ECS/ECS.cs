@@ -43,6 +43,9 @@ namespace Scripting
         public extern static void GetBoxColliderECS(uint entityID, ref string collisionLayer, ref bool isTrigger, ref Vector3 centre, ref Vector3 extends);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetColliderBox(uint entityID, ref bool isTrigger, ref Vector3 centre, ref Vector3 extends);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static string GetTagECS(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

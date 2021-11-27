@@ -88,6 +88,17 @@ namespace SSH
 		ScriptSystem::GetECS()->SetParent(static_cast<entt::entity>(parentID), static_cast<entt::entity>(childID));
 	}
 
+	void SetColliderBox(std::uint32_t entityID, bool& isTrigger, glm::vec3& centre, glm::vec3& extends)
+	{
+		auto boxCollider = ScriptSystem::GetECS()->GetReg().try_get<Components::BoxCollider>(static_cast<entt::entity>(entityID));
+		if (boxCollider)
+		{
+			boxCollider->centre = centre;
+			boxCollider->extends = extends;
+			boxCollider->isTrigger = isTrigger;
+		}
+	}
+
 	void RemoveParentFrom(std::uint32_t childID)
 	{
 		ScriptSystem::GetECS()->RemoveParentFrom(static_cast<entt::entity>(childID));
