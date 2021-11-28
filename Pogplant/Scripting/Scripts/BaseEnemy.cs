@@ -53,6 +53,7 @@ namespace Scripting
                 //Console.WriteLine("Started moving enemy");
                 ECS.RemoveParentFrom(owner.id);
                 ECS.SetTransformECS(owner.id, ECS.GetGlobalPosition(start_position.id), start_position.transform.Value.Rotation, start_position.transform.Value.Scale);
+                ECS.PlayAudio(owner.id, 2);
             }
 
             if (is_finished)
@@ -219,6 +220,7 @@ namespace Scripting
                 //}
                 //Console.WriteLine("Firing bullet");
                 GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 5f, owner.transform.Value.Rotation);
+                ECS.PlayAudio(owner.id, 3);
             }
 
             if (current_time >= duration)
@@ -380,25 +382,24 @@ namespace Scripting
         public void TakeDamage(float damage)
         {
             if (my_info.health >= 0)
-            my_info.health -= damage;
-
-            Console.WriteLine("Enemy with ID " + gameObject.id + " has taken " + damage + " damage, health is now " + my_info.health);
-
-            if (my_info.health <= 0)
+            {
+                my_info.health -= damage;
+                ECS.PlayAudio(gameObject.id, 0);
+                //Console.WriteLine("Enemy with ID " + gameObject.id + " has taken " + damage + " damage, health is now " + my_info.health);
+            }
+            else
                 HandleDeath();
         }
 
         private void HandleDeath()
         {
-            Console.WriteLine("Enemy with ID " + gameObject.id + " has called Handle death");
+            //Console.WriteLine("Enemy with ID " + gameObject.id + " has called Handle death");
             if (is_alive)
             {
-                //gameObject.GetComponent<Destructible_Actor>().HandleDeath();
-                //FirstPersonFiringSystem.Instance.RemoveEnemyFromListOfTargets(gameObject);
-
-                ////destroy script so any keyed actions will not occur
-                //Destroy(this);
                 is_alive = false;
+                ECS.PlayAudio(gameObject.id, 1);
+                ECS.RemoveParentFrom(gameObject.id);
+                GameUtilities.PlayEnemyDeathAnimation(gameObject.id);
             }
         }
 
@@ -441,21 +442,16 @@ namespace Scripting
             }
             else
             {
-                if (deathAnimationTime == deathAnimTime)
-                {
-                    ECS.RemoveParentFrom(gameObject.id);
-                    //var rand = new Random();
-                    //Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 1000.0f;
-                    //gameObject.GetComponent<Rigidbody>().AddImpulseForce(dir);
-                    //gameObject.GetComponent<Rigidbody>().useGravity = true;
-                    //gameObject.GetComponent<Rigidbody>().mass = 100.0f;
-                }
                 deathAnimationTime -= dt;
                 if (deathAnimationTime > 0.0f)
                 {
-                    //gameObject.GetComponent<Transform>().Rotation.X += 180.0f * dt;
-                    //gameObject.GetComponent<Transform>().Rotation.Y += 90.0f * dt;
-                    //gameObject.GetComponent<Transform>().Rotation.Z += 270.0f * dt;
+                    //Transform transform = gameObject.GetComponent<Transform>();
+                    //Vector3 new_rotation = transform.Rotation;
+                    //new_rotation.X += 180.0f * dt;
+                    //new_rotation.Y += 90.0f * dt;
+                    //new_rotation.Z += 270.0f * dt;
+
+                    //ECS.SetTransformECS(gameObject.id, transform.Position, new_rotation, transform.Scale);
                 }
                 else
                 {

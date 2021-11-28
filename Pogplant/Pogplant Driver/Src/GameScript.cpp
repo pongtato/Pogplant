@@ -9,6 +9,7 @@
 #include "../Src/Serialiser/Serializer.h"
 #include "GameScript.h"
 #include "Application.h"
+#include <random>
 
 namespace PPD = PogplantDriver;
 using namespace Components;
@@ -287,7 +288,7 @@ namespace Scripting
 		entt::entity hpBar = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("HP_Bar");
 		if (hpBar != entt::null)
 		{
-			auto hpTrans = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get< Transform>(hpBar);
+			auto hpTrans = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(hpBar);
 			if (hpTrans != nullptr)
 			{
 				static float targetScale = 0.805f;
@@ -317,5 +318,26 @@ namespace Scripting
 			isAlive = SSH::InvokeFunctionWithReturn<bool>("EncounterSystemDriver", "GetAlive" , player_id, entityID);
 		}
 		return isAlive;
+	}
+
+	void Scripting::PlayEnemyDeathAnimation(std::uint32_t entityID)
+	{
+		auto rb = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(static_cast<entt::entity>(entityID));
+
+		if (rb)
+		{
+			rb->isKinematic = false;
+			rb->useGravity = true;
+
+			std::random_device rd;  // Will be used to obtain a seed for the random number engine
+			std::mt19937 gen(rd());
+			auto dist = std::uniform_real_distribution(500.0, 1000.0);
+
+			glm::vec3 dir = { dist(gen), dist(gen), dist(gen) };
+			rb->AddImpulseForce(dir);
+			rb->mass = 100.0f;
+
+			//std::cout << "Death Animation called" << std::endl;
+		}
 	}
 }

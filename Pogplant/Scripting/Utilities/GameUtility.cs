@@ -39,6 +39,8 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static bool GetAlive(uint entityID);
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void PlayEnemyDeathAnimation(uint entityID);
 
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")
         {

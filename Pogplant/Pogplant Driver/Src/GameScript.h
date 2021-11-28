@@ -38,6 +38,7 @@ namespace Scripting
 	//Get Enemy alive status(Only for base turret, can expand to others)
 	//Calling this for others is ???
 	bool GetAlive(std::uint32_t entityID);
+	void PlayEnemyDeathAnimation(std::uint32_t entityID);
 }
 
 #endif
