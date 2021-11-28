@@ -119,7 +119,7 @@ namespace PogplantDriver
 		if (ImGui::MenuItem("Canvas", NULL, false, adding_enabled))
 		{
 			glm::vec4 color { 1.f,1.f,1.f,1.f };
-			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "snow_diff.dds");
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "snow_diff.dds", true);
 		}
 
 		if (ImGui::MenuItem("Particle System", NULL, false, adding_enabled))
@@ -2485,8 +2485,14 @@ namespace PogplantDriver
 			{
 				const char* popuplabel = "Texture Selection";
 
-				// Diffuse color picker
+				// World space or screen space?
 				ImGui::Dummy(ImVec2(0.0f, 2.0f));
+				ImGui::Text("Ortho");
+				ImGui::SameLine();
+				ImGui::Checkbox("###UseOrtho", &canvas->m_Ortho);
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+				// Diffuse color picker
 				ImGui::PushID("CANVAS");
 				ImGui::Text("Color Tint");
 				ImGui::ColorEdit3("###Color Tint", glm::value_ptr(canvas->m_Color));

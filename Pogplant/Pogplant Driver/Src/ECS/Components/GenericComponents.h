@@ -432,11 +432,12 @@ namespace Components
 	struct Canvas
 	{
 		Canvas() = default;
-		Canvas(const glm::vec4& _Color, std::string _TexName);
+		Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho);
 		void init(void);
 		glm::vec4 m_Color;
 		std::string m_TexName;
 		int m_TexID;
+		bool m_Ortho;
 	};
 
 	// For reference for Gab 

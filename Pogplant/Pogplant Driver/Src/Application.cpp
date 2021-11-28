@@ -324,7 +324,7 @@ void Application::InitialiseDebugObjects()
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("rocks_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "rocks_diff.dds"});
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "rocks_diff.dds", true});
 
 	pos = { -0.8, 0.7f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
@@ -333,7 +333,7 @@ void Application::InitialiseDebugObjects()
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("snow_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "snow_diff.dds"});
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "snow_diff.dds", true});
 
 	//Vinceen testing code
 	//auto _ra = m_activeECS->view<Transform>(entt::exclude_t<Renderer>());
@@ -485,7 +485,7 @@ void Application::UpdateTransforms(float _Dt)
 	{
 		auto& transform = canvasView.get<Transform>(it);
 		auto& canvas = canvasView.get<Canvas>(it);
-		PP::MeshInstance::SetInstance(PP::InstanceData{ transform.m_ModelMtx, canvas.m_Color, canvas.m_TexID, true, true });
+		PP::MeshInstance::SetInstance(PP::InstanceData{ transform.m_ModelMtx, canvas.m_Color, canvas.m_TexID, canvas.m_Ortho, canvas.m_Ortho });
 	}
 
 	
