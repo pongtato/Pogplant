@@ -271,7 +271,7 @@
 			],
 			"isTrigger" : true
 		},
-		"Children" : 6,
+		"Children" : 8,
 		"Name" : 
 		{
 			"m_Name" : "PlayerShip"
@@ -331,10 +331,42 @@
 		}
 	},
 	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret2"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.4997565746307373,
+				-1.0550041198730469,
+				0.43400001525878906
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.3107725385643252e-14,
+				-1.3305107095096538e-19
+			],
+			"m_scale" : 
+			[
+				0.0099999988451600075,
+				0.010000030510127544,
+				0.0099999988451600075
+			]
+		}
+	},
+	{
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Crosshair"
+			"m_Name" : "GunPart2"
 		},
 		"Render" : 
 		{
@@ -352,25 +384,29 @@
 			],
 			"RenderModel" : 
 			[
-				"CubeTest",
-				"Resources/Models\\CubeTest",
-				"Cone001"
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface19"
 			],
 			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
 		},
 		"Transform" : 
 		{
 			"m_position" : 
 			[
-				2.729830339376349e-05,
-				-0.0038242340087890625,
-				35.010417938232422
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				-179.99989318847656,
-				-1.8974533055882148e-10,
-				-179.99989318847656
+				0.0,
+				-2.7239709257344995e-15,
+				-7.3214829754419952e-09
 			],
 			"m_scale" : 
 			[
@@ -384,7 +420,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "LargeCrosshair"
+			"m_Name" : "GunPart3"
 		},
 		"Render" : 
 		{
@@ -402,31 +438,361 @@
 			],
 			"RenderModel" : 
 			[
-				"CubeTest",
-				"Resources/Models\\CubeTest",
-				"Box001"
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface20"
 			],
 			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
 		},
 		"Transform" : 
 		{
 			"m_position" : 
 			[
-				2.731234417296946e-05,
-				-0.010300636291503906,
-				35.016372680664062
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				-179.99989318847656,
-				-1.8975704341173127e-10,
-				-179.99989318847656
+				0.0,
+				-2.4692780711322616e-15,
+				-6.8655188201205419e-09
 			],
 			"m_scale" : 
 			[
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart1"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface18"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.002132415771484375,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				3.6775163602818968e-15,
+				1.0365017238191153e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret4"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.4999957084655762,
+				-1.8627462387084961,
+				0.40003854036331177
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-1.8984416816358873e-10,
+				3.4550341569604902e-16
+			],
+			"m_scale" : 
+			[
+				0.0099999979138374329,
+				0.010000061243772507,
+				0.0099999979138374329
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart2"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-2.7239709257344995e-15,
+				-7.3214829754419952e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart3"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface20"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-2.4692780711322616e-15,
+				-6.8655188201205419e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart1"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface18"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0059814453125,
+				-0.0010986328125,
+				1.9073486328125e-06
+			],
+			"m_rotation" : 
+			[
+				2.5534001579785581e-09,
+				3.6526682252577183e-15,
+				-4.5596085934684893e-11
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Small_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Crosshair"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.8930814955383539e-10,
+				-0.011991500854492188,
+				35.043087005615234
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-1.8974528892545806e-10,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				5.0,
+				5.0,
+				5.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Large_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LargeCrosshair"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.732825669227168e-05,
+				-0.018624305725097656,
+				35.049667358398438
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-1.89751575563335e-10,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				15.000735282897949,
+				15.00067138671875,
+				15.000581741333008
 			]
 		}
 	},
@@ -445,8 +811,8 @@
 			"m_position" : 
 			[
 				-2.5,
-				-1.2141361236572266,
-				0.41601699590682983
+				-1.2171344757080078,
+				-5.766749382019043e-06
 			],
 			"m_rotation" : 
 			[
@@ -659,7 +1025,7 @@
 			"m_rotation" : 
 			[
 				3.7232741334491948e-08,
-				1.1436443697436516e-13,
+				1.1373352617766869e-13,
 				-1.5391400154385337e-07
 			],
 			"m_scale" : 
@@ -711,14 +1077,14 @@
 		{
 			"m_position" : 
 			[
-				-1.5816112863831222e-08,
-				-0.02447509765625,
+				-1.5957994037307799e-08,
+				-0.024692535400390625,
 				20.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				4.6770069371190881e-13,
+				4.6794789180723551e-13,
 				1.3027550392619158e-11
 			],
 			"m_scale" : 
@@ -730,10 +1096,42 @@
 		}
 	},
 	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret3"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.5000042915344238,
+				-1.9921646118164062,
+				-9.3877315521240234e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				1.260652145824645e-13,
+				-2.2943009757076383e-19
+			],
+			"m_scale" : 
+			[
+				0.0099999988451600075,
+				0.010000030510127544,
+				0.0099999988451600075
+			]
+		}
+	},
+	{
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "PlayerTurret2"
+			"m_Name" : "GunPart2"
 		},
 		"Render" : 
 		{
@@ -751,9 +1149,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface19"
 			],
 			"UseLight" : 1
 		},
@@ -765,21 +1163,333 @@
 		{
 			"m_position" : 
 			[
-				2.5,
-				-1.2026987075805664,
-				-0.99999982118606567
+				0.0,
+				-0.00063323974609375,
+				-0.000301361083984375
+			],
+			"m_rotation" : 
+			[
+				4.4945053234712873e-10,
+				-2.3852945426537609e-15,
+				-7.7644202178817068e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart3"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface20"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				1.8977115712193182e-10,
-				-4.8859838841508463e-08
+				-2.4692780711322616e-15,
+				-6.8655188201205419e-09
 			],
 			"m_scale" : 
 			[
-				0.49999997019767761,
-				0.50000309944152832,
-				5.0009989738464355
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart1"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface18"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.010406494140625,
+				-6.191650390625,
+				0.000644683837890625
+			],
+			"m_rotation" : 
+			[
+				6.4746927819214761e-09,
+				8.3448550939344349e-15,
+				-6.4746927819214761e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "ReticleGroup"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.8391266937433102e-07,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				0.99999696016311646,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Lockon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Reticle1"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.6674342734622769e-09,
+				-0.0060262731276452541,
+				4.5865533593314467e-11
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				1.2684006677008558e-13,
+				-2.0844082015969434e-10
+			],
+			"m_scale" : 
+			[
+				5.0,
+				5.0,
+				5.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Lockon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Reticle2"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.3324705479317345e-09,
+				-0.00051116943359375,
+				-1.2710846931440756e-05
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Lockon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Reticle3"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-8.4622797658084892e-10,
+				-0.001625067088752985,
+				9.546977805204894e-15
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Lockon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Reticle4"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.4220022371300729e-09,
+				-0.0011297488817945123,
+				1.2401181427243446e-12
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -830,6 +1540,104 @@
 				10.0,
 				10.0,
 				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				8.0,
+				0.5,
+				0.5
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_1_Collision"
+		},
+		"Scripting" : 
+		{
+			"EnvDamage" : false
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.2234344482421875,
+				1.3522825241088867,
+				-2.3822555541992188
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Branch_2_Collision"
+		},
+		"Scripting" : 
+		{
+			"EnvDamage" : false
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				20.540569305419922,
+				4.5728683471679688,
+				-20.062938690185547
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -1088,104 +1896,6 @@
 				160.13522338867188,
 				1.1720800399780273,
 				-86.665252685546875
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				8.0,
-				0.5,
-				0.5
-			],
-			"isTrigger" : false
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Branch_1_Collision"
-		},
-		"Scripting" : 
-		{
-			"EnvDamage" : false
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				9.2234344482421875,
-				1.3522825241088867,
-				-2.3822555541992188
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				2.0,
-				2.0,
-				2.0
-			],
-			"isTrigger" : false
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Branch_2_Collision"
-		},
-		"Scripting" : 
-		{
-			"EnvDamage" : false
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				20.540569305419922,
-				4.5728683471679688,
-				-20.062938690185547
 			],
 			"m_rotation" : 
 			[
@@ -5798,9 +6508,9 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.1748046875,
-				-0.0001220703125
+				0.0009765625,
+				0.1749267578125,
+				0.0
 			],
 			"m_rotation" : 
 			[
@@ -5810,7 +6520,7 @@
 			],
 			"m_scale" : 
 			[
-				0.99979960918426514,
+				0.99979954957962036,
 				0.99978643655776978,
 				0.99978643655776978
 			]

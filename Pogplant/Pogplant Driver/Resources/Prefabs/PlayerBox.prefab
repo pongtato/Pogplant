@@ -1,0 +1,1190 @@
+[
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYERBOX",
+			"extends" : 
+			[
+				50.0,
+				20.0,
+				50.0
+			],
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Guid" : 
+		{
+			"m_guid" : "5f747ed5-1d10-4d31-8920-3cd1b088bda6"
+		},
+		"Name" : 
+		{
+			"m_Name" : "PlayerBox"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"EncounterSystemDriver" : false,
+			"FollowSpline" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Player"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				15.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-5.0089556680177338e-06,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYER",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isTrigger" : true
+		},
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "PlayerShip"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"CockPit",
+				"Resources/Models\\Ship",
+				"CockPit"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"PlayerScript" : false
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.15999984741210938,
+				0.15000000596046448
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.0089556680177338e-06,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				0.99999696016311646,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.4997565746307373,
+				-1.0550041198730469,
+				0.43400001525878906
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.3107725385643252e-14,
+				-1.3305107095096538e-19
+			],
+			"m_scale" : 
+			[
+				0.0099999988451600075,
+				0.010000030510127544,
+				0.0099999988451600075
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-2.7239709257344995e-15,
+				-7.3214829754419952e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart3"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface20"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-2.4692780711322616e-15,
+				-6.8655188201205419e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface18"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.002132415771484375,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				3.6775163602818968e-15,
+				1.0365017238191153e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret4"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.4999957084655762,
+				-1.8627462387084961,
+				0.40003854036331177
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-1.8984416816358873e-10,
+				3.4550341569604902e-16
+			],
+			"m_scale" : 
+			[
+				0.0099999979138374329,
+				0.010000061243772507,
+				0.0099999979138374329
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-2.7239709257344995e-15,
+				-7.3214829754419952e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart3"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface20"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-2.4692780711322616e-15,
+				-6.8655188201205419e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface18"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0059814453125,
+				-0.0010986328125,
+				1.9073486328125e-06
+			],
+			"m_rotation" : 
+			[
+				2.5534001579785581e-09,
+				3.6526682252577183e-15,
+				-4.5596085934684893e-11
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Small_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Crosshair"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.8930814955383539e-10,
+				-0.011991500854492188,
+				35.043087005615234
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-1.8974528892545806e-10,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				5.0,
+				5.0,
+				5.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_TexName" : "Large_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LargeCrosshair"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.732825669227168e-05,
+				-0.018624305725097656,
+				35.049667358398438
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-1.89751575563335e-10,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				15.000735282897949,
+				15.00067138671875,
+				15.000581741333008
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.5,
+				-1.2171344757080078,
+				-5.766749382019043e-06
+			],
+			"m_rotation" : 
+			[
+				0.00020849134307354689,
+				-1.8996827721995402e-10,
+				-3.4472122933948413e-08
+			],
+			"m_scale" : 
+			[
+				0.0099999997764825821,
+				0.0099999997764825821,
+				0.0099999997764825821
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-2.7239709257344995e-15,
+				-7.3214829754419952e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart3"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface20"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-2.4692780711322616e-15,
+				-6.8655188201205419e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface18"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.002132415771484375,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				3.6775163602818968e-15,
+				1.0365017238191153e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\ttd.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.14599999785423279
+			}
+		},
+		"Camera" : 
+		{
+			"m_Active" : true,
+			"m_Far" : 450.0,
+			"m_Fov" : 90.0,
+			"m_Near" : 0.10000000149011612,
+			"m_Pitch" : 0.0,
+			"m_Yaw" : -90.0
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerCam"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.4959068519528955e-07,
+				0.54999923706054688,
+				-0.88000005483627319
+			],
+			"m_rotation" : 
+			[
+				3.7232741334491948e-08,
+				1.1373352617766869e-13,
+				-1.5391400154385337e-07
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				5.0,
+				15.0
+			],
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "ShootingBox"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"FirstPersonFiringSystem" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.5957994037307799e-08,
+				-0.024692535400390625,
+				20.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				4.6794789180723551e-13,
+				1.3027550392619158e-11
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret3"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.5000042915344238,
+				-1.9921646118164062,
+				-9.3877315521240234e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				1.260652145824645e-13,
+				-2.2943009757076383e-19
+			],
+			"m_scale" : 
+			[
+				0.0099999988451600075,
+				0.010000030510127544,
+				0.0099999988451600075
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.00063323974609375,
+				-0.000301361083984375
+			],
+			"m_rotation" : 
+			[
+				4.4945053234712873e-10,
+				-2.3852945426537609e-15,
+				-7.7644202178817068e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart3"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface20"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-2.4692780711322616e-15,
+				-6.8655188201205419e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "GunPart1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\PlayerBox.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Gun",
+				"Resources/Models\\Ship",
+				"polySurface18"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.010406494140625,
+				-6.191650390625,
+				0.000644683837890625
+			],
+			"m_rotation" : 
+			[
+				6.4746927819214761e-09,
+				8.3448550939344349e-15,
+				-6.4746927819214761e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

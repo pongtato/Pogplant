@@ -41,6 +41,12 @@ namespace Pogplant
             "Resources/Textures/UI"
         );
 
+				TexLoader::LoadTextureSRGB
+				(
+					"Lockon.dds",
+					"Resources/Textures/UI"
+				);
+
         TexLoader::LoadTextureSRGB
         (
             "Hp_Icon.dds",

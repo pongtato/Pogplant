@@ -8,6 +8,7 @@ namespace Scripting
 {
     public class FirstPersonFiringSystem : MonoBehaviour
     {
+        List<uint> ReticleGroup = new List<uint>();
         List<uint> Turrets = new List<uint>();
         List<uint> enemy_in_range = new List<uint>();
         List<uint> enemy_to_target = new List<uint>();
@@ -16,6 +17,7 @@ namespace Scripting
         uint PlayerShip;
         uint shipCamera;
         uint ShootingBox;
+        uint ReticleGroupID;
 
         //Player Firing 
         float p_fireRate = 0.66f;
@@ -32,6 +34,10 @@ namespace Scripting
         Vector3 MousePos =  new Vector3(0, 0, 0);
         bool onceFlag = false;
 
+        //Reticle stuff
+        Vector3 start_position = new Vector3(0.0f, 0.0f, 0.0f);
+        Vector3 Small_hide_reticle = new Vector3(0.01f, 0.01f, 0.01f);
+        Vector3 Show_reticle = new Vector3(8f, 8f, 8f);
 
         public FirstPersonFiringSystem()
         {
@@ -40,10 +46,17 @@ namespace Scripting
             shipCamera = ECS.FindEntityWithName("PlayerCam");
             ShootingBox = ECS.FindEntityWithName("ShootingBox");
             Crosshair = ECS.FindEntityWithName("Crosshair");
-            uint Turret1 = ECS.FindEntityWithName("PlayerTurret1");
-            uint Turret2 = ECS.FindEntityWithName("PlayerTurret2");
-            Turrets.Add(Turret1);
-            Turrets.Add(Turret2);
+            ReticleGroupID = ECS.FindEntityWithName("ReticleGroup");
+
+            Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
+            Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
+            Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret3"));
+            Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret4"));
+
+            ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"));
+            ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"));
+            ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"));
+            ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"));
         }
 
         public override void Init(ref uint _entityID)
@@ -102,14 +115,23 @@ namespace Scripting
                 int get_lower = enemy_to_target.Count < Turrets.Count ? enemy_to_target.Count : Turrets.Count;
                 for (int i = 0; i < get_lower; ++i)
                 {
+                    //Turret in use
                     Transform.LookAt(Turrets[i], enemy_to_target[i]);
+                    //Update Reticle need to flip Z and X
+                    Vector3 EnemyPos = ECS.GetGlobalPosition(enemy_to_target[i]);
+                    EnemyPos.X *= -1.0f;
+                    EnemyPos.Z *= -1.0f;
+                    ECS.SetTransformECS(ReticleGroup[i], EnemyPos, ECS.GetGlobalRotation(PlayerShip), Show_reticle);
                 }
                 for (int j = get_lower; j < Turrets.Count; ++j)
                 {
+                    //Turrets not in use
                     Transform TurretTrans = new Transform();
                     ECS.GetTransformECS(Turrets[j], ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
                     TurretTrans.Rotation = new Vector3(0, 0, 0);
                     ECS.SetTransformECS(Turrets[j], TurretTrans.Position, TurretTrans.Rotation, TurretTrans.Scale);
+                    //Reset Reticle
+                    ECS.SetTransformECS(ReticleGroup[j], start_position, start_position, Small_hide_reticle);
                 }
 
             }
