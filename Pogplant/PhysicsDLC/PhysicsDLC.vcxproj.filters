@@ -51,6 +51,12 @@
     <ClInclude Include="Src\Broadphase\BroadphaseQuery.hpp">
       <Filter>Source Files\Broadphase</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Collision\GJK.h">
+      <Filter>Source Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utility.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Collision\Colliders.cpp">
@@ -61,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="Src\Physics\PhysicsResolvers.cpp">
       <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Collision\GJK.cpp">
+      <Filter>Source Files\Collision</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

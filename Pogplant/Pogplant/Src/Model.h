@@ -23,6 +23,7 @@ namespace Pogplant
 		float minZ;
 		float maxZ;
 		float longest;
+		//float largestDistanceFromOrigin;
 	};
 
 	class Model

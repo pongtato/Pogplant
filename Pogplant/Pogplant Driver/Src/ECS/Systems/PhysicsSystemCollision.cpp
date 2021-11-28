@@ -71,10 +71,6 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 		{
 			break;
 		}
-		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_HEIGHTMAP:
-		{
-			break;
-		}
 		default:
 			std::cerr << "PhysicsSystem::HandleCollision, unhandled collider update check box 2" << std::endl;
 			break;
@@ -140,10 +136,6 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 				}
 			}
 
-			break;
-		}
-		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_HEIGHTMAP:
-		{
 			break;
 		}
 		default:

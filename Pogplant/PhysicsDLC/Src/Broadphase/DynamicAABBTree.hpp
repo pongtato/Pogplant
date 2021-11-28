@@ -61,7 +61,7 @@ namespace PhysicsDLC::Broadphase
 		else
 		{
 			updateNode->m_aabb = aabb;
-			updateNode->m_aabb.FattenAABB(m_AABBFatteningFactor);
+			//updateNode->m_aabb.FattenAABB(m_AABBFatteningFactor);
 		}
 	}
 
@@ -291,7 +291,7 @@ namespace PhysicsDLC::Broadphase
 		if (!c_curNode)
 			return;
 
-		if (c_curNode->m_entity == m_IDNullObj)
+		//if (c_curNode->m_entity == m_IDNullObj)
 			c_boxes.push_back(c_curNode->m_aabb);
 
 		if (c_curNode->m_left)

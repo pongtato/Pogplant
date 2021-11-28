@@ -15,7 +15,9 @@
 #define PHYSICSDLC_H_
 
 //#include "Collision/Colliders.h"
+#include "Utility.h"
 #include "Collision/Collision.h"
+#include "Collision/GJK.h"
 #include "Physics/PhysicsResolvers.h"
 
 #include "Broadphase/BroadphaseQuery.h"

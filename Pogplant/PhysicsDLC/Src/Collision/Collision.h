@@ -46,9 +46,6 @@ namespace PhysicsDLC
 
 		bool StaticSphereSphere(const Shapes::Sphere& sphere1, const Shapes::Sphere& sphere2);
 		CollisionResults CRDynamicSphereSphere(const Shapes::Sphere& sphere1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime);
-		
-		bool StaticAABBSphere();
-		CollisionResults CRDynamicAABBSphere(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime);
 
 		bool PointAABB(const vec3& point, const Shapes::AABB& aabb);
 		bool PointSphere(const vec3& point, const Shapes::Sphere& sphere);

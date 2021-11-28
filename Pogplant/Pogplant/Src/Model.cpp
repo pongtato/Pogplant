@@ -111,6 +111,8 @@ namespace Pogplant
 		float lenZ = std::fabsf(m_Bounds.maxZ) + std::fabsf(m_Bounds.minZ);
 		m_Bounds.longest = std::max(lenX, lenY);
 		m_Bounds.longest = std::max(m_Bounds.longest, lenZ);
+
+		//m_Bounds.largestDistanceFromOrigin = (glm::vec3{ m_Bounds.longest, m_Bounds.longest, m_Bounds.longest } *0.5f).length();
 		return true;
 	}
 

@@ -85,17 +85,17 @@ namespace PogplantDriver
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Rigidbody>(PPD::ImguiHelper::m_CurrentEntity);
 		}
-		if (ImGui::MenuItem("BoxCollider", NULL, false, adding_enabled))
+		if (ImGui::MenuItem("Box Collider", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::BoxCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
-		if (ImGui::MenuItem("SphereCollider", NULL, false, adding_enabled))
+		if (ImGui::MenuItem("Sphere Collider", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::SphereCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
-		if (ImGui::MenuItem("OBBBoxCollider", NULL, false, adding_enabled))
+		if (ImGui::MenuItem("Mesh Collider", NULL, false, adding_enabled))
 		{
-			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::OBBBoxCollider>(PPD::ImguiHelper::m_CurrentEntity);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::MeshCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
 		if (ImGui::MenuItem(ICON_FA_CAMERA "  Camera", NULL, false, adding_enabled))
 		{
@@ -965,6 +965,63 @@ namespace PogplantDriver
 						m_ecs->GetReg().remove<Components::SphereCollider>(m_CurrentEntity);
 
 						if(m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity))
+							m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
+					}
+				}
+
+				auto meshCollider = m_ecs->GetReg().try_get <Components::MeshCollider>(m_CurrentEntity);
+				if (meshCollider)
+				{
+					bool enableMeshCollider = true;
+
+					if (ImGui::CollapsingHeader(ICON_FA_BOXES "  Mesh Collider", &enableMeshCollider, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						ImGuiComboFlags flag = 0;
+						flag |= ImGuiComboFlags_PopupAlignLeft;
+
+						ImGui::Checkbox("Is Trigger?", &meshCollider->isTrigger);
+
+						auto identifier = m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity);
+						if (identifier)
+							identifier->isTrigger = meshCollider->isTrigger;
+
+						/**Collision Layer editor**/
+						ImguiBlankSeperator(1);
+
+						auto& collisionLayers = Application::GetInstance().m_sPhysicsSystem.m_collisionLayers;
+
+						ImGui::Text(ICON_FA_LAYER_GROUP " Collision Layer");
+						if (ImGui::BeginCombo("###AxisKeys", meshCollider->collisionLayer.c_str(), ImGuiComboFlags_PopupAlignLeft))
+						{
+							for (auto itr = collisionLayers.begin(); itr != collisionLayers.end(); ++itr)
+							{
+								const bool isSelected = (itr->first == meshCollider->collisionLayer);
+
+								if (ImGui::Selectable(itr->first.c_str(), isSelected))
+								{
+									meshCollider->collisionLayer = itr->first;
+
+									if (identifier)
+										identifier->collisionLayer = itr->second;
+								}
+
+								if (isSelected)
+									ImGui::SetItemDefaultFocus();
+							}
+
+							ImGui::EndCombo();
+						}
+						/****/
+
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
+					}
+
+					if (!enableMeshCollider)
+					{
+						m_ecs->GetReg().remove<Components::MeshCollider>(m_CurrentEntity);
+
+						if (m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity))
 							m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
 					}
 				}

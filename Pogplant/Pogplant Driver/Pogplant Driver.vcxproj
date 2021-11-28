@@ -176,6 +176,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClCompile Include="Src\AssetCompiler.cpp" />
     <ClCompile Include="Src\ContentBrowser.cpp" />
     <ClCompile Include="Src\Debugger.cpp" />
+    <ClCompile Include="Src\ECS\Components\DependantComponents.cpp" />
     <ClCompile Include="Src\ECS\Components\GenericComponents.cpp" />
     <ClCompile Include="Src\ECS\ECS.cpp" />
     <ClCompile Include="Src\ECS\Entity.cpp" />

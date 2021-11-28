@@ -207,22 +207,6 @@ namespace PhysicsDLC
 			return CR;
 		}
 
-		bool StaticAABBSphere()
-		{
-			return false;
-		}
-
-		CollisionResults CRDynamicAABBSphere(const Shapes::AABB& aabb1, const vec3& vel1, const Shapes::Sphere& sphere2, const vec3& vel2, dtType deltaTime)
-		{
-			CollisionResults CR;
-			(void)aabb1;
-			(void)vel1;
-			(void)sphere2;
-			(void)vel2;
-			(void)deltaTime;
-			return CR;
-		}
-
 		bool PointAABB(const vec3& point, const Shapes::AABB& aabb)
 		{
 			return (aabb.m_min.x <= point.x && aabb.m_max.x >= point.x

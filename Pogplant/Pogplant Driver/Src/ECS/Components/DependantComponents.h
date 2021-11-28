@@ -44,6 +44,7 @@ namespace Components
 			CT_UNDEFINED,
 			CT_BOX,
 			CT_SPHERE,
+			CT_GJKMESH,
 			CT_OBBBOX,
 			CT_HEIGHTMAP
 		};
@@ -73,6 +74,8 @@ namespace Components
 
 		bool isTrigger = false;
 		std::string collisionLayer = "DEFAULT";
+
+		PhysicsDLC::Collision::Shapes::AABB aabb;
 		RTTR_ENABLE();
 	};
 
@@ -85,7 +88,6 @@ namespace Components
 
 		glm::vec3 extends = glm::vec3{ 1.f, 1.f, 1.f };
 		glm::vec3 centre;
-		PhysicsDLC::Collision::Shapes::AABB aabb;
 		RTTR_ENABLE(Collider);
 	};
 
@@ -118,12 +120,15 @@ namespace Components
 		RTTR_ENABLE(Collider);
 	};
 
-	/*struct HeightMapCollider : public Collider
+	struct MeshCollider : public Collider, public PhysicsDLC::Collision::GJK::GJKSupportShape
 	{
-		HeightMapCollider() = default;
+		MeshCollider() = default;
 
-		PhysicsDLC::Collision::Shapes::HeightMap heightMap;
-	};//*/
+		entt::entity m_id;
+
+		virtual glm::vec3 GetCenter() const override;
+		virtual glm::vec3 FindFurthestPoint(const glm::vec3& direction) const override;
+	};
 
 	struct AudioSource
 	{

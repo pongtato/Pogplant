@@ -126,7 +126,7 @@ namespace PPP
 
 			static bool drawAABBtree = false;
 
-			ImGui::Checkbox("Enable AABB Tree Draw", &drawAABBtree);
+			ImGui::Checkbox(ICON_FA_TREE " Enable AABB Tree Draw", &drawAABBtree);
 
 			if (drawAABBtree)
 			{

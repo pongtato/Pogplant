@@ -23,13 +23,16 @@
     </ClInclude>
     <ClInclude Include="Src\Collision\Colliders.h" />
     <ClInclude Include="Src\Collision\Collision.h" />
+    <ClInclude Include="Src\Collision\GJK.h" />
     <ClInclude Include="Src\PhysicsDLC.h" />
     <ClInclude Include="Src\Physics\PhysicsResolvers.h" />
     <ClInclude Include="Src\TypeDefines.h" />
+    <ClInclude Include="Src\Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Collision\Colliders.cpp" />
     <ClCompile Include="Src\Collision\Collision.cpp" />
+    <ClCompile Include="Src\Collision\GJK.cpp" />
     <ClCompile Include="Src\Physics\PhysicsResolvers.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

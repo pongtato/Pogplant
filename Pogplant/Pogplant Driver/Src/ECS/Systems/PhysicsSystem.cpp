@@ -159,16 +159,19 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 		//perform busy wait LOL
 		m_hasTriggerJob[threadID]->acquire();
 
-		if (!t_EXIT_THREADS /*&& m_hasTriggerJob.try_acquire()*/)
+		if (!t_EXIT_THREADS)
 		{
-			for (size_t i = 0; i < m_collisionQuery.m_query.size(); i++)
+			for (size_t i = threadID; i < m_collisionQuery.m_query.size(); i += NUM_TRIGGER_THREADS)
 			{
-				if ((threadID + i) % NUM_TRIGGER_THREADS != 0)
-					continue;
+				//if ((threadID + i) % NUM_TRIGGER_THREADS != 0)
+				//	continue;
 
 				//std::cout << i << " of " << m_collisionQuery.m_query.size() << std::endl;
 
 				auto& query = m_collisionQuery.m_query[i];
+
+				if (query.m_ID1 < query.m_ID2)
+					std::swap(query.m_ID1, query.m_ID2);
 
 				auto& _1colliderIdentifier = m_registry->GetReg().get<Components::ColliderIdentifier>(query.m_ID1);
 				auto& _2colliderIdentifier = m_registry->GetReg().get<Components::ColliderIdentifier>(query.m_ID2);
@@ -189,15 +192,71 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 						if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE)
 							continue;
 
-						if (query.m_ID1 < query.m_ID2)
-							std::swap(query.m_ID1, query.m_ID2);
-
 						auto objects = m_triggerList.equal_range(query.m_ID1);
 
-						auto _1collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID1);
-						auto _2collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID2);
+						bool collided = false;
 
-						if (_1collider && _2collider && PhysicsDLC::Collision::StaticAABBAABB(_1collider->aabb, _2collider->aabb))
+						switch (_1colliderIdentifier.colliderType)
+						{
+						case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
+						{
+							switch (_2colliderIdentifier.colliderType)
+							{
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
+							{
+								//Box box
+								auto _1collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID1);
+								auto _2collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::StaticAABBAABB(_1collider->aabb, _2collider->aabb);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH:
+							{
+								//Box GJK
+								break;
+							}
+							default:
+								assert(false && "Unsupported type detected");
+								break;
+							}
+							break;
+						}
+						case Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH:
+						{
+							switch (_2colliderIdentifier.colliderType)
+							{
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
+							{
+								//GJK BOX
+								auto _1collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID1);
+								auto _2collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::StaticAABBAABB(_1collider->aabb, _2collider->aabb);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH:
+							{
+								//GJK GJK
+								auto _1collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID1);
+								auto _2collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID2);
+
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+
+								std::cout << collided << std::endl;
+								break;
+							}
+							default:
+								assert(false && "Unsupported type detected");
+								break;
+							}
+							break;
+						}
+						default:
+							assert(false && "Unsupported type detected");
+							break;
+						}
+
+
+						if (collided)
 						{
 							//If not in the list trigger
 							if (objects.first == objects.second)
@@ -224,22 +283,21 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 						}
 						else if (objects.first != objects.second)
 						{
-							if (SetUntrigger(query.m_ID1, query.m_ID2))
-								objects = m_triggerList.equal_range(query.m_ID1);
+							SetUntrigger(query.m_ID1, query.m_ID2);
 						}
 					}
 				}
 			}
 
 			m_shouldContinue[threadID]->release();
-		}
+		}//*/
 
 		/*if (!t_EXIT_THREADS)
 		{
 			auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
 			auto movableEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
 
-			entityIndex = -1;
+			int entityIndex = -1;
 			for (auto _1entity : collidableEntities)
 			{
 				++entityIndex;
@@ -327,6 +385,7 @@ void PhysicsSystem::UpdateEditor()
 
 		boxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider.centre, boxCollider.extends * transform.GetGlobalScale());
 
+		//Update broadphase and identifiers
 		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
 		if (!colliderIdentifier)
 		{
@@ -349,6 +408,51 @@ void PhysicsSystem::UpdateEditor()
 				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, boxCollider.aabb);
 		}
 	}
+
+	auto meshColliders = m_registry->view<Components::Transform, Components::Renderer, Components::MeshCollider>();
+	for (auto& collidable : meshColliders)
+	{
+		auto& transform = meshColliders.get<Components::Transform>(collidable);
+		auto& meshCollider = meshColliders.get<Components::MeshCollider>(collidable);
+		auto& renderer = meshColliders.get<Components::Renderer>(collidable);
+
+		meshCollider.m_id = collidable;
+
+		float maxScale = std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
+		
+		meshCollider.aabb.CalculateAABBFromExtends(
+			transform.m_position,
+			glm::vec3{
+			renderer.m_RenderModel->m_Bounds.longest,
+			renderer.m_RenderModel->m_Bounds.longest,
+			renderer.m_RenderModel->m_Bounds.longest } * maxScale);
+
+		//Update broadphase and identifiers
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
+		if (!colliderIdentifier)
+		{
+			auto& identifier = m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+				collidable,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH,
+				meshCollider.isTrigger,
+				GetCollisionLayer(meshCollider.collisionLayer));
+
+			m_broadphase.InsertData(&identifier.broadPhaseKey, collidable, meshCollider.aabb);
+		}
+		else
+		{
+			colliderIdentifier->isTrigger = meshCollider.isTrigger;
+			colliderIdentifier->collisionLayer = GetCollisionLayer(meshCollider.collisionLayer);
+
+			if (colliderIdentifier->broadPhaseKey)
+				m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, meshCollider.aabb);
+			else
+				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, meshCollider.aabb);
+		}
+	}
+
+
+	//Anything below here is old shit to be updated
 
 	auto sphereColliders = m_registry->view<Components::Transform, Components::SphereCollider>();
 	for (auto& collidable : sphereColliders)

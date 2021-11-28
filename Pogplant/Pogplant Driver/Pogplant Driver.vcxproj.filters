@@ -177,6 +177,9 @@
     <ClCompile Include="Src\ApplicationPrefabState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\ECS\Components\DependantComponents.cpp">
+      <Filter>Source Files\ECS\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
