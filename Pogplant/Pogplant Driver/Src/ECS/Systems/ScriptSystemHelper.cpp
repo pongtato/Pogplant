@@ -93,7 +93,7 @@ namespace SSH
 		auto trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(parentID));
 		int count = 0;
 		if (trans)
-			count =  trans->m_children.size();
+			count =  static_cast<int>(trans->m_children.size());
 		return count;
 	}
 

@@ -42,6 +42,9 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void PlayEnemyDeathAnimation(uint entityID);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void StartMissile(uint entityID);
+
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")
         {
             var id = Instantiate(prefabName, position, rotation);

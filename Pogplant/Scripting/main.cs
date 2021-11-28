@@ -87,5 +87,10 @@ namespace Scripting
         {
             return new Missile();
         }
+
+        public static MissileController MissileController()
+        {
+            return new MissileController();
+        }
     }
 }

@@ -28,6 +28,8 @@ namespace Scripting
 
 	glm::vec3 GetForwardVector(std::uint32_t entityID);
 
+	void StartMissile(std::uint32_t entityID);
+
 	// Get the player healths
 	float GetPlayerHealth();
 	float GetPlayerMaxHealth();

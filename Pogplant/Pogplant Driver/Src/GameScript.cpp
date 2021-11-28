@@ -254,6 +254,15 @@ namespace Scripting
 		return fv;
 	}
 
+	void StartMissile(std::uint32_t entityID)
+	{
+		entt::entity missile_id = static_cast<entt::entity>(entityID);
+		if (missile_id != entt::null)
+		{
+			SSH::InvokeFunction("Missile", "SetMissile", missile_id, true);
+		}
+	}
+
 	float GetPlayerHealth()
 	{
 		entt::entity player = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerShip");

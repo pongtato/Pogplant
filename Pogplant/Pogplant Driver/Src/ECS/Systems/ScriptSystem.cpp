@@ -364,7 +364,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::GetMousePos", &Scripting::GetMousePos);
 	mono_add_internal_call("Scripting.GameUtilities::PlayerTakeDamage", &Scripting::PlayerTakeDamage);
 	mono_add_internal_call("Scripting.GameUtilities::PlayEnemyDeathAnimation", &Scripting::PlayEnemyDeathAnimation);
-	
+	mono_add_internal_call("Scripting.GameUtilities::StartMissile", &Scripting::StartMissile);
+
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);

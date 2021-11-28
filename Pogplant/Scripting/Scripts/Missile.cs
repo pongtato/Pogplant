@@ -56,7 +56,6 @@ namespace Scripting
             start_scale = ECS.GetComponent<Transform>(Explosion).Scale;
             start_extends = ECS.GetComponent<BoxCollider>(Explosion).extends;
             start_centre = ECS.GetComponent<BoxCollider>(Explosion).centre;
-            start_ani = true;
         }
 
         public override void Start()
