@@ -212,6 +212,7 @@ namespace PogplantDriver
 		Try_Save_Component<Text>(subroot, id);
 		Try_Save_Component<SphereCollider>(subroot, id);
 		Try_Save_Component<BoxCollider>(subroot, id);
+		Try_Save_Component<MeshCollider>(subroot, id);
 		Try_Save_Component<Camera>(subroot, id);
 		Try_Save_Component<Rigidbody>(subroot, id);
 		Try_Save_Component<ParticleSystem>(subroot, id);
@@ -344,6 +345,7 @@ namespace PogplantDriver
 		Try_Load_Component<Text>(root, "Text", id);
 		Try_Load_Component<BoxCollider>(root, "BoxCollider", id);
 		Try_Load_Component<SphereCollider>(root, "SphereCollider", id);
+		Try_Load_Component<MeshCollider>(root, "MeshCollider", id);
 		Try_Load_Component<Camera>(root, "Camera", id);
 		Try_Load_Component<Rigidbody>(root, "Rigidbody", id);
 

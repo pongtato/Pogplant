@@ -105,6 +105,7 @@ namespace Components
 		RTTR_ENABLE(Collider);
 	};
 
+	//Todo
 	struct OBBBoxCollider : public Collider
 	{
 		OBBBoxCollider() = default;
@@ -116,7 +117,7 @@ namespace Components
 		glm::vec3 centre;
 
 		PhysicsDLC::Collision::Shapes::OBB obb;
-		PhysicsDLC::Collision::Shapes::AABB aabb;
+
 		RTTR_ENABLE(Collider);
 	};
 
@@ -128,6 +129,7 @@ namespace Components
 
 		virtual glm::vec3 GetCenter() const override;
 		virtual glm::vec3 FindFurthestPoint(const glm::vec3& direction) const override;
+		RTTR_ENABLE(Collider);
 	};
 
 	struct AudioSource

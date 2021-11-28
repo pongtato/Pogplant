@@ -57,6 +57,8 @@ namespace Components
 			.property("radius", &SphereCollider::radius)
 			.property("centre", &SphereCollider::centre);
 
+		rttr::registration::class_<MeshCollider>("MeshCollider");
+
 		rttr::registration::class_<Camera>("Camera")
 			.property("m_Active", &Camera::m_Active)
 			.property("m_Yaw", &Camera::m_Yaw)
