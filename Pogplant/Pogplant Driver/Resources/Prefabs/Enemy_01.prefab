@@ -1,5 +1,32 @@
 [
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_SpawnFlybyBehind.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -24,11 +51,11 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Enemy_01"
+			"m_Name" : "Enemy_02"
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
 		},
 		"Render" : 
 		{
@@ -57,10 +84,6 @@
 			"isKinematic" : false,
 			"mass" : 10.0,
 			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"BaseEnemy" : false
 		},
 		"Tag" : 
 		{
@@ -96,7 +119,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
 		},
 		"Render" : 
 		{
@@ -150,7 +173,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
 		},
 		"Render" : 
 		{
@@ -204,7 +227,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
 		},
 		"Render" : 
 		{
@@ -258,7 +281,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
 		},
 		"Render" : 
 		{
@@ -312,7 +335,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\Enemy_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
 		},
 		"Render" : 
 		{
