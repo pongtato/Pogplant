@@ -200,19 +200,36 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 						{
 						case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
 						{
+							auto _1collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID1);
+
 							switch (_2colliderIdentifier.colliderType)
 							{
 							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
 							{
 								//Box box
-								auto _1collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID1);
 								auto _2collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID2);
 								collided = PhysicsDLC::Collision::StaticAABBAABB(_1collider->aabb, _2collider->aabb);
 								break;
 							}
 							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH:
 							{
-								//Box GJK
+								//Box Mesh
+								auto _2collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
+							{
+								//Box sphere
+								auto _2collider = m_registry->GetReg().try_get<Components::SphereCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_OBBBOX:
+							{
+								//Box OBB
+								auto _2collider = m_registry->GetReg().try_get<Components::OBBBoxCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
 								break;
 							}
 							default:
@@ -223,25 +240,116 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 						}
 						case Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH:
 						{
+							auto _1collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID1);
+
 							switch (_2colliderIdentifier.colliderType)
 							{
 							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
 							{
-								//GJK BOX
-								auto _1collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID1);
+								//Mesh BOX
 								auto _2collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID2);
-								collided = PhysicsDLC::Collision::StaticAABBAABB(_1collider->aabb, _2collider->aabb);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
 								break;
 							}
 							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH:
 							{
-								//GJK GJK
-								auto _1collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID1);
+								//Mesh GJK
 								auto _2collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID2);
-
 								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
+							{
+								//Mesh sphere
+								auto _2collider = m_registry->GetReg().try_get<Components::SphereCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_OBBBOX:
+							{
+								//Mesh OBB
+								auto _2collider = m_registry->GetReg().try_get<Components::OBBBoxCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							default:
+								assert(false && "Unsupported type detected");
+								break;
+							}
+							break;
+						}
+						case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
+						{
+							auto _1collider = m_registry->GetReg().try_get<Components::SphereCollider>(query.m_ID1);
 
-								std::cout << collided << std::endl;
+							switch (_2colliderIdentifier.colliderType)
+							{
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
+							{
+								//Sphere BOX
+								auto _2collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH:
+							{
+								//Sphere Mesh
+								auto _2collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
+							{
+								//Sphere sphere
+								auto _2collider = m_registry->GetReg().try_get<Components::SphereCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::StaticSphereSphere(_1collider->sphere, _2collider->sphere);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_OBBBOX:
+							{
+								//Sphere OBB
+								auto _2collider = m_registry->GetReg().try_get<Components::OBBBoxCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							default:
+								assert(false && "Unsupported type detected");
+								break;
+							}
+							break;
+						}
+						case Components::ColliderIdentifier::COLLIDER_TYPE::CT_OBBBOX:
+						{
+							auto _1collider = m_registry->GetReg().try_get<Components::OBBBoxCollider>(query.m_ID1);
+
+							switch (_2colliderIdentifier.colliderType)
+							{
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
+							{
+								//OBB BOX
+								auto _2collider = m_registry->GetReg().try_get<Components::BoxCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH:
+							{
+								//OBB Mesh
+								auto _2collider = m_registry->GetReg().try_get<Components::MeshCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
+							{
+								//OBB sphere
+								auto _2collider = m_registry->GetReg().try_get<Components::SphereCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
+								break;
+							}
+							case Components::ColliderIdentifier::COLLIDER_TYPE::CT_OBBBOX:
+							{
+								//OBB OBB
+								auto _2collider = m_registry->GetReg().try_get<Components::OBBBoxCollider>(query.m_ID2);
+								collided = PhysicsDLC::Collision::GJK::GJK::Intersect(_1collider, _2collider);
 								break;
 							}
 							default:
@@ -254,7 +362,6 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 							assert(false && "Unsupported type detected");
 							break;
 						}
-
 
 						if (collided)
 						{
@@ -421,11 +528,13 @@ void PhysicsSystem::UpdateEditor()
 		float maxScale = std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
 		
 		meshCollider.aabb.CalculateAABBFromExtends(
-			transform.m_position,
+			transform.GetGlobalPosition(),
 			glm::vec3{
 			renderer.m_RenderModel->m_Bounds.longest,
 			renderer.m_RenderModel->m_Bounds.longest,
-			renderer.m_RenderModel->m_Bounds.longest } * maxScale);
+			renderer.m_RenderModel->m_Bounds.longest
+			} * maxScale
+		);
 
 		//Update broadphase and identifiers
 		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
@@ -451,63 +560,86 @@ void PhysicsSystem::UpdateEditor()
 		}
 	}
 
-
-	//Anything below here is old shit to be updated
-
 	auto sphereColliders = m_registry->view<Components::Transform, Components::SphereCollider>();
 	for (auto& collidable : sphereColliders)
 	{
 		auto& transform = sphereColliders.get<Components::Transform>(collidable);
 		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
 
+		auto tmpScale = transform.GetGlobalScale();
+		sphereCollider.sphere.m_pos = transform.GetGlobalPosition() + sphereCollider.centre;
+		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
+
+		sphereCollider.aabb.CalculateAABBFromExtends(
+			sphereCollider.sphere.m_pos,
+			glm::vec3{
+				sphereCollider.sphere.m_radius,
+				sphereCollider.sphere.m_radius,
+				sphereCollider.sphere.m_radius
+			} * 1.1f
+		);
+
 		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
 		if (!colliderIdentifier)
 		{
-			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+			auto& identifier = m_registry->GetReg().emplace<Components::ColliderIdentifier>(
 				collidable,
 				Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE,
 				sphereCollider.isTrigger,
 				GetCollisionLayer(sphereCollider.collisionLayer));
+
+			m_broadphase.InsertData(&identifier.broadPhaseKey, collidable, sphereCollider.aabb);
 		}
 		else
 		{
 			colliderIdentifier->isTrigger = sphereCollider.isTrigger;
 			colliderIdentifier->collisionLayer = GetCollisionLayer(sphereCollider.collisionLayer);
-		}
 
-		auto tmpScale = transform.GetGlobalScale();
-		sphereCollider.sphere.m_pos = transform.GetGlobalPosition() + sphereCollider.centre;
-		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
+			if (colliderIdentifier->broadPhaseKey)
+				m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, sphereCollider.aabb);
+			else
+				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, sphereCollider.aabb);
+		}
 	}
 
-	//Temporary, to be optimised
 	auto obbBoxColliders = m_registry->view<Components::Transform, Components::OBBBoxCollider>();
 	for (auto& collidable : obbBoxColliders)
 	{
 		auto& transform = obbBoxColliders.get<Components::Transform>(collidable);
 		auto& obbBoxCollider = obbBoxColliders.get<Components::OBBBoxCollider>(collidable);
 
+		glm::vec3 scale = (obbBoxCollider.extends * transform.GetGlobalScale());
+
+		float maxLength = std::max({ scale.x, scale.y, scale.z}) * 2.f;
+
+		obbBoxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + obbBoxCollider.centre, glm::vec3{ maxLength, maxLength, maxLength });
+		obbBoxCollider.m_id = collidable;
+
 		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
 		if (!colliderIdentifier)
 		{
-			m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+			auto& identifier = m_registry->GetReg().emplace<Components::ColliderIdentifier>(
 				collidable,
-				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_OBBBOX,
 				obbBoxCollider.isTrigger,
 				GetCollisionLayer(obbBoxCollider.collisionLayer));
+
+			m_broadphase.InsertData(&identifier.broadPhaseKey, collidable, obbBoxCollider.aabb);
+		}
+		else
+		{
+			colliderIdentifier->isTrigger = obbBoxCollider.isTrigger;
+			colliderIdentifier->collisionLayer = GetCollisionLayer(obbBoxCollider.collisionLayer);
+
+			if (colliderIdentifier->broadPhaseKey)
+				m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, obbBoxCollider.aabb);
+			else
+				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, obbBoxCollider.aabb);
 		}
 
-		glm::mat4 rotationMtx{ 1 };
-		ImGuizmo::RecomposeRotationMatrix(glm::value_ptr(transform.m_rotation), glm::value_ptr(rotationMtx));
+		//glm::mat4 rotationMtx{ 1 };
+		//ImGuizmo::RecomposeRotationMatrix(glm::value_ptr(transform.m_rotation), glm::value_ptr(rotationMtx));
 
-		obbBoxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + obbBoxCollider.centre, obbBoxCollider.extends * transform.GetGlobalScale());
-		obbBoxCollider.obb.m_pos = transform.m_position;
-		obbBoxCollider.obb.m_extendX = rotationMtx * glm::vec4{ obbBoxCollider.extends.x, 0, 0, 0 };
-		obbBoxCollider.obb.m_extendY = rotationMtx * glm::vec4{ 0, obbBoxCollider.extends.y, 0, 0 };
-		obbBoxCollider.obb.m_extendZ = rotationMtx * glm::vec4{ 0, 0, obbBoxCollider.extends.z, 0 };
-
-		glm::vec3 offset = rotationMtx * glm::vec4{ obbBoxCollider.extends.x, obbBoxCollider.extends.y, obbBoxCollider.extends.z, 0 } *0.5f;
-		obbBoxCollider.obb.m_pos -= offset;
 	}
 }
 

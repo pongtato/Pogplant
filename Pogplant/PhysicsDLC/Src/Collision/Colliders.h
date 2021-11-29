@@ -82,16 +82,6 @@ namespace PhysicsDLC
 				float GetHeight(const vec3& _Position);
 				float Barycentric(const vec3& _V1, const vec3& _V2, const vec3& _V3, const vec3& _Position) const;
 			};
-
-			struct OBB
-			{
-				vec3 m_pos;
-				vec3 m_extendX;
-				vec3 m_extendY;
-				vec3 m_extendZ;
-
-				AABB CalculateAABB();
-			};
 		}
 	}
 }

@@ -28,7 +28,8 @@ namespace PhysicsDLC::Utility
 		u = glm::dot(pt - b, delta) / lengthSqr;
 		v = 1 - u;
 
-		return (u <= 1.f && u >= 0.f) && (v <= 1.f && v >= 0.f);
+		//return (u <= 1.f && u >= 0.f) && (v <= 1.f && v >= 0.f);
+		return true;
 	}
 
 	inline bool BarycentricCoordsTriangle(
@@ -56,7 +57,8 @@ namespace PhysicsDLC::Utility
 		v = ((A * F) - (C * E)) / denom;
 		w = 1.f - u - v;
 
-		return (u <= 1.f && u >= 0.f) && (v <= 1.f && v >= 0.f) && (w <= 1.f && w >= 0.f);
+		//return (u <= 1.f && u >= 0.f) && (v <= 1.f && v >= 0.f) && (w <= 1.f && w >= 0.f);
+		return true;
 	}
 }
 

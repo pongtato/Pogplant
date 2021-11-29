@@ -50,8 +50,8 @@ namespace PhysicsDLC::Collision::GJK
 			vec3 m_point2;
 			vec3 m_csoPt;
 		};
-
-		static bool Intersect(const GJKSupportShape* collider1, const GJKSupportShape* collider2);
+		
+		static CollisionResults Intersect(const GJKSupportShape* collider1, const GJKSupportShape* collider2);
 
 	private:
 		static VoronoiRegionType IdentifyVoronoiRegionPoint(

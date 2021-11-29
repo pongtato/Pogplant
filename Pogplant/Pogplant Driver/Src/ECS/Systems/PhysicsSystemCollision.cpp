@@ -176,21 +176,30 @@ void PhysicsSystem::DrawColliders()
 		PP::DebugDraw::DebugSphere(sphereCollider.sphere.m_pos, (sphereCollider.sphere.m_pos - camPos), sphereCollider.sphere.m_radius);
 	}
 
-	auto obbBoxColliders = m_registry->view<Components::OBBBoxCollider>();
+	auto obbBoxColliders = m_registry->view<Components::OBBBoxCollider, Components::Transform>();
 	for (auto collidable : obbBoxColliders)
 	{
 		auto& boxCollider = obbBoxColliders.get<Components::OBBBoxCollider>(collidable);
+		auto& transform = obbBoxColliders.get<Components::Transform>(collidable);
 
-		const glm::vec3 v0 = boxCollider.obb.m_pos;
-		const glm::vec3 v1 = boxCollider.obb.m_pos + boxCollider.obb.m_extendX;
-		const glm::vec3 v2 = boxCollider.obb.m_pos + boxCollider.obb.m_extendZ;
-		const glm::vec3 v3 = boxCollider.obb.m_pos + boxCollider.obb.m_extendX + boxCollider.obb.m_extendZ;
+		glm::vec3 v0 = -boxCollider.extends;
+		glm::vec3 v1 = glm::vec3{ boxCollider.extends.x, -boxCollider.extends.y, -boxCollider.extends.z };
+		glm::vec3 v2 = glm::vec3{ -boxCollider.extends.x, -boxCollider.extends.y, boxCollider.extends.z };
+		glm::vec3 v3 = glm::vec3{ boxCollider.extends.x, -boxCollider.extends.y, boxCollider.extends.z };
 
-		const glm::vec3 v4 = boxCollider.obb.m_pos + boxCollider.obb.m_extendY;
-		const glm::vec3 v5 = boxCollider.obb.m_pos + boxCollider.obb.m_extendX + boxCollider.obb.m_extendY;
-		const glm::vec3 v6 = boxCollider.obb.m_pos + boxCollider.obb.m_extendZ + boxCollider.obb.m_extendY;
-		const glm::vec3 v7 = boxCollider.obb.m_pos + boxCollider.obb.m_extendX + boxCollider.obb.m_extendZ + boxCollider.obb.m_extendY;
+		glm::vec3 v4 = glm::vec3{ -boxCollider.extends.x, boxCollider.extends.y, -boxCollider.extends.z };
+		glm::vec3 v5 = glm::vec3{ boxCollider.extends.x, boxCollider.extends.y, -boxCollider.extends.z };
+		glm::vec3 v6 = glm::vec3{ -boxCollider.extends.x, boxCollider.extends.y, boxCollider.extends.z };
+		glm::vec3 v7 = boxCollider.extends;
 
+		v0 = transform.m_ModelMtx * glm::vec4{v0.x, v0.y, v0.z, 1.0f};
+		v1 = transform.m_ModelMtx * glm::vec4{v1.x, v1.y, v1.z, 1.0f};
+		v2 = transform.m_ModelMtx * glm::vec4{v2.x, v2.y, v2.z, 1.0f};
+		v3 = transform.m_ModelMtx * glm::vec4{v3.x, v3.y, v3.z, 1.0f};
+		v4 = transform.m_ModelMtx * glm::vec4{v4.x, v4.y, v4.z, 1.0f};
+		v5 = transform.m_ModelMtx * glm::vec4{v5.x, v5.y, v5.z, 1.0f};
+		v6 = transform.m_ModelMtx * glm::vec4{v6.x, v6.y, v6.z, 1.0f};
+		v7 = transform.m_ModelMtx * glm::vec4{v7.x, v7.y, v7.z, 1.0f};
 
 		//const glm::vec3 v5 = boxCollider.obb.m_pos + boxCollider.obb.m_extendY;
 		
@@ -211,7 +220,7 @@ void PhysicsSystem::DrawColliders()
 		PP::DebugDraw::DebugLine(v1, v5);
 		PP::DebugDraw::DebugLine(v2, v6);
 		PP::DebugDraw::DebugLine(v3, v7);
-	}
+	}//*/
 
 	/*//Draw dynamic aabbtree
 	auto boxes = m_broadphase.GetAABBTreeBoxes();

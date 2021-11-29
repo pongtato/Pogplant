@@ -45,8 +45,7 @@ namespace Components
 			CT_BOX,
 			CT_SPHERE,
 			CT_GJKMESH,
-			CT_OBBBOX,
-			CT_HEIGHTMAP
+			CT_OBBBOX
 		};
 
 		COLLIDER_TYPE colliderType = COLLIDER_TYPE::CT_UNDEFINED;
@@ -79,19 +78,23 @@ namespace Components
 		RTTR_ENABLE();
 	};
 
-	struct BoxCollider : public Collider
+	struct BoxCollider : public Collider, public PhysicsDLC::Collision::GJK::GJKSupportShape
 	{
 		BoxCollider() = default;
 		inline BoxCollider(glm::vec3 c_extends, glm::vec3 c_centre)
 			: extends{ c_extends }, centre{ c_centre }
 		{}
 
-		glm::vec3 extends = glm::vec3{ 1.f, 1.f, 1.f };
+		glm::vec3 extends = glm::vec3{ 0.5f, 0.5f, 0.5f };
 		glm::vec3 centre;
+
+		virtual glm::vec3 GetCenter() const override;
+		virtual glm::vec3 FindFurthestPoint(const glm::vec3& direction) const override;
+
 		RTTR_ENABLE(Collider);
 	};
 
-	struct SphereCollider : public Collider
+	struct SphereCollider : public Collider, public PhysicsDLC::Collision::GJK::GJKSupportShape
 	{
 		SphereCollider() = default;
 		inline SphereCollider(glm::vec3 c_centre, float c_radius)
@@ -102,11 +105,14 @@ namespace Components
 		glm::vec3 centre;
 
 		PhysicsDLC::Collision::Shapes::Sphere sphere;
+		virtual glm::vec3 GetCenter() const override;
+		virtual glm::vec3 FindFurthestPoint(const glm::vec3& direction) const override;
+
 		RTTR_ENABLE(Collider);
 	};
 
 	//Todo
-	struct OBBBoxCollider : public Collider
+	struct OBBBoxCollider : public Collider, public PhysicsDLC::Collision::GJK::GJKSupportShape
 	{
 		OBBBoxCollider() = default;
 		inline OBBBoxCollider(glm::vec3 c_extends, glm::vec3 c_centre)
@@ -116,7 +122,12 @@ namespace Components
 		glm::vec3 extends = glm::vec3{ 1.f, 1.f, 1.f };
 		glm::vec3 centre;
 
-		PhysicsDLC::Collision::Shapes::OBB obb;
+		entt::entity m_id;
+
+		static const glm::vec3 m_OBBverts[8];
+
+		virtual glm::vec3 GetCenter() const override;
+		virtual glm::vec3 FindFurthestPoint(const glm::vec3& direction) const override;
 
 		RTTR_ENABLE(Collider);
 	};

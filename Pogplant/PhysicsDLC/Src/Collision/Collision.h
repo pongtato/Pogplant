@@ -24,6 +24,7 @@ namespace PhysicsDLC
 		{
 			bool collided = false;
 			float collisionTime = -1.f;
+			float penetrationAmount = 0.f;
 
 			/**> Collision normal relative to shape 1*/
 			vec3 collisionNormal = PhysicsDLC::Vector::Zero;

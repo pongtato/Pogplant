@@ -12,6 +12,7 @@
 			written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
+#include "Collision.h"
 #include "GJK.h"
 #include "..\Utility.h"
 
@@ -90,8 +91,9 @@ namespace PhysicsDLC::Collision::GJK
 		return type;
 	}
 
-	bool GJK::Intersect(const GJKSupportShape* collider1, const GJKSupportShape* collider2)
+	CollisionResults GJK::Intersect(const GJKSupportShape* collider1, const GJKSupportShape* collider2)
 	{
+		CollisionResults collisionResult;
 		std::vector<CsoPoint> simplex;
 		simplex.reserve(5);
 
@@ -115,31 +117,45 @@ namespace PhysicsDLC::Collision::GJK
 			//If hit max iterations please double check
 			//assert(i != GJK_MAX_ITERATIONS - 1);
 
+			VoronoiRegionType currentType;
+
 			switch (simplex.size())
 			{
 			case 1:
-				IdentifyVoronoiRegionPoint(q, simplex[0].m_csoPt, newSize, newIndices, closestPt, searchDir);
+				currentType = IdentifyVoronoiRegionPoint(q, simplex[0].m_csoPt, newSize, newIndices, closestPt, searchDir);
 				break;
 			case 2:
-				IdentifyVoronoiRegionEdge(q, simplex[0].m_csoPt, simplex[1].m_csoPt, newSize, newIndices, closestPt, searchDir);
+				currentType = IdentifyVoronoiRegionEdge(q, simplex[0].m_csoPt, simplex[1].m_csoPt, newSize, newIndices, closestPt, searchDir);
 				break;
 			case 3:
-				IdentifyVoronoiRegionTriangle(q, simplex[0].m_csoPt, simplex[1].m_csoPt, simplex[2].m_csoPt, newSize, newIndices, closestPt, searchDir);
+				currentType = IdentifyVoronoiRegionTriangle(q, simplex[0].m_csoPt, simplex[1].m_csoPt, simplex[2].m_csoPt, newSize, newIndices, closestPt, searchDir);
 				break;
 			case 4:
-				IdentifyVoronoiRegionTetrahedron(q, simplex[0].m_csoPt, simplex[1].m_csoPt, simplex[2].m_csoPt, simplex[3].m_csoPt, newSize, newIndices, closestPt, searchDir);
+				currentType = IdentifyVoronoiRegionTetrahedron(q, simplex[0].m_csoPt, simplex[1].m_csoPt, simplex[2].m_csoPt, simplex[3].m_csoPt, newSize, newIndices, closestPt, searchDir);
 				break;
 			default:
 				assert(false && "You done goofed");
 			}
 
+			if(currentType == VoronoiRegionType::Unknown)
+			{
+				collisionResult.collided = false;
+				return collisionResult;
+			}
+
 			//Intersection
 			if (glm::dot(closestPt, closestPt) < std::numeric_limits<float>::epsilon())
-				return true;
+			{
+				collisionResult.collided = true;
+				return collisionResult;
+			}
 
 			//If search direction is invalid
 			if (glm::dot(searchDir, searchDir) < std::numeric_limits<float>::epsilon())
-				return false;
+			{
+				collisionResult.collided = false;
+				return collisionResult;
+			}
 
 			//Get new simplex after getting the new "selected" point for the simplex
 			if (newSize < simplex.size())
@@ -155,7 +171,6 @@ namespace PhysicsDLC::Collision::GJK
 				simplex = std::move(newSimplex);
 			}
 
-			//might not need to normalise
 			glm::normalize(searchDir);
 
 			simplex.push_back(ComputeSupport(collider1, collider2, searchDir));
@@ -164,11 +179,13 @@ namespace PhysicsDLC::Collision::GJK
 			{
 				//If the search direction does not exceed origin, means already not possible to reach
 				//So no collision
-				return false;
+				collisionResult.collided = false;
+				return collisionResult;
 			}
 		}
 		
-		return false;
+		collisionResult.collided = false;
+		return collisionResult;
 	}
 
 	GJK::VoronoiRegionType GJK::SetEdge(
@@ -288,6 +305,7 @@ namespace PhysicsDLC::Collision::GJK
 		Utility::BarycentricCoordsLine(q, p1, p2, u12, v12);
 		Utility::BarycentricCoordsLine(q, p2, p0, u20, v20);
 
+
 		if (v01 <= 0 && u20 <= 0)
 			return SetPoint(q, p0, newSize, newIndices, closestPoint, searchDirection, VoronoiRegionType::Point0);
 		else if (v12 <= 0 && u01 <= 0)
@@ -296,7 +314,8 @@ namespace PhysicsDLC::Collision::GJK
 			return SetPoint(q, p2, newSize, newIndices, closestPoint, searchDirection, VoronoiRegionType::Point2);
 
 		float u{ 0.f }, v{ 0.f }, w{ 0.f };
-		Utility::BarycentricCoordsTriangle(q, p0, p1, p2, u, v, w);
+		if (!Utility::BarycentricCoordsTriangle(q, p0, p1, p2, u, v, w))
+			return VoronoiRegionType::Unknown;
 
 		if (u > 0 && v > 0 && w > 0)
 			return SetTriangle(q, p0, p1, p2, p2, newSize, newIndices, u, v, w, closestPoint, searchDirection, VoronoiRegionType::Triangle012);
@@ -320,6 +339,7 @@ namespace PhysicsDLC::Collision::GJK
 		Utility::BarycentricCoordsLine(q, p1, p3, u13, v13);
 		Utility::BarycentricCoordsLine(q, p2, p3, u23, v23);
 
+
 		if (v01 < 0 && v02 < 0 && v03 < 0)
 			return SetPoint(q, p0, newSize, newIndices, closestPoint, searchDirection, VoronoiRegionType::Point0);
 		else if (u01 < 0 && v12 < 0 && v13 < 0)
@@ -331,11 +351,13 @@ namespace PhysicsDLC::Collision::GJK
 
 		vec3 uvw012{ 0.f }, uvw013{ 0.f }, uvw023{ 0.f }, uvw123{ 0.f };
 
-		Utility::BarycentricCoordsTriangle(q, p0, p1, p2, uvw012.x, uvw012.y, uvw012.z);
-		Utility::BarycentricCoordsTriangle(q, p0, p1, p3, uvw013.x, uvw013.y, uvw013.z);
-		Utility::BarycentricCoordsTriangle(q, p0, p2, p3, uvw023.x, uvw023.y, uvw023.z);
-		Utility::BarycentricCoordsTriangle(q, p1, p2, p3, uvw123.x, uvw123.y, uvw123.z);
+		bool isValid = Utility::BarycentricCoordsTriangle(q, p0, p1, p2, uvw012.x, uvw012.y, uvw012.z);
+		isValid &= Utility::BarycentricCoordsTriangle(q, p0, p1, p3, uvw013.x, uvw013.y, uvw013.z);
+		isValid &= Utility::BarycentricCoordsTriangle(q, p0, p2, p3, uvw023.x, uvw023.y, uvw023.z);
+		isValid &= Utility::BarycentricCoordsTriangle(q, p1, p2, p3, uvw123.x, uvw123.y, uvw123.z);
 
+		if (!isValid)
+			return VoronoiRegionType::Unknown;
 
 		if (u01 > 0 && v01 > 0 && uvw012.z < 0 && uvw013.z < 0)
 			return SetEdge(q, p0, p1, newSize, newIndices, u01, v01, closestPoint, searchDirection, VoronoiRegionType::Edge01);
@@ -358,16 +380,18 @@ namespace PhysicsDLC::Collision::GJK
 		else if (uvw123.x > 0 && uvw123.y > 0 && uvw123.z > 0 && CheckTriangleSide(q, p1, p2, p3, p0) >= 0)
 			return SetTriangle(q, p0, p1, p2, p3, newSize, newIndices, uvw123.x, uvw123.y, uvw123.z, closestPoint, searchDirection, VoronoiRegionType::Triangle123);
 
+		//Collide
 		newSize = 4;
 		newIndices[0] = 0;
 		newIndices[1] = 1;
 		newIndices[2] = 2;
 		newIndices[3] = 3;
 
-		closestPoint = q;
+		
 		searchDirection = glm::vec3{ 0.f, 0.f, 0.f };
+		closestPoint = q;
 
+		//return VoronoiRegionType::Unknown;
 		return VoronoiRegionType::Tetrahedra0123;
 	}
-	
 }

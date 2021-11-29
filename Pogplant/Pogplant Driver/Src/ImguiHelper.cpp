@@ -93,6 +93,10 @@ namespace PogplantDriver
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::SphereCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
+		if (ImGui::MenuItem("OBB Box Collider", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::OBBBoxCollider>(PPD::ImguiHelper::m_CurrentEntity);
+		}
 		if (ImGui::MenuItem("Mesh Collider", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::MeshCollider>(PPD::ImguiHelper::m_CurrentEntity);
@@ -974,7 +978,7 @@ namespace PogplantDriver
 				{
 					bool enableMeshCollider = true;
 
-					if (ImGui::CollapsingHeader(ICON_FA_BOXES "  Mesh Collider", &enableMeshCollider, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_DRAW_POLYGON "  Mesh Collider", &enableMeshCollider, ImGuiTreeNodeFlags_DefaultOpen))
 					{
 						ImGuiComboFlags flag = 0;
 						flag |= ImGuiComboFlags_PopupAlignLeft;

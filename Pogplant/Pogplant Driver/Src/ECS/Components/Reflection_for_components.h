@@ -57,6 +57,10 @@ namespace Components
 			.property("radius", &SphereCollider::radius)
 			.property("centre", &SphereCollider::centre);
 
+		rttr::registration::class_<OBBBoxCollider>("OBBBoxCollider")
+			.property("extends", &OBBBoxCollider::extends)
+			.property("centre", &OBBBoxCollider::centre);
+
 		rttr::registration::class_<MeshCollider>("MeshCollider");
 
 		rttr::registration::class_<Camera>("Camera")
