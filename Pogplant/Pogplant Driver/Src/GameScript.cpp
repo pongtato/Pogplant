@@ -128,14 +128,14 @@ namespace Scripting
 			//std::cout << "spawned false bullet" << std::endl;
 		}
 
-		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, 3.f, 10.f, Components::Projectile::OwnerType::Enemy);
+		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, 3.f, 1.f, Components::Projectile::OwnerType::Enemy);
 
 		auto body = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
 		glm::vec3 forward_vec = enemy_trans->GetForwardVector();
 
 		//Add power to the shots
-		forward_vec *= 25.f;
+		forward_vec *= .25f;
 		body->AddImpulseForce(forward_vec);
 	}
 

@@ -24,7 +24,7 @@ namespace Scripting
     public class PlayerScript : MonoBehaviour
     {
 
-        public float movement_speed = 5000.0f;
+        public float movement_speed = 500.0f;
         private float horizontal_input = 0;
         private float vertical_input = 0;
         private float slowForce = 8.0f;

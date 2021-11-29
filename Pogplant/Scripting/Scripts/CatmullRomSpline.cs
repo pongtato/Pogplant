@@ -279,7 +279,7 @@ namespace Scripting
 
             Vector3 offset = new Vector3(0, 2.0f, 0);
 
-            float scale = 10.0f;
+            float scale = 1.0f;
 
             transform.Position.X = (float.Parse(result[0]) + offset.X) * scale;
             transform.Position.Y = (float.Parse(result[1]) + offset.Y) * scale;
