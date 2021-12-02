@@ -14,6 +14,8 @@ namespace Pogplant
 	int Window::m_Height = 0;
 	float Window::m_Aspect = 0.0f;
 	bool Window::m_VSync = false;
+	bool Window::m_Focused = false;
+	bool Window::m_UnFocused = true;
 
 	void WindowSizeCallback(GLFWwindow*, int _Width, int _Height)
 	{
@@ -78,7 +80,6 @@ namespace Pogplant
 		glfwSetFramebufferSizeCallback(m_Window, WindowSizeCallback);
 		glfwSetScrollCallback(m_Window, WindowScrollCallback);
 		glfwSetCursorPosCallback(m_Window, WindowMouseCallback);
-
 		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
 		// VSync
@@ -117,7 +118,25 @@ namespace Pogplant
 	{
 		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		{
-			Window::CloseWindow();
+			// Break out of focused mode
+			if (m_Focused)
+			{
+				m_Focused = false;
+				glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+				return;
+			}
+
+			if (m_UnFocused)
+			{
+				Window::CloseWindow();
+			}
+		}
+		else if (glfwGetKey(Window::GetWindow(), GLFW_KEY_ESCAPE) == GLFW_RELEASE)
+		{
+			if (!m_Focused)
+			{
+				m_UnFocused = true;
+			}
 		}
 	}
 
@@ -146,5 +165,12 @@ namespace Pogplant
 	void Window::SetVSync(bool _State)
 	{
 		m_VSync = _State;
+	}
+
+	void Window::SetFocused()
+	{
+		m_Focused = true;
+		m_UnFocused = false;
+		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	}
 }

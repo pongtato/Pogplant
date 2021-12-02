@@ -1270,6 +1270,11 @@ namespace PogplantDriver
 		ImGui::Begin("Game");
 		{
 			GameWindow();
+
+			if (ImGui::IsItemClicked() && ImGui::IsWindowFocused() && !m_FirstRun)
+			{
+				PP::Window::SetFocused();
+			}
 		}
 		ImGui::End();
 

@@ -15,6 +15,7 @@ namespace Pogplant
 		static GLFWwindow* GetWindow();
 		static void SetWindowSize(int _Width, int _Height);
 		static void SetVSync(bool _State);
+		static void SetFocused();
 
 		/// Variables
 		static GLFWwindow* m_Window;
@@ -22,5 +23,7 @@ namespace Pogplant
 		static int m_Height;
 		static bool m_VSync;
 		static float m_Aspect;
+		static bool m_Focused;
+		static bool m_UnFocused; // To check for key release state so that the thing does not unfocus and close on 1 key press
 	};
 }
