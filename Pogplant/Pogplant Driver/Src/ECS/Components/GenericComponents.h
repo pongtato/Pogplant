@@ -145,6 +145,7 @@ namespace Components
 		glm::vec3 GetGlobalRotation();
 		glm::vec3 GetGlobalScale();
 		glm::vec3 GetForwardVector();
+		glm::vec3 GetUpVector();
 
 	private:
 		bool computedLocal = false;

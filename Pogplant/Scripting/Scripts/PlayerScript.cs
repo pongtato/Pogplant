@@ -246,7 +246,7 @@ namespace Scripting
             else
                 vertical_input = -InputUtility.GetAxis("MOVEY");
 
-            Vector3 up_vec = new Vector3(0.0f, 1.0f, 0.0f);
+            Vector3 up_vec = Transform.GetUpVector(entityID);
             Vector3 forward_vec = Transform.GetForwardVector(entityID);
             Vector3 right_vec = Vector3.CrossProduct(forward_vec, up_vec);
             Vector3 direc_vector = (right_vec * horizontal_input) + (up_vec * vertical_input);
@@ -362,7 +362,7 @@ namespace Scripting
             targetRotation.Z = -relativeVelX * shipRollMultiplier;
 
             //Up down tilt
-            targetRotation.X = calculatedVelocity.Y * shipPitchMultiplier;
+            targetRotation.X = Vector3.Dot(up_vec, calculatedVelocity) * shipPitchMultiplier;
 
             transform.Rotation.Y += (targetRotation.Y - transform.Rotation.Y) * shipYawFollowSpeed * dt;
             transform.Rotation.Z += (targetRotation.Z - transform.Rotation.Z) * shipRollFollowSpeed * dt;

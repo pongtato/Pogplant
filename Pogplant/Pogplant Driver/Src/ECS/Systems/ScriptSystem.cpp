@@ -396,6 +396,7 @@ void ScriptSystem::BindFunctions()
 	// For Components
 	mono_add_internal_call("Scripting.ComponentHelper::GetModelKeysIC", SSH::GetModelKeysIC);
 	mono_add_internal_call("Scripting.Transform::GetForwardVector", Scripting::GetForwardVector);
+	mono_add_internal_call("Scripting.Transform::GetUpVector", SSH::GetUpVector);
 	mono_add_internal_call("Scripting.Transform::LookAt", SSH::LookAt);
 	
 }

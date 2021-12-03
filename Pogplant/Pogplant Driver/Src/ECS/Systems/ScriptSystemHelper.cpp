@@ -66,6 +66,12 @@ namespace SSH
 		self_trans->LookAt(target);
 	}
 
+	glm::vec3 GetUpVector(std::uint32_t self_entityID)
+	{
+		auto& transform = ScriptSystem::GetECS()->GetReg().get<Components::Transform>(static_cast<entt::entity>(self_entityID));
+		return transform.GetUpVector();
+	}
+
 	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale)
 	{
 		const auto& trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
