@@ -36,9 +36,9 @@ namespace Scripting
         public void InitializeSpline()
         {
             //ReadControlPointsFromFile("Control_Points_Curved.txt");
-            ReadControlPointsFromFile("Transform_CPs_2.txt");
+            ReadControlPointsFromFile("Transform_CP_4.txt");
             //CopyRotation();
-            ModCPFile();
+            //ModCPFile();
             //CreateGameObjectsFromCPList();
             //WriteControlPointsToFile();
             //Console.WriteLine(controlPointsList.Count);
@@ -46,7 +46,7 @@ namespace Scripting
 
         void ModCPFile()
         {
-            string[] old_data = File.ReadAllLines("Resources\\Transform_CPs.txt");
+            string[] old_data = File.ReadAllLines("Resources\\Transform_CP_3.txt");
 
             string[] new_lines = new string[old_data.Length];
 
@@ -65,13 +65,13 @@ namespace Scripting
                 new_lines[i] = new_line;
             }
 
-            File.WriteAllLines("Resources\\Transform_CPs_2.txt", new_lines);
+            File.WriteAllLines("Resources\\Transform_CP_3.txt", new_lines);
         }
 
         void CopyRotation()
         {
-            string[] old_data = File.ReadAllLines("Resources\\Control_Points_Curved.txt");
-            string[] new_data = File.ReadAllLines("Resources\\Transform_CPs.txt");
+            string[] old_data = File.ReadAllLines("Resources\\Transform_CPs_2.txt");
+            string[] new_data = File.ReadAllLines("Resources\\M3_CP_Data.txt");
 
             string[] new_lines = new string[new_data.Length];
 
@@ -85,16 +85,16 @@ namespace Scripting
                 new_line += new_values[2] + " ";
 
                 new_line += old_values[3] + " ";
-                new_line += (float.Parse(old_values[4]) - 180.0f).ToString() + " ";
+                new_line += old_values[4] + " ";
                 new_line += old_values[5];
 
                 new_lines[i] = new_line;
             }
 
-            File.WriteAllLines("Resources\\New_CP_data.txt", new_lines);
+            File.WriteAllLines("Resources\\Transform_CP_3.txt", new_lines);
         }
 
-        void CreateGameObjectsFromCPList()
+        public void CreateGameObjectsFromCPList()
         {
             //Transform parent_transform = new Transform(Vector3.Zero(), new Vector3(0.0f, 180.0f, 0.0f), Vector3.One() * 0.1f);
             Transform parent_transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
@@ -105,7 +105,7 @@ namespace Scripting
             foreach (Transform cp in controlPointsList)
             {
                 GameObject result = ECS.CreateChild(parent.id, "ControlPoint_" + counter++, cp);
-                //result.AddComponent<Renderer>(new Renderer("sphere"));
+                result.AddComponent<Renderer>(new Renderer("sphere"));
                 control_points.Add(result);
                 //Console.WriteLine(result.id);
             }
@@ -279,22 +279,22 @@ namespace Scripting
 
             Vector3 offset = new Vector3(0, 2.0f, 0);
 
-            float scale = 1.0f;
+            float scale = .1f;
 
-            transform.Position.X = (float.Parse(result[0]) + offset.X) * scale;
+            transform.Position.X = -(float.Parse(result[0]) + offset.X) * scale;
             transform.Position.Y = (float.Parse(result[1]) + offset.Y) * scale;
-            transform.Position.Z = (float.Parse(result[2]) + offset.Z) * scale;
+            transform.Position.Z = -(float.Parse(result[2]) + offset.Z) * scale;
 
-            transform.Rotation.X = float.Parse(result[3]);
-            transform.Rotation.Y = 180.0f - float.Parse(result[4]);
-            transform.Rotation.Z = float.Parse(result[5]);
+            transform.Rotation.X = 0.0f;// float.Parse(result[3]);
+            transform.Rotation.Y = float.Parse(result[4]);
+            transform.Rotation.Z = 0.0f;// float.Parse(result[5]);
             return transform;
         }
 
         // Write control points transform to file
         public void WriteControlPointsToFile()
         {
-            string filePath = Directory.GetCurrentDirectory() + "\\Resources\\" + "Transform_CPs" + ".txt";
+            string filePath = Directory.GetCurrentDirectory() + "\\Resources\\" + "Transform_CP_4" + ".txt";
 
             // Create a file to write to.
             string text = "";
