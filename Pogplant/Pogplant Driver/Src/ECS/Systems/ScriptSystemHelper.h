@@ -26,7 +26,7 @@ namespace SSH
 	std::uint32_t GetTransformParent(std::uint32_t childID);
 	void GetBoxColliderECS(std::uint32_t entityID, MonoString* collisionLayer, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);
 	MonoString* GetTagECS(std::uint32_t entityID);
-	void LookAt(std::uint32_t self_entityID, std::uint32_t other_entityID);
+	void LookAt(std::uint32_t self_entityID, glm::vec3& target);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index);
 
 

@@ -60,11 +60,10 @@ namespace SSH
 		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->FindChildEntityWithName(static_cast<entt::entity>(parentID), _name));
 	}
 
-	void LookAt(std::uint32_t self_entityID, std::uint32_t other_entityID)
+	void LookAt(std::uint32_t self_entityID, glm::vec3& target)
 	{
 		const auto& self_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(self_entityID));
-		const auto& other_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(other_entityID));
-		self_trans->LookAt(other_trans->GetGlobalPosition());
+		self_trans->LookAt(target);
 	}
 
 	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale)

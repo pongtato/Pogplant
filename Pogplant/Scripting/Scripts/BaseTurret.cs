@@ -99,7 +99,7 @@ namespace Scripting
             if (isAlive)
             {
                 if ((fire_delay_accumulator += dt) > fire_delay)
-                    StartFiring();
+                    StartFiring(true);
 
                 if (fire_delay_accumulator >= 10.0f)
                     HandleDeath();
@@ -179,10 +179,9 @@ namespace Scripting
         }
 
         // Call this function to make this enemy start firing
-        public void StartFiring()
+        public void StartFiring(bool fire_state)
         {
-            if (!isFiring)
-                isFiring = true;
+            isFiring = fire_state;
         }
 
         public void TakeDamage(float damage)

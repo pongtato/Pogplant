@@ -116,7 +116,7 @@ namespace Scripting
                 for (int i = 0; i < get_lower; ++i)
                 {
                     //Turret in use
-                    Transform.LookAt(Turrets[i], enemy_to_target[i]);
+                    Transform.LookAt(Turrets[i], ECS.GetGlobalPosition(enemy_to_target[i]));
                     //Update Reticle need to flip Z and X
                     Vector3 EnemyPos = ECS.GetGlobalPosition(enemy_to_target[i]);
                     EnemyPos.X *= -1.0f;

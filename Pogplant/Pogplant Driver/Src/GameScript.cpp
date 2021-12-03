@@ -82,12 +82,32 @@ namespace Scripting
 
 
 			//Turns the camera left,right (-180, 180);
-			auto box_y_rot = (box_pos->m_rotation.y + playerTransform->m_rotation.y) + 180.f;
+			glm::vec3 rotationTarget
+			{
+				(-box_pos->m_rotation.x - playerTransform->m_rotation.x),
+				(box_pos->m_rotation.y + playerTransform->m_rotation.y) + 180.f,
+				-playerTransform->m_rotation.z
+			};
+
+			if (cam_comp->m_Yaw - rotationTarget.y > 180)
+				cam_comp->m_Yaw -= 360.f;
+			else if (cam_comp->m_Yaw - rotationTarget.y < -180)
+				cam_comp->m_Yaw += 360.f;
+
+			if (cam_comp->m_Pitch - rotationTarget.x > 180)
+				cam_comp->m_Pitch -= 360.f;
+			else if (cam_comp->m_Pitch - rotationTarget.x < -180)
+				cam_comp->m_Pitch += 360.f;
+
+			if (cam_comp->m_Roll - rotationTarget.z > 180)
+				cam_comp->m_Roll -= 360.f;
+			else if (cam_comp->m_Roll - rotationTarget.z < -180)
+				cam_comp->m_Roll += 360.f;
 
 			//Lerps yaw and pitch over time
-			cam_comp->m_Yaw += (box_y_rot - cam_comp->m_Yaw) * _deltaTime * 20.f;
-			cam_comp->m_Pitch += ((box_pos->m_rotation.x - playerTransform->m_rotation.x) - cam_comp->m_Pitch) * _deltaTime * 20.f;
-			cam_comp->m_Roll += (-playerTransform->m_rotation.z - cam_comp->m_Roll) * _deltaTime * 20.f;
+			cam_comp->m_Yaw += (rotationTarget.y - cam_comp->m_Yaw) * _deltaTime * 20.f;
+			cam_comp->m_Pitch += (rotationTarget.x - cam_comp->m_Pitch) * _deltaTime * 20.f;
+			cam_comp->m_Roll += (rotationTarget.z - cam_comp->m_Roll) * _deltaTime * 20.f;
 		}
 	}
 

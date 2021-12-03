@@ -114,12 +114,22 @@ namespace Scripting
                 transform.Position += (Vector3.Lerp(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position, alpha) - transform.Position) * translation_lerpSpeed * dt;
 
 
-                float rotation_lerp_speed = 0.4f;
+                float rotation_lerp_speed = 0.2f;
                 //original
-                transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
+                //transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
 
                 //Replacement rotation code
-                //transform.Rotation += (Vector3.GetRotationFromVector(waypoints[current_waypoint_index + 1].Position - waypoints[current_waypoint_index].Position) - transform.Rotation) * rotation_lerp_speed * dt;
+                //transform.Rotation += (Vector3.GetRotationFromVector(waypoints[current_waypoint_index + 5].Position - ECS.GetGlobalPosition(entityID)) - transform.Rotation) * rotation_lerp_speed * dt;
+                //transform.Rotation = (Vector3.GetRotationFromVector(waypoints[current_waypoint_index + 1].Position - ECS.GetGlobalPosition(entityID))) * rotation_lerp_speed * dt;
+
+                float interpolant = rotation_lerp_speed * dt;
+                Vector3 forward = Transform.GetForwardVector(entityID);
+                Vector3 look_direction = waypoints[current_waypoint_index + 2].Position - ECS.GetGlobalPosition(entityID);
+                Vector3 look_vector = look_direction - forward;
+                Vector3 look_point = ECS.GetGlobalPosition(entityID) + (forward + (look_vector * interpolant));
+
+                Transform.LookAt(entityID, look_point);
+                //transform.Rotation = Vector3.GetRotationFromVector(look_point);
             }
         }
         void UpdateCurrentWaypoint(float alpha)

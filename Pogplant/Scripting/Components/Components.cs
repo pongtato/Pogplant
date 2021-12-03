@@ -48,7 +48,7 @@ namespace Scripting
         public extern static Vector3 GetForwardVector(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void LookAt(uint self_entityID, uint target_entityID);
+        public extern static void LookAt(uint self_entityID, Vector3 target);
     }
 
     [StructLayout(LayoutKind.Sequential)]
