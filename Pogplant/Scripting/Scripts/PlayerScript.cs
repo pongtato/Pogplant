@@ -54,6 +54,20 @@ namespace Scripting
         uint shipCameraEntity;
         uint boxEntityID;
 
+        //Used to calculate ship tilt
+        private Vector3 lastPosition;
+        private Vector3 calculatedVelocity;
+        private Vector3 targetRotation;
+
+        private float shipYawFollowSpeed = 8f;
+        private float shipRollFollowSpeed = 8f;
+        private float shipPitchFollowSpeed = 8f;
+
+        //Change this to make the ship tilt more according to movement
+        private float shipYawMultiplier = 2.5f;
+        private float shipPitchMultiplier = 3.5f;
+        private float shipRollMultiplier = 2.5f;
+
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
         //public List<uint> entityIDList = new List<uint>();
@@ -77,6 +91,9 @@ namespace Scripting
             shipCameraEntity = ECS.FindEntityWithName("PlayerCam");
             boxEntityID = ECS.FindEntityWithName("PlayerBox");
             ECS.PlayAudio(shipCameraEntity, 0);
+
+            lastPosition = ECS.GetGlobalPosition(entityID);
+            targetRotation = ECS.GetComponent<Transform>(entityID).Rotation;
         }
 
         public override void Start()
@@ -260,12 +277,12 @@ namespace Scripting
 
                 if (dotproduct > 0.0f)
                 {
-                    rigidbody.AddForce(right_vec * -dotproduct * 5000f);
+                    rigidbody.AddForce(right_vec * -dotproduct * 700f);
                     //Console.WriteLine("Exceed +X bounds");
                 }
                 else
                 {
-                    rigidbody.AddForce(right_vec * -dotproduct * 5000f);
+                    rigidbody.AddForce(right_vec * -dotproduct * 700f);
                     //Console.WriteLine("Exceed -X bounds");
                 }
             }
@@ -330,11 +347,26 @@ namespace Scripting
             }
 
 
+            calculatedVelocity = lastPosition - playerGlobalPos;
+            lastPosition = playerGlobalPos;
+
+            calculatedVelocity = calculatedVelocity * (1 / dt);
+
             //Ship tilter
-            float relativeVelX = Vector3.Dot(right_vec, rigidbody.velocity);
-            transform.Rotation.Y = -relativeVelX * 0.15f;
-            transform.Rotation.Z = relativeVelX * 0.15f;
-            transform.Rotation.X = -rigidbody.velocity.Y * 0.3f;
+            float relativeVelX = Vector3.Dot(right_vec, calculatedVelocity);
+            
+            //Left right tilt
+            targetRotation.Y = relativeVelX * shipYawMultiplier;
+
+            //Roll tilt
+            targetRotation.Z = -relativeVelX * shipRollMultiplier;
+
+            //Up down tilt
+            targetRotation.X = calculatedVelocity.Y * shipPitchMultiplier;
+
+            transform.Rotation.Y += (targetRotation.Y - transform.Rotation.Y) * shipYawFollowSpeed * dt;
+            transform.Rotation.Z += (targetRotation.Z - transform.Rotation.Z) * shipRollFollowSpeed * dt;
+            transform.Rotation.X += (targetRotation.X - transform.Rotation.X) * shipPitchFollowSpeed * dt;
 
         }
 

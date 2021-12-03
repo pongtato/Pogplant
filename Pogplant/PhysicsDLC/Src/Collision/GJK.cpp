@@ -117,7 +117,7 @@ namespace PhysicsDLC::Collision::GJK
 			//If hit max iterations please double check
 			//assert(i != GJK_MAX_ITERATIONS - 1);
 
-			VoronoiRegionType currentType;
+			VoronoiRegionType currentType = VoronoiRegionType::Unknown;
 
 			switch (simplex.size())
 			{

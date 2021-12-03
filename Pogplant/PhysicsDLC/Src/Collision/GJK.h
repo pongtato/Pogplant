@@ -19,7 +19,7 @@
 
 #include "..\TypeDefines.h"
 
-#define GJK_MAX_ITERATIONS 256
+#define GJK_MAX_ITERATIONS 128
 
 namespace PhysicsDLC::Collision::GJK
 {
