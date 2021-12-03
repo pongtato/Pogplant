@@ -3,11 +3,11 @@
 		"Children" : 3,
 		"Guid" : 
 		{
-			"m_guid" : "2c95024b-7fe0-4f16-a44f-014e7631d7a1"
+			"m_guid" : "09c0cd51-4b32-455d-8644-216db549b56d"
 		},
 		"Name" : 
 		{
-			"m_Name" : "Missile"
+			"m_Name" : "Missile5"
 		},
 		"Prefab" : 
 		{
@@ -15,7 +15,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "afdc166d-510e-4263-9ebc-5a9faf5f2d73"
+			"prefab_GUID" : "2c95024b-7fe0-4f16-a44f-014e7631d7a1"
 		},
 		"Rigidbody" : 
 		{
@@ -36,87 +36,6 @@
 			"m_position" : 
 			[
 				0.0,
-				4.4396405220031738,
-				-113.01902770996094
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				0.5,
-				1.0
-			],
-			"isTrigger" : false
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "DropMissile"
-		},
-		"Prefab" : 
-		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Missile.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"CubeTest",
-				"Resources/Models\\CubeTest",
-				"Cone001"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
 				0.0,
 				0.0
 			],
@@ -128,9 +47,9 @@
 			],
 			"m_scale" : 
 			[
-				0.10000000149011612,
-				0.10000000149011612,
-				0.10000000149011612
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -155,8 +74,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				1.0,
-				1.0
+				0.0,
+				0.0
 			],
 			"RenderModel" : 
 			[
@@ -175,7 +94,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.13446044921875,
+				0.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -186,9 +105,9 @@
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
 			]
 		}
 	},
@@ -271,9 +190,9 @@
 			],
 			"m_scale" : 
 			[
-				0.0099999997764825821,
-				0.0099999997764825821,
-				0.0099999997764825821
+				0.0010000000474974513,
+				0.0010000000474974513,
+				0.0010000000474974513
 			]
 		}
 	},
@@ -317,9 +236,9 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.146484375,
-				-0.00054931640625
+				0.0009765625,
+				0.1468505859375,
+				0.0
 			],
 			"m_rotation" : 
 			[
@@ -375,9 +294,9 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.1748046875,
-				-0.0001220703125
+				0.0009765625,
+				0.1749267578125,
+				0.0
 			],
 			"m_rotation" : 
 			[
@@ -387,9 +306,90 @@
 			],
 			"m_scale" : 
 			[
-				0.99979960918426514,
+				0.99979954957962036,
 				0.99978643655776978,
 				0.99978643655776978
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				0.5,
+				1.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "DropMissile"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Missile.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Bullet_True",
+				"Resources/Models\\Enemy",
+				"Enemy_True_Bullet_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.0099999997764825821,
+				0.0099999997764825821,
+				0.0099999997764825821
 			]
 		}
 	}

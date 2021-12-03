@@ -37,7 +37,7 @@ namespace Scripting
         //Reticle stuff
         Vector3 start_position = new Vector3(0.0f, 0.0f, 0.0f);
         Vector3 Small_hide_reticle = new Vector3(0.01f, 0.01f, 0.01f);
-        Vector3 Show_reticle = new Vector3(8f, 8f, 8f);
+        Vector3 Show_reticle = new Vector3(1f, 1f, 1f);
 
         public FirstPersonFiringSystem()
         {

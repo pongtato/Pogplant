@@ -18,24 +18,30 @@ namespace Scripting
         bool blink_phase1 = true;
         float blink_phase_dt = 0.0f;
         bool isBig = true;
+
+        float large_blink_scale = 0.1f;
+        float small_blink_scale = 0.001f;
         //second phase
         bool missle_drop_phase2 = false;
         bool set_missle_start = false;
-        float missle_drop_speed = 0.5f;
         float accu_dt_drop = 0.0f;
-        Vector3 Start_drop_pos = new Vector3(0, 0, 0);
-        // third phase explosion
+
+        float missle_drop_speed = 0.5f;
+        Vector3 Start_drop_pos = new Vector3(0, 100, 0);
+        float  missile_scale = 1f;
+        // third phase explosionlarge_blink_scale
         bool explode_phase3 = false;
         bool set_explode_start = false;
         Vector3 start_scale;
         Vector3 start_extends;
         Vector3 start_centre;
-        float centre_shift_multiplier = 40.0f;
-        float extends_multiplier_Y = 40.0f;
-        float extends_multiplier_XZ = 20.0f;
-        float final_scale_value = 1.0f;
-        float explosion_expand_multiplier = 1.0f;
         float accu_dt_expand = 0.0f;
+
+        float centre_shift_multiplier = 4.0f;
+        float extends_multiplier_Y = 4.0f;
+        float extends_multiplier_XZ = 2.0f;
+        float final_scale_value = 0.1f;
+        float explosion_expand_multiplier = 1.0f;
         float linger_time = 0.0f;
 
         public Missile()
@@ -56,6 +62,11 @@ namespace Scripting
             start_scale = ECS.GetComponent<Transform>(Explosion).Scale;
             start_extends = ECS.GetComponent<BoxCollider>(Explosion).extends;
             start_centre = ECS.GetComponent<BoxCollider>(Explosion).centre;
+
+            //Always self-set minimizer scale
+            Transform star_blink = ECS.GetComponent<Transform>(Indicator);
+            Vector3 start_mini = new Vector3(small_blink_scale, small_blink_scale, small_blink_scale);
+            ECS.SetTransformECS(Indicator, star_blink.Position, star_blink.Rotation, start_mini);
         }
 
         public override void Start()
@@ -116,12 +127,12 @@ namespace Scripting
                 if (isBig)
                 {
                     //Set your enlargement scale
-                    scale = new Vector3(1, 1, 1);
+                    scale = new Vector3(large_blink_scale, large_blink_scale, large_blink_scale);
                 }
                 if (!isBig)
                 {
                     //Set minimizer scale
-                    scale = new Vector3(0.01f, 0.01f, 0.01f);
+                    scale = new Vector3(small_blink_scale, small_blink_scale, small_blink_scale);
                 }
                 ECS.SetTransformECS(Indicator, blink.Position, blink.Rotation, scale);
                 isBig = !isBig;
@@ -129,7 +140,7 @@ namespace Scripting
             if (blink_phase_dt >= 5.0f)
             {
                 //Force set scale to small and initiate second phase
-                Vector3 force_scale = new Vector3(0.01f, 0.01f, 0.01f);
+                Vector3 force_scale = new Vector3(small_blink_scale, small_blink_scale, small_blink_scale);
                 ECS.SetTransformECS(Indicator, blink.Position, blink.Rotation, force_scale);
                 blink_phase1 = false;
                 missle_drop_phase2 = true;
@@ -142,8 +153,7 @@ namespace Scripting
             if (!set_missle_start)
             {
                 Transform dropper_set = ECS.GetComponent<Transform>(DropMissile);
-                Start_drop_pos = new Vector3(0, 100, 0);
-                Vector3 set_Scale = new Vector3(4.0f, 20.0f, 4.0f);
+                Vector3 set_Scale = new Vector3(missile_scale, missile_scale, missile_scale);
                 ECS.SetTransformECS(DropMissile, Start_drop_pos, dropper_set.Rotation, set_Scale);
                 set_missle_start = true;
             }
