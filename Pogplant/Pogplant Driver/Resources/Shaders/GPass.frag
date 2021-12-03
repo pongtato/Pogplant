@@ -63,13 +63,14 @@ float Shadow()
     // Bias calc
     vec3 normal = texture(gNormal, TexCoords).rgb;
     vec3 lightDir = normalize(-directLight.Direction);
-    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);
+    float bias = max(0.025 * (1.0 - dot(normal, lightDir)), 0.005);
 
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(gShadow, 0);
-    for(int x = -1; x <= 1; ++x)
+    const int samples = 3;
+    for(int x = -samples; x <= samples; ++x)
     {
-        for(int y = -1; y <= 1; ++y)
+        for(int y = -samples; y <= samples; ++y)
         {
             float pcfDepth = texture(gShadow, projCoords.xy + vec2(x, y) * texelSize).r; 
             shadow += currDepth - bias > pcfDepth  ? 1.0 : 0.0;        
@@ -83,7 +84,7 @@ float Shadow()
     }
     else
     {
-        return shadow /= 4.2;
+        return shadow /= pow((samples * 2 + 1), 2);
     }
 }
 

@@ -1273,7 +1273,7 @@ namespace PogplantDriver
 
 			if (ImGui::IsItemClicked() && ImGui::IsWindowFocused() && !m_FirstRun)
 			{
-				PP::Window::SetFocused();
+				PP::Window::HideCursor();
 			}
 		}
 		ImGui::End();
