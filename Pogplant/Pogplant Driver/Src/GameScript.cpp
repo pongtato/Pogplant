@@ -311,6 +311,9 @@ namespace Scripting
 
 	bool Scripting::GetAlive(std::uint32_t entityID)
 	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(entityID)))
+			return false;
+
 		//Get Playerboxwith EncounterSystemDriver
 		entt::entity player_id = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithTag("Player");
 		entt::entity id = static_cast<entt::entity>(entityID);

@@ -92,7 +92,7 @@ namespace Scripting
                 transform.Scale = new Vector3(1.0f, 1.0f, 1.0f);
 
                 GameObject waypoint_GO = ECS.CreateChild(parent, name, transform);
-                //waypoint_GO.AddComponent<Renderer>(new Renderer("sphere"));
+                waypoint_GO.AddComponent<Renderer>(new Renderer("sphere"));
                 waypointGroup.Add(waypoint_GO);
 
                 //Console.WriteLine("Creating waypoint " + name + " at location: " + transform.Position.X + ", " + +transform.Position.Y + ", " + +transform.Position.Z);

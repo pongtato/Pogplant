@@ -286,7 +286,7 @@ namespace Scripting
             transform.Position.Z = -(float.Parse(result[2]) + offset.Z) * scale;
 
             transform.Rotation.X = 0.0f;// float.Parse(result[3]);
-            transform.Rotation.Y = float.Parse(result[4]);
+            transform.Rotation.Y = 180.0f - float.Parse(result[4]);
             transform.Rotation.Z = 0.0f;// float.Parse(result[5]);
             return transform;
         }
