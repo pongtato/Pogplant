@@ -84,7 +84,7 @@ float Shadow()
     }
     else
     {
-        return shadow /= pow((samples * 2 + 1),2);
+        return shadow /= pow((samples * 2 + 1), 2);
     }
 }
 

@@ -14,8 +14,8 @@ namespace Pogplant
 	int Window::m_Height = 0;
 	float Window::m_Aspect = 0.0f;
 	bool Window::m_VSync = false;
-	bool Window::m_Focused = false;
-	bool Window::m_UnFocused = true;
+	bool Window::m_Hide = false;
+	bool Window::m_IsUnhiding = true;
 
 	void WindowSizeCallback(GLFWwindow*, int _Width, int _Height)
 	{
@@ -119,23 +119,22 @@ namespace Pogplant
 		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		{
 			// Break out of focused mode
-			if (m_Focused)
+			if (m_Hide)
 			{
-				m_Focused = false;
-				glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+				ShowCursor();
 				return;
 			}
 
-			if (m_UnFocused)
+			if (m_IsUnhiding)
 			{
 				Window::CloseWindow();
 			}
 		}
 		else if (glfwGetKey(Window::GetWindow(), GLFW_KEY_ESCAPE) == GLFW_RELEASE)
 		{
-			if (!m_Focused)
+			if (!m_Hide)
 			{
-				m_UnFocused = true;
+				m_IsUnhiding = true;
 			}
 		}
 	}
@@ -167,10 +166,16 @@ namespace Pogplant
 		m_VSync = _State;
 	}
 
-	void Window::SetFocused()
+	void Window::HideCursor()
 	{
-		m_Focused = true;
-		m_UnFocused = false;
+		m_Hide = true;
+		m_IsUnhiding = false;
 		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	}
+
+	void Window::ShowCursor()
+	{
+		m_Hide = false;
+		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	}
 }
