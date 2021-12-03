@@ -41,8 +41,11 @@ uniform vec3 viewPos;
 uniform int activeLights;
 uniform mat4 m4_LightProjection;
 
+uniform float Exposure;
+uniform float Gamma;
+
 uniform float Decay     = 0.69;
-uniform float Exposure  = 1.0;
+uniform float Shaft_Exposure  = 1.0;
 uniform float Density   = 5.0;
 uniform float Weight    = 0.69;
 uniform vec2 ScreenSize;
@@ -122,7 +125,7 @@ vec4 Shaft()
       // Update exponential decay factor.
       illuminationDecay *= Decay;
     }
-    return color * Exposure;
+    return color * Shaft_Exposure;
 }
 
 void main()
@@ -173,9 +176,15 @@ void main()
     specular *= directLight.Specular;
     lighting += diffuse + specular;
 
+    // HDR light
+    lighting = vec3(1.0) - exp(-lighting.rgb * Exposure); 
+
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
     //float brightness = dot(outColor.rgb * Shaft().rgb, vec3(0.2126, 0.7152, 0.0722));
     //outColor = mix(outColor * Shaft(),outColor, brightness);
+
+    // Gamma correct
+    outColor.rgb = pow(outColor.rgb, vec3(1.0 / Gamma));
 
     // Output bright bixels for bloom
     float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));

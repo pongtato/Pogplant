@@ -185,6 +185,9 @@ namespace Pogplant
 		glActiveTexture(GL_TEXTURE6);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
 
+		ShaderLinker::SetUniform("Exposure", m_Exposure);
+		ShaderLinker::SetUniform("Gamma", m_Gamma);
+
 		///// Shaft pos screen
 		//// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
@@ -361,8 +364,6 @@ namespace Pogplant
 		ShaderLinker::SetUniform("bloomBlur", 1);
 		ShaderLinker::SetUniform("debug", 2);
 		ShaderLinker::SetUniform("bloom", _Bloom);
-		ShaderLinker::SetUniform("exposure", m_Exposure);
-		ShaderLinker::SetUniform("gamma", m_Gamma);
 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_NORMAL]);
