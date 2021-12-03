@@ -155,7 +155,7 @@ namespace Scripting
 		glm::vec3 forward_vec = enemy_trans->GetForwardVector();
 
 		//Add power to the shots
-		forward_vec *= .25f;
+		forward_vec *= 100.f;
 		body->AddImpulseForce(forward_vec);
 	}
 
@@ -171,7 +171,7 @@ namespace Scripting
 		if (player_projectile_script && enemy_object_script)
 		{
 			bool enemy = enemy_object_script->m_ScriptTypes.contains("BaseTurret");
-			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy)
+			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy)	
 			{
 				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
@@ -280,6 +280,15 @@ namespace Scripting
 		if (missile_id != entt::null)
 		{
 			SSH::InvokeFunction("Missile", "SetMissile", missile_id, true);
+		}
+	}
+
+	void SetTurretFire(std::uint32_t entityID, bool isActivated)
+	{
+		entt::entity turret_id = static_cast<entt::entity>(entityID);
+		if (turret_id != entt::null)
+		{
+			SSH::InvokeFunction("BaseTurret", "StartFiring", turret_id, isActivated);
 		}
 	}
 

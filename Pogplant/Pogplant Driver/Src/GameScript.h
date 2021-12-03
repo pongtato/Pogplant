@@ -30,6 +30,8 @@ namespace Scripting
 
 	void StartMissile(std::uint32_t entityID);
 
+	void SetTurretFire(std::uint32_t entityID, bool isActivated);
+
 	// Get the player healths
 	float GetPlayerHealth();
 	float GetPlayerMaxHealth();

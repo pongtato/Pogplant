@@ -92,5 +92,10 @@ namespace Scripting
         {
             return new MissileController();
         }
+
+        public static TurretController TurretController()
+        {
+            return new TurretController();
+        }
     }
 }
