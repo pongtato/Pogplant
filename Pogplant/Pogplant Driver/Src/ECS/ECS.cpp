@@ -199,6 +199,9 @@ entt::entity ECS::CopyEntity(entt::entity _target)
 	//Try_Copy<>(new_entity, _target);
 	//Try_Copy<Prefab>(new_entity, _target);
 
+	Try_Copy<OBBBoxCollider>(new_entity, _target);
+	Try_Copy<MeshCollider>(new_entity, _target);
+
 	return new_entity;
 }
 
