@@ -29,7 +29,7 @@ void Application::EnterPrefabState()
 	m_activeECS = &m_playECS;
 
 	Serializer serialiser{ m_playECS };
-	if (!serialiser.Load(m_prefabFilePath, true))
+	if (!serialiser.Load(m_genericFilePath, true))
 		assert(false);
 
 	PPD::ImguiHelper::RelinkECS(&m_playECS);
@@ -101,7 +101,7 @@ void Application::LeavePrefabState()
 		if (view.get<Transform>(ent).m_parent == entt::null)
 		{
 			_id = ent;
-			m_playECS.GetReg().emplace_or_replace<Components::Prefab>(_id, m_prefabFilePath);
+			m_playECS.GetReg().emplace_or_replace<Components::Prefab>(_id, m_genericFilePath);
 			break;
 		}
 	}
@@ -109,21 +109,21 @@ void Application::LeavePrefabState()
 	assert(_id != entt::null);
 
 	Serializer serialiser{ m_playECS };
-	serialiser.SavePrefab(m_prefabFilePath, _id);
+	serialiser.SavePrefab(m_genericFilePath, _id);
 
 	//update all existing prefab using this GUID
-	if (m_editorECS.m_prefab_map.contains(m_prefabFilePath))
+	if (m_editorECS.m_prefab_map.contains(m_genericFilePath))
 	{
 		//delete current
-		m_editorECS.DestroyEntity(m_editorECS.m_prefab_map[m_prefabFilePath]);
+		m_editorECS.DestroyEntity(m_editorECS.m_prefab_map[m_genericFilePath]);
 		//load the new file
 		
-		m_editorECS.m_prefab_map.erase(m_prefabFilePath);
+		m_editorECS.m_prefab_map.erase(m_genericFilePath);
 		Serializer serialiser_2{ m_editorECS };
-		serialiser_2.LoadPrefab(m_prefabFilePath, true);
+		serialiser_2.LoadPrefab(m_genericFilePath, true);
 
-		assert(m_editorECS.m_prefab_map.contains(m_prefabFilePath));
-		entt::entity e_id = m_editorECS.m_prefab_map[m_prefabFilePath];
+		assert(m_editorECS.m_prefab_map.contains(m_genericFilePath));
+		entt::entity e_id = m_editorECS.m_prefab_map[m_genericFilePath];
 
 		auto _view = m_editorECS.view<PrefabInstance>();
 
@@ -135,8 +135,8 @@ void Application::LeavePrefabState()
 			if (prefab.m_guid == prefab_instance.prefab_GUID)
 			{
 				m_editorECS.DestroyEntity(ent);
-				auto _ent = m_editorECS.CopyEntity(m_editorECS.m_prefab_map[m_prefabFilePath]);
-				m_editorECS.GetReg().emplace<PrefabInstance>(_ent, m_prefabFilePath);
+				auto _ent = m_editorECS.CopyEntity(m_editorECS.m_prefab_map[m_genericFilePath]);
+				m_editorECS.GetReg().emplace<PrefabInstance>(_ent, m_genericFilePath);
 			}
 		}
 	}
@@ -161,12 +161,12 @@ void Application::StartPrefabEditing(const std::string& filePath)
 	if (m_appState == Application::APPLICATIONSTATE::PREFAB_EDITOR)
 	{
 		LeavePrefabState();
-		m_prefabFilePath = filePath;
+		m_genericFilePath = filePath;
 		EnterPrefabState();
 	}
 	else
 	{
-		m_prefabFilePath = filePath;
+		m_genericFilePath = filePath;
 		TransitionApplicationState(Application::APPLICATIONSTATE::PREFAB_EDITOR);
 	}
 }

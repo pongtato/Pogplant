@@ -25,23 +25,15 @@ using namespace PogplantDriver;
 	The function called when the engine enters play state
 */
 /******************************************************************************/
-void Application::EnterPlayState()
+void Application::EnterPlayState(const std::string& sceneToLoad)
 {
 	m_activeECS = &m_playECS;
 
 	PPD::ImguiHelper::RelinkECS(&m_playECS);
 
-#ifdef PPD_EDITOR_BUILD
 	Serializer serialiser{ m_playECS };
-	if (!serialiser.Load("Resources/tmp"))
+	if (!serialiser.Load(sceneToLoad))
 		assert(false);
-#else
-
-	//Change the default level here
-	Serializer serialiser{ m_playECS };
-	if (!serialiser.Load("Resources/Scenes/Level_01_Bigger.json"))
-		assert(false);
-#endif
 
 	m_sGeneralSystem.Init(&m_playECS);
 	m_sGeneralSystem.UpdateTransforms();
