@@ -117,7 +117,7 @@ namespace Scripting
 		//entt::entity player_ship = static_cast<entt::entity>(entityID);
 		//auto ship_trans = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(player_ship);
 		//glm::vec3 forward = ship_trans->GetForwardVector();
-		float speed = 500.f;
+		float speed = 100.f;
 		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
 		entt::entity bullet = serial.Instantiate("Bullet", _Position, _Rotation);
 		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, 3.f, speed, Components::Projectile::OwnerType::Player);
@@ -180,15 +180,18 @@ namespace Scripting
 		}
 		if (player_projectile_script)
 		{
-			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other)->collisionLayer == "ENEMY")
+			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player)
 			{
-				entt::entity playerbox = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithTag("Player");
-				if (playerbox != entt::null)
+				if (PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other) && PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other)->collisionLayer == "ENEMY")
 				{
-					const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(playerbox);
-					if (playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
-						SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", playerbox, static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
+					entt::entity playerbox = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithTag("Player");
+					if (playerbox != entt::null)
+					{
+						const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(playerbox);
+						if (playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+							SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", playerbox, static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
 
+					}
 				}
 			}
 		}

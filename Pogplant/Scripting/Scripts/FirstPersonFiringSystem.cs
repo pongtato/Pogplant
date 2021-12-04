@@ -20,7 +20,7 @@ namespace Scripting
         uint ReticleGroupID;
 
         //Player Firing 
-        float p_fireRate = 0.66f;
+        float p_fireRate = 0.2f;
         float p_fire_timer = 0.0f;
 
         //Player Crosshair(The smaller one)
@@ -62,7 +62,6 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
            entityID = _entityID;
-            p_fireRate = 1 / 10.0f;
             current_offset_value = new Vector3(0, 0, 0);
 
             Transform burner = new Transform();
@@ -150,7 +149,7 @@ namespace Scripting
                         Vector3 Forward = Transform.GetForwardVector(Turret);
                         Vector3 Position = ECS.GetGlobalPosition(Turret);
                         Vector3 Rotation = ECS.GetGlobalRotation(Turret);
-                        GameUtilities.FirePlayerBullet(Position, Forward, Rotation);
+                        GameUtilities.FirePlayerBullet(Position + Forward, Forward, Rotation);
                     }
 
                     ECS.PlayAudio(shipCamera, 1);

@@ -119,6 +119,738 @@
 		"Children" : 3,
 		"Name" : 
 		{
+			"m_Name" : "Missile5"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "09c0cd51-4b32-455d-8644-216db549b56d"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Missile" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				0.5,
+				1.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "DropMissile"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Bullet_True",
+				"Resources/Models\\Enemy",
+				"Enemy_True_Bullet_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.0099999997764825821,
+				0.0099999997764825821,
+				0.0099999997764825821
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Indicator"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Arti_DamageMarker",
+				"Resources/Models\\Arti_Impact",
+				"Damage_Marker"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.039999999105930328,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.019999999552965164,
+				0.039999999105930328,
+				0.019999999552965164
+			],
+			"isTrigger" : true
+		},
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Explosion"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"CubeTest",
+				"Resources/Models\\CubeTest",
+				"Cone001"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"EnvDamage" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.0010000000474974513,
+				0.0010000000474974513,
+				0.0010000000474974513
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "InnerRing"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Arti_InnerImpact",
+				"Resources/Models\\Arti_Impact",
+				"Impact_Inner"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0009765625,
+				0.1468505859375,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99975913763046265,
+				0.99944126605987549,
+				0.99944126605987549
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "OuterRing"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Arti_OuterImpact",
+				"Resources/Models\\Arti_Impact",
+				"Impact_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0009765625,
+				0.1749267578125,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99979954957962036,
+				0.99978643655776978,
+				0.99978643655776978
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Missile1"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "2c95024b-7fe0-4f16-a44f-014e7631d7a1"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Missile" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				0.5,
+				1.0
+			],
+			"isTrigger" : false
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "DropMissile"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Bullet_True",
+				"Resources/Models\\Enemy",
+				"Enemy_True_Bullet_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Indicator"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Arti_DamageMarker",
+				"Resources/Models\\Arti_Impact",
+				"Damage_Marker"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.13446044921875,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.039999999105930328,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.019999999552965164,
+				0.039999999105930328,
+				0.019999999552965164
+			],
+			"isTrigger" : true
+		},
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Explosion"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"CubeTest",
+				"Resources/Models\\CubeTest",
+				"Cone001"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"EnvDamage" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.47806358337402344,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.0010000000474974513,
+				0.0010000000474974513,
+				0.0010000000474974513
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "InnerRing"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Arti_InnerImpact",
+				"Resources/Models\\Arti_Impact",
+				"Impact_Inner"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.146484375,
+				-0.00054931640625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99975913763046265,
+				0.99944126605987549,
+				0.99944126605987549
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "OuterRing"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Arti_OuterImpact",
+				"Resources/Models\\Arti_Impact",
+				"Impact_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.1748046875,
+				-0.0001220703125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99979960918426514,
+				0.99978643655776978,
+				0.99978643655776978
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
 			"m_Name" : "Missile2"
 		},
 		"PrefabInstance" : 
@@ -894,83 +1626,6 @@
 		}
 	},
 	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				0.5,
-				1.0
-			],
-			"isTrigger" : false
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "DropMissile"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Bullet_True",
-				"Resources/Models\\Enemy",
-				"Enemy_True_Bullet_Outer"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.10000000149011612,
-				0.10000000149011612,
-				0.10000000149011612
-			]
-		}
-	},
-	{
 		"Children" : 0,
 		"Name" : 
 		{
@@ -1214,418 +1869,6 @@
 		}
 	},
 	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Missile5"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "09c0cd51-4b32-455d-8644-216db549b56d"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"Missile" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.039999999105930328,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.019999999552965164,
-				0.039999999105930328,
-				0.019999999552965164
-			],
-			"isTrigger" : true
-		},
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Explosion"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"CubeTest",
-				"Resources/Models\\CubeTest",
-				"Cone001"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"EnvDamage" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.0010000000474974513,
-				0.0010000000474974513,
-				0.0010000000474974513
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "InnerRing"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Arti_InnerImpact",
-				"Resources/Models\\Arti_Impact",
-				"Impact_Inner"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0009765625,
-				0.1468505859375,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99975913763046265,
-				0.99944126605987549,
-				0.99944126605987549
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "OuterRing"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Arti_OuterImpact",
-				"Resources/Models\\Arti_Impact",
-				"Impact_Outer"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0009765625,
-				0.1749267578125,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99979954957962036,
-				0.99978643655776978,
-				0.99978643655776978
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				0.5,
-				1.0
-			],
-			"isTrigger" : false
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "DropMissile"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Bullet_True",
-				"Resources/Models\\Enemy",
-				"Enemy_True_Bullet_Outer"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.0099999997764825821,
-				0.0099999997764825821,
-				0.0099999997764825821
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Indicator"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Arti_DamageMarker",
-				"Resources/Models\\Arti_Impact",
-				"Damage_Marker"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.10000000149011612,
-				0.10000000149011612,
-				0.10000000149011612
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Missile1"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "2c95024b-7fe0-4f16-a44f-014e7631d7a1"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"Missile" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -1699,249 +1942,6 @@
 				0.10000000149011612,
 				0.10000000149011612,
 				0.10000000149011612
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Indicator"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Arti_DamageMarker",
-				"Resources/Models\\Arti_Impact",
-				"Damage_Marker"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.13446044921875,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.10000000149011612,
-				0.10000000149011612,
-				0.10000000149011612
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.039999999105930328,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.019999999552965164,
-				0.039999999105930328,
-				0.019999999552965164
-			],
-			"isTrigger" : true
-		},
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Explosion"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"CubeTest",
-				"Resources/Models\\CubeTest",
-				"Cone001"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"EnvDamage" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.47806358337402344,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.0010000000474974513,
-				0.0010000000474974513,
-				0.0010000000474974513
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "InnerRing"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Arti_InnerImpact",
-				"Resources/Models\\Arti_Impact",
-				"Impact_Inner"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.146484375,
-				-0.00054931640625
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99975913763046265,
-				0.99944126605987549,
-				0.99944126605987549
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "OuterRing"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Arti_OuterImpact",
-				"Resources/Models\\Arti_Impact",
-				"Impact_Outer"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.1748046875,
-				-0.0001220703125
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99979960918426514,
-				0.99978643655776978,
-				0.99978643655776978
 			]
 		}
 	},
@@ -2360,21 +2360,21 @@
 		{
 			"m_position" : 
 			[
-				4.2491592466831207e-09,
-				-3.496673583984375,
-				0.14999988675117493
+				1.4028046280145645e-08,
+				-3.5478363037109375,
+				0.1499999612569809
 			],
 			"m_rotation" : 
 			[
 				0.0,
 				-5.0089556680177338e-06,
-				7.4091171308221853e-18
+				7.4091179580027978e-18
 			],
 			"m_scale" : 
 			[
-				1.0000001192092896,
-				0.99999696016311646,
-				1.0000001192092896
+				2.0,
+				2.0,
+				2.0
 			]
 		}
 	},
@@ -2392,21 +2392,21 @@
 		{
 			"m_position" : 
 			[
-				-2.5000042915344238,
-				-1.9921646118164062,
-				-9.3877315521240234e-07
+				-2.4999997615814209,
+				-2.19805908203125,
+				0.99999994039535522
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				1.260652145824645e-13,
-				-2.2943009757076383e-19
+				1.1304844592992941e-13,
+				1.0177780493392241e-11
 			],
 			"m_scale" : 
 			[
-				0.0099999988451600075,
+				0.010000000707805157,
 				0.010000030510127544,
-				0.0099999988451600075
+				0.010000000707805157
 			]
 		}
 	},
@@ -2447,19 +2447,19 @@
 			"m_position" : 
 			[
 				0.0,
-				-0.00063323974609375,
-				-0.000301361083984375
+				-0.00048828125,
+				-0.00029754638671875
 			],
 			"m_rotation" : 
 			[
-				4.4945053234712873e-10,
-				-2.3852945426537609e-15,
-				-7.7644202178817068e-09
+				4.1036740672240057e-10,
+				-2.588859641526782e-15,
+				-7.5755206552230447e-09
 			],
 			"m_scale" : 
 			[
 				1.0,
-				1.0,
+				1.000001072883606,
 				1.0
 			]
 		}
@@ -2586,21 +2586,21 @@
 		{
 			"m_position" : 
 			[
-				2.4997565746307373,
-				-1.0550041198730469,
-				0.43400001525878906
+				2.4999997615814209,
+				-1.3995742797851562,
+				1.0000513792037964
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				7.3107725385643252e-14,
-				-1.3305107095096538e-19
+				6.8727142032987132e-14,
+				1.0177780493392241e-11
 			],
 			"m_scale" : 
 			[
-				0.0099999988451600075,
+				0.010000000707805157,
 				0.010000030510127544,
-				0.0099999988451600075
+				0.010000000707805157
 			]
 		}
 	},
@@ -2780,15 +2780,15 @@
 		{
 			"m_position" : 
 			[
-				2.4999957084655762,
-				-1.8627462387084961,
-				0.40003854036331177
+				2.5,
+				-2.1999855041503906,
+				0.99999994039535522
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-1.8984416816358873e-10,
-				3.4550341569604902e-16
+				1.1399037269654855e-08,
+				-1.8980816918201526e-10,
+				3.5284594726910253e-16
 			],
 			"m_scale" : 
 			[
@@ -2981,21 +2981,21 @@
 		{
 			"m_position" : 
 			[
-				-4.8930814955383539e-10,
-				-0.011991500854492188,
-				35.043087005615234
+				-2.0081643015146255e-09,
+				-0.0137481689453125,
+				39.999996185302734
 			],
 			"m_rotation" : 
 			[
 				-179.99989318847656,
-				-1.8974528892545806e-10,
+				-1.8974531668103367e-10,
 				-179.99989318847656
 			],
 			"m_scale" : 
 			[
+				4.9999995231628418,
 				5.0,
-				5.0,
-				5.0
+				4.9999995231628418
 			]
 		}
 	},
@@ -3020,21 +3020,21 @@
 		{
 			"m_position" : 
 			[
-				2.732825669227168e-05,
-				-0.018624305725097656,
-				35.049667358398438
+				2.7308298740535975e-05,
+				-0.02056884765625,
+				39.999996185302734
 			],
 			"m_rotation" : 
 			[
 				-179.99989318847656,
-				-1.89751575563335e-10,
+				-1.8977656945917687e-10,
 				-179.99989318847656
 			],
 			"m_scale" : 
 			[
 				15.000735282897949,
 				15.00067138671875,
-				15.000581741333008
+				15.000578880310059
 			]
 		}
 	},
@@ -3052,21 +3052,21 @@
 		{
 			"m_position" : 
 			[
-				-2.5,
-				-1.2178106307983398,
-				-5.766749382019043e-06
+				-2.5000138282775879,
+				-1.4000701904296875,
+				1.0001174211502075
 			],
 			"m_rotation" : 
 			[
-				0.00020849134307354689,
-				-1.8996827721995402e-10,
-				-3.4472122933948413e-08
+				0.00020849115389864892,
+				-1.8996774986401732e-10,
+				-3.4492472877900582e-08
 			],
 			"m_scale" : 
 			[
-				0.0099999997764825821,
-				0.0099999997764825821,
-				0.0099999997764825821
+				0.010000000707805157,
+				0.010000000707805157,
+				0.010000000707805157
 			]
 		}
 	},
@@ -3215,8 +3215,8 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0302734375,
-				-1.239776611328125e-05
+				3.796875,
+				-3.24249267578125e-05
 			],
 			"m_rotation" : 
 			[
@@ -3240,13 +3240,19 @@
 				"Dir" : "Resources/Audio\\ttd.ogg",
 				"UpdatePos" : true,
 				"Volume" : 0.14599999785423279
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_Shoot.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.36399999260902405
 			}
 		},
 		"Camera" : 
 		{
 			"m_Active" : true,
 			"m_Far" : 450.0,
-			"m_Fov" : 90.0,
+			"m_Fov" : 80.0,
 			"m_Near" : 0.10000000149011612,
 			"m_Pitch" : 0.0,
 			"m_Yaw" : -90.0
@@ -3260,15 +3266,15 @@
 		{
 			"m_position" : 
 			[
-				9.4959068519528955e-07,
-				0.54999923706054688,
-				-0.88000005483627319
+				9.1643596533685923e-07,
+				0.5499725341796875,
+				-0.8800005316734314
 			],
 			"m_rotation" : 
 			[
-				3.7232741334491948e-08,
-				1.1373352617766869e-13,
-				-1.5391400154385337e-07
+				2.1287018370230726e-08,
+				1.4054851575108496e-13,
+				-1.5390097019007953e-07
 			],
 			"m_scale" : 
 			[
@@ -3279,23 +3285,6 @@
 		}
 	},
 	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				15.0,
-				5.0,
-				15.0
-			],
-			"isTrigger" : true
-		},
 		"Children" : 0,
 		"Name" : 
 		{
@@ -3311,6 +3300,18 @@
 		{
 			"FirstPersonFiringSystem" : false
 		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isTrigger" : false,
+			"radius" : 30.0
+		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -3319,15 +3320,15 @@
 		{
 			"m_position" : 
 			[
-				-1.5957994037307799e-08,
-				-0.024692535400390625,
-				20.0
+				-9.4529241323471069e-08,
+				-0.092254638671875,
+				39.999996185302734
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				4.6794789180723551e-13,
-				1.3027550392619158e-11
+				-5.5757918282495211e-09,
+				1.0340684946231853e-14,
+				1.9541333828865248e-11
 			],
 			"m_scale" : 
 			[
