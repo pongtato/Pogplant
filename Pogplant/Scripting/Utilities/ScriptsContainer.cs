@@ -26,6 +26,7 @@ namespace Scripting
             scriptNames.Add("Missile");
             scriptNames.Add("FlockController");
             scriptNames.Add("EnvDamage");
+            scriptNames.Add("MainMenuController");
             scriptNames.Add("DummyScript");
         }
 

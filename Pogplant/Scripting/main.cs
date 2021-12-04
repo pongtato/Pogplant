@@ -29,6 +29,11 @@ namespace Scripting
             return new ScriptsContainer();
         }
 
+        public static MainMenuController MainMenuController()
+        {
+            return new MainMenuController();
+        }
+
         public static DummyScript DummyScript()
         {
             return new DummyScript();

@@ -7,6 +7,7 @@
 
 #include "ScriptResource.h"
 
+
 namespace SSH
 {
 	// ECS for C# side
@@ -60,6 +61,9 @@ namespace SSH
 
 	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent);
 	void OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent);
+
+	// For scene loading through scripts
+	void LoadScene(MonoString* sceneFileName);
 }
 
 #include "ScriptSystemHelper.hpp"

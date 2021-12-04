@@ -145,6 +145,30 @@ namespace Pogplant
 			"Resources/Textures/Snow"
 		);
 
+		TexLoader::LoadTexture
+		(
+			"Placeholder_Arrow.dds",
+			"Resources/Textures/MainMenu"
+		);
+
+		TexLoader::LoadTexture
+		(
+			"Placeholder_Background.dds",
+			"Resources/Textures/MainMenu"
+		);
+
+		TexLoader::LoadTexture
+		(
+			"Placeholder_Quit_Button.dds",
+			"Resources/Textures/MainMenu"
+		);
+
+		TexLoader::LoadTexture
+		(
+			"Placeholder_Start_Button.dds",
+			"Resources/Textures/MainMenu"
+		);
+
 		// Compact to index 0
 		for (auto& it : m_TexturePool)
 		{
