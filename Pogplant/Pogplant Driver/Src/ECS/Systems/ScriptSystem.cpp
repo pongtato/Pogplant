@@ -362,6 +362,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::FollowPlayerCam", &Scripting::FollowPlayerCam);
 	mono_add_internal_call("Scripting.GameUtilities::FirePlayerBullet", &Scripting::FirePlayerBullet);
 	mono_add_internal_call("Scripting.GameUtilities::FireEnemyBullet", &Scripting::FireEnemyBullet);
+	mono_add_internal_call("Scripting.GameUtilities::SpawnStaticExplosion", &Scripting::SpawnStaticExplosion);
 	mono_add_internal_call("Scripting.GameUtilities::UpdatePlayerHealth_UI", &Scripting::UpdatePlayerHealth_UI);
 	mono_add_internal_call("Scripting.GameUtilities::GetAlive", &Scripting::GetAlive);
 	mono_add_internal_call("Scripting.GameUtilities::GetMousePos", &Scripting::GetMousePos);
@@ -401,6 +402,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.Transform::GetForwardVector", Scripting::GetForwardVector);
 	mono_add_internal_call("Scripting.Transform::GetUpVector", SSH::GetUpVector);
 	mono_add_internal_call("Scripting.Transform::LookAt", SSH::LookAt);
+	mono_add_internal_call("Scripting.Transform::LookAtClamped", SSH::LookAtClamped);
 	
 }
 

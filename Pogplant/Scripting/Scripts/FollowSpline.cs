@@ -53,7 +53,7 @@ namespace Scripting
             else if (ECS.GetTagECS(entityID) == "WPG_3")
                 DelayToStart = 0.6f;
             else if (ECS.GetTagECS(entityID) == "WPG_4")
-                DelayToStart = 1.0f;
+                DelayToStart = 1.2f;
         }
 
         // Start is called before the first frame update
@@ -130,11 +130,10 @@ namespace Scripting
                 Vector3 forward = Transform.GetForwardVector(entityID);
                 Vector3 look_direction = waypoints[current_waypoint_index + waypoint_offset].Position - ECS.GetGlobalPosition(entityID);
                 Vector3 look_vector = look_direction - forward;
-                float interpolant = rotation_lerp_speed * dt; ;// * look_vector.magnitude();
+                float interpolant = rotation_lerp_speed * dt; ;
                 Vector3 look_point = ECS.GetGlobalPosition(entityID) + (forward + (look_vector * interpolant));
 
-                Transform.LookAt(entityID, look_point);
-                //transform.Rotation = Vector3.GetRotationFromVector(look_point);
+                Transform.LookAtClamped(entityID, look_point);
             }
         }
         void UpdateCurrentWaypoint(float alpha)

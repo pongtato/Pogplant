@@ -191,10 +191,6 @@ namespace Scripting
             instance.AddComponent<BaseEnemy>(new BaseEnemy(enemy_template, instance));
             instance.GetComponent<BaseEnemy>().Start();
             instance.GetComponent<BaseEnemy>().SetManager(this);
-            //Transform transform = instance.GetComponent<Transform>();
-
-
-            //Console.WriteLine("Number of actions: " + enemy_template.commands.Count);
         }
 
         public void InstantiateTempEnemy(Transform location, string prefab_object, string parentName)
@@ -247,7 +243,7 @@ namespace Scripting
                 if (item.id == id)
                     return item.GetComponent<BaseEnemy>().GetAlive();
             }
-            Console.WriteLine("Enemy with ID: " + id + " could not be found!");
+            DebugUtilities.LogToEditor("EncounterManager", "Enemy with ID: " + id + " could not be found!");
             return false;
         }
         public void TakeDamage(uint id, float damage)

@@ -354,7 +354,7 @@ namespace Scripting
         public Transform[] muzzles;
 
         private float current_lifetime = 0.0f;
-        private const float deathAnimTime = 2.0f;
+        private const float deathAnimTime = 1.0f;
         private float deathAnimationTime = deathAnimTime;
         public bool is_alive;
 
@@ -385,6 +385,7 @@ namespace Scripting
             {
                 my_info.health -= damage;
                 ECS.PlayAudio(gameObject.id, 0);
+                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 1);
                 //Console.WriteLine("Enemy with ID " + gameObject.id + " has taken " + damage + " damage, health is now " + my_info.health);
             }
             else
@@ -400,6 +401,7 @@ namespace Scripting
                 ECS.PlayAudio(gameObject.id, 1);
                 ECS.RemoveParentFrom(gameObject.id);
                 GameUtilities.PlayEnemyDeathAnimation(gameObject.id);
+                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
             }
         }
 
@@ -455,6 +457,7 @@ namespace Scripting
                 }
                 else
                 {
+                    GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
                     em.DeleteEnemyInstance(gameObject.id);
                 }
             }

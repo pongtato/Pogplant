@@ -52,6 +52,9 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void LookAt(uint self_entityID, Vector3 target);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void LookAtClamped(uint self_entityID, Vector3 target);
     }
 
     [StructLayout(LayoutKind.Sequential)]

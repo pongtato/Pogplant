@@ -82,7 +82,7 @@ namespace Scripting
             is_active = true;
             current_time = 0.0f;
 
-            Console.WriteLine("Spawned encounter");
+            DebugUtilities.LogToEditor("EncounterManager", "Spawned Encounter");
         }
 
         // updates the encounter
@@ -161,7 +161,6 @@ namespace Scripting
                 // Spawn encounter if it is time and it has not spawned yet
                 if (!encounter.is_executed && current_time >= encounter.start_time)
                 {
-                    Console.WriteLine("Executing Encounter");
                     encounter.ExecuteEncounter();
                     break;
                 }

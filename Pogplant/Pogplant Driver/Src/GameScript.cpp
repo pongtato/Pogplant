@@ -159,6 +159,52 @@ namespace Scripting
 		body->AddImpulseForce(forward_vec);
 	}
 
+	void SpawnStaticExplosion(glm::vec3& position, int type)
+	{
+		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
+		if (type == 0)
+		{
+			entt::entity vfx = serial.Instantiate("Static_Explosion", position, {0,0,0});
+
+			// play particle systems
+			entt::entity rising = PogplantDriver::Application::GetInstance().m_activeECS->FindChildEntityWithName(vfx, "Explosion_Rising");
+			entt::entity smoke = PogplantDriver::Application::GetInstance().m_activeECS->FindChildEntityWithName(vfx, "Explosion_Smoke");
+			entt::entity bits = PogplantDriver::Application::GetInstance().m_activeECS->FindChildEntityWithName(vfx, "Explosion_Bits");
+
+			auto rising_ps = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ParticleSystem>(rising);
+			auto smoke_ps = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ParticleSystem>(smoke);
+			auto bits_ps = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ParticleSystem>(bits);
+
+			rising_ps->init();
+			rising_ps->m_Play = true;
+
+			smoke_ps->init();
+			smoke_ps->m_Play = true;
+
+			bits_ps->init();
+			bits_ps->m_Trail = true;
+			bits_ps->m_Play = true;
+		}
+		else
+		{
+			entt::entity vfx = serial.Instantiate("Hit_VFX", position, { 0,0,0 });
+
+			// play particle systems
+			entt::entity smoke = PogplantDriver::Application::GetInstance().m_activeECS->FindChildEntityWithName(vfx, "Explosion_Smoke");
+			entt::entity bits = PogplantDriver::Application::GetInstance().m_activeECS->FindChildEntityWithName(vfx, "Explosion_Bits");
+
+			auto smoke_ps = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ParticleSystem>(smoke);
+			auto bits_ps = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ParticleSystem>(bits);
+
+			smoke_ps->init();
+			smoke_ps->m_Play = true;
+
+			bits_ps->init();
+			bits_ps->m_Trail = true;
+			bits_ps->m_Play = true;
+		}
+	}
+
 
 	void PlayerProjectileCollision(entt::entity& object, entt::entity& other)
 	{
