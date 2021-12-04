@@ -69,6 +69,7 @@ namespace PPF
 		void Start();
 		static std::filesystem::path m_defaultpath;
 		static std::thread m_thread;
+		const std::string kekFileFolder{"Resources/KekFiles/"};
 
 		// Stacks to update particular thing, add own type here
 		std::stack<FileStuff::ModelUpdate> m_modelUpdate;

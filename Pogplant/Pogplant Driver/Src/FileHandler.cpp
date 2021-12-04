@@ -74,6 +74,15 @@ namespace PPF
                 {
                     // Compile the new model
                     PPC::AssetCompiler& ac = ac.GetInstance();
+                    std::string kekFilePathName = { kekFileFolder + key + ".kek" };
+
+                    if (ac.Exists(kekFilePathName))
+                    {
+                        std::cout << "[PPD::FILEHANDLER] " << kekFilePathName << " already exists, skipping compilation." <<  std::endl;
+                        PP::Logger::Log(PP::LogEntry{ "PPD::FILEHANDLER", PP::LogEntry::LOGTYPE::WARNING, kekFilePathName + " already exists, skipping compilation." });
+                        continue;
+                    }
+                    
                     ac.RunExecutable("Pogplant Compiler.exe", filePath);
                     ac.WaitForSingleProcess(key);
                 }
