@@ -59,5 +59,8 @@ namespace Scripting
 
             return new GameObject(id, t, tag);
         }
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void LoadScene(string levelToLoad);
     }
 }

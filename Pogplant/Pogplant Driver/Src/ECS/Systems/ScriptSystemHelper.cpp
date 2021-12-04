@@ -1,6 +1,8 @@
 #include "ScriptSystem.h"
 #include "ScriptSystemHelper.h"
 
+#include "../Application.h"
+
 #include "../Entity.h"
 #include <Pogplant.h>
 
@@ -302,5 +304,17 @@ namespace SSH
 				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2, onTriggerExitEvent.get()->m_entity1);
 			}
 		}
+	}
+
+	void LoadScene(MonoString* levelToLoad)
+	{
+		PPD::Application& app = PPD::Application::GetInstance();
+
+		std::string sceneName = "Resources/Scenes/";
+		std::string sceneFileName = mono_string_to_utf8(levelToLoad);
+		std::string fileFormat = ".json";
+		sceneName += sceneFileName + fileFormat;
+
+		app.LoadScene(sceneName);
 	}
 }
