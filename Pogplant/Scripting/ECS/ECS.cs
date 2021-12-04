@@ -54,6 +54,10 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint PlayAudio(uint entityID, uint index);
 
+        // Set to True to enable, false to disable entity
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetActive(uint entityID, bool isEnabled);
+
         public static GameObject CreateEntity(string name, Transform transform)
         {
             uint entityID = CreateEntity(name, transform.Position, transform.Rotation, transform.Scale);

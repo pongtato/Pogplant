@@ -23,6 +23,8 @@ namespace SSH
 	int GetChildCount(std::uint32_t parentID);
 	void SetColliderBox(std::uint32_t entityID, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);
 	void RemoveParentFrom(std::uint32_t _id);
+	// True is enabled, False is disabled
+	void SetActive(std::uint32_t entityID, bool isEnabled);
 
 	std::uint32_t GetTransformParent(std::uint32_t childID);
 	void GetBoxColliderECS(std::uint32_t entityID, MonoString* collisionLayer, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);

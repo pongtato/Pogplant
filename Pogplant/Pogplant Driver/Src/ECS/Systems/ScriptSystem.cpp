@@ -364,6 +364,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::PlayEnemyDeathAnimation", &Scripting::PlayEnemyDeathAnimation);
 	mono_add_internal_call("Scripting.GameUtilities::StartMissile", &Scripting::StartMissile);
 	mono_add_internal_call("Scripting.GameUtilities::SetTurretFire", &Scripting::SetTurretFire);
+
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);
 	mono_add_internal_call("Scripting.ECS::DestroyEntity", SSH::DestroyEntity);
@@ -382,6 +383,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetTagECS", SSH::GetTagECS);
 	mono_add_internal_call("Scripting.ECS::SetColliderBox", SSH::SetColliderBox);
 	mono_add_internal_call("Scripting.ECS::GetChildCount", SSH::GetChildCount);
+	mono_add_internal_call("Scripting.ECS::SetActive", SSH::SetActive);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
