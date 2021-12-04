@@ -301,7 +301,7 @@ namespace Scripting
             Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
             string[] result = data.Split(' ');
 
-            Vector3 offset = new Vector3(0, 10.0f, 0);
+            Vector3 offset = new Vector3(0, 14.0f, 0);
 
             float scale = .1f;
 

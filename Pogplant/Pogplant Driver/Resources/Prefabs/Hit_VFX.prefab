@@ -11,11 +11,11 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Hit_VFX.prefab"
+			"file_path" : "Resources\\Prefabs\\Hit_VFX.prefab"
 		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "Particle"
 		},
 		"Transform" : 
 		{
@@ -176,7 +176,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Hit_VFX.prefab"
+			"file_path" : "Resources\\Prefabs\\Hit_VFX.prefab"
 		},
 		"Tag" : 
 		{
@@ -341,7 +341,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Hit_VFX.prefab"
+			"file_path" : "Resources\\Prefabs\\Hit_VFX.prefab"
 		},
 		"Tag" : 
 		{

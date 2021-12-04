@@ -55,6 +55,25 @@ void GeneralSystem::UpdateGame(float c_dt)
 		if (projectile.m_CurentLifetime > projectile.m_Lifetime)
 			m_registry->DestroyEntity(projectileEntity);
 	}
+
+	auto particleSystems_objects = m_registry->view<Components::Transform, Components::Tag>();
+	for (auto& particle_system_object : particleSystems_objects)
+	{
+		auto& ps_root = particleSystems_objects.get<Components::Tag>(particle_system_object);
+		//auto& transform = projectiles.get<Components::Transform>(projectileEntity);
+		//auto& rigidbody = projectiles.get<Components::Rigidbody>(projectileEntity);
+
+		//glm::vec3 move = { 0.f,0.f,projectile.m_Speed * c_dt };
+		//transform.m_position += move;
+
+		if (ps_root.m_tag == "Particle")
+		{
+			auto child_ps = m_registry->FindChildEntityWithName(particle_system_object, "Explosion_Smoke");
+			auto particle_children = m_registry->view<Components::Transform, Components::ParticleSystem>();
+			if (particle_children.get<Components::ParticleSystem>(child_ps).m_CurrentLifetime >= 5.0f)
+				m_registry->DestroyEntity(particle_system_object);
+		}
+	}
 }
 
 void GeneralSystem::Update(float c_dt)
