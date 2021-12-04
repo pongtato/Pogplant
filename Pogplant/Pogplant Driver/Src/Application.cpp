@@ -89,6 +89,7 @@ void Application::Init()
 	EnterEditorState();
 
 #else
+	PP::Window::HideCursor();
 	m_appState = Application::APPLICATIONSTATE::PLAY;
 	m_nextAppState = Application::APPLICATIONSTATE::PLAY;
 	EnterPlayState("Resources/Scenes/Level01_WithEnemyWaypoints.json");
