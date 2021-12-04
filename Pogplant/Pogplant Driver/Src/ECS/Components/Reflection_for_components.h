@@ -108,7 +108,8 @@ namespace Components
 		rttr::registration::class_<Canvas>("Canvas")
 			.method("init", &Canvas::init)
 			.property("m_Color", &Canvas::m_Color)
-			.property("m_TexName", &Canvas::m_TexName);
+			.property("m_TexName", &Canvas::m_TexName)
+			.property("m_Ortho", &Canvas::m_Ortho);
 
 		rttr::registration::class_<ImVec2>("ImVec2")
 			.property("m_x", &ImVec2::x)
