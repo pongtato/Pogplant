@@ -64,6 +64,7 @@ namespace SSH
 
 	// For scene loading through scripts
 	void LoadScene(MonoString* sceneFileName);
+	void ExitScene();
 }
 
 #include "ScriptSystemHelper.hpp"
