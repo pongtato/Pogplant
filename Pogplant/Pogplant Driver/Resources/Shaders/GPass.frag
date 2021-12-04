@@ -140,7 +140,8 @@ void main()
     // Light calc
     const float ambient = 0.42f;
     float shadow = 1 - Shadow();
-    vec3 lighting  = Diffuse * ambient * clamp(shadow,0.0f,1.0f);
+    //vec3 lighting  = Diffuse * ambient * clamp(shadow,0.0f,1.0f);
+    vec3 lighting  = Diffuse * ambient;
     vec3 viewDir  = normalize(viewPos - FragPos);
     for(int i = 0; i < activeLights; ++i)
     {

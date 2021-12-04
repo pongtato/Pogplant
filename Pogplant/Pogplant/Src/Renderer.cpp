@@ -399,8 +399,6 @@ namespace Pogplant
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
 
 		// Render G pass objects first
-		//glEnable(GL_BLEND);
-		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		ShaderLinker::Use("BASIC");
 		MeshBuilder::RebindQuad();
 		// Bind textures
@@ -419,7 +417,6 @@ namespace Pogplant
 		ShaderLinker::SetUniform("b_Editor", _EditorMode);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();
-		//glDisable(GL_BLEND);
 
 		/*ShaderLinker::Use("SHAFT");
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);

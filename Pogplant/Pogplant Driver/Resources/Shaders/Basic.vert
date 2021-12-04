@@ -40,6 +40,6 @@ void main()
     }
     else
     {
-        gl_Position = proj * view * m4_Model * vec4(v2_Pos.x, yScaled, 0.0f, 1.0f);
+        gl_Position = proj * view * m4_Model * vec4(v2_Pos.x, yScaled, 1.0f, 1.0f);
     }
 }
