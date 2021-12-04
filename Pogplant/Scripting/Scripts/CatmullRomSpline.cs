@@ -29,6 +29,7 @@ namespace Scripting
 
         public float step_size = 0.2f;
 
+        static bool created_gameobjects = false;
         public CatmullRomSpline()
         {
         }
@@ -36,7 +37,7 @@ namespace Scripting
         public void InitializeSpline()
         {
             //ReadControlPointsFromFile("Control_Points_Curved.txt");
-            ReadControlPointsFromFile("Transform_CP_4.txt");
+            ReadControlPointsFromFile("M3_CP_data.txt");
             //CopyRotation();
             //ModCPFile();
             //CreateGameObjectsFromCPList();
@@ -75,7 +76,7 @@ namespace Scripting
 
             string[] new_lines = new string[new_data.Length];
 
-            for (int i = 0; i < old_data.Length; ++i)
+            for (int i = 0; i < new_data.Length; ++i)
             {
                 string[] old_values = old_data[i].Split(' ');
                 string[] new_values = new_data[i].Split(' ');
@@ -96,18 +97,41 @@ namespace Scripting
 
         public void CreateGameObjectsFromCPList()
         {
-            //Transform parent_transform = new Transform(Vector3.Zero(), new Vector3(0.0f, 180.0f, 0.0f), Vector3.One() * 0.1f);
-            Transform parent_transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
-            GameObject parent = ECS.CreateEntity("Control_points_parent", parent_transform);
-            //parent.AddComponent<Renderer>(new Renderer("sphere"));
-            
-            int counter = 0;
-            foreach (Transform cp in controlPointsList)
+            if (!created_gameobjects)
             {
-                GameObject result = ECS.CreateChild(parent.id, "ControlPoint_" + counter++, cp);
-                result.AddComponent<Renderer>(new Renderer("sphere"));
-                control_points.Add(result);
-                //Console.WriteLine(result.id);
+                //Transform parent_transform = new Transform(Vector3.Zero(), new Vector3(0.0f, 180.0f, 0.0f), Vector3.One() * 0.1f);
+                Transform parent_transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
+                GameObject parent = ECS.CreateEntity("Control_points_parent", parent_transform);
+                //parent.AddComponent<Renderer>(new Renderer("sphere"));
+            
+                int counter = 0;
+                foreach (Transform cp in controlPointsList)
+                {
+                    GameObject result = ECS.CreateChild(parent.id, "ControlPoint_" + counter++, cp);
+                    result.AddComponent<Renderer>(new Renderer("sphere"));
+                    control_points.Add(result);
+                    //Console.WriteLine(result.id);
+                }
+                created_gameobjects = true;
+            }
+        }
+
+        // Links a series of splines into chains and returns their waypoints.
+        public void DisplayCatmullRomSplineChain()
+        {
+            //Console.WriteLine("CalculateChain called");
+            // Resulting waypoint of the entire spline chain
+            List<Transform> waypoints = new List<Transform>();
+            int remove_range = (int)(10 / (step_size * 10));
+            for (int i = 1; i < controlPointsList.Count; i++)
+            {
+                if ((i == controlPointsList.Count - 1) && !isLooping)
+                {
+                    continue;
+                }
+                // Calculate the waypoints for one spline section 
+                // and add it to the waypoints.
+                DisplayCatmullRomSpline(i);
             }
         }
 
@@ -139,7 +163,7 @@ namespace Scripting
 
                 //Draw this line segment
                 //Gizmos.DrawLine(lastPos, newPos);
-                //DrawSphere(newPos, 0.1f);
+                DebugDraw.DebugSphere(newPos,Vector3.Zero(), 0.1f, 32);
 
                 //Save this pos so we can draw the next line segment
                 lastPos = newPos;
@@ -277,11 +301,11 @@ namespace Scripting
             Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
             string[] result = data.Split(' ');
 
-            Vector3 offset = new Vector3(0, 2.0f, 0);
+            Vector3 offset = new Vector3(0, 10.0f, 0);
 
             float scale = .1f;
 
-            transform.Position.X = -(float.Parse(result[0]) + offset.X) * scale;
+            transform.Position.X = (float.Parse(result[0]) + offset.X) * scale;
             transform.Position.Y = (float.Parse(result[1]) + offset.Y) * scale;
             transform.Position.Z = -(float.Parse(result[2]) + offset.Z) * scale;
 

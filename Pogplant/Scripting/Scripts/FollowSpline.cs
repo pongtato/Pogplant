@@ -35,6 +35,8 @@ namespace Scripting
         private bool isEnd = false; //  This is true when we have arrived a the end of the path
         private float time_between_waypoint = 0.0f;
 
+        private int waypoint_offset = 2;
+
         private bool isInit = false;
         public override void Init(ref uint _entityID)
         {
@@ -87,6 +89,9 @@ namespace Scripting
 
             if ((DelayToStart -= dt) <= 0.0f)
                 FollowWaypoints(ref transform, ref dt);
+
+            //if (ECS.GetTagECS(entityID) == "Player")
+            //    catmullRom.DisplayCatmullRomSplineChain();
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
@@ -114,7 +119,7 @@ namespace Scripting
                 transform.Position += (Vector3.Lerp(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position, alpha) - transform.Position) * translation_lerpSpeed * dt;
 
 
-                float rotation_lerp_speed = 0.2f;
+                float rotation_lerp_speed = 0.3f;
                 //original
                 //transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
 
@@ -122,10 +127,10 @@ namespace Scripting
                 //transform.Rotation += (Vector3.GetRotationFromVector(waypoints[current_waypoint_index + 5].Position - ECS.GetGlobalPosition(entityID)) - transform.Rotation) * rotation_lerp_speed * dt;
                 //transform.Rotation = (Vector3.GetRotationFromVector(waypoints[current_waypoint_index + 1].Position - ECS.GetGlobalPosition(entityID))) * rotation_lerp_speed * dt;
 
-                float interpolant = rotation_lerp_speed * dt;
                 Vector3 forward = Transform.GetForwardVector(entityID);
-                Vector3 look_direction = waypoints[current_waypoint_index + 2].Position - ECS.GetGlobalPosition(entityID);
+                Vector3 look_direction = waypoints[current_waypoint_index + waypoint_offset].Position - ECS.GetGlobalPosition(entityID);
                 Vector3 look_vector = look_direction - forward;
+                float interpolant = rotation_lerp_speed * dt; ;// * look_vector.magnitude();
                 Vector3 look_point = ECS.GetGlobalPosition(entityID) + (forward + (look_vector * interpolant));
 
                 Transform.LookAt(entityID, look_point);
@@ -134,6 +139,7 @@ namespace Scripting
         }
         void UpdateCurrentWaypoint(float alpha)
         {
+            int end_offset = waypoint_offset + 15;
             if (alpha >= 1.0)
             {
                 // Calculate d_alpha from follow_speed and distance between current and next waypoint
@@ -143,7 +149,7 @@ namespace Scripting
                 time_between_waypoint = 0.0f; // Reset current time between waypoints
             }
 
-            if (current_waypoint_index == waypoints.Length - 2)
+            if (current_waypoint_index >= waypoints.Length - end_offset - 1)
                 isEnd = true;
         }
 
