@@ -1,0 +1,174 @@
+[
+	{
+		"Guid" : 
+		{
+			"m_guid" : "413c98f1-e24f-4d66-8835-52af16a19e2f"
+		},
+		"Name" : 
+		{
+			"m_Name" : "TrailRender"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "CONE",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ConeRadiusMax" : 3.0,
+			"m_ConeRadiusMin" : 2.0,
+			"m_Delay" : 0.41999998688697815,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_Loop" : true,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 1.0,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 0.20000000298023224,
+				"m_CurveMin" : 0.20000000298023224,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 5,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 1.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 10.0,
+				"m_CurveMin" : 10.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SubDelay" : 0.0099999997764825821,
+			"m_SubSpawnCount" : 30,
+			"m_TargetConeScale" : 1.0499999523162842,
+			"m_TexName" : "mud_rough.dds",
+			"m_Trail" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\RenderTrail.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "b6bbfdbf-0664-43e1-bfb0-bb4e93cb91d4"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.2753083612769842e-06,
+				-0.0677337646484375,
+				100.0
+			],
+			"m_rotation" : 
+			[
+				-89.9998779296875,
+				5.0087610361515544e-06,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				9.997532844543457,
+				9.9999818801879883,
+				9.9999818801879883
+			]
+		}
+	}
+]
