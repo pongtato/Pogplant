@@ -87,7 +87,7 @@ namespace Scripting
         void UpdateInputs()
         {
             //Key input
-            if (InputUtility.onKeyTriggered("DOWN"))
+            if (InputUtility.onKeyTriggered("MENUDOWN"))
             //if (InputUtility.onKeyTriggered(KEY_ID.KEY_DOWN))
             {
                 --active_index;
@@ -102,7 +102,7 @@ namespace Scripting
                 }
                 //Console.WriteLine("Active index is: " + active_index);
             }
-            else if (InputUtility.onKeyTriggered("UP"))
+            else if (InputUtility.onKeyTriggered("MENUUP"))
             //else if (InputUtility.onKeyTriggered(KEY_ID.KEY_UP))
             {
                 ++active_index;
