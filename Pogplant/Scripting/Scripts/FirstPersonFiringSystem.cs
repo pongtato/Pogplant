@@ -20,7 +20,7 @@ namespace Scripting
         uint ReticleGroupID;
 
         //Player Firing 
-        float p_fireRate = 0.2f;
+        float p_fireRate = 0.1f;
         float p_fire_timer = 0.0f;
 
         //Player Crosshair(The smaller one)
@@ -212,24 +212,36 @@ namespace Scripting
             //Using left to update first
             Vector3 diff = new Vector3(0, 0, 0);
             //Use this to test as we need to set mouse to the middle when in game
-            if (InputUtility.onKeyHeld("RIGHTCLICK") || InputUtility.onKeyTriggered("RIGHTCLICK"))
-            {
-                Vector3 newMousePos = new Vector3(0, 0, 0);
-                if (!onceFlag)
-                {
-                    GameUtilities.GetMousePos(ref MousePos.X, ref MousePos.Y);
-                    onceFlag = true; ;
-                    newMousePos = MousePos;
-                }
-                GameUtilities.GetMousePos(ref newMousePos.X, ref newMousePos.Y);
-                diff = newMousePos - MousePos;
-                MousePos = newMousePos;
+            //if (InputUtility.onKeyHeld("RIGHTCLICK") || InputUtility.onKeyTriggered("RIGHTCLICK"))
+            //{
+            //    Vector3 newMousePos = new Vector3(0, 0, 0);
+            //    if (!onceFlag)
+            //    {
+            //        GameUtilities.GetMousePos(ref MousePos.X, ref MousePos.Y);
+            //        onceFlag = true; ;
+            //        newMousePos = MousePos;
+            //    }
+            //    GameUtilities.GetMousePos(ref newMousePos.X, ref newMousePos.Y);
+            //    diff = newMousePos - MousePos;
+            //    MousePos = newMousePos;
 
-                if (InputUtility.onKeyReleased("RIGHTCLICK"))
-                {
-                    onceFlag = false;
-                }
+            //    if (InputUtility.onKeyReleased("RIGHTCLICK"))
+            //    {
+            //        onceFlag = false;
+            //    }
+            //}
+
+            Vector3 newMousePos = new Vector3(0, 0, 0);
+            if (!onceFlag)
+            {
+                GameUtilities.GetMousePos(ref MousePos.X, ref MousePos.Y);
+                onceFlag = true; ;
+                newMousePos = MousePos;
             }
+            GameUtilities.GetMousePos(ref newMousePos.X, ref newMousePos.Y);
+            diff = newMousePos - MousePos;
+            MousePos = newMousePos;
+
 
             //Need to flip X and Y for world since mouse > is postive
             diff *= -1.0f;

@@ -82,7 +82,10 @@ namespace Scripting
                     {
                         for (int j = 0; j < Total_turret_groups[i].Indi_Turret.Count; ++j)
                         {
-                            GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], false);
+                            if(GameUtilities.GetAlive(Total_turret_groups[i].Indi_Turret[j]))
+                            {
+                               GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], false);
+                            }
                         }
                         Total_turret_groups[i].ActivateTurrets = false;
                     }

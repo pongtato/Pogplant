@@ -117,7 +117,7 @@ namespace Scripting
 		//entt::entity player_ship = static_cast<entt::entity>(entityID);
 		//auto ship_trans = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(player_ship);
 		//glm::vec3 forward = ship_trans->GetForwardVector();
-		float speed = 100.f;
+		float speed = 50.f;
 		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
 		entt::entity bullet = serial.Instantiate("Bullet", _Position, _Rotation);
 		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, 3.f, speed, Components::Projectile::OwnerType::Player);
@@ -155,7 +155,7 @@ namespace Scripting
 		glm::vec3 forward_vec = enemy_trans->GetForwardVector();
 
 		//Add power to the shots
-		forward_vec *= 100.f;
+		forward_vec *= 5.f;
 		body->AddImpulseForce(forward_vec);
 	}
 

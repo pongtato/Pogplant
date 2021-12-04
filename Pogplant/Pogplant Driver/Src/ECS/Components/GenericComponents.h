@@ -126,24 +126,38 @@ namespace Components
 
 			glm::vec3 directionalVector = target - GetGlobalPosition();
 
-			// bandaid
-			float threshold = 5.0f;
-			float angle_from_up = glm::degrees(glm::acos(glm::dot(directionalVector, { 0,1,0 }) / glm::length(directionalVector)));
-			if (angle_from_up > threshold
-				&& angle_from_up < 180.0f - threshold)
-			{
-				float angleX = glm::atan(
-						directionalVector.y,
-						glm::sqrt(directionalVector.x * directionalVector.x + directionalVector.z * directionalVector.z));
+			float angleX = glm::atan(
+				glm::sqrt(directionalVector.x * directionalVector.x + directionalVector.z * directionalVector.z),
+				directionalVector.y);
 
-				m_rotation.x = glm::degrees(-angleX);
-				m_rotation.y = glm::degrees(glm::atan(directionalVector.x, directionalVector.z));
-				m_rotation.z = 0.0f;
-			}
-			else
-			{
-				Pogplant::Logger::Log({ "PPD::GenericComponents::Transform",Pogplant::LogEntry::LOGTYPE::WARNING, "Angle between look direction and up vector is to small" }, true);
-			}
+			SetGlobalRotation(
+				glm::vec3{
+					glm::degrees(angleX) - 90.f,
+					glm::degrees(glm::atan(directionalVector.z, -directionalVector.x)) - 90.f,
+					0.f//Ignore roll for now
+				}
+			);
+	
+
+			// bandaid
+			//float threshold = 1.0f;
+			//float angle_from_up = glm::degrees(glm::acos(glm::dot(directionalVector, { 0,1,0 }) / glm::length(directionalVector)));
+			//if (angle_from_up > threshold
+			//	&& angle_from_up < 180.0f - threshold)
+			//{
+			//	float angleX = glm::atan(
+			//			directionalVector.y,
+			//			glm::sqrt(directionalVector.x * directionalVector.x + directionalVector.z * directionalVector.z));
+
+			//	m_rotation.x = glm::degrees(-angleX);
+			//	m_rotation.y = glm::degrees(glm::atan(directionalVector.x, directionalVector.z));
+			//	m_rotation.z = 0.0f;
+			//}
+			//else
+			//{
+			//	Pogplant::Logger::Log({ "PPD::GenericComponents::Transform",Pogplant::LogEntry::LOGTYPE::WARNING, "Angle between look direction and up vector is to small" }, true);
+			//}
+
 		}
 
 		void SetGlobalPosition(const glm::vec3& globalPos);
