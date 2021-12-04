@@ -65,8 +65,19 @@ namespace Scripting
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            UpdateInputs();
+            //// Example of how to disable entity
+            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
+            //{
+            //    ECS.SetActive(buttonMap["Arrow"].id, false);
+            //}
 
+            //// Example of how to enable entity (Do not activate an entity that is already active or it'll crash)
+            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_F))
+            //{
+            //    ECS.SetActive(buttonMap["Arrow"].id, true);
+            //}
+
+            UpdateInputs();
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
