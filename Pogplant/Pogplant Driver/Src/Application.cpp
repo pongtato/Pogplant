@@ -91,7 +91,7 @@ void Application::Init()
 #else
 	m_appState = Application::APPLICATIONSTATE::PLAY;
 	m_nextAppState = Application::APPLICATIONSTATE::PLAY;
-	EnterPlayState();
+	EnterPlayState("Resources/Scenes/Level01_WithEnemyWaypoints.json");
 #endif // PPD_EDITOR_BUILD
 
 	BindEvents();
@@ -186,28 +186,28 @@ void Application::InitialiseDebugObjects()
 	entity.AddComponent<Components::Rigidbody>(Rigidbody{});
 	entity.AddComponent<Components::BoxCollider>(BoxCollider{ glm::vec3{1, 1, 1}, glm::vec3{0, 0, 0} });
 	entity.AddComponent<Components::ParticleSystem>
-	(
-		ParticleSystem
 		(
-			glm::vec4{ 1,1,1,1 },		// Color
-			glm::vec3{ 0,1,0 },			// Spawn dir
-			glm::vec3{ 0,0.0f,0 },		// Force
-			glm::vec3{ 1,1,1 },			// Billboard axis
-			1.0f,	// SpawnRadius
-			3.5f,	// Cone radius min
-			4.2f,	// Cone radius max
-			1.05f,	// Cone target scale
-			0.42f,	// Delay
-			0.01f,	// SubDelay
-			1.00f,	// Min Life
-			1.00f,	// Max Life
-			{
-				curvePoints,	// Curve points
-				10.0f,			// Min Speed
-				10.0f,			// Max Speed
-				1.0f,			// Min Speed Mult
-				1.0f,			// Max Speed Mult
-			},
+			ParticleSystem
+			(
+				glm::vec4{ 1,1,1,1 },		// Color
+				glm::vec3{ 0,1,0 },			// Spawn dir
+				glm::vec3{ 0,0.0f,0 },		// Force
+				glm::vec3{ 1,1,1 },			// Billboard axis
+				1.0f,	// SpawnRadius
+				3.5f,	// Cone radius min
+				4.2f,	// Cone radius max
+				1.05f,	// Cone target scale
+				0.42f,	// Delay
+				0.01f,	// SubDelay
+				1.00f,	// Min Life
+				1.00f,	// Max Life
+				{
+					curvePoints,	// Curve points
+					10.0f,			// Min Speed
+					10.0f,			// Max Speed
+					1.0f,			// Min Speed Mult
+					1.0f,			// Max Speed Mult
+				},
 			{
 				curvePoints,	// Curve points
 				0.2f,			// Min Scale
@@ -223,8 +223,8 @@ void Application::InitialiseDebugObjects()
 			false,	// Randomly rotate particles?
 			true,   // Follow parent's position?
 			true	// Leave "trails"
-		)
-	);
+			)
+			);
 
 	pos = { 7.5f, 7.5f, 10.0f };
 	rot = { 0.0f,0.0f,0.0f };
@@ -324,7 +324,7 @@ void Application::InitialiseDebugObjects()
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("rocks_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "rocks_diff.dds", true});
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "rocks_diff.dds", true });
 
 	pos = { -0.8, 0.7f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
@@ -333,7 +333,7 @@ void Application::InitialiseDebugObjects()
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("snow_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "snow_diff.dds", true});
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "snow_diff.dds", true });
 
 	//Vinceen testing code
 	//auto _ra = m_activeECS->view<Transform>(entt::exclude_t<Renderer>());
@@ -341,7 +341,7 @@ void Application::InitialiseDebugObjects()
 	//{
 	//	std::cout << (entt::id_type)ent << std::endl;
 	//}
-	
+
 	//int k = 0;
 	/// Instancing test
 	//pos = { 0.0f, 0.0f, 0.0f };
@@ -488,7 +488,7 @@ void Application::UpdateTransforms(float _Dt)
 		PP::MeshInstance::SetInstance(PP::InstanceData{ transform.m_ModelMtx, canvas.m_Color, canvas.m_TexID, canvas.m_Ortho, canvas.m_Ortho });
 	}
 
-	
+
 
 	//delete entity in the delete set
 	m_sGeneralSystem.DeleteEntities();
@@ -650,18 +650,17 @@ void Application::Run()
 		PPI::InputSystem::PollEvents();
 		PP::Renderer::SwapBuffer();
 
-#ifdef PPD_EDITOR_BUILD
 		if (m_nextAppState != m_appState)
 		{
 			switch (m_appState)
 			{
-			case PogplantDriver::Application::APPLICATIONSTATE::EDITOR:
+			case APPLICATIONSTATE::EDITOR:
 				LeaveEditorState();
 				break;
-			case PogplantDriver::Application::APPLICATIONSTATE::PLAY:
+			case APPLICATIONSTATE::PLAY:
 				LeavePlayState();
 				break;
-			case PogplantDriver::Application::APPLICATIONSTATE::PREFAB_EDITOR:
+			case APPLICATIONSTATE::PREFAB_EDITOR:
 				LeavePrefabState();
 				break;
 			default:
@@ -670,14 +669,20 @@ void Application::Run()
 
 			switch (m_nextAppState)
 			{
-			case PogplantDriver::Application::APPLICATIONSTATE::EDITOR:
+			case APPLICATIONSTATE::EDITOR:
 				EnterEditorState();
 				break;
-			case PogplantDriver::Application::APPLICATIONSTATE::PLAY:
-				EnterPlayState();
+			case APPLICATIONSTATE::PLAY:
+				if (m_appState == APPLICATIONSTATE::EDITOR)
+					EnterPlayState("Resources/tmp");
 				break;
-			case PogplantDriver::Application::APPLICATIONSTATE::PREFAB_EDITOR:
+			case APPLICATIONSTATE::PREFAB_EDITOR:
 				EnterPrefabState();
+				break;
+			case APPLICATIONSTATE::NEWSCENETRANSITION:
+				EnterPlayState(m_genericFilePath);
+
+				m_nextAppState = APPLICATIONSTATE::PLAY;
 				break;
 			default:
 				assert(false);
@@ -685,10 +690,15 @@ void Application::Run()
 
 			m_appState = m_nextAppState;
 		}
-#endif
 
 		c_deltaTime = c_dtTimer.getElapsedTimePrecise();
 	}
+}
+
+void PogplantDriver::Application::LoadScene(const std::string& newScene)
+{
+	m_nextAppState = APPLICATIONSTATE::NEWSCENETRANSITION;
+	m_genericFilePath = newScene;
 }
 
 /******************************************************************************/
