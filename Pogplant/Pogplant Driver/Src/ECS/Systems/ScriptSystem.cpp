@@ -400,6 +400,7 @@ void ScriptSystem::BindFunctions()
 	
 	// Changing scenes
 	mono_add_internal_call("Scripting.GameUtilities::LoadScene", SSH::LoadScene);
+	mono_add_internal_call("Scripting.GameUtilities::ExitScene", SSH::ExitScene);
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)

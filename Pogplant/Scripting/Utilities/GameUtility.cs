@@ -62,5 +62,8 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void LoadScene(string levelToLoad);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void ExitScene();
     }
 }

@@ -128,7 +128,7 @@ namespace Scripting
                         GameUtilities.LoadScene("Level01_WithEnemyWaypoints");
                         break;
                     case 1:
-                        Console.WriteLine("Quit Game Here");
+                        GameUtilities.ExitScene();
                         break;
                     default:
                         break;

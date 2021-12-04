@@ -317,4 +317,9 @@ namespace SSH
 
 		app.LoadScene(sceneName);
 	}
+
+	void ExitScene()
+	{
+		PP::Window::CloseWindow();
+	}
 }
