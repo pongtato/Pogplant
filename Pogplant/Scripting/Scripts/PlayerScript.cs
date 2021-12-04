@@ -124,7 +124,7 @@ namespace Scripting
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
             {
-                //Console.WriteLine("D key is triggered");
+                Console.WriteLine("D key is triggered");
             }
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
@@ -230,6 +230,12 @@ namespace Scripting
                 //Console.WriteLine("S key is released");
             }
             //*/
+
+            // Debug log example
+            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
+            //{
+            //    DebugUtilities.LogToEditor("PlayerScript", "Pressing D");
+            //}
 
             bool rightPushed = InputUtility.onKeyHeld("RIGHT");
             bool leftPushed = InputUtility.onKeyHeld("LEFT");

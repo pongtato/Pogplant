@@ -29,7 +29,7 @@ namespace SSH
 	void LookAt(std::uint32_t self_entityID, glm::vec3& target);
 	glm::vec3 GetUpVector(std::uint32_t self_entityID);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index);
-
+	void LogToEditor(MonoString* scriptName, MonoString* debugLog);
 
 	glm::vec3 GetGlobalPosition(std::uint32_t entityID);
 	glm::vec3 GetGlobalRotation(std::uint32_t entityID);

@@ -72,6 +72,14 @@ namespace SSH
 		return transform.GetUpVector();
 	}
 
+	void LogToEditor(MonoString* scriptName, MonoString* debugLog)
+	{
+		std::string _scriptName = mono_string_to_utf8(scriptName);
+		std::string _debugLog = mono_string_to_utf8(debugLog);
+		
+		PP::Logger::Log(PP::LogEntry{ _scriptName, PP::LogEntry::LOGTYPE::DEBUG_TEXT, _debugLog });
+	}
+
 	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale)
 	{
 		const auto& trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));

@@ -352,6 +352,9 @@ void ScriptSystem::BindFunctions()
 
 	// Debug Draw
 	mono_add_internal_call("Scripting.DebugDraw::DebugSphere", &Pogplant::DebugDraw::DebugSphere);
+	
+	// Debug Text
+	mono_add_internal_call("Scripting.DebugUtilities::LogToEditor", &SSH::LogToEditor);
 
 	//Game Utils
 	mono_add_internal_call("Scripting.GameUtilities::CheckBounds", &Scripting::CheckBounds);
