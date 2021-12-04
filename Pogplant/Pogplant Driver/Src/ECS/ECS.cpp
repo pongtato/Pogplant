@@ -226,6 +226,9 @@ void ECS::Clear()
 {
 	m_registry.clear();
 	m_prefab_map.clear();
+	m_EntitiesToDelete.clear();
+	m_EntitiesToDisable.clear();
+	m_EntitiesToEnable.clear();
 
 	PogplantDriver::Application::GetInstance().m_sPhysicsSystem.Clear();
 }
@@ -282,7 +285,6 @@ void ECS::SetChild(entt::entity _parent, entt::entity _child)
 {
 	auto& _parent_transform = m_registry.get<Transform>(_parent);
 	_parent_transform.m_children.insert(_child);
-
 }
 
 void ECS::RemoveChildFrom(entt::entity _parent, entt::entity _child)
@@ -296,4 +298,35 @@ bool ECS::IsChildOf(entt::entity _parent, entt::entity _child)
 	const auto& _parentTransform = m_registry.get<Components::Transform>(_parent);
 
 	return _parentTransform.m_children.contains(_child);
+}
+
+void ECS::DisableEntity(entt::entity _entity)
+{
+	m_EntitiesToDisable.insert(_entity);
+}
+
+void ECS::EnableEntity(entt::entity _entity)
+{
+	m_EntitiesToEnable.insert(_entity);
+}
+void ECS::TrulyDisableEntity(entt::entity _entity)
+{
+	assert(m_registry.try_get<Disabled>(_entity) == nullptr);
+
+	auto& _transform = m_registry.get<Transform>(_entity);
+	for (auto e : _transform.m_children)
+		TrulyDisableEntity(e);
+
+	m_registry.emplace<Disabled>(_entity);
+}
+
+void ECS::TrulyEnableEntity(entt::entity _entity)
+{
+	assert(m_registry.try_get<Disabled>(_entity) != nullptr);
+
+	auto& _transform = m_registry.get<Transform>(_entity);
+	for (auto e : _transform.m_children)
+		TrulyEnableEntity(e);
+
+	m_registry.remove<Disabled>(_entity);
 }

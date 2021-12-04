@@ -15,10 +15,12 @@
 //#define SHOW_IMGUIDEMOWINDOW
 
 class Entity;
+class GeneralSystem;
 
 namespace Components
 {
 	struct Prefab;
+	struct Disabled;
 }
 
 class ECS
@@ -61,13 +63,16 @@ public:
 
 	std::string GenerateGUID();
 
+	void DisableEntity(entt::entity _entity);
+	void EnableEntity(entt::entity _entity);
+
 	//clears the ECS
 	void Clear();
 
 	template<typename... Component, typename... Exclude>
 	auto view(entt::exclude_t<Exclude...> _exclude = {})
 	{
-		return m_registry.view<Component...>(entt::exclude_t<Exclude..., Components::Prefab>());
+		return m_registry.view<Component...>(entt::exclude_t<Exclude..., Components::Prefab, Components::Disabled>());
 	}
 
 	//dont use this unless you really know lol
@@ -84,9 +89,7 @@ public:
 	bool m_edit_prefab = false;
 
 
-	//used for delayed deleting of entites
-	std::set<entt::entity> m_EntitiesToDelete;
-	void TrulyDestroyEntity(entt::entity _id);
+
 private:
 	entt::registry m_registry;
 
@@ -98,7 +101,18 @@ private:
 			m_registry.emplace_or_replace<T>(_new_entity, m_registry.get<T>(_target));
 	}
 
+	//used for delayed deleting of entites
+	std::set<entt::entity> m_EntitiesToDelete;
+	void TrulyDestroyEntity(entt::entity _id);
+
+	std::set<entt::entity> m_EntitiesToDisable;
+	void TrulyDisableEntity(entt::entity _id);
+
+	std::set<entt::entity> m_EntitiesToEnable;
+	void TrulyEnableEntity(entt::entity _id);
+
 	friend Entity;
+	friend GeneralSystem;
 };
 
 

@@ -21,13 +21,15 @@ namespace Components
 	struct Name
 	{
 		Name() = default;
-		Name(std::string name) : m_name(name) {}
+		Name(std::string name) : m_name(name), status(true) {}
 		std::string m_name;
+		bool status;
 	};
 
-	struct TheUnkillable6969xx
+	struct Disabled
 	{
-		//anything with this won't be deleted
+		//cheap method to disable an entity
+		bool m_disabled;
 	};
 
 	struct PositionList
