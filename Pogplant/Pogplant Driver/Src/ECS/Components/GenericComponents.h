@@ -166,7 +166,7 @@ namespace Components
 		{
 			// bandaid
 			glm::vec3 directionalVector = target - GetGlobalPosition();
-			float threshold = 1.0f;
+			float threshold = 8.0f;
 			float angle_from_up = glm::degrees(glm::acos(glm::dot(directionalVector, { 0,1,0 }) / glm::length(directionalVector)));
 			if (angle_from_up > threshold
 				&& angle_from_up < 180.0f - threshold)
@@ -476,6 +476,9 @@ namespace Components
 		bool m_Pause;
 		bool m_FollowParent;
 		bool m_Trail; 
+		
+		// extra float timer to keep track of current_lifetime
+		float m_CurrentLifetime;
 	};
 
 	struct Canvas
