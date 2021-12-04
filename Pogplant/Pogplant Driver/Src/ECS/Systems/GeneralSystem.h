@@ -32,6 +32,8 @@ public:
 	void Update(float c_dt);
 	void UpdateTransforms();
 	void DeleteEntities();
+	void DisableEntities();
+	void EnableEntities();
 private:
 	ECS* m_registry;
 

@@ -35,7 +35,7 @@ namespace PogplantDriver
 			auto results = m_ECS->view_SHOW_PREFAB<Components::Transform>();
 #else
 
-			auto results = m_ECS->view<Components::Transform>();
+			auto results = m_ECS->view_SHOW_PREFAB<Components::Transform>();
 #endif // SHOW_PREFAB
 
 			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
@@ -124,12 +124,21 @@ namespace PogplantDriver
 		auto name = m_ECS->GetReg().get<Components::Name>(entity);
 		std::string obj_name = name.m_name;
 
+
 		auto _p = m_ECS->GetReg().try_get<Components::Prefab>(entity);
 		if (_p)
+#ifdef SHOW_PREFAB
 			obj_name.append(" (Prefab)");
+#else
+			return false;
+#endif
 		auto _pi = m_ECS->GetReg().try_get<Components::PrefabInstance>(entity);
 		if (_pi)
+#ifdef SHOW_PREFAB
 			obj_name.append(" (Instance)");
+#else
+			return false;
+#endif
 
 		ImGuiTreeNodeFlags flags = (m_CurrentEntity == entity) ? ImGuiTreeNodeFlags_Selected : 0;
 		

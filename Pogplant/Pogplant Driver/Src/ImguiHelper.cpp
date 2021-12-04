@@ -582,7 +582,17 @@ namespace PogplantDriver
 				auto naming = m_ecs->GetReg().try_get<Components::Name>(m_CurrentEntity);
 				if (naming && ImGui::CollapsingHeader(ICON_FA_FILE_SIGNATURE"  Name", ImGuiTreeNodeFlags_DefaultOpen))
 				{
+					bool _prev_status = naming->status;
+					ImGui::Checkbox("Enable entity", &naming->status);
 					Reflect_ImGui(naming);
+
+					if (_prev_status != naming->status)
+					{
+						if (naming->status)
+							m_ecs->EnableEntity(m_CurrentEntity);
+						else
+							m_ecs->DisableEntity(m_CurrentEntity);
+					}
 				}
 
 				auto tagging = m_ecs->GetReg().try_get<Components::Tag>(m_CurrentEntity);

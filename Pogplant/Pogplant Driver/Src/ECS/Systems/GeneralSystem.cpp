@@ -139,3 +139,29 @@ void GeneralSystem::DeleteEntities()
 
 	m_registry->m_EntitiesToDelete.clear();
 }
+
+//Used to disable entities, should be the last system in the update loop
+void GeneralSystem::DisableEntities()
+{
+	const auto& set_of_entities = m_registry->m_EntitiesToDisable;
+
+	for (const auto& ent : set_of_entities)
+	{
+		m_registry->TrulyDisableEntity(ent);
+	}
+
+	m_registry->m_EntitiesToDisable.clear();
+}
+
+//Used to disable entities, should be the last system in the update loop
+void GeneralSystem::EnableEntities()
+{
+	const auto& set_of_entities = m_registry->m_EntitiesToEnable;
+
+	for (const auto& ent : set_of_entities)
+	{
+		m_registry->TrulyEnableEntity(ent);
+	}
+
+	m_registry->m_EntitiesToEnable.clear();
+}
