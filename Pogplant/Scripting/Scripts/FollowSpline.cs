@@ -138,7 +138,7 @@ namespace Scripting
         }
         void UpdateCurrentWaypoint(float alpha)
         {
-            int end_offset = waypoint_offset + 15;
+            int end_offset = 20;// waypoint_offset + 15;
             if (alpha >= 1.0)
             {
                 // Calculate d_alpha from follow_speed and distance between current and next waypoint
@@ -147,6 +147,9 @@ namespace Scripting
 
                 time_between_waypoint = 0.0f; // Reset current time between waypoints
             }
+
+            //if (current_waypoint_index >= 700)
+            //    Console.WriteLine("Current waypoint " + current_waypoint_index + " / " + waypoints.Length);
 
             if (current_waypoint_index >= waypoints.Length - end_offset - 1)
                 isEnd = true;

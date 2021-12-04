@@ -18237,5 +18237,389 @@
 				1.0
 			]
 		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.0,
+				10.0,
+				10.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment8_C"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentEight_C"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				39.771530151367188,
+				-28.711767196655273,
+				-390.848876953125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.0,
+				10.0,
+				10.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment9_AA"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_AA"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-28.281213760375977,
+				-35.647933959960938,
+				-386.9769287109375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.0,
+				10.0,
+				10.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment9_AB"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_AB"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-44.368637084960938,
+				-35.647933959960938,
+				-394.64840698242188
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.0,
+				10.0,
+				10.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment9_AC"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_AC"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-61.036170959472656,
+				-35.647933959960938,
+				-393.20840454101563
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.0,
+				10.0,
+				10.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment9_AD"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_AD"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-78.662071228027344,
+				-31.438514709472656,
+				-389.23602294921875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.0,
+				10.0,
+				10.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment9_AE"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_AE"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-117.13726043701172,
+				-31.438575744628906,
+				-390.41537475585938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment9_BA"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_BA"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-139.69999694824219,
+				-31.438581466674805,
+				-370.88351440429688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment9_BB"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_BB"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-139.69999694824219,
+				2.1944150924682617,
+				-359.41143798828125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
 	}
 ]

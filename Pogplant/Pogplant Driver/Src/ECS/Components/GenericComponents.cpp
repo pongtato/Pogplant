@@ -363,6 +363,8 @@ namespace Components
 		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[m_TexName]);
 		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
 		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+
+		m_CurrentLifetime = 0.0f;
 	}
 
 	void ParticleSystem::Update(float _Dt, const Transform& _Transform, const glm::vec3& _CamPos)
@@ -503,6 +505,8 @@ namespace Components
 				UpdateInstance(m_ParticlePool[i], _Dt, _CamPos, _Transform.m_ModelMtx, m_FollowParent);
 			}
 		}
+
+		m_CurrentLifetime += _Dt;
 	}
 
 	void ParticleSystem::Spawn(glm::vec3 _BasePos, glm::vec3 _RandPos, glm::vec3 _Direction)
