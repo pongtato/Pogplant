@@ -68,9 +68,9 @@ namespace Scripting
             return new EncounterSystemDriver();
         }
 
-        public static MoveStuff MoveStuff()
+        public static FlockController FlockController()
         {
-            return new MoveStuff();
+            return new FlockController();
         }
 
         public static FirstPersonFiringSystem FirstPersonFiringSystem()
