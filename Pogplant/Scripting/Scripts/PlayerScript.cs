@@ -66,8 +66,11 @@ namespace Scripting
         //Change this to make the ship tilt more according to movement
         private float shipYawMultiplier = 2.5f;
         private float shipPitchMultiplier = 3.5f;
-        private float shipRollMultiplier = 2.5f;
+        private float shipRollMultiplier = 3.5f;
 
+        //How much ship should roll based off rotation from the spline
+        private float shipRollMultiplierRotation = 0.25f;
+        
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
         //public List<uint> entityIDList = new List<uint>();
@@ -352,11 +355,13 @@ namespace Scripting
                 rigidbody.velocity += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
             }
 
+            if (dt > 0)
+            {
+                calculatedVelocity = lastPosition - playerGlobalPos;
+                calculatedVelocity = calculatedVelocity * (1 / dt);
+            }
 
-            calculatedVelocity = lastPosition - playerGlobalPos;
             lastPosition = playerGlobalPos;
-
-            calculatedVelocity = calculatedVelocity * (1 / dt);
 
             //Ship tilter
             float relativeVelX = Vector3.Dot(right_vec, calculatedVelocity);
@@ -373,7 +378,6 @@ namespace Scripting
             transform.Rotation.Y += (targetRotation.Y - transform.Rotation.Y) * shipYawFollowSpeed * dt;
             transform.Rotation.Z += (targetRotation.Z - transform.Rotation.Z) * shipRollFollowSpeed * dt;
             transform.Rotation.X += (targetRotation.X - transform.Rotation.X) * shipPitchFollowSpeed * dt;
-
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
