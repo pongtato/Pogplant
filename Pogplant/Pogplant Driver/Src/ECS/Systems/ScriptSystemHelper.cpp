@@ -65,6 +65,11 @@ namespace SSH
 		const auto& self_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(self_entityID));
 		self_trans->LookAt(target);
 	}
+	void LookAtClamped(std::uint32_t self_entityID, glm::vec3& target)
+	{
+		const auto& self_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(self_entityID));
+		self_trans->LookAtClamped(target);
+	}
 
 	glm::vec3 GetUpVector(std::uint32_t self_entityID)
 	{

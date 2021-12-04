@@ -1,0 +1,537 @@
+[
+	{
+		"Children" : 3,
+		"Guid" : 
+		{
+			"m_guid" : "d685b1d0-4a2b-42af-adaa-eb522e9d6353"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Static_Explosion"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Static_Explosion.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_Bits"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "BURST",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				0.45490196347236633,
+				0.0,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 1.0,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				-2.0,
+				0.0
+			],
+			"m_Loop" : true,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 1.0,
+			"m_Play" : false,
+			"m_RandomRotate" : true,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 0.20000000298023224,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.921875
+					],
+					[
+						0.10695187002420425,
+						0.921875
+					],
+					[
+						0.24446141719818115,
+						0.921875
+					],
+					[
+						0.40030556917190552,
+						0.90625
+					],
+					[
+						0.55614972114562988,
+						0.8046875
+					],
+					[
+						0.69060349464416504,
+						0.58984375
+					],
+					[
+						0.88617265224456787,
+						0.07421875
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 10,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 1.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Static_Explosion.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_Smoke"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "BURST",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.18823529779911041,
+				0.18823529779911041,
+				0.18823529779911041,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.0,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_Loop" : true,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 1.0,
+			"m_Play" : false,
+			"m_RandomRotate" : true,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 0.5,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.49609375
+					],
+					[
+						0.12528647482395172,
+						0.7265625
+					],
+					[
+						0.24446141719818115,
+						0.91796875
+					],
+					[
+						0.40641710162162781,
+						1.0
+					],
+					[
+						0.56837278604507446,
+						0.96484375
+					],
+					[
+						0.69365930557250977,
+						0.765625
+					],
+					[
+						0.80672270059585571,
+						0.21484375
+					],
+					[
+						1.0,
+						0.01171875
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 10,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 0.20000000298023224,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 0.5,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Static_Explosion.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_Rising"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.10196078568696976,
+				0.10196078568696976,
+				0.10196078568696976,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				0.5,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 1.0,
+			"m_Play" : false,
+			"m_RandomRotate" : true,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 0.5,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.828125
+					],
+					[
+						0.1375095546245575,
+						0.921875
+					],
+					[
+						0.31474408507347107,
+						0.95703125
+					],
+					[
+						0.41558441519737244,
+						0.91796875
+					],
+					[
+						0.55003821849822998,
+						0.796875
+					],
+					[
+						0.69671505689620972,
+						0.58984375
+					],
+					[
+						0.83116883039474487,
+						0.31640625
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 0.20000000298023224,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.51171875
+					],
+					[
+						0.15889991819858551,
+						0.703125
+					],
+					[
+						0.27807486057281494,
+						0.875
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.5989304780960083,
+						0.94140625
+					],
+					[
+						0.72727274894714355,
+						0.62890625
+					],
+					[
+						0.85561496019363403,
+						0.265625
+					],
+					[
+						1.0,
+						0.01171875
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Static_Explosion.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

@@ -27,6 +27,7 @@ namespace SSH
 	void GetBoxColliderECS(std::uint32_t entityID, MonoString* collisionLayer, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);
 	MonoString* GetTagECS(std::uint32_t entityID);
 	void LookAt(std::uint32_t self_entityID, glm::vec3& target);
+	void LookAtClamped(std::uint32_t self_entityID, glm::vec3& target);
 	glm::vec3 GetUpVector(std::uint32_t self_entityID);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index);
 	void LogToEditor(MonoString* scriptName, MonoString* debugLog);
