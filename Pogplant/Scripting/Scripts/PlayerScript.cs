@@ -79,6 +79,7 @@ namespace Scripting
 
         public List<GameObject> entityList = new List<GameObject>();
         public List<Tuple<GameObject, GameObject>> childList = new List<Tuple<GameObject, GameObject>>();
+        BoxCollider boxCollider;
         //EnemyManager enemyManager = new EnemyManager();
 
         bool isAlive = true;
@@ -94,7 +95,7 @@ namespace Scripting
             shipCameraEntity = ECS.FindEntityWithName("PlayerCam");
             boxEntityID = ECS.FindEntityWithName("PlayerBox");
             ECS.PlayAudio(shipCameraEntity, 0);
-
+            boxCollider = ECS.GetComponent<BoxCollider>(boxEntityID);
             lastPosition = ECS.GetGlobalPosition(entityID);
             targetRotation = ECS.GetComponent<Transform>(entityID).Rotation;
         }
@@ -109,137 +110,6 @@ namespace Scripting
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            /*//if(transform.Position.Y >= 10.0f)
-            //{
-            //    rigidbody.AddForce(new Vector3(0, -3.0f, 0));
-            //}
-
-            //if(transform.Position.Y < 10.0f)
-            //{
-            //    rigidbody.AddForce(new Vector3(0, 3.0f, 0));
-            //}
-
-            // Fake enemy encounter press Y to spawn random enemy infront of player
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_Y))
-            {
-                SpawnWave();
-            }
-
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
-            {
-                Console.WriteLine("D key is triggered");
-            }
-
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
-            {
-                //Console.WriteLine("D key is triggered");
-            }
-
-            // Create Entity Example
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_Z))
-            {
-                //uint entityID = ECS.CreateEntity("Testing123", Vector3.Zero(), Vector3.Zero(), Vector3.Zero());
-                //entityIDList.Add(entityID);
-
-                GameObject GO = ECS.CreateEntity("RandomNamexD", new Transform(Vector3.One(), Vector3.One(), Vector3.One()));
-                GO.AddComponent<Renderer>(new Renderer("Player_Ship"));
-
-                entityList.Add(GO);
-
-                Console.WriteLine("Entity ID created: " + GO.id);
-                //Console.WriteLine("Test Mass Is: " + GO.GetComponent<Rigidbody>().mass);
-            }
-
-            // Destroy Entity Example
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_X))
-            {
-                if (entityList.Count > 0)
-                {
-                    uint entity = entityList[0].id;
-                    Console.WriteLine("Trying Entity ID destroyed: " + entity);
-                    ECS.DestroyEntity(entity);
-                    entityList.RemoveAt(0);
-                    Console.WriteLine("Entity ID destroyed: " + entity);
-                }
-                else
-                {
-                    Console.WriteLine("Entity list is empty");
-                }
-            }
-
-            // Create Child Example
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_C))
-            {
-                if (entityList.Count > 0)
-                {
-                    GameObject GOParent = entityList[0];
-                    GameObject GOChild = ECS.CreateChild(GOParent.id, "Child123", new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.Zero()));
-                    childList.Add(new Tuple<GameObject, GameObject>(GOParent, GOChild));
-                    Console.WriteLine("Child ID created: " + GOChild.id + " Parent ID: " + GOParent.id);
-                }
-                else
-                {
-                    Console.WriteLine("Entity list is empty");
-                }
-            }
-
-            // Get EntityID example
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_V))
-            {
-                string exampleName = "RandomNamexD";
-                uint entityID = ECS.FindEntityWithName(exampleName);
-                Console.WriteLine("EntityID with name " + exampleName + ": " + entityID);
-            }
-
-            // Get component example
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_B))
-            {
-                if (entityList.Count > 0)
-                {
-                    //Console.WriteLine("Test Mass Is: " + entityList[0].GetComponent<Rigidbody>().mass);
-                    //Console.WriteLine("Test Model Name Is: " + entityList[0].GetComponent<Renderer>().modelName);
-                    Transform transform1 = ECS.GetComponent<Transform>(entityList[0].id);
-                    Console.WriteLine("Test Transforms are: " + transform1.Position.X + transform1.Position.Y + transform1.Position.Z);
-                }
-                else
-                {
-                    Console.WriteLine("Entity list is empty");
-                }
-            }
-
-            // Add component example
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_N))
-            {
-                if (entityList.Count > 0)
-                {
-                    entityList[0].AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
-                    entityList[0].AddComponent<Renderer>(new Renderer("Player_Ship"));
-                    entityList[0].AddComponent<SphereCollider>(new SphereCollider());
-                    entityList[0].AddComponent<BoxCollider>(new BoxCollider());
-                }
-                else
-                {
-                    Console.WriteLine("Entity list is empty");
-                }
-            }
-
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_M))
-            {
-                GameObject GO = ECS.CreateEntity("Player2", new Transform(Vector3.One(), Vector3.One(), Vector3.One()));
-                GO.AddComponent<Rigidbody>(new Rigidbody(new Vector3()));
-                GO.AddComponent<Renderer>(new Renderer("Player_Ship"));
-                GO.AddComponent<PlayerScript>(new PlayerScript());
-
-                //Console.WriteLine("S key is released");
-            }
-            //*/
-
-            // Debug log example
-            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
-            //{
-            //    DebugUtilities.LogToEditor("PlayerScript", "Pressing D");
-            //}
-
             bool rightPushed = InputUtility.onKeyHeld("RIGHT");
             bool leftPushed = InputUtility.onKeyHeld("LEFT");
             bool upPushed = InputUtility.onKeyHeld("UP");
@@ -260,7 +130,7 @@ namespace Scripting
             Vector3 right_vec = Vector3.CrossProduct(forward_vec, up_vec);
             Vector3 direc_vector = (right_vec * horizontal_input) + (up_vec * vertical_input);
 
-            BoxCollider boxCollider =  ECS.GetComponent<BoxCollider>(boxEntityID);
+            //BoxCollider boxCollider =  ECS.GetComponent<BoxCollider>(boxEntityID);
             Transform boxTransform = ECS.GetComponent<Transform>(boxEntityID);
             float length = transform.Position.magnitude();
 
@@ -317,27 +187,6 @@ namespace Scripting
             //{
             //    Console.WriteLine("Exceed -Z bounds");
             //}
-
-            //int result = GameUtilities.CheckBounds(ECS.GetGlobalPosition(entityID), Vector3.Normalise(rigidbody.velocity) + direc_vector);
-
-            //if ((result & 1) != 0)
-            //{
-            //    rigidbody.velocity.X = 0f;
-            //    direc_vector.X = 0;
-            //}
-
-            //if ((result & 2) != 0)
-            //{
-            //    rigidbody.velocity.Y = 0f;
-            //    direc_vector.Y = 0;
-            //}
-
-            //if ((result & 4) != 0)
-            //{
-            //    rigidbody.velocity.Z = 0f;
-            //    direc_vector.Z = 0;
-            //}
-
             float directionalMag = direc_vector.magnitude();
 
             if (directionalMag > 1.0f)

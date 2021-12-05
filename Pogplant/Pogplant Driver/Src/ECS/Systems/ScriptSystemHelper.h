@@ -67,6 +67,8 @@ namespace SSH
 	// For scene loading through scripts
 	void LoadScene(MonoString* sceneFileName);
 	void ExitScene();
+
+	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params);
 }
 
 #include "ScriptSystemHelper.hpp"

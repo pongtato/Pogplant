@@ -15,17 +15,18 @@ namespace Scripting
         }
 
         private int active_index = 0;
-        private Dictionary<string, GameObject> buttonMap = new Dictionary<string, GameObject>();
-        private bool enable_menu_control;
+        private static Dictionary<string, GameObject> buttonMap = new Dictionary<string, GameObject>();
+        //private static bool enable_menu_control;
 
         public GameOverScreen()
         {
-            enable_menu_control = true;
+            //enable_menu_control = true;
         }
 
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+            //ECS.PlayAudio(entityID, 0);
 
             Vector3 pos = new Vector3();
             Vector3 rot = new Vector3();
@@ -43,17 +44,17 @@ namespace Scripting
             ECS.GetTransformECS(ar, ref pos, ref rot, ref scale);
             buttonMap.Add("Arrow", new GameObject(ar, new Transform(pos, rot, scale), "Arrow"));
 
-            uint bg = ECS.FindChildEntityWithName(entityID, "Background");
-            ECS.GetTransformECS(ar, ref pos, ref rot, ref scale);
-            buttonMap.Add("Background", new GameObject(bg, new Transform(pos, rot, scale), "Background"));
+            //uint bg = ECS.FindChildEntityWithName(entityID, "Background");
+            //ECS.GetTransformECS(ar, ref pos, ref rot, ref scale);
+            //buttonMap.Add("Background", new GameObject(bg, new Transform(pos, rot, scale), "Background"));
 
             //Disable the object
-            foreach (KeyValuePair<string, GameObject> button in buttonMap)
-            {
-                ECS.SetActive(button.Value.id, false);
-            }
+            //foreach (KeyValuePair<string, GameObject> button in buttonMap)
+            //{
+            //    ECS.SetActive(button.Value.id, false);
+            //}
 
-            enable_menu_control = false;
+            //enable_menu_control = false;
         }
 
         public override void Start()
@@ -63,10 +64,10 @@ namespace Scripting
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            if (enable_menu_control)
-            {
+            //if (enable_menu_control)
+            //{
                 UpdateInputs();
-            }
+            //}
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
@@ -84,16 +85,16 @@ namespace Scripting
 
         }
 
-        public void ShowGameOverScreen()
-        {
-            //Disable the object
-            foreach (KeyValuePair<string, GameObject> button in buttonMap)
-            {
-                ECS.SetActive(button.Value.id, true);
-            }
+        //public void ShowGameOverScreen()
+        //{
+        //    //Disable the object
+        //    //foreach (KeyValuePair<string, GameObject> button in buttonMap)
+        //    //{
+        //    //    ECS.SetActive(button.Value.id, true);
+        //    //}
 
-            enable_menu_control = true;
-        }
+        //    //enable_menu_control = true;
+        //}
 
         void UpdateInputs()
         {
@@ -140,11 +141,11 @@ namespace Scripting
                 {
                     //Restart
                     case 0:
-                        GameUtilities.LoadScene("MainMenu");
+                        GameUtilities.LoadScene("Level01_M3_Blockout");
                         break;
                     //Return to menu
                     case 1:
-                        GameUtilities.LoadScene("Level01_M3_Blockout");
+                        GameUtilities.LoadScene("MainMenu");
                         break;
                     default:
                         break;
