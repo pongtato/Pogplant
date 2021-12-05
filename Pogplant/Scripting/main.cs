@@ -34,15 +34,15 @@ namespace Scripting
             return new MainMenuController();
         }
 
-        //public static GameOverScreen GameOverScreen()
-        //{
-        //    return new GameOverScreen();
-        //}
+        public static GameOverScreen GameOverScreen()
+        {
+            return new GameOverScreen();
+        }
 
-        //public static GameEndingTrigger GameEndingTrigger()
-        //{
-        //    return new GameEndingTrigger();
-        //}
+        public static GameEndingTrigger GameEndingTrigger()
+        {
+            return new GameEndingTrigger();
+        }
 
         public static DummyScript DummyScript()
         {
