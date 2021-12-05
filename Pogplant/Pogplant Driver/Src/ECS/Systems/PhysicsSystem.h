@@ -65,6 +65,11 @@ public:
 		return m_broadphase.GetAABBTreeBoxes();
 	}
 
+	inline size_t GetCollisionQueryCount()
+	{
+		return m_collisionQuery.m_query.size();
+	}
+
 	std::unordered_map<int, std::unordered_map<int, int>> m_collisionMatrix;
 	std::map<std::string, int> m_collisionLayers;
 
