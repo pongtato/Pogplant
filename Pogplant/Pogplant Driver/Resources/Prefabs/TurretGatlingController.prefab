@@ -20,7 +20,7 @@
 		"Children" : 1,
 		"Guid" : 
 		{
-			"m_guid" : "28e6e179-4bae-485e-9b98-cd681a9f56b5"
+			"m_guid" : "d9e29c73-9d22-4bb2-ab7c-30714448f157"
 		},
 		"Name" : 
 		{
@@ -28,11 +28,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "2ea1286a-5cd9-4aa0-977d-2b70bb1daa9e"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Rigidbody" : 
 		{
@@ -52,9 +48,9 @@
 		{
 			"m_position" : 
 			[
-				7.0,
-				8.9770002365112305,
-				-67.426002502441406
+				-7.0,
+				9.0,
+				-67.0
 			],
 			"m_rotation" : 
 			[
@@ -116,7 +112,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"PrefabInstance" : 
 		{
@@ -188,7 +184,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -246,7 +242,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -300,185 +296,11 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Bullet_Box"
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Turret_Gatling",
-				"Resources/Models\\Enemy",
-				"Bullet_Box"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-2.6053299903869629,
-				0.59314918518066406,
-				-1.5453994274139404
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Exhaust_Main002"
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Turret_Gatling",
-				"Resources/Models\\Enemy",
-				"Exhaust_Main002"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-1.7881393432617188e-07,
-				1.6617097854614258,
-				-3.8274483680725098
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Rotating_Gatling_Barrel"
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Turret_Gatling",
-				"Resources/Models\\Enemy",
-				"Rotating_Gatling_Barrel"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.9406967163085938e-08,
-				0.97872352600097656,
-				3.2371823787689209
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
 			"m_Name" : "Bullet_Belt"
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -532,11 +354,185 @@
 		"Children" : 0,
 		"Name" : 
 		{
+			"m_Name" : "Bullet_Box"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Gatling",
+				"Resources/Models\\Enemy",
+				"Bullet_Box"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.6053299903869629,
+				0.59314918518066406,
+				-1.5453994274139404
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Rotating_Gatling_Barrel"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Gatling",
+				"Resources/Models\\Enemy",
+				"Rotating_Gatling_Barrel"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.000957489013671875,
+				0.978729248046875,
+				3.2371826171875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main002"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Gatling",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main002"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.7881393432617188e-07,
+				1.6617097854614258,
+				-3.8274483680725098
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
 			"m_Name" : "Gun_Studs001"
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -594,7 +590,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -648,69 +644,11 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Arm_R001"
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Turret_Gatling",
-				"Resources/Models\\Enemy",
-				"Big_Alien_Arm_R001"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.81099998950958252,
-				0.67492866516113281,
-				0.16827559471130371
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
 			"m_Name" : "Big_Alien_Arm_L001"
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -764,11 +702,11 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Horns001"
+			"m_Name" : "Big_Alien_Arm_R001"
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -788,7 +726,7 @@
 			[
 				"Enemy_Turret_Gatling",
 				"Resources/Models\\Enemy",
-				"Horns001"
+				"Big_Alien_Arm_R001"
 			],
 			"UseLight" : 1
 		},
@@ -800,9 +738,9 @@
 		{
 			"m_position" : 
 			[
-				0.87958347797393799,
-				1.8634395599365234,
-				0.81712460517883301
+				-0.81099998950958252,
+				0.67492866516113281,
+				0.16827559471130371
 			],
 			"m_rotation" : 
 			[
@@ -826,7 +764,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -866,6 +804,64 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Horns001"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Gatling",
+				"Resources/Models\\Enemy",
+				"Horns001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.87958347797393799,
+				1.8634400367736816,
+				0.8171241283416748
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
