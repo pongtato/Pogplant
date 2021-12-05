@@ -48,6 +48,7 @@ namespace Scripting
         float final_scale_value = 0.1f;
         float explosion_expand_multiplier = 0.5f;
         float linger_time = 0.0f;
+        float scale_down_dt = 0.0f;
 
         bool start_outerring = true;
         float accumulated_outerring_dt = 0.0f;
@@ -137,6 +138,7 @@ namespace Scripting
                 if(accumulated_scale >= Scale_duration)
                 {
                     accumulated_scale = Scale_duration;
+                    ECS.PlayAudio(entityID, 0);
                     start_blinking = false;
                 }
                 Vector3 large_scale = new Vector3(large_blink_scale, large_blink_scale, large_blink_scale);
@@ -256,20 +258,22 @@ namespace Scripting
                 explosion_collider.extends.X = curr_scale.Y * extends_multiplier_XZ;
                 ECS.SetColliderBox(Explosion, ref explosion_collider.isTrigger, ref explosion_collider.centre, ref explosion_collider.extends);
             }
-            //Once reach max value check how long you want to linger
+            //Scale down the explosion after it happens
             if (accu_dt_expand >= explosion_expand_multiplier)
             {
-                linger_time += dt;
-                if (linger_time > 1.0f)
+                //Scale down
+                scale_down_dt += dt;
+                if(scale_down_dt > 0.7f)
                 {
-                    //Clear everything/reset
-                    ECS.SetTransformECS(Explosion, explode.Position, explode.Rotation, start_scale);
+                    scale_down_dt = 0.7f;
+                    explode_phase3 = false;
                     BoxCollider end_explosion_collider = ECS.GetComponent<BoxCollider>(Explosion);
                     end_explosion_collider.centre = start_centre;
                     end_explosion_collider.extends = start_extends;
                     ECS.SetColliderBox(Explosion, ref end_explosion_collider.isTrigger, ref end_explosion_collider.centre, ref end_explosion_collider.extends);
-                    explode_phase3 = false;
                 }
+                Vector3 scale_down = Vector3.Lerp(Final_scale, start_scale, scale_down_dt  / 0.7f);
+                ECS.SetTransformECS(Explosion, explode.Position, explode.Rotation, scale_down);
             }
         }
     }
