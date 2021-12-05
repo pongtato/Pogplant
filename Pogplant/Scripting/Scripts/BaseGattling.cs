@@ -15,14 +15,19 @@ namespace Scripting
         //public Transform turret_pivot_transform = new Transform();
         public float health = 20.0f;
 
+        //Turning speed 
+        float pivot_turning = 10.0f;
+        float gattling_turning = 250.0f;
+        float max_angle = 10.0f;
+        bool y_direction_switch = true;
+
+        //Firing stuff
+        float can_fire_timer = 0.0f;
+        float fire_window = 10.0f;
+        float fire_cooldown = 1.0f;
         float fireRate;
         float fire_timer = 0.0f;
-
-        //Turning speed 
-        float pivot_turning = 0.0f;
-        float gattling_turning = 0.0f;
-        float max_angle = 5.0f;
-        bool y_direction_switch = true;
+        bool can_fire  = true;
 
         bool isFiring = false;
         bool isAlive = true;
@@ -31,24 +36,18 @@ namespace Scripting
         public BaseGattling()
         {
             // initialize private variables here
-            fireRate =  0.5f;
+            fireRate =  0.1f;
 
         }
 
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-            Console.WriteLine("PARENT ENTITY ID?" + _entityID);
 
             muzzle_id = ECS.FindChildEntityWithName(_entityID, "Rotating_Gatling_Barrel");
             turret_pivot = ECS.FindChildEntityWithName(_entityID, "Turret_Pivot");
             //muzzle_transform= ECS.GetComponent<Transform>(muzzle_id);
             //turret_pivot_transform = ECS.GetComponent<Transform>(turret_pivot);
-            Console.WriteLine("GETTING DA ID MZULEE" + muzzle_id);
-            Console.WriteLine("GETTING DA ID turretpivot" + turret_pivot);
-
-            gattling_turning = 1.0f;
-            pivot_turning = 1.0f;
             //Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
 
         }
@@ -86,15 +85,32 @@ namespace Scripting
 
                 if (isFiring)
                 {
-
-                    fire_timer += dt;
-                    if (fire_timer >= fireRate)
+                    can_fire_timer += dt;
+                    if (can_fire)
                     {
-                        // Call C++ side bullet firing
-                        GameUtilities.FireEnemyBullet(entityID, ECS.GetGlobalPosition(muzzle_id) + Transform.GetForwardVector(muzzle_id) * 2.0f, transform.Rotation);
-                        fire_timer = 0.0f;
+                        fire_timer += dt;
+                        if (fire_timer >= fireRate)
+                        {
+                            // Call C++ side bullet firing
+                            GameUtilities.FireEnemyBullet(muzzle_id, ECS.GetGlobalPosition(muzzle_id) + Transform.GetForwardVector(muzzle_id) , ECS.GetGlobalRotation(muzzle_id));
+                            ECS.PlayAudio(entityID, 2);
+                            fire_timer = 0.0f;
+                        }
+                        if(can_fire_timer >= fire_window)
+                        {
+                            can_fire = false;
+                            fire_timer = 0.0f;
+                            can_fire_timer = 0.0f;
+                        }
                     }
-
+                    if(!can_fire)
+                    {
+                        if (can_fire_timer >= fire_cooldown)
+                        {
+                            can_fire = true;
+                            can_fire_timer = 0.0f;
+                        }
+                    }
                 }
             }
             else
@@ -102,14 +118,15 @@ namespace Scripting
                 deathAnimationTime -= dt;
                 if (deathAnimationTime > 0.0f)
                 {
-                    transform.Rotation.X += 180.0f * dt;
-                    transform.Rotation.Y += 90.0f * dt;
-                    transform.Rotation.Z += 270.0f * dt;
+                    //transform.Rotation.X += 180.0f * dt;
+                    //transform.Rotation.Y += 90.0f * dt;
+                    //transform.Rotation.Z += 270.0f * dt;
                 }
                 else
                 {
                     //Console.WriteLine("Turret (id: " + entityID + ") has died");
                     GameUtilities.PlayEnemyDeathAnimation(entityID);
+                    GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
                     ECS.DestroyEntity(entityID);
                 }
             }
@@ -126,9 +143,15 @@ namespace Scripting
         public void TakeDamage(float damage)
         {
             if (health > 0)
+            {
                 health -= damage;
-            if (health <= 0)
+                ECS.PlayAudio(entityID, 0);
+                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
+            }
+            else
+            {
                 HandleDeath();
+            }
         }
 
         void HandleDeath()
@@ -137,6 +160,9 @@ namespace Scripting
             {
                 isAlive = false;
                 isFiring = false;
+                ECS.PlayAudio(entityID, 1);
+                GameUtilities.PlayEnemyDeathAnimation(entityID);
+                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
             }
         }
 
