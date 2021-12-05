@@ -25,64 +25,35 @@ namespace Scripting
     // Enemy script class
     public class BaseTurret : MonoBehaviour
     {
-        public Transform[] muzzle_transforms = new Transform[1];
+        public uint turret_muzzle = 0;
         public float health = 20.0f;
 
-        float fireRate;
+        //Firing stuff
+        float fireRate = 0.2f;
         float fire_timer = 0.0f;
-        float fire_duration = 0.0f;
-        float current_fireDuration = 0.0f;
 
-        // temp variables
-        float fire_delay;
-        float fire_delay_accumulator = 0.0f;
+        float can_fire_timer = 0.0f;
+        float fire_window = 0.7f;
+        float fire_cooldown = 1.5f;
+        bool can_fire = true;
+
+
 
         bool isFiring = false;
-
         bool isAlive = true;
         float deathAnimationTime = 4.0f; // seconds
-        //uint disc_id;
 
-        //Temporary sine wave movement to smoke
-        Vector3 m_initialPos;
-        Vector3 m_sineOffset;
-        float m_sineTimer;
-        Vector3 m_sineScale;
-        Vector3 m_sineSpeed;
 
         public BaseTurret()
         {
             // initialize private variables here
 
-            fireRate = 1 / 2.0f;
-            fire_duration = current_fireDuration = 30.0f;
-
-            var rand = new Random();
-            fire_delay = ((float)rand.Next() / int.MaxValue) * 5.0f;
         }
 
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-            //disc_id = ECS.FindChildEntityWithName(entityID, "Spinning_Disk");
-
-            //Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
-
-            //Temporary sine wave movement
-            var rand = new Random();
-            m_initialPos = ECS.GetComponent<Transform>(entityID).Position;
-            m_sineOffset.X = (float)rand.NextDouble();
-            m_sineOffset.Y = (float)rand.NextDouble();
-            m_sineOffset.Z = (float)rand.NextDouble();
-
-
-            m_sineTimer = 0f;
-            m_sineScale.X = (float)rand.NextDouble() * 2.0f + 1.0f;
-            m_sineScale.Y = (float)rand.NextDouble() * 3.0f + 1.0f;
-            m_sineScale.Z = (float)rand.NextDouble() * 5.0f + 1.0f;
-            m_sineSpeed.X = (float)rand.NextDouble() * 1.0f + 0.5f;
-            m_sineSpeed.Y = (float)rand.NextDouble() * 1.5f + 0.5f;
-            m_sineSpeed.Z = (float)rand.NextDouble() * 1.5f + 0.5f;
+            turret_muzzle = ECS.FindChildEntityWithName(entityID, "Turret_Muzzle"); 
         }
 
         public override void Start()
@@ -98,84 +69,50 @@ namespace Scripting
 
             if (isAlive)
             {
-                //if ((fire_delay_accumulator += dt) > fire_delay)
-                //    StartFiring(false);
-
-                //if (fire_delay_accumulator >= 10.0f)
-                //    HandleDeath();
-
                 if (isFiring)
                 {
-                    //current_fireDuration -= dt;
-                    //if (current_fireDuration <= 0.0f)
-                    //{
-                    //    isFiring = false;
-                    //    current_fireDuration = fire_duration;
-                    //}
-
-                    fire_timer += dt;
-
-                    if (fire_timer >= fireRate)
+                    can_fire_timer += dt;
+                    if (can_fire)
                     {
-                        for (int i = 0; i < muzzle_transforms.Length; ++i)
+                        fire_timer += dt;
+                        if (fire_timer >= fireRate)
                         {
                             // Call C++ side bullet firing
-                            
-                            GameUtilities.FireEnemyBullet(entityID, ECS.GetGlobalPosition(entityID) + Transform.GetForwardVector(entityID) * 2.0f, transform.Rotation);
+                            GameUtilities.FireEnemyBullet(turret_muzzle, ECS.GetGlobalPosition(turret_muzzle) + Transform.GetForwardVector(turret_muzzle), ECS.GetGlobalRotation(turret_muzzle));
+                            ECS.PlayAudio(entityID, 2);
+                            fire_timer = 0.0f;
                         }
-                        fire_timer = 0.0f;
+                        if (can_fire_timer >= fire_window)
+                        {
+                            can_fire = false;
+                            fire_timer = 0.0f;
+                            can_fire_timer = 0.0f;
+                        }
                     }
-
+                    if (!can_fire)
+                    {
+                        if (can_fire_timer >= fire_cooldown)
+                        {
+                            can_fire = true;
+                            can_fire_timer = 0.0f;
+                        }
+                    }
                 }
-
-                //// spin disk
-                //Transform disk_transform = ECS.GetComponent<Transform>(disc_id);
-                //Vector3 disk_rotation = disk_transform.Rotation;
-                //disk_rotation.Y += 90.0f * dt;
-
-                //if (disk_rotation.Y > 360f)
-                //    disk_rotation.Y -= 360f;
-
-                ////transform.Rotation.Y += 120f * dt;
-
-                //ECS.SetTransformECS(disc_id, disk_transform.Position, disk_rotation, disk_transform.Scale);
-
-                //sineMovement(ref transform, ref dt);
-
             }
             else
             {
-                if (deathAnimationTime == 4.0f)
-                {
-                    var rand = new Random();
-                    Vector3 dir = new Vector3((float)rand.NextDouble(), (float)rand.NextDouble(), (float)rand.NextDouble()) * 1000.0f;
-                    rigidbody.AddImpulseForce(dir);
-                    rigidbody.useGravity = true;
-                    rigidbody.mass = 100.0f;
-                }
                 deathAnimationTime -= dt;
                 if (deathAnimationTime > 0.0f)
                 {
-                    transform.Rotation.X += 180.0f * dt;
-                    transform.Rotation.Y += 90.0f * dt;
-                    transform.Rotation.Z += 270.0f * dt;
+
                 }
                 else
                 {
-                    //Console.WriteLine("Turret (id: " + entityID + ") has died");
+                    GameUtilities.PlayEnemyDeathAnimation(entityID);
+                    GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
                     ECS.DestroyEntity(entityID);
                 }
             }
-
-        }
-
-        public void sineMovement(ref Transform transform, ref float dt)
-        {
-            m_sineTimer += dt;
-
-            transform.Position.X = (float)Math.Sin(m_sineOffset.X + m_sineTimer * m_sineSpeed.X) * m_sineScale.X + m_initialPos.Y;
-            transform.Position.Y = (float)Math.Sin(m_sineOffset.Y + m_sineTimer * m_sineSpeed.Y) * m_sineScale.Y + m_initialPos.Y;
-            transform.Position.Z = (float)Math.Sin(m_sineOffset.Z + m_sineTimer * m_sineSpeed.Z) * m_sineScale.Z + m_initialPos.Z;
         }
 
         // Call this function to make this enemy start firing
@@ -187,21 +124,29 @@ namespace Scripting
         public void TakeDamage(float damage)
         {
             if (health > 0)
+            {
                 health -= damage;
-            if (health <= 0)
+                ECS.PlayAudio(entityID, 0);
+                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
+            }
+            else
+            {
                 HandleDeath();
+            }
 
-            //Console.WriteLine("Turret took damage, health is now: " + health + "Entity ID: " + entityID);
+
         }
 
         void HandleDeath()
         {
-
             // This is a hardcoded way of destroying this instance, need to be replaced!
             if (isAlive)
             {
                 isAlive = false;
                 isFiring = false;
+                ECS.PlayAudio(entityID, 1);
+                GameUtilities.PlayEnemyDeathAnimation(entityID);
+                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
             }
         }
 
