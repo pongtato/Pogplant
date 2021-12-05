@@ -115,6 +115,64 @@
 		"Children" : 0,
 		"Name" : 
 		{
+			"m_Name" : "Exhaust_Main001"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_02",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.0971353054046631,
+				-0.67056179046630859
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
 			"m_Name" : "Spinning_Disk"
 		},
 		"Prefab" : 
@@ -463,64 +521,6 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Head"
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_02",
-				"Resources/Models\\Enemy",
-				"Big_Alien_Head"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-8.9406967163085938e-08,
-				-0.75588822364807129,
-				4.0419399738311768e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
 			"m_Name" : "Big_Alien_Arm_R"
 		},
 		"Prefab" : 
@@ -637,7 +637,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Exhaust_Main001"
+			"m_Name" : "Big_Alien_Head"
 		},
 		"Prefab" : 
 		{
@@ -661,7 +661,7 @@
 			[
 				"Enemy_02",
 				"Resources/Models\\Enemy",
-				"Exhaust_Main001"
+				"Big_Alien_Head"
 			],
 			"UseLight" : 1
 		},
@@ -673,9 +673,9 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				-1.0971353054046631,
-				-0.67056179046630859
+				-8.9406967163085938e-08,
+				-0.75588822364807129,
+				4.0419399738311768e-07
 			],
 			"m_rotation" : 
 			[
