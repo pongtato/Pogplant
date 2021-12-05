@@ -168,7 +168,7 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 
 				//std::cout << i << " of " << m_collisionQuery.m_query.size() << std::endl;
 
-				auto& query = m_collisionQuery.m_query[i];
+				auto query = m_collisionQuery.m_query[i];
 
 				if (query.m_ID1 < query.m_ID2)
 					std::swap(query.m_ID1, query.m_ID2);
@@ -490,7 +490,9 @@ void PhysicsSystem::UpdateEditor()
 		auto& transform = boxColliders.get<Components::Transform>(collidable);
 		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
 
-		boxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider.centre, boxCollider.extends * transform.GetGlobalScale());
+		boxCollider.aabb.CalculateAABBFromExtends(
+			transform.GetGlobalPosition() + boxCollider.centre,
+			boxCollider.extends * transform.GetGlobalScale());
 
 		//Update broadphase and identifiers
 		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
@@ -509,8 +511,25 @@ void PhysicsSystem::UpdateEditor()
 			colliderIdentifier->isTrigger = boxCollider.isTrigger;
 			colliderIdentifier->collisionLayer = GetCollisionLayer(boxCollider.collisionLayer);
 
-			if(colliderIdentifier->broadPhaseKey)
-				m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, boxCollider.aabb);
+			if (colliderIdentifier->broadPhaseKey)
+			{
+				auto rigidbody = m_registry->GetReg().try_get<Components::Rigidbody>(collidable);
+
+				if (rigidbody && !rigidbody->isKinematic)
+				{
+					static PhysicsDLC::Collision::Shapes::AABB dynamicAABB;
+
+					dynamicAABB.CalculateAABBFromExtends(
+						transform.GetGlobalPosition() + boxCollider.centre,
+						boxCollider.extends * transform.GetGlobalScale() * (1.f + (float)rigidbody->velocity.length()));
+
+					m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, dynamicAABB);
+				}
+				else
+				{
+					m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, boxCollider.aabb);
+				}
+			}
 			else
 				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, boxCollider.aabb);
 		}
@@ -636,10 +655,6 @@ void PhysicsSystem::UpdateEditor()
 			else
 				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, obbBoxCollider.aabb);
 		}
-
-		//glm::mat4 rotationMtx{ 1 };
-		//ImGuizmo::RecomposeRotationMatrix(glm::value_ptr(transform.m_rotation), glm::value_ptr(rotationMtx));
-
 	}
 }
 
@@ -674,7 +689,7 @@ void PhysicsSystem::Update(float c_dt)
 	auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
 	auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
 
-	//O(n^2) probably not ideal, but will do for now
+	//Update new rigidbody collisions
 	for (auto& _1entity : rigidBodyEntities)
 	{
 		auto& _1rigidbody = rigidBodyEntities.get<Components::Rigidbody>(_1entity);
@@ -697,7 +712,7 @@ void PhysicsSystem::Update(float c_dt)
 		_1rigidbody.impulseAcceleration = PhysicsDLC::Vector::Zero;
 		_1rigidbody.newPosition = _1transform.GetGlobalPosition() + _1rigidbody.velocity * c_dt;
 
-		if (!_1colliderIdentifier.isTrigger)
+		/*if (!_1colliderIdentifier.isTrigger)
 		{
 			for (auto _2entity : collidableEntities)
 			{
@@ -714,7 +729,19 @@ void PhysicsSystem::Update(float c_dt)
 				auto _2rigidbody = m_registry->GetReg().try_get<Components::Rigidbody>(_2entity);
 				HandleCollision(_1entity, _2entity, _1transform, _2transform, _1rigidbody, _2rigidbody, _1colliderIdentifier, _2colliderIdentifier, c_dt);
 			}
-		}
+		}//*/
+	}
+
+	CollisionUpdate(c_dt);
+
+	for (auto& _1entity : rigidBodyEntities)
+	{
+		auto& _1rigidbody = rigidBodyEntities.get<Components::Rigidbody>(_1entity);
+
+		if (_1rigidbody.isKinematic)
+			continue;
+
+		auto& _1transform = rigidBodyEntities.get<Components::Transform>(_1entity);
 
 		_1transform.SetGlobalPosition(_1rigidbody.newPosition);
 	}

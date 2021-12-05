@@ -228,9 +228,9 @@ float AABB::GetVolume() const
 
 bool AABB::Contains(const AABB& aabb) const
 {
-	return m_min.x < aabb.m_min.x&& m_max.x > aabb.m_max.x
-		&& m_min.y < aabb.m_min.y&& m_max.y > aabb.m_max.y
-		&& m_min.z < aabb.m_min.z&& m_max.z > aabb.m_max.z;
+	return m_min.x < aabb.m_min.x && m_max.x > aabb.m_max.x
+		&& m_min.y < aabb.m_min.y && m_max.y > aabb.m_max.y
+		&& m_min.z < aabb.m_min.z && m_max.z > aabb.m_max.z;
 }
 
 AABB AABB::Combine(const AABB& aabb1, const AABB& aabb2)
