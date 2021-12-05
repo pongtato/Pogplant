@@ -20,6 +20,8 @@ namespace Scripting
         uint ReticleGroupID;
         uint PlayerBox;
 
+        uint ScoreText; // id of score text object
+
         //Player Firing 
         float p_fireRate = 0.1f;
         float p_fire_timer = 0.0f;
@@ -40,6 +42,8 @@ namespace Scripting
         Vector3 Small_hide_reticle = new Vector3(0.01f, 0.01f, 0.01f);
         Vector3 Show_reticle = new Vector3(1f, 1f, 1f);
 
+        public static uint score = 0;
+
         public FirstPersonFiringSystem()
         {
             // initialize private variables here
@@ -49,6 +53,7 @@ namespace Scripting
             ShootingBox = ECS.FindEntityWithName("ShootingBox");
             Crosshair = ECS.FindEntityWithName("Crosshair");
             ReticleGroupID = ECS.FindEntityWithName("ReticleGroup");
+            ScoreText = ECS.FindEntityWithName("Score_Text");
 
             Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
             Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
@@ -97,6 +102,11 @@ namespace Scripting
                 else
                 {
                     removal_list.Add(enemy_in_range[i]);
+
+                    // add score
+                    ++score;
+                    //Console.WriteLine("Current Score is " + score);
+                    GameUtilities.UpdateScore(ScoreText, score);
                 }
             }
             DoRemovalList();

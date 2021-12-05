@@ -34,6 +34,8 @@ namespace Scripting
 
 	void SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier);
 
+	void UpdateScore(std::uint32_t text_object, std::uint32_t score);
+
 	// Get the player healths
 	float GetPlayerHealth();
 	float GetPlayerMaxHealth();

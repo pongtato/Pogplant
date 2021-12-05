@@ -429,6 +429,19 @@ namespace Scripting
 		return isAlive;
 	}
 
+	void Scripting::UpdateScore(std::uint32_t text_object, std::uint32_t score)
+	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(text_object)))
+			return;
+
+		auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(text_object));
+
+		if (text)
+		{
+			text->m_Text = "Score: " + std::to_string(score);
+		}
+	}
+
 	void Scripting::PlayEnemyDeathAnimation(std::uint32_t entityID)
 	{
 		auto rb = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(static_cast<entt::entity>(entityID));
