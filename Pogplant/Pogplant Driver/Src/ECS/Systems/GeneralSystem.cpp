@@ -120,12 +120,15 @@ void GeneralSystem::UpdateTransforms()
 	{
 		auto& transform = view.get<Transform>(entity);
 
-		transform.updateModelMtx();
-
 		if (transform.m_parent == entt::null)
 		{
+			transform.updateModelMtx();
+
 			for (auto& ent : transform.m_children)
+			{
+				transform.updateModelMtx();
 				UpdateTransform(ent, transform);
+			}
 		}
 	}
 }
@@ -136,6 +139,7 @@ void GeneralSystem::UpdateTransform(entt::entity _id, Components::Transform& par
 	//update myself
 	auto& transform = m_registry->GetReg().get<Transform>(_id);
 
+	transform.updateModelMtx();
 	transform.updateModelMtx(parent_transform);
 
 	//update children
