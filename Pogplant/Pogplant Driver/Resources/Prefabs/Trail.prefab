@@ -1,0 +1,174 @@
+[
+	{
+		"Guid" : 
+		{
+			"m_guid" : "2542824a-b076-479d-b9b3-8d62caba593d"
+		},
+		"Name" : 
+		{
+			"m_Name" : "TrailRender"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "CONE",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ConeRadiusMax" : 17.0,
+			"m_ConeRadiusMin" : 10.0,
+			"m_Delay" : 0.079999998211860657,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_Loop" : true,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 1.0,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 0.10000000149011612,
+				"m_CurveMin" : 0.10000000149011612,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.0
+					],
+					[
+						0.23862373828887939,
+						0.4765625
+					],
+					[
+						0.66037732362747192,
+						0.84765625
+					],
+					[
+						1.0,
+						1.0
+					],
+					[
+						-1.0,
+						1.0
+					],
+					[
+						-1.0,
+						1.0
+					],
+					[
+						-1.0,
+						1.0
+					],
+					[
+						-1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 3.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				-1.0
+			],
+			"m_SpawnRadius" : 1.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 169.0,
+				"m_CurveMin" : 169.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SubDelay" : 0.0099999997764825821,
+			"m_SubSpawnCount" : 20,
+			"m_TargetConeScale" : 1.0249999761581421,
+			"m_TexName" : "ParticleTest.dds",
+			"m_Trail" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "D:\\Digipen\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Trail.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "413c98f1-e24f-4d66-8835-52af16a19e2f"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.4260876923799515e-09,
+				2.288818359375e-05,
+				19.999998092651367
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				5.1388407418251347e-13,
+				-1.9541309542736585e-11
+			],
+			"m_scale" : 
+			[
+				0.50000029802322388,
+				0.50000035762786865,
+				0.49999979138374329
+			]
+		}
+	}
+]
