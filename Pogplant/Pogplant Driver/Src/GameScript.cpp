@@ -216,12 +216,20 @@ namespace Scripting
 
 		if (player_projectile_script && enemy_object_script)
 		{
-			bool enemy = enemy_object_script->m_ScriptTypes.contains("BaseTurret");
-			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy)	
+			bool enemy_turret = enemy_object_script->m_ScriptTypes.contains("BaseTurret");
+			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy_turret)
 			{
 				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
 				SSH::InvokeFunction("BaseTurret", "TakeDamage", other, player_projectile_script->m_Damage);
+			}
+
+			bool enemy_gatling = enemy_object_script->m_ScriptTypes.contains("BaseGattling");
+			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy_gatling)
+			{
+				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
+				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
+				SSH::InvokeFunction("BaseGattling", "TakeDamage", other, player_projectile_script->m_Damage);
 			}
 		}
 		if (player_projectile_script)
@@ -337,11 +345,16 @@ namespace Scripting
 		entt::entity turret_id = static_cast<entt::entity>(entityID);
 		if (turret_id != entt::null)
 		{
+			//Base normal turret
 			if (TurretIdentifier == 1)
 			{
 				SSH::InvokeFunction("BaseTurret", "StartFiring", turret_id, isActivated);
 			}
-
+			//Base normal turret
+			if (TurretIdentifier == 2)
+			{
+				SSH::InvokeFunction("BaseGattling", "StartFiring", turret_id, isActivated);
+			}
 		}
 	}
 
@@ -406,6 +419,8 @@ namespace Scripting
 		{
 			if (scriptable->m_ScriptTypes.contains("BaseTurret"))
 				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseTurret", "GetAlive", id);
+			if (scriptable->m_ScriptTypes.contains("BaseGattling"))
+				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseGattling", "GetAlive", id);
 		}
 		if(!scriptable)
 		{
