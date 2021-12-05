@@ -78,7 +78,7 @@ namespace Scripting
                         if (fire_timer >= fireRate)
                         {
                             // Call C++ side bullet firing
-                            GameUtilities.FireEnemyBullet(turret_muzzle, ECS.GetGlobalPosition(turret_muzzle) + Transform.GetForwardVector(turret_muzzle), ECS.GetGlobalRotation(turret_muzzle), 10.0f, 5.0f);
+                            GameUtilities.FireEnemyBullet(turret_muzzle, ECS.GetGlobalPosition(turret_muzzle) + Transform.GetForwardVector(turret_muzzle), ECS.GetGlobalRotation(turret_muzzle), 5.0f, 5.0f);
                             ECS.PlayAudio(entityID, 2);
                             fire_timer = 0.0f;
                         }
