@@ -41,8 +41,9 @@ namespace Scripting
         {
             if (id == Player)
             {
-                //ECS.GetComponent<GameOverScreen>(Game_Over_Screen_ID).ShowGameOverScreen();
-                Console.WriteLine("PLayer hit game over box");
+                
+                //GameUtilities.LoadScene("GameOverMenu"); //<- Uncomment this line to load the game over screen
+                Console.WriteLine("Player hit game over box");
             }
         }
 

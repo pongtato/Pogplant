@@ -53,6 +53,7 @@ namespace SSH
 		}
 
 		MonoMethod* method = mono_class_get_method_from_name(klass, funcName.c_str(), -1);
+		//MonoMethod* method = FindMethod(klass, funcName, -1);
 		if (method)
 		{
 			void* argss[] = { &args... };
