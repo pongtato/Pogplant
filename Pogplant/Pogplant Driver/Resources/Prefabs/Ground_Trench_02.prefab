@@ -1,0 +1,63 @@
+[
+	{
+		"Guid" : 
+		{
+			"m_guid" : "56fc1de4-76e0-444d-b611-c02944d386de"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_2_Sides_Right"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Ground_Trench_02.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_2_Sides_Right",
+				"Resources/Models\\Environment",
+				"Ground_Trench18"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	}
+]

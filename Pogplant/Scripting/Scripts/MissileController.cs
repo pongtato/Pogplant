@@ -25,6 +25,9 @@ namespace Scripting
 
         MissleGroups first_group = new MissleGroups();
         MissleGroups second_group = new MissleGroups();
+        MissleGroups third_group = new MissleGroups();
+        MissleGroups fourth_group = new MissleGroups();
+        MissleGroups fitfh_group = new MissleGroups();
         List<MissleGroups> Total_Missile_groups = new List<MissleGroups>();
         public MissileController()
         {
@@ -42,7 +45,7 @@ namespace Scripting
             // Initialise the The individual controller with thier timer
             if (_entityID == ECS.FindEntityWithName("MissileTrigger1"))
             {
-                first_group.Timers = new List<float> {0f, 0.5f, 1.0f, 1.5f, 2.0f };
+                first_group.Timers = new List<float> {0.3f, 1.1f, 2.5f, 2.9f, 3.6f, 3.8f, 4f, 4f};
                 first_group.ParentID = _entityID;
                 first_group.ActivateMissiles = false;
             }
@@ -52,7 +55,28 @@ namespace Scripting
 
             if (_entityID == ECS.FindEntityWithName("MissileTrigger2"))
             {
-                first_group.Timers = new List<float> { 0f, 0.5f, 1.0f, 1.5f, 2.0f, 2.5f };
+                first_group.Timers = new List<float> { 2.1f, 2.3f, 3f, 3.3f, 4f, 4.7f, 5.2f, 5.7f};
+                first_group.ParentID = _entityID;
+                first_group.ActivateMissiles = false;
+            }
+
+            if (_entityID == ECS.FindEntityWithName("MissileTrigger3"))
+            {
+                first_group.Timers = new List<float> { 2.6f, 2.9f, 3.3f, 4.4f};
+                first_group.ParentID = _entityID;
+                first_group.ActivateMissiles = false;
+            }
+
+            if (_entityID == ECS.FindEntityWithName("MissileTrigger4"))
+            {
+                first_group.Timers = new List<float> {1f, 1.2f, 1.5f, 1.6f, 1.8f, 2.1f, 2.6f, 3f, 3.3f, 3.6f, 4f, 4.3f};
+                first_group.ParentID = _entityID;
+                first_group.ActivateMissiles = false;
+            }
+
+            if (_entityID == ECS.FindEntityWithName("MissileTrigger5"))
+            {
+                first_group.Timers = new List<float> { 1f, 1.2f, 1.5f, 1.6f, 1.8f, 2.1f, 2.6f, 3f, 3.3f, 3.6f, 4f};
                 first_group.ParentID = _entityID;
                 first_group.ActivateMissiles = false;
             }
@@ -60,6 +84,9 @@ namespace Scripting
 
             Total_Missile_groups.Add(first_group);
             Total_Missile_groups.Add(second_group);
+            Total_Missile_groups.Add(third_group);
+            Total_Missile_groups.Add(fourth_group);
+            Total_Missile_groups.Add(fitfh_group);
 
             UpdateMissleGroup(_entityID);
         }

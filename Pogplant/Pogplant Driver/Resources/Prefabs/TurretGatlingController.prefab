@@ -28,7 +28,11 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "2ea1286a-5cd9-4aa0-977d-2b70bb1daa9e"
 		},
 		"Rigidbody" : 
 		{
@@ -99,9 +103,9 @@
 			"collisionLayer" : "ENEMY",
 			"extends" : 
 			[
-				9.5,
-				6.5,
-				7.5
+				5.0,
+				5.0,
+				5.0
 			],
 			"isTrigger" : true
 		},
@@ -112,7 +116,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"PrefabInstance" : 
 		{
@@ -184,7 +188,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -242,7 +246,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -300,7 +304,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -358,7 +362,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -416,7 +420,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -474,7 +478,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -532,7 +536,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -590,7 +594,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -648,7 +652,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -706,7 +710,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -764,7 +768,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
@@ -822,7 +826,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretGatlingController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretGatlingController.prefab"
 		},
 		"Render" : 
 		{
