@@ -22,6 +22,7 @@ namespace Scripting
             public uint Turret5 = 0;
             public uint Turret6 = 0;
             public float accumulated_dt = 0.0f;
+            public int Turret_type = 0;
 
             public float activated_time = 0.0f;
             public List<uint> Indi_Turret = new List<uint>();
@@ -42,11 +43,17 @@ namespace Scripting
             entityID = _entityID;
 
             // Initialise the The individual controller with thier timer
-            if (_entityID == ECS.FindEntityWithName("TurretGroup1"))
+            //if (_entityID == ECS.FindEntityWithName("TurretGroup1"))
+            //{
+            //    first_group.ParentID = _entityID;
+            //    first_group.activated_time = 20.0f;
+            //    first_group.Turret_type = 2;
+            //}
+            if (_entityID == ECS.FindEntityWithName("GatlingTurretGroup1"))
             {
                 first_group.ParentID = _entityID;
-                first_group.activated_time = 20.0f;
-
+                first_group.activated_time = 5.0f;
+                first_group.Turret_type = 2;
             }
             // Add new controllers here
             //if (_entityID == ECS.FindEntityWithName("Parentxxx"))
@@ -74,7 +81,7 @@ namespace Scripting
                     {
                         for (int j = 0; j < Total_turret_groups[i].Indi_Turret.Count; ++j)
                         {
-                            GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], true, 1);
+                            GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], true, Total_turret_groups[i].Turret_type);
                         }
                         Total_turret_groups[i].StartedFiring = true;
                     }
@@ -84,7 +91,7 @@ namespace Scripting
                         {
                             if(GameUtilities.GetAlive(Total_turret_groups[i].Indi_Turret[j]))
                             {
-                               GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], false, 1);
+                               GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], false, Total_turret_groups[i].Turret_type);
                             }
                         }
                         Total_turret_groups[i].ActivateTurrets = false;
