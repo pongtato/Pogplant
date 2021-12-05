@@ -163,7 +163,7 @@ namespace Scripting
 
                 //Draw this line segment
                 //Gizmos.DrawLine(lastPos, newPos);
-                DebugDraw.DebugSphere(newPos,Vector3.Zero(), 0.1f, 32);
+                DebugDraw.DebugLine(lastPos, newPos);
 
                 //Save this pos so we can draw the next line segment
                 lastPos = newPos;
@@ -301,7 +301,7 @@ namespace Scripting
             Transform transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
             string[] result = data.Split(' ');
 
-            Vector3 offset = new Vector3(0, 14.0f, 0);
+            Vector3 offset = new Vector3(0, 20.0f, 0);
 
             float scale = .1f;
 

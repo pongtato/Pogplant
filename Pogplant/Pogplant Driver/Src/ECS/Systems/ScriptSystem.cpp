@@ -346,6 +346,7 @@ void ScriptSystem::BindFunctions()
 
 	// Debug Draw
 	mono_add_internal_call("Scripting.DebugDraw::DebugSphere", &Pogplant::DebugDraw::DebugSphere);
+	mono_add_internal_call("Scripting.DebugDraw::DebugLine", &Pogplant::DebugDraw::DebugLine);
 	
 	// Debug Text
 	mono_add_internal_call("Scripting.DebugUtilities::LogToEditor", &SSH::LogToEditor);
