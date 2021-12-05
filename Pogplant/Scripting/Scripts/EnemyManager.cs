@@ -271,8 +271,8 @@ namespace Scripting
             if (bonus_count >= bonus_increment_requirement)
             {
                 bonus_count = 0;
-                ++bonus_score;
                 score += bonus_score;
+                ++bonus_score;
             }
             ++score;
 
