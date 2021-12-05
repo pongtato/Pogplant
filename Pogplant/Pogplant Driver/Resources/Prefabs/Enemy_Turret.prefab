@@ -1,5 +1,43 @@
 [
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isTrigger" : true
+		},
 		"Children" : 1,
 		"Guid" : 
 		{
@@ -11,7 +49,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Enemy_Turret.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_Turret.prefab"
 		},
 		"Render" : 
 		{
@@ -65,9 +103,9 @@
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.20000000298023224,
+				0.20000000298023224,
+				0.20000000298023224
 			]
 		}
 	},
@@ -79,7 +117,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Enemy_Turret.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_Turret.prefab"
 		},
 		"Render" : 
 		{
@@ -118,14 +156,14 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
 			[
+				1.0000002384185791,
 				1.0,
-				1.0,
-				1.0
+				1.0000002384185791
 			]
 		}
 	},
@@ -137,7 +175,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Enemy_Turret.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_Turret.prefab"
 		},
 		"Render" : 
 		{
@@ -176,7 +214,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -195,7 +233,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Enemy_Turret.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_Turret.prefab"
 		},
 		"Render" : 
 		{
@@ -253,7 +291,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Enemy_Turret.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_Turret.prefab"
 		},
 		"Render" : 
 		{
@@ -286,20 +324,20 @@
 			"m_position" : 
 			[
 				1.3411045074462891e-07,
-				1.2778387069702148,
-				1.2059000730514526
+				1.2778388261795044,
+				1.2059001922607422
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
 			]
 		}
 	},
@@ -311,7 +349,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Enemy_Turret.prefab"
+			"file_path" : "Resources\\Prefabs\\Enemy_Turret.prefab"
 		},
 		"Render" : 
 		{
@@ -344,13 +382,13 @@
 			"m_position" : 
 			[
 				0.0,
-				0.45407962799072266,
+				0.45408058166503906,
 				1.0765725374221802
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 

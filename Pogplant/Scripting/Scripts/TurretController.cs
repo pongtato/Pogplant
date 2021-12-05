@@ -30,6 +30,8 @@ namespace Scripting
 
         TurretGroup first_group = new TurretGroup();
         TurretGroup second_group = new TurretGroup();
+        TurretGroup third_group = new TurretGroup();
+
         List<TurretGroup> Total_turret_groups = new List<TurretGroup>();
         public TurretController()
         {
@@ -44,12 +46,13 @@ namespace Scripting
             entityID = _entityID;
 
             // Initialise the The individual controller with thier timer
-            //if (_entityID == ECS.FindEntityWithName("TurretGroup1"))
-            //{
-            //    first_group.ParentID = _entityID;
-            //    first_group.activated_time = 20.0f;
-            //    first_group.Turret_type = 2;
-            //}
+            if (_entityID == ECS.FindEntityWithName("TurretGroup1"))
+            {
+                third_group.ParentID = _entityID;
+                third_group.activated_time = 20.0f;
+                third_group.Turret_type = 1;
+            }
+
             if (_entityID == ECS.FindEntityWithName("GatlingTurretGroup1"))
             {
                 first_group.ParentID = _entityID;
@@ -70,6 +73,8 @@ namespace Scripting
 
             Total_turret_groups.Add(first_group);
             Total_turret_groups.Add(second_group);
+            Total_turret_groups.Add(third_group);
+
             UpdateTurretGroup(_entityID);
         }
 
