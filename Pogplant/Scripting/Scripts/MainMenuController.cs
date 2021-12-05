@@ -43,7 +43,7 @@ namespace Scripting
             Vector3 pos = new Vector3();
             Vector3 rot = new Vector3();
             Vector3 scale = new Vector3();
-
+            
             uint sb = ECS.FindChildEntityWithName(entityID, "Start Button");
             ECS.GetTransformECS(sb, ref pos, ref rot, ref scale);
             buttonMap.Add("Start Button", new GameObject(sb, new Transform(pos, rot, scale), "Start Button"));
@@ -103,13 +103,10 @@ namespace Scripting
             {
                 --active_index;
                 
-                if (active_index <= (int)BUTTONS.START_GAME)
+                if (active_index < (int)BUTTONS.START_GAME)
                 {
                     active_index = (int)BUTTONS.QUIT_GAME;
-                    ECS.SetTransformECS(buttonMap["Arrow"].id,
-                        new Vector3((buttonMap["Quit Button"].transform.Value.Position.X - 0.161f), buttonMap["Quit Button"].transform.Value.Position.Y, buttonMap["Quit Button"].transform.Value.Position.Z),
-                        buttonMap["Arrow"].transform.Value.Rotation,
-                        buttonMap["Arrow"].transform.Value.Scale);
+
                 }
                 //Console.WriteLine("Active index is: " + active_index);
             }
@@ -118,15 +115,28 @@ namespace Scripting
             {
                 ++active_index;
 
-                if (active_index >= (int)BUTTONS.QUIT_GAME)
+                if (active_index > (int)BUTTONS.QUIT_GAME)
                 {
                     active_index = (int)BUTTONS.START_GAME;
+
+                }
+                //Console.WriteLine("Active index is: "+ active_index);
+            }
+            
+            switch (active_index)
+            {
+                case 0:
                     ECS.SetTransformECS(buttonMap["Arrow"].id,
                         new Vector3((buttonMap["Start Button"].transform.Value.Position.X - 0.161f), buttonMap["Start Button"].transform.Value.Position.Y, buttonMap["Start Button"].transform.Value.Position.Z),
                         buttonMap["Arrow"].transform.Value.Rotation,
                         buttonMap["Arrow"].transform.Value.Scale);
-                }
-                //Console.WriteLine("Active index is: "+ active_index);
+                    break;
+                case 1:
+                    ECS.SetTransformECS(buttonMap["Arrow"].id,
+                        new Vector3((buttonMap["Quit Button"].transform.Value.Position.X - 0.161f), buttonMap["Quit Button"].transform.Value.Position.Y, buttonMap["Quit Button"].transform.Value.Position.Z),
+                        buttonMap["Arrow"].transform.Value.Rotation,
+                        buttonMap["Arrow"].transform.Value.Scale);
+                    break;
             }
 
             if (InputUtility.onKeyTriggered("MENUSELECT"))
@@ -136,7 +146,7 @@ namespace Scripting
                 switch (active_index)
                 {
                     case 0:
-                        GameUtilities.LoadScene("Level01_WithEnemyWaypoints");
+                        GameUtilities.LoadScene("Level01_M3_Blockout");
                         break;
                     case 1:
                         GameUtilities.ExitScene();

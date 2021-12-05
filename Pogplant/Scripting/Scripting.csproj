@@ -60,6 +60,8 @@
     <Compile Include="Scripts\EnemyManager.cs" />
     <Compile Include="Scripts\EnvDamage.cs" />
     <Compile Include="Scripts\FollowSpline.cs" />
+    <Compile Include="Scripts\GameEndingTrigger.cs" />
+    <Compile Include="Scripts\GameOverScreen.cs" />
     <Compile Include="Scripts\MainMenuController.cs" />
     <Compile Include="Scripts\Missile.cs" />
     <Compile Include="Scripts\MissileController.cs" />
