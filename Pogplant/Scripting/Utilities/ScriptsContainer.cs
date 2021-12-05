@@ -28,6 +28,8 @@ namespace Scripting
             scriptNames.Add("EnvDamage");
             scriptNames.Add("MainMenuController");
             scriptNames.Add("DummyScript");
+            scriptNames.Add("GameOverScreen");
+            scriptNames.Add("GameEndingTrigger");
         }
 
         public string GetScriptNameElement(int index)
