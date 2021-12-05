@@ -1438,10 +1438,8 @@ namespace PogplantDriver
 
 	void ImguiHelper::Scene_GOPick(Pogplant::Camera4D* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
-		if (!ImGui::IsWindowFocused() || !ImGui::IsItemHovered())
-		{
+		if (!ImGui::IsWindowFocused())
 			return;
-		}
 
 		Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
 		if (currQuatCam && PPI::InputSystem::onKeyTriggered(GLFW_KEY_X))
@@ -1456,6 +1454,9 @@ namespace PogplantDriver
 				currQuatCam->UpdateVectors();
 			}
 		}
+
+		if (!ImGui::IsItemHovered())
+			return;
 
 		if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) && !m_GoEditing)
 		{
