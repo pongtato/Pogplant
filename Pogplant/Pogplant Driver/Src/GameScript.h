@@ -32,7 +32,7 @@ namespace Scripting
 
 	void StartMissile(std::uint32_t entityID);
 
-	void SetTurretFire(std::uint32_t entityID, bool isActivated);
+	void SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier);
 
 	// Get the player healths
 	float GetPlayerHealth();
