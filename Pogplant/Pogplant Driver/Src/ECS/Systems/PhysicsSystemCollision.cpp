@@ -17,6 +17,42 @@
 #include <Pogplant.h>
 #include <iostream>
 
+void PhysicsSystem::CollisionUpdate(float c_dt)
+{
+	for (size_t i = 0; i < m_collisionQuery.m_query.size(); ++i)
+	{
+		auto query = m_collisionQuery.m_query[i];
+
+		auto _1rigidbody = m_registry->GetReg().try_get<Components::Rigidbody>(query.m_ID1);
+		auto _2rigidbody = m_registry->GetReg().try_get<Components::Rigidbody>(query.m_ID2);
+		bool _2IsValid = (_2rigidbody && !_2rigidbody->isKinematic);
+
+		if ((_1rigidbody && !_1rigidbody->isKinematic) || _2IsValid)
+		{
+			if (_2IsValid)
+			{
+				std::swap(_1rigidbody, _2rigidbody);
+				std::swap(query.m_ID1, query.m_ID2);
+			}
+
+			auto& _1colliderIdentifier = m_registry->GetReg().get<Components::ColliderIdentifier>(query.m_ID1);
+			
+			if (!_1colliderIdentifier.isTrigger)
+			{
+				auto& _2colliderIdentifier = m_registry->GetReg().get<Components::ColliderIdentifier>(query.m_ID2);
+
+				if (_2colliderIdentifier.isTrigger)
+					continue;
+
+				auto& _1transform = m_registry->GetReg().get<Components::Transform>(query.m_ID1);
+				auto& _2transform = m_registry->GetReg().get<Components::Transform>(query.m_ID2);
+
+				HandleCollision(query.m_ID1, query.m_ID2, _1transform, _2transform, *_1rigidbody, _2rigidbody, _1colliderIdentifier, _2colliderIdentifier, c_dt);
+			}
+		}
+	}
+}
+
 void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 	const entt::entity& c_2entity,
 	Components::Transform& c_1transform,

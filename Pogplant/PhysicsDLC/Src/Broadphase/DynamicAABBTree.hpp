@@ -1,7 +1,6 @@
-#include "DynamicAABBTree.h"
 /******************************************************************************/
 /*!
-\file	DynamicAABBTree.cpp
+\file	DynamicAABBTree.hpp
 \author Gabriel Wong Choon Jieh
 \par	email: c.wong\@digipen.edu
 \details
@@ -384,7 +383,7 @@ namespace PhysicsDLC::Broadphase
 	}
 
 	template<typename IDType>
-	typename DynamicAABBTree<IDType>::NODELOCSTAT DynamicAABBTree<IDType>::GetNodeLoc(Node* c_curNode, Node* c_loc)
+	inline typename DynamicAABBTree<IDType>::NODELOCSTAT DynamicAABBTree<IDType>::GetNodeLoc(Node* c_curNode, Node* c_loc)
 	{
 		if (c_curNode->m_left && c_curNode->m_left == c_loc)
 			return NODELOCSTAT::N_LEFT;

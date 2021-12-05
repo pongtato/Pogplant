@@ -26,7 +26,7 @@
 #include <tuple>
 
 //Defines the number of threads that should be used to do triggers
-#define NUM_TRIGGER_THREADS 3
+#define NUM_TRIGGER_THREADS 2
 
 class ECS;
 
@@ -67,6 +67,7 @@ public:
 
 	std::unordered_map<int, std::unordered_map<int, int>> m_collisionMatrix;
 	std::map<std::string, int> m_collisionLayers;
+
 private:
 	struct QueuedTriggerAction
 	{
@@ -93,7 +94,7 @@ private:
 	PhysicsDLC::Broadphase::DynamicAABBTree<entt::entity> m_broadphase;
 	PhysicsDLC::Broadphase::BroadphaseQuery<entt::entity> m_collisionQuery;
 
-
+	void CollisionUpdate(float c_dt);
 	void HandleCollision(const entt::entity& c_1entity,
 		const entt::entity& c_2entity,
 		Components::Transform& c_1transform,

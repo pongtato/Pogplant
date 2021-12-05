@@ -24,10 +24,10 @@ namespace Scripting
     public class PlayerScript : MonoBehaviour
     {
 
-        public float movement_speed = 500.0f;
+        public float movement_speed = 300.0f;
         private float horizontal_input = 0;
         private float vertical_input = 0;
-        private float slowForce = 8.0f;
+        private float slowForce = 4.0f;
         //private float maxSpeed = 10.0f;
 
 
@@ -168,13 +168,13 @@ namespace Scripting
 
             if(transform.Position.Y > boxCollider.extends.Y)
             {
-                rigidbody.AddForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 200f);
+                rigidbody.AddForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 150f);
                 //Console.WriteLine("Exceed +Y bounds");
             }
 
             if(transform.Position.Y < -boxCollider.extends.Y)
             {
-                rigidbody.AddForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 500f);
+                rigidbody.AddForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 450f);
                 //Console.WriteLine("Exceed -Y bounds");
             }
 
