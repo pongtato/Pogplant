@@ -129,7 +129,7 @@ namespace Scripting
 		body->AddImpulseForce(Powershot);
 
 	}
-	void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, bool isTrue)
+	void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue)
 	{
 		//Get enemy transform 
 		entt::entity enemy = static_cast<entt::entity>(entityID);
@@ -148,14 +148,14 @@ namespace Scripting
 			//std::cout << "spawned false bullet" << std::endl;
 		}
 
-		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, 3.f, 1.f, Components::Projectile::OwnerType::Enemy);
+		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, _Lifetime, 1.f, Components::Projectile::OwnerType::Enemy);
 
 		auto body = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
 		glm::vec3 forward_vec = enemy_trans->GetForwardVector();
 
 		//Add power to the shots
-		forward_vec *= 5.f;
+		forward_vec *= _Speed;
 		body->AddImpulseForce(forward_vec);
 	}
 

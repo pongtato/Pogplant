@@ -219,7 +219,7 @@ namespace Scripting
                 //    }
                 //}
                 //Console.WriteLine("Firing bullet");
-                GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, owner.transform.Value.Rotation);
+                GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, owner.transform.Value.Rotation, 5.0f, 3.0f);
                 ECS.PlayAudio(owner.id, 3);
             }
 
