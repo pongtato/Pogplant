@@ -138,7 +138,7 @@ namespace Scripting
         }
         void UpdateCurrentWaypoint(float alpha)
         {
-            int end_offset = 65;// waypoint_offset + 15;
+            int end_offset = 25;// waypoint_offset + 15;
             if (alpha >= 1.0)
             {
                 // Calculate d_alpha from follow_speed and distance between current and next waypoint
