@@ -45,6 +45,7 @@ namespace Scripting
 
         private List<uint> enemies_to_delete = new List<uint>();
 
+        private uint score = 0;
 
         // Start is called before the first frame update
         public void Start()
@@ -205,10 +206,14 @@ namespace Scripting
             BaseTurret comp = instance.GetComponent<BaseTurret>();
         }
 
-        public void DeleteEnemyInstance(uint id)
+        public void DeleteEnemyInstance(uint id, bool isDiedFromPlayer)
         {
 
-
+            if (isDiedFromPlayer)
+            {
+                ++score;
+                GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
+            }    
             enemies_to_delete.Add(id);
         }
 

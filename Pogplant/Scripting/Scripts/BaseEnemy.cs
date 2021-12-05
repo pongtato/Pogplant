@@ -358,6 +358,8 @@ namespace Scripting
         private float deathAnimationTime = deathAnimTime;
         public bool is_alive;
 
+        private bool isDiedFromPlayer = false;
+
         public BaseEnemy()
         {
 
@@ -389,19 +391,27 @@ namespace Scripting
                 //Console.WriteLine("Enemy with ID " + gameObject.id + " has taken " + damage + " damage, health is now " + my_info.health);
             }
             else
-                HandleDeath();
+            {
+                HandleDeath(true);
+            }
         }
 
-        private void HandleDeath()
+        private void HandleDeath(bool fromPlayer)
         {
             //Console.WriteLine("Enemy with ID " + gameObject.id + " has called Handle death");
             if (is_alive)
             {
                 is_alive = false;
-                ECS.PlayAudio(gameObject.id, 1);
                 ECS.RemoveParentFrom(gameObject.id);
                 GameUtilities.PlayEnemyDeathAnimation(gameObject.id);
-                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
+
+                if (fromPlayer)
+                {
+                    ECS.PlayAudio(gameObject.id, 1);
+                    GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
+                }
+
+                isDiedFromPlayer = fromPlayer;
             }
         }
 
@@ -439,7 +449,7 @@ namespace Scripting
                 {
                     //FirstPersonFiringSystem.Instance.RemoveEnemyFromListOfTargets(gameObject);
                     //Destroy(gameObject);
-                    HandleDeath();
+                    HandleDeath(false);
                 }
             }
             else
@@ -457,8 +467,8 @@ namespace Scripting
                 }
                 else
                 {
-                    GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
-                    em.DeleteEnemyInstance(gameObject.id);
+                    //GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
+                    em.DeleteEnemyInstance(gameObject.id, isDiedFromPlayer);
                 }
             }
             //Console.WriteLine("End of BaseEnemy.Update()");
