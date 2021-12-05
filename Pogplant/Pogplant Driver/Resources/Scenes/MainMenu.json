@@ -6,7 +6,7 @@
 			{
 				"Dir" : "Resources/Audio\\secretsound.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.1
+				"Volume" : 0.10000000149011612
 			}
 		},
 		"Canvas" : 
@@ -18,7 +18,7 @@
 				1.0,
 				1.0
 			],
-			"m_Ortho" : false,
+			"m_Ortho" : true,
 			"m_TexName" : "Placeholder_Background.dds"
 		},
 		"Children" : 3,
@@ -46,7 +46,7 @@
 			[
 				0.0,
 				0.0,
-				0.0
+				-1.0
 			],
 			"m_rotation" : 
 			[
@@ -56,8 +56,8 @@
 			],
 			"m_scale" : 
 			[
-				6.0,
-				3.5,
+				2.0,
+				1.0,
 				1.0
 			]
 		}
@@ -72,7 +72,7 @@
 				1.0,
 				1.0
 			],
-			"m_Ortho" : false,
+			"m_Ortho" : true,
 			"m_TexName" : "Placeholder_Quit_Button.dds"
 		},
 		"Children" : 0,
@@ -89,8 +89,8 @@
 			"m_position" : 
 			[
 				0.0,
-				-0.18001563847064972,
-				0.0
+				-0.5,
+				-1.0
 			],
 			"m_rotation" : 
 			[
@@ -116,7 +116,7 @@
 				1.0,
 				1.0
 			],
-			"m_Ortho" : false,
+			"m_Ortho" : true,
 			"m_TexName" : "Placeholder_Arrow.dds"
 		},
 		"Children" : 0,
@@ -134,7 +134,7 @@
 			[
 				-0.16099999845027924,
 				0.049000009894371033,
-				0.0
+				-1.0
 			],
 			"m_rotation" : 
 			[
@@ -160,7 +160,7 @@
 				1.0,
 				1.0
 			],
-			"m_Ortho" : false,
+			"m_Ortho" : true,
 			"m_TexName" : "Placeholder_Start_Button.dds"
 		},
 		"Children" : 0,
@@ -178,7 +178,7 @@
 			[
 				0.0,
 				0.048759147524833679,
-				0.0
+				-1.0
 			],
 			"m_rotation" : 
 			[
