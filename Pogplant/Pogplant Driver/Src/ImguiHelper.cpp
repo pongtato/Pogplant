@@ -1443,6 +1443,20 @@ namespace PogplantDriver
 			return;
 		}
 
+		Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
+		if (currQuatCam && PPI::InputSystem::onKeyTriggered(GLFW_KEY_X))
+		{
+			if (m_CurrentEntity != entt::null)
+			{
+				auto& transform = m_ecs->GetReg().get<Components::Transform>(m_CurrentEntity);
+				currQuatCam->m_Position = transform.m_position + glm::vec3{ 0.f, 0.f, 5.f };
+				currQuatCam->m_Yaw = 0.f;
+				currQuatCam->m_Pitch = 0.f;
+				currQuatCam->m_Roll = 0.f;
+				currQuatCam->UpdateVectors();
+			}
+		}
+
 		if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) && !m_GoEditing)
 		{
 			glm::vec2 min = { _VMin.x,_VMin.y };
