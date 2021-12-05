@@ -112,5 +112,10 @@ namespace Scripting
         {
             return new TurretController();
         }
+
+        public static BaseGattling BaseGattling()
+        {
+            return new BaseGattling();
+        }
     }
 }

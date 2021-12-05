@@ -74,7 +74,7 @@ namespace Scripting
                     {
                         for (int j = 0; j < Total_turret_groups[i].Indi_Turret.Count; ++j)
                         {
-                            GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], true);
+                            GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], true, 1);
                         }
                         Total_turret_groups[i].StartedFiring = true;
                     }
@@ -84,7 +84,7 @@ namespace Scripting
                         {
                             if(GameUtilities.GetAlive(Total_turret_groups[i].Indi_Turret[j]))
                             {
-                               GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], false);
+                               GameUtilities.SetTurretFire(Total_turret_groups[i].Indi_Turret[j], false, 1);
                             }
                         }
                         Total_turret_groups[i].ActivateTurrets = false;

@@ -50,7 +50,7 @@ namespace Scripting
         public extern static void StartMissile(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void SetTurretFire(uint entityID, bool isActivated);
+        public extern static void SetTurretFire(uint entityID, bool isActivated, int TurretIdentifier);
 
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")
         {

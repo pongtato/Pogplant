@@ -52,6 +52,7 @@
     <Compile Include="ECS\ECS.cs" />
     <Compile Include="ECS\GameObject.cs" />
     <Compile Include="Scripts\BaseEnemy.cs" />
+    <Compile Include="Scripts\BaseGattling.cs" />
     <Compile Include="Scripts\BaseTurret.cs" />
     <Compile Include="Scripts\CatmullRomSpline.cs" />
     <Compile Include="Scripts\DummyScript.cs" />

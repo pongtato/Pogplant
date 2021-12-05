@@ -332,12 +332,16 @@ namespace Scripting
 		}
 	}
 
-	void SetTurretFire(std::uint32_t entityID, bool isActivated)
+	void SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier)
 	{
 		entt::entity turret_id = static_cast<entt::entity>(entityID);
 		if (turret_id != entt::null)
 		{
-			SSH::InvokeFunction("BaseTurret", "StartFiring", turret_id, isActivated);
+			if (TurretIdentifier == 1)
+			{
+				SSH::InvokeFunction("BaseTurret", "StartFiring", turret_id, isActivated);
+			}
+
 		}
 	}
 

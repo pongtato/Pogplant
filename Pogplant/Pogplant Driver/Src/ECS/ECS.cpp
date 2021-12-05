@@ -133,7 +133,11 @@ entt::entity ECS::FindChildEntityWithName(entt::entity parentID, const std::stri
 		if (name.m_name == _name)
 			return entity;
 		else
-			FindChildEntityWithName(entity, _name);
+		{
+			auto child = FindChildEntityWithName(entity, _name);
+			if (child != entt::null)
+				return child;
+		}
 	}
 
 	return entt::null;
