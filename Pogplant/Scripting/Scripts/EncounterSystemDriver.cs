@@ -2346,9 +2346,9 @@ namespace Scripting
            return encounterManager.enemyManager.GetAlive(id);
         }
 
-        public void AddScore(uint increment = 1)
+        public void AddScore()
         {
-            encounterManager.enemyManager.AddScore(increment);
+            encounterManager.enemyManager.AddScore();
         }
 
         public void TakeDamage(uint id, float damage)

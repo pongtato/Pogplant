@@ -45,7 +45,11 @@ namespace Scripting
 
         private List<uint> enemies_to_delete = new List<uint>();
 
-        private uint score = 0;
+        private uint score = 0;                                         //Base score
+        private const uint kill_score = 1;                                  //Addition to base score everytime an enemy is killed
+        private uint bonus_score = 1;                                   //Bonus score
+        private int bonus_count;                                     
+        private const int bonus_increment_requirement = 5;              //Increase bonus everytime this amount of enemies is killed
 
         // Start is called before the first frame update
         public void Start()
@@ -210,7 +214,7 @@ namespace Scripting
         {
 
             if (isDiedFromPlayer)
-                AddScore(1);
+                AddScore();
 
             enemies_to_delete.Add(id);
         }
@@ -261,13 +265,18 @@ namespace Scripting
             }
         }
 
-        public void AddScore(uint increment)
+        public void AddScore()
         {
-            score += increment;
+            ++bonus_count;
+            if (bonus_count >= bonus_increment_requirement)
+            {
+                bonus_count = 0;
+                ++bonus_score;
+                score += bonus_score;
+            }
+            ++score;
+
             GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
         }
     }
-
-
-
 }
