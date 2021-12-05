@@ -686,8 +686,7 @@ void PhysicsSystem::Update(float c_dt)
 	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
 		m_hasTriggerJob[i]->release();
 
-	auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
-	auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
+	auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody>();
 
 	//Update new rigidbody collisions
 	for (auto& _1entity : rigidBodyEntities)
@@ -698,7 +697,6 @@ void PhysicsSystem::Update(float c_dt)
 			continue;
 
 		auto& _1transform = rigidBodyEntities.get<Components::Transform>(_1entity);
-		auto& _1colliderIdentifier = rigidBodyEntities.get<Components::ColliderIdentifier>(_1entity);
 
 		if (_1rigidbody.useGravity)
 			_1rigidbody.acceleration.y += m_gravityAcc;
