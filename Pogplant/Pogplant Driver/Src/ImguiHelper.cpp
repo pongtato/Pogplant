@@ -1273,6 +1273,17 @@ namespace PogplantDriver
 
 		ImGui::Begin("Scene");
 		{
+			if (ImGui::IsWindowFocused())
+			{
+				if (ImGui::IsKeyPressed('2'))
+					m_EditMode = ImGuizmo::TRANSLATE;
+				if (ImGui::IsKeyPressed('3'))
+					m_EditMode = ImGuizmo::ROTATE;
+				if (ImGui::IsKeyPressed('4'))
+					m_EditMode = ImGuizmo::SCALE;
+			}
+
+
 			SceneWindow();
 		}
 		ImGui::End();
