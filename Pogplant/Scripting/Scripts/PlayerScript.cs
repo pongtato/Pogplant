@@ -24,7 +24,7 @@ namespace Scripting
     public class PlayerScript : MonoBehaviour
     {
 
-        public float movement_speed = 300.0f;
+        public float movement_speed = 200.0f;
         private float horizontal_input = 0;
         private float vertical_input = 0;
         private float slowForce = 4.0f;
@@ -375,7 +375,10 @@ namespace Scripting
             {
                 HandleDeath();
             }
+
             Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
+            
+            ECS.PlayAudio(shipCameraEntity, 2);
         }
 
         void HandleDeath()
