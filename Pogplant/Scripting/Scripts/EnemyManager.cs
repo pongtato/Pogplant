@@ -210,10 +210,8 @@ namespace Scripting
         {
 
             if (isDiedFromPlayer)
-            {
-                ++score;
-                GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
-            }    
+                AddScore(1);
+
             enemies_to_delete.Add(id);
         }
 
@@ -261,6 +259,12 @@ namespace Scripting
                     break;
                 }
             }
+        }
+
+        public void AddScore(uint increment)
+        {
+            score += increment;
+            GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
         }
     }
 
