@@ -414,7 +414,6 @@ namespace Components
 			glm::vec3 _SpawnDir,
 			glm::vec3 _Force,
 			glm::vec3 _BillboardAxis,
-			glm::vec2 _ScaleAxis,
 			float _SpawnRadius,
 			float _ConeRadiusMin,
 			float _ConeRadiusMax,
@@ -447,7 +446,6 @@ namespace Components
 		glm::vec3 m_SpawnDirection;
 		glm::vec3 m_Force;
 		glm::vec3 m_BillboardAxis;
-		glm::vec2 m_ScaleAxis;
 
 		CurveVariable m_Speed;
 		CurveVariable m_Scale;

@@ -194,7 +194,6 @@ void Application::InitialiseDebugObjects()
 				glm::vec3{ 0,1,0 },			// Spawn dir
 				glm::vec3{ 0,0.0f,0 },		// Force
 				glm::vec3{ 1,1,1 },			// Billboard axis
-				glm::vec2{ 1,1, },
 				1.0f,	// SpawnRadius
 				3.5f,	// Cone radius min
 				4.2f,	// Cone radius max
