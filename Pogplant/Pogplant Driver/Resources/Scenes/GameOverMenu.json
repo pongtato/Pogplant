@@ -9,19 +9,7 @@
 				"Volume" : 0.10100000351667404
 			}
 		},
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Ortho" : true,
-			"m_TexName" : "Placeholder_Background.dds"
-		},
-		"Children" : 3,
+		"Children" : 4,
 		"Name" : 
 		{
 			"m_Name" : "Background"
@@ -190,6 +178,50 @@
 			[
 				0.30000001192092896,
 				0.20000001788139343,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_TexName" : "Placeholder_Background.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Background"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.1000000238418579,
 				1.0
 			]
 		}
