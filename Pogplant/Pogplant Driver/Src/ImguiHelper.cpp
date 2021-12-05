@@ -2514,6 +2514,13 @@ namespace PogplantDriver
 				{
 					ToolTipHelper(toolTip.c_str(), true);
 
+					// Scale Axis
+					ImGui::Dummy(ImVec2(0.0f, 1.0f));
+					ImGui::Text("Scale Axis");
+					toolTip = "Which axis is affected by scale";
+					ToolTipHelper(toolTip.c_str(), true);
+					ImGui::DragFloat2("###ScaleAxis", &pSystem->m_ScaleAxis.x, 1.0f, 0.0f, 1.0f);
+
 					ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					ImGui::Text("Min. Scale");
 					ImGui::DragFloat("###Min. Scale", &pSystem->m_Scale.m_CurveMin, 0.01f);

@@ -269,6 +269,7 @@ namespace Components
 		, m_SpawnDirection{ glm::vec3{0,1,0} }
 		, m_Force{ 1.0f }
 		, m_BillboardAxis{ glm::vec3{1,1,1} }
+		, m_ScaleAxis { glm::vec2{ 1,1} }
 		, m_Speed{ }
 		, m_Scale{ }
 		, m_SpawnRadius{ 1.0f }
@@ -303,6 +304,7 @@ namespace Components
 		glm::vec3 _SpawnDir,
 		glm::vec3 _Force,
 		glm::vec3 _BillboardAxis,
+		glm::vec2 _ScaleAxis,
 		float _SpawnRadius,
 		float _ConeRadiusMin,
 		float _ConeRadiusMax,
@@ -326,6 +328,7 @@ namespace Components
 		, m_SpawnDirection{ _SpawnDir }
 		, m_Force{ _Force }
 		, m_BillboardAxis { _BillboardAxis }
+		, m_ScaleAxis{ _ScaleAxis }
 		, m_Speed{ _Speed }
 		, m_Scale{ _Scale }
 		, m_SpawnRadius{ _SpawnRadius }
@@ -471,6 +474,8 @@ namespace Components
 			auto& subEmi = m_SubEmitters[i];
 			if (subEmi.m_Count > 0)
 			{
+				subEmi.m_Position += subEmi.m_Direction * m_Speed.m_MultiplierMin * 0.5f;
+
 				if(subEmi.Update(_Dt, m_SubDelay))
 				{
 					Spawn(_Transform.m_position, subEmi.m_Position, subEmi.m_Direction);
@@ -656,7 +661,7 @@ namespace Components
 		// Construct new matrix
 		glm::mat4 model = glm::translate(glm::mat4{ 1 }, posCalc);
 		model *= rotation;
-		model = glm::scale(model, scale);
+		model = glm::scale(model, { scale.x * m_ScaleAxis.x, scale.y * m_ScaleAxis.y, scale.z });
 
 		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, static_cast<int>(_Particle.m_TexID), false, false });
 	}

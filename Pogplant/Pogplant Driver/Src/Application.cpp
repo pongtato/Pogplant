@@ -194,6 +194,7 @@ void Application::InitialiseDebugObjects()
 				glm::vec3{ 0,1,0 },			// Spawn dir
 				glm::vec3{ 0,0.0f,0 },		// Force
 				glm::vec3{ 1,1,1 },			// Billboard axis
+				glm::vec2{ 1,1, },
 				1.0f,	// SpawnRadius
 				3.5f,	// Cone radius min
 				4.2f,	// Cone radius max
@@ -209,22 +210,22 @@ void Application::InitialiseDebugObjects()
 					1.0f,			// Min Speed Mult
 					1.0f,			// Max Speed Mult
 				},
-			{
-				curvePoints,	// Curve points
-				0.2f,			// Min Scale
-				0.2f,			// Max Scale
-				1.0f,			// Min Scale Mult
-				1.0f,			// Max Scale Mult
-			},
-			"mud_rough.dds",		// TexID
-			1,	// Spawn Count
-			20, // Sub spawn count
-			static_cast<int>(ParticleSystem::EMITTER_TYPE::CONE), // Emitter type, this was made an int for easy serialization idk kekw
-			true,	// Loop
-			false,	// Randomly rotate particles?
-			true,   // Follow parent's position?
-			true	// Leave "trails"
-			)
+				{
+					curvePoints,	// Curve points
+					0.2f,			// Min Scale
+					0.2f,			// Max Scale
+					1.0f,			// Min Scale Mult
+					1.0f,			// Max Scale Mult
+				},
+				"mud_rough.dds",		// TexID
+				1,	// Spawn Count
+				20, // Sub spawn count
+				static_cast<int>(ParticleSystem::EMITTER_TYPE::CONE), // Emitter type, this was made an int for easy serialization idk kekw
+				true,	// Loop
+				false,	// Randomly rotate particles?
+				true,   // Follow parent's position?
+				true	// Leave "trails"
+				)
 			);
 
 	pos = { 7.5f, 7.5f, 10.0f };
