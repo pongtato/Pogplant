@@ -1,0 +1,117 @@
+[
+	{
+		"Children" : 1,
+		"Guid" : 
+		{
+			"m_guid" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Obst_Cup.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.423571763130234e-23,
+				3.2567524790355271e-16,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Obst_Cup.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.8547277450561523,
+				1.5076116743895085e-10,
+				-1.3560298717241182e-12
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.6268057173872705e-11,
+				-6.8484129478463274e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	}
+]
