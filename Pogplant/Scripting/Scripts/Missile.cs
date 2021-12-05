@@ -137,7 +137,7 @@ namespace Scripting
                 ECS.SetTransformECS(Indicator, blink.Position, blink.Rotation, scale);
                 isBig = !isBig;
             }
-            if (blink_phase_dt >= 5.0f)
+            if (blink_phase_dt >= 2.0f)
             {
                 //Force set scale to small and initiate second phase
                 Vector3 force_scale = new Vector3(small_blink_scale, small_blink_scale, small_blink_scale);
