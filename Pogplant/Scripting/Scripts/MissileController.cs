@@ -15,12 +15,7 @@ namespace Scripting
             public uint ParentID = 0;
             public bool ActivateMissiles = false;
             public bool FiredAlready = false;
-            public uint Missle1 = 0;
-            public uint Missle2 = 0;
-            public uint Missle3 = 0;
-            public uint Missle4 = 0;
-            public uint Missle5 = 0;
-            public uint Missle6 = 0;
+
             public float accumulated_dt = 0.0f;
             public int counter = 0;
 
