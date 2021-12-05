@@ -177,7 +177,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -786,7 +786,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -909,7 +909,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -1518,7 +1518,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -1884,7 +1884,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -3317,7 +3317,7 @@
 				0.0
 			],
 			"collisionLayer" : "DEFAULT",
-			"isTrigger" : false,
+			"isTrigger" : true,
 			"radius" : 30.0
 		},
 		"Tag" : 
@@ -4232,7 +4232,7 @@
 				3.0,
 				3.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -11732,7 +11732,7 @@
 				11.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -11781,7 +11781,7 @@
 				11.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -11830,7 +11830,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -11879,7 +11879,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -11928,7 +11928,7 @@
 				4.5,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -11977,7 +11977,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12026,7 +12026,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12075,7 +12075,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12124,7 +12124,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12173,7 +12173,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12222,7 +12222,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12271,7 +12271,7 @@
 				4.5,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12320,7 +12320,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12369,7 +12369,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12418,7 +12418,7 @@
 				3.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -12467,7 +12467,7 @@
 				3.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -13994,7 +13994,7 @@
 				0.15000000596046448,
 				0.5
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -14820,7 +14820,7 @@
 				0.10000000149011612,
 				0.5
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15035,7 +15035,7 @@
 				0.10000000149011612,
 				0.5
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15347,7 +15347,7 @@
 				11.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15396,7 +15396,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15445,7 +15445,7 @@
 				4.5,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15494,7 +15494,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15543,7 +15543,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15592,7 +15592,7 @@
 				3.0,
 				18.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15641,7 +15641,7 @@
 				3.0,
 				18.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15690,7 +15690,7 @@
 				11.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15739,7 +15739,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15788,7 +15788,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15837,7 +15837,7 @@
 				4.5,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15886,7 +15886,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15935,7 +15935,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -15984,7 +15984,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -16033,7 +16033,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -16082,7 +16082,7 @@
 				2.0,
 				2.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -18093,7 +18093,7 @@
 				0.10000000149011612,
 				0.5
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -33566,7 +33566,7 @@
 				0.15000000596046448,
 				0.5
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -33727,7 +33727,7 @@
 				0.15000000596046448,
 				0.5
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -33888,7 +33888,7 @@
 				0.15000000596046448,
 				0.5
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -42544,7 +42544,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -42919,7 +42919,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -43240,7 +43240,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -43426,7 +43426,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -43801,7 +43801,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -44176,7 +44176,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -44551,7 +44551,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -44926,7 +44926,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -45607,7 +45607,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -45982,7 +45982,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -46303,7 +46303,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -46489,7 +46489,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -46864,7 +46864,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -47239,7 +47239,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -47614,7 +47614,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -47989,7 +47989,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -48427,7 +48427,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -48802,7 +48802,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -49231,7 +49231,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -49552,7 +49552,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -49990,7 +49990,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -50365,7 +50365,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -50740,7 +50740,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -51115,7 +51115,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -51490,7 +51490,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -51865,7 +51865,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -52240,7 +52240,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -52669,7 +52669,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -52990,7 +52990,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -53365,7 +53365,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -53740,7 +53740,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -54178,7 +54178,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -54553,7 +54553,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -54928,7 +54928,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -55303,7 +55303,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -55678,7 +55678,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -56053,7 +56053,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -56428,7 +56428,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -56803,7 +56803,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -57232,7 +57232,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -57553,7 +57553,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -57928,7 +57928,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
@@ -58303,7 +58303,7 @@
 				0.5,
 				1.0
 			],
-			"isTrigger" : false
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 

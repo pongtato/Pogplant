@@ -126,7 +126,11 @@ namespace PPP
 
 			static bool drawAABBtree = false;
 
+			ImGui::Separator();
+
 			ImGui::Checkbox(ICON_FA_TREE " Enable AABB Tree Draw", &drawAABBtree);
+
+			ImGui::Text("Number of queries: %d", physicsSystem.GetCollisionQueryCount());
 
 			if (drawAABBtree)
 			{
