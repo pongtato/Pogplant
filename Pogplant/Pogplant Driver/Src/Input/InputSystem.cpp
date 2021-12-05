@@ -195,6 +195,21 @@ namespace PPI
 		return onKeyReleased(_keyID);
 	}
 
+	bool InputSystem::onKeyTriggered(int key)
+	{
+		return PPI::GLFWInputManager::Instance().onKeyTriggered(key);
+	}
+
+	bool InputSystem::onKeyReleased(int key)
+	{
+		return PPI::GLFWInputManager::Instance().onKeyReleased(key);
+	}
+
+	bool InputSystem::onKeyHeld(int key)
+	{
+		return PPI::GLFWInputManager::Instance().onKeyHeld(key);
+	}
+
 	/******************************************************************************/
 	/*!
 	\brief

@@ -92,7 +92,7 @@ void Application::Init()
 	PP::Window::HideCursor();
 	m_appState = Application::APPLICATIONSTATE::PLAY;
 	m_nextAppState = Application::APPLICATIONSTATE::PLAY;
-	EnterPlayState("Resources/Scenes/Level01_WithEnemyWaypoints.json");
+	EnterPlayState("Resources/Scenes/MainMenu.json");
 #endif // PPD_EDITOR_BUILD
 
 	BindEvents();
