@@ -15,6 +15,7 @@
 				9.0,
 				1.0
 			],
+			"isStatic" : false,
 			"isTrigger" : true
 		},
 		"Children" : 1,
@@ -28,7 +29,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretController.prefab"
 		},
 		"Rigidbody" : 
 		{
@@ -73,19 +74,19 @@
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			},
 			"Clip1" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			},
 			"Clip2" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			}
 		},
 		"BoxCollider" : 
@@ -103,6 +104,7 @@
 				2.0,
 				2.0
 			],
+			"isStatic" : false,
 			"isTrigger" : true
 		},
 		"Children" : 1,
@@ -112,7 +114,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretController.prefab"
 		},
 		"PrefabInstance" : 
 		{
@@ -159,8 +161,8 @@
 			"m_position" : 
 			[
 				0.0,
-				0.00016164779663085938,
-				-0.0023956298828125
+				0.0013284683227539062,
+				-0.02106475830078125
 			],
 			"m_rotation" : 
 			[
@@ -184,7 +186,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretController.prefab"
 		},
 		"Render" : 
 		{
@@ -242,7 +244,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretController.prefab"
 		},
 		"Render" : 
 		{
@@ -300,7 +302,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretController.prefab"
 		},
 		"Render" : 
 		{
@@ -358,7 +360,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretController.prefab"
 		},
 		"Render" : 
 		{
@@ -416,7 +418,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\ASUS\\Documents\\GitHub\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\TurretController.prefab"
+			"file_path" : "Resources\\Prefabs\\TurretController.prefab"
 		},
 		"Render" : 
 		{

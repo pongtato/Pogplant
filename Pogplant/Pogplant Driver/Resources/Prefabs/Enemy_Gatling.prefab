@@ -6,19 +6,19 @@
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			},
 			"Clip1" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			},
 			"Clip2" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			}
 		},
 		"BoxCollider" : 
@@ -36,6 +36,7 @@
 				5.0,
 				5.0
 			],
+			"isStatic" : false,
 			"isTrigger" : true
 		},
 		"Children" : 1,
@@ -229,64 +230,6 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Bullet_Belt"
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_Gatling.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Turret_Gatling",
-				"Resources/Models\\Enemy",
-				"Bullet_Belt"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.9827449321746826,
-				1.6174612045288086,
-				-3.3037452697753906
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
 			"m_Name" : "Bullet_Box"
 		},
 		"Prefab" : 
@@ -384,6 +327,64 @@
 				8.9406967163085938e-08,
 				0.97872352600097656,
 				3.2371823787689209
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bullet_Belt"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_Gatling.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Gatling",
+				"Resources/Models\\Enemy",
+				"Bullet_Belt"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.9827449321746826,
+				1.6174612045288086,
+				-3.3037452697753906
 			],
 			"m_rotation" : 
 			[
@@ -577,6 +578,64 @@
 		"Children" : 0,
 		"Name" : 
 		{
+			"m_Name" : "Horns001"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_Gatling.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Gatling",
+				"Resources/Models\\Enemy",
+				"Horns001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.87958347797393799,
+				1.8634400367736816,
+				0.8171241283416748
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
 			"m_Name" : "Big_Alien_Arm_L001"
 		},
 		"Prefab" : 
@@ -737,64 +796,6 @@
 			[
 				0.0,
 				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Horns001"
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_Gatling.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Turret_Gatling",
-				"Resources/Models\\Enemy",
-				"Horns001"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.87958347797393799,
-				1.8634400367736816,
-				0.8171241283416748
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
 				0.0
 			],
 			"m_scale" : 
