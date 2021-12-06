@@ -366,6 +366,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::StartMissile", &Scripting::StartMissile);
 	mono_add_internal_call("Scripting.GameUtilities::SetTurretFire", &Scripting::SetTurretFire);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore", &Scripting::UpdateScore);
+	mono_add_internal_call("Scripting.GameUtilities::IncreaseScorefromEnv", &Scripting::IncreaseScorefromEnv);
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);

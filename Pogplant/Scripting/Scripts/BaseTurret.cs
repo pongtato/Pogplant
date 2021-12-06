@@ -25,6 +25,7 @@ namespace Scripting
     // Enemy script class
     public class BaseTurret : MonoBehaviour
     {
+        uint PlayerBox = 0;
         public uint turret_muzzle = 0;
         public float health = 20.0f;
 
@@ -53,7 +54,8 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-            turret_muzzle = ECS.FindChildEntityWithName(entityID, "Turret_Muzzle"); 
+            turret_muzzle = ECS.FindChildEntityWithName(entityID, "Turret_Muzzle");
+            PlayerBox = ECS.FindEntityWithName("PlayerBox");
         }
 
         public override void Start()
@@ -108,7 +110,6 @@ namespace Scripting
                 }
                 else
                 {
-                    GameUtilities.PlayEnemyDeathAnimation(entityID);
                     GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
                     ECS.DestroyEntity(entityID);
                 }
@@ -131,6 +132,7 @@ namespace Scripting
             }
             else
             {
+                GameUtilities.IncreaseScorefromEnv(PlayerBox);
                 HandleDeath();
             }
         }
