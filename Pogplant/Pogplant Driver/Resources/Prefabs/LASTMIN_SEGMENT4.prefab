@@ -1,0 +1,3764 @@
+[
+	{
+		"Children" : 14,
+		"Guid" : 
+		{
+			"m_guid" : "eee0dd57-1648-400d-abed-92a3d302a76f"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_04"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Segment_04",
+				"Resources/Models\\Environment",
+				"Seg_04_Gate_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				135.13787841796875,
+				-40.970943450927734,
+				-265.47650146484375
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9981861114501953,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.00643157958984375,
+				0.36945390701293945
+			],
+			"m_rotation" : 
+			[
+				-6.1066662794193038e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014247894287109375,
+				1.000866174697876
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999886155128479,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Bridge"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3abca86e-70b7-4500-8c07-c771e16cb76f"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				120.60696411132812,
+				-38.565216064453125,
+				-262.57839965820312
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9726772308349609,
+				10.0,
+				20.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.15000000596046448,
+				0.15000000596046448,
+				0.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00086498260498046875,
+				1.9073486328125e-06,
+				0.07980644702911377
+			],
+			"m_rotation" : 
+			[
+				7.1559930203690669e-10,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_Type_01_Ridges"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0002765655517578125,
+				0.000431060791015625,
+				0.089454293251037598
+			],
+			"m_rotation" : 
+			[
+				-1.0177774421860075e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Bridge"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3abca86e-70b7-4500-8c07-c771e16cb76f"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				100.0684814453125,
+				-33.818340301513672,
+				-262.57839965820312
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9833173751831055,
+				10.0,
+				20.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.15000000596046448,
+				0.15000000596046448,
+				0.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.9073486328125e-06,
+				3.814697265625e-06,
+				0.07980656623840332
+			],
+			"m_rotation" : 
+			[
+				7.5040751390531568e-10,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999982118606567,
+				0.99999982118606567
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_Type_01_Ridges"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0002765655517578125,
+				0.00042724609375,
+				0.089454531669616699
+			],
+			"m_rotation" : 
+			[
+				2.910844135173285e-11,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999982118606567,
+				0.99999982118606567
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Bridge"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3abca86e-70b7-4500-8c07-c771e16cb76f"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				89.140556335449219,
+				-38.557468414306641,
+				-262.57839965820312
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9723215103149414,
+				10.0,
+				20.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.15000000596046448,
+				0.15000000596046448,
+				0.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				3.814697265625e-06,
+				0.07980644702911377
+			],
+			"m_rotation" : 
+			[
+				7.1559919101460423e-10,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999994039535522,
+				1.0000002384185791,
+				1.0000002384185791
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_Type_01_Ridges"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0002765655517578125,
+				0.000431060791015625,
+				0.089454054832458496
+			],
+			"m_rotation" : 
+			[
+				-1.0177774421860075e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				128.60183715820312,
+				-40.970943450927734,
+				-259.95672607421875
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9974250793457031,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.00643157958984375,
+				0.36938357353210449
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014247894287109375,
+				1.0008037090301514
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999505281448364,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				113.85737609863281,
+				-40.970943450927734,
+				-259.876708984375
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9973440170288086,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0064334869384765625,
+				0.36938357353210449
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014249801635742188,
+				1.0008037090301514
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99998211860656738,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				85.414169311523438,
+				-40.970943450927734,
+				-259.9647216796875
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9967203140258789,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.00643157958984375,
+				0.36938381195068359
+			],
+			"m_rotation" : 
+			[
+				-6.1066662794193038e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014247894287109375,
+				1.0008041858673096
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99998146295547485,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				76.336723327636719,
+				-40.970943450927734,
+				-265.523681640625
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9952516555786133,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.00643157958984375,
+				0.36946725845336914
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014247894287109375,
+				1.0008444786071777
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999511241912842,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				186.69894409179688,
+				-35.391330718994141,
+				-266.00872802734375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				19.999977111816406,
+				20.0,
+				19.990413665771484
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				161.13345336914062,
+				-35.391330718994141,
+				-312.57498168945312
+			],
+			"m_rotation" : 
+			[
+				79.989532470703125,
+				1.0354844796011103e-14,
+				90.0
+			],
+			"m_scale" : 
+			[
+				19.999963760375977,
+				19.999858856201172,
+				19.997808456420898
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				102.52565765380859,
+				-35.391330718994141,
+				-311.00927734375
+			],
+			"m_rotation" : 
+			[
+				120.95220947265625,
+				-1.5436015028571885e-14,
+				90.0
+			],
+			"m_scale" : 
+			[
+				19.999942779541016,
+				19.999858856201172,
+				19.997804641723633
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				104.65541076660156,
+				-32.346733093261719,
+				-234.61909484863281
+			],
+			"m_rotation" : 
+			[
+				-99.653694152832031,
+				4.7321939468383789,
+				89.579452514648438
+			],
+			"m_scale" : 
+			[
+				19.999582290649414,
+				19.999843597412109,
+				15.647900581359863
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				120.31692504882812,
+				-8.1998424530029297,
+				-288.10302734375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				19.999973297119141,
+				20.000005722045898,
+				19.994342803955078
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				166.89915466308594,
+				-8.1997566223144531,
+				-296.74887084960938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				19.999973297119141,
+				20.000005722045898,
+				19.994342803955078
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\LASTMIN_SEGMENT4.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]
