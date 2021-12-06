@@ -4,7 +4,7 @@
 		{
 			"Clip0" : 
 			{
-				"Dir" : "Resources/Audio\\secretsound.ogg",
+				"Dir" : "Resources/Audio\\GameBGM_Menu.ogg",
 				"UpdatePos" : true,
 				"Volume" : 0.10000000149011612
 			}
