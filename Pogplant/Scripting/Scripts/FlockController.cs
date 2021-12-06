@@ -48,9 +48,8 @@ namespace Scripting
                 first_group.ParentID = _entityID;
                 first_group.travelling_speed = 0.5f;
 
-                first_group.EndPos = ECS.FindChildEntityWithName(entityID, "EndPos");
-                first_group.vec3_EndPos = ECS.GetComponent<Transform>(first_group.EndPos).Position;
-                first_group.vec3_Global_EndPos = ECS.GetGlobalPosition(first_group.EndPos);
+
+
             }
             // Add new controllers here
             //if (_entityID == ECS.FindEntityWithName("Parentxxx"))
@@ -110,9 +109,8 @@ namespace Scripting
             for (int i = 0; i < Total_flock_groups.Count; ++i)
             {
                 int counter = ECS.GetChildCount(Parent_ID);
-                //TO ACCOUNT FOR THE ADDITIONAL END POINT CHILD
+                string flock_name = "MiniFlock";
                 --counter;
-                string flock_name = "Flock";
                 string loop_name;
                 for (int j = 1; j < counter + 1; ++j)
                 {
@@ -121,6 +119,10 @@ namespace Scripting
                     Total_flock_groups[i].Indi_Flock.Add(FlockNo);
                     //Get child position for proper lerping
                     Total_flock_groups[i].FlockStart.Add(ECS.GetComponent<Transform>(FlockNo).Position);
+                    //Add MiniFlock end
+                    Total_flock_groups[i].EndPos = ECS.FindChildEntityWithName(Parent_ID, "EndPos");
+                    Total_flock_groups[i].vec3_EndPos = ECS.GetComponent<Transform>(Total_flock_groups[i].EndPos).Position;
+                    Total_flock_groups[i].vec3_Global_EndPos = ECS.GetGlobalPosition(Total_flock_groups[i].EndPos);
                 }
             }
         }
