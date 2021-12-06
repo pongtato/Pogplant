@@ -122,12 +122,13 @@ namespace Scripting
                 {
                     //Turret in use
                     //Need to look at the future position
-                    Transform.LookAt(Turrets[i], ECS.GetGlobalPosition(enemy_to_target[i]) + Transform.GetForwardVector(PlayerBox));
+                    Transform.LookAt(Turrets[i], ECS.GetGlobalPosition(enemy_to_target[i]));
                     //Update Reticle need to flip Z and X
                     Vector3 EnemyPos = ECS.GetGlobalPosition(enemy_to_target[i]);
+                    Vector3 ShipForward = Transform.GetForwardVector(PlayerShip);
                     EnemyPos.X *= -1.0f;
                     EnemyPos.Z *= -1.0f;
-                    ECS.SetTransformECS(ReticleGroup[i], EnemyPos, ECS.GetGlobalRotation(PlayerShip), Show_reticle);
+                    ECS.SetTransformECS(ReticleGroup[i], EnemyPos - ShipForward, ECS.GetGlobalRotation(PlayerShip), Show_reticle);
                 }
                 for (int j = get_lower; j < Turrets.Count; ++j)
                 {
