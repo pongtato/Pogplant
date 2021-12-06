@@ -12,32 +12,26 @@
 			written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scripting
 {
     public class FollowSpline : MonoBehaviour
     {
-        private CatmullRomSpline catmullRom = null;
 
-        private float follow_speed = 9.0f;
-
-        public float DelayToStart = 0.0f;
+        private float follow_speed = 9.0f; // follow speed in m/s
+        private int lookat_waypoint_offset = 2; // indicates how many waypoints infront to look at when dealing with rotation
 
         private Transform[] waypoints = null; // Array of waypoints we get from running the CatmullRomSpline script.
-        private uint current_waypoint_index = 1; // Initiallized to 2 so that skip the first 3 waypoints in waypoints array.
+        private float DelayToStart = 0.0f; // delay in seconds until the followspline starts
+        private uint current_waypoint_index = 1; // Initiallized to 1 so that skip the first 2 waypoints in waypoints array.
         private float alpha = 0.0f; // Clamped between [0,1], this value is used to interpolate between 2 waypoints.
         private float d_alpha = 0.0f; // This is the rate of change of alpha, determined by the distance between the 2 waypoints and the follow_speed (Essentially the time it takes to go between 2 waypoints)
-        private bool isEnd = false; //  This is true when we have arrived a the end of the path
         private float time_between_waypoint = 0.0f;
 
-        private int waypoint_offset = 2;
-
         private bool isInit = false;
+        private bool isEnd = false; //  This is true when we have arrived a the end of the path
+        private CatmullRomSpline catmullRom = null;
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -70,10 +64,6 @@ namespace Scripting
             // Calculate d_alpha from follow_speed and distance between current and next waypoint
             float distance = Vector3.Distance(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position);
             d_alpha = 1.0f / (distance / follow_speed);
-
-            //Console.WriteLine("alpha is" + d_alpha);
-
-            // Initialize starting position and rotation of the play area
         }
 
         // Update is called once per frame
@@ -90,6 +80,7 @@ namespace Scripting
             if ((DelayToStart -= dt) <= 0.0f)
                 FollowWaypoints(ref transform, ref dt);
 
+            // Debug the spline
             //if (ECS.GetTagECS(entityID) == "Player")
             //    catmullRom.DisplayCatmullRomSplineChain();
         }
@@ -99,6 +90,7 @@ namespace Scripting
 
         }
 
+        // Use this function to set a new speed for this followspline
         public void UpdateSpeed(float speed)
         {
             follow_speed = speed;
@@ -120,15 +112,10 @@ namespace Scripting
 
 
                 float rotation_lerp_speed = 1.5f;
-                //original
-                //transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
 
-                //Replacement rotation code
-                //transform.Rotation += (Vector3.GetRotationFromVector(waypoints[current_waypoint_index + 5].Position - ECS.GetGlobalPosition(entityID)) - transform.Rotation) * rotation_lerp_speed * dt;
-                //transform.Rotation = (Vector3.GetRotationFromVector(waypoints[current_waypoint_index + 1].Position - ECS.GetGlobalPosition(entityID))) * rotation_lerp_speed * dt;
-
+                // Rotate the game object by finding a waypoint infront to look at
                 Vector3 forward = Transform.GetForwardVector(entityID);
-                Vector3 look_direction = waypoints[current_waypoint_index + waypoint_offset].Position - ECS.GetGlobalPosition(entityID);
+                Vector3 look_direction = waypoints[current_waypoint_index + lookat_waypoint_offset].Position - ECS.GetGlobalPosition(entityID);
                 Vector3 look_vector = look_direction - forward;
                 float interpolant = rotation_lerp_speed * dt / look_vector.magnitude();
                 Vector3 look_point = ECS.GetGlobalPosition(entityID) + (forward + (look_vector * interpolant));
@@ -136,6 +123,9 @@ namespace Scripting
                 Transform.LookAtClamped(entityID, look_point);
             }
         }
+        
+        // This function updates the current waypoint and recalculates variables used for interpolation,
+        // as well as stops the followspline based on the end_offset value.
         void UpdateCurrentWaypoint(float alpha)
         {
             int end_offset = 25;// waypoint_offset + 15;
@@ -147,9 +137,6 @@ namespace Scripting
 
                 time_between_waypoint = 0.0f; // Reset current time between waypoints
             }
-
-            //if (current_waypoint_index >= 700)
-            //    Console.WriteLine("Current waypoint " + current_waypoint_index + " / " + waypoints.Length);
 
             if (current_waypoint_index >= waypoints.Length - end_offset - 1)
                 isEnd = true;

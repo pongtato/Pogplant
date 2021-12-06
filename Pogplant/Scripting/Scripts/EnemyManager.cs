@@ -12,12 +12,7 @@
 */
 /******************************************************************************/
 using System;
-using System.IO;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scripting
 {
@@ -35,8 +30,6 @@ namespace Scripting
 
         public List<GameObject> waypoints;
 
-        private GameObject[] true_bullet_pool; // object pool for true bullets.
-        private GameObject[] false_bullet_pool; // object pool for false bullets.
         public GameObject[] turret_true_bullet_pool; // object pool for true bullets.
         public GameObject[] turret_false_bullet_pool; // object pool for false bullets.
         private static Dictionary<string, GameObject> waypoint_map; // a string to vector3 map for waypoints.
@@ -57,19 +50,9 @@ namespace Scripting
             // Initialize waypoint dictionary
             waypoints = InitWaypointGroups();
             InitMap();
-
-            // Initialize bullet pools
-            const int pool_size = 500;
-            true_bullet_pool = new GameObject[pool_size];
-            false_bullet_pool = new GameObject[pool_size];
-
-            // print out map
-            //foreach (var item in waypoint_map)
-            //{
-            //    Console.WriteLine(item.Key + " = " + item.Value);
-            //}
         }
 
+        // This function creates waypoints based on the file and parents it to a enemy_waypoint_group object
         List<GameObject> CreateParentedWaypoints(string waypointFile, uint parent)
         {
             string[] data;
@@ -99,14 +82,12 @@ namespace Scripting
                 GameObject waypoint_GO = ECS.CreateChild(parent, name, transform);
                 //waypoint_GO.AddComponent<Renderer>(new Renderer("sphere"));
                 waypointGroup.Add(waypoint_GO);
-
-                //Console.WriteLine("Creating waypoint " + name + " at location: " + transform.Position.X + ", " + +transform.Position.Y + ", " + +transform.Position.Z);
             }
 
             return waypointGroup;
         }
 
-        // this function creates the waypoint groups from reading text files
+        // This function creates the waypoint groups from reading text files
         List<GameObject> InitWaypointGroups()
         {
             List<GameObject> waypointList = new List<GameObject>();
@@ -126,7 +107,6 @@ namespace Scripting
                 string parentName = waypoint_group_name + i;
                 parent_ids[i] = ECS.FindEntityWithName(parentName);
                 waypointList.AddRange(CreateParentedWaypoints(fileNames[i], parent_ids[i]));
-                //Console.WriteLine("Created " + parentName + " waypoint group.");
             }
 
             return waypointList;
@@ -165,7 +145,7 @@ namespace Scripting
         {
             // This function is deprecated, it is shifted to C++
 
-            Console.WriteLine("Cannot find anymore bullets in pool!");
+            Console.WriteLine("[Deprecated] Cannot find anymore bullets in pool!");
             return null;
         }
         //get turret bullets that are not parented
@@ -173,10 +153,11 @@ namespace Scripting
         {
             // This function is deprecated, it is shifted to C++
 
-            Console.WriteLine("Cannot find anymore bullets in pool!");
+            Console.WriteLine("[Deprecated] Cannot find anymore bullets in pool!");
             return null;
         }
 
+        // Helper function to create an instance from an enemy prefab
         GameObject CreateEnemyInstance(string prefab_name, Transform location)
         {
             GameObject instance = GameUtilities.InstantiateObject(prefab_name, location.Position, location.Rotation);
@@ -201,18 +182,16 @@ namespace Scripting
         public void InstantiateTempEnemy(Transform location, string prefab_object, string parentName)
         {
             GameObject instance = CreateEnemyInstance(prefab_object, location);
-            Transform transform = instance.GetComponent<Transform>();
 
             // Set parent here
             uint parent = ECS.FindEntityWithName(parentName);
             ECS.SetTransformParent(instance.id, parent);
-
-            BaseTurret comp = instance.GetComponent<BaseTurret>();
         }
 
+        // This function deletes the enemy instance from the managed list,
+        // also adds score if the enemy died from player
         public void DeleteEnemyInstance(uint id, bool isDiedFromPlayer)
         {
-
             if (isDiedFromPlayer)
                 AddScore();
 
@@ -222,24 +201,21 @@ namespace Scripting
         public void Update(float dt)
         {
             foreach (var item in enemy_instances)
-            {
                 item.GetComponent<BaseEnemy>().Update(dt);
-            }
-            //Console.WriteLine("End of EnemyManager.Update()");
 
+            // Delete the enemies after all updated has been called,
+            // To prevent iterator invalidation
             foreach (var go in enemies_to_delete)
-            {
                 foreach (var item in enemy_instances)
                 {
                     if (item.id == go)
                     {
-
                         enemy_instances.Remove(item);
                         ECS.DestroyEntity(item.id);
                         break;
                     }
                 }
-            }
+
             enemies_to_delete.Clear();
         }
 
@@ -250,6 +226,7 @@ namespace Scripting
                 if (item.id == id)
                     return item.GetComponent<BaseEnemy>().GetAlive();
             }
+
             DebugUtilities.LogToEditor("EncounterManager", "Enemy with ID: " + id + " could not be found!");
             return false;
         }
