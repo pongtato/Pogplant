@@ -1,0 +1,63 @@
+[
+	{
+		"Guid" : 
+		{
+			"m_guid" : "82e9ee01-d9fb-4549-abe1-03eb9d51b800"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Grass_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Grass_02.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Grass_02",
+				"Resources/Models\\Environment",
+				"34"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

@@ -1,0 +1,5776 @@
+[
+	{
+		"Children" : 56,
+		"Guid" : 
+		{
+			"m_guid" : "c157630c-74ce-4d48-b6cd-b45ef66d7ed1"
+		},
+		"Name" : 
+		{
+			"m_Name" : "DirtParent"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				13.910533905029297,
+				-0.67727535963058472,
+				-105.66905212402344
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f938d22f-7d80-4ba6-bb2b-d7de6b7c1668"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench",
+				"Resources/Models\\Environment",
+				"Ground_Trench"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				24.095821380615234,
+				-4.8112430572509766,
+				-110.54292297363281
+			],
+			"m_rotation" : 
+			[
+				0.00010427398228785023,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				5.0,
+				4.9999380111694336,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f938d22f-7d80-4ba6-bb2b-d7de6b7c1668"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench",
+				"Resources/Models\\Environment",
+				"Ground_Trench"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				64.837615966796875,
+				-4.8112430572509766,
+				-110.54292297363281
+			],
+			"m_rotation" : 
+			[
+				0.00010427398228785023,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				5.0,
+				4.9999380111694336,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f938d22f-7d80-4ba6-bb2b-d7de6b7c1668"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench",
+				"Resources/Models\\Environment",
+				"Ground_Trench"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				107.96414184570312,
+				-4.8112430572509766,
+				-110.54286193847656
+			],
+			"m_rotation" : 
+			[
+				0.00010427398228785023,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				5.0,
+				4.9999380111694336,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				169.19949340820312,
+				-0.82947516441345215,
+				-109.63603210449219
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				169.19949340820312,
+				-0.82947516441345215,
+				-178.30084228515625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				169.19949340820312,
+				-0.82947516441345215,
+				-215.44725036621094
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				169.19949340820312,
+				-0.82947516441345215,
+				-146.21858215332031
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-55.303245544433594,
+				-0.67757904529571533,
+				-203.60037231445312
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				138.85945129394531,
+				-0.67712390422821045,
+				-147.616455078125
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_4_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "7ea97bfb-53d7-4bd1-aef6-2c59674f5ec4"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_4_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench11"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-31.063230514526367,
+				-16.212287902832031,
+				-208.26361083984375
+			],
+			"m_rotation" : 
+			[
+				21.999998092651367,
+				-0.0,
+				20.0
+			],
+			"m_scale" : 
+			[
+				4.7000026702880859,
+				7.9999938011169434,
+				5.0000009536743164
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_4_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "7ea97bfb-53d7-4bd1-aef6-2c59674f5ec4"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_4_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench11"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				48.53619384765625,
+				-11.521867752075195,
+				-242.79269409179688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				4.6999998092651367,
+				5.0,
+				5.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_4_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "7ea97bfb-53d7-4bd1-aef6-2c59674f5ec4"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_4_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench11"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				11.729609489440918,
+				-12.016870498657227,
+				-199.88679504394531
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				4.6999998092651367,
+				5.0,
+				5.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_3_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "5a771e6b-5f5d-427a-a1ed-00aa905ce2bf"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_3_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				47.664585113525391,
+				-14.428696632385254,
+				-221.22685241699219
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				5.0,
+				5.0,
+				6.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_3_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "5a771e6b-5f5d-427a-a1ed-00aa905ce2bf"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_3_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				19.717327117919922,
+				-9.3334016799926758,
+				-261.08770751953125
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-5.0089561227650847e-06,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				5.0,
+				6.9999995231628418,
+				8.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_3_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "5a771e6b-5f5d-427a-a1ed-00aa905ce2bf"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_3_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				38.147449493408203,
+				-14.450343132019043,
+				-277.17221069335938
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				5.0,
+				7.0,
+				8.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_3_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "5a771e6b-5f5d-427a-a1ed-00aa905ce2bf"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_3_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				17.03619384765625,
+				-22.968898773193359,
+				-226.2408447265625
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-5.0089561227650847e-06,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				5.0,
+				6.9999995231628418,
+				8.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				24.328254699707031,
+				-9.8164491653442383,
+				-260.57327270507812
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9998855590820312,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f938d22f-7d80-4ba6-bb2b-d7de6b7c1668"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench",
+				"Resources/Models\\Environment",
+				"Ground_Trench"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				49.337985992431641,
+				-11.752280235290527,
+				-260.93661499023438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				5.0,
+				4.0,
+				4.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				26.706710815429688,
+				-8.1218252182006836,
+				-223.04208374023438
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				157.99899291992188
+			],
+			"m_scale" : 
+			[
+				6.0000004768371582,
+				9.9998807907104492,
+				6.7999491691589355
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f938d22f-7d80-4ba6-bb2b-d7de6b7c1668"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench",
+				"Resources/Models\\Environment",
+				"Ground_Trench"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				35.035083770751953,
+				-20.751045227050781,
+				-180.834228515625
+			],
+			"m_rotation" : 
+			[
+				0.00010427392408018932,
+				-89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				5.0,
+				3.9999523162841797,
+				4.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				35.162712097167969,
+				-13.145075798034668,
+				-192.44328308105469
+			],
+			"m_rotation" : 
+			[
+				0.00010427403321955353,
+				-5.0089561227650847e-06,
+				15.998998641967773
+			],
+			"m_scale" : 
+			[
+				6.0000014305114746,
+				9.9998836517333984,
+				6.7999491691589355
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				19.814458847045898,
+				9.2856960296630859,
+				-130.90791320800781
+			],
+			"m_rotation" : 
+			[
+				0.00010427392408018932,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9999809265136719,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				55.458984375,
+				9.2856960296630859,
+				-130.90791320800781
+			],
+			"m_rotation" : 
+			[
+				0.00010427392408018932,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9999809265136719,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				82.382049560546875,
+				9.2856960296630859,
+				-130.12005615234375
+			],
+			"m_rotation" : 
+			[
+				0.00010427392408018932,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9999809265136719,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_4_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "7ea97bfb-53d7-4bd1-aef6-2c59674f5ec4"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_4_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench11"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				93.97174072265625,
+				-12.037094116210938,
+				-147.72615051269531
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				138.85945129394531,
+				-0.6772504448890686,
+				-217.11477661132812
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				138.85945129394531,
+				-0.67719197273254395,
+				-185.00682067871094
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.3990535736083984,
+				-0.56597578525543213,
+				-168.47782897949219
+			],
+			"m_rotation" : 
+			[
+				0.00010427402594359592,
+				-89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9995613098144531,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-44.503040313720703,
+				-0.56610375642776489,
+				-168.47782897949219
+			],
+			"m_rotation" : 
+			[
+				0.00010427402594359592,
+				-89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9995613098144531,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-29.537345886230469,
+				-0.56594651937484741,
+				-239.91688537597656
+			],
+			"m_rotation" : 
+			[
+				0.00010427402594359592,
+				-0.0,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9995613098144531,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-30.041713714599609,
+				-0.56601238250732422,
+				-204.2252197265625
+			],
+			"m_rotation" : 
+			[
+				0.00010427402594359592,
+				-0.0,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9995613098144531,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-30.041713714599609,
+				-0.56588107347488403,
+				-276.22659301757812
+			],
+			"m_rotation" : 
+			[
+				0.00010427402594359592,
+				-0.0,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9995613098144531,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-30.041713714599609,
+				-0.56581336259841919,
+				-313.52706909179688
+			],
+			"m_rotation" : 
+			[
+				0.00010427402594359592,
+				-0.0,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9995613098144531,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				138.85945129394531,
+				-0.67705899477005005,
+				-112.02091217041016
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-55.303245544433594,
+				-0.67763775587081909,
+				-235.93798828125
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-55.303245544433594,
+				-0.67769932746887207,
+				-269.7509765625
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-55.303245544433594,
+				-0.67775684595108032,
+				-301.4237060546875
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-55.303245544433594,
+				-0.67782348394393921,
+				-338.1346435546875
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-21.765628814697266,
+				-0.67782795429229736,
+				-351.8807373046875
+			],
+			"m_rotation" : 
+			[
+				0.00010427398228785023,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9998865127563477,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.786376953125,
+				-0.67782795429229736,
+				-351.8807373046875
+			],
+			"m_rotation" : 
+			[
+				0.00010427398228785023,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9998865127563477,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				44.312789916992188,
+				-0.67782795429229736,
+				-351.8807373046875
+			],
+			"m_rotation" : 
+			[
+				0.00010427398228785023,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9998865127563477,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.4250907897949219,
+				-0.56574684381484985,
+				-332.11215209960938
+			],
+			"m_rotation" : 
+			[
+				0.00010427367669763044,
+				-89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9995250701904297,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				42.017932891845703,
+				-0.56561678647994995,
+				-332.11215209960938
+			],
+			"m_rotation" : 
+			[
+				0.00010427367669763044,
+				-89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9995250701904297,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				-4.76837158203125e-07
+			],
+			"m_rotation" : 
+			[
+				5.9926746898142369e-10,
+				6.5137738952669721e-12,
+				-1.8636056600380818e-17
+			],
+			"m_scale" : 
+			[
+				1.0000002384185791,
+				1.0,
+				1.0000002384185791
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				14.114246368408203,
+				-0.82947516441345215,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-15.691961288452148,
+				-0.67713713645935059,
+				1.232281078955566e-06
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				14.114246368408203,
+				-0.82947516441345215,
+				-34.816146850585938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-15.739590644836426,
+				-0.70288944244384766,
+				-197.89894104003906
+			],
+			"m_rotation" : 
+			[
+				0.00010427400411572307,
+				89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				10.0,
+				9.9999485015869141,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-15.691961288452148,
+				-0.67720723152160645,
+				-38.833965301513672
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f9d52419-7df4-490d-a443-e8608b6882d7"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				14.114246368408203,
+				-0.82947516441345215,
+				-70.909248352050781
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_01_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_01",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_01_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-15.691961288452148,
+				-0.67726224660873413,
+				-68.836380004882812
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_3_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "5a771e6b-5f5d-427a-a1ed-00aa905ce2bf"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_3_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.2099485397338867,
+				-5.0733466148376465,
+				-127.96151733398438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				5.0,
+				5.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_3_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "5a771e6b-5f5d-427a-a1ed-00aa905ce2bf"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_3_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				32.588905334472656,
+				-22.281120300292969,
+				-167.93836975097656
+			],
+			"m_rotation" : 
+			[
+				0.00010427394590806216,
+				-89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				5.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_3_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "5a771e6b-5f5d-427a-a1ed-00aa905ce2bf"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_3_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				51.189071655273438,
+				-22.280961990356445,
+				-187.710693359375
+			],
+			"m_rotation" : 
+			[
+				0.00010427406232338399,
+				5.0089561227650847e-06,
+				0.00010427406232338399
+			],
+			"m_scale" : 
+			[
+				5.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench_3_Sides"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "5a771e6b-5f5d-427a-a1ed-00aa905ce2bf"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench_3_Sides",
+				"Resources/Models\\Environment",
+				"Ground_Trench19"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.25307580828666687,
+				-30.820554733276367,
+				-181.33316040039062
+			],
+			"m_rotation" : 
+			[
+				0.00010427394590806216,
+				-89.999946594238281,
+				0.00010427402594359592
+			],
+			"m_scale" : 
+			[
+				5.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f0f94d7e-2a30-4824-bbfc-d0a1c4c1ff33"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-15.691961288452148,
+				-0.67732894420623779,
+				-105.66905212402344
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02_Rocks"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Dirt_Group.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_02_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]
