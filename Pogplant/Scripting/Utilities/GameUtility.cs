@@ -42,7 +42,7 @@ namespace Scripting
         public extern static void UpdatePlayerHealth_UI();
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void PlayerTakeDamage(uint Player_ID, float _Damage);
+        public extern static void PlayerTakeDamage(uint Player_ID, float _Damage, uint dashboardID, uint face);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static bool GetAlive(uint entityID);
