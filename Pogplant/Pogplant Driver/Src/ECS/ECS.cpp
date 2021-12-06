@@ -315,9 +315,12 @@ void ECS::EnableEntity(entt::entity _entity)
 }
 void ECS::TrulyDisableEntity(entt::entity _entity)
 {
-	assert(m_registry.try_get<Disabled>(_entity) == nullptr);
+	//assert(m_registry.try_get<Disabled>(_entity) == nullptr);
+	if (m_registry.try_get<Disabled>(_entity))
+		return;
 
 	auto& _transform = m_registry.get<Transform>(_entity);
+	//disable all child
 	for (auto e : _transform.m_children)
 		TrulyDisableEntity(e);
 
@@ -326,9 +329,12 @@ void ECS::TrulyDisableEntity(entt::entity _entity)
 
 void ECS::TrulyEnableEntity(entt::entity _entity)
 {
-	assert(m_registry.try_get<Disabled>(_entity) != nullptr);
+	//assert(m_registry.try_get<Disabled>(_entity) != nullptr);
+	if (m_registry.try_get<Disabled>(_entity) == nullptr)
+		return;
 
 	auto& _transform = m_registry.get<Transform>(_entity);
+	//enable all child
 	for (auto e : _transform.m_children)
 		TrulyEnableEntity(e);
 
