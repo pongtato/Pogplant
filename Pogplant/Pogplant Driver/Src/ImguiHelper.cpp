@@ -1530,39 +1530,42 @@ namespace PogplantDriver
 						largestScale = std::max(largestScale, transform.m_scale[j]);
 					}
 
-					const float radius = renderer->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
-					float currentTime = std::numeric_limits<float>::max();
-
-					//Largest sphere approach
-					if (PhysicsDLC::Collision::RaySphere(ray, PhysicsDLC::Collision::Shapes::Sphere{transform.m_position, radius}, currentTime))
+					if (renderer->m_RenderModel)
 					{
-						if (currentTime < shortestTime)
+						const float radius = renderer->m_RenderModel->m_Bounds.longest * 0.5f * largestScale;
+						float currentTime = std::numeric_limits<float>::max();
+
+						//Largest sphere approach
+						if (PhysicsDLC::Collision::RaySphere(ray, PhysicsDLC::Collision::Shapes::Sphere{ transform.m_position, radius }, currentTime))
 						{
-							chosenObject = entity;
-							shortestTime = currentTime;
+							if (currentTime < shortestTime)
+							{
+								chosenObject = entity;
+								shortestTime = currentTime;
+							}
 						}
+
+						//aabb approach (not good for rotation)
+						/*PhysicsDLC::Collision::Shapes::AABB aabb{
+							{ renderer->m_RenderModel->m_Bounds.minX,
+							renderer->m_RenderModel->m_Bounds.minY,
+							renderer->m_RenderModel->m_Bounds.minZ },
+							{ renderer->m_RenderModel->m_Bounds.maxX,
+							renderer->m_RenderModel->m_Bounds.maxY,
+							renderer->m_RenderModel->m_Bounds.maxZ } };
+
+						aabb.m_min = aabb.m_min * transform.m_scale + transform.m_position;
+						aabb.m_max = aabb.m_max * transform.m_scale + transform.m_position;
+
+						if (PhysicsDLC::Collision::RayAABB(ray, aabb, currentTime))
+						{
+							if (currentTime < shortestTime)
+							{
+								chosenObject = entity;
+								shortestTime = currentTime;
+							}
+						}//*/
 					}
-
-					//aabb approach (not good for rotation)
-					/*PhysicsDLC::Collision::Shapes::AABB aabb{
-						{ renderer->m_RenderModel->m_Bounds.minX,
-						renderer->m_RenderModel->m_Bounds.minY,
-						renderer->m_RenderModel->m_Bounds.minZ },
-						{ renderer->m_RenderModel->m_Bounds.maxX,
-						renderer->m_RenderModel->m_Bounds.maxY,
-						renderer->m_RenderModel->m_Bounds.maxZ } };
-
-					aabb.m_min = aabb.m_min * transform.m_scale + transform.m_position;
-					aabb.m_max = aabb.m_max * transform.m_scale + transform.m_position;
-					
-					if (PhysicsDLC::Collision::RayAABB(ray, aabb, currentTime))
-					{
-						if (currentTime < shortestTime)
-						{
-							chosenObject = entity;
-							shortestTime = currentTime;
-						}
-					}//*/
 				}
 			});
 
