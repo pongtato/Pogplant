@@ -206,14 +206,28 @@ namespace Scripting
 	}
 
 
-	void PlayerProjectileCollision(entt::entity& object, entt::entity& other)
+	void PlayerProjectileCollision(entt::entity object, entt::entity other)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
 			return;
 
-		const auto& player_projectile_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Projectile>(object);
-		const auto& enemy_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(other);
+		auto player_projectile_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Projectile>(object);
+		Components::Scriptable* enemy_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(other);
 
+		//There's no order between object and other, so there's a chance that the player is other and the turret is object, and vice versa
+
+		if (!player_projectile_script)
+		{
+			player_projectile_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Projectile>(other);
+			enemy_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(object);
+
+			std::swap(other, object);
+		}
+		else
+		{
+			enemy_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(other);
+		}
+		
 		if (player_projectile_script && enemy_object_script)
 		{
 			bool enemy_turret = enemy_object_script->m_ScriptTypes.contains("BaseTurret");
@@ -259,13 +273,26 @@ namespace Scripting
 		}
 	}
 
-	void EnemyProjectileCollision(entt::entity& object, entt::entity& other)
+	void EnemyProjectileCollision(entt::entity object, entt::entity other)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
 			return;
 
-		const auto& enemy_projectile_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Projectile>(object);
-		const auto& player_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(other);
+		auto enemy_projectile_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Projectile>(object);
+		Components::Scriptable* player_object_script = nullptr;
+
+		//There's no order between object and other, so there's a chance that the player is other and the turret is object, and vice versa
+		if (!enemy_projectile_script)
+		{
+			enemy_projectile_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Projectile>(other);
+			player_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(object);
+
+			std::swap(object, other);
+		}
+		else
+			player_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(other);
+
+		
 
 		if (enemy_projectile_script && player_object_script)
 		{
@@ -279,37 +306,39 @@ namespace Scripting
 		}
 	}
 
-	void TriggerWave(entt::entity& object, entt::entity& other)
+	void TriggerWave(entt::entity object, entt::entity other)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
 			return;
 
-		const auto& player_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(object);
-		const auto& other_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other);
+		auto player_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(object);
+		auto other_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other);
 
 		if (player_collider && other_collider)
 		{
-			if (other_collider->collisionLayer == "PLAYER" && player_collider->collisionLayer == "TRIGGERS")
+			//Check and swap since order can be different, it's ok to swap cause local pointers
+			//Like that no need duplicate the code
+			if (other_collider->collisionLayer == "PLAYER")
 			{
-				MonoString* tag_mono = mono_string_new(mono_domain_get(), PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Tag>(object)->m_tag.c_str());
-
-				auto parent_id = static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(other))->m_parent);
-				auto player_box_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(parent_id));
-
-				if (player_box_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
-					SSH::InvokeFunction("EncounterSystemDriver", "SpawnWave", ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(other))->m_parent, *tag_mono);
-				//SSH::InvokeFunction("PlayerScript", "SpawnWave", other);
+				std::swap(player_collider, other_collider);
+				std::swap(object, other);
 			}
-			else if (player_collider->collisionLayer == "PLAYER" && other_collider->collisionLayer == "TRIGGERS")
+
+			if (player_collider->collisionLayer == "PLAYER" && other_collider->collisionLayer == "TRIGGERS")
 			{
-				MonoString* tag_mono = mono_string_new(mono_domain_get(), PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Tag>(other)->m_tag.c_str());
+				auto tag = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Tag>(other);
 
-				auto parent_id = static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(object))->m_parent);
-				auto player_box_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(parent_id));
+				if (tag)
+				{
+					MonoString* tag_mono = mono_string_new(mono_domain_get(), tag->m_tag.c_str());
 
-				if (player_box_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
-					SSH::InvokeFunction("EncounterSystemDriver", "SpawnWave", ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(object))->m_parent, *tag_mono);
-				//SSH::InvokeFunction("PlayerScript", "SpawnWave", other);
+					auto parent_id = static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(object))->m_parent);
+					auto player_box_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(parent_id));
+
+					if (player_box_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+						SSH::InvokeFunction("EncounterSystemDriver", "SpawnWave", ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(object))->m_parent, *tag_mono);
+					//SSH::InvokeFunction("PlayerScript", "SpawnWave", other);
+				}
 			}
 		}
 	}

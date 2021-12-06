@@ -38,6 +38,7 @@ PhysicsSystem::PhysicsSystem()
 	CreateCollisionLayer("PLAYER PROJECTILES");
 	CreateCollisionLayer("ENEMY PROJECTILES");
 	CreateCollisionLayer("TRIGGERS");
+	CreateCollisionLayer("WAVETRIGGERS");
 	CreateCollisionLayer("OBSTACLES");
 
 	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_IGNORE);
@@ -51,9 +52,16 @@ PhysicsSystem::PhysicsSystem()
 	SetCollisionRule(GetCollisionLayer("PLAYER PROJECTILES"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("ENEMY PROJECTILES"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("OBSTACLES"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+
+	SetCollisionRule(GetCollisionLayer("WAVETRIGGERS"), GetCollisionLayer("WAVETRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("PLAYER PROJECTILES"), GetCollisionLayer("WAVETRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("ENEMY PROJECTILES"), GetCollisionLayer("WAVETRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("WAVETRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	SetCollisionRule(GetCollisionLayer("OBSTACLES"), GetCollisionLayer("WAVETRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 
 	SetCollisionRule(GetCollisionLayer("OBSTACLES"), GetCollisionLayer("OBSTACLES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
-	SetCollisionRule(GetCollisionLayer("OBSTACLES"), GetCollisionLayer("TRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	
 
 	for (auto itr = m_collisionLayers.begin(); itr != m_collisionLayers.end(); itr++)
 	{
