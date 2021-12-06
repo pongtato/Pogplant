@@ -98,10 +98,10 @@ namespace Scripting
             return new EnvDamage();
         }
 
-        public static Missile Missile()
-        {
-            return new Missile();
-        }
+        //public static Missile Missile()
+        //{
+        //    return new Missile();
+        //}
 
         public static MissileController MissileController()
         {
