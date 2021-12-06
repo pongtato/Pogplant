@@ -498,13 +498,10 @@ namespace Scripting
 
 			std::random_device rd;  // Will be used to obtain a seed for the random number engine
 			std::mt19937 gen(rd());
-			auto dist = std::uniform_real_distribution(500.0, 1000.0);
+			auto dist = std::uniform_real_distribution(10.0, 20.0);
 
 			glm::vec3 dir = { dist(gen), dist(gen), dist(gen) };
 			rb->AddImpulseForce(dir);
-			rb->mass = 100.0f;
-
-			//std::cout << "Death Animation called" << std::endl;
 		}
 	}
 }
