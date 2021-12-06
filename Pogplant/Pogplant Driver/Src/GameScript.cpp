@@ -34,6 +34,45 @@ namespace Scripting
 		return std::uint32_t(new_entitiy);
 	}
 
+	/**> General purpose particle creation that will autoplay*/
+	std::uint32_t InstantiateParticle(MonoString* name, glm::vec3 _Position, glm::vec3 _Rotation, bool _parented, uint32_t _parentID)
+	{
+		std::string _name = mono_string_to_utf8(name);
+
+		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
+		entt::entity newEntity = serial.Instantiate(_name, _Position, _Rotation);
+
+		auto particleSystem = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ParticleSystem>(newEntity);
+		auto& transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().get<Components::Transform>(newEntity);
+
+		if (particleSystem)
+		{
+			particleSystem->init();
+			particleSystem->m_Play = true;
+		}
+
+		if (!transform.m_children.empty())
+		{
+			for (auto child : transform.m_children)
+			{
+				auto childParticle = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ParticleSystem>(child);
+
+				if (childParticle)
+				{
+					childParticle->init();
+					childParticle->m_Play = true;
+				}
+			}
+		}
+
+		if (_parented)
+		{
+			PogplantDriver::Application::GetInstance().m_activeECS->SetParent((entt::entity)_parentID, newEntity);
+		}
+		
+		return std::uint32_t(newEntity);
+	}
+
 
 	// Only checking the bound for player to it's parent and will not work anywhere else
 	int CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity)
