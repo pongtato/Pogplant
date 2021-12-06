@@ -83,17 +83,17 @@ void ScriptSystem::InitPlayState(ECS* ecs)
 	m_ecs = ecs;
 
 	LoadMemory();
+
+	Start();
 }
 
-void ScriptSystem::Update(float dt)
+void ScriptSystem::Start()
 {
-	auto entities = m_ecs->view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
+	auto entities = m_ecs->view<Components::Scriptable, Components::Name>();
 
-	for (auto entity : entities)
+	for (auto& entity : entities)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
-		auto& rigidbody = entities.get<Components::Rigidbody>(entity);
-		auto& transform = entities.get<Components::Transform>(entity);
 		auto& name = entities.get<Components::Name>(entity);
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
@@ -106,7 +106,22 @@ void ScriptSystem::Update(float dt)
 				scripts.second = true;
 				std::cout << "Entity [" << name.m_name << "] has started script [" << scripts.first << "]" << std::endl;
 			}
+		}
+	}
+}
 
+void ScriptSystem::Update(float dt)
+{
+	auto entities = m_ecs->view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
+
+	for (auto entity : entities)
+	{
+		auto& scriptable = entities.get<Components::Scriptable>(entity);
+		auto& rigidbody = entities.get<Components::Rigidbody>(entity);
+		auto& transform = entities.get<Components::Transform>(entity);
+
+		for (auto& scripts : scriptable.m_ScriptTypes)
+		{
 			SSH::InvokeFunction(scripts.first, "Update", entity, transform, rigidbody, dt);
 		}
 	}
@@ -121,21 +136,11 @@ void ScriptSystem::LateUpdate(float dt)
 	for (auto& entity : entities)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
-		auto& rigidbody = entities.get<Components::Rigidbody>(entity);
 		auto& transform = entities.get<Components::Transform>(entity);
-		auto& name = entities.get<Components::Name>(entity);
+		auto& rigidbody = entities.get<Components::Rigidbody>(entity);
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
-			if (scripts.second == false)
-			{
-				AddScriptToEntity(entity);
-				SSH::InvokeFunction(scripts.first, "Init", entity, static_cast<std::uint32_t>(entity));
-				SSH::InvokeFunction(scripts.first, "Start", entity);
-				scripts.second = true;
-				std::cout << "Entity [" << name.m_name << "] has started script [" << scripts.first << "]" << std::endl;
-			}
-
 			SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, rigidbody, dt);
 		}
 	}

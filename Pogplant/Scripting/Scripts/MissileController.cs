@@ -248,8 +248,10 @@ namespace Scripting
         float accu_dt_expand = 0.0f;
 
         float centre_shift_multiplier = 4.0f;
-        float extends_multiplier_Y = 4.0f;
-        float extends_multiplier_XZ = 2.0f;
+        //float extends_multiplier_Y = 4.0f;
+        float extends_multiplier_Y = 800.0f;
+        //float extends_multiplier_XZ = 2.0f;
+        float extends_multiplier_XZ = 70.0f;
         float final_scale_value = 0.1f;
         float explosion_expand_multiplier = 0.5f;
         //float linger_time = 0.0f;
@@ -293,7 +295,7 @@ namespace Scripting
             // Missile Trigger 1
             if (_entityID == ECS.FindEntityWithName("MissileTrigger1"))
             {
-                m_Timers = new List<float> { 0.3f, 0.8f, 2.2f, 2.5f, 3.2f, 3.4f, 3.6f, 3.6f };
+                m_Timers = new List<float> { 0.5f, 1.0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f, 4.0f };
                 for (int i = 1; i < m_Timers.Count + 1; ++i)
                 {
                     missileID = ECS.FindChildEntityWithName(_entityID, missile + i);
