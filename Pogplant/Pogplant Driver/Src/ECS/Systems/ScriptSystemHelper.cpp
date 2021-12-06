@@ -133,6 +133,39 @@ namespace SSH
 		ScriptSystem::GetECS()->RemoveParentFrom(static_cast<entt::entity>(childID));
 	}
 
+	glm::vec3 GetVelocity(std::uint32_t entityID)
+	{
+		auto rb = ScriptSystem::GetECS()->GetReg().try_get<Components::Rigidbody>(static_cast<entt::entity>(entityID));
+
+		glm::vec3 vel{0.0f};
+
+		if (rb)
+		{
+			vel = rb->velocity;
+		}
+
+		return vel;
+	}
+
+	void SetVelocity(std::uint32_t entityID, glm::vec3 velocity)
+	{
+		auto rb = ScriptSystem::GetECS()->GetReg().try_get<Components::Rigidbody>(static_cast<entt::entity>(entityID));
+		if (rb)
+		{
+			rb->velocity = velocity;
+		}
+	}
+
+	void RigidbodyAddForce(std::uint32_t entityID, glm::vec3 direction)
+	{
+		auto rb = ScriptSystem::GetECS()->GetReg().try_get<Components::Rigidbody>(static_cast<entt::entity>(entityID));
+
+		if (rb)
+		{
+			rb->AddForce(direction);
+		}
+	}
+
 	void SetActive(std::uint32_t entityID, bool isEnabled)
 	{
 		if (isEnabled)

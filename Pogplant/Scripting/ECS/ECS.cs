@@ -58,6 +58,16 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetActive(uint entityID, bool isEnabled);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void RigidbodyAddForce(uint entityID, Vector3 dir);
+
+        // Temp to test stuff
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetVelocity(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetVelocity(uint entityID, Vector3 velocity);
+
         public static GameObject CreateEntity(string name, Transform transform)
         {
             uint entityID = CreateEntity(name, transform.Position, transform.Rotation, transform.Scale);

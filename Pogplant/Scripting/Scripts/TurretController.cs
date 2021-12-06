@@ -279,7 +279,7 @@ namespace Scripting
         {
 
         }
-        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void Update(ref Transform transform, ref float dt)
         {
             for (int i = 0; i < Total_turret_groups.Count; ++i)
             {
@@ -313,7 +313,7 @@ namespace Scripting
             }
 
         }
-        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void LateUpdate(ref Transform transform, ref float dt)
         {
 
         }
