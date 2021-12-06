@@ -71,10 +71,12 @@ namespace Components
 			CR_IGNORE/**<Just ignore the collision*/
 		};
 
-		bool isTrigger = false;
 		std::string collisionLayer = "DEFAULT";
-
 		PhysicsDLC::Collision::Shapes::AABB aabb;
+
+		bool isStatic = false;
+		bool isTrigger = false;
+
 		RTTR_ENABLE();
 	};
 
@@ -101,10 +103,10 @@ namespace Components
 			: centre{ c_centre }, radius{ c_radius }
 		{}
 
-		float radius = 1.f;
-		glm::vec3 centre;
-
 		PhysicsDLC::Collision::Shapes::Sphere sphere;
+		glm::vec3 centre;
+		float radius = 1.f;
+		
 		virtual glm::vec3 GetCenter() const override;
 		virtual glm::vec3 FindFurthestPoint(const glm::vec3& direction) const override;
 
@@ -119,10 +121,10 @@ namespace Components
 			: extends{ c_extends }, centre{ c_centre }
 		{}
 
+		entt::entity m_id;
+
 		glm::vec3 extends = glm::vec3{ 1.f, 1.f, 1.f };
 		glm::vec3 centre;
-
-		entt::entity m_id;
 
 		static const glm::vec3 m_OBBverts[8];
 

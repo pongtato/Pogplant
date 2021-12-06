@@ -115,41 +115,214 @@ void PhysicsSystem::Init(ECS* ecs, std::shared_ptr<PPE::EventBus>& eventBus)
 	m_broadphase.SetNullObject(entt::null);
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Initialises the play state
+*/
+/******************************************************************************/
 void PhysicsSystem::InitPlayState()
 {
 	UpdateEditor();
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Updates only moving objects in the scene
+*/
+/******************************************************************************/
 void PhysicsSystem::UpdateMovingObjects()
 {
-	/*auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody, Components::ColliderIdentifier>();
-	auto collidableEntities = m_registry->view<Components::Transform, Components::ColliderIdentifier>();
-
-	//Update colliders that move
-	for (auto& movableColliders : rigidBodyEntities)
+	//Update all colliders
+	auto boxColliders = m_registry->view<Components::Transform, Components::BoxCollider>();
+	for (auto& collidable : boxColliders)
 	{
-		auto& transform = rigidBodyEntities.get<Components::Transform>(movableColliders);
-		auto& colliderIdentifier = rigidBodyEntities.get<Components::ColliderIdentifier>(movableColliders);
+		auto& boxCollider = boxColliders.get<Components::BoxCollider>(collidable);
 
-		switch (colliderIdentifier.colliderType)
+		if (boxCollider.isStatic)
+			continue;
+
+		auto& transform = boxColliders.get<Components::Transform>(collidable);
+
+		boxCollider.aabb.CalculateAABBFromExtends(
+			transform.GetGlobalPosition() + boxCollider.centre,
+			boxCollider.extends * transform.GetGlobalScale());
+
+		//Update broadphase and identifiers
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
+		if (!colliderIdentifier)
 		{
-		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX:
+			auto& identifier = m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+				collidable,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_BOX,
+				boxCollider.isTrigger,
+				GetCollisionLayer(boxCollider.collisionLayer));
+
+			m_broadphase.InsertData(&identifier.broadPhaseKey, collidable, boxCollider.aabb);
+		}
+		else
 		{
-			auto boxCollider = m_registry->GetReg().try_get<Components::BoxCollider>(movableColliders);
-			boxCollider->aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + boxCollider->centre, boxCollider->extends * transform.GetGlobalScale());
-			break;
+			colliderIdentifier->isTrigger = boxCollider.isTrigger;
+			colliderIdentifier->collisionLayer = GetCollisionLayer(boxCollider.collisionLayer);
+
+			if (colliderIdentifier->broadPhaseKey)
+			{
+				auto rigidbody = m_registry->GetReg().try_get<Components::Rigidbody>(collidable);
+
+				if (rigidbody && !rigidbody->isKinematic)
+				{
+					static PhysicsDLC::Collision::Shapes::AABB dynamicAABB;
+
+					dynamicAABB.CalculateAABBFromExtends(
+						transform.GetGlobalPosition() + boxCollider.centre,
+						boxCollider.extends * transform.GetGlobalScale() * (1.f + (float)rigidbody->velocity.length()));
+
+					m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, dynamicAABB);
+				}
+				else
+				{
+					m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, boxCollider.aabb);
+				}
+			}
+			else
+				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, boxCollider.aabb);
 		}
-		case Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE:
+	}
+
+	auto meshColliders = m_registry->view<Components::Transform, Components::Renderer, Components::MeshCollider>();
+	for (auto& collidable : meshColliders)
+	{
+		auto& meshCollider = meshColliders.get<Components::MeshCollider>(collidable);
+
+		if (meshCollider.isStatic)
+			continue;
+
+		auto& transform = meshColliders.get<Components::Transform>(collidable);
+		auto& renderer = meshColliders.get<Components::Renderer>(collidable);
+
+		meshCollider.m_id = collidable;
+
+		float maxScale = std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
+
+		meshCollider.aabb.CalculateAABBFromExtends(
+			transform.GetGlobalPosition(),
+			glm::vec3{
+			renderer.m_RenderModel->m_Bounds.longest,
+			renderer.m_RenderModel->m_Bounds.longest,
+			renderer.m_RenderModel->m_Bounds.longest
+			} *maxScale
+		);
+
+		//Update broadphase and identifiers
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
+		if (!colliderIdentifier)
 		{
-			auto sphereCollider = m_registry->GetReg().try_get<Components::SphereCollider>(movableColliders);
-			sphereCollider->sphere.m_pos = transform.GetGlobalPosition() + sphereCollider->centre;
-			break;
+			auto& identifier = m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+				collidable,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_GJKMESH,
+				meshCollider.isTrigger,
+				GetCollisionLayer(meshCollider.collisionLayer));
+
+			m_broadphase.InsertData(&identifier.broadPhaseKey, collidable, meshCollider.aabb);
 		}
-		default:
-			std::cerr << "PhysicsSystem::Update, unhandled collider update" << std::endl;
-			assert(false);
+		else
+		{
+			colliderIdentifier->isTrigger = meshCollider.isTrigger;
+			colliderIdentifier->collisionLayer = GetCollisionLayer(meshCollider.collisionLayer);
+
+			if (colliderIdentifier->broadPhaseKey)
+				m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, meshCollider.aabb);
+			else
+				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, meshCollider.aabb);
 		}
-	}//*/
+	}
+
+	auto sphereColliders = m_registry->view<Components::Transform, Components::SphereCollider>();
+	for (auto& collidable : sphereColliders)
+	{
+		auto& sphereCollider = sphereColliders.get<Components::SphereCollider>(collidable);
+
+		if (sphereCollider.isStatic)
+			continue;
+
+		auto& transform = sphereColliders.get<Components::Transform>(collidable);
+
+		auto tmpScale = transform.GetGlobalScale();
+		sphereCollider.sphere.m_pos = transform.GetGlobalPosition() + sphereCollider.centre;
+		sphereCollider.sphere.m_radius = sphereCollider.radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
+
+		sphereCollider.aabb.CalculateAABBFromExtends(
+			sphereCollider.sphere.m_pos,
+			glm::vec3{
+				sphereCollider.sphere.m_radius,
+				sphereCollider.sphere.m_radius,
+				sphereCollider.sphere.m_radius
+			} *1.1f
+		);
+
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
+		if (!colliderIdentifier)
+		{
+			auto& identifier = m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+				collidable,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_SPHERE,
+				sphereCollider.isTrigger,
+				GetCollisionLayer(sphereCollider.collisionLayer));
+
+			m_broadphase.InsertData(&identifier.broadPhaseKey, collidable, sphereCollider.aabb);
+		}
+		else
+		{
+			colliderIdentifier->isTrigger = sphereCollider.isTrigger;
+			colliderIdentifier->collisionLayer = GetCollisionLayer(sphereCollider.collisionLayer);
+
+			if (colliderIdentifier->broadPhaseKey)
+				m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, sphereCollider.aabb);
+			else
+				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, sphereCollider.aabb);
+		}
+	}
+
+	auto obbBoxColliders = m_registry->view<Components::Transform, Components::OBBBoxCollider>();
+	for (auto& collidable : obbBoxColliders)
+	{
+		auto& obbBoxCollider = obbBoxColliders.get<Components::OBBBoxCollider>(collidable);
+
+		if (obbBoxCollider.isStatic)
+			continue;
+
+		auto& transform = obbBoxColliders.get<Components::Transform>(collidable);
+
+		glm::vec3 scale = (obbBoxCollider.extends * transform.GetGlobalScale());
+
+		float maxLength = std::max({ scale.x, scale.y, scale.z }) * 2.f;
+
+		obbBoxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + obbBoxCollider.centre, glm::vec3{ maxLength, maxLength, maxLength });
+		obbBoxCollider.m_id = collidable;
+
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
+		if (!colliderIdentifier)
+		{
+			auto& identifier = m_registry->GetReg().emplace<Components::ColliderIdentifier>(
+				collidable,
+				Components::ColliderIdentifier::COLLIDER_TYPE::CT_OBBBOX,
+				obbBoxCollider.isTrigger,
+				GetCollisionLayer(obbBoxCollider.collisionLayer));
+
+			m_broadphase.InsertData(&identifier.broadPhaseKey, collidable, obbBoxCollider.aabb);
+		}
+		else
+		{
+			colliderIdentifier->isTrigger = obbBoxCollider.isTrigger;
+			colliderIdentifier->collisionLayer = GetCollisionLayer(obbBoxCollider.collisionLayer);
+
+			if (colliderIdentifier->broadPhaseKey)
+				m_broadphase.UpdateData(&colliderIdentifier->broadPhaseKey, collidable, obbBoxCollider.aabb);
+			else
+				m_broadphase.InsertData(&colliderIdentifier->broadPhaseKey, collidable, obbBoxCollider.aabb);
+		}
+	}
 }
 
 /******************************************************************************/
