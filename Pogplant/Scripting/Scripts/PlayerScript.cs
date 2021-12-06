@@ -89,6 +89,7 @@ namespace Scripting
 
         bool isAlive = true;
         uint DashboardScreenID;
+        uint VOEntityID;
 
         public PlayerScript()
         {
@@ -106,6 +107,8 @@ namespace Scripting
             lastPosition = ECS.GetGlobalPosition(entityID);
             targetRotation = ECS.GetComponent<Transform>(entityID).Rotation;
             m_initialCameraPosition = ECS.GetComponent<Transform>(shipCameraEntity).Position;
+            VOEntityID = ECS.FindEntityWithName("VO_AudioSource");
+            ECS.PlayAudio(VOEntityID, 0);
         }
 
         public override void Start()

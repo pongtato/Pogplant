@@ -6,25 +6,25 @@
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			},
 			"Clip1" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			},
 			"Clip2" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_SpawnFlybyBehind.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			},
 			"Clip3" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.49799999594688416
 			}
 		},
 		"BoxCollider" : 
@@ -42,6 +42,7 @@
 				1.0,
 				1.0
 			],
+			"isStatic" : false,
 			"isTrigger" : true
 		},
 		"Children" : 3,
