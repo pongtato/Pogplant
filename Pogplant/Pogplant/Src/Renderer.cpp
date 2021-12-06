@@ -728,13 +728,13 @@ namespace Pogplant
 
 			glm::mat4 model = glm::mat4{ 1 };
 			model = it_Trans.m_ModelMtx;
-			//glm::quat rot_z = glm::angleAxis(glm::radians(it_Trans.m_rotation.z), glm::vec3{ 0.0f,0.0f,1.0f });
-			//glm::quat rot_y = glm::angleAxis(glm::radians(it_Trans.m_rotation.y), glm::vec3{ 0.0f,1.0f,0.0f });
-			//glm::quat rot_x = glm::angleAxis(glm::radians(it_Trans.m_rotation.x), glm::vec3{ 1.0f,0.0f,0.0f });
-			//glm::mat4 m4_rot = glm::mat4_cast(rot_y * rot_x * rot_z);
+			glm::quat rot_z = glm::angleAxis(glm::radians(it_Trans.m_rotation.z), glm::vec3{ 0.0f,0.0f,1.0f });
+			glm::quat rot_y = glm::angleAxis(glm::radians(it_Trans.m_rotation.y), glm::vec3{ 0.0f,1.0f,0.0f });
+			glm::quat rot_x = glm::angleAxis(glm::radians(it_Trans.m_rotation.x), glm::vec3{ 1.0f,0.0f,0.0f });
+			glm::mat4 m4_rot = glm::mat4_cast(rot_y * rot_x * rot_z);
 			//glm::mat4 m4_scale = glm::scale(glm::mat4{ 1 }, it_Trans.m_scale);
 
-			ShaderLinker::SetUniform("m4_Model", glm::mat4{ model });
+			ShaderLinker::SetUniform("m4_Model", glm::mat4{ model * m4_rot  });
 			ShaderLinker::SetUniform("textColor", it_Text.m_Color);
 			glBindTexture(GL_TEXTURE_2D, currFont->m_TextureID);
 
