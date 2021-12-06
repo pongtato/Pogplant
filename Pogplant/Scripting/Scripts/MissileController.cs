@@ -293,7 +293,7 @@ namespace Scripting
             // Missile Trigger 1
             if (_entityID == ECS.FindEntityWithName("MissileTrigger1"))
             {
-                m_Timers = new List<float> { 0.3f, 1.1f, 2.5f, 2.9f, 3.6f, 3.8f, 4f, 4f };
+                m_Timers = new List<float> { 0.3f, 0.8f, 2.2f, 2.5f, 3.2f, 3.4f, 3.6f, 3.6f };
                 for (int i = 1; i < m_Timers.Count + 1; ++i)
                 {
                     missileID = ECS.FindChildEntityWithName(_entityID, missile + i);
@@ -406,6 +406,7 @@ namespace Scripting
             // Check if player has entered trigger box
             if (id == playerID)
             {
+                //Console.WriteLine("Triggered");
                 m_MsGroup.m_Triggered = true;
             }
         }
