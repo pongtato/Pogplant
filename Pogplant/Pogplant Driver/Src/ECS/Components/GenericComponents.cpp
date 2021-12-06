@@ -685,6 +685,15 @@ namespace Components
 		m_CurvePoints.push_back({ 1.0f, 1.0f });
 
 		m_CurveData.resize(m_DataPoints);
+
+		int smoothness = static_cast<int>(m_CurveData.size());
+		for (int i = 0; i <= (smoothness - 1); ++i) 
+		{
+			float qx = (i + 1) / float(smoothness);
+			//float py = 1 - CurveValueSmooth(px, static_cast<int>(m_CurvePoints.size() + 1), m_CurvePoints.data());
+			float qy = 1 - CurveValueSmooth(qx, static_cast<int>(m_CurvePoints.size() + 1), m_CurvePoints.data());
+			m_CurveData[i] = qy;
+		}
 	};
 
 	ParticleSystem::CurveVariable::CurveVariable(const std::vector<ImVec2>& _CurvePoints, float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax)
@@ -696,7 +705,74 @@ namespace Components
 		, m_MultiplierMax{ _MultiMax }
 	{
 		m_CurveData.resize(m_DataPoints);
-	};
+
+		int smoothness = static_cast<int>(m_CurveData.size());
+		for (int i = 0; i <= (smoothness - 1); ++i)
+		{
+			float qx = (i + 1) / float(smoothness);
+			//float py = 1 - CurveValueSmooth(px, static_cast<int>(m_CurvePoints.size() + 1), m_CurvePoints.data());
+			float qy = 1 - CurveValueSmooth(qx, static_cast<int>(m_CurvePoints.size() + 1), m_CurvePoints.data());
+			m_CurveData[i] = qy;
+		}
+	}
+
+	float ParticleSystem::CurveVariable::CurveValueSmooth(float _P, int _Maxpoints, const ImVec2* _Points)
+	{
+		if (_Maxpoints < 2 || _Points == 0)
+		{
+			return 0;
+		}
+
+		if (_P < 0)
+		{
+			return _Points[0].y;
+		}
+
+		float* input = new float[_Maxpoints * 2];
+		float output[4];
+
+		for (int i = 0; i < _Maxpoints; ++i) {
+			input[i * 2 + 0] = _Points[i].x;
+			input[i * 2 + 1] = _Points[i].y;
+		}
+
+		Spline(input, _Maxpoints, 1, _P, output);
+
+		delete[] input;
+		return output[0];
+	}
+
+	void ParticleSystem::CurveVariable::Spline(const float* _Key, int _Num, int _Dim, float _T, float* _V)
+	{
+		static signed char coefs[16] = {
+			-1, 2,-1, 0,
+			 3,-5, 0, 2,
+			-3, 4, 1, 0,
+			 1,-1, 0, 0 };
+
+		const int size = _Dim + 1;
+
+		// find key
+		int k = 0; while (_Key[k * size] < _T) k++;
+
+		// interpolant
+		const float h = (_T - _Key[(k - 1) * size]) / (_Key[k * size] - _Key[(k - 1) * size]);
+
+		// init result
+		for (int i = 0; i < _Dim; i++) _V[i] = 0.0f;
+
+		// add basis functions
+		for (int i = 0; i < 4; i++)
+		{
+			int kn = k + i - 2; if (kn < 0) kn = 0; else if (kn > (_Num - 1)) kn = _Num - 1;
+
+			const signed char* co = coefs + 4 * i;
+
+			const float b = 0.5f * (((co[0] * h + co[1]) * h + co[2]) * h + co[3]);
+
+			for (int j = 0; j < _Dim; j++) _V[j] += b * _Key[kn * size + j + 1];
+		}
+	}
 
 	Canvas::Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho)
 		: m_Color {_Color}
