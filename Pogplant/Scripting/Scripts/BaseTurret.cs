@@ -133,8 +133,6 @@ namespace Scripting
             {
                 HandleDeath();
             }
-
-
         }
 
         void HandleDeath()
@@ -161,6 +159,7 @@ namespace Scripting
 
         public void FixedUpdate()
         {
+
         }
 
         public override void OnTriggerEnter(uint id)

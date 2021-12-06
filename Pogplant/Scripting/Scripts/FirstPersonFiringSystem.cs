@@ -167,8 +167,8 @@ namespace Scripting
 
         public override void OnTriggerEnter(uint id)
         {
-            
             Tag other_tag = ECS.GetComponent<Tag>(id);
+            
             if (other_tag.tag == "Targetable")
             {
                 AddEnemyToListOfTargets(id);
