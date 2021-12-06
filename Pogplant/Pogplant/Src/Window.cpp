@@ -13,7 +13,7 @@ namespace Pogplant
 	int Window::m_Width = 0;
 	int Window::m_Height = 0;
 	float Window::m_Aspect = 0.0f;
-	bool Window::m_VSync = false;
+	bool Window::m_VSync = true;
 	bool Window::m_Hide = false;
 	bool Window::m_IsUnhiding = true;
 
