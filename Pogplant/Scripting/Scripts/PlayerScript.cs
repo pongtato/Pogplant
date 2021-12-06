@@ -48,7 +48,7 @@ namespace Scripting
 
         //private float timeCount;
         public float ship_follow_rot_speed;
-        static public float maxHealth = 300.0f;
+        static public float maxHealth = 30000.0f;
         public float health = maxHealth;
 
         uint shipCameraEntity;
@@ -227,6 +227,8 @@ namespace Scripting
             transform.Rotation.Y += (targetRotation.Y - transform.Rotation.Y) * shipYawFollowSpeed * dt;
             transform.Rotation.Z += (targetRotation.Z - transform.Rotation.Z) * shipRollFollowSpeed * dt;
             transform.Rotation.X += (targetRotation.X - transform.Rotation.X) * shipPitchFollowSpeed * dt;
+
+            transform.Position.Z = 0.0f;
         }
 
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
