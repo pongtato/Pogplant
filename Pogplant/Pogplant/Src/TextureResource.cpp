@@ -67,6 +67,12 @@ namespace Pogplant
 
 		TexLoader::LoadTextureSRGB
 		(
+			"Shoot_VFX.dds",
+			"Resources/Textures/VFX"
+		);
+
+		TexLoader::LoadTextureSRGB
+		(
 			"MenuArrow.dds",
 			"Resources/Textures/UI"
 		);
