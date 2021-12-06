@@ -38,6 +38,8 @@ public:
 	void InitEditor(ECS* ecs);
 	void InitPlayState(ECS* ecs);
 	void Unload();
+	// Start Scripts
+	void Start();
 	// Update loop
 	void Update(float dt);
 	void LateUpdate(float dt);
