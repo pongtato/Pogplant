@@ -11,12 +11,7 @@
             written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Scripting
 {
@@ -36,7 +31,6 @@ namespace Scripting
 
         private float current_time = 0.0f;
         private bool is_finished = false;
-        private Transform transform;
 
         public MoveAction(GameObject startPos, GameObject endPos, float totalDuration)
         {
@@ -47,10 +41,11 @@ namespace Scripting
 
         public override bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
         {
-            float progress = current_time / duration;
+            float progress = current_time / duration; // calculate current progress
+
+            // if progress is 0, do some initialization
             if (progress <= 0.0f)
             {
-                //Console.WriteLine("Started moving enemy");
                 ECS.RemoveParentFrom(owner.id);
                 ECS.SetTransformECS(owner.id, ECS.GetGlobalPosition(start_position.id), start_position.transform.Value.Rotation, start_position.transform.Value.Scale);
                 ECS.PlayAudio(owner.id, 2);
@@ -59,29 +54,21 @@ namespace Scripting
             if (is_finished)
                 return is_finished;
 
-            //Console.WriteLine("Executing move action, current progress is: " + progress);
             current_time += dt;
-
-
-            if (owner != null)
-            {
-                transform = owner.transform.Value;
-            }
 
             Vector3 startPos = ECS.GetGlobalPosition(start_position.id);
             Vector3 endPos = ECS.GetGlobalPosition(end_position.id);
 
+            // if progress more than or equal to 1 then finish
             if (progress >= 1.0f)
             {
-                //Console.WriteLine("Stopped moving enemy");
                 is_finished = true;
-                //ECS.SetTransformECS(owner.id, end_position.transform.Value.Position, end_position.transform.Value.Rotation, end_position.transform.Value.Scale);
                 ECS.SetTransformParent(owner.id, ECS.GetTransformParent(end_position.id));
             }
+            // else lerp between 2 global positions because the enemy is unparented now
             else
             {
                 Vector3 target_pos = Vector3.Lerp(startPos, endPos, progress);
-                //Console.WriteLine("Enemy " + owner.id + " target position: " + target_pos.X + ", " + target_pos.Y + ", " + target_pos.Z);
                 ECS.SetTransformECS(owner.id, target_pos, ECS.GetGlobalRotation(end_position.id), owner.transform.Value.Scale);
             }
 
@@ -232,22 +219,6 @@ namespace Scripting
             return is_finished;
         }
 
-        private void FireBullet(GameObject bullet, int muzzleIndex)
-        {
-            //if (bullet)
-            //{
-            //    bullet.SetActive(true);
-
-            //    bullet.transform.SetPositionAndRotation(muzzle_transforms[muzzleIndex].position, muzzle_transforms[muzzleIndex].rotation);
-
-            //    Projectile prj_comp = bullet.GetComponent<Projectile>();
-            //    prj_comp.InitBullet();
-            //}
-
-            // Use C++ fire bullet now
-            //GameUtilities.FireEnemyBullet(muzzle_transforms[muzzleIndex].Position, muzzle_transforms[muzzleIndex].Rotation);
-        }
-
         public AttackAction MakeCopy()
         {
             return (AttackAction)this.MemberwiseClone();
@@ -383,12 +354,12 @@ namespace Scripting
 
         public void TakeDamage(float damage)
         {
+            // if health is more than 0, take damage and play effects
             if (my_info.health >= 0)
             {
                 my_info.health -= damage;
                 ECS.PlayAudio(gameObject.id, 0);
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 1);
-                //Console.WriteLine("Enemy with ID " + gameObject.id + " has taken " + damage + " damage, health is now " + my_info.health);
             }
             else
             {
@@ -396,9 +367,10 @@ namespace Scripting
             }
         }
 
+        // This function handles what happens when enemy dies,
+        // when fromPlayer is true, it means that the enemy died from the player
         private void HandleDeath(bool fromPlayer)
         {
-            //Console.WriteLine("Enemy with ID " + gameObject.id + " has called Handle death");
             if (is_alive)
             {
                 is_alive = false;
@@ -426,18 +398,19 @@ namespace Scripting
         {
             if (my_info == null)
             {
-                //Console.WriteLine("No enemy template info is found!");
+                DebugUtilities.LogToEditor("BaseEnemy", "No enemy template info is found!");
                 return;
             }
             if (my_info.commands == null)
             {
-                //Console.WriteLine("Enemy command list is null");
+                DebugUtilities.LogToEditor("BaseEnemy", "Enemy command list is null");
                 return;
             }
 
             if (is_alive)
             {
                 // Execute the actions like a sequence node in a BT
+                // upate actions only if the enemy is alive
                 foreach (BaseAction action in my_info.commands)
                 {
                     if (!action.Execute(dt, gameObject, em))
@@ -445,33 +418,20 @@ namespace Scripting
                 }
 
                 current_lifetime += dt;
+
+
                 if (current_lifetime >= my_info.life_time && is_alive)
-                {
-                    //FirstPersonFiringSystem.Instance.RemoveEnemyFromListOfTargets(gameObject);
-                    //Destroy(gameObject);
+                    // call handledeath with false to die
                     HandleDeath(false);
-                }
+
             }
             else
             {
                 deathAnimationTime -= dt;
-                if (deathAnimationTime > 0.0f)
-                {
-                    //Transform transform = gameObject.GetComponent<Transform>();
-                    //Vector3 new_rotation = transform.Rotation;
-                    //new_rotation.X += 180.0f * dt;
-                    //new_rotation.Y += 90.0f * dt;
-                    //new_rotation.Z += 270.0f * dt;
 
-                    //ECS.SetTransformECS(gameObject.id, transform.Position, new_rotation, transform.Scale);
-                }
-                else
-                {
-                    //GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
+                if (deathAnimationTime <= 0.0f)
                     em.DeleteEnemyInstance(gameObject.id, isDiedFromPlayer);
-                }
             }
-            //Console.WriteLine("End of BaseEnemy.Update()");
         }
 
         public bool GetAlive()
