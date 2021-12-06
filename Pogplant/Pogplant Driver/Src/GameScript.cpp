@@ -227,7 +227,7 @@ namespace Scripting
 		{
 			enemy_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(other);
 		}
-		
+
 		if (player_projectile_script && enemy_object_script)
 		{
 			bool enemy_turret = enemy_object_script->m_ScriptTypes.contains("BaseTurret");
@@ -265,8 +265,10 @@ namespace Scripting
 					{
 						const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(playerbox);
 						if (playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+						{
+							PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 							SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", playerbox, static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
-
+						}
 					}
 				}
 			}
@@ -291,8 +293,6 @@ namespace Scripting
 		}
 		else
 			player_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(other);
-
-		
 
 		if (enemy_projectile_script && player_object_script)
 		{
