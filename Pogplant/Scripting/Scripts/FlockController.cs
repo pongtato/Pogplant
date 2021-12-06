@@ -49,7 +49,7 @@ namespace Scripting
             if (_entityID == ECS.FindEntityWithName("FlockGroup1"))
             {
                 first_group.ParentID = _entityID;
-                first_group.travelling_speed = 5f;
+                first_group.travelling_speed = 10f;
 
 
 
