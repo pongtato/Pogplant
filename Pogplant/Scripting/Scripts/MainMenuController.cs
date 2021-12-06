@@ -63,7 +63,7 @@ namespace Scripting
             //Console.WriteLine("MMC init");
         }
 
-        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void Update(ref Transform transform, ref float dt)
         {
             //// Example of how to disable entity
             //if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
@@ -80,7 +80,7 @@ namespace Scripting
             UpdateInputs();
         }
 
-        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void LateUpdate(ref Transform transform, ref float dt)
         {
             
         }

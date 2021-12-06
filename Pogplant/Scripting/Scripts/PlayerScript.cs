@@ -119,7 +119,7 @@ namespace Scripting
         {
         }
 
-        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void Update(ref Transform transform, ref float dt)
         {
             bool rightPushed = InputUtility.onKeyHeld("RIGHT");
             bool leftPushed = InputUtility.onKeyHeld("LEFT");
@@ -167,25 +167,29 @@ namespace Scripting
 
                 if (dotproduct > 0.0f)
                 {
-                    rigidbody.AddForce(right_vec * -dotproduct * 700f);
+                    ECS.RigidbodyAddForce(entityID, right_vec * -dotproduct * 700f);
+                    //rigidbody.AddForce(right_vec * -dotproduct * 700f);
                     //Console.WriteLine("Exceed +X bounds");
                 }
                 else
                 {
-                    rigidbody.AddForce(right_vec * -dotproduct * 700f);
+                    ECS.RigidbodyAddForce(entityID, right_vec * -dotproduct * 700f);
+                    //rigidbody.AddForce(right_vec * -dotproduct * 700f);
                     //Console.WriteLine("Exceed -X bounds");
                 }
             }
 
             if(transform.Position.Y > boxCollider.extends.Y)
             {
-                rigidbody.AddForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 150f);
+                ECS.RigidbodyAddForce(entityID, up_vec * (boxCollider.extends.Y - transform.Position.Y) * 150f);
+                //rigidbody.AddForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 150f);
                 //Console.WriteLine("Exceed +Y bounds");
             }
 
             if(transform.Position.Y < -boxCollider.extends.Y)
             {
-                rigidbody.AddForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 450f);
+                ECS.RigidbodyAddForce(entityID, up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 450f);
+                //rigidbody.AddForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 450f);
                 //Console.WriteLine("Exceed -Y bounds");
             }
 
@@ -204,15 +208,17 @@ namespace Scripting
                 direc_vector *= 1 / directionalMag;
 
             Vector3 force_dir = direc_vector * movement_speed;
-            rigidbody.AddForce(force_dir);
+            ECS.RigidbodyAddForce(entityID, force_dir);
+            //rigidbody.AddForce(force_dir);
 
-            float maxslowforce = rigidbody.velocity.magnitude();
+            Vector3 playerVel = ECS.GetVelocity(entityID);
+            float maxslowforce = playerVel.magnitude();
             if (Math.Abs(maxslowforce) <= float.Epsilon)
                 maxslowforce = 0.0f;
             else
             {
-                Vector3 SlowDownVec = -rigidbody.velocity * (1/ maxslowforce);
-                rigidbody.velocity += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
+                Vector3 SlowDownVec = -playerVel * (1 / maxslowforce);
+                playerVel += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
             }
 
             if (dt > 0)
@@ -220,6 +226,21 @@ namespace Scripting
                 calculatedVelocity = lastPosition - playerGlobalPos;
                 calculatedVelocity = calculatedVelocity * (1 / dt);
             }
+
+            //float maxslowforce = rigidbody.velocity.magnitude();
+            //if (Math.Abs(maxslowforce) <= float.Epsilon)
+            //    maxslowforce = 0.0f;
+            //else
+            //{
+            //    Vector3 SlowDownVec = -rigidbody.velocity * (1 / maxslowforce);
+            //    rigidbody.velocity += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
+            //}
+
+            //if (dt > 0)
+            //{
+            //    calculatedVelocity = lastPosition - playerGlobalPos;
+            //    calculatedVelocity = calculatedVelocity * (1 / dt);
+            //}
 
             lastPosition = playerGlobalPos;
 
@@ -240,6 +261,7 @@ namespace Scripting
             transform.Rotation.X += (targetRotation.X - transform.Rotation.X) * shipPitchFollowSpeed * dt;
 
             transform.Position.Z = 0.0f;
+            ECS.SetVelocity(entityID, playerVel);
         }
 
         private Vector3 m_initialCameraPosition;
@@ -267,7 +289,7 @@ namespace Scripting
             m_shakeTimer = 0f;
         }
 
-        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void LateUpdate(ref Transform transform, ref float dt)
         {
             //Camera shake movement
             GameUtilities.FollowPlayerCam(shipCameraEntity, boxEntityID, entityID, transform.Position, transform.Rotation, dt);

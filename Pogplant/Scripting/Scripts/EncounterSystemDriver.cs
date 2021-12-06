@@ -41,12 +41,12 @@ namespace Scripting
         }
 
         // Update is called once per frame
-        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void Update(ref Transform transform, ref float dt)
         {
             encounterManager.Update(dt);
         }
 
-        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void LateUpdate(ref Transform transform, ref float dt)
         {
 
         }

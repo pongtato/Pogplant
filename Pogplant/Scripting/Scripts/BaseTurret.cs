@@ -68,7 +68,7 @@ namespace Scripting
         {
         }
 
-        public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void Update(ref Transform transform, ref float dt)
         {
 
             if (isAlive)
@@ -153,7 +153,7 @@ namespace Scripting
             }
         }
 
-        public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
+        public override void LateUpdate(ref Transform transform, ref float dt)
         {
             //Console.WriteLine("MY CURRENT ID IS:" + entityID);
         }
