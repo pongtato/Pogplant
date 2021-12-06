@@ -63,20 +63,20 @@ namespace Scripting
             return new FollowSpline();
         }
 
-        public static EnemyManager EnemyManager()
-        {
-            return new EnemyManager();
-        }
+        //public static EnemyManager EnemyManager()
+        //{
+        //    return new EnemyManager();
+        //}
 
-        public static BaseEnemy BaseEnemy()
-        {
-            return new BaseEnemy();
-        }
+        //public static BaseEnemy BaseEnemy()
+        //{
+        //    return new BaseEnemy();
+        //}
 
-        public static EncounterManager EncounterManager()
-        {
-            return new EncounterManager();
-        }
+        //public static EncounterManager EncounterManager()
+        //{
+        //    return new EncounterManager();
+        //}
 
         public static EncounterSystemDriver EncounterSystemDriver()
         {

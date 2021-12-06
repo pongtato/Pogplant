@@ -17,9 +17,9 @@ namespace Scripting
             scriptNames.Add("FirstPersonFiringSystem");
             scriptNames.Add("EncounterSystemDriver");
             scriptNames.Add("FollowSpline");
-            scriptNames.Add("EncounterManager");
-            scriptNames.Add("EnemyManager");
-            scriptNames.Add("BaseEnemy");
+            //scriptNames.Add("EncounterManager");
+            //scriptNames.Add("EnemyManager");
+            //scriptNames.Add("BaseEnemy");
             scriptNames.Add("BaseTurret");
             scriptNames.Add("BaseGattling");
             scriptNames.Add("TurretController");
