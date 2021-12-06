@@ -9,6 +9,7 @@ namespace Scripting
     // Enemy script class
     public class BaseFlock : MonoBehaviour
     {
+        uint PlayerBox = 0;
         public float health = 20.0f;
 
         float deathAnimationTime = 4.0f; // seconds
@@ -24,6 +25,7 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+            PlayerBox = ECS.FindEntityWithName("PlayerBox");
         }
 
         public override void Start()
@@ -66,6 +68,7 @@ namespace Scripting
             }
             else
             {
+                GameUtilities.IncreaseScorefromEnv(PlayerBox);
                 HandleDeath();
             }
         }

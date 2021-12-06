@@ -9,6 +9,7 @@ namespace Scripting
     // Enemy script class
     public class BaseGattling : MonoBehaviour
     {
+        uint PlayerBox = 0;
         uint muzzle_id = 0;
         uint turret_pivot = 0;
         //public Transform muzzle_transform = new Transform();
@@ -46,6 +47,7 @@ namespace Scripting
 
             muzzle_id = ECS.FindChildEntityWithName(_entityID, "Rotating_Gatling_Barrel");
             turret_pivot = ECS.FindChildEntityWithName(_entityID, "Turret_Pivot");
+            PlayerBox = ECS.FindEntityWithName("PlayerBox");
             //muzzle_transform= ECS.GetComponent<Transform>(muzzle_id);
             //turret_pivot_transform = ECS.GetComponent<Transform>(turret_pivot);
             //Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
@@ -125,7 +127,6 @@ namespace Scripting
                 else
                 {
                     //Console.WriteLine("Turret (id: " + entityID + ") has died");
-                    GameUtilities.PlayEnemyDeathAnimation(entityID);
                     GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
                     ECS.DestroyEntity(entityID);
                 }
@@ -150,6 +151,7 @@ namespace Scripting
             }
             else
             {
+                GameUtilities.IncreaseScorefromEnv(PlayerBox);
                 HandleDeath();
             }
         }
@@ -161,7 +163,6 @@ namespace Scripting
                 isAlive = false;
                 isFiring = false;
                 ECS.PlayAudio(entityID, 1);
-                GameUtilities.PlayEnemyDeathAnimation(entityID);
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
             }
         }

@@ -471,7 +471,17 @@ namespace Scripting
 	void IncreaseScorefromEnv(std::uint32_t entityID)
 	{
 		entt::entity encounterdriverID = static_cast<entt::entity>(entityID);
-		SSH::InvokeFunction("EncounterSystemDriver", "AddScore", encounterdriverID);
+		if (encounterdriverID != entt::null)
+		{
+			auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(encounterdriverID);
+			if (scriptable)
+			{
+				if (scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+				{
+					SSH::InvokeFunction("EncounterSystemDriver", "AddScore", encounterdriverID);
+				}
+			}
+		}
 	}
 
 	void Scripting::UpdateScore(std::uint32_t text_object, std::uint32_t score)
