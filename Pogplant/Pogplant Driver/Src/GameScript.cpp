@@ -480,10 +480,23 @@ namespace Scripting
 		return health;
 	}
 
-	void PlayerTakeDamage(std::uint32_t Player_ID, float _Damage)
+	void PlayerTakeDamage(std::uint32_t Player_ID, float _Damage, std::uint32_t DashboardID, std::uint32_t _FaceIndex)
 	{
 		entt::entity player_id = static_cast<entt::entity>(Player_ID);
 		SSH::InvokeFunction("PlayerScript", "TakeDamage", player_id, _Damage);
+
+		entt::entity dashboard_id = static_cast<entt::entity>(DashboardID);
+		if (dashboard_id != entt::null)
+		{
+			auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(dashboard_id);
+			if (scriptable)
+			{
+				if (scriptable->m_ScriptTypes.contains("PlayerScript"))
+				{
+					SSH::InvokeFunction("DashboardScreen", "SwapFace", dashboard_id, _FaceIndex);
+				}
+			}
+		}
 	}
 
 	// Updates the player health UI
@@ -534,6 +547,7 @@ namespace Scripting
 	void IncreaseScorefromEnv(std::uint32_t entityID)
 	{
 		entt::entity encounterdriverID = static_cast<entt::entity>(entityID);
+
 		if (encounterdriverID != entt::null)
 		{
 			auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(encounterdriverID);
@@ -542,6 +556,23 @@ namespace Scripting
 				if (scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
 				{
 					SSH::InvokeFunction("EncounterSystemDriver", "AddScore", encounterdriverID);
+				}
+			}
+		}
+	}
+
+	void UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType)
+	{
+		entt::entity dashboardID = static_cast<entt::entity>(dashboardEntityID);
+
+		if (PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(dashboardID))
+		{
+			auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(dashboardID);
+			if (scriptable)
+			{
+				if (scriptable->m_ScriptTypes.contains("DashboardScreen"))
+				{
+					SSH::InvokeFunction("DashboardScreen", "SwapFace", dashboardID, faceType);
 				}
 			}
 		}
@@ -556,7 +587,7 @@ namespace Scripting
 
 		if (text)
 		{
-			text->m_Text = "Score: " + std::to_string(score);
+			text->m_Text = std::to_string(score);
 		}
 	}
 

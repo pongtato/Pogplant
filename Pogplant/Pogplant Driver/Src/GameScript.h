@@ -38,12 +38,14 @@ namespace Scripting
 	//just store the object that contains the EncounterSystemDriver
 	void IncreaseScorefromEnv(std::uint32_t entityID);
 
+	void UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType);
+
 	void UpdateScore(std::uint32_t text_object, std::uint32_t score);
 
 	// Get the player healths
 	float GetPlayerHealth();
 	float GetPlayerMaxHealth();
-	void PlayerTakeDamage(std::uint32_t Player_ID, float _Damage);
+	void PlayerTakeDamage(std::uint32_t Player_ID, float _Damage, std::uint32_t DashboardID, std::uint32_t _FaceIndex);
 	// Updates the player health UI
 	void UpdatePlayerHealth_UI();
 

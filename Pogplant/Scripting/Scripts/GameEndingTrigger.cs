@@ -24,7 +24,6 @@ namespace Scripting
 
         public override void Init(ref uint _entityID)
         {
-            Console.WriteLine("Game Over ID" + Game_Over_Screen_ID);
         }
 
         public override void Update(ref Transform transform, ref Rigidbody rigidbody, ref float dt)

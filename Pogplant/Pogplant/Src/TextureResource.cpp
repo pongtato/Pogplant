@@ -186,6 +186,24 @@ namespace Pogplant
 			"Placeholder_Start_Button.dds",
 			"Resources/Textures/MainMenu"
 		);
+		
+		TexLoader::LoadTexture
+		(
+			"AI_Happy.dds",
+			"Resources/Textures/UI"
+		);
+		
+		TexLoader::LoadTexture
+		(
+			"AI_Hurt.dds",
+			"Resources/Textures/UI"
+		);
+		
+		TexLoader::LoadTexture
+		(
+			"AI_Neutral.dds",
+			"Resources/Textures/UI"
+		);
 
 		// Compact to index 0
 		for (auto& it : m_TexturePool)

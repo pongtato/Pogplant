@@ -10,6 +10,7 @@ namespace Scripting
     public class BaseGattling : MonoBehaviour
     {
         uint PlayerBox = 0;
+        uint DashboardScreenID;
         uint muzzle_id = 0;
         uint turret_pivot = 0;
         //public Transform muzzle_transform = new Transform();
@@ -48,6 +49,7 @@ namespace Scripting
             muzzle_id = ECS.FindChildEntityWithName(_entityID, "Rotating_Gatling_Barrel");
             turret_pivot = ECS.FindChildEntityWithName(_entityID, "Turret_Pivot");
             PlayerBox = ECS.FindEntityWithName("PlayerBox");
+            DashboardScreenID = ECS.FindEntityWithName("DashboardScreenFace");
             //muzzle_transform= ECS.GetComponent<Transform>(muzzle_id);
             //turret_pivot_transform = ECS.GetComponent<Transform>(turret_pivot);
             //Console.WriteLine("Turret Enemy ID:" + entityID + " has spawned.");
@@ -152,6 +154,7 @@ namespace Scripting
             else
             {
                 GameUtilities.IncreaseScorefromEnv(PlayerBox);
+                GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
                 HandleDeath();
             }
         }

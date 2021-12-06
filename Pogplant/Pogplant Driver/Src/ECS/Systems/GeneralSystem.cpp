@@ -67,7 +67,7 @@ void GeneralSystem::UpdateGame(float c_dt)
 		if (ps_root != entt::null && m_registry->GetReg().valid(ps_root))
 		{
 			// check if the parent is tagged Particle
-			if (particleSystemsView.get<Components::Tag>(ps_root).m_tag == "Particle")
+			if (m_registry->GetReg().get<Components::Tag>(ps_root).m_tag == "Particle")
 			{
 				auto& ps = particleSystemsView.get<Components::ParticleSystem>(particleSystem);
 
