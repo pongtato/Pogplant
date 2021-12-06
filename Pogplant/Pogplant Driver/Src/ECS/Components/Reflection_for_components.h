@@ -47,6 +47,7 @@ namespace Components
 
 		rttr::registration::class_<Collider>("Collider")
 			.property("isTrigger", &Collider::isTrigger)
+			.property("isStatic", &Collider::isStatic)
 			.property("collisionLayer", &Collider::collisionLayer);
 
 		rttr::registration::class_<BoxCollider>("BoxCollider")

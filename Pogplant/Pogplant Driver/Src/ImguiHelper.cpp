@@ -815,6 +815,7 @@ namespace PogplantDriver
 						ImGui::DragFloat3("###CCen", glm::value_ptr(box_collider->centre));
 
 						ImGui::Checkbox("Is Trigger?", &box_collider->isTrigger);
+						ImGui::Checkbox("Is Static?", &box_collider->isStatic);
 
 						auto identifier = m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity);
 						if (identifier)
@@ -877,6 +878,7 @@ namespace PogplantDriver
 						ImGui::DragFloat3("###CCen", glm::value_ptr(box_colliderOBB->centre));
 
 						ImGui::Checkbox("Is Trigger?", &box_colliderOBB->isTrigger);
+						ImGui::Checkbox("Is Static?", &box_colliderOBB->isStatic);
 
 						auto identifier = m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity);
 						if (identifier)
@@ -937,6 +939,7 @@ namespace PogplantDriver
 						ImGui::InputFloat("###CRad", &sphere_collider->radius, 0.01f, 1.0f, "%.3f");
 
 						ImGui::Checkbox("Is Trigger?", &sphere_collider->isTrigger);
+						ImGui::Checkbox("Is Static?", &sphere_collider->isStatic);
 
 						auto identifier = m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity);
 						if (identifier)
@@ -994,6 +997,7 @@ namespace PogplantDriver
 						flag |= ImGuiComboFlags_PopupAlignLeft;
 
 						ImGui::Checkbox("Is Trigger?", &meshCollider->isTrigger);
+						ImGui::Checkbox("Is Static?", &meshCollider->isStatic);
 
 						auto identifier = m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity);
 						if (identifier)
