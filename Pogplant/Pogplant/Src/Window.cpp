@@ -127,7 +127,7 @@ namespace Pogplant
 
 			if (m_IsUnhiding)
 			{
-				Window::CloseWindow();
+				//Window::CloseWindow();
 			}
 		}
 		else if (glfwGetKey(Window::GetWindow(), GLFW_KEY_ESCAPE) == GLFW_RELEASE)
