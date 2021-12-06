@@ -43,7 +43,7 @@ namespace Scripting
             entityID = _entityID;
 
             if (ECS.GetTagECS(entityID) == "Player")
-                DelayToStart = 0.8f;
+                DelayToStart = 1.0f;
             else if (ECS.GetTagECS(entityID) == "WPG_0")
                  DelayToStart = 0.0f;
             else if (ECS.GetTagECS(entityID) == "WPG_1")
@@ -53,7 +53,7 @@ namespace Scripting
             else if (ECS.GetTagECS(entityID) == "WPG_3")
                 DelayToStart = 0.6f;
             else if (ECS.GetTagECS(entityID) == "WPG_4")
-                DelayToStart = 1.2f;
+                DelayToStart = 1.4f;
         }
 
         // Start is called before the first frame update
@@ -119,7 +119,7 @@ namespace Scripting
                 transform.Position += (Vector3.Lerp(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position, alpha) - transform.Position) * translation_lerpSpeed * dt;
 
 
-                float rotation_lerp_speed = 0.3f;
+                float rotation_lerp_speed = 1.5f;
                 //original
                 //transform.Rotation += (Vector3.RotateTowards(waypoints[current_waypoint_index - 1].Rotation, waypoints[current_waypoint_index].Rotation, alpha) - transform.Rotation) * rotation_lerp_speed * dt;
 
@@ -130,7 +130,7 @@ namespace Scripting
                 Vector3 forward = Transform.GetForwardVector(entityID);
                 Vector3 look_direction = waypoints[current_waypoint_index + waypoint_offset].Position - ECS.GetGlobalPosition(entityID);
                 Vector3 look_vector = look_direction - forward;
-                float interpolant = rotation_lerp_speed * dt; ;
+                float interpolant = rotation_lerp_speed * dt / look_vector.magnitude();
                 Vector3 look_point = ECS.GetGlobalPosition(entityID) + (forward + (look_vector * interpolant));
 
                 Transform.LookAtClamped(entityID, look_point);
