@@ -14,6 +14,7 @@ namespace Scripting
 
 	//Wrapper for instantiate due to monostring calls
 	std::uint32_t Instantiate(MonoString* name , glm::vec3 _Position, glm::vec3 _Rotation);
+	std::uint32_t InstantiateParticle(MonoString* name , glm::vec3 _Position, glm::vec3 _Rotation, bool _parented, uint32_t _parentID);
 
 	int CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity);
 

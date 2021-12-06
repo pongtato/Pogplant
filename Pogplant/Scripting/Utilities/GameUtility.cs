@@ -20,6 +20,9 @@ namespace Scripting
         public extern static uint Instantiate(string name, Vector3 _Position, Vector3 _Rotation);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static uint InstantiateParticle(string name, Vector3 _Position, Vector3 _Rotation, bool _Parented = false, uint _parentID = 0);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void FollowPlayerCam(uint playerCam, uint playerBox, uint playerShip, Vector3 _Position, Vector3 _Rotation, float _deltaTime);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

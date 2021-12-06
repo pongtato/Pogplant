@@ -155,9 +155,11 @@ namespace Scripting
                     foreach(var Turret in Turrets)
                     {
                         Vector3 Forward = Transform.GetForwardVector(Turret);
-                        Vector3 Position = ECS.GetGlobalPosition(Turret);
+                        Vector3 Position = ECS.GetGlobalPosition(Turret) + Forward * 0.55f;
                         Vector3 Rotation = ECS.GetGlobalRotation(Turret);
-                        GameUtilities.FirePlayerBullet(Position + Forward, Forward, Rotation);
+                        GameUtilities.FirePlayerBullet(Position, Forward, Rotation);
+
+                        GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
                     }
 
                     ECS.PlayAudio(shipCamera, 1);

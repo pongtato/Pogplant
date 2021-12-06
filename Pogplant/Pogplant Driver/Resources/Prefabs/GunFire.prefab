@@ -1,0 +1,207 @@
+[
+	{
+		"Children" : 1,
+		"Guid" : 
+		{
+			"m_guid" : "b95b509a-f361-4d43-a41b-4fe189ccab80"
+		},
+		"Name" : 
+		{
+			"m_Name" : "GunFire"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\GunFire.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Particle"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.59396106004714966,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "BURST",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				0.99999505281448364,
+				0.99998998641967773,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 1.0,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_Loop" : true,
+			"m_MaxLife" : 0.5,
+			"m_MinLife" : 0.5,
+			"m_Play" : true,
+			"m_RandomRotate" : true,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 0.10000000149011612,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.49609375
+					],
+					[
+						0.13287957012653351,
+						0.66796875
+					],
+					[
+						0.28844591975212097,
+						0.91796875
+					],
+					[
+						0.3563677966594696,
+						0.9921875
+					],
+					[
+						0.47287264466285706,
+						0.7578125
+					],
+					[
+						0.60765278339385986,
+						0.4453125
+					],
+					[
+						0.85208451747894287,
+						0.03515625
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 0.05000000074505806,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 0.25,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 2.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TexName" : "Shoot_VFX.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\GunFire.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]
