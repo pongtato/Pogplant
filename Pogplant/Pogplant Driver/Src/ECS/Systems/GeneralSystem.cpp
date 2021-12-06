@@ -75,6 +75,14 @@ void GeneralSystem::UpdateGame(float c_dt)
 				if (ps.m_CurrentLifetime >= ps.m_MaxLife)
 					m_registry->DestroyEntity(ps_root);
 			}
+			else
+			{
+				auto& ps = particleSystemsView.get<Components::ParticleSystem>(particleSystem);
+
+				// check life time of the particle system if more than max life then delete
+				if (ps.m_CurrentLifetime >= ps.m_MaxLife)
+					m_registry->DestroyEntity(particleSystem);
+			}
 		}
 		else
 		{
