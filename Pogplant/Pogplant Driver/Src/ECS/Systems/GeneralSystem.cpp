@@ -56,22 +56,37 @@ void GeneralSystem::UpdateGame(float c_dt)
 			m_registry->DestroyEntity(projectileEntity);
 	}
 
-	auto particleSystems_objects = m_registry->view<Components::Transform, Components::Tag>();
-	for (auto& particle_system_object : particleSystems_objects)
+	// Get all entities with particle systems
+	auto particleSystemsView = m_registry->view<Components::Transform, Components::Tag, Components::ParticleSystem>();
+	for (auto& particleSystem : particleSystemsView)
 	{
-		auto& ps_root = particleSystems_objects.get<Components::Tag>(particle_system_object);
-		//auto& transform = projectiles.get<Components::Transform>(projectileEntity);
-		//auto& rigidbody = projectiles.get<Components::Rigidbody>(projectileEntity);
+		// get the parent entity of the particle system
+		auto& ps_root = particleSystemsView.get<Components::Transform>(particleSystem).m_parent;
 
-		//glm::vec3 move = { 0.f,0.f,projectile.m_Speed * c_dt };
-		//transform.m_position += move;
-
-		if (ps_root.m_tag == "Particle")
+		// if parent exist and is valid entity
+		if (ps_root != entt::null && m_registry->GetReg().valid(ps_root))
 		{
-			auto child_ps = m_registry->FindChildEntityWithName(particle_system_object, "Explosion_Smoke");
-			auto particle_children = m_registry->view<Components::Transform, Components::ParticleSystem>();
-			if (particle_children.get<Components::ParticleSystem>(child_ps).m_CurrentLifetime >= 5.0f)
-				m_registry->DestroyEntity(particle_system_object);
+			// check if the parent is tagged Particle
+			if (particleSystemsView.get<Components::Tag>(ps_root).m_tag == "Particle")
+			{
+				auto& ps = particleSystemsView.get<Components::ParticleSystem>(particleSystem);
+
+				// check life time of the particle system if more than max life then delete
+				if (ps.m_CurrentLifetime >= ps.m_MaxLife)
+					m_registry->DestroyEntity(ps_root);
+			}
+		}
+		else
+		{
+			// check if the this object is tagged Particle
+			if (particleSystemsView.get<Components::Tag>(particleSystem).m_tag == "Particle")
+			{
+				auto& ps = particleSystemsView.get<Components::ParticleSystem>(particleSystem);
+
+				// check life time of the particle system if more than max life then delete
+				if (ps.m_CurrentLifetime >= ps.m_MaxLife)
+					m_registry->DestroyEntity(particleSystem);
+			}
 		}
 	}
 }
