@@ -55,6 +55,8 @@ namespace Scripting
         TurretGroup seventeen_small_group = new TurretGroup();
 
         List<TurretGroup> Total_turret_groups = new List<TurretGroup>();
+
+        uint playerID;
         public TurretController()
         {
             // initialize private variables here
@@ -66,7 +68,7 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-
+            playerID = ECS.FindEntityWithName("PlayerShip");
             // Initialise the The individual controller with thier timer
             if (_entityID == ECS.FindEntityWithName("GatlingTurretGroup1"))
             {
@@ -317,7 +319,10 @@ namespace Scripting
         }
         public override void OnTriggerEnter(uint id)
         {
-            ActivateTurretGroup(entityID);
+            if(id == playerID)
+            {
+                ActivateTurretGroup(entityID);
+            }
         }
         public override void OnTriggerExit(uint id)
         {
