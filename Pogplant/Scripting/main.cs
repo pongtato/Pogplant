@@ -44,6 +44,11 @@ namespace Scripting
             return new GameEndingTrigger();
         }
 
+        public static DashboardScreen DashboardScreen()
+        {
+            return new DashboardScreen();
+        }
+
         public static DummyScript DummyScript()
         {
             return new DummyScript();

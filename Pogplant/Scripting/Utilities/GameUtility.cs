@@ -61,6 +61,8 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void IncreaseScorefromEnv(uint entityID);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void UpdateDashboardFace(uint entityID, uint face);
 
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")
         {

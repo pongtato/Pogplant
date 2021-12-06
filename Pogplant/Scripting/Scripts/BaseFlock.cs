@@ -10,11 +10,11 @@ namespace Scripting
     public class BaseFlock : MonoBehaviour
     {
         uint PlayerBox = 0;
+        uint DashboardScreenID;
         public float health = 20.0f;
 
         float deathAnimationTime = 4.0f; // seconds
         bool isAlive = true;
-
 
         public BaseFlock()
         {
@@ -26,6 +26,8 @@ namespace Scripting
         {
             entityID = _entityID;
             PlayerBox = ECS.FindEntityWithName("PlayerBox");
+            DashboardScreenID = ECS.FindEntityWithName("DashboardScreenFace");
+            Console.WriteLine("Dashboard ID: " + DashboardScreenID);
         }
 
         public override void Start()
@@ -69,6 +71,7 @@ namespace Scripting
             else
             {
                 GameUtilities.IncreaseScorefromEnv(PlayerBox);
+                GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
                 HandleDeath();
             }
         }

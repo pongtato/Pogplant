@@ -43,13 +43,14 @@ namespace Scripting
         private uint bonus_score = 1;                                   //Bonus score
         private int bonus_count;                                     
         private const int bonus_increment_requirement = 5;              //Increase bonus everytime this amount of enemies is killed
-
+        uint DashboardScreenID;
         // Start is called before the first frame update
         public void Start()
         {
             // Initialize waypoint dictionary
             waypoints = InitWaypointGroups();
             InitMap();
+            DashboardScreenID = ECS.FindEntityWithName("DashboardScreenFace");
         }
 
         // This function creates waypoints based on the file and parents it to a enemy_waypoint_group object
@@ -193,8 +194,9 @@ namespace Scripting
         public void DeleteEnemyInstance(uint id, bool isDiedFromPlayer)
         {
             if (isDiedFromPlayer)
-                AddScore();
-
+            {
+                AddScore(true);
+            }
             enemies_to_delete.Add(id);
         }
 
@@ -242,16 +244,28 @@ namespace Scripting
             }
         }
 
-        public void AddScore()
+        public void AddScore(bool increment)
         {
-            ++bonus_count;
-            if (bonus_count >= bonus_increment_requirement)
+            //Increase score
+            if (increment)
+            {
+                ++bonus_count;
+                if (bonus_count >= bonus_increment_requirement)
+                {
+                    bonus_count = 0;
+                    score += bonus_score;
+                    ++bonus_score;
+                }
+                ++score;
+
+                GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
+            }
+            //Decrease score
+            else
             {
                 bonus_count = 0;
-                score += bonus_score;
-                ++bonus_score;
+                --score;
             }
-            ++score;
 
             GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
         }

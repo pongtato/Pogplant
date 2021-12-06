@@ -70,9 +70,6 @@ namespace Scripting
         private float shipPitchMultiplier = 3.5f;
         private float shipRollMultiplier = 3.5f;
 
-        private float cameraShakeInitMultiplier = 0.005f;
-        private float cameraShakeMagMultiplier = 5f;
-
         //How much ship should roll based off rotation from the spline
         //private float shipRollMultiplierRotation = 0.25f;
         
@@ -88,6 +85,7 @@ namespace Scripting
         //EnemyManager enemyManager = new EnemyManager();
 
         bool isAlive = true;
+        uint DashboardScreenID;
 
         public PlayerScript()
         {
@@ -99,6 +97,7 @@ namespace Scripting
             entityID = _entityID;
             shipCameraEntity = ECS.FindEntityWithName("PlayerCam");
             boxEntityID = ECS.FindEntityWithName("PlayerBox");
+            DashboardScreenID = ECS.FindEntityWithName("DashboardScreenFace");
             ECS.PlayAudio(shipCameraEntity, 0);
             boxCollider = ECS.GetComponent<BoxCollider>(boxEntityID);
             lastPosition = ECS.GetGlobalPosition(entityID);
@@ -337,7 +336,8 @@ namespace Scripting
         public override void OnTriggerEnter(uint id)
         {
             //Console.WriteLine(" Other ID" + id);
-            
+            //string tag =  ECS.GetComponent<Tag>(id);
+
         }
 
         public override void OnTriggerExit(uint id)
@@ -370,12 +370,10 @@ namespace Scripting
             }
 
             Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
-            
+            GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
             ECS.PlayAudio(shipCameraEntity, 2);
 
-            //Triggers a random camera shake upon taking damage, scales with damage taken
-            TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage),
-                new Vector3(GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier), 1f);
+            TriggerCameraShake(new Vector3(GetRandFloat() * 0.05f, GetRandFloat() * 0.05f, GetRandFloat() * 0.05f), new Vector3(GetRandFloat() * 5f, GetRandFloat() * 5f, GetRandFloat() * 5f), 1f);
         }
 
         void HandleDeath()

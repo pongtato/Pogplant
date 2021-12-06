@@ -43,6 +43,7 @@ namespace Scripting
         bool isFiring = false;
         bool isAlive = true;
         float deathAnimationTime = 4.0f; // seconds
+        uint DashboardScreenID;
 
 
         public BaseTurret()
@@ -56,6 +57,7 @@ namespace Scripting
             entityID = _entityID;
             turret_muzzle = ECS.FindChildEntityWithName(entityID, "Turret_Muzzle");
             PlayerBox = ECS.FindEntityWithName("PlayerBox");
+            DashboardScreenID = ECS.FindEntityWithName("DashboardScreenFace");
         }
 
         public override void Start()
@@ -133,6 +135,7 @@ namespace Scripting
             else
             {
                 GameUtilities.IncreaseScorefromEnv(PlayerBox);
+                GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
                 HandleDeath();
             }
         }

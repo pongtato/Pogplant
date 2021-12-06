@@ -9,7 +9,9 @@ namespace Scripting
     public class EnvDamage : MonoBehaviour
     {
         uint Player;
+        
         float damage = 20.0f;
+
         public EnvDamage()
         {
         }
@@ -37,7 +39,6 @@ namespace Scripting
             if (id == Player)
             {
                 Console.WriteLine("Take Env Dmg");
-                GameUtilities.PlayerTakeDamage(Player, damage);
             }
         }
         public override void OnTriggerExit(uint id)

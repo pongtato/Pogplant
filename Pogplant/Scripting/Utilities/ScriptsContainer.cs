@@ -32,6 +32,7 @@ namespace Scripting
             scriptNames.Add("DummyScript");
             scriptNames.Add("GameOverScreen");
             scriptNames.Add("GameEndingTrigger");
+            scriptNames.Add("DashboardScreen");
         }
 
         public string GetScriptNameElement(int index)

@@ -56,6 +56,7 @@
     <Compile Include="Scripts\BaseGattling.cs" />
     <Compile Include="Scripts\BaseTurret.cs" />
     <Compile Include="Scripts\CatmullRomSpline.cs" />
+    <Compile Include="Scripts\DashboardScreen.cs" />
     <Compile Include="Scripts\DummyScript.cs" />
     <Compile Include="Scripts\EncounterManager.cs" />
     <Compile Include="Scripts\EncounterSystemDriver.cs" />
