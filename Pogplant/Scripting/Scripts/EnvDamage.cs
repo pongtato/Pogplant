@@ -10,6 +10,8 @@ namespace Scripting
     {
         uint Player;
         float damage = 20.0f;
+        uint DashboardScreenID;
+
         public EnvDamage()
         {
         }
@@ -17,6 +19,7 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             Player = ECS.FindEntityWithName("PlayerShip");
+            DashboardScreenID = ECS.FindEntityWithName("DashboardScreenFace");
         }
 
         public override void Start()
@@ -37,7 +40,7 @@ namespace Scripting
             if (id == Player)
             {
                 Console.WriteLine("Take Env Dmg");
-                GameUtilities.PlayerTakeDamage(Player, damage);
+                GameUtilities.PlayerTakeDamage(Player, damage, DashboardScreenID, 2);
             }
         }
         public override void OnTriggerExit(uint id)
