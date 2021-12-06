@@ -65,30 +65,11 @@ namespace Pogplant
 			"Resources/Textures/UI"
 		);
 
-		TexLoader::LoadTexture
-		(
-			"AI_Happy.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"AI_Hurt.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"AI_Neutral.dds",
-			"Resources/Textures/UI"
-		);
-
 		TexLoader::LoadTextureSRGB
 		(
 			"Shoot_VFX.dds",
 			"Resources/Textures/VFX"
 		);
-
 
 		TexLoader::LoadTextureSRGB
 		(
