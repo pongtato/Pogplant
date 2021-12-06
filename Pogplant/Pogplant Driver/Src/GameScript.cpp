@@ -303,6 +303,32 @@ namespace Scripting
 		}
 	}
 
+	void ObstaclesCollision(entt::entity object, entt::entity other)
+	{
+		auto player_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ColliderIdentifier>(object);
+		auto other_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ColliderIdentifier>(other);
+
+		int playerLayer = PogplantDriver::Application::GetInstance().m_sPhysicsSystem.GetCollisionLayer("PLAYER");
+		if (other_collider && other_collider->collisionLayer == playerLayer)
+		{
+			std::swap(player_collider, other_collider);
+			std::swap(object, other);
+		}
+
+		if (player_collider && player_collider->collisionLayer == playerLayer)
+		{
+			if (other_collider && other_collider->collisionLayer == PogplantDriver::Application::GetInstance().m_sPhysicsSystem.GetCollisionLayer("OBSTACLES"))
+			{
+				auto player_object_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(object);
+
+				if (player_object_script && player_object_script->m_ScriptTypes.contains("PlayerScript"))
+				{
+					SSH::InvokeFunction("PlayerScript", "TakeDamage", object, 30.f);
+				}
+			}
+		}
+	}
+
 	void TriggerWave(entt::entity object, entt::entity other)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
@@ -350,6 +376,7 @@ namespace Scripting
 
 		PlayerProjectileCollision(object, other);
 		EnemyProjectileCollision(object, other);
+		ObstaclesCollision(object, other);
 		TriggerWave(object, other);
 	}
 	glm::vec3 GetForwardVector(std::uint32_t entityID)

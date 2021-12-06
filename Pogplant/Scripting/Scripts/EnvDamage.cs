@@ -9,7 +9,7 @@ namespace Scripting
     public class EnvDamage : MonoBehaviour
     {
         uint Player;
-        float damage = 10.0f;
+        float damage = 20.0f;
         public EnvDamage()
         {
         }
