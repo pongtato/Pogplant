@@ -59,20 +59,17 @@ namespace Scripting
 	}
 
 	// Position is the player local position, Rotation is player local rotation
-	void FollowPlayerCam(glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime)
+	void FollowPlayerCam(std::uint32_t player_cam, std::uint32_t player_box, std::uint32_t playerShip, glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime)
 	{
 		//Offset the camera based on the box world position
-		entt::entity player_cam = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerCam");
-		entt::entity player_box = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerBox");
-		entt::entity playerShip = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerShip");
 		if (player_cam != entt::null && player_box != entt::null)
 		{
-			auto box_pos = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(player_box);
+			auto box_pos = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>((entt::entity)player_box);
 			//std::cout << "Rotation: " << box_pos->m_rotation.x << ", " << box_pos->m_rotation.y << ", " << box_pos->m_rotation.z << std::endl;
 
-			auto playerTransform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(playerShip);
+			auto playerTransform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>((entt::entity)playerShip);
 
-			auto cam_comp = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Camera>(player_cam);
+			auto cam_comp = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Camera>((entt::entity)player_cam);
 			//Account for the offset 0.01f that is hardcoded
 
 			//Hardcoded until i find a better way to save the inspector camera variables

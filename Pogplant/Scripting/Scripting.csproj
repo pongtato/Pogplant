@@ -72,6 +72,7 @@
     <Compile Include="Scripts\FlockController.cs" />
     <Compile Include="Scripts\TurretController.cs" />
     <Compile Include="Utilities\DebugUtilities.cs" />
+    <Compile Include="Utilities\MathUtils.cs" />
     <Compile Include="Utilities\ScriptsContainer.cs" />
     <Compile Include="Utilities\Vector3.cs" />
     <Compile Include="Utilities\DebugDraw.cs" />

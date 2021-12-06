@@ -18,6 +18,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Scripting.Utilities;
+
 namespace Scripting
 {
     // Player script class
@@ -69,7 +71,7 @@ namespace Scripting
         private float shipRollMultiplier = 3.5f;
 
         //How much ship should roll based off rotation from the spline
-        private float shipRollMultiplierRotation = 0.25f;
+        //private float shipRollMultiplierRotation = 0.25f;
         
 
         //// THIS IS ONLY FOR TESTING + EXAMPLE PURPOSES
@@ -98,6 +100,7 @@ namespace Scripting
             boxCollider = ECS.GetComponent<BoxCollider>(boxEntityID);
             lastPosition = ECS.GetGlobalPosition(entityID);
             targetRotation = ECS.GetComponent<Transform>(entityID).Rotation;
+            m_initialCameraPosition = ECS.GetComponent<Transform>(shipCameraEntity).Position;
         }
 
         public override void Start()
@@ -231,69 +234,55 @@ namespace Scripting
             transform.Position.Z = 0.0f;
         }
 
+        private Vector3 m_initialCameraPosition;
+        private Vector3 m_cameraPosition;
+        private Vector3 m_cameraRotation;
+        private Vector3 m_cameraScale;
+
+        bool m_isShaking = false;
+        float m_shakeTimer = 0f;
+        float m_shakeAddUnit = 1f;
+        Vector3 m_shakeMagnitude;
+        Vector3 m_shakeInit;
+
+        
+
+        public void TriggerCameraShake(Vector3 initialShake, Vector3 shakeAmount, float duration)
+		{
+            if (duration < float.Epsilon)
+                return;
+
+            m_isShaking = true;
+            m_shakeInit = initialShake;
+            m_shakeMagnitude = shakeAmount;
+            m_shakeAddUnit = 1 / duration;
+            m_shakeTimer = 0f;
+        }
+
         public override void LateUpdate(ref Transform transform, ref Rigidbody rigidbody, ref float dt)
         {
-            //Vector3 Rotation_Concat = Vector3.Zero();
+            //Camera shake movement
+            GameUtilities.FollowPlayerCam(shipCameraEntity, boxEntityID, entityID, transform.Position, transform.Rotation, dt);
 
-            //float adjustedAngle = transform.Rotation.X > 180.0f ? transform.Rotation.X - 360.0f : transform.Rotation.X;
-            //current_vertical_dampening = max_rotate_angle / (Math.Abs(adjustedAngle) + (dampening_reduction * dampening_modifier)) * 2f;
-            //if ((adjustedAngle > -max_rotate_angle && vertical_input > 0) || (adjustedAngle < max_rotate_angle && vertical_input < 0))
-            //{
-            //    Vector3 Rotatation_Vertical = new Vector3((max_rotate_angle * vertical_input * -current_vertical_dampening * rotation_speed_vertical * dt), 0.0f, 0.0f);
-            //    Rotation_Concat += Rotatation_Vertical;
-            //    timeCount = 0;
-            //}
+            if(m_isShaking)
+			{
+                ECS.GetTransformECS(shipCameraEntity, ref m_cameraPosition, ref m_cameraRotation, ref m_cameraScale);
 
-            //adjustedAngle = transform.Rotation.Y > 180.0f ? transform.Rotation.Y - 360.0f : transform.Rotation.Y;
-            //current_horizontal_dampening = max_rotate_angle / (Math.Abs(adjustedAngle) + (dampening_reduction * dampening_modifier));
-
-            //if ((adjustedAngle > -max_rotate_angle && horizontal_input < 0) || (adjustedAngle < max_rotate_angle && horizontal_input > 0))
-            //{
-            //    Vector3 Rotatation_Horizontal = new Vector3(0.0f, (max_rotate_angle * horizontal_input * current_horizontal_dampening * rotation_speed_horizontal * dt), 0.0f);
-            //    Rotation_Concat += Rotatation_Horizontal;
-            //    timeCount = 0;
-            //}
-
-            //transform.Rotation += Rotation_Concat;
-            //float adjustedRoll = (transform.Rotation.Y > 180.0f ? transform.Rotation.Y - 360.0f : transform.Rotation.Y) * camera_roll;
-            //transform.Rotation = new Vector3(transform.Rotation.X, transform.Rotation.Y, adjustedRoll);
+                m_shakeTimer += dt * m_shakeAddUnit;
 
 
-            //timeCount += dt * ship_follow_rot_speed;
-            //ship_transform.localRotation = Vector3.Lerp(ship_transform.localRotation, transform.localRotation, timeCount);
+                m_cameraPosition.X = m_initialCameraPosition.X + m_shakeInit.X * (1f - Ease.EaseOutElastic(m_shakeTimer, m_shakeMagnitude.X));
+                m_cameraPosition.Y = m_initialCameraPosition.Y + m_shakeInit.Y * (1f - Ease.EaseOutElastic(m_shakeTimer, m_shakeMagnitude.Y));
+                m_cameraPosition.Z = m_initialCameraPosition.Z + m_shakeInit.Z * (1f - Ease.EaseOutElastic(m_shakeTimer, m_shakeMagnitude.Z));
 
-            //if (vertical_input == 0.0f && horizontal_input == 0.0f)
-            //{
-            //    //Harcoded for now, if the box changes the rotation then i will edit this
-            //    transform.Rotation = Vector3.RotateTowards(transform.Rotation, new Vector3(0.0f,0.0f,0.01f), revert_speed * dt);
-            //}
+                if (m_shakeTimer >= 1f)
+                {
+                    m_isShaking = false;
+                    m_cameraPosition = m_initialCameraPosition;
+                }
 
-
-            //m_Distance = Vector3.Distance(FollowTarget.transform.position, transform.position);
-            //float step = m_MoveSpeed * Time.deltaTime;
-
-            //transform.position = Vector3.Lerp(transform.position, FollowTarget.transform.position, step);
-
-
-            //if (m_TrackRotation == true)
-            //{
-            //    transform.rotation = FollowTarget.transform.rotation;
-            //}
-
-            GameUtilities.FollowPlayerCam(transform.Position, transform.Rotation, dt);
-
-            //p_fire_timer += dt;
-            //if ((InputUtility.onKeyHeld("SHOOT")))
-            //{
-            //    if (p_fire_timer >= p_fireRate)s
-            //    {
-            //        // Call C++ side bullet firing
-            //        GameUtilities.FirePlayerBullet(entityID, transform.Position, transform.Rotation);
-            //        ECS.PlayAudio(shipCameraEntity, 1);
-            //        p_fire_timer = 0.0f;
-            //    }
-            //}
-
+                ECS.SetTransformECS(shipCameraEntity, m_cameraPosition, m_cameraRotation, m_cameraScale);
+            }
         }
 
         public void SpawnWave()
@@ -381,6 +370,8 @@ namespace Scripting
             Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
             
             ECS.PlayAudio(shipCameraEntity, 2);
+
+            TriggerCameraShake(new Vector3(GetRandFloat() * 0.05f, GetRandFloat() * 0.05f, GetRandFloat() * 0.05f), new Vector3(GetRandFloat() * 5f, GetRandFloat() * 5f, GetRandFloat() * 5f), 1f);
         }
 
         void HandleDeath()
