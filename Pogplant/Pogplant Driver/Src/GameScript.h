@@ -34,6 +34,9 @@ namespace Scripting
 
 	void SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier);
 
+	//just store the object that contains the EncounterSystemDriver
+	void IncreaseScorefromEnv(std::uint32_t entityID);
+
 	void UpdateScore(std::uint32_t text_object, std::uint32_t score);
 
 	// Get the player healths

@@ -231,6 +231,14 @@ namespace Scripting
 				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
 				SSH::InvokeFunction("BaseGattling", "TakeDamage", other, player_projectile_script->m_Damage);
 			}
+
+			bool enemy_flock = enemy_object_script->m_ScriptTypes.contains("BaseFlock");
+			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy_flock)
+			{
+				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
+				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
+				SSH::InvokeFunction("BaseFlock", "TakeDamage", other, player_projectile_script->m_Damage);
+			}
 		}
 		if (player_projectile_script)
 		{
@@ -421,12 +429,20 @@ namespace Scripting
 				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseTurret", "GetAlive", id);
 			if (scriptable->m_ScriptTypes.contains("BaseGattling"))
 				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseGattling", "GetAlive", id);
+			if (scriptable->m_ScriptTypes.contains("BaseFlock"))
+				isAlive = SSH::InvokeFunctionWithReturn<bool>("BaseFlock", "GetAlive", id);
 		}
 		if(!scriptable)
 		{
 			isAlive = SSH::InvokeFunctionWithReturn<bool>("EncounterSystemDriver", "GetAlive" , player_id, entityID);
 		}
 		return isAlive;
+	}
+
+	void IncreaseScorefromEnv(std::uint32_t entityID)
+	{
+		entt::entity encounterdriverID = static_cast<entt::entity>(entityID);
+		SSH::InvokeFunction("EncounterSystemDriver", "AddScore", encounterdriverID);
 	}
 
 	void Scripting::UpdateScore(std::uint32_t text_object, std::uint32_t score)

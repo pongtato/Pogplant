@@ -117,5 +117,10 @@ namespace Scripting
         {
             return new BaseGattling();
         }
+
+        public static BaseFlock BaseFlock()
+        {
+            return new BaseFlock();
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace Scripting
             //scriptNames.Add("EnemyManager");
             //scriptNames.Add("BaseEnemy");
             scriptNames.Add("BaseTurret");
+            scriptNames.Add("BaseFlock");
             scriptNames.Add("BaseGattling");
             scriptNames.Add("TurretController");
             scriptNames.Add("MissileController");
