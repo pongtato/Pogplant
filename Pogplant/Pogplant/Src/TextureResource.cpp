@@ -61,6 +61,18 @@ namespace Pogplant
 
 		TexLoader::LoadTextureSRGB
 		(
+			"GameLogo.dds",
+			"Resources/Textures/UI"
+		);
+
+		TexLoader::LoadTextureSRGB
+		(
+			"MenuArrow.dds",
+			"Resources/Textures/UI"
+		);
+
+		TexLoader::LoadTextureSRGB
+		(
 			"DarkSmoke.dds",
 			"Resources/Textures/Smoke"
 		);
