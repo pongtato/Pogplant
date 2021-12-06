@@ -8,6 +8,7 @@ namespace Scripting
 {
     public class FlockController : MonoBehaviour
     {
+        uint playerID = 0;
         public class FlockGroup
         {
             public uint ParentID = 0;
@@ -20,13 +21,15 @@ namespace Scripting
             public uint Flock6 = 0;
 
             public uint EndPos = 0;
-            public Vector3 vec3_EndPos = new Vector3(); // Local Position
             public Vector3 vec3_Global_EndPos = new Vector3(); // Global Position
             public float accumulated_dt = 0.0f;
 
             public float travelling_speed = 0.0f;
             public List<uint> Indi_Flock = new List<uint>();
             public List<Vector3> FlockStart = new List<Vector3>();
+            public Vector3 normalized_distance = new Vector3();
+            public float distance = 0;
+            public float accumulated_distance = 0;
         }
 
         FlockGroup first_group = new FlockGroup();
@@ -41,12 +44,12 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-
+            playerID = ECS.FindEntityWithName("PlayerShip");
             // Initialise the The individual controller with thier timer
             if (_entityID == ECS.FindEntityWithName("FlockGroup1"))
             {
                 first_group.ParentID = _entityID;
-                first_group.travelling_speed = 0.5f;
+                first_group.travelling_speed = 5f;
 
 
 
@@ -72,20 +75,18 @@ namespace Scripting
                 //If flocking start enabled
                 if (Total_flock_groups[i].ActivateFlock)
                 {
-                    Total_flock_groups[i].accumulated_dt += dt * Total_flock_groups[i].travelling_speed;
                     for (int j = 0; j < Total_flock_groups[i].Indi_Flock.Count; ++j)
                     {
-                        Vector3 lerp_val = Vector3.Lerp(Total_flock_groups[i].FlockStart[j], Total_flock_groups[i].vec3_EndPos, Total_flock_groups[i].accumulated_dt);
-                        Transform.LookAt(Total_flock_groups[i].Indi_Flock[j], Total_flock_groups[i].vec3_Global_EndPos);
                         Transform current_flock = ECS.GetComponent<Transform>(Total_flock_groups[i].Indi_Flock[j]);
-                        Vector3 global_rot = ECS.GetGlobalRotation(Total_flock_groups[i].Indi_Flock[j]);
+                        Vector3 Globalpos = ECS.GetGlobalPosition(Total_flock_groups[i].Indi_Flock[j]);
+                        current_flock.Position += Total_flock_groups[i].normalized_distance * dt * Total_flock_groups[i].travelling_speed;
+                        ECS.SetTransformECS(Total_flock_groups[i].Indi_Flock[j], current_flock.Position, current_flock.Rotation, current_flock.Scale);
+                        if (Vector3.Distance(Globalpos, Total_flock_groups[i].FlockStart[j]) > Total_flock_groups[i].distance)
+                        {
+                            Total_flock_groups[i].ActivateFlock = false;
+                        }
+                    }
 
-                        ECS.SetTransformECS(Total_flock_groups[i].Indi_Flock[j], lerp_val, global_rot, current_flock.Scale);
-                    }
-                    if(Total_flock_groups[i].accumulated_dt > 1.0f)
-                    {
-                        Total_flock_groups[i].ActivateFlock = false;
-                    }
                 }
             }
         }
@@ -96,7 +97,10 @@ namespace Scripting
 
         public override void OnTriggerEnter(uint id)
         {
-            ActivateFlockGroup(entityID);
+            if (id == playerID)
+            {
+                ActivateFlockGroup(entityID);
+            }
         }
         public override void OnTriggerExit(uint id)
         {
@@ -118,11 +122,12 @@ namespace Scripting
                     uint FlockNo = ECS.FindChildEntityWithName(entityID, loop_name);
                     Total_flock_groups[i].Indi_Flock.Add(FlockNo);
                     //Get child position for proper lerping
-                    Total_flock_groups[i].FlockStart.Add(ECS.GetComponent<Transform>(FlockNo).Position);
+                    Total_flock_groups[i].FlockStart.Add(ECS.GetGlobalPosition(FlockNo));
                     //Add MiniFlock end
                     Total_flock_groups[i].EndPos = ECS.FindChildEntityWithName(Parent_ID, "EndPos");
-                    Total_flock_groups[i].vec3_EndPos = ECS.GetComponent<Transform>(Total_flock_groups[i].EndPos).Position;
                     Total_flock_groups[i].vec3_Global_EndPos = ECS.GetGlobalPosition(Total_flock_groups[i].EndPos);
+                    Total_flock_groups[i].distance = Vector3.Distance(Total_flock_groups[i].vec3_Global_EndPos, Total_flock_groups[i].FlockStart[j-1]);
+                    Total_flock_groups[i].normalized_distance = Vector3.Normalise(Total_flock_groups[i].vec3_Global_EndPos - Total_flock_groups[i].FlockStart[j - 1]);
                 }
             }
         }
