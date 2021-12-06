@@ -383,6 +383,8 @@ namespace Components
 		{
 			CurveVariable();
 			CurveVariable(const std::vector<ImVec2>& _CurvePoints, float _CurveMin, float _CurveMax, float _MultiMin, float _MultiMax);
+			float CurveValueSmooth(float _P, int _Maxpoints, const ImVec2* _Points);
+			void Spline(const float* _Key, int _Num, int _Dim, float _T, float* _V);
 
 			//enum { m_MaxPoints = 9, m_DataPoints = 128 };
 
@@ -403,6 +405,14 @@ namespace Components
 			inline void init(void)
 			{
 				m_CurveData.resize(m_MaxPoints);
+
+				int smoothness = static_cast<int>(m_CurveData.size());
+				for (int i = 0; i <= (smoothness - 1); ++i)
+				{
+					float qx = (i + 1) / float(smoothness);
+					float qy = 1 - CurveValueSmooth(qx, static_cast<int>(m_CurvePoints.size() + 1), m_CurvePoints.data());
+					m_CurveData[i] = qy;
+				}
 			}
 		};
 

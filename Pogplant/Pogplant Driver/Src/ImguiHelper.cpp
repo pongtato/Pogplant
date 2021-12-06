@@ -2559,7 +2559,8 @@ namespace PogplantDriver
 						{ ImGui::GetContentRegionMax().x * 0.85f,256 },
 						static_cast<int>(pSystem->m_Scale.m_MaxPoints - 1),
 						pSystem->m_Scale.m_CurvePoints.data(),
-						pSystem->m_Scale.m_CurveData, scaleItem
+						pSystem->m_Scale.m_CurveData,
+						scaleItem
 					);
 					ImGui::TreePop();
 				}

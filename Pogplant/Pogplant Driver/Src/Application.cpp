@@ -262,8 +262,6 @@ void Application::InitialiseDebugObjects()
 	entity.AddComponent<Components::Point_Light>(Point_Light{ color, intensity, linear, quadratic });
 	ConstructModel(entity, sphereModel, &sphereModel->m_Meshes.begin()->second, color, glm::vec3(1.0f), false, true);
 
-
-
 	pos = { 21.0f, 10.0f, 10.0f };
 	color = { 1.0f, 0.0f, 0.0f };
 	entity = m_activeECS->CreateEntity("Red light", pos, glm::vec3{ 0 }, scale);
