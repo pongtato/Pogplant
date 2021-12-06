@@ -106,14 +106,14 @@ namespace Scripting
             if (enemy_to_target.Count == 0)
             {
                 //Shoot straight if there is no enemy
-                foreach (var Turrret in Turrets)
+                for (int i = 0; i < Turrets.Count; ++i)
                 {
                     Transform TurretTrans = new Transform();
-                    ECS.GetTransformECS(Turrret, ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
+                    ECS.GetTransformECS(Turrets[i], ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
                     TurretTrans.Rotation = new Vector3(0, 0, 0);
-                    ECS.SetTransformECS(Turrret, TurretTrans.Position, TurretTrans.Rotation, TurretTrans.Scale);
+                    ECS.SetTransformECS(Turrets[i], TurretTrans.Position, TurretTrans.Rotation, TurretTrans.Scale);
+                    ECS.SetTransformECS(ReticleGroup[i], start_position, start_position, Small_hide_reticle);
                 }
-
             }
             if (enemy_to_target.Count != 0)
             {
