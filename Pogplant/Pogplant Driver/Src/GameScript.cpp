@@ -324,7 +324,7 @@ namespace Scripting
 				std::swap(object, other);
 			}
 
-			if (player_collider->collisionLayer == "PLAYER" && other_collider->collisionLayer == "TRIGGERS")
+			if (player_collider->collisionLayer == "PLAYER" && other_collider->collisionLayer == "WAVETRIGGERS")
 			{
 				auto tag = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Tag>(other);
 
