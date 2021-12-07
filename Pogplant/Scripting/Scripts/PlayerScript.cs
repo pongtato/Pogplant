@@ -135,6 +135,12 @@ namespace Scripting
 
         public override void Update(float dt)
         {
+            //Return to main menu key
+            if (InputUtility.onKeyTriggered("ESCAPE"))
+            {
+                GameUtilities.LoadScene("MainMenu");
+            }
+
             ECS.GetTransformECS(entityID, ref playerTrans.Position, ref playerTrans.Rotation, ref playerTrans.Scale);
             Camera.GetCamera(shipCameraEntity, ref camera.m_Yaw, ref camera.m_Pitch, ref camera.m_Roll);
 
