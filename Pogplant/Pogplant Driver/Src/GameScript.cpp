@@ -584,10 +584,28 @@ namespace Scripting
 			return;
 
 		auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(text_object));
-
+		
+		static constexpr size_t numPadding = 8;
+		static std::string scoreText;
 		if (text)
 		{
-			text->m_Text = std::to_string(score);
+			scoreText = std::to_string(score);
+			int limit = (int)numPadding - (int)scoreText.size();
+
+			if (limit < 0)
+			{
+				text->m_Text = scoreText;
+			}
+			else
+			{
+				text->m_Text = "";
+				for (size_t i = 0; i < limit; i++)
+				{
+					text->m_Text += "0";
+				}
+
+				text->m_Text += scoreText;
+			}
 		}
 	}
 

@@ -6,7 +6,7 @@ Pogplant.sln is the main project, and PogplantDriver project should be the start
 ScriptingBuild.sln is the project for the C# scripts, and can be added/built while the editor is still running.
 
 To play the game in our editor, either remove #define PPD_EDITOR_BUILD, or do
-file->open..-> and open Level_01_Bigger.json in Resources/Scenes, then press play.
+file->open..-> and open Level01_M3_Blockout.json in Resources/Scenes, then press play.
 
 
 Controls for engine side:
@@ -14,7 +14,7 @@ Controls for engine side:
 Keyboard
 
 Move - WASD
-Fire - Spacebar
+Fire - Spacebar/Left mouse button
 
 Xbox Controller:
 
