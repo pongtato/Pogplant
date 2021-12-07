@@ -77,11 +77,14 @@ void GeneralSystem::UpdateGame(float c_dt)
 			}
 			else
 			{
-				auto& ps = particleSystemsView.get<Components::ParticleSystem>(particleSystem);
+				if (particleSystemsView.get<Components::Tag>(particleSystem).m_tag == "Particle")
+				{
+					auto& ps = particleSystemsView.get<Components::ParticleSystem>(particleSystem);
 
-				// check life time of the particle system if more than max life then delete
-				if (ps.m_CurrentLifetime >= ps.m_MaxLife)
-					m_registry->DestroyEntity(particleSystem);
+					// check life time of the particle system if more than max life then delete
+					if (ps.m_CurrentLifetime >= ps.m_MaxLife)
+						m_registry->DestroyEntity(particleSystem);
+				}
 			}
 		}
 		else
