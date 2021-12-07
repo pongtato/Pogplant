@@ -69,7 +69,7 @@ namespace SSH
 	}
 	void LookAtClamped(std::uint32_t self_entityID, glm::vec3& target)
 	{
-		const auto& self_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(self_entityID));
+		auto self_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(self_entityID));
 		self_trans->LookAtClamped(target);
 	}
 
@@ -163,6 +163,30 @@ namespace SSH
 		if (rb)
 		{
 			rb->AddForce(direction);
+		}
+	}
+
+	void GetCamera(std::uint32_t entityID, float& yaw, float& pitch, float& roll)
+	{
+		auto cam = ScriptSystem::GetECS()->GetReg().try_get<Components::Camera>(static_cast<entt::entity>(entityID));
+
+		if (cam)
+		{
+			yaw = cam->m_Yaw;
+			pitch = cam->m_Pitch;
+			roll = cam->m_Roll;
+		}
+	}
+
+	void SetCamera(std::uint32_t entityID, float yaw, float pitch, float roll)
+	{
+		auto cam = ScriptSystem::GetECS()->GetReg().try_get<Components::Camera>(static_cast<entt::entity>(entityID));
+
+		if (cam)
+		{
+			cam->m_Yaw = yaw;
+			cam->m_Pitch = pitch;
+			cam->m_Roll = roll;
 		}
 	}
 

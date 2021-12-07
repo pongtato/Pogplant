@@ -367,7 +367,7 @@ namespace Scripting
         {
         }
 
-        public override void Update(ref Transform transform, ref float dt)
+        public override void Update(float dt)
         {
             // Update if trigger box is hit
             if (m_MsGroup.m_Triggered)
@@ -399,7 +399,7 @@ namespace Scripting
                 }
             }
         }
-        public override void LateUpdate(ref Transform transform, ref float dt)
+        public override void LateUpdate(float dt)
         {
 
         }
