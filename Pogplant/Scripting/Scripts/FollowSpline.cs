@@ -31,6 +31,7 @@ namespace Scripting
         private bool isInit = false;
         private bool isEnd = false; //  This is true when we have arrived a the end of the path
         private CatmullRomSpline catmullRom = null;
+        private Transform transform;
 
         public override void Init(ref uint _entityID)
         {
@@ -48,6 +49,12 @@ namespace Scripting
                 DelayToStart = 0.6f;
             else if (ECS.GetTagECS(entityID) == "WPG_4")
                 DelayToStart = 1.4f;
+
+            Vector3 pos = new Vector3();
+            Vector3 rot = new Vector3();
+            Vector3 scale = new Vector3();
+            ECS.GetTransformECS(entityID, ref pos, ref rot, ref scale);
+            transform = new Transform(pos, rot, scale);
         }
 
         // Start is called before the first frame update
@@ -67,25 +74,29 @@ namespace Scripting
         }
 
         // Update is called once per frame
-        public override void Update(ref Transform transform,  ref float dt)
+        public override void Update(float dt)
         {
+            ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
             if (!isInit)
             {
                 // this is to initialize the starting position and rotation to te start of the spline
                 isInit = true;
                 transform.Position = waypoints[0].Position;
                 transform.Rotation = waypoints[0].Rotation;
+                ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
             }
 
             if ((DelayToStart -= dt) <= 0.0f)
-                FollowWaypoints(ref transform, ref dt);
+                FollowWaypoints(dt);
 
             // Debug the spline
             //if (ECS.GetTagECS(entityID) == "Player")
             //    catmullRom.DisplayCatmullRomSplineChain();
+
+            ECS.SetPosition(entityID, transform.Position);
         }
 
-        public override void LateUpdate(ref Transform transform, ref float dt)
+        public override void LateUpdate(float dt)
         {
 
         }
@@ -97,19 +108,18 @@ namespace Scripting
         }
 
         // This function interpolates the gameobjects transform between the current and next waypoint.
-        private void FollowWaypoints(ref Transform transform, ref float dt)
+        private void FollowWaypoints(float dt)
         {
             // Only move if we are not at the end of path.
             if (!isEnd)
             {
-
                 float translation_lerpSpeed = 10.0f;
 
                 UpdateCurrentWaypoint(alpha);
                 time_between_waypoint += dt;
                 alpha = d_alpha * time_between_waypoint; // Calculate the current alpha between the 2 waypoints
                 transform.Position += (Vector3.Lerp(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position, alpha) - transform.Position) * translation_lerpSpeed * dt;
-
+                ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
 
                 float rotation_lerp_speed = 1.5f;
 
@@ -145,10 +155,6 @@ namespace Scripting
         public void SetLockRotation (bool isLock)
         {
             //lockRotation = isLock;
-        }
-
-        public void LateUpdate(ref Transform transform, ref Rigidbody rigidbody)
-        {
         }
 
         public override void OnTriggerEnter(uint id)

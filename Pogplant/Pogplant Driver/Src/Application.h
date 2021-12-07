@@ -7,6 +7,10 @@
 //#define PPD_UPDATE_EDITOR_AS_GAME //Defines if stuff should update as a game even in editor state
 #define PPD_DEBUG_OBJECTS //Whether we should spawn those random debug stuff we using
 
+
+#define FIXEDUPDATEMINTIME 30.f
+#define FIXEDUPDATEMAXTIME 120.f
+
 #define NOMINMAX
 #include "ImguiHelper.h"
 #include "AudioEngine.h"
@@ -158,7 +162,8 @@ namespace PogplantDriver
 		PLAYSTATE m_playState = PLAYSTATE::PLAY;
 		std::string m_genericFilePath;
 		float m_accumulatedFixedTime = 0.f;
-		static constexpr float m_minFixedUpdateTime = 1 / 30.f;
+		static constexpr float m_minFixedUpdateTime = 1 / FIXEDUPDATEMINTIME;
+		static constexpr float m_maxFixedUpdateTime = 1 / FIXEDUPDATEMAXTIME;
 
 		/**************************
 		*

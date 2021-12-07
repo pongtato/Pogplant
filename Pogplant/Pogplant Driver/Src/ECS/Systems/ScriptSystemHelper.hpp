@@ -51,8 +51,14 @@ namespace SSH
 			// Maybe log something here
 			std::cout << "MonoClass not found" << std::endl;
 		}
+		
+		volatile std::string test = scriptName;
+		test;
 
-		MonoMethod* method = mono_class_get_method_from_name(klass, funcName.c_str(), -1);
+		volatile std::string test2 = funcName;
+		test2;
+
+		MonoMethod* method = mono_class_get_method_from_name(klass, funcName.c_str(), (int)sizeof...(args));
 		//MonoMethod* method = FindMethod(klass, funcName, -1);
 		if (method)
 		{
@@ -79,7 +85,7 @@ namespace SSH
 			std::cout << "MonoClass not found" << std::endl;
 		}
 
-		MonoMethod* method = mono_class_get_method_from_name(klass, funcName.c_str(), -1);
+		MonoMethod* method = mono_class_get_method_from_name(klass, funcName.c_str(), (int)sizeof...(args));
 		MonoObject* ptrReturnObj = nullptr;
 
 		if (method)

@@ -85,6 +85,8 @@ namespace Scripting
         public List<GameObject> entityList = new List<GameObject>();
         public List<Tuple<GameObject, GameObject>> childList = new List<Tuple<GameObject, GameObject>>();
         BoxCollider boxCollider;
+        Camera camera;
+        Transform playerTrans;
         //EnemyManager enemyManager = new EnemyManager();
 
         bool isAlive = true;
@@ -108,6 +110,18 @@ namespace Scripting
             targetRotation = ECS.GetComponent<Transform>(entityID).Rotation;
             m_initialCameraPosition = ECS.GetComponent<Transform>(shipCameraEntity).Position;
             VOEntityID = ECS.FindEntityWithName("VO_AudioSource");
+
+            float yaw, pitch, roll;
+            yaw = pitch = roll = 0;
+            Camera.GetCamera(shipCameraEntity, ref yaw, ref pitch, ref roll);
+            camera = new Camera(yaw, pitch, roll);
+
+            Vector3 pos = new Vector3();
+            Vector3 rot = new Vector3();
+            Vector3 scale = new Vector3();
+            ECS.GetTransformECS(entityID, ref pos, ref rot, ref scale);
+            playerTrans = new Transform(pos, rot, scale);
+
             ECS.PlayAudio(VOEntityID, 0);
         }
 
@@ -119,8 +133,11 @@ namespace Scripting
         {
         }
 
-        public override void Update(ref Transform transform, ref float dt)
+        public override void Update(float dt)
         {
+            ECS.GetTransformECS(entityID, ref playerTrans.Position, ref playerTrans.Rotation, ref playerTrans.Scale);
+            Camera.GetCamera(shipCameraEntity, ref camera.m_Yaw, ref camera.m_Pitch, ref camera.m_Roll);
+
             bool rightPushed = InputUtility.onKeyHeld("RIGHT");
             bool leftPushed = InputUtility.onKeyHeld("LEFT");
             bool upPushed = InputUtility.onKeyHeld("UP");
@@ -143,7 +160,7 @@ namespace Scripting
 
             //BoxCollider boxCollider =  ECS.GetComponent<BoxCollider>(boxEntityID);
             Transform boxTransform = ECS.GetComponent<Transform>(boxEntityID);
-            float length = transform.Position.magnitude();
+            float length = playerTrans.Position.magnitude();
 
             Vector3 playerGlobalPos = ECS.GetGlobalPosition(entityID);
             Vector3 boxGlobalPos = ECS.GetGlobalPosition(boxEntityID);
@@ -179,29 +196,20 @@ namespace Scripting
                 }
             }
 
-            if(transform.Position.Y > boxCollider.extends.Y)
+            if(playerTrans.Position.Y > boxCollider.extends.Y)
             {
-                ECS.RigidbodyAddForce(entityID, up_vec * (boxCollider.extends.Y - transform.Position.Y) * 150f);
+                ECS.RigidbodyAddForce(entityID, up_vec * (boxCollider.extends.Y - playerTrans.Position.Y) * 150f);
                 //rigidbody.AddForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 150f);
                 //Console.WriteLine("Exceed +Y bounds");
             }
 
-            if(transform.Position.Y < -boxCollider.extends.Y)
+            if(playerTrans.Position.Y < -boxCollider.extends.Y)
             {
-                ECS.RigidbodyAddForce(entityID, up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 450f);
+                ECS.RigidbodyAddForce(entityID, up_vec * (-boxCollider.extends.Y - playerTrans.Position.Y) * 450f);
                 //rigidbody.AddForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 450f);
                 //Console.WriteLine("Exceed -Y bounds");
             }
 
-            //if(forward_vec.Z > boxCollider.extends.Z)
-            //{
-            //    Console.WriteLine("Exceed +Z bounds");
-            //}
-
-            //if(forward_vec.Z < -boxCollider.extends.Z)
-            //{
-            //    Console.WriteLine("Exceed -Z bounds");
-            //}
             float directionalMag = direc_vector.magnitude();
 
             if (directionalMag > 1.0f)
@@ -256,12 +264,52 @@ namespace Scripting
             //Up down tilt
             targetRotation.X = Vector3.Dot(up_vec, calculatedVelocity) * shipPitchMultiplier;
 
-            transform.Rotation.Y += (targetRotation.Y - transform.Rotation.Y) * shipYawFollowSpeed * dt;
-            transform.Rotation.Z += (targetRotation.Z - transform.Rotation.Z) * shipRollFollowSpeed * dt;
-            transform.Rotation.X += (targetRotation.X - transform.Rotation.X) * shipPitchFollowSpeed * dt;
+            playerTrans.Rotation.Y += (targetRotation.Y - playerTrans.Rotation.Y) * shipYawFollowSpeed * dt;
+            playerTrans.Rotation.Z += (targetRotation.Z - playerTrans.Rotation.Z) * shipRollFollowSpeed * dt;
+            playerTrans.Rotation.X += (targetRotation.X - playerTrans.Rotation.X) * shipPitchFollowSpeed * dt;
 
-            transform.Position.Z = 0.0f;
+            playerTrans.Position.Z = 0.0f;
+
+            Vector3 pos = new Vector3();
+            Vector3 rot = new Vector3();
+            Vector3 scale = new Vector3();
+            ECS.GetTransformECS(boxEntityID, ref pos, ref rot, ref scale);
+            Transform box_pos = new Transform(pos, rot, scale);
+
+            Vector3 rotationTarget = new Vector3(
+                (-box_pos.Rotation.X - playerTrans.Rotation.X),
+                (box_pos.Rotation.Y + playerTrans.Rotation.Y) + 180.0f,
+                -playerTrans.Rotation.Z);
+
+            if (camera.m_Yaw - rotationTarget.Y > 180.0f)
+                camera.m_Yaw -= 360.0f;
+            else if (camera.m_Yaw - rotationTarget.Y < -180.0f)
+                camera.m_Yaw += 360.0f;
+
+            if (camera.m_Pitch - rotationTarget.X > 180.0f)
+                camera.m_Pitch -= 360.0f;
+            else if (camera.m_Pitch - rotationTarget.X < -180.0f)
+                camera.m_Pitch += 360.0f;
+
+            if (camera.m_Roll - rotationTarget.Z > 180.0f)
+                camera.m_Roll -= 360.0f;
+            else if (camera.m_Roll - rotationTarget.Z < -180.0f)
+                camera.m_Roll += 360.0f;
+
+            //Lerps yaw and pitch over time
+            camera.m_Yaw += (rotationTarget.Y - camera.m_Yaw) * dt * 20.0f;
+            camera.m_Pitch += (rotationTarget.X - camera.m_Pitch) * dt * 20.0f;
+            camera.m_Roll += (rotationTarget.Z - camera.m_Roll) * dt * 20.0f;
+
+            Camera.SetCamera(shipCameraEntity, camera.m_Yaw, camera.m_Pitch, camera.m_Roll);
+
+            //Console.WriteLine("Position: " + playerTrans.Position.X + '|' + playerTrans.Position.Y + '|' + playerTrans.Position.Z);
+            //Console.WriteLine("Rotation: " + playerTrans.Rotation.X + '|' + playerTrans.Rotation.Y + '|' + playerTrans.Rotation.Z);
+            //Console.WriteLine("Scale: " + playerTrans.Scale.X + '|' + playerTrans.Scale.Y + '|' + playerTrans.Scale.Z);
+
             ECS.SetVelocity(entityID, playerVel);
+            ECS.SetTransformECS(entityID, playerTrans.Position, playerTrans.Rotation, playerTrans.Scale);
+
         }
 
         private Vector3 m_initialCameraPosition;
@@ -275,8 +323,6 @@ namespace Scripting
         Vector3 m_shakeMagnitude;
         Vector3 m_shakeInit;
 
-        
-
         public void TriggerCameraShake(Vector3 initialShake, Vector3 shakeAmount, float duration)
 		{
             if (duration < float.Epsilon)
@@ -289,17 +335,14 @@ namespace Scripting
             m_shakeTimer = 0f;
         }
 
-        public override void LateUpdate(ref Transform transform, ref float dt)
+        public override void LateUpdate(float dt)
         {
-            //Camera shake movement
-            GameUtilities.FollowPlayerCam(shipCameraEntity, boxEntityID, entityID, transform.Position, transform.Rotation, dt);
 
-            if(m_isShaking)
+            if (m_isShaking)
 			{
                 ECS.GetTransformECS(shipCameraEntity, ref m_cameraPosition, ref m_cameraRotation, ref m_cameraScale);
 
                 m_shakeTimer += dt * m_shakeAddUnit;
-
 
                 m_cameraPosition.X = m_initialCameraPosition.X + m_shakeInit.X * (1f - Ease.EaseOutElastic(m_shakeTimer, m_shakeMagnitude.X));
                 m_cameraPosition.Y = m_initialCameraPosition.Y + m_shakeInit.Y * (1f - Ease.EaseOutElastic(m_shakeTimer, m_shakeMagnitude.Y));
@@ -313,6 +356,7 @@ namespace Scripting
 
                 ECS.SetTransformECS(shipCameraEntity, m_cameraPosition, m_cameraRotation, m_cameraScale);
             }
+
         }
 
         public void SpawnWave()

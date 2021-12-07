@@ -237,4 +237,26 @@ namespace Scripting
             centre = _centre;
         }
     }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public class Camera
+    {
+        public float m_Yaw;
+        public float m_Pitch;
+        public float m_Roll;
+
+        public Camera(float yaw, float pitch, float roll)
+        {
+            m_Yaw = yaw;
+            m_Pitch = pitch;
+            m_Roll = roll;
+        }
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetCamera(uint entityID, float yaw, float pitch, float roll);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void GetCamera(uint entityID, ref float yaw, ref float pitch, ref float roll);
+    }
+
 }

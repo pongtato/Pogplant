@@ -27,6 +27,9 @@ namespace SSH
 	glm::vec3 GetVelocity(std::uint32_t entityID);
 	void SetVelocity(std::uint32_t entityID, glm::vec3 velocity);
 	void RigidbodyAddForce(std::uint32_t entityID, glm::vec3 direction);
+	void GetCamera(std::uint32_t entityID, float& yaw, float& pitch, float& roll);
+	void SetCamera(std::uint32_t entityID, float yaw, float pitch, float roll);
+	void SetPosition(std::uint32_t entityID, glm::vec3 pos);
 
 	// True is enabled, False is disabled
 	void SetActive(std::uint32_t entityID, bool isEnabled);

@@ -83,6 +83,8 @@ void Application::UpdateEditorState(float c_dt)
 
 	//Update the transform before drawing
 	UpdateTransforms(c_dt);
+
+	PPI::InputSystem::PollEvents();
 }
 
 /******************************************************************************/
