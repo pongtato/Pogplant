@@ -259,7 +259,7 @@ namespace Scripting
                 }
                 score += kill_score;
 
-                GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
+                //GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
             }
             //Decrease score
             else
