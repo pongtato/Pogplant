@@ -41,7 +41,7 @@ namespace Scripting
         Vector3 start_position = new Vector3(0.0f, 0.0f, 0.0f);
         Vector3 Small_hide_reticle = new Vector3(0.01f, 0.01f, 0.01f);
         Vector3 Show_reticle = new Vector3(1f, 1f, 1f);
-
+        Transform transform;
         public FirstPersonFiringSystem()
         {
             // initialize private variables here
@@ -72,6 +72,7 @@ namespace Scripting
             Transform burner = new Transform();
             ECS.GetTransformECS(ShootingBox, ref shooting_box_initial_pos, ref burner.Rotation, ref burner.Scale);
             ECS.GetTransformECS(Crosshair, ref original_reticle_initial.Position, ref original_reticle_initial.Rotation, ref original_reticle_initial.Scale);
+            ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
         }
 
         public override void Start()
@@ -85,11 +86,8 @@ namespace Scripting
             //Console.WriteLine("Mouse Pos: " + X + ", " + Y);
 
             //UpdateReticleMovement(ref transform, ref dt);
-            Vector3 pos = new Vector3();
-            Vector3 rot = new Vector3();
-            Vector3 scale = new Vector3();
-            ECS.GetTransformECS(entityID, ref pos, ref rot, ref scale);
-            Transform transform = new Transform(pos, rot, scale);
+
+            ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
 
             UpdateReticleMovementCanvas(ref transform, ref dt);
 
@@ -148,7 +146,7 @@ namespace Scripting
                 }
             }
 
-            ECS.SetTransformECS(entityID, pos, rot, scale);
+            ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
         }
         public override void LateUpdate(float dt)
         {
