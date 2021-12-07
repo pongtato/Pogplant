@@ -23,7 +23,7 @@ namespace Scripting
             HURT = 2
         }
 
-        FACES current_face;
+        //FACES current_face;
 
         public DashboardScreen()
         {
@@ -40,7 +40,7 @@ namespace Scripting
 
         public override void Start()
         {
-            current_face = FACES.NEUTRAL;
+            //current_face = FACES.NEUTRAL;
 
             ECS.SetActive(UI_happy, false);
             ECS.SetActive(UI_hurt, false);
@@ -90,7 +90,7 @@ namespace Scripting
                     ECS.SetActive(UI_neutral, true);
                     ECS.SetActive(UI_happy, false);
                     ECS.SetActive(UI_hurt, false);
-                    current_face = FACES.NEUTRAL;
+                    //current_face = FACES.NEUTRAL;
                     break;
                 //Happy face (When getting bonus)
                 case 1:
@@ -98,7 +98,7 @@ namespace Scripting
                     ECS.SetActive(UI_neutral, false);
                     ECS.SetActive(UI_happy, true);
                     ECS.SetActive(UI_hurt, false);
-                    current_face = FACES.HAPPY;
+                    //current_face = FACES.HAPPY;
                     break;
                 //Hurt Face (When taking damage)
                 case 2:
@@ -106,7 +106,7 @@ namespace Scripting
                     ECS.SetActive(UI_neutral, false);
                     ECS.SetActive(UI_happy, false);
                     ECS.SetActive(UI_hurt, true);
-                    current_face = FACES.HURT;
+                    //current_face = FACES.HURT;
                     break;
             }
         }
@@ -116,7 +116,7 @@ namespace Scripting
             ECS.SetActive(UI_happy, false);
             ECS.SetActive(UI_hurt, false);
             ECS.SetActive(UI_neutral, true);
-            current_face = FACES.NEUTRAL;
+            //current_face = FACES.NEUTRAL;
         }
     }
 }

@@ -1454,7 +1454,7 @@ namespace PogplantDriver
 	void ImguiHelper::Scene_GOPick(Pogplant::Camera4D* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
 		Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
-		if (currQuatCam && PPI::InputSystem::onKeyTriggered(GLFW_KEY_X))
+		if (currQuatCam && PPI::InputSystem::onKeyHeld(GLFW_KEY_X))
 		{
 			if (m_CurrentEntity != entt::null)
 			{
