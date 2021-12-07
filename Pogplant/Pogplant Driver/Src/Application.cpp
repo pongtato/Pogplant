@@ -650,7 +650,7 @@ void Application::Run()
 
 
 		PPA::AudioEngine::Update();
-		PPI::InputSystem::PollEvents();
+		//PPI::InputSystem::PollEvents();
 		PP::Renderer::SwapBuffer();
 
 		if (m_nextAppState != m_appState)
