@@ -24,6 +24,8 @@
 #include <gtc/matrix_transform.hpp>
 #include <ImGuizmo.h>
 
+#include "../../Application.h"
+
 PhysicsSystem::PhysicsSystem()
 	:
 	m_registry{ nullptr },
@@ -869,7 +871,7 @@ void PhysicsSystem::Update(float c_dt)
 
 	auto rigidBodyEntities = m_registry->view<Components::Transform, Components::Rigidbody>();
 
-	//Update new rigidbody collisions
+	//Update new rigidbody positions
 	for (auto& _1entity : rigidBodyEntities)
 	{
 		auto& _1rigidbody = rigidBodyEntities.get<Components::Rigidbody>(_1entity);
@@ -882,9 +884,10 @@ void PhysicsSystem::Update(float c_dt)
 		if (_1rigidbody.useGravity)
 			_1rigidbody.acceleration.y += m_gravityAcc;
 
-		//Temp debug draw to show resultant forces, will change location after playstate if needed
+#ifdef PPD_EDITOR_BUILD
 		PP::DebugDraw::DebugLine(_1rigidbody.newPosition, _1rigidbody.newPosition + _1rigidbody.acceleration * _1rigidbody.mass * 0.5f);
 		PP::DebugDraw::DebugLine(_1rigidbody.newPosition, _1rigidbody.newPosition + _1rigidbody.impulseAcceleration * _1rigidbody.mass * 0.5f);
+#endif
 
 		_1rigidbody.velocity += _1rigidbody.acceleration * c_dt + _1rigidbody.impulseAcceleration;
 		_1rigidbody.acceleration = PhysicsDLC::Vector::Zero;
@@ -911,8 +914,10 @@ void PhysicsSystem::Update(float c_dt)
 		}//*/
 	}
 
+	//Handle/resolve positions
 	CollisionUpdate(c_dt);
 
+	//Update positions of colliders after collision checking
 	for (auto& _1entity : rigidBodyEntities)
 	{
 		auto& _1rigidbody = rigidBodyEntities.get<Components::Rigidbody>(_1entity);
