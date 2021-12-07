@@ -76,24 +76,24 @@ namespace Scripting
         // Update is called once per frame
         public override void Update(float dt)
         {
-
-
+            ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
             if (!isInit)
             {
                 // this is to initialize the starting position and rotation to te start of the spline
                 isInit = true;
                 transform.Position = waypoints[0].Position;
                 transform.Rotation = waypoints[0].Rotation;
+                ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
             }
 
             if ((DelayToStart -= dt) <= 0.0f)
-                FollowWaypoints(ref transform, ref dt);
+                FollowWaypoints(dt);
 
             // Debug the spline
             //if (ECS.GetTagECS(entityID) == "Player")
             //    catmullRom.DisplayCatmullRomSplineChain();
 
-            ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
+            ECS.SetPosition(entityID, transform.Position);
         }
 
         public override void LateUpdate(float dt)
@@ -108,7 +108,7 @@ namespace Scripting
         }
 
         // This function interpolates the gameobjects transform between the current and next waypoint.
-        private void FollowWaypoints(ref Transform transform, ref float dt)
+        private void FollowWaypoints(float dt)
         {
             // Only move if we are not at the end of path.
             if (!isEnd)

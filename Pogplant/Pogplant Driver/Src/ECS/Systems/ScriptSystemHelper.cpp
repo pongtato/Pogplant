@@ -190,6 +190,15 @@ namespace SSH
 		}
 	}
 
+	void SetPosition(std::uint32_t entityID, glm::vec3 pos)
+	{
+		auto trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
+		if (trans)
+		{
+			trans->m_position = pos;
+		}
+	}
+
 	void SetActive(std::uint32_t entityID, bool isEnabled)
 	{
 		if (isEnabled)
