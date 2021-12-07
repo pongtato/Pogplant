@@ -9,7 +9,27 @@ To play the game in our editor, either remove #define PPD_EDITOR_BUILD, or do
 file->open..-> and open Level01_M3_Blockout.json in Resources/Scenes, then press play.
 
 
-Controls for engine side:
+Editor: (Uncomment out #define PPD_EDITOR_BUILD on Application.h line 6 to access editor)
+	
+	WASD 	- Movement
+	Q/R 	- Up/Down
+	Z/C 	- Roll Camera
+	X 	- Teleport to selected entity
+	2 	- Gizmo Move
+	3 	- Gizmo Rotate
+	4 	- Gizmo Scale
+	Scene Hierarchy   	- Display all entities in scene
+	Inspector  	  	- Inspects the components of selected entity
+	Debugger 	  	- Toggle Collision Box rendering
+	Globals 	  	- Adjust camera settings
+	Debug 		  	- Shows debug information/printout
+	Director 	  	- View/used to add or edit prefabs
+	Prefab_Loaded 	  	- Display prefabs that are loaded into the scene(For debugging)
+	Collision Layer Editor	- View/edit collision layer interactions, debug information/settings for collision
+	Input Editor		- View/edit controls for keyboard/controller
+
+
+Controls for game side:
 
 Keyboard
 

@@ -16,7 +16,7 @@ namespace Scripting
         private const float seconds_until_changeable = seconds_until_revert - 0.5f;
         private float revert_timer = 0.0f;
         private float changeable_timer = seconds_until_changeable;
-        private bool start_revert_timer;
+        //private bool start_revert_timer;
         private bool swap_face_lock = false;
         //private FACES currentFace = FACES.NEUTRAL;
         private uint currentFace = 0;
