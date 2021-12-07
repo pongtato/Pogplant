@@ -70,7 +70,7 @@ namespace Scripting
         private float shipPitchMultiplier = 3.5f;
         private float shipRollMultiplier = 3.5f;
 
-        private float cameraShakeInitMultiplier = 0.005f;
+        private float cameraShakeInitMultiplier = 0.007f;
         private float cameraShakeMagMultiplier = 5f;
 
         //How much ship should roll based off rotation from the spline
