@@ -38,9 +38,9 @@ namespace Scripting
 
         private List<uint> enemies_to_delete = new List<uint>();
 
-        private uint score = 0;                                         //Base score
-        private const uint kill_score = 1;                                  //Addition to base score everytime an enemy is killed
-        private uint bonus_score = 1;                                   //Bonus score
+        private uint score = 0;                                         // Current score
+        private const uint kill_score = 100;                            //Addition to base score everytime an enemy is killed
+        private uint bonus_score = 50;                                  //Bonus score
         private int bonus_count;                                     
         private const int bonus_increment_requirement = 5;              //Increase bonus everytime this amount of enemies is killed
         uint DashboardScreenID;
@@ -254,9 +254,9 @@ namespace Scripting
                 {
                     bonus_count = 0;
                     score += bonus_score;
-                    ++bonus_score;
+                    bonus_score += 10;
                 }
-                ++score;
+                score += kill_score;
 
                 GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
             }
