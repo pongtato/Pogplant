@@ -118,12 +118,20 @@ void ScriptSystem::Update(float dt)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
 		//auto& rigidbody = entities.get<Components::Rigidbody>(entity);
-		//auto& transform = entities.get<Components::Transform>(entity);
+		auto& transform = entities.get<Components::Transform>(entity);
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
 			//SSH::InvokeFunction(scripts.first, "Update", entity, transform, rigidbody, dt);
 			//SSH::InvokeFunction(scripts.first, "Update", entity, transform, dt);
+			//if (scripts.first == "FollowSpline")
+			//{
+			//	SSH::InvokeFunction(scripts.first, "Update", entity, transform, dt);
+			//}
+			//else
+			//{
+			//	SSH::InvokeFunction(scripts.first, "Update", entity, dt);
+			//}
 			SSH::InvokeFunction(scripts.first, "Update", entity, dt);
 		}
 	}
@@ -401,6 +409,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::RigidbodyAddForce", SSH::RigidbodyAddForce);
 	mono_add_internal_call("Scripting.ECS::GetVelocity", SSH::GetVelocity);
 	mono_add_internal_call("Scripting.ECS::SetVelocity", SSH::SetVelocity);
+	mono_add_internal_call("Scripting.ECS::SetPosition", SSH::SetPosition);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
