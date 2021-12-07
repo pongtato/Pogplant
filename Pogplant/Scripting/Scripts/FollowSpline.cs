@@ -157,10 +157,6 @@ namespace Scripting
             //lockRotation = isLock;
         }
 
-        public void LateUpdate()
-        {
-        }
-
         public override void OnTriggerEnter(uint id)
         {
 
