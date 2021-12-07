@@ -330,14 +330,16 @@ namespace Scripting
         public bool is_alive;
 
         private bool isDiedFromPlayer = false;
+        private uint DashboardScreenID = 0;
 
         public BaseEnemy()
         {
 
         }
 
-        public BaseEnemy(EnemyTemplate template, GameObject go)
+        public BaseEnemy(EnemyTemplate template, GameObject go, uint _DashboardScreenID)
         {
+            DashboardScreenID = _DashboardScreenID;
             SetTemplate(template);
             gameObject = go;
         }
@@ -363,6 +365,7 @@ namespace Scripting
             }
             else
             {
+                GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
                 HandleDeath(true);
             }
         }

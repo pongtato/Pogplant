@@ -449,6 +449,7 @@ namespace Scripting
             Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
             GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
             ECS.PlayAudio(shipCameraEntity, 2);
+            EnemyManager.AddScore(false);
 
             //Triggers a random camera shake upon taking damage, scales with damage taken
             TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage),
