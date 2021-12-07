@@ -41,8 +41,8 @@ namespace Scripting
             if (id == Player)
             {
                 
-                //GameUtilities.LoadScene("GameOverMenu"); //<- Uncomment this line to load the game over screen
-                Console.WriteLine("Player hit game over box");
+                GameUtilities.LoadScene("MainMenu"); //<- Uncomment this line to load the game over screen
+                //Console.WriteLine("Player hit game over box");
             }
         }
 
