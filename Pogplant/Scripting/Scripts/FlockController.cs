@@ -68,7 +68,7 @@ namespace Scripting
         {
             
         }
-        public override void Update(ref Transform transform, ref float dt)
+        public override void Update(float dt)
         {
             for (int i = 0; i < Total_flock_groups.Count; ++i)
             {
@@ -90,7 +90,7 @@ namespace Scripting
                 }
             }
         }
-        public override void LateUpdate(ref Transform transform, ref float dt)
+        public override void LateUpdate(float dt)
         {
 
         }

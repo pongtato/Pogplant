@@ -78,13 +78,19 @@ namespace Scripting
         {
             
         }
-        public override void Update(ref Transform transform, ref float dt)
+        public override void Update(float dt)
         {
             //float X = 0, Y = 0;
             //GameUtilities.GetMousePos(ref X,ref  Y);
             //Console.WriteLine("Mouse Pos: " + X + ", " + Y);
 
             //UpdateReticleMovement(ref transform, ref dt);
+            Vector3 pos = new Vector3();
+            Vector3 rot = new Vector3();
+            Vector3 scale = new Vector3();
+            ECS.GetTransformECS(entityID, ref pos, ref rot, ref scale);
+            Transform transform = new Transform(pos, rot, scale);
+
             UpdateReticleMovementCanvas(ref transform, ref dt);
 
             //Add homing capablities
@@ -140,10 +146,11 @@ namespace Scripting
                     //Reset Reticle
                     ECS.SetTransformECS(ReticleGroup[j], start_position, start_position, Small_hide_reticle);
                 }
-
             }
+
+            ECS.SetTransformECS(entityID, pos, rot, scale);
         }
-        public override void LateUpdate(ref Transform transform, ref float dt)
+        public override void LateUpdate(float dt)
         {
 
             p_fire_timer += dt;

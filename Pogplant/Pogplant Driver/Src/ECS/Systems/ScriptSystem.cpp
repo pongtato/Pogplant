@@ -118,12 +118,13 @@ void ScriptSystem::Update(float dt)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
 		//auto& rigidbody = entities.get<Components::Rigidbody>(entity);
-		auto& transform = entities.get<Components::Transform>(entity);
+		//auto& transform = entities.get<Components::Transform>(entity);
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
 			//SSH::InvokeFunction(scripts.first, "Update", entity, transform, rigidbody, dt);
-			SSH::InvokeFunction(scripts.first, "Update", entity, transform, dt);
+			//SSH::InvokeFunction(scripts.first, "Update", entity, transform, dt);
+			SSH::InvokeFunction(scripts.first, "Update", entity, dt);
 		}
 	}
 
@@ -137,13 +138,14 @@ void ScriptSystem::LateUpdate(float dt)
 	for (auto& entity : entities)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
-		auto& transform = entities.get<Components::Transform>(entity);
+		//auto& transform = entities.get<Components::Transform>(entity);
 		//auto& rigidbody = entities.get<Components::Rigidbody>(entity);
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
 			//SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, rigidbody, dt);
-			SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, dt);
+			//SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, dt);
+			SSH::InvokeFunction(scripts.first, "LateUpdate", entity, dt);
 		}
 	}
 
@@ -414,10 +416,13 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.Transform::GetUpVector", SSH::GetUpVector);
 	mono_add_internal_call("Scripting.Transform::LookAt", SSH::LookAt);
 	mono_add_internal_call("Scripting.Transform::LookAtClamped", SSH::LookAtClamped);
+	mono_add_internal_call("Scripting.Camera::GetCamera", SSH::GetCamera);
+	mono_add_internal_call("Scripting.Camera::SetCamera", SSH::SetCamera);
 	
 	// Changing scenes
 	mono_add_internal_call("Scripting.GameUtilities::LoadScene", SSH::LoadScene);
 	mono_add_internal_call("Scripting.GameUtilities::ExitScene", SSH::ExitScene);
+
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)
