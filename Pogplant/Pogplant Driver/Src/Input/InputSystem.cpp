@@ -43,7 +43,7 @@ namespace PPI
 
 
 		/*Set menu buttons*/
-		InputSystem::Instance().AppendKey("ESCAPE", GLFW_KEY_ESCAPE, GLFW_GAMEPAD_BUTTON_START);
+		InputSystem::Instance().AppendKey("ESCAPE", GLFW_KEY_F1, GLFW_GAMEPAD_BUTTON_START);
 		InputSystem::Instance().AppendKey("MENUSELECT", GLFW_KEY_ENTER, GLFW_GAMEPAD_BUTTON_A);
 		InputSystem::Instance().AppendKey("MENUBACK", GLFW_KEY_BACKSPACE, GLFW_GAMEPAD_BUTTON_B);
 		InputSystem::Instance().AppendKey("MENUUP", GLFW_KEY_W, GLFW_GAMEPAD_BUTTON_DPAD_UP);
