@@ -118,7 +118,7 @@ void ScriptSystem::Update(float dt)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
 		//auto& rigidbody = entities.get<Components::Rigidbody>(entity);
-		auto& transform = entities.get<Components::Transform>(entity);
+		//auto& transform = entities.get<Components::Transform>(entity);
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
