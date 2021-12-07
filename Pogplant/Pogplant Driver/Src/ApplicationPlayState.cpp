@@ -66,7 +66,7 @@ void Application::UpdatePlayState(float c_dt)
 		//Physics dynamic update until fps drops below 30fps
 		m_accumulatedFixedTime += c_dt;
 
-		if (m_accumulatedFixedTime < m_minFixedUpdateTime)
+		if (m_accumulatedFixedTime < m_minFixedUpdateTime && m_accumulatedFixedTime > m_maxFixedUpdateTime)
 		{
 			m_sPhysicsSystem.Update(m_accumulatedFixedTime);
 
@@ -74,6 +74,8 @@ void Application::UpdatePlayState(float c_dt)
 			m_sScriptSystem.LateUpdate(m_accumulatedFixedTime);
 			m_sGeneralSystem.UpdateGame(m_accumulatedFixedTime);
 			m_accumulatedFixedTime = 0.f;
+
+			PPI::InputSystem::PollEvents();
 		}
 		else
 		{
@@ -85,6 +87,8 @@ void Application::UpdatePlayState(float c_dt)
 				m_sScriptSystem.LateUpdate(m_minFixedUpdateTime);
 				m_sGeneralSystem.UpdateGame(m_minFixedUpdateTime);
 				m_accumulatedFixedTime -= m_minFixedUpdateTime;
+
+				PPI::InputSystem::PollEvents();
 			}
 		}
 
