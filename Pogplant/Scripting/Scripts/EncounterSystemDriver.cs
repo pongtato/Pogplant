@@ -1599,7 +1599,8 @@ namespace Scripting
         // Increments the score.
         public void AddScore()
         {
-            encounterManager.enemyManager.AddScore(true);
+            //encounterManager.enemyManager.AddScore(true);
+            EnemyManager.AddScore(true);
         }
 
         // This function exposes EnemyManager.GetAlive method,

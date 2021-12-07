@@ -38,12 +38,13 @@ namespace Scripting
 
         private List<uint> enemies_to_delete = new List<uint>();
 
-        private uint score = 0;                                         // Current score
-        private const uint kill_score = 100;                            //Addition to base score everytime an enemy is killed
-        private uint bonus_score = 50;                                  //Bonus score
-        private int bonus_count;                                     
-        private const int bonus_increment_requirement = 5;              //Increase bonus everytime this amount of enemies is killed
-        uint DashboardScreenID;
+        public static uint score = 0;                                         // Current score
+        private static uint kill_score = 100;                            //Addition to base score everytime an enemy is killed
+        private static uint bonus_score = 50;                                  //Bonus score
+        private static int bonus_count;                                     
+        private static int bonus_increment_requirement = 5;              //Increase bonus everytime this amount of enemies is killed
+        static uint DashboardScreenID;
+
         // Start is called before the first frame update
         public void Start()
         {
@@ -175,7 +176,7 @@ namespace Scripting
 
             Transform transform = instance.GetComponent<Transform>();
             transform.Rotation.Y = 180.0f;
-            instance.AddComponent<BaseEnemy>(new BaseEnemy(enemy_template, instance));
+            instance.AddComponent<BaseEnemy>(new BaseEnemy(enemy_template, instance, DashboardScreenID));
             instance.GetComponent<BaseEnemy>().Start();
             instance.GetComponent<BaseEnemy>().SetManager(this);
         }
@@ -244,7 +245,7 @@ namespace Scripting
             }
         }
 
-        public void AddScore(bool increment)
+        public static void AddScore(bool increment)
         {
             //Increase score
             if (increment)
@@ -264,7 +265,10 @@ namespace Scripting
             else
             {
                 bonus_count = 0;
-                --score;
+                if (score > 10)
+                {
+                    score -= 10;
+                }
             }
 
             GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);

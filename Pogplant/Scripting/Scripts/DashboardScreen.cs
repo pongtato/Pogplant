@@ -12,9 +12,13 @@ namespace Scripting
         uint UI_hurt;
         uint UI_neutral;
 
-        private const float seconds_until_revert = 3.0f;
-        private float revert_timer;
+        private const float seconds_until_revert = 1.0f;
+        private const float seconds_until_changeable = seconds_until_revert - 0.5f;
+        private float revert_timer = 0.0f;
+        private float changeable_timer = seconds_until_changeable;
         private bool start_revert_timer;
+        //private FACES currentFace = FACES.NEUTRAL;
+        private uint currentFace = 0;
 
         public enum FACES
         {
@@ -48,17 +52,30 @@ namespace Scripting
 
         public override void Update(float dt)
         {
-            if (start_revert_timer)
+            if(currentFace != 0)
             {
                 revert_timer += dt;
+                changeable_timer += dt;
 
                 if (revert_timer >= seconds_until_revert)
                 {
                     revert_timer = 0.0f;
-                    start_revert_timer = false;
                     ResetFace();
+                    currentFace = 0;
                 }
             }
+
+            //if (start_revert_timer)
+            //{
+            //    revert_timer += dt;
+
+            //    if (revert_timer >= seconds_until_revert)
+            //    {
+            //        revert_timer = 0.0f;
+            //        start_revert_timer = false;
+            //        ResetFace();
+            //    }
+            //}
         }
 
         public override void LateUpdate(float dt)
@@ -76,38 +93,44 @@ namespace Scripting
 
         }
 
-        public void SwapFace(int faceType)
+        public void SwapFace(uint faceType)
         {
-            start_revert_timer = true;
-            revert_timer = 0.0f;
-
             //Enable the face type to swap to
-            switch (faceType)
+            if(currentFace != faceType && changeable_timer >= seconds_until_changeable)
             {
-                //Neutral face (Revert after x seconds)
-                case 0:
-                    //Console.WriteLine("enabling neutral");
-                    ECS.SetActive(UI_neutral, true);
-                    ECS.SetActive(UI_happy, false);
-                    ECS.SetActive(UI_hurt, false);
-                    //current_face = FACES.NEUTRAL;
-                    break;
-                //Happy face (When getting bonus)
-                case 1:
-                    //Console.WriteLine("enabling happy");
-                    ECS.SetActive(UI_neutral, false);
-                    ECS.SetActive(UI_happy, true);
-                    ECS.SetActive(UI_hurt, false);
-                    //current_face = FACES.HAPPY;
-                    break;
-                //Hurt Face (When taking damage)
-                case 2:
-                    //Console.WriteLine("enabling hurt");
-                    ECS.SetActive(UI_neutral, false);
-                    ECS.SetActive(UI_happy, false);
-                    ECS.SetActive(UI_hurt, true);
-                    //current_face = FACES.HURT;
-                    break;
+                switch (faceType)
+                {
+                    //Neutral face (Revert after x seconds)
+                    case 0:
+                        //Console.WriteLine("enabling neutral");
+                        ECS.SetActive(UI_neutral, true);
+                        ECS.SetActive(UI_happy, false);
+                        ECS.SetActive(UI_hurt, false);
+                        currentFace = 0;
+                        //current_face = FACES.NEUTRAL;
+                        break;
+                    //Happy face (When getting bonus)
+                    case 1:
+                        //Console.WriteLine("enabling happy");
+                        ECS.SetActive(UI_neutral, false);
+                        ECS.SetActive(UI_happy, true);
+                        ECS.SetActive(UI_hurt, false);
+                        currentFace = 1;
+                        //current_face = FACES.HAPPY;
+                        break;
+                    //Hurt Face (When taking damage)
+                    case 2:
+                        //Console.WriteLine("enabling hurt");
+                        ECS.SetActive(UI_neutral, false);
+                        ECS.SetActive(UI_happy, false);
+                        ECS.SetActive(UI_hurt, true);
+                        currentFace = 2;
+                        //current_face = FACES.HURT;
+                        break;
+                }
+
+                changeable_timer = 0.0f;
+                revert_timer = 0.0f;
             }
         }
 

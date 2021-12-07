@@ -98,10 +98,10 @@ namespace Scripting
             return new FirstPersonFiringSystem();
         }
 
-        public static EnvDamage EnvDamage()
-        {
-            return new EnvDamage();
-        }
+        //public static EnvDamage EnvDamage()
+        //{
+        //    return new EnvDamage();
+        //}
 
         //public static Missile Missile()
         //{
