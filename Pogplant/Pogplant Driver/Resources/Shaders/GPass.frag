@@ -43,6 +43,7 @@ uniform mat4 m4_LightProjection;
 
 uniform float Exposure;
 uniform float Gamma;
+uniform bool Shadows;
 
 uniform float Decay     = 0.69;
 uniform float Shaft_Exposure  = 1.0;
@@ -140,8 +141,13 @@ void main()
     // Light calc
     const float ambient = 0.42f;
     float shadow = 1 - Shadow();
-    //vec3 lighting  = Diffuse * ambient * clamp(shadow,0.0f,1.0f);
+
     vec3 lighting  = Diffuse * ambient;
+    if(Shadows)
+    {
+         lighting = lighting * clamp(shadow,0.0f,1.0f);
+    }
+    
     vec3 viewDir  = normalize(viewPos - FragPos);
     for(int i = 0; i < activeLights; ++i)
     {

@@ -29,6 +29,7 @@
 namespace Pogplant
 {
 	bool Renderer::m_RenderGrid = false;
+	bool Renderer::m_EnableShadows = false;
 	float Renderer::m_Exposure = 1.0f;
 	float Renderer::m_Gamma = 2.2f;
 	float Renderer::m_LightShaftDecay = 0.9f;
@@ -187,6 +188,7 @@ namespace Pogplant
 
 		ShaderLinker::SetUniform("Exposure", m_Exposure);
 		ShaderLinker::SetUniform("Gamma", m_Gamma);
+		ShaderLinker::SetUniform("Shadows", m_EnableShadows);
 
 		///// Shaft pos screen
 		//// Editor cam by default;
