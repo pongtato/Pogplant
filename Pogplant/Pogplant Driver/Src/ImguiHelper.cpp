@@ -1239,6 +1239,7 @@ namespace PogplantDriver
 		{
 			Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
 			ImGui::PushItemWidth(69.0f);
+			ImGui::Checkbox("Shadows", &PP::Renderer::m_EnableShadows);
 			ImGui::DragFloat("Exposure", &PP::Renderer::m_Exposure, 0.05f);
 			ImGui::DragFloat("Gamma", &PP::Renderer::m_Gamma, 0.05f);
 			//auto* camera = &PP::CameraResource::m_QuatCam;
