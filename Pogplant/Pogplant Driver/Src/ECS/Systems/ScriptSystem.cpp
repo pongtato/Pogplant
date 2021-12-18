@@ -369,23 +369,23 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.DebugUtilities::LogToEditor", &SSH::LogToEditor);
 
 	//Game Utils
-	mono_add_internal_call("Scripting.GameUtilities::CheckBounds", &Scripting::CheckBounds);
-	mono_add_internal_call("Scripting.GameUtilities::Instantiate", &Scripting::Instantiate);
-	mono_add_internal_call("Scripting.GameUtilities::InstantiateParticle", &Scripting::InstantiateParticle);
-	mono_add_internal_call("Scripting.GameUtilities::FollowPlayerCam", &Scripting::FollowPlayerCam);
-	mono_add_internal_call("Scripting.GameUtilities::FirePlayerBullet", &Scripting::FirePlayerBullet);
-	mono_add_internal_call("Scripting.GameUtilities::FireEnemyBullet", &Scripting::FireEnemyBullet);
-	mono_add_internal_call("Scripting.GameUtilities::SpawnStaticExplosion", &Scripting::SpawnStaticExplosion);
-	mono_add_internal_call("Scripting.GameUtilities::UpdatePlayerHealth_UI", &Scripting::UpdatePlayerHealth_UI);
-	mono_add_internal_call("Scripting.GameUtilities::GetAlive", &Scripting::GetAlive);
-	mono_add_internal_call("Scripting.GameUtilities::GetMousePos", &Scripting::GetMousePos);
-	mono_add_internal_call("Scripting.GameUtilities::PlayerTakeDamage", &Scripting::PlayerTakeDamage);
-	mono_add_internal_call("Scripting.GameUtilities::PlayEnemyDeathAnimation", &Scripting::PlayEnemyDeathAnimation);
-	mono_add_internal_call("Scripting.GameUtilities::StartMissile", &Scripting::StartMissile);
-	mono_add_internal_call("Scripting.GameUtilities::SetTurretFire", &Scripting::SetTurretFire);
-	mono_add_internal_call("Scripting.GameUtilities::UpdateScore", &Scripting::UpdateScore);
-	mono_add_internal_call("Scripting.GameUtilities::IncreaseScorefromEnv", &Scripting::IncreaseScorefromEnv);
-	mono_add_internal_call("Scripting.GameUtilities::UpdateDashboardFace", &Scripting::UpdateDashboardFace);
+	mono_add_internal_call("Scripting.GameUtilities::CheckBounds", &Scripting::GameScript::CheckBounds);
+	mono_add_internal_call("Scripting.GameUtilities::Instantiate", &Scripting::GameScript::Instantiate);
+	mono_add_internal_call("Scripting.GameUtilities::InstantiateParticle", &Scripting::GameScript::InstantiateParticle);
+	mono_add_internal_call("Scripting.GameUtilities::FollowPlayerCam", &Scripting::GameScript::FollowPlayerCam);
+	mono_add_internal_call("Scripting.GameUtilities::FirePlayerBullet", &Scripting::GameScript::FirePlayerBullet);
+	mono_add_internal_call("Scripting.GameUtilities::FireEnemyBullet", &Scripting::GameScript::FireEnemyBullet);
+	mono_add_internal_call("Scripting.GameUtilities::SpawnStaticExplosion", &Scripting::GameScript::SpawnStaticExplosion);
+	mono_add_internal_call("Scripting.GameUtilities::UpdatePlayerHealth_UI", &Scripting::GameScript::UpdatePlayerHealth_UI);
+	mono_add_internal_call("Scripting.GameUtilities::GetAlive", &Scripting::GameScript::GetAlive);
+	mono_add_internal_call("Scripting.GameUtilities::GetMousePos", &Scripting::GameScript::GetMousePos);
+	mono_add_internal_call("Scripting.GameUtilities::PlayerTakeDamage", &Scripting::GameScript::PlayerTakeDamage);
+	mono_add_internal_call("Scripting.GameUtilities::PlayEnemyDeathAnimation", &Scripting::GameScript::PlayEnemyDeathAnimation);
+	mono_add_internal_call("Scripting.GameUtilities::StartMissile", &Scripting::GameScript::StartMissile);
+	mono_add_internal_call("Scripting.GameUtilities::SetTurretFire", &Scripting::GameScript::SetTurretFire);
+	mono_add_internal_call("Scripting.GameUtilities::UpdateScore", &Scripting::GameScript::UpdateScore);
+	mono_add_internal_call("Scripting.GameUtilities::IncreaseScorefromEnv", &Scripting::GameScript::IncreaseScorefromEnv);
+	mono_add_internal_call("Scripting.GameUtilities::UpdateDashboardFace", &Scripting::GameScript::UpdateDashboardFace);
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);
@@ -421,7 +421,7 @@ void ScriptSystem::BindFunctions()
 
 	// For Components
 	mono_add_internal_call("Scripting.ComponentHelper::GetModelKeysIC", SSH::GetModelKeysIC);
-	mono_add_internal_call("Scripting.Transform::GetForwardVector", Scripting::GetForwardVector);
+	mono_add_internal_call("Scripting.Transform::GetForwardVector", SSH::GetForwardVector);
 	mono_add_internal_call("Scripting.Transform::GetUpVector", SSH::GetUpVector);
 	mono_add_internal_call("Scripting.Transform::LookAt", SSH::LookAt);
 	mono_add_internal_call("Scripting.Transform::LookAtClamped", SSH::LookAtClamped);

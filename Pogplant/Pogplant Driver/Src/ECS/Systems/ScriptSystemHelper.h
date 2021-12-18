@@ -45,6 +45,7 @@ namespace SSH
 
 	glm::vec3 GetGlobalPosition(std::uint32_t entityID);
 	glm::vec3 GetGlobalRotation(std::uint32_t entityID);
+  glm::vec3 GetForwardVector(std::uint32_t entityID);
 
 	// Components for GambObject
 	void AddComponentTransform(unsigned int id, Components::Transform transform);

@@ -35,6 +35,7 @@ void Application::EnterPlayState(const std::string& sceneToLoad)
 	if (!serialiser.Load(sceneToLoad))
 		assert(false);
 
+	Scripting::GameScript::Init();
 	m_sGeneralSystem.Init(&m_playECS);
 	m_sGeneralSystem.UpdateTransforms();
 
