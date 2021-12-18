@@ -15,7 +15,17 @@ namespace PPD = PogplantDriver;
 using namespace Components;
 namespace Scripting
 {
-	void GetMousePos(float& _X, float& _Y)
+	entt::entity GameScript::m_playerbox = entt::null;
+	entt::entity GameScript::m_playership = entt::null;
+
+	void GameScript::Init()
+	{
+		GameScript::m_playerbox = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerBox");
+		GameScript::m_playership = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerShip");
+
+	}
+
+	void GameScript::GetMousePos(float& _X, float& _Y)
 	{
 		double castX = 0;
 		double castY = 0;
@@ -24,7 +34,7 @@ namespace Scripting
 		_Y = static_cast<float>(castY);
 	}
 
-	std::uint32_t Instantiate(MonoString* name, glm::vec3 _Position, glm::vec3 _Rotation)
+	std::uint32_t GameScript::Instantiate(MonoString* name, glm::vec3 _Position, glm::vec3 _Rotation)
 	{
 		std::string _name = mono_string_to_utf8(name);
 
@@ -35,7 +45,7 @@ namespace Scripting
 	}
 
 	/**> General purpose particle creation that will autoplay*/
-	std::uint32_t InstantiateParticle(MonoString* name, glm::vec3 _Position, glm::vec3 _Rotation, bool _parented, uint32_t _parentID)
+	std::uint32_t GameScript::InstantiateParticle(MonoString* name, glm::vec3 _Position, glm::vec3 _Rotation, bool _parented, uint32_t _parentID)
 	{
 		std::string _name = mono_string_to_utf8(name);
 
@@ -75,15 +85,13 @@ namespace Scripting
 
 
 	// Only checking the bound for player to it's parent and will not work anywhere else
-	int CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity)
+	int GameScript::CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity)
 	{
 		//std::cout << "Player Health Is: " << GetPlayerHealth() << std::endl;
-		std::string parent{ "PlayerBox" };
-		entt::entity parent_box = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName(parent);
-		if (parent_box != entt::null)
+		if (m_playerbox != entt::null)
 		{
 			//GET AND COMPARE GLOBAL DUE TO LOCAL FUNKYNESS
-			auto boxcollider_comp = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<BoxCollider>(parent_box);
+			auto boxcollider_comp = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<BoxCollider>(m_playerbox);
 			int value = 0;
 			glm::vec3 future_pos = _Position + _Velocity;
 			if (future_pos.x > boxcollider_comp->aabb.m_max.x || future_pos.x < boxcollider_comp->aabb.m_min.x)
@@ -98,7 +106,7 @@ namespace Scripting
 	}
 
 	// Position is the player local position, Rotation is player local rotation
-	void FollowPlayerCam(std::uint32_t player_cam, std::uint32_t player_box, std::uint32_t playerShip, glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime)
+	void GameScript::FollowPlayerCam(std::uint32_t player_cam, std::uint32_t player_box, std::uint32_t playerShip, glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime)
 	{
 		//Offset the camera based on the box world position
 		if (player_cam != entt::null && player_box != entt::null)
@@ -147,7 +155,7 @@ namespace Scripting
 		}
 	}
 
-	void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation)
+	void GameScript::FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation)
 	{
 		//Need to find player ship transform 
 		//entt::entity player_ship = static_cast<entt::entity>(entityID);
@@ -165,7 +173,7 @@ namespace Scripting
 		body->AddImpulseForce(Powershot);
 
 	}
-	void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue)
+	void GameScript::FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue)
 	{
 		//Get enemy transform 
 		entt::entity enemy = static_cast<entt::entity>(entityID);
@@ -195,7 +203,7 @@ namespace Scripting
 		body->AddImpulseForce(forward_vec);
 	}
 
-	void SpawnStaticExplosion(glm::vec3& position, int type)
+	void GameScript::SpawnStaticExplosion(glm::vec3& position, int type)
 	{
 		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
 		if (type == 0)
@@ -405,7 +413,7 @@ namespace Scripting
 		}
 	}
 
-	void OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
+	void GameScript::OnTriggerEnterEvent(std::shared_ptr<PPE::OnTriggerEnterEvent> onTriggerEnterEvent)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(onTriggerEnterEvent->m_entity1) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(onTriggerEnterEvent->m_entity2))
 			return;
@@ -418,20 +426,8 @@ namespace Scripting
 		ObstaclesCollision(object, other);
 		TriggerWave(object, other);
 	}
-	glm::vec3 GetForwardVector(std::uint32_t entityID)
-	{
-		auto transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(static_cast<entt::entity>(entityID));
-		glm::vec3 fv{ 0.f };
 
-		if (transform)
-		{
-			fv = transform->GetForwardVector();
-		}
-
-		return fv;
-	}
-
-	void StartMissile(std::uint32_t entityID)
+	void GameScript::StartMissile(std::uint32_t entityID)
 	{
 		entt::entity missile_id = static_cast<entt::entity>(entityID);
 		if (missile_id != entt::null)
@@ -440,7 +436,7 @@ namespace Scripting
 		}
 	}
 
-	void SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier)
+	void GameScript::SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier)
 	{
 		entt::entity turret_id = static_cast<entt::entity>(entityID);
 		if (turret_id != entt::null)
@@ -458,29 +454,27 @@ namespace Scripting
 		}
 	}
 
-	float GetPlayerHealth()
+	float GameScript::GetPlayerHealth()
 	{
-		entt::entity player = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerShip");
 		float health = 0.f;
-		if (player != entt::null)
+		if (m_playership != entt::null)
 		{
-			health = SSH::InvokeFunctionWithReturn<float>("PlayerScript", "GetPlayerHealth", player);
+			health = SSH::InvokeFunctionWithReturn<float>("PlayerScript", "GetPlayerHealth", m_playership);
 		}
 		return health;
 	}
 
-	float GetPlayerMaxHealth()
+	float GameScript::GetPlayerMaxHealth()
 	{
-		entt::entity player = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("PlayerShip");
 		float health = 0.f;
-		if (player != entt::null)
+		if (m_playership != entt::null)
 		{
-			health = SSH::InvokeFunctionWithReturn<float>("PlayerScript", "GetPlayerMaxHealth", player);
+			health = SSH::InvokeFunctionWithReturn<float>("PlayerScript", "GetPlayerMaxHealth", m_playership);
 		}
 		return health;
 	}
 
-	void PlayerTakeDamage(std::uint32_t Player_ID, float _Damage, std::uint32_t DashboardID, std::uint32_t _FaceIndex)
+	void GameScript::PlayerTakeDamage(std::uint32_t Player_ID, float _Damage, std::uint32_t DashboardID, std::uint32_t _FaceIndex)
 	{
 		entt::entity player_id = static_cast<entt::entity>(Player_ID);
 		SSH::InvokeFunction("PlayerScript", "TakeDamage", player_id, _Damage);
@@ -500,7 +494,8 @@ namespace Scripting
 	}
 
 	// Updates the player health UI
-	void UpdatePlayerHealth_UI()
+	//Not used anymore
+	void GameScript::UpdatePlayerHealth_UI()
 	{
 		entt::entity hpBar = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithName("HP_Bar");
 		if (hpBar != entt::null)
@@ -517,7 +512,7 @@ namespace Scripting
 		}
 	}
 
-	bool Scripting::GetAlive(std::uint32_t entityID)
+	bool GameScript::GetAlive(std::uint32_t entityID)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(entityID)))
 			return false;
@@ -544,7 +539,7 @@ namespace Scripting
 		return isAlive;
 	}
 
-	void IncreaseScorefromEnv(std::uint32_t entityID)
+	void GameScript::IncreaseScorefromEnv(std::uint32_t entityID)
 	{
 		entt::entity encounterdriverID = static_cast<entt::entity>(entityID);
 
@@ -561,7 +556,7 @@ namespace Scripting
 		}
 	}
 
-	void UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType)
+	void GameScript::UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType)
 	{
 		entt::entity dashboardID = static_cast<entt::entity>(dashboardEntityID);
 
@@ -578,7 +573,7 @@ namespace Scripting
 		}
 	}
 
-	void Scripting::UpdateScore(std::uint32_t text_object, std::uint32_t score)
+	void GameScript::UpdateScore(std::uint32_t text_object, std::uint32_t score)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(text_object)))
 			return;
@@ -609,7 +604,7 @@ namespace Scripting
 		}
 	}
 
-	void Scripting::PlayEnemyDeathAnimation(std::uint32_t entityID)
+	void GameScript::PlayEnemyDeathAnimation(std::uint32_t entityID)
 	{
 		auto rb = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(static_cast<entt::entity>(entityID));
 

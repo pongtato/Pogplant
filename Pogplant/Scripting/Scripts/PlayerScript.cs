@@ -439,7 +439,7 @@ namespace Scripting
                 health -= damage;
             }
 
-            GameUtilities.UpdatePlayerHealth_UI();
+            //GameUtilities.UpdatePlayerHealth_UI();
 
             if (health <= 0)
             {

@@ -373,7 +373,7 @@ void Application::BindEvents()
 
 	m_eventBus->listen(&SSH::OnTriggerEnterEvent);
 	m_eventBus->listen(&SSH::OnTriggerExitEvent);
-	m_eventBus->listen(&Scripting::OnTriggerEnterEvent);
+	m_eventBus->listen(&Scripting::GameScript::OnTriggerEnterEvent);
 }
 
 void Application::UpdateTransforms(float _Dt)

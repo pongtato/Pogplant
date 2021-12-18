@@ -250,6 +250,18 @@ namespace SSH
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalRotation();
 	}
 
+	glm::vec3 GetForwardVector(std::uint32_t entityID)
+	{
+		auto transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
+		glm::vec3 fv{ 0.f };
+		if (transform)
+		{
+			fv = transform->GetForwardVector();
+		}
+
+		return fv;
+	}
+
 	void AddComponentTransform(unsigned int id, Components::Transform transform)
 	{
 		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Transform>(static_cast<entt::entity>(id), transform);
