@@ -118,5 +118,8 @@ namespace Scripting
 
             return default(T);
         }
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static uint[] GetChildren(uint entityID);
     }
 }

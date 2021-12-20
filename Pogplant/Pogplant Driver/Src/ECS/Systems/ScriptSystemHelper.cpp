@@ -133,6 +133,23 @@ namespace SSH
 		ScriptSystem::GetECS()->RemoveParentFrom(static_cast<entt::entity>(childID));
 	}
 
+	MonoArray* GetChildren(std::uint32_t entityID)
+	{
+		auto& transform = ScriptSystem::GetECS()->GetReg().get<Components::Transform>(static_cast<entt::entity>(entityID));
+
+		MonoArray* data = nullptr;
+		data = mono_array_new(mono_domain_get(), mono_get_int32_class(), transform.m_children.size());
+
+		int i = 0;
+		for (auto& entity : transform.m_children)
+		{
+			mono_array_set(data, unsigned int,i, static_cast<unsigned int>(entity));
+			++i;
+		}
+
+		return data;
+	}
+
 	glm::vec3 GetVelocity(std::uint32_t entityID)
 	{
 		auto rb = ScriptSystem::GetECS()->GetReg().try_get<Components::Rigidbody>(static_cast<entt::entity>(entityID));

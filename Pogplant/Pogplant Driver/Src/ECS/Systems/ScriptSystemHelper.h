@@ -23,6 +23,7 @@ namespace SSH
 	int GetChildCount(std::uint32_t parentID);
 	void SetColliderBox(std::uint32_t entityID, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);
 	void RemoveParentFrom(std::uint32_t _id);
+	MonoArray* GetChildren(std::uint32_t entityID);
 
 	glm::vec3 GetVelocity(std::uint32_t entityID);
 	void SetVelocity(std::uint32_t entityID, glm::vec3 velocity);
