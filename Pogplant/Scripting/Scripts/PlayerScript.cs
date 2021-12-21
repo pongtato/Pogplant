@@ -130,7 +130,6 @@ namespace Scripting
             playerTrans = new Transform(pos, rot, scale);
 
             ECS.PlayAudio(VOEntityID, 0);
-
         }
 
         public override void Start()

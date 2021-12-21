@@ -22,6 +22,7 @@ namespace Scripting
 {
     class CatmullRomSpline
     {
+
         static private List<Transform> controlPointsList = new List<Transform>();
         private bool isLooping = false;
 
@@ -109,7 +110,7 @@ namespace Scripting
         {
             if (controlPointsList.Count == 0)
                 return null;
-
+          
             // Resulting waypoint of the entire spline chain
             List<Transform> waypoints = new List<Transform>();
             int remove_range = (int)(10 / (step_size * 10));
