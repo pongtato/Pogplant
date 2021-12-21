@@ -93,6 +93,13 @@ namespace Scripting
         uint DashboardScreenID;
         uint VOEntityID;
 
+        //PlayerSpline Speed 
+        float m_Maxspeed = 12.0f;
+        float m_Minspeed = 9.0f;
+        float m_SpeedChange = 0.5f;
+        float m_IncrementInterval = 0.1f;
+        float m_IncrementTimer = 0.0f;
+
         public PlayerScript()
         {
 
@@ -141,6 +148,9 @@ namespace Scripting
             {
                 GameUtilities.LoadScene("MainMenu");
             }
+
+            //Updates Follow Spline
+            UpdateFollowSplineSpeed(dt);
 
             ECS.GetTransformECS(entityID, ref playerTrans.Position, ref playerTrans.Rotation, ref playerTrans.Scale);
             Camera.GetCamera(shipCameraEntity, ref camera.m_Yaw, ref camera.m_Pitch, ref camera.m_Roll);
@@ -466,6 +476,33 @@ namespace Scripting
                 Console.WriteLine("Player (id: " + entityID + ") has died");
                 ECS.DestroyEntity(entityID);
                 isAlive = false;
+            }
+        }
+
+        void UpdateFollowSplineSpeed(float dt)
+        {
+            //Add speed
+            if (m_IncrementTimer >= 0)
+            {
+                m_IncrementTimer -= dt;
+            }
+            else
+            {
+                if (InputUtility.onKeyTriggered(KEY_ID.KEY_Q) || InputUtility.onKeyHeld(KEY_ID.KEY_Q))
+                {
+                    if ((FollowSpline.follow_speed += m_SpeedChange) > m_Maxspeed)
+                        FollowSpline.follow_speed = m_Maxspeed;
+                    m_IncrementTimer = m_IncrementInterval;
+                }
+                if (InputUtility.onKeyTriggered(KEY_ID.KEY_E) || InputUtility.onKeyHeld(KEY_ID.KEY_E))
+                {
+                    if ((FollowSpline.follow_speed -= m_SpeedChange) < m_Minspeed)
+                        FollowSpline.follow_speed = m_Minspeed;
+
+                    //DebugUtilities.LogToEditor("PlayerScript", "Current FollowSpline speed is: " + FollowSpline.follow_speed);
+                    //Console.WriteLine("Current FollowSpline speed is: " + FollowSpline.follow_speed);
+                    m_IncrementTimer = m_IncrementInterval;
+                }
             }
         }
     }

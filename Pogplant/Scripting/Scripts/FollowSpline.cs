@@ -19,7 +19,7 @@ namespace Scripting
     public class FollowSpline : MonoBehaviour
     {
 
-        private float follow_speed = 9.0f; // follow speed in m/s
+        public static float follow_speed = 9.0f; // follow speed in m/s
         private int lookat_waypoint_offset = 2; // indicates how many waypoints infront to look at when dealing with rotation
 
         private Transform[] waypoints = null; // Array of waypoints we get from running the CatmullRomSpline script.
@@ -41,11 +41,11 @@ namespace Scripting
             if (ECS.GetTagECS(entityID) == "Player")
                 DelayToStart = 1.0f;
             else if (ECS.GetTagECS(entityID) == "WPG_0")
-                 DelayToStart = 0.0f;
+                DelayToStart = 0.0f;
             else if (ECS.GetTagECS(entityID) == "WPG_1")
-                 DelayToStart = 0.2f;
+                DelayToStart = 0.2f;
             else if (ECS.GetTagECS(entityID) == "WPG_2")
-                 DelayToStart = 0.4f;
+                DelayToStart = 0.4f;
             else if (ECS.GetTagECS(entityID) == "WPG_3")
                 DelayToStart = 0.6f;
             else if (ECS.GetTagECS(entityID) == "WPG_4")
@@ -147,7 +147,7 @@ namespace Scripting
                 Transform.LookAtClamped(entityID, look_point);
             }
         }
-        
+
         // This function updates the current waypoint and recalculates variables used for interpolation,
         // as well as stops the followspline based on the end_offset value.
         void UpdateCurrentWaypoint(float alpha)
@@ -166,7 +166,7 @@ namespace Scripting
                 isEnd = true;
         }
 
-        public void SetLockRotation (bool isLock)
+        public void SetLockRotation(bool isLock)
         {
             //lockRotation = isLock;
         }
