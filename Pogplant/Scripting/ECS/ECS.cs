@@ -61,6 +61,9 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void RigidbodyAddForce(uint entityID, Vector3 dir);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static bool CheckValidEntity(uint entityID);
+
         // Temp to test stuff
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector3 GetVelocity(uint entityID);

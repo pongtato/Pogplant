@@ -124,12 +124,6 @@ namespace Scripting
 
             ECS.PlayAudio(VOEntityID, 0);
 
-            uint[] children = ECS.GetChildren(entityID);
-            for (int i = 0; i < children.Length; ++i)
-            {
-                Console.WriteLine("Children ID: " + children[i]);
-            }
-
         }
 
         public override void Start()

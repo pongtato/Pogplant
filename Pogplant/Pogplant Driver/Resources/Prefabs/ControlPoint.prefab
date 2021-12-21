@@ -1,0 +1,63 @@
+[
+	{
+		"Guid" : 
+		{
+			"m_guid" : "6b7c2a7a-60ae-493a-8db1-852e1668c2b8"
+		},
+		"Name" : 
+		{
+			"m_Name" : "ControlPoint"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "D:\\Repositories\\Pogplant\\Pogplant\\Pogplant Driver\\Resources\\Scenes\\ControlPoint.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"sphere",
+				"Resources/Models\\sphere",
+				"Sphere001"
+			],
+			"UseLight" : 0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "0"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				4.614771842956543,
+				-4.6905317306518555
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

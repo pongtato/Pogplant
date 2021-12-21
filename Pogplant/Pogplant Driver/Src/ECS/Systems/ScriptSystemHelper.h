@@ -44,9 +44,11 @@ namespace SSH
 	void PlayAudio(std::uint32_t entity, std::uint32_t index);
 	void LogToEditor(MonoString* scriptName, MonoString* debugLog);
 
+	bool CheckValidEntity(std::uint32_t entityID); // returns true if entity is valid
+
 	glm::vec3 GetGlobalPosition(std::uint32_t entityID);
 	glm::vec3 GetGlobalRotation(std::uint32_t entityID);
-  glm::vec3 GetForwardVector(std::uint32_t entityID);
+	glm::vec3 GetForwardVector(std::uint32_t entityID);
 
 	// Components for GambObject
 	void AddComponentTransform(unsigned int id, Components::Transform transform);

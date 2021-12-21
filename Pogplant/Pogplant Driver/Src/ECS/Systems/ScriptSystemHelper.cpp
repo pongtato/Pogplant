@@ -391,6 +391,11 @@ namespace SSH
 		}
 	}
 
+	bool CheckValidEntity(std::uint32_t entityID)
+	{
+		return ScriptSystem::GetECS()->GetReg().valid(static_cast<entt::entity>(entityID));
+	}
+
 	void OnTriggerExitEvent(std::shared_ptr<PPE::OnTriggerExitEvent> onTriggerExitEvent)
 	{
 		auto script1 = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity1);

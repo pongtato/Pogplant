@@ -411,6 +411,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetVelocity", SSH::SetVelocity);
 	mono_add_internal_call("Scripting.ECS::SetPosition", SSH::SetPosition);
 	mono_add_internal_call("Scripting.ECS::GetChildren", SSH::GetChildren);
+	mono_add_internal_call("Scripting.ECS::CheckValidEntity", SSH::CheckValidEntity);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
