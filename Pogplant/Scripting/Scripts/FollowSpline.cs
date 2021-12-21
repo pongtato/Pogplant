@@ -162,9 +162,6 @@ namespace Scripting
                 time_between_waypoint = 0.0f; // Reset current time between waypoints
             }
 
-            //if (current_waypoint_index >= 700)
-            //    Console.WriteLine("Current waypoint " + current_waypoint_index + " / " + waypoints.Length);
-
             if (current_waypoint_index >= waypoints.Length - end_offset - 1)
                 isEnd = true;
         }
