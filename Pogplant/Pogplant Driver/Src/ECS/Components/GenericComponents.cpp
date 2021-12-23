@@ -809,4 +809,9 @@ namespace Components
 
 		return false;
 	}
+
+	PrefabInstance::PrefabInstance(std::string _str, std::string _path) :
+		prefab_GUID(_str), prefab_path(_path)
+	{
+	}
 }

@@ -123,7 +123,8 @@ namespace Components
 			.property("file_path", &Prefab::file_path);
 
 		rttr::registration::class_<PrefabInstance>("PrefabInstance")
-			.property("prefab_GUID", &PrefabInstance::prefab_GUID);
+			.property("prefab_GUID", &PrefabInstance::prefab_GUID)
+			.property("prefab_path", &PrefabInstance::prefab_path);
 
 		rttr::registration::enumeration<ParticleSystem::EMITTER_TYPE>("EMITTER_TYPE")
 			(

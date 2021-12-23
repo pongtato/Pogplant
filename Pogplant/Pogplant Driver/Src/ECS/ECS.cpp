@@ -70,9 +70,9 @@ void ECS::TrulyDestroyEntity(entt::entity entity)
 	auto& _transform = m_registry.get<Transform>(entity);
 
 	//if it's a prefab, remove from map
-	const auto& _prefab = m_registry.try_get<Prefab>(entity);
-	if (_prefab && m_prefab_map.contains(_prefab->file_path))
-		m_prefab_map.extract(_prefab->file_path);
+	//const auto& _prefab = m_registry.try_get<Prefab>(entity);
+	//if (_prefab && m_prefab_map.contains(_prefab->file_path))
+	//	m_prefab_map.extract(_prefab->file_path);
 
 	//Destroy all children
 	auto copy_set = _transform.m_children;

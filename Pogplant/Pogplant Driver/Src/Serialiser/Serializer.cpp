@@ -39,7 +39,12 @@ namespace PogplantDriver
 			if(!m_ecs.GetReg().try_get<Guid>(id))
 				m_ecs.GetReg().emplace<Components::Guid>(id, m_ecs.GenerateGUID());
 			if (!m_ecs.GetReg().try_get<Prefab>(id))
-				m_ecs.GetReg().emplace<Components::Prefab>(id, File);
+			{
+				std::filesystem::path cur_path = std::filesystem::current_path();
+				std::string pepe = File;
+				pepe.erase(0, cur_path.string().size() + 1);
+				m_ecs.GetReg().emplace<Components::Prefab>(id, pepe);
+			}
 
 			Json::Value root;
 			Json::Value subroot = SaveComponents(id);
@@ -81,7 +86,7 @@ namespace PogplantDriver
 
 		auto _entity = m_ecs.CopyEntity(m_ecs.m_prefab_map[current_file]);
 		auto _prefab = m_ecs.GetReg().get<Components::Guid>(m_ecs.m_prefab_map[current_file]);
-		m_ecs.GetReg().emplace<Components::PrefabInstance>(_entity, _prefab.m_guid);
+		m_ecs.GetReg().emplace<Components::PrefabInstance>(_entity, _prefab.m_guid, path.string());
 
 		auto& transform = m_ecs.GetReg().get<Transform>(_entity);
 		transform.m_position = _Position;

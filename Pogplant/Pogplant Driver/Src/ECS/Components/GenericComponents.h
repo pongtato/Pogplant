@@ -527,8 +527,9 @@ namespace Components
 	struct PrefabInstance
 	{
 		PrefabInstance() = default;
-		PrefabInstance(std::string _str) : prefab_GUID(_str) {};
+		PrefabInstance(std::string _str, std::string _path);
 		std::string prefab_GUID;
+		std::string prefab_path;
 	};
 
 }

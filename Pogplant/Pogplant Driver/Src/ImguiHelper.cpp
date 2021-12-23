@@ -505,8 +505,9 @@ namespace PogplantDriver
 				{
 					if (ImGui::MenuItem("Add to scene"))
 					{
-						auto _prefab = m_ecs->GetReg().get<Components::Guid>(m_CurrentEntity);
-						m_ecs->GetReg().emplace<Components::PrefabInstance>(m_ecs->CopyEntity(m_CurrentEntity), _prefab.m_guid);
+						auto _guid = m_ecs->GetReg().get<Components::Guid>(m_CurrentEntity);
+						auto _prefab = m_ecs->GetReg().get<Components::Prefab>(m_CurrentEntity);
+						m_ecs->GetReg().emplace<Components::PrefabInstance>(m_ecs->CopyEntity(m_CurrentEntity), _guid.m_guid, _prefab.file_path);
 					}
 					if (ImGui::MenuItem("Edit prefab"))
 					{
@@ -647,7 +648,7 @@ namespace PogplantDriver
 
 							Pogplant::DebugDraw::DebugLine(tmpPos, tmpPos + transform->GetForwardVector() * transformDebugger->m_forwardVectorLength);
 						}
-
+						
 						if (ImGui::Button("Set LookAt to (0, 0, 0)"))
 						{
 							transform->LookAt(glm::vec3{ 0.f,0.f,0.f });

@@ -201,7 +201,9 @@ namespace PogplantDriver
 			serialiser.SavePrefab(filepath, copy_of_entity);
 
 			//current copy becomes a prefab instnace
-			m_ECS->GetReg().emplace<Components::PrefabInstance>(_object, m_ECS->GetReg().get<Components::Guid>(copy_of_entity).m_guid);
+			m_ECS->GetReg().emplace<Components::PrefabInstance>(_object, 
+																m_ECS->GetReg().get<Components::Guid>(copy_of_entity).m_guid, 
+																m_ECS->GetReg().get<Components::Prefab>(copy_of_entity).file_path);
 		}
 	}
 
