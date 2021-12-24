@@ -6,6 +6,7 @@
 namespace Pogplant
 {
 	std::vector<glm::vec3> DebugDraw::m_DebugVerts;
+	std::vector<glm::vec3> DebugDraw::m_DebugVertsConst;
 	float DebugDraw::m_GridWidth = 0.25f;
 	float DebugDraw::m_GridIntervalWidth = 2.0f;
 	int DebugDraw::m_GridInterval = 5;
@@ -14,12 +15,24 @@ namespace Pogplant
 	void DebugDraw::NewFrame()
 	{
 		m_DebugVerts.clear();
+
+		if (!m_DebugVertsConst.empty())
+		{
+			m_DebugVerts.resize(m_DebugVertsConst.size());
+			std::copy(m_DebugVertsConst.begin(), m_DebugVertsConst.end(), m_DebugVerts.begin());
+		}
 	}
 
 	void DebugDraw::DebugLine(glm::vec3 _Position1, glm::vec3 _Position2)
 	{
 		m_DebugVerts.push_back(_Position1);
 		m_DebugVerts.push_back(_Position2);
+	}
+
+	void DebugDraw::DebugLineConst(glm::vec3 _Position1, glm::vec3 _Position2)
+	{
+		m_DebugVertsConst.push_back(_Position1);
+		m_DebugVertsConst.push_back(_Position2);
 	}
 
 	void DebugDraw::DebugCircle(glm::vec3 _Position, float _Radius, glm::vec3 _Axis1, glm::vec3 _Axis2, size_t _Segments)

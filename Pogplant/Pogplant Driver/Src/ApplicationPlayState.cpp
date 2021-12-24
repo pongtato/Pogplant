@@ -164,6 +164,7 @@ void Application::LeavePlayState()
 {
 	m_sPhysicsSystem.Clear();
 
+	PP::DebugDraw::m_DebugVertsConst.clear();
 	PPA::AudioEngine::StopPlayingAll();
 	m_sScriptSystem.Unload();
 	m_playECS.Clear();

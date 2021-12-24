@@ -82,6 +82,9 @@ namespace Scripting
             // Calculate d_alpha from follow_speed and distance between current and next waypoint
             float distance = Vector3.Distance(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position);
             d_alpha = 1.0f / (distance / follow_speed);
+
+            if (ECS.GetTagECS(entityID) == "Player")
+                catmullRom.DisplayCatmullRomSplineChain();
         }
 
         // Update is called once per frame
@@ -104,9 +107,6 @@ namespace Scripting
                 FollowWaypoints(dt);
 
             // Debug the spline
-            if (ECS.GetTagECS(entityID) == "Player")
-                catmullRom.DisplayCatmullRomSplineChain();
-
             ECS.SetPosition(entityID, transform.Position);
         }
 
