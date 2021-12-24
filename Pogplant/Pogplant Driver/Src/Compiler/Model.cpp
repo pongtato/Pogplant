@@ -145,7 +145,9 @@ void Model::ProcessMesh(aiMesh* _Mesh, const aiScene* _Scene, aiNode* _Node, Mes
             vertex.m_BiTangent = vector;
         }
         else
+        {
             vertex.m_TexCoords = glm::vec2(0.0f, 0.0f);
+        }
 
         vertices.push_back(vertex);
     }

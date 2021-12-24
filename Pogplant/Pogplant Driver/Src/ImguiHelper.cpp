@@ -2145,15 +2145,22 @@ namespace PogplantDriver
 				}
 				ImGui::NewLine();
 
-				ImGui::Text("RLighting");
 				bool temp_light = renderer->m_UseLight;
 				ImGui::Checkbox("Use Light", &temp_light);
 				if (temp_light != static_cast<bool>(renderer->m_UseLight))
 					renderer->m_UseLight = temp_light;
 
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+				bool temp_renderMode = renderer->m_EditorDrawOnly;
+				ImGui::Checkbox("Editor Draw Only", &temp_renderMode);
+				if (temp_renderMode != static_cast<bool>(renderer->m_EditorDrawOnly))
+					renderer->m_EditorDrawOnly = temp_renderMode;
+
 				ImguiBlankSeperator(1);
 				ImGui::Separator();
 			}
+
 			if (!enable_render)
 			{
 				m_ecs->GetReg().remove<Components::Renderer>(m_CurrentEntity);
