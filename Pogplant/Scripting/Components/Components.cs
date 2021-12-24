@@ -58,9 +58,13 @@ namespace Scripting
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public class Tag
+    public struct Tag
     {
-        public string tag = "Nothing";
+        public string tag;
+        Tag(string _tag = "Nothing")
+        {
+            tag = _tag;
+        }
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -120,7 +124,7 @@ namespace Scripting
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public class Time
+    public struct Time
     {
         public static double deltaTime;
     }
@@ -194,52 +198,57 @@ namespace Scripting
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class Collider
-    {
-        public bool isTrigger = false;
-        public string collisionLayer = "DEFAULT";
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class BoxCollider : Collider
+    public struct BoxCollider
     {
         public Vector3 extends;
         public Vector3 centre;
+        public bool isTrigger;
+        public string collisionLayer;
 
-        public BoxCollider()
+        public BoxCollider(bool _isTrigger = false, string _collisionLayer = "DEFAULT")
         {
             extends = Vector3.One();
             centre = Vector3.Zero();
+            isTrigger = _isTrigger;
+            collisionLayer = _collisionLayer;
         }
 
-        public BoxCollider(Vector3 _extends, Vector3 _centre)
+        public BoxCollider(Vector3 _extends, Vector3 _centre, bool _isTrigger = false, string _collisionLayer = "DEFAULT")
         {
             extends = _extends;
             centre = _centre;
+            isTrigger = _isTrigger;
+            collisionLayer = _collisionLayer;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class SphereCollider : Collider
+    public struct SphereCollider
     {
         public float radius;
         public Vector3 centre;
+        public bool isTrigger;
+        public string collisionLayer;
 
-        public SphereCollider()
+        public SphereCollider(bool _isTrigger = false, string _collisionLayer = "DEFAULT")
         {
             radius = 1.0f;
             centre = Vector3.Zero();
+            isTrigger = _isTrigger;
+            collisionLayer = _collisionLayer;
         }
 
-        public SphereCollider(float _radius, Vector3 _centre)
+        public SphereCollider(float _radius, Vector3 _centre, bool _isTrigger = false, string _collisionLayer = "DEFAULT")
         {
             radius = _radius;
             centre = _centre;
+            isTrigger = _isTrigger;
+            collisionLayer = _collisionLayer;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class Camera
+    public struct Camera
     {
         public float m_Yaw;
         public float m_Pitch;

@@ -47,7 +47,7 @@ namespace Scripting
             if (progress <= 0.0f)
             {
                 ECS.RemoveParentFrom(owner.id);
-                ECS.SetTransformECS(owner.id, ECS.GetGlobalPosition(start_position.id), start_position.transform.Value.Rotation, start_position.transform.Value.Scale);
+                ECS.SetTransformECS(owner.id, ECS.GetGlobalPosition(start_position.id), start_position.transform.Rotation, start_position.transform.Scale);
                 ECS.PlayAudio(owner.id, 2);
             }
 
@@ -69,7 +69,7 @@ namespace Scripting
             else
             {
                 Vector3 target_pos = Vector3.Lerp(startPos, endPos, progress);
-                ECS.SetTransformECS(owner.id, target_pos, ECS.GetGlobalRotation(end_position.id), owner.transform.Value.Scale);
+                ECS.SetTransformECS(owner.id, target_pos, ECS.GetGlobalRotation(end_position.id), owner.transform.Scale);
             }
 
             return is_finished;
@@ -206,7 +206,7 @@ namespace Scripting
                 //    }
                 //}
                 //Console.WriteLine("Firing bullet");
-                GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, owner.transform.Value.Rotation, 5.0f, 3.0f);
+                GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, owner.transform.Rotation, 5.0f, 3.0f);
                 ECS.PlayAudio(owner.id, 3);
             }
 

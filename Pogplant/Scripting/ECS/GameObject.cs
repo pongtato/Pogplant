@@ -31,13 +31,12 @@ namespace Scripting
             tag = _tag;
         }
 
+        // Components here
         public uint id;
         public string name;
-        
-        // Components here
-        public Nullable<Transform> transform;
-        public Nullable<Rigidbody> rigidbody;
-        public Nullable<Renderer> renderer;
+        public Transform transform;
+        public Rigidbody rigidbody;
+        public Renderer renderer;
         public Tag tag;
         public BoxCollider boxCollider;
         public SphereCollider sphereCollider;
@@ -74,10 +73,10 @@ namespace Scripting
         {
             if (typeof(T) == typeof(Transform))
             {
-                if(transform.HasValue == false)
+                if(component.Equals(default(Transform)))
                 {
                     transform = (Transform)(object)component;
-                    AddComponentTransform(id, transform.Value);
+                    AddComponentTransform(id, transform);
                 }
                 else 
                 {
@@ -86,10 +85,10 @@ namespace Scripting
             }
             else if(typeof(T) == typeof(Rigidbody))
             {
-                if(rigidbody.HasValue == false)
+                if(component.Equals(default(Rigidbody)))
                 {
                     rigidbody = (Rigidbody)(object)component;
-                    AddComponentRigidbody(id, rigidbody.Value);
+                    AddComponentRigidbody(id, rigidbody);
                 }
                 else
                 {
@@ -98,10 +97,10 @@ namespace Scripting
             }
             else if(typeof(T) == typeof(Renderer))
             {
-                if (renderer.HasValue == false)
+                if (component.Equals(default(Renderer)))
                 {
                     renderer = (Renderer)(object)component;
-                    AddComponentRenderer(id, renderer.Value.colorTint, renderer.Value.emissiveTint, renderer.Value.useLight, renderer.Value.editorDrawOnly, renderer.Value.modelName);
+                    AddComponentRenderer(id, renderer.colorTint, renderer.emissiveTint, renderer.useLight, renderer.editorDrawOnly, renderer.modelName);
                     //AddComponentRenderer(id, renderer.Value.colorTint, renderer.Value.useLight, renderer.Value.editorDrawOnly);
                 }
                 else
@@ -147,7 +146,7 @@ namespace Scripting
             }
             else if(typeof(T) == typeof(BoxCollider))
             {
-                if (boxCollider == null)
+                if (component.Equals(default(BoxCollider)))
                 {
                     boxCollider = (BoxCollider)(object)component;
                     AddComponentBoxCollider(id, boxCollider.isTrigger, boxCollider.collisionLayer, boxCollider.extends, boxCollider.centre);
@@ -160,7 +159,7 @@ namespace Scripting
             }
             else if (typeof(T) == typeof(SphereCollider))
             {
-                if (sphereCollider == null)
+                if (component.Equals(default(SphereCollider)))
                 {
                     sphereCollider = (SphereCollider)(object)component;
                     AddComponentSphereCollider(id, sphereCollider.isTrigger, sphereCollider.collisionLayer, sphereCollider.radius, sphereCollider.centre);
@@ -183,9 +182,9 @@ namespace Scripting
         {
             if (typeof(T) ==  typeof(Transform))
             {
-                if (transform.HasValue == true)
+                if (!transform.Equals(default(Transform)))
                 {
-                    return (T)(object)transform.Value;
+                    return (T)(object)transform;
                 }
                 else
                 {
@@ -194,9 +193,9 @@ namespace Scripting
             }
             else if(typeof(T) == typeof(Rigidbody))
             {
-                if (rigidbody.HasValue == true)
+                if (!rigidbody.Equals(default(Rigidbody)))
                 {
-                    return (T)(object)rigidbody.Value;
+                    return (T)(object)rigidbody;
                 }
                 else
                 {
@@ -205,9 +204,9 @@ namespace Scripting
             }
             else if(typeof(T) == typeof(Renderer))
             {
-                if (renderer.HasValue == true)
+                if (!renderer.Equals(default(Renderer)))
                 {
-                    return (T)(object)renderer.Value;
+                    return (T)(object)renderer;
                 }
                 else
                 {
@@ -249,7 +248,7 @@ namespace Scripting
             }
             else if(typeof(T) == typeof(BoxCollider))
             {
-                if(boxCollider != null)
+                if(!boxCollider.Equals(default(BoxCollider)))
                 {
                     return (T)(object)boxCollider;
                 }
@@ -260,7 +259,7 @@ namespace Scripting
             }
             else if(typeof(T) == typeof(SphereCollider))
             {
-                if(sphereCollider != null)
+                if(!sphereCollider.Equals(default(SphereCollider)))
                 {
                     return (T)(object)sphereCollider;
                 }
@@ -271,7 +270,7 @@ namespace Scripting
             }
             else if (typeof(T) == typeof(Tag))
             {
-                if (tag != null)
+                if (!tag.Equals(default(Tag)))
                 {
                     return (T)(object)tag;
                 }

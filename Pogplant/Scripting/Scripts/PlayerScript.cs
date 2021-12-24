@@ -143,10 +143,10 @@ namespace Scripting
         public override void Update(float dt)
         {
             //Return to main menu key
-            if (InputUtility.onKeyTriggered("ESCAPE"))
-            {
-                GameUtilities.LoadScene("MainMenu");
-            }
+            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_ESCAPE))
+            //{
+            //    GameUtilities.LoadScene("MainMenu");
+            //}
 
             //Updates Follow Spline
             UpdateFollowSplineSpeed(dt);

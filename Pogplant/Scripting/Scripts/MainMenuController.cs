@@ -127,15 +127,15 @@ namespace Scripting
             {
                 case 0:
                     ECS.SetTransformECS(buttonMap["Arrow"].id,
-                        new Vector3((buttonMap["Start Button"].transform.Value.Position.X - 0.161f), buttonMap["Start Button"].transform.Value.Position.Y, buttonMap["Start Button"].transform.Value.Position.Z),
-                        buttonMap["Arrow"].transform.Value.Rotation,
-                        buttonMap["Arrow"].transform.Value.Scale);
+                        new Vector3((buttonMap["Start Button"].transform.Position.X - 0.161f), buttonMap["Start Button"].transform.Position.Y, buttonMap["Start Button"].transform.Position.Z),
+                        buttonMap["Arrow"].transform.Rotation,
+                        buttonMap["Arrow"].transform.Scale);
                     break;
                 case 1:
                     ECS.SetTransformECS(buttonMap["Arrow"].id,
-                        new Vector3((buttonMap["Quit Button"].transform.Value.Position.X - 0.161f), buttonMap["Quit Button"].transform.Value.Position.Y, buttonMap["Quit Button"].transform.Value.Position.Z),
-                        buttonMap["Arrow"].transform.Value.Rotation,
-                        buttonMap["Arrow"].transform.Value.Scale);
+                        new Vector3((buttonMap["Quit Button"].transform.Position.X - 0.161f), buttonMap["Quit Button"].transform.Position.Y, buttonMap["Quit Button"].transform.Position.Z),
+                        buttonMap["Arrow"].transform.Rotation,
+                        buttonMap["Arrow"].transform.Scale);
                     break;
             }
 

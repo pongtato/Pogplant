@@ -83,8 +83,8 @@ namespace Scripting
             float distance = Vector3.Distance(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position);
             d_alpha = 1.0f / (distance / follow_speed);
 
-            if (ECS.GetTagECS(entityID) == "Player")
-                catmullRom.DisplayCatmullRomSplineChain();
+            //if (ECS.GetTagECS(entityID) == "Player")
+            //    catmullRom.DisplayCatmullRomSplineChain();
         }
 
         // Update is called once per frame

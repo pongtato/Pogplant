@@ -170,7 +170,7 @@ namespace Scripting
         // Given a location, enemy template and name of the enemy prefab this function will spawn an instance of an enemy.
         public void InstantiateEnemy(GameObject spawnWaypoint, EnemyTemplate enemy_template, string prefab_object)
         {
-            GameObject instance = CreateEnemyInstance(prefab_object, spawnWaypoint.transform.Value);
+            GameObject instance = CreateEnemyInstance(prefab_object, spawnWaypoint.transform);
             //// Set parent here
             ECS.SetTransformParent(instance.id, ECS.GetTransformParent(spawnWaypoint.id));
 
