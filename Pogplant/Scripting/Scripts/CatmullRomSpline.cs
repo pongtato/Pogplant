@@ -14,13 +14,16 @@
 /******************************************************************************/
 using System;
 using System.IO;
+using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Scripting
 {
     class CatmullRomSpline
     {
-        private List<Transform> controlPointsList = new List<Transform>();
+
+        static private List<Transform> controlPointsList = new List<Transform>();
         private bool isLooping = false;
 
         private float step_size = 0.2f;
@@ -28,22 +31,31 @@ namespace Scripting
         private List<GameObject> control_points = new List<GameObject>();
         private static bool created_gameobjects = false;
 
+        static bool isInitialized = false;
+
         public CatmullRomSpline()
         {
         }
 
         public void InitializeSpline()
         {
-            ReadControlPointsFromFile("M3_CP_data.txt");
-            //CopyRotation();
-            //ModCPFile();
-            //CreateGameObjectsFromCPList();
-            //WriteControlPointsToFile();
+            if (!isInitialized)
+            {
+                //ReadControlPointsFromFile("M3_CP_data.txt");
+                ReadControlPointsFromScene("Control_Points");
+                isInitialized = true;
+                //CopyRotation();
+                //ModCPFile();
+                //CreateGameObjectsFromCPList();
+                //WriteControlPointsToFile();
+            }
         }
 
         // Links a series of splines into chains and returns their waypoints.
         public void DisplayCatmullRomSplineChain()
         {
+            if (controlPointsList.Count == 0)
+                return;
             // Resulting waypoint of the entire spline chain
             List<Transform> waypoints = new List<Transform>();
 
@@ -56,6 +68,8 @@ namespace Scripting
                 DisplayCatmullRomSpline(i);
             }
         }
+
+
 
         //Display a spline between 2 points derived with the Catmull-Rom spline algorithm
         void DisplayCatmullRomSpline(int pos)
@@ -94,6 +108,9 @@ namespace Scripting
         // Links a series of splines into chains and returns their waypoints.
         public List<Transform> CalculateCatmullRomChain()
         {
+            if (controlPointsList.Count == 0)
+                return null;
+          
             // Resulting waypoint of the entire spline chain
             List<Transform> waypoints = new List<Transform>();
             int remove_range = (int)(10 / (step_size * 10));
@@ -187,7 +204,7 @@ namespace Scripting
             if (!created_gameobjects)
             {
                 Transform parent_transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
-                GameObject parent = ECS.CreateEntity("Control_points_parent", parent_transform);
+                GameObject parent = ECS.CreateEntity("Control_Points", parent_transform);
 
                 //Transform parent_transform = new Transform(Vector3.Zero(), new Vector3(0.0f, 180.0f, 0.0f), Vector3.One() * 0.1f);
                 //parent.AddComponent<Renderer>(new Renderer("sphere"));
@@ -196,6 +213,7 @@ namespace Scripting
                 foreach (Transform cp in controlPointsList)
                 {
                     GameObject result = ECS.CreateChild(parent.id, "ControlPoint_" + counter++, cp);
+                    //result.GetComponent<Tag>().tag = counter.ToString();
                     result.AddComponent<Renderer>(new Renderer("sphere"));
                     control_points.Add(result);
                 }
@@ -253,7 +271,7 @@ namespace Scripting
             File.WriteAllText(filePath, text);
         }
 
-        // Write control points transform to file
+        // Read control points data from file into control points list
         void ReadControlPointsFromFile(string filePath)
         {
             string abs_path = "Resources\\" + filePath;
@@ -268,6 +286,57 @@ namespace Scripting
             }
 
             //Console.WriteLine(controlPointsList.Count);
+        }
+
+        // This function compares the tags, the tags must contain 1 uint value
+        // example: tag = "69"
+        public static int TagComparer(uint x, uint y)
+        {
+            // Get
+            uint x_tag = uint.Parse(ECS.GetComponent<Tag>(x).tag);
+            uint y_tag = uint.Parse(ECS.GetComponent<Tag>(y).tag);
+            if (x_tag == y_tag)
+                return 0;
+            else if (x_tag > y_tag)
+                return 1;
+            else
+                return -1;
+        }
+
+        // Read control point objects from scene into control points list
+        void ReadControlPointsFromScene(string controlPointGroupName)
+        {
+            // Find the parent object that groups up all the control points
+            uint control_point_group_id = ECS.FindEntityWithName(controlPointGroupName);
+
+            if (!ECS.CheckValidEntity(control_point_group_id))
+            {
+                Console.WriteLine("ERROR: Could not find Control_Points object in the scene, \nfalling back to reading control points data from file.");
+                ReadControlPointsFromFile("M3_CP_data.txt");
+                return;
+            }
+
+            //Console.WriteLine("Found control_points id: " + control_point_group_id);
+
+            // Get all the control point in the group as a list
+
+            // convert uint[] to list<int> for sorting
+            uint[] temp_list = ECS.GetChildren(control_point_group_id);
+            List<uint> control_points_id = new List<uint>();
+            foreach (var item in temp_list)
+                control_points_id.Add(item);
+            //Console.WriteLine("Number of control points in control_point_group is: " + control_points_id.Count);
+
+            control_points_id.Sort(TagComparer); // Sort the list according to their tags OPTIONAL
+
+            // Add each control points' transform into controlPointList
+            foreach (var controlPoint in control_points_id)
+            {
+                controlPointsList.Add(ECS.GetComponent<Transform>(controlPoint));
+                ECS.SetActive(controlPoint, false);
+            }
+
+            Console.WriteLine("Number of control points is: " + controlPointsList.Count);
         }
 
         // Use this function to modify/transform the CP data file

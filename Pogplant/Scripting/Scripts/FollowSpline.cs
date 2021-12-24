@@ -12,6 +12,7 @@
 			written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
+using System;
 
 namespace Scripting
 {
@@ -65,7 +66,17 @@ namespace Scripting
             catmullRom = new CatmullRomSpline();
             catmullRom.InitializeSpline();
 
-            waypoints = catmullRom.CalculateCatmullRomChain().ToArray();
+            var calculated_waypoints = catmullRom.CalculateCatmullRomChain();
+            if (calculated_waypoints != null)
+            {
+                waypoints = catmullRom.CalculateCatmullRomChain().ToArray();
+                //Console.WriteLine("Number of waypoints generated: " + waypoints.Length);
+            }
+            else
+            {
+                Console.WriteLine("Error: waypoints is null!");
+                return;
+            }
 
             // Initialize d_alpha for first waypoint
             // Calculate d_alpha from follow_speed and distance between current and next waypoint
@@ -76,22 +87,25 @@ namespace Scripting
         // Update is called once per frame
         public override void Update(float dt)
         {
+            if (waypoints == null)
+                return;
+
             ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
             if (!isInit)
             {
-                // this is to initialize the starting position and rotation to te start of the spline
+                // this is to initialize the starting position and rotation to the start of the spline
                 isInit = true;
                 transform.Position = waypoints[0].Position;
-                transform.Rotation = waypoints[0].Rotation;
-                ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
+                transform.Rotation = waypoints[0].Rotation; // initialize rotation here
+                ECS.SetTransformECS(entityID, transform.Position, new Vector3(0, 180, 0), transform.Scale); // NOTE: Rotation is hard coded here because it is imposible to correctly configure rotation of the waypoints from the editor
             }
 
             if ((DelayToStart -= dt) <= 0.0f)
                 FollowWaypoints(dt);
 
             // Debug the spline
-            //if (ECS.GetTagECS(entityID) == "Player")
-            //    catmullRom.DisplayCatmullRomSplineChain();
+            if (ECS.GetTagECS(entityID) == "Player")
+                catmullRom.DisplayCatmullRomSplineChain();
 
             ECS.SetPosition(entityID, transform.Position);
         }
