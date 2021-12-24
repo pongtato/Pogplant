@@ -204,7 +204,7 @@ namespace Scripting
             if (!created_gameobjects)
             {
                 Transform parent_transform = new Transform(Vector3.Zero(), Vector3.Zero(), Vector3.One());
-                GameObject parent = ECS.CreateEntity("Control_points_parent", parent_transform);
+                GameObject parent = ECS.CreateEntity("Control_Points", parent_transform);
 
                 //Transform parent_transform = new Transform(Vector3.Zero(), new Vector3(0.0f, 180.0f, 0.0f), Vector3.One() * 0.1f);
                 //parent.AddComponent<Renderer>(new Renderer("sphere"));
@@ -213,6 +213,7 @@ namespace Scripting
                 foreach (Transform cp in controlPointsList)
                 {
                     GameObject result = ECS.CreateChild(parent.id, "ControlPoint_" + counter++, cp);
+                    //result.GetComponent<Tag>().tag = counter.ToString();
                     result.AddComponent<Renderer>(new Renderer("sphere"));
                     control_points.Add(result);
                 }
@@ -332,6 +333,7 @@ namespace Scripting
             foreach (var controlPoint in control_points_id)
             {
                 controlPointsList.Add(ECS.GetComponent<Transform>(controlPoint));
+                ECS.SetActive(controlPoint, false);
             }
 
             Console.WriteLine("Number of control points is: " + controlPointsList.Count);
