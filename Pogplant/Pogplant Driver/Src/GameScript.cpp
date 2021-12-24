@@ -621,4 +621,133 @@ namespace Scripting
 			rb->AddImpulseForce(dir);
 		}
 	}
+
+
+
+	void GameScript::RunMissilePhase1(std::uint32_t entityID, std::uint32_t IndicatorID, bool& blink_phase1,
+		float& large_blink_scale, float& small_blink_scale, float& accumulated_scale, float& Scale_duration,
+		bool& start_blinking, float& blink_phase_dt, float& accu_dt_blink, bool& isBig, bool& missle_drop_phase2,
+		float dt)
+	{
+		//Expand to blink
+		glm::vec3 large_scale{ large_blink_scale };
+		glm::vec3 small_scale{ small_blink_scale };
+
+		if (start_blinking)
+		{
+			//Expand in 0.5s
+			accumulated_scale += dt;
+			if (accumulated_scale >= Scale_duration)
+			{
+				accumulated_scale = Scale_duration;
+				SSH::PlayAudio(entityID, 0);
+				start_blinking = false;
+			}
+			glm::vec3 scale = glm::mix(small_scale, large_scale, (accumulated_scale / Scale_duration));
+			SSH::SetScale(IndicatorID, scale);
+		}
+		//Just scale  to big and small
+		if (!start_blinking)
+		{
+			blink_phase_dt += dt;
+			accu_dt_blink += dt;
+			if (accu_dt_blink >= 0.2f)
+			{
+				accu_dt_blink = 0.0f;
+				glm::vec3 scale{ 0 };
+				if (isBig)
+					scale = large_scale;
+				if (!isBig)
+					scale = small_scale;
+				SSH::SetScale(IndicatorID, scale);
+				isBig = !isBig;
+			}
+			if (blink_phase_dt >= 1.5f)
+			{
+				//Force set scale to small and initiate second phase
+				SSH::SetScale(IndicatorID, small_scale);
+				blink_phase1 = false;
+				missle_drop_phase2 = true;
+			}
+		}
+	}
+
+	void GameScript::RunMissilePhase2(std::uint32_t m_DropMissile, bool& set_missle_start,
+		float& missile_scale, glm::vec3& Start_drop_pos, glm::vec3& End_drop_pos,
+	float& accu_dt_drop , float& missle_drop_speed, bool& missle_drop_phase2, bool& explode_phase3 , float dt)
+	{
+		//Set missle drop high
+		if (!set_missle_start)
+		{
+			glm::vec3 set_Scale{ missile_scale };
+			SSH::SetPosition(m_DropMissile, Start_drop_pos);
+			SSH::SetScale(m_DropMissile, set_Scale);
+			set_missle_start = true;
+		}
+
+		accu_dt_drop += missle_drop_speed * dt;
+		//Iterate the dropping now
+		glm::vec3 drop_pos = glm::mix(Start_drop_pos, End_drop_pos, accu_dt_drop);
+		SSH::SetPosition(m_DropMissile, drop_pos);
+		//If the aabb collider min Y only touches touches the bottem, end phase 2 and start phase 3
+		BoxCollider* missle_collider =  PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<BoxCollider>(static_cast<entt::entity>(m_DropMissile));
+		glm::vec3 min = drop_pos - missle_collider->extends;
+		if (min.y <= End_drop_pos.y)
+		{
+			//Start phase 3 return the missle to unseeable
+			glm::vec3 set_end_Scale{ 0.01 };
+			SSH::SetScale(m_DropMissile, set_end_Scale);
+			missle_drop_phase2 = false;
+			explode_phase3 = true;
+		}
+	}
+
+	void GameScript::RunMissilePhase3(std::uint32_t m_Explosion, float& final_scale_value, bool& set_explode_start, glm::vec3& start_scale, 
+		float& accu_dt_expand, float& explosion_expand_multiplier, float& centre_shift_multiplier, float& extends_multiplier_Y, float& extends_multiplier_XZ,
+		float& scale_down_dt, float& scale_down_time, bool& explode_phase3, bool& m_End, glm::vec3& start_centre, glm::vec3& start_extends, float dt)
+	{
+
+		glm::vec3 Final_scale{ final_scale_value };
+		if (!set_explode_start)
+		{
+			//Assume the trigger is already there, just have to not to step on it on a VERY TINY BOX
+			Final_scale.y = 0.0f;
+			start_scale = Final_scale;
+			SSH::SetScale(m_Explosion, Final_scale);
+			set_explode_start = true;
+		}
+		//Start expanding and lerping to scale size and set trigger to active
+		accu_dt_expand += dt;
+		if (accu_dt_expand < explosion_expand_multiplier)
+		{
+			glm::vec3 curr_scale = glm::mix(start_scale, Final_scale, accu_dt_expand / explosion_expand_multiplier);
+			SSH::SetScale(m_Explosion, curr_scale);
+			//Change the centre colliderbox position also
+			BoxCollider* explosion_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<BoxCollider>(static_cast<entt::entity>(m_Explosion));
+			explosion_collider->centre.y = curr_scale.y * centre_shift_multiplier;
+			explosion_collider->extends.y = curr_scale.y * extends_multiplier_Y;
+			explosion_collider->extends.z = curr_scale.y * extends_multiplier_XZ;
+			explosion_collider->extends.x = curr_scale.y * extends_multiplier_XZ;
+		}
+		//Scale down the explosion after it happens
+		if (accu_dt_expand >= explosion_expand_multiplier)
+		{
+			//Scale down
+			scale_down_dt += dt;
+			if (scale_down_dt > scale_down_time)
+			{
+				scale_down_dt = scale_down_time;
+				explode_phase3 = false;
+				m_End = true;
+				BoxCollider* end_explosion_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<BoxCollider>(static_cast<entt::entity>(m_Explosion));
+				end_explosion_collider->centre = start_centre;
+				end_explosion_collider->extends = start_extends;
+			}
+			glm::vec3 scale_down = glm::mix(Final_scale, start_scale, scale_down_dt / scale_down_time);
+			SSH::SetScale(m_Explosion, scale_down);
+		}
+	}
+
 }
+
+

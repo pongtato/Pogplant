@@ -216,6 +216,24 @@ namespace SSH
 		}
 	}
 
+	void SetRotation(std::uint32_t entityID, glm::vec3 rot)
+	{
+		auto trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
+		if (trans)
+		{
+			trans->m_rotation = rot;
+		}
+	}
+
+	void SetScale(std::uint32_t entityID, glm::vec3 sca)
+	{
+		auto trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
+		if (trans)
+		{
+			trans->m_scale = sca;
+		}
+	}
+
 	void SetActive(std::uint32_t entityID, bool isEnabled)
 	{
 		if (isEnabled)

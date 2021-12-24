@@ -25,10 +25,11 @@ namespace Scripting
             start_extends = ECS.GetComponent<BoxCollider>(m_Explosion).extends;
             start_centre = ECS.GetComponent<BoxCollider>(m_Explosion).centre;
 
+            End_drop_pos = ECS.GetComponent<Transform>(m_Indicator).Position;
+
             //Always self-set minimizer scale
-            Transform star_blink = ECS.GetComponent<Transform>(m_Indicator);
             Vector3 start_mini = new Vector3(small_blink_scale, small_blink_scale, small_blink_scale);
-            ECS.SetTransformECS(m_Indicator, star_blink.Position, star_blink.Rotation, start_mini);
+            ECS.SetScale(m_Indicator, start_mini);
         }
 
         public void Start()
@@ -60,153 +61,153 @@ namespace Scripting
 
         void Phase1(float dt)
         {
-            //Just scale  to big and small
-            Transform blink = ECS.GetComponent<Transform>(m_Indicator);
-            if (start_blinking)
-            {
-                //Expand in 0.5s
-                accumulated_scale += dt;
-                if (accumulated_scale >= Scale_duration)
-                {
-                    accumulated_scale = Scale_duration;
-                    ECS.PlayAudio(m_EntityID, 0);
-                    start_blinking = false;
-                }
-                Vector3 large_scale = new Vector3(large_blink_scale, large_blink_scale, large_blink_scale);
-                Vector3 small_scale = new Vector3(small_blink_scale, small_blink_scale, small_blink_scale);
-                Vector3 scale = Vector3.Lerp(small_scale, large_scale, accumulated_scale / Scale_duration);
-                ECS.SetTransformECS(m_Indicator, blink.Position, blink.Rotation, scale);
-            }
-            if (!start_blinking)
-            {
-                blink_phase_dt += dt;
-                accu_dt_blink += dt;
-                if (accu_dt_blink >= 0.2f)
-                {
-                    accu_dt_blink = 0.0f;
-                    Vector3 scale = new Vector3(0, 0, 0);
-                    if (isBig)
-                    {
-                        //Set your enlargement scale
-                        scale = new Vector3(large_blink_scale, large_blink_scale, large_blink_scale);
-                    }
-                    if (!isBig)
-                    {
-                        //Set minimizer scale
-                        scale = new Vector3(small_blink_scale, small_blink_scale, small_blink_scale);
-                    }
-                    ECS.SetTransformECS(m_Indicator, blink.Position, blink.Rotation, scale);
-                    isBig = !isBig;
-                }
-                if (blink_phase_dt >= 1.5f)
-                {
-                    //Force set scale to small and initiate second phase
-                    Vector3 force_scale = new Vector3(small_blink_scale, small_blink_scale, small_blink_scale);
-                    ECS.SetTransformECS(m_Indicator, blink.Position, blink.Rotation, force_scale);
-                    blink_phase1 = false;
-                    missle_drop_phase2 = true;
-                }
-            }
+            GameUtilities.RunMissilePhase1(m_EntityID , m_Indicator, ref blink_phase1,
+           ref  large_blink_scale, ref small_blink_scale, ref accumulated_scale, ref Scale_duration,
+           ref start_blinking,  ref blink_phase_dt,  ref accu_dt_blink, ref isBig,  ref missle_drop_phase2,
+             dt);
+
+            ////Expand to blink
+            //Vector3 large_scale = new Vector3(large_blink_scale, large_blink_scale, large_blink_scale);
+            //Vector3 small_scale = new Vector3(small_blink_scale, small_blink_scale, small_blink_scale);
+
+            //if (start_blinking)
+            //{
+            //    //Expand in 0.5s
+            //    accumulated_scale += dt;
+            //    if (accumulated_scale >= Scale_duration)
+            //    {
+            //        accumulated_scale = Scale_duration;
+            //        ECS.PlayAudio(m_EntityID, 0);
+            //        start_blinking = false;
+            //    }
+            //    Vector3 scale = Vector3.Lerp(small_scale, large_scale, accumulated_scale / Scale_duration);
+            //    ECS.SetScale(m_Indicator, scale);
+            //}
+            ////Just scale  to big and small
+            //if (!start_blinking)
+            //{
+            //    blink_phase_dt += dt;
+            //    accu_dt_blink += dt;
+            //    if (accu_dt_blink >= 0.2f)
+            //    {
+            //        accu_dt_blink = 0.0f;
+            //        Vector3 scale = new Vector3(0);
+            //        if (isBig)
+            //            scale = large_scale;
+            //        if (!isBig)
+            //            scale = small_scale;
+            //        ECS.SetScale(m_Indicator, scale);
+            //        isBig = !isBig;
+            //    }
+            //    if (blink_phase_dt >= 1.5f)
+            //    {
+            //        //Force set scale to small and initiate second phase
+            //        ECS.SetScale(m_Indicator, small_scale);
+            //        blink_phase1 = false;
+            //        missle_drop_phase2 = true;
+            //    }
+            //}
         }
 
         void Phase2(float dt)
         {
-            //Set missle drop high
-            if (!set_missle_start)
-            {
-                Transform dropper_set = ECS.GetComponent<Transform>(m_DropMissile);
-                Vector3 set_Scale = new Vector3(missile_scale, missile_scale, missile_scale);
-                ECS.SetTransformECS(m_DropMissile, Start_drop_pos, dropper_set.Rotation, set_Scale);
-                set_missle_start = true;
-            }
+            GameUtilities.RunMissilePhase2(m_DropMissile, ref set_missle_start,
+            ref missile_scale, ref Start_drop_pos, ref End_drop_pos,
+            ref accu_dt_drop, ref missle_drop_speed, ref missle_drop_phase2, ref explode_phase3, dt);
 
-            accu_dt_drop += missle_drop_speed * dt;
-            Transform dropper = ECS.GetComponent<Transform>(m_DropMissile);
-            Transform end_pos = ECS.GetComponent<Transform>(m_Indicator);
-            //Iterate the dropping now
-            Vector3 drop_pos = Vector3.Lerp(Start_drop_pos, end_pos.Position, accu_dt_drop);
-            ECS.SetTransformECS(m_DropMissile, drop_pos, dropper.Rotation, dropper.Scale);
-            //If the aabb collider min Y only touches touches the bottem, end phase 2 and start phase 3
-            BoxCollider missle_collider = ECS.GetComponent<BoxCollider>(m_DropMissile);
-            Vector3 min = drop_pos - missle_collider.extends; // Might be wrong
-            if (min.Y <= end_pos.Position.Y)
-            {
-                //Start phase 3 return the missle to unseeable
-                Transform dropper_set = new Transform();
-                ECS.GetTransformECS(m_DropMissile, ref dropper_set.Position, ref dropper_set.Rotation, ref dropper_set.Scale);
-                Vector3 set_end_Scale = new Vector3(0.1f, 0.1f, 0.1f);
-                ECS.SetTransformECS(m_DropMissile, dropper_set.Position, dropper_set.Rotation, set_end_Scale);
-                missle_drop_phase2 = false;
-                explode_phase3 = true;
-            }
+            ////Set missle drop high
+            //if (!set_missle_start)
+            //{
+            //    Vector3 set_Scale = new Vector3(missile_scale, missile_scale, missile_scale);
+            //    ECS.SetPosition(m_DropMissile, Start_drop_pos);
+            //    ECS.SetScale(m_DropMissile, set_Scale);
+            //    set_missle_start = true;
+            //}
+
+            //accu_dt_drop += missle_drop_speed * dt;
+            ////Iterate the dropping now
+            //Vector3 drop_pos = Vector3.Lerp(Start_drop_pos, End_drop_pos, accu_dt_drop);
+            //ECS.SetPosition(m_DropMissile, drop_pos);
+            ////If the aabb collider min Y only touches touches the bottem, end phase 2 and start phase 3
+            //BoxCollider missle_collider = ECS.GetComponent<BoxCollider>(m_DropMissile);
+            //Vector3 min = drop_pos - missle_collider.extends; 
+            //if (min.Y <= End_drop_pos.Y)
+            //{
+            //    //Start phase 3 return the missle to unseeable
+            //    Vector3 set_end_Scale = new Vector3(0.01f, 0.01f, 0.01f);
+            //    ECS.SetScale(m_DropMissile, set_end_Scale);
+            //    missle_drop_phase2 = false;
+            //    explode_phase3 = true;
+            //}
         }
 
         void Phase3(float dt)
         {
             //NEED TO SEPERATE INNER AND OUTER RING TIMINGS, TO GET BETTER FEEL.
             //TAKES LONGER TIME
+            GameUtilities.RunMissilePhase3(m_Explosion, ref final_scale_value, ref  set_explode_start, ref  start_scale,
+        ref  accu_dt_expand, ref explosion_expand_multiplier, ref  centre_shift_multiplier, ref  extends_multiplier_Y, ref extends_multiplier_XZ,
+        ref  scale_down_dt, ref  scale_down_time, ref explode_phase3, ref  m_End, ref  start_centre, ref  start_extends,  dt);
 
-            if (!set_explode_start)
-            {
-                //Assume the trigger is already there, just have to not to step on it on a VERY TINY BOX
-                Vector3 start3_scale = new Vector3(final_scale_value);
-                start3_scale.Y = 0.0f;
-                start_scale = start3_scale;
-                Transform start_explode = ECS.GetComponent<Transform>(m_Explosion);
-                ECS.SetTransformECS(m_Explosion, start_explode.Position, start_explode.Rotation, start3_scale);
-                set_explode_start = true;
-            }
-            //Only expand the outerring first then inner ring
-            //if(start_outerring)
+            //Vector3 Final_scale = new Vector3(final_scale_value);
+            //if (!set_explode_start)
             //{
-            //    //Expand in 30s
-            //    accumulated_outerring_dt += dt;
-            //    if (accumulated_outerring_dt >= outerring_scale_duration)
-            //    {
-            //        accumulated_outerring_dt = outerring_scale_duration;
-            //        start_outerring = false;
-            //    }
-            //    Transform start_explode = ECS.GetComponent<Transform>(OuterRing);
-            //    Vector3 outerring_large_scale = new Vector3(final_scale_value, final_scale_value, final_scale_value);
-            //    Vector3 outer_ring_small_scale = new Vector3(final_scale_value, 0.0f, final_scale_value);
-            //    Vector3 outerring_scale = Vector3.Lerp(outer_ring_small_scale, outerring_large_scale, accumulated_outerring_dt / outerring_scale_duration);
-            //    ECS.SetTransformECS(OuterRing, blink.Position, blink.Rotation, scale);
+            //    //Assume the trigger is already there, just have to not to step on it on a VERY TINY BOX
+            //    Final_scale.Y = 0.0f;
+            //    start_scale = Final_scale;
+            //    ECS.SetScale(m_Explosion, Final_scale);
+            //    set_explode_start = true;
             //}
+            ////Only expand the outerring first then inner ring
+            ////if(start_outerring)
+            ////{
+            ////    //Expand in 30s
+            ////    accumulated_outerring_dt += dt;
+            ////    if (accumulated_outerring_dt >= outerring_scale_duration)
+            ////    {
+            ////        accumulated_outerring_dt = outerring_scale_duration;
+            ////        start_outerring = false;
+            ////    }
+            ////    Transform start_explode = ECS.GetComponent<Transform>(OuterRing);
+            ////    Vector3 outerring_large_scale = new Vector3(final_scale_value, final_scale_value, final_scale_value);
+            ////    Vector3 outer_ring_small_scale = new Vector3(final_scale_value, 0.0f, final_scale_value);
+            ////    Vector3 outerring_scale = Vector3.Lerp(outer_ring_small_scale, outerring_large_scale, accumulated_outerring_dt / outerring_scale_duration);
+            ////    ECS.SetTransformECS(OuterRing, blink.Position, blink.Rotation, scale);
+            ////}
 
-            //Start expanding and lerping to scale size and set trigger to active
-            Vector3 Final_scale = new Vector3(final_scale_value);
-            accu_dt_expand += dt;
-            Transform explode = ECS.GetComponent<Transform>(m_Explosion);
-            if (accu_dt_expand < explosion_expand_multiplier)
-            {
-                Vector3 curr_scale = Vector3.Lerp(start_scale, Final_scale, accu_dt_expand / explosion_expand_multiplier);
-                ECS.SetTransformECS(m_Explosion, explode.Position, explode.Rotation, curr_scale);
-                //Change the centre colliderbox position also
-                BoxCollider explosion_collider = ECS.GetComponent<BoxCollider>(m_Explosion);
-                explosion_collider.centre.Y = curr_scale.Y * centre_shift_multiplier;
-                explosion_collider.extends.Y = curr_scale.Y * extends_multiplier_Y;
-                explosion_collider.extends.Z = curr_scale.Y * extends_multiplier_XZ;
-                explosion_collider.extends.X = curr_scale.Y * extends_multiplier_XZ;
-                ECS.SetColliderBox(m_Explosion, ref explosion_collider.isTrigger, ref explosion_collider.centre, ref explosion_collider.extends);
-            }
-            //Scale down the explosion after it happens
-            if (accu_dt_expand >= explosion_expand_multiplier)
-            {
-                //Scale down
-                scale_down_dt += dt;
-                if (scale_down_dt > 0.7f)
-                {
-                    scale_down_dt = 0.7f;
-                    explode_phase3 = false;
-                    m_End = true;
-                    BoxCollider end_explosion_collider = ECS.GetComponent<BoxCollider>(m_Explosion);
-                    end_explosion_collider.centre = start_centre;
-                    end_explosion_collider.extends = start_extends;
-                    ECS.SetColliderBox(m_Explosion, ref end_explosion_collider.isTrigger, ref end_explosion_collider.centre, ref end_explosion_collider.extends);
-                }
-                Vector3 scale_down = Vector3.Lerp(Final_scale, start_scale, scale_down_dt / 0.7f);
-                ECS.SetTransformECS(m_Explosion, explode.Position, explode.Rotation, scale_down);
-            }
+            ////Start expanding and lerping to scale size and set trigger to active
+        
+            //accu_dt_expand += dt;
+            //if (accu_dt_expand < explosion_expand_multiplier)
+            //{
+            //    Vector3 curr_scale = Vector3.Lerp(start_scale, Final_scale, accu_dt_expand / explosion_expand_multiplier);
+            //    ECS.SetScale(m_Explosion,curr_scale);
+            //    //Change the centre colliderbox position also
+            //    BoxCollider explosion_collider = ECS.GetComponent<BoxCollider>(m_Explosion);
+            //    explosion_collider.centre.Y = curr_scale.Y * centre_shift_multiplier;
+            //    explosion_collider.extends.Y = curr_scale.Y * extends_multiplier_Y;
+            //    explosion_collider.extends.Z = curr_scale.Y * extends_multiplier_XZ;
+            //    explosion_collider.extends.X = curr_scale.Y * extends_multiplier_XZ;
+            //    ECS.SetColliderBox(m_Explosion, ref explosion_collider.isTrigger, ref explosion_collider.centre, ref explosion_collider.extends);
+            //}
+            ////Scale down the explosion after it happens
+            //if (accu_dt_expand >= explosion_expand_multiplier)
+            //{
+            //    //Scale down
+            //    scale_down_dt += dt;
+            //    if (scale_down_dt > scale_down_time)
+            //    {
+            //        scale_down_dt = scale_down_time;
+            //        explode_phase3 = false;
+            //        m_End = true;
+            //        BoxCollider end_explosion_collider = ECS.GetComponent<BoxCollider>(m_Explosion);
+            //        end_explosion_collider.centre = start_centre;
+            //        end_explosion_collider.extends = start_extends;
+            //        ECS.SetColliderBox(m_Explosion, ref end_explosion_collider.isTrigger, ref end_explosion_collider.centre, ref end_explosion_collider.extends);
+            //    }
+            //    Vector3 scale_down = Vector3.Lerp(Final_scale, start_scale, scale_down_dt / scale_down_time);
+            //    ECS.SetScale(m_Explosion, scale_down);
+            //}
         }
 
         uint m_Indicator;
@@ -241,21 +242,21 @@ namespace Scripting
 
         float missle_drop_speed = 10f;
         Vector3 Start_drop_pos = new Vector3(0, 15, 0);
+        Vector3 End_drop_pos = new Vector3(0);
         float missile_scale = 0.1f;
-        // third phase explosionlarge_blink_scale
+        // third phase explosion
         bool explode_phase3 = false;
         bool set_explode_start = false;
         float accu_dt_expand = 0.0f;
 
         float centre_shift_multiplier = 4.0f;
-        //float extends_multiplier_Y = 4.0f;
         float extends_multiplier_Y = 800.0f;
-        //float extends_multiplier_XZ = 2.0f;
         float extends_multiplier_XZ = 70.0f;
         float final_scale_value = 0.1f;
         float explosion_expand_multiplier = 0.5f;
         //float linger_time = 0.0f;
         float scale_down_dt = 0.0f;
+        float scale_down_time = 0.7f;
 
         //bool start_outerring = true;
         //float accumulated_outerring_dt = 0.0f;

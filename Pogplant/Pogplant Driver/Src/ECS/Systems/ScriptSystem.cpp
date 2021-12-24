@@ -382,6 +382,9 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::PlayerTakeDamage", &Scripting::GameScript::PlayerTakeDamage);
 	mono_add_internal_call("Scripting.GameUtilities::PlayEnemyDeathAnimation", &Scripting::GameScript::PlayEnemyDeathAnimation);
 	mono_add_internal_call("Scripting.GameUtilities::StartMissile", &Scripting::GameScript::StartMissile);
+	mono_add_internal_call("Scripting.GameUtilities::RunMissilePhase1", &Scripting::GameScript::RunMissilePhase1);
+	mono_add_internal_call("Scripting.GameUtilities::RunMissilePhase2", &Scripting::GameScript::RunMissilePhase2);
+	mono_add_internal_call("Scripting.GameUtilities::RunMissilePhase3", &Scripting::GameScript::RunMissilePhase3);
 	mono_add_internal_call("Scripting.GameUtilities::SetTurretFire", &Scripting::GameScript::SetTurretFire);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore", &Scripting::GameScript::UpdateScore);
 	mono_add_internal_call("Scripting.GameUtilities::IncreaseScorefromEnv", &Scripting::GameScript::IncreaseScorefromEnv);
@@ -410,6 +413,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetVelocity", SSH::GetVelocity);
 	mono_add_internal_call("Scripting.ECS::SetVelocity", SSH::SetVelocity);
 	mono_add_internal_call("Scripting.ECS::SetPosition", SSH::SetPosition);
+	mono_add_internal_call("Scripting.ECS::SetRotation", SSH::SetRotation);
+	mono_add_internal_call("Scripting.ECS::SetScale", SSH::SetScale);
 	mono_add_internal_call("Scripting.ECS::GetChildren", SSH::GetChildren);
 	mono_add_internal_call("Scripting.ECS::CheckValidEntity", SSH::CheckValidEntity);
 

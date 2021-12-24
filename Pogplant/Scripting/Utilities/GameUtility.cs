@@ -53,6 +53,22 @@ namespace Scripting
         public extern static void StartMissile(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void RunMissilePhase1(uint entityID, uint IndicatorID , ref bool blink_phase1,
+        ref float large_blink_scale, ref float small_blink_scale, ref float accumulated_scale, ref float Scale_duration,
+        ref bool start_blinking, ref float blink_phase_dt, ref float accu_dt_blink, ref bool isBig, ref bool missle_drop_phase2,
+        float dt);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void RunMissilePhase2(uint m_DropMissile,  ref bool set_missle_start,
+        ref float missile_scale, ref Vector3 Start_drop_pos, ref Vector3 End_drop_pos,
+        ref float accu_dt_drop, ref float missle_drop_speed, ref bool missle_drop_phase2, ref bool explode_phase3, float dt);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void RunMissilePhase3(uint m_Explosion, ref float final_scale_value, ref bool set_explode_start, ref Vector3 start_scale,
+        ref float accu_dt_expand, ref float explosion_expand_multiplier, ref float centre_shift_multiplier, ref float extends_multiplier_Y, ref float extends_multiplier_XZ,
+        ref float scale_down_dt,ref float scale_down_time,ref bool explode_phase3, ref bool m_End, ref Vector3 start_centre, ref Vector3 start_extends, float dt);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetTurretFire(uint entityID, bool isActivated, int TurretIdentifier);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

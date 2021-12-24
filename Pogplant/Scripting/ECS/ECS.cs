@@ -73,6 +73,10 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetPosition(uint entityID, Vector3 position);
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetRotation(uint entityID, Vector3 rotation);
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetScale(uint entityID, Vector3 scale);
 
         public static GameObject CreateEntity(string name, Transform transform)
         {

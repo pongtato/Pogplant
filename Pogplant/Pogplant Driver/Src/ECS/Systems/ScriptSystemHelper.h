@@ -31,6 +31,8 @@ namespace SSH
 	void GetCamera(std::uint32_t entityID, float& yaw, float& pitch, float& roll);
 	void SetCamera(std::uint32_t entityID, float yaw, float pitch, float roll);
 	void SetPosition(std::uint32_t entityID, glm::vec3 pos);
+	void SetRotation(std::uint32_t entityID, glm::vec3 rot);
+	void SetScale(std::uint32_t entityID, glm::vec3 sca);
 
 	// True is enabled, False is disabled
 	void SetActive(std::uint32_t entityID, bool isEnabled);

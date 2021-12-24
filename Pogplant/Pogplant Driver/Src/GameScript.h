@@ -38,6 +38,19 @@ namespace Scripting
 
 	static void StartMissile(std::uint32_t entityID);
 
+	static void RunMissilePhase1(std::uint32_t entityID, std::uint32_t IndicatorID,  bool& blink_phase1,
+		float& large_blink_scale, float& small_blink_scale, float& accumulated_scale, float& Scale_duration,
+		bool& start_blinking, float& blink_phase_dt, float& accu_dt_blink, bool& isBig, bool& missle_drop_phase2,
+		float dt);
+
+	static 	void RunMissilePhase2(std::uint32_t m_DropMissile, bool& set_missle_start,
+		float& missile_scale, glm::vec3& Start_drop_pos, glm::vec3& End_drop_pos,
+		float& accu_dt_drop, float& missle_drop_speed, bool& missle_drop_phase2, bool& explode_phase3, float dt);
+
+	static 	void RunMissilePhase3(std::uint32_t m_Explosion, float& final_scale_value, bool& set_explode_start, glm::vec3& start_scale,
+		float& accu_dt_expand, float& explosion_expand_multiplier, float& centre_shift_multiplier, float& extends_multiplier_Y, float& extends_multiplier_XZ,
+		float& scale_down_dt, float& scale_down_time, bool& explode_phase3, bool& m_End, glm::vec3& start_centre, glm::vec3& start_extends, float dt);
+
 	static void SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier);
 
 	//just store the object that contains the EncounterSystemDriver
