@@ -4,7 +4,7 @@ layout (location = 0) in vec2 v2_Pos;
 layout (location = 1) in vec2 v2_TexCoords;
 layout (location = 2) in vec4 v4_Color;
 layout (location = 3) in mat4 m4_Model;
-layout (location = 7) in int  i_TexID;
+layout (location = 7) in int i_TexID;
 layout (location = 8) in int b_Ortho;
 layout (location = 9) in int b_GameOnly;
 
@@ -40,6 +40,6 @@ void main()
     }
     else
     {
-        gl_Position = proj * view * m4_Model * vec4(v2_Pos.x, yScaled, 1.0f, 1.0f);
+        gl_Position = proj * view * m4_Model * vec4(v2_Pos.x, yScaled, 0.0f, 1.0f);
     }
 }
