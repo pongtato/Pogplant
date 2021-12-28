@@ -50,7 +50,10 @@ namespace PPI
 		~InputSystem() = default;
 
 		static void Init(GLFWwindow* window);
-		static void PollEvents();
+		static void PollEvents(float c_dt);
+
+		static void VibrateControllerLightMotor(float amount, float duration, bool compounded = true);
+		static void VibrateControllerHeavyMotor(float amount, float duration, bool compounded = true);
 
 		static bool onKeyHeld(std::string keyID);
 		static bool onKeyHeldMono(MonoString* keyID);
@@ -89,12 +92,29 @@ namespace PPI
 	private:
 		InputSystem() = default;
 		
+		struct VibrateInfo
+		{
+			enum class Motor
+			{
+				HEAVY,
+				LIGHT,
+				TRIGGERLEFT,
+				TRIGGERRIGHT
+			};
+
+			Motor m_motor = Motor::LIGHT;
+			float m_vibrationStrength = 0.f;
+			float m_timer = 0.f;
+		};
+
 		/**> singleton instance*/
 		static std::unique_ptr<InputSystem> m_instance;
 		static std::once_flag m_onceFlag;
 
 		std::unordered_map<std::string, keyCode> m_inputMap;
 		std::unordered_map<std::string, ControllerAxis> m_axisMap;
+
+		std::vector<VibrateInfo> m_vibrationStack;
 	};
 }
 

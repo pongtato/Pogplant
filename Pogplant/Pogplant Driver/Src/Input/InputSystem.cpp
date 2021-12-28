@@ -14,6 +14,7 @@
 /******************************************************************************/
 #include "InputSystem.h"
 #include "GLFWInput.h"
+#include "WindowsXInput.h"
 
 #include <iostream>
 
@@ -79,9 +80,11 @@ namespace PPI
 	/*!
 	\brief
 		Update booleans to correctly reflect triggered/release behaviour
+	\param c_dt
+		The delta time for this frame
 	*/
 	/******************************************************************************/
-	void InputSystem::PollEvents()
+	void InputSystem::PollEvents(float c_dt)
 	{
 		/*static int layout = 1;
 		if (GLFWInputManager::Instance().onControllerTriggered(GLFW_GAMEPAD_BUTTON_BACK))
@@ -91,6 +94,74 @@ namespace PPI
 			setControllerLayout(layout);
 		}//*/
 		GLFWInputManager::Instance().pollEvents();
+
+		float lightVibration = 0.f;
+		float heavyVibration = 0.f;
+
+		for (int i = 0; i < m_instance->m_vibrationStack.size(); i++)
+		{
+			m_instance->m_vibrationStack[i].m_timer -= c_dt;
+
+			if (m_instance->m_vibrationStack[i].m_motor == VibrateInfo::Motor::LIGHT)
+			{
+				lightVibration += m_instance->m_vibrationStack[i].m_vibrationStrength;
+			}
+			else
+			{
+				heavyVibration += m_instance->m_vibrationStack[i].m_vibrationStrength;
+			}
+
+			if (m_instance->m_vibrationStack[i].m_timer <= 0)
+			{
+				m_instance->m_vibrationStack.erase(m_instance->m_vibrationStack.begin() + i);
+				i--;
+			}
+		}
+
+		xInput::Instance().Vibrate(lightVibration, heavyVibration);
+		xInput::Instance().UpdateControllerVibration();
+	}
+
+	/******************************************************************************/
+	/*!
+	\brief
+		Vibrates the heavy controller motor if a controller is connected
+	\param amount
+		The amount of force of vibration, range (0 ~ 1)
+	\param duration
+		The duration to vibrate for in seconds
+	\param compounded
+		Whether this should stack and compound if called multiple times
+		if set to false, will completely override old values
+	*/
+	/******************************************************************************/
+	void InputSystem::VibrateControllerLightMotor(float amount, float duration, bool compounded)
+	{
+		if (!compounded)
+			Instance().m_vibrationStack.clear();
+
+		Instance().m_vibrationStack.push_back({ VibrateInfo::Motor::LIGHT, amount, duration });
+	}
+
+	/******************************************************************************/
+	/*!
+	\brief
+		Vibrates the heavy controller motor if a controller is connected
+	\param amount
+		The amount of force of vibration, range (0 ~ 1)
+	\param duration
+		The duration to vibrate for in seconds
+	\param compounded
+		Whether this should stack and compound if called multiple times
+		if set to false, will completely override old values
+	*/
+	/******************************************************************************/
+	void InputSystem::VibrateControllerHeavyMotor(float amount, float duration, bool compounded)
+	{
+		if (!compounded)
+			Instance().m_vibrationStack.clear();
+
+		Instance().m_vibrationStack.push_back({ VibrateInfo::Motor::HEAVY, amount, duration });
 	}
 
 	/******************************************************************************/

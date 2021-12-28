@@ -180,6 +180,9 @@
     <ClCompile Include="Src\ECS\Components\DependantComponents.cpp">
       <Filter>Source Files\ECS\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Input\WindowsXInput.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
@@ -325,6 +328,9 @@
     </ClInclude>
     <ClInclude Include="Src\Panels\CollisionLayerPanel.h">
       <Filter>Source Files\ImguiPanels</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Input\WindowsXInput.h">
+      <Filter>Source Files\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
