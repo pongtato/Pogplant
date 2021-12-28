@@ -403,6 +403,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::RemoveParentFrom", SSH::RemoveParentFrom);
 	mono_add_internal_call("Scripting.ECS::GetGlobalPosition", SSH::GetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::GetGlobalRotation", SSH::GetGlobalRotation);
+	mono_add_internal_call("Scripting.ECS::SetGlobalPosition", SSH::SetGlobalPosition);
+	mono_add_internal_call("Scripting.ECS::SetGlobalRotation", SSH::SetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);
 	mono_add_internal_call("Scripting.ECS::GetBoxColliderECS", SSH::GetBoxColliderECS);
 	mono_add_internal_call("Scripting.ECS::GetTagECS", SSH::GetTagECS);

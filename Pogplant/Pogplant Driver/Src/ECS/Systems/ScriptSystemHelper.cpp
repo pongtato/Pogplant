@@ -285,6 +285,16 @@ namespace SSH
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalRotation();
 	}
 
+	void SetGlobalPosition(std::uint32_t entityID, glm::vec3 pos)
+	{
+		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->SetGlobalPosition(pos);
+	}
+
+	void SetGlobalRotation(std::uint32_t entityID, glm::vec3 rot)
+	{
+		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->SetGlobalRotation(rot);
+	}
+
 	glm::vec3 GetForwardVector(std::uint32_t entityID)
 	{
 		auto transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));

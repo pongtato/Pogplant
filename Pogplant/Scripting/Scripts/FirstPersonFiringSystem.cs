@@ -8,7 +8,6 @@ namespace Scripting
 {
     public class FirstPersonFiringSystem : MonoBehaviour
     {
-        List<uint> ReticleGroup = new List<uint>();
         List<uint> Turrets = new List<uint>();
         List<uint> enemy_in_range = new List<uint>();
         List<uint> enemy_to_target = new List<uint>();
@@ -39,8 +38,22 @@ namespace Scripting
 
         //Reticle stuff
         Vector3 start_position = new Vector3(0.0f, 0.0f, 0.0f);
-        Vector3 Small_hide_reticle = new Vector3(0.01f, 0.01f, 0.01f);
-        Vector3 Show_reticle = new Vector3(1f, 1f, 1f);
+        Vector3 Small_hide_reticle = new Vector3(0.01f, 0.01f, 0f);
+        Vector3 Show_reticle = new Vector3(1f, 1f, 0f);
+        Vector3 start_reticle = new Vector3(3f, 3f, 0f);
+        float rotateAmount = 7.5f;
+        float animateSpeed = 10.0f;
+
+        public class  Reticle
+        {
+            public uint parent_id = 0;
+            public uint child_id = 0;           
+            public bool enabled = false;
+            public float accu_angle = 0;
+            public float step = 0;
+            public Reticle( uint parentid, uint chilid, bool enable = false) { enabled = enable; parent_id = parentid; child_id = chilid; }
+        };
+        List<Reticle> ReticleGroup = new List<Reticle>();
         Transform transform;
         public FirstPersonFiringSystem()
         {
@@ -58,10 +71,13 @@ namespace Scripting
             Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret3"));
             Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret4"));
 
-            ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"));
-            ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"));
-            ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"));
-            ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"));
+            ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"),"Child")));
+            ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), "Child")));
+            ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), "Child")));
+            ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"), "Child")));
+            //ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"));
+            //ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"));
+            //ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"));
         }
 
         public override void Init(ref uint _entityID)
@@ -81,10 +97,6 @@ namespace Scripting
         }
         public override void Update(float dt)
         {
-            //float X = 0, Y = 0;
-            //GameUtilities.GetMousePos(ref X,ref  Y);
-            //Console.WriteLine("Mouse Pos: " + X + ", " + Y);
-
             //UpdateReticleMovement(ref transform, ref dt);
 
             ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
@@ -112,11 +124,16 @@ namespace Scripting
                 //Shoot straight if there is no enemy
                 for (int i = 0; i < Turrets.Count; ++i)
                 {
-                    Transform TurretTrans = new Transform();
-                    ECS.GetTransformECS(Turrets[i], ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
-                    TurretTrans.Rotation = new Vector3(0, 0, 0);
-                    ECS.SetTransformECS(Turrets[i], TurretTrans.Position, TurretTrans.Rotation, TurretTrans.Scale);
-                    ECS.SetTransformECS(ReticleGroup[i], start_position, start_position, Small_hide_reticle);
+                    //Angle is too small 
+                    //Vector3 GlobalCur = Transform.GetForwardVector(Turrets[i]);
+                    //Vector3 GlobalShip = Transform.GetForwardVector(PlayerShip);
+                    //Console.WriteLine("ANGLEEEE DIFFERENCE ISSS: " + Vector3.Angle(GlobalCur, GlobalShip));
+                    //ECS.SetRotation(Turrets[i], Vector3.RotateTowards(GlobalCur, GlobalShip, dt * m_rotspeed));
+
+
+                    ECS.SetRotation(Turrets[i], new Vector3(0, 0, 0));
+                    //Reset Reticle
+                    ResetReticle(ReticleGroup[i]);
                 }
             }
             if (enemy_to_target.Count != 0)
@@ -125,24 +142,41 @@ namespace Scripting
                 for (int i = 0; i < get_lower; ++i)
                 {
                     //Turret in use
-                    //Need to look at the future position
+                    //Prelimnary rotation feel for the gun, has issues with ANGLE being REALLY small
+                    Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[i]).Rotation;
                     Transform.LookAt(Turrets[i], ECS.GetGlobalPosition(enemy_to_target[i]));
-                    //Update Reticle need to flip Z and X
+                    Vector3 AfterTurrRot = ECS.GetComponent<Transform>(Turrets[i]).Rotation;
+                    ECS.SetRotation(Turrets[i], CurrTurrRot);
+                    ECS.SetRotation(Turrets[i], Vector3.RotateTowards(CurrTurrRot, AfterTurrRot,  dt * 20.0f));
+
+                    //Update Reticle 
                     Vector3 EnemyPos = ECS.GetGlobalPosition(enemy_to_target[i]);
-                    Vector3 ShipForward = Transform.GetForwardVector(PlayerShip);
-                    EnemyPos.X *= -1.0f;
-                    EnemyPos.Z *= -1.0f;
-                    ECS.SetTransformECS(ReticleGroup[i], EnemyPos - ShipForward, ECS.GetGlobalRotation(PlayerShip), Show_reticle);
+                    Vector3 Rot = ECS.GetGlobalRotation(shipCamera);
+                    if (Rot.X < 0)
+                        Rot.X += 180.0f; 
+                    else
+                        Rot.X -= 180.0f;
+                    ReticleGroup[i].step += dt * animateSpeed;
+                    if (ReticleGroup[i].step >= 1.0f)
+                        ReticleGroup[i].step = 1.0f;
+                    ECS.SetTransformECS(ReticleGroup[i].parent_id, EnemyPos, Rot, Vector3.Lerp(start_reticle, Show_reticle, ReticleGroup[i].step));
+                    //Rotate child reticle aftewards
+                    if (!ReticleGroup[i].enabled)
+                        ReticleGroup[i].enabled = true;
+                    else
+                    {
+                        ReticleGroup[i].accu_angle -= rotateAmount * animateSpeed * dt;
+                        ECS.SetRotation(ReticleGroup[i].child_id, new Vector3(0, 0, ReticleGroup[i].accu_angle));
+                    }
+
+
                 }
                 for (int j = get_lower; j < Turrets.Count; ++j)
                 {
                     //Turrets not in use
-                    Transform TurretTrans = new Transform();
-                    ECS.GetTransformECS(Turrets[j], ref TurretTrans.Position, ref TurretTrans.Rotation, ref TurretTrans.Scale);
-                    TurretTrans.Rotation = new Vector3(0, 0, 0);
-                    ECS.SetTransformECS(Turrets[j], TurretTrans.Position, TurretTrans.Rotation, TurretTrans.Scale);
+                    ECS.SetRotation(Turrets[j], new Vector3(0, 0, 0));
                     //Reset Reticle
-                    ECS.SetTransformECS(ReticleGroup[j], start_position, start_position, Small_hide_reticle);
+                    ResetReticle(ReticleGroup[j]);
                 }
             }
 
@@ -324,9 +358,6 @@ namespace Scripting
                 current_offset_value.Y += (diff.Y * move_multipler);
 
 
-            //Console.WriteLine("current_offset_value X: " + current_offset_value.X);
-            //Console.WriteLine("current_offset_value Y: " + current_offset_value.Y);
-
             //Update the reticle and hitbox zone
             Transform inner_ret = new Transform();
             inner_ret.Position = new Vector3(0, 0, 0);
@@ -345,6 +376,15 @@ namespace Scripting
                 inner_ret.Position = new Vector3(maxRange.X, maxRange.Y, original_reticle_initial.Position.Z);
                 ECS.SetTransformECS(Crosshair, inner_ret.Position, original_reticle_initial.Rotation, original_reticle_initial.Scale);
             }
+        }
+
+        void ResetReticle(Reticle ret)
+        {
+            ret.enabled = false;
+            ret.accu_angle = 0.0f;
+            ret.step = 0.0f;
+            ECS.SetRotation(ret.child_id, new Vector3(0));
+            ECS.SetTransformECS(ret.parent_id, start_position, start_position, Small_hide_reticle);
         }
 
         void CoutMyEnemy()

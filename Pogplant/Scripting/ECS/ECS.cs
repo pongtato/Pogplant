@@ -98,6 +98,12 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector3 GetGlobalRotation(uint entityID);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetGlobalPosition(uint entityID, Vector3 _Position);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetGlobalRotation(uint entityID, Vector3 _Rotation);
+
         public static T GetComponent<T>(uint entityID)
         {
             if(typeof(T) == typeof(Transform))
