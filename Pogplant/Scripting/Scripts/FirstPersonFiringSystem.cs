@@ -42,7 +42,7 @@ namespace Scripting
         Vector3 Show_reticle = new Vector3(1f, 1f, 0f);
         Vector3 start_reticle = new Vector3(3f, 3f, 0f);
         float rotateAmount = 7.5f;
-        float animateSpeed = 10.0f;
+        float animateSpeed = 6.0f;
 
         public class  Reticle
         {
