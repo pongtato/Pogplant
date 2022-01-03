@@ -24,6 +24,7 @@ namespace Scripting
         //Player Firing 
         float p_fireRate = 0.1f;
         float p_fire_timer = 0.0f;
+        float m_rotspeed = 10.0f; 
 
         //Player Crosshair(The smaller one)
         uint Crosshair;
@@ -124,14 +125,9 @@ namespace Scripting
                 //Shoot straight if there is no enemy
                 for (int i = 0; i < Turrets.Count; ++i)
                 {
-                    //Angle is too small 
-                    //Vector3 GlobalCur = Transform.GetForwardVector(Turrets[i]);
-                    //Vector3 GlobalShip = Transform.GetForwardVector(PlayerShip);
-                    //Console.WriteLine("ANGLEEEE DIFFERENCE ISSS: " + Vector3.Angle(GlobalCur, GlobalShip));
-                    //ECS.SetRotation(Turrets[i], Vector3.RotateTowards(GlobalCur, GlobalShip, dt * m_rotspeed));
 
-
-                    ECS.SetRotation(Turrets[i], new Vector3(0, 0, 0));
+                    Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[i]).Rotation;
+                    ECS.SetRotation(Turrets[i], Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed));
                     //Reset Reticle
                     ResetReticle(ReticleGroup[i]);
                 }
@@ -142,12 +138,10 @@ namespace Scripting
                 for (int i = 0; i < get_lower; ++i)
                 {
                     //Turret in use
-                    //Prelimnary rotation feel for the gun, has issues with ANGLE being REALLY small
                     Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[i]).Rotation;
                     Transform.LookAt(Turrets[i], ECS.GetGlobalPosition(enemy_to_target[i]));
                     Vector3 AfterTurrRot = ECS.GetComponent<Transform>(Turrets[i]).Rotation;
-                    ECS.SetRotation(Turrets[i], CurrTurrRot);
-                    ECS.SetRotation(Turrets[i], Vector3.RotateTowards(CurrTurrRot, AfterTurrRot,  dt * 20.0f));
+                    ECS.SetRotation(Turrets[i], Vector3.Lerp(CurrTurrRot, AfterTurrRot,  dt * m_rotspeed));
 
                     //Update Reticle 
                     Vector3 EnemyPos = ECS.GetGlobalPosition(enemy_to_target[i]);
@@ -174,7 +168,8 @@ namespace Scripting
                 for (int j = get_lower; j < Turrets.Count; ++j)
                 {
                     //Turrets not in use
-                    ECS.SetRotation(Turrets[j], new Vector3(0, 0, 0));
+                    Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[j]).Rotation;
+                    ECS.SetRotation(Turrets[j], Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed));
                     //Reset Reticle
                     ResetReticle(ReticleGroup[j]);
                 }
