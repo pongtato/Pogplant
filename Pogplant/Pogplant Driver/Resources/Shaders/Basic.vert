@@ -7,9 +7,13 @@ layout (location = 3) in mat4 m4_Model;
 layout (location = 7) in int i_TexID;
 layout (location = 8) in int b_Ortho;
 layout (location = 9) in int b_GameOnly;
+layout (location = 10) in vec2 v2_Tiling;
+layout (location = 11) in vec2 v2_UV_Offset;
 
 out vec4 ColorCoords;
 out vec2 TexCoords;
+out vec2 Tiling;
+out vec2 UV_Offset;
 
 flat out int TexID;
 
@@ -22,6 +26,8 @@ void main()
 {
     ColorCoords = v4_Color;
     TexCoords = v2_TexCoords;
+    Tiling = v2_Tiling;
+    UV_Offset = v2_UV_Offset;
     TexID = i_TexID;
     
     mat4 proj = m4_Projection;

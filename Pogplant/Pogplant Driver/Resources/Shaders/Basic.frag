@@ -5,6 +5,8 @@ layout (location = 5) out vec3 gShaft;
 
 in vec4 ColorCoords;
 in vec2 TexCoords;
+in vec2 Tiling;
+in vec2 UV_Offset;
 flat in int TexID;
 
 uniform sampler2D Textures[32];
@@ -13,7 +15,11 @@ void main()
 {
     if(TexID >= 0)
     {
-        gNoLight = texture(Textures[int(TexID)],vec2(TexCoords.x,1-TexCoords.y));
+        vec2 TiledCoords = vec2(TexCoords.x * Tiling.x, TexCoords.y * Tiling.y);
+        vec2 NewTex = vec2(TiledCoords.x, 1 - TiledCoords.y) + UV_Offset;
+        gNoLight = texture(Textures[TexID],NewTex);
+
+        //gNoLight = texture(Textures[int(TexID)],vec2(TexCoords.x,1-TexCoords.y));
         gNoLight.rgb *= ColorCoords.rgb;
     }
     else

@@ -95,6 +95,16 @@ namespace Pogplant
         glVertexAttribIPointer(9, 1, GL_UNSIGNED_INT, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_GameOnly));
         glVertexAttribDivisor(9, 1);
 
+        // Tiling
+        glEnableVertexAttribArray(10);
+        glVertexAttribPointer(10, 2, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_Tiling));
+        glVertexAttribDivisor(10, 1);
+
+        // UV Offset
+        glEnableVertexAttribArray(11);
+        glVertexAttribPointer(11, 2, GL_FLOAT, GL_FALSE, instDatSize, (void*)offsetof(InstanceData, InstanceData::m_UV_Offset));
+        glVertexAttribDivisor(11, 1);
+
         // Unbind
         glBindVertexArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
