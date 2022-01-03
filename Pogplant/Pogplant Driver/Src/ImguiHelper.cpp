@@ -717,6 +717,7 @@ namespace PogplantDriver
 						ImguiBlankSeperator(1);
 						ImGui::Separator();
 					}
+
 					if (!enable_directionlight)
 					{
 						m_ecs->GetReg().remove<Components::Directional_Light>(m_CurrentEntity);
@@ -2050,6 +2051,14 @@ namespace PogplantDriver
 							ImGui::Dummy(ImVec2(0.0f, 0.5f));
 						}
 						TextureSelectHelper(popuplabel, selectedTex);
+						ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+						if (ImGui::Button("Add Debug Texture"))
+						{
+							AddDebugTexture(renderer, "texture_diffuse");
+						}
+						ToolTipHelper("This is just to check UV's see if texture would have worked, setting this is a local change and it will NOT be saved", true);
+
 						ImGui::TreePop();
 						ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					}
@@ -2077,6 +2086,12 @@ namespace PogplantDriver
 							ImGui::Dummy(ImVec2(0.0f, 0.5f));
 						}
 						TextureSelectHelper(popuplabel, selectedTex);
+						if (ImGui::Button("Add Debug Texture"))
+						{
+							AddDebugTexture(renderer, "texture_specular");
+						}
+						ToolTipHelper("This is just to check UV's see if texture would have worked, setting this is a local change and it will NOT be saved", true);
+
 						ImGui::TreePop();
 						ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					}
@@ -2104,6 +2119,12 @@ namespace PogplantDriver
 							ImGui::Dummy(ImVec2(0.0f, 0.5f));
 						}
 						TextureSelectHelper(popuplabel, selectedTex);
+						if (ImGui::Button("Add Debug Texture"))
+						{
+							AddDebugTexture(renderer, "texture_normal");
+						}
+						ToolTipHelper("This is just to check UV's see if texture would have worked, setting this is a local change and it will NOT be saved", true);
+
 						ImGui::TreePop();
 						ImGui::Dummy(ImVec2(0.0f, 1.0f));
 					}
@@ -2139,6 +2160,12 @@ namespace PogplantDriver
 							ImGui::Dummy(ImVec2(0.0f, 0.5f));
 						}
 						TextureSelectHelper(popuplabel, selectedTex);
+						if (ImGui::Button("Add Debug Texture"))
+						{
+							AddDebugTexture(renderer, "texture_emissive");
+						}
+						ToolTipHelper("This is just to check UV's see if texture would have worked, setting this is a local change and it will NOT be saved", true);
+
 						ImGui::TreePop();
 					}
 					ImGui::TreePop();
@@ -2166,6 +2193,21 @@ namespace PogplantDriver
 				m_ecs->GetReg().remove<Components::Renderer>(m_CurrentEntity);
 			}
 		}
+	}
+
+	void ImguiHelper::AddDebugTexture(Components::Renderer* _CRenderer, std::string _Type)
+	{
+		// Only 1 of this type
+		for (auto it : _CRenderer->m_Mesh->m_Textures)
+		{
+			if (it.m_Type == _Type)
+			{
+				return;
+			}
+		}
+
+		// This is only for adding textures to model manually for debugging, it will not be saved 
+		_CRenderer->m_Mesh->m_Textures.push_back(PP::Texture{ 0,_Type, "NULL"});
 	}
 
 	void ImguiHelper::PRendererComponentHelper()
