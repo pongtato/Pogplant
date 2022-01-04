@@ -92,7 +92,7 @@ namespace Scripting
         bool isAlive = true;
         uint DashboardScreenID;
         uint VOEntityID;
-        uint m_TrailRenderer;
+        //uint m_TrailRenderer;
 
         //PlayerSpline Speed 
         float m_Maxspeed = 12.0f;
@@ -118,7 +118,7 @@ namespace Scripting
             targetRotation = ECS.GetComponent<Transform>(entityID).Rotation;
             m_initialCameraPosition = ECS.GetComponent<Transform>(shipCameraEntity).Position;
             VOEntityID = ECS.FindEntityWithName("VO_AudioSource");
-            m_TrailRenderer = ECS.FindEntityWithName("TrailRender");
+            //m_TrailRenderer = ECS.FindEntityWithName("TrailRender");
 
             float yaw, pitch, roll;
             yaw = pitch = roll = 0;
@@ -150,17 +150,17 @@ namespace Scripting
             //    GameUtilities.LoadScene("MainMenu");
             //}
 
-            // Example usage, pause particle
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
-            {
-                ECS.SetParticlePause(m_TrailRenderer, true);
-            }
+            //// Example usage, pause particle
+            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
+            //{
+            //    ECS.SetParticlePause(m_TrailRenderer, true);
+            //}
 
-            // Example usage, play particle
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_1))
-            {
-                ECS.SetParticlePause(m_TrailRenderer, false);
-            }
+            //// Example usage, play particle
+            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_1))
+            //{
+            //    ECS.SetParticlePause(m_TrailRenderer, false);
+            //}
 
             //Updates Follow Spline
             UpdateFollowSplineSpeed(dt);

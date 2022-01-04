@@ -1,0 +1,2609 @@
+[
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYERBOX",
+			"extends" : 
+			[
+				50.0,
+				20.0,
+				50.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "PlayerBox"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"FollowSpline" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Player"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.9965819362394166e-12,
+				13.5,
+				0.60280877351760864
+			],
+			"m_rotation" : 
+			[
+				0.0001042740695993416,
+				-0.0,
+				0.0001042740695993416
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYER",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "PlayerShip"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"Cockpit"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.035429079085588455,
+				-3.538909912109375,
+				-6.028052806854248
+			],
+			"m_rotation" : 
+			[
+				-179.999755859375,
+				-0.0,
+				-179.999755859375
+			],
+			"m_scale" : 
+			[
+				1.9999979734420776,
+				2.0,
+				1.9999979734420776
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "DashBoard"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"DashBoard"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.0446577254045777e-13,
+				2.0844186099377993e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Score_Text"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.72685772180557251,
+				0.004651188850402832
+			],
+			"m_FontID" : "Ruda",
+			"m_Ortho" : false,
+			"m_Text" : "00000000"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.24571403861045837,
+				-0.082672119140625,
+				-0.16531179845333099
+			],
+			"m_rotation" : 
+			[
+				149.99995422363281,
+				2.3956187034102072e-10,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.79999971389770508,
+				0.80000406503677368,
+				0.80000615119934082
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Projector"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"Projector"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-1.7244569284363166e-14,
+				1.0462481084266969e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "DashboardScreenFace"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"AI_PC"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"DashboardScreen" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-1.1449996224592585e-13,
+				1.0464799836960078e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Screen"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"Screen"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-1.6499126080670758e-14,
+				1.0463002009529531e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "AI_Neutral.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Neutral Face"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.58779358863830566,
+				0.1086883544921875,
+				-0.17139142751693726
+			],
+			"m_rotation" : 
+			[
+				164.99992370605469,
+				-9.9999446868896484,
+				179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.17500001192092896,
+				0.17500001192092896,
+				1.0000004768371582
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "AI_Happy.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Happy Face"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.58822435140609741,
+				0.10756683349609375,
+				-0.17089886963367462
+			],
+			"m_rotation" : 
+			[
+				164.99992370605469,
+				-9.9999961853027344,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.1749994307756424,
+				0.1750018298625946,
+				1.0000002384185791
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "AI_Hurt.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Hurt Face"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.58634364604949951,
+				0.1082916259765625,
+				-0.17200000584125519
+			],
+			"m_rotation" : 
+			[
+				164.99992370605469,
+				-9.9999475479125977,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.17500001192092896,
+				0.17499998211860657,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Screen_Shell"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"Screen_Shell"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-1.416340647059566e-14,
+				1.0462406968884085e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Screen001"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"Screen001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-1.4416857193732396e-13,
+				1.0467591869312465e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Score_Text_Title"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				0.42790699005126953,
+				1.0
+			],
+			"m_FontID" : "Ruda",
+			"m_Ortho" : false,
+			"m_Text" : "Score"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.17691507935523987,
+				0.00553131103515625,
+				-0.12679430842399597
+			],
+			"m_rotation" : 
+			[
+				149.99995422363281,
+				2.6062017127737036e-11,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999213218688965,
+				0.99999874830245972,
+				0.99999386072158813
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret4"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Player_Gun",
+				"Resources/Models\\Ship",
+				"Guns"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.5000035762786865,
+				-1.3000030517578125,
+				-0.00078426080290228128
+			],
+			"m_rotation" : 
+			[
+				0.0002408778527751565,
+				-5.0089556680177338e-06,
+				0.0002408778527751565
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret2"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Player_Gun",
+				"Resources/Models\\Ship",
+				"Guns"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.5000035762786865,
+				-0.5,
+				0.00019338043057359755
+			],
+			"m_rotation" : 
+			[
+				0.0001042740695993416,
+				-5.0089556680177338e-06,
+				0.00010427409870317206
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret1"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Player_Gun",
+				"Resources/Models\\Ship",
+				"Guns"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.5,
+				-0.5,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0001042740695993416,
+				-5.0089556680177338e-06,
+				0.00010427409870317206
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerTurret3"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Player_Gun",
+				"Resources/Models\\Ship",
+				"Guns"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.5,
+				-1.3000030517578125,
+				-1.9499566406011581e-09
+			],
+			"m_rotation" : 
+			[
+				-3.2329739042324945e-05,
+				5.0099661166314036e-06,
+				0.00024087761994451284
+			],
+			"m_scale" : 
+			[
+				1.0000013113021851,
+				0.99999964237213135,
+				1.0000013113021851
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\GameBGM_JP_Low.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.11800000071525574
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_Shoot.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.40700000524520874
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_Damaged.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.50199997425079346
+			}
+		},
+		"Camera" : 
+		{
+			"m_Active" : true,
+			"m_Far" : 420.0,
+			"m_Fov" : 80.0,
+			"m_Near" : 0.10000000149011612,
+			"m_Pitch" : 0.0,
+			"m_Yaw" : 0.0
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerCam"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.8056244850158691e-07,
+				0.5,
+				-1.0000004768371582
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.3061092845918534e-12,
+				2.0844188874935554e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "ShootingBox"
+		},
+		"OBBBoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				5.0,
+				5.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"FirstPersonFiringSystem" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.9802322387695312e-08,
+				5.340576171875e-05,
+				20.000001907348633
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.5751917919213394e-12,
+				2.0844186099377993e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "TrailRender"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "CONE",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.97674417495727539,
+				0.86154168844223022,
+				0.44975662231445312,
+				1.0
+			],
+			"m_ConeRadiusMax" : 30.0,
+			"m_ConeRadiusMin" : 20.0,
+			"m_Delay" : 0.059999998658895493,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_Loop" : true,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 1.0,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 0.20000000298023224,
+				"m_CurveMin" : 0.10000000149011612,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.0
+					],
+					[
+						0.47234857082366943,
+						0.25390625
+					],
+					[
+						0.72172516584396362,
+						0.83203125
+					],
+					[
+						1.0,
+						1.0
+					],
+					[
+						-1.0,
+						1.0
+					],
+					[
+						-1.0,
+						1.0
+					],
+					[
+						-1.0,
+						1.0
+					],
+					[
+						-1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 3.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 5,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				-1.0
+			],
+			"m_SpawnRadius" : 1.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 80.0,
+				"m_CurveMin" : 70.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.46484375
+					],
+					[
+						0.25231042504310608,
+						0.65625
+					],
+					[
+						0.3256564736366272,
+						0.85546875
+					],
+					[
+						0.4400763213634491,
+						0.97265625
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SubDelay" : 0.0,
+			"m_SubSpawnCount" : 20,
+			"m_TargetConeScale" : 1.0249999761581421,
+			"m_TexName" : "ParticleTest.dds",
+			"m_Trail" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "2542824a-b076-479d-b9b3-8d62caba593d",
+			"prefab_path" : ""
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.01811373233795166,
+				-2.288818359375e-05,
+				60.0
+			],
+			"m_rotation" : 
+			[
+				-8.1236093407710541e-09,
+				-1.2618012190657169e-09,
+				3.5107390772282088e-07
+			],
+			"m_scale" : 
+			[
+				0.69999998807907104,
+				0.69999998807907104,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\GAM300_Level1_VO.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "VO_AudioSource"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-8.4800849435850978e-06,
+				-4.766021728515625,
+				-6.028078556060791
+			],
+			"m_rotation" : 
+			[
+				-0.00010427404777146876,
+				-1.8977099058847813e-10,
+				-0.00010427404777146876
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Directional_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.15000000596046448
+			],
+			"m_Diffuse" : 0.41999998688697815,
+			"m_Direction" : 
+			[
+				-0.28734788298606873,
+				-0.57469576597213745,
+				-0.76626098155975342
+			],
+			"m_Intensity" : 13.0,
+			"m_Specular" : 0.68999999761581421
+		},
+		"Name" : 
+		{
+			"m_Name" : "Directional Light"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.15000000596046448
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"sphere",
+				"Resources/Models\\sphere",
+				"Sphere001"
+			],
+			"UseLight" : 0
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				7.5,
+				15.0,
+				20.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYER",
+			"extends" : 
+			[
+				5.0,
+				5.0,
+				5.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Name" : 
+		{
+			"m_Name" : "Game Over Trigger Box"
+		},
+		"Scripting" : 
+		{
+			"GameEndingTrigger" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-137.14041137695312,
+				79.0,
+				-361.11651611328125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				7.0,
+				0.5,
+				7.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Light"
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.78935641050338745,
+				0.5767441987991333
+			],
+			"m_Intensity" : 0.5,
+			"m_Linear" : 0.00069000001531094313,
+			"m_Quadratic" : 0.00419999985024333
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-41.524112701416016,
+				21.61212158203125,
+				-219.55024719238281
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "ReticleGroup"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.8391266937433102e-07,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				0.99999696016311646,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Reticle1"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.5873418962873984e-09,
+				-0.0060292743146419525,
+				4.9255731437991557e-11
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				1.4701740801321972e-13,
+				-2.0844082015969434e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.0010000000474974513
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Lockon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Child"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				4.6611603465862572e-11,
+				5.788169801235199e-07,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-2.0792243383107379e-27,
+				6.2120205211548311e-17,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99989914894104004,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Reticle2"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.3226082147593843e-09,
+				-0.00051116943359375,
+				-1.2712301213468891e-05
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.0010000000474974513
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Lockon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Child"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.4670043785590678e-11,
+				6.1583705246448517e-08,
+				8.7637454271316528e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99993693828582764,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Reticle3"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-8.3170448306191247e-10,
+				-0.0016252624336630106,
+				2.2071924908433072e-13
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.0010000000474974513
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Lockon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Child"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.1959326558280736e-12,
+				2.537854015827179e-08,
+				2.7755575615628914e-17
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.999961256980896,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Reticle4"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.4548861549410503e-09,
+				-0.0011297488817945123,
+				1.2401181427243446e-12
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.0010000000474974513
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Lockon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Child"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.7706724975141697e-11,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99994796514511108,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "CanvasParent"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-7.4505805969238281e-09,
+				-1.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Small_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Crosshair"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.3589858503546566e-06,
+				0.0,
+				1.0
+			],
+			"m_rotation" : 
+			[
+				-6.5137591501174263e-12,
+				-4.0970005166229839e-12,
+				1.3027204315285701e-11
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Large_Reticle.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LargeCrosshair"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.1027385628258344e-06,
+				0.0,
+				1.0
+			],
+			"m_rotation" : 
+			[
+				-8.68464501702082e-12,
+				-4.0656263078364674e-12,
+				8.6842599084091532e-12
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Boss Shield"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.4440838098526001,
+				11.460818290710449,
+				-16.766532897949219
+			],
+			"m_rotation" : 
+			[
+				0.00010427407687529922,
+				-89.999946594238281,
+				0.00010427392408018932
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999278783798218,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Shield Sparks"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 1.0,
+			"m_FollowParent" : false,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 1.0,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 1.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TexName" : "",
+			"m_Trail" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				11.727523803710938,
+				-13.001592636108398
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Boss Eye Upper Lid"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cube",
+				"Resources/Models\\cube",
+				"Box001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.9249721765518188,
+				14.739916801452637,
+				-15.344663619995117
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Boss Eye Lower Lid"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cube",
+				"Resources/Models\\cube",
+				"Box001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.9249721765518188,
+				8.1780176162719727,
+				-15.344663619995117
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Boss Particle Cannon"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : false,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				10.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 3.0,
+			"m_MinLife" : 3.0,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 1.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TexName" : "",
+			"m_Trail" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.5469269752502441,
+				12.142816543579102,
+				-14.116763114929199
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "snow_diff.dds"
+		},
+		"Name" : 
+		{
+			"m_Name" : "L1 Black Screen"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "L1 Boss Script"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"L1BossShield" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

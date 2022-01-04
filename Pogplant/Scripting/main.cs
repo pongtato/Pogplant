@@ -127,5 +127,10 @@ namespace Scripting
         {
             return new BaseFlock();
         }
+
+        public static L1BossShield L1BossShield()
+        {
+            return new L1BossShield();
+        }
     }
 }
