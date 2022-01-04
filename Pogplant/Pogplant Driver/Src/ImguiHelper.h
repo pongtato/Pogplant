@@ -89,6 +89,7 @@ namespace PogplantDriver
 		// Renderer
 		static void RendererComponentHelper();
 		static void AddDebugTexture(Components::Renderer* _CRenderer, std::string _Type);
+		static void SpriteAnimationHelper();
 
 		// Primitive Renderer
 		static void PRendererComponentHelper();

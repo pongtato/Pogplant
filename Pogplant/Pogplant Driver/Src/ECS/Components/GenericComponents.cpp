@@ -662,7 +662,6 @@ namespace Components
 		model = glm::scale(model, scale);
 
 		/// PARTICLE TEMP 
-
 		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, {1,1}, {0,0}, static_cast<int>(_Particle.m_TexID), false, false });
 	}
 

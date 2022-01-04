@@ -2210,6 +2210,11 @@ namespace PogplantDriver
 		_CRenderer->m_Mesh->m_Textures.push_back(PP::Texture{ 0,_Type, "NULL"});
 	}
 
+	void ImguiHelper::SpriteAnimationHelper()
+	{
+
+	}
+
 	void ImguiHelper::PRendererComponentHelper()
 	{
 		assert(m_CurrentEntity != entt::null);
