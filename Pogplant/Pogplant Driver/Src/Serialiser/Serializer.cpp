@@ -224,6 +224,7 @@ namespace PogplantDriver
 		Try_Save_Component<ParticleSystem>(subroot, id);
 		Try_Save_Component<Canvas>(subroot, id);
 		Try_Save_Component<Components::Guid>(subroot, id);
+		Try_Save_Component<Components::SpriteAnimation>(subroot, id);
 		Try_Save_Component<Prefab>(subroot, id);
 		Try_Save_Component<PrefabInstance>(subroot, id);
 
@@ -355,8 +356,10 @@ namespace PogplantDriver
 		Try_Load_Component<OBBBoxCollider>(root, "OBBBoxCollider", id);
 		Try_Load_Component<Camera>(root, "Camera", id);
 		Try_Load_Component<Rigidbody>(root, "Rigidbody", id);
+		Try_Load_Component<Components::SpriteAnimation>(root, "SpriteAnimation", id);
 
 		Try_Load_Component<Components::Guid>(root, "Guid", id);
+
 		if(!remove_prefab_tag)
 			Try_Load_Component<Prefab>(root, "Prefab", id);
 		Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);
@@ -686,6 +689,10 @@ namespace PogplantDriver
 			{
 				std::cout << "no support for associative container yet" << std::endl;
 			}
+			else if (prop_value.is_type<Components::SpriteAnimation>())
+			{
+				Reflect_Serialization(root[name], prop_value.get_value<Components::SpriteAnimation>(), false);
+			}
 			else if (prop_value.is_type<ParticleSystem::CurveVariable>())
 			{
 				Reflect_Serialization(root[name], prop_value.get_value<ParticleSystem::CurveVariable>(), false);
@@ -777,6 +784,12 @@ namespace PogplantDriver
 				if (prop_value.is_type<ParticleSystem::CurveVariable>())
 				{
 					auto temp_obj = prop_value.get_value<ParticleSystem::CurveVariable>();
+					Reflect_Deserialization(temp_obj, _data[name]);
+					prop.set_value(obj, temp_obj);
+				}
+				else if (prop_value.is_type<Components::SpriteAnimation>())
+				{
+					auto temp_obj = prop_value.get_value<Components::SpriteAnimation>();
 					Reflect_Deserialization(temp_obj, _data[name]);
 					prop.set_value(obj, temp_obj);
 				}
