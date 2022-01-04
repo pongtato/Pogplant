@@ -2215,8 +2215,12 @@ namespace PogplantDriver
 		ImGui::Dummy(ImVec2(0.0f, 5.0f));
 		if (ImGui::TreeNode("Sprite Animation"))
 		{
-			ImGui::Dummy(ImVec2(0.0f, 2.0f));
 			auto spriteAnim = &m_ecs->GetReg().try_get<Components::Canvas>(m_CurrentEntity)->m_SpriteAnimation;
+
+			ImGui::Dummy(ImVec2(0.0f, 2.0f));
+			ImGui::Text("Current Frame: %d", static_cast<int>(spriteAnim->m_FrameCounter));
+			ImGui::Dummy(ImVec2(0.0f, 2.0f));
+
 			// Buttons
 			if (spriteAnim->m_Play)
 			{
@@ -2253,12 +2257,12 @@ namespace PogplantDriver
 			ImGui::Text("Frame Controls");
 			if (ImGui::Button("Prev Frame"))
 			{
-				spriteAnim->m_FrameCounter = spriteAnim->m_FrameCounter - 1 > 0 ? spriteAnim->m_FrameCounter - 1 : 0;
+				spriteAnim->PrevFrame();
 			}
 			ImGui::SameLine();
 			if (ImGui::Button("Next Frame"))
 			{
-				spriteAnim->m_FrameCounter = spriteAnim->m_FrameCounter + 1 < spriteAnim->m_MaxFrames ? spriteAnim->m_FrameCounter + 1 : spriteAnim->m_FrameCounter;
+				spriteAnim->NextFrame();
 			}
 
 			ImGui::Dummy(ImVec2(0.0f, 8.0f));

@@ -867,14 +867,7 @@ namespace Components
 			}
 		}
 
-		// Calculate the UV offset
-		const int currFrame = static_cast<int>(m_FrameCounter);
-		// Rows = y, Columns = x
-		// Assuming we have 4 rows and 4 columns, tiling is {0.25,0.25}  
-		// Frame 6 will result in an offset of {0.5,0.25}
-		int yOffset = currFrame / m_Columns;
-		int xOffset = currFrame % m_Columns;
-		m_UV_Offset = { xOffset * m_Tiling.x, (m_Rows-1) * m_Tiling.y - yOffset * m_Tiling.y };
+		CalcUV();
 	}
 
 	void SpriteAnimation::UpdateTiling()
@@ -884,8 +877,32 @@ namespace Components
 		m_UV_Offset = { 0.0f, (m_Rows - 1) * m_Tiling.y };
 	}
 
+	void SpriteAnimation::NextFrame()
+	{
+		m_FrameCounter = m_FrameCounter + 1 < m_MaxFrames ? m_FrameCounter + 1 : m_FrameCounter;
+		CalcUV();
+	}
+
+	void SpriteAnimation::PrevFrame()
+	{
+		m_FrameCounter = m_FrameCounter - 1 > 0 ? m_FrameCounter - 1 : 0;
+		CalcUV();
+	}
+
 	void SpriteAnimation::init()
 	{
+		m_FrameCounter = 0.0f;
+	}
 
+	void SpriteAnimation::CalcUV()
+	{
+		// Calculate the UV offset
+		const int currFrame = static_cast<int>(m_FrameCounter);
+		// Rows = y, Columns = x
+		// Assuming we have 4 rows and 4 columns, tiling is {0.25,0.25}  
+		// Frame 6 will result in an offset of {0.5,0.25}
+		int yOffset = currFrame / m_Columns;
+		int xOffset = currFrame % m_Columns;
+		m_UV_Offset = { xOffset * m_Tiling.x, (m_Rows - 1) * m_Tiling.y - yOffset * m_Tiling.y };
 	}
 }

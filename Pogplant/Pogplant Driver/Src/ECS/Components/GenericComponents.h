@@ -376,7 +376,12 @@ namespace Components
 		SpriteAnimation(int _MaxFrames, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed = 1.0f);
 		void Update(float _Dt);
 		void UpdateTiling();
+		void NextFrame();
+		void PrevFrame();
 		void init();
+
+	private:
+		void CalcUV();
 	};
 
 	struct ParticleSystem
