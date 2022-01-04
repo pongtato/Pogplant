@@ -815,4 +815,77 @@ namespace Components
 		prefab_GUID(_str), prefab_path(_path)
 	{
 	}
+
+	SpriteAnimation::SpriteAnimation()
+		: m_Tiling{ 1,1 }
+		, m_UV_Offset{ 0,0 }
+		, m_FrameCounter{ 0 }
+		, m_PlaySpeed{ 1 }
+		, m_MaxFrames{ 1 }
+		, m_Rows{ 1 }
+		, m_Columns{ 1 }
+		, m_Repeat{ false }
+		, m_Play{ false }
+		, m_Pause{ false }
+	{
+	}
+
+	SpriteAnimation::SpriteAnimation(int _MaxFrames, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed)
+		: m_Tiling{ 1.0f / _Columns, 1.0f / _Rows }
+		, m_UV_Offset{ 0,0 }
+		, m_FrameCounter{ 0 }
+		, m_PlaySpeed{ _PlaySpeed }
+		, m_MaxFrames{ _MaxFrames }
+		, m_Rows{ _Rows }
+		, m_Columns{ _Columns }
+		, m_Repeat{ _Repeat }
+		, m_Play{ _Playing }
+		, m_Pause{ false }
+	{
+	}
+
+	void SpriteAnimation::Update(float _Dt)
+	{
+		// If paused or stop just do not update
+		if (!m_Play || m_Pause)
+		{
+			return;
+		}
+
+		// Current frame
+		m_FrameCounter += _Dt * m_PlaySpeed;
+		// Cap at maximum frame/restart, -1 since start from 0
+		if (m_FrameCounter >= m_MaxFrames)
+		{
+			if (m_Repeat)
+			{
+				m_FrameCounter = 0.0f;
+			}
+			else
+			{
+				m_FrameCounter = static_cast<float>(m_MaxFrames - 1);
+			}
+		}
+
+		// Calculate the UV offset
+		const int currFrame = static_cast<int>(m_FrameCounter);
+		// Rows = y, Columns = x
+		// Assuming we have 4 rows and 4 columns, tiling is {0.25,0.25}  
+		// Frame 6 will result in an offset of {0.5,0.25}
+		int yOffset = currFrame / m_Columns;
+		int xOffset = currFrame % m_Columns;
+		m_UV_Offset = { xOffset * m_Tiling.x, (m_Rows-1) * m_Tiling.y - yOffset * m_Tiling.y };
+	}
+
+	void SpriteAnimation::UpdateTiling()
+	{
+		m_FrameCounter = 0.0f;
+		m_Tiling = { 1.0f / m_Columns, 1.0f / m_Rows };
+		m_UV_Offset = { 0.0f, (m_Rows - 1) * m_Tiling.y };
+	}
+
+	void SpriteAnimation::init()
+	{
+
+	}
 }

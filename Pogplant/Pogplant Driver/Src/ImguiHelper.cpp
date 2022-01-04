@@ -2212,7 +2212,86 @@ namespace PogplantDriver
 
 	void ImguiHelper::SpriteAnimationHelper()
 	{
+		ImGui::Dummy(ImVec2(0.0f, 5.0f));
+		if (ImGui::TreeNode("Sprite Animation"))
+		{
+			ImGui::Dummy(ImVec2(0.0f, 2.0f));
+			auto spriteAnim = &m_ecs->GetReg().try_get<Components::Canvas>(m_CurrentEntity)->m_SpriteAnimation;
+			// Buttons
+			if (spriteAnim->m_Play)
+			{
+				if (spriteAnim->m_Pause)
+				{
+					if (ImGui::Button("Resume"))
+					{
+						spriteAnim->m_Pause = false;
+					}
+				}
+				else
+				{
+					if (ImGui::Button("Pause"))
+					{
+						spriteAnim->m_Pause = true;
+					}
+				}
+			}
+			else
+			{
+				if (ImGui::Button("Play"))
+				{
+					spriteAnim->m_Play = true;
+				}
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("Stop"))
+			{
+				spriteAnim->m_Play = false;
+				spriteAnim->m_Pause = false;
+			}
+			ImGui::Dummy(ImVec2(0.0f, 2.0f));
 
+			ImGui::Text("Frame Controls");
+			if (ImGui::Button("Prev Frame"))
+			{
+				spriteAnim->m_FrameCounter = spriteAnim->m_FrameCounter - 1 > 0 ? spriteAnim->m_FrameCounter - 1 : 0;
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("Next Frame"))
+			{
+				spriteAnim->m_FrameCounter = spriteAnim->m_FrameCounter + 1 < spriteAnim->m_MaxFrames ? spriteAnim->m_FrameCounter + 1 : spriteAnim->m_FrameCounter;
+			}
+
+			ImGui::Dummy(ImVec2(0.0f, 8.0f));
+			ImGui::Text("Repeat");
+			ImGui::SameLine();
+			ImGui::Checkbox("###SARepeat", &spriteAnim->m_Repeat);
+			ImGui::Dummy(ImVec2(0.0f, 4.0f));
+
+			// Config
+			ImGui::Text("Rows");
+			if (ImGui::DragInt("###Rows", &spriteAnim->m_Rows, 1.0f, 0, 100))
+			{
+				spriteAnim->UpdateTiling();
+			}
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			ImGui::Text("Columns");
+			if (ImGui::DragInt("###Columns", &spriteAnim->m_Columns, 1.0f, 0, 100))
+			{
+				spriteAnim->UpdateTiling();
+			}
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			ImGui::Text("Max Frames");
+			ImGui::DragInt("###MaxFrames", &spriteAnim->m_MaxFrames, 1.0f, 0, spriteAnim->m_Rows * spriteAnim->m_Columns);
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			ImGui::Text("Play Speed");
+			ImGui::DragFloat("###PlaySpeed", &spriteAnim->m_PlaySpeed, 1.0f);
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			ImGui::TreePop();
+		}
 	}
 
 	void ImguiHelper::PRendererComponentHelper()
@@ -2670,6 +2749,9 @@ namespace PogplantDriver
 				}
 				ImGui::Dummy(ImVec2(0.0f, 0.5f));
 				TextureSelectHelper(popuplabel, canvas->m_TexName, canvas->m_TexID);
+
+				ImGui::Dummy(ImVec2(0.0f, 0.1f));
+				SpriteAnimationHelper();
 
 				if (!enableCanvas)
 					m_ecs->GetReg().remove<Components::Canvas>(m_CurrentEntity);

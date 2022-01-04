@@ -327,14 +327,14 @@ void Application::InitialiseDebugObjects()
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
 	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "rocks_diff.dds", true });
 
-	pos = { -0.8, 0.7f, 0.0f };
+	pos = { -0.6, 0.5f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
-	scale = { 0.1f, 0.1f, 0.1f };
+	scale = { 0.25f, 0.25f, 0.25f };
 	child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 2", pos, rot, scale);
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("snow_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "snow_diff.dds", true });
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "kekwiggle.dds", true });
 
 	//Vinceen testing code
 	//auto _ra = m_activeECS->view<Transform>(entt::exclude_t<Renderer>());
@@ -486,10 +486,21 @@ void Application::UpdateTransforms(float _Dt)
 	{
 		auto& transform = canvasView.get<Transform>(it);
 		auto& canvas = canvasView.get<Canvas>(it);
-		PP::MeshInstance::SetInstance(PP::InstanceData{ transform.m_ModelMtx, canvas.m_Color, {1,1}, {0,0}, canvas.m_TexID, canvas.m_Ortho, canvas.m_Ortho });
+		canvas.m_SpriteAnimation.Update(_Dt);
+		PP::MeshInstance::SetInstance
+		(
+			PP::InstanceData
+			{ 
+				transform.m_ModelMtx,
+				canvas.m_Color,
+				canvas.m_SpriteAnimation.m_Tiling,
+				canvas.m_SpriteAnimation.m_UV_Offset,
+				canvas.m_TexID,
+				canvas.m_Ortho,
+				canvas.m_Ortho, // If ortho show in game only since it blocks the screen, else can show it in the world
+			}
+		);
 	}
-
-
 
 	//delete entity in the delete set
 	m_sGeneralSystem.DisableEntities();

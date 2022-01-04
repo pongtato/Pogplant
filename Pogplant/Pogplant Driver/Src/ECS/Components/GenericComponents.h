@@ -356,6 +356,29 @@ namespace Components
 		float m_Rotation;
 	};
 
+	struct SpriteAnimation
+	{
+		// Derived
+		glm::vec2 m_Tiling;
+		glm::vec2 m_UV_Offset;
+		// Accumulated
+		float m_FrameCounter;
+		// Set
+		float m_PlaySpeed;
+		int m_MaxFrames;
+		int m_Rows;
+		int m_Columns;
+		bool m_Repeat;
+		bool m_Play;
+		bool m_Pause;
+
+		SpriteAnimation();
+		SpriteAnimation(int _MaxFrames, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed = 1.0f);
+		void Update(float _Dt);
+		void UpdateTiling();
+		void init();
+	};
+
 	struct ParticleSystem
 	{
 		enum class EMITTER_TYPE
@@ -500,6 +523,7 @@ namespace Components
 		std::string m_TexName;
 		int m_TexID;
 		bool m_Ortho;
+		SpriteAnimation m_SpriteAnimation;
 	};
 
 	// For reference for Gab 

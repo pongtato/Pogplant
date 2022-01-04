@@ -106,11 +106,24 @@ namespace Components
 			.property("m_FollowParent", &ParticleSystem::m_FollowParent)
 			.property("m_Trail", &ParticleSystem::m_Trail);
 
+		rttr::registration::class_<SpriteAnimation>("SpriteAnimation")
+			.method("init", &SpriteAnimation::init)
+			.property("m_Tiling", &SpriteAnimation::m_Tiling)
+			.property("m_UV_Offset", &SpriteAnimation::m_UV_Offset)
+			.property("m_FrameCounter", &SpriteAnimation::m_FrameCounter)
+			.property("m_PlaySpeed", &SpriteAnimation::m_PlaySpeed)
+			.property("m_MaxFrames", &SpriteAnimation::m_MaxFrames)
+			.property("m_Rows", &SpriteAnimation::m_Rows)
+			.property("m_Columns", &SpriteAnimation::m_Columns)
+			.property("m_Repeat", &SpriteAnimation::m_Repeat)
+			.property("m_Play", &SpriteAnimation::m_Play);
+
 		rttr::registration::class_<Canvas>("Canvas")
 			.method("init", &Canvas::init)
 			.property("m_Color", &Canvas::m_Color)
 			.property("m_TexName", &Canvas::m_TexName)
-			.property("m_Ortho", &Canvas::m_Ortho);
+			.property("m_Ortho", &Canvas::m_Ortho)
+			.property("m_SpriteAnimation", &Canvas::m_SpriteAnimation);
 
 		rttr::registration::class_<ImVec2>("ImVec2")
 			.property("m_x", &ImVec2::x)

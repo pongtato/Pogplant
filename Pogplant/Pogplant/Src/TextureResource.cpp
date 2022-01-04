@@ -115,6 +115,13 @@ namespace Pogplant
 			false
 		);
 
+		TexLoader::LoadTextureSRGB
+		(
+			"kekwiggle.dds",
+			"Resources/Textures/SpriteAnimation",
+			false
+		);
+
 		TexLoader::LoadTexture
 		(
 			"mud_bump.dds",
