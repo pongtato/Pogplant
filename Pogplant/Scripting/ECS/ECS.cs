@@ -104,6 +104,10 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetGlobalRotation(uint entityID, Vector3 _Rotation);
 
+        // Set to true to pause particle, set to false to unpause particle
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetParticlePause(uint entityID, bool isPause);
+
         public static T GetComponent<T>(uint entityID)
         {
             if(typeof(T) == typeof(Transform))

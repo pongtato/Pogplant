@@ -33,6 +33,8 @@ namespace SSH
 	void SetPosition(std::uint32_t entityID, glm::vec3 pos);
 	void SetRotation(std::uint32_t entityID, glm::vec3 rot);
 	void SetScale(std::uint32_t entityID, glm::vec3 sca);
+	void SetParticlePause(std::uint32_t entityID, bool isPaused);
+	
 
 	// True is enabled, False is disabled
 	void SetActive(std::uint32_t entityID, bool isEnabled);

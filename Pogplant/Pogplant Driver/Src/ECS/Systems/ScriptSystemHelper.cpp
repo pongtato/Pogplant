@@ -234,6 +234,16 @@ namespace SSH
 		}
 	}
 
+	void SetParticlePause(std::uint32_t entityID, bool isPaused)
+	{
+		auto particleSys = ScriptSystem::GetECS()->GetReg().try_get<Components::ParticleSystem>(static_cast<entt::entity>(entityID));
+
+		if (particleSys)
+		{
+			particleSys->m_Pause = isPaused;
+		}
+	}
+
 	void SetActive(std::uint32_t entityID, bool isEnabled)
 	{
 		if (isEnabled)
