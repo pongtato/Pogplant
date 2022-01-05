@@ -313,6 +313,7 @@ namespace Components
 		float _MaxLife,
 		CurveVariable _Speed,
 		CurveVariable _Scale,
+		SpriteAnimation _SpriteAnimation,
 		std::string _TexName,
 		int _SpawnCount,
 		int _SubSpawnCount,
@@ -328,6 +329,7 @@ namespace Components
 		, m_BillboardAxis { _BillboardAxis }
 		, m_Speed{ _Speed }
 		, m_Scale{ _Scale }
+		, m_SpriteAnimation { _SpriteAnimation }
 		, m_SpawnRadius{ _SpawnRadius }
 		, m_ConeRadiusMin{ _ConeRadiusMin }
 		, m_ConeRadiusMax{ _ConeRadiusMax }
@@ -505,6 +507,7 @@ namespace Components
 					i--;
 					continue;
 				}
+				it.m_SpriteAnimation.Update(_Dt);
 				UpdateInstance(m_ParticlePool[i], _Dt, _CamPos, _Transform.m_ModelMtx, m_FollowParent);
 			}
 		}
@@ -551,7 +554,8 @@ namespace Components
 			life,
 			life,
 			1.0f / m_Speed.m_CurveData.size(),
-			randRotate
+			randRotate,
+			m_SpriteAnimation
 		};
 
 		m_ActiveCount++;
@@ -661,8 +665,19 @@ namespace Components
 		model *= rotation;
 		model = glm::scale(model, scale);
 
-		/// PARTICLE TEMP 
-		Pogplant::MeshInstance::SetInstance(Pogplant::InstanceData{ model, _Particle.m_Color, {1,1}, {0,0}, static_cast<int>(_Particle.m_TexID), false, false });
+		Pogplant::MeshInstance::SetInstance
+		(
+			Pogplant::InstanceData
+			{ 
+				model,
+				_Particle.m_Color,
+				_Particle.m_SpriteAnimation.m_Tiling,
+				_Particle.m_SpriteAnimation.m_UV_Offset,
+				static_cast<int>(_Particle.m_TexID),
+				false,
+				false 
+			}
+		);
 	}
 
 	ParticleSystem::CurveVariable::CurveVariable()

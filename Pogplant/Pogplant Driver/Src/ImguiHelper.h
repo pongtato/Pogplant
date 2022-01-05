@@ -96,6 +96,7 @@ namespace PogplantDriver
 		
 		// Particles 
 		static void ParticlesHelper();
+		static void ParticleSpriteAnimationHelper();
 
 		// Canvas
 		static void CanvasHelper();

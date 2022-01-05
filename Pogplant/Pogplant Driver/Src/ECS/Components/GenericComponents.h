@@ -329,33 +329,6 @@ namespace Components
 		bool m_Active;
 	};
 
-	struct Particle
-	{
-		struct CurveVariable
-		{
-			float m_Min;
-			float m_Max;
-			float m_Multiplier;
-		};
-
-		// Reference to particle system to determine curve
-		std::vector <float>* m_SpeedCurve;
-		std::vector <float>* m_ScaleCurve;
-		glm::vec4 m_Color;
-		glm::vec3 m_BasePosition;
-		glm::vec3 m_LocalPosition;
-		glm::vec3 m_Velocity;
-		glm::vec3 m_MinVelocity;
-		glm::vec3 m_Force;
-		CurveVariable m_Speed;
-		CurveVariable m_Scale;
-		int m_TexID;
-		float m_BaseLife;
-		float m_Life;
-		float m_IndexCalc;
-		float m_Rotation;
-	};
-
 	struct SpriteAnimation
 	{
 		// Derived
@@ -382,6 +355,34 @@ namespace Components
 
 	private:
 		void CalcUV();
+	};
+
+	struct Particle
+	{
+		struct CurveVariable
+		{
+			float m_Min;
+			float m_Max;
+			float m_Multiplier;
+		};
+
+		// Reference to particle system to determine curve
+		std::vector <float>* m_SpeedCurve;
+		std::vector <float>* m_ScaleCurve;
+		glm::vec4 m_Color;
+		glm::vec3 m_BasePosition;
+		glm::vec3 m_LocalPosition;
+		glm::vec3 m_Velocity;
+		glm::vec3 m_MinVelocity;
+		glm::vec3 m_Force;
+		CurveVariable m_Speed;
+		CurveVariable m_Scale;
+		int m_TexID;
+		float m_BaseLife;
+		float m_Life;
+		float m_IndexCalc;
+		float m_Rotation;
+		SpriteAnimation m_SpriteAnimation;
 	};
 
 	struct ParticleSystem
@@ -462,6 +463,7 @@ namespace Components
 			float _MaxLife,
 			CurveVariable _Speed,
 			CurveVariable _Scale,
+			SpriteAnimation _SpriteAnimation,
 			std::string _TexName,
 			int _SpawnCount,
 			int _SubSpawnCount,
@@ -487,6 +489,9 @@ namespace Components
 
 		CurveVariable m_Speed;
 		CurveVariable m_Scale;
+		
+		/// Sprite animation config, the general config will be passed to individual particles
+		SpriteAnimation m_SpriteAnimation;
 
 		/// General emitter var
 		float m_SpawnRadius; 

@@ -88,6 +88,7 @@ namespace Components
 			.property("m_BillboardAxis", &ParticleSystem::m_BillboardAxis)
 			.property("m_Speed", &ParticleSystem::m_Speed)
 			.property("m_Scale", &ParticleSystem::m_Scale)
+			.property("m_SpriteAnimation", &ParticleSystem::m_SpriteAnimation)
 			.property("m_SpawnRadius", &ParticleSystem::m_SpawnRadius)
 			.property("m_ConeRadiusMin", &ParticleSystem::m_ConeRadiusMin)
 			.property("m_ConeRadiusMax", &ParticleSystem::m_ConeRadiusMax)

@@ -216,6 +216,7 @@ void Application::InitialiseDebugObjects()
 					1.0f,			// Min Scale Mult
 					1.0f,			// Max Scale Mult
 				},
+				SpriteAnimation(),
 				"mud_rough.dds",		// TexID
 				1,	// Spawn Count
 				20, // Sub spawn count

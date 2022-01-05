@@ -2451,6 +2451,13 @@ namespace PogplantDriver
 						if (ImGui::Button("Resume"))
 						{
 							pSystem->m_Pause = false;
+							pSystem->m_SpriteAnimation.m_Pause = false;
+
+							// Resume sprite animations
+							for (auto& it : pSystem->m_ParticlePool)
+							{
+								it.m_SpriteAnimation.m_Pause = false;
+							}
 						}
 					}
 					else
@@ -2458,6 +2465,13 @@ namespace PogplantDriver
 						if(ImGui::Button("Pause"))
 						{
 							pSystem->m_Pause = true;
+							pSystem->m_SpriteAnimation.m_Pause = true;
+
+							// Pause sprite animations
+							for (auto& it : pSystem->m_ParticlePool)
+							{
+								it.m_SpriteAnimation.m_Pause = true;
+							}
 						}
 					}
 				}
@@ -2467,6 +2481,13 @@ namespace PogplantDriver
 					{
 						pSystem->m_Play = true;
 						pSystem->m_Done = false;
+						pSystem->m_SpriteAnimation.m_Play = true;
+
+						// Play sprite animations
+						for (auto& it : pSystem->m_ParticlePool)
+						{
+							it.m_SpriteAnimation.m_Play = true;
+						}
 					}
 				}
 				ImGui::SameLine();
@@ -2711,12 +2732,54 @@ namespace PogplantDriver
 					ToolTipHelper(toolTip.c_str(), true);
 				}
 
+				ParticleSpriteAnimationHelper();
+
 				if(!enablePSystem)
 					m_ecs->GetReg().remove<Components::ParticleSystem>(m_CurrentEntity);
 
 				ImguiBlankSeperator(1);
 				ImGui::Separator();
 			}
+		}
+	}
+
+	void ImguiHelper::ParticleSpriteAnimationHelper()
+	{
+		ImGui::Dummy(ImVec2(0.0f, 5.0f));
+		if (ImGui::TreeNode("Sprite Animation"))
+		{
+			auto spriteAnim = &m_ecs->GetReg().try_get<Components::ParticleSystem>(m_CurrentEntity)->m_SpriteAnimation;
+
+			ImGui::Dummy(ImVec2(0.0f, 2.0f));
+			ImGui::Text("Repeat");
+			ImGui::SameLine();
+			ImGui::Checkbox("###PSARepeat", &spriteAnim->m_Repeat);
+			ImGui::Dummy(ImVec2(0.0f, 4.0f));
+
+			// Config
+			ImGui::Text("Rows");
+			if (ImGui::DragInt("###PRows", &spriteAnim->m_Rows, 1.0f, 0, 100))
+			{
+				spriteAnim->UpdateTiling();
+			}
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			ImGui::Text("Columns");
+			if (ImGui::DragInt("###PColumns", &spriteAnim->m_Columns, 1.0f, 0, 100))
+			{
+				spriteAnim->UpdateTiling();
+			}
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			ImGui::Text("Max Frames");
+			ImGui::DragInt("###PMaxFrames", &spriteAnim->m_MaxFrames, 1.0f, 0, spriteAnim->m_Rows * spriteAnim->m_Columns);
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			ImGui::Text("Play Speed");
+			ImGui::DragFloat("###PPlaySpeed", &spriteAnim->m_PlaySpeed, 1.0f);
+			ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
+			ImGui::TreePop();
 		}
 	}
 
