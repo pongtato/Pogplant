@@ -308,7 +308,7 @@ namespace Scripting
 					if (playerbox != entt::null)
 					{
 						const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(playerbox);
-						if (playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+						if (playerbox_scriptable && playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
 						{
 							PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 							SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", playerbox, static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
@@ -446,7 +446,7 @@ namespace Scripting
 			{
 				SSH::InvokeFunction("BaseTurret", "StartFiring", turret_id, isActivated);
 			}
-			//Base normal turret
+			//Base Gattling turret
 			if (TurretIdentifier == 2)
 			{
 				SSH::InvokeFunction("BaseGattling", "StartFiring", turret_id, isActivated);
