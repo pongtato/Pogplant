@@ -328,14 +328,14 @@ void Application::InitialiseDebugObjects()
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
 	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "rocks_diff.dds", true });
 
-	pos = { -0.6, 0.5f, 0.0f };
+	pos = { 0.0f, 0.0f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
-	scale = { 0.25f, 0.25f, 0.25f };
+	scale = { 1.0f, 1.0f, 1.0f };
 	child = m_activeECS->CreateChild(entity.GetID(), "Canvas Image 2", pos, rot, scale);
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("snow_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "kekwiggle.dds", true });
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "ParticleTest2.dds", true });
 
 	//Vinceen testing code
 	//auto _ra = m_activeECS->view<Transform>(entt::exclude_t<Renderer>());

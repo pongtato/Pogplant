@@ -181,8 +181,8 @@ namespace Pogplant
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
 		glActiveTexture(GL_TEXTURE4);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_EMISSIVE_BUFFER]);
-		//glActiveTexture(GL_TEXTURE5);
-		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_SHAFT_BUFFER]);
+		glActiveTexture(GL_TEXTURE5);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_CANVAS_BUFFER]);
 		glActiveTexture(GL_TEXTURE6);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
 
@@ -400,26 +400,6 @@ namespace Pogplant
 		// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
 
-		// Render G pass objects first
-		ShaderLinker::Use("BASIC");
-		MeshBuilder::RebindQuad();
-		// Bind textures
-		for (const auto& it : TextureResource::m_TexturePool)
-		{
-			auto mapped_id = TextureResource::m_UsedTextures[it.second];
-			std::string uniformStr = "Textures[" + std::to_string(mapped_id) + "]";
-			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(mapped_id));
-			glActiveTexture(GL_TEXTURE0 + mapped_id);
-			glBindTexture(GL_TEXTURE_2D, it.second);
-		}
-
-		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
-		ShaderLinker::SetUniform("m4_View", ret.m_View);
-		ShaderLinker::SetUniform("f_Aspect", Pogplant::Window::m_Aspect);
-		ShaderLinker::SetUniform("b_Editor", _EditorMode);
-		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
-		ShaderLinker::UnUse();
-
 		/*ShaderLinker::Use("SHAFT");
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
@@ -474,9 +454,8 @@ namespace Pogplant
 			}
 		}
 		ShaderLinker::UnUse();
-		//glEnable(GL_CULL_FACE);
 
-		// Primitive shapes
+		/// Primitive shapes
 		ShaderLinker::Use("PRIMITIVE");
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
@@ -526,18 +505,43 @@ namespace Pogplant
 		}
 		ShaderLinker::UnUse();
 
-		// Skybox
+		/// Skybox
 		glDepthFunc(GL_LEQUAL);
 		ShaderLinker::Use("SKYBOX");
 		// Remove translate
-		ret.m_View = glm::mat4(glm::mat3(ret.m_View));
+		glm::mat4 skyboxView = glm::mat4(glm::mat3(ret.m_View));
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
-		ShaderLinker::SetUniform("m4_View", ret.m_View);
+		ShaderLinker::SetUniform("m4_View", skyboxView);
 		Skybox::Draw(TextureResource::m_TexturePool["Skybox"]);
 		ShaderLinker::UnUse();
 		glDepthFunc(GL_LESS);
 
+		/// Text
 		DrawText(registry, _EditorMode);
+
+		/// Canvas
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		// Render G pass objects first
+		ShaderLinker::Use("BASIC");
+		MeshBuilder::RebindQuad();
+		// Bind textures
+		for (const auto& it : TextureResource::m_TexturePool)
+		{
+			auto mapped_id = TextureResource::m_UsedTextures[it.second];
+			std::string uniformStr = "Textures[" + std::to_string(mapped_id) + "]";
+			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(mapped_id));
+			glActiveTexture(GL_TEXTURE0 + mapped_id);
+			glBindTexture(GL_TEXTURE_2D, it.second);
+		}
+
+		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
+		ShaderLinker::SetUniform("m4_View", ret.m_View);
+		ShaderLinker::SetUniform("f_Aspect", Pogplant::Window::m_Aspect);
+		ShaderLinker::SetUniform("b_Editor", _EditorMode);
+		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
+		ShaderLinker::UnUse();
+		glDisable(GL_BLEND);
 
 		if (_EditorMode)
 		{

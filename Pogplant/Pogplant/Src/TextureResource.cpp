@@ -124,6 +124,12 @@ namespace Pogplant
 
 		TexLoader::LoadTexture
 		(
+			"ParticleTest2.dds",
+			"Resources/Textures/Particle"
+		);
+
+		TexLoader::LoadTexture
+		(
 			"mud_bump.dds",
 			"Resources/Textures/Mud"
 		);

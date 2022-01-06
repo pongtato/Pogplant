@@ -13,7 +13,8 @@ uniform sampler2D gAlbedoSpec;
 uniform sampler2D gNoLight;
 uniform sampler2D gEmissive;
 uniform sampler2D gShadow;
-uniform sampler2D gShaft;
+//uniform sampler2D gShaft;
+uniform sampler2D gCanvas;
 
 struct Light 
 {
@@ -92,43 +93,6 @@ float Shadow()
     }
 }
 
-vec4 Shaft()
-{
-    vec2 shaftTex = gl_FragCoord.xy / ScreenSize;
-
-    // Calculate vector from pixel to light source in screen space.
-    vec2 deltaTexCoord = (shaftTex - LightScreenPos);
-
-    // Divide by number of samples and scale by control factor.
-    deltaTexCoord *= 1.0f / NUM_SAMPLES * Density;
-
-    // Store initial sample.
-    vec4 color = texture(gShaft, shaftTex);
-
-    // Set up illumination decay factor.
-    float illuminationDecay = 1.0f;
-
-    // Evaluate summation from Equation 3 NUM_SAMPLES iterations.
-    for (int i = 0; i < NUM_SAMPLES; i++)
-    {
-      // Step sample location along ray.
-      shaftTex -= deltaTexCoord;
-
-      // Retrieve sample at new location.
-      vec4 colorSample = texture(gShaft, shaftTex);
-
-      // Apply sample attenuation scale/decay factors.
-      colorSample *= illuminationDecay * Weight;
-
-      // Accumulate combined color.
-      color += colorSample;
-
-      // Update exponential decay factor.
-      illuminationDecay *= Decay;
-    }
-    return color * Shaft_Exposure;
-}
-
 void main()
 {             
     // gBuffer sample
@@ -137,6 +101,9 @@ void main()
     vec3 Diffuse = texture(gAlbedoSpec, TexCoords).rgb;
     float Specular = texture(gAlbedoSpec, TexCoords).a;
     vec4 NoLight = texture(gNoLight, TexCoords);
+    vec4 Canvas = texture(gCanvas, TexCoords);
+    Canvas.a *= 6.9f;
+    Canvas.a = clamp(Canvas.a, 0.0f, 1.0f);
     
     // Light calc
     const float ambient = 0.42f;
@@ -187,6 +154,7 @@ void main()
     lighting = vec3(1.0) - exp(-lighting.rgb * Exposure); 
 
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
+    outColor = mix(vec4(outColor.rgb, 1.0), Canvas, Canvas.a);
     //float brightness = dot(outColor.rgb * Shaft().rgb, vec3(0.2126, 0.7152, 0.0722));
     //outColor = mix(outColor * Shaft(),outColor, brightness);
 

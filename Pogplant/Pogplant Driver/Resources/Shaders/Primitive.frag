@@ -6,6 +6,7 @@ layout (location = 0) out vec3 gPosition;
 layout (location = 1) out vec3 gNormal;
 layout (location = 2) out vec4 gAlbedoSpec;
 layout (location = 3) out vec4 gNoLight;
+layout (location = 5) out vec4 gCanvas;
 
 in vec2 TexCoords;
 in vec3 FragPos;
@@ -66,4 +67,5 @@ void main()
     gAlbedoSpec.rgb = difflBlend * Color;
     gAlbedoSpec.a = 1.0f - specBlend;
     gNoLight = vec4(0.0f);
+    gCanvas = vec4(0.0f);
 }
