@@ -1129,7 +1129,7 @@ namespace PogplantDriver
 							hasChanged |= ImGui::SliderFloat("Volume", &audioSourceComponent->m_audioSources[i].m_volume, 0.f, 1.f);
 
 							//
-							ImGui::Text("AudioClip");
+							ImGui::Text("AudioClip - Below settings are bound to audio object");
 
 							if (audioSourceComponent->m_audioSources[i].m_audioClip)
 							{

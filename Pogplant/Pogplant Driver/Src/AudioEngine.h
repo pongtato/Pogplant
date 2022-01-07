@@ -22,7 +22,10 @@
 #include <mutex>
 #include <vector>
 #include <string>
+#include <unordered_map>
 #include <map>
+
+#define PPA_NULL_STRING "NULL"
 
 namespace PPA
 {
@@ -34,12 +37,16 @@ namespace PPA
 		static AudioEngine& Instance();
 		static void Update();
 		
+		static void CreateChannelGroup(const std::string& channelGroupName);
+		static void SetChannelGroupVolume(const std::string& channelGroupName, float volume);
+		static float GetChannelGroupVolume(const std::string& channelGroupName);
+
 		static bool LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed);
 		static void UnloadAudio(const std::string& fileName);
 
 
 		static void UpdateAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed);
-		static int PlaySound(const std::string& fileName, float volume, const glm::vec3& position);
+		static int PlaySound(const std::string& fileName, float volume, const glm::vec3& position, const std::string& channelGroupName = PPA_NULL_STRING);
 		static void StopPlayingChannel(int channelID);
 		static void StopPlayingAll();
 
@@ -59,6 +66,7 @@ namespace PPA
 
 			int m_nextChannelID;
 
+			std::unordered_map<std::string, std::pair<FMOD::ChannelGroup*, float>> m_channelGroupMap;
 			std::map<int, FMOD::Channel*> m_channelMap;
 			std::map<std::string, FMOD::Sound*> m_soundMap;
 
@@ -67,6 +75,8 @@ namespace PPA
 		};
 
 		xFMOD xFmod;
+
+		FMOD::ChannelGroup* GetChannelGroup(const std::string& channelGroupName);
 
 		static FMOD_VECTOR GLMToFMODVec3(const glm::vec3& vec);
 

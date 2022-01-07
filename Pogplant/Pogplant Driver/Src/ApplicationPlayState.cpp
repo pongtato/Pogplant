@@ -2,7 +2,7 @@
 /*!
 \file	ApplicationPlayState.cpp
 \details
-	
+
 	This file contains the play state behaviour, as well as the behaviour
 	when the game is set to build as a game instead of an editor.
 
@@ -57,10 +57,7 @@ void Application::EnterPlayState(const std::string& sceneToLoad)
 /******************************************************************************/
 void Application::UpdatePlayState(float c_dt)
 {
-#ifdef PPD_EDITOR_BUILD
-
 	if (m_playState == PLAYSTATE::PLAY || (m_playState == PLAYSTATE::STEPNEXT))
-#endif // PPD_EDITOR_BUILD
 	{
 		//m_sPhysicsSystem.UpdateEditor();
 
@@ -74,7 +71,7 @@ void Application::UpdatePlayState(float c_dt)
 			m_sScriptSystem.Update(m_accumulatedFixedTime);
 			m_sScriptSystem.LateUpdate(m_accumulatedFixedTime);
 			m_sGeneralSystem.UpdateGame(m_accumulatedFixedTime);
-			
+
 
 			PPI::InputSystem::PollEvents(m_accumulatedFixedTime);
 
@@ -89,7 +86,7 @@ void Application::UpdatePlayState(float c_dt)
 				m_sScriptSystem.Update(m_minFixedUpdateTime);
 				m_sScriptSystem.LateUpdate(m_minFixedUpdateTime);
 				m_sGeneralSystem.UpdateGame(m_minFixedUpdateTime);
-				
+
 
 				PPI::InputSystem::PollEvents(m_minFixedUpdateTime);
 
@@ -118,11 +115,14 @@ void Application::UpdatePlayState(float c_dt)
 			m_playState = PLAYSTATE::PAUSE;
 #endif // PPD_EDITOR_BUILD
 	}
+	else if (m_playState == PLAYSTATE::PAUSE)
+	{
 
-#ifdef PPD_EDITOR_BUILD
-	if (m_playState == PLAYSTATE::PAUSE)
+		m_sGeneralSystem.Update(c_dt);
+		PPI::InputSystem::PollEvents(c_dt);
+
 		UpdateTransforms(0.f);
-#endif
+	}
 }
 
 /******************************************************************************/
@@ -150,7 +150,7 @@ void Application::RenderPlayState()
 	///
 
 #else
-	
+
 	DrawCommon();
 	DrawGame();
 	DrawScreen();

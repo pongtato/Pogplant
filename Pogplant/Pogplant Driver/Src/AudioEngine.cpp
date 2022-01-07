@@ -54,6 +54,115 @@ namespace PPA
 	/***************************************************************************/
 	/*!
 	\brief
+		Creates a new channel group
+	\param channelGroupName
+		Name of the channel group
+	*/
+	/***************************************************************************/
+	void AudioEngine::CreateChannelGroup(const std::string& channelGroupName)
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		if (c_instance->xFmod.m_channelGroupMap.find(channelGroupName) == c_instance->xFmod.m_channelGroupMap.end())
+		{
+			FMOD::ChannelGroup* newChannelGroup;
+			c_instance->xFmod.m_system->createChannelGroup(channelGroupName.c_str(), &newChannelGroup);
+
+			if (newChannelGroup)
+			{
+				c_instance->xFmod.m_channelGroupMap[channelGroupName] = std::pair{ newChannelGroup, 1.f };
+			}
+			else
+			{
+				std::stringstream ss;
+
+				ss << "Unable to create channel group \"" << channelGroupName << "\"";
+				PP::Logger::Log(
+					PP::LogEntry{ "AudioEngine::CreateChannelGroup", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			}
+		}
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
+		Sets the volume of the channel group
+	\param channelGroupName
+		Name of the channel group
+	\param volume
+		The volume of the audio set on the channel group
+	*/
+	/***************************************************************************/
+	void AudioEngine::SetChannelGroupVolume(const std::string& channelGroupName, float volume)
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		auto channelGroup = c_instance->GetChannelGroup(channelGroupName);
+
+		if (!channelGroup)
+		{
+			std::stringstream ss;
+
+			ss << "Unable to find channel group \"" << channelGroupName << "\"";
+			PP::Logger::Log(
+				PP::LogEntry{ "AudioEngine::SetChannelGroupVolume", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			return;
+		}
+
+		channelGroup->setVolume(volume);
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
+		Gets the volume of the channel group
+	\param channelGroupName
+		Name of the channel group
+	*/
+	/***************************************************************************/
+	float AudioEngine::GetChannelGroupVolume(const std::string& channelGroupName)
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		auto channelGroup = c_instance->GetChannelGroup(channelGroupName);
+
+		if (!channelGroup)
+		{
+			std::stringstream ss;
+
+			ss << "Unable to find channel group \"" << channelGroupName << "\"";
+			PP::Logger::Log(
+				PP::LogEntry{ "AudioEngine::GetChannelGroupVolume", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			return;
+		}
+
+		float volume = 1.f;
+		channelGroup->getVolume(&volume);
+		return volume;
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
+		Attempts to get the channel group
+	\param channelGroupName
+		Name of the channel group
+	\returns
+		Returns a channel group pointer
+	*/
+	/***************************************************************************/
+	FMOD::ChannelGroup* AudioEngine::GetChannelGroup(const std::string& channelGroupName)
+	{
+		auto itr = xFmod.m_channelGroupMap.find(channelGroupName);
+		if (itr == xFmod.m_channelGroupMap.end())
+			return nullptr;
+
+		return itr->second.first;
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
 		Loads a sound into FMOD to be played
 	\param fileName
 		The name of the file
@@ -160,11 +269,13 @@ namespace PPA
 		The volume of the file
 	\param position
 		The position of the sound to play
+	\param channelGroupName
+		The name of the channel group to play in, if is set to "null", won't use any
 	\return
 		Returns the channel ID the sound is played in
 	*/
 	/***************************************************************************/
-	int AudioEngine::PlaySound(const std::string& fileName, float volume, const glm::vec3& position)
+	int AudioEngine::PlaySound(const std::string& fileName, float volume, const glm::vec3& position, const std::string& channelGroupName)
 	{
 		auto c_instance = &AudioEngine::Instance();
 
@@ -184,7 +295,24 @@ namespace PPA
 		int channelID{ c_instance->xFmod.m_nextChannelID++ };
 		FMOD::Channel* channel{ nullptr };
 
-		c_instance->xFmod.m_system->playSound(soundItr->second, nullptr, true, &channel);
+		if (channelGroupName == PPA_NULL_STRING)
+		{
+			c_instance->xFmod.m_system->playSound(soundItr->second, nullptr, true, &channel);
+		}
+		else
+		{
+			auto channelGroup = c_instance->GetChannelGroup(channelGroupName);
+			c_instance->xFmod.m_system->playSound(soundItr->second, channelGroup, true, &channel);
+
+			if (channelGroup == nullptr)
+			{
+				std::stringstream ss;
+
+				ss << "Unable to find channel group \"" << channelGroupName << "\"";
+				PP::Logger::Log(
+					PP::LogEntry{ "AudioEngine::PlaySound", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			}
+		}
 
 		if (channel)
 		{
@@ -196,6 +324,8 @@ namespace PPA
 				FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
 				channel->set3DAttributes(&fvPosition, nullptr);
 			}
+			
+			//Set custom attenuation here
 
 			channel->setVolume(volume);
 			channel->setPaused(false);
@@ -330,6 +460,9 @@ namespace PPA
 	/***************************************************************************/
 	AudioEngine::xFMOD::~xFMOD()
 	{
+		for (auto it = m_channelGroupMap.begin(); it != m_channelGroupMap.end(); ++it)
+			it->second.first->release();
+
 		m_studioSystem->unloadAll();
 		m_studioSystem->release();
 		m_system->release();
