@@ -210,7 +210,7 @@ namespace Components
 			}
 		}//*/
 
-		inline void PlayAudio(size_t id, const glm::vec3& pos = PhysicsDLC::Vector::Zero)
+		inline void PlayAudio(size_t id, const std::string& channelGroupName = PPA_NULL_STRING, const glm::vec3& pos = PhysicsDLC::Vector::Zero)
 		{
 			if (m_audioSources.size() > id)
 			{

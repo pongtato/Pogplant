@@ -45,7 +45,10 @@ namespace SSH
 	void LookAt(std::uint32_t self_entityID, glm::vec3& target);
 	void LookAtClamped(std::uint32_t self_entityID, glm::vec3& target);
 	glm::vec3 GetUpVector(std::uint32_t self_entityID);
-	void PlayAudio(std::uint32_t entity, std::uint32_t index);
+	void PlayAudio(std::uint32_t entity, std::uint32_t index, MonoString* channelGroupName = nullptr);
+	void CreateAudioChannelGroup(MonoString* channelGroupName = nullptr);
+	void PauseAudioChannelGroup(MonoString* channelGroupName = nullptr);
+	void ResumeAudioChannelGroup(MonoString* channelGroupName = nullptr);
 	void LogToEditor(MonoString* scriptName, MonoString* debugLog);
 
 	bool CheckValidEntity(std::uint32_t entityID); // returns true if entity is valid
@@ -86,6 +89,9 @@ namespace SSH
 	// For scene loading through scripts
 	void LoadScene(MonoString* sceneFileName);
 	void ExitScene();
+
+	void PauseScene();
+	void ResumeScene();
 
 	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params);
 }

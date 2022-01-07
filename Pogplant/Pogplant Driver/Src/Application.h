@@ -65,6 +65,16 @@ namespace PogplantDriver
 		/**> Loads a scene while in play mode, can be called anywhere*/
 		void LoadScene(const std::string& newScene);
 
+		inline void PauseGame()
+		{
+			SetPlayState(PLAYSTATE::PAUSE);
+		}
+
+		inline void ResumeGame()
+		{
+			SetPlayState(PLAYSTATE::PLAY);
+		}
+
 		/**> Calls to transition between play/pause editor */
 		void TransitionApplicationState(APPLICATIONSTATE c_newState);
 		

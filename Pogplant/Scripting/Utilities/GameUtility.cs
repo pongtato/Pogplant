@@ -93,5 +93,11 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void ExitScene();
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void PauseScene();
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void ResumeScene();
     }
 }

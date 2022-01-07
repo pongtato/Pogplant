@@ -201,6 +201,9 @@ namespace Scripting
 
                     ECS.PlayAudio(shipCamera, 1);
                     p_fire_timer = 0.0f;
+
+                    //Vibrate controller
+                    InputUtility.VibrateControllerLightMotor(0.25f, 0.05f);
                 }
             }
         }

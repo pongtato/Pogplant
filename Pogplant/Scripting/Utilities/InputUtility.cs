@@ -169,5 +169,11 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static float GetAxis(string axisID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void VibrateControllerLightMotor(float strength, float duration, bool compoundEffects = true);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void VibrateControllerHeavyMotor(float strength, float duration, bool compoundEffects = true);
     }
 }

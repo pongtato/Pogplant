@@ -70,7 +70,7 @@ namespace PPA
 
 			if (newChannelGroup)
 			{
-				c_instance->xFmod.m_channelGroupMap[channelGroupName] = std::pair{ newChannelGroup, 1.f };
+				c_instance->xFmod.m_channelGroupMap[channelGroupName] = std::pair{ newChannelGroup, xFMOD::ChannelGroupInfo{} };
 			}
 			else
 			{
@@ -133,12 +133,93 @@ namespace PPA
 			ss << "Unable to find channel group \"" << channelGroupName << "\"";
 			PP::Logger::Log(
 				PP::LogEntry{ "AudioEngine::GetChannelGroupVolume", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
-			return 0;
+			return 0.f;
 		}
 
 		float volume = 1.f;
 		channelGroup->getVolume(&volume);
 		return volume;
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
+		Pauses all audio in this channel group
+	\param channelGroupName
+		Name of the channel group
+	*/
+	/***************************************************************************/
+	void AudioEngine::PauseChannelGroup(const std::string& channelGroupName)
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		auto itr = c_instance->xFmod.m_channelGroupMap.find(channelGroupName);
+		if (itr == c_instance->xFmod.m_channelGroupMap.end())
+		{
+			std::stringstream ss;
+
+			ss << "Unable to find channel group \"" << channelGroupName << "\"";
+			PP::Logger::Log(
+				PP::LogEntry{ "AudioEngine::PauseChannelGroup", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			return;
+		}
+
+		itr->second.first->setPaused(true);
+		itr->second.second.m_setPaused = true;
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
+		Resumes all audio in this channel group
+	\param channelGroupName
+		Name of the channel group
+	*/
+	/***************************************************************************/
+	void AudioEngine::ResumeChannelGroup(const std::string& channelGroupName)
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		auto itr = c_instance->xFmod.m_channelGroupMap.find(channelGroupName);
+		if (itr == c_instance->xFmod.m_channelGroupMap.end())
+		{
+			std::stringstream ss;
+
+			ss << "Unable to find channel group \"" << channelGroupName << "\"";
+			PP::Logger::Log(
+				PP::LogEntry{ "AudioEngine::ResumeChannelGroup", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			return;
+		}
+
+		itr->second.first->setPaused(false);
+		itr->second.second.m_setPaused = false;
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
+		Stops all audio in this channel group
+	\param channelGroupName
+		Name of the channel group
+	*/
+	/***************************************************************************/
+	void AudioEngine::StopChannelGroup(const std::string& channelGroupName)
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		auto channelGroup = c_instance->GetChannelGroup(channelGroupName);
+
+		if (!channelGroup)
+		{
+			std::stringstream ss;
+
+			ss << "Unable to find channel group \"" << channelGroupName << "\"";
+			PP::Logger::Log(
+				PP::LogEntry{ "AudioEngine::GetChannelGroupVolume", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			return;
+		}
+
+		channelGroup->stop();
 	}
 
 	/***************************************************************************/
@@ -330,7 +411,7 @@ namespace PPA
 			channel->setVolume(volume);
 			channel->setPaused(false);
 
-			c_instance->xFmod.m_channelMap[channelID] = channel;
+			c_instance->xFmod.m_channelMap[channelID] = { channel, channelGroupName };
 		}
 
 		return channelID;
@@ -350,17 +431,23 @@ namespace PPA
 
 		if (channelItr != c_instance->xFmod.m_channelMap.end())
 		{
-			channelItr->second->stop();
+			channelItr->second.first->stop();
 		}
 	}
 
+	/***************************************************************************/
+	/*!
+	\brief
+		Stops all sounds from playing
+	*/
+	/***************************************************************************/
 	void AudioEngine::StopPlayingAll()
 	{
 		auto c_instance = &AudioEngine::Instance();
 
 		for (auto& channel : c_instance->xFmod.m_channelMap)
 		{
-			channel.second->stop();
+			channel.second.first->stop();
 		}
 	}
 
@@ -385,7 +472,7 @@ namespace PPA
 		if (channelItr != c_instance->xFmod.m_channelMap.end())
 		{
 			FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
-			channelItr->second->set3DAttributes(&fvPosition, nullptr);
+			channelItr->second.first->set3DAttributes(&fvPosition, nullptr);
 
 			return true;
 		}
@@ -401,7 +488,7 @@ namespace PPA
 
 		if (channelItr != c_instance->xFmod.m_channelMap.end())
 		{
-			channelItr->second->setVolume(volume);
+			channelItr->second.first->setVolume(volume);
 		}
 	}
 
@@ -476,18 +563,39 @@ namespace PPA
 	/***************************************************************************/
 	void AudioEngine::xFMOD::Update()
 	{
-		static std::vector<std::map<int, FMOD::Channel*>::iterator> c_stoppedChannels;
+		static std::vector<std::map<int, std::pair<FMOD::Channel*, std::string>>::iterator> c_stoppedChannels;
 
 		c_stoppedChannels.clear();
 
 		for (auto it = m_channelMap.begin(); it != m_channelMap.end(); ++it)
 		{
 			bool isPlaying = false;
-			it->second->isPlaying(&isPlaying);
+			//bool isPaused = false;
+			
+			it->second.first->isPlaying(&isPlaying);
 			//it->second->getPaused();
 
 			if (!isPlaying)
-				c_stoppedChannels.push_back(it);
+			{
+				if (it->second.second == PPA_NULL_STRING)
+				{
+					c_stoppedChannels.push_back(it);
+				}
+				else
+				{
+					auto channelGroupInfo = m_channelGroupMap.find(it->second.second);
+
+					if (channelGroupInfo != m_channelGroupMap.end())
+					{
+						if (!channelGroupInfo->second.second.m_setPaused)
+							c_stoppedChannels.push_back(it);
+					}
+					else
+					{
+						assert(false && "Some desync happened in the system or someone removed a channel in use");
+					}
+				}
+			}
 		}
 
 		for (auto& it : c_stoppedChannels)

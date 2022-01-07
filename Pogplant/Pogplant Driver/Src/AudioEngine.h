@@ -40,6 +40,9 @@ namespace PPA
 		static void CreateChannelGroup(const std::string& channelGroupName);
 		static void SetChannelGroupVolume(const std::string& channelGroupName, float volume);
 		static float GetChannelGroupVolume(const std::string& channelGroupName);
+		static void PauseChannelGroup(const std::string& channelGroupName);
+		static void ResumeChannelGroup(const std::string& channelGroupName);
+		static void StopChannelGroup(const std::string& channelGroupName);
 
 		static bool LoadAudio(const std::string& fileName, bool is3D, bool isLooping, bool isStreamed);
 		static void UnloadAudio(const std::string& fileName);
@@ -62,12 +65,17 @@ namespace PPA
 			xFMOD();
 			~xFMOD();
 
+			struct ChannelGroupInfo
+			{
+				bool m_setPaused = false;
+			};
+
 			void Update();
 
 			int m_nextChannelID;
 
-			std::unordered_map<std::string, std::pair<FMOD::ChannelGroup*, float>> m_channelGroupMap;
-			std::map<int, FMOD::Channel*> m_channelMap;
+			std::unordered_map<std::string, std::pair<FMOD::ChannelGroup*, ChannelGroupInfo>> m_channelGroupMap;
+			std::map<int, std::pair<FMOD::Channel*, std::string>> m_channelMap;
 			std::map<std::string, FMOD::Sound*> m_soundMap;
 
 			FMOD::Studio::System* m_studioSystem;

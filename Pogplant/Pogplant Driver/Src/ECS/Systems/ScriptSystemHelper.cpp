@@ -352,10 +352,41 @@ namespace SSH
 		}
 	}
 
-	void PlayAudio(std::uint32_t entity, std::uint32_t index)
+	void PlayAudio(std::uint32_t entity, std::uint32_t index, MonoString* channelGroupName)
 	{
-		const auto& audio_comp = ScriptSystem::GetECS()->GetReg().try_get<Components::AudioSource>(static_cast<entt::entity>(entity));
-		audio_comp->PlayAudio(index);
+		if (channelGroupName)
+		{
+			std::string channelGroupNameStr = mono_string_to_utf8(channelGroupName);
+			const auto& audio_comp = ScriptSystem::GetECS()->GetReg().try_get<Components::AudioSource>(static_cast<entt::entity>(entity));
+
+			if (audio_comp)
+				audio_comp->PlayAudio(index, channelGroupNameStr);
+		}
+		else
+		{
+			const auto& audio_comp = ScriptSystem::GetECS()->GetReg().try_get<Components::AudioSource>(static_cast<entt::entity>(entity));
+
+			if (audio_comp)
+				audio_comp->PlayAudio(index);
+		}
+	}
+
+	void CreateAudioChannelGroup(MonoString* channelGroupName)
+	{
+		std::string channelGroupNameStr = mono_string_to_utf8(channelGroupName);
+		PPA::AudioEngine::CreateChannelGroup(channelGroupNameStr);
+	}
+
+	void PauseAudioChannelGroup(MonoString* channelGroupName)
+	{
+		std::string channelGroupNameStr = mono_string_to_utf8(channelGroupName);
+		PPA::AudioEngine::PauseChannelGroup(channelGroupNameStr);
+	}
+
+	void ResumeAudioChannelGroup(MonoString* channelGroupName)
+	{
+		std::string channelGroupNameStr = mono_string_to_utf8(channelGroupName);
+		PPA::AudioEngine::ResumeChannelGroup(channelGroupNameStr);
 	}
 
 	void AddComponentBoxCollider(unsigned int id, bool isTrigger, MonoString* collisionLayer, glm::vec3 extends, glm::vec3 centre)
@@ -526,5 +557,15 @@ namespace SSH
 	void ExitScene()
 	{
 		PP::Window::CloseWindow();
+	}
+
+	void PauseScene()
+	{
+		PPD::Application::GetInstance().PauseGame();
+	}
+
+	void ResumeScene()
+	{
+		PPD::Application::GetInstance().ResumeGame();
 	}
 }

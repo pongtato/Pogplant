@@ -478,6 +478,9 @@ namespace Scripting
             //Triggers a random camera shake upon taking damage, scales with damage taken
             TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage),
                 new Vector3(GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier), 1f);
+
+            //Add controller vibration
+            InputUtility.VibrateControllerHeavyMotor(0.8f, 0.2f);
         }
 
         void HandleDeath()

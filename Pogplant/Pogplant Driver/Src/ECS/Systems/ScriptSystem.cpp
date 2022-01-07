@@ -390,6 +390,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.InputUtility::onKeyReleased(string)", &PPI::InputSystem::onKeyReleasedMono);
 	mono_add_internal_call("Scripting.InputUtility::onKeyHeld(string)", &PPI::InputSystem::onKeyHeldMono);
 	mono_add_internal_call("Scripting.InputUtility::GetAxis(string)", &PPI::InputSystem::GetAxisMono);
+	mono_add_internal_call("Scripting.InputUtility::VibrateControllerLightMotor", &PPI::InputSystem::VibrateControllerLightMotor);
+	mono_add_internal_call("Scripting.InputUtility::VibrateControllerHeavyMotor", &PPI::InputSystem::VibrateControllerHeavyMotor);
 
 	// Debug Draw
 	mono_add_internal_call("Scripting.DebugDraw::DebugSphere", &Pogplant::DebugDraw::DebugSphere);
@@ -436,6 +438,9 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetGlobalPosition", SSH::SetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::SetGlobalRotation", SSH::SetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);
+	mono_add_internal_call("Scripting.ECS::CreateAudioChannelGroup", SSH::CreateAudioChannelGroup);
+	mono_add_internal_call("Scripting.ECS::PauseAudioChannelGroup", SSH::PauseAudioChannelGroup);
+	mono_add_internal_call("Scripting.ECS::ResumeAudioChannelGroup", SSH::ResumeAudioChannelGroup);
 	mono_add_internal_call("Scripting.ECS::GetBoxColliderECS", SSH::GetBoxColliderECS);
 	mono_add_internal_call("Scripting.ECS::GetTagECS", SSH::GetTagECS);
 	mono_add_internal_call("Scripting.ECS::SetColliderBox", SSH::SetColliderBox);
@@ -468,9 +473,11 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.Camera::GetCamera", SSH::GetCamera);
 	mono_add_internal_call("Scripting.Camera::SetCamera", SSH::SetCamera);
 	
-	// Changing scenes
+	// Changing scenes / pausing
 	mono_add_internal_call("Scripting.GameUtilities::LoadScene", SSH::LoadScene);
 	mono_add_internal_call("Scripting.GameUtilities::ExitScene", SSH::ExitScene);
+	mono_add_internal_call("Scripting.GameUtilities::PauseScene", SSH::PauseScene);
+	mono_add_internal_call("Scripting.GameUtilities::ResumeScene", SSH::ResumeScene);
 
 }
 
