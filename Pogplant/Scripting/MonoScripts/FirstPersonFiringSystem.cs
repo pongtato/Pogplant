@@ -28,6 +28,7 @@ namespace Scripting
 
         //Player Crosshair(The smaller one)
         uint Crosshair;
+        public float controller_move_multiplier = 10.0f;
         public float max_offset_value = 0.1f; // For non Canvas is 5
         public float move_multipler = 0.001f; // Non-Canvas value is 0.1;
         public float lerp_speed = 20.0f; // Needs high lerp speed to be smooth
@@ -345,6 +346,13 @@ namespace Scripting
             GameUtilities.GetMousePos(ref newMousePos.X, ref newMousePos.Y);
             diff = newMousePos - MousePos;
             MousePos = newMousePos;
+
+            //Check for controller movement if no mouse
+            if((Math.Abs(diff.X) < float.Epsilon) && (Math.Abs(diff.Y) < float.Epsilon))
+            {
+                diff.X = InputUtility.GetAxis("AIMX") * controller_move_multiplier;
+                diff.Y = InputUtility.GetAxis("AIMY") * controller_move_multiplier;
+            }
 
             diff.Y *= -1.0f;
 

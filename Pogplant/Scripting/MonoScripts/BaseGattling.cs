@@ -38,7 +38,6 @@ namespace Scripting
         public BaseGattling()
         {
             // initialize private variables here
-            fireRate =  0.1f;
 
         }
 
@@ -46,6 +45,7 @@ namespace Scripting
         {
             entityID = _entityID;
 
+            fireRate = 0.1f;
             muzzle_id = ECS.FindChildEntityWithName(_entityID, "Rotating_Gatling_Barrel");
             turret_pivot = ECS.FindChildEntityWithName(_entityID, "Turret_Pivot");
             PlayerBox = ECS.FindEntityWithName("PlayerBox");
