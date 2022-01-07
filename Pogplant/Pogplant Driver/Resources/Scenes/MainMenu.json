@@ -19,6 +19,26 @@
 				1.0
 			],
 			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
 			"m_TexName" : "Placeholder_Background.dds"
 		},
 		"Children" : 4,
@@ -73,6 +93,26 @@
 				1.0
 			],
 			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
 			"m_TexName" : "Placeholder_Quit_Button.dds"
 		},
 		"Children" : 0,
@@ -90,7 +130,7 @@
 			[
 				0.32499998807907104,
 				-0.60000002384185791,
-				-1.0
+				0.0
 			],
 			"m_rotation" : 
 			[
@@ -117,6 +157,26 @@
 				1.0
 			],
 			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
 			"m_TexName" : "MenuArrow.dds"
 		},
 		"Children" : 0,
@@ -161,6 +221,26 @@
 				1.0
 			],
 			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
 			"m_TexName" : "Placeholder_Start_Button.dds"
 		},
 		"Children" : 0,
@@ -205,6 +285,26 @@
 				1.0
 			],
 			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
 			"m_TexName" : "GameLogo.dds"
 		},
 		"Children" : 0,

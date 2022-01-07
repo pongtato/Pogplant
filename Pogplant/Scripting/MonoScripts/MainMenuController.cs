@@ -146,7 +146,7 @@ namespace Scripting
                 switch (active_index)
                 {
                     case 0:
-                        GameUtilities.LoadScene("Level01_M3_Blockout");
+                        GameUtilities.LoadScene("Level01_M3_SplineReimport");
                         break;
                     case 1:
                         GameUtilities.ExitScene();

@@ -58,6 +58,16 @@ namespace Scripting
         Transform transform;
         public FirstPersonFiringSystem()
         {
+
+            //ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"));
+            //ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"));
+            //ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"));
+        }
+
+        public override void Init(ref uint _entityID)
+        {
+            entityID = _entityID;
+
             // initialize private variables here
             PlayerBox = ECS.FindEntityWithName("PlayerBox");
             PlayerShip = ECS.FindEntityWithName("PlayerShip");
@@ -72,18 +82,11 @@ namespace Scripting
             Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret3"));
             Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret4"));
 
-            ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"),"Child")));
+            ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"), "Child")));
-            //ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"));
-            //ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"));
-            //ReticleGroup.Add(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"));
-        }
 
-        public override void Init(ref uint _entityID)
-        {
-            entityID = _entityID;
             current_offset_value = new Vector3(0, 0, 0);
 
             Transform burner = new Transform();
@@ -96,6 +99,7 @@ namespace Scripting
         {
             
         }
+
         public override void Update(float dt)
         {
             //UpdateReticleMovement(ref transform, ref dt);
@@ -125,7 +129,6 @@ namespace Scripting
                 //Shoot straight if there is no enemy
                 for (int i = 0; i < Turrets.Count; ++i)
                 {
-
                     Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[i]).Rotation;
                     ECS.SetRotation(Turrets[i], Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed));
                     //Reset Reticle
