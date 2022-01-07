@@ -133,7 +133,7 @@ namespace PPA
 			ss << "Unable to find channel group \"" << channelGroupName << "\"";
 			PP::Logger::Log(
 				PP::LogEntry{ "AudioEngine::GetChannelGroupVolume", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
-			return;
+			return 0;
 		}
 
 		float volume = 1.f;

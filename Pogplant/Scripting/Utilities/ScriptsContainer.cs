@@ -9,41 +9,65 @@ namespace Scripting
 {
     public class ScriptsContainer
     {
-        static public List<string> scriptNames = new List<string>();
+        static public List<string> monoScriptNames = new List<string>();
+        static public List<string> pauseScriptNames = new List<string>();
 
         public ScriptsContainer()
         {
-            scriptNames.Add("PlayerScript");
-            scriptNames.Add("FirstPersonFiringSystem");
-            scriptNames.Add("EncounterSystemDriver");
-            scriptNames.Add("FollowSpline");
-            scriptNames.Add("L1BossShield");
-            //scriptNames.Add("EncounterManager");
-            //scriptNames.Add("EnemyManager");
-            //scriptNames.Add("BaseEnemy");
-            scriptNames.Add("BaseTurret");
-            scriptNames.Add("BaseFlock");
-            scriptNames.Add("BaseGattling");
-            scriptNames.Add("TurretController");
-            scriptNames.Add("MissileController");
-            //scriptNames.Add("Missile");
-            scriptNames.Add("FlockController");
-            //scriptNames.Add("EnvDamage");
-            scriptNames.Add("MainMenuController");
-            scriptNames.Add("DummyScript");
-            scriptNames.Add("GameOverScreen");
-            scriptNames.Add("GameEndingTrigger");
-            scriptNames.Add("DashboardScreen");
+            AddMonoScripts();
+            AddPauseScripts();
+        }
+
+        private void AddMonoScripts()
+        {
+            // For Mono Scripts
+            monoScriptNames.Add("PlayerScript");
+            monoScriptNames.Add("FirstPersonFiringSystem");
+            monoScriptNames.Add("EncounterSystemDriver");
+            monoScriptNames.Add("FollowSpline");
+            monoScriptNames.Add("L1BossShield");
+            //monoScriptNames.Add("EncounterManager");
+            //monoScriptNames.Add("EnemyManager");
+            //monoScriptNames.Add("BaseEnemy");
+            monoScriptNames.Add("BaseTurret");
+            monoScriptNames.Add("BaseFlock");
+            monoScriptNames.Add("BaseGattling");
+            monoScriptNames.Add("TurretController");
+            monoScriptNames.Add("MissileController");
+            //monoScriptNames.Add("Missile");
+            monoScriptNames.Add("FlockController");
+            //monoScriptNames.Add("EnvDamage");
+            monoScriptNames.Add("MainMenuController");
+            monoScriptNames.Add("DummyScript");
+            monoScriptNames.Add("GameOverScreen");
+            monoScriptNames.Add("GameEndingTrigger");
+            monoScriptNames.Add("DashboardScreen");
+        }
+        
+        private void AddPauseScripts()
+        {
+            // For Pause State Scripts
+            pauseScriptNames.Add("TestPauseUpdate");
         }
 
         public string GetScriptNameElement(int index)
         {
-            return scriptNames[index];
+            return monoScriptNames[index];
         }
 
         public int GetScriptNamesSize()
         {
-            return scriptNames.Count;
+            return monoScriptNames.Count;
+        }
+
+        public string GetPScriptNameElement(int index)
+        {
+            return pauseScriptNames[index];
+        }
+
+        public int GetPScriptNamesSize()
+        {
+            return pauseScriptNames.Count;
         }
     }
 }

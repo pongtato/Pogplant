@@ -44,6 +44,9 @@ public:
 	void Update(float dt);
 	void LateUpdate(float dt);
 
+	// Only for scripts that are meant to be updated during the pause state
+	void PauseUpdate(float dt);
+
 	static void SetReload(bool _isReload);
 	static ECS* GetECS() { return m_ecs; }
 

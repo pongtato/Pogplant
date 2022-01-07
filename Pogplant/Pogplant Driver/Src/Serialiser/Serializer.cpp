@@ -206,6 +206,7 @@ namespace PogplantDriver
 		auto& transform_component = m_ecs.GetReg().get<Transform>(id);
 		auto render_component = m_ecs.GetReg().try_get<Renderer>(id);
 		auto script_component = m_ecs.GetReg().try_get<Scriptable>(id);
+		auto pscript_component = m_ecs.GetReg().try_get<PauseScriptable>(id);
 		auto audio_component = m_ecs.GetReg().try_get<AudioSource>(id);
 		// To reflect save
 
@@ -262,6 +263,16 @@ namespace PogplantDriver
 				classroot[script_name.first] = script_name.second;
 			}
 			subroot["Scripting"] = classroot;
+		}
+
+		if (pscript_component)
+		{
+			Json::Value classroot;
+			for (auto& script_name : pscript_component->m_ScriptTypes)
+			{
+				classroot[script_name.first] = script_name.second;
+			}
+			subroot["P_Scripting"] = classroot;
 		}
 
 		if (audio_component)
@@ -337,6 +348,7 @@ namespace PogplantDriver
 		auto& render = root["Render"];
 		auto& relationship = root["Children"];
 		auto& scripting = root["Scripting"];
+		auto& pscripting = root["P_Scripting"];
 		auto& audioSource = root["AudioSource"];
 
 
@@ -468,6 +480,17 @@ namespace PogplantDriver
 				temp_ScriptTypes.emplace(it->c_str(), scripting[*it].asBool());
 			}
 			m_ecs.GetReg().emplace<Scriptable>(id, temp_ScriptTypes);
+		}
+
+		if (pscripting)
+		{
+			auto members = pscripting.getMemberNames();
+			std::unordered_map<std::string, bool> temp_ScriptTypes;
+			for (auto it = members.begin(); it != members.end(); ++it)
+			{
+				temp_ScriptTypes.emplace(it->c_str(), pscripting[*it].asBool());
+			}
+			m_ecs.GetReg().emplace<PauseScriptable>(id, temp_ScriptTypes);
 		}
 
 		if (audioSource)

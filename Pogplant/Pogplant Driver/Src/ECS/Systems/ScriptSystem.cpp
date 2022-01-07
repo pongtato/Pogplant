@@ -51,17 +51,6 @@ ScriptSystem::ScriptSystem()
 	mono_set_dirs("Mono\\lib", "Mono\\etc");
 	// Root domain
 	m_ptrMonoDomain = mono_jit_init("ScriptSystem");
-
-	// Add Script names here
-	//ScriptResource::m_allScriptNames.push_back("PlayerScript");
-	//ScriptResource::m_allScriptNames.push_back("FollowSpline");
-	//ScriptResource::m_allScriptNames.push_back("EnemyManager");
-	//ScriptResource::m_allScriptNames.push_back("EncounterManager");
-	//ScriptResource::m_allScriptNames.push_back("BaseTurret");
-	//ScriptResource::m_allScriptNames.push_back("BaseEnemy");
-	//ScriptResource::m_allScriptNames.push_back("MoveStuff");
-	// Load dll into memory
-	//LoadMemory();
 }
 
 ScriptSystem::~ScriptSystem()
@@ -73,8 +62,11 @@ void ScriptSystem::InitEditor(ECS* ecs)
 {
 	m_ecs = ecs;
 
-	ScriptResource::m_allScriptNames.clear();
-	ScriptResource::m_allScriptNames.shrink_to_fit();
+	ScriptResource::m_MonoScriptNames.clear();
+	ScriptResource::m_MonoScriptNames.shrink_to_fit();
+
+	ScriptResource::m_PauseScriptNames.clear();
+	ScriptResource::m_PauseScriptNames.shrink_to_fit();
 	InitLoad();
 }
 
@@ -108,6 +100,26 @@ void ScriptSystem::Start()
 			}
 		}
 	}
+
+	auto entities_1 = m_ecs->view<Components::PauseScriptable, Components::Name>();
+
+	for (auto& entity : entities_1)
+	{
+		auto& scriptable = entities_1.get<Components::PauseScriptable>(entity);
+		auto& name = entities_1.get<Components::Name>(entity);
+
+		for (auto& scripts : scriptable.m_ScriptTypes)
+		{
+			if (scripts.second == false)
+			{
+				AddScriptToEntity(entity);
+				SSH::InvokeFunction(scripts.first, "Init", entity, static_cast<std::uint32_t>(entity));
+				SSH::InvokeFunction(scripts.first, "Start", entity);
+				scripts.second = true;
+				std::cout << "Entity [" << name.m_name << "] has started script [" << scripts.first << "]" << std::endl;
+			}
+		}
+	}
 }
 
 void ScriptSystem::Update(float dt)
@@ -117,21 +129,9 @@ void ScriptSystem::Update(float dt)
 	for (auto entity : entities)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
-		//auto& rigidbody = entities.get<Components::Rigidbody>(entity);
-		//auto& transform = entities.get<Components::Transform>(entity);
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
-			//SSH::InvokeFunction(scripts.first, "Update", entity, transform, rigidbody, dt);
-			//SSH::InvokeFunction(scripts.first, "Update", entity, transform, dt);
-			//if (scripts.first == "FollowSpline")
-			//{
-			//	SSH::InvokeFunction(scripts.first, "Update", entity, transform, dt);
-			//}
-			//else
-			//{
-			//	SSH::InvokeFunction(scripts.first, "Update", entity, dt);
-			//}
 			SSH::InvokeFunction(scripts.first, "Update", entity, dt);
 		}
 	}
@@ -146,18 +146,32 @@ void ScriptSystem::LateUpdate(float dt)
 	for (auto& entity : entities)
 	{
 		auto& scriptable = entities.get<Components::Scriptable>(entity);
-		//auto& transform = entities.get<Components::Transform>(entity);
-		//auto& rigidbody = entities.get<Components::Rigidbody>(entity);
 
 		for (auto& scripts : scriptable.m_ScriptTypes)
 		{
-			//SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, rigidbody, dt);
-			//SSH::InvokeFunction(scripts.first, "LateUpdate", entity, transform, dt);
 			SSH::InvokeFunction(scripts.first, "LateUpdate", entity, dt);
 		}
 	}
 
 	SSH::UpdateDestroyedEntities();
+}
+
+void ScriptSystem::PauseUpdate(float dt)
+{
+	auto entities = m_ecs->view<Components::PauseScriptable, Components::Name>();
+
+	for (auto& entity : entities)
+	{
+		auto& scriptable = entities.get<Components::PauseScriptable>(entity);
+
+		for (auto& scripts : scriptable.m_ScriptTypes)
+		{
+			SSH::InvokeFunction(scripts.first, "Update", entity, dt);
+		}
+	}
+
+	SSH::UpdateDestroyedEntities();
+
 }
 
 void ScriptSystem::SetReload(bool _isReload)
@@ -221,14 +235,14 @@ void ScriptSystem::LoadMemory()
 				assert(m_ptrMainEntryClass && "MonoClass* monoMainClass does not exist, this means that the main function is bogged in c#.");
 
 				BindFunctions();
-				if (m_ptrMainEntryClass)
-				{
-					auto entities = m_ecs->view<Components::Scriptable, Components::Transform, Components::Name>();
-					for (auto& entity : entities)
-					{
-						AddScriptToEntity(entity);
-					}
-				}
+				//if (m_ptrMainEntryClass)
+				//{
+				//	auto entities = m_ecs->view<Components::Scriptable, Components::Transform, Components::Name>();
+				//	for (auto& entity : entities)
+				//	{
+				//		AddScriptToEntity(entity);
+				//	}
+				//}
 			}
 		}
 	}
@@ -283,13 +297,12 @@ void ScriptSystem::InitLoad()
 					excep = "MonoObject* ptrGameObject does not exist, the method " + fullname + " to call the script in c# is invalid.";
 					assert(ptrGameObject && excep.c_str());
 
-					// Call the getscript
+					// Call the getscript for mono scripts
 					MonoClass* klass = mono_object_get_class(ptrGameObject);
-					MonoMethod* method = mono_class_get_method_from_name(klass, "GetScriptNamesSize", -1);
+					MonoMethod* getMonoScriptNamesMethod = mono_class_get_method_from_name(klass, "GetScriptNamesSize", -1);
 
-					MonoObject* retContainerSize = mono_runtime_invoke(method, ptrGameObject, nullptr, nullptr);
+					MonoObject* retContainerSize = mono_runtime_invoke(getMonoScriptNamesMethod, ptrGameObject, nullptr, nullptr);
 					int len = *(int*)mono_object_unbox(retContainerSize);
-					//ScriptResource::m_allScriptNames.resize(len);
 
 					for (int i = 0; i < len; ++i)
 					{
@@ -299,7 +312,24 @@ void ScriptSystem::InitLoad()
 						MonoObject* retStringName = mono_runtime_invoke(getNameMethod, ptrGameObject, args, nullptr);
 						MonoString* monoStr = mono_object_to_string(retStringName, nullptr);
 						std::string scrName{ mono_string_to_utf8(monoStr) };
-						ScriptResource::m_allScriptNames.push_back(scrName);
+						ScriptResource::m_MonoScriptNames.push_back(scrName);
+					}
+
+					// Call the getscript for pause scripts
+					MonoMethod* getPauseScriptNamesMethod = mono_class_get_method_from_name(klass, "GetPScriptNamesSize", -1);
+
+					MonoObject* pRetContainerSize = mono_runtime_invoke(getPauseScriptNamesMethod, ptrGameObject, nullptr, nullptr);
+					int pLen = *(int*)mono_object_unbox(pRetContainerSize);
+
+					for (int i = 0; i < pLen; ++i)
+					{
+						void* args[] = { &i };
+
+						MonoMethod* getNameMethod = mono_class_get_method_from_name(klass, "GetPScriptNameElement", -1);
+						MonoObject* retStringName = mono_runtime_invoke(getNameMethod, ptrGameObject, args, nullptr);
+						MonoString* monoStr = mono_object_to_string(retStringName, nullptr);
+						std::string scrName{ mono_string_to_utf8(monoStr) };
+						ScriptResource::m_PauseScriptNames.push_back(scrName);
 					}
 
 					// Garbage Collection Handle for the game object
@@ -446,46 +476,93 @@ void ScriptSystem::BindFunctions()
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)
 {
-	auto& scriptable = m_ecs->GetReg().get<Components::Scriptable>(entity);
+	auto scriptable = m_ecs->GetReg().try_get<Components::Scriptable>(entity);
+	auto pauseScriptable = m_ecs->GetReg().try_get<Components::PauseScriptable>(entity);
 
-	for (auto& scripts : scriptable.m_ScriptTypes)
+	if (scriptable)
 	{
-		MonoClass* monoclass = mono_class_from_name(m_ptrGameAssemblyImage, m_namespace.c_str(), scripts.first.c_str());
-		std::string excep = "MonoClass* monoclass does not exist, this means that function " + scripts.first + " is bogged in c#.";
-		assert(monoclass && excep.c_str());
-		(void)monoclass;
-
-		// Main method describe
-		std::string fullname = '.' + m_namespace + ':' + scripts.first.c_str() + "()";
-		MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(fullname.c_str(), false);
-		excep = "MonoMethodDesc* ptrMainMethodDesc does not exist, " + fullname + " is bogged in c#.";
-		assert(ptrMainMethodDesc && excep.c_str());
-
-		// Find the main in mainclass
-		MonoMethod* ptrMainMethod = mono_method_desc_search_in_class(ptrMainMethodDesc, m_ptrMainEntryClass);
-		assert(ptrMainMethod && "MainMonoMethod* ptrMainMethod does not exist, probably missing main.cs functions in c#");
-
-		MonoObject* ptrExObject = nullptr;
-		MonoObject* ptrGameObject = mono_runtime_invoke(ptrMainMethod, nullptr, nullptr, &ptrExObject);
-		excep = "MonoObject* ptrGameObject does not exist, the method " + fullname + " to call the script in c# is invalid.";
-		assert(ptrGameObject && excep.c_str());
-
-		// Garbage Collection Handle for the game object
-		uint32_t m_gameObjectGCHandle = mono_gchandle_new(ptrGameObject, false);
-
-		// Exception hit
-		if (ptrExObject)
+		for (auto& scripts : scriptable->m_ScriptTypes)
 		{
-			MonoString* exString = mono_object_to_string(ptrExObject, nullptr);
-			const char* exCString = mono_string_to_utf8(exString);
-			std::cout << exCString << std::endl;
+			MonoClass* monoclass = mono_class_from_name(m_ptrGameAssemblyImage, m_namespace.c_str(), scripts.first.c_str());
+			std::string excep = "MonoClass* monoclass does not exist, this means that function " + scripts.first + " is bogged in c#.";
+			assert(monoclass && excep.c_str());
+			(void)monoclass;
+
+			// Main method describe
+			std::string fullname = '.' + m_namespace + ':' + scripts.first.c_str() + "()";
+			MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(fullname.c_str(), false);
+			excep = "MonoMethodDesc* ptrMainMethodDesc does not exist, " + fullname + " is bogged in c#.";
+			assert(ptrMainMethodDesc && excep.c_str());
+
+			// Find the main in mainclass
+			MonoMethod* ptrMainMethod = mono_method_desc_search_in_class(ptrMainMethodDesc, m_ptrMainEntryClass);
+			assert(ptrMainMethod && "MainMonoMethod* ptrMainMethod does not exist, probably missing main.cs functions in c#");
+
+			MonoObject* ptrExObject = nullptr;
+			MonoObject* ptrGameObject = mono_runtime_invoke(ptrMainMethod, nullptr, nullptr, &ptrExObject);
+			excep = "MonoObject* ptrGameObject does not exist, the method " + fullname + " to call the script in c# is invalid.";
+			assert(ptrGameObject && excep.c_str());
+
+			// Garbage Collection Handle for the game object
+			uint32_t m_gameObjectGCHandle = mono_gchandle_new(ptrGameObject, false);
+
+			// Exception hit
+			if (ptrExObject)
+			{
+				MonoString* exString = mono_object_to_string(ptrExObject, nullptr);
+				const char* exCString = mono_string_to_utf8(exString);
+				std::cout << exCString << std::endl;
+			}
+
+			// Entity ID then scriptName with monoObject. Lookup with entityID
+			ScriptResource::m_MonoObjects[entity][scripts.first] = std::make_unique<MonoObjectWithGC>(m_gameObjectGCHandle, ptrGameObject);
+
+			// Free desc
+			mono_method_desc_free(ptrMainMethodDesc);
 		}
+	}
+	
+	if (pauseScriptable)
+	{
+		for (auto& scripts : pauseScriptable->m_ScriptTypes)
+		{
+			MonoClass* monoclass = mono_class_from_name(m_ptrGameAssemblyImage, m_namespace.c_str(), scripts.first.c_str());
+			std::string excep = "MonoClass* monoclass does not exist, this means that function " + scripts.first + " is bogged in c#.";
+			assert(monoclass && excep.c_str());
+			(void)monoclass;
 
-		// Entity ID then scriptName with monoObject. Lookup with entityID
-		ScriptResource::m_MonoObjects[entity][scripts.first] = std::make_unique<MonoObjectWithGC>(m_gameObjectGCHandle, ptrGameObject);
+			// Main method describe
+			std::string fullname = '.' + m_namespace + ':' + scripts.first.c_str() + "()";
+			MonoMethodDesc* ptrMainMethodDesc = mono_method_desc_new(fullname.c_str(), false);
+			excep = "MonoMethodDesc* ptrMainMethodDesc does not exist, " + fullname + " is bogged in c#.";
+			assert(ptrMainMethodDesc && excep.c_str());
 
-		// Free desc
-		mono_method_desc_free(ptrMainMethodDesc);
+			// Find the main in mainclass
+			MonoMethod* ptrMainMethod = mono_method_desc_search_in_class(ptrMainMethodDesc, m_ptrMainEntryClass);
+			assert(ptrMainMethod && "MainMonoMethod* ptrMainMethod does not exist, probably missing main.cs functions in c#");
+
+			MonoObject* ptrExObject = nullptr;
+			MonoObject* ptrGameObject = mono_runtime_invoke(ptrMainMethod, nullptr, nullptr, &ptrExObject);
+			excep = "MonoObject* ptrGameObject does not exist, the method " + fullname + " to call the script in c# is invalid.";
+			assert(ptrGameObject && excep.c_str());
+
+			// Garbage Collection Handle for the game object
+			uint32_t m_gameObjectGCHandle = mono_gchandle_new(ptrGameObject, false);
+
+			// Exception hit
+			if (ptrExObject)
+			{
+				MonoString* exString = mono_object_to_string(ptrExObject, nullptr);
+				const char* exCString = mono_string_to_utf8(exString);
+				std::cout << exCString << std::endl;
+			}
+
+			// Entity ID then scriptName with monoObject. Lookup with entityID
+			ScriptResource::m_MonoObjects[entity][scripts.first] = std::make_unique<MonoObjectWithGC>(m_gameObjectGCHandle, ptrGameObject);
+
+			// Free desc
+			mono_method_desc_free(ptrMainMethodDesc);
+		}
 	}
 }
 

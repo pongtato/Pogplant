@@ -117,7 +117,7 @@ void Application::UpdatePlayState(float c_dt)
 	}
 	else if (m_playState == PLAYSTATE::PAUSE)
 	{
-
+		m_sScriptSystem.PauseUpdate(c_dt);
 		m_sGeneralSystem.Update(c_dt);
 		PPI::InputSystem::PollEvents(c_dt);
 

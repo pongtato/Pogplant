@@ -116,6 +116,16 @@ namespace PogplantDriver
 			}
 			
 		}
+		if (ImGui::MenuItem("PauseScriptable", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::PauseScriptable>(PPD::ImguiHelper::m_CurrentEntity);
+			auto name_com = PPD::ImguiHelper::m_ecs->GetReg().try_get<Components::Name>(PPD::ImguiHelper::m_CurrentEntity);
+			if (name_com)
+			{
+				std::cout << "Entity [" << name_com->m_name << "] has added pause script component" << std::endl;
+			}
+
+		}
 		if (ImGui::MenuItem("Audio Source", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::AudioSource>(PPD::ImguiHelper::m_CurrentEntity);
@@ -1185,9 +1195,9 @@ namespace PogplantDriver
 				{
 					bool enable_scripts_com = true;
 
-					if (ImGui::CollapsingHeader(ICON_FA_SCROLL "  Active Scripts", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
+					if (ImGui::CollapsingHeader(ICON_FA_SCROLL "  Mono Scripts", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
 					{	
-						for (auto& scriptName : ScriptResource::m_allScriptNames)
+						for (auto& scriptName : ScriptResource::m_MonoScriptNames)
 						{
 							bool hasScript = scripts_com->m_ScriptTypes.contains(scriptName);
 							bool setScript = hasScript;
@@ -1197,11 +1207,12 @@ namespace PogplantDriver
 								if (setScript == false)
 								{
 									scripts_com->m_ScriptTypes.erase(scriptName);
-									std::cout << "Entity [" << name_com->m_name << "] has stopped script [" << scriptName << "]" << std::endl;
+									std::cout << "Entity [" << name_com->m_name << "] has removed script [" << scriptName << "]" << std::endl;
 								}
 								else
 								{
 									scripts_com->m_ScriptTypes[scriptName] = false;
+									std::cout << "Entity [" << name_com->m_name << "] has added script [" << scriptName << "]" << std::endl;
 								}
 							}
 						}
@@ -1210,11 +1221,45 @@ namespace PogplantDriver
 					if (!enable_scripts_com)
 					{
 						m_ecs->GetReg().remove<Components::Scriptable>(m_CurrentEntity);
-						std::cout << "Entity [" << name_com->m_name << "] has removed script component" << std::endl;
+						std::cout << "Entity [" << name_com->m_name << "] has removed mono script component" << std::endl;
 					}
 				}
 
-	
+				auto pausescripts_com = m_ecs->GetReg().try_get<Components::PauseScriptable>(m_CurrentEntity);
+				if (pausescripts_com && name_com)
+				{
+					bool enable_scripts_com = true;
+
+					if (ImGui::CollapsingHeader(ICON_FA_SCROLL "  Pause Scripts", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						for (auto& scriptName : ScriptResource::m_PauseScriptNames)
+						{
+							bool hasScript = pausescripts_com->m_ScriptTypes.contains(scriptName);
+							bool setScript = hasScript;
+							ImGui::Checkbox(scriptName.c_str(), &setScript);
+							if (setScript != hasScript)
+							{
+								if (setScript == false)
+								{
+									pausescripts_com->m_ScriptTypes.erase(scriptName);
+									std::cout << "Entity [" << name_com->m_name << "] has removed script [" << scriptName << "]" << std::endl;
+								}
+								else
+								{
+									pausescripts_com->m_ScriptTypes[scriptName] = false;
+									std::cout << "Entity [" << name_com->m_name << "] has added script [" << scriptName << "]" << std::endl;
+								}
+							}
+						}
+					}
+
+					if (!enable_scripts_com)
+					{
+						m_ecs->GetReg().remove<Components::PauseScriptable>(m_CurrentEntity);
+						std::cout << "Entity [" << name_com->m_name << "] has removed pause script component" << std::endl;
+					}
+				}
+				
 				ImGui::Separator();
 				ImguiBlankSeperator(2);
 

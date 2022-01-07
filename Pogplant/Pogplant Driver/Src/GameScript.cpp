@@ -695,7 +695,7 @@ namespace Scripting
 		if (min.y <= End_drop_pos.y)
 		{
 			//Start phase 3 return the missle to unseeable
-			glm::vec3 set_end_Scale{ 0.01 };
+			glm::vec3 set_end_Scale{ 0.01f };
 			SSH::SetScale(m_DropMissile, set_end_Scale);
 			missle_drop_phase2 = false;
 			explode_phase3 = true;

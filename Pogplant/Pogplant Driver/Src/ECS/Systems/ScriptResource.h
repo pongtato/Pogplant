@@ -19,8 +19,10 @@ struct MonoObjectWithGC
 struct ScriptResource
 {
 	static void RemoveEntity(const entt::entity& entity);
-	// Name of available scripts
-	static std::vector<std::string> m_allScriptNames;
+	// Name of available pause scripts
+	static std::vector<std::string> m_PauseScriptNames;
+	// Name of available mono script names
+	static std::vector<std::string> m_MonoScriptNames;
 	// Map of MonoObjects
 	//static std::unordered_map<std::string, std::unique_ptr<MonoObjectWithGC>> m_MonoObjects;
 	// Lookup via entityID, second will be the name of scripts and the mono object.

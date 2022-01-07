@@ -132,5 +132,10 @@ namespace Scripting
         {
             return new L1BossShield();
         }
+
+        public static TestPauseUpdate TestPauseUpdate()
+        {
+            return new TestPauseUpdate();
+        }
     }
 }

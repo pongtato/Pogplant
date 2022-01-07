@@ -28,6 +28,12 @@ namespace Components
 		// key is name of script, bool is if it has started
 		std::unordered_map<std::string, bool> m_ScriptTypes;
 	};
+
+	struct PauseScriptable
+	{
+		// key is name of script, bool is if it has started
+		std::unordered_map<std::string, bool> m_ScriptTypes;
+	};
 }
 
 #endif // _SCRIPT_COMPONENTS_H_
