@@ -28,7 +28,7 @@ void main()
 
     if(gCanvas.a < 0.1f )
     {
-        //discard;
+        discard;
     }
     else
     {

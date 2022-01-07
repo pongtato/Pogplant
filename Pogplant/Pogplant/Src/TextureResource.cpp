@@ -2,221 +2,150 @@
 #include "TextureLoader.h"
 #include "Logger.h"
 
+#include <json.h>
+#include <fstream>
+#include <iostream>
+
 namespace Pogplant
 {
 	std::unordered_map<std::string, unsigned int> TextureResource::m_TexturePool;
 	std::unordered_map<unsigned int, int> TextureResource::m_UsedTextures;
 
+	void HandleCubemaps(const Json::Value& _Root)
+	{
+		Json::ValueConstIterator iter = _Root.begin();
+		while (iter != _Root.end())
+		{
+			Json::Value subroot = _Root[iter.index()];
+			auto& j_fileNames = subroot["FileName"];
+			auto& j_dir = subroot["Dir"];
+
+			std::vector<std::string> fileNames;
+			std::string dir = "";
+
+			if (j_fileNames)
+			{
+				Json::ValueConstIterator fileIt = j_fileNames.begin();
+				while (fileIt != j_fileNames.end())
+				{
+					auto& fileName = j_fileNames[fileIt.index()];
+					fileNames.push_back(fileName.asString());
+					fileIt++;
+				}
+			}
+
+			if (j_dir)
+			{
+				dir = j_dir.asString();
+			}
+
+			// Load
+			TexLoader::LoadCubemap(fileNames, dir);
+
+			iter++;
+		}
+	}
+
+	void HandleSRGB(const Json::Value& _Root)
+	{
+		Json::ValueConstIterator iter = _Root.begin();
+		while (iter != _Root.end())
+		{
+			Json::Value subroot = _Root[iter.index()];
+			auto& j_fileName = subroot["FileName"];
+			auto& j_dir = subroot["Dir"];
+			auto& j_alpha = subroot["Alpha"];
+
+			std::string fileName = "";
+			std::string dir = "";
+			bool alpha = false;
+
+			if (j_fileName)
+			{
+				fileName = j_fileName.asString();
+			}
+
+			if (j_dir)
+			{
+				dir = j_dir.asString();
+			}
+
+			if (j_alpha)
+			{
+				alpha = j_alpha.asBool();
+			}
+
+			// Load
+			TexLoader::LoadTextureSRGB(fileName, dir, alpha);
+
+			iter++;
+		}
+	}
+
+	void HandleDefault(const Json::Value& _Root)
+	{
+		Json::ValueConstIterator iter = _Root.begin();
+		while (iter != _Root.end())
+		{
+			Json::Value subroot = _Root[iter.index()];
+			auto& j_fileName = subroot["FileName"];
+			auto& j_dir = subroot["Dir"];
+
+			std::string fileName = "";
+			std::string dir = "";
+
+			if (j_fileName)
+			{
+				fileName = j_fileName.asString();
+			}
+
+			if (j_dir)
+			{
+				dir = j_dir.asString();
+			}
+
+			// Load
+			TexLoader::LoadTexture(fileName, dir);
+
+			iter++;
+		}
+	}
+
 	void TextureResource::InitResource()
 	{
-		TexLoader::LoadCubemap
-		(
+		const std::string dir = "Resources/Textures/TextureList.json";
+
+		// Read json file
+		std::ifstream istream(dir, std::ios::in);
+		if (istream.is_open())
+		{
+			Json::Value root;
+			istream >> root[0];
+			Json::ValueIterator iter = root.begin();
+			/// Textures
+			while (iter != root.end())
 			{
-				"px.dds",
-				"nx.dds",
-				"py.dds",
-				"ny.dds",
-				"pz.dds",
-				"nz.dds"
+				Json::Value texRoot = root[iter.index()];
+				auto& cubemapTex = texRoot["CUBEMAP"];
+				if (cubemapTex)
+				{
+					HandleCubemaps(cubemapTex);
+				}
+
+				auto& gammaTex = texRoot["GAMMA"];
+				if (gammaTex)
+				{
+					HandleSRGB(gammaTex);
+				}
+
+				auto& defaultTex = texRoot["DEFAULT"];
+				if (defaultTex)
+				{
+					HandleDefault(defaultTex);
+				}
+				iter++;
 			}
-			, "Resources\\Textures\\Skybox"
-		);
-
-		// Must group all SRGB together
-		TexLoader::LoadTextureSRGB
-		(
-			"Large_Reticle.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"HP_Inner.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"Small_Reticle.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"Lockon.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"Hp_Icon.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"HP_Outer.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"GameLogo.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"Shoot_VFX.dds",
-			"Resources/Textures/VFX"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"MenuArrow.dds",
-			"Resources/Textures/UI"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"DarkSmoke.dds",
-			"Resources/Textures/Smoke"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"Smoke.dds",
-			"Resources/Textures/Smoke"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"Smoke_E.dds",
-			"Resources/Textures/Smoke"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"ParticleTest.dds",
-			"Resources/Textures/Particle"
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"grass_diff.dds",
-			"Resources/Textures/Grass",
-			false
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"mud_diff.dds",
-			"Resources/Textures/Mud",
-			false
-		);
-
-		TexLoader::LoadTextureSRGB
-		(
-			"kekwiggle.dds",
-			"Resources/Textures/SpriteAnimation",
-			false
-		);
-
-		TexLoader::LoadTexture
-		(
-			"ParticleTest2.dds",
-			"Resources/Textures/Particle"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"mud_bump.dds",
-			"Resources/Textures/Mud"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"mud_norm.dds",
-			"Resources/Textures/Mud"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"mud_rough.dds",
-			"Resources/Textures/Mud"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"grass_bump.dds",
-			"Resources/Textures/Grass"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"grass_norm.dds",
-			"Resources/Textures/Grass"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"grass_rough.dds",
-			"Resources/Textures/Grass"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"rocks_diff.dds",
-			"Resources/Textures/Rocks"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"snow_diff.dds",
-			"Resources/Textures/Snow"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"Placeholder_Arrow.dds",
-			"Resources/Textures/MainMenu"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"Placeholder_Background.dds",
-			"Resources/Textures/MainMenu"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"Placeholder_Quit_Button.dds",
-			"Resources/Textures/MainMenu"
-		);
-
-		TexLoader::LoadTexture
-		(
-			"Placeholder_Start_Button.dds",
-			"Resources/Textures/MainMenu"
-		);
-		
-		TexLoader::LoadTexture
-		(
-			"AI_Happy.dds",
-			"Resources/Textures/UI"
-		);
-		
-		TexLoader::LoadTexture
-		(
-			"AI_Hurt.dds",
-			"Resources/Textures/UI"
-		);
-		
-		TexLoader::LoadTexture
-		(
-			"AI_Neutral.dds",
-			"Resources/Textures/UI"
-		);
+		}
 
 		// Compact to index 0
 		for (auto& it : m_TexturePool)

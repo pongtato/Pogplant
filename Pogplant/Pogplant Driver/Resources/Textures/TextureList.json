@@ -1,0 +1,161 @@
+{
+    "CUBEMAP": 
+    [
+        {
+            "FileName" : ["px.dds","nx.dds","py.dds","ny.dds","pz.dds","nz.dds"],
+            "Dir"       : "Resources\\Textures\\Skybox"
+        }
+    ],
+
+    "GAMMA": 
+    [
+        {
+            "FileName" : "Large_Reticle.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "HP_Inner.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Small_Reticle.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Lockon.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Hp_Icon.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "HP_Outer.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "GameLogo.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Shoot_VFX.dds",
+            "Dir"       : "Resources/Textures/VFX",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "MenuArrow.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "DarkSmoke.dds",
+            "Dir"       : "Resources/Textures/Smoke",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Smoke.dds",
+            "Dir"       : "Resources/Textures/Smoke",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Smoke_E.dds",
+            "Dir"       : "Resources/Textures/Smoke",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "ParticleTest.dds",
+            "Dir"       : "Resources/Textures/Particle",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "grass_diff.dds",
+            "Dir"       : "Resources/Textures/Grass",
+            "Alpha"     : false
+        },
+        {
+            "FileName" : "mud_diff.dds",
+            "Dir"       : "Resources/Textures/Mud",
+            "Alpha"     : false
+        },
+        {
+            "FileName" : "kekwiggle.dds",
+            "Dir"       : "Resources/Textures/SpriteAnimation",
+            "Alpha"     : false
+        }
+    ],
+
+    "DEFAULT": 
+    [
+        {
+            "FileName" : "ParticleTest2.dds",
+            "Dir"       : "Resources/Textures/Particle"
+        },
+        {
+            "FileName" : "mud_bump.dds",
+            "Dir"       : "Resources/Textures/Mud"
+        },
+        {
+            "FileName" : "mud_norm.dds",
+            "Dir"       : "Resources/Textures/Mud"
+        },
+        {
+            "FileName" : "mud_rough.dds",
+            "Dir"       : "Resources/Textures/Mud"
+        },
+        {
+            "FileName" : "grass_bump.dds",
+            "Dir"       : "Resources/Textures/Grass"
+        },
+        {
+            "FileName" : "grass_norm.dds",
+            "Dir"       : "Resources/Textures/Grass"
+        },
+        {
+            "FileName" : "grass_rough.dds",
+            "Dir"       : "Resources/Textures/Grass"
+        },
+        {
+            "FileName" : "rocks_diff.dds",
+            "Dir"       : "Resources/Textures/Rocks"
+        },
+        {
+            "FileName" : "snow_diff.dds",
+            "Dir"       : "Resources/Textures/Snow"
+        },
+        {
+            "FileName" : "Placeholder_Arrow.dds",
+            "Dir"       : "Resources/Textures/MainMenu"
+        },
+        {
+            "FileName" : "Placeholder_Background.dds",
+            "Dir"       : "Resources/Textures/MainMenu"
+        },
+        {
+            "FileName" : "Placeholder_Quit_Button.dds",
+            "Dir"       : "Resources/Textures/MainMenu"
+        },
+        {
+            "FileName" : "Placeholder_Start_Button.dds",
+            "Dir"       : "Resources/Textures/MainMenu"
+        },
+        {
+            "FileName" : "AI_Happy.dds",
+            "Dir"       : "Resources/Textures/UI"
+        },
+        {
+            "FileName" : "AI_Hurt.dds",
+            "Dir"       : "Resources/Textures/UI"
+        },
+        {
+            "FileName" : "AI_Neutral.dds",
+            "Dir"       : "Resources/Textures/UI"
+        }
+    ]
+}
