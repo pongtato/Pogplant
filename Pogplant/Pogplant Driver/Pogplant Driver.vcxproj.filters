@@ -183,6 +183,9 @@
     <ClCompile Include="Src\Input\WindowsXInput.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Serialiser\CustomSaver.cpp">
+      <Filter>Source Files\Serialiser</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
@@ -331,6 +334,12 @@
     </ClInclude>
     <ClInclude Include="Src\Input\WindowsXInput.h">
       <Filter>Source Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Serialiser\CustomSaver.h">
+      <Filter>Source Files\Serialiser</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Serialiser\CustomSaver.hpp">
+      <Filter>Source Files\Serialiser</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
