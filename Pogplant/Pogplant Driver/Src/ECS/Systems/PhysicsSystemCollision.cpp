@@ -350,6 +350,20 @@ int PhysicsSystem::GetCollisionLayer(const std::string& layerName)
 	return CreateCollisionLayer(layerName);
 }
 
+std::string PhysicsSystem::GetCollisionLayer(int layerID)
+{
+	for (auto itr = m_collisionLayers.begin(); itr != m_collisionLayers.end(); ++itr)
+	{
+		if (itr->second == layerID)
+			return itr->first;
+	}
+
+	assert(false && "Layer ID Desync");
+
+	return "NULLSTRING";
+}
+
+
 decltype(auto) PhysicsSystem::GetTriggered(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
 {
 	auto objects = m_triggerList.equal_range(c_triggerEntity);

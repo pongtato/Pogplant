@@ -199,6 +199,7 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClCompile Include="Src\Panels\CollisionLayerPanel.cpp" />
     <ClCompile Include="Src\Panels\InputPanel.cpp" />
     <ClCompile Include="Src\SceneHierarchy.cpp" />
+    <ClCompile Include="Src\Serialiser\CustomSaver.cpp" />
     <ClCompile Include="Src\Serialiser\Serializer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +252,11 @@ xcopy "$(SolutionDir)Libs\Mono\etc\" "$(TargetDir)..\Libs\Mono\etc\" /y /i /s</C
     <ClInclude Include="Src\Panels\CollisionLayerPanel.h" />
     <ClInclude Include="Src\Panels\InputPanel.h" />
     <ClInclude Include="Src\SceneHierarchy.h" />
+    <ClInclude Include="Src\Serialiser\CustomSaver.h" />
+    <ClInclude Include="Src\Serialiser\CustomSaver.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Src\Serialiser\Serializer.h" />
     <ClInclude Include="Src\Utils\ChronoTimer.h" />
     <ClInclude Include="Src\Utils\ChronoTimer.hpp">

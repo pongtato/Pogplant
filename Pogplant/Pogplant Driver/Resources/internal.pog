@@ -1,0 +1,74 @@
+{
+	"CollisionLayers" : 
+	{
+		"LayerData" : 
+		{
+			"DEFAULT" : 
+			{
+				"DEFAULT" : 0,
+				"PLAYERBOX" : 3
+			},
+			"ENEMY" : 
+			{
+				"ENEMY" : 3,
+				"ENEMY PROJECTILES" : 3,
+				"PLAYER" : 3,
+				"PLAYERBOX" : 3,
+				"TRIGGERS" : 3,
+				"WAVETRIGGERS" : 3
+			},
+			"ENEMY PROJECTILES" : 
+			{
+				"ENEMY PROJECTILES" : 3,
+				"PLAYERBOX" : 3,
+				"TRIGGERS" : 3,
+				"WAVETRIGGERS" : 3
+			},
+			"OBSTACLES" : 
+			{
+				"OBSTACLES" : 3,
+				"PLAYERBOX" : 3,
+				"TRIGGERS" : 3,
+				"WAVETRIGGERS" : 3
+			},
+			"PLAYER" : 
+			{
+				"PLAYER PROJECTILES" : 3,
+				"PLAYERBOX" : 0
+			},
+			"PLAYER PROJECTILES" : 
+			{
+				"PLAYER PROJECTILES" : 3,
+				"PLAYERBOX" : 3,
+				"TRIGGERS" : 3,
+				"WAVETRIGGERS" : 3
+			},
+			"PLAYERBOX" : 
+			{
+				"PLAYERBOX" : 3,
+				"TRIGGERS" : 3,
+				"WAVETRIGGERS" : 3
+			},
+			"TRIGGERS" : 
+			{
+				"TRIGGERS" : 3
+			},
+			"WAVETRIGGERS" : 
+			{
+				"WAVETRIGGERS" : 3
+			}
+		},
+		"Layers" : 
+		[
+			"DEFAULT",
+			"ENEMY",
+			"ENEMY PROJECTILES",
+			"OBSTACLES",
+			"PLAYER",
+			"PLAYER PROJECTILES",
+			"PLAYERBOX",
+			"TRIGGERS",
+			"WAVETRIGGERS"
+		]
+	}
+}

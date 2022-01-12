@@ -26,6 +26,8 @@
 
 #include "../../Application.h"
 
+#include "../../Serialiser/CustomSaver.h"
+
 PhysicsSystem::PhysicsSystem()
 	:
 	m_registry{ nullptr },
@@ -33,17 +35,9 @@ PhysicsSystem::PhysicsSystem()
 {
 	m_collisionLayers["DEFAULT"] = 0;
 
-	//Temporary
-	CreateCollisionLayer("PLAYER");
-	CreateCollisionLayer("PLAYERBOX");
-	CreateCollisionLayer("ENEMY");
-	CreateCollisionLayer("PLAYER PROJECTILES");
-	CreateCollisionLayer("ENEMY PROJECTILES");
-	CreateCollisionLayer("TRIGGERS");
-	CreateCollisionLayer("WAVETRIGGERS");
-	CreateCollisionLayer("OBSTACLES");
+	LoadLayers();
 
-	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_IGNORE);
+	/*SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("ENEMY"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("PLAYER"), GetCollisionLayer("PLAYER PROJECTILES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 	SetCollisionRule(GetCollisionLayer("ENEMY"), GetCollisionLayer("ENEMY PROJECTILES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
@@ -63,7 +57,7 @@ PhysicsSystem::PhysicsSystem()
 	SetCollisionRule(GetCollisionLayer("OBSTACLES"), GetCollisionLayer("WAVETRIGGERS"), Components::Collider::COLLISION_RULE::CR_IGNORE);
 
 	SetCollisionRule(GetCollisionLayer("OBSTACLES"), GetCollisionLayer("OBSTACLES"), Components::Collider::COLLISION_RULE::CR_IGNORE);
-	
+
 
 	for (auto itr = m_collisionLayers.begin(); itr != m_collisionLayers.end(); itr++)
 	{
@@ -71,7 +65,9 @@ PhysicsSystem::PhysicsSystem()
 	}
 
 	SetCollisionRule(GetCollisionLayer("PLAYERBOX"), GetCollisionLayer("PLAYER"), Components::Collider::COLLISION_RULE::CR_COLLIDE);
+	//*/
 
+	//Create threads
 	for (int i = 0; i < NUM_TRIGGER_THREADS; i++)
 	{
 		m_hasTriggerJob[i] = std::make_unique<std::binary_semaphore>(0);
@@ -364,7 +360,7 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 				{
 					auto rigidbodyCheck = m_registry->GetReg().try_get<Components::Rigidbody>(query.m_ID1);
 
-					if(!rigidbodyCheck)
+					if (!rigidbodyCheck)
 						rigidbodyCheck = m_registry->GetReg().try_get<Components::Rigidbody>(query.m_ID2);
 
 					//If no rigidbody ignore
@@ -728,14 +724,14 @@ void PhysicsSystem::UpdateEditor()
 		meshCollider.m_id = collidable;
 
 		float maxScale = std::max({ transform.m_scale.x, transform.m_scale.y, transform.m_scale.z });
-		
+
 		meshCollider.aabb.CalculateAABBFromExtends(
 			transform.GetGlobalPosition(),
 			glm::vec3{
 			renderer.m_RenderModel->m_Bounds.longest,
 			renderer.m_RenderModel->m_Bounds.longest,
 			renderer.m_RenderModel->m_Bounds.longest
-			} * maxScale
+			} *maxScale
 		);
 
 		//Update broadphase and identifiers
@@ -778,7 +774,7 @@ void PhysicsSystem::UpdateEditor()
 				sphereCollider.sphere.m_radius,
 				sphereCollider.sphere.m_radius,
 				sphereCollider.sphere.m_radius
-			} * 1.1f
+			} *1.1f
 		);
 
 		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(collidable);
@@ -812,7 +808,7 @@ void PhysicsSystem::UpdateEditor()
 
 		glm::vec3 scale = (obbBoxCollider.extends * transform.GetGlobalScale());
 
-		float maxLength = std::max({ scale.x, scale.y, scale.z}) * 2.f;
+		float maxLength = std::max({ scale.x, scale.y, scale.z }) * 2.f;
 
 		obbBoxCollider.aabb.CalculateAABBFromExtends(transform.GetGlobalPosition() + obbBoxCollider.centre, glm::vec3{ maxLength, maxLength, maxLength });
 		obbBoxCollider.m_id = collidable;
@@ -958,7 +954,7 @@ void PhysicsSystem::Update(float c_dt)
 					);
 
 				m_triggerList.insert(std::make_pair(queuedAction.entity1, queuedAction.entity2));
-				
+
 				//std::cout << "Triggered" << (uint16_t)queuedAction.entity1 << " " << (uint16_t)queuedAction.entity2 << std::endl;
 			}
 			else
@@ -1010,4 +1006,82 @@ void PhysicsSystem::Clear()
 
 	m_broadphase.Clear();
 	m_collisionQuery.Clear();
+}
+
+void PhysicsSystem::LoadLayers()
+{
+	Json::Value physicsLayers = PPU::CustomSaver::GetValueJson("CollisionLayers", false);
+
+	if (physicsLayers["Layers"] && physicsLayers["LayerData"])
+	{
+		for (int i = 0; i < (int)physicsLayers["Layers"].size(); i++)
+		{
+			std::cout << physicsLayers["Layers"][i].asString() << std::endl;
+			CreateCollisionLayer(physicsLayers["Layers"][i].asString());
+		}
+
+		Json::Value layersData = physicsLayers["LayerData"];
+		{
+			for (auto itr = m_collisionLayers.cbegin(); itr != m_collisionLayers.cend(); ++itr)
+			{
+				if (layersData[itr->first])
+				{
+					Json::Value layer = layersData[itr->first];
+
+					//layer.begin
+				}
+			}
+
+			for (auto itr = layersData.begin(); itr != layersData.end(); ++itr)
+			{
+				Json::Value layer = *itr;
+
+				for (auto layerItr = layer.begin(); layerItr != layer.end(); ++layerItr)
+				{
+					//std::cout << itr.name() << " & " << layerItr.name() << " = " << layerItr->asInt() << std::endl;
+					SetCollisionRule(GetCollisionLayer(itr.name()), GetCollisionLayer(layerItr.name()), (Components::Collider::COLLISION_RULE)layerItr->asInt());
+				}
+			}
+		}
+	}
+	else
+	{
+		Pogplant::Logger::Log(
+			Pogplant::LogEntry{ "PhysicsSystem::LoadLayers", Pogplant::LogEntry::LOGTYPE::ERROR, "internal.pog has been corrupted" }, true);
+	}
+}
+
+void PhysicsSystem::SaveLayers()
+{
+	Json::Value physicsLayers;
+
+	Json::Value layersArray{ Json::arrayValue };
+	{
+		for (auto itr = m_collisionLayers.cbegin(); itr != m_collisionLayers.cend(); ++itr)
+		{
+			layersArray.append(itr->first);
+		}
+
+		physicsLayers["Layers"] = layersArray;
+	}
+
+	Json::Value layersData;
+	{
+		for (auto itr = m_collisionMatrix.cbegin(); itr != m_collisionMatrix.cend(); ++itr)
+		{
+			Json::Value layer;
+			
+			for (auto layerItr = itr->second.cbegin(); layerItr != itr->second.cend(); ++layerItr)
+			{
+				layer[GetCollisionLayer(layerItr->first)] = layerItr->second;
+			}
+
+			layersData[GetCollisionLayer(itr->first)] = layer;
+		}
+
+		physicsLayers["LayerData"] = layersData;
+	}
+
+	PPU::CustomSaver::Append("CollisionLayers", physicsLayers, false);
+	PPU::CustomSaver::Save();
 }

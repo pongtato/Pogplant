@@ -91,6 +91,10 @@ namespace PPP
 					}//*/
 				}
 				ImGui::EndTable();
+
+				if (ImGui::Button(ICON_FA_SAVE "  Save"))
+					physicsSystem.SaveLayers();
+
 			}
 
 			if (ImGui::CollapsingHeader(ICON_FA_LAYER_GROUP"  Collision Layers", ImGuiTreeNodeFlags_DefaultOpen))
