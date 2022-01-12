@@ -4,7 +4,8 @@
 \author Gabriel Wong Choon Jieh
 \par	email: c.wong\@digipen.edu
 \details
-	A save system meant to loosely replicate the playerprefs from unity
+	A save system meant to loosely replicate the playerprefs from unity,
+	and just converting to json format
 
 \copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
 			or disclosure of this file or its contents without the prior
@@ -20,24 +21,31 @@
 #include <string>
 #include <json.h>
 
-#define DOCUMENTSFOLDER "BogosBinted/settings.pog"
+#define DOCUMENTSFOLDER "settings.pog"
 #define INTERNALFOLDER "Resources/internal.pog"
 
-namespace PogplantDriver
+#pragma warning(disable : 4499)
+
+namespace PPU
 {
 	class CustomSaver
 	{
 	public:
-		~CustomSaver() = default;
+		~CustomSaver();
 
 		template <typename T>
 		static void Append(const std::string& key, const T& value, bool saveAsDocuments = true);
 
 		template <typename T>
-		static decltype(auto) GetValue(const std::string& key, bool loadFromDocuments = true);
+		inline static T GetValue(const std::string& key, bool loadFromDocuments = true);
 
-		template <float>
-		static float GetValue(const std::string& key, bool loadFromDocuments = true);
+		template <>
+		inline static float GetValue<float>(const std::string& key, bool loadFromDocuments);
+
+		template <>
+		inline static std::string GetValue<std::string>(const std::string& key, bool loadFromDocuments);
+
+		static Json::Value GetValueJson(const std::string& key, bool loadFromDocuments = true);
 
 		static void Save();
 
@@ -45,9 +53,11 @@ namespace PogplantDriver
 	private:
 		CustomSaver();
 
+		void Load();
+
 		/**> File directory of the save file*/
-		std::wstring m_documentsSaveFile;
-		std::string m_internalSaveFile;
+		std::wstring m_documentsFilePath;
+		std::string m_internalFilePath;
 
 		Json::Value m_internalJson;
 		Json::Value m_documentJson;

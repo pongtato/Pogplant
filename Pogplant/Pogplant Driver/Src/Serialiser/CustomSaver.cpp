@@ -25,10 +25,10 @@
 #include <KnownFolders.h>
 #include <wchar.h>
 
-std::unique_ptr<PogplantDriver::CustomSaver> PogplantDriver::CustomSaver::m_instance = nullptr;
-std::once_flag PogplantDriver::CustomSaver::m_onceFlag;
+std::unique_ptr<PPU::CustomSaver> PPU::CustomSaver::m_instance = nullptr;
+std::once_flag PPU::CustomSaver::m_onceFlag;
 
-namespace PogplantDriver
+namespace PPU
 {
 	CustomSaver& CustomSaver::Instance()
 	{
@@ -60,17 +60,75 @@ namespace PogplantDriver
 
 		CoTaskMemFree(static_cast<void*>(Documentspath));
 
-		m_documentsSaveFile = ss.str();
-		m_internalSaveFile = INTERNALFOLDER;
+		m_documentsFilePath = ss.str();
+		m_internalFilePath = INTERNALFOLDER;
 
 		//load Data
+		Load();
 	}
+
+	void CustomSaver::Load()
+	{
+		if (std::filesystem::exists(m_documentsFilePath))
+		{
+			std::ifstream documentStream(m_documentsFilePath, std::ios::in);
+
+			if (documentStream.is_open())
+			{
+				documentStream >> m_documentJson;
+
+				documentStream.close();
+			}
+		}
+
+		if(std::filesystem::exists(m_internalFilePath))
+		{
+			std::ifstream internalStream(m_internalFilePath, std::ios::in);
+			if (internalStream.is_open())
+			{
+				internalStream >> m_internalFilePath;
+
+				internalStream.close();
+			}
+		}
+	}
+
+#undef ERROR
+
+	
+
+	Json::Value CustomSaver::GetValueJson(const std::string& key, bool loadFromDocuments)
+	{
+		auto& instance = Instance();
+
+		if (loadFromDocuments)
+		{
+			if (instance.m_documentJson[key])
+				return instance.m_documentJson[key];
+		}
+		else
+		{
+			if (instance.m_internalJson[key])
+				return instance.m_internalJson[key];
+		}
+
+		std::stringstream ss;
+
+		ss << "Unable to load key: " << key;
+
+		Pogplant::Logger::Log(
+			Pogplant::LogEntry{ "CustomSaver::GetValueJson", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+
+		return Json::Value{};
+	}
+
+
 
 	void CustomSaver::Save()
 	{
 		auto& instance = Instance();
 
-		std::ofstream documentStream(DOCUMENTSFOLDER, std::ios::out);
+		std::ofstream documentStream(instance.m_documentsFilePath, std::ios::out);
 
 		if (documentStream.is_open())
 		{
@@ -89,7 +147,7 @@ namespace PogplantDriver
 			documentStream.close();
 		}
 
-		std::ofstream internalStream(DOCUMENTSFOLDER, std::ios::out);
+		std::ofstream internalStream(instance.m_internalFilePath, std::ios::out);
 
 		if (internalStream.is_open())
 		{

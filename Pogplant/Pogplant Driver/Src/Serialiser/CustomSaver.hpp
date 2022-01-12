@@ -5,19 +5,20 @@
 \author Gabriel Wong Choon Jieh
 \par	email: c.wong\@digipen.edu
 \details
-	A save system meant to loosely replicate the playerprefs from unity
+	A save system meant to loosely replicate the playerprefs from unity,
+	and just converting to json format
 
 \copyright	Copyright (c) 2021 DigiPen Institute of Technology. Reproduction
 			or disclosure of this file or its contents without the prior
 			written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
-namespace PogplantDriver
+namespace PPU
 {
 	template<typename T>
 	void CustomSaver::Append(const std::string& key, const T& value, bool saveAsDocuments)
 	{
-		auto instance = Instance();
+		auto& instance = Instance();
 
 		if (saveAsDocuments)
 			instance.m_documentJson[key] = value;
@@ -26,15 +27,18 @@ namespace PogplantDriver
 	}
 
 	template<typename T>
-	decltype(auto) CustomSaver::GetValue(const std::string& key, bool loadFromDocuments)
+	T CustomSaver::GetValue(const std::string& key, bool loadFromDocuments)
 	{
-		assert(false && "Unsupported type!!");
+		(void)key;
+		(void)loadFromDocuments;
+		throw;
+		//return T{};
 	}
 
-	template <float>
-	static float CustomSaver::GetValue(const std::string& key, bool loadFromDocuments)
+	template <>
+	float CustomSaver::GetValue<float>(const std::string& key, bool loadFromDocuments)
 	{
-		auto instance = Instance();
+		auto& instance = Instance();
 
 		if (loadFromDocuments)
 		{
@@ -49,12 +53,37 @@ namespace PogplantDriver
 
 		std::stringstream ss;
 
+		ss << "Unable to load key: " << key;
+
+		Pogplant::Logger::Log(
+			Pogplant::LogEntry{ "CustomSaver::GetValue<float>", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+
+		return 0.f;
+	}
+
+	template <>
+	std::string CustomSaver::GetValue<std::string>(const std::string& key, bool loadFromDocuments)
+	{
+		auto& instance = Instance();
+
+		if (loadFromDocuments)
+		{
+			if (instance.m_documentJson[key])
+				return instance.m_documentJson[key].asString();
+		}
+		else
+		{
+			if (instance.m_internalJson[key])
+				return instance.m_internalJson[key].asString();
+		}
+
+		std::stringstream ss;
 
 		ss << "Unable to load key: " << key;
 
 		Pogplant::Logger::Log(
-			Pogplant::LogEntry{ "CustomSaver::GetValue", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			Pogplant::LogEntry{ "CustomSaver::GetValue<std::string>", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
 
-		return 0.f;
+		return "NULLSTRING";
 	}
 }
