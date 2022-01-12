@@ -86,7 +86,7 @@ namespace PPU
 			std::ifstream internalStream(m_internalFilePath, std::ios::in);
 			if (internalStream.is_open())
 			{
-				internalStream >> m_internalFilePath;
+				internalStream >> m_internalJson;
 
 				internalStream.close();
 			}
@@ -94,8 +94,6 @@ namespace PPU
 	}
 
 #undef ERROR
-
-	
 
 	Json::Value CustomSaver::GetValueJson(const std::string& key, bool loadFromDocuments)
 	{
@@ -128,16 +126,10 @@ namespace PPU
 	{
 		auto& instance = Instance();
 
-		std::ofstream documentStream(instance.m_documentsFilePath, std::ios::out);
+		std::ofstream documentStream(instance.m_documentsFilePath, std::ios::out | std::ios::trunc);
 
 		if (documentStream.is_open())
 		{
-			/*for (int i = 0; i < root.size(); ++i)
-			{
-				Json::Value subroot = SaveComponents(*entity);
-				root[i] = subroot;
-			}//*/
-
 			Json::StreamWriterBuilder builder;
 			Json::StreamWriter* writer = builder.newStreamWriter();
 
@@ -147,16 +139,10 @@ namespace PPU
 			documentStream.close();
 		}
 
-		std::ofstream internalStream(instance.m_internalFilePath, std::ios::out);
+		std::ofstream internalStream(instance.m_internalFilePath, std::ios::out | std::ios::trunc);
 
 		if (internalStream.is_open())
 		{
-			/*for (int i = 0; i < root.size(); ++i)
-			{
-				Json::Value subroot = SaveComponents(*entity);
-				root[i] = subroot;
-			}//*/
-
 			Json::StreamWriterBuilder builder;
 			Json::StreamWriter* writer = builder.newStreamWriter();
 

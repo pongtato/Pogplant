@@ -31,7 +31,7 @@ namespace PPU
 	class CustomSaver
 	{
 	public:
-		~CustomSaver();
+		~CustomSaver() = default;
 
 		template <typename T>
 		static void Append(const std::string& key, const T& value, bool saveAsDocuments = true);

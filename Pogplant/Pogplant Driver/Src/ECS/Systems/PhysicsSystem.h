@@ -55,6 +55,9 @@ public:
 
 	void Clear();
 
+	void LoadLayers();
+	void SaveLayers();
+
 	inline void RemoveEntityFromTree(const entt::entity& entity)
 	{
 		m_broadphase.RemoveData(entity);
@@ -99,6 +102,7 @@ private:
 	PhysicsDLC::Broadphase::DynamicAABBTree<entt::entity> m_broadphase;
 	PhysicsDLC::Broadphase::BroadphaseQuery<entt::entity> m_collisionQuery;
 
+	std::string GetCollisionLayer(int layerID);
 	void CollisionUpdate(float c_dt);
 	void HandleCollision(const entt::entity& c_1entity,
 		const entt::entity& c_2entity,
