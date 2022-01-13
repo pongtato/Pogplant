@@ -21,6 +21,7 @@
 #include "../../Pogplant/Src/DebugDraw.h"
 #include "../../GameScript.h"
 #include "../Components/GenericComponents.h"
+#include "../../Serialiser/CustomSaver.h"
 
 
 bool ScriptSystem::isReload = false;
@@ -391,6 +392,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.InputUtility::onKeyHeld(string)", &PPI::InputSystem::onKeyHeldMono);
 	mono_add_internal_call("Scripting.InputUtility::GetAxis(string)", &PPI::InputSystem::GetAxisMono);
 	mono_add_internal_call("Scripting.InputUtility::onAnyKey", &PPI::InputSystem::onAnyKey);
+	mono_add_internal_call("Scripting.InputUtility::IsControlledBeingUsed", &PPI::InputSystem::IsUsingController);
 	mono_add_internal_call("Scripting.InputUtility::VibrateControllerLightMotor", &PPI::InputSystem::VibrateControllerLightMotor);
 	mono_add_internal_call("Scripting.InputUtility::VibrateControllerHeavyMotor", &PPI::InputSystem::VibrateControllerHeavyMotor);
 
@@ -481,6 +483,10 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::ExitScene", SSH::ExitScene);
 	mono_add_internal_call("Scripting.GameUtilities::PauseScene", SSH::PauseScene);
 	mono_add_internal_call("Scripting.GameUtilities::ResumeScene", SSH::ResumeScene);
+
+	//Save/loading
+	mono_add_internal_call("Scripting.PlayerPrefs::GetValueFloat", SSH::CustomSaverGetValueMono<float>);
+	mono_add_internal_call("Scripting.PlayerPrefs::GetValueInt", SSH::CustomSaverGetValueMono<int>);
 
 }
 

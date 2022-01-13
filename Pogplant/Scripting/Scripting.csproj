@@ -77,6 +77,7 @@
     <Compile Include="MonoScripts\TurretController.cs" />
     <Compile Include="Utilities\DebugUtilities.cs" />
     <Compile Include="Utilities\MathUtils.cs" />
+    <Compile Include="Utilities\PlayerPrefs.cs" />
     <Compile Include="Utilities\ScriptsContainer.cs" />
     <Compile Include="Utilities\Vector3.cs" />
     <Compile Include="Utilities\DebugDraw.cs" />

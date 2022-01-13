@@ -1016,7 +1016,7 @@ void PhysicsSystem::LoadLayers()
 	{
 		for (int i = 0; i < (int)physicsLayers["Layers"].size(); i++)
 		{
-			std::cout << physicsLayers["Layers"][i].asString() << std::endl;
+			//std::cout << physicsLayers["Layers"][i].asString() << std::endl;
 			CreateCollisionLayer(physicsLayers["Layers"][i].asString());
 		}
 

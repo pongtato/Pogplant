@@ -68,6 +68,8 @@ namespace PPI
 
 		static bool onAnyKey();
 
+		static bool IsUsingController();
+
 		static float GetAxis(const std::string& axisID);
 		static float GetAxisMono(MonoString* axisID);
 

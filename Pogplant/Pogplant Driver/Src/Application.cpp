@@ -11,6 +11,8 @@
 #include "GameScript.h"
 #include "ECS/Systems/ScriptSystemHelper.h"
 
+#include "Serialiser/CustomSaver.h"
+
 namespace PPD = PogplantDriver;
 using namespace Components;
 using namespace PogplantDriver;
@@ -76,6 +78,14 @@ void Application::Init()
 
 	std::cout << "PROGRAM STARTED, USE THE EDITOR'S DEBUGGER" << std::endl;
 	PPI::InputSystem::Init(PP::Window::GetWindow());
+
+	//Load default audio Settings
+	PPA::AudioEngine::CreateChannelGroup("BGM");
+	PPA::AudioEngine::CreateChannelGroup("SFX");
+	PPA::AudioEngine::CreateChannelGroup("VO");
+	PPA::AudioEngine::SetChannelGroupVolume("BGM", PPU::CustomSaver::GetValue<float>("AudioBGM", 1.f));
+	PPA::AudioEngine::SetChannelGroupVolume("SFX", PPU::CustomSaver::GetValue<float>("AudioSFX", 1.f));
+	PPA::AudioEngine::SetChannelGroupVolume("VO", PPU::CustomSaver::GetValue<float>("AudioVO", 1.f));
 
 #ifdef PPD_EDITOR_BUILD
 

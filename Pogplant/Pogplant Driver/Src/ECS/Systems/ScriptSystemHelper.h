@@ -6,7 +6,7 @@
 #include "../../Events/Events.h"
 
 #include "ScriptResource.h"
-
+#include "../../Serialiser/CustomSaver.h"
 
 namespace SSH
 {
@@ -94,6 +94,13 @@ namespace SSH
 
 	void PauseScene();
 	void ResumeScene();
+
+	template <typename T>
+	inline static T CustomSaverGetValueMono(MonoString* monoKey, const T& defaultValue, bool loadFromDocuments)
+	{
+		const char* key = mono_string_to_utf8(monoKey);
+		return PPU::CustomSaver::template GetValue<T>(key, defaultValue, loadFromDocuments);
+	}
 
 	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params);
 }

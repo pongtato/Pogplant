@@ -63,6 +63,8 @@ namespace PPI
 
 		static bool onAnyKey();
 
+		static bool IsUsingController();
+
 		inline size_t controllersConnected()
 		{
 			return m_connectedControllers.size();
@@ -102,6 +104,8 @@ namespace PPI
 
 		void pressKey(int key, bool joystick = false);
 		void releaseKey(int key, bool joystick = false);
+
+		bool m_controllerUsed = false;
 	};
 }
 

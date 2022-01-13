@@ -21,7 +21,7 @@
 #include <string>
 #include <json.h>
 
-#define DOCUMENTSFOLDER "settings.pog"
+#define DOCUMENTSFOLDER "data.pog"
 #define INTERNALFOLDER "Resources/internal.pog"
 
 #pragma warning(disable : 4499)

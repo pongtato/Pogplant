@@ -170,6 +170,10 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static bool onAnyKey();
 
+        /**> Is true if the last pressed button is a controller */
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static bool IsControlledBeingUsed();
+
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static float GetAxis(string axisID);
 

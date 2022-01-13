@@ -84,11 +84,15 @@ namespace PPI
 					{
 						m_controllerPressed[i] = true;
 						pressKey((int)i, true);
+
+						m_controllerUsed = true;
 					}
 					else if (!state.buttons[i] && m_controllerPressed[i])
 					{
 						m_controllerPressed[i] = false;
 						releaseKey((int)i, true);
+
+						m_controllerUsed = true;
 					}
 				}
 
@@ -102,11 +106,15 @@ namespace PPI
 					{
 						m_controllerPressed[iOffset] = true;
 						pressKey((int)(iOffset), true);
+
+						m_controllerUsed = true;
 					}
 					else if (!(m_controllerAxis[i] > TRIGGERBUTTONPOINT) && m_controllerPressed[iOffset])
 					{
 						m_controllerPressed[iOffset] = false;
 						releaseKey((int)(iOffset), true);
+
+						m_controllerUsed = true;
 					}
 				}
 			}
@@ -306,6 +314,11 @@ namespace PPI
 		return Instance().m_activeKeys.size() > 0 || Instance().m_activeControllerKeys.size() > 0;
 	}
 
+	bool GLFWInputManager::IsUsingController()
+	{
+		return Instance().m_controllerUsed;
+	}
+
 	void GLFWInputManager::setActiveController(int controllerID)
 	{
 		m_mainController = controllerID;
@@ -379,6 +392,8 @@ namespace PPI
 		{
 			m_instance->releaseKey(key);
 		}
+
+		m_instance->m_controllerUsed = false;
 	}
 
 	/******************************************************************************/
@@ -403,6 +418,8 @@ namespace PPI
 		{
 			m_instance->releaseKey(button);
 		}
+
+		m_instance->m_controllerUsed = false;
 
 		/*switch (button)
 		{

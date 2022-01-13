@@ -140,7 +140,7 @@ namespace PPU
 		ss << "Unable to load key: " << key;
 
 		Pogplant::Logger::Log(
-			Pogplant::LogEntry{ "CustomSaver::GetValue<std::string>", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			Pogplant::LogEntry{ "CustomSaver::GetValue<std::string>", Pogplant::LogEntry::LOGTYPE::WARNING, ss.str() }, true);
 
 		return defaultValue;
 	}
