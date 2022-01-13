@@ -295,6 +295,11 @@ namespace SSH
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalRotation();
 	}
 
+	glm::vec3 GetGlobalScale(std::uint32_t entityID)
+	{
+		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalScale();
+	}
+
 	void SetGlobalPosition(std::uint32_t entityID, glm::vec3 pos)
 	{
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->SetGlobalPosition(pos);
@@ -303,6 +308,11 @@ namespace SSH
 	void SetGlobalRotation(std::uint32_t entityID, glm::vec3 rot)
 	{
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->SetGlobalRotation(rot);
+	}
+
+	void SetGlobalScale(std::uint32_t entityID, glm::vec3 scale)
+	{
+		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->SetGlobalScale(scale);
 	}
 
 	glm::vec3 GetForwardVector(std::uint32_t entityID)

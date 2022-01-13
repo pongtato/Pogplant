@@ -108,10 +108,16 @@ namespace Scripting
         public extern static Vector3 GetGlobalRotation(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetGlobalScale(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetGlobalPosition(uint entityID, Vector3 _Position);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetGlobalRotation(uint entityID, Vector3 _Rotation);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetGlobalScale(uint entityID, Vector3 _Scale);
 
         // Set to true to pause particle, set to false to unpause particle
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
