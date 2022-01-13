@@ -61,6 +61,8 @@ namespace PPI
 
 		static float GetControllerAxis(int axisKey);
 
+		static bool onAnyKey();
+
 		inline size_t controllersConnected()
 		{
 			return m_connectedControllers.size();

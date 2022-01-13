@@ -66,6 +66,8 @@ namespace PPI
 		static bool onKeyReleased(int key);
 		static bool onKeyHeld(int key);
 
+		static bool onAnyKey();
+
 		static float GetAxis(const std::string& axisID);
 		static float GetAxisMono(MonoString* axisID);
 

@@ -301,6 +301,11 @@ namespace PPI
 		return Instance().m_controllerAxis[axisKey];
 	}
 
+	bool GLFWInputManager::onAnyKey()
+	{
+		return Instance().m_activeKeys.size() > 0 || Instance().m_activeControllerKeys.size() > 0;
+	}
+
 	void GLFWInputManager::setActiveController(int controllerID)
 	{
 		m_mainController = controllerID;

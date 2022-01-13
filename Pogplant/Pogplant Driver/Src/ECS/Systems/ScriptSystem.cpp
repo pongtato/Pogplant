@@ -390,6 +390,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.InputUtility::onKeyReleased(string)", &PPI::InputSystem::onKeyReleasedMono);
 	mono_add_internal_call("Scripting.InputUtility::onKeyHeld(string)", &PPI::InputSystem::onKeyHeldMono);
 	mono_add_internal_call("Scripting.InputUtility::GetAxis(string)", &PPI::InputSystem::GetAxisMono);
+	mono_add_internal_call("Scripting.InputUtility::onAnyKey", &PPI::InputSystem::onAnyKey);
 	mono_add_internal_call("Scripting.InputUtility::VibrateControllerLightMotor", &PPI::InputSystem::VibrateControllerLightMotor);
 	mono_add_internal_call("Scripting.InputUtility::VibrateControllerHeavyMotor", &PPI::InputSystem::VibrateControllerHeavyMotor);
 
