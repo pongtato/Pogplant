@@ -30,6 +30,12 @@ std::once_flag PPU::CustomSaver::m_onceFlag;
 
 namespace PPU
 {
+	/**************************************************************************/
+	/*!
+	\brief
+		Gets the CustomSaver singleton instance
+	*/
+	/**************************************************************************/
 	CustomSaver& CustomSaver::Instance()
 	{
 		std::call_once(m_onceFlag, [] {
@@ -39,6 +45,12 @@ namespace PPU
 		return *m_instance.get();
 	}
 
+	/**************************************************************************/
+	/*!
+	\brief
+		Default constructor
+	*/
+	/**************************************************************************/
 	CustomSaver::CustomSaver()
 	{
 		std::wstringstream ss;
@@ -67,6 +79,12 @@ namespace PPU
 		Load();
 	}
 
+	/**************************************************************************/
+	/*!
+	\brief
+		Loads the configured files into the Json::Value for easy access
+	*/
+	/**************************************************************************/
 	void CustomSaver::Load()
 	{
 		if (std::filesystem::exists(m_documentsFilePath))
@@ -95,6 +113,17 @@ namespace PPU
 
 #undef ERROR
 
+	/**************************************************************************/
+	/*!
+	\brief
+		Attempts to get a Json::Value from the save file with the key
+	\param key
+		The key of the item
+	\param loadFromDocuments
+		If true, will load the data from the save file in documents folder,
+		otherwise, will load from internal.pog in Resources
+	*/
+	/**************************************************************************/
 	Json::Value CustomSaver::GetValueJson(const std::string& key, bool loadFromDocuments)
 	{
 		auto& instance = Instance();
@@ -120,8 +149,12 @@ namespace PPU
 		return Json::Value{};
 	}
 
-
-
+	/**************************************************************************/
+	/*!
+	\brief
+		Saves all the data to both documents and resources folder
+	*/
+	/**************************************************************************/
 	void CustomSaver::Save()
 	{
 		auto& instance = Instance();

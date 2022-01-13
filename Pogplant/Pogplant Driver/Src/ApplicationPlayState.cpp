@@ -49,6 +49,9 @@ void Application::EnterPlayState(const std::string& sceneToLoad)
 	m_sPhysicsSystem.InitPlayState();
 }
 
+#include "Input/InputSystem.h"
+#include "AudioEngine.h"
+
 /******************************************************************************/
 /*!
 \brief
@@ -59,6 +62,11 @@ void Application::UpdatePlayState(float c_dt)
 {
 	if (m_playState == PLAYSTATE::PLAY || (m_playState == PLAYSTATE::STEPNEXT))
 	{
+		if (PPI::InputSystem::onKeyHeld(GLFW_KEY_9))
+			PPA::AudioEngine::SetMasterVolume(0.5f);
+
+		if (PPI::InputSystem::onKeyHeld(GLFW_KEY_8))
+			PPA::AudioEngine::SetMasterVolume(1.f);
 		//m_sPhysicsSystem.UpdateEditor();
 
 		//Physics dynamic update until fps drops below 30fps

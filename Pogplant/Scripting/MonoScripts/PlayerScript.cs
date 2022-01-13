@@ -112,7 +112,7 @@ namespace Scripting
             shipCameraEntity = ECS.FindEntityWithName("PlayerCam");
             boxEntityID = ECS.FindEntityWithName("PlayerBox");
             DashboardScreenID = ECS.FindEntityWithName("DashboardScreenFace");
-            ECS.PlayAudio(shipCameraEntity, 0);
+            ECS.PlayAudio(shipCameraEntity, 0, "BGM");
             boxCollider = ECS.GetComponent<BoxCollider>(boxEntityID);
             lastPosition = ECS.GetGlobalPosition(entityID);
             targetRotation = ECS.GetComponent<Transform>(entityID).Rotation;
@@ -131,7 +131,7 @@ namespace Scripting
             ECS.GetTransformECS(entityID, ref pos, ref rot, ref scale);
             playerTrans = new Transform(pos, rot, scale);
 
-            ECS.PlayAudio(VOEntityID, 0);
+            ECS.PlayAudio(VOEntityID, 0, "VO");
         }
 
         public override void Start()
@@ -472,7 +472,7 @@ namespace Scripting
 
             Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
             GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
-            ECS.PlayAudio(shipCameraEntity, 2);
+            ECS.PlayAudio(shipCameraEntity, 2, "SFX");
             EnemyManager.AddScore(false);
 
             //Triggers a random camera shake upon taking damage, scales with damage taken

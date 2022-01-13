@@ -48,7 +48,7 @@ namespace Scripting
             {
                 ECS.RemoveParentFrom(owner.id);
                 ECS.SetTransformECS(owner.id, ECS.GetGlobalPosition(start_position.id), start_position.transform.Rotation, start_position.transform.Scale);
-                ECS.PlayAudio(owner.id, 2);
+                ECS.PlayAudio(owner.id, 2, "SFX");
             }
 
             if (is_finished)
@@ -207,7 +207,7 @@ namespace Scripting
                 //}
                 //Console.WriteLine("Firing bullet");
                 GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, owner.transform.Rotation, 5.0f, 3.0f);
-                ECS.PlayAudio(owner.id, 3);
+                ECS.PlayAudio(owner.id, 3, "SFX");
             }
 
             if (current_time >= duration)
@@ -360,7 +360,7 @@ namespace Scripting
             if (my_info.health >= 0)
             {
                 my_info.health -= damage;
-                ECS.PlayAudio(gameObject.id, 0);
+                ECS.PlayAudio(gameObject.id, 0, "SFX");
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 1);
             }
             else
@@ -382,7 +382,7 @@ namespace Scripting
 
                 if (fromPlayer)
                 {
-                    ECS.PlayAudio(gameObject.id, 1);
+                    ECS.PlayAudio(gameObject.id, 1, "SFX");
                     GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
                 }
 

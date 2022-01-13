@@ -200,7 +200,7 @@ namespace Scripting
                         GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
                     }
 
-                    ECS.PlayAudio(shipCamera, 1);
+                    ECS.PlayAudio(shipCamera, 1, "SFX");
                     p_fire_timer = 0.0f;
 
                     //Vibrate controller

@@ -70,22 +70,6 @@ void Application::UpdateEditorState(float c_dt)
 
 #endif // PPD_UPDATE_EDITOR_AS_GAME
 
-	/*if (PPI::InputSystem::onKeyTriggered(GLFW_KEY_9))
-	{
-		PPI::InputSystem::VibrateControllerHeavyMotor(0.5f, 1.f);
-	}
-	
-	if (PPI::InputSystem::onKeyTriggered(GLFW_KEY_8))
-	{
-		PPI::InputSystem::VibrateControllerLightMotor(0.5f, 1.f);
-	}
-	
-	if (PPI::InputSystem::onKeyTriggered(GLFW_KEY_7))
-	{
-		PPI::xInput::Instance().VibrateHeavyMotor(0.f);
-		PPI::xInput::Instance().VibrateLightMotor(0.f);
-	}//*/
-
 	m_sGeneralSystem.Update(c_dt);
 	PPF::FileHandler& fh = fh.GetInstance();
 	if (fh.m_Modified)

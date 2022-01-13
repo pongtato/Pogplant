@@ -97,7 +97,7 @@ namespace Scripting
                         {
                             // Call C++ side bullet firing
                             GameUtilities.FireEnemyBullet(muzzle_id, ECS.GetGlobalPosition(muzzle_id) + Transform.GetForwardVector(muzzle_id) , ECS.GetGlobalRotation(muzzle_id), 10.0f, 7.0f);
-                            ECS.PlayAudio(entityID, 2);
+                            ECS.PlayAudio(entityID, 2, "SFX");
                             fire_timer = 0.0f;
                         }
                         if(can_fire_timer >= fire_window)
@@ -148,7 +148,7 @@ namespace Scripting
             if (health > 0)
             {
                 health -= damage;
-                ECS.PlayAudio(entityID, 0);
+                ECS.PlayAudio(entityID, 0, "SFX");
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
             }
             else
@@ -165,7 +165,7 @@ namespace Scripting
             {
                 isAlive = false;
                 isFiring = false;
-                ECS.PlayAudio(entityID, 1);
+                ECS.PlayAudio(entityID, 1, "SFX");
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
             }
         }

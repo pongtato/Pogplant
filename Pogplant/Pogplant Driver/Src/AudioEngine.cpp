@@ -54,16 +54,37 @@ namespace PPA
 	/***************************************************************************/
 	/*!
 	\brief
+		Sets the master volume of the audio engine
+	\param volume
+		The volume to use, range [0, 1]
+	*/
+	/***************************************************************************/
+	void AudioEngine::SetMasterVolume(float volume)
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		FMOD::SoundGroup* masterSoundGroup = nullptr;
+		c_instance->xFmod.m_system->getMasterSoundGroup(&masterSoundGroup);
+
+		if (masterSoundGroup)
+			masterSoundGroup->setVolume(volume);
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
 		Creates a new channel group
 	\param channelGroupName
 		Name of the channel group
 	*/
 	/***************************************************************************/
-	void AudioEngine::CreateChannelGroup(const std::string& channelGroupName)
+	FMOD::ChannelGroup* AudioEngine::CreateChannelGroup(const std::string& channelGroupName)
 	{
 		auto c_instance = &AudioEngine::Instance();
 
-		if (c_instance->xFmod.m_channelGroupMap.find(channelGroupName) == c_instance->xFmod.m_channelGroupMap.end())
+		auto itr = c_instance->xFmod.m_channelGroupMap.find(channelGroupName);
+
+		if (itr == c_instance->xFmod.m_channelGroupMap.end())
 		{
 			FMOD::ChannelGroup* newChannelGroup;
 			c_instance->xFmod.m_system->createChannelGroup(channelGroupName.c_str(), &newChannelGroup);
@@ -71,6 +92,7 @@ namespace PPA
 			if (newChannelGroup)
 			{
 				c_instance->xFmod.m_channelGroupMap[channelGroupName] = std::pair{ newChannelGroup, xFMOD::ChannelGroupInfo{} };
+				return newChannelGroup;
 			}
 			else
 			{
@@ -79,8 +101,12 @@ namespace PPA
 				ss << "Unable to create channel group \"" << channelGroupName << "\"";
 				PP::Logger::Log(
 					PP::LogEntry{ "AudioEngine::CreateChannelGroup", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+
+				return nullptr;
 			}
 		}
+
+		return itr->second.first;
 	}
 
 	/***************************************************************************/
@@ -383,16 +409,22 @@ namespace PPA
 		else
 		{
 			auto channelGroup = c_instance->GetChannelGroup(channelGroupName);
-			c_instance->xFmod.m_system->playSound(soundItr->second, channelGroup, true, &channel);
 
 			if (channelGroup == nullptr)
+			{
+				channelGroup = c_instance->CreateChannelGroup(channelGroupName);
+			}
+
+			c_instance->xFmod.m_system->playSound(soundItr->second, channelGroup, true, &channel);
+
+			/*if (channelGroup == nullptr)
 			{
 				std::stringstream ss;
 
 				ss << "Unable to find channel group \"" << channelGroupName << "\"";
 				PP::Logger::Log(
 					PP::LogEntry{ "AudioEngine::PlaySound", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
-			}
+			}//*/
 		}
 
 		if (channel)

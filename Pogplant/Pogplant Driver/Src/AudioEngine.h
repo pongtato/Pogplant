@@ -37,7 +37,8 @@ namespace PPA
 		static AudioEngine& Instance();
 		static void Update();
 		
-		static void CreateChannelGroup(const std::string& channelGroupName);
+		static void SetMasterVolume(float volume);
+		static FMOD::ChannelGroup* CreateChannelGroup(const std::string& channelGroupName);
 		static void SetChannelGroupVolume(const std::string& channelGroupName, float volume);
 		static float GetChannelGroupVolume(const std::string& channelGroupName);
 		static void PauseChannelGroup(const std::string& channelGroupName);
@@ -58,7 +59,6 @@ namespace PPA
 
 		static void UpdateListenerPosition(const glm::vec3& position, const glm::vec3& forwardVec, const glm::vec3& upVec, const glm::vec3& velocity);
 	private:
-		AudioEngine() = default;
 		
 		struct xFMOD
 		{

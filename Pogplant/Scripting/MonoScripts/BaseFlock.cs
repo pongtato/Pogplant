@@ -65,7 +65,7 @@ namespace Scripting
             if (health > 0)
             {
                 health -= damage;
-                ECS.PlayAudio(entityID, 0);
+                ECS.PlayAudio(entityID, 0, "SFX");
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
             }
             else
@@ -82,7 +82,7 @@ namespace Scripting
             if (isAlive)
             {
                 isAlive = false;
-                ECS.PlayAudio(entityID, 1);
+                ECS.PlayAudio(entityID, 1, "SFX");
                 GameUtilities.PlayEnemyDeathAnimation(entityID);
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
             }

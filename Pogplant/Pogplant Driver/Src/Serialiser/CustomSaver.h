@@ -28,6 +28,12 @@
 
 namespace PPU
 {
+	/**************************************************************************/
+	/*!
+	\brief
+		CustomSaver class to save/load data easily
+	*/
+	/**************************************************************************/
 	class CustomSaver
 	{
 	public:
@@ -37,13 +43,16 @@ namespace PPU
 		static void Append(const std::string& key, const T& value, bool saveAsDocuments = true);
 
 		template <typename T>
-		inline static T GetValue(const std::string& key, bool loadFromDocuments = true);
+		inline static T GetValue(const std::string& key, const T& defaultValue, bool loadFromDocuments = true);
 
 		template <>
-		inline static float GetValue<float>(const std::string& key, bool loadFromDocuments);
+		inline static float GetValue<float>(const std::string& key, const float& defaultValue, bool loadFromDocuments);
 
 		template <>
-		inline static std::string GetValue<std::string>(const std::string& key, bool loadFromDocuments);
+		inline static std::string GetValue<std::string>(const std::string& key, const std::string& defaultValue, bool loadFromDocuments);
+
+		template <>
+		inline static int GetValue<int>(const std::string& key, const int& defaultValue, bool loadFromDocuments);
 
 		static Json::Value GetValueJson(const std::string& key, bool loadFromDocuments = true);
 

@@ -38,7 +38,7 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
-            ECS.PlayAudio(entityID, 0);
+            ECS.PlayAudio(entityID, 0, "BGM");
 
             Vector3 pos = new Vector3();
             Vector3 rot = new Vector3();
