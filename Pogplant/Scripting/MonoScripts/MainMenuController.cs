@@ -24,11 +24,58 @@ namespace Scripting
         public enum BUTTONS
         {
             START_GAME = 0,
-            QUIT_GAME = 1 
+            HOW_TO_PLAY = 1,
+            SETTINGS = 2,
+            CREDITS = 3,
+            QUIT_GAME = 4
         }
 
         private int active_index = 0;
         private Dictionary<string, GameObject> buttonMap = new Dictionary<string, GameObject>();
+
+        //Menu buttons
+        uint start_button_id;
+        uint how_to_play_button_id;
+        uint settings_button_id;
+        uint credits_button_id;
+        uint quit_button_id;
+
+        //UI elements
+        uint logo_id;
+        uint bg1_id;   
+        uint bg2_id;    //With the controls
+        uint any_key_to_continue_id;
+        uint arrow_id;
+        const float arrow_anim_speed = 0.5f;
+        const float menu_buttons_default_x = 0.7f;
+        bool move_arrow_left;
+
+        //Anim sequences
+        enum ANIM_SEQUENCE
+        {
+            LOGO_SHRINK_EXPAND,
+            ANY_KEY_FLASHING,
+            MOVE_LOGO_TOP_LEFT,
+            BUTTONS_SLIDE_IN,
+            INPUT_READY
+        }
+        ANIM_SEQUENCE anim_seq;
+
+        //Logo expand
+        const float max_logo_expand_scale = 2.2f;
+        const float final_logo_expand_scale = 1.9f;
+        const float logo_expand_anim_speed = 3.0f;
+        bool shrink_logo = false;
+
+        //Press any key flashing
+        const float default_flash_speed = 0.5f;
+        const float selected_flash_speed = 2.5f;
+
+        //Logo move to top left
+        const float logo_move_top_left_anim_speed = 2.0f;
+
+        //Buttons sliding in
+        const float slide_in_speed = 2.0f;
 
         public MainMenuController()
         {
@@ -43,41 +90,62 @@ namespace Scripting
             Vector3 pos = new Vector3();
             Vector3 rot = new Vector3();
             Vector3 scale = new Vector3();
-            
-            uint sb = ECS.FindChildEntityWithName(entityID, "Start Button");
-            ECS.GetTransformECS(sb, ref pos, ref rot, ref scale);
-            buttonMap.Add("Start Button", new GameObject(sb, new Transform(pos, rot, scale), "Start Button"));
 
-            uint qb = ECS.FindChildEntityWithName(entityID, "Quit Button");
-            ECS.GetTransformECS(qb, ref pos, ref rot, ref scale);
-            buttonMap.Add("Quit Button", new GameObject(qb, new Transform(pos, rot, scale), "Quit Button"));
+            start_button_id = ECS.FindChildEntityWithName(entityID, "Start Button");
+            ECS.GetTransformECS(start_button_id, ref pos, ref rot, ref scale);
+            buttonMap.Add("Start Button", new GameObject(start_button_id, new Transform(pos, rot, scale), "Start Button"));
 
-            uint ar = ECS.FindChildEntityWithName(entityID, "Arrow");
-            ECS.GetTransformECS(ar, ref pos, ref rot, ref scale);
-            buttonMap.Add("Arrow", new GameObject(ar, new Transform(pos, rot, scale), "Arrow"));
+            how_to_play_button_id = ECS.FindChildEntityWithName(entityID, "How To Play Button");
+            ECS.GetTransformECS(how_to_play_button_id, ref pos, ref rot, ref scale);
+            buttonMap.Add("How To Play Button", new GameObject(how_to_play_button_id, new Transform(pos, rot, scale), "How To Play Button"));
+
+            settings_button_id = ECS.FindChildEntityWithName(entityID, "Settings Button");
+            ECS.GetTransformECS(settings_button_id, ref pos, ref rot, ref scale);
+            buttonMap.Add("Settings Button", new GameObject(settings_button_id, new Transform(pos, rot, scale), "Settings Button"));
+
+            credits_button_id = ECS.FindChildEntityWithName(entityID, "Credits Button");
+            ECS.GetTransformECS(credits_button_id, ref pos, ref rot, ref scale);
+            buttonMap.Add("Credits Button", new GameObject(credits_button_id, new Transform(pos, rot, scale), "Credits Button "));
+
+            quit_button_id = ECS.FindChildEntityWithName(entityID, "Quit Button");
+            ECS.GetTransformECS(quit_button_id, ref pos, ref rot, ref scale);
+            buttonMap.Add("Quit Button", new GameObject(quit_button_id, new Transform(pos, rot, scale), "Quit Button"));
+
+            uint ap = ECS.FindChildEntityWithName(entityID, "Arrow Parent");
+            ECS.GetTransformECS(ap, ref pos, ref rot, ref scale);
+            buttonMap.Add("Arrow Parent", new GameObject(ap, new Transform(pos, rot, scale), "Arrow Parent"));
+
+            arrow_id = ECS.FindChildEntityWithName(ap, "Arrow");
+            ECS.SetActive(arrow_id, false);
+
+            anim_seq = ANIM_SEQUENCE.LOGO_SHRINK_EXPAND;
+            shrink_logo = false;
+
+            any_key_to_continue_id = ECS.FindEntityWithName("Any Key Continue");
+            ECS.SetActive(any_key_to_continue_id, false);
+
+            logo_id = ECS.FindEntityWithName("Logo");
+            bg1_id = ECS.FindEntityWithName("Background 1");
+            bg2_id = ECS.FindEntityWithName("Background 2");
+            ECS.SetActive(bg2_id, false);
         }
 
         public override void Start()
         {
-            //active_index = 0;
-            //Console.WriteLine("MMC init");
+
         }
 
         public override void Update(float dt)
         {
-            //// Example of how to disable entity
-            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_D))
-            //{
-            //    ECS.SetActive(buttonMap["Arrow"].id, false);
-            //}
-
-            //// Example of how to enable entity (Do not activate an entity that is already active or it'll crash)
-            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_F))
-            //{
-            //    ECS.SetActive(buttonMap["Arrow"].id, true);
-            //}
-
-            UpdateInputs();
+            if (anim_seq == ANIM_SEQUENCE.INPUT_READY)
+            {
+                UpdateInputs();
+                UpdateArrowAnimation(dt);
+            }
+            else
+            {
+                UpdateAnimSequence(dt);
+            }
         }
 
         public override void LateUpdate(float dt)
@@ -95,11 +163,82 @@ namespace Scripting
 
         }
 
+        void UpdateAnimSequence(float dt)
+        {
+            switch (anim_seq)
+            {
+                case ANIM_SEQUENCE.LOGO_SHRINK_EXPAND:
+                    {
+
+                        if (!shrink_logo)
+                        {
+                            ECS.SetGlobalScale(logo_id, Vector3.Lerp(ECS.GetGlobalScale(logo_id), new Vector3(max_logo_expand_scale, max_logo_expand_scale), dt * logo_expand_anim_speed));
+
+                            if (ECS.GetGlobalScale(logo_id).X >= max_logo_expand_scale - 0.1f)
+                            {
+                                shrink_logo = true;
+                            }
+                        }
+                        else
+                        {
+                            ECS.SetGlobalScale(logo_id, Vector3.Lerp(ECS.GetGlobalScale(logo_id), new Vector3(final_logo_expand_scale, final_logo_expand_scale), dt * logo_expand_anim_speed));
+
+                            if (ECS.GetGlobalScale(logo_id).X <= final_logo_expand_scale + 0.1f)
+                            {
+                                anim_seq = ANIM_SEQUENCE.ANY_KEY_FLASHING;
+                                ECS.SetActive(any_key_to_continue_id, true);
+                            }
+                        }
+                    }
+                    break;
+                case ANIM_SEQUENCE.ANY_KEY_FLASHING:
+                    {
+                        //Button flash on default speed
+
+
+                        if (InputUtility.onAnyKey())
+                        {
+                            ECS.SetActive(any_key_to_continue_id, false);
+                            anim_seq = ANIM_SEQUENCE.MOVE_LOGO_TOP_LEFT;
+                        }
+                    }
+                    break;
+                case ANIM_SEQUENCE.MOVE_LOGO_TOP_LEFT:
+                    {
+                        if (ECS.GetGlobalPosition(logo_id).X < -0.39f)
+                        {
+                            anim_seq = ANIM_SEQUENCE.BUTTONS_SLIDE_IN;
+                        }
+                        else
+                        {
+                            ECS.SetGlobalPosition(logo_id, Vector3.Lerp(ECS.GetGlobalPosition(logo_id), new Vector3(-0.4f, 0.3f), dt * logo_move_top_left_anim_speed));
+                        }
+                    }
+                    break;
+                case ANIM_SEQUENCE.BUTTONS_SLIDE_IN:
+                    {
+                        ECS.SetGlobalPosition(start_button_id, Vector3.Lerp(ECS.GetGlobalPosition(start_button_id), new Vector3(0.7f, -0.25f, 0f), slide_in_speed * dt));
+                        ECS.SetGlobalPosition(how_to_play_button_id, Vector3.Lerp(ECS.GetGlobalPosition(how_to_play_button_id), new Vector3(0.7f, -0.4f, 0f), slide_in_speed * dt));
+                        ECS.SetGlobalPosition(settings_button_id, Vector3.Lerp(ECS.GetGlobalPosition(settings_button_id), new Vector3(0.7f, -0.55f, 0f), slide_in_speed * dt));
+                        ECS.SetGlobalPosition(credits_button_id, Vector3.Lerp(ECS.GetGlobalPosition(credits_button_id), new Vector3(0.7f, -0.7f, 0f), slide_in_speed * dt));
+                        ECS.SetGlobalPosition(quit_button_id, Vector3.Lerp(ECS.GetGlobalPosition(quit_button_id), new Vector3(0.7f, -0.85f, 0f), slide_in_speed * dt));
+
+                        if (ECS.GetGlobalPosition(quit_button_id).X <= 0.71f)
+                        {
+                            anim_seq = ANIM_SEQUENCE.INPUT_READY;
+                            ECS.SetActive(bg1_id, false);
+                            ECS.SetActive(bg2_id, true);
+                            ECS.SetActive(arrow_id, true);
+                        }
+                    }
+                    break;
+            }
+        }
+
         void UpdateInputs()
         {
             //Key input
-            if (InputUtility.onKeyTriggered("MENUDOWN"))
-            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_DOWN))
+            if (InputUtility.onKeyTriggered("MENUUP"))
             {
                 --active_index;
                 
@@ -110,8 +249,7 @@ namespace Scripting
                 }
                 //Console.WriteLine("Active index is: " + active_index);
             }
-            else if (InputUtility.onKeyTriggered("MENUUP"))
-            //else if (InputUtility.onKeyTriggered(KEY_ID.KEY_UP))
+            else if (InputUtility.onKeyTriggered("MENUDOWN"))
             {
                 ++active_index;
 
@@ -120,27 +258,43 @@ namespace Scripting
                     active_index = (int)BUTTONS.START_GAME;
 
                 }
-                //Console.WriteLine("Active index is: "+ active_index);
             }
             
             switch (active_index)
             {
                 case 0:
-                    ECS.SetTransformECS(buttonMap["Arrow"].id,
-                        new Vector3((buttonMap["Start Button"].transform.Position.X - 0.161f), buttonMap["Start Button"].transform.Position.Y, buttonMap["Start Button"].transform.Position.Z),
-                        buttonMap["Arrow"].transform.Rotation,
-                        buttonMap["Arrow"].transform.Scale);
+                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                        new Vector3(GetXFromButton(active_index), buttonMap["Start Button"].transform.Position.Y, buttonMap["Start Button"].transform.Position.Z),
+                        buttonMap["Arrow Parent"].transform.Rotation,
+                        buttonMap["Arrow Parent"].transform.Scale);
                     break;
                 case 1:
-                    ECS.SetTransformECS(buttonMap["Arrow"].id,
-                        new Vector3((buttonMap["Quit Button"].transform.Position.X - 0.161f), buttonMap["Quit Button"].transform.Position.Y, buttonMap["Quit Button"].transform.Position.Z),
-                        buttonMap["Arrow"].transform.Rotation,
-                        buttonMap["Arrow"].transform.Scale);
+                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                        new Vector3(GetXFromButton(active_index), buttonMap["How To Play Button"].transform.Position.Y, buttonMap["How To Play Button"].transform.Position.Z),
+                        buttonMap["Arrow Parent"].transform.Rotation,
+                        buttonMap["Arrow Parent"].transform.Scale);
+                    break;
+                case 2:
+                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                        new Vector3(GetXFromButton(active_index), buttonMap["Settings Button"].transform.Position.Y, buttonMap["Settings Button"].transform.Position.Z),
+                        buttonMap["Arrow Parent"].transform.Rotation,
+                        buttonMap["Arrow Parent"].transform.Scale);
+                    break;
+                case 3:
+                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                        new Vector3(GetXFromButton(active_index), buttonMap["Credits Button"].transform.Position.Y, buttonMap["Credits Button"].transform.Position.Z),
+                        buttonMap["Arrow Parent"].transform.Rotation,
+                        buttonMap["Arrow Parent"].transform.Scale);
+                    break;
+                case 4:
+                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                        new Vector3(GetXFromButton(active_index), buttonMap["Quit Button"].transform.Position.Y, buttonMap["Quit Button"].transform.Position.Z),
+                        buttonMap["Arrow Parent"].transform.Rotation,
+                        buttonMap["Arrow Parent"].transform.Scale);
                     break;
             }
 
             if (InputUtility.onKeyTriggered("MENUSELECT"))
-            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_ENTER))
             {
                 //Start or quit game based on index
                 switch (active_index)
@@ -155,6 +309,65 @@ namespace Scripting
                         break;
                 }
             }
+        }
+
+        void UpdateArrowAnimation(float dt)
+        {
+            //Move left and right
+            Vector3 defaultPos = new Vector3(ECS.GetGlobalPosition(arrow_id).X, ECS.GetGlobalPosition(arrow_id).Y, ECS.GetGlobalPosition(arrow_id).Z);
+            
+            //Move left
+            if (ECS.GetGlobalPosition(arrow_id).X > GetXFromButton(active_index) + 0.01f)
+            {
+                move_arrow_left = true;
+            }
+            else if (ECS.GetGlobalPosition(arrow_id).X < GetXFromButton(active_index) - 0.01f)
+            {
+                move_arrow_left = false;
+            }
+
+            if (move_arrow_left)
+            {
+                ECS.SetGlobalPosition(arrow_id, Vector3.Lerp(new Vector3(defaultPos.X, defaultPos.Y, defaultPos.Z), new Vector3(defaultPos.X - 0.1f, defaultPos.Y, defaultPos.Z), dt * arrow_anim_speed));
+            }
+            else
+            {
+                ECS.SetGlobalPosition(arrow_id, Vector3.Lerp(new Vector3(defaultPos.X, defaultPos.Y, defaultPos.Z), new Vector3(defaultPos.X + 0.1f, defaultPos.Y, defaultPos.Z), dt * arrow_anim_speed));
+            }
+        }
+
+        void FlashingAnimAnyKey(float dt)
+        {
+            //ECS.GetComponent<Renderer>(any_key_to_continue_id).
+        }
+
+        float GetXFromButton(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ECS.GetGlobalPosition(start_button_id).X - 0.250f;
+                case 1:
+                    return ECS.GetGlobalPosition(how_to_play_button_id).X - 0.275f;
+                case 2:
+                    return ECS.GetGlobalPosition(settings_button_id).X - 0.175f;
+                case 3:
+                    return ECS.GetGlobalPosition(credits_button_id).X - 0.125f;
+                case 4:
+                    return ECS.GetGlobalPosition(quit_button_id).X - 0.26f;
+                    //case 0:
+                    //    return menu_buttons_default_x - 0.250f;
+                    //case 1:
+                    //    return menu_buttons_default_x - 0.275f;
+                    //case 2:
+                    //    return menu_buttons_default_x - 0.175f;
+                    //case 3:
+                    //    return menu_buttons_default_x - 0.125f;
+                    //case 4:
+                    //    return menu_buttons_default_x - 0.26f;
+            }
+
+            return 0.0f;
         }
     }
 }

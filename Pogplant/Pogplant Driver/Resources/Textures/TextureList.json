@@ -88,6 +88,56 @@
             "FileName" : "kekwiggle.dds",
             "Dir"       : "Resources/Textures/SpriteAnimation",
             "Alpha"     : false
+        },
+        {
+            "FileName" : "Arrow_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "BG_01_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "BG_02_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Credits_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "HowToPlay_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Logo_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Press_To_Start_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "QuitGame_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Settings_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "StartGame_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
         }
     ],
 
