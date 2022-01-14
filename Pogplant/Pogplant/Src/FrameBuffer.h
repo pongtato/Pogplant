@@ -24,6 +24,7 @@ namespace Pogplant
 		static bool InitGBuffer();
 		static bool InitShadowBuffer();
 		static bool InitBlurBuffer();
+		static bool InitAOBuffer();
 	};
 }
 

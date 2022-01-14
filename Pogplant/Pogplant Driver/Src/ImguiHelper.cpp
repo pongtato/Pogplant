@@ -1299,6 +1299,7 @@ namespace PogplantDriver
 			ImGui::DragFloat3("Camera Pos", &currQuatCam->m_Position.x);
 			ImGui::PopItemWidth();
 			ImGui::DragFloat("Camera Speed", &currQuatCam->m_Speed);
+			ImGui::Dummy({ 0,2.0f });
 
 		/*	ImGui::Text("Light Shaft");
 			ImGui::PushItemWidth(207.0f);
@@ -1311,6 +1312,11 @@ namespace PogplantDriver
 			ImGui::DragFloat("Weight", &PP::Renderer::m_LightShaftWeight);
 			ImGui::PopItemWidth();*/
 
+			ImGui::Text("AO Config");
+			ImGui::DragFloat("Radius", &PP::Renderer::m_AO_Radius);
+			ImGui::DragFloat("Bias ", &PP::Renderer::m_AO_Bias);
+			ImGui::Dummy({ 0,2.0f });
+
 			ImGui::PushItemWidth(207.0f);
 			ImGui::Text("Quat Pos");
 			ImGui::DragFloat3("###Quat Pos", &PP::Renderer::m_QuatTestPos .x);
@@ -1319,6 +1325,8 @@ namespace PogplantDriver
 			ImGui::Text("Quat Scale");
 			ImGui::DragFloat3("###Quat Scale", &PP::Renderer::m_QuatTestScale.x);
 			ImGui::PopItemWidth();
+
+
 
 		}
 		ImGui::End();

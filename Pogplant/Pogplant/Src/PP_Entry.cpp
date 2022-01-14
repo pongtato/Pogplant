@@ -6,6 +6,7 @@
 #include "ShaderLinker.h"
 #include "FrameBuffer.h"
 #include "CameraResource.h"
+#include "Renderer.h"
 
 namespace Pogplant
 {
@@ -39,6 +40,7 @@ namespace Pogplant
 				0.1f	// Pan speed
 			}
 		);
+		Renderer::InitAOKernel();
 	}
 
 	void Entry::Cleanup()

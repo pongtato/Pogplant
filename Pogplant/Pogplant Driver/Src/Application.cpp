@@ -571,9 +571,14 @@ void Application::DrawEditor()
 	PP::Renderer::Draw(m_activeECS->GetReg(), nullptr, true);
 	PP::Renderer::EndBuffer();
 
+	// AO
+	PP::Renderer::AOPass(m_activeECS->GetReg(), true);
+	PP::Renderer::EndBuffer();
+	PP::Renderer::AOBlurPass();
+	PP::Renderer::EndBuffer();
+
 	// Where to draw the gpass FB to
 	PP::Renderer::PostProcess();
-	PP::Renderer::ClearBuffer();
 	PP::Renderer::GLightPass(m_activeECS->GetReg(), true);
 	PP::Renderer::EndBuffer();
 
@@ -593,6 +598,12 @@ void Application::DrawGame()
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::Draw(m_activeECS->GetReg(), nullptr, false);
+	PP::Renderer::EndBuffer();
+
+	// AO
+	PP::Renderer::AOPass(m_activeECS->GetReg(), false);
+	PP::Renderer::EndBuffer();
+	PP::Renderer::AOBlurPass();
 	PP::Renderer::EndBuffer();
 
 	// Where to draw the gpass FB to

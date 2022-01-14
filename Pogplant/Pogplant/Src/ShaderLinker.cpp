@@ -32,6 +32,8 @@ namespace Pogplant
 		ShaderResource::AddShaderProfile(ShaderProfile("LINE", dir, "Line.vert", "Line.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("SHAFT", dir, "Shaft.vert", "Shaft.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("PRIMITIVE", dir, "Primitive.vert", "Primitive.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("SSAO", dir, "SSAO.vert", "SSAO.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("SSAO_BLUR", dir, "SSAO_Blur.vert", "SSAO_Blur.frag"));
 
 		bool passFlag = true;
 		for (const auto& it : ShaderResource::m_ShaderProfiles)

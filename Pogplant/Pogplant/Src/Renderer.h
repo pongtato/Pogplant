@@ -15,9 +15,12 @@ namespace Pogplant
 	class Renderer
 	{
 	public:
+		static void InitAOKernel();
 		static void StartEditorBuffer();
 		static void StartGameBuffer();
 		static void StartGBuffer();
+		static void AOPass(const entt::registry& registry, bool _EditorMode);
+		static void AOBlurPass();
 		static void DebugPass(const entt::registry& registry);
 		static void EndBuffer();
 		static void PostProcess();
@@ -48,6 +51,10 @@ namespace Pogplant
 		static glm::vec3 m_QuatTestPos;
 		static glm::vec3 m_QuatTestRot;
 		static glm::vec3 m_QuatTestScale;
+
+		static std::vector<glm::vec3> m_AOKernel;
+		static float m_AO_Radius;
+		static float m_AO_Bias;
 	private:
 		static void DrawText(const entt::registry& registry, bool _EditorMode);
 	};

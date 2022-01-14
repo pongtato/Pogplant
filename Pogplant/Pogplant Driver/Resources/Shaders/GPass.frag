@@ -15,6 +15,7 @@ uniform sampler2D gEmissive;
 uniform sampler2D gShadow;
 //uniform sampler2D gShaft;
 uniform sampler2D gCanvas;
+uniform sampler2D gAO;
 
 struct Light 
 {
@@ -104,6 +105,7 @@ void main()
     vec4 Canvas = texture(gCanvas, TexCoords);
     Canvas.a *= 6.9f;
     Canvas.a = clamp(Canvas.a, 0.0f, 1.0f);
+    float AmbientOcclusion = texture(gAO, TexCoords).r;
     
     // Light calc
     const float ambient = 0.42f;
@@ -112,10 +114,10 @@ void main()
     vec3 lighting  = Diffuse * ambient;
     if(Shadows)
     {
-         lighting = lighting * clamp(shadow,0.0f,1.0f);
+        lighting = lighting * clamp(shadow,0.0f,1.0f);
     }
     
-    vec3 viewDir  = normalize(viewPos - FragPos);
+    vec3 viewDir = normalize(-FragPos);
     for(int i = 0; i < activeLights; ++i)
     {
         // Distance cutoff
@@ -149,6 +151,7 @@ void main()
     diffuse *= directLight.Diffuse;
     specular *= directLight.Specular;
     lighting += diffuse + specular;
+    lighting.rgb *= AmbientOcclusion;
 
     // HDR light
     lighting = vec3(1.0) - exp(-lighting.rgb * Exposure); 
@@ -160,6 +163,8 @@ void main()
 
     // Gamma correct
     outColor.rgb = pow(outColor.rgb, vec3(1.0 / Gamma));
+
+    //outColor.rgb = vec3(AmbientOcclusion);
 
     // Output bright bixels for bloom
     float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));

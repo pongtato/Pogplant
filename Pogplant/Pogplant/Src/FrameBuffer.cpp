@@ -19,6 +19,7 @@ namespace Pogplant
 		passFlag &= InitGBuffer();
 		passFlag &= InitShadowBuffer();
 		passFlag &= InitBlurBuffer();
+		passFlag &= InitAOBuffer();
 
 		if (passFlag)
 		{
@@ -294,6 +295,7 @@ namespace Pogplant
 		//ShaderLinker::SetUniform("gShaft", 5);
 		ShaderLinker::SetUniform("gCanvas", 5);
 		ShaderLinker::SetUniform("gShadow", 6);
+		ShaderLinker::SetUniform("gAO", 7);
 		ShaderLinker::UnUse();
 
 		unsigned int* frameBuffer = &FBR::m_FrameBuffers[BufferType::G_BUFFER];
@@ -307,6 +309,8 @@ namespace Pogplant
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, *gPosition, 0);
 
 		// normal color buffer
@@ -359,17 +363,26 @@ namespace Pogplant
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT5, GL_TEXTURE_2D, *gCanvas, 0);
 
+		unsigned int* gAO = &FBR::m_FrameBuffers[BufferType::G_AO_BUFFER];
+		glGenTextures(1, gAO);
+		glBindTexture(GL_TEXTURE_2D, *gAO);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT7, GL_TEXTURE_2D, *gAO, 0);
+
 		// tell OpenGL which color attachments we'll use (of this framebuffer) for rendering 
-		unsigned int attachments[6] = 
+		unsigned int attachments[7] = 
 		{ 
 			GL_COLOR_ATTACHMENT0,
 			GL_COLOR_ATTACHMENT1,
 			GL_COLOR_ATTACHMENT2,
 			GL_COLOR_ATTACHMENT3,
 			GL_COLOR_ATTACHMENT4,
-			GL_COLOR_ATTACHMENT5
+			GL_COLOR_ATTACHMENT5,
+			GL_COLOR_ATTACHMENT7
 		};
-		glDrawBuffers(6, attachments);
+		glDrawBuffers(7, attachments);
 
 		// create and attach depth buffer (renderbuffer)
 		unsigned int* rboDepth = &FBR::m_FrameBuffers[BufferType::G_DEPTH];
@@ -465,6 +478,63 @@ namespace Pogplant
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
 			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"Blur Framebuffer init failed" });
+			passFlag = false;
+		}
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		return passFlag;
+	}
+
+	bool FrameBuffer::InitAOBuffer()
+	{
+		bool passFlag = true;
+
+		ShaderLinker::Use("SSAO");
+		ShaderLinker::SetUniform("gPosition", 0);
+		ShaderLinker::SetUniform("gNormal", 1);
+		ShaderLinker::SetUniform("texNoise", 2);
+		ShaderLinker::UnUse();
+
+		unsigned int* ssaoFB = &FBR::m_FrameBuffers[BufferType::SSAO_BUFFER];
+		glGenFramebuffers(1, ssaoFB);
+		glBindFramebuffer(GL_FRAMEBUFFER, *ssaoFB);
+
+		unsigned int* ssaoColor = &FBR::m_FrameBuffers[BufferType::SSAO_COLOR_BUFFER];
+		// SSAO color buffer
+		glGenTextures(1, ssaoColor);
+		glBindTexture(GL_TEXTURE_2D, *ssaoColor);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Window::m_Width, Window::m_Height, 0, GL_RED, GL_FLOAT, NULL);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, *ssaoColor, 0);
+
+		// Check for completion
+		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+		{
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"AO Framebuffer init failed" });
+			passFlag = false;
+		}
+
+		ShaderLinker::Use("SSAO_BLUR");
+		ShaderLinker::SetUniform("ssaoInput", 0);
+		ShaderLinker::UnUse();
+
+		unsigned int* ssaoBlurFB = &FBR::m_FrameBuffers[BufferType::SSAO_BLUR_BUFFER];
+		glGenFramebuffers(1, ssaoBlurFB);
+		glBindFramebuffer(GL_FRAMEBUFFER, *ssaoBlurFB);
+
+		unsigned int* ssaoBlurColor = &FBR::m_FrameBuffers[BufferType::SSAO_BLUR_COLOR_BUFFER];
+		glGenTextures(1, ssaoBlurColor);
+		glBindTexture(GL_TEXTURE_2D, *ssaoBlurColor);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, Window::m_Width, Window::m_Height, 0, GL_RED, GL_FLOAT, NULL);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, *ssaoBlurColor, 0);
+	
+		// Check for completion
+		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+		{
+			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"AO Blur buffer init failed" });
 			passFlag = false;
 		}
 

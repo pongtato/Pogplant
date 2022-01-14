@@ -39,13 +39,13 @@ void main()
     UseLight = i_UseLight;
     UseTexture = i_UseTexture;
 
-    vec4 worldPos = m4_Model * vec4(v3_Pos, 1.0);
-    FragPos = worldPos.xyz; 
+    vec4 viewPos = m4_View * m4_Model * vec4(v3_Pos, 1.0);
+    FragPos = viewPos.xyz; 
 
-    mat3 normalMatrix = transpose(inverse(mat3(m4_Model)));
+    mat3 normalMatrix = transpose(inverse(mat3(m4_View * m4_Model)));
     Normal = normalMatrix * v3_Normal;
 
     TexCoords = v2_TexCoords;  
 
-    gl_Position = m4_Projection * m4_View * worldPos;
+    gl_Position = m4_Projection * viewPos;
 }

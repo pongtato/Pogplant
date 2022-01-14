@@ -23,7 +23,7 @@
 #include <glew.h>
 #include <glfw3.h>
 #include <string>
-
+#include <random>
 #include <iostream>
 
 namespace Pogplant
@@ -38,6 +38,9 @@ namespace Pogplant
 	float Renderer::m_LightShaftWeight = 0.3f;
 	glm::vec3 Renderer::m_LightShaftPos = { -500.0f,500.0f,0.0f };
 	float Renderer::m_LightShaftScale = 10.0f;
+	std::vector<glm::vec3> Renderer::m_AOKernel;
+	float Renderer::m_AO_Radius = 1.5f;
+	float Renderer::m_AO_Bias = 0.0125f;
 
 	/// QUAT TEST
 	glm::vec3 Renderer::m_QuatTestPos = glm::vec3{ 0 };
@@ -128,6 +131,29 @@ namespace Pogplant
 		};
 	}
 
+	float Lerp(float _A, float _B, float _F)
+	{
+		return _A + _F * (_B - _A);
+	}
+
+	void Renderer::InitAOKernel()
+	{
+		std::uniform_real_distribution<float> floatRand(0.0, 1.0);
+		std::default_random_engine gen;
+		for (unsigned int i = 0; i < 64; ++i)
+		{
+			glm::vec3 sample(floatRand(gen) * 2.0 - 1.0, floatRand(gen) * 2.0 - 1.0, floatRand(gen));
+			sample = glm::normalize(sample);
+			sample *= floatRand(gen);
+			float scale = float(i) / 64.0f;
+
+			// scale samples s.t. they're more aligned to center of kernel
+			scale = Lerp(0.1f, 1.0f, scale * scale);
+			sample *= scale;
+			m_AOKernel.push_back(sample);
+		}
+	}
+
 	void Renderer::StartEditorBuffer()
 	{
 		FrameBuffer::BindFrameBuffer(BufferType::EDITOR_BUFFER);
@@ -146,6 +172,42 @@ namespace Pogplant
 	{
 		FrameBuffer::BindFrameBuffer(BufferType::G_BUFFER);
 		glEnable(GL_DEPTH_TEST);
+	}
+
+	void Renderer::AOPass(const entt::registry& registry, bool _EditorMode)
+	{
+		FrameBuffer::BindFrameBuffer(BufferType::SSAO_BUFFER);
+		glClear(GL_COLOR_BUFFER_BIT);
+		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
+		ShaderLinker::Use("SSAO");
+		// Send kernel + rotation 
+		for (unsigned int i = 0; i < m_AOKernel.size(); ++i)
+		{
+			ShaderLinker::SetUniform(("samples[" + std::to_string(i) + "]").c_str(), m_AOKernel[i]);
+		}
+		ShaderLinker::SetUniform("noiseScale", { Window::m_Width / 4, Window::m_Height / 4 });
+		ShaderLinker::SetUniform("projection", ret.m_Projection);
+		ShaderLinker::SetUniform("radius", m_AO_Radius);
+		ShaderLinker::SetUniform("bias", m_AO_Bias);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NORMAL_BUFFER]);
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_COLOR_BUFFER]);
+		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN);
+		ShaderLinker::UnUse();
+	}
+
+	void Renderer::AOBlurPass()
+	{
+		FrameBuffer::BindFrameBuffer(BufferType::SSAO_BLUR_BUFFER);
+		glClear(GL_COLOR_BUFFER_BIT);
+		ShaderLinker::Use("SSAO_BLUR");
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SSAO_COLOR_BUFFER]);
+		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN);
+		ShaderLinker::UnUse();
 	}
 
 	void Renderer::DebugPass(const entt::registry& registry)
@@ -185,6 +247,8 @@ namespace Pogplant
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_CANVAS_BUFFER]);
 		glActiveTexture(GL_TEXTURE6);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+		glActiveTexture(GL_TEXTURE7);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SSAO_BLUR_COLOR_BUFFER]);
 
 		ShaderLinker::SetUniform("Exposure", m_Exposure);
 		ShaderLinker::SetUniform("Gamma", m_Gamma);
@@ -520,8 +584,8 @@ namespace Pogplant
 		DrawText(registry, _EditorMode);
 
 		/// Canvas
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//glEnable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		// Render G pass objects first
 		ShaderLinker::Use("BASIC");
 		MeshBuilder::RebindQuad();
@@ -541,7 +605,7 @@ namespace Pogplant
 		ShaderLinker::SetUniform("b_Editor", _EditorMode);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();
-		glDisable(GL_BLEND);
+		//glDisable(GL_BLEND);
 
 		if (_EditorMode)
 		{
