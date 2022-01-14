@@ -116,7 +116,7 @@ namespace PPA
 	\param channelGroupName
 		Name of the channel group
 	\param volume
-		The volume of the audio set on the channel group
+		The volume of the audio set on the channel group, range [0, 1]
 	*/
 	/***************************************************************************/
 	void AudioEngine::SetChannelGroupVolume(const std::string& channelGroupName, float volume)
@@ -136,6 +136,55 @@ namespace PPA
 		}
 
 		channelGroup->setVolume(volume);
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
+		Sets the pitch of the channel group.
+		Note: Will slow down audio as well
+	\param channelGroupName
+		Name of the channel group
+	\param pitch
+		The pitch of the audio set on the channel group, range [0, 1]
+	*/
+	/***************************************************************************/
+	void AudioEngine::SetChannelGroupPitch(const std::string& channelGroupName, float pitch)
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		auto channelGroup = c_instance->GetChannelGroup(channelGroupName);
+
+		if (!channelGroup)
+		{
+			std::stringstream ss;
+
+			ss << "Unable to find channel group \"" << channelGroupName << "\"";
+			PP::Logger::Log(
+				PP::LogEntry{ "AudioEngine::SetChannelGroupVolume", PP::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+			return;
+		}
+
+		channelGroup->setPitch(pitch);
+	}
+
+	/***************************************************************************/
+	/*!
+	\brief
+		Sets the pitch of all the channel groups.
+		Note: Will slow down audio as well
+	\param pitch
+		The pitch of the audio set on the channel group, range [0, 1]
+	*/
+	/***************************************************************************/
+	void AudioEngine::SetAllChannelGroupPitch(float pitch)
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		for (auto itr = c_instance->xFmod.m_channelGroupMap.begin(); itr != c_instance->xFmod.m_channelGroupMap.end(); ++itr)
+		{
+			itr->second.first->setPitch(pitch);
+		}
 	}
 
 	/***************************************************************************/
@@ -437,7 +486,7 @@ namespace PPA
 				FMOD_VECTOR fvPosition = GLMToFMODVec3(position);
 				channel->set3DAttributes(&fvPosition, nullptr);
 			}
-			
+
 			//Set custom attenuation here
 
 			channel->setVolume(volume);
@@ -603,7 +652,7 @@ namespace PPA
 		{
 			bool isPlaying = false;
 			//bool isPaused = false;
-			
+
 			it->second.first->isPlaying(&isPlaying);
 			//it->second->getPaused();
 
@@ -667,7 +716,7 @@ namespace PPA
 		}
 
 		auto ret = AudioEngine::LoadAudio(fileName, true, false, false);
-		
+
 		if (ret)
 		{
 			AudioResource::Instance().m_audioPool[fileName] = newAudioClip;

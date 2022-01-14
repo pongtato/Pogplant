@@ -40,6 +40,8 @@ namespace PPA
 		static void SetMasterVolume(float volume);
 		static FMOD::ChannelGroup* CreateChannelGroup(const std::string& channelGroupName);
 		static void SetChannelGroupVolume(const std::string& channelGroupName, float volume);
+		static void SetChannelGroupPitch(const std::string& channelGroupName, float pitch);
+		static void SetAllChannelGroupPitch(float pitch);
 		static float GetChannelGroupVolume(const std::string& channelGroupName);
 		static void PauseChannelGroup(const std::string& channelGroupName);
 		static void ResumeChannelGroup(const std::string& channelGroupName);

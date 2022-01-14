@@ -51,6 +51,7 @@ namespace SSH
 	void ResumeAudioChannelGroup(MonoString* channelGroupName);
 	float GetAudioChannelGroupVolume(MonoString* channelGroupName);
 	void SetAudioChannelGroupVolume(MonoString* channelGroupName, float volume);
+	void SetAudioChannelGroupPitch(MonoString* channelGroupName, float pitch);
 
 	void LogToEditor(MonoString* scriptName, MonoString* debugLog);
 

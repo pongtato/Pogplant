@@ -17,7 +17,13 @@ namespace Scripting
 		public extern static float GetChannelGroupVolume(string channelGroupName);
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		public extern static float SetChannelGroupVolume(string channelGroupName, float volume);
+		public extern static void SetChannelGroupVolume(string channelGroupName, float volume);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		public extern static void SetChannelGroupPitch(string channelGroupName, float pitch);
+
+		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+		public extern static void SetAllChannelGroupPitch(float pitch);
 
 		[MethodImplAttribute(MethodImplOptions.InternalCall)]
 		public extern static void CreateChannelGroup(string channelGroupName);

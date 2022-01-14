@@ -493,6 +493,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.AudioEngine::PlayAudio", SSH::PlayAudio);
 	mono_add_internal_call("Scripting.AudioEngine::GetChannelGroupVolume", SSH::GetAudioChannelGroupVolume);
 	mono_add_internal_call("Scripting.AudioEngine::SetChannelGroupVolume", SSH::SetAudioChannelGroupVolume);
+	mono_add_internal_call("Scripting.AudioEngine::SetChannelGroupPitch", SSH::SetAudioChannelGroupPitch);
+	mono_add_internal_call("Scripting.AudioEngine::SetAllChannelGroupPitch", PPA::AudioEngine::SetAllChannelGroupPitch);
 	mono_add_internal_call("Scripting.AudioEngine::CreateChannelGroup", SSH::CreateAudioChannelGroup);
 	mono_add_internal_call("Scripting.AudioEngine::PauseChannelGroup", SSH::PauseAudioChannelGroup);
 	mono_add_internal_call("Scripting.AudioEngine::ResumeChannelGroup", SSH::ResumeAudioChannelGroup);
