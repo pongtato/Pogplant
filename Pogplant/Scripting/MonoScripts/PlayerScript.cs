@@ -110,7 +110,7 @@ namespace Scripting
 
         // Bonus Item / Bonus Effects
         static public int m_BonusItem = 0;
-        const int m_BonusItemMax = 2;
+        const int m_BonusItemMax = 10;
         static public bool m_EnableBonusScreen = false;
         uint m_BobHeadMenuID;
         static public uint m_ScoreMultiplierBobbleCount = 1;
