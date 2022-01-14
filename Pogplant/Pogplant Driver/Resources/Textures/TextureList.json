@@ -109,13 +109,23 @@
             "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
             "Alpha"     : true
         },
+		        {
+            "FileName" : "Credits_MM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
         {
             "FileName"  : "HowToPlay_MM.dds",
             "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
             "Alpha"     : true
         },
         {
-            "FileName"  : "Logo_MM.dds",
+            "FileName" : "HowToPlay_MM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },		
+        {
+            "FileName" : "Logo_MM.dds",
             "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
             "Alpha"     : true
         },
@@ -130,13 +140,78 @@
             "Alpha"     : true
         },
         {
-            "FileName"  : "Settings_MM.dds",
+            "FileName" : "QuitGame_MM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Settings_MM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },		
+        {
+            "FileName" : "Settings_MM_A.dds",
             "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
             "Alpha"     : true
         },
         {
             "FileName"  : "StartGame_MM.dds",
             "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },
+{
+            "FileName" : "StartGame_MM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
+            "Alpha"     : true
+        },		
+		{
+            "FileName" : "Backing_SM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "Default_SM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "MasterVolume_SM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "SFXVolume_SM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "SliderArrowLeft_SM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "SliderArrowRight_SM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "SliderBacking_SM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "SliderFill_SM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },		
+		{
+            "FileName" : "VoiceOvers_SM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "BlackBG.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu",
             "Alpha"     : true
         }
     ],

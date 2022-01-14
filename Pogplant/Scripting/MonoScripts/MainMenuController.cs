@@ -21,6 +21,10 @@ namespace Scripting
 {
     public class MainMenuController : MonoBehaviour
     {
+        //========================================================//
+        //Main menu
+        //========================================================//
+
         public enum BUTTONS
         {
             START_GAME = 0,
@@ -64,18 +68,27 @@ namespace Scripting
         //Logo expand
         const float max_logo_expand_scale = 2.2f;
         const float final_logo_expand_scale = 1.9f;
-        const float logo_expand_anim_speed = 3.0f;
+        const float logo_expand_anim_speed = 6.0f;
         bool shrink_logo = false;
 
         //Press any key flashing
-        const float default_flash_speed = 0.5f;
-        const float selected_flash_speed = 2.5f;
+        const float any_key_scale_speed = 0.5f;
+        const float any_key_expanded_scale = 1.1f;
+        const float any_key_spin_speed = 2.0f;
+        const float any_key_move_out_speed = 4.0f;
+        bool any_key_expand;
+        bool begin_any_key_spin;
 
         //Logo move to top left
-        const float logo_move_top_left_anim_speed = 2.0f;
+        const float logo_move_top_left_anim_speed = 4.0f;
 
         //Buttons sliding in
-        const float slide_in_speed = 2.0f;
+        const float slide_in_speed = 4.0f;
+
+        //========================================================//
+        //Settings menu
+        //========================================================//
+        uint settings_menu_id;
 
         public MainMenuController()
         {
@@ -128,6 +141,9 @@ namespace Scripting
             bg1_id = ECS.FindEntityWithName("Background 1");
             bg2_id = ECS.FindEntityWithName("Background 2");
             ECS.SetActive(bg2_id, false);
+
+            settings_menu_id = ECS.FindEntityWithName("Settings Menu");
+            ECS.SetActive(settings_menu_id, false);
         }
 
         public override void Start()
@@ -193,13 +209,47 @@ namespace Scripting
                     break;
                 case ANIM_SEQUENCE.ANY_KEY_FLASHING:
                     {
-                        //Button flash on default speed
-
-
+                        //Button spin out
                         if (InputUtility.onAnyKey())
                         {
-                            ECS.SetActive(any_key_to_continue_id, false);
+                            begin_any_key_spin = true;
+                        }
+                        else
+                        {
+                            if (!begin_any_key_spin)
+                            {
+                                if (any_key_expand)
+                                {
+                                    ECS.SetGlobalScale(any_key_to_continue_id, Vector3.Lerp(new Vector3(1.0f, 1.0f, 1.0f), new Vector3(any_key_expanded_scale, any_key_expanded_scale, 1.0f), any_key_scale_speed * dt));
+
+                                    if (ECS.GetGlobalScale(any_key_to_continue_id).X >= any_key_expanded_scale - 0.01f)
+                                    {
+                                        any_key_expand = false;
+                                    }
+                                }
+                                else
+                                {
+                                    ECS.SetGlobalScale(any_key_to_continue_id, Vector3.Lerp(new Vector3(any_key_expanded_scale, any_key_expanded_scale, 1.0f), new Vector3(1.0f, 1.0f, 1.0f), any_key_scale_speed * dt));
+
+                                    if (ECS.GetGlobalScale(any_key_to_continue_id).X <= 0.99f)
+                                    {
+                                        any_key_expand = true;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (begin_any_key_spin)
+                        {
+                            //ECS.SetGlobalPosition(any_key_to_continue_id, Vector3.Lerp(ECS.GetGlobalPosition(any_key_to_continue_id), new Vector3(-1.1f, 0.7f, 0.0f), any_key_move_out_speed * dt));
+                            ECS.SetGlobalRotation(any_key_to_continue_id, Vector3.Lerp(ECS.GetGlobalRotation(any_key_to_continue_id), new Vector3(0.0f, 0.0f, 540.0f), any_key_spin_speed * dt));
+                            ECS.SetGlobalScale(any_key_to_continue_id, Vector3.Lerp(ECS.GetGlobalScale(any_key_to_continue_id), new Vector3(0.5f, 0.5f, 0.5f), any_key_move_out_speed * dt));
+                        }
+
+                        if (ECS.GetGlobalScale(any_key_to_continue_id).X <= 0.57f)
+                        {
                             anim_seq = ANIM_SEQUENCE.MOVE_LOGO_TOP_LEFT;
+                            ECS.SetActive(any_key_to_continue_id, false);
                         }
                     }
                     break;
@@ -223,7 +273,7 @@ namespace Scripting
                         ECS.SetGlobalPosition(credits_button_id, Vector3.Lerp(ECS.GetGlobalPosition(credits_button_id), new Vector3(0.7f, -0.7f, 0f), slide_in_speed * dt));
                         ECS.SetGlobalPosition(quit_button_id, Vector3.Lerp(ECS.GetGlobalPosition(quit_button_id), new Vector3(0.7f, -0.85f, 0f), slide_in_speed * dt));
 
-                        if (ECS.GetGlobalPosition(quit_button_id).X <= 0.71f)
+                        if (ECS.GetGlobalPosition(quit_button_id).X <= 0.70f)
                         {
                             anim_seq = ANIM_SEQUENCE.INPUT_READY;
                             ECS.SetActive(bg1_id, false);
@@ -302,7 +352,7 @@ namespace Scripting
                     case 0:
                         GameUtilities.LoadScene("Level01_M3_SplineReimport");
                         break;
-                    case 1:
+                    case 4:
                         GameUtilities.ExitScene();
                         break;
                     default:
