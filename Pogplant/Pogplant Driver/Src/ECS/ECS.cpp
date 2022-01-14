@@ -200,6 +200,7 @@ entt::entity ECS::CopyEntity(entt::entity _target)
 	Try_Copy<Projectile>(new_entity, _target);
 
 	Try_Copy<Scriptable>(new_entity, _target);
+	Try_Copy<PauseScriptable>(new_entity, _target);
 	//Try_Copy<>(new_entity, _target);
 	//Try_Copy<Prefab>(new_entity, _target);
 
