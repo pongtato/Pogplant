@@ -42,12 +42,14 @@ namespace Scripting
             monoScriptNames.Add("GameOverScreen");
             monoScriptNames.Add("GameEndingTrigger");
             monoScriptNames.Add("DashboardScreen");
+            monoScriptNames.Add("BonusItem");
         }
         
         private void AddPauseScripts()
         {
             // For Pause State Scripts
             pauseScriptNames.Add("TestPauseUpdate");
+            pauseScriptNames.Add("BobbleHeadMenu");
         }
 
         public string GetScriptNameElement(int index)

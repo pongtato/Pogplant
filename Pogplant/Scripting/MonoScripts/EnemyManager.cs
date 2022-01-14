@@ -38,11 +38,11 @@ namespace Scripting
 
         private List<uint> enemies_to_delete = new List<uint>();
 
-        public static uint score = 0;                                         // Current score
-        private static uint kill_score = 100;                            //Addition to base score everytime an enemy is killed
-        private static uint bonus_score = 50;                                  //Bonus score
+        public static uint score = 0;                                    // Current score
+        private static uint kill_score = 100;                            // Addition to base score everytime an enemy is killed
+        private static uint bonus_score = 50;                            // Bonus score
         private static int bonus_count;                                     
-        private static int bonus_increment_requirement = 5;              //Increase bonus everytime this amount of enemies is killed
+        private static int bonus_increment_requirement = 5;              // Increase bonus everytime this amount of enemies is killed
         static uint DashboardScreenID;
 
         // Start is called before the first frame update
@@ -251,14 +251,15 @@ namespace Scripting
             if (increment)
             {
                 ++bonus_count;
-                if (bonus_count >= bonus_increment_requirement)
+                if (bonus_count >= bonus_increment_requirement && PlayerScript.m_ComboActive)
                 {
+                    Console.WriteLine("Combo Activated");
                     bonus_count = 0;
                     score += bonus_score;
                     bonus_score += 10;
                 }
-                score += kill_score;
-
+                score += kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
+                PlayerScript.m_ComboDecayTimer = 0.0f;
                 //GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
             }
             //Decrease score

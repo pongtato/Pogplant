@@ -108,6 +108,21 @@ namespace Scripting
         float m_IncrementInterval = 0.1f;
         float m_IncrementTimer = 0.0f;
 
+        // Bonus Item / Bonus Effects
+        static public int m_BonusItem = 0;
+        const int m_BonusItemMax = 2;
+        static public bool m_EnableBonusScreen = false;
+        uint m_BobHeadMenuID;
+        static public uint m_ScoreMultiplierBobbleCount = 1;
+        static public uint m_ShieldBobbleCount = 1;
+        static public uint m_ComboDecayBobbleCount = 1;
+        static public float m_ComboDecayTimer = 0.0f;
+        const float m_ComboDecayTimeLimit = 5.0f;
+        static public bool m_ComboActive = true;
+
+        // Bonus Effects
+
+         
         public PlayerScript()
         {
 
@@ -126,6 +141,14 @@ namespace Scripting
             m_initialCameraPosition = ECS.GetComponent<Transform>(shipCameraEntity).Position;
             VOEntityID = ECS.FindEntityWithName("VO_AudioSource");
             //m_TrailRenderer = ECS.FindEntityWithName("TrailRender");
+
+            // For the bobble things
+            m_BobHeadMenuID = ECS.FindEntityWithName("BobbleHeadMenu");
+            m_ScoreMultiplierBobbleCount = 1;
+            m_ShieldBobbleCount = 1;
+            m_ComboDecayBobbleCount = 1;
+            m_ComboDecayTimer = 0.0f;
+            m_ComboActive = true;
 
             float yaw, pitch, roll;
             yaw = pitch = roll = 0;
@@ -171,6 +194,14 @@ namespace Scripting
 
             //Updates Follow Spline
             UpdateFollowSplineSpeed(dt);
+
+            // Updates bonus item 
+            UpdateBonusItem();
+
+            // Updates the combo bonus
+            UpdateCombo(dt);
+
+            // Updates Combo bonus
 
             ECS.GetTransformECS(entityID, ref playerTrans.Position, ref playerTrans.Rotation, ref playerTrans.Scale);
             Camera.GetCamera(shipCameraEntity, ref camera.m_Yaw, ref camera.m_Pitch, ref camera.m_Roll);
@@ -398,7 +429,7 @@ namespace Scripting
 			{
                 damageInvulTimer += dt;
 
-                if (damageInvulTimer > damageInvulPeriod)
+                if (damageInvulTimer > (damageInvulPeriod * m_ShieldBobbleCount))
                     damageInvul = false;
 
             }
@@ -540,6 +571,31 @@ namespace Scripting
                     //Console.WriteLine("Current FollowSpline speed is: " + FollowSpline.follow_speed);
                     m_IncrementTimer = m_IncrementInterval;
                 }
+            }
+        }
+
+        void UpdateBonusItem()
+        {
+            if(m_BonusItem >= m_BonusItemMax)
+            {
+                m_EnableBonusScreen = true;
+                ECS.SetActive(m_BobHeadMenuID, true);
+                GameUtilities.PauseScene();
+            }
+        }
+
+        void UpdateCombo(float dt)
+        {
+            m_ComboDecayTimer += dt;
+            
+            if(m_ComboDecayTimer >= (m_ComboDecayTimeLimit * m_ComboDecayBobbleCount))
+            {
+                m_ComboDecayTimer = 0.0f;
+                m_ComboActive = false;
+            }
+            else
+            {
+                m_ComboActive = true;
             }
         }
     }

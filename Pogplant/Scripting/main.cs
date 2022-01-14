@@ -137,5 +137,15 @@ namespace Scripting
         {
             return new TestPauseUpdate();
         }
+
+        public static BonusItem BonusItem()
+        {
+            return new BonusItem();
+        }
+
+        public static BobbleHeadMenu BobbleHeadMenu()
+        {
+            return new BobbleHeadMenu();
+        }
     }
 }
