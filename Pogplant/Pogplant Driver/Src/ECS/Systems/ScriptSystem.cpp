@@ -443,9 +443,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetGlobalRotation", SSH::SetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::SetGlobalScale", SSH::SetGlobalScale);
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);
-	mono_add_internal_call("Scripting.ECS::CreateAudioChannelGroup", SSH::CreateAudioChannelGroup);
-	mono_add_internal_call("Scripting.ECS::PauseAudioChannelGroup", SSH::PauseAudioChannelGroup);
-	mono_add_internal_call("Scripting.ECS::ResumeAudioChannelGroup", SSH::ResumeAudioChannelGroup);
+	
 	mono_add_internal_call("Scripting.ECS::GetBoxColliderECS", SSH::GetBoxColliderECS);
 	mono_add_internal_call("Scripting.ECS::GetTagECS", SSH::GetTagECS);
 	mono_add_internal_call("Scripting.ECS::SetColliderBox", SSH::SetColliderBox);
@@ -487,7 +485,17 @@ void ScriptSystem::BindFunctions()
 	//Save/loading
 	mono_add_internal_call("Scripting.PlayerPrefs::GetValueFloat", SSH::CustomSaverGetValueMono<float>);
 	mono_add_internal_call("Scripting.PlayerPrefs::GetValueInt", SSH::CustomSaverGetValueMono<int>);
+	mono_add_internal_call("Scripting.PlayerPrefs::SetValueFloat", SSH::CustomSaverSetValueMono<float>);
+	mono_add_internal_call("Scripting.PlayerPrefs::SetValueInt", SSH::CustomSaverSetValueMono<int>);
+	mono_add_internal_call("Scripting.PlayerPrefs::Save", PPU::CustomSaver::Save);
 
+	//Audio
+	mono_add_internal_call("Scripting.AudioEngine::PlayAudio", SSH::PlayAudio);
+	mono_add_internal_call("Scripting.AudioEngine::GetChannelGroupVolume", SSH::GetAudioChannelGroupVolume);
+	mono_add_internal_call("Scripting.AudioEngine::SetChannelGroupVolume", SSH::SetAudioChannelGroupVolume);
+	mono_add_internal_call("Scripting.AudioEngine::CreateChannelGroup", SSH::CreateAudioChannelGroup);
+	mono_add_internal_call("Scripting.AudioEngine::PauseChannelGroup", SSH::PauseAudioChannelGroup);
+	mono_add_internal_call("Scripting.AudioEngine::ResumeChannelGroup", SSH::ResumeAudioChannelGroup);
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)

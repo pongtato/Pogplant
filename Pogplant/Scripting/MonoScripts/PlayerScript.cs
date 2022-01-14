@@ -61,17 +61,24 @@ namespace Scripting
         private Vector3 calculatedVelocity;
         private Vector3 targetRotation;
 
-        private float shipYawFollowSpeed = 8f;
-        private float shipRollFollowSpeed = 8f;
-        private float shipPitchFollowSpeed = 8f;
+        private const float shipYawFollowSpeed = 8f;
+        private const float shipRollFollowSpeed = 8f;
+        private const float shipPitchFollowSpeed = 8f;
 
         //Change this to make the ship tilt more according to movement
-        private float shipYawMultiplier = 2.5f;
-        private float shipPitchMultiplier = 3.5f;
-        private float shipRollMultiplier = 3.5f;
+        private const float shipYawMultiplier = 2.5f;
+        private const float shipPitchMultiplier = 3.5f;
+        private const float shipRollMultiplier = 3.5f;
 
-        private float cameraShakeInitMultiplier = 0.007f;
-        private float cameraShakeMagMultiplier = 5f;
+        private const float cameraShakeInitMultiplier = 0.007f;
+        private const float cameraShakeMagMultiplier = 5f;
+
+        //How long the player should be invulnerable if damage is taken
+        private const float damageInvulPeriod = 0.1f;
+
+        private bool damageInvul = false;
+        private float damageInvulTimer = 0.0f;
+
 
         //How much ship should roll based off rotation from the spline
         //private float shipRollMultiplierRotation = 0.25f;
@@ -387,6 +394,14 @@ namespace Scripting
                 ECS.SetTransformECS(shipCameraEntity, m_cameraPosition, m_cameraRotation, m_cameraScale);
             }
 
+            if(damageInvul)
+			{
+                damageInvulTimer += dt;
+
+                if (damageInvulTimer > damageInvulPeriod)
+                    damageInvul = false;
+
+            }
         }
 
         public void SpawnWave()
@@ -458,6 +473,12 @@ namespace Scripting
 
         public void TakeDamage(float damage)
         {
+            if (damageInvul)
+                return;
+
+            damageInvul = true;
+            damageInvulTimer = 0.0f;
+
             if (health > 0)
             {
                 health -= damage;

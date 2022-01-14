@@ -399,6 +399,18 @@ namespace SSH
 		PPA::AudioEngine::ResumeChannelGroup(channelGroupNameStr);
 	}
 
+	float GetAudioChannelGroupVolume(MonoString* channelGroupName)
+	{
+		std::string channelGroupNameStr = mono_string_to_utf8(channelGroupName);
+		return PPA::AudioEngine::GetChannelGroupVolume(channelGroupNameStr);
+	}
+
+	void SetAudioChannelGroupVolume(MonoString* channelGroupName, float volume)
+	{
+		std::string channelGroupNameStr = mono_string_to_utf8(channelGroupName);
+		PPA::AudioEngine::SetChannelGroupVolume(channelGroupNameStr, volume);
+	}
+
 	void AddComponentBoxCollider(unsigned int id, bool isTrigger, MonoString* collisionLayer, glm::vec3 extends, glm::vec3 centre)
 	{
 		(void)isTrigger;

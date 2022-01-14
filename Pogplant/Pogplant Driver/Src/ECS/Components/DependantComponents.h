@@ -223,7 +223,8 @@ namespace Components
 				m_audioSources[id].c_channelID = PPA::AudioEngine::PlaySound(
 					m_audioSources[id].m_fileDir,
 					m_audioSources[id].m_volume,
-					pos);
+					pos,
+					channelGroupName);
 
 				m_audioSources[id].c_playing = true;
 			}

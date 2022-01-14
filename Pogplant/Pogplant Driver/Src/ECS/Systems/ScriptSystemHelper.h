@@ -46,9 +46,12 @@ namespace SSH
 	void LookAtClamped(std::uint32_t self_entityID, glm::vec3& target);
 	glm::vec3 GetUpVector(std::uint32_t self_entityID);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index, MonoString* channelGroupName = nullptr);
-	void CreateAudioChannelGroup(MonoString* channelGroupName = nullptr);
-	void PauseAudioChannelGroup(MonoString* channelGroupName = nullptr);
-	void ResumeAudioChannelGroup(MonoString* channelGroupName = nullptr);
+	void CreateAudioChannelGroup(MonoString* channelGroupName);
+	void PauseAudioChannelGroup(MonoString* channelGroupName);
+	void ResumeAudioChannelGroup(MonoString* channelGroupName);
+	float GetAudioChannelGroupVolume(MonoString* channelGroupName);
+	void SetAudioChannelGroupVolume(MonoString* channelGroupName, float volume);
+
 	void LogToEditor(MonoString* scriptName, MonoString* debugLog);
 
 	bool CheckValidEntity(std::uint32_t entityID); // returns true if entity is valid
@@ -96,10 +99,17 @@ namespace SSH
 	void ResumeScene();
 
 	template <typename T>
-	inline static T CustomSaverGetValueMono(MonoString* monoKey, const T& defaultValue, bool loadFromDocuments)
+	inline static T CustomSaverGetValueMono(MonoString* monoKey, T defaultValue, bool loadFromDocuments)
 	{
 		const char* key = mono_string_to_utf8(monoKey);
 		return PPU::CustomSaver::template GetValue<T>(key, defaultValue, loadFromDocuments);
+	}
+
+	template <typename T>
+	inline static void CustomSaverSetValueMono(MonoString* monoKey, T value, bool saveToDocuments)
+	{
+		const char* key = mono_string_to_utf8(monoKey);
+		PPU::CustomSaver::template Append<T>(key, value, saveToDocuments);
 	}
 
 	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params);

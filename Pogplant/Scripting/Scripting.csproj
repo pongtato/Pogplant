@@ -75,6 +75,7 @@
     <Compile Include="MonoScripts\FlockController.cs" />
     <Compile Include="PauseScripts\TestPauseUpdate.cs" />
     <Compile Include="MonoScripts\TurretController.cs" />
+    <Compile Include="Utilities\AudioEngine.cs" />
     <Compile Include="Utilities\DebugUtilities.cs" />
     <Compile Include="Utilities\MathUtils.cs" />
     <Compile Include="Utilities\PlayerPrefs.cs" />
