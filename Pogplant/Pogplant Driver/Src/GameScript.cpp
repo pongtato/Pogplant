@@ -274,29 +274,10 @@ namespace Scripting
 
 		if (player_projectile_script && enemy_object_script)
 		{
-			bool enemy_turret = enemy_object_script->m_ScriptTypes.contains("BaseTurret");
-			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy_turret)
-			{
-				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
-				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
-				SSH::InvokeFunction("BaseTurret", "TakeDamage", other, player_projectile_script->m_Damage);
-			}
-
-			bool enemy_gatling = enemy_object_script->m_ScriptTypes.contains("BaseGattling");
-			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy_gatling)
-			{
-				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
-				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
-				SSH::InvokeFunction("BaseGattling", "TakeDamage", other, player_projectile_script->m_Damage);
-			}
-
-			bool enemy_flock = enemy_object_script->m_ScriptTypes.contains("BaseFlock");
-			if (player_projectile_script->m_Ownertype == Projectile::OwnerType::Player && enemy_flock)
-			{
-				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
-				// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
-				SSH::InvokeFunction("BaseFlock", "TakeDamage", other, player_projectile_script->m_Damage);
-			}
+			GameScript::InvokeEnemyTakeDamage("BaseTurret", object, other, player_projectile_script, enemy_object_script);
+			GameScript::InvokeEnemyTakeDamage("BaseGattling", object, other, player_projectile_script, enemy_object_script);
+			GameScript::InvokeEnemyTakeDamage("BaseFlock", object, other, player_projectile_script, enemy_object_script);
+			GameScript::InvokeEnemyTakeDamage("L1BossShield", object, other, player_projectile_script, enemy_object_script);
 		}
 		if (player_projectile_script)
 		{
@@ -304,14 +285,13 @@ namespace Scripting
 			{
 				if (PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other) && PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::BoxCollider>(other)->collisionLayer == "ENEMY")
 				{
-					entt::entity playerbox = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithTag("Player");
-					if (playerbox != entt::null)
+					if (GameScript::GetPlayerBox() != entt::null)
 					{
-						const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(playerbox);
+						const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(GameScript::GetPlayerBox());
 						if (playerbox_scriptable && playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
 						{
 							PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
-							SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", playerbox, static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
+							SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
 						}
 					}
 				}
@@ -745,6 +725,18 @@ namespace Scripting
 			}
 			glm::vec3 scale_down = glm::mix(Final_scale, start_scale, scale_down_dt / scale_down_time);
 			SSH::SetScale(m_Explosion, scale_down);
+		}
+	}
+
+	//Helper function for Playerbullet taking damage
+	void GameScript::InvokeEnemyTakeDamage(std::string _ScriptName, entt::entity object, entt::entity other,Components::Projectile* player_projectile_p , Components::Scriptable* enemy_script_p)
+	{
+		bool script_check = enemy_script_p->m_ScriptTypes.contains(_ScriptName);
+		if (player_projectile_p->m_Ownertype == Projectile::OwnerType::Player && script_check)
+		{
+			PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
+			// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
+			SSH::InvokeFunction(_ScriptName, "TakeDamage", other, player_projectile_p->m_Damage);
 		}
 	}
 

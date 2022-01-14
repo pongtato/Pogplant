@@ -72,10 +72,17 @@ namespace Scripting
 	static bool GetAlive(std::uint32_t entityID);
 	static void PlayEnemyDeathAnimation(std::uint32_t entityID);
 
+
+	static entt::entity GetPlayerBox() { return m_playerbox; }
+	static entt::entity GetPlayerShip() { return m_playership; }
+	// Helper Function for taking damage
+	static void InvokeEnemyTakeDamage(std::string _ScriptName,
+																		entt::entity object ,entt::entity other, 
+																		Components::Projectile* player_projectile_pointer, Components::Scriptable* enemy_script_pointer);  
 	private:
 
-		static entt::entity m_playerbox;
-		static entt::entity m_playership;
+	static entt::entity m_playerbox;
+	static entt::entity m_playership;
 	};
 }
 

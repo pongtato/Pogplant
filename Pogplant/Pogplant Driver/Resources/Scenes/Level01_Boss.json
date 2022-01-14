@@ -2044,6 +2044,67 @@
 		}
 	},
 	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				6.5,
+				6.5,
+				0.5
+			],
+			"isStatic" : false,
+			"isTrigger" : false
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "L1 Boss Script"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"L1BossShield" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.1736557483673096,
+				11.180336952209473,
+				-17.118032455444336
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
 		"Name" : 
 		{
 			"m_Name" : "Boss Shield"
@@ -2078,9 +2139,9 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				11.460818290710449,
-				-16.766532897949219
+				-1.1736557483673096,
+				0.28048133850097656,
+				0.35149955749511719
 			],
 			"m_rotation" : 
 			[
@@ -2598,47 +2659,6 @@
 		"Name" : 
 		{
 			"m_Name" : "L1 Black Screen"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Name" : 
-		{
-			"m_Name" : "L1 Boss Script"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"L1BossShield" : false
 		},
 		"Tag" : 
 		{

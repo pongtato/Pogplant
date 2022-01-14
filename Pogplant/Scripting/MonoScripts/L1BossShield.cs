@@ -48,17 +48,19 @@ namespace Scripting
 
         public L1BossShield()
         {
+
+        }
+
+        public override void Start()
+        {
             black_screen_id = ECS.FindEntityWithName("L1 Black Screen");
             shield_object_id = ECS.FindEntityWithName("Boss Shield");
             sparks_particle_id = ECS.FindEntityWithName("Shield Sparks");
             eye_upper_lid_id = ECS.FindEntityWithName("Boss Eye Upper Lid");
             eye_lower_lid_id = ECS.FindEntityWithName("Boss Eye Lower Lid");
             particle_cannon_id = ECS.FindEntityWithName("Boss Particle Cannon");
-        }
 
-        public override void Start()
-        {
-            health = 1;
+            health = 5;
             is_shield_broken = false;
             ECS.SetActive(black_screen_id, false);
             ECS.SetActive(particle_cannon_id, false);
@@ -157,16 +159,19 @@ namespace Scripting
         public void TakeDamage(float damage)
         {
             health -= damage;
-            Console.WriteLine("Health: " + health);
+            //Make sure it does not accidently overflow
+            if (health < -100.0f)
+                health = -100.0f;
+            //Console.WriteLine("Health: " + health);
             //Triggers the shield depleting and starts the sequence of the OHK
             if (health <= 0)
             {
-                Console.WriteLine("Dead");
+                //Console.WriteLine("Dead");
                 if (!is_shield_broken)
                 {
                     //Play shield destroyed audio
                     //ECS.PlayAudio(entityID, 0);
-                    Console.WriteLine("shield broken");
+                    //Console.WriteLine("shield broken");
 
                     //Play electric sparks particle
                     ECS.SetActive(sparks_particle_id, true);
