@@ -9,7 +9,7 @@
 				"Volume" : 0.10000000149011612
 			}
 		},
-		"Children" : 11,
+		"Children" : 16,
 		"Name" : 
 		{
 			"m_Name" : "MainMenuController"
@@ -46,6 +46,326 @@
 			[
 				1.0,
 				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "StartGame_MM_A.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Start Button Faded"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.69999998807907104,
+				-0.25,
+				0.95999997854232788
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "HowToPlay_MM_A.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "How To Play Button Faded"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.69999998807907104,
+				-0.40000000596046448,
+				0.95999997854232788
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Settings_MM_A.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Settings Button Faded"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.69999998807907104,
+				-0.55000001192092896,
+				0.95999997854232788
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Credits_MM_A.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Credits Button Faded"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.69999998807907104,
+				-0.69999998807907104,
+				0.95999997854232788
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "QuitGame_MM_A.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Quit Button Faded"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.69999998807907104,
+				-0.85000002384185791,
+				0.95999997854232788
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
 				1.0
 			]
 		}
@@ -280,7 +600,7 @@
 			"m_Color" : 
 			[
 				1.0,
-				0.99999606609344482,
+				0.99999630451202393,
 				0.99998998641967773,
 				1.0
 			],
@@ -450,7 +770,7 @@
 			[
 				2.5999999046325684,
 				-0.85000002384185791,
-				0.0
+				0.95999997854232788
 			],
 			"m_rotation" : 
 			[
@@ -514,7 +834,7 @@
 			[
 				1.3999999761581421,
 				-0.25,
-				0.0
+				0.95999997854232788
 			],
 			"m_rotation" : 
 			[
@@ -578,7 +898,7 @@
 			[
 				1.7000000476837158,
 				-0.40000000596046448,
-				0.0
+				0.95999997854232788
 			],
 			"m_rotation" : 
 			[
@@ -642,7 +962,7 @@
 			[
 				2.0,
 				-0.55000001192092896,
-				0.0
+				0.95999997854232788
 			],
 			"m_rotation" : 
 			[
@@ -706,7 +1026,7 @@
 			[
 				2.2999999523162842,
 				-0.69999998807907104,
-				0.0
+				0.95999997854232788
 			],
 			"m_rotation" : 
 			[
@@ -723,7 +1043,7 @@
 		}
 	},
 	{
-		"Children" : 10,
+		"Children" : 9,
 		"Name" : 
 		{
 			"m_Name" : "Settings Menu"
@@ -750,390 +1070,6 @@
 			[
 				1.0,
 				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "SliderFill_SM.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Master Bar FG"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.13300000131130219,
-				0.25999999046325684,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0001042740695993416
-			],
-			"m_scale" : 
-			[
-				0.11999999731779099,
-				0.11999999731779099,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "BlackBG.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Black BG"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				2.0,
-				2.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "SliderBacking_SM.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "SFX Bar FG"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.30000001192092896,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.5,
-				0.5,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "SliderBacking_SM.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "VO Bar FG"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.30000001192092896,
-				-0.25,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.5,
-				0.5,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "Backing_SM.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Settings BG"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.10000002384185791
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				2.0,
-				2.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "MasterVolume_SM.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Master Volume"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.31999999284744263,
-				0.25,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.5,
-				0.5,
 				1.0
 			]
 		}
@@ -1314,7 +1250,7 @@
 			[
 				-0.31999999284744263,
 				-0.5,
-				0.0
+				0.10000002384185791
 			],
 			"m_rotation" : 
 			[
@@ -1378,6 +1314,134 @@
 			[
 				0.30000001192092896,
 				0.25,
+				0.89999997615814209
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "SliderFill_SM.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Master Bar FG"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.13300000131130219,
+				0.25999999046325684,
+				0.85000002384185791
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0001042740695993416
+			],
+			"m_scale" : 
+			[
+				0.11999999731779099,
+				0.11999999731779099,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "SliderBacking_SM.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SFX Bar FG"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.30000001192092896,
+				0.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -1391,6 +1455,238 @@
 				0.5,
 				0.5,
 				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "SliderBacking_SM.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "VO Bar FG"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.30000001192092896,
+				-0.25,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Backing_SM.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Settings BG"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.94999998807907104
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "MasterVolume_SM.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Master Volume"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.31999999284744263,
+				0.25,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Camera" : 
+		{
+			"m_Active" : true,
+			"m_Far" : 420.0,
+			"m_Fov" : 45.0,
+			"m_Near" : 0.10000000149011612,
+			"m_Pitch" : 0.0,
+			"m_Yaw" : 0.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Camera"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.0079998970031738,
+				17.680999755859375,
+				67.745002746582031
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999803304672241,
+				0.99999910593032837,
+				0.99999803304672241
 			]
 		}
 	},
@@ -2124,46 +2420,6 @@
 				0.99999988079071045,
 				1.0,
 				0.99999988079071045
-			]
-		}
-	},
-	{
-		"Camera" : 
-		{
-			"m_Active" : true,
-			"m_Far" : 420.0,
-			"m_Fov" : 45.0,
-			"m_Near" : 0.10000000149011612,
-			"m_Pitch" : 0.0,
-			"m_Yaw" : 0.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Camera"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-6.0079998970031738,
-				17.680999755859375,
-				67.745002746582031
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999803304672241,
-				0.99999910593032837,
-				0.99999803304672241
 			]
 		}
 	}

@@ -122,6 +122,9 @@ namespace Scripting
 
         // Bonus Effects
 
+        //Pause menu
+        static public bool m_EnablePauseMenu = false;
+
          
         public PlayerScript()
         {
@@ -378,6 +381,14 @@ namespace Scripting
             ECS.SetVelocity(entityID, playerVel);
             ECS.SetTransformECS(entityID, playerTrans.Position, playerTrans.Rotation, playerTrans.Scale);
 
+
+            //Pause menu
+            if (InputUtility.onKeyTriggered("ESCAPE"))
+            {
+                Console.WriteLine("pausing");
+                m_EnablePauseMenu = true;
+                GameUtilities.PauseScene();
+            }
         }
 
         private Vector3 m_initialCameraPosition;

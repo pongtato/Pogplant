@@ -213,6 +213,76 @@
             "FileName" : "BlackBG.dds",
             "Dir"       : "Resources/Textures/UI/Main Menu",
             "Alpha"     : true
+        },
+        {
+            "FileName" : "Backing_PM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "HowToPlay_PM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "HowToPlay_PM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "ResumeGame_PM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "ResumeGame_PM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Settings_PM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Settings_PM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "MainMenu_PM.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "MainMenu_PM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PM_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Backing_PU.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PU_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Cross_PU.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PU_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Cross_PU_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PU_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Tick_PU.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PU_DDS",
+            "Alpha"     : true
+        },
+        {
+            "FileName" : "Tick_PU_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/PU_DDS",
+            "Alpha"     : true
         }
     ],
 

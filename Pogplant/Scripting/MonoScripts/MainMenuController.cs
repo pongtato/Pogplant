@@ -39,10 +39,15 @@ namespace Scripting
 
         //Menu buttons
         uint start_button_id;
+        uint start_button_faded_id;
         uint how_to_play_button_id;
+        uint how_to_play_button_faded_id;
         uint settings_button_id;
+        uint settings_button_faded_id;
         uint credits_button_id;
+        uint credits_button_faded_id;
         uint quit_button_id;
+        uint quit_button_faded_id;
 
         //UI elements
         uint logo_id;
@@ -55,15 +60,16 @@ namespace Scripting
         bool move_arrow_left;
 
         //Anim sequences
-        enum ANIM_SEQUENCE
+        enum MENU_STATE
         {
             LOGO_SHRINK_EXPAND,
             ANY_KEY_FLASHING,
             MOVE_LOGO_TOP_LEFT,
             BUTTONS_SLIDE_IN,
-            INPUT_READY
+            INPUT_READY,
+            IN_SUB_MENU
         }
-        ANIM_SEQUENCE anim_seq;
+        MENU_STATE menu_state;
 
         //Logo expand
         const float max_logo_expand_scale = 2.2f;
@@ -131,7 +137,7 @@ namespace Scripting
             arrow_id = ECS.FindChildEntityWithName(ap, "Arrow");
             ECS.SetActive(arrow_id, false);
 
-            anim_seq = ANIM_SEQUENCE.LOGO_SHRINK_EXPAND;
+            menu_state = MENU_STATE.LOGO_SHRINK_EXPAND;
             shrink_logo = false;
 
             any_key_to_continue_id = ECS.FindEntityWithName("Any Key Continue");
@@ -144,6 +150,18 @@ namespace Scripting
 
             settings_menu_id = ECS.FindEntityWithName("Settings Menu");
             ECS.SetActive(settings_menu_id, false);
+
+            start_button_faded_id = ECS.FindEntityWithName("Start Button Faded");
+            how_to_play_button_faded_id = ECS.FindEntityWithName("How To Play Button Faded");
+            settings_button_faded_id = ECS.FindEntityWithName("Settings Button Faded");
+            credits_button_faded_id = ECS.FindEntityWithName("Credits Button Faded");
+            quit_button_faded_id = ECS.FindEntityWithName("Quit Button Faded");
+
+            ECS.SetActive(start_button_faded_id, false);
+            ECS.SetActive(how_to_play_button_faded_id, false);
+            ECS.SetActive(settings_button_faded_id, false);
+            ECS.SetActive(credits_button_faded_id, false);
+            ECS.SetActive(quit_button_faded_id, false);
         }
 
         public override void Start()
@@ -153,7 +171,7 @@ namespace Scripting
 
         public override void Update(float dt)
         {
-            if (anim_seq == ANIM_SEQUENCE.INPUT_READY)
+            if (menu_state == MENU_STATE.INPUT_READY)
             {
                 UpdateInputs();
                 UpdateArrowAnimation(dt);
@@ -181,9 +199,9 @@ namespace Scripting
 
         void UpdateAnimSequence(float dt)
         {
-            switch (anim_seq)
+            switch (menu_state)
             {
-                case ANIM_SEQUENCE.LOGO_SHRINK_EXPAND:
+                case MENU_STATE.LOGO_SHRINK_EXPAND:
                     {
 
                         if (!shrink_logo)
@@ -201,13 +219,13 @@ namespace Scripting
 
                             if (ECS.GetGlobalScale(logo_id).X <= final_logo_expand_scale + 0.1f)
                             {
-                                anim_seq = ANIM_SEQUENCE.ANY_KEY_FLASHING;
+                                menu_state = MENU_STATE.ANY_KEY_FLASHING;
                                 ECS.SetActive(any_key_to_continue_id, true);
                             }
                         }
                     }
                     break;
-                case ANIM_SEQUENCE.ANY_KEY_FLASHING:
+                case MENU_STATE.ANY_KEY_FLASHING:
                     {
                         //Button spin out
                         if (InputUtility.onAnyKey())
@@ -248,16 +266,16 @@ namespace Scripting
 
                         if (ECS.GetGlobalScale(any_key_to_continue_id).X <= 0.57f)
                         {
-                            anim_seq = ANIM_SEQUENCE.MOVE_LOGO_TOP_LEFT;
+                            menu_state = MENU_STATE.MOVE_LOGO_TOP_LEFT;
                             ECS.SetActive(any_key_to_continue_id, false);
                         }
                     }
                     break;
-                case ANIM_SEQUENCE.MOVE_LOGO_TOP_LEFT:
+                case MENU_STATE.MOVE_LOGO_TOP_LEFT:
                     {
                         if (ECS.GetGlobalPosition(logo_id).X < -0.39f)
                         {
-                            anim_seq = ANIM_SEQUENCE.BUTTONS_SLIDE_IN;
+                            menu_state = MENU_STATE.BUTTONS_SLIDE_IN;
                         }
                         else
                         {
@@ -265,7 +283,7 @@ namespace Scripting
                         }
                     }
                     break;
-                case ANIM_SEQUENCE.BUTTONS_SLIDE_IN:
+                case MENU_STATE.BUTTONS_SLIDE_IN:
                     {
                         ECS.SetGlobalPosition(start_button_id, Vector3.Lerp(ECS.GetGlobalPosition(start_button_id), new Vector3(0.7f, -0.25f, 0f), slide_in_speed * dt));
                         ECS.SetGlobalPosition(how_to_play_button_id, Vector3.Lerp(ECS.GetGlobalPosition(how_to_play_button_id), new Vector3(0.7f, -0.4f, 0f), slide_in_speed * dt));
@@ -273,9 +291,9 @@ namespace Scripting
                         ECS.SetGlobalPosition(credits_button_id, Vector3.Lerp(ECS.GetGlobalPosition(credits_button_id), new Vector3(0.7f, -0.7f, 0f), slide_in_speed * dt));
                         ECS.SetGlobalPosition(quit_button_id, Vector3.Lerp(ECS.GetGlobalPosition(quit_button_id), new Vector3(0.7f, -0.85f, 0f), slide_in_speed * dt));
 
-                        if (ECS.GetGlobalPosition(quit_button_id).X <= 0.70f)
+                        if (ECS.GetGlobalPosition(quit_button_id).X <= 0.701f)
                         {
-                            anim_seq = ANIM_SEQUENCE.INPUT_READY;
+                            menu_state = MENU_STATE.INPUT_READY;
                             ECS.SetActive(bg1_id, false);
                             ECS.SetActive(bg2_id, true);
                             ECS.SetActive(arrow_id, true);
@@ -313,34 +331,109 @@ namespace Scripting
             switch (active_index)
             {
                 case 0:
-                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
-                        new Vector3(GetXFromButton(active_index), buttonMap["Start Button"].transform.Position.Y, buttonMap["Start Button"].transform.Position.Z),
-                        buttonMap["Arrow Parent"].transform.Rotation,
-                        buttonMap["Arrow Parent"].transform.Scale);
+                    {
+                        ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                            new Vector3(GetXFromButton(active_index), buttonMap["Start Button"].transform.Position.Y, buttonMap["Start Button"].transform.Position.Z),
+                            buttonMap["Arrow Parent"].transform.Rotation,
+                            buttonMap["Arrow Parent"].transform.Scale);
+
+                        //Set only the selected button to be non faded
+                        ECS.SetActive(start_button_id, true);
+                        ECS.SetActive(how_to_play_button_id, false);
+                        ECS.SetActive(settings_button_id, false);
+                        ECS.SetActive(credits_button_id, false);
+                        ECS.SetActive(quit_button_id, false);
+
+                        ECS.SetActive(start_button_faded_id, false);
+                        ECS.SetActive(how_to_play_button_faded_id, true);
+                        ECS.SetActive(settings_button_faded_id, true);
+                        ECS.SetActive(credits_button_faded_id, true);
+                        ECS.SetActive(quit_button_faded_id, true);
+                    }
                     break;
                 case 1:
-                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
-                        new Vector3(GetXFromButton(active_index), buttonMap["How To Play Button"].transform.Position.Y, buttonMap["How To Play Button"].transform.Position.Z),
-                        buttonMap["Arrow Parent"].transform.Rotation,
-                        buttonMap["Arrow Parent"].transform.Scale);
+                    {
+                        ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                            new Vector3(GetXFromButton(active_index), buttonMap["How To Play Button"].transform.Position.Y, buttonMap["How To Play Button"].transform.Position.Z),
+                            buttonMap["Arrow Parent"].transform.Rotation,
+                            buttonMap["Arrow Parent"].transform.Scale);
+
+                        //Set only the selected button to be non faded
+                        ECS.SetActive(start_button_id, false);
+                        ECS.SetActive(how_to_play_button_id, true);
+                        ECS.SetActive(settings_button_id, false);
+                        ECS.SetActive(credits_button_id, false);
+                        ECS.SetActive(quit_button_id, false);
+
+                        ECS.SetActive(start_button_faded_id, true);
+                        ECS.SetActive(how_to_play_button_faded_id, false);
+                        ECS.SetActive(settings_button_faded_id, true);
+                        ECS.SetActive(credits_button_faded_id, true);
+                        ECS.SetActive(quit_button_faded_id, true);
+                    }
                     break;
                 case 2:
-                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
-                        new Vector3(GetXFromButton(active_index), buttonMap["Settings Button"].transform.Position.Y, buttonMap["Settings Button"].transform.Position.Z),
-                        buttonMap["Arrow Parent"].transform.Rotation,
-                        buttonMap["Arrow Parent"].transform.Scale);
+                    {
+                        ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                            new Vector3(GetXFromButton(active_index), buttonMap["Settings Button"].transform.Position.Y, buttonMap["Settings Button"].transform.Position.Z),
+                            buttonMap["Arrow Parent"].transform.Rotation,
+                            buttonMap["Arrow Parent"].transform.Scale);
+
+                        //Set only the selected button to be non faded
+                        ECS.SetActive(start_button_id, false);
+                        ECS.SetActive(how_to_play_button_id, false);
+                        ECS.SetActive(settings_button_id, true);
+                        ECS.SetActive(credits_button_id, false);
+                        ECS.SetActive(quit_button_id, false);
+
+                        ECS.SetActive(start_button_faded_id, true);
+                        ECS.SetActive(how_to_play_button_faded_id, true);
+                        ECS.SetActive(settings_button_faded_id, false);
+                        ECS.SetActive(credits_button_faded_id, true);
+                        ECS.SetActive(quit_button_faded_id, true);
+                    }
                     break;
                 case 3:
-                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
-                        new Vector3(GetXFromButton(active_index), buttonMap["Credits Button"].transform.Position.Y, buttonMap["Credits Button"].transform.Position.Z),
-                        buttonMap["Arrow Parent"].transform.Rotation,
-                        buttonMap["Arrow Parent"].transform.Scale);
+                    {
+                        ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                            new Vector3(GetXFromButton(active_index), buttonMap["Credits Button"].transform.Position.Y, buttonMap["Credits Button"].transform.Position.Z),
+                            buttonMap["Arrow Parent"].transform.Rotation,
+                            buttonMap["Arrow Parent"].transform.Scale);
+
+                        //Set only the selected button to be non faded
+                        ECS.SetActive(start_button_id, false);
+                        ECS.SetActive(how_to_play_button_id, false);
+                        ECS.SetActive(settings_button_id, false);
+                        ECS.SetActive(credits_button_id, true);
+                        ECS.SetActive(quit_button_id, false);
+
+                        ECS.SetActive(start_button_faded_id, true);
+                        ECS.SetActive(how_to_play_button_faded_id, true);
+                        ECS.SetActive(settings_button_faded_id, true);
+                        ECS.SetActive(credits_button_faded_id, false);
+                        ECS.SetActive(quit_button_faded_id, true);
+                    }
                     break;
                 case 4:
-                    ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
-                        new Vector3(GetXFromButton(active_index), buttonMap["Quit Button"].transform.Position.Y, buttonMap["Quit Button"].transform.Position.Z),
-                        buttonMap["Arrow Parent"].transform.Rotation,
-                        buttonMap["Arrow Parent"].transform.Scale);
+                    {
+                        ECS.SetTransformECS(buttonMap["Arrow Parent"].id,
+                            new Vector3(GetXFromButton(active_index), buttonMap["Quit Button"].transform.Position.Y, buttonMap["Quit Button"].transform.Position.Z),
+                            buttonMap["Arrow Parent"].transform.Rotation,
+                            buttonMap["Arrow Parent"].transform.Scale);
+
+                        //Set only the selected button to be non faded
+                        ECS.SetActive(start_button_id, false);
+                        ECS.SetActive(how_to_play_button_id, false);
+                        ECS.SetActive(settings_button_id, false);
+                        ECS.SetActive(credits_button_id, false);
+                        ECS.SetActive(quit_button_id, true);
+
+                        ECS.SetActive(start_button_faded_id, true);
+                        ECS.SetActive(how_to_play_button_faded_id, true);
+                        ECS.SetActive(settings_button_faded_id, true);
+                        ECS.SetActive(credits_button_faded_id, true);
+                        ECS.SetActive(quit_button_faded_id, false);
+                    }
                     break;
             }
 

@@ -584,8 +584,8 @@ namespace Pogplant
 		DrawText(registry, _EditorMode);
 
 		/// Canvas
-		//glEnable(GL_BLEND);
-		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		// Render G pass objects first
 		ShaderLinker::Use("BASIC");
 		MeshBuilder::RebindQuad();
@@ -605,7 +605,7 @@ namespace Pogplant
 		ShaderLinker::SetUniform("b_Editor", _EditorMode);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();
-		//glDisable(GL_BLEND);
+		glDisable(GL_BLEND);
 
 		if (_EditorMode)
 		{
