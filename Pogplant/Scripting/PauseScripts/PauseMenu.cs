@@ -94,20 +94,20 @@ namespace Scripting
             //Confirmation menu full opacity
             uint confirm_yes_button_id = ECS.FindChildEntityWithName(confirm_menu_id, "Confirm Yes Button");
             ECS.GetTransformECS(confirm_yes_button_id, ref pos, ref rot, ref scale);
-            button_map.Add("Confirm Yes Button", new GameObject(confirm_yes_button_id, new Transform(pos, rot, scale), "Confirm Yes Button"));
+            confirm_button_map.Add("Confirm Yes Button", new GameObject(confirm_yes_button_id, new Transform(pos, rot, scale), "Confirm Yes Button"));
 
             uint confirm_no_button_id = ECS.FindChildEntityWithName(confirm_menu_id, "Confirm No Button");
             ECS.GetTransformECS(confirm_no_button_id, ref pos, ref rot, ref scale);
-            button_map.Add("Confirm No Button", new GameObject(confirm_no_button_id, new Transform(pos, rot, scale), "Confirm No Button"));
+            confirm_button_map.Add("Confirm No Button", new GameObject(confirm_no_button_id, new Transform(pos, rot, scale), "Confirm No Button"));
 
             //Confirmation menu faded
             uint confirm_yes_button_faded_id = ECS.FindChildEntityWithName(confirm_menu_id, "Confirm Yes Button Faded");
             ECS.GetTransformECS(confirm_yes_button_faded_id, ref pos, ref rot, ref scale);
-            button_map.Add("Confirm Yes Button Faded", new GameObject(confirm_yes_button_faded_id, new Transform(pos, rot, scale), "Confirm Yes Button Faded"));
+            faded_confirm_button_map.Add("Confirm Yes Button Faded", new GameObject(confirm_yes_button_faded_id, new Transform(pos, rot, scale), "Confirm Yes Button Faded"));
 
             uint confirm_no_button_faded_id = ECS.FindChildEntityWithName(confirm_menu_id, "Confirm No Button Faded");
             ECS.GetTransformECS(confirm_no_button_faded_id, ref pos, ref rot, ref scale);
-            button_map.Add("Confirm No Button Faded", new GameObject(confirm_no_button_faded_id, new Transform(pos, rot, scale), "Confirm No Button Faded"));
+            faded_confirm_button_map.Add("Confirm No Button Faded", new GameObject(confirm_no_button_faded_id, new Transform(pos, rot, scale), "Confirm No Button Faded"));
 
             menu_state = MENU_STATE.INACTIVE;
             ECS.SetActive(confirm_menu_id, false);
@@ -208,79 +208,39 @@ namespace Scripting
             {
                 --confirmation_index;
 
-                if (confirmation_index < (int)PAUSE_MENU_BUTTONS.RESUME_GAME)
+                if (confirmation_index < (int)CONFIRMATION_MENU_BUTTONS.NO)
                 {
-                    confirmation_index = (int)PAUSE_MENU_BUTTONS.RETURN_TO_MENU;
-
+                    confirmation_index = (int)CONFIRMATION_MENU_BUTTONS.YES;
                 }
+                UpdateConfirmationButtonFade();
             }
             else if (InputUtility.onKeyTriggered("MENURIGHT"))
             {
                 ++confirmation_index;
 
-                if (confirmation_index > (int)PAUSE_MENU_BUTTONS.RETURN_TO_MENU)
+                if (confirmation_index > (int)CONFIRMATION_MENU_BUTTONS.YES)
                 {
-                    confirmation_index = (int)PAUSE_MENU_BUTTONS.RESUME_GAME;
-
+                    confirmation_index = (int)CONFIRMATION_MENU_BUTTONS.NO;
                 }
-            }
-
-            switch (confirmation_index)
-            {
-                case 0:
-                    //Set only the selected button to be non faded
-                    ToggleButtonFade(confirm_button_map, faded_confirm_button_map, "Confirm Yes Button", "Confirm Yes Button Faded");
-                    break;
-                case 1:
-                    //Set only the selected button to be non faded
-                    ToggleButtonFade(confirm_button_map, faded_confirm_button_map, "Confirm No Button", "Confirm No Button Faded");
-                    break;
+                UpdateConfirmationButtonFade();
             }
 
             if (InputUtility.onKeyTriggered("MENUSELECT"))
             {
                 //Cancel or confirm return to main menu based on index
-                switch (active_index)
+                switch (confirmation_index)
                 {
                     case 0:
                         ECS.SetActive(confirm_menu_id, false);
                         menu_state = MENU_STATE.INPUT_READY;
                         break;
                     case 1:
-                        menu_state = MENU_STATE.CONFIRMATION;
+                        menu_state = MENU_STATE.INACTIVE;
+                        GameUtilities.ResumeScene();
                         GameUtilities.LoadScene("MainMenu");
                         break;
                     default:
                         break;
-                }
-            }
-        }
-
-        void ToggleButtonFade(Dictionary<string, GameObject> unfaded_buttons, Dictionary<string, GameObject> faded_buttons, string active_button_name, string inactive_button_name)
-        {
-            foreach (KeyValuePair<string, GameObject> entry in unfaded_buttons)
-            {
-                if (entry.Key == active_button_name)
-                {
-                    Console.WriteLine("activating " + active_button_name);
-                    ECS.SetActive(entry.Value.id, true);
-                }
-                else
-                {
-                    ECS.SetActive(entry.Value.id, false);
-                }
-            }
-
-            foreach (KeyValuePair<string, GameObject> entry in faded_buttons)
-            {
-                if (entry.Key == inactive_button_name)
-                {
-                    Console.WriteLine("de-activating " + inactive_button_name);
-                    ECS.SetActive(entry.Value.id, false);
-                }
-                else
-                {
-                    ECS.SetActive(entry.Value.id, true);
                 }
             }
         }
@@ -313,6 +273,49 @@ namespace Scripting
                         ToggleButtonFade(button_map, faded_button_map, "Main Menu Button", "Main Menu Button Faded");
                     }
                     break;
+            }
+        }
+
+        void UpdateConfirmationButtonFade()
+        {
+            switch (confirmation_index)
+            {
+                case 0:
+                    //Set only the selected button to be non faded
+                    ToggleButtonFade(confirm_button_map, faded_confirm_button_map, "Confirm No Button", "Confirm No Button Faded");
+                    break;
+                case 1:
+                    //Set only the selected button to be non faded
+                    ToggleButtonFade(confirm_button_map, faded_confirm_button_map, "Confirm Yes Button", "Confirm Yes Button Faded");
+                    break;
+            }
+            Console.WriteLine("Confirmation is " + confirmation_index);
+        }
+
+        void ToggleButtonFade(Dictionary<string, GameObject> unfaded_buttons, Dictionary<string, GameObject> faded_buttons, string active_button_name, string inactive_button_name)
+        {
+            foreach (KeyValuePair<string, GameObject> entry in unfaded_buttons)
+            {
+                if (entry.Key == active_button_name)
+                {
+                    ECS.SetActive(entry.Value.id, true);
+                }
+                else
+                {
+                    ECS.SetActive(entry.Value.id, false);
+                }
+            }
+
+            foreach (KeyValuePair<string, GameObject> entry in faded_buttons)
+            {
+                if (entry.Key == inactive_button_name)
+                {
+                    ECS.SetActive(entry.Value.id, false);
+                }
+                else
+                {
+                    ECS.SetActive(entry.Value.id, true);
+                }
             }
         }
 
