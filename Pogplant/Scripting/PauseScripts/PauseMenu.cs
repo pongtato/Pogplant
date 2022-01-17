@@ -45,7 +45,10 @@ namespace Scripting
 
         int active_index;
         int confirmation_index;
-        
+
+        uint settings_menu_id;
+
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -56,6 +59,7 @@ namespace Scripting
 
             pause_menu_id = ECS.FindEntityWithName("Pause Menu");
             confirm_menu_id = ECS.FindEntityWithName("Confirmation Menu");
+            settings_menu_id = ECS.FindEntityWithName("Settings Menu");
 
             //Pause menu full opacity
             uint resume_game_button_id = ECS.FindChildEntityWithName(pause_menu_id, "Resume Game Button");
@@ -124,6 +128,11 @@ namespace Scripting
 
         public override void Update(float dt)
         {
+            if (InputUtility.onKeyTriggered("ESCAPE"))
+            {
+                menu_state = MENU_STATE.INPUT_READY;
+            }
+
             if (PlayerScript.m_EnablePauseMenu)
             {
                 if (!enabled)
@@ -190,6 +199,11 @@ namespace Scripting
                         enabled = false;
                         PlayerScript.m_EnablePauseMenu = false;
                         GameUtilities.ResumeScene();
+                        break;
+                    case 2:
+                        menu_state = MENU_STATE.IN_SUB_MENU;
+                        PauseSettingsMenu.refresh = true;
+                        ECS.SetActive(settings_menu_id, true);
                         break;
                     case 3:
                         menu_state = MENU_STATE.CONFIRMATION;
@@ -289,7 +303,6 @@ namespace Scripting
                     ToggleButtonFade(confirm_button_map, faded_confirm_button_map, "Confirm Yes Button", "Confirm Yes Button Faded");
                     break;
             }
-            Console.WriteLine("Confirmation is " + confirmation_index);
         }
 
         void ToggleButtonFade(Dictionary<string, GameObject> unfaded_buttons, Dictionary<string, GameObject> faded_buttons, string active_button_name, string inactive_button_name)

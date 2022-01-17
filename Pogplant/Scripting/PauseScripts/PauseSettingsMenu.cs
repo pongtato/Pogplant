@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scripting
 {
-    public class SettingsMenu : MonoBehaviour
+    public class PauseSettingsMenu : PauseBehaviour
     {
         enum SETTINGS_MENU_BUTTONS
         {
@@ -42,8 +42,9 @@ namespace Scripting
         uint vo_bar_fg_id;
 
         public static bool refresh;
+        bool enabled;
 
-        public SettingsMenu()
+        public PauseSettingsMenu()
         {
 
         }
@@ -147,6 +148,14 @@ namespace Scripting
 
         public override void Update(float dt)
         {
+            if (PlayerScript.m_EnablePauseMenu)
+            {
+                if (!enabled)
+                {
+                    enabled = true;
+                }
+            }
+
             if (refresh)
             {
                 UpdatePauseMenuButtonFade();
@@ -156,7 +165,10 @@ namespace Scripting
                 refresh = false;
             }
 
-            UpdateSettingsMenuInput(dt);
+            if (enabled)
+            {
+                UpdateSettingsMenuInput(dt);
+            }
         }
 
         void UpdateSettingsMenuInput(float dt)
@@ -206,7 +218,7 @@ namespace Scripting
                     case 2:
                         {
                             float amount = AudioEngine.GetChannelGroupVolume("VO") > 0.1f ? AudioEngine.GetChannelGroupVolume("VO") - volume_change_amount : 0.0f;
-                            AudioEngine.SetChannelGroupVolume("VO",amount);
+                            AudioEngine.SetChannelGroupVolume("VO", amount);
                             UpdateVolumeBars(vo_bars_list);
                         }
                         break;
@@ -264,9 +276,9 @@ namespace Scripting
                 ECS.SetActive(entityID, false);
             }
 
-            if(play_left_arrow_anim)
+            if (play_left_arrow_anim)
                 UpdateArrowAnimation(true, dt);
-            if(play_right_arrow_anim)
+            if (play_right_arrow_anim)
                 UpdateArrowAnimation(false, dt);
         }
 
@@ -447,11 +459,6 @@ namespace Scripting
                     ECS.SetActive(entry.Value.id, true);
                 }
             }
-        }
-
-        public override void LateUpdate(float dt)
-        {
-
         }
 
         public override void OnTriggerEnter(uint id)

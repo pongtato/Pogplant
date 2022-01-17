@@ -55,6 +55,7 @@
     <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />
     <Compile Include="PauseScripts\PauseMenu.cs" />
+    <Compile Include="PauseScripts\PauseSettingsMenu.cs" />
     <Compile Include="ScriptBehaviours\PauseBehaviour.cs" />
     <Compile Include="MonoScripts\BaseEnemy.cs" />
     <Compile Include="MonoScripts\BaseFlock.cs" />

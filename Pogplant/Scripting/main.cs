@@ -153,6 +153,11 @@ namespace Scripting
             return new SettingsMenu();
         }
 
+        public static PauseSettingsMenu PauseSettingsMenu()
+        {
+            return new PauseSettingsMenu();
+        }
+
         public static PauseMenu PauseMenu()
         {
             return new PauseMenu();

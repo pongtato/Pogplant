@@ -15,11 +15,6 @@
             "Alpha"     : true
         },
         {
-            "FileName"  : "HP_Inner.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-        {
             "FileName"  : "Small_Reticle.dds",
             "Dir"       : "Resources/Textures/UI",
             "Alpha"     : true
@@ -30,28 +25,8 @@
             "Alpha"     : true
         },
         {
-            "FileName"  : "Hp_Icon.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-        {
-            "FileName"  : "HP_Outer.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-        {
-            "FileName"  : "GameLogo.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-        {
             "FileName"  : "Shoot_VFX.dds",
             "Dir"       : "Resources/Textures/VFX",
-            "Alpha"     : true
-        },
-        {
-            "FileName"  : "MenuArrow.dds",
-            "Dir"       : "Resources/Textures/UI",
             "Alpha"     : true
         },
         {
@@ -343,22 +318,6 @@
         {
             "FileName"  : "snow_diff.dds",
             "Dir"       : "Resources/Textures/Snow"
-        },
-        {
-            "FileName"  : "Placeholder_Arrow.dds",
-            "Dir"       : "Resources/Textures/MainMenu"
-        },
-        {
-            "FileName"  : "Placeholder_Background.dds",
-            "Dir"       : "Resources/Textures/MainMenu"
-        },
-        {
-            "FileName"  : "Placeholder_Quit_Button.dds",
-            "Dir"       : "Resources/Textures/MainMenu"
-        },
-        {
-            "FileName"  : "Placeholder_Start_Button.dds",
-            "Dir"       : "Resources/Textures/MainMenu"
         },
         {
             "FileName"  : "AI_Happy.dds",

@@ -385,7 +385,6 @@ namespace Scripting
             //Pause menu
             if (InputUtility.onKeyTriggered("ESCAPE"))
             {
-                Console.WriteLine("pausing");
                 m_EnablePauseMenu = true;
                 GameUtilities.PauseScene();
             }

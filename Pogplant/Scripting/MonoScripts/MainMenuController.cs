@@ -170,6 +170,11 @@ namespace Scripting
 
         public override void Update(float dt)
         {
+            if (InputUtility.onKeyTriggered("ESCAPE") && menu_state == MENU_STATE.IN_SUB_MENU)
+            {
+                menu_state = MENU_STATE.INPUT_READY;
+            }
+
             if (menu_state == MENU_STATE.INPUT_READY)
             {
                 UpdateInputs();

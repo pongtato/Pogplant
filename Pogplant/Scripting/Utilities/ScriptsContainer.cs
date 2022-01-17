@@ -52,6 +52,7 @@ namespace Scripting
             pauseScriptNames.Add("TestPauseUpdate");
             pauseScriptNames.Add("BobbleHeadMenu");
             pauseScriptNames.Add("PauseMenu");
+            pauseScriptNames.Add("PauseSettingsMenu");
         }
 
         public string GetScriptNameElement(int index)
