@@ -43,6 +43,7 @@ namespace Scripting
             monoScriptNames.Add("GameEndingTrigger");
             monoScriptNames.Add("DashboardScreen");
             monoScriptNames.Add("BonusItem");
+            monoScriptNames.Add("SettingsMenu");
         }
         
         private void AddPauseScripts()

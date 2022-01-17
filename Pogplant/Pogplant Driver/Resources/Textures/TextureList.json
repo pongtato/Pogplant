@@ -210,6 +210,26 @@
             "Alpha"     : true
         },
 		{
+            "FileName" : "Default_SM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "MasterVolume_SM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
+            "FileName" : "SFXVolume_SM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },		
+		{
+            "FileName" : "VoiceOvers_SM_A.dds",
+            "Dir"       : "Resources/Textures/UI/Main Menu/SM_DDS",
+            "Alpha"     : true
+        },
+		{
             "FileName" : "BlackBG.dds",
             "Dir"       : "Resources/Textures/UI/Main Menu",
             "Alpha"     : true

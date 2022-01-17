@@ -149,7 +149,6 @@ namespace Scripting
             ECS.SetActive(bg2_id, false);
 
             settings_menu_id = ECS.FindEntityWithName("Settings Menu");
-            ECS.SetActive(settings_menu_id, false);
 
             start_button_faded_id = ECS.FindEntityWithName("Start Button Faded");
             how_to_play_button_faded_id = ECS.FindEntityWithName("How To Play Button Faded");
@@ -444,6 +443,11 @@ namespace Scripting
                 {
                     case 0:
                         GameUtilities.LoadScene("Level01_M3_SplineReimport");
+                        break;
+                    case 2:
+                        menu_state = MENU_STATE.IN_SUB_MENU;
+                        SettingsMenu.refresh = true;
+                        ECS.SetActive(settings_menu_id, true);
                         break;
                     case 4:
                         GameUtilities.ExitScene();

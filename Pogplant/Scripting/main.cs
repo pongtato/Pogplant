@@ -148,6 +148,11 @@ namespace Scripting
             return new BobbleHeadMenu();
         }
 
+        public static SettingsMenu SettingsMenu()
+        {
+            return new SettingsMenu();
+        }
+
         public static PauseMenu PauseMenu()
         {
             return new PauseMenu();

@@ -52,6 +52,7 @@
     <Compile Include="ECS\ECS.cs" />
     <Compile Include="ECS\GameObject.cs" />
     <Compile Include="MonoScripts\BonusItem.cs" />
+    <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />
     <Compile Include="PauseScripts\PauseMenu.cs" />
     <Compile Include="ScriptBehaviours\PauseBehaviour.cs" />
