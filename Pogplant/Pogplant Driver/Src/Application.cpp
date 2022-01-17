@@ -161,22 +161,22 @@ void Application::InitialiseDebugObjects()
 	//entity.AddComponent<Components::Renderer>(Renderer{ color, cubeDebugModel });
 	//entity.GetComponent<Components::Name>().m_name = "DebugCube";
 
-	pos = { 0.0f, -10.0f, 0.0f };
-	rot = { 0.0f,0.0f,0.0f };
-	scale = { 210.0f,30.0f,210.0f };
-	entity = m_activeECS->CreateEntity("Floor", pos, rot, scale);
-	//entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
-	entity.AddComponent<Components::PrimitiveRender>(PrimitiveRender
-	(
-		{ "mud_diff.dds", "grass_diff.dds" },
-		{ "mud_bump.dds", "grass_bump.dds" },
-		{ "mud_norm.dds", "grass_norm.dds" },
-		{ "mud_rough.dds", "grass_rough.dds" },
-		floorMesh,
-		4.0f,
-		true
-	));
-	entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.1f, 0.1f, 0.1f }, {0.f, 0.f, 0.f} });
+	//pos = { 0.0f, -10.0f, 0.0f };
+	//rot = { 0.0f,0.0f,0.0f };
+	//scale = { 210.0f,30.0f,210.0f };
+	//entity = m_activeECS->CreateEntity("Floor", pos, rot, scale);
+	////entity.AddComponent<Components::Renderer>(Renderer{ glm::mat4{1}, color, cubeModel });
+	//entity.AddComponent<Components::PrimitiveRender>(PrimitiveRender
+	//(
+	//	{ "mud_diff.dds", "grass_diff.dds" },
+	//	{ "mud_bump.dds", "grass_bump.dds" },
+	//	{ "mud_norm.dds", "grass_norm.dds" },
+	//	{ "mud_rough.dds", "grass_rough.dds" },
+	//	floorMesh,
+	//	4.0f,
+	//	true
+	//));
+	//entity.AddComponent<Components::BoxCollider>(BoxCollider{ {0.1f, 0.1f, 0.1f }, {0.f, 0.f, 0.f} });
 
 	const size_t second_last = Components::ParticleSystem::CurveVariable::m_MaxPoints - 2;
 	const float increment = 1.0f / second_last;
@@ -336,7 +336,7 @@ void Application::InitialiseDebugObjects()
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("rocks_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("rocks_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "rocks_diff.dds", true });
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "ParticleTest.dds", true });
 
 	pos = { 0.0f, 0.0f, 0.0f };
 	color = { 1.0f, 1.0f, 1.0f };
@@ -345,7 +345,7 @@ void Application::InitialiseDebugObjects()
 	// Simulate inspector set texture
 	//PP::TextureResource::UseTexture("snow_diff.dds");
 	//child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, PP::TextureResource::GetUsedTextureID("snow_diff.dds") });
-	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "ParticleTest2.dds", true });
+	child.AddComponent<Components::Canvas>(Canvas{ {color, 1.0f}, "ParticleTest.dds", true });
 
 	//Vinceen testing code
 	//auto _ra = m_activeECS->view<Transform>(entt::exclude_t<Renderer>());

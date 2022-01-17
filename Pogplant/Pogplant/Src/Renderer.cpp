@@ -309,7 +309,7 @@ namespace Pogplant
 			light_it++;
 		}
 
-		ShaderLinker::SetUniform("viewPos", ret.m_Position);
+		//ShaderLinker::SetUniform("viewPos", ret.m_Position);
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
 		ShaderLinker::UnUse();
 

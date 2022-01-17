@@ -50,16 +50,6 @@
             "Alpha"     : true
         },
         {
-            "FileName"  : "grass_diff.dds",
-            "Dir"       : "Resources/Textures/Grass",
-            "Alpha"     : false
-        },
-        {
-            "FileName"  : "mud_diff.dds",
-            "Dir"       : "Resources/Textures/Mud",
-            "Alpha"     : false
-        },
-        {
             "FileName"  : "kekwiggle.dds",
             "Dir"       : "Resources/Textures/SpriteAnimation",
             "Alpha"     : false
@@ -134,7 +124,7 @@
             "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
             "Alpha"     : true
         },
-{
+        {
             "FileName" : "StartGame_MM_A.dds",
             "Dir"       : "Resources/Textures/UI/Main Menu/MM_DDS",
             "Alpha"     : true
@@ -283,42 +273,6 @@
 
     "DEFAULT": 
     [
-        {
-            "FileName"  : "ParticleTest2.dds",
-            "Dir"       : "Resources/Textures/Particle"
-        },
-        {
-            "FileName"  : "mud_bump.dds",
-            "Dir"       : "Resources/Textures/Mud"
-        },
-        {
-            "FileName"  : "mud_norm.dds",
-            "Dir"       : "Resources/Textures/Mud"
-        },
-        {
-            "FileName"  : "mud_rough.dds",
-            "Dir"       : "Resources/Textures/Mud"
-        },
-        {
-            "FileName"  : "grass_bump.dds",
-            "Dir"       : "Resources/Textures/Grass"
-        },
-        {
-            "FileName"  : "grass_norm.dds",
-            "Dir"       : "Resources/Textures/Grass"
-        },
-        {
-            "FileName"  : "grass_rough.dds",
-            "Dir"       : "Resources/Textures/Grass"
-        },
-        {
-            "FileName"  : "rocks_diff.dds",
-            "Dir"       : "Resources/Textures/Rocks"
-        },
-        {
-            "FileName"  : "snow_diff.dds",
-            "Dir"       : "Resources/Textures/Snow"
-        },
         {
             "FileName"  : "AI_Happy.dds",
             "Dir"       : "Resources/Textures/UI"
