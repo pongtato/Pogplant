@@ -56,6 +56,8 @@ namespace Pogplant
 		//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_CANVAS_BUFFER]);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_AO_BUFFER]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
 		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::G_DEPTH]);
 		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, Window::m_Width, Window::m_Height);
 
@@ -73,6 +75,14 @@ namespace Pogplant
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::BLUR_COLOR_BUFFER_1]);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
 		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::PP_BUFFER]);
+
+		// AO
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SSAO_COLOR_BUFFER]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::SSAO_BUFFER]);
+		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SSAO_BLUR_COLOR_BUFFER]);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Window::m_Width, Window::m_Height, 0, GL_RGBA, GL_FLOAT, NULL);
+		glBindRenderbuffer(GL_RENDERBUFFER, FBR::m_FrameBuffers[BufferType::SSAO_BLUR_BUFFER]);
 	}
 
 	void FrameBuffer::ResizeFrameBuffer(BufferType _BufferType, const float _Scale)

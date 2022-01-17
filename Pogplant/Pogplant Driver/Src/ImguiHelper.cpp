@@ -1418,7 +1418,6 @@ namespace PogplantDriver
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
-
 		ImVec2 vMax = ImGui::GetWindowContentRegionMax();
 	}
 

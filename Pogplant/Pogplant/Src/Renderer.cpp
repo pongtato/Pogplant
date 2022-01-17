@@ -139,7 +139,7 @@ namespace Pogplant
 	void Renderer::InitAOKernel()
 	{
 		std::uniform_real_distribution<float> floatRand(0.0, 1.0);
-		std::default_random_engine gen;
+		std::default_random_engine gen = {};
 		for (unsigned int i = 0; i < 64; ++i)
 		{
 			glm::vec3 sample(floatRand(gen) * 2.0 - 1.0, floatRand(gen) * 2.0 - 1.0, floatRand(gen));
@@ -183,12 +183,13 @@ namespace Pogplant
 		// Send kernel + rotation 
 		for (unsigned int i = 0; i < m_AOKernel.size(); ++i)
 		{
-			ShaderLinker::SetUniform(("samples[" + std::to_string(i) + "]").c_str(), m_AOKernel[i]);
+			ShaderLinker::SetUniform(("v3_Samples[" + std::to_string(i) + "]").c_str(), m_AOKernel[i]);
 		}
-		ShaderLinker::SetUniform("noiseScale", { Window::m_Width / 4, Window::m_Height / 4 });
-		ShaderLinker::SetUniform("projection", ret.m_Projection);
-		ShaderLinker::SetUniform("radius", m_AO_Radius);
-		ShaderLinker::SetUniform("bias", m_AO_Bias);
+
+		ShaderLinker::SetUniform("v2_Noise", { static_cast<float>(Window::m_Width) * 0.25f, static_cast<float>(Window::m_Height) * 0.25f });
+		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
+		ShaderLinker::SetUniform("Radius", m_AO_Radius);
+		ShaderLinker::SetUniform("Bias", m_AO_Bias);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
 		glActiveTexture(GL_TEXTURE1);
