@@ -80,6 +80,9 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void UpdateDashboardFace(uint entityID, uint face);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void StartLaser(uint entityID);
+
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")
         {
             var id = Instantiate(prefabName, position, rotation);

@@ -52,6 +52,7 @@ namespace Scripting
 		float& scale_down_dt, float& scale_down_time, bool& explode_phase3, bool& m_End, glm::vec3& start_centre, glm::vec3& start_extends, float dt);
 
 	static void SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier);
+	static void StartLaser(std::uint32_t entity);
 
 	//just store the object that contains the EncounterSystemDriver
 	static void IncreaseScorefromEnv(std::uint32_t entityID);

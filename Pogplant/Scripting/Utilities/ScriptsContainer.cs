@@ -38,6 +38,8 @@ namespace Scripting
             monoScriptNames.Add("FlockController");
             //monoScriptNames.Add("EnvDamage");
             monoScriptNames.Add("MainMenuController");
+            monoScriptNames.Add("Laser");
+            monoScriptNames.Add("LaserTriggerController");
             monoScriptNames.Add("DummyScript");
             monoScriptNames.Add("GameOverScreen");
             monoScriptNames.Add("GameEndingTrigger");

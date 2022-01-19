@@ -114,6 +114,17 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetParticlePause(uint entityID, bool isPause);
 
+        // Set to true to pause particle, set to false to unpause particle
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetLaserStart(uint entityID, bool isActivated);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static bool IsLaserComplete(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void ResetLaser(uint entityID);
+
         public static T GetComponent<T>(uint entityID)
         {
             if(typeof(T) == typeof(Transform))

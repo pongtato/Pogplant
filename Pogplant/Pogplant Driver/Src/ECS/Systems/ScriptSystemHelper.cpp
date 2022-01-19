@@ -244,6 +244,38 @@ namespace SSH
 		}
 	}
 
+	void SetLaserStart(std::uint32_t entityID, bool isActivated)
+	{
+		auto laser = ScriptSystem::GetECS()->GetReg().try_get<Components::Laser>(static_cast<entt::entity>(entityID));
+
+		if (laser)
+		{
+			ScriptSystem::GetECS()->EnableEntity(static_cast<entt::entity>(entityID));
+			laser->m_ActivateLaser = isActivated;
+			laser->m_LaserCompleted = false;
+		}
+	}
+
+	bool IsLaserComplete(std::uint32_t entityID)
+	{
+		auto laser = ScriptSystem::GetECS()->GetReg().try_get<Components::Laser>(static_cast<entt::entity>(entityID));
+
+		if (laser)
+		{
+			return laser->m_LaserCompleted;
+		}
+		return false;
+	}
+
+	void ResetLaser(std::uint32_t entityID)
+	{
+		auto laser = ScriptSystem::GetECS()->GetReg().try_get<Components::Laser>(static_cast<entt::entity>(entityID));
+		if (laser)
+		{
+			laser->m_LaserCompleted = false;
+		}
+	}
+
 	void SetActive(std::uint32_t entityID, bool isEnabled)
 	{
 		if (isEnabled)

@@ -126,6 +126,15 @@ namespace Components
 			.property("m_Ortho", &Canvas::m_Ortho)
 			.property("m_SpriteAnimation", &Canvas::m_SpriteAnimation);
 
+		rttr::registration::class_<Laser>("Laser")
+			.property("m_ActivateLaser", &Laser::m_ActivateLaser)
+			.property("m_Spawntime", &Laser::m_Spawntime)
+			.property("m_Activetime", &Laser::m_Activetime)
+			.property("m_Inactivetime", &Laser::m_Inactivetime)
+			.property("m_ChargeParticletime", &Laser::m_ChargeParticletime)
+			.property("m_LaserLerptime", &Laser::m_LaserLerptime);
+
+
 		rttr::registration::class_<ImVec2>("ImVec2")
 			.property("m_x", &ImVec2::x)
 			.property("m_y", &ImVec2::y);

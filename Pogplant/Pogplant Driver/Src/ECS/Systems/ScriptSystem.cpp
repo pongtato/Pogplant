@@ -424,6 +424,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore", &Scripting::GameScript::UpdateScore);
 	mono_add_internal_call("Scripting.GameUtilities::IncreaseScorefromEnv", &Scripting::GameScript::IncreaseScorefromEnv);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateDashboardFace", &Scripting::GameScript::UpdateDashboardFace);
+	mono_add_internal_call("Scripting.GameUtilities::StartLaser", &Scripting::GameScript::StartLaser);
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);
@@ -458,6 +459,10 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetChildren", SSH::GetChildren);
 	mono_add_internal_call("Scripting.ECS::CheckValidEntity", SSH::CheckValidEntity);
 	mono_add_internal_call("Scripting.ECS::SetParticlePause", SSH::SetParticlePause);
+
+	mono_add_internal_call("Scripting.ECS::SetLaserStart", SSH::SetLaserStart);
+	mono_add_internal_call("Scripting.ECS::IsLaserComplete", SSH::IsLaserComplete);
+	mono_add_internal_call("Scripting.ECS::ResetLaser", SSH::ResetLaser);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);

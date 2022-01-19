@@ -105,6 +105,10 @@ namespace PogplantDriver
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Camera>(PPD::ImguiHelper::m_CurrentEntity);
 		}
+		if (ImGui::MenuItem("Laserrrr", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Laser>(PPD::ImguiHelper::m_CurrentEntity);
+		}
 		// Scriptable Component
 		if (ImGui::MenuItem("Scriptable", NULL, false, adding_enabled))
 		{
@@ -1087,6 +1091,39 @@ namespace PogplantDriver
 					if (!enable_camera_com)
 					{
 						m_ecs->GetReg().remove<Components::Camera>(m_CurrentEntity);
+					}
+				}
+
+				//Laser Component
+				auto laser_com = m_ecs->GetReg().try_get<Components::Laser>(m_CurrentEntity);
+				if (laser_com)
+				{
+					bool enable_laser_com = true;
+
+					if (ImGui::CollapsingHeader(ICON_FA_CAMERA_RETRO "  Laser", &enable_laser_com, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+
+						ImGui::Text("ActivateLaser");
+						ImGui::Checkbox("###ActivateLaser", &laser_com->m_ActivateLaser);
+						
+						ImGui::Text("Laser Activation time");
+						ImGui::DragFloat("###laser_activate", &laser_com->m_Spawntime, 1.0f);
+
+						ImGui::Text("ActiveTime");
+						ImGui::DragFloat("###ActiveTime", &laser_com->m_Activetime, 1.0f);
+
+						ImGui::Text("InactiveTime");
+						ImGui::DragFloat("###InactiveTime", &laser_com->m_Inactivetime, 1.0f);
+
+						ImGui::Text("Lerp Time");
+						ImGui::DragFloat("###Lerp Time", &laser_com->m_LaserLerptime, 1.0f);
+
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
+					}
+					if (!enable_laser_com)
+					{
+						m_ecs->GetReg().remove<Components::Laser>(m_CurrentEntity);
 					}
 				}
 

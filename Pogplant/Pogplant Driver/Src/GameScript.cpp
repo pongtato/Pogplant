@@ -728,6 +728,11 @@ namespace Scripting
 		}
 	}
 
+	void GameScript::StartLaser(std::uint32_t entity)
+	{
+		SSH::InvokeFunction("Laser", "ActivateLaser", static_cast<entt::entity>(entity));
+	}
+
 	//Helper function for Playerbullet taking damage
 	void GameScript::InvokeEnemyTakeDamage(std::string _ScriptName, entt::entity object, entt::entity other,Components::Projectile* player_projectile_p , Components::Scriptable* enemy_script_p)
 	{

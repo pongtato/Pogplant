@@ -128,6 +128,16 @@ namespace Scripting
             return new BaseFlock();
         }
 
+        public static Laser Laser()
+        {
+            return new Laser();
+        }
+
+        public static LaserTriggerController LaserTriggerController()
+        {
+            return new LaserTriggerController();
+        }
+
         public static L1BossShield L1BossShield()
         {
             return new L1BossShield();

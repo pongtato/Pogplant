@@ -53,6 +53,7 @@
     <Compile Include="ECS\GameObject.cs" />
     <Compile Include="MonoScripts\BonusItem.cs" />
     <Compile Include="MonoScripts\SettingsMenu.cs" />
+    <Compile Include="MonoScripts\GameEndingTrigger.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />
     <Compile Include="PauseScripts\PauseMenu.cs" />
     <Compile Include="PauseScripts\PauseSettingsMenu.cs" />
@@ -69,7 +70,8 @@
     <Compile Include="MonoScripts\EnemyManager.cs" />
     <Compile Include="MonoScripts\EnvDamage.cs" />
     <Compile Include="MonoScripts\FollowSpline.cs" />
-    <Compile Include="MonoScripts\GameEndingTrigger.cs" />
+    <Compile Include="MonoScripts\Laser.cs" />
+	<Compile Include="MonoScripts\LaserTriggerController.cs" />
     <Compile Include="MonoScripts\GameOverScreen.cs" />
     <Compile Include="MonoScripts\L1BossShield.cs" />
     <Compile Include="MonoScripts\MainMenuController.cs" />
