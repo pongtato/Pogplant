@@ -6,6 +6,7 @@
 
 #include "../../Pogplant/Src/Utils/FileDialogs.h"
 #include "../../Pogplant/Src/ModelResource.h"
+#include "../../Pogplant/Src/Window.h"
 #include "ECS/Components/Components.h"
 #include "ECS/Components/DependantComponents.h"
 #include "Serialiser/Serializer.h"
@@ -294,15 +295,17 @@ namespace PogplantDriver
 
 		// Always center this window when appearing
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowSizeConstraints({ 1,1 }, {1000,900});
 		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
 
 		if (ImGui::BeginPopupModal(label, NULL, ImGuiWindowFlags_AlwaysAutoResize))
 		{
+			size_t it_count = 0;
 			for (auto& it : Pogplant::ModelResource::m_ModelPool)
 			{
 				// Center object
 				//ImGui::SetCursorPosX(ImGui::GetWindowContentRegionMax().x * 0.5f - 146.0f);
-				if(ImGui::Button(it.first.c_str(), ImVec2(300,00)))
+				if(ImGui::Button(it.first.c_str(), ImVec2(300,69)))
 				{
 					auto entity = m_ECS->CreateEntity(it.first);
 					ConstructModel(entity, it.second, &it.second->m_Meshes.begin()->second, glm::vec4 { 1 });
@@ -310,6 +313,14 @@ namespace PogplantDriver
 					m_Loading = false;
 					ImGui::CloseCurrentPopup();
 				}
+
+				// Formatting
+				if ((it_count + 1) % 3 != 0)
+				{
+					ImGui::SameLine();
+				}
+
+				it_count++;
 			}
 
 			ImGui::SetItemDefaultFocus();

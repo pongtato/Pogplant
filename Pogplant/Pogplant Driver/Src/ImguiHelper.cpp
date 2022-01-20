@@ -1420,6 +1420,29 @@ namespace PogplantDriver
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
 
+		/// Unused, temp debugger, have to restructure for extra draw calls just so this will work properly
+		//ImGui::PushItemWidth(200.0f);
+		//const std::vector<std::string> comboStr = { "EDITOR", "POSITION", "NORMAL", "ALBEDO", "AO" };
+		//if (ImGui::BeginCombo("###debugcombo", comboStr[PP::Renderer::m_DebugRenderMode].c_str()))
+		//{
+		//	for (int i = 0; i < PP::Renderer::RenderMode::RENDER_MODE_COUNT; i++)
+		//	{
+		//		bool selected = (PP::Renderer::m_DebugRenderMode == i);
+		//		if (ImGui::Selectable(comboStr[i].c_str()))
+		//		{
+		//			PP::Renderer::m_DebugRenderMode = static_cast<PP::Renderer::RenderMode>(i);
+		//		}
+
+		//		if (selected)
+		//		{
+		//			ImGui::SetItemDefaultFocus();
+		//		}
+
+		//	}
+		//	ImGui::EndCombo();
+		//}
+		//ImGui::PopItemWidth();
+
 		// Draw the actual editor scene
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 
@@ -1439,6 +1462,11 @@ namespace PogplantDriver
 		vMax.x += ImGui::GetWindowPos().x;
 		vMax.y += ImGui::GetWindowPos().y;
 
+		if (!ImGui::IsWindowFocused())
+		{
+			return;
+		}
+
 		/// GUIZMO GO EDIT
 		Scene_GOEdit(currQuatCam, vMin, vMax);
 
@@ -1454,8 +1482,47 @@ namespace PogplantDriver
 		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
+
+		ImGui::SameLine(ImGui::GetWindowWidth() - 208.0f);
+		// Unused, temp debugger, have to restructure for extra draw calls just so this will work properly
+		ImGui::PushItemWidth(200.0f);
+		const std::vector<std::string> comboStr = { "GAME CAMERA", "EDITOR CAMERA"};
+		if (ImGui::BeginCombo("###debugcombo", comboStr[PP::Renderer::m_EditorCamDebug].c_str()))
+		{
+			for (int i = 0; i < comboStr.size(); i++)
+			{
+				bool selected = (PP::Renderer::m_EditorCamDebug == static_cast<bool>(i));
+				if (ImGui::Selectable(comboStr[i].c_str()))
+				{
+					PP::Renderer::m_EditorCamDebug = static_cast<bool>(i);
+				}
+
+				if (selected)
+				{
+					ImGui::SetItemDefaultFocus();
+				}
+
+			}
+			ImGui::EndCombo();
+		}
+		ImGui::PopItemWidth();
+
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 		ImVec2 vMax = ImGui::GetWindowContentRegionMax();
+
+		if (!ImGui::IsWindowFocused())
+		{
+			return;
+		}
+
+		if (!ImGui::IsItemHovered())
+		{
+			PP::CameraResource::DeselectCam();
+		}
+		else if(PP::Renderer::m_EditorCamDebug)
+		{
+			PP::CameraResource::SetActiveCam("EDITOR");
+		}
 	}
 
 	void ImguiHelper::SaveSceneAs()
@@ -1477,6 +1544,9 @@ namespace PogplantDriver
 	{
 		m_CurrentEntity = entt::null;
 		m_ecs->Clear();
+
+		/// Reupdate the textures
+		PP::TextureResource::m_Updated = false;
 	}
 
 	void ImguiHelper::OpenScene()
@@ -1484,6 +1554,9 @@ namespace PogplantDriver
 		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
 		if (!filepath.empty())
 			OpenScene(filepath);
+
+		/// Reupdate the textures
+		PP::TextureResource::m_Updated = false;
 	}
 
 
@@ -1766,7 +1839,7 @@ namespace PogplantDriver
 
 		// Make sure begin is being called before this function
 		// This ensures the input for camera only works when the Scene window is focused
-		if (!ImGui::IsWindowFocused() || !ImGui::IsItemHovered())
+		if (!ImGui::IsItemHovered())
 		{
 			PP::CameraResource::DeselectCam();
 		}
@@ -1871,6 +1944,7 @@ namespace PogplantDriver
 	{
 		// Always center this window when appearing
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowSizeConstraints({ 1,1 }, { 1000,900 });
 		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
 		static std::string currentPath = "";
 		static bool hovered = false;
@@ -1902,7 +1976,7 @@ namespace PogplantDriver
 				}
 
 				// Formatting
-				if ((it_count + 1) % 5 != 0)
+				if ((it_count + 1) % 10 != 0)
 				{
 					ImGui::SameLine();
 				}
@@ -1928,6 +2002,7 @@ namespace PogplantDriver
 	{
 		// Always center this window when appearing
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowSizeConstraints({ 1,1 }, { 1000,900 });
 		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
 		static std::string currentPath = "";
 		static bool hovered = false;
@@ -1958,7 +2033,7 @@ namespace PogplantDriver
 				}
 
 				// Formatting
-				if ((it_count + 1) % 5 != 0)
+				if ((it_count + 1) % 10 != 0)
 				{
 					ImGui::SameLine();
 				}
@@ -1984,6 +2059,7 @@ namespace PogplantDriver
 	{
 		// Always center this window when appearing
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowSizeConstraints({ 1,1 }, { 1000,900 });
 		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
 		static std::string currentPath = "";
 		static bool hovered = false;
@@ -2004,7 +2080,8 @@ namespace PogplantDriver
 				if (ImGui::ImageButton(it.second, ImVec2(64, 64), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
 					_Path = it.first;
-					_TexID = PP::TextureResource::m_UsedTextures[it.second];
+					//_TexID = PP::TextureResource::m_UsedTextures[it.second];
+					PP::TextureResource::m_Updated = false;
 					ImGui::CloseCurrentPopup();
 				}
 				if (ImGui::IsItemHovered())
@@ -2014,7 +2091,7 @@ namespace PogplantDriver
 				}
 
 				// Formatting
-				if ((it_count + 1) % 5 != 0)
+				if ((it_count + 1) % 10 != 0)
 				{
 					ImGui::SameLine();
 				}
@@ -2354,6 +2431,14 @@ namespace PogplantDriver
 				spriteAnim->NextFrame();
 			}
 
+			ImGui::Dummy(ImVec2(0.0f, 2.0f));
+			ImGui::Text("Set Frame");
+			int frameSetter = static_cast<int>(spriteAnim->m_FrameCounter);
+			if (ImGui::InputInt("###SetFrame", &frameSetter))
+			{
+				spriteAnim->SetFrame(frameSetter);
+			}
+
 			ImGui::Dummy(ImVec2(0.0f, 8.0f));
 			ImGui::Text("Repeat");
 			ImGui::SameLine();
@@ -2598,6 +2683,7 @@ namespace PogplantDriver
 
 				// Texture
 				ImGui::Text("Texture");
+				ImGui::Text("Current Texture: %s", pSystem->m_TexName.c_str());
 				//auto mappedID = PP::TextureResource::m_UsedTextures[pSystem->m_TexID];
 				if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[pSystem->m_TexName], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
@@ -2899,6 +2985,7 @@ namespace PogplantDriver
 
 				// Texture
 				ImGui::Text("Texture");
+				ImGui::Text("Current Texture: %s", canvas->m_TexName.c_str());
 				if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[canvas->m_TexName], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
 					ImGui::OpenPopup(popuplabel);

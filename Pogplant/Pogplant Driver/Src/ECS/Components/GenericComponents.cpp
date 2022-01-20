@@ -285,6 +285,7 @@ namespace Components
 		, m_SpawnCount{ 1 }
 		, m_SubSpawnCount{ 1 }
 		, m_SubActiveCount{ 0 }
+		, m_CurrentLifetime{ 0.0f }
 		, m_EmitterType{ EMITTER_TYPE::GENERAL }
 		, m_Loop{ false }
 		, m_Done{ false }
@@ -293,8 +294,8 @@ namespace Components
 		, m_Pause{ false }
 		, m_FollowParent{ false }
 		, m_Trail{ false }
+		, m_TexID{-1}
 	{
-		m_TexID = -1;
 	}
 
 	ParticleSystem::ParticleSystem
@@ -344,6 +345,7 @@ namespace Components
 		, m_SpawnCount{ _SpawnCount }
 		, m_SubSpawnCount{ _SubSpawnCount }
 		, m_SubActiveCount{ 0 }
+		, m_CurrentLifetime{ 0.0f }
 		, m_EmitterType{ static_cast<EMITTER_TYPE>(_EmitterType) }
 		, m_Loop{ _Loop }
 		, m_Done{ false }
@@ -352,10 +354,11 @@ namespace Components
 		, m_Pause{ false }
 		, m_FollowParent{ _FollowParent }
 		, m_Trail{ _Trail }
+		, m_TexID{ -1 }
 	{
 		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
-		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
-		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		//auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
+		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
 	}
 
 	void ParticleSystem::init()
@@ -363,8 +366,9 @@ namespace Components
 		Clear();
 		m_Pause = false;
 		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[m_TexName]);
-		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
-		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		//auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
+		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
 
 		m_CurrentLifetime = 0.0f;
 	}
@@ -801,8 +805,9 @@ namespace Components
 
 	void Canvas::init()
 	{
-		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
-		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		//auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
+		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
 	}
 
 	ParticleSystem::SubEmitter::SubEmitter(const glm::vec3& _Position, const glm::vec3& _Direction, int _Count)
@@ -845,10 +850,10 @@ namespace Components
 	{
 	}
 
-	SpriteAnimation::SpriteAnimation(int _MaxFrames, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed)
+	SpriteAnimation::SpriteAnimation(int _MaxFrames, float _CurrentFrame, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed)
 		: m_Tiling{ 1.0f / _Columns, 1.0f / _Rows }
 		, m_UV_Offset{ 0,0 }
-		, m_FrameCounter{ 0 }
+		, m_FrameCounter{ _CurrentFrame }
 		, m_PlaySpeed{ _PlaySpeed }
 		, m_MaxFrames{ _MaxFrames }
 		, m_Rows{ _Rows }
@@ -904,9 +909,19 @@ namespace Components
 		CalcUV();
 	}
 
+	void SpriteAnimation::SetFrame(int _NewFrame)
+	{
+		if (_NewFrame < 0 || _NewFrame >= m_MaxFrames)
+		{
+			return;
+		}
+		m_FrameCounter = static_cast<float>(_NewFrame);
+		CalcUV();
+	}
+
 	void SpriteAnimation::init()
 	{
-		m_FrameCounter = 0.0f;
+		//m_FrameCounter = 0.0f;
 	}
 
 	void SpriteAnimation::CalcUV()

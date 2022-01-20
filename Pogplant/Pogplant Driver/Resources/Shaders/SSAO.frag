@@ -19,34 +19,34 @@ uniform float Bias;
 
 void main()
 {
-    // get input for SSAO algorithm
+    // Input for SSAO algorithm
     vec3 fragPos = texture(gPosition, TexCoords).xyz;
     vec3 normal = normalize(texture(gNormal, TexCoords).rgb);
     vec3 randomVec = normalize(texture(texNoise, TexCoords * v2_Noise).xyz);
 
-    // create TBN change-of-basis matrix: from tangent-space to view-space
+    // Tangent to view space
     vec3 tangent = normalize(randomVec - normal * dot(randomVec, normal));
     vec3 bitangent = cross(normal, tangent);
     mat3 TBN = mat3(tangent, bitangent, normal);
 
-    // iterate over the sample kernel and calculate occlusion factor
     float occlusion = 0.0;
     for(int i = 0; i < kernelSize; ++i)
     {
-        // get sample position
-        vec3 samplePos = TBN * v3_Samples[i]; // from tangent to view-space
+        vec3 samplePos = TBN * v3_Samples[i]; 
         samplePos = fragPos + samplePos * Radius; 
         
-        // project sample position (to sample texture) (to get position on screen/texture)
         vec4 offset = vec4(samplePos, 1.0);
-        offset = m4_Projection * offset; // from view to clip-space
-        offset.xyz /= offset.w; // perspective divide
-        offset.xyz = offset.xyz * 0.5 + 0.5; // transform to range 0.0 - 1.0
+        // View to clip
+        offset = m4_Projection * offset; 
+        // Perspective
+        offset.xyz /= offset.w; 
+        // Range 0.0 - 1.0
+        offset.xyz = offset.xyz * 0.5 + 0.5; 
         
-        // get sample depth
+        // Depth
         float sampleDepth = texture(gPosition, offset.xy).z; // get depth value of kernel sample
         
-        // range check & accumulate
+        // Range check & accumulate
         float rangeCheck = smoothstep(0.0, 1.0, Radius / abs(fragPos.z - sampleDepth));
         occlusion += (sampleDepth >= samplePos.z + Bias ? 1.0 : 0.0) * rangeCheck;           
     }

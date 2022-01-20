@@ -131,7 +131,7 @@ void Application::InitialiseDebugObjects()
 	//PP::Model* cubeDebugModel = PP::ModelResource::m_ModelPool[cubeDebug];
 	PP::Model* shipModel = PP::ModelResource::m_ModelPool[ship];
 	PP::Model* enemyModel = PP::ModelResource::m_ModelPool[enemy];
-	PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
+	//PP::Mesh* floorMesh = PP::MeshResource::m_MeshPool[PP::MeshResource::MESH_TYPE::HEIGHTMAP];
 
 	glm::vec3 pos = { 5.0f, 0.0f, -10.0f };
 	glm::vec3 rot = { 0.0f,0.0f,0.0f };
@@ -479,6 +479,14 @@ void Application::UpdateTransforms(float _Dt)
 		}
 	}
 
+	/// Start of instanced objects
+	// See if texture list has to be updated
+	if (!PP::TextureResource::m_Updated)
+	{
+		PP::TextureResource::m_UsedTextures.clear();
+		//printf("UPDATING...\n");
+	}
+
 	/// Particle transforms
 	auto particleView = m_activeECS->view<Transform, ParticleSystem>();
 	{
@@ -487,6 +495,19 @@ void Application::UpdateTransforms(float _Dt)
 			auto& transform = m_activeECS->GetReg().get<Transform>(entity);
 			auto& pSys = m_activeECS->GetReg().get<ParticleSystem>(entity);
 
+			//If to be updated
+			auto& usedTex = PP::TextureResource::m_UsedTextures;
+			if (!PP::TextureResource::m_Updated || !usedTex[pSys.m_TexName].m_Used)
+			{
+				pSys.Clear();
+				//If not in used yet toggle it to be in use
+				usedTex[pSys.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[pSys.m_TexName]);
+				//This will always be > 0 since by comparing !used it already creates an entry
+				usedTex[pSys.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
+				usedTex[pSys.m_TexName].m_Used = true;
+				//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[pSys.m_TexName].m_MappedID, pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID);
+				pSys.m_TexID = usedTex[pSys.m_TexName].m_MappedID;
+			}
 			pSys.Update(_Dt, transform, gameCamPos);
 		}
 	}
@@ -498,6 +519,20 @@ void Application::UpdateTransforms(float _Dt)
 		auto& transform = canvasView.get<Transform>(it);
 		auto& canvas = canvasView.get<Canvas>(it);
 		canvas.m_SpriteAnimation.Update(_Dt);
+
+		// If to be updated or if not in used yet toggle it to be in use
+		auto& usedTex = PP::TextureResource::m_UsedTextures;
+		if (!PP::TextureResource::m_Updated || !usedTex[canvas.m_TexName].m_Used)
+		{
+			usedTex[canvas.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[canvas.m_TexName]);
+			// This will always be > 0 since by comparing !used it already creates an entry
+			usedTex[canvas.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
+			usedTex[canvas.m_TexName].m_Used = true;
+			//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[canvas.m_TexName].m_MappedID, canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID);
+			// Update canvas ID
+			canvas.m_TexID = usedTex[canvas.m_TexName].m_MappedID;
+		}
+
 		PP::MeshInstance::SetInstance
 		(
 			PP::InstanceData
@@ -508,10 +543,13 @@ void Application::UpdateTransforms(float _Dt)
 				canvas.m_SpriteAnimation.m_UV_Offset,
 				canvas.m_TexID,
 				canvas.m_Ortho,
-				canvas.m_Ortho, // If ortho show in game only since it blocks the screen, else can show it in the world
+				canvas.m_Ortho, // If ortho, show in game only since it blocks the screen, else can show it in the world
 			}
 		);
 	}
+
+	// Would always be set to true
+	PP::TextureResource::m_Updated = true;
 
 	//delete entity in the delete set
 	m_sGeneralSystem.DisableEntities();
@@ -597,11 +635,11 @@ void Application::DrawGame()
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::Draw(m_activeECS->GetReg(), nullptr, false);
+	PP::Renderer::Draw(m_activeECS->GetReg(), nullptr, PP::Renderer::m_EditorCamDebug);
 	PP::Renderer::EndBuffer();
 
 	// AO
-	PP::Renderer::AOPass(m_activeECS->GetReg(), false);
+	PP::Renderer::AOPass(m_activeECS->GetReg(), PP::Renderer::m_EditorCamDebug);
 	PP::Renderer::EndBuffer();
 	PP::Renderer::AOBlurPass();
 	PP::Renderer::EndBuffer();
@@ -609,7 +647,7 @@ void Application::DrawGame()
 	// Where to draw the gpass FB to
 	PP::Renderer::PostProcess();
 	PP::Renderer::ClearBuffer();
-	PP::Renderer::GLightPass(m_activeECS->GetReg(), false);
+	PP::Renderer::GLightPass(m_activeECS->GetReg(), PP::Renderer::m_EditorCamDebug);
 	PP::Renderer::EndBuffer();
 
 	PP::Renderer::BlurPass();

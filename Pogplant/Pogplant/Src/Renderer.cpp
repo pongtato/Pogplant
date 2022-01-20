@@ -32,15 +32,17 @@ namespace Pogplant
 	bool Renderer::m_EnableShadows = false;
 	float Renderer::m_Exposure = 1.0f;
 	float Renderer::m_Gamma = 2.2f;
-	float Renderer::m_LightShaftDecay = 0.9f;
-	float Renderer::m_LightShaftExposure = 0.2f;
-	float Renderer::m_LightShaftDensity = 0.69f;
-	float Renderer::m_LightShaftWeight = 0.3f;
-	glm::vec3 Renderer::m_LightShaftPos = { -500.0f,500.0f,0.0f };
-	float Renderer::m_LightShaftScale = 10.0f;
+	//float Renderer::m_LightShaftDecay = 0.9f;
+	//float Renderer::m_LightShaftExposure = 0.2f;
+	//float Renderer::m_LightShaftDensity = 0.69f;
+	//float Renderer::m_LightShaftWeight = 0.3f;
+	//glm::vec3 Renderer::m_LightShaftPos = { -500.0f,500.0f,0.0f };
+	//float Renderer::m_LightShaftScale = 10.0f;
 	std::vector<glm::vec3> Renderer::m_AOKernel;
 	float Renderer::m_AO_Radius = 1.5f;
 	float Renderer::m_AO_Bias = 0.0125f;
+	//Renderer::RenderMode Renderer::m_DebugRenderMode = Renderer::RenderMode::EDITOR;
+	bool Renderer::m_EditorCamDebug = false;
 
 	/// QUAT TEST
 	glm::vec3 Renderer::m_QuatTestPos = glm::vec3{ 0 };
@@ -108,21 +110,8 @@ namespace Pogplant
 		// Default to editor cam
 		Camera4D* currCam = CameraResource::GetCamera("EDITOR");
 
-		//Camera4D* currQCam = &CameraResource::m_QuatCam;
-		//std::cout << "@" << currQCam->m_Projection.length() << std::endl;
-		//std::cout << "@" << currQCam->m_View.length() << std::endl;
-		//std::cout << "@" << currQCam->m_Position.x << "|" << currQCam->m_Position.y << "|" << currQCam->m_Position.z << std::endl;
-		//std::cout << "@" << currQCam->m_Near << std::endl;
-		//std::cout << "@" << currQCam->m_Far << std::endl;
-		//std::cout << currQCam->m_Pitch << "|" << currQCam->m_Heading << std::endl;
-
 		return CameraReturnData
 		{
-			/*currCam->GetPerspective(),
-			currCam->GetView(),
-			currCam->GetPosition(),
-			currCam->GetCameraConfig().m_Near,
-			currCam->GetCameraConfig().m_Far,*/
 			currCam->m_Projection,
 			currCam->GetView(),
 			currCam->m_Position,
@@ -397,7 +386,7 @@ namespace Pogplant
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_BRIGHT]);
 
 		bool first_it = true;
-		const float blur_increment = 0.15f;
+		const float blur_increment = 0.05f;
 		for (int i = 1; i <= 5; i++)
 		{
 			ShaderLinker::SetUniform("targetWidth", Window::m_Width * blur_increment * i);
@@ -520,55 +509,55 @@ namespace Pogplant
 		}
 		ShaderLinker::UnUse();
 
-		/// Primitive shapes
-		ShaderLinker::Use("PRIMITIVE");
-		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
-		ShaderLinker::SetUniform("m4_View", ret.m_View);
-		auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
-		for (const auto& e : p_results)
-		{
-			const auto& it_pRender = p_results.get<const Components::PrimitiveRender>(e);
-			const auto& it_trans = p_results.get<const Components::Transform>(e);
+		///// Primitive shapes
+		//ShaderLinker::Use("PRIMITIVE");
+		//ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
+		//ShaderLinker::SetUniform("m4_View", ret.m_View);
+		//auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
+		//for (const auto& e : p_results)
+		//{
+		//	const auto& it_pRender = p_results.get<const Components::PrimitiveRender>(e);
+		//	const auto& it_trans = p_results.get<const Components::Transform>(e);
 
-			//ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
-			ShaderLinker::SetUniform("tile", it_pRender.m_Blend);
-			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
-			ShaderLinker::SetUniform("v3_ViewPosition", ret.m_Position);
+		//	//ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
+		//	ShaderLinker::SetUniform("tile", it_pRender.m_Blend);
+		//	ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
+		//	ShaderLinker::SetUniform("v3_ViewPosition", ret.m_Position);
 
-			ShaderLinker::SetUniform("texture_diffuse", 0);
-			ShaderLinker::SetUniform("texture_normal", 1);
-			ShaderLinker::SetUniform("texture_disp", 2);
-			ShaderLinker::SetUniform("texture_specular", 3);
+		//	ShaderLinker::SetUniform("texture_diffuse", 0);
+		//	ShaderLinker::SetUniform("texture_normal", 1);
+		//	ShaderLinker::SetUniform("texture_disp", 2);
+		//	ShaderLinker::SetUniform("texture_specular", 3);
 
-			ShaderLinker::SetUniform("texture_diffuse2", 4);
-			ShaderLinker::SetUniform("texture_normal2", 5);
-			ShaderLinker::SetUniform("texture_disp2", 6);
-			ShaderLinker::SetUniform("texture_specular2", 7);
+		//	ShaderLinker::SetUniform("texture_diffuse2", 4);
+		//	ShaderLinker::SetUniform("texture_normal2", 5);
+		//	ShaderLinker::SetUniform("texture_disp2", 6);
+		//	ShaderLinker::SetUniform("texture_specular2", 7);
 
-			/// WIP, to be updated
-			// Tex 1
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[0]]);
-			glActiveTexture(GL_TEXTURE1);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[0]]);
-			glActiveTexture(GL_TEXTURE2);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[0]]);
-			glActiveTexture(GL_TEXTURE3);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[0]]);
+		//	/// WIP, to be updated
+		//	// Tex 1
+		//	glActiveTexture(GL_TEXTURE0);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[0]]);
+		//	glActiveTexture(GL_TEXTURE1);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[0]]);
+		//	glActiveTexture(GL_TEXTURE2);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[0]]);
+		//	glActiveTexture(GL_TEXTURE3);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[0]]);
 
-			// Tex 2
-			glActiveTexture(GL_TEXTURE4);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[1]]);
-			glActiveTexture(GL_TEXTURE5);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[1]]);
-			glActiveTexture(GL_TEXTURE6);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[1]]);
-			glActiveTexture(GL_TEXTURE7);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[1]]);
+		//	// Tex 2
+		//	glActiveTexture(GL_TEXTURE4);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[1]]);
+		//	glActiveTexture(GL_TEXTURE5);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[1]]);
+		//	glActiveTexture(GL_TEXTURE6);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[1]]);
+		//	glActiveTexture(GL_TEXTURE7);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[1]]);
 
-			it_pRender.m_Mesh->Draw();
-		}
-		ShaderLinker::UnUse();
+		//	it_pRender.m_Mesh->Draw();
+		//}
+		//ShaderLinker::UnUse();
 
 		/// Skybox
 		glDepthFunc(GL_LEQUAL);
@@ -591,13 +580,12 @@ namespace Pogplant
 		ShaderLinker::Use("BASIC");
 		MeshBuilder::RebindQuad();
 		// Bind textures
-		for (const auto& it : TextureResource::m_TexturePool)
+		for (const auto& it : TextureResource::m_UsedTextures)
 		{
-			auto mapped_id = TextureResource::m_UsedTextures[it.second];
-			std::string uniformStr = "Textures[" + std::to_string(mapped_id) + "]";
-			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(mapped_id));
-			glActiveTexture(GL_TEXTURE0 + mapped_id);
-			glBindTexture(GL_TEXTURE_2D, it.second);
+			std::string uniformStr = "Textures[" + std::to_string(it.second.m_MappedID) + "]";
+			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(it.second.m_MappedID));
+			glActiveTexture(GL_TEXTURE0 + it.second.m_MappedID);
+			glBindTexture(GL_TEXTURE_2D, it.second.m_ID);
 		}
 
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);

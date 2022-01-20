@@ -346,11 +346,12 @@ namespace Components
 		bool m_Pause;
 
 		SpriteAnimation();
-		SpriteAnimation(int _MaxFrames, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed = 1.0f);
+		SpriteAnimation(int _MaxFrames, float _CurrentFrame, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed = 1.0f);
 		void Update(float _Dt);
 		void UpdateTiling();
 		void NextFrame();
 		void PrevFrame();
+		void SetFrame(int _NewFrame);
 		void init();
 
 	private:
