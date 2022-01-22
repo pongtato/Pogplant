@@ -19,6 +19,7 @@ namespace Scripting
     public abstract class BaseAction
     {
         public abstract bool Execute(float dt, GameObject owner = null, EnemyManager manager = null);
+        public abstract bool GetIsFinished();
 
     }
 
@@ -79,6 +80,11 @@ namespace Scripting
         {
             return (MoveAction)this.MemberwiseClone();
         }
+
+        public override bool GetIsFinished()
+        {
+            return is_finished;
+        }
     }
 
     // This action causes the enemy to stop for a duration.
@@ -110,6 +116,10 @@ namespace Scripting
         public WaitAction MakeCopy()
         {
             return (WaitAction)this.MemberwiseClone();
+        }
+        public override bool GetIsFinished()
+        {
+            return is_finished;
         }
     }
 
@@ -223,6 +233,11 @@ namespace Scripting
         {
             return (AttackAction)this.MemberwiseClone();
         }
+
+        public override bool GetIsFinished()
+        {
+            return is_finished;
+        }
     }
 
     // This action is a collection of actions, use this action when you want the enemy to perform multiple actions at once.
@@ -243,10 +258,12 @@ namespace Scripting
 
             foreach (BaseAction item in action_array)
             {
-                if (item.Execute(dt, owner, manager)) ++actions_finished;
+                if (!item.GetIsFinished())
+                    if(item.Execute(dt, owner, manager))
+                        ++actions_finished;
             }
 
-            if (actions_finished >= action_array.Length)
+            if (actions_finished == action_array.Length)
                 is_finished = true;
             return is_finished;
         }
@@ -259,6 +276,11 @@ namespace Scripting
         public CompositeAction MakeCopy()
         {
             return (CompositeAction)this.MemberwiseClone();
+        }
+
+        public override bool GetIsFinished()
+        {
+            return is_finished;
         }
     }
 
