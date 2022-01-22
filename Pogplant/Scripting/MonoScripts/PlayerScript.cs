@@ -165,6 +165,8 @@ namespace Scripting
             playerTrans = new Transform(pos, rot, scale);
 
             ECS.PlayAudio(VOEntityID, 0, "VO");
+
+            movement_speed = ECS.GetValue<float>(entityID, 200.0f, "MovementSpeed");
         }
 
         public override void Start()

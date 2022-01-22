@@ -8,6 +8,8 @@
 #include "ScriptResource.h"
 #include "../../Serialiser/CustomSaver.h"
 
+#include "ScriptSystem.h"
+
 namespace SSH
 {
 	// ECS for C# side
@@ -37,7 +39,7 @@ namespace SSH
 	void SetLaserStart(std::uint32_t entityID, bool isActivated);
 	bool IsLaserComplete(std::uint32_t entityID);
 	void ResetLaser(std::uint32_t entityID);
-	
+
 
 	// True is enabled, False is disabled
 	void SetActive(std::uint32_t entityID, bool isEnabled);
@@ -66,7 +68,7 @@ namespace SSH
 	void SetGlobalPosition(std::uint32_t entityID, glm::vec3 pos);
 	void SetGlobalRotation(std::uint32_t entityID, glm::vec3 rot);
 	void SetGlobalScale(std::uint32_t entityID, glm::vec3 scale);
-  glm::vec3 GetForwardVector(std::uint32_t entityID);
+	glm::vec3 GetForwardVector(std::uint32_t entityID);
 
 
 	// Components for GambObject
@@ -117,6 +119,20 @@ namespace SSH
 	}
 
 	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params);
+
+	//void SetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
+	template <typename T>
+	inline static T ScriptVariableGet(std::uint32_t entityID, T defaultValue, MonoString* monoName)
+	{
+		auto scriptVarCom = ScriptSystem::GetECS()->GetReg().try_get<Components::ScriptVariables>(static_cast<entt::entity>(entityID));
+
+		const char* key = mono_string_to_utf8(monoName);
+
+		if (scriptVarCom)
+			return scriptVarCom->GetValue<T>(key, defaultValue);
+
+		return defaultValue;
+	}
 }
 
 #include "ScriptSystemHelper.hpp"

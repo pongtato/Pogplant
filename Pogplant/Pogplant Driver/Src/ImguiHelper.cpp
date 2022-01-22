@@ -130,6 +130,12 @@ namespace PogplantDriver
 			}
 
 		}
+
+		if (ImGui::MenuItem("Script Variable Container", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::ScriptVariables>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+
 		if (ImGui::MenuItem("Audio Source", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::AudioSource>(PPD::ImguiHelper::m_CurrentEntity);
@@ -1296,7 +1302,102 @@ namespace PogplantDriver
 						std::cout << "Entity [" << name_com->m_name << "] has removed pause script component" << std::endl;
 					}
 				}
-				
+
+				auto scriptVariableCom = m_ecs->GetReg().try_get<Components::ScriptVariables>(m_CurrentEntity);
+				if (scriptVariableCom)
+				{
+					bool enable_scripts_com = true;
+
+					if (ImGui::CollapsingHeader(ICON_FA_SD_CARD "  Script Variables", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						for (auto itr = scriptVariableCom->m_variables.begin(); itr != scriptVariableCom->m_variables.end(); ++itr)
+						{
+							if (ImGui::TreeNode(itr->first.c_str()))
+							{
+								ImGui::Text("Type");
+								ImGui::SameLine();
+
+								Components::ScriptVariables::Variable::Type selectedType = itr->second.m_type;
+
+								if (ImGui::BeginCombo("###ValueType", scriptVariableCom->GetTypeName(selectedType).c_str(), ImGuiComboFlags_PopupAlignLeft))
+								{
+									for (int i = 0; i < (int)Components::ScriptVariables::Variable::Type::TOTAL; ++i)
+									{
+										const bool isSelected = (i == (int)selectedType);
+
+										if (ImGui::Selectable(scriptVariableCom->GetTypeName((Components::ScriptVariables::Variable::Type)i).c_str(), isSelected))
+										{
+											itr->second.m_type = (Components::ScriptVariables::Variable::Type)i;
+										}
+
+										if (isSelected)
+											ImGui::SetItemDefaultFocus();
+									}
+
+									ImGui::EndCombo();
+								}
+
+								switch (itr->second.m_type)
+								{
+								case Components::ScriptVariables::Variable::Type::FLOAT:
+								{
+									float value = itr->second.GetValue<float>();
+
+									if (ImGui::InputFloat("Value", &value))
+										itr->second.SetValue(value);
+									break;
+								}
+								case Components::ScriptVariables::Variable::Type::INT:
+								{
+									int value = itr->second.GetValue<int>();
+									if (ImGui::InputInt("Value", &value))
+										itr->second.SetValue(value);
+									break;
+								}
+								case Components::ScriptVariables::Variable::Type::BOOL:
+								{
+									bool value = itr->second.GetValue<bool>();
+									if (ImGui::Checkbox("Value", &value))
+										itr->second.SetValue(value);
+									break;
+								}
+								default:
+									assert(false && "Something exploded");
+									break;
+								}
+
+								ImGui::Spacing();
+
+								//Remove key from map
+								if (ImGui::Button(ICON_FA_MINUS_CIRCLE " Remove"))
+								{
+									scriptVariableCom->m_variables.erase(itr);
+									ImGui::TreePop();
+									break;
+								}
+
+								ImGui::TreePop();
+							}
+						}
+
+						//Add new key
+						static char name_stuff[256] = "";
+						ImGui::InputText("Variable name", name_stuff, IM_ARRAYSIZE(name_stuff));
+
+						if (ImGui::Button(ICON_FA_PLUS_CIRCLE " Add variable"))
+						{
+							scriptVariableCom->m_variables.insert(
+								{ std::string(name_stuff),
+								Components::ScriptVariables::Variable{Components::ScriptVariables::Variable::Type::INT, 0} });
+						}
+					}
+
+					if (!enable_scripts_com)
+					{
+						m_ecs->GetReg().remove<Components::ScriptVariables>(m_CurrentEntity);
+					}
+				}
+
 				ImGui::Separator();
 				ImguiBlankSeperator(2);
 

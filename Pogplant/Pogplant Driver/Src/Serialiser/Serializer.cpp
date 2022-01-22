@@ -207,6 +207,7 @@ namespace PogplantDriver
 		auto render_component = m_ecs.GetReg().try_get<Renderer>(id);
 		auto script_component = m_ecs.GetReg().try_get<Scriptable>(id);
 		auto pscript_component = m_ecs.GetReg().try_get<PauseScriptable>(id);
+		auto scriptVariablesComponent = m_ecs.GetReg().try_get<ScriptVariables>(id);
 		auto audio_component = m_ecs.GetReg().try_get<AudioSource>(id);
 		// To reflect save
 
@@ -274,6 +275,25 @@ namespace PogplantDriver
 				classroot[script_name.first] = script_name.second;
 			}
 			subroot["P_Scripting"] = classroot;
+		}
+
+		if (scriptVariablesComponent)
+		{
+			Json::Value classroot{ Json::arrayValue };
+
+			for (auto itr = scriptVariablesComponent->m_variables.begin(); itr != scriptVariablesComponent->m_variables.end(); ++itr)
+			{
+				Json::Value data;
+				{
+					data["Name"] = itr->first;
+					data["Type"] = (int)itr->second.m_type;
+					data["Data"] = itr->second.m_data;
+				}
+
+				classroot.append(data);
+			}
+
+			subroot["ScriptVariables"] = classroot;
 		}
 
 		if (audio_component)
@@ -350,7 +370,9 @@ namespace PogplantDriver
 		auto& relationship = root["Children"];
 		auto& scripting = root["Scripting"];
 		auto& pscripting = root["P_Scripting"];
+		auto& scriptVariables = root["ScriptVariables"];
 		auto& audioSource = root["AudioSource"];
+		
 
 
 		Try_Load_Component<ParticleSystem>(root, "ParticleSystem", id);
@@ -493,6 +515,22 @@ namespace PogplantDriver
 				temp_ScriptTypes.emplace(it->c_str(), pscripting[*it].asBool());
 			}
 			m_ecs.GetReg().emplace<PauseScriptable>(id, temp_ScriptTypes);
+		}
+
+		if (scriptVariables)
+		{
+			auto& scriptVarComponent = m_ecs.GetReg().get_or_emplace<Components::ScriptVariables>(id);
+
+			for (auto itr = scriptVariables.begin(); itr != scriptVariables.end(); ++itr)
+			{
+				Json::Value data = *itr;
+
+				Components::ScriptVariables::Variable var;
+				var.m_data = data["Data"].asInt();
+				var.m_type = (Components::ScriptVariables::Variable::Type)data["Type"].asInt();
+
+				scriptVarComponent.m_variables.insert({data["Name"].asString(), var});
+			}
 		}
 
 		if (audioSource)

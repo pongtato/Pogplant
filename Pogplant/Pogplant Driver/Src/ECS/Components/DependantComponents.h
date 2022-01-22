@@ -22,6 +22,10 @@
 #include "../../AudioEngine.h"
 #include <rttr/registration>
 
+//For monostring
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
+
 namespace Components
 {
 	/**> Use PhysicsDLC as rigidbody*/
@@ -238,6 +242,86 @@ namespace Components
 				m_audioSources[id].c_playing = false;
 			}
 		}
+	};
+
+	/**> A data structure to set and pass variables to the C# side without reflection*/
+	struct ScriptVariables
+	{
+		struct Variable
+		{
+			enum class Type
+			{
+				FLOAT,
+				INT,
+				BOOL,
+				TOTAL
+			};
+
+			Type m_type = Type::INT;
+			int m_data;
+
+			template <typename T>
+			inline T GetValue()
+			{
+				return *reinterpret_cast<T*>(&m_data);
+			}
+
+			template <typename T>
+			void SetValue(T value)
+			{
+				m_data = *reinterpret_cast<int*>(&value);
+			}
+		};
+
+		template <typename T>
+		inline T GetValue(std::string key, T defaultValue)
+		{
+			auto itr = m_variables.find(key);
+
+			if (itr != m_variables.end())
+			{
+				return itr->second.GetValue<T>();
+			}
+
+			return defaultValue;
+		}
+
+		/*template <typename T>
+		inline T GetValueMono(MonoString* monoKey)
+		{
+			const char* key = mono_string_to_utf8(monoKey);
+			return GetValue<T>(key);
+		}//*/
+
+		template <typename T>
+		inline void SetValue(std::string key, const T& value)
+		{
+			m_variables[key].SetValue(value);
+		}
+
+		/*template <typename T>
+		inline void SetValueMono(MonoString* monoKey, const T& value)
+		{
+			const char* key = mono_string_to_utf8(monoKey);
+			SetValue(key, value);
+		}//*/
+
+		static inline std::string GetTypeName(Variable::Type type)
+		{
+			switch (type)
+			{
+			case Components::ScriptVariables::Variable::Type::FLOAT:
+				return "Float";
+			case Components::ScriptVariables::Variable::Type::INT:
+				return "Int";
+			case Components::ScriptVariables::Variable::Type::BOOL:
+				return "Bool";
+			default:
+				return "Something exploded";
+			}
+		}
+
+		std::unordered_map<std::string, Variable> m_variables;
 	};
 }
 

@@ -155,5 +155,38 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint[] GetChildren(uint entityID);
+
+
+
+        public static T GetValue<T>(uint entityID, T defaultValue, string name)
+        {
+            if (typeof(T) == typeof(float))
+            {
+                return (T)(object)GetValueFloat(entityID, (float)(object)defaultValue, name);
+            }
+            else if (typeof(T) == typeof(int))
+            {
+                return (T)(object)GetValueInt(entityID, (int)(object)defaultValue, name);
+            }
+            else if (typeof(T) == typeof(bool))
+            {
+                return (T)(object)GetValueBool(entityID, (bool)(object)defaultValue, name);
+            }
+            else
+            {
+                Console.WriteLine("Value not supported.");
+            }
+
+            return (T)(object)0;
+        }
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static float GetValueFloat(uint entityID, float defaultValue, string name);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static int GetValueInt(uint entityID, int defaultValue, string name);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static bool GetValueBool(uint entityID, bool defaultValue, string name);
     }
 }
