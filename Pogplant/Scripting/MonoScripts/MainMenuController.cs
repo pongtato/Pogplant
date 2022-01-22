@@ -91,9 +91,6 @@ namespace Scripting
         //Buttons sliding in
         const float slide_in_speed = 4.0f;
 
-        //========================================================//
-        //Settings menu
-        //========================================================//
         uint settings_menu_id;
 
         public MainMenuController()
@@ -340,7 +337,7 @@ namespace Scripting
                             new Vector3(GetXFromButton(active_index), buttonMap["Start Button"].transform.Position.Y, buttonMap["Start Button"].transform.Position.Z),
                             buttonMap["Arrow Parent"].transform.Rotation,
                             buttonMap["Arrow Parent"].transform.Scale);
-
+                        
                         //Set only the selected button to be non faded
                         ECS.SetActive(start_button_id, true);
                         ECS.SetActive(how_to_play_button_id, false);

@@ -172,5 +172,10 @@ namespace Scripting
         {
             return new PauseMenu();
         }
+
+        public static L1Boss L1Boss()
+        {
+            return new L1Boss();
+        }
     }
 }

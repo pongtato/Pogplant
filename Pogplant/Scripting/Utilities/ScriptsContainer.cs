@@ -46,6 +46,7 @@ namespace Scripting
             monoScriptNames.Add("DashboardScreen");
             monoScriptNames.Add("BonusItem");
             monoScriptNames.Add("SettingsMenu");
+            monoScriptNames.Add("L1Boss");
         }
         
         private void AddPauseScripts()
