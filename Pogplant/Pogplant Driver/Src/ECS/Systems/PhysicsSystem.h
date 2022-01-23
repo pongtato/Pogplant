@@ -61,6 +61,12 @@ public:
 	inline void RemoveEntityFromTree(const entt::entity& entity)
 	{
 		m_broadphase.RemoveData(entity);
+
+		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(entity);
+		if (!colliderIdentifier)
+		{
+			m_registry->GetReg().remove<Components::Renderer>(entity);
+		}
 	}
 
 	inline std::vector<PhysicsDLC::Collision::Shapes::AABB> GetAABBTreeBoxes()
