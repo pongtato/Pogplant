@@ -2486,6 +2486,9 @@ namespace PogplantDriver
 
 			ImGui::Dummy(ImVec2(0.0f, 2.0f));
 			ImGui::Text("Current Frame: %d", static_cast<int>(spriteAnim->m_FrameCounter));
+			ImGui::Text("UV: %f, %f", spriteAnim->m_UV_Offset.x, spriteAnim->m_UV_Offset.y);
+			ImGui::Text("Tiling: %f, %f", spriteAnim->m_Tiling.x, spriteAnim->m_Tiling.y);
+
 			ImGui::Dummy(ImVec2(0.0f, 2.0f));
 
 			// Buttons

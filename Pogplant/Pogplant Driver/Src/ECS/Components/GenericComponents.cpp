@@ -848,6 +848,7 @@ namespace Components
 		, m_Play{ false }
 		, m_Pause{ false }
 	{
+		CalcUV();
 	}
 
 	SpriteAnimation::SpriteAnimation(int _MaxFrames, float _CurrentFrame, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed)
@@ -862,6 +863,7 @@ namespace Components
 		, m_Play{ _Playing }
 		, m_Pause{ false }
 	{
+		CalcUV();
 	}
 
 	void SpriteAnimation::Update(float _Dt)
@@ -894,7 +896,7 @@ namespace Components
 	{
 		m_FrameCounter = 0.0f;
 		m_Tiling = { 1.0f / m_Columns, 1.0f / m_Rows };
-		m_UV_Offset = { 0.0f, (m_Rows - 1) * m_Tiling.y };
+		m_UV_Offset = { 0.0f, m_Tiling.y };
 	}
 
 	void SpriteAnimation::NextFrame()
@@ -933,6 +935,6 @@ namespace Components
 		// Frame 6 will result in an offset of {0.5,0.25}
 		int yOffset = currFrame / m_Columns;
 		int xOffset = currFrame % m_Columns;
-		m_UV_Offset = { xOffset * m_Tiling.x, (m_Rows - 1) * m_Tiling.y - yOffset * m_Tiling.y };
+		m_UV_Offset = { xOffset * m_Tiling.x, (1.0f + yOffset) * m_Tiling.y };
 	}
 }
