@@ -119,7 +119,7 @@ namespace Scripting
             SetTargetEnemies(ref Turrets_A, ref enemy_in_range_A, ref enemy_to_target_A);
             SetTargetEnemies(ref Turrets_B, ref enemy_in_range_B, ref enemy_to_target_B);
             DoRemovalList();
-            RemoveDuplicates(ref enemy_to_target_A, ref enemy_to_target_B);
+            //RemoveDuplicates(ref enemy_to_target_A, ref enemy_to_target_B);
             if (enemy_to_target_A.Count == 0)
             {
                 SetTurretStraight(ref Turrets_A, 0, dt);
@@ -406,7 +406,8 @@ namespace Scripting
                 LockonEnemies(TurretGroup[i], EnemytoTarget[i], dt);
 
                 //Update Reticle 
-                Vector3 EnemyPos = ECS.GetGlobalPosition(EnemytoTarget[i]);
+                //To ensure the reticle doesnt clip agaisnt big enemies
+                Vector3 EnemyPos = ECS.GetGlobalPosition(EnemytoTarget[i]) - (Transform.GetForwardVector(shipCamera) * 0.3F);
                 Vector3 Rot = ECS.GetGlobalRotation(shipCamera);
                 if (Rot.X < 0)
                     Rot.X += 180.0f;
