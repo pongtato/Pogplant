@@ -2882,7 +2882,7 @@
 		}
 	},
 	{
-		"Children" : 20,
+		"Children" : 18,
 		"Name" : 
 		{
 			"m_Name" : "Boss"
@@ -3167,114 +3167,6 @@
 		}
 	},
 	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Right_Large_Laser_Body"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Boss",
-				"Resources/Models\\Enemy",
-				"Right_Large_Laser_Body"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-12.110260009765625,
-				-2.4216377735137939,
-				-2.14410400390625
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Right_Large_Laser_Spin"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Boss",
-				"Resources/Models\\Enemy",
-				"Right_Large_Laser_Spin"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.1627044677734375,
-				-3.814697265625e-06,
-				3.0994415283203125e-06
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 0,
 		"Name" : 
 		{
@@ -3383,7 +3275,7 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Right_Arm_End_Joint"
@@ -3421,6 +3313,114 @@
 				-5.5597152709960938,
 				-3.337860107421875e-06,
 				-4.0531158447265625e-06
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Right_Large_Laser_Body"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Large_Laser_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.706787109375,
+				4.76837158203125e-06,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_Large_Laser_Spin"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Large_Laser_Spin"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.1627044677734375,
+				-3.814697265625e-06,
+				3.0994415283203125e-06
 			],
 			"m_rotation" : 
 			[
@@ -4139,114 +4139,6 @@
 		}
 	},
 	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Left_Large_Laser_Body"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Boss",
-				"Resources/Models\\Enemy",
-				"Left_Large_Laser_Body"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				12.11029052734375,
-				-2.4216437339782715,
-				-2.144094705581665
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Left_Large_Laser_Spin"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Boss",
-				"Resources/Models\\Enemy",
-				"Left_Large_Laser_Spin"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.1627044677734375,
-				1.430511474609375e-06,
-				2.384185791015625e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 0,
 		"Name" : 
 		{
@@ -4355,7 +4247,7 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Left_Arm_End_Joint"
@@ -4393,6 +4285,114 @@
 				5.5597076416015625,
 				-4.291534423828125e-06,
 				4.76837158203125e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Left_Large_Laser_Body"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Large_Laser_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.706787109375,
+				-1.9073486328125e-06,
+				5.7220458984375e-06
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_Large_Laser_Spin"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Large_Laser_Spin"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.1627044677734375,
+				1.430511474609375e-06,
+				2.384185791015625e-07
 			],
 			"m_rotation" : 
 			[
