@@ -18,6 +18,21 @@ namespace SSH
 		return method;
 	}
 
+	MonoString* ScriptVariableGetString(std::uint32_t entityID, MonoString* defaultValue, MonoString* monoName)
+	{
+		auto scriptVarCom = ScriptSystem::GetECS()->GetReg().try_get<Components::ScriptVariables>(static_cast<entt::entity>(entityID));
+
+		const char* key = mono_string_to_utf8(monoName);
+		const char* defaultValueConverted = mono_string_to_utf8(defaultValue);
+
+		if (scriptVarCom)
+		{
+			return mono_string_new(mono_domain_get(), scriptVarCom->GetValue<std::string>(key, defaultValueConverted).c_str());
+		}
+
+		return defaultValue;
+	}
+
 	std::uint32_t CreateEntity(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag)
 	{
 		std::string _name = mono_string_to_utf8(name);

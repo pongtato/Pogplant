@@ -73,7 +73,7 @@ namespace PogplantDriver
 
 		//simple helper imgui function
 		//less copy pasta lol.
-		static std::string CreateStringInputField(std::string& _label, std::string _target);
+		static std::string CreateStringInputField(const std::string& _label, std::string _target);
 		static void CreateDragFloat3(const std::string& _label, float* _value, float increment_speed = 1.0f, float min_val = 0.0f, float max_val = 0.f);
 		//imgui reflection functions
 		static void Reflect_ImGui(rttr::instance _obj);

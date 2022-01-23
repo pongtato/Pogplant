@@ -133,6 +133,8 @@ namespace SSH
 
 		return defaultValue;
 	}
+
+	MonoString* ScriptVariableGetString(std::uint32_t entityID, MonoString* defaultValue, MonoString* monoName);
 }
 
 #include "ScriptSystemHelper.hpp"

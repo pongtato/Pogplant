@@ -254,22 +254,124 @@ namespace Components
 				FLOAT,
 				INT,
 				BOOL,
+				STRING,
+				VECTOR3,
 				TOTAL
 			};
 
+			inline ~Variable()
+			{
+				DeleteValue();
+			}
+
+			Variable() = default;
+			Variable(const Variable& rhs);
+
+			Variable& operator=(const Variable& rhs);
+
 			Type m_type = Type::INT;
-			int m_data;
+			void* m_data = nullptr;
 
 			template <typename T>
 			inline T GetValue()
 			{
-				return *reinterpret_cast<T*>(&m_data);
+				if (m_data)
+					return *reinterpret_cast<T*>(m_data);
+				else
+					return T();
 			}
 
 			template <typename T>
-			void SetValue(T value)
+			void SetValue(T newValue)
 			{
-				m_data = *reinterpret_cast<int*>(&value);
+				if constexpr (std::is_same<T, float>::value)
+				{
+					if (m_type != Type::FLOAT)
+						UpdateType(Type::FLOAT);
+				}
+				if constexpr (std::is_same<T, int>::value)
+				{
+					if (m_type != Type::INT)
+						UpdateType(Type::INT);
+				}
+				if constexpr (std::is_same<T, bool>::value)
+				{
+					if (m_type != Type::BOOL)
+						UpdateType(Type::BOOL);
+				}
+				if constexpr (std::is_same<T, std::string>::value)
+				{
+					if (m_type != Type::STRING)
+						UpdateType(Type::STRING);
+				}
+				if constexpr (std::is_same<T, glm::vec3>::value)
+				{
+					if (m_type != Type::VECTOR3)
+						UpdateType(Type::VECTOR3);
+				}
+
+				if (!m_data)
+					UpdateType(m_type);
+
+				*reinterpret_cast<T*>(m_data) = newValue;
+			}
+
+			void UpdateType(Type newType)
+			{
+				DeleteValue();
+
+				switch (newType)
+				{
+				case Components::ScriptVariables::Variable::Type::FLOAT:
+					m_data = new float;
+					break;
+				case Components::ScriptVariables::Variable::Type::INT:
+					m_data = new int;
+					break;
+				case Components::ScriptVariables::Variable::Type::BOOL:
+					m_data = new bool;
+					break;
+				case Components::ScriptVariables::Variable::Type::STRING:
+					m_data = new std::string;
+					break;
+				case Components::ScriptVariables::Variable::Type::VECTOR3:
+					m_data = new glm::vec3;
+					break;
+				default:
+					throw;
+				}
+
+				m_type = newType;
+			}
+
+		private:
+			void DeleteValue()
+			{
+				if (!m_data)
+					return;
+
+				switch (m_type)
+				{
+				case Components::ScriptVariables::Variable::Type::FLOAT:
+					delete reinterpret_cast<float*>(m_data);
+					break;
+				case Components::ScriptVariables::Variable::Type::INT:
+					delete reinterpret_cast<int*>(m_data);
+					break;
+				case Components::ScriptVariables::Variable::Type::BOOL:
+					delete reinterpret_cast<bool*>(m_data);
+					break;
+				case Components::ScriptVariables::Variable::Type::STRING:
+					delete reinterpret_cast<std::string*>(m_data);
+					break;
+				case Components::ScriptVariables::Variable::Type::VECTOR3:
+					delete reinterpret_cast<glm::vec3*>(m_data);
+					break;
+				default:
+					throw;
+				}
+
+				m_data = nullptr;
 			}
 		};
 
@@ -316,6 +418,10 @@ namespace Components
 				return "Int";
 			case Components::ScriptVariables::Variable::Type::BOOL:
 				return "Bool";
+			case Components::ScriptVariables::Variable::Type::STRING:
+				return "String";
+			case Components::ScriptVariables::Variable::Type::VECTOR3:
+				return "Vector 3";
 			default:
 				return "Something exploded";
 			}

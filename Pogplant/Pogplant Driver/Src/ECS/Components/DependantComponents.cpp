@@ -168,3 +168,62 @@ glm::vec3 Components::MeshCollider::FindFurthestPoint(const glm::vec3& direction
 		renderer.m_Mesh->m_Vertices[index].m_Position.z,
 		1.f });
 }
+
+Components::ScriptVariables::Variable::Variable(const Variable& rhs)
+{
+	if (!rhs.m_data)
+		return;
+
+	UpdateType(rhs.m_type);
+
+	switch (rhs.m_type)
+	{
+	case Components::ScriptVariables::Variable::Type::FLOAT:
+		SetValue<float>(*reinterpret_cast<float*>(rhs.m_data));
+		break;
+	case Components::ScriptVariables::Variable::Type::INT:
+		SetValue<int>(*reinterpret_cast<int*>(rhs.m_data));
+		break;
+	case Components::ScriptVariables::Variable::Type::BOOL:
+		SetValue<bool>(*reinterpret_cast<bool*>(rhs.m_data));
+		break;
+	case Components::ScriptVariables::Variable::Type::STRING:
+		SetValue<std::string>(*reinterpret_cast<std::string*>(rhs.m_data));
+		break;
+	case Components::ScriptVariables::Variable::Type::VECTOR3:
+		SetValue<glm::vec3>(*reinterpret_cast<glm::vec3*>(rhs.m_data));
+		break;
+	default:
+		throw;
+	}
+}
+
+Components::ScriptVariables::Variable& Components::ScriptVariables::Variable::operator=(const Variable& rhs)
+{
+	if (&rhs != this && rhs.m_data)
+	{
+		UpdateType(rhs.m_type);
+
+		switch (rhs.m_type)
+		{
+		case Components::ScriptVariables::Variable::Type::FLOAT:
+			SetValue<float>(*reinterpret_cast<float*>(rhs.m_data));
+			break;
+		case Components::ScriptVariables::Variable::Type::INT:
+			SetValue<int>(*reinterpret_cast<int*>(rhs.m_data));
+			break;
+		case Components::ScriptVariables::Variable::Type::BOOL:
+			SetValue<bool>(*reinterpret_cast<bool*>(rhs.m_data));
+			break;
+		case Components::ScriptVariables::Variable::Type::STRING:
+			SetValue<std::string>(*reinterpret_cast<std::string*>(rhs.m_data));
+			break;
+		case Components::ScriptVariables::Variable::Type::VECTOR3:
+			SetValue<glm::vec3>(*reinterpret_cast<glm::vec3*>(rhs.m_data));
+			break;
+		default:
+			throw;
+		}
+	}
+	return *this;
+}

@@ -1327,7 +1327,7 @@ namespace PogplantDriver
 
 										if (ImGui::Selectable(scriptVariableCom->GetTypeName((Components::ScriptVariables::Variable::Type)i).c_str(), isSelected))
 										{
-											itr->second.m_type = (Components::ScriptVariables::Variable::Type)i;
+											itr->second.UpdateType((Components::ScriptVariables::Variable::Type)i);
 										}
 
 										if (isSelected)
@@ -1343,22 +1343,37 @@ namespace PogplantDriver
 								{
 									float value = itr->second.GetValue<float>();
 
-									if (ImGui::InputFloat("Value", &value))
+									if (ImGui::InputFloat("Float", &value))
 										itr->second.SetValue(value);
 									break;
 								}
 								case Components::ScriptVariables::Variable::Type::INT:
 								{
 									int value = itr->second.GetValue<int>();
-									if (ImGui::InputInt("Value", &value))
+									if (ImGui::InputInt("Int", &value))
 										itr->second.SetValue(value);
 									break;
 								}
 								case Components::ScriptVariables::Variable::Type::BOOL:
 								{
 									bool value = itr->second.GetValue<bool>();
-									if (ImGui::Checkbox("Value", &value))
+									if (ImGui::Checkbox("Bool", &value))
 										itr->second.SetValue(value);
+									break;
+								}
+								case Components::ScriptVariables::Variable::Type::STRING:
+								{
+									std::string _str = CreateStringInputField("String", itr->second.GetValue<std::string>());
+									itr->second.SetValue(_str);
+									break;
+								}
+								case Components::ScriptVariables::Variable::Type::VECTOR3:
+								{
+									glm::vec3 value = itr->second.GetValue<glm::vec3>();
+
+									CreateDragFloat3("Vec3", glm::value_ptr(value));
+
+									itr->second.SetValue<glm::vec3>(value);
 									break;
 								}
 								default:
@@ -1388,7 +1403,7 @@ namespace PogplantDriver
 						{
 							scriptVariableCom->m_variables.insert(
 								{ std::string(name_stuff),
-								Components::ScriptVariables::Variable{Components::ScriptVariables::Variable::Type::INT, 0} });
+								Components::ScriptVariables::Variable{} });
 						}
 					}
 
@@ -1967,7 +1982,7 @@ namespace PogplantDriver
 		}
 	}
 
-	std::string ImguiHelper::CreateStringInputField(std::string& _label, std::string _target)
+	std::string ImguiHelper::CreateStringInputField(const std::string& _label, std::string _target)
 	{
 		ImGui::Text(_label.c_str());
 		static char name_stuff[256] = "";

@@ -172,6 +172,14 @@ namespace Scripting
             {
                 return (T)(object)GetValueBool(entityID, (bool)(object)defaultValue, name);
             }
+            else if (typeof(T) == typeof(string))
+            {
+                return (T)(object)GetValueString(entityID, (string)(object)defaultValue, name);
+            }
+            else if (typeof(T) == typeof(Vector3))
+            {
+                return (T)(object)GetValueVector3(entityID, (Vector3)(object)defaultValue, name);
+            }
             else
             {
                 Console.WriteLine("Value not supported.");
@@ -188,5 +196,11 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static bool GetValueBool(uint entityID, bool defaultValue, string name);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static string GetValueString(uint entityID, string defaultValue, string name);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static Vector3 GetValueVector3(uint entityID, Vector3 defaultValue, string name);
     }
 }

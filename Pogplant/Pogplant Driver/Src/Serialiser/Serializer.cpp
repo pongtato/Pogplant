@@ -288,6 +288,30 @@ namespace PogplantDriver
 					data["Name"] = itr->first;
 					data["Type"] = (int)itr->second.m_type;
 					data["Data"] = itr->second.m_data;
+
+					switch (itr->second.m_type)
+					{
+					case Components::ScriptVariables::Variable::Type::FLOAT:
+						data["Data"] = *reinterpret_cast<float*>(itr->second.m_data);
+						break;
+					case Components::ScriptVariables::Variable::Type::INT:
+						data["Data"] = *reinterpret_cast<int*>(itr->second.m_data);
+						break;
+					case Components::ScriptVariables::Variable::Type::BOOL:
+						data["Data"] = *reinterpret_cast<bool*>(itr->second.m_data);
+						break;
+					case Components::ScriptVariables::Variable::Type::STRING:
+						data["Data"] = *reinterpret_cast<std::string*>(itr->second.m_data);
+						break;
+					case Components::ScriptVariables::Variable::Type::VECTOR3:
+						glm::vec3 vectorSave = *reinterpret_cast<glm::vec3*>(itr->second.m_data);
+						data["Data0"] = vectorSave.x;
+						data["Data1"] = vectorSave.y;
+						data["Data2"] = vectorSave.z;
+						break;
+					default:
+						throw;
+					}
 				}
 
 				classroot.append(data);
@@ -535,8 +559,35 @@ namespace PogplantDriver
 				Json::Value data = *itr;
 
 				Components::ScriptVariables::Variable var;
-				var.m_data = data["Data"].asInt();
 				var.m_type = (Components::ScriptVariables::Variable::Type)data["Type"].asInt();
+
+				switch (var.m_type)
+				{
+				case Components::ScriptVariables::Variable::Type::FLOAT:
+					var.SetValue<float>(data["Data"].asFloat());
+					break;
+				case Components::ScriptVariables::Variable::Type::INT:
+					var.SetValue<int>(data["Data"].asInt());
+					break;
+				case Components::ScriptVariables::Variable::Type::BOOL:
+					var.SetValue<bool>(data["Data"].asBool());
+					break;
+				case Components::ScriptVariables::Variable::Type::STRING:
+					var.SetValue<std::string>(data["Data"].asString());
+					break;
+
+				case Components::ScriptVariables::Variable::Type::VECTOR3:
+					var.SetValue<glm::vec3>(
+						glm::vec3{
+						data["Data0"].asFloat(),
+						data["Data1"].asFloat(),
+						data["Data2"].asFloat()
+						}
+					);
+					break;
+				default:
+					throw;
+				}
 
 				scriptVarComponent.m_variables.insert({data["Name"].asString(), var});
 			}
