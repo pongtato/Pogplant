@@ -372,7 +372,7 @@ namespace PogplantDriver
 		auto& pscripting = root["P_Scripting"];
 		auto& scriptVariables = root["ScriptVariables"];
 		auto& audioSource = root["AudioSource"];
-		
+		auto& PrefabInstance_data = root["PrefabInstance"];
 
 
 		Try_Load_Component<ParticleSystem>(root, "ParticleSystem", id);
@@ -398,7 +398,16 @@ namespace PogplantDriver
 
 		if(!remove_prefab_tag)
 			Try_Load_Component<Prefab>(root, "Prefab", id);
-		Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);
+
+		if (PrefabInstance_data)
+		{
+			Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);
+			auto pi_data = m_ecs.GetReg().get<PrefabInstance>(id);
+			if(!m_ecs.m_prefab_map.contains(pi_data.prefab_path))
+				LoadPrefab(pi_data.prefab_path, true);
+		}
+
+
 
 
 
