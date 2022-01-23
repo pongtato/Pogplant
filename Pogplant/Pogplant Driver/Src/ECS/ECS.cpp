@@ -326,9 +326,9 @@ void ECS::TrulyDisableEntity(entt::entity _entity)
 	for (auto e : _transform.m_children)
 		TrulyDisableEntity(e);
 
-	m_registry.emplace<Disabled>(_entity);
-
 	PogplantDriver::Application::GetInstance().m_sPhysicsSystem.RemoveEntityFromTree(_entity);
+
+	m_registry.emplace<Disabled>(_entity);
 }
 
 void ECS::TrulyEnableEntity(entt::entity _entity)
