@@ -101,11 +101,11 @@ void ECS::TrulyDestroyEntity(entt::entity entity)
 		ScriptResource::RemoveEntity(entity);
 	}
 	
+	PogplantDriver::Application::GetInstance().m_sPhysicsSystem.RemoveEntityFromTree(entity);
+
 	//destroy itself
 	//m_registry.destroy(entity, 0);
 	m_registry.destroy(entity);
-
-	PogplantDriver::Application::GetInstance().m_sPhysicsSystem.RemoveEntityFromTree(entity);
 }
 
 //returns the first entity with the name
