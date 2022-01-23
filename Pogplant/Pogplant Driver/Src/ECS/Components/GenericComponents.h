@@ -434,7 +434,7 @@ namespace Components
 
 			inline void init(void)
 			{
-				m_CurveData.resize(m_MaxPoints);
+				m_CurveData.resize(m_DataPoints);
 
 				int smoothness = static_cast<int>(m_CurveData.size());
 				for (int i = 0; i <= (smoothness - 1); ++i)

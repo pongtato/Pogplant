@@ -557,7 +557,7 @@ namespace Components
 			m_TexID,
 			life,
 			life,
-			1.0f / m_Speed.m_CurveData.size(),
+			1.0f / ParticleSystem::CurveVariable::m_DataPoints,
 			randRotate,
 			m_SpriteAnimation
 		};
@@ -599,6 +599,8 @@ namespace Components
 		float t = 1.0f - _Particle.m_Life / _Particle.m_BaseLife;
 		size_t index = static_cast<size_t>(t / _Particle.m_IndexCalc);
 		// For some reason it exceeds the index size
+
+		//printf("%d | %f | %f | %f \n", static_cast<int>(index), _Particle.m_Life, _Particle.m_BaseLife, _Particle.m_IndexCalc);
 
 		//Change if needed, I defaulted it to 1.f for both first
 		float curveSpeed;
@@ -705,8 +707,7 @@ namespace Components
 		m_CurvePoints.push_back({ 1.0f, 1.0f });
 
 		m_CurveData.resize(m_DataPoints);
-
-		int smoothness = static_cast<int>(m_CurveData.size());
+		int smoothness = static_cast<int>(m_DataPoints);
 		for (int i = 0; i <= (smoothness - 1); ++i) 
 		{
 			float qx = (i + 1) / float(smoothness);
@@ -725,8 +726,7 @@ namespace Components
 		, m_MultiplierMax{ _MultiMax }
 	{
 		m_CurveData.resize(m_DataPoints);
-
-		int smoothness = static_cast<int>(m_CurveData.size());
+		int smoothness = static_cast<int>(m_DataPoints);
 		for (int i = 0; i <= (smoothness - 1); ++i)
 		{
 			float qx = (i + 1) / float(smoothness);
