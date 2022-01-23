@@ -70,7 +70,6 @@
     <Compile Include="MonoScripts\EncounterManager.cs" />
     <Compile Include="MonoScripts\EncounterSystemDriver.cs" />
     <Compile Include="MonoScripts\EnemyManager.cs" />
-    <Compile Include="MonoScripts\EnvDamage.cs" />
     <Compile Include="MonoScripts\FollowSpline.cs" />
     <Compile Include="MonoScripts\Laser.cs" />
     <Compile Include="MonoScripts\LaserTriggerController.cs" />
