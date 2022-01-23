@@ -37,6 +37,11 @@ namespace Scripting
             playerID = ECS.FindEntityWithName("PlayerShip");
             // Initialise the The individual controller with thier timer
             AddLaserGroup("LaserTriggerGroup1");
+            AddLaserGroup("LaserTriggerGroup2");
+            AddLaserGroup("LaserTriggerGroup3");
+            AddLaserGroup("LaserTriggerGroup4");
+            AddLaserGroup("LaserTriggerGroup5");
+            AddLaserGroup("LaserTriggerGroup6");
             UpdateLaserGroup(_entityID);
         }
 

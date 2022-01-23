@@ -65,7 +65,7 @@ public:
 		if (m_registry->GetReg().valid(entity))
 		{
 			auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(entity);
-			if (!colliderIdentifier)
+			if (colliderIdentifier)
 			{
 				m_registry->GetReg().remove<Components::ColliderIdentifier>(entity);
 			}
