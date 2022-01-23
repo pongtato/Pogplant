@@ -62,10 +62,13 @@ public:
 	{
 		m_broadphase.RemoveData(entity);
 
-		auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(entity);
-		if (!colliderIdentifier)
+		if (m_registry->GetReg().valid(entity))
 		{
-			m_registry->GetReg().remove<Components::Renderer>(entity);
+			auto colliderIdentifier = m_registry->GetReg().try_get<Components::ColliderIdentifier>(entity);
+			if (!colliderIdentifier)
+			{
+				m_registry->GetReg().remove<Components::ColliderIdentifier>(entity);
+			}
 		}
 	}
 
