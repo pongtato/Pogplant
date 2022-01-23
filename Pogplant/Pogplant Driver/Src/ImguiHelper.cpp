@@ -527,7 +527,7 @@ namespace PogplantDriver
 					{
 						auto _guid = m_ecs->GetReg().get<Components::Guid>(m_CurrentEntity);
 						auto _prefab = m_ecs->GetReg().get<Components::Prefab>(m_CurrentEntity);
-						m_ecs->GetReg().emplace<Components::PrefabInstance>(m_ecs->CopyEntity(m_CurrentEntity), _guid.m_guid, _prefab.file_path);
+						m_ecs->GetReg().emplace_or_replace<Components::PrefabInstance>(m_ecs->CopyEntity(m_CurrentEntity), _guid.m_guid, _prefab.file_path);
 					}
 					if (ImGui::MenuItem("Edit prefab"))
 					{

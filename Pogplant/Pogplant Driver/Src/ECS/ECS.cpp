@@ -160,16 +160,32 @@ entt::entity ECS::FindEntityWithTag(std::string _tag)
 	return entt::null;
 }
 
-entt::entity ECS::CopyEntity(entt::entity _target)
+entt::entity ECS::CopyEntity(entt::entity _target, entt::entity _override)
 {
+	//override is used to overwrite the transform, name and any other information that should be
+	//unique to an entity
 	const auto& transform = m_registry.get<Transform>(_target);
+	//const auto& override_transform = _override == entt::null ? m_registry.get<Transform>(_target) : m_registry.get<Transform>(_override);
+	//const auto& tag = _override == entt::null ? m_registry.get<Tag>(_target) : m_registry.get<Tag>(_override);
+	//const auto& name = _override == entt::null ? m_registry.get<Name>(_target) : m_registry.get<Name>(_override);
+
 	entt::entity new_entity = m_registry.create();
 
 	auto& new_transform = m_registry.emplace_or_replace<Transform>(new_entity, transform.m_position, transform.m_rotation, transform.m_scale);
+	if (_override != entt::null)
+	{
+		const auto override_transform = m_registry.get<Transform>(_override);
+		new_transform.m_position = override_transform.m_position;
+		new_transform.m_rotation = override_transform.m_rotation;
+		new_transform.m_scale = override_transform.m_scale;
+	}
+	//m_registry.emplace_or_replace<Tag>(new_entity, tag.m_tag);
+	//m_registry.emplace_or_replace<Name>(new_entity, name.m_name);
+
 	for (const auto& ent : transform.m_children)
 	{
 		//creates a new entity first
-		entt::entity new_child = ECS::CopyEntity(ent);
+		entt::entity new_child = ECS::CopyEntity(ent, _override);
 		//set up the parent child relationship
 		new_transform.m_children.insert(new_child);
 		//set child's parent

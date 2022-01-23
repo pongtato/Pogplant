@@ -134,8 +134,8 @@ void Application::LeavePrefabState()
 
 			if (prefab.m_guid == prefab_instance.prefab_GUID)
 			{
+				auto _ent = m_editorECS.CopyEntity(m_editorECS.m_prefab_map[m_genericFilePath], ent);
 				m_editorECS.DestroyEntity(ent);
-				auto _ent = m_editorECS.CopyEntity(m_editorECS.m_prefab_map[m_genericFilePath]);
 				m_editorECS.GetReg().emplace_or_replace<PrefabInstance>(_ent, prefab.m_guid, m_genericFilePath);
 			}
 		}
