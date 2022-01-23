@@ -76,7 +76,7 @@ void GeneralSystem::UpdateGame(float c_dt)
 			if (laser.m_Activetime != 0 && laser.m_Inactivetime != 0)
 			{
 				laser.m_AccumulatedActivetime += c_dt;
-				if (laser.m_AccumulatedActivetime >= laser.m_ActivateLaser)
+				if (laser.m_AccumulatedActivetime >= laser.m_Activetime)
 				{
 					laser.m_AccumulatedActivetime = 0;
 					laser.m_IsDeactivated = true;
