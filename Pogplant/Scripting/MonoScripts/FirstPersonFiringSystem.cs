@@ -30,7 +30,7 @@ namespace Scripting
         //Player Firing 
         float p_fireRate = 0.1f;
         float p_fire_timer = 0.0f;
-        float m_rotspeed = 10.0f; 
+        float m_rotspeed = 3.0f; 
 
         //Player Crosshair(The smaller one)
         uint Crosshair;
@@ -119,14 +119,50 @@ namespace Scripting
             SetTargetEnemies(ref Turrets_A, ref enemy_in_range_A, ref enemy_to_target_A);
             SetTargetEnemies(ref Turrets_B, ref enemy_in_range_B, ref enemy_to_target_B);
             DoRemovalList();
-            //RemoveDuplicates(ref enemy_to_target_A, ref enemy_to_target_B);
+            RemoveDuplicates(ref enemy_to_target_A, ref enemy_to_target_B);
             if (enemy_to_target_A.Count == 0)
             {
-                SetTurretStraight(ref Turrets_A, 0, dt);
+                if (enemy_to_target_B.Count != 0)
+                {
+                    //SetTurret to Aim at B
+                    int get_lower = enemy_to_target_B.Count < Turrets_A.Count ? enemy_to_target_B.Count : Turrets_A.Count;
+                    for (int i = 0; i < get_lower; ++i)
+                    {
+                        //Turret in use
+                        LockonEnemies(Turrets_A[i], enemy_to_target_B[i], dt);
+                    }
+                    for (int j = get_lower; j < Turrets_A.Count; ++j)
+                    {
+                        //Set the other to target the same enemy
+                        LockonEnemies(Turrets_A[j], enemy_to_target_B[j - 1], dt);
+                    }
+                }
+                else
+                {
+                    SetTurretStraight(ref Turrets_A, 0, dt);
+                }
             }
             if (enemy_to_target_B.Count == 0)
             {
-                SetTurretStraight(ref Turrets_B, 2, dt);
+                if (enemy_to_target_A.Count != 0)
+                {
+                    //SetTurret to Aim at B
+                    int get_lower = enemy_to_target_A.Count < Turrets_B.Count ? enemy_to_target_A.Count : Turrets_B.Count;
+                    for (int i = 0; i < get_lower; ++i)
+                    {
+                        //Turret in use
+                        LockonEnemies(Turrets_B[i], enemy_to_target_A[i], dt);
+                    }
+                    for (int j = get_lower; j < Turrets_A.Count; ++j)
+                    {
+                        //Set the other to target the same enemy
+                        LockonEnemies(Turrets_B[j], enemy_to_target_A[j - 1], dt);
+                    }
+                }
+                else
+                {
+                    SetTurretStraight(ref Turrets_B, 2, dt);
+                }
             }
             if (enemy_to_target_A.Count != 0)
             {
@@ -457,10 +493,19 @@ namespace Scripting
 
         public void RemoveDuplicates(ref List<uint> TurretGroup1, ref List<uint> TurretGroup2)
         {
-            duplicates = TurretGroup1.Intersect(TurretGroup2).ToList();
-            //Condition to remove
             if (TurretGroup1.Count > TurretGroup2.Count)
             {
+                foreach (var id1 in TurretGroup2)
+                {
+                    foreach (var id2 in TurretGroup1)
+                    {
+                        if (id1 == id2)
+                        {
+                            duplicates.Add(id2);
+                        }
+                    }
+                }
+
                 foreach (var duplicate in duplicates)
                 {
                     TurretGroup1.Remove(duplicate);
@@ -468,6 +513,17 @@ namespace Scripting
             }
             else
             {
+                foreach (var id1 in TurretGroup1)
+                {
+                    foreach (var id2 in TurretGroup2)
+                    {
+                        if (id1 == id2)
+                        {
+                            duplicates.Add(id2);
+                        }
+                    }
+                }
+
                 foreach (var duplicate in duplicates)
                 {
                     TurretGroup2.Remove(duplicate);
