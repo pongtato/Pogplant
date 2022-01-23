@@ -8,10 +8,16 @@ namespace Scripting
 {
     public class FirstPersonFiringSystem : MonoBehaviour
     {
-        List<uint> Turrets = new List<uint>();
         List<uint> enemy_in_range = new List<uint>();
         List<uint> enemy_to_target = new List<uint>();
+        List<uint> Turrets_A = new List<uint>();
+        List<uint> Turrets_B = new List<uint>();
+        static List<uint> enemy_in_range_A = new List<uint>();
+        static List<uint> enemy_to_target_A = new List<uint>();
+        static List<uint> enemy_in_range_B = new List<uint>();
+        static List<uint> enemy_to_target_B = new List<uint>();
         List<uint> removal_list = new List<uint>();
+        List<uint> duplicates = new List<uint>();
 
         uint PlayerShip;
         uint shipCamera;
@@ -78,10 +84,10 @@ namespace Scripting
             ReticleGroupID = ECS.FindEntityWithName("ReticleGroup");
             ScoreText = ECS.FindEntityWithName("Score_Text");
 
-            Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
-            Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
-            Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret3"));
-            Turrets.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret4"));
+            Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
+            Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
+            Turrets_B.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret3"));
+            Turrets_B.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret4"));
 
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), "Child")));
@@ -110,75 +116,26 @@ namespace Scripting
             UpdateReticleMovementCanvas(ref transform, ref dt);
 
             //Add homing capablities
-            int lower_count = enemy_in_range.Count < Turrets.Count ? enemy_in_range.Count : Turrets.Count;
-            for (int i = 0; i < lower_count; ++i)
-            {
-                if (GameUtilities.GetAlive(enemy_in_range[i]))
-                {
-                    if (enemy_to_target.Contains(enemy_in_range[i]))
-                        continue;
-                    enemy_to_target.Add(enemy_in_range[i]);
-                }
-                else
-                {
-                    removal_list.Add(enemy_in_range[i]);
-                }
-            }
+            SetTargetEnemies(ref Turrets_A, ref enemy_in_range_A, ref enemy_to_target_A);
+            SetTargetEnemies(ref Turrets_B, ref enemy_in_range_B, ref enemy_to_target_B);
             DoRemovalList();
-            if (enemy_to_target.Count == 0)
+            RemoveDuplicates(ref enemy_to_target_A, ref enemy_to_target_B);
+            if (enemy_to_target_A.Count == 0)
             {
-                //Shoot straight if there is no enemy
-                for (int i = 0; i < Turrets.Count; ++i)
-                {
-                    Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[i]).Rotation;
-                    ECS.SetRotation(Turrets[i], Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed));
-                    //Reset Reticle
-                    ResetReticle(ReticleGroup[i]);
-                }
+                SetTurretStraight(ref Turrets_A, 0, dt);
             }
-            if (enemy_to_target.Count != 0)
+            if (enemy_to_target_B.Count == 0)
             {
-                int get_lower = enemy_to_target.Count < Turrets.Count ? enemy_to_target.Count : Turrets.Count;
-                for (int i = 0; i < get_lower; ++i)
-                {
-                    //Turret in use
-                    Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[i]).Rotation;
-                    Transform.LookAt(Turrets[i], ECS.GetGlobalPosition(enemy_to_target[i]));
-                    Vector3 AfterTurrRot = ECS.GetComponent<Transform>(Turrets[i]).Rotation;
-                    ECS.SetRotation(Turrets[i], Vector3.Lerp(CurrTurrRot, AfterTurrRot,  dt * m_rotspeed));
-
-                    //Update Reticle 
-                    Vector3 EnemyPos = ECS.GetGlobalPosition(enemy_to_target[i]);
-                    Vector3 Rot = ECS.GetGlobalRotation(shipCamera);
-                    if (Rot.X < 0)
-                        Rot.X += 180.0f; 
-                    else
-                        Rot.X -= 180.0f;
-                    ReticleGroup[i].step += dt * animateSpeed;
-                    if (ReticleGroup[i].step >= 1.0f)
-                        ReticleGroup[i].step = 1.0f;
-                    ECS.SetTransformECS(ReticleGroup[i].parent_id, EnemyPos, Rot, Vector3.Lerp(start_reticle, Show_reticle, ReticleGroup[i].step));
-                    //Rotate child reticle aftewards
-                    if (!ReticleGroup[i].enabled)
-                        ReticleGroup[i].enabled = true;
-                    else
-                    {
-                        ReticleGroup[i].accu_angle -= rotateAmount * animateSpeed * dt;
-                        ECS.SetRotation(ReticleGroup[i].child_id, new Vector3(0, 0, ReticleGroup[i].accu_angle));
-                    }
-
-
-                }
-                for (int j = get_lower; j < Turrets.Count; ++j)
-                {
-                    //Turrets not in use
-                    Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[j]).Rotation;
-                    ECS.SetRotation(Turrets[j], Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed));
-                    //Reset Reticle
-                    ResetReticle(ReticleGroup[j]);
-                }
+                SetTurretStraight(ref Turrets_B, 2, dt);
             }
-
+            if (enemy_to_target_A.Count != 0)
+            {
+                SetReticleandTurret(ref Turrets_A, ref enemy_to_target_A, 0, dt);
+            }
+            if (enemy_to_target_B.Count != 0)
+            {
+                SetReticleandTurret(ref Turrets_B, ref enemy_to_target_B, 2, dt);
+            }
             ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
         }
         public override void LateUpdate(float dt)
@@ -190,16 +147,8 @@ namespace Scripting
                 if (p_fire_timer >= p_fireRate)
                 {
                     // Call C++ side bullet firing
-                    foreach(var Turret in Turrets)
-                    {
-                        Vector3 Forward = Transform.GetForwardVector(Turret);
-                        Vector3 Position = ECS.GetGlobalPosition(Turret) + Forward * 0.55f;
-                        Vector3 Rotation = ECS.GetGlobalRotation(Turret);
-                        GameUtilities.FirePlayerBullet(Position, Forward, Rotation);
-
-                        GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
-                    }
-
+                    CallTurretShoot(ref Turrets_A);
+                    CallTurretShoot(ref Turrets_B);
                     ECS.PlayAudio(shipCamera, 1, "SFX");
                     p_fire_timer = 0.0f;
 
@@ -211,50 +160,65 @@ namespace Scripting
 
         public override void OnTriggerEnter(uint id)
         {
-            Tag other_tag = ECS.GetComponent<Tag>(id);
-            
-            if (other_tag.tag == "Targetable")
-            {
-                AddEnemyToListOfTargets(id);
-            }
 
         }
         public override void OnTriggerExit(uint id)
         {
-            Tag other_tag = ECS.GetComponent<Tag>(id);
-            if (other_tag.tag == "Targetable")
-            {
-                RemoveEnemyFromListOfTargets(id);
-            }
         }
 
-        void AddEnemyToListOfTargets(uint baseEnemy)
+        public static void AddEnemyToListOfTargets(uint baseEnemy, uint BoxType)
         {
-            if(!enemy_in_range.Contains(baseEnemy))
+            if (BoxType == 0)
             {
-                enemy_in_range.Add(baseEnemy);
+                //Go Box Type A
+                if (!enemy_in_range_A.Contains(baseEnemy))
+                {
+                    enemy_in_range_A.Add(baseEnemy);
+                }
             }
-            //UpdateReticleTargets();
-        }
+            else if (BoxType == 1)
+            {
+                //Go Box Type B
+                if (!enemy_in_range_B.Contains(baseEnemy))
+                {
+                    enemy_in_range_B.Add(baseEnemy);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error adding Enemy list of targets");
+            }
 
+        }
         void DoRemovalList()
         {
             foreach (uint removable in removal_list)
             {
-                enemy_in_range.Remove(removable);
-                enemy_to_target.Remove(removable);
+                enemy_in_range_A.Remove(removable);
+                enemy_to_target_A.Remove(removable);
+                enemy_in_range_B.Remove(removable);
+                enemy_to_target_B.Remove(removable);
             }
             removal_list.Clear();
         }
-
-        public void RemoveEnemyFromListOfTargets(uint baseEnemy)
+        public static void RemoveEnemyFromListOfTargets(uint baseEnemy, uint BoxType)
         {
-            if (enemy_in_range.Contains(baseEnemy))
+            if (BoxType == 0)
             {
-                enemy_in_range.Remove(baseEnemy);
+                //Go Box Type A
+                enemy_in_range_A.Remove(baseEnemy);
+                enemy_to_target_A.Remove(baseEnemy);
             }
-            enemy_to_target.Remove(baseEnemy);
-            //UpdateReticleTargets();
+            else if (BoxType == 1)
+            {
+                //Go Box Type B
+                enemy_in_range_B.Remove(baseEnemy);
+                enemy_to_target_B.Remove(baseEnemy);
+            }
+            else
+            {
+                Console.WriteLine("Error removing Enemy list of targets");
+            }
         }
 
         void UpdateReticleMovement(ref Transform transform, ref float dt)
@@ -396,6 +360,120 @@ namespace Scripting
             ECS.SetTransformECS(ret.parent_id, start_position, start_position, Small_hide_reticle);
         }
 
+        void SetTargetEnemies(ref List<uint> TurretGroup, ref List<uint> EnemyinRangeGroup, ref List<uint> EnemytoTarget)
+        {
+            int lower_count = EnemyinRangeGroup.Count < TurretGroup.Count ? EnemyinRangeGroup.Count : TurretGroup.Count;
+            for (int i = 0; i < lower_count; ++i)
+            {
+                if (GameUtilities.GetAlive(EnemyinRangeGroup[i]))
+                {
+                    if (EnemytoTarget.Contains(EnemyinRangeGroup[i]))
+                        continue;
+                    EnemytoTarget.Add(EnemyinRangeGroup[i]);
+                }
+                else
+                {
+                    removal_list.Add(EnemyinRangeGroup[i]);
+                }
+            }
+        }
+
+        void SetTurretStraight(ref List<uint> TurretGroup, int Offset, float dt)
+        {
+            for (int i = 0; i < TurretGroup.Count; ++i)
+            {
+                Vector3 CurrTurrRot = ECS.GetComponent<Transform>(TurretGroup[i]).Rotation;
+                ECS.SetRotation(TurretGroup[i], Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed));
+                //Reset Reticle
+                ResetReticle(ReticleGroup[i + Offset]);
+            }
+        }
+
+        public void LockonEnemies(uint Turret, uint EnemytoTarget, float dt)
+        {
+            Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turret).Rotation;
+            Transform.LookAt(Turret, ECS.GetGlobalPosition(EnemytoTarget));
+            Vector3 AfterTurrRot = ECS.GetComponent<Transform>(Turret).Rotation;
+            ECS.SetRotation(EnemytoTarget, Vector3.Lerp(CurrTurrRot, AfterTurrRot, dt * m_rotspeed));
+        }
+
+        public void SetReticleandTurret(ref List<uint> TurretGroup, ref List<uint> EnemytoTarget, int RetOffSet, float dt)
+        {
+            int get_lower = EnemytoTarget.Count < TurretGroup.Count ? EnemytoTarget.Count : TurretGroup.Count;
+            for (int i = 0; i < get_lower; ++i)
+            {
+                //Turret in use
+                LockonEnemies(TurretGroup[i], EnemytoTarget[i], dt);
+
+                //Update Reticle 
+                Vector3 EnemyPos = ECS.GetGlobalPosition(EnemytoTarget[i]);
+                Vector3 Rot = ECS.GetGlobalRotation(shipCamera);
+                if (Rot.X < 0)
+                    Rot.X += 180.0f;
+                else
+                    Rot.X -= 180.0f;
+                int k = i + RetOffSet;
+                ReticleGroup[k].step += dt * animateSpeed;
+                if (ReticleGroup[k].step >= 1.0f)
+                    ReticleGroup[k].step = 1.0f;
+                ECS.SetTransformECS(ReticleGroup[k].parent_id, EnemyPos, Rot, Vector3.Lerp(start_reticle, Show_reticle, ReticleGroup[k].step));
+                //Rotate child reticle aftewards
+                if (!ReticleGroup[k].enabled)
+                    ReticleGroup[k].enabled = true;
+                else
+                {
+                    ReticleGroup[k].accu_angle -= rotateAmount * animateSpeed * dt;
+                    ECS.SetRotation(ReticleGroup[k].child_id, new Vector3(0, 0, ReticleGroup[k].accu_angle));
+                }
+
+
+            }
+            for (int j = get_lower; j < TurretGroup.Count; ++j)
+            {
+                //Set the other to target the same enemy
+                LockonEnemies(TurretGroup[j], EnemytoTarget[j - 1], dt);
+
+                //Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[j]).Rotation;
+                //ECS.SetRotation(Turrets[j], Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed));
+
+                //Reset Reticle
+                ResetReticle(ReticleGroup[j + RetOffSet]);
+            }
+        }
+
+        public void CallTurretShoot(ref List<uint> TurretGroup)
+        {
+            foreach (var Turret in TurretGroup)
+            {
+                Vector3 Forward = Transform.GetForwardVector(Turret);
+                Vector3 Position = ECS.GetGlobalPosition(Turret) + Forward * 0.55f;
+                Vector3 Rotation = ECS.GetGlobalRotation(Turret);
+                GameUtilities.FirePlayerBullet(Position, Forward, Rotation);
+
+                GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
+            }
+        }
+
+        public void RemoveDuplicates(ref List<uint> TurretGroup1, ref List<uint> TurretGroup2)
+        {
+            duplicates = TurretGroup1.Intersect(TurretGroup2).ToList();
+            //Condition to remove
+            if (TurretGroup1.Count > TurretGroup2.Count)
+            {
+                foreach (var duplicate in duplicates)
+                {
+                    TurretGroup1.Remove(duplicate);
+                }
+            }
+            else
+            {
+                foreach (var duplicate in duplicates)
+                {
+                    TurretGroup2.Remove(duplicate);
+                }
+            }
+            duplicates.Clear();
+        }
         void CoutMyEnemy()
         {
             Console.Write("Start: ");

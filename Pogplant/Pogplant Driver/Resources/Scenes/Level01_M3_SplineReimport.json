@@ -18615,28 +18615,10 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "ShootingBox"
-		},
-		"OBBBoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				5.0,
-				5.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
 		},
 		"Rigidbody" : 
 		{
@@ -18665,6 +18647,114 @@
 				0.0,
 				-3.4248608723336238e-12,
 				2.0844186099377993e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BoxA"
+		},
+		"OBBBoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				5.0,
+				2.5,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Scripting" : 
+		{
+			"FirstPersonFiringBox" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.862645149230957e-08,
+				2.5,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				1.0533445504587935e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BoxB"
+		},
+		"OBBBoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				5.0,
+				2.5,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Scripting" : 
+		{
+			"FirstPersonFiringBox" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.862645149230957e-09,
+				-2.5000114440917969,
+				-7.62939453125e-06
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				1.0533445504587935e-15
 			],
 			"m_scale" : 
 			[
