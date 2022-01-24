@@ -110635,7 +110635,7 @@
 				0.5,
 				0.5
 			],
-			"isStatic" : false,
+			"isStatic" : true,
 			"isTrigger" : true
 		},
 		"Children" : 0,
@@ -110665,13 +110665,9 @@
 			],
 			"UseLight" : 1
 		},
-		"Scripting" : 
-		{
-			"BonusItem" : false
-		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "BonusCoin"
 		},
 		"Transform" : 
 		{
@@ -110711,7 +110707,7 @@
 				0.5,
 				0.5
 			],
-			"isStatic" : false,
+			"isStatic" : true,
 			"isTrigger" : true
 		},
 		"Children" : 0,
@@ -110741,13 +110737,9 @@
 			],
 			"UseLight" : 1
 		},
-		"Scripting" : 
-		{
-			"BonusItem" : false
-		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "BonusCoin"
 		},
 		"Transform" : 
 		{
@@ -110787,7 +110779,7 @@
 				0.5,
 				0.5
 			],
-			"isStatic" : false,
+			"isStatic" : true,
 			"isTrigger" : true
 		},
 		"Children" : 0,
@@ -110817,13 +110809,9 @@
 			],
 			"UseLight" : 1
 		},
-		"Scripting" : 
-		{
-			"BonusItem" : false
-		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "BonusCoin"
 		},
 		"Transform" : 
 		{

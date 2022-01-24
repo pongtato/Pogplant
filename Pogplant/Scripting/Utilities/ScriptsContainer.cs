@@ -40,7 +40,6 @@ namespace Scripting
             monoScriptNames.Add("MainMenuController");
             monoScriptNames.Add("Laser");
             monoScriptNames.Add("LaserTriggerController");
-            monoScriptNames.Add("DummyScript");
             monoScriptNames.Add("GameOverScreen");
             monoScriptNames.Add("GameEndingTrigger");
             monoScriptNames.Add("DashboardScreen");
@@ -56,6 +55,7 @@ namespace Scripting
             pauseScriptNames.Add("BobbleHeadMenu");
             pauseScriptNames.Add("PauseMenu");
             pauseScriptNames.Add("PauseSettingsMenu");
+            pauseScriptNames.Add("LaserWeapon");
         }
 
         public string GetScriptNameElement(int index)

@@ -79,7 +79,6 @@ namespace Scripting
 
         void UpdateInputs()
         {
-
             //Key input
             if (InputUtility.onKeyTriggered("MENULEFT"))
             {

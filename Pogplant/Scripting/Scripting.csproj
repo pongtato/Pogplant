@@ -65,7 +65,7 @@
     <Compile Include="MonoScripts\BaseTurret.cs" />
     <Compile Include="MonoScripts\CatmullRomSpline.cs" />
     <Compile Include="MonoScripts\DashboardScreen.cs" />
-    <Compile Include="MonoScripts\DummyScript.cs" />
+    <Compile Include="PauseScripts\LaserWeapon.cs" />
     <Compile Include="MonoScripts\EncounterManager.cs" />
     <Compile Include="MonoScripts\EncounterSystemDriver.cs" />
     <Compile Include="MonoScripts\EnemyManager.cs" />

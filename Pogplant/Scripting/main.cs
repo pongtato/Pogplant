@@ -49,9 +49,9 @@ namespace Scripting
             return new DashboardScreen();
         }
 
-        public static DummyScript DummyScript()
+        public static LaserWeapon LaserWeapon()
         {
-            return new DummyScript();
+            return new LaserWeapon();
         }
         public static PlayerScript PlayerScript()
         {

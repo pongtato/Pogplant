@@ -110,7 +110,7 @@ namespace Scripting
 
         // Bonus Item / Bonus Effects
         static public int m_BonusItem = 0;
-        const int m_BonusItemMax = 10;
+        const int m_BonusItemMax = 4;
         static public bool m_EnableBonusScreen = false;
         uint m_BobHeadMenuID;
         static public uint m_ScoreMultiplierBobbleCount = 1;
@@ -496,7 +496,10 @@ namespace Scripting
         public override void OnTriggerEnter(uint id)
         {
             //Console.WriteLine(" Other ID" + id);
-            
+            if(ECS.GetComponent<Tag>(id).tag == "BonusCoin")
+            {
+                ++m_BonusItem;
+            }
         }
 
         public override void OnTriggerExit(uint id)

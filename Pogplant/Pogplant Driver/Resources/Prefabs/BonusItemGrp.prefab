@@ -3,7 +3,7 @@
 		"Children" : 3,
 		"Guid" : 
 		{
-			"m_guid" : "169b7d98-b0de-403e-98b3-cf01f135f9bd"
+			"m_guid" : "f0e65f8f-f3cb-4631-9873-09e243b1cb07"
 		},
 		"Name" : 
 		{
@@ -11,7 +11,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\BonusItemGroup.prefab"
+			"file_path" : "Resources\\Prefabs\\BonusItemGrp.prefab"
 		},
 		"Tag" : 
 		{
@@ -55,7 +55,7 @@
 				0.5,
 				0.5
 			],
-			"isStatic" : false,
+			"isStatic" : true,
 			"isTrigger" : true
 		},
 		"Children" : 0,
@@ -65,7 +65,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\BonusItemGroup.prefab"
+			"file_path" : "Resources\\Prefabs\\BonusItemGrp.prefab"
 		},
 		"Render" : 
 		{
@@ -89,13 +89,9 @@
 			],
 			"UseLight" : 1
 		},
-		"Scripting" : 
-		{
-			"BonusItem" : false
-		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "BonusCoin"
 		},
 		"Transform" : 
 		{
@@ -135,7 +131,7 @@
 				0.5,
 				0.5
 			],
-			"isStatic" : false,
+			"isStatic" : true,
 			"isTrigger" : true
 		},
 		"Children" : 0,
@@ -145,7 +141,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\BonusItemGroup.prefab"
+			"file_path" : "Resources\\Prefabs\\BonusItemGrp.prefab"
 		},
 		"Render" : 
 		{
@@ -169,13 +165,9 @@
 			],
 			"UseLight" : 1
 		},
-		"Scripting" : 
-		{
-			"BonusItem" : false
-		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "BonusCoin"
 		},
 		"Transform" : 
 		{
@@ -215,7 +207,7 @@
 				0.5,
 				0.5
 			],
-			"isStatic" : false,
+			"isStatic" : true,
 			"isTrigger" : true
 		},
 		"Children" : 0,
@@ -225,7 +217,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\BonusItemGroup.prefab"
+			"file_path" : "Resources\\Prefabs\\BonusItemGrp.prefab"
 		},
 		"Render" : 
 		{
@@ -249,13 +241,9 @@
 			],
 			"UseLight" : 1
 		},
-		"Scripting" : 
-		{
-			"BonusItem" : false
-		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "BonusCoin"
 		},
 		"Transform" : 
 		{
