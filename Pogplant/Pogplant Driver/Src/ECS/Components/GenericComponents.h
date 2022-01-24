@@ -528,12 +528,13 @@ namespace Components
 	struct Canvas
 	{
 		Canvas() = default;
-		Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho);
+		Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho, bool _ForceAlpha);
 		void init(void);
 		glm::vec4 m_Color;
 		std::string m_TexName;
 		int m_TexID;
 		bool m_Ortho;
+		bool m_ForceAlpha;
 		SpriteAnimation m_SpriteAnimation;
 	};
 

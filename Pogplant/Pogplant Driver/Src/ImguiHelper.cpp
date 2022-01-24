@@ -143,7 +143,7 @@ namespace PogplantDriver
 		if (ImGui::MenuItem("Canvas", NULL, false, adding_enabled))
 		{
 			glm::vec4 color { 1.f,1.f,1.f,1.f };
-			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "snow_diff.dds", true);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "hehe.dds", true, false);
 		}
 
 		if (ImGui::MenuItem("Particle System", NULL, false, adding_enabled))
@@ -3109,10 +3109,17 @@ namespace PogplantDriver
 				ImGui::Checkbox("###UseOrtho", &canvas->m_Ortho);
 				ImGui::Dummy(ImVec2(0.0f, 1.0f));
 
+				// Force alpha?
+				ImGui::Dummy(ImVec2(0.0f, 2.0f));
+				ImGui::Text("Force Alpha");
+				ImGui::SameLine();
+				ImGui::Checkbox("###UseFalpha", &canvas->m_ForceAlpha);
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
 				// Diffuse color picker
 				ImGui::PushID("CANVAS");
 				ImGui::Text("Color Tint");
-				ImGui::ColorEdit3("###Color Tint", glm::value_ptr(canvas->m_Color));
+				ImGui::ColorEdit4("###Color Tint", glm::value_ptr(canvas->m_Color));
 				ImGui::PopID();
 				ImGui::Dummy(ImVec2(0.0f, 1.0f));
 

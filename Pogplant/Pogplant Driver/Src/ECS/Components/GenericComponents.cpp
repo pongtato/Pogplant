@@ -794,11 +794,12 @@ namespace Components
 		}
 	}
 
-	Canvas::Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho)
-		: m_Color {_Color}
-		, m_TexName {_TexName}
-		, m_TexID {0}
-		, m_Ortho {_Ortho}
+	Canvas::Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho, bool _ForceAlpha)
+		: m_Color{ _Color }
+		, m_TexName{ _TexName }
+		, m_TexID{ 0 }
+		, m_Ortho{ _Ortho }
+		, m_ForceAlpha{ _ForceAlpha }
 	{
 		init();
 	}

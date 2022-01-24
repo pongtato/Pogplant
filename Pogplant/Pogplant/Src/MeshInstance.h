@@ -22,10 +22,13 @@ namespace Pogplant
 		static void InitMeshInstance(size_t _Pool_Size);
 		static void SetInstance(InstanceData _Instance_Data);
 		static void ResetCount();
+		static void ForceAlpha();
+		static void AlphaSwap();
 		static size_t GetInstanceCount();
 
 	private:
 		static size_t m_InstanceCount;
+		static size_t m_AlphaIndex;
 	};
 }
 

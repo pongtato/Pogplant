@@ -546,7 +546,16 @@ void Application::UpdateTransforms(float _Dt)
 				canvas.m_Ortho, // If ortho, show in game only since it blocks the screen, else can show it in the world
 			}
 		);
+
+		// Move it to the front so its rendered first
+		if (canvas.m_ForceAlpha)
+		{
+			PP::MeshInstance::ForceAlpha();
+		}
 	}
+
+	// Send the forced alpha object to be rendered last
+	PP::MeshInstance::AlphaSwap();
 
 	// Would always be set to true
 	PP::TextureResource::m_Updated = true;

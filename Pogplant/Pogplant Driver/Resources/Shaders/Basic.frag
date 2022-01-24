@@ -19,7 +19,7 @@ void main()
         gCanvas = texture(Textures[TexID],NewTex);
 
         //gNoLight = texture(Textures[int(TexID)],vec2(TexCoords.x,1-TexCoords.y));
-        gCanvas.rgb *= ColorCoords.rgb;
+        gCanvas *= ColorCoords;
     }
     else
     {
