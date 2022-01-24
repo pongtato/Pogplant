@@ -3,7 +3,7 @@
 		"Children" : 18,
 		"Guid" : 
 		{
-			"m_guid" : "accd3d2d-1162-4369-a3fb-0abd507b3089"
+			"m_guid" : "c02e8233-4ace-450e-9478-4836306345ff"
 		},
 		"Name" : 
 		{
@@ -12,11 +12,6 @@
 		"Prefab" : 
 		{
 			"file_path" : "Resources\\Prefabs\\Boss.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "c02e8233-4ace-450e-9478-4836306345ff",
-			"prefab_path" : "Resources\\Prefabs\\Boss.prefab"
 		},
 		"Render" : 
 		{
@@ -39,16 +34,6 @@
 				"Boss_Body"
 			],
 			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"L1Boss" : false
 		},
 		"Tag" : 
 		{
