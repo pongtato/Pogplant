@@ -125,6 +125,12 @@ namespace Scripting
         //Pause menu
         static public bool m_EnablePauseMenu = false;
 
+        // Laser Attack
+        uint m_LaserWeaponID;
+        static public bool m_EnableLaserAttack = false;
+        bool m_LaserReady = false;
+        const float m_LaserCooldown = 2.0f;
+        float m_LaserTimer = m_LaserCooldown;
          
         public PlayerScript()
         {
@@ -152,6 +158,12 @@ namespace Scripting
             m_ComboDecayBobbleCount = 1;
             m_ComboDecayTimer = 0.0f;
             m_ComboActive = true;
+
+            // Variables for the laser
+            m_LaserWeaponID = ECS.FindEntityWithName("LaserWeapon");
+            m_EnableLaserAttack = false;
+            m_LaserReady = false;
+            m_LaserTimer = m_LaserCooldown;
 
             float yaw, pitch, roll;
             yaw = pitch = roll = 0;
@@ -207,6 +219,7 @@ namespace Scripting
             UpdateCombo(dt);
 
             // Updates Combo bonus
+            UpdateLaser(dt);
 
             ECS.GetTransformECS(entityID, ref playerTrans.Position, ref playerTrans.Rotation, ref playerTrans.Scale);
             Camera.GetCamera(shipCameraEntity, ref camera.m_Yaw, ref camera.m_Pitch, ref camera.m_Roll);
@@ -392,6 +405,7 @@ namespace Scripting
             }
         }
 
+
         private Vector3 m_initialCameraPosition;
         private Vector3 m_cameraPosition;
         private Vector3 m_cameraRotation;
@@ -537,8 +551,9 @@ namespace Scripting
                 HandleDeath();
             }
 
-            Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
-            GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
+            //Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
+            //GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
+            DashboardScreen.SwapFace(DashboardScreen.FACES.HURT);
             ECS.PlayAudio(shipCameraEntity, 2, "SFX");
             EnemyManager.AddScore(false);
 
@@ -611,6 +626,33 @@ namespace Scripting
             else
             {
                 m_ComboActive = true;
+            }
+        }
+
+        private void UpdateLaser(float dt)
+        {
+            if (m_LaserTimer <= 0.0f && !m_LaserReady)
+            {
+                Console.WriteLine("Special Ready");
+                //ECS.SetActive(m_LaserWeaponID, true);
+                m_LaserReady = true;
+            }
+            else
+            {
+                m_LaserTimer -= dt;
+            }
+
+            if (InputUtility.onKeyHeld("LASER") && m_LaserReady)
+            {
+                Console.WriteLine("Special Used");
+                m_EnableLaserAttack = true;
+                m_LaserReady = false;
+                m_LaserTimer = m_LaserCooldown;
+                GameUtilities.PauseScene();
+            }
+            else if(InputUtility.onKeyHeld("LASER") && !m_LaserReady)
+            {
+                Console.WriteLine("Special Not Ready");
             }
         }
     }

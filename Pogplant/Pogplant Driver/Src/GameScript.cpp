@@ -171,8 +171,8 @@ namespace Scripting
 		//Add power to the shots
 		glm::vec3 Powershot = _FowardVector * speed;
 		body->AddImpulseForce(Powershot);
-
 	}
+
 	void GameScript::FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue)
 	{
 		//Get enemy transform 
@@ -536,22 +536,22 @@ namespace Scripting
 		}
 	}
 
-	void GameScript::UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType)
-	{
-		entt::entity dashboardID = static_cast<entt::entity>(dashboardEntityID);
+	//void GameScript::UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType)
+	//{
+	//	entt::entity dashboardID = static_cast<entt::entity>(dashboardEntityID);
 
-		if (PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(dashboardID))
-		{
-			auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(dashboardID);
-			if (scriptable)
-			{
-				if (scriptable->m_ScriptTypes.contains("DashboardScreen"))
-				{
-					SSH::InvokeFunction("DashboardScreen", "SwapFace", dashboardID, faceType);
-				}
-			}
-		}
-	}
+	//	if (PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(dashboardID))
+	//	{
+	//		auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(dashboardID);
+	//		if (scriptable)
+	//		{
+	//			if (scriptable->m_ScriptTypes.contains("DashboardScreen"))
+	//			{
+	//				SSH::InvokeFunction("DashboardScreen", "SwapFace", dashboardID, faceType);
+	//			}
+	//		}
+	//	}
+	//}
 
 	void GameScript::UpdateScore(std::uint32_t text_object, std::uint32_t score)
 	{
@@ -745,6 +745,23 @@ namespace Scripting
 		}
 	}
 
+	//Helper function for Playerbullet taking damage
+	void GameScript::EnemyTakeDamageFromID(std::uint32_t entityID, float damage)
+	{
+		auto enemy_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(entityID));
+
+		if (enemy_script)
+		{
+			if (enemy_script->m_ScriptTypes.contains("BaseTurret"))
+				SSH::InvokeFunction("BaseTurret", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			else if (enemy_script->m_ScriptTypes.contains("BaseGattling"))
+				SSH::InvokeFunction("BaseGattling", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			else if (enemy_script->m_ScriptTypes.contains("BaseFlock"))
+				SSH::InvokeFunction("BaseFlock", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			else if (enemy_script->m_ScriptTypes.contains("L1BossShield"))
+				SSH::InvokeFunction("L1BossShield", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+		}
+	}
 }
 
 

@@ -518,11 +518,8 @@ namespace SSH
 		auto script1 = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity1);
 		auto script2 = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity2);
 
-		bool found = false;
-
 		if (script1)
 		{
-			found = true;
 			for (auto& scripts : script1->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity1, onTriggerEnterEvent.get()->m_entity2);
@@ -531,34 +528,28 @@ namespace SSH
 
 		if (script2)
 		{
-			found = true;
 			for (auto& scripts : script2->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity2, onTriggerEnterEvent.get()->m_entity1);
 			}
 		}
 
-		if (!found)
+		auto pScript1 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerEnterEvent.get()->m_entity1);
+		auto pScript2 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerEnterEvent.get()->m_entity2);
+
+		if (pScript1)
 		{
-			auto pScript1 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerEnterEvent.get()->m_entity1);
-			auto pScript2 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerEnterEvent.get()->m_entity2);
-
-			if (pScript1)
+			for (auto& scripts : pScript1->m_ScriptTypes)
 			{
-				found = true;
-				for (auto& scripts : pScript1->m_ScriptTypes)
-				{
-					InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity1, onTriggerEnterEvent.get()->m_entity2);
-				}
+				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity1, onTriggerEnterEvent.get()->m_entity2);
 			}
+		}
 
-			if (pScript2)
+		if (pScript2)
+		{
+			for (auto& scripts : pScript2->m_ScriptTypes)
 			{
-				found = true;
-				for (auto& scripts : pScript2->m_ScriptTypes)
-				{
-					InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity2, onTriggerEnterEvent.get()->m_entity1);
-				}
+				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity2, onTriggerEnterEvent.get()->m_entity1);
 			}
 		}
 	}
@@ -572,11 +563,9 @@ namespace SSH
 	{
 		auto script1 = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity1);
 		auto script2 = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity2);
-		bool found = false;
 
 		if (script1)
 		{
-			found = true;
 			for (auto& scripts : script1->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity1, onTriggerExitEvent.get()->m_entity2);
@@ -585,34 +574,28 @@ namespace SSH
 
 		if (script2)
 		{
-			found = true;
 			for (auto& scripts : script2->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2, onTriggerExitEvent.get()->m_entity1);
 			}
 		}
 
-		if (!found)
+		auto pScript1 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerExitEvent.get()->m_entity1);
+		auto pScript2 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerExitEvent.get()->m_entity2);
+
+		if (pScript1)
 		{
-			auto pScript1 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerExitEvent.get()->m_entity1);
-			auto pScript2 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerExitEvent.get()->m_entity2);
-
-			if (pScript1)
+			for (auto& scripts : pScript1->m_ScriptTypes)
 			{
-				found = true;
-				for (auto& scripts : pScript1->m_ScriptTypes)
-				{
-					InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity1, onTriggerExitEvent.get()->m_entity2);
-				}
+				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity1, onTriggerExitEvent.get()->m_entity2);
 			}
+		}
 
-			if (pScript2)
+		if (pScript2)
+		{
+			for (auto& scripts : pScript2->m_ScriptTypes)
 			{
-				found = true;
-				for (auto& scripts : pScript2->m_ScriptTypes)
-				{
-					InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2, onTriggerExitEvent.get()->m_entity1);
-				}
+				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2, onTriggerExitEvent.get()->m_entity1);
 			}
 		}
 	}

@@ -28,7 +28,7 @@ namespace Scripting
         float Enemy1_fire_rate = 5;
         float Enemy2_fire_rate = 2f;
 
-        EncounterManager encounterManager = new EncounterManager();
+        static EncounterManager encounterManager = new EncounterManager();
 
         public override void Init(ref uint _entityID)
         {
@@ -1605,7 +1605,7 @@ namespace Scripting
 
         // This function exposes EnemyManager.GetAlive method,
         // Provided an ID, the function will deal given damage to the enemy.
-        public void TakeDamage(uint id, float damage)
+        public static void TakeDamage(uint id, float damage)
         {
             encounterManager.enemyManager.TakeDamage(id, damage);
         }

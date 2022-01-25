@@ -8,27 +8,26 @@ namespace Scripting
 {
     public class DashboardScreen : MonoBehaviour
     {
-        uint UI_happy;
-        uint UI_hurt;
-        uint UI_neutral;
+        static uint UI_happy;
+        static uint UI_hurt;
+        static uint UI_neutral;
 
         private const float seconds_until_revert = 1.0f;
         private const float seconds_until_changeable = seconds_until_revert - 0.5f;
-        private float revert_timer = 0.0f;
-        private float changeable_timer = seconds_until_changeable;
+        private static float revert_timer = 0.0f;
+        private static float changeable_timer = seconds_until_changeable;
         //private bool start_revert_timer;
-        private bool swap_face_lock = false;
-        //private FACES currentFace = FACES.NEUTRAL;
-        private uint currentFace = 0;
+        private static bool swap_face_lock = false;
+        private static FACES currentFace = FACES.NEUTRAL;
+        //private static uint currentFace = 0;
 
+        //FACES current_face;
         public enum FACES
         {
             NEUTRAL = 0,
             HAPPY = 1,
             HURT = 2
         }
-
-        //FACES current_face;
 
         public DashboardScreen()
         {
@@ -41,6 +40,7 @@ namespace Scripting
             UI_happy = ECS.FindChildEntityWithName(entityID, "Happy Face");
             UI_hurt = ECS.FindChildEntityWithName(entityID, "Hurt Face");
             UI_neutral = ECS.FindChildEntityWithName(entityID, "Neutral Face");
+            Console.WriteLine(UI_happy + " | " + UI_hurt + " | " + UI_neutral);
         }
 
         public override void Start()
@@ -59,7 +59,7 @@ namespace Scripting
                 if (changeable_timer >= seconds_until_changeable)
                     swap_face_lock = false;
             }
-            else if (currentFace != 0)
+            else if (currentFace != FACES.NEUTRAL)
             {
                 revert_timer += dt;
 
@@ -67,7 +67,7 @@ namespace Scripting
                 {
                     revert_timer = 0.0f;
                     ResetFace();
-                    currentFace = 0;
+                    currentFace = FACES.NEUTRAL;
                 }
             }
 
@@ -99,7 +99,7 @@ namespace Scripting
 
         }
 
-        public void SwapFace(uint faceType)
+        public static void SwapFace(FACES faceType)
         {
             //Enable the face type to swap to
             if (currentFace != faceType && !swap_face_lock)
@@ -107,30 +107,30 @@ namespace Scripting
                 switch (faceType)
                 {
                     //Neutral face (Revert after x seconds)
-                    case 0:
+                    case FACES.NEUTRAL:
                         //Console.WriteLine("enabling neutral");
                         ECS.SetActive(UI_neutral, true);
                         ECS.SetActive(UI_happy, false);
                         ECS.SetActive(UI_hurt, false);
-                        currentFace = 0;
+                        currentFace = FACES.NEUTRAL;
                         //current_face = FACES.NEUTRAL;
                         break;
                     //Happy face (When getting bonus)
-                    case 1:
+                    case FACES.HAPPY:
                         //Console.WriteLine("enabling happy");
                         ECS.SetActive(UI_neutral, false);
                         ECS.SetActive(UI_happy, true);
                         ECS.SetActive(UI_hurt, false);
-                        currentFace = 1;
+                        currentFace = FACES.HAPPY;
                         //current_face = FACES.HAPPY;
                         break;
                     //Hurt Face (When taking damage)
-                    case 2:
+                    case FACES.HURT:
                         //Console.WriteLine("enabling hurt");
                         ECS.SetActive(UI_neutral, false);
                         ECS.SetActive(UI_happy, false);
                         ECS.SetActive(UI_hurt, true);
-                        currentFace = 2;
+                        currentFace = FACES.HURT;
                         //current_face = FACES.HURT;
                         break;
                 }
@@ -145,7 +145,6 @@ namespace Scripting
             ECS.SetActive(UI_happy, false);
             ECS.SetActive(UI_hurt, false);
             ECS.SetActive(UI_neutral, true);
-            //current_face = FACES.NEUTRAL;
         }
     }
 }

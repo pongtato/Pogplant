@@ -77,8 +77,8 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void IncreaseScorefromEnv(uint entityID);
 
-        [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void UpdateDashboardFace(uint entityID, uint face);
+        //[MethodImplAttribute(MethodImplOptions.InternalCall)]
+        //public extern static void UpdateDashboardFace(uint entityID, uint face);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void StartLaser(uint entityID);
@@ -102,5 +102,8 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void ResumeScene();
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void EnemyTakeDamageFromID(uint entityID, float damage);
     }
 }

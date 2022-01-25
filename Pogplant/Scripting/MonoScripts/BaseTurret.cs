@@ -126,16 +126,18 @@ namespace Scripting
 
         public void TakeDamage(float damage)
         {
+            health -= damage;
+
             if (health > 0)
             {
-                health -= damage;
                 ECS.PlayAudio(entityID, 0, "SFX");
-                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
             }
             else
             {
+                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
                 GameUtilities.IncreaseScorefromEnv(PlayerBox);
-                GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
+                //GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
+                DashboardScreen.SwapFace(DashboardScreen.FACES.HAPPY);
                 HandleDeath();
             }
         }
