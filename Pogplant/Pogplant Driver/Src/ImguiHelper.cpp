@@ -1494,6 +1494,14 @@ namespace PogplantDriver
 					m_EditMode = ImGuizmo::ROTATE;
 				if (ImGui::IsKeyPressed('4'))
 					m_EditMode = ImGuizmo::SCALE;
+				if (ImGui::IsKeyPressed(GLFW_KEY_DELETE))
+				{
+					if (m_CurrentEntity != entt::null)
+					{
+						m_ecs->DestroyEntity(m_CurrentEntity);
+						m_CurrentEntity = entt::null;
+					}
+				}
 			}
 
 
