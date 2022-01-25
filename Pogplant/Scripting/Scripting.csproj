@@ -88,6 +88,7 @@
     <Compile Include="Utilities\MathUtils.cs" />
     <Compile Include="Utilities\PlayerPrefs.cs" />
     <Compile Include="Utilities\ScriptsContainer.cs" />
+    <Compile Include="Utilities\TimeManager.cs" />
     <Compile Include="Utilities\Vector3.cs" />
     <Compile Include="Utilities\DebugDraw.cs" />
     <Compile Include="Utilities\GameUtility.cs" />

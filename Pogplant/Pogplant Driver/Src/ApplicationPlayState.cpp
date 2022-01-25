@@ -14,6 +14,7 @@
 #include "Application.h"
 #include "Serialiser/Serializer.h"
 #include "GameScript.h"
+#include "Utils/TimeStone.h"
 
 namespace PPD = PogplantDriver;
 using namespace Components;
@@ -34,7 +35,7 @@ void Application::EnterPlayState(const std::string& sceneToLoad)
 	Serializer serialiser{ m_playECS };
 	if (!serialiser.Load(sceneToLoad))
 		assert(false);
-
+	
 	Scripting::GameScript::Init();
 	m_sGeneralSystem.Init(&m_playECS);
 	m_sGeneralSystem.UpdateTransforms();
@@ -59,12 +60,14 @@ void Application::UpdatePlayState(float c_dt)
 {
 	if (m_playState == PLAYSTATE::PLAY || (m_playState == PLAYSTATE::STEPNEXT))
 	{
+		c_dt = TimeStone::GetUpdatedDelta(c_dt);
+		float timeMulti = TimeStone::GetCurrentTimeScale();
 		//m_sPhysicsSystem.UpdateEditor();
 
 		//Physics dynamic update until fps drops below 30fps
 		m_accumulatedFixedTime += c_dt;
 
-		if (m_accumulatedFixedTime < m_minFixedUpdateTime && m_accumulatedFixedTime > m_maxFixedUpdateTime)
+		if (m_accumulatedFixedTime < m_minFixedUpdateTime * timeMulti && m_accumulatedFixedTime > m_maxFixedUpdateTime * timeMulti)
 		{
 			m_sPhysicsSystem.Update(m_accumulatedFixedTime);
 
@@ -72,25 +75,26 @@ void Application::UpdatePlayState(float c_dt)
 			m_sScriptSystem.LateUpdate(m_accumulatedFixedTime);
 			m_sGeneralSystem.UpdateGame(m_accumulatedFixedTime);
 
-
 			PPI::InputSystem::PollEvents(m_accumulatedFixedTime);
 
 			m_accumulatedFixedTime = 0.f;
 		}
 		else
 		{
-			while (m_accumulatedFixedTime > m_minFixedUpdateTime)
+			float timeToUpdate = m_minFixedUpdateTime * timeMulti;
+
+			while (m_accumulatedFixedTime > timeToUpdate)
 			{
-				m_sPhysicsSystem.Update(m_minFixedUpdateTime);
+				
+				m_sPhysicsSystem.Update(timeToUpdate);
 
-				m_sScriptSystem.Update(m_minFixedUpdateTime);
-				m_sScriptSystem.LateUpdate(m_minFixedUpdateTime);
-				m_sGeneralSystem.UpdateGame(m_minFixedUpdateTime);
+				m_sScriptSystem.Update(timeToUpdate);
+				m_sScriptSystem.LateUpdate(timeToUpdate);
+				m_sGeneralSystem.UpdateGame(timeToUpdate);
 
+				PPI::InputSystem::PollEvents(timeToUpdate);
 
-				PPI::InputSystem::PollEvents(m_minFixedUpdateTime);
-
-				m_accumulatedFixedTime -= m_minFixedUpdateTime;
+				m_accumulatedFixedTime -= timeToUpdate * timeMulti;
 			}
 		}
 

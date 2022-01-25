@@ -22,6 +22,7 @@
 #include "../../GameScript.h"
 #include "../Components/GenericComponents.h"
 #include "../../Serialiser/CustomSaver.h"
+#include "../../Utils/TimeStone.h"
 
 
 bool ScriptSystem::isReload = false;
@@ -510,6 +511,9 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.AudioEngine::CreateChannelGroup", SSH::CreateAudioChannelGroup);
 	mono_add_internal_call("Scripting.AudioEngine::PauseChannelGroup", SSH::PauseAudioChannelGroup);
 	mono_add_internal_call("Scripting.AudioEngine::ResumeChannelGroup", SSH::ResumeAudioChannelGroup);
+
+	mono_add_internal_call("Scripting.TimeManager::TriggerTimeAlter", TimeStone::TriggerTimeAlter);
+	mono_add_internal_call("Scripting.TimeManager::ForceNormalTime", TimeStone::ForceNormalTime);
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)
