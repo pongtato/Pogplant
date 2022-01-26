@@ -12,30 +12,56 @@ namespace Scripting
 
     public class MOVING_PARTS
     {
-        public float lerp_position_speed;
+        public float lerp_position_speed_X;
+        public float lerp_position_speed_Y;
+        public float lerp_position_speed_Z;
+
         public Vector3 lerp_position_upper_limit;
         public Vector3 lerp_position_lower_limit;
 
-        public float lerp_rotation_speed;
+        public float lerp_rotation_speed_X;
+        public float lerp_rotation_speed_Y;
+        public float lerp_rotation_speed_Z;
+
         public Vector3 lerp_rotation_upper_limit;
         public Vector3 lerp_rotation_lower_limit;
 
         public bool toggle_spin;
         public Vector3 spin_rotation;
 
-        public bool lerp_position_positive_direction;       //+ve means going towards upper limit, -ve going towards lower limit
-        public bool lerp_rotation_positive_direction;
+        public bool lerp_position_positive_direction_X;       //+ve means going towards upper limit, -ve going towards lower limit
+        public bool lerp_position_positive_direction_Y;
+        public bool lerp_position_positive_direction_Z;
 
-        public bool lerp_position_ping_pong;
-        public bool lerp_rotation_ping_pong;
+        public bool lerp_rotation_positive_direction_X;
+        public bool lerp_rotation_positive_direction_Y;
+        public bool lerp_rotation_positive_direction_Z;
+
+        public bool lerp_position_ping_pong_X;
+        public bool lerp_position_ping_pong_Y;
+        public bool lerp_position_ping_pong_Z;
+
+        public bool lerp_rotation_ping_pong_X;
+        public bool lerp_rotation_ping_pong_Y;
+        public bool lerp_rotation_ping_pong_Z;
 
         public bool update_position = false;
         public bool update_rotation = false;
 
         //Position
-        public void SetLerpPosSpeed(float value)
+        public void SetLerpPosSpeedX(float value)
         {
-            lerp_position_speed = value;
+            lerp_position_speed_X = value;
+        }
+
+        public void SetLerpPosSpeedY(float value)
+        {
+            lerp_position_speed_Y = value;
+        }
+
+        public void SetLerpPosSpeedZ(float value)
+        {
+            lerp_position_speed_Z = value;
         }
 
         public void SetLerpPosUpperLimit(Vector3 value)
@@ -48,14 +74,34 @@ namespace Scripting
             lerp_position_lower_limit = value;
         }
 
-        public void SetLerpPosPositiveDirection(bool value)
+        public void SetLerpPosPositiveDirectionX(bool value)
         {
-            lerp_position_positive_direction = value;
+            lerp_position_positive_direction_X = value;
         }
 
-        public void SetLerpPosPingPong(bool value)
+        public void SetLerpPosPositiveDirectionY(bool value)
         {
-            lerp_position_ping_pong = value;
+            lerp_position_positive_direction_Y = value;
+        }
+
+        public void SetLerpPosPositiveDirectionZ(bool value)
+        {
+            lerp_position_positive_direction_Z = value;
+        }
+
+        public void SetLerpPosPingPongX(bool value)
+        {
+            lerp_position_ping_pong_X = value;
+        }
+
+        public void SetLerpPosPingPongY(bool value)
+        {
+            lerp_position_ping_pong_Y = value;
+        }
+
+        public void SetLerpPosPingPongZ(bool value)
+        {
+            lerp_position_ping_pong_Z = value;
         }
 
         public void SetUpdatePosition(bool value)
@@ -64,9 +110,19 @@ namespace Scripting
         }
 
         //Rotation
-        public void SetLerpRotSpeed(float value)
+        public void SetLerpRotSpeedX(float value)
         {
-            lerp_rotation_speed = value;
+            lerp_rotation_speed_X = value;
+        }
+
+        public void SetLerpRotSpeedY(float value)
+        {
+            lerp_rotation_speed_Y = value;
+        }
+
+        public void SetLerpRotSpeedZ(float value)
+        {
+            lerp_rotation_speed_Z = value;
         }
 
         public void SetLerpRotUpperLimit(Vector3 value)
@@ -79,14 +135,34 @@ namespace Scripting
             lerp_rotation_lower_limit = value;
         }
 
-        public void SetLerpRotPositiveDirection(bool value)
+        public void SetLerpRotPositiveDirectionX(bool value)
         {
-            lerp_rotation_positive_direction = value;
+            lerp_rotation_positive_direction_X = value;
         }
 
-        public void SetLerpRotPingPong(bool value)
+        public void SetLerpRotPositiveDirectionY(bool value)
         {
-            lerp_rotation_ping_pong = value;
+            lerp_rotation_positive_direction_Y = value;
+        }
+
+        public void SetLerpRotPositiveDirectionZ(bool value)
+        {
+            lerp_rotation_positive_direction_Z = value;
+        }
+
+        public void SetLerpRotPingPongX(bool value)
+        {
+            lerp_rotation_ping_pong_X = value;
+        }
+
+        public void SetLerpRotPingPongY(bool value)
+        {
+            lerp_rotation_ping_pong_Y = value;
+        }
+
+        public void SetLerpRotPingPongZ(bool value)
+        {
+            lerp_rotation_ping_pong_Z = value;
         }
 
         public void SetUpdateRotation(bool value)
@@ -222,7 +298,7 @@ namespace Scripting
 
         public override void Init(ref uint _entityID)
         {
-
+            entityID = _entityID;
         }
 
         public override void Start()
@@ -285,6 +361,9 @@ namespace Scripting
             //Create and initialize the list of moving parts
             moving_parts_dict = new Dictionary<uint, MOVING_PARTS>();
 
+            //Boss body
+            moving_parts_dict.Add(entityID, new MOVING_PARTS());
+
             //Core
             moving_parts_dict.Add(false_core_id, new MOVING_PARTS());
             moving_parts_dict.Add(mouth_left_id, new MOVING_PARTS());
@@ -342,7 +421,7 @@ namespace Scripting
             switch (current_state)
             {
                 case BOSS_BEHAVIOUR_STATE.MOVING:
-                    
+                    RunMovingSequence(dt);
                     break;
             }
 
@@ -480,28 +559,28 @@ namespace Scripting
 
         void SetState(BOSS_BEHAVIOUR_STATE set_state)
         {
-            current_state = BOSS_BEHAVIOUR_STATE.MOVING;
+            current_state = set_state;
 
             //Update animation sets based on state
             switch (current_state)
             {
                 case BOSS_BEHAVIOUR_STATE.MOVING:
-
+                    SetMovingStateAnimations();
                     //Set the moving animation parameters and adding it to the stack
-                    AddAnimationSpecsStack(SetMovingStateAnimations, 10.0f);
-                    AddAnimationSpecsStack(SetTestStateAnimations, 5.0f);
-                    RunNextAnimationStack();
-                    AddAnimationUpdateStack(RunMovingSequence);
-                    AddAnimationUpdateStack(RunTestSequence);
+                    //AddAnimationSpecsStack(SetMovingStateAnimations, 10.0f);
+                    //AddAnimationSpecsStack(SetTestStateAnimations, 5.0f);
+                    //RunNextAnimationStack();
+                    //AddAnimationUpdateStack(RunMovingSequence);
+                    //AddAnimationUpdateStack(RunTestSequence);
                     break;
             }
         }
 
         void AddAnimationSpecsStack(Action action, float anim_duration)
         {
-            animation_specs_stack.Add(new Animation_Stack() 
-            { 
-                action = action, 
+            animation_specs_stack.Add(new Animation_Stack()
+            {
+                action = action,
                 animation_duration = anim_duration
             });
         }
@@ -509,6 +588,12 @@ namespace Scripting
         void AddAnimationUpdateStack(Action<float> action)
         {
             animation_update_stack.Add(action);
+        }
+
+        void StopAnimation()
+        {
+            play_animation = false;
+            ClearAnimationStack();
         }
 
         void ClearAnimationStack()
@@ -547,27 +632,50 @@ namespace Scripting
             }
         }
 
-        void SetMovingPartsPosition(uint id, Vector3 set_pos_lower_limit, Vector3 set_pos_upper_limit, float set_lerp_speed, bool set_positive_direction, bool set_ping_pong, float set_ping_pong_duration = -1.0f)
+        void SetMovingPartsPosition(uint id, Vector3 set_pos_lower_limit, Vector3 set_pos_upper_limit, Vector3 lerp_speed,
+            bool set_positive_direction_X, bool set_positive_direction_Y, bool set_positive_direction_Z,
+            bool set_ping_pong_X, bool set_ping_pong_Y, bool set_ping_pong_Z)
         {
             //Update the moving part's parameters
-            moving_parts_dict[id].SetLerpPosSpeed(set_lerp_speed);
+            moving_parts_dict[id].SetLerpPosSpeedX(lerp_speed.X);
+            moving_parts_dict[id].SetLerpPosSpeedY(lerp_speed.Y);
+            moving_parts_dict[id].SetLerpPosSpeedZ(lerp_speed.Z);
+
             moving_parts_dict[id].SetLerpPosUpperLimit(set_pos_upper_limit);
             moving_parts_dict[id].SetLerpPosLowerLimit(set_pos_lower_limit);
-            moving_parts_dict[id].SetLerpPosPingPong(set_ping_pong);
-            moving_parts_dict[id].SetLerpPosPositiveDirection(set_positive_direction);
+
+            moving_parts_dict[id].SetLerpPosPingPongX(set_ping_pong_X);
+            moving_parts_dict[id].SetLerpPosPingPongY(set_ping_pong_Y);
+            moving_parts_dict[id].SetLerpPosPingPongZ(set_ping_pong_Z);
+
+            moving_parts_dict[id].SetLerpPosPositiveDirectionX(set_positive_direction_X);
+            moving_parts_dict[id].SetLerpPosPositiveDirectionY(set_positive_direction_Y);
+            moving_parts_dict[id].SetLerpPosPositiveDirectionZ(set_positive_direction_Z);
+
 
             //Automatically enable since already setting
             moving_parts_dict[id].SetUpdatePosition(true);
         }
 
-        void SetMovingPartsRotation(uint id, Vector3 set_pos_lower_limit, Vector3 set_pos_upper_limit, float set_lerp_speed, bool set_positive_direction, bool set_ping_pong, float set_ping_pong_duration = -1.0f)
+        void SetMovingPartsRotation(uint id, Vector3 set_pos_lower_limit, Vector3 set_pos_upper_limit, Vector3 lerp_speed,
+            bool set_positive_direction_X, bool set_positive_direction_Y, bool set_positive_direction_Z, 
+            bool set_ping_pong_X, bool set_ping_pong_Y, bool set_ping_pong_Z)
         {
             //Update the moving part's parameters
-            moving_parts_dict[id].SetLerpRotSpeed(set_lerp_speed);
+            moving_parts_dict[id].SetLerpRotSpeedX(lerp_speed.X);
+            moving_parts_dict[id].SetLerpRotSpeedY(lerp_speed.Y);
+            moving_parts_dict[id].SetLerpRotSpeedZ(lerp_speed.Z);
+
             moving_parts_dict[id].SetLerpRotUpperLimit(set_pos_upper_limit);
             moving_parts_dict[id].SetLerpRotLowerLimit(set_pos_lower_limit);
-            moving_parts_dict[id].SetLerpRotPingPong(set_ping_pong);
-            moving_parts_dict[id].SetLerpRotPositiveDirection(set_positive_direction);
+
+            moving_parts_dict[id].SetLerpRotPingPongX(set_ping_pong_X);
+            moving_parts_dict[id].SetLerpRotPingPongY(set_ping_pong_Y);
+            moving_parts_dict[id].SetLerpRotPingPongZ(set_ping_pong_Z);
+
+            moving_parts_dict[id].SetLerpRotPositiveDirectionX(set_positive_direction_X);
+            moving_parts_dict[id].SetLerpRotPositiveDirectionY(set_positive_direction_Y);
+            moving_parts_dict[id].SetLerpRotPositiveDirectionZ(set_positive_direction_Z);
 
             //Automatically enable since already setting
             moving_parts_dict[id].SetUpdateRotation(true);
@@ -575,154 +683,321 @@ namespace Scripting
 
         void UpdateMovingParts(uint id, float dt)
         {
-            //Console.WriteLine(current_animation_time);
-
-            //Update position
+            //Update position only if needed
             if (moving_parts_dict[id].update_position)
             {
-                //Keep playing if ping pong
-                if (moving_parts_dict[id].lerp_position_ping_pong)
-                {
-                    //Check where current position is (if below lower limit, animate to upper limit and vice versa) (ONHOLD)
-
-                    ////X axis
-                    //if (pos.X < moving_part.lerp_position_lower_limit.X)
-                    //{
-                    //    ECS.SetPosition(part_id, Vector3.Lerp(pos, new Vector3(moving_part.lerp_position_upper_limit.X, pos.Y, pos.Z), moving_part.lerp_position_speed * dt));
-                    //}
-                    //else if (pos.X > moving_part.lerp_position_upper_limit.X)
-                    //{
-                    //    ECS.SetPosition(part_id, Vector3.Lerp(pos, new Vector3(moving_part.lerp_rotation_lower_limit.X, pos.Y, pos.Z), moving_part.lerp_position_speed * dt));
-                    //}
-                    ////if in between, lerp to closer value
-                    //else
-                    //{
-                    //    ECS.SetPosition(part_id, Vector3.Lerp(pos, new Vector3(CheckNearest(pos.X, moving_part.lerp_position_upper_limit.X, moving_part.lerp_position_lower_limit.X), pos.Y, pos.Z), moving_part.lerp_position_speed * dt));
-                    //}
-
-                    ////Y axis
-                    //if (pos.Y < moving_part.lerp_position_lower_limit.Y)
-                    //{
-                    //    ECS.SetPosition(part_id, Vector3.Lerp(pos, new Vector3(pos.X, moving_part.lerp_position_upper_limit.Y, pos.Z), moving_part.lerp_position_speed * dt));
-                    //}
-                    //else if (pos.Y > moving_part.lerp_position_upper_limit.Y)
-                    //{
-                    //    ECS.SetPosition(part_id, Vector3.Lerp(pos, new Vector3(pos.X, moving_part.lerp_rotation_lower_limit.Y, pos.Z), moving_part.lerp_position_speed * dt));
-                    //}
-                    ////if in between, lerp to closer value
-                    //else
-                    //{
-                    //    ECS.SetPosition(part_id, Vector3.Lerp(pos, new Vector3(CheckNearest(pos.X, moving_part.lerp_position_upper_limit.Y, pos.Z), pos.Y, pos.Z), moving_part.lerp_position_speed * dt));
-                    //}
-
-                    ////Z axis
-                    //if (pos.Z < moving_part.lerp_position_lower_limit.Z)
-                    //{
-                    //    ECS.SetPosition(part_id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, moving_part.lerp_position_upper_limit.Z), moving_part.lerp_position_speed * dt));
-                    //}
-                    //else if (pos.Z > moving_part.lerp_position_upper_limit.Z)
-                    //{
-                    //    ECS.SetPosition(part_id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, moving_part.lerp_rotation_lower_limit.Z), moving_part.lerp_position_speed * dt));
-                    //}
-                    ////if in between, lerp to closer value
-                    //else
-                    //{
-                    //    ECS.SetPosition(part_id, Vector3.Lerp(pos, new Vector3(CheckNearest(pos.X, pos.Y, moving_part.lerp_position_lower_limit.Z), pos.Y, pos.Z), moving_part.lerp_position_speed * dt));
-                    //}
-
-                    ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
-
-                    //Move 
-                    if (moving_parts_dict[id].lerp_position_positive_direction)
-                    {
-                        ECS.SetPosition(id, Vector3.Lerp(pos, moving_parts_dict[id].lerp_position_upper_limit, moving_parts_dict[id].lerp_position_speed * dt));
-
-                        //Check for limit and reverse
-                        if (pos.X >= moving_parts_dict[id].lerp_position_upper_limit.X - 0.1f)
-                        {
-                            moving_parts_dict[id].lerp_position_positive_direction = false;
-                        }
-                    }
-                    else
-                    {
-                        ECS.SetPosition(id, Vector3.Lerp(pos, moving_parts_dict[id].lerp_position_lower_limit, moving_parts_dict[id].lerp_position_speed * dt));
-
-                        if (pos.X <= moving_parts_dict[id].lerp_position_lower_limit.X + 0.1f)
-                        {
-                            moving_parts_dict[id].lerp_position_positive_direction = true;
-                        }
-                    }
-                }
-                //Play anim once if no ping pong
-                else
-                {
-                    //Move 
-                    if (moving_parts_dict[id].lerp_position_positive_direction)
-                    {
-                        ECS.SetPosition(id, Vector3.Lerp(pos, moving_parts_dict[id].lerp_position_upper_limit, moving_parts_dict[id].lerp_position_speed * dt));
-                    }
-                    else
-                    {
-                        ECS.SetPosition(id, Vector3.Lerp(pos, moving_parts_dict[id].lerp_position_lower_limit, moving_parts_dict[id].lerp_position_speed * dt));
-                    }
-                }
+                UpdateMovingPartsPosition(id, dt);
             }
-
-            //Update rotation
+            //Update rotation only if needed
             if (moving_parts_dict[id].update_rotation)
+            {
+                UpdateMovingPartsRotation(id, dt);
+            }
+        }
+
+        void UpdateMovingPartsPosition(uint id, float dt)
+        {
+            //===============================================================================================================================================//
+            //X Axis
+            //===============================================================================================================================================//
+
+            //Keep playing if ping pong
+            if (moving_parts_dict[id].lerp_position_ping_pong_X)
             {
                 ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
 
-                if (moving_parts_dict[id].lerp_rotation_ping_pong)
+                //Move 
+                if (moving_parts_dict[id].lerp_position_positive_direction_X)
                 {
-                    //Rotate 
-                    if (moving_parts_dict[id].lerp_rotation_positive_direction)
-                    {
-                        ECS.SetRotation(id, Vector3.Lerp(rot, moving_parts_dict[id].lerp_rotation_upper_limit, moving_parts_dict[id].lerp_rotation_speed * dt));
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(moving_parts_dict[id].lerp_position_upper_limit.X, pos.Y, pos.Z), moving_parts_dict[id].lerp_position_speed_X * dt));
 
-                        //Check for limit and reverse
-                        if (rot.X >= moving_parts_dict[id].lerp_rotation_upper_limit.X - 0.1f)
-                        {
-                            moving_parts_dict[id].lerp_rotation_positive_direction = false;
-                        }
-                    }
-                    else
+                    //Check for limit and reverse
+                    if (pos.X >= moving_parts_dict[id].lerp_position_upper_limit.X - 0.1f)
                     {
-                        ECS.SetRotation(id, Vector3.Lerp(rot, moving_parts_dict[id].lerp_rotation_lower_limit, moving_parts_dict[id].lerp_rotation_speed * dt));
-
-                        if (rot.X <= moving_parts_dict[id].lerp_rotation_lower_limit.X + 0.1f)
-                        {
-                            moving_parts_dict[id].lerp_rotation_positive_direction = true;
-                        }
+                        moving_parts_dict[id].lerp_position_positive_direction_X = false;
                     }
                 }
                 else
                 {
-                    //Rotate 
-                    if (moving_parts_dict[id].lerp_rotation_ping_pong)
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(moving_parts_dict[id].lerp_position_lower_limit.X, pos.Y, pos.Z), moving_parts_dict[id].lerp_position_speed_X * dt));
+
+                    if (pos.X <= moving_parts_dict[id].lerp_position_lower_limit.X + 0.1f)
                     {
-                        ECS.SetRotation(id, Vector3.Lerp(rot, moving_parts_dict[id].lerp_rotation_upper_limit, moving_parts_dict[id].lerp_rotation_speed * dt));
-                    }
-                    else
-                    {
-                        ECS.SetRotation(id, Vector3.Lerp(rot, moving_parts_dict[id].lerp_rotation_lower_limit, moving_parts_dict[id].lerp_rotation_speed * dt));
+                        moving_parts_dict[id].lerp_position_positive_direction_X = true;
                     }
                 }
             }
+            //Play anim once if no ping pong
+            else
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
 
+                //Move 
+                if (moving_parts_dict[id].lerp_position_positive_direction_X)
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(moving_parts_dict[id].lerp_position_upper_limit.X, pos.Y, pos.Z), moving_parts_dict[id].lerp_position_speed_X * dt));
+                }
+                else
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(moving_parts_dict[id].lerp_position_lower_limit.X, pos.Y, pos.Z), moving_parts_dict[id].lerp_position_speed_X * dt));
+                }
+            }
+
+            //===============================================================================================================================================//
+            //Y Axis
+            //===============================================================================================================================================//
+
+            //Keep playing if ping pong
+            if (moving_parts_dict[id].lerp_position_ping_pong_Y)
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Move 
+                if (moving_parts_dict[id].lerp_position_positive_direction_Y)
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, moving_parts_dict[id].lerp_position_upper_limit.Y, pos.Z), moving_parts_dict[id].lerp_position_speed_Y * dt));
+
+                    //Check for limit and reverse
+                    if (pos.Y >= moving_parts_dict[id].lerp_position_upper_limit.Y - 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_position_positive_direction_Y = false;
+                    }
+                }
+                else
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, moving_parts_dict[id].lerp_position_lower_limit.Y, pos.Z), moving_parts_dict[id].lerp_position_speed_Y * dt));
+
+                    if (pos.Y <= moving_parts_dict[id].lerp_position_lower_limit.Y + 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_position_positive_direction_Y = true;
+                    }
+                }
+            }
+            //Play anim once if no ping pong
+            else
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Move 
+                if (moving_parts_dict[id].lerp_position_positive_direction_Y)
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, moving_parts_dict[id].lerp_position_upper_limit.Y, pos.Z), moving_parts_dict[id].lerp_position_speed_Y * dt));
+                }
+                else
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, moving_parts_dict[id].lerp_position_lower_limit.Y, pos.Z), moving_parts_dict[id].lerp_position_speed_Y * dt));
+                }
+            }
+
+            //===============================================================================================================================================//
+            //Z Axis
+            //===============================================================================================================================================//
+
+            //Keep playing if ping pong
+            if (moving_parts_dict[id].lerp_position_ping_pong_Z)
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Move 
+                if (moving_parts_dict[id].lerp_position_positive_direction_Z)
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, moving_parts_dict[id].lerp_position_upper_limit.Z), moving_parts_dict[id].lerp_position_speed_Z * dt));
+
+                    //Check for limit and reverse
+                    if (pos.Z >= moving_parts_dict[id].lerp_position_upper_limit.Z - 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_position_positive_direction_Z = false;
+                    }
+                }
+                else
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, moving_parts_dict[id].lerp_position_lower_limit.Z), moving_parts_dict[id].lerp_position_speed_Z * dt));
+
+                    if (pos.Z <= moving_parts_dict[id].lerp_position_lower_limit.Z + 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_position_positive_direction_Z = true;
+                    }
+                }
+            }
+            //Play anim once if no ping pong
+            else
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Move 
+                if (moving_parts_dict[id].lerp_position_positive_direction_Z)
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, moving_parts_dict[id].lerp_position_upper_limit.Z), moving_parts_dict[id].lerp_position_speed_Z * dt));
+                }
+                else
+                {
+                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, moving_parts_dict[id].lerp_position_lower_limit.Z), moving_parts_dict[id].lerp_position_speed_Z * dt));
+                }
+            }
+        }   
+
+        void UpdateMovingPartsRotation(uint id, float dt)
+        {
+            //===============================================================================================================================================//
+            //X Axis
+            //===============================================================================================================================================//
+
+            //Keep playing if ping pong
+            if (moving_parts_dict[id].lerp_rotation_ping_pong_X)
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_rotation_positive_direction_X)
+                {
+                    
+
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(moving_parts_dict[id].lerp_rotation_upper_limit.X, rot.Y, rot.Z), moving_parts_dict[id].lerp_rotation_speed_X * dt));
+
+                    //Check for limit and reverse
+                    if (rot.X >= moving_parts_dict[id].lerp_rotation_upper_limit.X - 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_rotation_positive_direction_X = false;
+                    }
+                }
+                else
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(moving_parts_dict[id].lerp_rotation_lower_limit.X, rot.Y, rot.Z), moving_parts_dict[id].lerp_rotation_speed_X * dt));
+
+                    if (rot.X <= moving_parts_dict[id].lerp_rotation_lower_limit.X + 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_rotation_positive_direction_X = true;
+                    }
+                }
+            }
+            //Play anim once if no ping pong
+            else
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_rotation_positive_direction_X)
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(moving_parts_dict[id].lerp_rotation_upper_limit.X, rot.Y, rot.Z), moving_parts_dict[id].lerp_rotation_speed_X * dt));
+                }
+                else
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(moving_parts_dict[id].lerp_rotation_lower_limit.X, rot.Y, rot.Z), moving_parts_dict[id].lerp_rotation_speed_X * dt));
+                }
+            }
+
+            //===============================================================================================================================================//
+            //Y Axis
+            //===============================================================================================================================================//
+
+            //Keep playing if ping pong
+            if (moving_parts_dict[id].lerp_rotation_ping_pong_Y)
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_rotation_positive_direction_Y)
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, moving_parts_dict[id].lerp_rotation_upper_limit.Y, rot.Z), moving_parts_dict[id].lerp_rotation_speed_Y * dt));
+
+                    //Check for limit and reverse
+                    if (rot.Y >= moving_parts_dict[id].lerp_rotation_upper_limit.Y - 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_rotation_positive_direction_Y = false;
+                    }
+                }
+                else
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, moving_parts_dict[id].lerp_rotation_lower_limit.Y, rot.Z), moving_parts_dict[id].lerp_rotation_speed_Y * dt));
+
+                    if (rot.Y <= moving_parts_dict[id].lerp_rotation_lower_limit.Y + 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_rotation_positive_direction_Y = true;
+                    }
+                }
+            }
+            //Play anim once if no ping pong
+            else
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_rotation_positive_direction_Y)
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, moving_parts_dict[id].lerp_rotation_upper_limit.Y, rot.Z), moving_parts_dict[id].lerp_rotation_speed_Y * dt));
+                }
+                else
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, moving_parts_dict[id].lerp_rotation_lower_limit.Y, rot.Z), moving_parts_dict[id].lerp_rotation_speed_Y * dt));
+                }
+            }
+
+            //===============================================================================================================================================//
+            //Z Axis
+            //===============================================================================================================================================//
+
+            //Keep playing if ping pong
+            if (moving_parts_dict[id].lerp_rotation_ping_pong_Z)
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_rotation_positive_direction_Z)
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, moving_parts_dict[id].lerp_rotation_upper_limit.Z), moving_parts_dict[id].lerp_rotation_speed_Z * dt));
+
+                    //Check for limit and reverse
+                    if (rot.Z >= moving_parts_dict[id].lerp_rotation_upper_limit.Z - 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_rotation_positive_direction_Z = false;
+                    }
+                }
+                else
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, moving_parts_dict[id].lerp_rotation_lower_limit.Z), moving_parts_dict[id].lerp_rotation_speed_Z * dt));
+
+                    if (rot.Z <= moving_parts_dict[id].lerp_rotation_lower_limit.Z + 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_rotation_positive_direction_Z = true;
+                    }
+                }
+            }
+            //Play anim once if no ping pong
+            else
+            {
+                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_rotation_positive_direction_Z)
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, moving_parts_dict[id].lerp_rotation_upper_limit.Z), moving_parts_dict[id].lerp_rotation_speed_Z * dt));
+                }
+                else
+                {
+                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, moving_parts_dict[id].lerp_rotation_lower_limit.Z), moving_parts_dict[id].lerp_rotation_speed_Z * dt));
+                }
+            }
         }
 
-        void SpinObjectEndless(uint id, Vector3 axis, float spin_speed, float dt)
+        void SpinObjectEndless(uint id, float x_axis, float y_axis, float z_axis, float spin_speed, float dt)
         {
             if (moving_parts_dict[id].toggle_spin)
             {
-                moving_parts_dict[id].spin_rotation += axis * spin_speed * dt;
+                moving_parts_dict[id].spin_rotation.X += x_axis * spin_speed * dt;
+                moving_parts_dict[id].spin_rotation.Y += y_axis * spin_speed * dt;
+                moving_parts_dict[id].spin_rotation.Z += z_axis * spin_speed * dt;
+
                 ClampRotationValue(ref moving_parts_dict[id].spin_rotation.X, -360.0f, 360.0f);
                 ClampRotationValue(ref moving_parts_dict[id].spin_rotation.Y, -360.0f, 360.0f);
                 ClampRotationValue(ref moving_parts_dict[id].spin_rotation.Z, -360.0f, 360.0f);
 
                 ECS.SetRotation(id, moving_parts_dict[id].spin_rotation);
             }
+        }
+
+        void StopObjectSpin(uint id)
+        {
+            moving_parts_dict[id].toggle_spin = false;
         }
 
         float CheckNearest(float value, float comp1, float comp2)
@@ -760,40 +1035,49 @@ namespace Scripting
         /// </summary>
         void SetMovingStateAnimations()
         {
-            //Arms
-            SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(0, 0, 0), new Vector3(45, 30, 20), 15.0f, true, true);
-            SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, 0), new Vector3(45, 15, 35), 15.0f, true, true);
-            SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(0, 0, 0), new Vector3(45, 60, 35), 15.0f, true, true);
-            SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 0), new Vector3(45, 80, 20), 15.0f, true, true);
+            //Body
+            SetMovingPartsPosition(entityID, new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
+            SetMovingPartsRotation(entityID, new Vector3(0, 0, -4), new Vector3(0, 0, 4), new Vector3(0, 0, 3.0f), false, false, true, false, false, true);
 
-            //Arm lasers
-            SetMovingPartsRotation(left_large_laser_spin_id, new Vector3(0, 0, 0), new Vector3(45, 0, 0), 15.0f, true, true);
-            SetMovingPartsRotation(right_large_laser_spin_id, new Vector3(0, 0, 0), new Vector3(45, 0, 0), 3.2f, true, true);
+            //Arms
+            SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
+            SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -85), new Vector3(0, 0, -65), new Vector3(0, 0, 5.0f), false, false, false, false, false, true);
+            SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
+            SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 65), new Vector3(0, 0, 85), new Vector3(0.0f, 0.0f, 5.0f), false, false, false, false, false, true);
 
             //Legs
-            SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(-3, -3, -3), new Vector3(10, 10, 10), 15.0f, true, true);
-            SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(-3, -3, -3), new Vector3(10, 10, 10), 15.0f, true, true);
-            SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(-3, -3, -3), new Vector3(10, 10, 10), 15.0f, true, true);
-            SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(-3, -3, -3), new Vector3(10, 10, 10), 15.0f, true, true);
+            SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(-90, 0, -35), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, 50), new Vector3(0, 0, 100), new Vector3(10.0f, 15.0f, 15.0f), false, false, true, false, false, true);
+            SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(-90, 0, 0), new Vector3(0, 0, 35), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, -100), new Vector3(0, 0, -50), new Vector3(10.0f, 15.0f, 15.0f), false, false, true, false, false, true);
 
             //Launching bays
-            SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), 3.2f, true, false);
-            SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), 3.2f, true, false);
-            SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), 3.2f, true, false);
+            SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
-            SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), 3.2f, true, false);
-            SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), 3.2f, true, false);
-            SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), 3.2f, true, false);
+            SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+
+            //Mouth
+            SetMovingPartsRotation(mouth_left_id, new Vector3(0, -15, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
+            SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 15, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
 
             //Artillery
-            SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(-35, 0, 0), 3.2f, true, false);
-            SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(), 3.2f, true, false);
+            SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+
+            moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
+            moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
         }
 
         void RunMovingSequence(float dt)
         {
             //Set the boss in a moving state where the arms and legs flail a little bit
 
+            UpdateMovingParts(entityID, dt);
+
             //Arms
             UpdateMovingParts(left_arm_middle_joint_id, dt);
             UpdateMovingParts(left_arm_end_joint_id, dt);
@@ -822,75 +1106,13 @@ namespace Scripting
             //Artillery
             UpdateMovingParts(artillery_axis_id, dt);
             UpdateMovingParts(artillery_barrel_id, dt);
-        }
 
-        /// <summary>
-        /// [Test State] Test
-        /// </summary>
-        void SetTestStateAnimations()
-        {
-            Console.WriteLine("this should be called after 10s");
+            //Mouth
+            UpdateMovingParts(mouth_left_id, dt);
+            UpdateMovingParts(mouth_right_id, dt);
 
-            //Arms
-            SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(-45, 0, 0), new Vector3(0, 30, 20), 15.0f, true, true);
-            SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(-45, 0, 0), new Vector3(0, 15, 35), 15.0f, true, true);
-            SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(-45, 0, 0), new Vector3(0, 60, 35), 15.0f, true, true);
-            SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(-45, 0, 0), new Vector3(0, 80, 20), 15.0f, true, true);
-
-            //Arm lasers
-            SetMovingPartsRotation(left_large_laser_spin_id, new Vector3(0, 0, 0), new Vector3(45, 0, 0), 15.0f, true, true);
-            SetMovingPartsRotation(right_large_laser_spin_id, new Vector3(0, 0, 0), new Vector3(45, 0, 0), 3.2f, true, true);
-
-            //Legs
-            SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(-3, -3, -3), new Vector3(10, 10, 10), 15.0f, true, true);
-            SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(-3, -3, -3), new Vector3(10, 10, 10), 15.0f, true, true);
-            SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(-3, -3, -3), new Vector3(10, 10, 10), 15.0f, true, true);
-            SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(-3, -3, -3), new Vector3(10, 10, 10), 15.0f, true, true);
-
-            //Launching bays
-            SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), 3.2f, true, false);
-            SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), 3.2f, true, false);
-            SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), 3.2f, true, false);
-
-            SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), 3.2f, true, false);
-            SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), 3.2f, true, false);
-            SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), 3.2f, true, false);
-
-            //Artillery
-            SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(-35, 0, 0), 3.2f, true, false);
-            SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(), 3.2f, true, false);
-        }
-
-        void RunTestSequence(float dt)
-        {
-            //Arms
-            UpdateMovingParts(left_arm_middle_joint_id, dt);
-            UpdateMovingParts(left_arm_end_joint_id, dt);
-            UpdateMovingParts(right_arm_middle_joint_id, dt);
-            UpdateMovingParts(right_arm_end_joint_id, dt);
-
-            //Arm Lasers
-            UpdateMovingParts(left_large_laser_spin_id, dt);
-            UpdateMovingParts(right_large_laser_spin_id, dt);
-
-            //Legs
-            UpdateMovingParts(left_leg_middle_joint_id, dt);
-            UpdateMovingParts(left_leg_end_joint_id, dt);
-            UpdateMovingParts(right_leg_middle_joint_id, dt);
-            UpdateMovingParts(right_leg_end_joint_id, dt);
-
-            //Launching bays
-            UpdateMovingParts(right_launching_bay_one_id, dt);
-            UpdateMovingParts(right_launching_bay_two_id, dt);
-            UpdateMovingParts(right_launching_bay_three_id, dt);
-
-            UpdateMovingParts(left_launching_bay_one_id, dt);
-            UpdateMovingParts(left_launching_bay_two_id, dt);
-            UpdateMovingParts(left_launching_bay_three_id, dt);
-
-            //Artillery
-            UpdateMovingParts(artillery_axis_id, dt);
-            UpdateMovingParts(artillery_barrel_id, dt);
+            SpinObjectEndless(left_large_laser_spin_id, 0, 0, 1.0f, 5.0f, dt);
+            SpinObjectEndless(right_large_laser_spin_id, 0, 0, 1.0f, 5.0f, dt);
         }
         #endregion
     }
