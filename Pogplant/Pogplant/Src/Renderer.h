@@ -49,6 +49,7 @@ namespace Pogplant
 		static void BindTexture(int _Location, unsigned _TexID);
 		static bool m_RenderGrid;
 		static bool m_EnableShadows;
+		static float m_BloomDamp;
 		static float m_Exposure;
 		static float m_Gamma;
 		//static float m_LightShaftDecay;

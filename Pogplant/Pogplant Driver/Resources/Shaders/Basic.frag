@@ -30,8 +30,4 @@ void main()
     {
         discard;
     }
-    else
-    {
-        //discard;
-    }
 }

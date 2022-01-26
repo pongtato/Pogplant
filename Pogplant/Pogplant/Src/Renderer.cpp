@@ -30,6 +30,7 @@ namespace Pogplant
 {
 	bool Renderer::m_RenderGrid = false;
 	bool Renderer::m_EnableShadows = false;
+	float Renderer::m_BloomDamp = 6.9f;
 	float Renderer::m_Exposure = 1.0f;
 	float Renderer::m_Gamma = 2.2f;
 	//float Renderer::m_LightShaftDecay = 0.9f;
@@ -240,6 +241,7 @@ namespace Pogplant
 		glActiveTexture(GL_TEXTURE7);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SSAO_BLUR_COLOR_BUFFER]);
 
+		ShaderLinker::SetUniform("BloomDamp", m_BloomDamp);
 		ShaderLinker::SetUniform("Exposure", m_Exposure);
 		ShaderLinker::SetUniform("Gamma", m_Gamma);
 		ShaderLinker::SetUniform("Shadows", m_EnableShadows);
@@ -386,7 +388,7 @@ namespace Pogplant
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_BRIGHT]);
 
 		bool first_it = true;
-		const float blur_increment = 0.05f;
+		const float blur_increment = 0.10f;
 		for (int i = 1; i <= 5; i++)
 		{
 			ShaderLinker::SetUniform("targetWidth", Window::m_Width * blur_increment * i);
