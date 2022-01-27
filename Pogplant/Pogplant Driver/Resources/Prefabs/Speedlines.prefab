@@ -1,0 +1,790 @@
+[
+	{
+		"Children" : 11,
+		"Guid" : 
+		{
+			"m_guid" : "ea00747f-fc43-4983-b78a-ab4ac2b12521"
+		},
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_Parent"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 105.36147308349609,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 300.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.828125
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_01"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.2199999988079071,
+				0.85000002384185791,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				74.999984741210938
+			],
+			"m_scale" : 
+			[
+				1.3000000715255737,
+				0.0070000002160668373,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 87.801223754882813,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 250.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.6875
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_02"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.5,
+				0.60000002384185791,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				54.999992370605469
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.0099999997764825821,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 105.36147308349609,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 300.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.828125
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_03"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.60000002384185791,
+				0.30000001192092896,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				30.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.0099999997764825821,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 7.6091103553771973,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 150.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.0625
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_04"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.2000000476837158,
+				-0.30000001192092896,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-15.0
+			],
+			"m_scale" : 
+			[
+				1.9999998807907104,
+				0.0099999988451600075,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 105.36147308349609,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 300.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.828125
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_05"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.15000000596046448,
+				-0.30000001192092896,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-69.999992370605469
+			],
+			"m_scale" : 
+			[
+				0.30000001192092896,
+				0.00699999975040555,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 105.36147308349609,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 300.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.828125
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_07"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.55000001192092896,
+				-0.40000000596046448,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-144.99996948242188
+			],
+			"m_scale" : 
+			[
+				0.99999994039535522,
+				0.0099999997764825821,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 105.36147308349609,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 300.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.828125
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_08"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.51999998092651367,
+				-0.10000000149011612,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-169.99996948242188
+			],
+			"m_scale" : 
+			[
+				0.69999998807907104,
+				0.0099999997764825821,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 89.876815795898438,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 200.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.703125
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_09"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.60000002384185791,
+				0.20000000298023224,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				159.99996948242188
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.0099999997764825821,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 87.801223754882813,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 250.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.6875
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_10"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.60000002384185791,
+				0.80000001192092896,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				130.0
+			],
+			"m_scale" : 
+			[
+				1.5,
+				0.0099999997764825821,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 89.876815795898438,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 200.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.703125
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_11"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.20000000298023224,
+				0.94999998807907104,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				104.99996185302734
+			],
+			"m_scale" : 
+			[
+				1.4999998807907104,
+				0.0080000003799796104,
+				0.99999988079071045
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 100.34935760498047,
+				"m_MaxFrames" : 128,
+				"m_Play" : true,
+				"m_PlaySpeed" : 400.0,
+				"m_Repeat" : true,
+				"m_Rows" : 64,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.015625
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.796875
+				]
+			},
+			"m_TexName" : "SpeedLines.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SpeedLine_06"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.05000000074505806,
+				-0.40000000596046448,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-99.999984741210938
+			],
+			"m_scale" : 
+			[
+				0.29999998211860657,
+				0.0070000002160668373,
+				1.0
+			]
+		}
+	}
+]
