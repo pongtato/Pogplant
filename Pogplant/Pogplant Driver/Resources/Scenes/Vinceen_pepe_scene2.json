@@ -6,6 +6,24 @@
 			"m_Name" : "Explosive Enemy",
 			"status" : true
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
+				"Type" : 0
+			},
+			{
+				"Data" : 1.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 3.0,
+				"Name" : "m_ExplosiveEnemy_threshold_3",
+				"Type" : 0
+			}
+		],
 		"Scripting" : 
 		{
 			"ExplosiveEnemy" : false
@@ -25,7 +43,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -1869,7 +1887,7 @@
 			"m_position" : 
 			[
 				-2.5000042915344238,
-				-1.9921646118164063,
+				-1.9921646118164062,
 				-9.3877315521240234e-07
 			],
 			"m_rotation" : 

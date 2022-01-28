@@ -13,15 +13,26 @@ namespace Scripting
 		//activate the entity
 		bool m_armed = false;
 
-		//-Indicators to show range
+		//Indicators to show range
 		uint m_near_indicator;
 		uint m_medium_indicator;
 		uint m_far_indicator;
 
 		uint m_player_id;
 
+		//used to accumulate dt
+		float m_timer_counter;
+
+		// respective threshold
+		// threshold_3 > threshold_2 > threshold_1 > BOOM
+		// please use common sense, threshold values should be lower arming timer
+		float m_threshold_3;
+		float m_threshold_2;
+		float m_threshold_1;
+
 		public override void Init(ref uint _entityID)
 		{
+			m_timer_counter = 0;
 			entityID = _entityID;
 		}
 
@@ -39,6 +50,9 @@ namespace Scripting
 
 			m_player_id = ECS.FindEntityWithName("PlayerBox");
 
+			m_threshold_1 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_threshold_1");
+			m_threshold_2 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_threshold_2");
+			m_threshold_3 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_threshold_3");
 
 			Console.WriteLine("m_near_indicator id: " + m_near_indicator);
 			Console.WriteLine("m_medium_indicator id: " + m_medium_indicator);
@@ -50,8 +64,27 @@ namespace Scripting
 		{
 			if (m_armed)
             {
-            }
-		}
+				m_timer_counter += dt;
+
+				// threshold_3 > threshold_2 > threshold_1 > BOOM
+				if (m_timer_counter < 0)
+                {
+					Console.WriteLine("BOOOOOOOOOOOOOOM");
+				}
+				else if(m_timer_counter < m_threshold_1)
+                {
+					Console.WriteLine("beep beep beep");
+				}
+				else if (m_timer_counter < m_threshold_2)
+				{
+					Console.WriteLine("beep beep");
+				}
+				else if (m_timer_counter < m_threshold_3)
+				{
+					Console.WriteLine("beep");
+				}
+			}
+        }
 
 		public override void LateUpdate(float dt)
 		{

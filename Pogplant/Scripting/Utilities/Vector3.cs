@@ -61,6 +61,12 @@ namespace Scripting
             return result.magnitude();
         }
 
+        public static float DistanceSquared(Vector3 a, Vector3 b)
+        {
+            Vector3 result = a - b;
+            return result.magnitudeSquared();
+        }
+
         public static Vector3 Lerp(Vector3 start, Vector3 end, float t)
         {
             return (1 - t) * start + t * end;
@@ -69,6 +75,11 @@ namespace Scripting
         public float magnitude()
         {
             return (float)Math.Sqrt((X * X) + (Y * Y) + (Z * Z));
+        }
+
+        public float magnitudeSquared()
+        {
+            return (float)(X * X) + (Y * Y) + (Z * Z);
         }
 
         public static Vector3 Normalise(Vector3 a)

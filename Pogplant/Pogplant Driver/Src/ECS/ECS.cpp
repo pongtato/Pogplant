@@ -111,7 +111,7 @@ void ECS::TrulyDestroyEntity(entt::entity entity)
 //returns the first entity with the name
 entt::entity ECS::FindEntityWithName(std::string _name)
 {
-	auto view = m_registry.view<Name>();
+	auto view = m_registry.view<Name>(entt::exclude_t<Components::Prefab>());
 
 	for (auto& entity : view)
 	{
@@ -147,7 +147,7 @@ entt::entity ECS::FindChildEntityWithName(entt::entity parentID, const std::stri
 //returns the first entity with the tag
 entt::entity ECS::FindEntityWithTag(std::string _tag)
 {
-	auto view = m_registry.view<Tag>();
+	auto view = m_registry.view<Tag>(entt::exclude_t<Components::Prefab>());
 
 	for (auto& entity : view)
 	{
@@ -155,8 +155,6 @@ entt::entity ECS::FindEntityWithTag(std::string _tag)
 		if (tag.m_tag == _tag)
 			return entity;
 	}
-
-	auto results = m_registry.view<Transform, Renderer>();
 	return entt::null;
 }
 
