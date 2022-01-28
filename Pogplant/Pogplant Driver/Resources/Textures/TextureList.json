@@ -9,6 +9,36 @@
 
     "GAMMA": 
     [
+	{
+            "FileName"  : "SpeedLines.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+	{
+            "FileName"  : "256_ExportSheet_01.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+	{
+            "FileName"  : "512_ExportSheet_01.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+	{
+            "FileName"  : "1024_ExportSheet_01.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+	{
+            "FileName"  : "2048_ExportSheet_01.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+	{
+            "FileName"  : "2048_ExportSheet_02.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
         {
             "FileName"  : "Large_Reticle.dds",
             "Dir"       : "Resources/Textures/UI",

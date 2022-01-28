@@ -131,6 +131,11 @@ namespace Scripting
         bool m_LaserReady = false;
         const float m_LaserCooldown = 2.0f;
         float m_LaserTimer = m_LaserCooldown;
+
+        // EndGameMenu Stats
+        public static uint m_EnemyDestroyedCount = 0;
+        public static uint m_PlayerHitCount = 0;
+        public static uint m_CollectiblesCount = 0;
          
         public PlayerScript()
         {
