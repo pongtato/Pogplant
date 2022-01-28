@@ -92,7 +92,7 @@ namespace Pogplant
 	{
 		if (m_ActiveCamera)
 		{
-			m_ActiveCamera->UpdateProjection(_ImGuiWinSize);
+			//m_ActiveCamera->UpdateProjection(_ImGuiWinSize);
 		}
 
 		/// QUAT

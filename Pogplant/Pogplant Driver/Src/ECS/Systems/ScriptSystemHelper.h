@@ -39,6 +39,10 @@ namespace SSH
 	void SetLaserStart(std::uint32_t entityID, bool isActivated);
 	bool IsLaserComplete(std::uint32_t entityID);
 	void ResetLaser(std::uint32_t entityID);
+	//Canvas Component
+	void SetFrames(std::uint32_t entityID, int frameValue);
+	void SetColorTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
+	glm::vec3 GetColorTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
 
 
 	// True is enabled, False is disabled

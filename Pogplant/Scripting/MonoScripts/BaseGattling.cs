@@ -168,6 +168,7 @@ namespace Scripting
                 isFiring = false;
                 ECS.PlayAudio(entityID, 1, "SFX");
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
+                ++PlayerScript.m_EnemyDestroyedCount;
             }
         }
 

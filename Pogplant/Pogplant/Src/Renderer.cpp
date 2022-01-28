@@ -584,6 +584,7 @@ namespace Pogplant
 		// Render G pass objects first
 		ShaderLinker::Use("BASIC");
 		MeshBuilder::RebindQuad();
+
 		// Bind textures
 		for (const auto& it : TextureResource::m_UsedTextures)
 		{
@@ -769,7 +770,6 @@ namespace Pogplant
 		ShaderLinker::Use("TEXT");
 
 		auto results = registry.view<Components::Transform, Components::Text>(entt::exclude_t<Components::Prefab, Components::Disabled>());
-		const glm::vec2 halfWindowSize = { Window::m_Width * 0.5f,Window::m_Height * 0.5f };
 		for (const auto& e : results)
 		{
 			const auto& it_Text = results.get<const Components::Text>(e);
@@ -805,12 +805,12 @@ namespace Pogplant
 				);
 
 				// Decompose to apply mapping
-				model = glm::translate(model, { pos.x * Window::m_Width + halfWindowSize.x, pos.y * Window::m_Height + halfWindowSize.y, pos.z });
+				model = glm::translate(model, { pos.x * Window::m_Width, pos.y * Window::m_Height, pos.z });
 				model = glm::rotate(model, glm::radians(rot.x), { 1,0,0 });
 				model = glm::rotate(model, glm::radians(rot.y), { 0,1,0 });
 				model = glm::rotate(model, glm::radians(rot.z), { 0,0,1 });
 				// Disregard aspect ratio so width for x and y
-				model = glm::scale(model, { scale.x * Window::m_Width, scale.y * Window::m_Height * Window::m_TargetAspect, 1 });
+				model = glm::scale(model, { scale.x * Window::m_Width, scale.y * Window::m_Height * Window::m_TargetAspect, 1.0f });
 			}
 
 			ShaderLinker::SetUniform("m4_Model", glm::mat4{ model });

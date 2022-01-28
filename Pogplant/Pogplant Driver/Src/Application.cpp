@@ -484,6 +484,7 @@ void Application::UpdateTransforms(float _Dt)
 	// See if texture list has to be updated
 	if (!PP::TextureResource::m_Updated)
 	{
+		printf("Clear\n");
 		PP::TextureResource::m_UsedTextures.clear();
 		//printf("UPDATING...\n");
 	}
@@ -500,22 +501,27 @@ void Application::UpdateTransforms(float _Dt)
 			auto& usedTex = PP::TextureResource::m_UsedTextures;
 			if (!PP::TextureResource::m_Updated || !usedTex[pSys.m_TexName].m_Used)
 			{
-				pSys.Clear();
-				//If not in used yet toggle it to be in use
-				usedTex[pSys.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[pSys.m_TexName]);
-				//This will always be > 0 since by comparing !used it already creates an entry
-				usedTex[pSys.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
-				usedTex[pSys.m_TexName].m_Used = true;
-				//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[pSys.m_TexName].m_MappedID, pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID);
-				pSys.m_TexID = usedTex[pSys.m_TexName].m_MappedID;
+				if (!usedTex[pSys.m_TexName].m_Used)
+				{
+					pSys.Clear();
+					//If not in used yet toggle it to be in use
+					usedTex[pSys.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[pSys.m_TexName]);
+					//This will always be > 0 since by comparing !used it already creates an entry
+					usedTex[pSys.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
+					usedTex[pSys.m_TexName].m_Used = true;
+					//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[pSys.m_TexName].m_MappedID, pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID);
+					
+
+					printf("%s | %d \n", pSys.m_TexName.c_str(), pSys.m_TexID);
+				}
 			}
+			pSys.m_TexID = usedTex[pSys.m_TexName].m_MappedID;
 			pSys.Update(_Dt, transform, gameCamPos);
 		}
 	}
 
 	/// Canvas
 	auto canvasView = m_activeECS->view<Transform, Canvas>();
-	const glm::vec2 halfWindowSize = { PP::Window::m_Width * 0.5f, PP::Window::m_Height * 0.5f };
 	for (auto it : canvasView)
 	{
 		auto& transform = canvasView.get<Transform>(it);
@@ -526,14 +532,20 @@ void Application::UpdateTransforms(float _Dt)
 		auto& usedTex = PP::TextureResource::m_UsedTextures;
 		if (!PP::TextureResource::m_Updated || !usedTex[canvas.m_TexName].m_Used)
 		{
-			usedTex[canvas.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[canvas.m_TexName]);
-			// This will always be > 0 since by comparing !used it already creates an entry
-			usedTex[canvas.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
-			usedTex[canvas.m_TexName].m_Used = true;
-			//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[canvas.m_TexName].m_MappedID, canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID);
-			// Update canvas ID
-			canvas.m_TexID = usedTex[canvas.m_TexName].m_MappedID;
+			if (!usedTex[canvas.m_TexName].m_Used)
+			{
+				usedTex[canvas.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[canvas.m_TexName]);
+				// This will always be > 0 since by comparing !used it already creates an entry
+				usedTex[canvas.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
+				usedTex[canvas.m_TexName].m_Used = true;
+				//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[canvas.m_TexName].m_MappedID, canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID);
+				// Update canvas ID
+				
+				printf("%s | %d \n", canvas.m_TexName.c_str(), canvas.m_TexID);
+			}
 		}
+
+		canvas.m_TexID = usedTex[canvas.m_TexName].m_MappedID;
 
 		/// Scale with window size
 		glm::mat4 model = glm::mat4{ 1 };
@@ -553,12 +565,12 @@ void Application::UpdateTransforms(float _Dt)
 			);
 
 			// Decompose to apply mapping
-			model = glm::translate(model, { pos.x * PP::Window::m_Width + halfWindowSize.x, pos.y * PP::Window::m_Height + halfWindowSize.y, pos.z });
+			model = glm::translate(model, { pos.x * PP::Window::m_Width, pos.y * PP::Window::m_Height, pos.z });
 			model = glm::rotate(model, glm::radians(rot.x), { 1,0,0 });
 			model = glm::rotate(model, glm::radians(rot.y), { 0,1,0 });
 			model = glm::rotate(model, glm::radians(rot.z), { 0,0,1 });
 			// Disregard aspect ratio so width for x and y
-			model = glm::scale(model, { scale.x * PP::Window::m_Width, scale.y * PP::Window::m_Height * PP::Window::m_TargetAspect, 1 });
+			model = glm::scale(model, { scale.x * PP::Window::m_Width, scale.y * PP::Window::m_Height * PP::Window::m_TargetAspect, 1.0f });
 		}
 		else
 		{

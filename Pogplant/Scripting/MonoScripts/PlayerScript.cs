@@ -543,6 +543,7 @@ namespace Scripting
 
             damageInvul = true;
             damageInvulTimer = 0.0f;
+            ++m_PlayerHitCount;
 
             if (health > 0)
             {

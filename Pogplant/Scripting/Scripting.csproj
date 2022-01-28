@@ -54,6 +54,7 @@
     <Compile Include="MonoScripts\BonusItem.cs" />
     <Compile Include="MonoScripts\EndGameMenuTrigger.cs" />
     <Compile Include="MonoScripts\ExplosiveEnemy.cs" />
+    <Compile Include="MonoScripts\FirstPersonFiringBox.cs" />
     <Compile Include="MonoScripts\L1Boss.cs" />
     <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="MonoScripts\GameEndingTrigger.cs" />
@@ -73,7 +74,6 @@
     <Compile Include="MonoScripts\EncounterManager.cs" />
     <Compile Include="MonoScripts\EncounterSystemDriver.cs" />
     <Compile Include="MonoScripts\EnemyManager.cs" />
-    <Compile Include="MonoScripts\EnvDamage.cs" />
     <Compile Include="MonoScripts\FollowSpline.cs" />
     <Compile Include="MonoScripts\Laser.cs" />
     <Compile Include="MonoScripts\LaserTriggerController.cs" />

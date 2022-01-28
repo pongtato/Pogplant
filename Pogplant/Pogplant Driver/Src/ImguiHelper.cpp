@@ -1593,8 +1593,8 @@ namespace PogplantDriver
 		Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
 		//currCam->UpdateProjection({ vMax.x, vMax.y });
 		//PP::Camera4D& currQuatCam = PP::CameraResource::m_QuatCam;
-		currQuatCam->UpdateProjection({ vMax.x, vMax.y });
-		currQuatCam->UpdateOrthographic({ vMax.x, vMax.y }, currQuatCam->m_Far, currQuatCam->m_Orthographic);
+		//currQuatCam->UpdateProjection({ vMax.x, vMax.y });
+		//currQuatCam->UpdateOrthographic({ vMax.x, vMax.y }, currQuatCam->m_Far, currQuatCam->m_Orthographic);
 
 		// Account for position of window
 		vMin.x += ImGui::GetWindowPos().x;

@@ -125,6 +125,15 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void ResetLaser(uint entityID);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetFrames(uint entityID, int frameValue);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetColorTint(uint entityID, Vector3 Color);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetColorTint(uint entityID, Vector3 Color);
+
         public static T GetComponent<T>(uint entityID)
         {
             if(typeof(T) == typeof(Transform))
