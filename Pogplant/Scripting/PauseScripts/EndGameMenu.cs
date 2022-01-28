@@ -9,9 +9,22 @@ namespace Scripting
     public class EndGameMenu : PauseBehaviour
     {
         uint m_EndScoreID;
+        uint m_DestructParentID;
+        uint m_EvasiveParentID;
+        uint m_CollectParentID;
+        uint m_MedalsParentID;
+
         private Dictionary<string, GameObject> m_LettersMap = new Dictionary<string, GameObject>();
+        private Dictionary<uint, Vector3> m_ScaleAnimation = new Dictionary<uint, Vector3>();
         float m_Timer = 0.0f;
         float m_AnimationSpeed = 5.0f;
+        float m_AnimationLetterSpeed = 5.0f;
+        bool m_CallOnce = true;
+        bool m_CallOnceDes = true;
+        bool m_CallOnceEva = true;
+        bool m_CallOnceCol = true;
+        bool m_CallOnceMedal = true;
+        uint m_OverallGrade = 0;
 
         Vector3 m_pos = new Vector3();
         Vector3 m_rot = new Vector3();
@@ -25,6 +38,17 @@ namespace Scripting
             COUNT
         }
 
+        private enum MEDALGRADE
+        {
+            BRONZE = 1,
+            SILVER = 2,
+            GOLD = 3,
+            OVERALLBRONZE = 0,
+            OVERALLSILVER = 4,
+            OVERALLGOLD = 8,
+            COUNT
+        }
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -35,6 +59,7 @@ namespace Scripting
 
             // End Score Text ID
             m_EndScoreID = ECS.FindEntityWithName("EndScoreText");
+            m_MedalsParentID = ECS.FindEntityWithName("Medals");
 
             // Collectibles
             uint collectA = ECS.FindEntityWithName("Collectibles_A");
@@ -49,6 +74,9 @@ namespace Scripting
             ECS.GetTransformECS(collectC, ref pos, ref rot, ref scale);
             m_LettersMap.Add("Collectibles_C", new GameObject(collectC, new Transform(pos, rot, scale), "Collectibles_C"));
 
+            m_CollectParentID = ECS.FindEntityWithName("Collectibles");
+            m_ScaleAnimation.Add(m_CollectParentID, new Vector3(1.0f, 1.0f, 1.0f));
+
             // Destruction
             uint destructA = ECS.FindEntityWithName("Destruction_A");
             ECS.GetTransformECS(destructA, ref pos, ref rot, ref scale);
@@ -61,6 +89,9 @@ namespace Scripting
             uint destructC = ECS.FindEntityWithName("Destruction_C");
             ECS.GetTransformECS(destructC, ref pos, ref rot, ref scale);
             m_LettersMap.Add("Destruction_C", new GameObject(destructC, new Transform(pos, rot, scale), "Destruction_C"));
+
+            m_DestructParentID = ECS.FindEntityWithName("Destruction");
+            m_ScaleAnimation.Add(m_DestructParentID, new Vector3(1.0f, 1.0f, 1.0f));
 
             // Evasiveness
             uint evasiveA = ECS.FindEntityWithName("Evasiveness_A");
@@ -75,10 +106,26 @@ namespace Scripting
             ECS.GetTransformECS(evasiveC, ref pos, ref rot, ref scale);
             m_LettersMap.Add("Evasiveness_C", new GameObject(evasiveC, new Transform(pos, rot, scale), "Evasiveness_C"));
 
+            m_EvasiveParentID = ECS.FindEntityWithName("Evasiveness");
+            m_ScaleAnimation.Add(m_EvasiveParentID, new Vector3(1.0f, 1.0f, 1.0f));
+
+            // Medals
+            uint medalGold = ECS.FindEntityWithName("Medal_Gold");
+            ECS.GetTransformECS(medalGold, ref pos, ref rot, ref scale);
+            m_LettersMap.Add("Medal_Gold", new GameObject(medalGold, new Transform(pos, rot, scale), "Medal_Gold"));
+
+            uint medalSilver = ECS.FindEntityWithName("Medal_Silver");
+            ECS.GetTransformECS(medalSilver, ref pos, ref rot, ref scale);
+            m_LettersMap.Add("Medal_Silver", new GameObject(medalSilver, new Transform(pos, rot, scale), "Medal_Silver"));
+
+            uint medalBronze = ECS.FindEntityWithName("Medal_Bronze");
+            ECS.GetTransformECS(medalBronze, ref pos, ref rot, ref scale);
+            m_LettersMap.Add("Medal_Bronze", new GameObject(medalBronze, new Transform(pos, rot, scale), "Medal_Bronze"));
+
             ECS.GetTransformECS(entityID, ref pos, ref rot, ref scale);
             m_LettersMap.Add("EndMenuControllerStart", new GameObject(entityID, new Transform(pos, rot, scale), "EndMenuController"));
-            m_LettersMap.Add("EndMenuControllerMid", new GameObject(entityID, new Transform(new Vector3(pos.X, pos.Y + 2.0f, pos.Z), rot, scale), "EndMenuController"));
-            m_LettersMap.Add("EndMenuControllerEnd", new GameObject(entityID, new Transform(new Vector3(pos.X, pos.Y + 1.7f, pos.Z), rot, scale), "EndMenuController"));
+            m_LettersMap.Add("EndMenuControllerMid", new GameObject(entityID, new Transform(new Vector3(pos.X, pos.Y + 1.0f, pos.Z), rot, scale), "EndMenuController"));
+            m_LettersMap.Add("EndMenuControllerEnd", new GameObject(entityID, new Transform(new Vector3(pos.X, pos.Y + 0.85f, pos.Z), rot, scale), "EndMenuController"));
 
             ECS.SetActive(entityID, false);
         }
@@ -91,32 +138,47 @@ namespace Scripting
         {
             if(EndGameMenuTrigger.m_EnableEndGameMenu)
             {
+                if (m_CallOnce)
+                {
+                    DisableGrades(m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_A"].id);
+                    DisableGrades(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
+                    DisableGrades(m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_A"].id);
+                    DisableGrades(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
+                    ECS.SetActive(m_EndScoreID, false);
+                    m_CallOnce = false;
+                }
+
                 m_Timer += dt;
                 ECS.GetTransformECS(entityID, ref m_pos, ref m_rot, ref m_scale);
                 
-                if(m_Timer < 1.0f)
+                if(m_Timer < 0.5f)
                 {
                     ECS.SetPosition(entityID, Vector3.Lerp(m_pos, m_LettersMap["EndMenuControllerMid"].transform.Position, m_AnimationSpeed * dt));
                 }
-                else if(m_Timer >= 1.0f && m_Timer < 2.0f)
+                else if(m_Timer >= 0.5f && m_Timer < 1.0f)
                 {
                     ECS.SetPosition(entityID, Vector3.Lerp(m_pos, m_LettersMap["EndMenuControllerEnd"].transform.Position, m_AnimationSpeed * dt));
                 }
+                else if(m_Timer >= 1.0f && m_Timer < 2.0f)
+                {
+                    UpdateDestroyGrade(dt);
+                }
                 else if(m_Timer >= 2.0f && m_Timer < 3.0f)
                 {
-                    UpdateDestroyGrade();
+                    UpdateEvasiveGrade(dt);
                 }
                 else if(m_Timer >= 3.0f && m_Timer < 4.0f)
                 {
-                    UpdateEvasiveGrade();
+                    UpdateCollectGrade(dt);
                 }
                 else if(m_Timer >= 4.0f && m_Timer < 5.0f)
                 {
-                    UpdateCollectGrade();
-                }
-                else
-                {
+                    ECS.SetActive(m_EndScoreID, true);
                     GameUtilities.UpdateScore(m_EndScoreID, EnemyManager.score);
+                }
+                else if(m_Timer >= 6.0f && m_Timer < 7.0f)
+                {
+                    UpdateMedals();
                 }
             }
         }
@@ -129,59 +191,114 @@ namespace Scripting
         {
         }
 
-        private void UpdateDestroyGrade()
+        private void UpdateDestroyGrade(float dt)
         {
-            // Grade C for Destruction
-            if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE.C && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE.B)
+            if (m_CallOnceDes)
             {
-                SwapGrade(m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_A"].id);
+                // Grade C for Destruction
+                if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE.C && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE.B)
+                {
+                    SwapGrade(m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_A"].id);
+                    m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                }
+                // Grade B for Destruction
+                else if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE.B && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE.A)
+                {
+                    SwapGrade(m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_A"].id);
+                    m_OverallGrade += (uint)MEDALGRADE.SILVER;
+                }
+                // Grade A for Destruction
+                else
+                {
+                    SwapGrade(m_LettersMap["Destruction_A"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_C"].id);
+                    m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                }
+                m_CallOnceDes = false;
             }
-            // Grade B for Destruction
-            else if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE.B && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE.A)
-            {
-                SwapGrade(m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_A"].id);
-            }
-            // Grade A for Destruction
             else
             {
-                SwapGrade(m_LettersMap["Destruction_A"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_C"].id);
+                ECS.GetTransformECS(m_DestructParentID,ref m_pos,ref m_rot,ref m_scale);
+                ECS.SetScale(m_DestructParentID, Vector3.Lerp(m_scale, m_ScaleAnimation[m_DestructParentID], m_AnimationLetterSpeed * dt));
             }
         }
 
-        private void UpdateEvasiveGrade()
+        private void UpdateEvasiveGrade(float dt)
         {
-            // Grade C for Evasiveness
-            if (PlayerScript.m_PlayerHitCount >= (uint)GRADE.C && PlayerScript.m_PlayerHitCount < (uint)GRADE.B)
+            if (m_CallOnceEva)
             {
-                SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
+                // Grade C for Evasiveness
+                if (PlayerScript.m_PlayerHitCount >= (uint)GRADE.C && PlayerScript.m_PlayerHitCount < (uint)GRADE.B)
+                {
+                    SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
+                    m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                }
+                // Grade B for Evasiveness
+                else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE.B && PlayerScript.m_PlayerHitCount < (uint)GRADE.A)
+                {
+                    SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
+                    m_OverallGrade += (uint)MEDALGRADE.SILVER;
+                }
+                // Grade A for Evasiveness
+                else
+                {
+                    SwapGrade(m_LettersMap["Evasiveness_A"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id);
+                    m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                }
+                m_CallOnceEva = false;
             }
-            // Grade B for Evasiveness
-            else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE.B && PlayerScript.m_PlayerHitCount < (uint)GRADE.A)
-            {
-                SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
-            }
-            // Grade A for Evasiveness
             else
             {
-                SwapGrade(m_LettersMap["Evasiveness_A"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id);
+                ECS.GetTransformECS(m_EvasiveParentID, ref m_pos, ref m_rot, ref m_scale);
+                ECS.SetScale(m_EvasiveParentID, Vector3.Lerp(m_scale, m_ScaleAnimation[m_EvasiveParentID], m_AnimationLetterSpeed * dt));
             }
         }
-        private void UpdateCollectGrade()
+        private void UpdateCollectGrade(float dt)
         {
-            // Grade C for Collectibles
-            if (PlayerScript.m_CollectiblesCount >= (uint)GRADE.C && PlayerScript.m_CollectiblesCount < (uint)GRADE.B)
+            if(m_CallOnceCol)
             {
-                SwapGrade(m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_A"].id);
+                // Grade C for Collectibles
+                if (PlayerScript.m_CollectiblesCount >= (uint)GRADE.C && PlayerScript.m_CollectiblesCount < (uint)GRADE.B)
+                {
+                    SwapGrade(m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_A"].id);
+                    m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                }
+                // Grade B for Collectibles
+                else if (PlayerScript.m_CollectiblesCount >= (uint)GRADE.B && PlayerScript.m_CollectiblesCount < (uint)GRADE.A)
+                {
+                    SwapGrade(m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_A"].id);
+                    m_OverallGrade += (uint)MEDALGRADE.SILVER;
+                }
+                // Grade A for Collectibles
+                else
+                {
+                    SwapGrade(m_LettersMap["Collectibles_A"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_C"].id);
+                    m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                }
+                m_CallOnceCol = false;
             }
-            // Grade B for Collectibles
-            else if (PlayerScript.m_CollectiblesCount >= (uint)GRADE.B && PlayerScript.m_CollectiblesCount < (uint)GRADE.A)
-            {
-                SwapGrade(m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_A"].id);
-            }
-            // Grade A for Collectibles
             else
             {
-                SwapGrade(m_LettersMap["Collectibles_A"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_C"].id);
+                ECS.GetTransformECS(m_CollectParentID, ref m_pos, ref m_rot, ref m_scale);
+                ECS.SetScale(m_CollectParentID, Vector3.Lerp(m_scale, m_ScaleAnimation[m_CollectParentID], m_AnimationLetterSpeed * dt));
+            }
+        }
+        private void UpdateMedals()
+        {
+            if(m_CallOnceMedal)
+            {
+                if (m_OverallGrade >= (uint)MEDALGRADE.OVERALLBRONZE && m_OverallGrade < (uint)MEDALGRADE.OVERALLSILVER)
+                {
+                    SwapGrade(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
+                }
+                else if(m_OverallGrade >= (uint)MEDALGRADE.OVERALLSILVER && m_OverallGrade < (uint)MEDALGRADE.OVERALLGOLD)
+                {
+                    SwapGrade(m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Gold"].id);
+                }
+                else
+                {
+                    SwapGrade(m_LettersMap["Medal_Gold"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id);
+                }
+                m_CallOnceMedal = false;
             }
         }
 
@@ -190,6 +307,13 @@ namespace Scripting
             ECS.SetActive(activeID, true);
             ECS.SetActive(inactiveID1, false);
             ECS.SetActive(inactiveID2, false);
+        }
+
+        private void DisableGrades(uint inactiveID1, uint inactiveID2, uint inactiveID3)
+        {
+            ECS.SetActive(inactiveID1, false);
+            ECS.SetActive(inactiveID2, false);
+            ECS.SetActive(inactiveID3, false);
         }
     }
 }
