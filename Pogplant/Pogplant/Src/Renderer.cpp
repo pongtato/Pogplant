@@ -52,6 +52,7 @@ namespace Pogplant
 
 	struct CameraReturnData
 	{
+		glm::mat4 m_Orthographic;
 		glm::mat4 m_Projection;
 		glm::mat4 m_View;
 		glm::vec3 m_Position;
@@ -80,6 +81,7 @@ namespace Pogplant
 					{
 						ret =
 						{
+							it_Camera.m_Orthographic,
 							it_Camera.m_Projection,
 							it_Camera.m_View,
 							it_Trans.m_position,
@@ -113,6 +115,7 @@ namespace Pogplant
 
 		return CameraReturnData
 		{
+			currCam->m_Orthographic,
 			currCam->m_Projection,
 			currCam->GetView(),
 			currCam->m_Position,
@@ -590,9 +593,9 @@ namespace Pogplant
 			glBindTexture(GL_TEXTURE_2D, it.second.m_ID);
 		}
 
+		ShaderLinker::SetUniform("m4_Ortho", ret.m_Orthographic);
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
-		ShaderLinker::SetUniform("f_Aspect", Pogplant::Window::m_Aspect);
 		ShaderLinker::SetUniform("b_Editor", _EditorMode);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();
@@ -765,7 +768,8 @@ namespace Pogplant
 		// Use shader
 		ShaderLinker::Use("TEXT");
 
-		auto results = registry.view<Components::Text, Components::Transform>();
+		auto results = registry.view<Components::Transform, Components::Text>();
+		const glm::vec2 halfWindowSize = { Window::m_Width * 0.5f,Window::m_Height * 0.5f };
 		for (const auto& e : results)
 		{
 			const auto& it_Text = results.get<const Components::Text>(e);
@@ -773,27 +777,41 @@ namespace Pogplant
 
 			Font* currFont = FontResource::m_FontPool[it_Text.m_FontID];
 
+			/// Scale with window size
+			glm::mat4 model = glm::mat4{ 1 };
 			// Ortho or not
 			if (!it_Text.m_Ortho)
 			{
 				ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
-				ShaderLinker::SetUniform("m4_View", ret.m_View);
-				ShaderLinker::SetUniform("f_Aspect", 1.0f);
+				ShaderLinker::SetUniform("m4_View", ret.m_View);	
+				model = it_Trans.m_ModelMtx;
 			}
 			else
 			{
-				ShaderLinker::SetUniform("m4_Projection", glm::mat4{ 1 });
+				ShaderLinker::SetUniform("m4_Projection", ret.m_Orthographic);
 				ShaderLinker::SetUniform("m4_View", glm::mat4{ 1 });
-				ShaderLinker::SetUniform("f_Aspect", Window::m_Aspect);
-			}
 
-			glm::mat4 model = glm::mat4{ 1 };
-			model = it_Trans.m_ModelMtx;
-			/*glm::quat rot_z = glm::angleAxis(glm::radians(it_Trans.m_rotation.z), glm::vec3{ 0.0f,0.0f,1.0f });
-			glm::quat rot_y = glm::angleAxis(glm::radians(it_Trans.m_rotation.y), glm::vec3{ 0.0f,1.0f,0.0f });
-			glm::quat rot_x = glm::angleAxis(glm::radians(it_Trans.m_rotation.x), glm::vec3{ 1.0f,0.0f,0.0f });
-			glm::mat4 m4_rot = glm::mat4_cast(rot_y * rot_x * rot_z);*/
-			//glm::mat4 m4_scale = glm::scale(glm::mat4{ 1 }, it_Trans.m_scale);
+				glm::vec3 pos = {};
+				glm::vec3 rot = {};
+				glm::vec3 scale = {};
+
+				// To maintain parent transform
+				ImGuizmo::DecomposeMatrixToComponents
+				(
+					glm::value_ptr(it_Trans.m_ModelMtx),
+					glm::value_ptr(pos),
+					glm::value_ptr(rot),
+					glm::value_ptr(scale)
+				);
+
+				// Decompose to apply mapping
+				model = glm::translate(model, { pos.x * Window::m_Width + halfWindowSize.x, pos.y * Window::m_Height + halfWindowSize.y, pos.z });
+				model = glm::rotate(model, glm::radians(rot.x), { 1,0,0 });
+				model = glm::rotate(model, glm::radians(rot.y), { 0,1,0 });
+				model = glm::rotate(model, glm::radians(rot.z), { 0,0,1 });
+				// Disregard aspect ratio so width for x and y
+				model = glm::scale(model, { scale.x * Window::m_Width, scale.y * Window::m_Height * Window::m_TargetAspect, 1 });
+			}
 
 			ShaderLinker::SetUniform("m4_Model", glm::mat4{ model });
 			ShaderLinker::SetUniform("textColor", it_Text.m_Color);

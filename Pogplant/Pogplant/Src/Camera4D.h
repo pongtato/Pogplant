@@ -43,9 +43,11 @@ namespace Pogplant
 		// To update componentss
 		static void UpdateVectors(float _Yaw, float _Pitch, float _Roll, glm::vec3& _Front, glm::vec3& _Right, glm::vec3& _Up, glm::quat& _Orientation);
 		static void UpdateProjection(glm::vec2 _WindowSize, float _Near, float _Far, float _Fov, glm::mat4& _Projection);
+		static void UpdateOrthographic(glm::vec2 _WindowSize, float _Far, glm::mat4& _Orthographic);
 		static void GetView(const glm::vec3& _Position,const glm::quat& _Orientation, glm::mat4& _View);
 
 		glm::quat m_Orientation;
+		glm::mat4 m_Orthographic;
 		glm::mat4 m_Projection;
 		glm::vec3 m_Position;
 		glm::vec3 m_Front;

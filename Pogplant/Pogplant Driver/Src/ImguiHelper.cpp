@@ -144,7 +144,7 @@ namespace PogplantDriver
 		if (ImGui::MenuItem("Canvas", NULL, false, adding_enabled))
 		{
 			glm::vec4 color { 1.f,1.f,1.f,1.f };
-			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "hehe.dds", true, false);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "NO_TEX.dds", true, false);
 		}
 
 		if (ImGui::MenuItem("Particle System", NULL, false, adding_enabled))
@@ -1594,6 +1594,7 @@ namespace PogplantDriver
 		//currCam->UpdateProjection({ vMax.x, vMax.y });
 		//PP::Camera4D& currQuatCam = PP::CameraResource::m_QuatCam;
 		currQuatCam->UpdateProjection({ vMax.x, vMax.y });
+		currQuatCam->UpdateOrthographic({ vMax.x, vMax.y }, currQuatCam->m_Far, currQuatCam->m_Orthographic);
 
 		// Account for position of window
 		vMin.x += ImGui::GetWindowPos().x;

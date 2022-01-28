@@ -15,12 +15,14 @@
 				1.0,
 				1.0
 			],
+			"isStatic" : false,
 			"isTrigger" : true
 		},
 		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "Enemy_01"
+			"m_Name" : "Enemy_01",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -80,7 +82,8 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Gun_Horizontal_Pivot"
+			"m_Name" : "Gun_Horizontal_Pivot",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -130,7 +133,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Alien_Arms"
+			"m_Name" : "Alien_Arms",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -180,7 +184,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Gun_Vertical_Pivot"
+			"m_Name" : "Gun_Vertical_Pivot",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -230,7 +235,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Exhaust_Main"
+			"m_Name" : "Exhaust_Main",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -280,7 +286,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Spinning_Disk"
+			"m_Name" : "Spinning_Disk",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -338,7 +345,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Camera"
+			"m_Name" : "Camera",
+			"status" : true
 		},
 		"Transform" : 
 		{
@@ -378,11 +386,13 @@
 				0.5,
 				0.5
 			],
+			"isStatic" : false,
 			"isTrigger" : false
 		},
 		"Name" : 
 		{
-			"m_Name" : "OBSTACLES"
+			"m_Name" : "OBSTACLES",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -444,11 +454,13 @@
 				0.5,
 				0.5
 			],
+			"isStatic" : false,
 			"isTrigger" : false
 		},
 		"Name" : 
 		{
-			"m_Name" : "PLAYER"
+			"m_Name" : "PLAYER",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -510,11 +522,13 @@
 				1.0,
 				1.0
 			],
+			"isStatic" : false,
 			"isTrigger" : false
 		},
 		"Name" : 
 		{
-			"m_Name" : "sphere"
+			"m_Name" : "sphere",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -582,11 +596,13 @@
 				0.5,
 				0.5
 			],
+			"isStatic" : false,
 			"isTrigger" : false
 		},
 		"Name" : 
 		{
-			"m_Name" : "TRIGGERS"
+			"m_Name" : "TRIGGERS",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -648,11 +664,13 @@
 				0.5,
 				0.5
 			],
+			"isStatic" : false,
 			"isTrigger" : false
 		},
 		"Name" : 
 		{
-			"m_Name" : "Floor"
+			"m_Name" : "Floor",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -719,7 +737,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Directional Light"
+			"m_Name" : "Directional Light",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -781,14 +800,23 @@
 				1.0,
 				1.0
 			],
+			"isStatic" : false,
 			"isTrigger" : false
 		},
 		"Name" : 
 		{
-			"m_Name" : "Ship"
+			"m_Name" : "Ship",
+			"status" : true
 		},
 		"ParticleSystem" : 
 		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
 			"m_Color" : 
 			[
 				1.0,
@@ -796,10 +824,10 @@
 				0.99998998641967773,
 				1.0
 			],
-			"m_ConeAngleMax" : 45.0,
-			"m_ConeAngleMin" : 0.0,
-			"m_ConeRadius" : 1.0,
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.004999999888241291,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
 				0.0,
@@ -903,7 +931,31 @@
 				"m_MultiplierMax" : 4.1999998092651367,
 				"m_MultiplierMin" : 1.0
 			},
-			"m_TexName" : "Small_Reticle.dds"
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TexName" : "Small_Reticle.dds",
+			"m_Trail" : false
 		},
 		"Render" : 
 		{
@@ -952,6 +1004,115 @@
 				0.99999970197677612,
 				0.99999964237213135,
 				0.99999970197677612
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Font",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_FontID" : "Ruda",
+			"m_Ortho" : true,
+			"m_Text" : "Lorem ipsum dolor sit amet"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.5,
+				-0.5,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				15.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_TexName" : "AI_Happy.dds"
+		},
+		"Name" : 
+		{
+			"m_Name" : "wiggle",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				1.0
 			]
 		}
 	}

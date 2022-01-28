@@ -441,6 +441,7 @@ void Application::UpdateTransforms(float _Dt)
 				//PP::Camera::GetUpdatedView(gameCamPos, gameCamPos + camera.m_Front, camera.m_Up, camera.m_View);
 				PP::Camera4D::UpdateVectors(camera.m_Yaw, camera.m_Pitch, camera.m_Roll, camera.m_Front, camera.m_Right, camera.m_Up, camera.m_Orientation);
 				PP::Camera4D::UpdateProjection(windowSize, camera.m_Near, camera.m_Far, camera.m_Fov, camera.m_Projection);
+				PP::Camera4D::UpdateOrthographic(windowSize, camera.m_Far, camera.m_Orthographic);
 				PP::Camera4D::GetView(gameCamPos, camera.m_Orientation, camera.m_View);
 				PPA::AudioEngine::UpdateListenerPosition(gameCamPos, camera.m_Front, camera.m_Up, PhysicsDLC::Vector::Zero);
 			}
@@ -514,6 +515,7 @@ void Application::UpdateTransforms(float _Dt)
 
 	/// Canvas
 	auto canvasView = m_activeECS->view<Transform, Canvas>();
+	const glm::vec2 halfWindowSize = { PP::Window::m_Width * 0.5f, PP::Window::m_Height * 0.5f };
 	for (auto it : canvasView)
 	{
 		auto& transform = canvasView.get<Transform>(it);
@@ -533,11 +535,41 @@ void Application::UpdateTransforms(float _Dt)
 			canvas.m_TexID = usedTex[canvas.m_TexName].m_MappedID;
 		}
 
+		/// Scale with window size
+		glm::mat4 model = glm::mat4{ 1 };
+		if (canvas.m_Ortho)
+		{
+			glm::vec3 pos = {};
+			glm::vec3 rot = {};
+			glm::vec3 scale = {};
+
+			// To maintain parent transform
+			ImGuizmo::DecomposeMatrixToComponents
+			(
+				glm::value_ptr(transform.m_ModelMtx),
+				glm::value_ptr(pos),
+				glm::value_ptr(rot),
+				glm::value_ptr(scale)
+			);
+
+			// Decompose to apply mapping
+			model = glm::translate(model, { pos.x * PP::Window::m_Width + halfWindowSize.x, pos.y * PP::Window::m_Height + halfWindowSize.y, pos.z });
+			model = glm::rotate(model, glm::radians(rot.x), { 1,0,0 });
+			model = glm::rotate(model, glm::radians(rot.y), { 0,1,0 });
+			model = glm::rotate(model, glm::radians(rot.z), { 0,0,1 });
+			// Disregard aspect ratio so width for x and y
+			model = glm::scale(model, { scale.x * PP::Window::m_Width, scale.y * PP::Window::m_Height * PP::Window::m_TargetAspect, 1 });
+		}
+		else
+		{
+			model = transform.m_ModelMtx;
+		}
+
 		PP::MeshInstance::SetInstance
 		(
 			PP::InstanceData
 			{ 
-				transform.m_ModelMtx,
+				model,
 				canvas.m_Color,
 				canvas.m_SpriteAnimation.m_Tiling,
 				canvas.m_SpriteAnimation.m_UV_Offset,

@@ -18,6 +18,8 @@ namespace Pogplant
 		const std::string dir = "Resources/Fonts/";
 		LoadFont(dir + "Ruda.json");
 		LoadFont(dir + "Comfortaa.json");
+		LoadFont(dir + "Dekko.json");
+		LoadFont(dir + "Bangers.json");
 	}
 
 	void FontResource::CleanUpResource()

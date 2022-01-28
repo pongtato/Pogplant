@@ -315,6 +315,7 @@ namespace Components
 		Camera(bool _Active);
 
 		glm::quat m_Orientation;
+		glm::mat4 m_Orthographic;
 		glm::mat4 m_Projection;
 		glm::mat4 m_View;
 		glm::vec3 m_Up;

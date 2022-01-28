@@ -17,9 +17,9 @@ out vec2 UV_Offset;
 
 flat out int TexID;
 
+uniform mat4 m4_Ortho;
 uniform mat4 m4_Projection;
 uniform mat4 m4_View;
-uniform float f_Aspect;
 uniform bool b_Editor;
 
 void main() 
@@ -29,15 +29,12 @@ void main()
     Tiling = v2_Tiling;
     UV_Offset = v2_UV_Offset;
     TexID = i_TexID;
-    
     mat4 proj = m4_Projection;
     mat4 view = m4_View;
-    float yScaled = v2_Pos.y;
     if(b_Ortho == 1)
     {
-        proj = mat4(1.0f);
-        view = mat4(1.0f);
-        yScaled = yScaled * f_Aspect;
+        proj = m4_Ortho;
+        view = mat4(1);
     }
 
     if(b_GameOnly == 1 && b_Editor)
@@ -46,6 +43,6 @@ void main()
     }
     else
     {
-        gl_Position = proj * view * m4_Model * vec4(v2_Pos.x, yScaled, 0.0f, 1.0f);
+        gl_Position = proj * view * m4_Model * vec4(v2_Pos.x, v2_Pos.y, 0.0f, 1.0f);
     }
 }

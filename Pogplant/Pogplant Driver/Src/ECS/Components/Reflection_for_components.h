@@ -125,6 +125,7 @@ namespace Components
 			.property("m_Color", &Canvas::m_Color)
 			.property("m_TexName", &Canvas::m_TexName)
 			.property("m_Ortho", &Canvas::m_Ortho)
+			.property("m_ForceAlpha", &Canvas::m_ForceAlpha)
 			.property("m_SpriteAnimation", &Canvas::m_SpriteAnimation);
 
 		rttr::registration::class_<Laser>("Laser")
