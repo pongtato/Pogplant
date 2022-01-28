@@ -228,18 +228,16 @@ namespace Scripting
 
                     const double angle = ( 2 * Math.PI) / muzzle_number;
 
-                    // Console.WriteLine("Spiral shooting");
-
                     Vector3 forward_vector = Transform.GetForwardVector(owner.id);
                     Vector3 up_vector = Transform.GetUpVector(owner.id);
                     Vector3 right_vector = Vector3.CrossProduct(forward_vector, up_vector);
 
-                    right_vector *= (float)Math.Cos(angle * true_bullet_interval);
-                    up_vector *= (float)Math.Sin(angle * true_bullet_interval);
+                    right_vector *= (float)Math.Cos(angle * true_bullet_interval) * 1.2f;
+                    up_vector *= (float)Math.Sin(angle * true_bullet_interval) * 1.2f;
 
                     Vector3 direction = forward_vector + right_vector + up_vector;
 
-                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + direction * 0.2f, direction, 2.0f, 10.0f);
+                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + direction * 0.3f, direction, 0.2f, 10.0f);
 
                 }
                 else

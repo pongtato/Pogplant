@@ -26,7 +26,7 @@ namespace Scripting
     public class EncounterSystemDriver : MonoBehaviour
     {
         float Enemy1_fire_rate = 5;
-        float Enemy2_fire_rate = 15f;
+        float Enemy2_fire_rate = 24f;
 
         EncounterManager encounterManager = new EncounterManager();
 
