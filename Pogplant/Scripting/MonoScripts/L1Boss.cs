@@ -603,11 +603,13 @@ namespace Scripting
                 case BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
                     StopAnimation(true);
                     AddAnimationSpecsStack(SetDeathStateAnimationsOne, 1.5f);
-                    AddAnimationSpecsStack(SetDeathStateAnimationsTwo, 15.0f);
-                    AddAnimationSpecsStack(SetDeathStateAnimationsThree, 3.0f);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsTwo, 10.0f);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsThree, 1.0f);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsFour, 0.5f);
                     AddAnimationUpdateStack(RunDeathStateSequenceOne);
                     AddAnimationUpdateStack(RunDeathStateSequenceTwo);
                     AddAnimationUpdateStack(RunDeathStateSequenceThree);
+                    AddAnimationUpdateStack(RunDeathStateSequenceFour);
                     SetStateQueue(BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE);
                     PlayAnimation();
                     break;
@@ -1396,6 +1398,8 @@ namespace Scripting
         /// [Death State] 
         /// 1. Boss arms move to aim forward
         /// 2. Boss arms and legs spasms and the main laser starts to appear
+        /// 3. Fire recoil
+        /// 4. Fire recoil recovery
         /// </summary>
         void SetDeathStateAnimationsOne()
         {
@@ -1421,14 +1425,14 @@ namespace Scripting
             SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
             //Mouth
-            SetMovingPartsRotation(mouth_left_id, new Vector3(0, -105, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, false, false, false, false, false);
-            SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 105, 0), new Vector3(0, 10.0f, 0), false, true, false, false, false, false);
+            SetMovingPartsRotation(mouth_left_id, new Vector3(0, -105, 0), new Vector3(), new Vector3(0, 5.0f, 0), false, false, false, false, false, false);
+            SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 105, 0), new Vector3(0, 5.0f, 0), false, true, false, false, false, false);
 
             //Artillery
             SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
             SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
 
-            ECS.SetActive(false_core_id, false);
+            //ECS.SetActive(false_core_id, false);
         }
 
         void RunDeathStateSequenceOne(float dt)
@@ -1470,7 +1474,7 @@ namespace Scripting
         void SetDeathStateAnimationsTwo()
         {
             //Body
-            SetMovingPartsPosition(entityID, new Vector3(0, -0.1f, 0), new Vector3(0, 0.1f, 0), new Vector3(0, 5.0f, 0), false, false, false, false, true, false);
+            SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, 0), new Vector3(0, 0.2f, 0), new Vector3(0, 5.0f, 0), false, false, false, false, true, false);
 
             //Arms
             SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -98.0f), new Vector3(0, 0, -95.0f), new Vector3(0, 0, 55.0f), false, false, false, false, false, true);
@@ -1516,7 +1520,7 @@ namespace Scripting
         void SetDeathStateAnimationsThree()
         {
             //Body
-            SetMovingPartsPosition(entityID, new Vector3(0, 0, -5), new Vector3(0, 0, 0), new Vector3(0, 0, 30.0f), false, false, false, false, false, false);
+            SetMovingPartsPosition(entityID, new Vector3(0, 0, -4), new Vector3(0, 0, 0), new Vector3(0, 0, 10.0f), false, false, false, false, false, false);
 
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(true);
         }
@@ -1526,6 +1530,22 @@ namespace Scripting
             UpdateMovingParts(entityID, dt);
 
             SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, 100.0f, dt);
+            SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+            SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+        }
+
+        void SetDeathStateAnimationsFour()
+        {
+            //Body
+            SetMovingPartsPosition(entityID, new Vector3(0, 0, 0), new Vector3(0, 0, 2), new Vector3(0, 0, 10.0f), false, false, false, false, false, false);
+
+            moving_parts_dict[main_laser_barrel_id].SetToggleSpin(false);
+        }
+
+        void RunDeathStateSequenceFour(float dt)
+        {
+            UpdateMovingParts(entityID, dt);
+
             SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
             SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
         }
