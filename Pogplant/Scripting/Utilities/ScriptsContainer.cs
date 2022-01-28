@@ -23,6 +23,7 @@ namespace Scripting
             // For Mono Scripts
             monoScriptNames.Add("PlayerScript");
             monoScriptNames.Add("FirstPersonFiringSystem");
+            monoScriptNames.Add("FirstPersonFiringBox");
             monoScriptNames.Add("EncounterSystemDriver");
             monoScriptNames.Add("FollowSpline");
             monoScriptNames.Add("L1BossShield");
@@ -36,7 +37,6 @@ namespace Scripting
             monoScriptNames.Add("MissileController");
             //monoScriptNames.Add("Missile");
             monoScriptNames.Add("FlockController");
-            //monoScriptNames.Add("EnvDamage");
             monoScriptNames.Add("MainMenuController");
             monoScriptNames.Add("Laser");
             monoScriptNames.Add("LaserTriggerController");

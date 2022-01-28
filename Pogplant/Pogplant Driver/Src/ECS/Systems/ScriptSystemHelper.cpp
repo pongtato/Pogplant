@@ -291,6 +291,39 @@ namespace SSH
 		}
 	}
 
+	void SetFrames(std::uint32_t entityID, int frameValue)
+	{
+		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));
+		if (canvas)
+		{
+			canvas->m_SpriteAnimation.SetFrame(frameValue);
+		}
+	}
+
+	void SetColorTint(std::uint32_t entityID, glm::vec3& color)
+	{
+		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));
+		if (canvas)
+		{
+			glm::vec4 OldVal = canvas->m_Color;
+			OldVal.x = color.x;
+			OldVal.y = color.y;
+			OldVal.z = color.z;
+		}
+	}
+
+	glm::vec3 GetColorTint(std::uint32_t entityID, glm::vec3& color)
+	{
+		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));
+		glm::vec3 Vec3Val{ 0 };
+		if (canvas)
+		{
+			glm::vec4 OldVal = canvas->m_Color;
+			Vec3Val = OldVal;
+		}
+		return Vec3Val;
+	}
+
 	void SetActive(std::uint32_t entityID, bool isEnabled)
 	{
 		if (isEnabled)
