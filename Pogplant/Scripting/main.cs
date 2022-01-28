@@ -185,7 +185,8 @@ namespace Scripting
         public static EndGameMenuTrigger EndGameMenuTrigger()
         {
             return new EndGameMenuTrigger();
-
+        }
+        
         public static TetherEnemy TetherEnemy()
         {
             return new TetherEnemy();
