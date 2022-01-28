@@ -768,7 +768,7 @@ namespace Pogplant
 		// Use shader
 		ShaderLinker::Use("TEXT");
 
-		auto results = registry.view<Components::Transform, Components::Text>();
+		auto results = registry.view<Components::Transform, Components::Text>(entt::exclude_t<Components::Prefab, Components::Disabled>());
 		const glm::vec2 halfWindowSize = { Window::m_Width * 0.5f,Window::m_Height * 0.5f };
 		for (const auto& e : results)
 		{
