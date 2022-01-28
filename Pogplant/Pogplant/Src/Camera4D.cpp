@@ -315,7 +315,7 @@ namespace Pogplant
 	void Camera4D::UpdateOrthographic(glm::vec2 _WindowSize, float _Far, glm::mat4& _Orthographic)
 	{
 		// Ortho near always 0
-		_Orthographic = glm::ortho(0.0f, _WindowSize.x, 0.0f, _WindowSize.y, 0.0f, _Far);
+		_Orthographic = glm::ortho(-_WindowSize.x * 0.5f, _WindowSize.x * 0.5f, -_WindowSize.y * 0.5f, _WindowSize.y * 0.5f, 0.0f, _Far);
 	}
 
 	void Camera4D::GetView(const glm::vec3& _Position, const glm::quat& _Orientation, glm::mat4& _View)
