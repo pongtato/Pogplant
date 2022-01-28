@@ -86,6 +86,7 @@ namespace Scripting
                 ECS.PlayAudio(entityID, 1, "SFX");
                 GameUtilities.PlayEnemyDeathAnimation(entityID);
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
+                ++PlayerScript.m_EnemyDestroyedCount;
             }
         }
 

@@ -391,6 +391,7 @@ namespace Scripting
                 {
                     ECS.PlayAudio(gameObject.id, 1, "SFX");
                     GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
+                    ++PlayerScript.m_EnemyDestroyedCount;
                 }
 
                 isDiedFromPlayer = fromPlayer;
