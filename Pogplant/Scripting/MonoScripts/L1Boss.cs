@@ -179,7 +179,8 @@ namespace Scripting
 
     public class L1Boss : MonoBehaviour
     {
-        enum BOSS_BEHAVIOUR_STATE
+        static public L1Boss m_singleton;
+        public enum BOSS_BEHAVIOUR_STATE
         {
             EMPTY,
             MOVING,
@@ -289,6 +290,7 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+            m_singleton = this;
         }
 
         public override void Start()
@@ -409,7 +411,7 @@ namespace Scripting
             SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
 
             //Testing
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+            /*if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
             {
                 SetState(BOSS_BEHAVIOUR_STATE.MOVING);
 
@@ -424,7 +426,7 @@ namespace Scripting
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
             {
                 SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
-            }
+            }//*/
 
             switch (current_state)
             {
@@ -569,7 +571,7 @@ namespace Scripting
             }
         }
 
-        void SetState(BOSS_BEHAVIOUR_STATE set_state)
+        public void SetState(BOSS_BEHAVIOUR_STATE set_state)
         {
             current_state = set_state;
 

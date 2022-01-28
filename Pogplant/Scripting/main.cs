@@ -177,6 +177,12 @@ namespace Scripting
         {
             return new L1Boss();
         }
+
+        public static L1BossBehaviour L1BossBehaviour()
+		{
+            return new L1BossBehaviour();
+		}
+
         public static EndGameMenu EndGameMenu()
         {
             return new EndGameMenu();
