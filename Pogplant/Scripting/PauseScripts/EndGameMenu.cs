@@ -13,9 +13,11 @@ namespace Scripting
         uint m_EvasiveParentID;
         uint m_CollectParentID;
         uint m_MedalsParentID;
+        uint m_EndContinueID;
 
         private Dictionary<string, GameObject> m_LettersMap = new Dictionary<string, GameObject>();
         private Dictionary<uint, Vector3> m_ScaleAnimation = new Dictionary<uint, Vector3>();
+        
         float m_Timer = 0.0f;
         float m_AnimationSpeed = 5.0f;
         float m_AnimationLetterSpeed = 5.0f;
@@ -24,11 +26,16 @@ namespace Scripting
         bool m_CallOnceEva = true;
         bool m_CallOnceCol = true;
         bool m_CallOnceMedal = true;
+        bool m_CallOnceCont = true;
         uint m_OverallGrade = 0;
 
         Vector3 m_pos = new Vector3();
         Vector3 m_rot = new Vector3();
         Vector3 m_scale = new Vector3();
+        Vector3 m_contScaleSmall;
+        Vector3 m_contScaleBig;
+
+        bool m_EnablePlayBig = true;
 
         private enum GRADE
         {
@@ -122,10 +129,16 @@ namespace Scripting
             ECS.GetTransformECS(medalBronze, ref pos, ref rot, ref scale);
             m_LettersMap.Add("Medal_Bronze", new GameObject(medalBronze, new Transform(pos, rot, scale), "Medal_Bronze"));
 
+            // Continue Button
+            m_EndContinueID = ECS.FindEntityWithName("EndContinue");
+
             ECS.GetTransformECS(entityID, ref pos, ref rot, ref scale);
             m_LettersMap.Add("EndMenuControllerStart", new GameObject(entityID, new Transform(pos, rot, scale), "EndMenuController"));
             m_LettersMap.Add("EndMenuControllerMid", new GameObject(entityID, new Transform(new Vector3(pos.X, pos.Y + 1.0f, pos.Z), rot, scale), "EndMenuController"));
             m_LettersMap.Add("EndMenuControllerEnd", new GameObject(entityID, new Transform(new Vector3(pos.X, pos.Y + 0.85f, pos.Z), rot, scale), "EndMenuController"));
+
+            m_contScaleSmall = new Vector3(0.35f, 0.35f, 1.0f);
+            m_contScaleBig = new Vector3(0.4f, 0.4f, 1.0f);
 
             ECS.SetActive(entityID, false);
         }
@@ -145,6 +158,7 @@ namespace Scripting
                     DisableGrades(m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_A"].id);
                     DisableGrades(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
                     ECS.SetActive(m_EndScoreID, false);
+                    ECS.SetActive(m_EndContinueID, false);
                     m_CallOnce = false;
                 }
 
@@ -176,9 +190,13 @@ namespace Scripting
                     ECS.SetActive(m_EndScoreID, true);
                     GameUtilities.UpdateScore(m_EndScoreID, EnemyManager.score);
                 }
-                else if(m_Timer >= 6.0f && m_Timer < 7.0f)
+                else if(m_Timer >= 5.0f && m_Timer < 6.0f)
                 {
                     UpdateMedals();
+                }
+                else
+                {
+                    UpdateContinue(dt);
                 }
             }
         }
@@ -299,6 +317,40 @@ namespace Scripting
                     SwapGrade(m_LettersMap["Medal_Gold"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id);
                 }
                 m_CallOnceMedal = false;
+            }
+        }
+
+        private void UpdateContinue(float dt)
+        {
+            if (m_CallOnceCont)
+            {
+                ECS.SetActive(m_EndContinueID, true);
+                m_CallOnceCont = false;
+            }
+            else
+            {
+                if(InputUtility.onAnyKey())
+                {
+                    GameUtilities.ResumeScene();
+                    GameUtilities.LoadScene("MainMenu");
+                }
+
+                ECS.GetTransformECS(m_EndContinueID, ref m_pos, ref m_rot, ref m_scale);
+
+                if (m_scale.X >= m_contScaleBig.X - 0.01f)
+                    m_EnablePlayBig = false;
+
+                if (m_scale.X <= m_contScaleSmall.X + 0.01f)
+                    m_EnablePlayBig = true;
+
+                if (m_EnablePlayBig)
+                {
+                    ECS.SetScale(m_EndContinueID, Vector3.Lerp(m_scale, m_contScaleBig, (m_AnimationLetterSpeed - 4.0f) * dt));
+                }
+                else
+                {
+                    ECS.SetScale(m_EndContinueID, Vector3.Lerp(m_scale, m_contScaleSmall, (m_AnimationLetterSpeed - 4.0f) * dt));
+                }
             }
         }
 

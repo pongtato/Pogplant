@@ -88,7 +88,7 @@
 		}
 	},
 	{
-		"Children" : 6,
+		"Children" : 7,
 		"Name" : 
 		{
 			"m_Name" : "EndGameMenuController",
@@ -107,7 +107,7 @@
 			"m_position" : 
 			[
 				0.0,
-				-1.0,
+				0.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -152,7 +152,7 @@
 			"m_position" : 
 			[
 				-0.12999999523162842,
-				-0.20999999344348907,
+				-0.18000000715255737,
 				-0.95099997520446777
 			],
 			"m_rotation" : 
@@ -1156,6 +1156,72 @@
 				0.20000000298023224,
 				0.20000000298023224,
 				0.99999988079071045
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 5.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 4,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.25
+				],
+				"m_UV_Offset" : 
+				[
+					0.25,
+					0.5
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "EndContinue",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.039999999105930328,
+				-0.30000001192092896,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.34999999403953552,
+				0.34999999403953552,
+				1.0
 			]
 		}
 	}
