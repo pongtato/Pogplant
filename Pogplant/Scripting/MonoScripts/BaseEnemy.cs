@@ -11,6 +11,7 @@
             written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
+using System;
 using System.Collections.Generic;
 
 namespace Scripting
@@ -148,7 +149,7 @@ namespace Scripting
         {
             fire_rate = 1 / fireRate;
             attack_animation = attackPattern;
-            true_bullet_interval = trueBulletInterval;
+            true_bullet_interval = 0; // ignore truebulletinterval param
             duration = totalDuration;
 
         }
@@ -216,9 +217,37 @@ namespace Scripting
                 //    }
                 //}
                 //Console.WriteLine("Firing bullet");
-                GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, owner.transform.Rotation, 5.0f, 3.0f);
+
+                if (attack_animation == "Spiral")
+                {
+                    ++true_bullet_interval;
+                    const float muzzle_number = 8;
+
+                    if (true_bullet_interval >= muzzle_number)
+                        true_bullet_interval = 0;
+
+                    const double angle = ( 2 * Math.PI) / muzzle_number;
+
+                    // Console.WriteLine("Spiral shooting");
+
+                    Vector3 forward_vector = Transform.GetForwardVector(owner.id);
+                    Vector3 up_vector = Transform.GetUpVector(owner.id);
+                    Vector3 right_vector = Vector3.CrossProduct(forward_vector, up_vector);
+
+                    right_vector *= (float)Math.Cos(angle * true_bullet_interval);
+                    up_vector *= (float)Math.Sin(angle * true_bullet_interval);
+
+                    Vector3 direction = forward_vector + right_vector + up_vector;
+
+                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + direction * 0.2f, direction, 2.0f, 10.0f);
+
+                }
+                else
+                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, Transform.GetForwardVector(owner.id), 5.0f, 3.0f);
+
                 ECS.PlayAudio(owner.id, 3, "SFX");
             }
+
 
             if (current_time >= duration)
             {
@@ -259,7 +288,7 @@ namespace Scripting
             foreach (BaseAction item in action_array)
             {
                 if (!item.GetIsFinished())
-                    if(item.Execute(dt, owner, manager))
+                    if (item.Execute(dt, owner, manager))
                         ++actions_finished;
             }
 

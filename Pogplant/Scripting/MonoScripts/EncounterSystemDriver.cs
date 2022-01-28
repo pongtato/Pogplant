@@ -26,7 +26,7 @@ namespace Scripting
     public class EncounterSystemDriver : MonoBehaviour
     {
         float Enemy1_fire_rate = 5;
-        float Enemy2_fire_rate = 2f;
+        float Enemy2_fire_rate = 15f;
 
         EncounterManager encounterManager = new EncounterManager();
 
@@ -670,7 +670,7 @@ namespace Scripting
             {
                 BaseAction[] action1 = new BaseAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Far_T7_MidM"), enemyManager.GetWaypoint("7,4,5"), 1.5f);
-                action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
             }
 
@@ -711,7 +711,7 @@ namespace Scripting
             {
                 BaseAction[] action1 = new BaseAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("7,1,5"), enemyManager.GetWaypoint("10,3,5"), 1.0f);
-                action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.5f);
                 enemy1.AddCommand(new CompositeAction(action1));
             }
 
@@ -722,7 +722,7 @@ namespace Scripting
             {
                 BaseAction[] action1 = new BaseAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("4,4,5"), enemyManager.GetWaypoint("7,1,5"), 1.0f);
-                action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.5f);
                 enemy2.AddCommand(new CompositeAction(action1));
             }
 
@@ -736,12 +736,12 @@ namespace Scripting
             {
                 BaseAction[] action1 = new BaseAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("7,6,5"), enemyManager.GetWaypoint("Far_T7_MidM"), 1.5f);
-                action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.5f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.5f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
                 BaseAction[] action2 = new BaseAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("7,1,5"), enemyManager.GetWaypoint("Far_T7_MidM"), 1.5f);
-                action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.5f);
+                action2[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.5f);
                 enemy2.AddCommand(new CompositeAction(action2));
             }
 

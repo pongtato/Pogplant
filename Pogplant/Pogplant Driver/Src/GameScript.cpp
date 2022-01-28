@@ -196,7 +196,7 @@ namespace Scripting
 
 		auto body = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
-		glm::vec3 forward_vec = enemy_trans->GetForwardVector();
+		glm::vec3 forward_vec = _Rotation;
 
 		//Add power to the shots
 		forward_vec *= _Speed;
