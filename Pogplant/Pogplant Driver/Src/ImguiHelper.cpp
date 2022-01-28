@@ -27,6 +27,7 @@
 
 #include "Application.h"
 #include <IconsMaterialDesign.h>
+
 namespace PogplantDriver
 {
 	//Adds blank text as seperator text to make things look nicer

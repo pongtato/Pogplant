@@ -425,6 +425,14 @@ namespace PogplantDriver
 		if(!remove_prefab_tag)
 			Try_Load_Component<Prefab>(root, "Prefab", id);
 
+		//set to disabled
+		auto entity_name = m_ecs.GetReg().try_get<Name>(id);
+		if (entity_name)
+		{
+			if (!entity_name->status)
+				m_ecs.DisableEntity(id);
+		}
+
 		if (PrefabInstance_data)
 		{
 			Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);

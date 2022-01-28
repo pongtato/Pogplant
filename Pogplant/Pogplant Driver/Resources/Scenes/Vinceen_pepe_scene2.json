@@ -3,7 +3,8 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Explosive Enemy"
+			"m_Name" : "Explosive Enemy",
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -35,7 +36,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Turret_Body"
+			"m_Name" : "Turret_Body",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -89,7 +91,8 @@
 		"Children" : 6,
 		"Name" : 
 		{
-			"m_Name" : "Turret_Pivot"
+			"m_Name" : "Turret_Pivot",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -143,7 +146,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Bullet_Box"
+			"m_Name" : "Bullet_Box",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -197,7 +201,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Rotating_Gatling_Barrel"
+			"m_Name" : "Rotating_Gatling_Barrel",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -251,7 +256,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Bullet_Belt"
+			"m_Name" : "Bullet_Belt",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -305,7 +311,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Exhaust_Main002"
+			"m_Name" : "Exhaust_Main002",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -359,7 +366,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Gun_Studs001"
+			"m_Name" : "Gun_Studs001",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -413,7 +421,8 @@
 		"Children" : 4,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Body"
+			"m_Name" : "Big_Alien_Body",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -467,7 +476,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Horns001"
+			"m_Name" : "Horns001",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -521,7 +531,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Arm_L001"
+			"m_Name" : "Big_Alien_Arm_L001",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -575,7 +586,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Arm_R001"
+			"m_Name" : "Big_Alien_Arm_R001",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -629,7 +641,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Head001"
+			"m_Name" : "Big_Alien_Head001",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -683,7 +696,8 @@
 		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "Range Indicators"
+			"m_Name" : "Range Indicators",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -715,115 +729,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Near"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				8.0,
-				10.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Medium"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.92093020677566528,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				8.0,
-				10.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Far"
+			"m_Name" : "Far",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -831,6 +738,116 @@
 			[
 				0.2697676420211792,
 				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cube",
+				"Resources/Models\\cube",
+				"Box001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				8.0,
+				10.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Near",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cube",
+				"Resources/Models\\cube",
+				"Box001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				8.0,
+				10.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Medium",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.92093020677566528,
 				0.0
 			],
 			"EmissiveTint" : 
