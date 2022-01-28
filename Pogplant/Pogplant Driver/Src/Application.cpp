@@ -510,11 +510,12 @@ void Application::UpdateTransforms(float _Dt)
 					usedTex[pSys.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
 					usedTex[pSys.m_TexName].m_Used = true;
 					//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[pSys.m_TexName].m_MappedID, pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID);
-					pSys.m_TexID = usedTex[pSys.m_TexName].m_MappedID;
+					
 
 					printf("%s | %d \n", pSys.m_TexName.c_str(), pSys.m_TexID);
 				}
 			}
+			pSys.m_TexID = usedTex[pSys.m_TexName].m_MappedID;
 			pSys.Update(_Dt, transform, gameCamPos);
 		}
 	}
@@ -539,10 +540,12 @@ void Application::UpdateTransforms(float _Dt)
 				usedTex[canvas.m_TexName].m_Used = true;
 				//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[canvas.m_TexName].m_MappedID, canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID);
 				// Update canvas ID
-				canvas.m_TexID = usedTex[canvas.m_TexName].m_MappedID;
+				
 				printf("%s | %d \n", canvas.m_TexName.c_str(), canvas.m_TexID);
 			}
 		}
+
+		canvas.m_TexID = usedTex[canvas.m_TexName].m_MappedID;
 
 		/// Scale with window size
 		glm::mat4 model = glm::mat4{ 1 };
