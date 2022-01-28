@@ -500,14 +500,17 @@ void Application::UpdateTransforms(float _Dt)
 			auto& usedTex = PP::TextureResource::m_UsedTextures;
 			if (!PP::TextureResource::m_Updated || !usedTex[pSys.m_TexName].m_Used)
 			{
-				pSys.Clear();
-				//If not in used yet toggle it to be in use
-				usedTex[pSys.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[pSys.m_TexName]);
-				//This will always be > 0 since by comparing !used it already creates an entry
-				usedTex[pSys.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
-				usedTex[pSys.m_TexName].m_Used = true;
-				//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[pSys.m_TexName].m_MappedID, pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID);
-				pSys.m_TexID = usedTex[pSys.m_TexName].m_MappedID;
+				if (!usedTex[pSys.m_TexName].m_Used)
+				{
+					pSys.Clear();
+					//If not in used yet toggle it to be in use
+					usedTex[pSys.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[pSys.m_TexName]);
+					//This will always be > 0 since by comparing !used it already creates an entry
+					usedTex[pSys.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
+					usedTex[pSys.m_TexName].m_Used = true;
+					//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[pSys.m_TexName].m_MappedID, pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID);
+					pSys.m_TexID = usedTex[pSys.m_TexName].m_MappedID;
+				}
 			}
 			pSys.Update(_Dt, transform, gameCamPos);
 		}
@@ -525,13 +528,16 @@ void Application::UpdateTransforms(float _Dt)
 		auto& usedTex = PP::TextureResource::m_UsedTextures;
 		if (!PP::TextureResource::m_Updated || !usedTex[canvas.m_TexName].m_Used)
 		{
-			usedTex[canvas.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[canvas.m_TexName]);
-			// This will always be > 0 since by comparing !used it already creates an entry
-			usedTex[canvas.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
-			usedTex[canvas.m_TexName].m_Used = true;
-			//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[canvas.m_TexName].m_MappedID, canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID);
-			// Update canvas ID
-			canvas.m_TexID = usedTex[canvas.m_TexName].m_MappedID;
+			if (!usedTex[canvas.m_TexName].m_Used)
+			{
+				usedTex[canvas.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[canvas.m_TexName]);
+				// This will always be > 0 since by comparing !used it already creates an entry
+				usedTex[canvas.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
+				usedTex[canvas.m_TexName].m_Used = true;
+				//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[canvas.m_TexName].m_MappedID, canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID);
+				// Update canvas ID
+				canvas.m_TexID = usedTex[canvas.m_TexName].m_MappedID;
+			}
 		}
 
 		/// Scale with window size
