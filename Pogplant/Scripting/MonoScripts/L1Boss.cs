@@ -187,7 +187,8 @@ namespace Scripting
             LAUNCH_NORMAL_ADDS,
             LAUNCH_LASER_ADDS,
             ARTI_ATTACK,
-            DEATH_SEQUENCE
+            DEATH_SEQUENCE,
+            TRANSIT_SCENE
         }
 
         Dictionary<uint, MOVING_PARTS> moving_parts_dict;
@@ -229,22 +230,6 @@ namespace Scripting
         uint main_laser_barrel_id;
 
         /////////////////////////////////////////////////////////////////////////
-        //  State vars
-        /////////////////////////////////////////////////////////////////////////
-
-        //Moving state
-
-
-        //Arm laser attack state
-
-        //Left launch state
-
-        //Right launch state
-
-        //Arti attack state
-
-
-        /////////////////////////////////////////////////////////////////////////
         //  Death sequence
         /////////////////////////////////////////////////////////////////////////
 
@@ -277,6 +262,10 @@ namespace Scripting
         float scene_change_delay_timer;
         uint black_screen_id;
 
+        //Laser
+        float laser_spin_addition;
+        const float laser_spin_addition_speed = 10.0f;
+
         //For ECS get transform
         Vector3 pos = new Vector3();
         Vector3 rot = new Vector3();
@@ -286,6 +275,7 @@ namespace Scripting
         {
             public Action action;
             public float animation_duration;
+            public bool loop_animation;
         }
 
         //Animation stack
@@ -310,7 +300,7 @@ namespace Scripting
             ECS.SetActive(black_screen_id, false);
             ECS.SetActive(sparks_particle_id, false);
             rotate_angle = new Vector3(0, 0, 40.0f);
-            current_animation_index = -1;
+            current_animation_index = 0;
         }
 
         void FindEntities()
@@ -431,10 +421,19 @@ namespace Scripting
                 SetState(BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
             }
 
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
+            {
+                SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+            }
+
             switch (current_state)
             {
                 case BOSS_BEHAVIOUR_STATE.MOVING:
                     RunMovingSequence(dt);
+                    break;
+                case BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
+                    laser_spin_addition += laser_spin_addition_speed * dt;
+                    SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, laser_spin_addition, dt);
                     break;
             }
 
@@ -587,19 +586,30 @@ namespace Scripting
                     //AddAnimationUpdateStack(RunTestSequence);
                     break;
                 case BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
-                    StopAnimation();
+                    StopAnimation(true);
                     AddAnimationSpecsStack(SetLaunchStateAnimationsOne, 2.0f);
                     AddAnimationSpecsStack(SetLaunchStateAnimationsTwo, 2.0f);
                     AddAnimationSpecsStack(SetLaunchStateAnimationsThree, 3.5f);
                     AddAnimationSpecsStack(SetLaunchStateAnimationsFour, 2.0f);
                     AddAnimationSpecsStack(SetLaunchStateAnimationsFive, 0.5f);
-                    RunNextAnimationStack();
-                    AddAnimationUpdateStack(RunLaunchStateOneSequence);
-                    AddAnimationUpdateStack(RunLaunchStateTwoSequence);
-                    AddAnimationUpdateStack(RunLaunchStateThreeSequence);
-                    AddAnimationUpdateStack(RunLaunchStateFourSequence);
-                    AddAnimationUpdateStack(RunLaunchStateFiveSequence);
+                    AddAnimationUpdateStack(RunLaunchStateSequenceOne);
+                    AddAnimationUpdateStack(RunLaunchStateSequenceTwo);
+                    AddAnimationUpdateStack(RunLaunchStateSequenceThree);
+                    AddAnimationUpdateStack(RunLaunchStateSequenceFour);
+                    AddAnimationUpdateStack(RunLaunchStateSequenceFive);
                     SetStateQueue(BOSS_BEHAVIOUR_STATE.MOVING);
+                    PlayAnimation();
+                    break;
+                case BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
+                    StopAnimation(true);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsOne, 1.5f);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsTwo, 15.0f);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsThree, 3.0f);
+                    AddAnimationUpdateStack(RunDeathStateSequenceOne);
+                    AddAnimationUpdateStack(RunDeathStateSequenceTwo);
+                    AddAnimationUpdateStack(RunDeathStateSequenceThree);
+                    SetStateQueue(BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE);
+                    PlayAnimation();
                     break;
             }
         }
@@ -615,12 +625,13 @@ namespace Scripting
             state_queue = BOSS_BEHAVIOUR_STATE.EMPTY;
         }
 
-        void AddAnimationSpecsStack(Action action, float anim_duration)
+        void AddAnimationSpecsStack(Action action, float anim_duration, bool loop = false)
         {
             animation_specs_stack.Add(new Animation_Stack()
             {
                 action = action,
-                animation_duration = anim_duration
+                animation_duration = anim_duration,
+                loop_animation = loop
             });
         }
 
@@ -629,15 +640,31 @@ namespace Scripting
             animation_update_stack.Add(action);
         }
 
-        void StopAnimation()
+        void PlayAnimation()
+        {
+            current_animation_time = 0.0f;
+            animation_specs_stack[current_animation_index].action.Invoke();
+            play_animation = true;
+        }
+
+        void StopAnimation(bool clear_stack)
         {
             play_animation = false;
-            ClearAnimationStack();
+
+            if(clear_stack)
+                ClearAnimationStack();
+
+            //if there is a queue of animation state to transition to, transition and reset the state queue
+            if (state_queue != BOSS_BEHAVIOUR_STATE.EMPTY)
+            {
+                SetState(state_queue);
+                ResetStateQueue();
+            }
         }
 
         void ClearAnimationStack()
         {
-            current_animation_index = -1;
+            current_animation_index = 0;
             current_animation_time = 0.0f;
 
             //Use the function so its easier to track
@@ -650,11 +677,14 @@ namespace Scripting
             play_animation = true;
             current_animation_time = 0.0f;
 
-            ++current_animation_index;
+            //Increase the index if not looping
+            if (animation_specs_stack[current_animation_index].loop_animation == false)
+            {
+                ++current_animation_index;
+            }
 
             if (current_animation_index <= animation_specs_stack.Count - 1)
             {
-
                 //Only run if the stack still has actions
                 if (animation_specs_stack[current_animation_index].action != null)
                 {
@@ -1109,8 +1139,8 @@ namespace Scripting
             SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
             //Mouth
-            SetMovingPartsRotation(mouth_left_id, new Vector3(0, -15, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
-            SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 15, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
+            SetMovingPartsRotation(mouth_left_id, new Vector3(0, -35, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
+            SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 35, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
 
             //Artillery
             SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
@@ -1206,10 +1236,8 @@ namespace Scripting
             SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
         }
 
-        void RunLaunchStateOneSequence(float dt)
+        void RunLaunchStateSequenceOne(float dt)
         {
-            //Set the boss in a moving state where the arms and legs flail a little bit
-
             UpdateMovingParts(entityID, dt);
 
             //Arms
@@ -1261,7 +1289,7 @@ namespace Scripting
             SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, -100.0f), new Vector3(0, 0, -50.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
         }
 
-        void RunLaunchStateTwoSequence(float dt)
+        void RunLaunchStateSequenceTwo(float dt)
         {
             UpdateMovingParts(entityID, dt);
 
@@ -1290,7 +1318,7 @@ namespace Scripting
             SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 2.0f), false, false, true, false, false, false);
         }
 
-        void RunLaunchStateThreeSequence(float dt)
+        void RunLaunchStateSequenceThree(float dt)
         {
             //Launching bays
             UpdateMovingParts(right_launching_bay_one_id, dt);
@@ -1314,7 +1342,7 @@ namespace Scripting
             SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(0, 0, 2.0f), false, false, true, false, false, false);
         }
 
-        void RunLaunchStateFourSequence(float dt)
+        void RunLaunchStateSequenceFour(float dt)
         {
             //Launching bays
             UpdateMovingParts(right_launching_bay_one_id, dt);
@@ -1345,7 +1373,7 @@ namespace Scripting
             SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, -100.0f), new Vector3(0, 0, -50.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
         }
 
-        void RunLaunchStateFiveSequence(float dt)
+        void RunLaunchStateSequenceFive(float dt)
         {
             UpdateMovingParts(entityID, dt);
 
@@ -1360,6 +1388,146 @@ namespace Scripting
             UpdateMovingParts(left_leg_end_joint_id, dt);
             UpdateMovingParts(right_leg_middle_joint_id, dt);
             UpdateMovingParts(right_leg_end_joint_id, dt);
+        }
+        #endregion
+
+        #region[Death Animation Sequence]
+        /// <summary>
+        /// [Death State] 
+        /// 1. Boss arms move to aim forward
+        /// 2. Boss arms and legs spasms and the main laser starts to appear
+        /// </summary>
+        void SetDeathStateAnimationsOne()
+        {
+            //Arms
+            SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(-100.0f, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 0, 0), false, false, false, false, false, false);
+            SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -98.0f), new Vector3(0, 0, -95.0f), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(-100.0f, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 0, 0), false, false, false, false, false, false);
+            SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 95.0f), new Vector3(0, 0, 98.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
+
+            //Legs
+            SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(0, 0, 0), new Vector3(75.0f, 0, 0), new Vector3(5.0f, 0, 0), true, false, false, false, false, false);
+            SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, -90.0f), new Vector3(0, 0, -70.0f), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(0, 0, 0), new Vector3(75.0f, 0, 0), new Vector3(5.0f, 0, 0), true, false, false, false, false, false);
+            SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, 70.0f), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
+
+            //Launching bays
+            SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+
+            SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+
+            //Mouth
+            SetMovingPartsRotation(mouth_left_id, new Vector3(0, -105, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, false, false, false, false, false);
+            SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 105, 0), new Vector3(0, 10.0f, 0), false, true, false, false, false, false);
+
+            //Artillery
+            SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+
+            ECS.SetActive(false_core_id, false);
+        }
+
+        void RunDeathStateSequenceOne(float dt)
+        {
+            //Arms
+            UpdateMovingParts(left_arm_middle_joint_id, dt);
+            UpdateMovingParts(left_arm_end_joint_id, dt);
+            UpdateMovingParts(right_arm_middle_joint_id, dt);
+            UpdateMovingParts(right_arm_end_joint_id, dt);
+
+            //Legs
+            UpdateMovingParts(left_leg_middle_joint_id, dt);
+            UpdateMovingParts(left_leg_end_joint_id, dt);
+            UpdateMovingParts(right_leg_middle_joint_id, dt);
+            UpdateMovingParts(right_leg_end_joint_id, dt);
+
+            //Launching bays
+            UpdateMovingParts(right_launching_bay_one_id, dt);
+            UpdateMovingParts(right_launching_bay_two_id, dt);
+            UpdateMovingParts(right_launching_bay_three_id, dt);
+
+            UpdateMovingParts(left_launching_bay_one_id, dt);
+            UpdateMovingParts(left_launching_bay_two_id, dt);
+            UpdateMovingParts(left_launching_bay_three_id, dt);
+
+            //Artillery
+            UpdateMovingParts(artillery_axis_id, dt);
+            UpdateMovingParts(artillery_barrel_id, dt);
+
+            //Mouth
+            UpdateMovingParts(mouth_left_id, dt);
+            UpdateMovingParts(mouth_right_id, dt);
+
+            //Laser
+            UpdateMovingParts(main_laser_rails_id, dt);
+            UpdateMovingParts(main_laser_barrel_id, dt);
+        }
+
+        void SetDeathStateAnimationsTwo()
+        {
+            //Body
+            SetMovingPartsPosition(entityID, new Vector3(0, -0.1f, 0), new Vector3(0, 0.1f, 0), new Vector3(0, 5.0f, 0), false, false, false, false, true, false);
+
+            //Arms
+            SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -98.0f), new Vector3(0, 0, -95.0f), new Vector3(0, 0, 55.0f), false, false, false, false, false, true);
+            SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 95.0f), new Vector3(0, 0, 98.0f), new Vector3(0, 0, 55.0f), false, false, true, false, false, true);
+
+            //Legs
+            SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, -90.0f), new Vector3(0, 0, -70.0f), new Vector3(0, 0, 55.0f), false, false, false, false, false, true);
+            SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, 70.0f), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 55.0f), false, false, true, false, false, true);
+
+            //Main Laser
+            ECS.SetActive(main_laser_rail_vent_id, false);
+            SetMovingPartsPosition(main_laser_rails_id, new Vector3(), new Vector3(0, 0, 0.802f), new Vector3(0, 0, 0.5f), false, false, true, false, false, false);
+            SetMovingPartsPosition(main_laser_barrel_id, new Vector3(), new Vector3(0, 0, 1.344f), new Vector3(0, 0, 0.25f), false, false, true, false, false, false);
+
+            moving_parts_dict[main_laser_barrel_id].SetToggleSpin(true);
+        }
+
+        void RunDeathStateSequenceTwo(float dt)
+        {
+            UpdateMovingParts(entityID, dt);
+
+            //Arms
+            UpdateMovingParts(left_arm_end_joint_id, dt);
+            UpdateMovingParts(right_arm_end_joint_id, dt);
+
+            //Legs
+            UpdateMovingParts(left_leg_end_joint_id, dt);
+            UpdateMovingParts(right_leg_end_joint_id, dt);
+
+            //Artillery
+            UpdateMovingParts(artillery_axis_id, dt);
+            UpdateMovingParts(artillery_barrel_id, dt);
+
+            //Laser
+            UpdateMovingParts(main_laser_rails_id, dt);
+            UpdateMovingParts(main_laser_barrel_id, dt);
+
+            SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, 100.0f, dt);
+            SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+            SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+        }
+
+        void SetDeathStateAnimationsThree()
+        {
+            //Body
+            SetMovingPartsPosition(entityID, new Vector3(0, 0, -5), new Vector3(0, 0, 0), new Vector3(0, 0, 30.0f), false, false, false, false, false, false);
+
+            moving_parts_dict[main_laser_barrel_id].SetToggleSpin(true);
+        }
+
+        void RunDeathStateSequenceThree(float dt)
+        {
+            UpdateMovingParts(entityID, dt);
+
+            SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, 100.0f, dt);
+            SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+            SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
         }
         #endregion
     }
