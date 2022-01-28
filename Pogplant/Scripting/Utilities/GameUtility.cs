@@ -105,5 +105,8 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void EnemyTakeDamageFromID(uint entityID, float damage);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void UpdateComboUI(uint text_object, uint score);
     }
 }

@@ -188,7 +188,7 @@ namespace Scripting
                 else if(m_Timer >= 4.0f && m_Timer < 5.0f)
                 {
                     ECS.SetActive(m_EndScoreID, true);
-                    GameUtilities.UpdateScore(m_EndScoreID, EnemyManager.score);
+                    GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 }
                 else if(m_Timer >= 5.0f && m_Timer < 6.0f)
                 {
