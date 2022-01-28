@@ -29,7 +29,8 @@ namespace Components
 			.property("m_Specular", &Directional_Light::m_Specular);
 
 		rttr::registration::class_<Name>("Name")
-			.property("m_Name", &Name::m_name);
+			.property("m_Name", &Name::m_name)
+			.property("status", &Name::status);
 
 		rttr::registration::class_<Tag>("Tag")
 			.property("m_tag", &Tag::m_tag);

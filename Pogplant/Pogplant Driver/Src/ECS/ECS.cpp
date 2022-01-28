@@ -331,6 +331,7 @@ void ECS::EnableEntity(entt::entity _entity)
 {
 	m_EntitiesToEnable.insert(_entity);
 }
+
 void ECS::TrulyDisableEntity(entt::entity _entity)
 {
 	//assert(m_registry.try_get<Disabled>(_entity) == nullptr);

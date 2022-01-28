@@ -147,7 +147,9 @@ namespace PogplantDriver
 			entt::entity prev = entt::null;
 
 			Components::Transform* parentPtr;
-			auto entities = m_ecs.view<Transform>();
+			//auto entities = m_ecs.view<Transform>();
+			auto entities = m_ecs.GetReg().view<Transform>(entt::exclude_t<Components::Prefab>());
+
 			for (auto entity = entities.rbegin(); entity != entities.rend(); ++entity)
 			{
 				if (m_saved.contains(*entity))

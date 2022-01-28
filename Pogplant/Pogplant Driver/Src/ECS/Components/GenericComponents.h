@@ -23,7 +23,7 @@ namespace Components
 		Name() = default;
 		Name(std::string name) : m_name(name), status(true) {}
 		std::string m_name;
-		bool status;
+		bool status = true;
 	};
 
 	struct Disabled
