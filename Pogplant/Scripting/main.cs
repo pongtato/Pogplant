@@ -177,5 +177,14 @@ namespace Scripting
         {
             return new L1Boss();
         }
+        public static EndGameMenu EndGameMenu()
+        {
+            return new EndGameMenu();
+        }
+
+        public static EndGameMenuTrigger EndGameMenuTrigger()
+        {
+            return new EndGameMenuTrigger();
+        }
     }
 }

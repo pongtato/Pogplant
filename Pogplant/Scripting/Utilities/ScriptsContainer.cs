@@ -46,6 +46,7 @@ namespace Scripting
             monoScriptNames.Add("BonusItem");
             monoScriptNames.Add("SettingsMenu");
             monoScriptNames.Add("L1Boss");
+            monoScriptNames.Add("EndGameMenuTrigger");
         }
         
         private void AddPauseScripts()
@@ -56,6 +57,7 @@ namespace Scripting
             pauseScriptNames.Add("PauseMenu");
             pauseScriptNames.Add("PauseSettingsMenu");
             pauseScriptNames.Add("LaserWeapon");
+            pauseScriptNames.Add("EndGameMenu");
         }
 
         public string GetScriptNameElement(int index)
