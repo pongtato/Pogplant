@@ -52,9 +52,11 @@
     <Compile Include="ECS\ECS.cs" />
     <Compile Include="ECS\GameObject.cs" />
     <Compile Include="MonoScripts\BonusItem.cs" />
+    <Compile Include="MonoScripts\ExplosiveEnemy.cs" />
     <Compile Include="MonoScripts\L1Boss.cs" />
     <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="MonoScripts\GameEndingTrigger.cs" />
+    <Compile Include="MonoScripts\TetherEnemy.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />
     <Compile Include="PauseScripts\PauseMenu.cs" />
     <Compile Include="PauseScripts\PauseSettingsMenu.cs" />

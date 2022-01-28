@@ -1,4 +1,4 @@
-#include "Serializer.h"
+﻿#include "Serializer.h"
 
 #include "Logger.h"
 #include "../ECS/Components/Components.h"

@@ -177,5 +177,15 @@ namespace Scripting
         {
             return new L1Boss();
         }
+
+        public static TetherEnemy TetherEnemy()
+        {
+            return new TetherEnemy();
+        }
+
+        public static ExplosiveEnemy ExplosiveEnemy()
+        {
+            return new ExplosiveEnemy();
+        }
     }
 }

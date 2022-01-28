@@ -46,6 +46,8 @@ namespace Scripting
             monoScriptNames.Add("BonusItem");
             monoScriptNames.Add("SettingsMenu");
             monoScriptNames.Add("L1Boss");
+            monoScriptNames.Add("TetherEnemy");
+            monoScriptNames.Add("ExplosiveEnemy");
         }
         
         private void AddPauseScripts()

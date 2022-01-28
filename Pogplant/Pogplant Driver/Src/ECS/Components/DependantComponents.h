@@ -1,4 +1,4 @@
-/******************************************************************************/
+﻿/******************************************************************************/
 /*!
 \file	DependantComponents.h
 \author Gabriel Wong Choon Jieh
@@ -421,7 +421,7 @@ namespace Components
 			case Components::ScriptVariables::Variable::Type::STRING:
 				return "String";
 			case Components::ScriptVariables::Variable::Type::VECTOR3:
-				return "Vector 3";
+				return "Vector3";
 			default:
 				return "Something exploded";
 			}
