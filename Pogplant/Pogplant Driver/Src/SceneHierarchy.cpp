@@ -63,12 +63,6 @@ namespace PogplantDriver
 						m_ECS->CreateChild(m_CurrentEntity);
 					}
 
-					if (ImGui::MenuItem("Create Child Prefab"))
-					{
-						Entity child = m_ECS->CreateChild(m_CurrentEntity);
-						child.GetID();
-					}
-
 					if (ImGui::MenuItem("Delete Entity"))
 					{
 						m_ECS->DestroyEntity(m_CurrentEntity);

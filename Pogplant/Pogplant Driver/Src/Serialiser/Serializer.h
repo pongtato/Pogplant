@@ -30,10 +30,15 @@ namespace PogplantDriver
 		std::stack<int> m_child_counter;
 		std::stack<entt::entity> m_parent_id;
 
+		//used to load prefab after loading all objects because issues
+		//with saving/loading children objects
+		std::vector<std::string> m_prefab_list;
+
 		void SaveObjects(const std::string& File);
 		Json::Value SaveComponents(entt::entity id);
 		entt::entity LoadObjects(const std::string& File, bool IsPrefab = false, bool remove_prefab_tag = false);
 		void LoadComponents(const Json::Value& root, entt::entity id, bool IsPrefab = false, std::string _filepath = {}, bool remove_prefab_tag = false);
+		void LoadPrefabAfter();
 		int RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter);
 
 

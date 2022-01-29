@@ -14,9 +14,8 @@ namespace Scripting
 		bool m_armed = false;
 
 		//Indicators to show range
-		uint m_near_indicator;
-		uint m_medium_indicator;
-		uint m_far_indicator;
+		uint m_indicator_white;
+		uint m_indicator_red;
 
 		uint m_player_id;
 
@@ -44,19 +43,15 @@ namespace Scripting
 		//mainly for binding of datas and entity id
 		void BindData()
 		{
-			m_near_indicator = ECS.FindChildEntityWithName(entityID, "Near");
-			m_medium_indicator = ECS.FindChildEntityWithName(entityID, "Medium");
-			m_far_indicator = ECS.FindChildEntityWithName(entityID, "Far");
+			m_indicator_white = ECS.FindChildEntityWithName(entityID, "White");
+			m_indicator_red = ECS.FindChildEntityWithName(entityID, "Red");
 
-			m_player_id = ECS.FindEntityWithName("PlayerBox");
+			m_player_id = ECS.FindEntityWithName("PlayerShip");
 
 			m_threshold_1 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_threshold_1");
 			m_threshold_2 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_threshold_2");
 			m_threshold_3 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_threshold_3");
 
-			Console.WriteLine("m_near_indicator id: " + m_near_indicator);
-			Console.WriteLine("m_medium_indicator id: " + m_medium_indicator);
-			Console.WriteLine("m_far_indicator id: " + m_far_indicator);
 			Console.WriteLine("m_player_id id: " + m_player_id);
 		}
 

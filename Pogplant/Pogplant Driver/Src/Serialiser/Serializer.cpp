@@ -386,6 +386,8 @@ namespace PogplantDriver
 			istream.close();
 		}
 
+		LoadPrefabAfter();
+
 		//assert(p_id != entt::null);
 		return p_id;
 	}
@@ -398,13 +400,10 @@ namespace PogplantDriver
 		auto& pscripting = root["P_Scripting"];
 		auto& scriptVariables = root["ScriptVariables"];
 		auto& audioSource = root["AudioSource"];
-		auto& PrefabInstance_data = root["PrefabInstance"];
-
 
 		Try_Load_Component<ParticleSystem>(root, "ParticleSystem", id);
 		Try_Load_Component<Canvas>(root, "Canvas", id);
 		Try_Load_Component<Transform>(root, "Transform", id);
-
 
 		Try_Load_Component<Directional_Light>(root, "Directional_Light", id);
 		Try_Load_Component<Point_Light>(root, "Point_Light", id);
@@ -425,6 +424,15 @@ namespace PogplantDriver
 		if(!remove_prefab_tag)
 			Try_Load_Component<Prefab>(root, "Prefab", id);
 
+		auto& PrefabInstance_data = root["PrefabInstance"];
+		if (PrefabInstance_data)
+		{
+			Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);
+			auto pi_data = m_ecs.GetReg().get<PrefabInstance>(id);
+			if (pi_data.prefab_path != "")
+				m_prefab_list.push_back(pi_data.prefab_path);
+		}
+
 		//set to disabled
 		auto entity_name = m_ecs.GetReg().try_get<Name>(id);
 		if (entity_name)
@@ -432,19 +440,6 @@ namespace PogplantDriver
 			if (!entity_name->status)
 				m_ecs.DisableEntity(id);
 		}
-
-		if (PrefabInstance_data)
-		{
-			Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);
-			auto pi_data = m_ecs.GetReg().get<PrefabInstance>(id);
-			if(!m_ecs.m_prefab_map.contains(pi_data.prefab_path))
-				LoadPrefab(pi_data.prefab_path, true);
-		}
-
-
-
-
-
 
 		if (relationship)
 		{
@@ -660,6 +655,15 @@ namespace PogplantDriver
 			sphereCollider->sphere.m_pos = transform.GetGlobalPosition() + sphereCollider->centre;
 			sphereCollider->sphere.m_radius = sphereCollider->radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
 		}
+	}
+	void Serializer::LoadPrefabAfter()
+	{
+		for (auto str : m_prefab_list)
+		{
+			if (!m_ecs.m_prefab_map.contains(str))
+				LoadPrefab(str, true);
+		}
+		m_prefab_list.clear();
 	}
 
 	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter)
