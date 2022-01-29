@@ -74,8 +74,8 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void UpdateScore(uint text_object, uint score);
 
-        [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void IncreaseScorefromEnv(uint entityID);
+        //[MethodImplAttribute(MethodImplOptions.InternalCall)]
+        //public extern static void IncreaseScorefromEnv(uint entityID);
 
         //[MethodImplAttribute(MethodImplOptions.InternalCall)]
         //public extern static void UpdateDashboardFace(uint entityID, uint face);

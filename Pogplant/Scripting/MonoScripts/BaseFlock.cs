@@ -70,7 +70,6 @@ namespace Scripting
             else
             {
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
-                GameUtilities.IncreaseScorefromEnv(PlayerBox);
                 DashboardScreen.SwapFace(DashboardScreen.FACES.HAPPY);
                 //GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
                 HandleDeath();
@@ -82,11 +81,11 @@ namespace Scripting
             // This is a hardcoded way of destroying this instance, need to be replaced!
             if (isAlive)
             {
+                PlayerScript.AddScore(true);
                 isAlive = false;
                 ECS.PlayAudio(entityID, 1, "SFX");
                 GameUtilities.PlayEnemyDeathAnimation(entityID);
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
-                ++PlayerScript.m_EnemyDestroyedCount;
             }
         }
 

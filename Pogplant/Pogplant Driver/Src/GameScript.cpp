@@ -519,22 +519,22 @@ namespace Scripting
 		return isAlive;
 	}
 
-	void GameScript::IncreaseScorefromEnv(std::uint32_t entityID)
-	{
-		entt::entity encounterdriverID = static_cast<entt::entity>(entityID);
+	//void GameScript::IncreaseScorefromEnv(std::uint32_t entityID)
+	//{
+	//	entt::entity encounterdriverID = static_cast<entt::entity>(entityID);
 
-		if (encounterdriverID != entt::null)
-		{
-			auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(encounterdriverID);
-			if (scriptable)
-			{
-				if (scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
-				{
-					SSH::InvokeFunction("EncounterSystemDriver", "AddScore", encounterdriverID);
-				}
-			}
-		}
-	}
+	//	if (encounterdriverID != entt::null)
+	//	{
+	//		auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(encounterdriverID);
+	//		if (scriptable)
+	//		{
+	//			if (scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+	//			{
+	//				SSH::InvokeFunction("EncounterSystemDriver", "AddScore", encounterdriverID);
+	//			}
+	//		}
+	//	}
+	//}
 
 	//void GameScript::UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType)
 	//{

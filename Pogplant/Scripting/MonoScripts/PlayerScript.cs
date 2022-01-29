@@ -141,7 +141,9 @@ namespace Scripting
         public static uint m_ComboNumber = 0;
         public static uint m_ComboNumberID;
         public static uint m_ComboLargeFireID;
+        const uint m_ComboThresholdLarge = 10;
         public static uint m_ComboSmallFireID;
+        const uint m_ComboThresholdSmall = 5;
         public static uint m_ComboBarID;
         public static Vector3 m_FullComboBarScale = new Vector3(2.0f, 1.0f, 1.0f);
         public static Vector3 m_EmptyComboBarScale = new Vector3(0.0f, 1.0f, 1.0f);
@@ -648,18 +650,27 @@ namespace Scripting
         {
             ECS.GetTransformECS(m_ComboBarID, ref m_ComboBarTrans.Position, ref m_ComboBarTrans.Rotation, ref m_ComboBarTrans.Scale);
 
+            if (m_ComboDecayTimer <= 0.0f)
+            {
+                ResetCombo();
+            }
+
             // Have to put this here cause of the update enable/disable entity doesn't function correctly
-            if(m_ComboNumber >= 1 && m_ComboNumber < 2)
+            if (m_ComboNumber >= m_ComboThresholdSmall && m_ComboNumber < m_ComboThresholdLarge)
             {
                 m_ComboActive = true;
                 ECS.SetActive(m_ComboSmallFireID, true);
                 ECS.SetActive(m_ComboLargeFireID, false);
             }
-            else if(m_ComboNumber >= 2)
+            else if(m_ComboNumber >= m_ComboThresholdLarge)
             {
                 m_ComboActive = true;
                 ECS.SetActive(m_ComboSmallFireID, false);
                 ECS.SetActive(m_ComboLargeFireID, true);
+            }
+            else if(m_ComboNumber >= 1 && m_ComboNumber < m_ComboThresholdSmall)
+            {
+                m_ComboActive = true;
             }
 
             // Combo is active
@@ -672,11 +683,6 @@ namespace Scripting
             else
             {
                 ECS.SetScale(m_ComboBarID, m_EmptyComboBarScale);
-            }
-
-            if(m_ComboDecayTimer <= 0.0f)
-            {
-                ResetCombo();
             }
         }
 
@@ -712,6 +718,7 @@ namespace Scripting
             //Increase score
             if (increment)
             {
+                ++PlayerScript.m_EnemyDestroyedCount;
                 // Max 99
                 if (PlayerScript.m_ComboNumber < 99)
                     ++PlayerScript.m_ComboNumber;
@@ -722,12 +729,12 @@ namespace Scripting
 
                 if (PlayerScript.m_ComboActive)
                 {
-                    if (PlayerScript.m_ComboNumber >= 1 && PlayerScript.m_ComboNumber < 2)
+                    if (PlayerScript.m_ComboNumber >= m_ComboThresholdSmall && PlayerScript.m_ComboNumber < m_ComboThresholdLarge)
                     {
                         ECS.SetActive(PlayerScript.m_ComboSmallFireID, true);
                         ECS.SetActive(PlayerScript.m_ComboLargeFireID, false);
                     }
-                    else
+                    else if(PlayerScript.m_ComboNumber >= m_ComboThresholdLarge)
                     {
                         ECS.SetActive(PlayerScript.m_ComboSmallFireID, false);
                         ECS.SetActive(PlayerScript.m_ComboLargeFireID, true);

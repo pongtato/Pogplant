@@ -423,7 +423,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::RunMissilePhase3", &Scripting::GameScript::RunMissilePhase3);
 	mono_add_internal_call("Scripting.GameUtilities::SetTurretFire", &Scripting::GameScript::SetTurretFire);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore", &Scripting::GameScript::UpdateScore);
-	mono_add_internal_call("Scripting.GameUtilities::IncreaseScorefromEnv", &Scripting::GameScript::IncreaseScorefromEnv);
+	//mono_add_internal_call("Scripting.GameUtilities::IncreaseScorefromEnv", &Scripting::GameScript::IncreaseScorefromEnv);
 	//mono_add_internal_call("Scripting.GameUtilities::UpdateDashboardFace", &Scripting::GameScript::UpdateDashboardFace);
 	mono_add_internal_call("Scripting.GameUtilities::StartLaser", &Scripting::GameScript::StartLaser);
 	mono_add_internal_call("Scripting.GameUtilities::EnemyTakeDamageFromID", &Scripting::GameScript::EnemyTakeDamageFromID);

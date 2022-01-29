@@ -152,7 +152,6 @@ namespace Scripting
             }
             else
             {
-                GameUtilities.IncreaseScorefromEnv(PlayerBox);
                 //GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
                 DashboardScreen.SwapFace(DashboardScreen.FACES.HAPPY);
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
@@ -164,11 +163,11 @@ namespace Scripting
         {
             if (isAlive)
             {
+                PlayerScript.AddScore(true);
                 isAlive = false;
                 isFiring = false;
                 ECS.PlayAudio(entityID, 1, "SFX");
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
-                ++PlayerScript.m_EnemyDestroyedCount;
             }
         }
 

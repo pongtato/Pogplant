@@ -1597,11 +1597,11 @@ namespace Scripting
 
         // This function exposes EnemyManager.AddScore method.
         // Increments the score.
-        public void AddScore()
-        {
-            //encounterManager.enemyManager.AddScore(true);
-            PlayerScript.AddScore(true);
-        }
+        //public void AddScore()
+        //{
+        //    //encounterManager.enemyManager.AddScore(true);
+        //    PlayerScript.AddScore(true);
+        //}
 
         // This function exposes EnemyManager.GetAlive method,
         // Provided an ID, the function will deal given damage to the enemy.
