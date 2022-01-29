@@ -11,6 +11,7 @@ namespace Scripting
         List<uint> enemy_in_range = new List<uint>();
         List<uint> enemy_to_target = new List<uint>();
         List<uint> Turrets_A = new List<uint>();
+        List<uint> MuzzleGroup = new List<uint>();
         //List<uint> Turrets_B = new List<uint>();
         static List<uint> enemy_in_range_A = new List<uint>();
         static List<uint> enemy_to_target_A = new List<uint>();
@@ -28,12 +29,13 @@ namespace Scripting
         //Player Firing 
         float p_fireRate = 0.1f;
         float p_fire_timer = 0.0f;
-        float m_rotspeed = 30.0f; 
+        float m_rotspeed = 10.0f;
+        float turret_rot_lerp_limit = 5.0f;
 
         //Player Crosshair(The smaller one)
         uint Crosshair;
         public float controller_move_multiplier = 10.0f;
-        public float max_offset_value = 0.1f; // For non Canvas is 5
+        public float max_offset_value = 0.125f; // For non Canvas is 5 // original 0.1
         public float move_multipler = 0.001f; // Non-Canvas value is 0.1;
         public float lerp_speed = 20.0f; // Needs high lerp speed to be smooth
         public float crosshair_accumulative_rot = 0.0f;
@@ -42,13 +44,15 @@ namespace Scripting
         Vector3 current_offset_value; //Use only X,Y
         Vector3 shooting_box_initial_pos;
         Vector3 MousePos =  new Vector3(0, 0, 0);
+        Vector3 SetCurrentOffset = new Vector3(0, 0, 0);
         Vector3 IdleColor = new Vector3(0, 0.48f, 1);
         Vector3 LockonColor = new Vector3(1, 0, 0);
         bool onceFlag = false;
         bool Idleflag = false;
         bool LockonFlag = false;
+       
 
-        Transform original_reticle_initial = new Transform();
+        Transform original_crosshair_initial = new Transform();
         //Player Crosshair(TheBiggerone)
         uint LargeCrosshair;
         
@@ -109,6 +113,9 @@ namespace Scripting
             Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
             Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
 
+            MuzzleGroup.Add(ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"), "Muzzle"));
+            MuzzleGroup.Add(ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"), "Muzzle"));
+
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), "Child")));
@@ -118,7 +125,7 @@ namespace Scripting
 
             Transform burner = new Transform();
             ECS.GetTransformECS(ShootingBox, ref shooting_box_initial_pos, ref burner.Rotation, ref burner.Scale);
-            ECS.GetTransformECS(Crosshair, ref original_reticle_initial.Position, ref original_reticle_initial.Rotation, ref original_reticle_initial.Scale);
+            ECS.GetTransformECS(Crosshair, ref original_crosshair_initial.Position, ref original_crosshair_initial.Rotation, ref original_crosshair_initial.Scale);
             ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
         }
 
@@ -131,6 +138,7 @@ namespace Scripting
         {
             //UpdateReticleMovement(ref transform, ref dt);
 
+            //Moving the hit box
             ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
 
             UpdateReticleMovementCanvas(ref transform, ref dt);
@@ -300,8 +308,8 @@ namespace Scripting
             Transform inner_ret = new Transform();
             inner_ret.Position = new Vector3(0, 0, 0);
             ECS.GetTransformECS(Crosshair, ref inner_ret.Position, ref inner_ret.Rotation, ref inner_ret.Scale);
-            inner_ret.Position = Vector3.Lerp(inner_ret.Position, original_reticle_initial.Position + current_offset_value, lerp_speed * dt);
-            ECS.SetTransformECS(Crosshair, inner_ret.Position, original_reticle_initial.Rotation, original_reticle_initial.Scale);
+            inner_ret.Position = Vector3.Lerp(inner_ret.Position, original_crosshair_initial.Position + current_offset_value, lerp_speed * dt);
+            ECS.SetTransformECS(Crosshair, inner_ret.Position, original_crosshair_initial.Rotation, original_crosshair_initial.Scale);
             //ShootingBox
             transform.Position = Vector3.Lerp(transform.Position, shooting_box_initial_pos + current_offset_value, lerp_speed * dt);
 
@@ -311,8 +319,8 @@ namespace Scripting
             {
                 Vector3 maxRange = Vector3.Normalise(current_offset_value) * max_offset_value;
                 transform.Position = new Vector3(maxRange.X, maxRange.Y, transform.Position.Z);
-                inner_ret.Position = new Vector3(maxRange.X, maxRange.Y, original_reticle_initial.Position.Z);
-                ECS.SetTransformECS(Crosshair, inner_ret.Position, original_reticle_initial.Rotation, original_reticle_initial.Scale);
+                inner_ret.Position = new Vector3(maxRange.X, maxRange.Y, original_crosshair_initial.Position.Z);
+                ECS.SetTransformECS(Crosshair, inner_ret.Position, original_crosshair_initial.Rotation, original_crosshair_initial.Scale);
             }
         }
 
@@ -357,8 +365,8 @@ namespace Scripting
             Transform inner_ret = new Transform();
             inner_ret.Position = new Vector3(0, 0, 0);
             ECS.GetTransformECS(Crosshair, ref inner_ret.Position, ref inner_ret.Rotation, ref inner_ret.Scale);
-            inner_ret.Position = Vector3.Lerp(inner_ret.Position, original_reticle_initial.Position + current_offset_value, lerp_speed * dt);
-            ECS.SetTransformECS(Crosshair, inner_ret.Position, original_reticle_initial.Rotation, original_reticle_initial.Scale);
+            inner_ret.Position = Vector3.Lerp(inner_ret.Position, original_crosshair_initial.Position + current_offset_value, lerp_speed * dt);
+            ECS.SetTransformECS(Crosshair, inner_ret.Position, original_crosshair_initial.Rotation, original_crosshair_initial.Scale);
             //ShootingBox
             transform.Position = Vector3.Lerp(transform.Position, shooting_box_initial_pos + (current_offset_value  * 50.0f), lerp_speed * dt);
 
@@ -367,9 +375,9 @@ namespace Scripting
             if (dist > max_offset_value)
             {
                 Vector3 maxRange = Vector3.Normalise(current_offset_value) * max_offset_value;
-                transform.Position = new Vector3(maxRange.X, maxRange.Y, transform.Position.Z);
-                inner_ret.Position = new Vector3(maxRange.X, maxRange.Y, original_reticle_initial.Position.Z);
-                ECS.SetTransformECS(Crosshair, inner_ret.Position, original_reticle_initial.Rotation, original_reticle_initial.Scale);
+                transform.Position = shooting_box_initial_pos + (maxRange * 50.0f);
+                inner_ret.Position = new Vector3(original_crosshair_initial.Position.X + maxRange.X, original_crosshair_initial.Position.Y + maxRange.Y, original_crosshair_initial.Position.Z);
+                ECS.SetTransformECS(Crosshair, inner_ret.Position, original_crosshair_initial.Rotation, original_crosshair_initial.Scale);
             }
         }
 
@@ -405,7 +413,10 @@ namespace Scripting
             for (int i = 0; i < TurretGroup.Count; ++i)
             {
                 Vector3 CurrTurrRot = ECS.GetComponent<Transform>(TurretGroup[i]).Rotation;
-                ECS.SetRotation(TurretGroup[i], Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed));
+                Vector3 LerpVal = Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed);
+                LimitLerp(ref LerpVal, turret_rot_lerp_limit);
+
+                ECS.SetRotation(TurretGroup[i], LerpVal);
                 //Reset Reticle
                 ResetReticle(ReticleGroup[i + Offset]);
             }
@@ -417,7 +428,9 @@ namespace Scripting
             Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turret).Rotation;
             Transform.LookAt(Turret, ECS.GetGlobalPosition(EnemytoTarget));
             Vector3 AfterTurrRot = ECS.GetComponent<Transform>(Turret).Rotation;
-            ECS.SetRotation(EnemytoTarget, Vector3.Lerp(CurrTurrRot, AfterTurrRot, dt * m_rotspeed));
+            Vector3 LerpVal = Vector3.Lerp(CurrTurrRot, AfterTurrRot, dt * m_rotspeed);
+            LimitLerp(ref LerpVal, turret_rot_lerp_limit);
+            ECS.SetRotation(Turret, LerpVal);
         }
 
         public void SetReticleandTurret(ref List<uint> TurretGroup, ref List<uint> EnemytoTarget, int RetOffSet, float dt)
@@ -460,11 +473,20 @@ namespace Scripting
 
         public void CallTurretShoot(ref List<uint> TurretGroup)
         {
-            foreach (var Turret in TurretGroup)
+            //foreach (var Turret in TurretGroup)
+            //{
+            //    Vector3 Forward = Transform.GetForwardVector(Turret);
+            //    Vector3 Position = ECS.GetGlobalPosition(Turret) + Forward * 0.6f;
+            //    Vector3 Rotation = ECS.GetGlobalRotation(Turret);
+            //    GameUtilities.FirePlayerBullet(Position, Forward, Rotation);
+
+            //    GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
+            //}
+            for (int i = 0;  i < Turrets_A.Count; i++)
             {
-                Vector3 Forward = Transform.GetForwardVector(Turret);
-                Vector3 Position = ECS.GetGlobalPosition(Turret) + Forward * 0.55f;
-                Vector3 Rotation = ECS.GetGlobalRotation(Turret);
+                Vector3 Forward = Transform.GetForwardVector(MuzzleGroup[i]);
+                Vector3 Position = ECS.GetGlobalPosition(MuzzleGroup[i]);
+                Vector3 Rotation = ECS.GetGlobalRotation(MuzzleGroup[i]);
                 GameUtilities.FirePlayerBullet(Position, Forward, Rotation);
 
                 GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
@@ -564,6 +586,35 @@ namespace Scripting
             //also reset largecrosshair delay
             delay_largecrosshair_animation = true;
             accu_delay_largecrosshair = 0;
+        }
+
+        void LimitLerp(ref Vector3 lerpVal, float limit)
+        {
+            
+            if (Math.Abs(lerpVal.X) > limit)
+            {
+                if (lerpVal.X < 0)
+                    lerpVal.X = -limit;
+                else
+                    lerpVal.X = limit;
+
+            }
+            if (Math.Abs(lerpVal.Y) > limit)
+            {
+                if (lerpVal.Y < 0)
+                    lerpVal.Y = -limit;
+                else
+                    lerpVal.Y = limit;
+
+            }
+            if (Math.Abs(lerpVal.Z) > limit)
+            {
+                if (lerpVal.Z < 0)
+                    lerpVal.Z = -limit;
+                else
+                    lerpVal.Z = limit;
+
+            }
         }
 
 
