@@ -129,10 +129,10 @@ namespace Scripting
         public extern static void SetFrames(uint entityID, int frameValue);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void SetColorTint(uint entityID, Vector3 Color);
+        public extern static void SetColorTint(uint entityID, ref Vector3 Color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static Vector3 GetColorTint(uint entityID, Vector3 Color);
+        public extern static Vector3 GetColorTint(uint entityID, ref Vector3 Color);
 
         public static T GetComponent<T>(uint entityID)
         {

@@ -17265,25 +17265,25 @@
 			"m_Ortho" : false,
 			"m_SpriteAnimation" : 
 			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
+				"m_Columns" : 8,
+				"m_FrameCounter" : 9.0,
+				"m_MaxFrames" : 64,
 				"m_Play" : false,
 				"m_PlaySpeed" : 1.0,
 				"m_Repeat" : false,
-				"m_Rows" : 1,
+				"m_Rows" : 8,
 				"m_Tiling" : 
 				[
-					1.0,
-					1.0
+					0.125,
+					0.125
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.0
+					0.125,
+					0.25
 				]
 			},
-			"m_TexName" : "Lockon.dds"
+			"m_TexName" : "256_ExportSheet_01.dds"
 		},
 		"Children" : 0,
 		"Name" : 
@@ -19134,7 +19134,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.769119262695312,
+				"m_FrameCounter" : 74.605575561523438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19147,8 +19147,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19266,7 +19266,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.769119262695312,
+				"m_FrameCounter" : 74.605575561523438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19279,8 +19279,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19332,7 +19332,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 55.819202423095703,
+				"m_FrameCounter" : 50.330398559570312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -19345,8 +19345,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.4375
+					0.0,
+					0.40625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19398,7 +19398,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.769119262695312,
+				"m_FrameCounter" : 74.605575561523438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19411,8 +19411,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19464,7 +19464,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.769119262695312,
+				"m_FrameCounter" : 74.605575561523438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19477,8 +19477,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19530,7 +19530,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.769119262695312,
+				"m_FrameCounter" : 74.605575561523438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19543,8 +19543,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19596,7 +19596,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 104.79828643798828,
+				"m_FrameCounter" : 101.11752319335938,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -19609,8 +19609,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.828125
+					0.5,
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19728,7 +19728,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 104.79828643798828,
+				"m_FrameCounter" : 101.11752319335938,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -19741,8 +19741,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.828125
+					0.5,
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19794,7 +19794,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 5.5282802581787109,
+				"m_FrameCounter" : 126.54313659667969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 400.0,
@@ -19807,8 +19807,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.046875
+					0.0,
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
