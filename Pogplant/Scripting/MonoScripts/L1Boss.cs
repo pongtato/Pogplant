@@ -187,12 +187,14 @@ namespace Scripting
             PROTECTION,
             LAUNCH_NORMAL_ADDS,
             DEATH_SEQUENCE,
-            TRANSIT_SCENE
+            TRANSIT_SCENE,
+
+            TOTAL
         }
 
         Dictionary<uint, MOVING_PARTS> moving_parts_dict;
 
-        BOSS_BEHAVIOUR_STATE current_state;
+        public BOSS_BEHAVIOUR_STATE current_state;
 
         //Arms
         uint left_arm_middle_joint_id;
@@ -408,24 +410,28 @@ namespace Scripting
             SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
             SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
 
-            //Testing
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
-            {
-                SetState(BOSS_BEHAVIOUR_STATE.MOVING);
+            //Test behaviour here has been shifted to L1BossBehaviour script.
+            //Under Update() if(m_debugMode).
+            //Can toggle by bool, look in the hierachy, Boss > BossBehaviourCore
 
-                //TakeDamage(1);
-            }
+                //Testing
+                /*if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+                {
+                    SetState(BOSS_BEHAVIOUR_STATE.MOVING);
 
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
-            {
-                SetState(BOSS_BEHAVIOUR_STATE.PROTECTION);
-                //SetState(BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
-            }
+                    //TakeDamage(1);
+                }
 
-            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
-            //{
-            //    SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
-            //}
+                if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
+                {
+                    SetState(BOSS_BEHAVIOUR_STATE.PROTECTION);
+                    //SetState(BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+                }//*/
+
+                //if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
+                //{
+                //    SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+                //}
 
             switch (current_state)
             {

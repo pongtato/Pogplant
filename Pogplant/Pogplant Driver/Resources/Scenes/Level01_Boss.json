@@ -21,7 +21,8 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "PlayerBox"
+			"m_Name" : "PlayerBox",
+			"status" : true
 		},
 		"Rigidbody" : 
 		{
@@ -81,7 +82,8 @@
 		"Children" : 8,
 		"Name" : 
 		{
-			"m_Name" : "PlayerShip"
+			"m_Name" : "PlayerShip",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -141,7 +143,8 @@
 		"Children" : 5,
 		"Name" : 
 		{
-			"m_Name" : "DashBoard"
+			"m_Name" : "DashBoard",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -195,7 +198,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Score_Text"
+			"m_Name" : "Score_Text",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -239,7 +243,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Projector"
+			"m_Name" : "Projector",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -293,7 +298,8 @@
 		"Children" : 4,
 		"Name" : 
 		{
-			"m_Name" : "DashboardScreenFace"
+			"m_Name" : "DashboardScreenFace",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -357,7 +363,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Screen"
+			"m_Name" : "Screen",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -417,6 +424,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : false,
 			"m_SpriteAnimation" : 
 			{
@@ -443,7 +451,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Neutral Face"
+			"m_Name" : "Neutral Face",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -481,6 +490,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : false,
 			"m_SpriteAnimation" : 
 			{
@@ -507,7 +517,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Happy Face"
+			"m_Name" : "Happy Face",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -545,6 +556,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : false,
 			"m_SpriteAnimation" : 
 			{
@@ -571,7 +583,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Hurt Face"
+			"m_Name" : "Hurt Face",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -603,7 +616,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Screen_Shell"
+			"m_Name" : "Screen_Shell",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -657,7 +671,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Screen001"
+			"m_Name" : "Screen001",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -711,7 +726,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Score_Text_Title"
+			"m_Name" : "Score_Text_Title",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -755,7 +771,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "PlayerTurret4"
+			"m_Name" : "PlayerTurret4",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -809,7 +826,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "PlayerTurret2"
+			"m_Name" : "PlayerTurret2",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -863,7 +881,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "PlayerTurret1"
+			"m_Name" : "PlayerTurret1",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -917,7 +936,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "PlayerTurret3"
+			"m_Name" : "PlayerTurret3",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -1001,7 +1021,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "PlayerCam"
+			"m_Name" : "PlayerCam",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1033,7 +1054,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "ShootingBox"
+			"m_Name" : "ShootingBox",
+			"status" : true
 		},
 		"OBBBoxCollider" : 
 		{
@@ -1093,7 +1115,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "TrailRender"
+			"m_Name" : "TrailRender",
+			"status" : true
 		},
 		"ParticleSystem" : 
 		{
@@ -1288,7 +1311,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "VO_AudioSource"
+			"m_Name" : "VO_AudioSource",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1337,7 +1361,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Directional Light"
+			"m_Name" : "Directional Light",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -1404,7 +1429,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Game Over Trigger Box"
+			"m_Name" : "Game Over Trigger Box",
+			"status" : true
 		},
 		"Scripting" : 
 		{
@@ -1439,7 +1465,8 @@
 	{
 		"Name" : 
 		{
-			"m_Name" : "Light"
+			"m_Name" : "Light",
+			"status" : true
 		},
 		"Point_Light" : 
 		{
@@ -1483,7 +1510,8 @@
 		"Children" : 4,
 		"Name" : 
 		{
-			"m_Name" : "ReticleGroup"
+			"m_Name" : "ReticleGroup",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1515,7 +1543,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Reticle1"
+			"m_Name" : "Reticle1",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1553,6 +1582,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : false,
 			"m_SpriteAnimation" : 
 			{
@@ -1579,7 +1609,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Child"
+			"m_Name" : "Child",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1611,7 +1642,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Reticle2"
+			"m_Name" : "Reticle2",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1649,6 +1681,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : false,
 			"m_SpriteAnimation" : 
 			{
@@ -1675,7 +1708,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Child"
+			"m_Name" : "Child",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1707,7 +1741,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Reticle3"
+			"m_Name" : "Reticle3",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1745,6 +1780,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : false,
 			"m_SpriteAnimation" : 
 			{
@@ -1771,7 +1807,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Child"
+			"m_Name" : "Child",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1803,7 +1840,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Reticle4"
+			"m_Name" : "Reticle4",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1841,6 +1879,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : false,
 			"m_SpriteAnimation" : 
 			{
@@ -1867,7 +1906,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Child"
+			"m_Name" : "Child",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -1899,7 +1939,8 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "CanvasParent"
+			"m_Name" : "CanvasParent",
+			"status" : true
 		},
 		"Transform" : 
 		{
@@ -1933,6 +1974,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
@@ -1959,7 +2001,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Crosshair"
+			"m_Name" : "Crosshair",
+			"status" : true
 		},
 		"Transform" : 
 		{
@@ -1993,6 +2036,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
@@ -2019,7 +2063,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "LargeCrosshair"
+			"m_Name" : "LargeCrosshair",
+			"status" : true
 		},
 		"Transform" : 
 		{
@@ -2047,7 +2092,8 @@
 		"Children" : 7,
 		"Name" : 
 		{
-			"m_Name" : "Control_Points"
+			"m_Name" : "Control_Points",
+			"status" : true
 		},
 		"PrefabInstance" : 
 		{
@@ -2084,7 +2130,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "ControlPoint_5"
+			"m_Name" : "ControlPoint_5",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -2138,7 +2185,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "ControlPoint_0"
+			"m_Name" : "ControlPoint_0",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -2192,7 +2240,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "ControlPoint_2"
+			"m_Name" : "ControlPoint_2",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -2246,7 +2295,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "ControlPoint_3"
+			"m_Name" : "ControlPoint_3",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -2300,7 +2350,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "ControlPoint_4"
+			"m_Name" : "ControlPoint_4",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -2354,7 +2405,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "ControlPoint_6"
+			"m_Name" : "ControlPoint_6",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -2408,7 +2460,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "ControlPoint_1"
+			"m_Name" : "ControlPoint_1",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -2461,7 +2514,8 @@
 	{
 		"Name" : 
 		{
-			"m_Name" : "Shield Sparks"
+			"m_Name" : "Shield Sparks",
+			"status" : true
 		},
 		"ParticleSystem" : 
 		{
@@ -2641,7 +2695,8 @@
 	{
 		"Name" : 
 		{
-			"m_Name" : "Boss Particle Cannon"
+			"m_Name" : "Boss Particle Cannon",
+			"status" : true
 		},
 		"ParticleSystem" : 
 		{
@@ -2828,6 +2883,7 @@
 				1.0,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
@@ -2853,7 +2909,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "L1 Black Screen"
+			"m_Name" : "L1 Black Screen",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -2882,10 +2939,11 @@
 		}
 	},
 	{
-		"Children" : 18,
+		"Children" : 19,
 		"Name" : 
 		{
-			"m_Name" : "Boss"
+			"m_Name" : "Boss",
+			"status" : true
 		},
 		"PrefabInstance" : 
 		{
@@ -2954,7 +3012,8 @@
 		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "Right_LaunchingBay"
+			"m_Name" : "Right_LaunchingBay",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3008,7 +3067,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_Lid_01"
+			"m_Name" : "Right_Lid_01",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3062,7 +3122,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_Lid_02"
+			"m_Name" : "Right_Lid_02",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3116,7 +3177,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_Lid_03"
+			"m_Name" : "Right_Lid_03",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3170,7 +3232,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_Eye"
+			"m_Name" : "Right_Eye",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3224,7 +3287,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Right_Arm_Middle_Joint"
+			"m_Name" : "Right_Arm_Middle_Joint",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3278,7 +3342,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Right_Arm_End_Joint"
+			"m_Name" : "Right_Arm_End_Joint",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3332,7 +3397,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Right_Large_Laser_Body"
+			"m_Name" : "Right_Large_Laser_Body",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3386,7 +3452,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_Large_Laser_Spin"
+			"m_Name" : "Right_Large_Laser_Spin",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3440,7 +3507,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "RailVent_Panels"
+			"m_Name" : "RailVent_Panels",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3494,7 +3562,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "MainLaser_Rails"
+			"m_Name" : "MainLaser_Rails",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3548,7 +3617,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "MainLaser"
+			"m_Name" : "MainLaser",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3602,7 +3672,8 @@
 		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "Left_MiniLaser_Rack"
+			"m_Name" : "Left_MiniLaser_Rack",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3656,7 +3727,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_MiniLaser_Launcher_01"
+			"m_Name" : "Left_MiniLaser_Launcher_01",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3710,7 +3782,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_MiniLaser_Launcher_02"
+			"m_Name" : "Left_MiniLaser_Launcher_02",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3764,7 +3837,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_MiniLaser_Launcher_03"
+			"m_Name" : "Left_MiniLaser_Launcher_03",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3818,7 +3892,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Left_Leg_Middle_Joint"
+			"m_Name" : "Left_Leg_Middle_Joint",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3872,7 +3947,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_Leg_End_Joint"
+			"m_Name" : "Left_Leg_End_Joint",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3926,7 +4002,8 @@
 		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "Left_LaunchingBay"
+			"m_Name" : "Left_LaunchingBay",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -3980,7 +4057,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_Lid_01"
+			"m_Name" : "Left_Lid_01",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4019,7 +4097,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -4034,7 +4112,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_Lid_02"
+			"m_Name" : "Left_Lid_02",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4088,7 +4167,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_Lid_03"
+			"m_Name" : "Left_Lid_03",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4142,7 +4222,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_Eye"
+			"m_Name" : "Left_Eye",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4196,7 +4277,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Left_Arm_Middle_Joint"
+			"m_Name" : "Left_Arm_Middle_Joint",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4250,7 +4332,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Left_Arm_End_Joint"
+			"m_Name" : "Left_Arm_End_Joint",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4304,7 +4387,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Left_Large_Laser_Body"
+			"m_Name" : "Left_Large_Laser_Body",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4358,7 +4442,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_Large_Laser_Spin"
+			"m_Name" : "Left_Large_Laser_Spin",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4412,7 +4497,8 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "FalseCore"
+			"m_Name" : "FalseCore",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4466,7 +4552,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Mouth_L"
+			"m_Name" : "Mouth_L",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4520,7 +4607,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Mouth_R"
+			"m_Name" : "Mouth_R",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4574,7 +4662,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Arti_Base"
+			"m_Name" : "Arti_Base",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4628,7 +4717,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Arti_Axis"
+			"m_Name" : "Arti_Axis",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4682,7 +4772,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Arti_Barrel"
+			"m_Name" : "Arti_Barrel",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4736,7 +4827,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_MiniLaser_Launcher_01"
+			"m_Name" : "Right_MiniLaser_Launcher_01",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4790,7 +4882,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_MiniLaser_Launcher_02"
+			"m_Name" : "Right_MiniLaser_Launcher_02",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4844,7 +4937,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_MiniLaser_Launcher_03"
+			"m_Name" : "Right_MiniLaser_Launcher_03",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4898,7 +4992,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Right_Leg_Middle_Joint"
+			"m_Name" : "Right_Leg_Middle_Joint",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -4952,7 +5047,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_Leg_End_Joint"
+			"m_Name" : "Right_Leg_End_Joint",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -5006,7 +5102,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_MiniLaser_Rack"
+			"m_Name" : "Right_MiniLaser_Rack",
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -5046,6 +5143,80 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BossBehaviourCore",
+			"status" : true
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 100.0,
+				"Name" : "CoreHealth",
+				"Type" : 0
+			},
+			{
+				"Data" : 10.0,
+				"Name" : "CoreProtectionThreshold",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "CoreProtectionDuration",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"L1BossBehaviour" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"isStatic" : false,
+			"isTrigger" : true,
+			"radius" : 3.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "BossBehaviourController"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				12.91783618927002,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 

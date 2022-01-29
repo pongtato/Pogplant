@@ -17,4 +17,22 @@ namespace Scripting.Utilities
 			return (float)Math.Pow(2f, (-10f) * x) * (float)Math.Sin(((x * 10f * magnitude - 0.75f) * c4)) + 1f;
 		}
 	}
+
+	public struct PPMath
+	{
+		public static float RandomFloat(float min, float max)
+		{
+			Random random = new Random();
+			return (float)(random.NextDouble() * (max - min) + min);
+		}
+
+		public static float Clamp(float value, float min, float max)
+		{
+			if (value < min)
+				return min;
+			else if (value > max)
+				return max;
+			return value;
+		}
+	}
 }
