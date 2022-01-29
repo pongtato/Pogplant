@@ -37,12 +37,28 @@ namespace Scripting
 
         bool m_EnablePlayBig = true;
 
-        private enum GRADE
+        // Number of enemies destroyed
+        private enum GRADE_DES
         {
-            A = 20,
-            B = 10,
             C = 0,
-            COUNT
+            B = 20,
+            A = 40
+        }
+
+        // Number of times hit
+        private enum GRADE_EVA
+        {
+            A = 0,
+            B = 10,
+            C = 20
+        }
+
+        // Number of coins collected
+        private enum GRADE_COL
+        {
+            C = 0,
+            B = 2,
+            A = 4
         }
 
         private enum MEDALGRADE
@@ -214,13 +230,13 @@ namespace Scripting
             if (m_CallOnceDes)
             {
                 // Grade C for Destruction
-                if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE.C && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE.B)
+                if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE_DES.C && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE_DES.B)
                 {
                     SwapGrade(m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.BRONZE;
                 }
                 // Grade B for Destruction
-                else if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE.B && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE.A)
+                else if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE_DES.B && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE_DES.A)
                 {
                     SwapGrade(m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.SILVER;
@@ -245,13 +261,13 @@ namespace Scripting
             if (m_CallOnceEva)
             {
                 // Grade C for Evasiveness
-                if (PlayerScript.m_PlayerHitCount >= (uint)GRADE.C && PlayerScript.m_PlayerHitCount < (uint)GRADE.B)
+                if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA.C)
                 {
                     SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.BRONZE;
                 }
                 // Grade B for Evasiveness
-                else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE.B && PlayerScript.m_PlayerHitCount < (uint)GRADE.A)
+                else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA.B && PlayerScript.m_PlayerHitCount < (uint)GRADE_EVA.C)
                 {
                     SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.SILVER;
@@ -275,13 +291,13 @@ namespace Scripting
             if(m_CallOnceCol)
             {
                 // Grade C for Collectibles
-                if (PlayerScript.m_CollectiblesCount >= (uint)GRADE.C && PlayerScript.m_CollectiblesCount < (uint)GRADE.B)
+                if (PlayerScript.m_CollectiblesCount >= (uint)GRADE_COL.C && PlayerScript.m_CollectiblesCount < (uint)GRADE_COL.B)
                 {
                     SwapGrade(m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.BRONZE;
                 }
                 // Grade B for Collectibles
-                else if (PlayerScript.m_CollectiblesCount >= (uint)GRADE.B && PlayerScript.m_CollectiblesCount < (uint)GRADE.A)
+                else if (PlayerScript.m_CollectiblesCount >= (uint)GRADE_COL.B && PlayerScript.m_CollectiblesCount < (uint)GRADE_COL.A)
                 {
                     SwapGrade(m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.SILVER;
