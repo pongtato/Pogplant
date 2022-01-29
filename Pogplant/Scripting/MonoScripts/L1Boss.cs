@@ -184,10 +184,8 @@ namespace Scripting
         {
             EMPTY,
             MOVING,
-            ARM_LASER_ATTACK,
+            PROTECTION,
             LAUNCH_NORMAL_ADDS,
-            LAUNCH_LASER_ADDS,
-            ARTI_ATTACK,
             DEATH_SEQUENCE,
             TRANSIT_SCENE
         }
@@ -411,7 +409,7 @@ namespace Scripting
             SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
 
             //Testing
-            /*if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
             {
                 SetState(BOSS_BEHAVIOUR_STATE.MOVING);
 
@@ -420,18 +418,22 @@ namespace Scripting
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
             {
-                SetState(BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+                SetState(BOSS_BEHAVIOUR_STATE.PROTECTION);
+                //SetState(BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
             }
 
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
-            {
-                SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
-            }//*/
+            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
+            //{
+            //    SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+            //}
 
             switch (current_state)
             {
                 case BOSS_BEHAVIOUR_STATE.MOVING:
                     RunMovingSequence(dt);
+                    break;
+                case BOSS_BEHAVIOUR_STATE.PROTECTION:
+                    RunProtectionSequence(dt);
                     break;
                 case BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
                     laser_spin_addition += laser_spin_addition_speed * dt;
@@ -439,10 +441,10 @@ namespace Scripting
                     break;
             }
 
-            if (is_shield_broken)
-            {
-                DeathSequence(dt);
-            }
+            //if (is_shield_broken)
+            //{
+            //    DeathSequence(dt);
+            //}
 
             if (animation_update_stack.Count > 0 && play_animation)
             {
@@ -464,112 +466,112 @@ namespace Scripting
             }
         }
 
-        void DeathSequence(float dt)
-        {
-            //Shield break animation
-            if (start_shield_break_countdown)
-            {
-                if (shield_break_delay_timer < shield_break_delay_duration)
-                {
-                    shield_break_delay_timer += dt;
-                }
-                else
-                {
-                    start_shield_break_countdown = false;
+        //void DeathSequence(float dt)
+        //{
+        //    //Shield break animation
+        //    if (start_shield_break_countdown)
+        //    {
+        //        if (shield_break_delay_timer < shield_break_delay_duration)
+        //        {
+        //            shield_break_delay_timer += dt;
+        //        }
+        //        else
+        //        {
+        //            start_shield_break_countdown = false;
 
-                    //Stops the sparks particle and disable shields
-                    ECS.SetParticlePause(sparks_particle_id, true);
-                    ECS.SetActive(sparks_particle_id, false);
-                    ECS.SetActive(false_core_id, false);
+        //            //Stops the sparks particle and disable shields
+        //            ECS.SetParticlePause(sparks_particle_id, true);
+        //            ECS.SetActive(sparks_particle_id, false);
+        //            ECS.SetActive(false_core_id, false);
 
-                    start_eye_countdown = true;
-                }
-            }
+        //            start_eye_countdown = true;
+        //        }
+        //    }
 
-            //Eye rotation and fire particle cannon animation
-            if (start_eye_countdown)
-            {
-                //Rotate the eye lids
-                ECS.SetRotation(mouth_left_id, Vector3.Lerp(ECS.GetComponent<Transform>(mouth_left_id).Rotation, rotate_angle, dt * rotate_speed));
-                ECS.SetRotation(mouth_right_id, Vector3.Lerp(ECS.GetComponent<Transform>(mouth_left_id).Rotation, -rotate_angle, dt * rotate_speed));
+        //    //Eye rotation and fire particle cannon animation
+        //    if (start_eye_countdown)
+        //    {
+        //        //Rotate the eye lids
+        //        ECS.SetRotation(mouth_left_id, Vector3.Lerp(ECS.GetComponent<Transform>(mouth_left_id).Rotation, rotate_angle, dt * rotate_speed));
+        //        ECS.SetRotation(mouth_right_id, Vector3.Lerp(ECS.GetComponent<Transform>(mouth_left_id).Rotation, -rotate_angle, dt * rotate_speed));
 
-                if (eye_delay_timer < eye_delay_duration)
-                {
-                    eye_delay_timer += dt;
-                }
-                else
-                {
-                    start_eye_countdown = false;
-                    start_particle_countdown = true;
+        //        if (eye_delay_timer < eye_delay_duration)
+        //        {
+        //            eye_delay_timer += dt;
+        //        }
+        //        else
+        //        {
+        //            start_eye_countdown = false;
+        //            start_particle_countdown = true;
 
-                    ECS.SetParticlePause(main_laser_barrel_id, false);
-                }
-            }
+        //            ECS.SetParticlePause(main_laser_barrel_id, false);
+        //        }
+        //    }
 
-            //Collision and black screen
-            if (start_particle_countdown)
-            {
-                if (particle_timer < particle_delay_duration)
-                {
-                    particle_timer += dt;
-                }
-                else
-                {
-                    //Fire OHK cannon (activate large particle towards player and enable a black screen after being hit)
-                    ECS.SetActive(black_screen_id, true);
+        //    //Collision and black screen
+        //    if (start_particle_countdown)
+        //    {
+        //        if (particle_timer < particle_delay_duration)
+        //        {
+        //            particle_timer += dt;
+        //        }
+        //        else
+        //        {
+        //            //Fire OHK cannon (activate large particle towards player and enable a black screen after being hit)
+        //            ECS.SetActive(black_screen_id, true);
 
-                    //Play player take severe damage and crashing audio
-                    //ECS.PlayAudio(entityID, 1);
+        //            //Play player take severe damage and crashing audio
+        //            //ECS.PlayAudio(entityID, 1);
 
-                    //Transit to another scene after X seconds
-                    start_scene_change_countdown = true;
-                }
-            }
+        //            //Transit to another scene after X seconds
+        //            start_scene_change_countdown = true;
+        //        }
+        //    }
 
-            //Countdown for scene changing
-            if (start_scene_change_countdown)
-            {
-                if (scene_change_delay_timer < scene_change_delay_duration)
-                {
-                    scene_change_delay_timer += dt;
-                }
-                else
-                {
-                    start_scene_change_countdown = false;
-                    //GameUtilities.LoadScene("Level2");
-                }
-            }
-        }
+        //    //Countdown for scene changing
+        //    if (start_scene_change_countdown)
+        //    {
+        //        if (scene_change_delay_timer < scene_change_delay_duration)
+        //        {
+        //            scene_change_delay_timer += dt;
+        //        }
+        //        else
+        //        {
+        //            start_scene_change_countdown = false;
+        //            //GameUtilities.LoadScene("Level2");
+        //        }
+        //    }
+        //}
 
-        public void TakeDamage(float damage)
-        {
-            health -= damage;
-            //Make sure it does not accidently overflow
-            if (health < -100.0f)
-                health = -100.0f;
-            //Console.WriteLine("Health: " + health);
-            //Triggers the shield depleting and starts the sequence of the OHK
-            if (health <= 0)
-            {
-                //Console.WriteLine("Dead");
-                if (!is_shield_broken)
-                {
-                    //Play shield destroyed audio
-                    //ECS.PlayAudio(entityID, 0);
-                    Console.WriteLine("shield broken");
+        //public void TakeDamage(float damage)
+        //{
+        //    health -= damage;
+        //    //Make sure it does not accidently overflow
+        //    if (health < -100.0f)
+        //        health = -100.0f;
+        //    //Console.WriteLine("Health: " + health);
+        //    //Triggers the shield depleting and starts the sequence of the OHK
+        //    if (health <= 0)
+        //    {
+        //        //Console.WriteLine("Dead");
+        //        if (!is_shield_broken)
+        //        {
+        //            //Play shield destroyed audio
+        //            //ECS.PlayAudio(entityID, 0);
+        //            Console.WriteLine("shield broken");
 
-                    //Play electric sparks particle
-                    ECS.SetActive(sparks_particle_id, true);
-                    ECS.SetParticlePause(sparks_particle_id, false);
+        //            //Play electric sparks particle
+        //            ECS.SetActive(sparks_particle_id, true);
+        //            ECS.SetParticlePause(sparks_particle_id, false);
 
-                    //Start counting down the delay
-                    start_shield_break_countdown = true;
+        //            //Start counting down the delay
+        //            start_shield_break_countdown = true;
 
-                    //Only need to happen once
-                    is_shield_broken = true;
-                }
-            }
-        }
+        //            //Only need to happen once
+        //            is_shield_broken = true;
+        //        }
+        //    }
+        //}
 
         public void SetState(BOSS_BEHAVIOUR_STATE set_state)
         {
@@ -580,12 +582,9 @@ namespace Scripting
             {
                 case BOSS_BEHAVIOUR_STATE.MOVING:
                     SetMovingStateAnimations();
-                    //Set the moving animation parameters and adding it to the stack
-                    //AddAnimationSpecsStack(SetMovingStateAnimations, 10.0f);
-                    //AddAnimationSpecsStack(SetTestStateAnimations, 5.0f);
-                    //RunNextAnimationStack();
-                    //AddAnimationUpdateStack(RunMovingSequence);
-                    //AddAnimationUpdateStack(RunTestSequence);
+                    break;
+                case BOSS_BEHAVIOUR_STATE.PROTECTION:
+                    SetProtectionStateAnimations();
                     break;
                 case BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
                     StopAnimation(true);
@@ -1143,8 +1142,8 @@ namespace Scripting
             SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
             //Mouth
-            SetMovingPartsRotation(mouth_left_id, new Vector3(0, -35, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
-            SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 35, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
+            SetMovingPartsRotation(mouth_left_id, new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 2.0f, 0), false, true, false, false, true, false);
+            SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 2.0f, 0), false, false, false, false, true, false);
 
             //Artillery
             SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
@@ -1155,6 +1154,91 @@ namespace Scripting
         }
 
         void RunMovingSequence(float dt)
+        {
+            //Set the boss in a moving state where the arms and legs flail a little bit
+
+            UpdateMovingParts(entityID, dt);
+
+            //Arms
+            UpdateMovingParts(left_arm_middle_joint_id, dt);
+            UpdateMovingParts(left_arm_end_joint_id, dt);
+            UpdateMovingParts(right_arm_middle_joint_id, dt);
+            UpdateMovingParts(right_arm_end_joint_id, dt);
+
+            //Arm Lasers
+            UpdateMovingParts(left_large_laser_spin_id, dt);
+            UpdateMovingParts(right_large_laser_spin_id, dt);
+
+            //Legs
+            UpdateMovingParts(left_leg_middle_joint_id, dt);
+            UpdateMovingParts(left_leg_end_joint_id, dt);
+            UpdateMovingParts(right_leg_middle_joint_id, dt);
+            UpdateMovingParts(right_leg_end_joint_id, dt);
+
+            //Launching bays
+            UpdateMovingParts(right_launching_bay_one_id, dt);
+            UpdateMovingParts(right_launching_bay_two_id, dt);
+            UpdateMovingParts(right_launching_bay_three_id, dt);
+
+            UpdateMovingParts(left_launching_bay_one_id, dt);
+            UpdateMovingParts(left_launching_bay_two_id, dt);
+            UpdateMovingParts(left_launching_bay_three_id, dt);
+
+            //Artillery
+            UpdateMovingParts(artillery_axis_id, dt);
+            UpdateMovingParts(artillery_barrel_id, dt);
+
+            //Mouth
+            UpdateMovingParts(mouth_left_id, dt);
+            UpdateMovingParts(mouth_right_id, dt);
+        }
+        #endregion
+
+        #region[Protection Animation Sequence]
+
+        /// <summary>
+        /// [Moving State] Boss swaying around and flailing its arms
+        /// </summary>
+        void SetProtectionStateAnimations()
+        {
+            //Body
+            SetMovingPartsPosition(entityID, new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
+            SetMovingPartsRotation(entityID, new Vector3(0, 0, -4), new Vector3(0, 0, 4), new Vector3(0, 0, 3.0f), false, false, true, false, false, true);
+
+            //Arms
+            SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
+            SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -85), new Vector3(0, 0, -65), new Vector3(0, 0, 5.0f), false, false, false, false, false, true);
+            SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
+            SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 65), new Vector3(0, 0, 85), new Vector3(0.0f, 0.0f, 5.0f), false, false, false, false, false, true);
+
+            //Legs
+            SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(-90, 0, -35), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, 50), new Vector3(0, 0, 100), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(-90, 0, 0), new Vector3(0, 0, 35), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, -100), new Vector3(0, 0, -50), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+
+            //Launching bays
+            SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+
+            SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+
+            //Mouth
+            SetMovingPartsRotation(mouth_left_id, new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, false, false);
+            SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 10.0f, 0), false, false, false, false, false, false);
+
+            //Artillery
+            SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+
+            moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
+            moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
+        }
+
+        void RunProtectionSequence(float dt)
         {
             //Set the boss in a moving state where the arms and legs flail a little bit
 
