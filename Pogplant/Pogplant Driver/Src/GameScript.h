@@ -60,6 +60,7 @@ namespace Scripting
 	//static void UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType);
 
 	static void UpdateScore(std::uint32_t text_object, std::uint32_t score);
+	static void UpdateComboUI(std::uint32_t text_object, std::uint32_t score);
 
 	// Get the player healths
 	static float GetPlayerHealth();

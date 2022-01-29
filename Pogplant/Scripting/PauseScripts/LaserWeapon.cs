@@ -40,7 +40,7 @@ namespace Scripting
                 if(m_Timer >= 2.0f)
                 {
                     m_Timer = 0.0f;
-                    Console.WriteLine("Enemies In Range: " + m_EnemiesInRange.Count);
+                    //Console.WriteLine("Enemies In Range: " + m_EnemiesInRange.Count);
                     foreach (var id in m_EnemiesInRange)
                     {    
                         EncounterSystemDriver.TakeDamage(id, m_Damage);

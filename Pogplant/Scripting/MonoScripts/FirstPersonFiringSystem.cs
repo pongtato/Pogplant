@@ -11,13 +11,11 @@ namespace Scripting
         List<uint> enemy_in_range = new List<uint>();
         List<uint> enemy_to_target = new List<uint>();
         List<uint> Turrets_A = new List<uint>();
-        List<uint> Turrets_B = new List<uint>();
+        //List<uint> Turrets_B = new List<uint>();
         static List<uint> enemy_in_range_A = new List<uint>();
         static List<uint> enemy_to_target_A = new List<uint>();
-        static List<uint> enemy_in_range_B = new List<uint>();
-        static List<uint> enemy_to_target_B = new List<uint>();
         List<uint> removal_list = new List<uint>();
-        List<uint> duplicates = new List<uint>();
+        //List<uint> duplicates = new List<uint>();
 
         uint PlayerShip;
         uint shipCamera;
@@ -38,19 +36,43 @@ namespace Scripting
         public float max_offset_value = 0.1f; // For non Canvas is 5
         public float move_multipler = 0.001f; // Non-Canvas value is 0.1;
         public float lerp_speed = 20.0f; // Needs high lerp speed to be smooth
+        public float crosshair_accumulative_rot = 0.0f;
+        public float crosshair_idle_rot_speed = 100.0f;
+        public float crosshair_lockon_rot_speed = 200.0f;
         Vector3 current_offset_value; //Use only X,Y
         Vector3 shooting_box_initial_pos;
-        Transform original_reticle_initial = new Transform();
         Vector3 MousePos =  new Vector3(0, 0, 0);
+        Vector3 IdleColor = new Vector3(0, 0.48f, 1);
+        Vector3 LockonColor = new Vector3(1, 0, 0);
         bool onceFlag = false;
+        bool swapOnce = false;
+        bool Idleflag = false;
+        bool LockonFlag = false;
+
+        Transform original_reticle_initial = new Transform();
+        //Player Crosshair(TheBiggerone)
+        uint LargeCrosshair;
+        
+        float largecrosshair_accumulative_scale = 0;
+        float largecrosshair_lockon_scale_speed = 2.0f;
+        float accu_delay_largecrosshair = 0;
+        float delay_largecrosshair = 0.5f;
+
+        bool LargeIdleflag = false;
+        bool LargeLockonFlag = false;
+        bool delay_largecrosshair_animation = true;
+
+        Vector3 LargeCrosshairInitialScale = new Vector3(0.3f, 0.3f, 0);
+        Vector3 LargeCrosshairBlinkScale = new Vector3(0.35f, 0.35f, 0);
 
         //Reticle stuff
         Vector3 start_position = new Vector3(0.0f, 0.0f, 0.0f);
         Vector3 Small_hide_reticle = new Vector3(0.01f, 0.01f, 0f);
         Vector3 Show_reticle = new Vector3(1f, 1f, 0f);
-        Vector3 start_reticle = new Vector3(3f, 3f, 0f);
+        Vector3 start_reticle = new Vector3(0.1f, 0.1f, 0f);
         float rotateAmount = 7.5f;
         float animateSpeed = 6.0f;
+        uint EnemyTrack = 0;
 
         public class  Reticle
         {
@@ -81,11 +103,12 @@ namespace Scripting
             shipCamera = ECS.FindEntityWithName("PlayerCam");
             ShootingBox = ECS.FindEntityWithName("ShootingBox");
             Crosshair = ECS.FindEntityWithName("Crosshair");
+            LargeCrosshair = ECS.FindEntityWithName("LargeCrosshair");
             ReticleGroupID = ECS.FindEntityWithName("ReticleGroup");
             ScoreText = ECS.FindEntityWithName("Score_Text");
 
             Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
-            Turrets_B.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
+            Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
 
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), "Child")));
@@ -113,64 +136,33 @@ namespace Scripting
 
             UpdateReticleMovementCanvas(ref transform, ref dt);
 
+            ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
+
             //Add homing capablities
             SetTargetEnemies(ref Turrets_A, ref enemy_in_range_A, ref enemy_to_target_A);
-            SetTargetEnemies(ref Turrets_B, ref enemy_in_range_B, ref enemy_to_target_B);
             DoRemovalList();
-            RemoveDuplicates(ref enemy_to_target_A, ref enemy_to_target_B);
             if (enemy_to_target_A.Count == 0)
             {
-                if (enemy_to_target_B.Count != 0)
-                {
-                    //SetTurret to Aim at B
-                    int get_lower = enemy_to_target_B.Count < Turrets_A.Count ? enemy_to_target_B.Count : Turrets_A.Count;
-                    for (int i = 0; i < get_lower; ++i)
-                    {
-                        //Turret in use
-                        LockonEnemies(Turrets_A[i], enemy_to_target_B[i], dt);
-                    }
-                    for (int j = get_lower; j < Turrets_A.Count; ++j)
-                    {
-                        //Set the other to target the same enemy
-                        LockonEnemies(Turrets_A[j], enemy_to_target_B[j - 1], dt);
-                    }
-                }
-                else
-                {
-                    SetTurretStraight(ref Turrets_A, 0, dt);
-                }
-            }
-            if (enemy_to_target_B.Count == 0)
-            {
-                if (enemy_to_target_A.Count != 0)
-                {
-                    //SetTurret to Aim at B
-                    int get_lower = enemy_to_target_A.Count < Turrets_B.Count ? enemy_to_target_A.Count : Turrets_B.Count;
-                    for (int i = 0; i < get_lower; ++i)
-                    {
-                        //Turret in use
-                        LockonEnemies(Turrets_B[i], enemy_to_target_A[i], dt);
-                    }
-                    for (int j = get_lower; j < Turrets_A.Count; ++j)
-                    {
-                        //Set the other to target the same enemy
-                        LockonEnemies(Turrets_B[j], enemy_to_target_A[j - 1], dt);
-                    }
-                }
-                else
-                {
-                    SetTurretStraight(ref Turrets_B, 2, dt);
-                }
+                SetTurretStraight(ref Turrets_A, 0, dt);
+                SetCrosshairColor(IdleColor,ref Idleflag,ref LockonFlag);
+                SetLargeCrossHair(3,ref LargeIdleflag, ref LargeLockonFlag);
+                RotateSmallCrossHair(crosshair_idle_rot_speed, dt);
+                ResetLargeCrossHairSize();
+                //SetRotateCrosshair(Slow & blue);
+                //SetOuterCrosshair(blue)
             }
             if (enemy_to_target_A.Count != 0)
             {
                 SetReticleandTurret(ref Turrets_A, ref enemy_to_target_A, 0, dt);
+                SetCrosshairColor(LockonColor, ref LockonFlag, ref Idleflag);
+                SetLargeCrossHair(4, ref LargeLockonFlag, ref LargeIdleflag);
+                RotateSmallCrossHair(crosshair_lockon_rot_speed, dt);
+                AnimateLargeCrosshair(dt);
+                //SetRotateCrosshair(fast & red);
+                //SetOuterCrosshair(red)
+                //Play animation of out scaling up a little and back.
             }
-            if (enemy_to_target_B.Count != 0)
-            {
-                SetReticleandTurret(ref Turrets_B, ref enemy_to_target_B, 2, dt);
-            }
-            ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
+
         }
         public override void LateUpdate(float dt)
         {
@@ -182,7 +174,6 @@ namespace Scripting
                 {
                     // Call C++ side bullet firing
                     CallTurretShoot(ref Turrets_A);
-                    CallTurretShoot(ref Turrets_B);
                     ECS.PlayAudio(shipCamera, 1, "SFX");
                     p_fire_timer = 0.0f;
 
@@ -213,10 +204,10 @@ namespace Scripting
             else if (BoxType == 1)
             {
                 //Go Box Type B
-                if (!enemy_in_range_B.Contains(baseEnemy))
-                {
-                    enemy_in_range_B.Add(baseEnemy);
-                }
+                //if (!enemy_in_range_B.Contains(baseEnemy))
+                //{
+                //    enemy_in_range_B.Add(baseEnemy);
+                //}
             }
             else
             {
@@ -230,8 +221,6 @@ namespace Scripting
             {
                 enemy_in_range_A.Remove(removable);
                 enemy_to_target_A.Remove(removable);
-                enemy_in_range_B.Remove(removable);
-                enemy_to_target_B.Remove(removable);
             }
             removal_list.Clear();
         }
@@ -246,8 +235,8 @@ namespace Scripting
             else if (BoxType == 1)
             {
                 //Go Box Type B
-                enemy_in_range_B.Remove(baseEnemy);
-                enemy_to_target_B.Remove(baseEnemy);
+                //enemy_in_range_B.Remove(baseEnemy);
+                //enemy_to_target_B.Remove(baseEnemy);
             }
             else
             {
@@ -338,7 +327,7 @@ namespace Scripting
             if (!onceFlag)
             {
                 GameUtilities.GetMousePos(ref MousePos.X, ref MousePos.Y);
-                onceFlag = true; ;
+                onceFlag = true;
                 newMousePos = MousePos;
             }
             GameUtilities.GetMousePos(ref newMousePos.X, ref newMousePos.Y);
@@ -421,6 +410,7 @@ namespace Scripting
                 //Reset Reticle
                 ResetReticle(ReticleGroup[i + Offset]);
             }
+            EnemyTrack = 0;
         }
 
         public void LockonEnemies(uint Turret, uint EnemytoTarget, float dt)
@@ -433,47 +423,40 @@ namespace Scripting
 
         public void SetReticleandTurret(ref List<uint> TurretGroup, ref List<uint> EnemytoTarget, int RetOffSet, float dt)
         {
-            int get_lower = EnemytoTarget.Count < TurretGroup.Count ? EnemytoTarget.Count : TurretGroup.Count;
-            for (int i = 0; i < get_lower; ++i)
+            //always only one.
+            for (int i = 0; i < TurretGroup.Count; ++i)
             {
                 //Turret in use
-                LockonEnemies(TurretGroup[i], EnemytoTarget[i], dt);
-
-                //Update Reticle 
-                //To ensure the reticle doesnt clip agaisnt big enemies
-                Vector3 EnemyPos = ECS.GetGlobalPosition(EnemytoTarget[i]) - (Transform.GetForwardVector(shipCamera) * 0.3F);
-                Vector3 Rot = ECS.GetGlobalRotation(shipCamera);
-                if (Rot.X < 0)
-                    Rot.X += 180.0f;
-                else
-                    Rot.X -= 180.0f;
-                int k = i + RetOffSet;
-                ReticleGroup[k].step += dt * animateSpeed;
-                if (ReticleGroup[k].step >= 1.0f)
-                    ReticleGroup[k].step = 1.0f;
-                ECS.SetTransformECS(ReticleGroup[k].parent_id, EnemyPos, Rot, Vector3.Lerp(start_reticle, Show_reticle, ReticleGroup[k].step));
-                //Rotate child reticle aftewards
-                if (!ReticleGroup[k].enabled)
-                    ReticleGroup[k].enabled = true;
-                else
-                {
-                    ReticleGroup[k].accu_angle -= rotateAmount * animateSpeed * dt;
-                    ECS.SetRotation(ReticleGroup[k].child_id, new Vector3(0, 0, ReticleGroup[k].accu_angle));
-                }
-
+                LockonEnemies(TurretGroup[i], EnemytoTarget[0], dt);
 
             }
-            for (int j = get_lower; j < TurretGroup.Count; ++j)
+            //Update Reticle 
+            //To ensure the reticle doesnt clip agaisnt big enemies
+            Vector3 EnemyPos = ECS.GetGlobalPosition(EnemytoTarget[0]) - (Transform.GetForwardVector(shipCamera) * 0.3F);
+            int k = 0;
+            if (EnemyTrack != EnemytoTarget[0])
             {
-                //Set the other to target the same enemy
-                LockonEnemies(TurretGroup[j], EnemytoTarget[j - 1], dt);
-
-                //Vector3 CurrTurrRot = ECS.GetComponent<Transform>(Turrets[j]).Rotation;
-                //ECS.SetRotation(Turrets[j], Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed));
-
-                //Reset Reticle
-                ResetReticle(ReticleGroup[j + RetOffSet]);
+                ReticleGroup[k].step = 0;
             }
+            EnemyTrack = EnemytoTarget[0];
+            Vector3 Rot = ECS.GetGlobalRotation(shipCamera);
+            if (Rot.X < 0)
+                Rot.X += 180.0f;
+            else
+                Rot.X -= 180.0f;
+            ReticleGroup[k].step += dt * animateSpeed;
+            if (ReticleGroup[k].step >= 1.0f)
+                ReticleGroup[k].step = 1.0f;
+            ECS.SetTransformECS(ReticleGroup[k].parent_id, EnemyPos, Rot, Vector3.Lerp(start_reticle, Show_reticle, ReticleGroup[k].step));
+            //Rotate child reticle aftewards
+            if (!ReticleGroup[k].enabled)
+                ReticleGroup[k].enabled = true;
+            else
+            {
+                ReticleGroup[k].accu_angle -= rotateAmount * animateSpeed * dt;
+                ECS.SetRotation(ReticleGroup[k].child_id, new Vector3(0, 0, ReticleGroup[k].accu_angle));
+            }
+
         }
 
         public void CallTurretShoot(ref List<uint> TurretGroup)
@@ -489,46 +472,102 @@ namespace Scripting
             }
         }
 
-        public void RemoveDuplicates(ref List<uint> TurretGroup1, ref List<uint> TurretGroup2)
+        //public void RemoveDuplicates(ref List<uint> TurretGroup1, ref List<uint> TurretGroup2)
+        //{
+        //    if (TurretGroup1.Count > TurretGroup2.Count)
+        //    {
+        //        foreach (var id1 in TurretGroup2)
+        //        {
+        //            foreach (var id2 in TurretGroup1)
+        //            {
+        //                if (id1 == id2)
+        //                {
+        //                    duplicates.Add(id2);
+        //                }
+        //            }
+        //        }
+
+        //        foreach (var duplicate in duplicates)
+        //        {
+        //            TurretGroup1.Remove(duplicate);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        foreach (var id1 in TurretGroup1)
+        //        {
+        //            foreach (var id2 in TurretGroup2)
+        //            {
+        //                if (id1 == id2)
+        //                {
+        //                    duplicates.Add(id2);
+        //                }
+        //            }
+        //        }
+
+        //        foreach (var duplicate in duplicates)
+        //        {
+        //            TurretGroup2.Remove(duplicate);
+        //        }
+        //    }
+        //    duplicates.Clear();
+        //}
+
+        void SetCrosshairColor(Vector3 Color, ref bool flag, ref bool counterflag)
         {
-            if (TurretGroup1.Count > TurretGroup2.Count)
+            if (!flag)
             {
-                foreach (var id1 in TurretGroup2)
-                {
-                    foreach (var id2 in TurretGroup1)
-                    {
-                        if (id1 == id2)
-                        {
-                            duplicates.Add(id2);
-                        }
-                    }
-                }
-
-                foreach (var duplicate in duplicates)
-                {
-                    TurretGroup1.Remove(duplicate);
-                }
+                ECS.SetColorTint(Crosshair, ref Color);
+                counterflag = false;
+                flag = true;
             }
-            else
-            {
-                foreach (var id1 in TurretGroup1)
-                {
-                    foreach (var id2 in TurretGroup2)
-                    {
-                        if (id1 == id2)
-                        {
-                            duplicates.Add(id2);
-                        }
-                    }
-                }
-
-                foreach (var duplicate in duplicates)
-                {
-                    TurretGroup2.Remove(duplicate);
-                }
-            }
-            duplicates.Clear();
         }
+
+        void SetLargeCrossHair(int frames, ref bool flag, ref bool counterflag)
+        {
+            if (!flag)
+            {
+                ECS.SetFrames(LargeCrosshair, frames);
+                counterflag = false;
+                flag = true;
+            }
+        }
+
+        void RotateSmallCrossHair(float Rotatespeed, float dt)
+        {
+            crosshair_accumulative_rot -= Rotatespeed *  dt;
+            if (crosshair_accumulative_rot < -360.0f)
+                crosshair_accumulative_rot = 0;
+            ECS.SetRotation(Crosshair, new Vector3(0, 0, crosshair_accumulative_rot));
+        }
+
+        void AnimateLargeCrosshair(float dt)
+        {
+            if (!delay_largecrosshair_animation)
+            {
+                largecrosshair_accumulative_scale += dt * largecrosshair_lockon_scale_speed;
+                if (largecrosshair_accumulative_scale >= 1.0f)
+                    largecrosshair_accumulative_scale = 0.0f;
+                ECS.SetScale(LargeCrosshair, Vector3.Lerp(LargeCrosshairInitialScale, LargeCrosshairBlinkScale, largecrosshair_accumulative_scale));
+            }
+            else 
+            {
+                accu_delay_largecrosshair += dt;
+                if (accu_delay_largecrosshair > delay_largecrosshair)
+                    delay_largecrosshair_animation = false;
+
+            }
+        }
+
+        void ResetLargeCrossHairSize()
+        {
+            ECS.SetScale(LargeCrosshair, LargeCrosshairInitialScale);
+            //also reset largecrosshair delay
+            delay_largecrosshair_animation = true;
+            accu_delay_largecrosshair = 0;
+        }
+
+
         void CoutMyEnemy()
         {
             Console.Write("Start: ");

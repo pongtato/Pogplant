@@ -1600,7 +1600,7 @@ namespace Scripting
         public void AddScore()
         {
             //encounterManager.enemyManager.AddScore(true);
-            EnemyManager.AddScore(true);
+            PlayerScript.AddScore(true);
         }
 
         // This function exposes EnemyManager.GetAlive method,

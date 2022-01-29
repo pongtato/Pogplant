@@ -427,6 +427,7 @@ void ScriptSystem::BindFunctions()
 	//mono_add_internal_call("Scripting.GameUtilities::UpdateDashboardFace", &Scripting::GameScript::UpdateDashboardFace);
 	mono_add_internal_call("Scripting.GameUtilities::StartLaser", &Scripting::GameScript::StartLaser);
 	mono_add_internal_call("Scripting.GameUtilities::EnemyTakeDamageFromID", &Scripting::GameScript::EnemyTakeDamageFromID);
+	mono_add_internal_call("Scripting.GameUtilities::UpdateComboUI", &Scripting::GameScript::UpdateComboUI);
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);

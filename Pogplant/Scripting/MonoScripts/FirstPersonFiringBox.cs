@@ -21,7 +21,7 @@ namespace Scripting
             entityID = _entityID;
             PlayerShip = ECS.FindEntityWithName("PlayerShip");
             BoxA = ECS.FindChildEntityWithName(PlayerShip, "BoxA");
-            BoxB = ECS.FindChildEntityWithName(PlayerShip, "BoxB");
+            //BoxB = ECS.FindChildEntityWithName(PlayerShip, "BoxB");
         }
 
         public override void Start()
@@ -43,10 +43,10 @@ namespace Scripting
             {
                FirstPersonFiringSystem.AddEnemyToListOfTargets(id,0);
             }
-            if (other_tag.tag == "Targetable" && entityID == BoxB)
-            {
-                FirstPersonFiringSystem.AddEnemyToListOfTargets(id, 1);
-            }
+            //if (other_tag.tag == "Targetable" && entityID == BoxB)
+            //{
+            //    FirstPersonFiringSystem.AddEnemyToListOfTargets(id, 1);
+            //}
         }
         public override void OnTriggerExit(uint id)
         {
@@ -55,10 +55,10 @@ namespace Scripting
             {
                 FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(id,0);
             }
-            if (other_tag.tag == "Targetable" && entityID == BoxB)
-            {
-                FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(id,1);
-            }
+            //if (other_tag.tag == "Targetable" && entityID == BoxB)
+            //{
+            //    FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(id,1);
+            //}
         }
     }
 }

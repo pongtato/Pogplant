@@ -305,10 +305,9 @@ namespace SSH
 		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));
 		if (canvas)
 		{
-			glm::vec4 OldVal = canvas->m_Color;
-			OldVal.x = color.x;
-			OldVal.y = color.y;
-			OldVal.z = color.z;
+			canvas->m_Color.x = color.x;
+			canvas->m_Color.y = color.y;
+			canvas->m_Color.z = color.z;
 		}
 	}
 
