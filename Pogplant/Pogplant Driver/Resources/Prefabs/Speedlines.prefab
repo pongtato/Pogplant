@@ -3,15 +3,21 @@
 		"Children" : 11,
 		"Guid" : 
 		{
-			"m_guid" : "ea00747f-fc43-4983-b78a-ab4ac2b12521"
+			"m_guid" : "8639e9d1-f8aa-4b51-a514-9ad25c4eb834"
 		},
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_Parent"
+			"m_Name" : "SpeedLine_Parent",
+			"status" : true
 		},
 		"Prefab" : 
 		{
 			"file_path" : "Resources\\Prefabs\\Speedlines.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "ea00747f-fc43-4983-b78a-ab4ac2b12521",
+			"prefab_path" : "Resources\\Prefabs\\Speedlines.prefab"
 		},
 		"Tag" : 
 		{
@@ -49,14 +55,15 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 105.36147308349609,
+				"m_FrameCounter" : 40.733943939208984,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 300.0,
+				"m_PlaySpeed" : 150.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -66,8 +73,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.828125
+					0.0,
+					0.328125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -75,7 +82,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_01"
+			"m_Name" : "SpeedLine_01",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -89,8 +97,8 @@
 		{
 			"m_position" : 
 			[
-				0.2199999988079071,
-				0.85000002384185791,
+				0.14000000059604645,
+				0.89999997615814209,
 				0.0
 			],
 			"m_rotation" : 
@@ -101,7 +109,7 @@
 			],
 			"m_scale" : 
 			[
-				1.3000000715255737,
+				0.80000001192092896,
 				0.0070000002160668373,
 				1.0
 			]
@@ -117,14 +125,15 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 87.801223754882813,
+				"m_FrameCounter" : 90.577972412109375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 250.0,
+				"m_PlaySpeed" : 100.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -134,8 +143,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.6875
+					0.0,
+					0.71875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143,7 +152,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_02"
+			"m_Name" : "SpeedLine_02",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -157,8 +167,8 @@
 		{
 			"m_position" : 
 			[
-				0.5,
-				0.60000002384185791,
+				0.37999999523162842,
+				0.85000002384185791,
 				0.0
 			],
 			"m_rotation" : 
@@ -185,14 +195,15 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 105.36147308349609,
+				"m_FrameCounter" : 82.969520568847656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 300.0,
+				"m_PlaySpeed" : 250.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -202,8 +213,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.828125
+					0.0,
+					0.65625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -211,7 +222,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_03"
+			"m_Name" : "SpeedLine_03",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -225,8 +237,8 @@
 		{
 			"m_position" : 
 			[
-				0.60000002384185791,
 				0.30000001192092896,
+				0.25,
 				0.0
 			],
 			"m_rotation" : 
@@ -237,8 +249,8 @@
 			],
 			"m_scale" : 
 			[
-				1.0,
-				0.0099999997764825821,
+				0.5,
+				0.0080000003799796104,
 				1.0
 			]
 		}
@@ -253,11 +265,12 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 7.6091103553771973,
+				"m_FrameCounter" : 45.256710052490234,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -271,7 +284,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.0625
+					0.359375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -279,7 +292,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_04"
+			"m_Name" : "SpeedLine_04",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -293,8 +307,8 @@
 		{
 			"m_position" : 
 			[
-				1.2000000476837158,
-				-0.30000001192092896,
+				1.1000000238418579,
+				-0.5,
 				0.0
 			],
 			"m_rotation" : 
@@ -321,14 +335,15 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 105.36147308349609,
+				"m_FrameCounter" : 113.23362731933594,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 300.0,
+				"m_PlaySpeed" : 250.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -339,7 +354,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.828125
+					0.890625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -347,7 +362,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_05"
+			"m_Name" : "SpeedLine_05",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -361,19 +377,19 @@
 		{
 			"m_position" : 
 			[
-				0.15000000596046448,
-				-0.30000001192092896,
+				0.070000000298023224,
+				-0.14000000059604645,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
 				-0.0,
-				-69.999992370605469
+				-54.0
 			],
 			"m_scale" : 
 			[
-				0.30000001192092896,
+				0.10000000149011612,
 				0.00699999975040555,
 				1.0
 			]
@@ -389,14 +405,15 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 105.36147308349609,
+				"m_FrameCounter" : 57.345897674560547,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 300.0,
+				"m_PlaySpeed" : 200.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -407,7 +424,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.828125
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -415,7 +432,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_07"
+			"m_Name" : "SpeedLine_07",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -429,20 +447,20 @@
 		{
 			"m_position" : 
 			[
-				-0.55000001192092896,
-				-0.40000000596046448,
+				-0.30000001192092896,
+				-0.20000000298023224,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
 				-0.0,
-				-144.99996948242188
+				-150.0
 			],
 			"m_scale" : 
 			[
-				0.99999994039535522,
-				0.0099999997764825821,
+				0.5,
+				0.004999999888241291,
 				1.0
 			]
 		}
@@ -457,11 +475,12 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 105.36147308349609,
+				"m_FrameCounter" : 4.4671797752380371,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -474,8 +493,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.828125
+					0.0,
+					0.046875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -483,7 +502,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_08"
+			"m_Name" : "SpeedLine_08",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -525,11 +545,12 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 89.876815795898438,
+				"m_FrameCounter" : 9.0967597961425781,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -543,7 +564,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.703125
+					0.078125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -551,7 +572,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_09"
+			"m_Name" : "SpeedLine_09",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -565,8 +587,8 @@
 		{
 			"m_position" : 
 			[
-				-0.60000002384185791,
-				0.20000000298023224,
+				-0.43000000715255737,
+				0.30000001192092896,
 				0.0
 			],
 			"m_rotation" : 
@@ -577,7 +599,7 @@
 			],
 			"m_scale" : 
 			[
-				1.0,
+				0.60000002384185791,
 				0.0099999997764825821,
 				1.0
 			]
@@ -593,11 +615,12 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 87.801223754882813,
+				"m_FrameCounter" : 18.916400909423828,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -610,8 +633,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.6875
+					0.0,
+					0.15625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -619,7 +642,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_10"
+			"m_Name" : "SpeedLine_10",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -633,7 +657,7 @@
 		{
 			"m_position" : 
 			[
-				-0.60000002384185791,
+				-0.40000000596046448,
 				0.80000001192092896,
 				0.0
 			],
@@ -645,7 +669,7 @@
 			],
 			"m_scale" : 
 			[
-				1.5,
+				1.0,
 				0.0099999997764825821,
 				1.0
 			]
@@ -661,11 +685,12 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 89.876815795898438,
+				"m_FrameCounter" : 9.0967597961425781,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -679,7 +704,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.703125
+					0.078125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -687,7 +712,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_11"
+			"m_Name" : "SpeedLine_11",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -701,8 +727,8 @@
 		{
 			"m_position" : 
 			[
-				-0.20000000298023224,
-				0.94999998807907104,
+				-0.10000000149011612,
+				0.75,
 				0.0
 			],
 			"m_rotation" : 
@@ -713,7 +739,7 @@
 			],
 			"m_scale" : 
 			[
-				1.4999998807907104,
+				0.69999998807907104,
 				0.0080000003799796104,
 				0.99999988079071045
 			]
@@ -729,14 +755,15 @@
 				0.99998998641967773,
 				1.0
 			],
+			"m_ForceAlpha" : true,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 100.34935760498047,
+				"m_FrameCounter" : 66.375617980957031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 400.0,
+				"m_PlaySpeed" : 200.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -747,7 +774,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.796875
+					0.53125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -755,7 +782,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "SpeedLine_06"
+			"m_Name" : "SpeedLine_06",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -770,18 +798,18 @@
 			"m_position" : 
 			[
 				-0.05000000074505806,
-				-0.40000000596046448,
+				-0.12999999523162842,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
 				-0.0,
-				-99.999984741210938
+				-125.0
 			],
 			"m_scale" : 
 			[
-				0.29999998211860657,
+				0.070000000298023224,
 				0.0070000002160668373,
 				1.0
 			]
