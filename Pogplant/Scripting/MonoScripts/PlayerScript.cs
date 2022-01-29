@@ -147,7 +147,7 @@ namespace Scripting
         public static uint m_ComboBarID;
         public static Vector3 m_FullComboBarScale = new Vector3(2.0f, 1.0f, 1.0f);
         public static Vector3 m_EmptyComboBarScale = new Vector3(0.0f, 1.0f, 1.0f);
-        public static Transform m_ComboBarTrans = new Transform();
+        //public static Transform m_ComboBarTrans = new Transform();
 
         // Score
         public static uint score = 0;                                    // Current score
@@ -648,7 +648,7 @@ namespace Scripting
 
         void UpdateCombo(float dt)
         {
-            ECS.GetTransformECS(m_ComboBarID, ref m_ComboBarTrans.Position, ref m_ComboBarTrans.Rotation, ref m_ComboBarTrans.Scale);
+            //ECS.GetTransformECS(m_ComboBarID, ref m_ComboBarTrans.Position, ref m_ComboBarTrans.Rotation, ref m_ComboBarTrans.Scale);
 
             if (m_ComboDecayTimer <= 0.0f)
             {
@@ -677,7 +677,8 @@ namespace Scripting
             if (m_ComboActive)
             {
                 m_ComboDecayTimer -= dt;
-                ECS.SetScale(m_ComboBarID, Vector3.Lerp(m_ComboBarTrans.Scale, m_EmptyComboBarScale, 1.5f * dt));
+                //ECS.SetScale(m_ComboBarID, Vector3.Lerp(m_ComboBarTrans.Scale, m_EmptyComboBarScale, 1.5f * dt));
+                ECS.SetScale(m_ComboBarID, new Vector3(m_FullComboBarScale.X * (m_ComboDecayTimer/m_ComboDecayTimeLimit), m_FullComboBarScale.Y, m_FullComboBarScale.Z));
             }
             // Combo is inactive
             else
