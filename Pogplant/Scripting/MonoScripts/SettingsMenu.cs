@@ -26,8 +26,8 @@ namespace Scripting
         const float default_value = 0.5f;
         const float volume_change_amount = 0.1f;
         const float arrow_animation_speed = 20.0f;
-        const float max_arrow_scale = 0.15f;
-        const float min_arrow_scale = 0.1f;
+        const float max_arrow_scale = 0.075f;
+        const float min_arrow_scale = 0.05f;
         bool scale_left_arrow;
         bool scale_right_arrow;
         bool play_left_arrow_anim;
@@ -368,8 +368,8 @@ namespace Scripting
             play_right_arrow_anim = false;
             scale_left_arrow = false;
             scale_right_arrow = false;
-            ECS.SetGlobalScale(left_arrow_id, new Vector3(0.1f, 0.1f, 1.0f));
-            ECS.SetGlobalScale(right_arrow_id, new Vector3(0.1f, 0.1f, 1.0f));
+            ECS.SetGlobalScale(left_arrow_id, new Vector3(min_arrow_scale, min_arrow_scale, 1.0f));
+            ECS.SetGlobalScale(right_arrow_id, new Vector3(min_arrow_scale, min_arrow_scale, 1.0f));
         }
 
         void UpdateVolumeBars(List<uint> bars_to_update, string channel_type = "")
