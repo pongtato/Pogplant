@@ -1532,6 +1532,18 @@ namespace PogplantDriver
 			{
 				PP::Window::HideCursor();
 			}
+			if (ImGui::IsKeyPressed(GLFW_KEY_Z))
+			{
+				Application::GetInstance().SetPlayState(Application::PLAYSTATE::PAUSE);
+			}
+			if (ImGui::IsKeyPressed(GLFW_KEY_X))
+			{
+				Application::GetInstance().SetPlayState(Application::PLAYSTATE::PLAY);
+			}
+			if (ImGui::IsKeyPressed(GLFW_KEY_C))
+			{
+				Application::GetInstance().SetPlayState(Application::PLAYSTATE::STEPNEXT);
+			}
 		}
 		ImGui::End();
 
