@@ -28,7 +28,7 @@ namespace Scripting
         //Player Firing 
         float p_fireRate = 0.1f;
         float p_fire_timer = 0.0f;
-        float m_rotspeed = 3.0f; 
+        float m_rotspeed = 30.0f; 
 
         //Player Crosshair(The smaller one)
         uint Crosshair;
@@ -45,7 +45,6 @@ namespace Scripting
         Vector3 IdleColor = new Vector3(0, 0.48f, 1);
         Vector3 LockonColor = new Vector3(1, 0, 0);
         bool onceFlag = false;
-        bool swapOnce = false;
         bool Idleflag = false;
         bool LockonFlag = false;
 
@@ -149,9 +148,9 @@ namespace Scripting
                 RotateSmallCrossHair(crosshair_idle_rot_speed, dt);
                 ResetLargeCrossHairSize();
                 //SetRotateCrosshair(Slow & blue);
-                //SetOuterCrosshair(blue)
+                //SetOuterCrosshair(blue)b
             }
-            if (enemy_to_target_A.Count != 0)
+            if (enemy_to_target_A.Count >= 1)
             {
                 SetReticleandTurret(ref Turrets_A, ref enemy_to_target_A, 0, dt);
                 SetCrosshairColor(LockonColor, ref LockonFlag, ref Idleflag);
@@ -571,7 +570,7 @@ namespace Scripting
         void CoutMyEnemy()
         {
             Console.Write("Start: ");
-            foreach (uint Enemy in enemy_in_range)
+            foreach (uint Enemy in enemy_to_target_A)
             {
                 Console.Write(Enemy + ", ");
             }

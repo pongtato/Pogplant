@@ -10,7 +10,7 @@ namespace Scripting
     {
         uint PlayerShip;
         uint BoxA;
-        uint BoxB;
+        //uint BoxB;
 
         public FirstPersonFiringBox()
         {
