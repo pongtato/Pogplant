@@ -28,9 +28,16 @@ namespace Scripting
 		/**> How much time before the damage threshold gets reset*/
 		public float m_coreProtectionDamageDuration;
 
-
-
 		public uint[] mID_ventSpawnpoints = new uint[6];
+
+		//--- Spawner variables
+
+		//This is hardcoded second for spawner
+
+		/**> How many seconds into the animation to choose to spawn enemies*/
+		float mSpawner_timeStartSpawnEnemies = 4.2f;
+		float mSpawner_timeEndSpawnEnemies = 7f;
+		public float mSpawner_durationBetweenSpawns = 0.5f;
 
 		#endregion
 
@@ -65,12 +72,14 @@ namespace Scripting
 			RuntimeStateVariables(int defaultVal = 0)
 			{
 				m_timer = 0f;
+				m_secondaryTimer = 0f;
 				m_stateDuration = 1f;
 				m_timeSinceLastDamage = 0f;
 				m_damageTakenPeriod = 0f;
 			}
 
 			public float m_timer;
+			public float m_secondaryTimer;
 			public float m_stateDuration;
 			public float m_timeSinceLastDamage;
 
@@ -106,6 +115,7 @@ namespace Scripting
 			m_coreHealth = ECS.GetValue<float>(entityID, 100f, "CoreHealth");
 			m_coreProtectionThreshold = ECS.GetValue<float>(entityID, 1f, "CoreProtectionThreshold");
 			m_coreProtectionDamageDuration = ECS.GetValue<float>(entityID, 1f, "CoreProtectionDamageDuration");
+			mSpawner_durationBetweenSpawns = ECS.GetValue<float>(entityID, 0.5f, "DurationBetweenEnemySpawns");
 
 			InitStateBehaviours();
 
@@ -132,8 +142,8 @@ namespace Scripting
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].shouldReturnToDefault = false;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMin = 5f;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMax = 10f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMin = 20f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMax = 20f;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].shouldReturnToDefault = false;
@@ -169,10 +179,18 @@ namespace Scripting
 				{
 					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
 				}
+
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
+				{
+					Console.WriteLine("Boss state is: " + L1Boss.m_singleton.current_state);
+					Console.WriteLine("Timer is: " + m_runStateInfo.m_timer);
+				}
 				//return;
 			}
 
-			//Other code logic
+			//Timers
+			m_runStateInfo.m_timer += dt;
+			m_runStateInfo.m_timeSinceLastDamage += dt;
 
 			switch (L1Boss.m_singleton.current_state)
 			{
@@ -182,8 +200,29 @@ namespace Scripting
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
 					break;
+				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
+				{
+					if(m_runStateInfo.m_timer > mSpawner_timeStartSpawnEnemies && m_runStateInfo.m_timer < mSpawner_timeEndSpawnEnemies)
+					{
+						m_runStateInfo.m_secondaryTimer += dt;
+						
+						if(m_runStateInfo.m_secondaryTimer > mSpawner_durationBetweenSpawns)
+						{
+							Console.WriteLine("SPAWNING ENEMIES");
+
+							for (int i = 0; i < 6; ++i)
+							{
+								ECS.GetGlobalPosition(mID_ventSpawnpoints[i]);
+							}
+
+							m_runStateInfo.m_secondaryTimer = 0f;
+						}
+					}
+				}
+				break;
 			}
 
+			//Enter protection mode if damager threshold is reached
 			if (m_runStateInfo.m_damageTakenPeriod > m_coreProtectionThreshold)
 			{
 				TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION);
@@ -191,19 +230,18 @@ namespace Scripting
 				Console.WriteLine("Boss hit damage threshold, entering protection");
 			}
 
-			m_runStateInfo.m_timer += dt;
-			m_runStateInfo.m_timeSinceLastDamage += dt;
-
+			//When Past the state duration threshold, it will return back to moving state
 			if (m_runStateInfo.m_timer > m_runStateInfo.m_stateDuration)
 			{
-				if(m_stateBehaviours[(int)L1Boss.m_singleton.current_state].shouldReturnToDefault)
+				if (m_stateBehaviours[(int)L1Boss.m_singleton.current_state].shouldReturnToDefault)
 				{
 					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
 					Console.WriteLine("Changing to MOVING");
 				}
 			}
 
-			if(m_runStateInfo.m_timeSinceLastDamage > m_coreProtectionDamageDuration)
+			//Damage threshold reset if boss doesn't take damage for awhile
+			if (m_runStateInfo.m_timeSinceLastDamage > m_coreProtectionDamageDuration)
 			{
 				m_runStateInfo.m_damageTakenPeriod = 0f;
 			}
@@ -213,19 +251,28 @@ namespace Scripting
 
 		}
 
-		void TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE nextState)
+		void TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false)
 		{
 			L1Boss.m_singleton.SetState(nextState);
 			m_runStateInfo.m_timer = 0f;
-			m_runStateInfo.m_stateDuration = PPMath.RandomFloat(
-				m_stateBehaviours[(int)nextState].stateDurationMin,
-				m_stateBehaviours[(int)nextState].stateDurationMax);
+			m_runStateInfo.m_secondaryTimer = 0f;
+
+			if (forceNonReturn)
+			{
+				m_runStateInfo.m_stateDuration = float.PositiveInfinity;
+			}
+			else
+			{
+				m_runStateInfo.m_stateDuration = PPMath.RandomFloat(
+					m_stateBehaviours[(int)nextState].stateDurationMin,
+					m_stateBehaviours[(int)nextState].stateDurationMax);
+			}
 		}
 
 		public override void OnTriggerEnter(uint id)
 		{
 			//Invulnerable in protection mode
-			if(!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable)
+			if (!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable)
 			{
 				return;
 			}

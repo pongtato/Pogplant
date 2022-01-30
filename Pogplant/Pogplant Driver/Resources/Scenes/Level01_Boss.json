@@ -35,7 +35,6 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
-		"Scripting" : null,
 		"Tag" : 
 		{
 			"m_tag" : "Player"
@@ -115,7 +114,6 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
-		"Scripting" : null,
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -5038,13 +5036,18 @@
 				"Type" : 0
 			},
 			{
+				"Data" : 60.0,
+				"Name" : "CoreProtectionThreshold",
+				"Type" : 0
+			},
+			{
 				"Data" : 5.0,
 				"Name" : "CoreProtectionDamageDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 60.0,
-				"Name" : "CoreProtectionThreshold",
+				"Data" : 0.5,
+				"Name" : "DurationBetweenEnemySpawns",
 				"Type" : 0
 			}
 		],
