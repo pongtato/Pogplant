@@ -264,7 +264,11 @@ namespace Components
 				DeleteValue();
 			}
 
-			Variable() = default;
+			inline Variable()
+			{
+				SetValue<int>(0);
+			}
+
 			Variable(const Variable& rhs);
 
 			Variable& operator=(const Variable& rhs);
