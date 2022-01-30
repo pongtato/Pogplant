@@ -1,0 +1,166 @@
+[
+	{
+		"Children" : 2,
+		"Guid" : 
+		{
+			"m_guid" : "5d92ed76-cdea-4058-86a1-17bb81b6f04a"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Cloud_Prefab_03",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Cloud_Prefab_03.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "e4640592-854b-4ea0-97c9-ce11a685c846",
+			"prefab_path" : "Resources\\Prefabs\\Cloud_Prefab_03.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Cloud_Ring_03",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Cloud_Prefab_03.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cloud_Ring_03",
+				"Resources/Models\\Environment",
+				"Cloud_Ring_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-47.40277099609375,
+				18.595191955566406,
+				-19.958589553833008
+			],
+			"m_rotation" : 
+			[
+				179.99897766113281,
+				-0.0001092693128157407,
+				-179.99909973144531
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Cloud_Ring_03",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Cloud_Prefab_03.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cloud_Ring_03",
+				"Resources/Models\\Environment",
+				"Cloud_Ring_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				48.713516235351562,
+				18.669502258300781,
+				33.058570861816406
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				2.5839505882196967e-11
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			]
+		}
+	}
+]

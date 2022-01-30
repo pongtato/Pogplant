@@ -138,9 +138,9 @@
 		{
 			"m_position" : 
 			[
-				-0.068206787109375,
+				1.5652313232421875,
 				0.0,
-				-23.368057250976562
+				-30.329620361328125
 			],
 			"m_rotation" : 
 			[
@@ -866,9 +866,9 @@
 		{
 			"m_position" : 
 			[
-				1.0567626953125,
+				-0.411712646484375,
 				0.0,
-				-35.141204833984375
+				-36.8095703125
 			],
 			"m_rotation" : 
 			[
@@ -2692,9 +2692,9 @@
 		{
 			"m_position" : 
 			[
-				3.7436981201171875,
+				5.616485595703125,
 				0.0,
-				-17.783859252929688
+				-21.005813598632812
 			],
 			"m_rotation" : 
 			[
@@ -19145,7 +19145,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 75.518692016601562,
+				"m_FrameCounter" : 111.38282775878906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -19159,7 +19159,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.59375
+					0.875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19211,7 +19211,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 94.363243103027344,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -19225,7 +19225,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.015625
+					0.75
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19277,7 +19277,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.311676025390625,
+				"m_FrameCounter" : 39.202899932861328,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -19291,7 +19291,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.75
+					0.3125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19343,7 +19343,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 75.518692016601562,
+				"m_FrameCounter" : 111.38282775878906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -19357,7 +19357,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.59375
+					0.875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19409,7 +19409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.311676025390625,
+				"m_FrameCounter" : 39.202899932861328,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -19423,7 +19423,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.75
+					0.3125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19475,7 +19475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.249336242675781,
+				"m_FrameCounter" : 68.696517944335938,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -19489,7 +19489,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.609375
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19541,7 +19541,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 12.668880462646484,
+				"m_FrameCounter" : 121.42430114746094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19554,8 +19554,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.109375
+					0.5,
+					0.953125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19607,7 +19607,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.249336242675781,
+				"m_FrameCounter" : 68.696517944335938,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -19621,7 +19621,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.609375
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19673,7 +19673,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.311676025390625,
+				"m_FrameCounter" : 39.202899932861328,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -19687,7 +19687,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.75
+					0.3125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19739,7 +19739,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.249336242675781,
+				"m_FrameCounter" : 68.696517944335938,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -19753,7 +19753,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.609375
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19805,7 +19805,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.249336242675781,
+				"m_FrameCounter" : 68.696517944335938,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -19819,7 +19819,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.609375
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -20981,7 +20981,7 @@
 		{
 			"m_position" : 
 			[
-				48.53619384765625,
+				49.668792724609375,
 				-11.521867752075195,
 				-242.79269409179688
 			],
@@ -20993,7 +20993,7 @@
 			],
 			"m_scale" : 
 			[
-				4.6999998092651367,
+				4.2165083885192871,
 				5.0,
 				5.0
 			]
@@ -21042,8 +21042,8 @@
 			"m_position" : 
 			[
 				11.729609489440918,
-				-12.016870498657227,
-				-199.88679504394531
+				-15.154135704040527,
+				-201.54780578613281
 			],
 			"m_rotation" : 
 			[
@@ -21053,8 +21053,8 @@
 			],
 			"m_scale" : 
 			[
-				4.6999998092651367,
-				5.0,
+				4.2417030334472656,
+				5.4530467987060547,
 				5.0
 			]
 		}
@@ -21101,7 +21101,7 @@
 		{
 			"m_position" : 
 			[
-				47.664585113525391,
+				50.266883850097656,
 				-14.428696632385254,
 				-221.22685241699219
 			],
@@ -21161,7 +21161,7 @@
 		{
 			"m_position" : 
 			[
-				19.717327117919922,
+				17.955718994140625,
 				-9.3334016799926758,
 				-261.08770751953125
 			],
@@ -21281,7 +21281,7 @@
 		{
 			"m_position" : 
 			[
-				17.03619384765625,
+				16.404531478881836,
 				-22.968898773193359,
 				-226.2408447265625
 			],
@@ -21456,7 +21456,7 @@
 		{
 			"m_position" : 
 			[
-				49.337985992431641,
+				51.312118530273438,
 				-11.752280235290527,
 				-260.93661499023438
 			],
@@ -21468,7 +21468,7 @@
 			],
 			"m_scale" : 
 			[
-				5.0,
+				3.7967894077301025,
 				4.0,
 				4.0
 			]
@@ -21516,21 +21516,21 @@
 		{
 			"m_position" : 
 			[
-				26.706710815429688,
-				-8.1218252182006836,
+				28.477800369262695,
+				-9.6116237640380859,
 				-223.04208374023438
 			],
 			"m_rotation" : 
 			[
-				-179.99989318847656,
-				-0.0,
-				157.99899291992188
+				179.84809875488281,
+				2.7722578048706055,
+				165.72067260742188
 			],
 			"m_scale" : 
 			[
-				6.0000004768371582,
-				9.9998807907104492,
-				6.7999491691589355
+				5.9999923706054688,
+				9.9998903274536133,
+				6.7998981475830078
 			]
 		}
 	},
@@ -21632,7 +21632,7 @@
 			"m_position" : 
 			[
 				35.035083770751953,
-				-20.751045227050781,
+				-20.377140045166016,
 				-180.834228515625
 			],
 			"m_rotation" : 
@@ -21691,21 +21691,21 @@
 		{
 			"m_position" : 
 			[
-				35.162712097167969,
-				-13.145075798034668,
+				34.438579559326172,
+				-13.267045021057129,
 				-192.44328308105469
 			],
 			"m_rotation" : 
 			[
-				0.00010427403321955353,
-				-5.0089561227650847e-06,
-				15.998998641967773
+				0.00010417782323202118,
+				6.7148394009564072e-06,
+				9.5609006881713867
 			],
 			"m_scale" : 
 			[
-				6.0000014305114746,
-				9.9998836517333984,
-				6.7999491691589355
+				5.9999995231628418,
+				9.9998846054077148,
+				6.7999486923217773
 			]
 		}
 	},
@@ -25148,7 +25148,7 @@
 			[
 				32.588905334472656,
 				-22.281120300292969,
-				-167.93836975097656
+				-165.84767150878906
 			],
 			"m_rotation" : 
 			[
@@ -25206,7 +25206,7 @@
 		{
 			"m_position" : 
 			[
-				51.189071655273438,
+				54.915328979492188,
 				-22.280961990356445,
 				-187.710693359375
 			],
@@ -25266,21 +25266,21 @@
 		{
 			"m_position" : 
 			[
-				0.25307580828666687,
-				-30.820554733276367,
-				-181.33316040039062
+				17.613901138305664,
+				-21.287302017211914,
+				-185.63299560546875
 			],
 			"m_rotation" : 
 			[
-				0.00010427394590806216,
+				0.00010427380038890988,
 				-89.999946594238281,
 				0.00010427402594359592
 			],
 			"m_scale" : 
 			[
 				5.0,
-				10.0,
-				10.0
+				7.0,
+				3.0
 			]
 		}
 	},
@@ -37984,7 +37984,7 @@
 			"m_position" : 
 			[
 				156.63975524902344,
-				9.2783098220825195,
+				8.3764591217041016,
 				-140.33218383789062
 			],
 			"m_rotation" : 
@@ -76421,7 +76421,7 @@
 		{
 			"m_position" : 
 			[
-				158.55552673339844,
+				162.25846862792969,
 				0.27035033702850342,
 				-205.45030212402344
 			],
@@ -80414,7 +80414,7 @@
 			"m_position" : 
 			[
 				155.63165283203125,
-				-3.4071474075317383,
+				-4.3044004440307617,
 				-172.93099975585938
 			],
 			"m_rotation" : 
@@ -85550,7 +85550,7 @@
 		{
 			"m_position" : 
 			[
-				159.994140625,
+				164.08953857421875,
 				-1.5823196172714233,
 				-200.03776550292969
 			],
@@ -87333,7 +87333,7 @@
 		}
 	},
 	{
-		"Children" : 32,
+		"Children" : 33,
 		"Name" : 
 		{
 			"m_Name" : "Segment_6_Obstacals",
@@ -87355,6 +87355,2211 @@
 			[
 				0.0,
 				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 18,
+		"Name" : 
+		{
+			"m_Name" : "Boss",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c02e8233-4ace-450e-9478-4836306345ff",
+			"prefab_path" : "Resources\\Prefabs\\Boss.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Boss_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-30.896026611328125,
+				15.43885612487793,
+				-180.17276000976562
+			],
+			"m_rotation" : 
+			[
+				101.15237426757812,
+				78.600921630859375,
+				72.831214904785156
+			],
+			"m_scale" : 
+			[
+				0.9999995231628418,
+				0.99999886751174927,
+				0.99999910593032837
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Right_LaunchingBay",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_LaunchingBay"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.058772090822458267,
+				2.5493011474609375,
+				-4.889366626739502
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_Lid_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Lid_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.8795669078826904,
+				1.2908422946929932,
+				2.3331303596496582
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_Lid_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Lid_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.9392058849334717,
+				1.1344091892242432,
+				-0.046572685241699219
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_Lid_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Lid_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.9478514194488525,
+				0.60667514801025391,
+				-2.3331394195556641
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_Eye",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Eye"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.1827316284179688,
+				1.8441238403320312,
+				1.5320566892623901
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Right_Arm_Middle_Joint",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Arm_Middle_Joint"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.8437652587890625,
+				-2.4216384887695312,
+				-2.1441020965576172
+			],
+			"m_rotation" : 
+			[
+				-13.919687271118164,
+				34.932804107666016,
+				9.8991260528564453
+			],
+			"m_scale" : 
+			[
+				1.000005841255188,
+				1.0000308752059937,
+				1.0000518560409546
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Right_Arm_End_Joint",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Arm_End_Joint"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-5.5464324951171875,
+				-0.0025177001953125,
+				-0.004901885986328125
+			],
+			"m_rotation" : 
+			[
+				1.0345356464385986,
+				7.6185302734375,
+				87.015823364257812
+			],
+			"m_scale" : 
+			[
+				0.99998873472213745,
+				0.99998682737350464,
+				0.9999423623085022
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Right_Large_Laser_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Large_Laser_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.706787109375,
+				4.76837158203125e-06,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_Large_Laser_Spin",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Large_Laser_Spin"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.1627044677734375,
+				-3.814697265625e-06,
+				3.0994415283203125e-06
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "RailVent_Panels",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"RailVent_Panels"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.6711577177047729,
+				1.6709500551223755,
+				0.49022197723388672
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "MainLaser_Rails",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"MainLaser_Rails"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.6711578369140625,
+				1.6709499359130859,
+				-5.19805908203125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "MainLaser",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"MainLaser"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.9101501891327644e-07,
+				1.2488810341437784e-07,
+				-1.8440742492675781
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Left_MiniLaser_Rack",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_MiniLaser_Rack"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.8207941055297852,
+				2.0039291381835938,
+				-2.2064321041107178
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_MiniLaser_Launcher_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_MiniLaser_Launcher_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.9073486328125e-06,
+				1.1999998092651367,
+				1.5025647878646851
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_MiniLaser_Launcher_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_MiniLaser_Launcher_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.0606594085693359,
+				1.1999971866607666,
+				1.0606594085693359
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_MiniLaser_Launcher_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_MiniLaser_Launcher_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.5025711059570312,
+				1.1999983787536621,
+				-0.039159297943115234
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Left_Leg_Middle_Joint",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Leg_Middle_Joint"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.748779296875,
+				-1.7073020935058594,
+				-8.0618324279785156
+			],
+			"m_rotation" : 
+			[
+				-2.3002610206604004,
+				38.5372314453125,
+				-3.8489987850189209
+			],
+			"m_scale" : 
+			[
+				1.0000075101852417,
+				1.0000219345092773,
+				1.0000807046890259
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_Leg_End_Joint",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Leg_End_Joint"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.0942840576171875,
+				-0.23052978515625,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-2.7320902518113144e-05,
+				-0.00022198197257239372,
+				-79.133232116699219
+			],
+			"m_scale" : 
+			[
+				0.99999618530273438,
+				0.99999463558197021,
+				0.99999856948852539
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Left_LaunchingBay",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_LaunchingBay"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.058772090822458267,
+				2.5493011474609375,
+				-4.889366626739502
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_Lid_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Lid_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.8795654773712158,
+				1.2908389568328857,
+				2.3331351280212402
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_Lid_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Lid_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.9392046928405762,
+				1.1344053745269775,
+				-0.046567916870117188
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_Lid_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Lid_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.9478557109832764,
+				0.60667300224304199,
+				-2.3331356048583984
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_Eye",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Eye"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				4.1827316284179688,
+				1.8441238403320312,
+				1.5320566892623901
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Left_Arm_Middle_Joint",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Arm_Middle_Joint"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.8437957763671875,
+				-2.4216423034667969,
+				-2.1441001892089844
+			],
+			"m_rotation" : 
+			[
+				11.818079948425293,
+				-27.92841911315918,
+				4.818058967590332
+			],
+			"m_scale" : 
+			[
+				1.0000169277191162,
+				1.0000382661819458,
+				1.0000689029693604
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Left_Arm_End_Joint",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Arm_End_Joint"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.55413818359375,
+				0.00293731689453125,
+				-0.01239776611328125
+			],
+			"m_rotation" : 
+			[
+				-0.00021344317065086216,
+				4.8238089220831171e-05,
+				-115.38978576660156
+			],
+			"m_scale" : 
+			[
+				1.0000025033950806,
+				1.000001072883606,
+				1.0000178813934326
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Left_Large_Laser_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Large_Laser_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.706787109375,
+				-1.9073486328125e-06,
+				5.7220458984375e-06
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Left_Large_Laser_Spin",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Left_Large_Laser_Spin"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.1627044677734375,
+				1.430511474609375e-06,
+				2.384185791015625e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "FalseCore",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"FalseCore"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00020899175433441997,
+				-7.152557373046875e-07,
+				0.03933560848236084
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Mouth_L",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Mouth_L"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.8943759389221668e-08,
+				-4.2487101836741203e-08,
+				0.30243980884552002
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Mouth_R",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Mouth_R"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.8943759389221668e-08,
+				-4.2487101836741203e-08,
+				0.30243980884552002
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Arti_Base",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Arti_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.9710375909198774e-07,
+				2.2034914493560791,
+				-6.9960942268371582
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Arti_Axis",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Arti_Axis"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0003204345703125,
+				4.57763671875e-05,
+				0.1287994384765625
+			],
+			"m_rotation" : 
+			[
+				49.999782562255859,
+				-0.00028238497907295823,
+				0.00023307967057917267
+			],
+			"m_scale" : 
+			[
+				1.0000022649765015,
+				1.0000286102294922,
+				1.0000197887420654
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Arti_Barrel",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Arti_Barrel"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.320472610037541e-06,
+				10.309344291687012,
+				-9.5367431640625e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_MiniLaser_Launcher_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_MiniLaser_Launcher_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-5.9383411407470703,
+				3.2039263248443604,
+				-0.70386648178100586
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_MiniLaser_Launcher_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_MiniLaser_Launcher_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.9989948272705078,
+				3.2039248943328857,
+				-1.1457747220993042
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_MiniLaser_Launcher_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_MiniLaser_Launcher_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-7.4409027099609375,
+				3.2039246559143066,
+				-2.2455911636352539
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Right_Leg_Middle_Joint",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Leg_Middle_Joint"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.74859619140625,
+				-1.7073020935058594,
+				-8.06182861328125
+			],
+			"m_rotation" : 
+			[
+				-5.2905235290527344,
+				-36.825344085693359,
+				8.7868967056274414
+			],
+			"m_scale" : 
+			[
+				1.0000098943710327,
+				1.0000596046447754,
+				1.0000391006469727
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_Leg_End_Joint",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_Leg_End_Joint"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-5.0943069458007812,
+				-0.23053359985351562,
+				1.52587890625e-05
+			],
+			"m_rotation" : 
+			[
+				0.00010757581912912428,
+				-2.1344370907172561e-05,
+				96.195419311523438
+			],
+			"m_scale" : 
+			[
+				0.99999862909317017,
+				0.9999968409538269,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Right_MiniLaser_Rack",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_MiniLaser_Rack"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-5.9383382797241211,
+				2.0039253234863281,
+				-2.2064363956451416
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -94783,7 +96988,7 @@
 			[
 				19.999977111816406,
 				20.0,
-				19.987159729003906
+				19.985702514648438
 			]
 		}
 	},
@@ -107057,14 +109262,14 @@
 		{
 			"m_position" : 
 			[
-				23.543773651123047,
+				21.578067779541016,
 				9.8458366394042969,
 				-254.39894104003906
 			],
 			"m_rotation" : 
 			[
 				176.73506164550781,
-				5.009171218262054e-06,
+				5.0097437451768201e-06,
 				-179.99989318847656
 			],
 			"m_scale" : 
@@ -107177,9 +109382,9 @@
 		{
 			"m_position" : 
 			[
-				47.335651397705078,
-				7.4193506240844727,
-				-204.98321533203125
+				51.088058471679688,
+				7.2793149948120117,
+				-203.75396728515625
 			],
 			"m_rotation" : 
 			[
@@ -107417,20 +109622,20 @@
 		{
 			"m_position" : 
 			[
-				13.74681568145752,
-				6.7607450485229492,
-				-172.38128662109375
+				13.105545043945312,
+				7.120053768157959,
+				-170.08232116699219
 			],
 			"m_rotation" : 
 			[
-				-113.05711364746094,
-				-50.272632598876953,
+				-105.04248809814453,
+				-50.272556304931641,
 				118.96228790283203
 			],
 			"m_scale" : 
 			[
-				0.9999164342880249,
-				0.89999991655349731,
+				0.9999159574508667,
+				0.89999902248382568,
 				1.0000001192092896
 			]
 		}
@@ -110196,7 +112401,7 @@
 			],
 			"m_scale" : 
 			[
-				0.99991470575332642,
+				0.9999048113822937,
 				0.99998992681503296,
 				0.99999821186065674
 			]
@@ -110256,7 +112461,7 @@
 			],
 			"m_scale" : 
 			[
-				0.99984592199325562,
+				0.99983608722686768,
 				0.99998992681503296,
 				0.99999821186065674
 			]

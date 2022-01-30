@@ -1,0 +1,107 @@
+[
+	{
+		"Children" : 1,
+		"Guid" : 
+		{
+			"m_guid" : "d3a50329-7fa0-45e8-afc0-2d6338f32cba"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Cloud_Prefeb_02",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Cloud_Prefab_02.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Cloud_Ring_02",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Cloud_Prefab_02.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "d7642e09-1e7c-4d2e-8d3d-6ddec526e258",
+			"prefab_path" : "Resources\\Prefabs\\Cloud_Prefab_02.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cloud_Ring_02",
+				"Resources/Models\\Environment",
+				"Cloud_Ring_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-18.489011764526367,
+				46.246597290039062,
+				-17.791706085205078
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	}
+]
