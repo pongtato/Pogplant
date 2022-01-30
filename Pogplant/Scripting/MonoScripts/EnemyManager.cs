@@ -241,6 +241,19 @@ namespace Scripting
                 }
             }
         }
+        public void DestroyEnemyFromObstacle(uint id)
+        {
+            foreach (var item in enemy_instances)
+            {
+                if (item.id == id)
+                {
+                    GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(id), 0);
+                    DeleteEnemyInstance(id, false);
+                    break;
+                }
+            }
+        }
+
         //public static void AddScore(bool increment)
         //{
         //    Console.WriteLine(PlayerScript.m_ComboNumber);
@@ -274,7 +287,7 @@ namespace Scripting
         //        {
         //            score += kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
         //        }
-                
+
         //        //GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
         //    }
         //    //Decrease score
