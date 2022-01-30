@@ -1,0 +1,301 @@
+[
+	{
+		"Children" : 3,
+		"Guid" : 
+		{
+			"m_guid" : "4879f0b7-0f11-4a31-be06-2f7ba843f7e5"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Enemy_04",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_04.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Enemy_04_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.40000000596046448,
+				0.40000000596046448,
+				0.40000000596046448
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Propeller_Base",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_04.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Propeller_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.697938204069942e-09,
+				0.082419559359550476,
+				1.3411046495548362e-08
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Propeller",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_04.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Propeller"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3322676295501878e-14,
+				0.99065679311752319,
+				1.3560057254835556e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Eyes",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_04.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Eyes"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.7388491474766852e-10,
+				-0.13313589990139008,
+				2.514568109290849e-09
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outline",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_04.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.96744143962860107,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.92093020677566528,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.2607835582539906e-10,
+				-0.16333366930484772,
+				1.6763763710514468e-09
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]
