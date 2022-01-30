@@ -274,5 +274,17 @@ namespace Scripting
 
             GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
         }
+        public void DestroyEnemyFromObstacle(uint id)
+        {
+            foreach (var item in enemy_instances)
+            {
+                if (item.id == id)
+                {
+                    GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(id), 0);
+                    DeleteEnemyInstance(id, false);
+                    break;
+                }
+            }
+        }
     }
 }
