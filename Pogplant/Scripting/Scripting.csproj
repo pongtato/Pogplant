@@ -57,6 +57,7 @@
     <Compile Include="MonoScripts\FirstPersonFiringBox.cs" />
     <Compile Include="MonoScripts\L1Boss.cs" />
     <Compile Include="MonoScripts\L1BossBehaviour.cs" />
+    <Compile Include="MonoScripts\BossWarning.cs" />
     <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="MonoScripts\GameEndingTrigger.cs" />
     <Compile Include="MonoScripts\TetherEnemy.cs" />

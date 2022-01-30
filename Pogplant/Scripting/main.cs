@@ -173,6 +173,11 @@ namespace Scripting
             return new PauseMenu();
         }
 
+        public static BossWarning BossWarning()
+        {
+            return new BossWarning();
+
+        }
         public static L1Boss L1Boss()
         {
             return new L1Boss();

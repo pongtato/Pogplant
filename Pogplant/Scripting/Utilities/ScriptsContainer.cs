@@ -45,6 +45,7 @@ namespace Scripting
             monoScriptNames.Add("DashboardScreen");
             monoScriptNames.Add("BonusItem");
             monoScriptNames.Add("SettingsMenu");
+            monoScriptNames.Add("BossWarning");
             monoScriptNames.Add("L1Boss");
             monoScriptNames.Add("L1BossBehaviour");
             monoScriptNames.Add("EndGameMenuTrigger");
