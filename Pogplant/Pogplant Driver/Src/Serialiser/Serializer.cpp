@@ -347,6 +347,7 @@ namespace PogplantDriver
 
 	entt::entity Serializer::LoadObjects(const std::string& File, bool IsPrefab, bool remove_prefab_tag)
 	{
+		m_prefab_list.clear();
 		std::ifstream istream(File, std::ios::in);
 
 		entt::entity p_id = entt::null;
