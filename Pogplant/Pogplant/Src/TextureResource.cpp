@@ -11,6 +11,7 @@ namespace Pogplant
 	std::unordered_map<std::string, unsigned int> TextureResource::m_TexturePool;
 	std::unordered_map<std::string, UsedTex> TextureResource::m_UsedTextures;
 	bool TextureResource::m_Updated = false;
+	unsigned int TextureResource::m_UsedTexCount = 0;
 
 	void HandleCubemaps(const Json::Value& _Root)
 	{
@@ -153,6 +154,11 @@ namespace Pogplant
 		//{
 		//	m_UsedTextures[it.second] = static_cast<int>(m_UsedTextures.size());
 		//}
+
+		for (auto it : m_TexturePool)
+		{
+			printf("%s\n", it.first.c_str());
+		}
 	}
 
 	void TextureResource::ReloadTextures()

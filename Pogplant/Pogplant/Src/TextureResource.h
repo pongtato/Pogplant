@@ -24,5 +24,6 @@ namespace Pogplant
 		static std::unordered_map<std::string, UsedTex> m_UsedTextures;
 		// If used textures need to be updated
 		static bool m_Updated;
+		static unsigned int m_UsedTexCount;
 	};
 }

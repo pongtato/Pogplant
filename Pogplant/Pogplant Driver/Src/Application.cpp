@@ -484,9 +484,9 @@ void Application::UpdateTransforms(float _Dt)
 	// See if texture list has to be updated
 	if (!PP::TextureResource::m_Updated)
 	{
-		printf("Clear\n");
+		//printf("Clear\n");
 		PP::TextureResource::m_UsedTextures.clear();
-		//printf("UPDATING...\n");
+		PP::TextureResource::m_UsedTexCount = 0;
 	}
 
 	/// Particle transforms
@@ -506,13 +506,13 @@ void Application::UpdateTransforms(float _Dt)
 					pSys.Clear();
 					//If not in used yet toggle it to be in use
 					usedTex[pSys.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[pSys.m_TexName]);
-					//This will always be > 0 since by comparing !used it already creates an entry
-					usedTex[pSys.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
+					usedTex[pSys.m_TexName].m_MappedID = PP::TextureResource::m_UsedTexCount;
 					usedTex[pSys.m_TexName].m_Used = true;
+					PP::TextureResource::m_UsedTexCount++;
 					//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[pSys.m_TexName].m_MappedID, pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID);
 					
 
-					printf("%s | %d \n", pSys.m_TexName.c_str(), pSys.m_TexID);
+					//printf("%s | %d | %d \n", pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID), usedTex[pSys.m_TexName].m_MappedID;
 				}
 			}
 			pSys.m_TexID = usedTex[pSys.m_TexName].m_MappedID;
@@ -535,13 +535,13 @@ void Application::UpdateTransforms(float _Dt)
 			if (!usedTex[canvas.m_TexName].m_Used)
 			{
 				usedTex[canvas.m_TexName].m_ID = static_cast<int>(PP::TextureResource::m_TexturePool[canvas.m_TexName]);
-				// This will always be > 0 since by comparing !used it already creates an entry
-				usedTex[canvas.m_TexName].m_MappedID = static_cast<unsigned int>(usedTex.size()) - 1;
+				usedTex[canvas.m_TexName].m_MappedID = PP::TextureResource::m_UsedTexCount;
 				usedTex[canvas.m_TexName].m_Used = true;
+				PP::TextureResource::m_UsedTexCount++;
 				//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[canvas.m_TexName].m_MappedID, canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID);
 				// Update canvas ID
 				
-				printf("%s | %d \n", canvas.m_TexName.c_str(), canvas.m_TexID);
+				//printf("%s | %d | %d \n", canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID, usedTex[canvas.m_TexName].m_MappedID);
 			}
 		}
 
