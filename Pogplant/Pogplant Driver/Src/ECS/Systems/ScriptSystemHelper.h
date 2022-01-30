@@ -47,6 +47,7 @@ namespace SSH
 
 	// True is enabled, False is disabled
 	void SetActive(std::uint32_t entityID, bool isEnabled);
+	void ToggleEntity(std::uint32_t entityID);
 
 	std::uint32_t GetTransformParent(std::uint32_t childID);
 	void GetBoxColliderECS(std::uint32_t entityID, MonoString* collisionLayer, bool& isTrigger, glm::vec3& centre, glm::vec3& extends);

@@ -335,6 +335,13 @@ namespace SSH
 		}
 	}
 
+	void ToggleEntity(std::uint32_t entityID)
+	{
+		//entities are enabled and disabled at the end of main loop
+		//so if you call twice before the main loop is over, it'll do nothing lol
+		ScriptSystem::GetECS()->ToggleEntity(static_cast<entt::entity>(entityID));
+	}
+
 	std::uint32_t GetTransformParent(std::uint32_t childID)
 	{
 		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(childID))->m_parent);

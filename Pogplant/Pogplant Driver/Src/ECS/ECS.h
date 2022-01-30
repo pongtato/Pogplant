@@ -65,6 +65,7 @@ public:
 
 	void DisableEntity(entt::entity _entity);
 	void EnableEntity(entt::entity _entity);
+	void ToggleEntity(entt::entity _entity);
 
 	//clears the ECS
 	void Clear();

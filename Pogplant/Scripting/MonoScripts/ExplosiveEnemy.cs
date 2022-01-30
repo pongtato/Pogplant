@@ -13,25 +13,28 @@ namespace Scripting
 		//activate the entity
 		bool m_armed = false;
 
-		//Indicators to show range
-		uint m_indicator_white;
-		uint m_indicator_red;
-
+		//outline which will be turned on and off
+		uint m_outline_id;
+		uint m_propeller_id;
 		uint m_player_id;
 
-		//used to accumulate dt
-		float m_timer_counter;
+		//how long the entity is alive for
+		float m_lifetime;
 
+		//just a timer
+		float m_dt_counter = 0;
+		bool test = false;
 		// respective threshold
 		// threshold_3 > threshold_2 > threshold_1 > BOOM
 		// please use common sense, threshold values should be lower arming timer
-		float m_threshold_3;
 		float m_threshold_2;
 		float m_threshold_1;
 
+		float m_flicker_rate_2;
+		float m_flicker_rate_1;
+
 		public override void Init(ref uint _entityID)
 		{
-			m_timer_counter = 0;
 			entityID = _entityID;
 		}
 
@@ -43,41 +46,60 @@ namespace Scripting
 		//mainly for binding of datas and entity id
 		void BindData()
 		{
-			m_indicator_white = ECS.FindChildEntityWithName(entityID, "White");
-			m_indicator_red = ECS.FindChildEntityWithName(entityID, "Red");
-
+			m_outline_id = ECS.FindChildEntityWithName(entityID, "Outline");
+			m_propeller_id = ECS.FindChildEntityWithName(entityID, "Propeller");
 			m_player_id = ECS.FindEntityWithName("PlayerShip");
 
-			m_threshold_1 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_threshold_1");
-			m_threshold_2 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_threshold_2");
-			m_threshold_3 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_threshold_3");
+			m_threshold_1 = ECS.GetValue<float>(entityID, 3.69f, "m_ExplosiveEnemy_threshold_1");
+			m_threshold_2 = ECS.GetValue<float>(entityID, 1.69f, "m_ExplosiveEnemy_threshold_2");
 
+			m_flicker_rate_1 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_flicker_rate_1");
+			m_flicker_rate_2 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_flicker_rate_2");
+
+			m_armed = true;
+			m_lifetime = ECS.GetValue<float>(entityID, 5.69f, "m_ExplosiveEnemy_lifetime");
 			Console.WriteLine("m_player_id id: " + m_player_id);
+			Console.WriteLine("m_outline_id id: " + m_outline_id);
+			Console.WriteLine("m_propeller_id id: " + m_propeller_id);
 		}
 
 		public override void Update(float dt)
 		{
 			if (m_armed)
             {
-				m_timer_counter += dt;
+				m_lifetime -= dt;
 
 				// threshold_3 > threshold_2 > threshold_1 > BOOM
-				if (m_timer_counter < 0)
+				if (m_lifetime < 0)
                 {
 					Console.WriteLine("BOOOOOOOOOOOOOOM");
 				}
-				else if(m_timer_counter < m_threshold_1)
+				else if(m_lifetime < m_threshold_1)
                 {
 					Console.WriteLine("beep beep beep");
+					Flicker(ref dt, ref m_flicker_rate_1);
 				}
-				else if (m_timer_counter < m_threshold_2)
+				else if (m_lifetime < m_threshold_2)
 				{
+					Flicker(ref dt, ref m_flicker_rate_2);
 					Console.WriteLine("beep beep");
 				}
-				else if (m_timer_counter < m_threshold_3)
-				{
-					Console.WriteLine("beep");
-				}
+			}
+        }
+
+		void Flicker(ref float dt, ref float limit)
+        {
+			m_dt_counter += dt;
+			if (m_dt_counter > limit)
+            {
+				if (test)
+					ECS.SetActive(m_outline_id, !test);
+                else
+					ECS.SetActive(m_outline_id, !test);
+
+				test = !test;
+				//ECS.ToggleEntity(m_outline_id);
+				m_dt_counter = 0;
 			}
         }
 
