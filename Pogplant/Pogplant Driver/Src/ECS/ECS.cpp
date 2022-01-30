@@ -216,6 +216,7 @@ entt::entity ECS::CopyEntity(entt::entity _target, entt::entity _override)
 
 	Try_Copy<Scriptable>(new_entity, _target);
 	Try_Copy<PauseScriptable>(new_entity, _target);
+	Try_Copy<ScriptVariables>(new_entity, _target);
 	//Try_Copy<>(new_entity, _target);
 	//Try_Copy<Prefab>(new_entity, _target);
 
