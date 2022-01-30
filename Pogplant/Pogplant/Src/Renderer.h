@@ -11,10 +11,20 @@ namespace Components
 
 namespace Pogplant
 {
-
 	class Renderer
 	{
 	public:
+
+		//enum RenderMode
+		//{
+		//	EDITOR,
+		//	POSITION,
+		//	NORMAL,
+		//	ALBEDO,
+		//	AO,
+		//	RENDER_MODE_COUNT,
+		//};
+
 		static void InitAOKernel();
 		static void StartEditorBuffer();
 		static void StartGameBuffer();
@@ -39,14 +49,15 @@ namespace Pogplant
 		static void BindTexture(int _Location, unsigned _TexID);
 		static bool m_RenderGrid;
 		static bool m_EnableShadows;
+		static float m_BloomDamp;
 		static float m_Exposure;
 		static float m_Gamma;
-		static float m_LightShaftDecay;
-		static float m_LightShaftExposure;
-		static float m_LightShaftDensity;
-		static float m_LightShaftWeight;
-		static glm::vec3 m_LightShaftPos;
-		static float m_LightShaftScale;
+		//static float m_LightShaftDecay;
+		//static float m_LightShaftExposure;
+		//static float m_LightShaftDensity;
+		//static float m_LightShaftWeight;
+		//static glm::vec3 m_LightShaftPos;
+		//static float m_LightShaftScale;
 
 		static glm::vec3 m_QuatTestPos;
 		static glm::vec3 m_QuatTestRot;
@@ -55,6 +66,10 @@ namespace Pogplant
 		static std::vector<glm::vec3> m_AOKernel;
 		static float m_AO_Radius;
 		static float m_AO_Bias;
+		
+		//static RenderMode m_DebugRenderMode;
+		static bool m_EditorCamDebug;
+
 	private:
 		static void DrawText(const entt::registry& registry, bool _EditorMode);
 	};

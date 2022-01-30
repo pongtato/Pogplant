@@ -8,6 +8,8 @@
 #include "ScriptResource.h"
 #include "../../Serialiser/CustomSaver.h"
 
+#include "ScriptSystem.h"
+
 namespace SSH
 {
 	// ECS for C# side
@@ -34,7 +36,14 @@ namespace SSH
 	void SetRotation(std::uint32_t entityID, glm::vec3 rot);
 	void SetScale(std::uint32_t entityID, glm::vec3 sca);
 	void SetParticlePause(std::uint32_t entityID, bool isPaused);
-	
+	void SetLaserStart(std::uint32_t entityID, bool isActivated);
+	bool IsLaserComplete(std::uint32_t entityID);
+	void ResetLaser(std::uint32_t entityID);
+	//Canvas Component
+	void SetFrames(std::uint32_t entityID, int frameValue);
+	void SetColorTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
+	glm::vec3 GetColorTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
+
 
 	// True is enabled, False is disabled
 	void SetActive(std::uint32_t entityID, bool isEnabled);
@@ -63,7 +72,7 @@ namespace SSH
 	void SetGlobalPosition(std::uint32_t entityID, glm::vec3 pos);
 	void SetGlobalRotation(std::uint32_t entityID, glm::vec3 rot);
 	void SetGlobalScale(std::uint32_t entityID, glm::vec3 scale);
-  glm::vec3 GetForwardVector(std::uint32_t entityID);
+	glm::vec3 GetForwardVector(std::uint32_t entityID);
 
 
 	// Components for GambObject
@@ -114,6 +123,22 @@ namespace SSH
 	}
 
 	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params);
+
+	//void SetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
+	template <typename T>
+	inline static T ScriptVariableGet(std::uint32_t entityID, T defaultValue, MonoString* monoName)
+	{
+		auto scriptVarCom = ScriptSystem::GetECS()->GetReg().try_get<Components::ScriptVariables>(static_cast<entt::entity>(entityID));
+
+		const char* key = mono_string_to_utf8(monoName);
+
+		if (scriptVarCom)
+			return scriptVarCom->GetValue<T>(key, defaultValue);
+
+		return defaultValue;
+	}
+
+	MonoString* ScriptVariableGetString(std::uint32_t entityID, MonoString* defaultValue, MonoString* monoName);
 }
 
 #include "ScriptSystemHelper.hpp"

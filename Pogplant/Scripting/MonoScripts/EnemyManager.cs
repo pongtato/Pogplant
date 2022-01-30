@@ -18,7 +18,6 @@ namespace Scripting
 {
     public class EnemyManager
     {
-
         public static int enemy_counter = 0;
 
         public Transform parent;
@@ -38,11 +37,9 @@ namespace Scripting
 
         private List<uint> enemies_to_delete = new List<uint>();
 
-        public static uint score = 0;                                    // Current score
-        private static uint kill_score = 100;                            // Addition to base score everytime an enemy is killed
-        private static uint bonus_score = 50;                            // Bonus score
-        private static int bonus_count;                                     
-        private static int bonus_increment_requirement = 5;              // Increase bonus everytime this amount of enemies is killed
+        //private static uint bonus_score = 50;                            // Bonus score
+        //private static int bonus_count;                                     
+        //private static int bonus_increment_requirement = 5;              // Increase bonus everytime this amount of enemies is killed
         static uint DashboardScreenID;
 
         // Start is called before the first frame update
@@ -196,7 +193,7 @@ namespace Scripting
         {
             if (isDiedFromPlayer)
             {
-                AddScore(true);
+                PlayerScript.AddScore(true);
             }
             enemies_to_delete.Add(id);
         }
@@ -244,47 +241,59 @@ namespace Scripting
                 }
             }
         }
+        //public static void AddScore(bool increment)
+        //{
+        //    Console.WriteLine(PlayerScript.m_ComboNumber);
+        //    //Increase score
+        //    if (increment)
+        //    {
+        //        // Max 99
+        //        if (PlayerScript.m_ComboNumber < 99)
+        //            ++PlayerScript.m_ComboNumber;
 
-        public static void AddScore(bool increment)
-        {
-            //Increase score
-            if (increment)
-            {
-                ++bonus_count;
-                if (bonus_count >= bonus_increment_requirement && PlayerScript.m_ComboActive)
-                {
-                    Console.WriteLine("Combo Activated");
-                    bonus_count = 0;
-                    score += bonus_score;
-                    bonus_score += 10;
-                }
-                score += kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
-                PlayerScript.m_ComboDecayTimer = 0.0f;
-                //GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
-            }
-            //Decrease score
-            else
-            {
-                bonus_count = 0;
-                if (score > 10)
-                {
-                    score -= 10;
-                }
-            }
+        //        // Start the combo decay timer
+        //        PlayerScript.m_ComboDecayTimer = PlayerScript.m_ComboDecayTimeLimit;
+        //        ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_FullComboBarScale);
 
-            GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
-        }
-        public void DestroyEnemyFromObstacle(uint id)
-        {
-            foreach (var item in enemy_instances)
-            {
-                if (item.id == id)
-                {
-                    GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(id), 0);
-                    DeleteEnemyInstance(id, false);
-                    break;
-                }
-            }
-        }
+        //        if (PlayerScript.m_ComboActive)
+        //        {
+        //            if(PlayerScript.m_ComboNumber >= 1 && PlayerScript.m_ComboNumber < 2)
+        //            {
+        //                ECS.SetActive(PlayerScript.m_ComboSmallFireID, true);
+        //                ECS.SetActive(PlayerScript.m_ComboLargeFireID, false);
+        //            }
+        //            else
+        //            {
+        //                ECS.SetActive(PlayerScript.m_ComboSmallFireID, false);
+        //                ECS.SetActive(PlayerScript.m_ComboLargeFireID, true);
+        //            }
+
+        //            score += kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber;
+        //        }
+        //        else
+        //        {
+        //            score += kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
+        //        }
+                
+        //        //GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
+        //    }
+        //    //Decrease score
+        //    else
+        //    {
+        //        PlayerScript.m_ComboNumber = 0;
+        //        ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_EmptyComboBarScale);
+        //        PlayerScript.m_ComboDecayTimer = 0.0f;
+        //        PlayerScript.m_ComboActive = false;
+        //        if (score > 10)
+        //        {
+        //            score -= 10;
+        //        }
+        //        ECS.SetActive(PlayerScript.m_ComboSmallFireID, false);
+        //        ECS.SetActive(PlayerScript.m_ComboLargeFireID, false);
+        //    }
+
+        //    GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
+        //    GameUtilities.UpdateComboUI(PlayerScript.m_ComboNumberID, PlayerScript.m_ComboNumber);
+        //}
     }
 }

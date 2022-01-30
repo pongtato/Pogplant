@@ -52,13 +52,15 @@ namespace Scripting
 		float& scale_down_dt, float& scale_down_time, bool& explode_phase3, bool& m_End, glm::vec3& start_centre, glm::vec3& start_extends, float dt);
 
 	static void SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier);
+	static void StartLaser(std::uint32_t entity);
 
-	//just store the object that contains the EncounterSystemDriver
-	static void IncreaseScorefromEnv(std::uint32_t entityID);
+	////just store the object that contains the EncounterSystemDriver
+	//static void IncreaseScorefromEnv(std::uint32_t entityID);
 
-	static void UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType);
+	//static void UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType);
 
 	static void UpdateScore(std::uint32_t text_object, std::uint32_t score);
+	static void UpdateComboUI(std::uint32_t text_object, std::uint32_t score);
 
 	// Get the player healths
 	static float GetPlayerHealth();
@@ -78,7 +80,9 @@ namespace Scripting
 	// Helper Function for taking damage
 	static void InvokeEnemyTakeDamage(std::string _ScriptName,
 																		entt::entity object ,entt::entity other, 
-																		Components::Projectile* player_projectile_pointer, Components::Scriptable* enemy_script_pointer);  
+																		Components::Projectile* player_projectile_pointer, Components::Scriptable* enemy_script_pointer);
+	static void EnemyTakeDamageFromID(std::uint32_t entityID, float damage);
+
 	private:
 
 	static entt::entity m_playerbox;

@@ -74,11 +74,14 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void UpdateScore(uint text_object, uint score);
 
-        [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void IncreaseScorefromEnv(uint entityID);
+        //[MethodImplAttribute(MethodImplOptions.InternalCall)]
+        //public extern static void IncreaseScorefromEnv(uint entityID);
+
+        //[MethodImplAttribute(MethodImplOptions.InternalCall)]
+        //public extern static void UpdateDashboardFace(uint entityID, uint face);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void UpdateDashboardFace(uint entityID, uint face);
+        public extern static void StartLaser(uint entityID);
 
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")
         {
@@ -99,5 +102,11 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void ResumeScene();
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void EnemyTakeDamageFromID(uint entityID, float damage);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void UpdateComboUI(uint text_object, uint score);
     }
 }

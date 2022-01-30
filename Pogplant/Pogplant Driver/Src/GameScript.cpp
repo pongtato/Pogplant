@@ -171,8 +171,8 @@ namespace Scripting
 		//Add power to the shots
 		glm::vec3 Powershot = _FowardVector * speed;
 		body->AddImpulseForce(Powershot);
-
 	}
+
 	void GameScript::FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue)
 	{
 		//Get enemy transform 
@@ -552,39 +552,39 @@ namespace Scripting
 		return isAlive;
 	}
 
-	void GameScript::IncreaseScorefromEnv(std::uint32_t entityID)
-	{
-		entt::entity encounterdriverID = static_cast<entt::entity>(entityID);
+	//void GameScript::IncreaseScorefromEnv(std::uint32_t entityID)
+	//{
+	//	entt::entity encounterdriverID = static_cast<entt::entity>(entityID);
 
-		if (encounterdriverID != entt::null)
-		{
-			auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(encounterdriverID);
-			if (scriptable)
-			{
-				if (scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
-				{
-					SSH::InvokeFunction("EncounterSystemDriver", "AddScore", encounterdriverID);
-				}
-			}
-		}
-	}
+	//	if (encounterdriverID != entt::null)
+	//	{
+	//		auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(encounterdriverID);
+	//		if (scriptable)
+	//		{
+	//			if (scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+	//			{
+	//				SSH::InvokeFunction("EncounterSystemDriver", "AddScore", encounterdriverID);
+	//			}
+	//		}
+	//	}
+	//}
 
-	void GameScript::UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType)
-	{
-		entt::entity dashboardID = static_cast<entt::entity>(dashboardEntityID);
+	//void GameScript::UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType)
+	//{
+	//	entt::entity dashboardID = static_cast<entt::entity>(dashboardEntityID);
 
-		if (PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(dashboardID))
-		{
-			auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(dashboardID);
-			if (scriptable)
-			{
-				if (scriptable->m_ScriptTypes.contains("DashboardScreen"))
-				{
-					SSH::InvokeFunction("DashboardScreen", "SwapFace", dashboardID, faceType);
-				}
-			}
-		}
-	}
+	//	if (PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(dashboardID))
+	//	{
+	//		auto scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(dashboardID);
+	//		if (scriptable)
+	//		{
+	//			if (scriptable->m_ScriptTypes.contains("DashboardScreen"))
+	//			{
+	//				SSH::InvokeFunction("DashboardScreen", "SwapFace", dashboardID, faceType);
+	//			}
+	//		}
+	//	}
+	//}
 
 	void GameScript::UpdateScore(std::uint32_t text_object, std::uint32_t score)
 	{
@@ -594,6 +594,37 @@ namespace Scripting
 		auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(text_object));
 		
 		static constexpr size_t numPadding = 8;
+		static std::string scoreText;
+		if (text)
+		{
+			scoreText = std::to_string(score);
+			int limit = (int)numPadding - (int)scoreText.size();
+
+			if (limit < 0)
+			{
+				text->m_Text = scoreText;
+			}
+			else
+			{
+				text->m_Text = "";
+				for (size_t i = 0; i < limit; i++)
+				{
+					text->m_Text += "0";
+				}
+
+				text->m_Text += scoreText;
+			}
+		}
+	}
+
+	void GameScript::UpdateComboUI(std::uint32_t text_object, std::uint32_t score)
+	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(text_object)))
+			return;
+
+		auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(text_object));
+
+		static constexpr size_t numPadding = 2;
 		static std::string scoreText;
 		if (text)
 		{
@@ -761,6 +792,11 @@ namespace Scripting
 		}
 	}
 
+	void GameScript::StartLaser(std::uint32_t entity)
+	{
+		SSH::InvokeFunction("Laser", "ActivateLaser", static_cast<entt::entity>(entity));
+	}
+
 	//Helper function for Playerbullet taking damage
 	void GameScript::InvokeEnemyTakeDamage(std::string _ScriptName, entt::entity object, entt::entity other,Components::Projectile* player_projectile_p , Components::Scriptable* enemy_script_p)
 	{
@@ -773,6 +809,23 @@ namespace Scripting
 		}
 	}
 
+	//Helper function for Playerbullet taking damage
+	void GameScript::EnemyTakeDamageFromID(std::uint32_t entityID, float damage)
+	{
+		auto enemy_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(entityID));
+
+		if (enemy_script)
+		{
+			if (enemy_script->m_ScriptTypes.contains("BaseTurret"))
+				SSH::InvokeFunction("BaseTurret", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			else if (enemy_script->m_ScriptTypes.contains("BaseGattling"))
+				SSH::InvokeFunction("BaseGattling", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			else if (enemy_script->m_ScriptTypes.contains("BaseFlock"))
+				SSH::InvokeFunction("BaseFlock", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			else if (enemy_script->m_ScriptTypes.contains("L1BossShield"))
+				SSH::InvokeFunction("L1BossShield", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+		}
+	}
 }
 
 

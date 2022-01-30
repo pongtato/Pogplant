@@ -186,6 +186,9 @@
     <ClCompile Include="Src\Serialiser\CustomSaver.cpp">
       <Filter>Source Files\Serialiser</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Utils\TimeStone.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ImguiHelper.h">
@@ -340,6 +343,9 @@
     </ClInclude>
     <ClInclude Include="Src\Serialiser\CustomSaver.hpp">
       <Filter>Source Files\Serialiser</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utils\TimeStone.h">
+      <Filter>Source Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

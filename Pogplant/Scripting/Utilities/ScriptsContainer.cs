@@ -23,6 +23,7 @@ namespace Scripting
             // For Mono Scripts
             monoScriptNames.Add("PlayerScript");
             monoScriptNames.Add("FirstPersonFiringSystem");
+            monoScriptNames.Add("FirstPersonFiringBox");
             monoScriptNames.Add("EncounterSystemDriver");
             monoScriptNames.Add("FollowSpline");
             monoScriptNames.Add("L1BossShield");
@@ -36,14 +37,20 @@ namespace Scripting
             monoScriptNames.Add("MissileController");
             //monoScriptNames.Add("Missile");
             monoScriptNames.Add("FlockController");
-            //monoScriptNames.Add("EnvDamage");
             monoScriptNames.Add("MainMenuController");
-            monoScriptNames.Add("DummyScript");
+            monoScriptNames.Add("Laser");
+            monoScriptNames.Add("LaserTriggerController");
             monoScriptNames.Add("GameOverScreen");
             monoScriptNames.Add("GameEndingTrigger");
             monoScriptNames.Add("DashboardScreen");
             monoScriptNames.Add("BonusItem");
             monoScriptNames.Add("SettingsMenu");
+            monoScriptNames.Add("BossWarning");
+            monoScriptNames.Add("L1Boss");
+            monoScriptNames.Add("L1BossBehaviour");
+            monoScriptNames.Add("EndGameMenuTrigger");
+            monoScriptNames.Add("TetherEnemy");
+            monoScriptNames.Add("ExplosiveEnemy");
         }
         
         private void AddPauseScripts()
@@ -53,6 +60,8 @@ namespace Scripting
             pauseScriptNames.Add("BobbleHeadMenu");
             pauseScriptNames.Add("PauseMenu");
             pauseScriptNames.Add("PauseSettingsMenu");
+            pauseScriptNames.Add("LaserWeapon");
+            pauseScriptNames.Add("EndGameMenu");
         }
 
         public string GetScriptNameElement(int index)

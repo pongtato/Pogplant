@@ -34,6 +34,24 @@ namespace Components
 			m_Lifetime(lifetime), m_CurentLifetime(0.f), m_Speed(speed), m_Damage(damage), m_Ownertype(ownertype) {};
 	};
 
+	struct Laser
+	{
+		bool  m_ActivateLaser = false;
+		bool  m_Onceflag = false;
+		float m_Spawntime;
+		float m_Activetime;
+		float m_Inactivetime;
+		float m_ChargeParticletime;
+		float m_LaserLerptime;
+
+		bool m_IsDeactivated = false;
+		float m_AccumulatedActivetime = 0.f;
+		float m_AccumulatedTime = 0.f;
+		bool m_LaserCompleted = false;
+
+		Laser(float Spawntime = 5.f, float Activetime = 0.f, float Inactivetime = 0.f, float ChargeParticletime = 0.f, float LaserLerptime = 0.f) :
+			m_Spawntime(Spawntime), m_Activetime(Activetime), m_Inactivetime(Inactivetime), m_ChargeParticletime(ChargeParticletime), m_LaserLerptime(LaserLerptime) {};
+	};
 }
 
 #endif // !GENERICCOMPONENTS_H_

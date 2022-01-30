@@ -285,6 +285,7 @@ namespace Components
 		, m_SpawnCount{ 1 }
 		, m_SubSpawnCount{ 1 }
 		, m_SubActiveCount{ 0 }
+		, m_CurrentLifetime{ 0.0f }
 		, m_EmitterType{ EMITTER_TYPE::GENERAL }
 		, m_Loop{ false }
 		, m_Done{ false }
@@ -293,8 +294,8 @@ namespace Components
 		, m_Pause{ false }
 		, m_FollowParent{ false }
 		, m_Trail{ false }
+		, m_TexID{-1}
 	{
-		m_TexID = -1;
 	}
 
 	ParticleSystem::ParticleSystem
@@ -344,6 +345,7 @@ namespace Components
 		, m_SpawnCount{ _SpawnCount }
 		, m_SubSpawnCount{ _SubSpawnCount }
 		, m_SubActiveCount{ 0 }
+		, m_CurrentLifetime{ 0.0f }
 		, m_EmitterType{ static_cast<EMITTER_TYPE>(_EmitterType) }
 		, m_Loop{ _Loop }
 		, m_Done{ false }
@@ -352,10 +354,11 @@ namespace Components
 		, m_Pause{ false }
 		, m_FollowParent{ _FollowParent }
 		, m_Trail{ _Trail }
+		, m_TexID{ -1 }
 	{
 		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
-		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
-		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		//auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
+		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
 	}
 
 	void ParticleSystem::init()
@@ -363,8 +366,9 @@ namespace Components
 		Clear();
 		m_Pause = false;
 		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[m_TexName]);
-		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
-		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		//auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
+		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
 
 		m_CurrentLifetime = 0.0f;
 	}
@@ -553,7 +557,7 @@ namespace Components
 			m_TexID,
 			life,
 			life,
-			1.0f / m_Speed.m_CurveData.size(),
+			1.0f / ParticleSystem::CurveVariable::m_DataPoints,
 			randRotate,
 			m_SpriteAnimation
 		};
@@ -595,6 +599,8 @@ namespace Components
 		float t = 1.0f - _Particle.m_Life / _Particle.m_BaseLife;
 		size_t index = static_cast<size_t>(t / _Particle.m_IndexCalc);
 		// For some reason it exceeds the index size
+
+		//printf("%d | %f | %f | %f \n", static_cast<int>(index), _Particle.m_Life, _Particle.m_BaseLife, _Particle.m_IndexCalc);
 
 		//Change if needed, I defaulted it to 1.f for both first
 		float curveSpeed;
@@ -701,8 +707,7 @@ namespace Components
 		m_CurvePoints.push_back({ 1.0f, 1.0f });
 
 		m_CurveData.resize(m_DataPoints);
-
-		int smoothness = static_cast<int>(m_CurveData.size());
+		int smoothness = static_cast<int>(m_DataPoints);
 		for (int i = 0; i <= (smoothness - 1); ++i) 
 		{
 			float qx = (i + 1) / float(smoothness);
@@ -721,8 +726,7 @@ namespace Components
 		, m_MultiplierMax{ _MultiMax }
 	{
 		m_CurveData.resize(m_DataPoints);
-
-		int smoothness = static_cast<int>(m_CurveData.size());
+		int smoothness = static_cast<int>(m_DataPoints);
 		for (int i = 0; i <= (smoothness - 1); ++i)
 		{
 			float qx = (i + 1) / float(smoothness);
@@ -790,19 +794,21 @@ namespace Components
 		}
 	}
 
-	Canvas::Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho)
-		: m_Color {_Color}
-		, m_TexName {_TexName}
-		, m_TexID {0}
-		, m_Ortho {_Ortho}
+	Canvas::Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho, bool _ForceAlpha)
+		: m_Color{ _Color }
+		, m_TexName{ _TexName }
+		, m_TexID{ 0 }
+		, m_Ortho{ _Ortho }
+		, m_ForceAlpha{ _ForceAlpha }
 	{
 		init();
 	}
 
 	void Canvas::init()
 	{
-		auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
-		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		//auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
+		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
+		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
 	}
 
 	ParticleSystem::SubEmitter::SubEmitter(const glm::vec3& _Position, const glm::vec3& _Direction, int _Count)
@@ -843,12 +849,13 @@ namespace Components
 		, m_Play{ false }
 		, m_Pause{ false }
 	{
+		CalcUV();
 	}
 
-	SpriteAnimation::SpriteAnimation(int _MaxFrames, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed)
+	SpriteAnimation::SpriteAnimation(int _MaxFrames, float _CurrentFrame, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed)
 		: m_Tiling{ 1.0f / _Columns, 1.0f / _Rows }
 		, m_UV_Offset{ 0,0 }
-		, m_FrameCounter{ 0 }
+		, m_FrameCounter{ _CurrentFrame }
 		, m_PlaySpeed{ _PlaySpeed }
 		, m_MaxFrames{ _MaxFrames }
 		, m_Rows{ _Rows }
@@ -857,6 +864,7 @@ namespace Components
 		, m_Play{ _Playing }
 		, m_Pause{ false }
 	{
+		CalcUV();
 	}
 
 	void SpriteAnimation::Update(float _Dt)
@@ -889,7 +897,7 @@ namespace Components
 	{
 		m_FrameCounter = 0.0f;
 		m_Tiling = { 1.0f / m_Columns, 1.0f / m_Rows };
-		m_UV_Offset = { 0.0f, (m_Rows - 1) * m_Tiling.y };
+		m_UV_Offset = { 0.0f, m_Tiling.y };
 	}
 
 	void SpriteAnimation::NextFrame()
@@ -904,9 +912,19 @@ namespace Components
 		CalcUV();
 	}
 
+	void SpriteAnimation::SetFrame(int _NewFrame)
+	{
+		if (_NewFrame < 0 || _NewFrame >= m_MaxFrames)
+		{
+			return;
+		}
+		m_FrameCounter = static_cast<float>(_NewFrame);
+		CalcUV();
+	}
+
 	void SpriteAnimation::init()
 	{
-		m_FrameCounter = 0.0f;
+		//m_FrameCounter = 0.0f;
 	}
 
 	void SpriteAnimation::CalcUV()
@@ -918,6 +936,6 @@ namespace Components
 		// Frame 6 will result in an offset of {0.5,0.25}
 		int yOffset = currFrame / m_Columns;
 		int xOffset = currFrame % m_Columns;
-		m_UV_Offset = { xOffset * m_Tiling.x, (m_Rows - 1) * m_Tiling.y - yOffset * m_Tiling.y };
+		m_UV_Offset = { xOffset * m_Tiling.x, (1.0f + yOffset) * m_Tiling.y };
 	}
 }

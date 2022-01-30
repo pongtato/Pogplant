@@ -1,4 +1,4 @@
-#include "Serializer.h"
+﻿#include "Serializer.h"
 
 #include "Logger.h"
 #include "../ECS/Components/Components.h"
@@ -147,7 +147,9 @@ namespace PogplantDriver
 			entt::entity prev = entt::null;
 
 			Components::Transform* parentPtr;
-			auto entities = m_ecs.view<Transform>();
+			//auto entities = m_ecs.view<Transform>();
+			auto entities = m_ecs.GetReg().view<Transform>(entt::exclude_t<Components::Prefab>());
+
 			for (auto entity = entities.rbegin(); entity != entities.rend(); ++entity)
 			{
 				if (m_saved.contains(*entity))
@@ -207,6 +209,7 @@ namespace PogplantDriver
 		auto render_component = m_ecs.GetReg().try_get<Renderer>(id);
 		auto script_component = m_ecs.GetReg().try_get<Scriptable>(id);
 		auto pscript_component = m_ecs.GetReg().try_get<PauseScriptable>(id);
+		auto scriptVariablesComponent = m_ecs.GetReg().try_get<ScriptVariables>(id);
 		auto audio_component = m_ecs.GetReg().try_get<AudioSource>(id);
 		// To reflect save
 
@@ -224,6 +227,7 @@ namespace PogplantDriver
 		Try_Save_Component<Rigidbody>(subroot, id);
 		Try_Save_Component<ParticleSystem>(subroot, id);
 		Try_Save_Component<Canvas>(subroot, id);
+		Try_Save_Component<Laser>(subroot, id);
 		Try_Save_Component<Components::Guid>(subroot, id);
 		Try_Save_Component<Components::SpriteAnimation>(subroot, id);
 		Try_Save_Component<Prefab>(subroot, id);
@@ -273,6 +277,49 @@ namespace PogplantDriver
 				classroot[script_name.first] = script_name.second;
 			}
 			subroot["P_Scripting"] = classroot;
+		}
+
+		if (scriptVariablesComponent)
+		{
+			Json::Value classroot{ Json::arrayValue };
+
+			for (auto itr = scriptVariablesComponent->m_variables.begin(); itr != scriptVariablesComponent->m_variables.end(); ++itr)
+			{
+				Json::Value data;
+				{
+					data["Name"] = itr->first;
+					data["Type"] = (int)itr->second.m_type;
+					data["Data"] = itr->second.m_data;
+
+					switch (itr->second.m_type)
+					{
+					case Components::ScriptVariables::Variable::Type::FLOAT:
+						data["Data"] = *reinterpret_cast<float*>(itr->second.m_data);
+						break;
+					case Components::ScriptVariables::Variable::Type::INT:
+						data["Data"] = *reinterpret_cast<int*>(itr->second.m_data);
+						break;
+					case Components::ScriptVariables::Variable::Type::BOOL:
+						data["Data"] = *reinterpret_cast<bool*>(itr->second.m_data);
+						break;
+					case Components::ScriptVariables::Variable::Type::STRING:
+						data["Data"] = *reinterpret_cast<std::string*>(itr->second.m_data);
+						break;
+					case Components::ScriptVariables::Variable::Type::VECTOR3:
+						glm::vec3 vectorSave = *reinterpret_cast<glm::vec3*>(itr->second.m_data);
+						data["Data0"] = vectorSave.x;
+						data["Data1"] = vectorSave.y;
+						data["Data2"] = vectorSave.z;
+						break;
+					default:
+						throw;
+					}
+				}
+
+				classroot.append(data);
+			}
+
+			subroot["ScriptVariables"] = classroot;
 		}
 
 		if (audio_component)
@@ -339,6 +386,8 @@ namespace PogplantDriver
 			istream.close();
 		}
 
+		LoadPrefabAfter();
+
 		//assert(p_id != entt::null);
 		return p_id;
 	}
@@ -349,13 +398,12 @@ namespace PogplantDriver
 		auto& relationship = root["Children"];
 		auto& scripting = root["Scripting"];
 		auto& pscripting = root["P_Scripting"];
+		auto& scriptVariables = root["ScriptVariables"];
 		auto& audioSource = root["AudioSource"];
-
 
 		Try_Load_Component<ParticleSystem>(root, "ParticleSystem", id);
 		Try_Load_Component<Canvas>(root, "Canvas", id);
 		Try_Load_Component<Transform>(root, "Transform", id);
-
 
 		Try_Load_Component<Directional_Light>(root, "Directional_Light", id);
 		Try_Load_Component<Point_Light>(root, "Point_Light", id);
@@ -368,16 +416,30 @@ namespace PogplantDriver
 		Try_Load_Component<OBBBoxCollider>(root, "OBBBoxCollider", id);
 		Try_Load_Component<Camera>(root, "Camera", id);
 		Try_Load_Component<Rigidbody>(root, "Rigidbody", id);
+		Try_Load_Component<Laser>(root, "Laser", id);
 		Try_Load_Component<Components::SpriteAnimation>(root, "SpriteAnimation", id);
 
 		Try_Load_Component<Components::Guid>(root, "Guid", id);
 
 		if(!remove_prefab_tag)
 			Try_Load_Component<Prefab>(root, "Prefab", id);
-		Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);
 
+		auto& PrefabInstance_data = root["PrefabInstance"];
+		if (PrefabInstance_data)
+		{
+			Try_Load_Component<PrefabInstance>(root, "PrefabInstance", id);
+			auto pi_data = m_ecs.GetReg().get<PrefabInstance>(id);
+			if (pi_data.prefab_path != "")
+				m_prefab_list.push_back(pi_data.prefab_path);
+		}
 
-
+		//set to disabled
+		auto entity_name = m_ecs.GetReg().try_get<Name>(id);
+		if (entity_name)
+		{
+			if (!entity_name->status)
+				m_ecs.DisableEntity(id);
+		}
 
 		if (relationship)
 		{
@@ -493,6 +555,49 @@ namespace PogplantDriver
 			m_ecs.GetReg().emplace<PauseScriptable>(id, temp_ScriptTypes);
 		}
 
+		if (scriptVariables)
+		{
+			auto& scriptVarComponent = m_ecs.GetReg().get_or_emplace<Components::ScriptVariables>(id);
+
+			for (auto itr = scriptVariables.begin(); itr != scriptVariables.end(); ++itr)
+			{
+				Json::Value data = *itr;
+
+				Components::ScriptVariables::Variable var;
+				var.m_type = (Components::ScriptVariables::Variable::Type)data["Type"].asInt();
+
+				switch (var.m_type)
+				{
+				case Components::ScriptVariables::Variable::Type::FLOAT:
+					var.SetValue<float>(data["Data"].asFloat());
+					break;
+				case Components::ScriptVariables::Variable::Type::INT:
+					var.SetValue<int>(data["Data"].asInt());
+					break;
+				case Components::ScriptVariables::Variable::Type::BOOL:
+					var.SetValue<bool>(data["Data"].asBool());
+					break;
+				case Components::ScriptVariables::Variable::Type::STRING:
+					var.SetValue<std::string>(data["Data"].asString());
+					break;
+
+				case Components::ScriptVariables::Variable::Type::VECTOR3:
+					var.SetValue<glm::vec3>(
+						glm::vec3{
+						data["Data0"].asFloat(),
+						data["Data1"].asFloat(),
+						data["Data2"].asFloat()
+						}
+					);
+					break;
+				default:
+					throw;
+				}
+
+				scriptVarComponent.m_variables.insert({data["Name"].asString(), var});
+			}
+		}
+
 		if (audioSource)
 		{
 			auto& audioComponent = m_ecs.GetReg().emplace<AudioSource>(id);
@@ -550,6 +655,15 @@ namespace PogplantDriver
 			sphereCollider->sphere.m_pos = transform.GetGlobalPosition() + sphereCollider->centre;
 			sphereCollider->sphere.m_radius = sphereCollider->radius * std::max({ tmpScale.x, tmpScale.y, tmpScale.z });
 		}
+	}
+	void Serializer::LoadPrefabAfter()
+	{
+		for (auto str : m_prefab_list)
+		{
+			if (!m_ecs.m_prefab_map.contains(str))
+				LoadPrefab(str, true);
+		}
+		m_prefab_list.clear();
 	}
 
 	int Serializer::RecurSaveChild(Json::Value& _classroot, entt::entity id, int counter)

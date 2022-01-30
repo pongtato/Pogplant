@@ -1,0 +1,534 @@
+[
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Guid" : 
+		{
+			"m_guid" : "e93cb2b2-aece-4f65-85ac-a35405744907"
+		},
+		"Name" : 
+		{
+			"m_Name" : "LaserTriggerGroup1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "94b9e5e2-a8f7-44ec-bc45-7a1da1990d7c",
+			"prefab_path" : "Resources\\Prefabs\\Laser_Trigger_Group.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"LaserTriggerController" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.095849275588989258,
+				10.071174621582031,
+				-6.0786385536193848
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Laser1"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
+			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cube",
+				"Resources/Models\\cube",
+				"Box001"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Laser" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.036664962768554688,
+				-1.9073486328125e-06,
+				-57.359325408935547
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99988704919815063,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				100.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.40000000596046448,
+				10.0,
+				0.40000000596046448
+			],
+			"isStatic" : true,
+			"isTrigger" : false
+		},
+		"Children" : 1,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 5.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "LaserObject"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.003551483154296875,
+				-8.2874011993408203
+			],
+			"m_rotation" : 
+			[
+				1.4392187441814031e-09,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.005908966064453,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserOutLine"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.30697673559188843,
+				0.30697673559188843
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.9550323486328125e-05,
+				-1.1920928955078125e-07
+			],
+			"m_rotation" : 
+			[
+				9.1599991480784126e-12,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserParticle"
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				0.079069793224334717,
+				0.079069793224334717,
+				1.0
+			],
+			"m_ConeRadiusMax" : 2.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.019999999552965164,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 5.0,
+			"m_MinLife" : 2.0,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.94921875
+					],
+					[
+						0.1428571492433548,
+						0.77747905254364014
+					],
+					[
+						0.28571429848670959,
+						0.56611621379852295
+					],
+					[
+						0.4285714328289032,
+						0.37651020288467407
+					],
+					[
+						0.57142859697341919,
+						0.21816849708557129
+					],
+					[
+						0.71428573131561279,
+						0.09903109073638916
+					],
+					[
+						0.8571428656578064,
+						0.025072097778320312
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 100,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_SpawnRadius" : 5.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 100.0,
+				"m_CurveMin" : 50.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 200,
+			"m_TargetConeScale" : 10.0,
+			"m_TexName" : "SliderFill_SM.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.0644073486328125,
+				-3.4474973678588867
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Gate_Entrance"
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Gate_Entrance",
+				"Resources/Models\\Environment",
+				"Gate_Entrace"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.059189531952142715,
+				9.6216621398925781,
+				-10.071171760559082
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.0049998005852103233,
+				0.0050000003539025784,
+				0.0050000003539025784
+			]
+		}
+	}
+]

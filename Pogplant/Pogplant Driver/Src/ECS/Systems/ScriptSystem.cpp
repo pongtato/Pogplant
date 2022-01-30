@@ -22,6 +22,7 @@
 #include "../../GameScript.h"
 #include "../Components/GenericComponents.h"
 #include "../../Serialiser/CustomSaver.h"
+#include "../../Utils/TimeStone.h"
 
 
 bool ScriptSystem::isReload = false;
@@ -422,8 +423,11 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::RunMissilePhase3", &Scripting::GameScript::RunMissilePhase3);
 	mono_add_internal_call("Scripting.GameUtilities::SetTurretFire", &Scripting::GameScript::SetTurretFire);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore", &Scripting::GameScript::UpdateScore);
-	mono_add_internal_call("Scripting.GameUtilities::IncreaseScorefromEnv", &Scripting::GameScript::IncreaseScorefromEnv);
-	mono_add_internal_call("Scripting.GameUtilities::UpdateDashboardFace", &Scripting::GameScript::UpdateDashboardFace);
+	//mono_add_internal_call("Scripting.GameUtilities::IncreaseScorefromEnv", &Scripting::GameScript::IncreaseScorefromEnv);
+	//mono_add_internal_call("Scripting.GameUtilities::UpdateDashboardFace", &Scripting::GameScript::UpdateDashboardFace);
+	mono_add_internal_call("Scripting.GameUtilities::StartLaser", &Scripting::GameScript::StartLaser);
+	mono_add_internal_call("Scripting.GameUtilities::EnemyTakeDamageFromID", &Scripting::GameScript::EnemyTakeDamageFromID);
+	mono_add_internal_call("Scripting.GameUtilities::UpdateComboUI", &Scripting::GameScript::UpdateComboUI);
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);
@@ -443,6 +447,13 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetGlobalRotation", SSH::SetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::SetGlobalScale", SSH::SetGlobalScale);
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);
+
+
+	mono_add_internal_call("Scripting.ECS::GetValueFloat", SSH::ScriptVariableGet<float>);
+	mono_add_internal_call("Scripting.ECS::GetValueInt", SSH::ScriptVariableGet<int>);
+	mono_add_internal_call("Scripting.ECS::GetValueBool", SSH::ScriptVariableGet<bool>);
+	mono_add_internal_call("Scripting.ECS::GetValueVector3", SSH::ScriptVariableGet<glm::vec3>);
+	mono_add_internal_call("Scripting.ECS::GetValueString", SSH::ScriptVariableGetString);
 	
 	mono_add_internal_call("Scripting.ECS::GetBoxColliderECS", SSH::GetBoxColliderECS);
 	mono_add_internal_call("Scripting.ECS::GetTagECS", SSH::GetTagECS);
@@ -458,6 +469,14 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetChildren", SSH::GetChildren);
 	mono_add_internal_call("Scripting.ECS::CheckValidEntity", SSH::CheckValidEntity);
 	mono_add_internal_call("Scripting.ECS::SetParticlePause", SSH::SetParticlePause);
+
+	mono_add_internal_call("Scripting.ECS::SetLaserStart", SSH::SetLaserStart);
+	mono_add_internal_call("Scripting.ECS::IsLaserComplete", SSH::IsLaserComplete);
+	mono_add_internal_call("Scripting.ECS::ResetLaser", SSH::ResetLaser);
+
+	mono_add_internal_call("Scripting.ECS::SetFrames", SSH::SetFrames);
+	mono_add_internal_call("Scripting.ECS::SetColorTint", SSH::SetColorTint);
+	mono_add_internal_call("Scripting.ECS::GetColorTint", SSH::GetColorTint);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
@@ -498,6 +517,9 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.AudioEngine::CreateChannelGroup", SSH::CreateAudioChannelGroup);
 	mono_add_internal_call("Scripting.AudioEngine::PauseChannelGroup", SSH::PauseAudioChannelGroup);
 	mono_add_internal_call("Scripting.AudioEngine::ResumeChannelGroup", SSH::ResumeAudioChannelGroup);
+
+	mono_add_internal_call("Scripting.TimeManager::TriggerTimeAlter", TimeStone::TriggerTimeAlter);
+	mono_add_internal_call("Scripting.TimeManager::ForceNormalTime", TimeStone::ForceNormalTime);
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)

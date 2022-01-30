@@ -1,4 +1,4 @@
-#include "ImguiHelper.h"
+﻿#include "ImguiHelper.h"
 #include "Pogplant.h"
 
 #include <imgui.h>
@@ -27,6 +27,7 @@
 
 #include "Application.h"
 #include <IconsMaterialDesign.h>
+
 namespace PogplantDriver
 {
 	//Adds blank text as seperator text to make things look nicer
@@ -105,6 +106,10 @@ namespace PogplantDriver
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Camera>(PPD::ImguiHelper::m_CurrentEntity);
 		}
+		if (ImGui::MenuItem("Laserrrr", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Laser>(PPD::ImguiHelper::m_CurrentEntity);
+		}
 		// Scriptable Component
 		if (ImGui::MenuItem("Scriptable", NULL, false, adding_enabled))
 		{
@@ -126,6 +131,12 @@ namespace PogplantDriver
 			}
 
 		}
+
+		if (ImGui::MenuItem("Script Variable Container", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::ScriptVariables>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+
 		if (ImGui::MenuItem("Audio Source", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::AudioSource>(PPD::ImguiHelper::m_CurrentEntity);
@@ -133,7 +144,7 @@ namespace PogplantDriver
 		if (ImGui::MenuItem("Canvas", NULL, false, adding_enabled))
 		{
 			glm::vec4 color { 1.f,1.f,1.f,1.f };
-			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "snow_diff.dds", true);
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Canvas>(PPD::ImguiHelper::m_CurrentEntity, color, "NO_TEX.dds", true, false);
 		}
 
 		if (ImGui::MenuItem("Particle System", NULL, false, adding_enabled))
@@ -517,7 +528,7 @@ namespace PogplantDriver
 					{
 						auto _guid = m_ecs->GetReg().get<Components::Guid>(m_CurrentEntity);
 						auto _prefab = m_ecs->GetReg().get<Components::Prefab>(m_CurrentEntity);
-						m_ecs->GetReg().emplace<Components::PrefabInstance>(m_ecs->CopyEntity(m_CurrentEntity), _guid.m_guid, _prefab.file_path);
+						m_ecs->GetReg().emplace_or_replace<Components::PrefabInstance>(m_ecs->CopyEntity(m_CurrentEntity), _guid.m_guid, _prefab.file_path);
 					}
 					if (ImGui::MenuItem("Edit prefab"))
 					{
@@ -1090,6 +1101,39 @@ namespace PogplantDriver
 					}
 				}
 
+				//Laser Component
+				auto laser_com = m_ecs->GetReg().try_get<Components::Laser>(m_CurrentEntity);
+				if (laser_com)
+				{
+					bool enable_laser_com = true;
+
+					if (ImGui::CollapsingHeader(ICON_FA_CAMERA_RETRO "  Laser", &enable_laser_com, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+
+						ImGui::Text("ActivateLaser");
+						ImGui::Checkbox("###ActivateLaser", &laser_com->m_ActivateLaser);
+						
+						ImGui::Text("Laser Activation time");
+						ImGui::DragFloat("###laser_activate", &laser_com->m_Spawntime, 1.0f);
+
+						ImGui::Text("ActiveTime");
+						ImGui::DragFloat("###ActiveTime", &laser_com->m_Activetime, 1.0f);
+
+						ImGui::Text("InactiveTime");
+						ImGui::DragFloat("###InactiveTime", &laser_com->m_Inactivetime, 1.0f);
+
+						ImGui::Text("Lerp Time");
+						ImGui::DragFloat("###Lerp Time", &laser_com->m_LaserLerptime, 1.0f);
+
+						ImguiBlankSeperator(1);
+						ImGui::Separator();
+					}
+					if (!enable_laser_com)
+					{
+						m_ecs->GetReg().remove<Components::Laser>(m_CurrentEntity);
+					}
+				}
+
 				//Audio component
 				auto audioSourceComponent = m_ecs->GetReg().try_get<Components::AudioSource>(m_CurrentEntity);
 				if (audioSourceComponent)
@@ -1259,7 +1303,117 @@ namespace PogplantDriver
 						std::cout << "Entity [" << name_com->m_name << "] has removed pause script component" << std::endl;
 					}
 				}
-				
+
+				auto scriptVariableCom = m_ecs->GetReg().try_get<Components::ScriptVariables>(m_CurrentEntity);
+				if (scriptVariableCom)
+				{
+					bool enable_scripts_com = true;
+
+					if (ImGui::CollapsingHeader(ICON_FA_SD_CARD "  Script Variables", &enable_scripts_com, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						for (auto itr = scriptVariableCom->m_variables.begin(); itr != scriptVariableCom->m_variables.end(); ++itr)
+						{
+							if (ImGui::TreeNode(itr->first.c_str()))
+							{
+								ImGui::Text("Type");
+								ImGui::SameLine();
+
+								Components::ScriptVariables::Variable::Type selectedType = itr->second.m_type;
+
+								if (ImGui::BeginCombo("###ValueType", scriptVariableCom->GetTypeName(selectedType).c_str(), ImGuiComboFlags_PopupAlignLeft))
+								{
+									for (int i = 0; i < (int)Components::ScriptVariables::Variable::Type::TOTAL; ++i)
+									{
+										const bool isSelected = (i == (int)selectedType);
+
+										if (ImGui::Selectable(scriptVariableCom->GetTypeName((Components::ScriptVariables::Variable::Type)i).c_str(), isSelected))
+										{
+											itr->second.UpdateType((Components::ScriptVariables::Variable::Type)i);
+										}
+
+										if (isSelected)
+											ImGui::SetItemDefaultFocus();
+									}
+
+									ImGui::EndCombo();
+								}
+
+								switch (itr->second.m_type)
+								{
+								case Components::ScriptVariables::Variable::Type::FLOAT:
+								{
+									float value = itr->second.GetValue<float>();
+
+									if (ImGui::InputFloat("Float", &value))
+										itr->second.SetValue(value);
+									break;
+								}
+								case Components::ScriptVariables::Variable::Type::INT:
+								{
+									int value = itr->second.GetValue<int>();
+									if (ImGui::InputInt("Int", &value))
+										itr->second.SetValue(value);
+									break;
+								}
+								case Components::ScriptVariables::Variable::Type::BOOL:
+								{
+									bool value = itr->second.GetValue<bool>();
+									if (ImGui::Checkbox("Bool", &value))
+										itr->second.SetValue(value);
+									break;
+								}
+								case Components::ScriptVariables::Variable::Type::STRING:
+								{
+									std::string _str = CreateStringInputField("String", itr->second.GetValue<std::string>());
+									itr->second.SetValue(_str);
+									break;
+								}
+								case Components::ScriptVariables::Variable::Type::VECTOR3:
+								{
+									glm::vec3 value = itr->second.GetValue<glm::vec3>();
+
+									CreateDragFloat3("Vec3", glm::value_ptr(value));
+
+									itr->second.SetValue<glm::vec3>(value);
+									break;
+								}
+								default:
+									assert(false && "Something exploded");
+									break;
+								}
+
+								ImGui::Spacing();
+
+								//Remove key from map
+								if (ImGui::Button(ICON_FA_MINUS_CIRCLE " Remove"))
+								{
+									scriptVariableCom->m_variables.erase(itr);
+									ImGui::TreePop();
+									break;
+								}
+
+								ImGui::TreePop();
+							}
+						}
+
+						//Add new key
+						static char name_stuff[256] = "";
+						ImGui::InputText("Variable name", name_stuff, IM_ARRAYSIZE(name_stuff));
+
+						if (ImGui::Button(ICON_FA_PLUS_CIRCLE " Add variable"))
+						{
+							scriptVariableCom->m_variables.insert(
+								{ std::string(name_stuff),
+								Components::ScriptVariables::Variable{} });
+						}
+					}
+
+					if (!enable_scripts_com)
+					{
+						m_ecs->GetReg().remove<Components::ScriptVariables>(m_CurrentEntity);
+					}
+				}
+
 				ImGui::Separator();
 				ImguiBlankSeperator(2);
 
@@ -1287,6 +1441,7 @@ namespace PogplantDriver
 			Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
 			ImGui::PushItemWidth(69.0f);
 			ImGui::Checkbox("Shadows", &PP::Renderer::m_EnableShadows);
+			ImGui::DragFloat("Bloom Dampening", &PP::Renderer::m_BloomDamp, 0.05f);
 			ImGui::DragFloat("Exposure", &PP::Renderer::m_Exposure, 0.05f);
 			ImGui::DragFloat("Gamma", &PP::Renderer::m_Gamma, 0.05f);
 			//auto* camera = &PP::CameraResource::m_QuatCam;
@@ -1341,8 +1496,29 @@ namespace PogplantDriver
 					m_EditMode = ImGuizmo::ROTATE;
 				if (ImGui::IsKeyPressed('4'))
 					m_EditMode = ImGuizmo::SCALE;
-			}
+				if (ImGui::IsKeyPressed(GLFW_KEY_DELETE))
+				{
+					if (m_CurrentEntity != entt::null)
+					{
+						m_ecs->DestroyEntity(m_CurrentEntity);
+						m_CurrentEntity = entt::null;
+					}
+				}
 
+				Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
+				if (currQuatCam && PPI::InputSystem::onKeyHeld(GLFW_KEY_X))
+				{
+					if (m_CurrentEntity != entt::null)
+					{
+						auto& transform = m_ecs->GetReg().get<Components::Transform>(m_CurrentEntity);
+						currQuatCam->m_Position = transform.GetGlobalPosition() + glm::vec3{ 0.f, 0.f, 5.f };
+						currQuatCam->m_Yaw = 0.f;
+						currQuatCam->m_Pitch = 0.f;
+						currQuatCam->m_Roll = 0.f;
+						currQuatCam->UpdateVectors();
+					}
+				}
+			}
 
 			SceneWindow();
 		}
@@ -1355,6 +1531,18 @@ namespace PogplantDriver
 			if (ImGui::IsItemClicked() && ImGui::IsWindowFocused() && !m_FirstRun)
 			{
 				PP::Window::HideCursor();
+			}
+			if (ImGui::IsKeyPressed(GLFW_KEY_Z))
+			{
+				Application::GetInstance().SetPlayState(Application::PLAYSTATE::PAUSE);
+			}
+			if (ImGui::IsKeyPressed(GLFW_KEY_X))
+			{
+				Application::GetInstance().SetPlayState(Application::PLAYSTATE::PLAY);
+			}
+			if (ImGui::IsKeyPressed(GLFW_KEY_C))
+			{
+				Application::GetInstance().SetPlayState(Application::PLAYSTATE::STEPNEXT);
 			}
 		}
 		ImGui::End();
@@ -1383,6 +1571,29 @@ namespace PogplantDriver
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
 
+		/// Unused, temp debugger, have to restructure for extra draw calls just so this will work properly
+		//ImGui::PushItemWidth(200.0f);
+		//const std::vector<std::string> comboStr = { "EDITOR", "POSITION", "NORMAL", "ALBEDO", "AO" };
+		//if (ImGui::BeginCombo("###debugcombo", comboStr[PP::Renderer::m_DebugRenderMode].c_str()))
+		//{
+		//	for (int i = 0; i < PP::Renderer::RenderMode::RENDER_MODE_COUNT; i++)
+		//	{
+		//		bool selected = (PP::Renderer::m_DebugRenderMode == i);
+		//		if (ImGui::Selectable(comboStr[i].c_str()))
+		//		{
+		//			PP::Renderer::m_DebugRenderMode = static_cast<PP::Renderer::RenderMode>(i);
+		//		}
+
+		//		if (selected)
+		//		{
+		//			ImGui::SetItemDefaultFocus();
+		//		}
+
+		//	}
+		//	ImGui::EndCombo();
+		//}
+		//ImGui::PopItemWidth();
+
 		// Draw the actual editor scene
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::EDITOR_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 
@@ -1394,13 +1605,19 @@ namespace PogplantDriver
 		Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
 		//currCam->UpdateProjection({ vMax.x, vMax.y });
 		//PP::Camera4D& currQuatCam = PP::CameraResource::m_QuatCam;
-		currQuatCam->UpdateProjection({ vMax.x, vMax.y });
+		//currQuatCam->UpdateProjection({ vMax.x, vMax.y });
+		//currQuatCam->UpdateOrthographic({ vMax.x, vMax.y }, currQuatCam->m_Far, currQuatCam->m_Orthographic);
 
 		// Account for position of window
 		vMin.x += ImGui::GetWindowPos().x;
 		vMin.y += ImGui::GetWindowPos().y + 20; // + 20 to account for the text line kekw
 		vMax.x += ImGui::GetWindowPos().x;
 		vMax.y += ImGui::GetWindowPos().y;
+
+		if (!ImGui::IsWindowFocused())
+		{
+			return;
+		}
 
 		/// GUIZMO GO EDIT
 		Scene_GOEdit(currQuatCam, vMin, vMax);
@@ -1417,8 +1634,47 @@ namespace PogplantDriver
 		ImGui::PushStyleColor(0, ImVec4{ 0.55f,0.8f,0.2f,1 });
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		ImGui::PopStyleColor();
+
+		ImGui::SameLine(ImGui::GetWindowWidth() - 208.0f);
+		// Unused, temp debugger, have to restructure for extra draw calls just so this will work properly
+		ImGui::PushItemWidth(200.0f);
+		const std::vector<std::string> comboStr = { "GAME CAMERA", "EDITOR CAMERA"};
+		if (ImGui::BeginCombo("###debugcombo", comboStr[PP::Renderer::m_EditorCamDebug].c_str()))
+		{
+			for (int i = 0; i < comboStr.size(); i++)
+			{
+				bool selected = (PP::Renderer::m_EditorCamDebug == static_cast<bool>(i));
+				if (ImGui::Selectable(comboStr[i].c_str()))
+				{
+					PP::Renderer::m_EditorCamDebug = static_cast<bool>(i);
+				}
+
+				if (selected)
+				{
+					ImGui::SetItemDefaultFocus();
+				}
+
+			}
+			ImGui::EndCombo();
+		}
+		ImGui::PopItemWidth();
+
 		ImGui::Image(PP::FBR::m_FrameBuffers[PP::BufferType::GAME_COLOR_BUFFER], ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 		ImVec2 vMax = ImGui::GetWindowContentRegionMax();
+
+		if (!ImGui::IsWindowFocused())
+		{
+			return;
+		}
+
+		if (!ImGui::IsItemHovered())
+		{
+			PP::CameraResource::DeselectCam();
+		}
+		else if(PP::Renderer::m_EditorCamDebug)
+		{
+			PP::CameraResource::SetActiveCam("EDITOR");
+		}
 	}
 
 	void ImguiHelper::SaveSceneAs()
@@ -1440,6 +1696,9 @@ namespace PogplantDriver
 	{
 		m_CurrentEntity = entt::null;
 		m_ecs->Clear();
+
+		/// Reupdate the textures
+		PP::TextureResource::m_Updated = false;
 	}
 
 	void ImguiHelper::OpenScene()
@@ -1447,6 +1706,9 @@ namespace PogplantDriver
 		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
 		if (!filepath.empty())
 			OpenScene(filepath);
+
+		/// Reupdate the textures
+		PP::TextureResource::m_Updated = false;
 	}
 
 
@@ -1508,20 +1770,6 @@ namespace PogplantDriver
 
 	void ImguiHelper::Scene_GOPick(Pogplant::Camera4D* _CurrCam, ImVec2 _VMin, ImVec2 _VMax)
 	{
-		Pogplant::Camera4D* currQuatCam = PP::CameraResource::GetCamera("EDITOR");
-		if (currQuatCam && PPI::InputSystem::onKeyHeld(GLFW_KEY_X))
-		{
-			if (m_CurrentEntity != entt::null)
-			{
-				auto& transform = m_ecs->GetReg().get<Components::Transform>(m_CurrentEntity);
-				currQuatCam->m_Position = transform.GetGlobalPosition() + glm::vec3{ 0.f, 0.f, 5.f };
-				currQuatCam->m_Yaw = 0.f;
-				currQuatCam->m_Pitch = 0.f;
-				currQuatCam->m_Roll = 0.f;
-				currQuatCam->UpdateVectors();
-			}
-		}
-
 		if (!ImGui::IsWindowFocused() || !ImGui::IsItemHovered())
 			return;
 
@@ -1729,7 +1977,7 @@ namespace PogplantDriver
 
 		// Make sure begin is being called before this function
 		// This ensures the input for camera only works when the Scene window is focused
-		if (!ImGui::IsWindowFocused() || !ImGui::IsItemHovered())
+		if (!ImGui::IsItemHovered())
 		{
 			PP::CameraResource::DeselectCam();
 		}
@@ -1756,7 +2004,7 @@ namespace PogplantDriver
 		}
 	}
 
-	std::string ImguiHelper::CreateStringInputField(std::string& _label, std::string _target)
+	std::string ImguiHelper::CreateStringInputField(const std::string& _label, std::string _target)
 	{
 		ImGui::Text(_label.c_str());
 		static char name_stuff[256] = "";
@@ -1834,6 +2082,7 @@ namespace PogplantDriver
 	{
 		// Always center this window when appearing
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowSizeConstraints({ 1,1 }, { 1000,900 });
 		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
 		static std::string currentPath = "";
 		static bool hovered = false;
@@ -1865,7 +2114,7 @@ namespace PogplantDriver
 				}
 
 				// Formatting
-				if ((it_count + 1) % 5 != 0)
+				if ((it_count + 1) % 10 != 0)
 				{
 					ImGui::SameLine();
 				}
@@ -1891,6 +2140,7 @@ namespace PogplantDriver
 	{
 		// Always center this window when appearing
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowSizeConstraints({ 1,1 }, { 1000,900 });
 		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
 		static std::string currentPath = "";
 		static bool hovered = false;
@@ -1921,7 +2171,7 @@ namespace PogplantDriver
 				}
 
 				// Formatting
-				if ((it_count + 1) % 5 != 0)
+				if ((it_count + 1) % 10 != 0)
 				{
 					ImGui::SameLine();
 				}
@@ -1947,6 +2197,7 @@ namespace PogplantDriver
 	{
 		// Always center this window when appearing
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowSizeConstraints({ 1,1 }, { 1000,900 });
 		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
 		static std::string currentPath = "";
 		static bool hovered = false;
@@ -1967,7 +2218,8 @@ namespace PogplantDriver
 				if (ImGui::ImageButton(it.second, ImVec2(64, 64), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
 					_Path = it.first;
-					_TexID = PP::TextureResource::m_UsedTextures[it.second];
+					//_TexID = PP::TextureResource::m_UsedTextures[it.second];
+					PP::TextureResource::m_Updated = false;
 					ImGui::CloseCurrentPopup();
 				}
 				if (ImGui::IsItemHovered())
@@ -1977,7 +2229,7 @@ namespace PogplantDriver
 				}
 
 				// Formatting
-				if ((it_count + 1) % 5 != 0)
+				if ((it_count + 1) % 10 != 0)
 				{
 					ImGui::SameLine();
 				}
@@ -2271,6 +2523,9 @@ namespace PogplantDriver
 
 			ImGui::Dummy(ImVec2(0.0f, 2.0f));
 			ImGui::Text("Current Frame: %d", static_cast<int>(spriteAnim->m_FrameCounter));
+			ImGui::Text("UV: %f, %f", spriteAnim->m_UV_Offset.x, spriteAnim->m_UV_Offset.y);
+			ImGui::Text("Tiling: %f, %f", spriteAnim->m_Tiling.x, spriteAnim->m_Tiling.y);
+
 			ImGui::Dummy(ImVec2(0.0f, 2.0f));
 
 			// Buttons
@@ -2315,6 +2570,14 @@ namespace PogplantDriver
 			if (ImGui::Button("Next Frame"))
 			{
 				spriteAnim->NextFrame();
+			}
+
+			ImGui::Dummy(ImVec2(0.0f, 2.0f));
+			ImGui::Text("Set Frame");
+			int frameSetter = static_cast<int>(spriteAnim->m_FrameCounter);
+			if (ImGui::InputInt("###SetFrame", &frameSetter))
+			{
+				spriteAnim->SetFrame(frameSetter);
 			}
 
 			ImGui::Dummy(ImVec2(0.0f, 8.0f));
@@ -2561,6 +2824,7 @@ namespace PogplantDriver
 
 				// Texture
 				ImGui::Text("Texture");
+				ImGui::Text("Current Texture: %s", pSystem->m_TexName.c_str());
 				//auto mappedID = PP::TextureResource::m_UsedTextures[pSystem->m_TexID];
 				if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[pSystem->m_TexName], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
@@ -2740,7 +3004,8 @@ namespace PogplantDriver
 						{ ImGui::GetContentRegionMax().x * 0.85f,256 },
 						static_cast<int>(pSystem->m_Speed.m_MaxPoints - 1),
 						pSystem->m_Speed.m_CurvePoints.data(),
-						pSystem->m_Speed.m_CurveData, speedItem
+						pSystem->m_Speed.m_CurveData, 
+						speedItem
 					);
 					ImGui::TreePop();
 					ImGui::NewLine();
@@ -2803,6 +3068,19 @@ namespace PogplantDriver
 			auto spriteAnim = &m_ecs->GetReg().try_get<Components::ParticleSystem>(m_CurrentEntity)->m_SpriteAnimation;
 
 			ImGui::Dummy(ImVec2(0.0f, 2.0f));
+			ImGui::Text("Current Frame: %d", static_cast<int>(spriteAnim->m_FrameCounter));
+			ImGui::Text("UV: %f, %f", spriteAnim->m_UV_Offset.x, spriteAnim->m_UV_Offset.y);
+			ImGui::Text("Tiling: %f, %f", spriteAnim->m_Tiling.x, spriteAnim->m_Tiling.y);
+
+			ImGui::Dummy(ImVec2(0.0f, 2.0f));
+			ImGui::Text("Set Frame");
+			int frameSetter = static_cast<int>(spriteAnim->m_FrameCounter);
+			if (ImGui::InputInt("###SetFrame", &frameSetter))
+			{
+				spriteAnim->SetFrame(frameSetter);
+			}
+
+			ImGui::Dummy(ImVec2(0.0f, 2.0f));
 			ImGui::Text("Repeat");
 			ImGui::SameLine();
 			ImGui::Checkbox("###PSARepeat", &spriteAnim->m_Repeat);
@@ -2853,15 +3131,23 @@ namespace PogplantDriver
 				ImGui::Checkbox("###UseOrtho", &canvas->m_Ortho);
 				ImGui::Dummy(ImVec2(0.0f, 1.0f));
 
+				// Force alpha?
+				ImGui::Dummy(ImVec2(0.0f, 2.0f));
+				ImGui::Text("Force Alpha");
+				ImGui::SameLine();
+				ImGui::Checkbox("###UseFalpha", &canvas->m_ForceAlpha);
+				ImGui::Dummy(ImVec2(0.0f, 1.0f));
+
 				// Diffuse color picker
 				ImGui::PushID("CANVAS");
 				ImGui::Text("Color Tint");
-				ImGui::ColorEdit3("###Color Tint", glm::value_ptr(canvas->m_Color));
+				ImGui::ColorEdit4("###Color Tint", glm::value_ptr(canvas->m_Color));
 				ImGui::PopID();
 				ImGui::Dummy(ImVec2(0.0f, 1.0f));
 
 				// Texture
 				ImGui::Text("Texture");
+				ImGui::Text("Current Texture: %s", canvas->m_TexName.c_str());
 				if (ImGui::ImageButton(PP::TextureResource::m_TexturePool[canvas->m_TexName], ImVec2(32, 32), { 0,0 }, { 1,1 }, -1, ImVec4{ 0,0,0,0 }, ImVec4{ 1,1,1,1 }))
 				{
 					ImGui::OpenPopup(popuplabel);

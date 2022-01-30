@@ -24,6 +24,7 @@ namespace Pogplant
 		static int m_Height;
 		static bool m_VSync;
 		static float m_Aspect;
+		static float m_TargetAspect;
 		static bool m_Hide;
 		static bool m_IsUnhiding; // To check for key release state so that the thing does not unfocus and close on 1 key press
 	};

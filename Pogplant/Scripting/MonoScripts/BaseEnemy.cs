@@ -406,17 +406,24 @@ namespace Scripting
         public void TakeDamage(float damage)
         {
             // if health is more than 0, take damage and play effects
-            if (my_info.health >= 0)
+            my_info.health -= damage;
+            if (my_info.health > 0)
             {
-                my_info.health -= damage;
                 ECS.PlayAudio(gameObject.id, 0, "SFX");
-                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 1);
             }
             else
             {
-                GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
+                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 1);
+                //GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
+                DashboardScreen.SwapFace(DashboardScreen.FACES.HAPPY);
                 HandleDeath(true);
             }
+
+            //else
+            //{
+            //    GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
+            //    HandleDeath(true);
+            //}
         }
 
         // This function handles what happens when enemy dies,
@@ -433,6 +440,7 @@ namespace Scripting
                 {
                     ECS.PlayAudio(gameObject.id, 1, "SFX");
                     GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 0);
+                    ++PlayerScript.m_EnemyDestroyedCount;
                 }
 
                 isDiedFromPlayer = fromPlayer;

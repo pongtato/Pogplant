@@ -30,17 +30,20 @@ namespace Pogplant
 {
 	bool Renderer::m_RenderGrid = false;
 	bool Renderer::m_EnableShadows = false;
+	float Renderer::m_BloomDamp = 6.9f;
 	float Renderer::m_Exposure = 1.0f;
 	float Renderer::m_Gamma = 2.2f;
-	float Renderer::m_LightShaftDecay = 0.9f;
-	float Renderer::m_LightShaftExposure = 0.2f;
-	float Renderer::m_LightShaftDensity = 0.69f;
-	float Renderer::m_LightShaftWeight = 0.3f;
-	glm::vec3 Renderer::m_LightShaftPos = { -500.0f,500.0f,0.0f };
-	float Renderer::m_LightShaftScale = 10.0f;
+	//float Renderer::m_LightShaftDecay = 0.9f;
+	//float Renderer::m_LightShaftExposure = 0.2f;
+	//float Renderer::m_LightShaftDensity = 0.69f;
+	//float Renderer::m_LightShaftWeight = 0.3f;
+	//glm::vec3 Renderer::m_LightShaftPos = { -500.0f,500.0f,0.0f };
+	//float Renderer::m_LightShaftScale = 10.0f;
 	std::vector<glm::vec3> Renderer::m_AOKernel;
 	float Renderer::m_AO_Radius = 1.5f;
 	float Renderer::m_AO_Bias = 0.0125f;
+	//Renderer::RenderMode Renderer::m_DebugRenderMode = Renderer::RenderMode::EDITOR;
+	bool Renderer::m_EditorCamDebug = false;
 
 	/// QUAT TEST
 	glm::vec3 Renderer::m_QuatTestPos = glm::vec3{ 0 };
@@ -49,6 +52,7 @@ namespace Pogplant
 
 	struct CameraReturnData
 	{
+		glm::mat4 m_Orthographic;
 		glm::mat4 m_Projection;
 		glm::mat4 m_View;
 		glm::vec3 m_Position;
@@ -77,6 +81,7 @@ namespace Pogplant
 					{
 						ret =
 						{
+							it_Camera.m_Orthographic,
 							it_Camera.m_Projection,
 							it_Camera.m_View,
 							it_Trans.m_position,
@@ -108,21 +113,9 @@ namespace Pogplant
 		// Default to editor cam
 		Camera4D* currCam = CameraResource::GetCamera("EDITOR");
 
-		//Camera4D* currQCam = &CameraResource::m_QuatCam;
-		//std::cout << "@" << currQCam->m_Projection.length() << std::endl;
-		//std::cout << "@" << currQCam->m_View.length() << std::endl;
-		//std::cout << "@" << currQCam->m_Position.x << "|" << currQCam->m_Position.y << "|" << currQCam->m_Position.z << std::endl;
-		//std::cout << "@" << currQCam->m_Near << std::endl;
-		//std::cout << "@" << currQCam->m_Far << std::endl;
-		//std::cout << currQCam->m_Pitch << "|" << currQCam->m_Heading << std::endl;
-
 		return CameraReturnData
 		{
-			/*currCam->GetPerspective(),
-			currCam->GetView(),
-			currCam->GetPosition(),
-			currCam->GetCameraConfig().m_Near,
-			currCam->GetCameraConfig().m_Far,*/
+			currCam->m_Orthographic,
 			currCam->m_Projection,
 			currCam->GetView(),
 			currCam->m_Position,
@@ -251,6 +244,7 @@ namespace Pogplant
 		glActiveTexture(GL_TEXTURE7);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SSAO_BLUR_COLOR_BUFFER]);
 
+		ShaderLinker::SetUniform("BloomDamp", m_BloomDamp);
 		ShaderLinker::SetUniform("Exposure", m_Exposure);
 		ShaderLinker::SetUniform("Gamma", m_Gamma);
 		ShaderLinker::SetUniform("Shadows", m_EnableShadows);
@@ -397,7 +391,7 @@ namespace Pogplant
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_BRIGHT]);
 
 		bool first_it = true;
-		const float blur_increment = 0.15f;
+		const float blur_increment = 0.10f;
 		for (int i = 1; i <= 5; i++)
 		{
 			ShaderLinker::SetUniform("targetWidth", Window::m_Width * blur_increment * i);
@@ -520,55 +514,55 @@ namespace Pogplant
 		}
 		ShaderLinker::UnUse();
 
-		/// Primitive shapes
-		ShaderLinker::Use("PRIMITIVE");
-		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
-		ShaderLinker::SetUniform("m4_View", ret.m_View);
-		auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
-		for (const auto& e : p_results)
-		{
-			const auto& it_pRender = p_results.get<const Components::PrimitiveRender>(e);
-			const auto& it_trans = p_results.get<const Components::Transform>(e);
+		///// Primitive shapes
+		//ShaderLinker::Use("PRIMITIVE");
+		//ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
+		//ShaderLinker::SetUniform("m4_View", ret.m_View);
+		//auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
+		//for (const auto& e : p_results)
+		//{
+		//	const auto& it_pRender = p_results.get<const Components::PrimitiveRender>(e);
+		//	const auto& it_trans = p_results.get<const Components::Transform>(e);
 
-			//ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
-			ShaderLinker::SetUniform("tile", it_pRender.m_Blend);
-			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
-			ShaderLinker::SetUniform("v3_ViewPosition", ret.m_Position);
+		//	//ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
+		//	ShaderLinker::SetUniform("tile", it_pRender.m_Blend);
+		//	ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
+		//	ShaderLinker::SetUniform("v3_ViewPosition", ret.m_Position);
 
-			ShaderLinker::SetUniform("texture_diffuse", 0);
-			ShaderLinker::SetUniform("texture_normal", 1);
-			ShaderLinker::SetUniform("texture_disp", 2);
-			ShaderLinker::SetUniform("texture_specular", 3);
+		//	ShaderLinker::SetUniform("texture_diffuse", 0);
+		//	ShaderLinker::SetUniform("texture_normal", 1);
+		//	ShaderLinker::SetUniform("texture_disp", 2);
+		//	ShaderLinker::SetUniform("texture_specular", 3);
 
-			ShaderLinker::SetUniform("texture_diffuse2", 4);
-			ShaderLinker::SetUniform("texture_normal2", 5);
-			ShaderLinker::SetUniform("texture_disp2", 6);
-			ShaderLinker::SetUniform("texture_specular2", 7);
+		//	ShaderLinker::SetUniform("texture_diffuse2", 4);
+		//	ShaderLinker::SetUniform("texture_normal2", 5);
+		//	ShaderLinker::SetUniform("texture_disp2", 6);
+		//	ShaderLinker::SetUniform("texture_specular2", 7);
 
-			/// WIP, to be updated
-			// Tex 1
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[0]]);
-			glActiveTexture(GL_TEXTURE1);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[0]]);
-			glActiveTexture(GL_TEXTURE2);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[0]]);
-			glActiveTexture(GL_TEXTURE3);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[0]]);
+		//	/// WIP, to be updated
+		//	// Tex 1
+		//	glActiveTexture(GL_TEXTURE0);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[0]]);
+		//	glActiveTexture(GL_TEXTURE1);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[0]]);
+		//	glActiveTexture(GL_TEXTURE2);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[0]]);
+		//	glActiveTexture(GL_TEXTURE3);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[0]]);
 
-			// Tex 2
-			glActiveTexture(GL_TEXTURE4);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[1]]);
-			glActiveTexture(GL_TEXTURE5);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[1]]);
-			glActiveTexture(GL_TEXTURE6);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[1]]);
-			glActiveTexture(GL_TEXTURE7);
-			glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[1]]);
+		//	// Tex 2
+		//	glActiveTexture(GL_TEXTURE4);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[1]]);
+		//	glActiveTexture(GL_TEXTURE5);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[1]]);
+		//	glActiveTexture(GL_TEXTURE6);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[1]]);
+		//	glActiveTexture(GL_TEXTURE7);
+		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[1]]);
 
-			it_pRender.m_Mesh->Draw();
-		}
-		ShaderLinker::UnUse();
+		//	it_pRender.m_Mesh->Draw();
+		//}
+		//ShaderLinker::UnUse();
 
 		/// Skybox
 		glDepthFunc(GL_LEQUAL);
@@ -590,19 +584,19 @@ namespace Pogplant
 		// Render G pass objects first
 		ShaderLinker::Use("BASIC");
 		MeshBuilder::RebindQuad();
+
 		// Bind textures
-		for (const auto& it : TextureResource::m_TexturePool)
+		for (const auto& it : TextureResource::m_UsedTextures)
 		{
-			auto mapped_id = TextureResource::m_UsedTextures[it.second];
-			std::string uniformStr = "Textures[" + std::to_string(mapped_id) + "]";
-			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(mapped_id));
-			glActiveTexture(GL_TEXTURE0 + mapped_id);
-			glBindTexture(GL_TEXTURE_2D, it.second);
+			std::string uniformStr = "Textures[" + std::to_string(it.second.m_MappedID) + "]";
+			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(it.second.m_MappedID));
+			glActiveTexture(GL_TEXTURE0 + it.second.m_MappedID);
+			glBindTexture(GL_TEXTURE_2D, it.second.m_ID);
 		}
 
+		ShaderLinker::SetUniform("m4_Ortho", ret.m_Orthographic);
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", ret.m_View);
-		ShaderLinker::SetUniform("f_Aspect", Pogplant::Window::m_Aspect);
 		ShaderLinker::SetUniform("b_Editor", _EditorMode);
 		MeshResource::DrawInstanced(MeshResource::MESH_TYPE::QUAD);
 		ShaderLinker::UnUse();
@@ -775,7 +769,7 @@ namespace Pogplant
 		// Use shader
 		ShaderLinker::Use("TEXT");
 
-		auto results = registry.view<Components::Text, Components::Transform>();
+		auto results = registry.view<Components::Transform, Components::Text>(entt::exclude_t<Components::Prefab, Components::Disabled>());
 		for (const auto& e : results)
 		{
 			const auto& it_Text = results.get<const Components::Text>(e);
@@ -783,27 +777,41 @@ namespace Pogplant
 
 			Font* currFont = FontResource::m_FontPool[it_Text.m_FontID];
 
+			/// Scale with window size
+			glm::mat4 model = glm::mat4{ 1 };
 			// Ortho or not
 			if (!it_Text.m_Ortho)
 			{
 				ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
-				ShaderLinker::SetUniform("m4_View", ret.m_View);
-				ShaderLinker::SetUniform("f_Aspect", 1.0f);
+				ShaderLinker::SetUniform("m4_View", ret.m_View);	
+				model = it_Trans.m_ModelMtx;
 			}
 			else
 			{
-				ShaderLinker::SetUniform("m4_Projection", glm::mat4{ 1 });
+				ShaderLinker::SetUniform("m4_Projection", ret.m_Orthographic);
 				ShaderLinker::SetUniform("m4_View", glm::mat4{ 1 });
-				ShaderLinker::SetUniform("f_Aspect", Window::m_Aspect);
-			}
 
-			glm::mat4 model = glm::mat4{ 1 };
-			model = it_Trans.m_ModelMtx;
-			/*glm::quat rot_z = glm::angleAxis(glm::radians(it_Trans.m_rotation.z), glm::vec3{ 0.0f,0.0f,1.0f });
-			glm::quat rot_y = glm::angleAxis(glm::radians(it_Trans.m_rotation.y), glm::vec3{ 0.0f,1.0f,0.0f });
-			glm::quat rot_x = glm::angleAxis(glm::radians(it_Trans.m_rotation.x), glm::vec3{ 1.0f,0.0f,0.0f });
-			glm::mat4 m4_rot = glm::mat4_cast(rot_y * rot_x * rot_z);*/
-			//glm::mat4 m4_scale = glm::scale(glm::mat4{ 1 }, it_Trans.m_scale);
+				glm::vec3 pos = {};
+				glm::vec3 rot = {};
+				glm::vec3 scale = {};
+
+				// To maintain parent transform
+				ImGuizmo::DecomposeMatrixToComponents
+				(
+					glm::value_ptr(it_Trans.m_ModelMtx),
+					glm::value_ptr(pos),
+					glm::value_ptr(rot),
+					glm::value_ptr(scale)
+				);
+
+				// Decompose to apply mapping
+				model = glm::translate(model, { pos.x * Window::m_Width, pos.y * Window::m_Height, pos.z });
+				model = glm::rotate(model, glm::radians(rot.x), { 1,0,0 });
+				model = glm::rotate(model, glm::radians(rot.y), { 0,1,0 });
+				model = glm::rotate(model, glm::radians(rot.z), { 0,0,1 });
+				// Disregard aspect ratio so width for x and y
+				model = glm::scale(model, { scale.x * Window::m_Width, scale.y * Window::m_Height * Window::m_TargetAspect, 1.0f });
+			}
 
 			ShaderLinker::SetUniform("m4_Model", glm::mat4{ model });
 			ShaderLinker::SetUniform("textColor", it_Text.m_Color);

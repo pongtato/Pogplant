@@ -23,7 +23,7 @@ namespace Components
 		Name() = default;
 		Name(std::string name) : m_name(name), status(true) {}
 		std::string m_name;
-		bool status;
+		bool status = true;
 	};
 
 	struct Disabled
@@ -315,6 +315,7 @@ namespace Components
 		Camera(bool _Active);
 
 		glm::quat m_Orientation;
+		glm::mat4 m_Orthographic;
 		glm::mat4 m_Projection;
 		glm::mat4 m_View;
 		glm::vec3 m_Up;
@@ -346,11 +347,12 @@ namespace Components
 		bool m_Pause;
 
 		SpriteAnimation();
-		SpriteAnimation(int _MaxFrames, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed = 1.0f);
+		SpriteAnimation(int _MaxFrames, float _CurrentFrame, int _Rows, int _Columns, bool _Repeat, bool _Playing, float _PlaySpeed = 1.0f);
 		void Update(float _Dt);
 		void UpdateTiling();
 		void NextFrame();
 		void PrevFrame();
+		void SetFrame(int _NewFrame);
 		void init();
 
 	private:
@@ -433,7 +435,7 @@ namespace Components
 
 			inline void init(void)
 			{
-				m_CurveData.resize(m_MaxPoints);
+				m_CurveData.resize(m_DataPoints);
 
 				int smoothness = static_cast<int>(m_CurveData.size());
 				for (int i = 0; i <= (smoothness - 1); ++i)
@@ -527,12 +529,13 @@ namespace Components
 	struct Canvas
 	{
 		Canvas() = default;
-		Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho);
+		Canvas(const glm::vec4& _Color, std::string _TexName, bool _Ortho, bool _ForceAlpha);
 		void init(void);
 		glm::vec4 m_Color;
 		std::string m_TexName;
 		int m_TexID;
 		bool m_Ortho;
+		bool m_ForceAlpha;
 		SpriteAnimation m_SpriteAnimation;
 	};
 

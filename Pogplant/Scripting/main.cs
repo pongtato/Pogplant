@@ -49,9 +49,9 @@ namespace Scripting
             return new DashboardScreen();
         }
 
-        public static DummyScript DummyScript()
+        public static LaserWeapon LaserWeapon()
         {
-            return new DummyScript();
+            return new LaserWeapon();
         }
         public static PlayerScript PlayerScript()
         {
@@ -98,10 +98,10 @@ namespace Scripting
             return new FirstPersonFiringSystem();
         }
 
-        //public static EnvDamage EnvDamage()
-        //{
-        //    return new EnvDamage();
-        //}
+        public static FirstPersonFiringBox FirstPersonFiringBox()
+        {
+            return new FirstPersonFiringBox();
+        }
 
         //public static Missile Missile()
         //{
@@ -126,6 +126,16 @@ namespace Scripting
         public static BaseFlock BaseFlock()
         {
             return new BaseFlock();
+        }
+
+        public static Laser Laser()
+        {
+            return new Laser();
+        }
+
+        public static LaserTriggerController LaserTriggerController()
+        {
+            return new LaserTriggerController();
         }
 
         public static L1BossShield L1BossShield()
@@ -161,6 +171,41 @@ namespace Scripting
         public static PauseMenu PauseMenu()
         {
             return new PauseMenu();
+        }
+
+        public static BossWarning BossWarning()
+        {
+            return new BossWarning();
+
+        }
+        public static L1Boss L1Boss()
+        {
+            return new L1Boss();
+        }
+
+        public static L1BossBehaviour L1BossBehaviour()
+		{
+            return new L1BossBehaviour();
+		}
+
+        public static EndGameMenu EndGameMenu()
+        {
+            return new EndGameMenu();
+        }
+
+        public static EndGameMenuTrigger EndGameMenuTrigger()
+        {
+            return new EndGameMenuTrigger();
+        }
+        
+        public static TetherEnemy TetherEnemy()
+        {
+            return new TetherEnemy();
+        }
+
+        public static ExplosiveEnemy ExplosiveEnemy()
+        {
+            return new ExplosiveEnemy();
         }
     }
 }

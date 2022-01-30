@@ -18,6 +18,21 @@ namespace SSH
 		return method;
 	}
 
+	MonoString* ScriptVariableGetString(std::uint32_t entityID, MonoString* defaultValue, MonoString* monoName)
+	{
+		auto scriptVarCom = ScriptSystem::GetECS()->GetReg().try_get<Components::ScriptVariables>(static_cast<entt::entity>(entityID));
+
+		const char* key = mono_string_to_utf8(monoName);
+		const char* defaultValueConverted = mono_string_to_utf8(defaultValue);
+
+		if (scriptVarCom)
+		{
+			return mono_string_new(mono_domain_get(), scriptVarCom->GetValue<std::string>(key, defaultValueConverted).c_str());
+		}
+
+		return defaultValue;
+	}
+
 	std::uint32_t CreateEntity(MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag)
 	{
 		std::string _name = mono_string_to_utf8(name);
@@ -242,6 +257,70 @@ namespace SSH
 		{
 			particleSys->m_Pause = isPaused;
 		}
+	}
+
+	void SetLaserStart(std::uint32_t entityID, bool isActivated)
+	{
+		auto laser = ScriptSystem::GetECS()->GetReg().try_get<Components::Laser>(static_cast<entt::entity>(entityID));
+
+		if (laser)
+		{
+			ScriptSystem::GetECS()->EnableEntity(static_cast<entt::entity>(entityID));
+			laser->m_ActivateLaser = isActivated;
+			laser->m_LaserCompleted = false;
+		}
+	}
+
+	bool IsLaserComplete(std::uint32_t entityID)
+	{
+		auto laser = ScriptSystem::GetECS()->GetReg().try_get<Components::Laser>(static_cast<entt::entity>(entityID));
+
+		if (laser)
+		{
+			return laser->m_LaserCompleted;
+		}
+		return false;
+	}
+
+	void ResetLaser(std::uint32_t entityID)
+	{
+		auto laser = ScriptSystem::GetECS()->GetReg().try_get<Components::Laser>(static_cast<entt::entity>(entityID));
+		if (laser)
+		{
+			laser->m_LaserCompleted = false;
+		}
+	}
+
+	void SetFrames(std::uint32_t entityID, int frameValue)
+	{
+		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));
+		if (canvas)
+		{
+			canvas->m_SpriteAnimation.SetFrame(frameValue);
+		}
+	}
+
+	void SetColorTint(std::uint32_t entityID, glm::vec3& color)
+	{
+		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));
+		if (canvas)
+		{
+			canvas->m_Color.x = color.x;
+			canvas->m_Color.y = color.y;
+			canvas->m_Color.z = color.z;
+		}
+	}
+
+	glm::vec3 GetColorTint(std::uint32_t entityID, glm::vec3& color)
+	{
+		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));
+		glm::vec3 Vec3Val{ 0 };
+		if (canvas)
+		{
+			glm::vec4 OldVal = canvas->m_Color;
+			Vec3Val = OldVal;
+		}
+		return Vec3Val;
 	}
 
 	void SetActive(std::uint32_t entityID, bool isEnabled)
@@ -471,11 +550,8 @@ namespace SSH
 		auto script1 = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity1);
 		auto script2 = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(onTriggerEnterEvent.get()->m_entity2);
 
-		bool found = false;
-
 		if (script1)
 		{
-			found = true;
 			for (auto& scripts : script1->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity1, onTriggerEnterEvent.get()->m_entity2);
@@ -484,34 +560,28 @@ namespace SSH
 
 		if (script2)
 		{
-			found = true;
 			for (auto& scripts : script2->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity2, onTriggerEnterEvent.get()->m_entity1);
 			}
 		}
 
-		if (!found)
+		auto pScript1 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerEnterEvent.get()->m_entity1);
+		auto pScript2 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerEnterEvent.get()->m_entity2);
+
+		if (pScript1)
 		{
-			auto pScript1 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerEnterEvent.get()->m_entity1);
-			auto pScript2 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerEnterEvent.get()->m_entity2);
-
-			if (pScript1)
+			for (auto& scripts : pScript1->m_ScriptTypes)
 			{
-				found = true;
-				for (auto& scripts : pScript1->m_ScriptTypes)
-				{
-					InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity1, onTriggerEnterEvent.get()->m_entity2);
-				}
+				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity1, onTriggerEnterEvent.get()->m_entity2);
 			}
+		}
 
-			if (pScript2)
+		if (pScript2)
+		{
+			for (auto& scripts : pScript2->m_ScriptTypes)
 			{
-				found = true;
-				for (auto& scripts : pScript2->m_ScriptTypes)
-				{
-					InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity2, onTriggerEnterEvent.get()->m_entity1);
-				}
+				InvokeFunction(scripts.first, "OnTriggerEnter", onTriggerEnterEvent.get()->m_entity2, onTriggerEnterEvent.get()->m_entity1);
 			}
 		}
 	}
@@ -525,11 +595,9 @@ namespace SSH
 	{
 		auto script1 = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity1);
 		auto script2 = ScriptSystem::GetECS()->GetReg().try_get<Components::Scriptable>(onTriggerExitEvent.get()->m_entity2);
-		bool found = false;
 
 		if (script1)
 		{
-			found = true;
 			for (auto& scripts : script1->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity1, onTriggerExitEvent.get()->m_entity2);
@@ -538,34 +606,28 @@ namespace SSH
 
 		if (script2)
 		{
-			found = true;
 			for (auto& scripts : script2->m_ScriptTypes)
 			{
 				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2, onTriggerExitEvent.get()->m_entity1);
 			}
 		}
 
-		if (!found)
+		auto pScript1 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerExitEvent.get()->m_entity1);
+		auto pScript2 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerExitEvent.get()->m_entity2);
+
+		if (pScript1)
 		{
-			auto pScript1 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerExitEvent.get()->m_entity1);
-			auto pScript2 = ScriptSystem::GetECS()->GetReg().try_get<Components::PauseScriptable>(onTriggerExitEvent.get()->m_entity2);
-
-			if (pScript1)
+			for (auto& scripts : pScript1->m_ScriptTypes)
 			{
-				found = true;
-				for (auto& scripts : pScript1->m_ScriptTypes)
-				{
-					InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity1, onTriggerExitEvent.get()->m_entity2);
-				}
+				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity1, onTriggerExitEvent.get()->m_entity2);
 			}
+		}
 
-			if (pScript2)
+		if (pScript2)
+		{
+			for (auto& scripts : pScript2->m_ScriptTypes)
 			{
-				found = true;
-				for (auto& scripts : pScript2->m_ScriptTypes)
-				{
-					InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2, onTriggerExitEvent.get()->m_entity1);
-				}
+				InvokeFunction(scripts.first, "OnTriggerExit", onTriggerExitEvent.get()->m_entity2, onTriggerExitEvent.get()->m_entity1);
 			}
 		}
 	}

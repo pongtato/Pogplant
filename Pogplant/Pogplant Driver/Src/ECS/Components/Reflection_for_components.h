@@ -29,7 +29,8 @@ namespace Components
 			.property("m_Specular", &Directional_Light::m_Specular);
 
 		rttr::registration::class_<Name>("Name")
-			.property("m_Name", &Name::m_name);
+			.property("m_Name", &Name::m_name)
+			.property("status", &Name::status);
 
 		rttr::registration::class_<Tag>("Tag")
 			.property("m_tag", &Tag::m_tag);
@@ -124,7 +125,17 @@ namespace Components
 			.property("m_Color", &Canvas::m_Color)
 			.property("m_TexName", &Canvas::m_TexName)
 			.property("m_Ortho", &Canvas::m_Ortho)
+			.property("m_ForceAlpha", &Canvas::m_ForceAlpha)
 			.property("m_SpriteAnimation", &Canvas::m_SpriteAnimation);
+
+		rttr::registration::class_<Laser>("Laser")
+			.property("m_ActivateLaser", &Laser::m_ActivateLaser)
+			.property("m_Spawntime", &Laser::m_Spawntime)
+			.property("m_Activetime", &Laser::m_Activetime)
+			.property("m_Inactivetime", &Laser::m_Inactivetime)
+			.property("m_ChargeParticletime", &Laser::m_ChargeParticletime)
+			.property("m_LaserLerptime", &Laser::m_LaserLerptime);
+
 
 		rttr::registration::class_<ImVec2>("ImVec2")
 			.property("m_x", &ImVec2::x)

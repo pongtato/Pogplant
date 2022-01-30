@@ -296,7 +296,7 @@ namespace Scripting
             // Missile Trigger 1
             if (_entityID == ECS.FindEntityWithName("MissileTrigger1"))
             {
-                m_Timers = new List<float> { 0.5f, 1.0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f, 4.0f };
+                m_Timers = new List<float> { 0.0f, 0.5f, 1.0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f };
                 for (int i = 1; i < m_Timers.Count + 1; ++i)
                 {
                     missileID = ECS.FindChildEntityWithName(_entityID, missile + i);

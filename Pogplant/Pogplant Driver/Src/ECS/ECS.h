@@ -59,7 +59,7 @@ public:
 	void SetChild(entt::entity _parent, entt::entity _child);
 	void RemoveChildFrom(entt::entity _parent, entt::entity _child);
 
-	entt::entity CopyEntity(entt::entity _target);
+	entt::entity CopyEntity(entt::entity _target, entt::entity _original_value_override = entt::null);
 
 	std::string GenerateGUID();
 

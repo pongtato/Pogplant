@@ -18,6 +18,7 @@
 
 #include "../Components/GameplayComponents.h"
 #include "../Components/DependantComponents.h"
+#include "../Systems/ScriptSystemHelper.h"
 #include "../../Input/GLFWInput.h"
 #include "../../AudioEngine.h"
 
@@ -54,6 +55,55 @@ void GeneralSystem::UpdateGame(float c_dt)
 
 		if (projectile.m_CurentLifetime > projectile.m_Lifetime)
 			m_registry->DestroyEntity(projectileEntity);
+	}
+
+	auto lasers = m_registry->view<Components::Transform, Components::Laser>();
+	for (auto& laserEntity : lasers)
+	{
+		auto& laser = lasers.get<Components::Laser>(laserEntity);
+		//All lasers will be activated 
+		if (laser.m_ActivateLaser)
+		{
+
+			//if (!laser.m_Onceflag)
+			//{
+			//	m_registry->EnableEntity(laserEntity);
+			//	laser.m_Onceflag = true;
+			//	std::cout << "Activate  LASSER" << std::endl;
+			//}
+
+			laser.m_AccumulatedTime += c_dt;
+			if (laser.m_Activetime != 0 && laser.m_Inactivetime != 0)
+			{
+				laser.m_AccumulatedActivetime += c_dt;
+				if (laser.m_AccumulatedActivetime >= laser.m_Activetime)
+				{
+					laser.m_AccumulatedActivetime = 0;
+					laser.m_IsDeactivated = true;
+					m_registry->DisableEntity(laserEntity);
+				}
+				if (laser.m_AccumulatedActivetime >= laser.m_Inactivetime)
+				{
+					laser.m_AccumulatedActivetime = 0;
+					laser.m_IsDeactivated = false;
+					m_registry->EnableEntity(laserEntity);
+				}
+			}
+
+			//Final case for spawn time
+			if (laser.m_AccumulatedTime > laser.m_Spawntime)
+			{
+				laser.m_ActivateLaser = false;
+				laser.m_AccumulatedTime = 0;
+				laser.m_LaserCompleted = true;
+				if (!laser.m_IsDeactivated)
+				{
+					m_registry->DisableEntity(laserEntity);
+				}
+
+			}
+		}
+
 	}
 
 	// Get all entities with particle systems

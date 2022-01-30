@@ -12,6 +12,7 @@ namespace Pogplant
 {
 	Camera4D::Camera4D()
 		: m_Orientation{ glm::quat{0,0,0,-1} }
+		, m_Orthographic{ glm::mat4{1} }
 		, m_Projection{ glm::mat4{1} }
 		, m_Position{ glm::vec3{0,0,0} }
 		, m_Front{ glm::vec3{0,0,-1} }
@@ -30,10 +31,12 @@ namespace Pogplant
 	{
 		UpdateVectors();
 		UpdateProjection();
+		UpdateOrthographic(glm::vec2{ static_cast<float>(Window::m_Width),static_cast<float>(Window::m_Height) }, m_Far, m_Orthographic);
 	}
 
 	Camera4D::Camera4D(CameraConfig _CamConfig)
 		: m_Orientation{ glm::quat{0,0,0,-1} }
+		, m_Orthographic{ glm::mat4{1} }
 		, m_Projection{ glm::mat4{1} }
 		, m_Position{ _CamConfig.m_Position }
 		, m_Front{ glm::vec3{0,0,-1} }
@@ -52,6 +55,7 @@ namespace Pogplant
 	{
 		UpdateVectors();
 		UpdateProjection();
+		UpdateOrthographic(glm::vec2{ static_cast<float>(Window::m_Width),static_cast<float>(Window::m_Height) }, m_Far, m_Orthographic);
 	}
 
 	Camera4D::~Camera4D()
@@ -102,7 +106,7 @@ namespace Pogplant
 		//m_Orientation.z = cU * sV * cW + sU * cV * sW;
 
 		//m_Orientation.w = cU * cV * sW - sU * sV * cW;
-		
+
 		m_Orientation = yRotate * xRotate * zRotate;
 	}
 
@@ -238,10 +242,10 @@ namespace Pogplant
 	{
 		// Mouse position with offset
 		const RayConfig& rayCfg = m_Ray.m_RayConfig;
-		glm::vec2 mPos = 
-		{ 
-			rayCfg.m_CursorPos.x - rayCfg.m_VP_Min.x , rayCfg.m_VP_Max.y 
-			- (rayCfg.m_VP_Max.y - rayCfg.m_CursorPos.y) - rayCfg.m_VP_Min.y 
+		glm::vec2 mPos =
+		{
+			rayCfg.m_CursorPos.x - rayCfg.m_VP_Min.x , rayCfg.m_VP_Max.y
+			- (rayCfg.m_VP_Max.y - rayCfg.m_CursorPos.y) - rayCfg.m_VP_Min.y
 		};
 
 		// NDC
@@ -308,6 +312,12 @@ namespace Pogplant
 		}
 	}
 
+	void Camera4D::UpdateOrthographic(glm::vec2 _WindowSize, float _Far, glm::mat4& _Orthographic)
+	{
+		// Ortho near always 0
+		_Orthographic = glm::ortho(-_WindowSize.x * 0.5f, _WindowSize.x * 0.5f, -_WindowSize.y * 0.5f, _WindowSize.y * 0.5f, 0.0f, _Far);
+	}
+
 	void Camera4D::GetView(const glm::vec3& _Position, const glm::quat& _Orientation, glm::mat4& _View)
 	{
 		glm::quat reverseOrient = glm::conjugate(_Orientation);
@@ -326,7 +336,7 @@ namespace Pogplant
 		{
 			m_Pitch += 360.0f;
 		}
-		else if(m_Pitch > 360.0f)
+		else if (m_Pitch > 360.0f)
 		{
 			m_Pitch -= 360.0f;
 		}

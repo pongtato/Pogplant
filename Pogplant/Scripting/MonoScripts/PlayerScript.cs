@@ -110,22 +110,49 @@ namespace Scripting
 
         // Bonus Item / Bonus Effects
         static public int m_BonusItem = 0;
-        const int m_BonusItemMax = 10;
+        const int m_BonusItemMax = 4;
         static public bool m_EnableBonusScreen = false;
         uint m_BobHeadMenuID;
         static public uint m_ScoreMultiplierBobbleCount = 1;
         static public uint m_ShieldBobbleCount = 1;
         static public uint m_ComboDecayBobbleCount = 1;
-        static public float m_ComboDecayTimer = 0.0f;
-        const float m_ComboDecayTimeLimit = 5.0f;
-        static public bool m_ComboActive = true;
+        static public float m_ComboDecayTimeLimit = 3.0f;
+        static public float m_ComboDecayTimer = m_ComboDecayTimeLimit;
+        static public bool m_ComboActive = false;
 
         // Bonus Effects
 
         //Pause menu
         static public bool m_EnablePauseMenu = false;
 
-         
+        // Laser Attack
+        uint m_LaserWeaponID;
+        static public bool m_EnableLaserAttack = false;
+        bool m_LaserReady = false;
+        const float m_LaserCooldown = 2.0f;
+        float m_LaserTimer = m_LaserCooldown;
+
+        // EndGameMenu Stats
+        public static uint m_EnemyDestroyedCount = 0;
+        public static uint m_PlayerHitCount = 0;
+        public static uint m_CollectiblesCount = 0;
+
+        // Combo UI
+        public static uint m_ComboNumber = 0;
+        public static uint m_ComboNumberID;
+        public static uint m_ComboLargeFireID;
+        const uint m_ComboThresholdLarge = 10;
+        public static uint m_ComboSmallFireID;
+        const uint m_ComboThresholdSmall = 5;
+        public static uint m_ComboBarID;
+        public static Vector3 m_FullComboBarScale = new Vector3(2.0f, 1.0f, 1.0f);
+        public static Vector3 m_EmptyComboBarScale = new Vector3(0.0f, 1.0f, 1.0f);
+        //public static Transform m_ComboBarTrans = new Transform();
+
+        // Score
+        public static uint score = 0;                                    // Current score
+        private static uint kill_score = 100;                            // Addition to base score everytime an enemy is killed
+
         public PlayerScript()
         {
 
@@ -150,8 +177,24 @@ namespace Scripting
             m_ScoreMultiplierBobbleCount = 1;
             m_ShieldBobbleCount = 1;
             m_ComboDecayBobbleCount = 1;
-            m_ComboDecayTimer = 0.0f;
-            m_ComboActive = true;
+            m_ComboDecayTimer = m_ComboDecayTimeLimit;
+            m_ComboActive = false;
+
+            // Variables for the laser
+            m_LaserWeaponID = ECS.FindEntityWithName("LaserWeapon");
+            m_EnableLaserAttack = false;
+            m_LaserReady = false;
+            m_LaserTimer = m_LaserCooldown;
+
+            // Variables for the ComboNumber
+            m_ComboNumber = 0;
+            m_ComboNumberID = ECS.FindEntityWithName("PlayerComboNumber");
+            m_ComboLargeFireID = ECS.FindEntityWithName("PlayerComboLargeFire");
+            m_ComboSmallFireID = ECS.FindEntityWithName("PlayerComboSmallFire");
+            m_ComboBarID = ECS.FindEntityWithName("PlayerComboBar");
+
+            ECS.SetActive(m_ComboSmallFireID, false);
+            ECS.SetActive(m_ComboLargeFireID, false);
 
             float yaw, pitch, roll;
             yaw = pitch = roll = 0;
@@ -165,6 +208,8 @@ namespace Scripting
             playerTrans = new Transform(pos, rot, scale);
 
             ECS.PlayAudio(VOEntityID, 0, "VO");
+
+            movement_speed = ECS.GetValue<float>(entityID, 200.0f, "MovementSpeed");
         }
 
         public override void Start()
@@ -205,6 +250,7 @@ namespace Scripting
             UpdateCombo(dt);
 
             // Updates Combo bonus
+            UpdateLaser(dt);
 
             ECS.GetTransformECS(entityID, ref playerTrans.Position, ref playerTrans.Rotation, ref playerTrans.Scale);
             Camera.GetCamera(shipCameraEntity, ref camera.m_Yaw, ref camera.m_Pitch, ref camera.m_Roll);
@@ -390,6 +436,7 @@ namespace Scripting
             }
         }
 
+
         private Vector3 m_initialCameraPosition;
         private Vector3 m_cameraPosition;
         private Vector3 m_cameraRotation;
@@ -494,7 +541,10 @@ namespace Scripting
         public override void OnTriggerEnter(uint id)
         {
             //Console.WriteLine(" Other ID" + id);
-            
+            if(ECS.GetComponent<Tag>(id).tag == "BonusCoin")
+            {
+                ++m_BonusItem;
+            }
         }
 
         public override void OnTriggerExit(uint id)
@@ -519,6 +569,7 @@ namespace Scripting
 
             damageInvul = true;
             damageInvulTimer = 0.0f;
+            ++m_PlayerHitCount;
 
             if (health > 0)
             {
@@ -532,10 +583,11 @@ namespace Scripting
                 HandleDeath();
             }
 
-            Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
-            GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
+            //Console.WriteLine("Player took damage, health is now: " + health + " Entity ID: " + entityID);
+            //GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
+            DashboardScreen.SwapFace(DashboardScreen.FACES.HURT);
             ECS.PlayAudio(shipCameraEntity, 2, "SFX");
-            EnemyManager.AddScore(false);
+            AddScore(false);
 
             //Triggers a random camera shake upon taking damage, scales with damage taken
             TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage),
@@ -596,17 +648,131 @@ namespace Scripting
 
         void UpdateCombo(float dt)
         {
-            m_ComboDecayTimer += dt;
-            
-            if(m_ComboDecayTimer >= (m_ComboDecayTimeLimit * m_ComboDecayBobbleCount))
+            //ECS.GetTransformECS(m_ComboBarID, ref m_ComboBarTrans.Position, ref m_ComboBarTrans.Rotation, ref m_ComboBarTrans.Scale);
+
+            if (m_ComboDecayTimer <= 0.0f)
             {
-                m_ComboDecayTimer = 0.0f;
-                m_ComboActive = false;
+                ResetCombo();
             }
-            else
+
+            // Have to put this here cause of the update enable/disable entity doesn't function correctly
+            if (m_ComboNumber >= m_ComboThresholdSmall && m_ComboNumber < m_ComboThresholdLarge)
+            {
+                m_ComboActive = true;
+                ECS.SetActive(m_ComboSmallFireID, true);
+                ECS.SetActive(m_ComboLargeFireID, false);
+            }
+            else if(m_ComboNumber >= m_ComboThresholdLarge)
+            {
+                m_ComboActive = true;
+                ECS.SetActive(m_ComboSmallFireID, false);
+                ECS.SetActive(m_ComboLargeFireID, true);
+            }
+            else if(m_ComboNumber >= 1 && m_ComboNumber < m_ComboThresholdSmall)
             {
                 m_ComboActive = true;
             }
+
+            // Combo is active
+            if (m_ComboActive)
+            {
+                m_ComboDecayTimer -= dt;
+                //ECS.SetScale(m_ComboBarID, Vector3.Lerp(m_ComboBarTrans.Scale, m_EmptyComboBarScale, 1.5f * dt));
+                ECS.SetScale(m_ComboBarID, new Vector3(m_FullComboBarScale.X * (m_ComboDecayTimer/m_ComboDecayTimeLimit), m_FullComboBarScale.Y, m_FullComboBarScale.Z));
+            }
+            // Combo is inactive
+            else
+            {
+                ECS.SetScale(m_ComboBarID, m_EmptyComboBarScale);
+            }
+        }
+
+        private void UpdateLaser(float dt)
+        {
+            if (m_LaserTimer <= 0.0f && !m_LaserReady)
+            {
+                //Console.WriteLine("Special Ready");
+                //ECS.SetActive(m_LaserWeaponID, true);
+                m_LaserReady = true;
+            }
+            else
+            {
+                m_LaserTimer -= dt;
+            }
+
+            if (InputUtility.onKeyHeld("LASER") && m_LaserReady)
+            {
+                //Console.WriteLine("Special Used");
+                m_EnableLaserAttack = true;
+                m_LaserReady = false;
+                m_LaserTimer = m_LaserCooldown;
+                GameUtilities.PauseScene();
+            }
+            else if(InputUtility.onKeyHeld("LASER") && !m_LaserReady)
+            {
+                //Console.WriteLine("Special Not Ready");
+            }
+        }
+
+        public static void AddScore(bool increment)
+        {
+            //Increase score
+            if (increment)
+            {
+                ++PlayerScript.m_EnemyDestroyedCount;
+                // Max 99
+                if (PlayerScript.m_ComboNumber < 99)
+                    ++PlayerScript.m_ComboNumber;
+
+                // Start the combo decay timer
+                PlayerScript.m_ComboDecayTimer = PlayerScript.m_ComboDecayTimeLimit;
+                ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_FullComboBarScale);
+
+                if (PlayerScript.m_ComboActive)
+                {
+                    if (PlayerScript.m_ComboNumber >= m_ComboThresholdSmall && PlayerScript.m_ComboNumber < m_ComboThresholdLarge)
+                    {
+                        ECS.SetActive(PlayerScript.m_ComboSmallFireID, true);
+                        ECS.SetActive(PlayerScript.m_ComboLargeFireID, false);
+                    }
+                    else if(PlayerScript.m_ComboNumber >= m_ComboThresholdLarge)
+                    {
+                        ECS.SetActive(PlayerScript.m_ComboSmallFireID, false);
+                        ECS.SetActive(PlayerScript.m_ComboLargeFireID, true);
+                    }
+
+                    score += kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber;
+                }
+                else
+                {
+                    score += kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
+                }
+
+                //GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
+            }
+            //Decrease score
+            else
+            {
+                if (score > 10)
+                {
+                    score -= 10;
+                }
+                ResetCombo();
+            }
+
+            GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
+            GameUtilities.UpdateComboUI(PlayerScript.m_ComboNumberID, PlayerScript.m_ComboNumber);
+        }
+
+        private static void ResetCombo()
+        {
+            PlayerScript.m_ComboNumber = 0;
+            ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_EmptyComboBarScale);
+            PlayerScript.m_ComboDecayTimer = 0.0f;
+            PlayerScript.m_ComboActive = false;
+            ECS.SetActive(PlayerScript.m_ComboSmallFireID, false);
+            ECS.SetActive(PlayerScript.m_ComboLargeFireID, false);
+            GameUtilities.UpdateComboUI(PlayerScript.m_ComboNumberID, PlayerScript.m_ComboNumber);
         }
     }
 }

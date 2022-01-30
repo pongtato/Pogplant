@@ -32,6 +32,7 @@ namespace Scripting
         public override void OnTriggerEnter(uint id)
         {
             ++PlayerScript.m_BonusItem;
+            ++PlayerScript.m_CollectiblesCount;
             ECS.DestroyEntity(entityID);
         }
 

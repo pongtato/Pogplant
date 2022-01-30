@@ -1,4 +1,4 @@
-/******************************************************************************/
+﻿/******************************************************************************/
 /*!
 \file	DependantComponents.h
 \author Gabriel Wong Choon Jieh
@@ -21,6 +21,10 @@
 #include <PhysicsDLC.h>
 #include "../../AudioEngine.h"
 #include <rttr/registration>
+
+//For monostring
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
 
 namespace Components
 {
@@ -238,6 +242,192 @@ namespace Components
 				m_audioSources[id].c_playing = false;
 			}
 		}
+	};
+
+	/**> A data structure to set and pass variables to the C# side without reflection*/
+	struct ScriptVariables
+	{
+		struct Variable
+		{
+			enum class Type
+			{
+				FLOAT,
+				INT,
+				BOOL,
+				STRING,
+				VECTOR3,
+				TOTAL
+			};
+
+			inline ~Variable()
+			{
+				DeleteValue();
+			}
+
+			Variable() = default;
+			Variable(const Variable& rhs);
+
+			Variable& operator=(const Variable& rhs);
+
+			Type m_type = Type::INT;
+			void* m_data = nullptr;
+
+			template <typename T>
+			inline T GetValue()
+			{
+				if (m_data)
+					return *reinterpret_cast<T*>(m_data);
+				else
+					return T();
+			}
+
+			template <typename T>
+			void SetValue(T newValue)
+			{
+				if constexpr (std::is_same<T, float>::value)
+				{
+					if (m_type != Type::FLOAT)
+						UpdateType(Type::FLOAT);
+				}
+				if constexpr (std::is_same<T, int>::value)
+				{
+					if (m_type != Type::INT)
+						UpdateType(Type::INT);
+				}
+				if constexpr (std::is_same<T, bool>::value)
+				{
+					if (m_type != Type::BOOL)
+						UpdateType(Type::BOOL);
+				}
+				if constexpr (std::is_same<T, std::string>::value)
+				{
+					if (m_type != Type::STRING)
+						UpdateType(Type::STRING);
+				}
+				if constexpr (std::is_same<T, glm::vec3>::value)
+				{
+					if (m_type != Type::VECTOR3)
+						UpdateType(Type::VECTOR3);
+				}
+
+				if (!m_data)
+					UpdateType(m_type);
+
+				*reinterpret_cast<T*>(m_data) = newValue;
+			}
+
+			void UpdateType(Type newType)
+			{
+				DeleteValue();
+
+				switch (newType)
+				{
+				case Components::ScriptVariables::Variable::Type::FLOAT:
+					m_data = new float;
+					break;
+				case Components::ScriptVariables::Variable::Type::INT:
+					m_data = new int;
+					break;
+				case Components::ScriptVariables::Variable::Type::BOOL:
+					m_data = new bool;
+					break;
+				case Components::ScriptVariables::Variable::Type::STRING:
+					m_data = new std::string;
+					break;
+				case Components::ScriptVariables::Variable::Type::VECTOR3:
+					m_data = new glm::vec3;
+					break;
+				default:
+					throw;
+				}
+
+				m_type = newType;
+			}
+
+		private:
+			void DeleteValue()
+			{
+				if (!m_data)
+					return;
+
+				switch (m_type)
+				{
+				case Components::ScriptVariables::Variable::Type::FLOAT:
+					delete reinterpret_cast<float*>(m_data);
+					break;
+				case Components::ScriptVariables::Variable::Type::INT:
+					delete reinterpret_cast<int*>(m_data);
+					break;
+				case Components::ScriptVariables::Variable::Type::BOOL:
+					delete reinterpret_cast<bool*>(m_data);
+					break;
+				case Components::ScriptVariables::Variable::Type::STRING:
+					delete reinterpret_cast<std::string*>(m_data);
+					break;
+				case Components::ScriptVariables::Variable::Type::VECTOR3:
+					delete reinterpret_cast<glm::vec3*>(m_data);
+					break;
+				default:
+					throw;
+				}
+
+				m_data = nullptr;
+			}
+		};
+
+		template <typename T>
+		inline T GetValue(std::string key, T defaultValue)
+		{
+			auto itr = m_variables.find(key);
+
+			if (itr != m_variables.end())
+			{
+				return itr->second.GetValue<T>();
+			}
+
+			return defaultValue;
+		}
+
+		/*template <typename T>
+		inline T GetValueMono(MonoString* monoKey)
+		{
+			const char* key = mono_string_to_utf8(monoKey);
+			return GetValue<T>(key);
+		}//*/
+
+		template <typename T>
+		inline void SetValue(std::string key, const T& value)
+		{
+			m_variables[key].SetValue(value);
+		}
+
+		/*template <typename T>
+		inline void SetValueMono(MonoString* monoKey, const T& value)
+		{
+			const char* key = mono_string_to_utf8(monoKey);
+			SetValue(key, value);
+		}//*/
+
+		static inline std::string GetTypeName(Variable::Type type)
+		{
+			switch (type)
+			{
+			case Components::ScriptVariables::Variable::Type::FLOAT:
+				return "Float";
+			case Components::ScriptVariables::Variable::Type::INT:
+				return "Int";
+			case Components::ScriptVariables::Variable::Type::BOOL:
+				return "Bool";
+			case Components::ScriptVariables::Variable::Type::STRING:
+				return "String";
+			case Components::ScriptVariables::Variable::Type::VECTOR3:
+				return "Vector3";
+			default:
+				return "Something exploded";
+			}
+		}
+
+		std::unordered_map<std::string, Variable> m_variables;
 	};
 }
 

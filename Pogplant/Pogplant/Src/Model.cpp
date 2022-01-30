@@ -283,6 +283,7 @@ namespace Pogplant
 	{
 		std::vector<Texture> textures;
 		bool skip = false;
+		bool specOverRide = true;
 		for (unsigned int j = 0; j < m_TexturesLoaded.size(); j++)
 		{
 			// Optimization to skip loading again
@@ -304,7 +305,7 @@ namespace Pogplant
 
 			/// HARD FIXED DIRECTORY
 			const std::string fixedDir = "Resources/Textures/ModelTextures";
-			Texture texture;
+			Texture texture = {};
 			// Convert to linear space
 			if (_TypeName == "texture_diffuse")
 			{
@@ -312,6 +313,11 @@ namespace Pogplant
 			}
 			else
 			{
+				if (_TypeName == "texture_specular")
+				{
+					printf("%s\n", _Material.c_str());
+					specOverRide = false;
+				}
 				texture.m_Id = TexLoader::LoadTexture(extractedPath, fixedDir);
 			}
 			texture.m_Type = _TypeName;
@@ -320,6 +326,14 @@ namespace Pogplant
 			// To not load dupes
 			m_TexturesLoaded.push_back(texture);
 		}
+
+		// Add a blank texture since to block spec
+		if (specOverRide)
+		{
+			Texture texture = { 0, "texture_specular", "NULL" };
+			textures.push_back(texture);
+		}
+
 		return textures;
 	}
 }

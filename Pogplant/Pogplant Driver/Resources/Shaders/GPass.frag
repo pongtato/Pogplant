@@ -43,14 +43,15 @@ uniform vec3 viewPos;
 uniform int activeLights;
 uniform mat4 m4_LightProjection;
 
+uniform float BloomDamp;
 uniform float Exposure;
 uniform float Gamma;
 uniform bool Shadows;
 
-uniform float Decay     = 0.69;
-uniform float Shaft_Exposure  = 1.0;
-uniform float Density   = 5.0;
-uniform float Weight    = 0.69;
+uniform float Decay             = 0.69;
+uniform float Shaft_Exposure    = 1.0;
+uniform float Density           = 5.0;
+uniform float Weight            = 0.69;
 uniform vec2 ScreenSize;
 uniform vec2 LightScreenPos;
 int NUM_SAMPLES = 100;
@@ -158,20 +159,25 @@ void main()
 
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
     outColor = mix(vec4(outColor.rgb, 1.0), Canvas, Canvas.a);
-    //float brightness = dot(outColor.rgb * Shaft().rgb, vec3(0.2126, 0.7152, 0.0722));
-    //outColor = mix(outColor * Shaft(),outColor, brightness);
 
     // Gamma correct
     outColor.rgb = pow(outColor.rgb, vec3(1.0 / Gamma));
 
-    //outColor.rgb = vec3(AmbientOcclusion);
-
-    // Output bright bixels for bloom
-    float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
-    if(brightness > 1.1f)
-        brightColor = vec4(outColor.rgb,1.0);
+    // So that canvas does not have bleeding bloom/bloom, done this way as you cannot compare 0
+    if(Canvas.a > 0)
+    {
+    }
     else
-        brightColor = vec4(0.0, 0.0, 0.0, 1.0);
+    {
+        // Output bright bixels for bloom
+        float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
+        //if(brightness > BloomDamp)
+        //    brightColor = vec4(outColor.rgb, brightness);
+        //else
+        //    brightColor = vec4(0.0, 0.0, 0.0, 1.0);
 
-    brightColor += vec4(texture(gEmissive, TexCoords).rgb,1.0);
+        brightColor = vec4(outColor.rgb * 1.0f / (brightness * BloomDamp), 1.0f);
+        //brightColor = vec4(1.0f / (brightness * BloomThresh));
+        brightColor += vec4(texture(gEmissive, TexCoords).rgb,1.0);
+    }
 }

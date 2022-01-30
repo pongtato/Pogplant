@@ -145,16 +145,16 @@ namespace Scripting
 
         public void TakeDamage(float damage)
         {
+            health -= damage;
             if (health > 0)
             {
-                health -= damage;
                 ECS.PlayAudio(entityID, 0, "SFX");
-                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
             }
             else
             {
-                GameUtilities.IncreaseScorefromEnv(PlayerBox);
-                GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
+                //GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
+                DashboardScreen.SwapFace(DashboardScreen.FACES.HAPPY);
+                GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 1);
                 HandleDeath();
             }
         }
@@ -163,6 +163,7 @@ namespace Scripting
         {
             if (isAlive)
             {
+                PlayerScript.AddScore(true);
                 isAlive = false;
                 isFiring = false;
                 ECS.PlayAudio(entityID, 1, "SFX");
