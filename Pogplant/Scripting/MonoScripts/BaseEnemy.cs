@@ -11,6 +11,7 @@
             written consent of DigiPen Institute of Technology is prohibited.
 */
 /******************************************************************************/
+using System;
 using System.Collections.Generic;
 
 namespace Scripting
@@ -19,6 +20,7 @@ namespace Scripting
     public abstract class BaseAction
     {
         public abstract bool Execute(float dt, GameObject owner = null, EnemyManager manager = null);
+        public abstract bool GetIsFinished();
 
     }
 
@@ -79,6 +81,11 @@ namespace Scripting
         {
             return (MoveAction)this.MemberwiseClone();
         }
+
+        public override bool GetIsFinished()
+        {
+            return is_finished;
+        }
     }
 
     // This action causes the enemy to stop for a duration.
@@ -111,6 +118,10 @@ namespace Scripting
         {
             return (WaitAction)this.MemberwiseClone();
         }
+        public override bool GetIsFinished()
+        {
+            return is_finished;
+        }
     }
 
     // This action makes the enemy attack
@@ -138,7 +149,7 @@ namespace Scripting
         {
             fire_rate = 1 / fireRate;
             attack_animation = attackPattern;
-            true_bullet_interval = trueBulletInterval;
+            true_bullet_interval = 0; // ignore truebulletinterval param
             duration = totalDuration;
 
         }
@@ -206,9 +217,35 @@ namespace Scripting
                 //    }
                 //}
                 //Console.WriteLine("Firing bullet");
-                GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, owner.transform.Rotation, 5.0f, 3.0f);
+
+                if (attack_animation == "Spiral")
+                {
+                    ++true_bullet_interval;
+                    const float muzzle_number = 8;
+
+                    if (true_bullet_interval >= muzzle_number)
+                        true_bullet_interval = 0;
+
+                    const double angle = ( 2 * Math.PI) / muzzle_number;
+
+                    Vector3 forward_vector = Transform.GetForwardVector(owner.id);
+                    Vector3 up_vector = Transform.GetUpVector(owner.id);
+                    Vector3 right_vector = Vector3.CrossProduct(forward_vector, up_vector);
+
+                    right_vector *= (float)Math.Cos(angle * true_bullet_interval) * 1.2f;
+                    up_vector *= (float)Math.Sin(angle * true_bullet_interval) * 1.2f;
+
+                    Vector3 direction = forward_vector + right_vector + up_vector;
+
+                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + direction * 0.3f, direction, 0.2f, 10.0f);
+
+                }
+                else
+                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, Transform.GetForwardVector(owner.id), 5.0f, 3.0f);
+
                 ECS.PlayAudio(owner.id, 3, "SFX");
             }
+
 
             if (current_time >= duration)
             {
@@ -222,6 +259,11 @@ namespace Scripting
         public AttackAction MakeCopy()
         {
             return (AttackAction)this.MemberwiseClone();
+        }
+
+        public override bool GetIsFinished()
+        {
+            return is_finished;
         }
     }
 
@@ -243,10 +285,12 @@ namespace Scripting
 
             foreach (BaseAction item in action_array)
             {
-                if (item.Execute(dt, owner, manager)) ++actions_finished;
+                if (!item.GetIsFinished())
+                    if (item.Execute(dt, owner, manager))
+                        ++actions_finished;
             }
 
-            if (actions_finished >= action_array.Length)
+            if (actions_finished == action_array.Length)
                 is_finished = true;
             return is_finished;
         }
@@ -259,6 +303,11 @@ namespace Scripting
         public CompositeAction MakeCopy()
         {
             return (CompositeAction)this.MemberwiseClone();
+        }
+
+        public override bool GetIsFinished()
+        {
+            return is_finished;
         }
     }
 

@@ -196,7 +196,7 @@ namespace Scripting
 
 		auto body = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(bullet);
 		//Hardcoded for now
-		glm::vec3 forward_vec = enemy_trans->GetForwardVector();
+		glm::vec3 forward_vec = _Rotation;
 
 		//Add power to the shots
 		forward_vec *= _Speed;
@@ -356,6 +356,38 @@ namespace Scripting
 		}
 	}
 
+	void EnemyObstaclesCollision(entt::entity object, entt::entity other)
+	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
+			return;
+
+		auto enemy_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ColliderIdentifier>(object);
+		auto other_collider = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ColliderIdentifier>(other);
+
+		int enemyLayer = PogplantDriver::Application::GetInstance().m_sPhysicsSystem.GetCollisionLayer("ENEMY");
+		if (other_collider && other_collider->collisionLayer == enemyLayer)
+		{
+			std::swap(enemy_collider, other_collider);
+			std::swap(object, other);
+		}
+
+		if (enemy_collider && enemy_collider->collisionLayer == enemyLayer)
+		{
+			if (other_collider && other_collider->collisionLayer == PogplantDriver::Application::GetInstance().m_sPhysicsSystem.GetCollisionLayer("OBSTACLES"))
+			{
+				entt::entity playerbox = PogplantDriver::Application::GetInstance().m_activeECS->FindEntityWithTag("Player");
+				if (playerbox != entt::null)
+				{
+					const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(playerbox);
+					if (playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
+					{
+						SSH::InvokeFunction("EncounterSystemDriver", "DestroyEnemyFromObstacle", playerbox, static_cast<std::uint32_t>(object));
+					}
+				}
+			}
+		}
+	}
+
 	void TriggerWave(entt::entity object, entt::entity other)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(object) || !PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(other))
@@ -404,6 +436,7 @@ namespace Scripting
 		PlayerProjectileCollision(object, other);
 		EnemyProjectileCollision(object, other);
 		ObstaclesCollision(object, other);
+		EnemyObstaclesCollision(object, other);
 		TriggerWave(object, other);
 	}
 

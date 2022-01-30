@@ -241,7 +241,6 @@ namespace Scripting
                 }
             }
         }
-
         //public static void AddScore(bool increment)
         //{
         //    Console.WriteLine(PlayerScript.m_ComboNumber);
