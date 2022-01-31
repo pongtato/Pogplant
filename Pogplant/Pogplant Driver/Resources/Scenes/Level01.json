@@ -16626,7 +16626,7 @@
 			[
 				"Segment_04_Final_Merged",
 				"Resources/Models\\Environment",
-				"Seg_04_Final_Merged"
+				"Segment_04_Final_Merged"
 			],
 			"UseLight" : 1
 		},
@@ -134170,7 +134170,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 58.703468322753906,
+				"m_FrameCounter" : 12.020939826965332,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -134184,7 +134184,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.46875
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134236,7 +134236,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 58.703468322753906,
+				"m_FrameCounter" : 12.020939826965332,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -134250,7 +134250,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.46875
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134302,7 +134302,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 6.0683002471923828,
+				"m_FrameCounter" : 87.688285827636719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -134315,8 +134315,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.0625
+					0.5,
+					0.6875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134368,7 +134368,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 58.703468322753906,
+				"m_FrameCounter" : 12.020939826965332,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -134382,7 +134382,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.46875
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134434,7 +134434,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 51.215995788574219,
+				"m_FrameCounter" : 68.938682556152344,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -134447,8 +134447,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.40625
+					0.0,
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134500,7 +134500,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 58.703468322753906,
+				"m_FrameCounter" : 12.020939826965332,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -134514,7 +134514,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.46875
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134566,7 +134566,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 6.0683002471923828,
+				"m_FrameCounter" : 87.688285827636719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -134579,8 +134579,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.0625
+					0.5,
+					0.6875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134632,7 +134632,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 112.76361846923828,
+				"m_FrameCounter" : 46.955024719238281,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -134646,7 +134646,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.890625
+					0.375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134698,7 +134698,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 6.0683002471923828,
+				"m_FrameCounter" : 87.688285827636719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -134711,8 +134711,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.0625
+					0.5,
+					0.6875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134764,7 +134764,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 61.935684204101562,
+				"m_FrameCounter" : 74.557296752929688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -134777,8 +134777,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.484375
+					0.0,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134830,7 +134830,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 112.76361846923828,
+				"m_FrameCounter" : 46.955024719238281,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -134844,7 +134844,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.890625
+					0.375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
