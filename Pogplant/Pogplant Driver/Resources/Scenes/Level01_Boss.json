@@ -5036,13 +5036,13 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 5.0,
-				"Name" : "CoreProtectionDamageDuration",
+				"Data" : 60.0,
+				"Name" : "CoreProtectionThreshold",
 				"Type" : 0
 			},
 			{
-				"Data" : 60.0,
-				"Name" : "CoreProtectionThreshold",
+				"Data" : 5.0,
+				"Name" : "CoreProtectionDamageDuration",
 				"Type" : 0
 			},
 			{
@@ -5066,7 +5066,7 @@
 			"collisionLayer" : "ENEMY",
 			"isStatic" : false,
 			"isTrigger" : true,
-			"radius" : 3.0
+			"radius" : 1.190000057220459
 		},
 		"Tag" : 
 		{
@@ -5076,9 +5076,9 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				12.91783618927002,
-				-3.3753790855407715
+				0.00024094304535537958,
+				0.010192424058914185,
+				0.34172117710113525
 			],
 			"m_rotation" : 
 			[
