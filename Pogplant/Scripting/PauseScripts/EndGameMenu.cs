@@ -348,7 +348,7 @@ namespace Scripting
                 if(InputUtility.onAnyKey())
                 {
                     GameUtilities.ResumeScene();
-                    GameUtilities.LoadScene("MainMenu");
+                    GameUtilities.LoadScene("Level01_Boss");
                 }
 
                 ECS.GetTransformECS(m_EndContinueID, ref m_pos, ref m_rot, ref m_scale);

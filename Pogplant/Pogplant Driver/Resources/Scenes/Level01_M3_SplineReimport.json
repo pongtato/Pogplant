@@ -16626,7 +16626,7 @@
 			[
 				"Segment_04_Final_Merged",
 				"Resources/Models\\Environment",
-				"Seg_04_Final_Merged"
+				"Segment_04_Final_Merged"
 			],
 			"UseLight" : 1
 		},
@@ -135090,7 +135090,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 58.939403533935547,
+				"m_FrameCounter" : 54.545944213867188,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -135104,7 +135104,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.46875
+					0.4375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -135156,7 +135156,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 120.98248291015625,
+				"m_FrameCounter" : 54.545944213867188,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -135170,7 +135170,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.953125
+					0.4375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -135222,7 +135222,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 85.563796997070312,
+				"m_FrameCounter" : 25.630449295043945,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -135236,7 +135236,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.671875
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -135288,7 +135288,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 120.98248291015625,
+				"m_FrameCounter" : 54.545944213867188,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -135302,7 +135302,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.953125
+					0.4375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -135354,7 +135354,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 35.554378509521484,
+				"m_FrameCounter" : 2.5637400150299072,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -135367,8 +135367,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.28125
+					0.0,
+					0.03125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -135420,7 +135420,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 36.763881683349609,
+				"m_FrameCounter" : 54.545944213867188,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -135434,7 +135434,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.296875
+					0.4375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -135486,7 +135486,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 63.383579254150391,
+				"m_FrameCounter" : 25.630449295043945,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -135500,7 +135500,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.5
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -135552,7 +135552,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 63.928199768066406,
+				"m_FrameCounter" : 62.731239318847656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -135565,7 +135565,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
+					0.0,
 					0.5
 				]
 			},
@@ -135618,7 +135618,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 24.258100509643555,
+				"m_FrameCounter" : 25.630449295043945,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -135631,7 +135631,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
+					0.5,
 					0.203125
 				]
 			},
@@ -135684,7 +135684,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 23.360101699829102,
+				"m_FrameCounter" : 102.84880828857422,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -135697,8 +135697,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.1875
+					0.0,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -135750,7 +135750,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 63.928199768066406,
+				"m_FrameCounter" : 62.731239318847656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -135763,7 +135763,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
+					0.0,
 					0.5
 				]
 			},

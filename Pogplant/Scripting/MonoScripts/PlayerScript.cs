@@ -226,6 +226,10 @@ namespace Scripting
 
         public override void Update(float dt)
         {
+            if(InputUtility.onKeyTriggered("SLOWMO"))
+			{
+                TimeManager.TriggerTimeAlter(0.5f, 2f);
+			}
             //Return to main menu key
             //if (InputUtility.onKeyTriggered(KEY_ID.KEY_ESCAPE))
             //{
