@@ -17817,8 +17817,8 @@
 			],
 			"m_scale" : 
 			[
-				0.05000000074505806,
-				0.05000000074505806,
+				0.039999999105930328,
+				0.039999999105930328,
 				0.99999994039535522
 			]
 		}
@@ -18941,7 +18941,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				-5.1726747885005864e-12,
+				-5.9340202022972743e-12,
 				2.0844188874935554e-10
 			],
 			"m_scale" : 
@@ -18977,14 +18977,14 @@
 		{
 			"m_position" : 
 			[
-				-2.9802322387695312e-08,
-				5.340576171875e-05,
-				20.000001907348633
+				-2.0675361156463623e-07,
+				1.0,
+				20.000019073486328
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-3.4537839168485851e-12,
+				-9.799586272660199e-13,
 				2.0844186099377993e-10
 			],
 			"m_scale" : 
@@ -19013,9 +19013,9 @@
 			"collisionLayer" : "DEFAULT",
 			"extends" : 
 			[
-				5.0,
-				5.0,
-				15.0
+				1.0,
+				1.0,
+				20.0
 			],
 			"isStatic" : false,
 			"isTrigger" : true
@@ -19032,21 +19032,21 @@
 		{
 			"m_position" : 
 			[
+				1.5459954738616943e-07,
 				0.0,
-				0.0,
-				-3.814697265625e-06
+				-8.7618827819824219e-06
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				1.2379811802423757e-12,
-				1.0504620973392871e-15
+				-6.7580420426427423e-11,
+				1.2380308367018755e-12,
+				9.8796260665582605e-16
 			],
 			"m_scale" : 
 			[
 				1.0,
 				1.0,
-				1.0
+				0.99999505281448364
 			]
 		}
 	},
@@ -19145,7 +19145,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.853794097900391,
+				"m_FrameCounter" : 125.1217041015625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19159,7 +19159,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.390625
+					0.984375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19211,7 +19211,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.895187377929688,
+				"m_FrameCounter" : 64.882148742675781,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -19225,7 +19225,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.609375
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19277,7 +19277,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.853794097900391,
+				"m_FrameCounter" : 125.1217041015625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19291,7 +19291,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.390625
+					0.984375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19343,7 +19343,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 36.520423889160156,
+				"m_FrameCounter" : 21.253244400024414,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -19356,8 +19356,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.296875
+					0.5,
+					0.171875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19409,7 +19409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.853794097900391,
+				"m_FrameCounter" : 125.1217041015625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19423,7 +19423,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.390625
+					0.984375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19475,7 +19475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.853794097900391,
+				"m_FrameCounter" : 125.1217041015625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19489,7 +19489,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.390625
+					0.984375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19541,7 +19541,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.853794097900391,
+				"m_FrameCounter" : 125.1217041015625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -19555,7 +19555,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.390625
+					0.984375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19607,7 +19607,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 94.650901794433594,
+				"m_FrameCounter" : 70.324211120605469,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -19621,7 +19621,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.75
+					0.5625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19673,7 +19673,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.895187377929688,
+				"m_FrameCounter" : 64.882148742675781,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -19687,7 +19687,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.609375
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19739,7 +19739,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 94.650901794433594,
+				"m_FrameCounter" : 70.324211120605469,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -19753,7 +19753,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.75
+					0.5625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -19805,7 +19805,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 15.315040588378906,
+				"m_FrameCounter" : 40.444038391113281,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 400.0,
@@ -19818,8 +19818,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.125
+					0.0,
+					0.328125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -117475,7 +117475,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirmation Menu",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -117541,7 +117541,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirm Yes Button",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -117607,7 +117607,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirm Yes Button Faded",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -117673,7 +117673,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirm No Button",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -117739,7 +117739,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirm No Button Faded",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -117805,7 +117805,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Pop Up Backing",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{

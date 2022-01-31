@@ -236,32 +236,12 @@ namespace Scripting
 
         //Shield
         public float health;
-        bool is_shield_broken;
-        bool start_shield_break_countdown;
-        const float shield_break_delay_duration = 2.0f;
-        float shield_break_delay_timer;
         uint false_core_id;
         uint sparks_particle_id;
 
         //Eye
         uint mouth_left_id;
         uint mouth_right_id;
-        Vector3 rotate_angle;
-        const float rotate_speed = 10.0f;
-        bool start_eye_countdown;
-        const float eye_delay_duration = 3.0f;
-        float eye_delay_timer;
-
-        //Black screen & particle
-        bool start_particle_countdown;
-        const float particle_delay_duration = 2.5f;
-        float particle_timer;
-
-        //Scene transition
-        bool start_scene_change_countdown;
-        const float scene_change_delay_duration = 5.0f;
-        float scene_change_delay_timer;
-        uint black_screen_id;
 
         //Laser
         float laser_spin_addition;
@@ -298,18 +278,12 @@ namespace Scripting
             FindEntities();
 
             health = 5;
-            is_shield_broken = false;
-            ECS.SetActive(black_screen_id, false);
             ECS.SetActive(sparks_particle_id, false);
-            rotate_angle = new Vector3(0, 0, 40.0f);
             current_animation_index = 0;
         }
 
         void FindEntities()
         {
-            //UI
-            black_screen_id = ECS.FindEntityWithName("L1 Black Screen");
-
             //Core
             false_core_id = ECS.FindEntityWithName("FalseCore");
             sparks_particle_id = ECS.FindEntityWithName("Shield Sparks");

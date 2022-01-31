@@ -145,6 +145,8 @@ namespace Scripting
         public static uint m_ComboSmallFireID;
         const uint m_ComboThresholdSmall = 5;
         public static uint m_ComboBarID;
+        public static uint m_ComboTextID;
+        public static uint m_ComboXID;
         public static Vector3 m_FullComboBarScale = new Vector3(2.0f, 1.0f, 1.0f);
         public static Vector3 m_EmptyComboBarScale = new Vector3(0.0f, 1.0f, 1.0f);
         //public static Transform m_ComboBarTrans = new Transform();
@@ -192,6 +194,8 @@ namespace Scripting
             m_ComboLargeFireID = ECS.FindEntityWithName("PlayerComboLargeFire");
             m_ComboSmallFireID = ECS.FindEntityWithName("PlayerComboSmallFire");
             m_ComboBarID = ECS.FindEntityWithName("PlayerComboBar");
+            m_ComboTextID = ECS.FindEntityWithName("PlayerComboText");
+            m_ComboXID = ECS.FindEntityWithName("PlayerComboX");
 
             ECS.SetActive(m_ComboSmallFireID, false);
             ECS.SetActive(m_ComboLargeFireID, false);
@@ -672,12 +676,17 @@ namespace Scripting
             {
                 m_ComboActive = true;
             }
+            else if(m_ComboNumber == 0)
+            {
+                EnableComboUI(false);
+            }
 
             // Combo is active
             if (m_ComboActive)
             {
                 m_ComboDecayTimer -= dt;
                 //ECS.SetScale(m_ComboBarID, Vector3.Lerp(m_ComboBarTrans.Scale, m_EmptyComboBarScale, 1.5f * dt));
+                EnableComboUI(true);
                 ECS.SetScale(m_ComboBarID, new Vector3(m_FullComboBarScale.X * (m_ComboDecayTimer/m_ComboDecayTimeLimit), m_FullComboBarScale.Y, m_FullComboBarScale.Z));
             }
             // Combo is inactive
@@ -772,7 +781,15 @@ namespace Scripting
             PlayerScript.m_ComboActive = false;
             ECS.SetActive(PlayerScript.m_ComboSmallFireID, false);
             ECS.SetActive(PlayerScript.m_ComboLargeFireID, false);
+            EnableComboUI(false);
             GameUtilities.UpdateComboUI(PlayerScript.m_ComboNumberID, PlayerScript.m_ComboNumber);
+        }
+
+        private static void EnableComboUI(bool isEnable)
+        {
+            ECS.SetActive(PlayerScript.m_ComboTextID, isEnable);
+            ECS.SetActive(PlayerScript.m_ComboXID, isEnable);
+            ECS.SetActive(PlayerScript.m_ComboNumberID, isEnable);
         }
     }
 }

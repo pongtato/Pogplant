@@ -40,11 +40,11 @@ namespace Scripting
         //Menu buttons
         uint start_button_id;
         uint start_button_faded_id;
-        uint how_to_play_button_id;
+        //uint how_to_play_button_id;
         uint how_to_play_button_faded_id;
         uint settings_button_id;
         uint settings_button_faded_id;
-        uint credits_button_id;
+        //uint credits_button_id;
         uint credits_button_faded_id;
         uint quit_button_id;
         uint quit_button_faded_id;
