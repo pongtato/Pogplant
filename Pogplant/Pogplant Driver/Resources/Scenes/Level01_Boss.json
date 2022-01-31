@@ -43,9 +43,9 @@
 		{
 			"m_position" : 
 			[
-				3.3044008501681432e-11,
-				13.499978065490723,
-				9.9766807556152344
+				2.4263614250230603e-05,
+				0.16779443621635437,
+				14.29778003692627
 			],
 			"m_rotation" : 
 			[
@@ -5036,13 +5036,13 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 60.0,
-				"Name" : "CoreProtectionThreshold",
+				"Data" : 5.0,
+				"Name" : "CoreProtectionDamageDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 5.0,
-				"Name" : "CoreProtectionDamageDuration",
+				"Data" : 60.0,
+				"Name" : "CoreProtectionThreshold",
 				"Type" : 0
 			},
 			{
