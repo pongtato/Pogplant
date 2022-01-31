@@ -236,10 +236,6 @@ namespace Scripting
 
         //Shield
         public float health;
-        bool is_shield_broken;
-        bool start_shield_break_countdown;
-        const float shield_break_delay_duration = 2.0f;
-        float shield_break_delay_timer;
         uint false_core_id;
         uint sparks_particle_id;
 
@@ -282,7 +278,6 @@ namespace Scripting
             FindEntities();
 
             health = 5;
-            is_shield_broken = false;
             ECS.SetActive(sparks_particle_id, false);
             current_animation_index = 0;
         }
