@@ -16597,7 +16597,7 @@
 		}
 	},
 	{
-		"Children" : 8,
+		"Children" : 11,
 		"Name" : 
 		{
 			"m_Name" : "Segment_04",
@@ -19471,6 +19471,171 @@
 			"m_rotation" : 
 			[
 				7.1559930203690669e-10,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bridge",
+				"Resources/Models\\Environment",
+				"Bridge"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				120.39548492431641,
+				-38.302352905273438,
+				-261.16519165039062
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bridge",
+				"Resources/Models\\Environment",
+				"Bridge"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				99.828567504882812,
+				-33.65386962890625,
+				-261.16519165039062
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bridge",
+				"Resources/Models\\Environment",
+				"Bridge"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				88.925643920898438,
+				-38.279991149902344,
+				-261.16519165039062
+			],
+			"m_rotation" : 
+			[
+				0.0,
 				-0.0,
 				0.0
 			],
@@ -101258,14 +101423,14 @@
 		"Name" : 
 		{
 			"m_Name" : "Coin3",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
 				1.0,
-				0.004651188850402832,
+				0.56019467115402222,
 				0.004651188850402832
 			],
 			"EmissiveTint" : 
@@ -101276,9 +101441,9 @@
 			],
 			"RenderModel" : 
 			[
-				"sphere",
-				"Resources/Models\\sphere",
-				"Sphere001"
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
 			],
 			"UseLight" : 1
 		},
@@ -101331,15 +101496,15 @@
 		"Name" : 
 		{
 			"m_Name" : "Coin2",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
 				1.0,
-				0.004651188850402832,
-				0.004651188850402832
+				0.56078433990478516,
+				0.0039215688593685627
 			],
 			"EmissiveTint" : 
 			[
@@ -101349,9 +101514,9 @@
 			],
 			"RenderModel" : 
 			[
-				"sphere",
-				"Resources/Models\\sphere",
-				"Sphere001"
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
 			],
 			"UseLight" : 1
 		},
@@ -101411,8 +101576,8 @@
 			"ColorTint" : 
 			[
 				1.0,
-				0.004651188850402832,
-				0.004651188850402832
+				0.56078433990478516,
+				0.0039215688593685627
 			],
 			"EmissiveTint" : 
 			[
@@ -101422,9 +101587,9 @@
 			],
 			"RenderModel" : 
 			[
-				"sphere",
-				"Resources/Models\\sphere",
-				"Sphere001"
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
 			],
 			"UseLight" : 1
 		},
@@ -101436,9 +101601,9 @@
 		{
 			"m_position" : 
 			[
-				-0.053465843200683594,
-				2.5635006427764893,
-				-49.226779937744141
+				152.67243957519531,
+				4.3409128189086914,
+				-200.08248901367188
 			],
 			"m_rotation" : 
 			[
@@ -134170,7 +134335,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 12.020939826965332,
+				"m_FrameCounter" : 75.871467590332031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -134183,8 +134348,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.109375
+					0.5,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134236,7 +134401,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 12.020939826965332,
+				"m_FrameCounter" : 75.871467590332031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -134249,8 +134414,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.109375
+					0.5,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134302,7 +134467,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 87.688285827636719,
+				"m_FrameCounter" : 87.587478637695312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -134368,7 +134533,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 12.020939826965332,
+				"m_FrameCounter" : 75.871467590332031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -134381,8 +134546,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.109375
+					0.5,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134434,7 +134599,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 68.938682556152344,
+				"m_FrameCounter" : 39.47052001953125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -134447,8 +134612,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.546875
+					0.5,
+					0.3125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134500,7 +134665,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 12.020939826965332,
+				"m_FrameCounter" : 75.871467590332031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -134513,8 +134678,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.109375
+					0.5,
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134566,7 +134731,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 87.688285827636719,
+				"m_FrameCounter" : 87.587478637695312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -134632,7 +134797,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.955024719238281,
+				"m_FrameCounter" : 126.93182373046875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -134646,7 +134811,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.375
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134698,7 +134863,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 87.688285827636719,
+				"m_FrameCounter" : 87.587478637695312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -134764,7 +134929,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 74.557296752929688,
+				"m_FrameCounter" : 1.4699000120162964,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -134777,8 +134942,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.59375
+					0.5,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -134830,7 +134995,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.955024719238281,
+				"m_FrameCounter" : 126.93182373046875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -134844,7 +135009,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.375
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
