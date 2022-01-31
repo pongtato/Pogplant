@@ -58,8 +58,8 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetActive(uint entityID, bool isEnabled);
 
-        //[MethodImplAttribute(MethodImplOptions.InternalCall)]
-        //public extern static void ToggleEntity(uint entityID);
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void ToggleEntity(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void RigidbodyAddForce(uint entityID, Vector3 dir);

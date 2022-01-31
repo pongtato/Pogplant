@@ -1194,9 +1194,22 @@
 				"Type" : 0
 			},
 			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
 				"Data" : 5.0,
 				"Name" : "m_ExplosiveEnemy_threshold_2",
 				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
 			},
 			{
 				"Data" : 0.10000000149011612,

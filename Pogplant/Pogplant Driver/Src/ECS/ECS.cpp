@@ -334,9 +334,9 @@ void ECS::EnableEntity(entt::entity _entity)
 void ECS::ToggleEntity(entt::entity _entity)
 {
 	if (m_registry.try_get<Disabled>(_entity))
-		m_EntitiesToDisable.insert(_entity);
-	else
 		m_EntitiesToEnable.insert(_entity);
+	else
+		m_EntitiesToDisable.insert(_entity);
 }
 
 void ECS::TrulyDisableEntity(entt::entity _entity)

@@ -15,8 +15,14 @@ namespace Scripting
 
 		//outline which will be turned on and off
 		uint m_outline_id;
-		uint m_propeller_id;
+
 		uint m_player_id;
+
+		uint m_propeller_id;
+		bool m_spin_propeller = true;
+		float m_propeller_speed;
+		Vector3 m_propeller_rot;
+		Vector3 m_propeller_rot_axis;
 
 		//how long the entity is alive for
 		float m_lifetime;
@@ -56,6 +62,9 @@ namespace Scripting
 			m_flicker_rate_1 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_flicker_rate_1");
 			m_flicker_rate_2 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_flicker_rate_2");
 
+			m_propeller_speed = ECS.GetValue<float>(entityID, 200.0f, "m_ExplosiveEnemy_propeller_speed");
+			//m_propeller_rot_axis = ECS.GetValue<Vector3>(entityID, new Vector3(0,1,0), "m_ExplosiveEnemy_propeller_rot_axis");
+			m_propeller_rot_axis = new Vector3(0, 1, 0);
 			m_armed = true;
 			m_lifetime = ECS.GetValue<float>(entityID, 5.69f, "m_ExplosiveEnemy_lifetime");
 			Console.WriteLine("m_player_id id: " + m_player_id);
@@ -85,23 +94,51 @@ namespace Scripting
 					Console.WriteLine("beep beep");
 				}
 			}
-        }
+
+			SpinObjectEndless(m_propeller_id, m_propeller_rot_axis, m_propeller_speed, dt);
+
+		}
 
 		void Flicker(ref float dt, ref float limit)
         {
 			m_dt_counter += dt;
 			if (m_dt_counter > limit)
             {
-				if (test)
-					ECS.SetActive(m_outline_id, !test);
-                else
-					ECS.SetActive(m_outline_id, !test);
+				//if (test)
+				//	ECS.SetActive(m_outline_id, !test);
+    //            else
+				//	ECS.SetActive(m_outline_id, !test);
 
 				test = !test;
-				//ECS.ToggleEntity(m_outline_id);
+				ECS.ToggleEntity(m_outline_id);
 				m_dt_counter = 0;
 			}
         }
+
+		void SpinObjectEndless(uint id, Vector3 axis, float spin_speed, float dt)
+		{
+			if (m_spin_propeller)
+			{
+				m_propeller_rot += axis * spin_speed * dt;
+				//m_propeller_rot.X += x_axis * spin_speed * dt;
+				//m_propeller_rot.Y += y_axis * spin_speed * dt;
+				//m_propeller_rot.Z += z_axis * spin_speed * dt;
+
+				ClampRotationValue(ref m_propeller_rot.X, -360.0f, 360.0f);
+				ClampRotationValue(ref m_propeller_rot.Y, -360.0f, 360.0f);
+				ClampRotationValue(ref m_propeller_rot.Z, -360.0f, 360.0f);
+
+				ECS.SetRotation(id, m_propeller_rot);
+			}
+		}
+
+		void ClampRotationValue(ref float value, float min, float max)
+		{
+			if (value <= min)
+				value = 0.0f;
+			else if (value >= max)
+				value = 0.0f;
+		}
 
 		public override void LateUpdate(float dt)
 		{
