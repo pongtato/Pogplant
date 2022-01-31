@@ -178,6 +178,12 @@ namespace Scripting
             return new BossWarning();
 
         }
+
+        public static L1BossCloudMover L1BossCloudMover()
+        {
+            return new L1BossCloudMover();
+        }
+
         public static L1Boss L1Boss()
         {
             return new L1Boss();
