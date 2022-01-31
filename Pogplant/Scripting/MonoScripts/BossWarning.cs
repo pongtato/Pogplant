@@ -43,7 +43,6 @@ namespace Scripting
         const float backing_begin_X = 1.2f;
 
         const float text_anim_speed = 8.0f;
-        const float text_begin_X = 1.1f;
 
         //Text
         const float text_pulsing_speed = 6.0f;
@@ -53,10 +52,6 @@ namespace Scripting
         const float text_pulse_min_scale = 0.55f;
         const int text_pulse_max_count = 6;
         int text_pulse_current_count;
-
-        Vector3 pos = new Vector3();
-        Vector3 rot = new Vector3();
-        Vector3 scale = new Vector3();
 
         public override void Init(ref uint _entityID)
         {
