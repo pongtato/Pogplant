@@ -1,0 +1,171 @@
+[
+	{
+		"Children" : 2,
+		"Guid" : 
+		{
+			"m_guid" : "329008d1-9c90-4469-88e1-a79cf88c6a48"
+		},
+		"Name" : 
+		{
+			"m_Name" : "CanvasParent",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Canvas_Parent.prefab"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-7.4505805969238281e-09,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				0.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : true,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 8.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.25
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Crosshair",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Canvas_Parent.prefab"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.3589858503546566e-06,
+				0.05000000074505806,
+				-1.0
+			],
+			"m_rotation" : 
+			[
+				-6.5137591501174263e-12,
+				-4.0970005166229839e-12,
+				1.3027204315285701e-11
+			],
+			"m_scale" : 
+			[
+				0.039999999105930328,
+				0.039999999105930328,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 3.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 4,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.25
+				],
+				"m_UV_Offset" : 
+				[
+					0.75,
+					0.25
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LargeCrosshair",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Canvas_Parent.prefab"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.05000000074505806,
+				-1.0
+			],
+			"m_rotation" : 
+			[
+				-8.68464501702082e-12,
+				-4.0656263078364674e-12,
+				8.6842599084091532e-12
+			],
+			"m_scale" : 
+			[
+				0.30000001192092896,
+				0.30000001192092896,
+				1.0
+			]
+		}
+	}
+]
