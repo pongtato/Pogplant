@@ -565,9 +565,8 @@ namespace PogplantDriver
 				Json::Value data = *itr;
 
 				Components::ScriptVariables::Variable var;
-				var.m_type = (Components::ScriptVariables::Variable::Type)data["Type"].asInt();
 
-				switch (var.m_type)
+				switch ((Components::ScriptVariables::Variable::Type)data["Type"].asInt())
 				{
 				case Components::ScriptVariables::Variable::Type::FLOAT:
 					var.SetValue<float>(data["Data"].asFloat());
