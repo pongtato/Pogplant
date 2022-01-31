@@ -63,8 +63,8 @@ namespace Scripting
 			m_flicker_rate_2 = ECS.GetValue<float>(entityID, 0.69f, "m_ExplosiveEnemy_flicker_rate_2");
 
 			m_propeller_speed = ECS.GetValue<float>(entityID, 200.0f, "m_ExplosiveEnemy_propeller_speed");
-			//m_propeller_rot_axis = ECS.GetValue<Vector3>(entityID, new Vector3(0,1,0), "m_ExplosiveEnemy_propeller_rot_axis");
-			m_propeller_rot_axis = new Vector3(0, 1, 0);
+			m_propeller_rot_axis = ECS.GetValue<Vector3>(entityID, new Vector3(0,1,0), "m_ExplosiveEnemy_propeller_rot_axis");
+			//m_propeller_rot_axis = new Vector3(0, 1, 0);
 			m_armed = true;
 			m_lifetime = ECS.GetValue<float>(entityID, 5.69f, "m_ExplosiveEnemy_lifetime");
 			Console.WriteLine("m_player_id id: " + m_player_id);
