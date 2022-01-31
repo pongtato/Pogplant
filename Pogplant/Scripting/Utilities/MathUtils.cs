@@ -20,6 +20,11 @@ namespace Scripting.Utilities
 
 	public struct PPMath
 	{
+		public static float Lerp(float a, float b, float by)
+		{
+			return a * (1 - by) + b * by;
+		}
+
 		public static float RandomFloat(float min, float max)
 		{
 			Random random = new Random();

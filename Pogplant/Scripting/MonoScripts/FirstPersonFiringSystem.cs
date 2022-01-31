@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Scripting.Utilities;
+
 
 namespace Scripting
 {
@@ -29,8 +31,8 @@ namespace Scripting
         //Player Firing 
         float p_fireRate = 0.1f;
         float p_fire_timer = 0.0f;
-        float m_rotspeed = 10.0f;
-        float turret_rot_lerp_limit = 5.0f;
+        float m_rotspeed = 30.0f;
+        float turret_rot_lerp_limit = 15.0f;
 
         //Player Crosshair(The smaller one)
         uint Crosshair;
@@ -41,21 +43,27 @@ namespace Scripting
         public float crosshair_accumulative_rot = 0.0f;
         public float crosshair_idle_rot_speed = 100.0f;
         public float crosshair_lockon_rot_speed = 200.0f;
+        public float screen_to_world_multiplier = 20.0f;
         Vector3 current_offset_value; //Use only X,Y
         Vector3 shooting_box_initial_pos;
-        Vector3 MousePos =  new Vector3(0, 0, 0);
-        Vector3 SetCurrentOffset = new Vector3(0, 0, 0);
+        Vector3 MousePos = new Vector3(0, 0, 0);
         Vector3 IdleColor = new Vector3(0, 0.48f, 1);
         Vector3 LockonColor = new Vector3(1, 0, 0);
+
+        Vector3 Maxangleoffset = new Vector3(20.0f, 40.0f, 0); // Given approx 50 for y.
+        float Max_X = 0.126F; // Will break if anything changes just an approx
+        float Max_Y = 0.126F; // Will break if anything changes just an approx
+
+
         bool onceFlag = false;
         bool Idleflag = false;
         bool LockonFlag = false;
-       
+
 
         Transform original_crosshair_initial = new Transform();
         //Player Crosshair(TheBiggerone)
         uint LargeCrosshair;
-        
+
         float largecrosshair_accumulative_scale = 0;
         float largecrosshair_lockon_scale_speed = 2.0f;
         float accu_delay_largecrosshair = 0;
@@ -77,14 +85,14 @@ namespace Scripting
         float animateSpeed = 6.0f;
         uint EnemyTrack = 0;
 
-        public class  Reticle
+        public class Reticle
         {
             public uint parent_id = 0;
-            public uint child_id = 0;           
+            public uint child_id = 0;
             public bool enabled = false;
             public float accu_angle = 0;
             public float step = 0;
-            public Reticle( uint parentid, uint chilid, bool enable = false) { enabled = enable; parent_id = parentid; child_id = chilid; }
+            public Reticle(uint parentid, uint chilid, bool enable = false) { enabled = enable; parent_id = parentid; child_id = chilid; }
         };
         List<Reticle> ReticleGroup = new List<Reticle>();
         Transform transform;
@@ -131,7 +139,7 @@ namespace Scripting
 
         public override void Start()
         {
-            
+
         }
 
         public override void Update(float dt)
@@ -148,11 +156,12 @@ namespace Scripting
             //Add homing capablities
             SetTargetEnemies(ref Turrets_A, ref enemy_in_range_A, ref enemy_to_target_A);
             DoRemovalList();
+
             if (enemy_to_target_A.Count == 0)
             {
                 SetTurretStraight(ref Turrets_A, 0, dt);
-                SetCrosshairColor(IdleColor,ref Idleflag,ref LockonFlag);
-                SetLargeCrossHair(3,ref LargeIdleflag, ref LargeLockonFlag);
+                SetCrosshairColor(IdleColor, ref Idleflag, ref LockonFlag);
+                SetLargeCrossHair(3, ref LargeIdleflag, ref LargeLockonFlag);
                 RotateSmallCrossHair(crosshair_idle_rot_speed, dt);
                 ResetLargeCrossHairSize();
                 //SetRotateCrosshair(Slow & blue);
@@ -160,6 +169,7 @@ namespace Scripting
             }
             if (enemy_to_target_A.Count >= 1)
             {
+                SetNearestEnemy();
                 SetReticleandTurret(ref Turrets_A, ref enemy_to_target_A, 0, dt);
                 SetCrosshairColor(LockonColor, ref LockonFlag, ref Idleflag);
                 SetLargeCrossHair(4, ref LargeLockonFlag, ref LargeIdleflag);
@@ -292,7 +302,7 @@ namespace Scripting
             diff *= -1.0f;
             if (diff.X > 0 && current_offset_value.X < max_offset_value)
                 current_offset_value.X += (diff.X * move_multipler);
-            if(diff.X < 0 && current_offset_value.X > -max_offset_value)
+            if (diff.X < 0 && current_offset_value.X > -max_offset_value)
                 current_offset_value.X += (diff.X * move_multipler);
 
             if (diff.Y > 0 && current_offset_value.Y < max_offset_value)
@@ -314,6 +324,8 @@ namespace Scripting
             transform.Position = Vector3.Lerp(transform.Position, shooting_box_initial_pos + current_offset_value, lerp_speed * dt);
 
             float dist = current_offset_value.magnitude();
+            //Update the anglular difference 
+
             //Clamp the reticle
             if (dist > max_offset_value)
             {
@@ -322,6 +334,7 @@ namespace Scripting
                 inner_ret.Position = new Vector3(maxRange.X, maxRange.Y, original_crosshair_initial.Position.Z);
                 ECS.SetTransformECS(Crosshair, inner_ret.Position, original_crosshair_initial.Rotation, original_crosshair_initial.Scale);
             }
+
         }
 
         void UpdateReticleMovementCanvas(ref Transform transform, ref float dt)
@@ -342,7 +355,7 @@ namespace Scripting
             MousePos = newMousePos;
 
             //Check for controller movement if no mouse
-            if((Math.Abs(diff.X) < float.Epsilon) && (Math.Abs(diff.Y) < float.Epsilon))
+            if ((Math.Abs(diff.X) < float.Epsilon) && (Math.Abs(diff.Y) < float.Epsilon))
             {
                 diff.X = InputUtility.GetAxis("AIMX") * controller_move_multiplier;
                 diff.Y = InputUtility.GetAxis("AIMY") * controller_move_multiplier;
@@ -361,6 +374,9 @@ namespace Scripting
                 current_offset_value.Y += (diff.Y * move_multipler);
 
 
+            //Console.WriteLine("OFFSET X: " + current_offset_value.X);
+            //Console.WriteLine("OFFSET Y: " + current_offset_value.Y);
+
             //Update the reticle and hitbox zone
             Transform inner_ret = new Transform();
             inner_ret.Position = new Vector3(0, 0, 0);
@@ -368,14 +384,50 @@ namespace Scripting
             inner_ret.Position = Vector3.Lerp(inner_ret.Position, original_crosshair_initial.Position + current_offset_value, lerp_speed * dt);
             ECS.SetTransformECS(Crosshair, inner_ret.Position, original_crosshair_initial.Rotation, original_crosshair_initial.Scale);
             //ShootingBox
-            transform.Position = Vector3.Lerp(transform.Position, shooting_box_initial_pos + (current_offset_value  * 50.0f), lerp_speed * dt);
+            Vector3 MainWorldInvert = current_offset_value;
+            MainWorldInvert.X *= -1.0f;
+            transform.Position = Vector3.Lerp(transform.Position, shooting_box_initial_pos + (MainWorldInvert * screen_to_world_multiplier), lerp_speed * dt);
+            //Set The max angle too
+
 
             float dist = current_offset_value.magnitude();
+            float angle_y_to_offset = 0.0f;
+            if (current_offset_value.X < 0)
+            {
+                float by = current_offset_value.X / -Max_X;
+                angle_y_to_offset = PPMath.Lerp(0, Maxangleoffset.Y, by);
+            }
+            else
+            {
+                float by = current_offset_value.X / Max_X;
+                angle_y_to_offset = PPMath.Lerp(0, -Maxangleoffset.Y, by);
+            }
+
+            //Apply ADDTIONAL rotations
+            transform.Rotation.Y = angle_y_to_offset;
+
+            float angle_x_to_offset = 0.0f;
+            if (current_offset_value.Y < 0)
+            {
+                float bx = current_offset_value.Y / -Max_Y;
+                angle_x_to_offset = PPMath.Lerp(0, Maxangleoffset.X, bx);
+            }
+            else
+            {
+                float bx = current_offset_value.Y / Max_Y;
+                angle_x_to_offset = PPMath.Lerp(0, -Maxangleoffset.X, bx);
+            }
+
+            //Apply ADDTIONAL rotations
+            transform.Rotation.X = angle_x_to_offset;
+
             //Clamp the reticle
             if (dist > max_offset_value)
             {
                 Vector3 maxRange = Vector3.Normalise(current_offset_value) * max_offset_value;
-                transform.Position = shooting_box_initial_pos + (maxRange * 50.0f);
+                Vector3 MainWorldMaxInvert = maxRange;
+                MainWorldMaxInvert.X *= -1.0f;
+                transform.Position = shooting_box_initial_pos + (MainWorldMaxInvert * screen_to_world_multiplier);
                 inner_ret.Position = new Vector3(original_crosshair_initial.Position.X + maxRange.X, original_crosshair_initial.Position.Y + maxRange.Y, original_crosshair_initial.Position.Z);
                 ECS.SetTransformECS(Crosshair, inner_ret.Position, original_crosshair_initial.Rotation, original_crosshair_initial.Scale);
             }
@@ -482,7 +534,7 @@ namespace Scripting
 
             //    GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
             //}
-            for (int i = 0;  i < Turrets_A.Count; i++)
+            for (int i = 0; i < Turrets_A.Count; i++)
             {
                 Vector3 Forward = Transform.GetForwardVector(MuzzleGroup[i]);
                 Vector3 Position = ECS.GetGlobalPosition(MuzzleGroup[i]);
@@ -556,7 +608,7 @@ namespace Scripting
 
         void RotateSmallCrossHair(float Rotatespeed, float dt)
         {
-            crosshair_accumulative_rot -= Rotatespeed *  dt;
+            crosshair_accumulative_rot -= Rotatespeed * dt;
             if (crosshair_accumulative_rot < -360.0f)
                 crosshair_accumulative_rot = 0;
             ECS.SetRotation(Crosshair, new Vector3(0, 0, crosshair_accumulative_rot));
@@ -571,7 +623,7 @@ namespace Scripting
                     largecrosshair_accumulative_scale = 0.0f;
                 ECS.SetScale(LargeCrosshair, Vector3.Lerp(LargeCrosshairInitialScale, LargeCrosshairBlinkScale, largecrosshair_accumulative_scale));
             }
-            else 
+            else
             {
                 accu_delay_largecrosshair += dt;
                 if (accu_delay_largecrosshair > delay_largecrosshair)
@@ -590,14 +642,13 @@ namespace Scripting
 
         void LimitLerp(ref Vector3 lerpVal, float limit)
         {
-            
+
             if (Math.Abs(lerpVal.X) > limit)
             {
                 if (lerpVal.X < 0)
                     lerpVal.X = -limit;
                 else
                     lerpVal.X = limit;
-
             }
             if (Math.Abs(lerpVal.Y) > limit)
             {
@@ -605,7 +656,6 @@ namespace Scripting
                     lerpVal.Y = -limit;
                 else
                     lerpVal.Y = limit;
-
             }
             if (Math.Abs(lerpVal.Z) > limit)
             {
@@ -613,7 +663,32 @@ namespace Scripting
                     lerpVal.Z = -limit;
                 else
                     lerpVal.Z = limit;
+            }
+        }
 
+        void SetNearestEnemy()
+        {
+            float curr_lowest_angle = 0;
+            int curr_lowest_index = 0;
+            Vector3 CamPos = ECS.GetGlobalPosition(shipCamera);
+            Vector3 ShootBoxForward = ECS.GetGlobalPosition(ShootingBox);
+            for (var i = 0; i < enemy_to_target_A.Count; ++i)
+            {
+                Vector3 EnemyPos = ECS.GetGlobalPosition(enemy_to_target_A[i]);
+                Vector3 EnemytoCam = EnemyPos - CamPos;
+                float Angle = Vector3.Angle(ShootBoxForward, EnemytoCam);
+                if(Math.Abs(Angle) < Math.Abs(curr_lowest_angle))
+                {
+                    curr_lowest_angle = Angle;
+                    curr_lowest_index = i;
+                }
+            }
+            if (curr_lowest_index != 0)
+            {
+                //Need to swap
+                uint temp = enemy_to_target_A[0];
+                enemy_to_target_A[0] = enemy_to_target_A[curr_lowest_index];
+                enemy_to_target_A[curr_lowest_index] = temp;
             }
         }
 
