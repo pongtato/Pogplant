@@ -797,6 +797,12 @@ namespace Scripting
 		SSH::InvokeFunction("Laser", "ActivateLaser", static_cast<entt::entity>(entity));
 	}
 
+	void GameScript::InvokeScriptFunction(std::uint32_t entity, MonoString* _script_name, MonoString* _script_function)
+	{
+		SSH::InvokeFunction(mono_string_to_utf8(_script_name), mono_string_to_utf8(_script_function), static_cast<entt::entity>(entity));
+	}
+
+
 	//Helper function for Playerbullet taking damage
 	void GameScript::InvokeEnemyTakeDamage(std::string _ScriptName, entt::entity object, entt::entity other,Components::Projectile* player_projectile_p , Components::Scriptable* enemy_script_p)
 	{

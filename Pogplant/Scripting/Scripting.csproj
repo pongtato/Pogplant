@@ -51,6 +51,7 @@
     <Compile Include="Components\Components.cs" />
     <Compile Include="ECS\ECS.cs" />
     <Compile Include="ECS\GameObject.cs" />
+    <Compile Include="MonoScripts\ActivateChildren.cs" />
     <Compile Include="MonoScripts\BonusItem.cs" />
     <Compile Include="MonoScripts\EndGameMenuTrigger.cs" />
     <Compile Include="MonoScripts\ExplosiveEnemy.cs" />

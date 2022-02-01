@@ -147,11 +147,12 @@ namespace Scripting
 
 		public override void OnTriggerEnter(uint id)
 		{
-			if (id == m_player_id)
-			{
-				if (!m_armed)
-					m_armed = true;
-			}
+			//if (id == m_player_id)
+			//{
+			//	if (!m_armed)
+			//		m_armed = true;
+			//}
+			
 		}
 
 		public override void OnTriggerExit(uint id)

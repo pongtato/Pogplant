@@ -20,6 +20,8 @@ namespace Scripting
 		public float m_Score_Penalty;
 		public float m_Speed;
 
+		bool m_do_once = false;
+
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
@@ -43,7 +45,12 @@ namespace Scripting
 
 		public override void Update(float dt)
 		{
-		 
+			if (m_do_once)
+            {
+				Console.WriteLine(entityID + " Has be activated");
+				m_do_once = false;
+
+			}
 		}
 
 		public override void LateUpdate(float dt)
@@ -53,11 +60,17 @@ namespace Scripting
 
 		public override void OnTriggerEnter(uint id)
 		{
-			Console.WriteLine("Something entered");
+			//Console.WriteLine("Something entered");
 		}
 
 		public override void OnTriggerExit(uint id)
 		{
+
+		}
+
+		public void EnableLogic()
+        {
+			m_do_once = true;
 
 		}
 	}

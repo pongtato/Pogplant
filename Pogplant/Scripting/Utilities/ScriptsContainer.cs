@@ -51,8 +51,9 @@ namespace Scripting
             monoScriptNames.Add("EndGameMenuTrigger");
             monoScriptNames.Add("TetherEnemy");
             monoScriptNames.Add("ExplosiveEnemy");
+            monoScriptNames.Add("ActivateChildren");
         }
-        
+
         private void AddPauseScripts()
         {
             // For Pause State Scripts

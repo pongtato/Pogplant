@@ -207,5 +207,10 @@ namespace Scripting
         {
             return new ExplosiveEnemy();
         }
+
+        public static ActivateChildren ActivateChildren()
+        {
+            return new ActivateChildren();
+        }
     }
 }

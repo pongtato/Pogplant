@@ -83,6 +83,9 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void StartLaser(uint entityID);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void InvokeScriptFunction(uint entityID, string _script_name, string _script_function);
+
         public static GameObject InstantiateObject(string prefabName, Vector3 position, Vector3 rotation, string tag = "")
         {
             var id = Instantiate(prefabName, position, rotation);

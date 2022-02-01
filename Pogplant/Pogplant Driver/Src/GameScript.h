@@ -53,6 +53,8 @@ namespace Scripting
 
 	static void SetTurretFire(std::uint32_t entityID, bool isActivated, int TurretIdentifier);
 	static void StartLaser(std::uint32_t entity);
+	
+	static void InvokeScriptFunction(std::uint32_t entity_id, MonoString* script_name, MonoString* script_function);
 
 	////just store the object that contains the EncounterSystemDriver
 	//static void IncreaseScorefromEnv(std::uint32_t entityID);
