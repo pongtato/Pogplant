@@ -470,6 +470,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetChildren", SSH::GetChildren);
 	mono_add_internal_call("Scripting.ECS::CheckValidEntity", SSH::CheckValidEntity);
 	mono_add_internal_call("Scripting.ECS::SetParticlePause", SSH::SetParticlePause);
+	mono_add_internal_call("Scripting.ECS::SetParticlePlay", SSH::SetParticlePlay);
 
 	mono_add_internal_call("Scripting.ECS::SetLaserStart", SSH::SetLaserStart);
 	mono_add_internal_call("Scripting.ECS::IsLaserComplete", SSH::IsLaserComplete);

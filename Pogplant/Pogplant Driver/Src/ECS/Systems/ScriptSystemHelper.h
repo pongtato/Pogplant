@@ -36,6 +36,7 @@ namespace SSH
 	void SetRotation(std::uint32_t entityID, glm::vec3 rot);
 	void SetScale(std::uint32_t entityID, glm::vec3 sca);
 	void SetParticlePause(std::uint32_t entityID, bool isPaused);
+	void SetParticlePlay(std::uint32_t entityID, bool setPlay);
 	void SetLaserStart(std::uint32_t entityID, bool isActivated);
 	bool IsLaserComplete(std::uint32_t entityID);
 	void ResetLaser(std::uint32_t entityID);
