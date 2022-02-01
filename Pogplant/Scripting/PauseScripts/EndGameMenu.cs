@@ -57,8 +57,8 @@ namespace Scripting
         private enum GRADE_COL
         {
             C = 0,
-            B = 2,
-            A = 4
+            B = 1,
+            A = 2
         }
 
         private enum MEDALGRADE

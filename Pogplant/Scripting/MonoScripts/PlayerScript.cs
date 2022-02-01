@@ -119,6 +119,10 @@ namespace Scripting
         static public float m_ComboDecayTimeLimit = 3.0f;
         static public float m_ComboDecayTimer = m_ComboDecayTimeLimit;
         static public bool m_ComboActive = false;
+        static public bool m_ActivateBobble = false;
+        uint m_BobbleTimmy;
+        uint m_BobbleProf;
+        uint m_BobbleBoobas;
 
         // Bonus Effects
 
@@ -176,6 +180,9 @@ namespace Scripting
 
             // For the bobble things
             m_BobHeadMenuID = ECS.FindEntityWithName("BobbleHeadMenu");
+            m_BobbleTimmy = ECS.FindEntityWithName("BobbleTimmy");
+            m_BobbleProf = ECS.FindEntityWithName("BobbleProf");
+            m_BobbleBoobas = ECS.FindEntityWithName("BobbleBoobas");
             m_ScoreMultiplierBobbleCount = 1;
             m_ShieldBobbleCount = 1;
             m_ComboDecayBobbleCount = 1;
@@ -646,12 +653,35 @@ namespace Scripting
 
         void UpdateBonusItem()
         {
-            if(m_BonusItem >= m_BonusItemMax)
+            //if(m_BonusItem >= m_BonusItemMax)
+            //{
+            //    m_EnableBonusScreen = true;
+            //    ECS.SetActive(m_BobHeadMenuID, true);
+            //    GameUtilities.PauseScene();
+            //}
+
+            if(m_ActivateBobble)
             {
-                m_EnableBonusScreen = true;
-                ECS.SetActive(m_BobHeadMenuID, true);
-                GameUtilities.PauseScene();
+                switch(m_CollectiblesCount)
+                {
+                    case 1:
+                        ECS.SetActive(m_BobbleBoobas, true);
+                        ++m_ScoreMultiplierBobbleCount;
+                        break;
+                    case 2:
+                        ECS.SetActive(m_BobbleProf, true);
+                        ++m_ComboDecayBobbleCount;
+                        break;
+                    case 3:
+                        ECS.SetActive(m_BobbleTimmy, true);
+                        ++m_ShieldBobbleCount;
+                        break;
+                    default:
+                        break;
+                }
+                m_ActivateBobble = false;
             }
+             
         }
 
         void UpdateCombo(float dt)

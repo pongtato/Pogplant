@@ -33,6 +33,7 @@ namespace Scripting
         {
             ++PlayerScript.m_BonusItem;
             ++PlayerScript.m_CollectiblesCount;
+            PlayerScript.m_ActivateBobble = true;
             ECS.DestroyEntity(entityID);
         }
 
