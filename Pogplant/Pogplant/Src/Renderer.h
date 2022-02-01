@@ -52,6 +52,7 @@ namespace Pogplant
 		static float m_BloomDamp;
 		static float m_Exposure;
 		static float m_Gamma;
+		static int m_Layer;
 		//static float m_LightShaftDecay;
 		//static float m_LightShaftExposure;
 		//static float m_LightShaftDensity;

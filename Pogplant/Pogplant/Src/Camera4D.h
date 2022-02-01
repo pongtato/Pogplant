@@ -1,6 +1,7 @@
 #pragma once
 #include "Ray.h"
 
+#include <vector>
 #include <glm.hpp>
 #include <gtc/quaternion.hpp>
 
@@ -32,6 +33,7 @@ namespace Pogplant
 		void UpdateProjection(glm::vec2 _WindowSize);
 		void KeyInput(float _Dt);
 		void MouseInput(float _X, float _Y);
+
 		glm::mat4 GetView() const;
 
 		void UpdateRayConfig(RayConfig _Rayconfig);
@@ -45,6 +47,7 @@ namespace Pogplant
 		static void UpdateProjection(glm::vec2 _WindowSize, float _Near, float _Far, float _Fov, glm::mat4& _Projection);
 		static void UpdateOrthographic(glm::vec2 _WindowSize, float _Far, glm::mat4& _Orthographic);
 		static void GetView(const glm::vec3& _Position,const glm::quat& _Orientation, glm::mat4& _View);
+		static std::vector<glm::vec4> GetFrustumCorner(const glm::mat4 _Projection, const glm::mat4 _View);
 
 		glm::quat m_Orientation;
 		glm::mat4 m_Orthographic;

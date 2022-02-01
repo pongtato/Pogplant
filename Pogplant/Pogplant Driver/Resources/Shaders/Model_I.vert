@@ -40,7 +40,7 @@ void main()
     UseTexture = i_UseTexture;
 
     vec4 viewPos = m4_View * m4_Model * vec4(v3_Pos, 1.0);
-    FragPos = viewPos.xyz; 
+    FragPos = viewPos.xyz;
 
     mat3 normalMatrix = transpose(inverse(mat3(m4_View * m4_Model)));
     Normal = normalMatrix * v3_Normal;

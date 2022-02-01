@@ -1444,6 +1444,7 @@ namespace PogplantDriver
 			ImGui::DragFloat("Bloom Dampening", &PP::Renderer::m_BloomDamp, 0.05f);
 			ImGui::DragFloat("Exposure", &PP::Renderer::m_Exposure, 0.05f);
 			ImGui::DragFloat("Gamma", &PP::Renderer::m_Gamma, 0.05f);
+			ImGui::DragInt("Depth Layer Debug", &PP::Renderer::m_Layer);
 			//auto* camera = &PP::CameraResource::m_QuatCam;
 			ImGui::DragFloat("Editor Cam Near", &currQuatCam->m_Near);
 			ImGui::DragFloat("Editor Cam Far", &currQuatCam->m_Far);

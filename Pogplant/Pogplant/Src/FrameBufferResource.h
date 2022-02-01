@@ -33,8 +33,11 @@ namespace Pogplant
 		G_DEPTH,
 
 		// Shadow pass
-		SHADOW_BUFFER,
-		SHADOW_DEPTH,
+		//SHADOW_BUFFER,	// old
+		//SHADOW_DEPTH,	// old
+		LIGHT_BUFFER,
+		LIGHT_DEPTH_MAP,
+		MATRICES_BUFFER,
 
 		// Post process
 		PP_BUFFER,

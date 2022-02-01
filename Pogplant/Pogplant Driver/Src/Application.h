@@ -7,7 +7,6 @@
 //#define PPD_UPDATE_EDITOR_AS_GAME //Defines if stuff should update as a game even in editor state
 //#define PPD_DEBUG_OBJECTS //Whether we should spawn those random debug stuff we using
 
-
 #define FIXEDUPDATEMINTIME 30.f
 #define FIXEDUPDATEMAXTIME 120.f
 

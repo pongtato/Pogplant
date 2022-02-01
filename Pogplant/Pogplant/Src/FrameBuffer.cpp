@@ -121,8 +121,11 @@ namespace Pogplant
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::G_CANVAS_BUFFER]);
 		glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::G_DEPTH]);
 
-		glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::SHADOW_BUFFER]);
-		glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+		//glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::SHADOW_BUFFER]);
+		//glDeleteRenderbuffers(1, &FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+		glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::LIGHT_BUFFER]);
+		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::LIGHT_DEPTH_MAP]);
+		glDeleteBuffers(1, &FBR::m_FrameBuffers[BufferType::MATRICES_BUFFER]);
 
 		glDeleteFramebuffers(1, &FBR::m_FrameBuffers[BufferType::PP_BUFFER]);
 		glDeleteTextures(1, &FBR::m_FrameBuffers[BufferType::PP_COLOR_BUFFER_NORMAL]);
@@ -416,26 +419,59 @@ namespace Pogplant
 	{
 		bool passFlag = true;
 
-		unsigned int* shadowFBO = &FBR::m_FrameBuffers[BufferType::SHADOW_BUFFER];
-		glGenFramebuffers(1, shadowFBO);
+		//unsigned int* shadowFBO = &FBR::m_FrameBuffers[BufferType::SHADOW_BUFFER];
+		//glGenFramebuffers(1, shadowFBO);
 
-		unsigned int* shadowMap = &FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH];
-		glGenTextures(1, shadowMap);
-		glBindTexture(GL_TEXTURE_2D, *shadowMap);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, ShadowCFG::m_ShadowMapW, ShadowCFG::m_ShadowMapH, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-		float clampColor[] = { 1.0f,1.0f,1.0f,1.0f };
-		glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, clampColor);
+		//unsigned int* shadowMap = &FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH];
+		//glGenTextures(1, shadowMap);
+		//glBindTexture(GL_TEXTURE_2D, *shadowMap);
+		//glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, ShadowCFG::m_ShadowMapW, ShadowCFG::m_ShadowMapH, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+		//float clampColor[] = { 1.0f,1.0f,1.0f,1.0f };
+		//glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, clampColor);
 
-		glBindFramebuffer(GL_FRAMEBUFFER, *shadowFBO);
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, *shadowMap, 0);
+		//glBindFramebuffer(GL_FRAMEBUFFER, *shadowFBO);
+		//glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, *shadowMap, 0);
+		//glDrawBuffer(GL_NONE);
+		//glReadBuffer(GL_NONE);
+
+		//// Assert
+		//if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+		//{
+		//	Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"Shadow Framebuffer init failed" });
+		//	passFlag = false;
+		//}
+
+		//glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+		unsigned int* lightFBO = &FBR::m_FrameBuffers[BufferType::LIGHT_BUFFER];
+		glGenFramebuffers(1, lightFBO);
+
+		unsigned int* lightDepthMap = &FBR::m_FrameBuffers[BufferType::LIGHT_DEPTH_MAP];
+		glGenTextures(1, lightDepthMap);
+		glBindTexture(GL_TEXTURE_2D_ARRAY, *lightDepthMap);
+		glTexImage3D
+		(
+			GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT32F, ShadowCFG::m_ShadowMapW, ShadowCFG::m_ShadowMapH, static_cast<int>(ShadowCFG::m_CascadeIntervals.size()) + 1,
+			0, GL_DEPTH_COMPONENT, GL_FLOAT, nullptr
+		);
+
+		glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+		glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+
+		constexpr float bordercolor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+		glTexParameterfv(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_BORDER_COLOR, bordercolor);
+
+		glBindFramebuffer(GL_FRAMEBUFFER, *lightFBO);
+		glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, *lightDepthMap, 0);
 		glDrawBuffer(GL_NONE);
 		glReadBuffer(GL_NONE);
 
-		// Assert
 		if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 		{
 			Logger::Log({ "PP::FRAMEBUFFER",LogEntry::LOGTYPE::ERROR,"Shadow Framebuffer init failed" });
@@ -443,6 +479,15 @@ namespace Pogplant
 		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+		// Matrices
+		unsigned int* matrixUBO = &FBR::m_FrameBuffers[BufferType::MATRICES_BUFFER];
+		glGenBuffers(1, matrixUBO);
+		glBindBuffer(GL_UNIFORM_BUFFER, *matrixUBO);
+		glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::mat4x4) * 16, nullptr, GL_STATIC_DRAW);
+		glBindBufferBase(GL_UNIFORM_BUFFER, 0, *matrixUBO);
+		glBindBuffer(GL_UNIFORM_BUFFER, 0);
+
 		return passFlag;
 	}
 

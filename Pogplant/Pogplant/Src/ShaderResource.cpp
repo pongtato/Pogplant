@@ -7,11 +7,16 @@ namespace Pogplant
 	std::unordered_map <std::string, unsigned int> ShaderResource::m_ShaderPrograms;
 	std::unordered_map <std::string, ShaderProfile> ShaderResource::m_ShaderProfiles;
 
-	ShaderProfile::ShaderProfile(std::string _ProgramID, std::string _Directory, std::string _VertexPath, std::string _FragmentPath)
+	ShaderProfile::ShaderProfile(std::string _ProgramID, std::string _Directory, std::string _VertexPath, std::string _FragmentPath, std::string _GeometryPath)
 		: m_ProgramID{ _ProgramID }
 		, m_VertexPath{ _Directory + _VertexPath }
 		, m_FragmentPath{ _Directory + _FragmentPath }
+		, m_GeometryPath{ }
 	{
+		if (!_GeometryPath.empty())
+		{
+			m_GeometryPath = _Directory + _GeometryPath;
+		}
 	};
 
 	void ShaderResource::AddShaderProfile(const ShaderProfile& _ShaderProfile)
