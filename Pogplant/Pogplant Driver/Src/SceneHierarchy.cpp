@@ -74,6 +74,16 @@ namespace PogplantDriver
 						SavePrefab(m_CurrentEntity);
 					}
 
+
+					auto prefab_instance = m_ECS->GetReg().try_get<Components::PrefabInstance>(m_CurrentEntity);
+					if (prefab_instance)
+					{
+						if (ImGui::MenuItem("Make unique"))
+						{
+							m_ECS->RemovePrefabInstance(m_CurrentEntity);
+						}
+					}
+
 					if (ImGui::MenuItem("Duplicate Entity"))
 						m_ECS->CopyEntity(m_CurrentEntity);
 

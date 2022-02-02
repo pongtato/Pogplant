@@ -67,6 +67,8 @@ public:
 	void EnableEntity(entt::entity _entity);
 	void ToggleEntity(entt::entity _entity);
 
+	void RemovePrefabInstance(entt::entity _entity);
+
 	//clears the ECS
 	void Clear();
 

@@ -339,6 +339,13 @@ void ECS::ToggleEntity(entt::entity _entity)
 		m_EntitiesToDisable.insert(_entity);
 }
 
+void ECS::RemovePrefabInstance(entt::entity _entity)
+{
+	auto prefab_instance = m_registry.try_get<PrefabInstance>(_entity);
+	if (prefab_instance)
+		m_registry.remove<PrefabInstance>(_entity);
+}
+
 void ECS::TrulyDisableEntity(entt::entity _entity)
 {
 	//assert(m_registry.try_get<Disabled>(_entity) == nullptr);
