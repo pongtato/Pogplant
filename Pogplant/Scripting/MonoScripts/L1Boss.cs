@@ -237,7 +237,6 @@ namespace Scripting
         //Shield
         public float health;
         uint false_core_id;
-        uint sparks_particle_id;
 
         //Eye
         uint mouth_left_id;
@@ -278,7 +277,6 @@ namespace Scripting
             FindEntities();
 
             health = 5;
-            ECS.SetActive(sparks_particle_id, false);
             current_animation_index = 0;
         }
 
@@ -286,7 +284,6 @@ namespace Scripting
         {
             //Core
             false_core_id = ECS.FindEntityWithName("FalseCore");
-            sparks_particle_id = ECS.FindEntityWithName("Shield Sparks");
             mouth_left_id = ECS.FindEntityWithName("Mouth_L");
             mouth_right_id = ECS.FindEntityWithName("Mouth_R");
 
@@ -1266,6 +1263,8 @@ namespace Scripting
         /// State 1: Arms rotate and arm ends tilt 90 degrees
         /// State 2: Boss tilts and arm rotate downwards
         /// State 3: Open launch bays and spawns enemies
+        /// State 4: Launch bays close
+        /// State 5: Arms and body rotate back
         /// </summary>
 
         void SetLaunchStateAnimationsOne()
@@ -1384,6 +1383,15 @@ namespace Scripting
             SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 10.0f), false, false, true, false, false, false);
             SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 6.0f), false, false, true, false, false, false);
             SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 2.0f), false, false, true, false, false, false);
+
+            //Enable the launch particles
+            ECS.SetParticlePlay(right_launching_bay_one_id, true);
+            ECS.SetParticlePlay(right_launching_bay_two_id, true);
+            ECS.SetParticlePlay(right_launching_bay_three_id, true);
+
+            ECS.SetParticlePlay(left_launching_bay_one_id, true);
+            ECS.SetParticlePlay(left_launching_bay_two_id, true);
+            ECS.SetParticlePlay(left_launching_bay_three_id, true);
         }
 
         void RunLaunchStateSequenceThree(float dt)

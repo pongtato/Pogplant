@@ -25,11 +25,10 @@
 #include <string>
 #include <random>
 #include <iostream>
-
 namespace Pogplant
 {
 	bool Renderer::m_RenderGrid = false;
-	bool Renderer::m_EnableShadows = false;
+	bool Renderer::m_EnableShadows = true;
 	float Renderer::m_BloomDamp = 6.9f;
 	float Renderer::m_Exposure = 1.0f;
 	float Renderer::m_Gamma = 2.2f;
@@ -44,6 +43,10 @@ namespace Pogplant
 	float Renderer::m_AO_Bias = 0.0125f;
 	//Renderer::RenderMode Renderer::m_DebugRenderMode = Renderer::RenderMode::EDITOR;
 	bool Renderer::m_EditorCamDebug = false;
+	int Renderer::m_Layer = 0;
+
+	// Hard fix for shadows, good angle for minimal artifacts
+	const glm::vec3 lightDir = glm::normalize(glm::vec3(10.0f, 20.0f, 10.0f));
 
 	/// QUAT TEST
 	glm::vec3 Renderer::m_QuatTestPos = glm::vec3{ 0 };
@@ -58,6 +61,7 @@ namespace Pogplant
 		glm::vec3 m_Position;
 		float m_Near;
 		float m_Far;
+		float m_Fov;
 	};
 
 	/// Helper
@@ -87,6 +91,7 @@ namespace Pogplant
 							it_Trans.m_position,
 							it_Camera.m_Near,
 							it_Camera.m_Far,
+							it_Camera.m_Fov
 						};
 						
 						failFlag = false;
@@ -121,7 +126,85 @@ namespace Pogplant
 			currCam->m_Position,
 			currCam->m_Near,
 			currCam->m_Far,
+			currCam->m_Fov
 		};
+	}
+
+	glm::mat4 LightSpaceMtx(CameraReturnData _Cam, float _CascadeNear, float _CascadeFar, glm::vec3 _LightDir)
+	{
+		const auto proj = glm::perspective( glm::radians(_Cam.m_Fov), (float)Window::m_Aspect, _Cam.m_Near / _CascadeNear, _Cam.m_Far / _CascadeFar);
+		const auto corners = Camera4D::GetFrustumCorner(_Cam.m_Projection, _Cam.m_View);
+
+		glm::vec3 center = glm::vec3(0, 0, 0);
+		for (const auto& v : corners)
+		{
+			center += glm::vec3(v);
+		}
+		center /= corners.size();
+
+		const auto lightView = glm::lookAt(center + _LightDir, center, glm::vec3(0.0f, 1.0f, 0.0f));
+
+		float minX = std::numeric_limits<float>::max();
+		float maxX = std::numeric_limits<float>::min();
+		float minY = std::numeric_limits<float>::max();
+		float maxY = std::numeric_limits<float>::min();
+		float minZ = std::numeric_limits<float>::max();
+		float maxZ = std::numeric_limits<float>::min();
+
+		for (const auto& v : corners)
+		{
+			const auto trf = lightView * v;
+			minX = std::min(minX, trf.x);
+			maxX = std::max(maxX, trf.x);
+			minY = std::min(minY, trf.y);
+			maxY = std::max(maxY, trf.y);
+			minZ = std::min(minZ, trf.z);
+			maxZ = std::max(maxZ, trf.z);
+		}
+
+		// Tune this parameter according to the scene
+		constexpr float zMult = 10.0f;
+		if (minZ < 0)
+		{
+			minZ *= zMult;
+		}
+		else
+		{
+			minZ /= zMult;
+		}
+		if (maxZ < 0)
+		{
+			maxZ /= zMult;
+		}
+		else
+		{
+			maxZ *= zMult;
+		}
+
+		const glm::mat4 lightProjection = glm::ortho(minX, maxX, minY, maxY, minZ, maxZ);
+
+		return lightProjection * lightView;
+	}
+
+	std::vector<glm::mat4> CalcAllLightSpaceMtx(CameraReturnData _Cam, glm::vec3 _LightDir)
+	{
+		std::vector<glm::mat4> ret;
+		for (size_t i = 0; i < ShadowCFG::m_CascadeIntervals.size() + 1; ++i)
+		{
+			if (i == 0)
+			{
+				ret.push_back(LightSpaceMtx(_Cam, 1.0f, ShadowCFG::m_CascadeIntervals[i], _LightDir));
+			}
+			else if (i < ShadowCFG::m_CascadeIntervals.size())
+			{
+				ret.push_back(LightSpaceMtx(_Cam, ShadowCFG::m_CascadeIntervals[i - 1], ShadowCFG::m_CascadeIntervals[i], _LightDir));
+			}
+			else
+			{
+				ret.push_back(LightSpaceMtx(_Cam, ShadowCFG::m_CascadeIntervals[i - 1], 1.0f, _LightDir));
+			}
+		}
+		return ret;
 	}
 
 	float Lerp(float _A, float _B, float _F)
@@ -240,7 +323,8 @@ namespace Pogplant
 		glActiveTexture(GL_TEXTURE5);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_CANVAS_BUFFER]);
 		glActiveTexture(GL_TEXTURE6);
-		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+		glBindTexture(GL_TEXTURE_2D_ARRAY, FBR::m_FrameBuffers[BufferType::LIGHT_DEPTH_MAP]);
 		glActiveTexture(GL_TEXTURE7);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SSAO_BLUR_COLOR_BUFFER]);
 
@@ -249,9 +333,10 @@ namespace Pogplant
 		ShaderLinker::SetUniform("Gamma", m_Gamma);
 		ShaderLinker::SetUniform("Shadows", m_EnableShadows);
 
-		///// Shaft pos screen
 		//// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
+
+		/// Shaft pos screen
 		//auto clipSpace = ret.m_Projection * (ret.m_View * glm::vec4(m_LightShaftPos,1.0f));
 		//auto ndc = glm::vec3{ clipSpace.x,clipSpace.y,clipSpace.z } / clipSpace.w;
 		//auto windowSpace = glm::vec2{ ndc.x + 1.0f, ndc.y + 1.0f } / 2.0f;
@@ -261,10 +346,14 @@ namespace Pogplant
 		//ShaderLinker::SetUniform("Exposure", m_LightShaftExposure);
 		//ShaderLinker::SetUniform("Density", m_LightShaftDensity);
 		//ShaderLinker::SetUniform("Weight", m_LightShaftWeight);
+		//ShaderLinker::SetUniform("m4_View", ret.m_View);
 
 		/// Lights
 		// Directional
-		ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
+		// ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
+		// Default position in case directional light not in scene
+		
+		//glm::vec3 lightDir = glm::normalize(glm::vec3(20.0f, 50.0f, 20.0f));
 		auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
 		auto dLight_it = dResults.begin();
 		if (dLight_it != dResults.end())
@@ -276,6 +365,8 @@ namespace Pogplant
 			ShaderLinker::SetUniform((currLight + "Diffuse").c_str(), dLight.m_Diffuse);
 			ShaderLinker::SetUniform((currLight + "Specular").c_str(), dLight.m_Specular);
 			ShaderLinker::SetUniform((currLight + "Direction").c_str(), dLight.m_Direction);
+			const auto& dLight_trans = dResults.get<const Components::Transform>(*dLight_it);
+			//lightDir = glm::normalize(dLight_trans.m_position);
 		}
 
 		// Point lights
@@ -304,6 +395,18 @@ namespace Pogplant
 			light_it++;
 		}
 
+		/// Shadow stuff
+		ShaderLinker::SetUniform("m4_InverseView", glm::inverse(ret.m_View));
+		ShaderLinker::SetUniform("lightDir", lightDir);
+		ShaderLinker::SetUniform("farPlane", ret.m_Far);
+		ShaderLinker::SetUniform("cascadeCount", static_cast<int>(ShadowCFG::m_CascadeIntervals.size()));
+		for (size_t i = 0; i < ShadowCFG::m_CascadeIntervals.size(); ++i)
+		{
+			auto str = "cascadePlaneDistances[" + std::to_string(i) + "]";
+			//ShaderLinker::SetUniform(str.c_str(), shadowCascadeLevels[i]);
+			ShaderLinker::SetUniform(str.c_str(), ret.m_Far/ShadowCFG::m_CascadeIntervals[i]);
+		}
+
 		//ShaderLinker::SetUniform("viewPos", ret.m_Position);
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::G_POS_BUFFER]);
 		ShaderLinker::UnUse();
@@ -317,34 +420,105 @@ namespace Pogplant
 
 	void Renderer::ShadowPass(const entt::registry& registry)
 	{
-		// Default position in case directional light not in scene
-		glm::vec3 lightPos = { 0,0,0 };
-		// Directional light
-		auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
-		auto dLight_it = dResults.begin();
-		if (dLight_it != dResults.end())
+		/// Old shadow
 		{
-			const auto& dLight = dResults.get<const Components::Transform>(*dLight_it);
-			lightPos = dLight.m_position;
+			//// Default position in case directional light not in scene
+			//glm::vec3 lightPos = { 0,0,0 };
+			//// Directional light
+			//auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
+			//auto dLight_it = dResults.begin();
+			//if (dLight_it != dResults.end())
+			//{
+			//	const auto& dLight = dResults.get<const Components::Transform>(*dLight_it);
+			//	lightPos = dLight.m_position;
+			//}
+
+			//// Editor cam by default;
+			//CameraReturnData ret = GetCurrentCamera(registry, false);
+
+			////printf("%f\n", ret.m_Far);
+			//glm::mat4 orthogalProj = glm::ortho(-ret.m_Far, ret.m_Far, -ret.m_Far, ret.m_Far, ret.m_Near, ret.m_Far);
+			//glm::mat4 lightView = glm::lookAt(lightPos, glm::vec3(0), glm::vec3{ 0.0f, 1.0f, 0.0f });
+			//ShadowCFG::m_LightProj = orthogalProj * lightView;
+
+			//glEnable(GL_DEPTH_TEST);
+			//glViewport(0, 0, ShadowCFG::m_ShadowMapW, ShadowCFG::m_ShadowMapH);
+			//glBindFramebuffer(GL_FRAMEBUFFER, FrameBufferResource::m_FrameBuffers[BufferType::SHADOW_BUFFER]);
+			//glClear(GL_DEPTH_BUFFER_BIT);
+
+			///// Draw
+			//ShaderLinker::Use("SHADOW_I");
+			//ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
+			//// 3D Instanced
+			//for (auto& model : ModelResource::m_ModelPool)
+			//{
+			//	for (auto& mesh : model.second->m_Meshes)
+			//	{
+			//		mesh.second.DrawInstanced(false);
+			//	}
+			//}
+			//ShaderLinker::UnUse();
+
+			///*ShaderLinker::Use("SHADOW");
+			//ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
+			//auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
+			//for (const auto& e : p_results)
+			//{
+			//	const auto& it = p_results.get<const Components::PrimitiveRender>(e);
+			//	const auto& it_trans = p_results.get<const Components::Transform>(e);
+			//	ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
+			//	it.m_Mesh->Draw();
+			//}
+			//ShaderLinker::UnUse();*/
+			/////
+
+			//glDisable(GL_DEPTH_TEST);
+			//glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			//glViewport(0, 0, Window::m_Width, Window::m_Height);
+			//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			///// Debug draw
+			////glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[BufferType::DEBUG_BUFFER]);
+			////ShaderLinker::Use("DEPTH");
+			////MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+			////ShaderLinker::UnUse();
+			////glBindFramebuffer(GL_FRAMEBUFFER,0);
 		}
+
+		//// Default position in case directional light not in scene
+		//glm::vec3 lightDir = glm::normalize(glm::vec3(20.0f, 50.0f, 20.0f));
+		//// Directional light
+		//auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
+		//auto dLight_it = dResults.begin();
+		//if (dLight_it != dResults.end())
+		//{
+		//	const auto& dLight = dResults.get<const Components::Transform>(*dLight_it);
+		//	lightDir = glm::normalize(dLight.m_position);
+		//}
 
 		// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, false);
 
-		//ret.m_Far = 200.0f;
-		glm::mat4 orthogalProj = glm::ortho(-ret.m_Far, ret.m_Far, -ret.m_Far, ret.m_Far, ret.m_Near, ret.m_Far);
-		glm::mat4 lightView = glm::lookAt(lightPos, glm::vec3{ 0 }, glm::vec3{ 0.0f, 1.0f, 0.0f });
-		ShadowCFG::m_LightProj = orthogalProj * lightView;
+		// Light matrix config
+		const auto lightMatrices = CalcAllLightSpaceMtx(ret, lightDir);
+		//const auto lightMatrices = getLightSpaceMatrices(ret);
+		glBindBuffer(GL_UNIFORM_BUFFER, FBR::m_FrameBuffers[BufferType::MATRICES_BUFFER]);
+		for (size_t i = 0; i < lightMatrices.size(); ++i)
+		{
+			glBufferSubData(GL_UNIFORM_BUFFER, i * sizeof(glm::mat4x4), sizeof(glm::mat4x4), &lightMatrices[i]);
+		}
+		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 
+		/// Depth
+		glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[BufferType::LIGHT_BUFFER]);
+		glFramebufferTexture(GL_FRAMEBUFFER, GL_TEXTURE_2D_ARRAY, FBR::m_FrameBuffers[BufferType::LIGHT_DEPTH_MAP], 0);
 		glEnable(GL_DEPTH_TEST);
 		glViewport(0, 0, ShadowCFG::m_ShadowMapW, ShadowCFG::m_ShadowMapH);
-		glBindFramebuffer(GL_FRAMEBUFFER, FrameBufferResource::m_FrameBuffers[BufferType::SHADOW_BUFFER]);
 		glClear(GL_DEPTH_BUFFER_BIT);
-
-		/// Draw
-		ShaderLinker::Use("SHADOW_I");
-		ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
-		// 3D Instanced
+		glCullFace(GL_FRONT);  // peter panning
+		
+		/// Scene
+		ShaderLinker::Use("CSM");
 		for (auto& model : ModelResource::m_ModelPool)
 		{
 			for (auto& mesh : model.second->m_Meshes)
@@ -353,33 +527,27 @@ namespace Pogplant
 			}
 		}
 		ShaderLinker::UnUse();
-
-		ShaderLinker::Use("SHADOW");
-		ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
-		auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
-		for (const auto& e : p_results)
-		{
-			const auto& it = p_results.get<const Components::PrimitiveRender>(e);
-			const auto& it_trans = p_results.get<const Components::Transform>(e);
-			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
-			it.m_Mesh->Draw();
-		}
-		ShaderLinker::UnUse();
-		///
-
+		
+		glCullFace(GL_BACK);
 		glDisable(GL_DEPTH_TEST);
-
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+		// reset viewport
 		glViewport(0, 0, Window::m_Width, Window::m_Height);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		/// Debug draw
-		//glBindFramebuffer(GL_FRAMEBUFFER, FrameBufferResource::m_FrameBuffers[BufferType::PP_BUFFER]);
-		//ShaderLinker::Use("DEPTH");
-		//MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
+		///Debug
+		//glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[BufferType::DEBUG_BUFFER]);
+		//ShaderLinker::Use("CSM_D");
+		//ShaderLinker::SetUniform("depthMap", 0);
+		//ShaderLinker::SetUniform("layer", m_Layer);
+		////ShaderLinker::SetUniform("near_plane", ret.m_Near);
+		////ShaderLinker::SetUniform("far_plane", ret.m_Far);
+		//glActiveTexture(GL_TEXTURE0);
+		//glBindTexture(GL_TEXTURE_2D_ARRAY, FBR::m_FrameBuffers[BufferType::LIGHT_DEPTH_MAP]);
+		//MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN);
 		//ShaderLinker::UnUse();
-		//glBindFramebuffer(GL_FRAMEBUFFER,0);
+		//glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
 	void Renderer::BlurPass()
@@ -588,6 +756,7 @@ namespace Pogplant
 		// Bind textures
 		for (const auto& it : TextureResource::m_UsedTextures)
 		{
+			//printf("%s | %d\n", it.first.c_str(), it.second.m_MappedID);
 			std::string uniformStr = "Textures[" + std::to_string(it.second.m_MappedID) + "]";
 			ShaderLinker::SetUniform(uniformStr.c_str(), static_cast<int>(it.second.m_MappedID));
 			glActiveTexture(GL_TEXTURE0 + it.second.m_MappedID);
@@ -784,12 +953,16 @@ namespace Pogplant
 			{
 				ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 				ShaderLinker::SetUniform("m4_View", ret.m_View);	
+				ShaderLinker::SetUniform("b_Editor", false);
 				model = it_Trans.m_ModelMtx;
 			}
 			else
 			{
 				ShaderLinker::SetUniform("m4_Projection", ret.m_Orthographic);
 				ShaderLinker::SetUniform("m4_View", glm::mat4{ 1 });
+
+				// Don't allow ortho in editor mode
+				ShaderLinker::SetUniform("b_Editor", _EditorMode);
 
 				glm::vec3 pos = {};
 				glm::vec3 rot = {};

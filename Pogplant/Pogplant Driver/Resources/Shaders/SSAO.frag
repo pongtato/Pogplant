@@ -33,7 +33,7 @@ void main()
     for(int i = 0; i < kernelSize; ++i)
     {
         vec3 samplePos = TBN * v3_Samples[i]; 
-        samplePos = fragPos + samplePos * Radius; 
+        samplePos = fragPos + samplePos * Radius;
         
         vec4 offset = vec4(samplePos, 1.0);
         // View to clip

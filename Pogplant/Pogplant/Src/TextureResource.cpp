@@ -155,10 +155,10 @@ namespace Pogplant
 		//	m_UsedTextures[it.second] = static_cast<int>(m_UsedTextures.size());
 		//}
 
-		for (auto it : m_TexturePool)
-		{
-			printf("%s\n", it.first.c_str());
-		}
+		//for (auto it : m_TexturePool)
+		//{
+		//	printf("%s\n", it.first.c_str());
+		//}
 	}
 
 	void TextureResource::ReloadTextures()

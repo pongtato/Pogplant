@@ -34,11 +34,13 @@ namespace Pogplant
 		ShaderResource::AddShaderProfile(ShaderProfile("PRIMITIVE", dir, "Primitive.vert", "Primitive.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("SSAO", dir, "SSAO.vert", "SSAO.frag"));
 		ShaderResource::AddShaderProfile(ShaderProfile("SSAO_BLUR", dir, "SSAO_Blur.vert", "SSAO_Blur.frag"));
+		ShaderResource::AddShaderProfile(ShaderProfile("CSM", dir, "CSM.vert", "CSM.frag", "CSM.geom"));
+		ShaderResource::AddShaderProfile(ShaderProfile("CSM_D", dir, "CSM_D.vert", "CSM_D.frag"));
 
 		bool passFlag = true;
 		for (const auto& it : ShaderResource::m_ShaderProfiles)
 		{
-			passFlag &= LoadShader(it.second.m_ProgramID.c_str(), it.second.m_VertexPath.c_str(), it.second.m_FragmentPath.c_str());
+			passFlag &= LoadShader(it.second.m_ProgramID.c_str(), it.second.m_VertexPath.c_str(), it.second.m_FragmentPath.c_str(), it.second.m_GeometryPath.c_str());
 		}
 
 		if (passFlag)
@@ -228,17 +230,20 @@ namespace Pogplant
 		return m_ProgramHandle;
 	}
 
-	bool ShaderLinker::LoadShader(const char* const _ProgramID, const char* const _VertexPath, const char* const _FragmentPath)
+	bool ShaderLinker::LoadShader(const char* const _ProgramID, const char* const _VertexPath, const char* const _FragmentPath, const char* const _GeometryPath)
 	{
 		// Get vertex/fragment shader code from file path
 		std::string vertexCode;
 		std::string fragmentCode;
+		std::string geometryCode;
 		std::ifstream vShaderFile;
 		std::ifstream fShaderFile;
+		std::ifstream gShaderFile;
 
 		// For throwing exceptions
 		vShaderFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
 		fShaderFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+		gShaderFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
 
 		try
 		{
@@ -255,6 +260,14 @@ namespace Pogplant
 			// Parse to string
 			vertexCode = VShaderStream.str();
 			fragmentCode = FShaderStream.str();
+
+			if (_GeometryPath[0] != '\0')
+			{
+				gShaderFile.open(_GeometryPath);
+				GShaderStream << gShaderFile.rdbuf();
+				gShaderFile.close();
+				geometryCode = GShaderStream.str();
+			}
 
 			// Close when done
 			vShaderFile.close();
@@ -273,8 +286,9 @@ namespace Pogplant
 		const char* fShaderCode = fragmentCode.c_str();
 
 		//Shader objects
-		unsigned int vertex;
-		unsigned int fragment;
+		unsigned int vertex = 0;
+		unsigned int fragment = 0;
+		unsigned int geometry = 0;
 
 		int success;
 		int passFlag = true;
@@ -312,10 +326,34 @@ namespace Pogplant
 			Logger::Log({ "PP::SHADER",LogEntry::LOGTYPE::ERROR, logEntry.str() });
 		}
 
+		/// Geometry
+		if (_GeometryPath[0] != '\0')
+		{
+			const char* gShaderCode = geometryCode.c_str();
+			geometry = glCreateShader(GL_GEOMETRY_SHADER);
+			glShaderSource(geometry, 1, &gShaderCode, NULL);
+			glCompileShader(geometry);
+
+			// Print compile errors if any
+			glGetShaderiv(geometry, GL_COMPILE_STATUS, &success);
+			passFlag &= success;
+			if (!success)
+			{
+				glGetShaderInfoLog(geometry, 512, NULL, infoLog);
+				std::stringstream logEntry;
+				logEntry << _ProgramID << " Failed to compile geometry shader " << " | " << infoLog;
+				Logger::Log({ "PP::SHADER",LogEntry::LOGTYPE::ERROR, logEntry.str() });
+			}
+		}
+
 		// Shader Program
 		ShaderResource::m_ShaderPrograms[_ProgramID] = glCreateProgram();
 		glAttachShader(ShaderResource::m_ShaderPrograms[_ProgramID], vertex);
 		glAttachShader(ShaderResource::m_ShaderPrograms[_ProgramID], fragment);
+		if (_GeometryPath[0] != '\0')
+		{
+			glAttachShader(ShaderResource::m_ShaderPrograms[_ProgramID], geometry);
+		}
 		glLinkProgram(ShaderResource::m_ShaderPrograms[_ProgramID]);
 
 		// Print linking errors if any
@@ -332,6 +370,10 @@ namespace Pogplant
 		// Delete the shaders as they're linked into our program now and no longer necessary
 		glDeleteShader(vertex);
 		glDeleteShader(fragment);
+		if (_GeometryPath[0] != '\0')
+		{
+			glDeleteShader(geometry);
+		}
 
 		return passFlag;
 	}

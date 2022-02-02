@@ -12,7 +12,7 @@ uniform sampler2D gNormal;
 uniform sampler2D gAlbedoSpec;
 uniform sampler2D gNoLight;
 uniform sampler2D gEmissive;
-uniform sampler2D gShadow;
+uniform sampler2DArray gShadow;
 //uniform sampler2D gShaft;
 uniform sampler2D gCanvas;
 uniform sampler2D gAO;
@@ -39,9 +39,7 @@ struct DirectionalLight
 const int MAX_LIGHTS = 32;
 uniform Light lights[MAX_LIGHTS];
 uniform DirectionalLight directLight;
-uniform vec3 viewPos;
 uniform int activeLights;
-uniform mat4 m4_LightProjection;
 
 uniform float BloomDamp;
 uniform float Exposure;
@@ -56,43 +54,81 @@ uniform vec2 ScreenSize;
 uniform vec2 LightScreenPos;
 int NUM_SAMPLES = 100;
 
-float Shadow()
+/// CSM
+layout (std140, binding = 0) uniform LightSpaceMatrices
 {
-    vec3 fragPos = texture(gPosition, TexCoords).rgb;
+    mat4 lightSpaceMatrices[16];
+};
+uniform float cascadePlaneDistances[16];
+uniform int cascadeCount;
+uniform vec3 lightDir;
+uniform float farPlane;
+uniform mat4 m4_InverseView;
 
-    // Map to correct space 
-    vec4 fragPosLightSpace = m4_LightProjection * vec4(fragPos,1.0f);
+float Shadow(vec3 normal)
+{
+    vec4 fragPosViewSpace = vec4(texture(gPosition, TexCoords).rgb, 1.0);
+    float depthValue = abs(fragPosViewSpace.z);
+
+    int layer = -1;
+    for (int i = 0; i < cascadeCount; ++i)
+    {
+        if (depthValue < cascadePlaneDistances[i])
+        {
+            layer = i;
+            break;
+        }
+    }
+    if (layer == -1)
+    {
+        layer = cascadeCount;
+    }
+
+    vec4 fragPosLightSpace = lightSpaceMatrices[layer] * vec4(vec3(m4_InverseView * fragPosViewSpace),1.0);
+    // perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
-    float closestDepth = texture(gShadow, projCoords.xy).r; 
-    float currDepth = projCoords.z;
 
-    // Bias calc
-    vec3 normal = texture(gNormal, TexCoords).rgb;
-    vec3 lightDir = normalize(-directLight.Direction);
+    // get depth of current fragment from light's perspective
+    float currentDepth = projCoords.z;
+    if (currentDepth  > 1.0)
+    {
+        return 0.0;
+    }
+
+    // calculate bias (based on depth map resolution and slope)
     float bias = max(0.025 * (1.0 - dot(normal, lightDir)), 0.005);
+    if (layer == cascadeCount)
+    {
+        bias *= 1 / (farPlane * 0.5f);
+    }
+    else
+    {
+        bias *= 1 / (cascadePlaneDistances[layer] * 0.5f);
+    }
 
+    // PCF
     float shadow = 0.0;
-    vec2 texelSize = 1.0 / textureSize(gShadow, 0);
-    const int samples = 3;
+    vec2 texelSize = 1.0 / vec2(textureSize(gShadow, 0));
+    const int samples = 5;
     for(int x = -samples; x <= samples; ++x)
     {
         for(int y = -samples; y <= samples; ++y)
         {
-            float pcfDepth = texture(gShadow, projCoords.xy + vec2(x, y) * texelSize).r; 
-            shadow += currDepth - bias > pcfDepth  ? 1.0 : 0.0;        
+            float pcfDepth = texture(gShadow, vec3(projCoords.xy + vec2(x, y) * texelSize, layer)).r; 
+            shadow += (currentDepth - bias) > pcfDepth ? 1.0 : 0.0;        
         }    
     }
-        
-    // Cull outside frustum
+    shadow /= pow((samples * 2 + 1), 2);
+    
+    // keep the shadow at 0.0 when outside the far_plane region of the light's frustum.
     if(projCoords.z > 1.0)
     {
-        return 0;
+        shadow = 0.0;
     }
-    else
-    {
-        return shadow /= pow((samples * 2 + 1), 2);
-    }
+    
+    return shadow;
 }
 
 void main()
@@ -110,12 +146,22 @@ void main()
     
     // Light calc
     const float ambient = 0.42f;
-    float shadow = 1 - Shadow();
 
-    vec3 lighting  = Diffuse * ambient;
+    float shadow = 1.0;
+    vec3 lighting = Diffuse * ambient;
+    vec3 colorDebug = vec3(0);
     if(Shadows)
     {
-        lighting = lighting * clamp(shadow,0.0f,1.0f);
+        shadow = 1.0 - Shadow(Normal);
+
+        // Visualisation of the cascades
+        int layer = int(Shadow(Normal));
+        if(layer == 0)
+            colorDebug = vec3(1,0,0);
+        if(layer == 1)
+            colorDebug = vec3(0,1,0);
+        if(layer == 2)
+            colorDebug = vec3(0,0,1);
     }
     
     vec3 viewDir = normalize(-FragPos);
@@ -137,7 +183,7 @@ void main()
             float attenuation = k / (k + lights[i].Linear * distance + lights[i].Quadratic * distance * distance);
             diffuse *= attenuation;
             specular *= attenuation;
-            lighting += diffuse + specular;
+            lighting += shadow * (diffuse + specular);
         }
     }
 
@@ -151,7 +197,7 @@ void main()
     vec3 specular = directLight.Color * spec * Specular;
     diffuse *= directLight.Diffuse;
     specular *= directLight.Specular;
-    lighting += diffuse + specular;
+    lighting += shadow * (diffuse + specular);
     lighting.rgb *= AmbientOcclusion;
 
     // HDR light
@@ -162,6 +208,8 @@ void main()
 
     // Gamma correct
     outColor.rgb = pow(outColor.rgb, vec3(1.0 / Gamma));
+
+    //outColor.rgb = vec3(shadow);
 
     // So that canvas does not have bleeding bloom/bloom, done this way as you cannot compare 0
     if(Canvas.a > 0)

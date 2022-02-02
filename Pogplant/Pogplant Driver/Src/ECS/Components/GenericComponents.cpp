@@ -406,16 +406,20 @@ namespace Components
 					if (!m_Loop)
 					{
 						m_Done = true;
-						m_Play = false;
 						m_Pause = false;
 					}
-					else
+
+					for (int i = 0; i < m_SpawnCount; i++)
 					{
-						for (int i = 0; i < m_SpawnCount; i++)
-						{
-							Spawn(_Transform.m_position, glm::vec3{ 0 }, glm::sphericalRand(1.0f));
-						}
+						Spawn(_Transform.m_position, glm::vec3{ 0 }, glm::sphericalRand(1.0f));
 					}
+				}
+			}
+			else
+			{
+				if (m_ActiveCount == 0)
+				{
+					m_Play = false;
 				}
 			}
 			break;

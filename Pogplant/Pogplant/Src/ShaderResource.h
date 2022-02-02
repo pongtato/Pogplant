@@ -7,11 +7,12 @@ namespace Pogplant
 	struct ShaderProfile
 	{
 		ShaderProfile() = default;
-		ShaderProfile(std::string _ProgramID, std::string _Directory, std::string _VertexPath, std::string _FragmentPath);
+		ShaderProfile(std::string _ProgramID, std::string _Directory, std::string _VertexPath, std::string _FragmentPath, std::string _GeometryPath = "");
 
 		std::string m_ProgramID;
 		std::string m_VertexPath;
 		std::string m_FragmentPath;
+		std::string m_GeometryPath;
 	};
 
 	struct ShaderResource

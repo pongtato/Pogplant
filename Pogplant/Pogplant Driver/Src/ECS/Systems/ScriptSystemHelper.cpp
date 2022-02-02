@@ -259,6 +259,17 @@ namespace SSH
 		}
 	}
 
+	void SetParticlePlay(std::uint32_t entityID, bool setPlay)
+	{
+		auto particleSys = ScriptSystem::GetECS()->GetReg().try_get<Components::ParticleSystem>(static_cast<entt::entity>(entityID));
+
+		if (particleSys)
+		{
+			particleSys->m_Done = !setPlay;
+			particleSys->m_Play = setPlay;
+		}
+	}
+
 	void SetLaserStart(std::uint32_t entityID, bool isActivated)
 	{
 		auto laser = ScriptSystem::GetECS()->GetReg().try_get<Components::Laser>(static_cast<entt::entity>(entityID));
