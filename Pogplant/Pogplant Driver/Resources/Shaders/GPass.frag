@@ -196,12 +196,13 @@ void main()
     lighting = vec3(1.0) - exp(-lighting.rgb * Exposure); 
 
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
+    outColor = mix(outColor, Canvas, Canvas.a);
     
     // Gamma correct
     outColor.rgb = pow(outColor.rgb, vec3(1.0 / Gamma));
 
     // So that canvas/text does not have bleeding bloom/bloom, done this way as you cannot compare 0
-    if(NoLight.a > 0)
+    if(Canvas.a > 0)
     {
     }
     else

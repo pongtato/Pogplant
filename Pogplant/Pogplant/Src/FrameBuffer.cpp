@@ -306,7 +306,7 @@ namespace Pogplant
 		ShaderLinker::SetUniform("gNoLight", 3);
 		ShaderLinker::SetUniform("gEmissive", 4);
 		//ShaderLinker::SetUniform("gShaft", 5);
-		//ShaderLinker::SetUniform("gCanvas", 5);
+		ShaderLinker::SetUniform("gCanvas", 5);
 		ShaderLinker::SetUniform("gShadow", 6);
 		ShaderLinker::SetUniform("gAO", 7);
 		ShaderLinker::UnUse();

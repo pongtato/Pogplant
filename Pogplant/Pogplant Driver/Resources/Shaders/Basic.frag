@@ -13,23 +13,23 @@ uniform sampler2D Textures[64];
 
 void main() 
 {
+    gNoLight = vec4(0);
+
     if(TexID >= 0)
     {
         vec2 TiledCoords = vec2(TexCoords.x * Tiling.x, TexCoords.y * Tiling.y);
         vec2 NewTex = vec2(TiledCoords.x, 1 - TiledCoords.y) + UV_Offset;
-        gNoLight = texture(Textures[TexID],NewTex);
+        gCanvas = texture(Textures[TexID],NewTex);
 
         //gNoLight = texture(Textures[int(TexID)],vec2(TexCoords.x,1-TexCoords.y));
-        gNoLight *= ColorCoords;
+        gCanvas *= ColorCoords;
     }
     else
     {
-        gNoLight = ColorCoords;
+        gCanvas = ColorCoords;
     }  
 
-    gCanvas = vec4(0);
-
-    if(gNoLight.a < 0.169)
+    if(gCanvas.a < 0.169)
     {
         discard;
     }
