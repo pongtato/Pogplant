@@ -1,5 +1,6 @@
 #version 450 core
 
+layout (location = 3) out vec4 gNoLight;
 layout (location = 5) out vec4 gCanvas;
 
 in vec4 ColorCoords;
@@ -12,6 +13,8 @@ uniform sampler2D Textures[64];
 
 void main() 
 {
+    gNoLight = vec4(0);
+
     if(TexID >= 0)
     {
         vec2 TiledCoords = vec2(TexCoords.x * Tiling.x, TexCoords.y * Tiling.y);
@@ -26,8 +29,9 @@ void main()
         gCanvas = ColorCoords;
     }  
 
-    if(gCanvas.a < 0.1f )
+    if(gCanvas.a < 0.169)
     {
         discard;
     }
+    
 }

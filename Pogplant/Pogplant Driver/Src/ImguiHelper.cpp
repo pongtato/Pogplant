@@ -2861,7 +2861,7 @@ namespace PogplantDriver
 				}
 				ImGui::NewLine();
 
-				// Direction
+				// Billboard config
 				ImGui::Text("Billboard Axis");
 				toolTip = "Which axis will the particle rotate to face the camera";
 				ToolTipHelper(toolTip.c_str(), true);
@@ -2904,11 +2904,31 @@ namespace PogplantDriver
 					ImGui::DragFloat("###Spawn Radius", &pSystem->m_SpawnRadius, 0.01f);
 					ImGui::NewLine();
 
-					// Direction
-					ImGui::Text("Direction");
-					toolTip = "Spawn direction. that particles will move in";
-					ToolTipHelper(toolTip.c_str(), true);
-					ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
+					// Different direction config
+					ImGui::Checkbox("Move To Target Pos.", &pSystem->m_MoveToTarget);
+					ImGui::NewLine();
+
+					if (pSystem->m_MoveToTarget)
+					{
+						// Direction
+						ImGui::Text("Target Position");
+						toolTip = "Target Position that particles will try to move to";
+						ToolTipHelper(toolTip.c_str(), true);
+						ImGui::DragFloat3("###Target Position", &pSystem->m_TargetPos.x, 0.01f);
+						ImGui::NewLine();
+
+						// Direction
+						ImGui::Text("Direction");
+						ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
+					}
+					else
+					{
+						// Direction
+						ImGui::Text("Direction");
+						toolTip = "Spawn direction. that particles will move in";
+						ToolTipHelper(toolTip.c_str(), true);
+						ImGui::DragFloat3("###Spawn Direction", &pSystem->m_SpawnDirection.x, 0.01f);
+					}
 					break;
 				case Components::ParticleSystem::EMITTER_TYPE::BURST:
 					// Spawn radius

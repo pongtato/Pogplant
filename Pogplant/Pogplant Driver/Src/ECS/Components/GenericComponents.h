@@ -453,6 +453,7 @@ namespace Components
 		(
 			glm::vec4 _Color,
 			glm::vec3 _SpawnDir,
+			glm::vec3 _TargetPos,
 			glm::vec3 _Force,
 			glm::vec3 _BillboardAxis,
 			float _SpawnRadius,
@@ -473,7 +474,8 @@ namespace Components
 			bool _Loop,
 			bool _RandomRotate,
 			bool _FollowParent,
-			bool _Trail
+			bool _Trail,
+			bool _MoveToTarget
 		);
 
 		void Update(float _Dt, const Transform& _Transform, const glm::vec3& _CamPos);
@@ -486,6 +488,7 @@ namespace Components
 		std::vector<SubEmitter> m_SubEmitters;
 		glm::vec4 m_Color;
 		glm::vec3 m_SpawnDirection;
+		glm::vec3 m_TargetPos;
 		glm::vec3 m_Force;
 		glm::vec3 m_BillboardAxis;
 
@@ -521,6 +524,7 @@ namespace Components
 		bool m_Pause;
 		bool m_FollowParent;
 		bool m_Trail; 
+		bool m_MoveToTarget;
 		
 		// extra float timer to keep track of current_lifetime
 		float m_CurrentLifetime;

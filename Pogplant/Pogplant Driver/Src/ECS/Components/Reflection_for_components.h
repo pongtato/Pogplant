@@ -85,6 +85,7 @@ namespace Components
 			.method("init", &ParticleSystem::init)
 			.property("m_Color", &ParticleSystem::m_Color)
 			.property("m_SpawnDirection", &ParticleSystem::m_SpawnDirection)
+			.property("m_TargetPos", &ParticleSystem::m_TargetPos)
 			.property("m_Force", &ParticleSystem::m_Force)
 			.property("m_BillboardAxis", &ParticleSystem::m_BillboardAxis)
 			.property("m_Speed", &ParticleSystem::m_Speed)
@@ -106,7 +107,8 @@ namespace Components
 			.property("m_RandomRotate", &ParticleSystem::m_RandomRotate)
 			.property("m_Play", &ParticleSystem::m_Play)
 			.property("m_FollowParent", &ParticleSystem::m_FollowParent)
-			.property("m_Trail", &ParticleSystem::m_Trail);
+			.property("m_Trail", &ParticleSystem::m_Trail)
+			.property("m_MoveToTarget", &ParticleSystem::m_MoveToTarget);
 
 		rttr::registration::class_<SpriteAnimation>("SpriteAnimation")
 			.method("init", &SpriteAnimation::init)

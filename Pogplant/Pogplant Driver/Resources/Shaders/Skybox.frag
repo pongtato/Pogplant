@@ -11,6 +11,7 @@ void main ()
 {
     FragColor = texture(skybox, TexCoords);
     gShaft = vec4(0.0f);
+    
     //float brightness = dot(FragColor.rgb, vec3(0.2126, 0.7152, 0.0722));
     //if(brightness > 0.42f)
     //{
