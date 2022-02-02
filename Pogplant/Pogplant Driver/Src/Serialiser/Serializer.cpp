@@ -675,7 +675,7 @@ namespace PogplantDriver
 			for (auto& child : transform.m_children)
 			{
 				if (_prefab)
-					m_ecs.GetReg().emplace<Prefab>(child, _prefab->file_path);
+					m_ecs.GetReg().emplace_or_replace<Prefab>(child, _prefab->file_path);
 				_classroot[counter++] = SaveComponents(child);
 				m_saved.insert(child);
 
