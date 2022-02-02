@@ -323,8 +323,8 @@ namespace Pogplant
 		//glActiveTexture(GL_TEXTURE5);
 		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_CANVAS_BUFFER]);
 		glActiveTexture(GL_TEXTURE6);
-		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
 		glBindTexture(GL_TEXTURE_2D_ARRAY, FBR::m_FrameBuffers[BufferType::LIGHT_DEPTH_MAP]);
+		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
 		glActiveTexture(GL_TEXTURE7);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SSAO_BLUR_COLOR_BUFFER]);
 

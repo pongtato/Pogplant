@@ -302,6 +302,7 @@ namespace Components
 	(
 		glm::vec4 _Color,
 		glm::vec3 _SpawnDir,
+		glm::vec3 _TargetPos,
 		glm::vec3 _Force,
 		glm::vec3 _BillboardAxis,
 		float _SpawnRadius,
@@ -322,10 +323,12 @@ namespace Components
 		bool _Loop,
 		bool _RandomRotate,
 		bool _FollowParent,
-		bool _Trail
+		bool _Trail,
+		bool _MoveToTarget
 	)
 		: m_Color{ _Color }
 		, m_SpawnDirection{ _SpawnDir }
+		, m_TargetPos{ _TargetPos }
 		, m_Force{ _Force }
 		, m_BillboardAxis { _BillboardAxis }
 		, m_Speed{ _Speed }
@@ -355,6 +358,7 @@ namespace Components
 		, m_FollowParent{ _FollowParent }
 		, m_Trail{ _Trail }
 		, m_TexID{ -1 }
+		, m_MoveToTarget{_MoveToTarget}
 	{
 		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[_TexName]);
 		//auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
@@ -393,6 +397,7 @@ namespace Components
 			if (m_Timer >= m_Delay)
 			{
 				m_Timer = 0.0f;
+
 				Spawn(_Transform.m_position, glm::sphericalRand(m_SpawnRadius), m_SpawnDirection);
 			}
 			break;
@@ -525,6 +530,14 @@ namespace Components
 
 	void ParticleSystem::Spawn(glm::vec3 _BasePos, glm::vec3 _RandPos, glm::vec3 _Direction)
 	{
+		// Override
+		if (m_MoveToTarget)
+		{
+			glm::vec3 globalRandPos = _BasePos + _RandPos;
+			m_SpawnDirection = glm::normalize((_BasePos + m_TargetPos) - globalRandPos);
+			_Direction = m_SpawnDirection;
+		}
+
 		// Scale up if need more
 		if (m_ActiveCount >= m_ParticlePool.size())
 		{

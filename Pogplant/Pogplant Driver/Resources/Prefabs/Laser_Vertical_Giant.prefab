@@ -21,11 +21,12 @@
 		"Children" : 1,
 		"Guid" : 
 		{
-			"m_guid" : "e93cb2b2-aece-4f65-85ac-a35405744907"
+			"m_guid" : "d5326eda-3988-4d02-80b6-0a5f32c89306"
 		},
 		"Name" : 
 		{
-			"m_Name" : "LaserTriggerGroup1"
+			"m_Name" : "LaserTriggerGroup1",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -33,8 +34,8 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "94b9e5e2-a8f7-44ec-bc45-7a1da1990d7c",
-			"prefab_path" : "Resources\\Prefabs\\Laser_Trigger_Group.prefab"
+			"prefab_GUID" : "e93cb2b2-aece-4f65-85ac-a35405744907",
+			"prefab_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
 		},
 		"Rigidbody" : 
 		{
@@ -76,7 +77,8 @@
 		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "Laser1"
+			"m_Name" : "Laser1",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -176,7 +178,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "LaserObject"
+			"m_Name" : "LaserObject",
+			"status" : false
 		},
 		"Prefab" : 
 		{
@@ -234,7 +237,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "LaserOutLine"
+			"m_Name" : "LaserOutLine",
+			"status" : false
 		},
 		"Prefab" : 
 		{
@@ -292,7 +296,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "LaserParticle"
+			"m_Name" : "LaserParticle",
+			"status" : true
 		},
 		"ParticleSystem" : 
 		{
@@ -306,23 +311,24 @@
 			"m_Color" : 
 			[
 				1.0,
-				0.079069793224334717,
-				0.079069793224334717,
+				0.53953492641448975,
+				0.53953492641448975,
 				1.0
 			],
 			"m_ConeRadiusMax" : 2.0,
 			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.019999999552965164,
+			"m_Delay" : 0.0099999997764825821,
 			"m_FollowParent" : true,
 			"m_Force" : 
 			[
 				0.0,
-				1.0,
+				0.0,
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 5.0,
-			"m_MinLife" : 2.0,
+			"m_MaxLife" : 0.5,
+			"m_MinLife" : 0.41999998688697815,
+			"m_MoveToTarget" : true,
 			"m_Play" : true,
 			"m_RandomRotate" : false,
 			"m_Scale" : 
@@ -364,21 +370,21 @@
 						0.0
 					]
 				],
-				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMax" : 2.0,
 				"m_MultiplierMin" : 1.0
 			},
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				-0.021101020276546478,
+				-0.99172371625900269,
+				0.1266443282365799
 			],
-			"m_SpawnRadius" : 5.0,
+			"m_SpawnRadius" : 15.0,
 			"m_Speed" : 
 			{
-				"m_CurveMax" : 100.0,
-				"m_CurveMin" : 50.0,
+				"m_CurveMax" : 42.0,
+				"m_CurveMin" : 21.0,
 				"m_CurvePoints" : 
 				[
 					[
@@ -387,35 +393,35 @@
 					],
 					[
 						0.1428571492433548,
-						1.0
+						0.8571428656578064
 					],
 					[
 						0.28571429848670959,
-						1.0
+						0.71428573131561279
 					],
 					[
-						0.42857146263122559,
-						1.0
+						0.4285714328289032,
+						0.57142853736877441
 					],
 					[
 						0.57142859697341919,
-						1.0
+						0.42857140302658081
 					],
 					[
 						0.71428573131561279,
-						1.0
+						0.28571426868438721
 					],
 					[
-						0.85714292526245117,
-						1.0
+						0.8571428656578064,
+						0.1428571343421936
 					],
 					[
 						1.0,
-						1.0
+						0.0
 					]
 				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
+				"m_MultiplierMax" : 4.0,
+				"m_MultiplierMin" : 2.0
 			},
 			"m_SpriteAnimation" : 
 			{
@@ -440,7 +446,13 @@
 			"m_SubDelay" : 1.0,
 			"m_SubSpawnCount" : 200,
 			"m_TargetConeScale" : 10.0,
-			"m_TexName" : "SliderFill_SM.dds",
+			"m_TargetPos" : 
+			[
+				7.6651025998567494e-43,
+				-62.0,
+				7.6651025998567494e-43
+			],
+			"m_TexName" : "ParticleTest.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -456,8 +468,8 @@
 			"m_position" : 
 			[
 				0.0,
-				-0.0644073486328125,
-				-3.4474973678588867
+				-0.092311859130859375,
+				42.000003814697266
 			],
 			"m_rotation" : 
 			[
@@ -467,7 +479,7 @@
 			],
 			"m_scale" : 
 			[
-				1.0,
+				0.99946331977844238,
 				1.0,
 				1.0
 			]
@@ -477,7 +489,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Obst_Gate_Entrance"
+			"m_Name" : "Obst_Gate_Entrance",
+			"status" : true
 		},
 		"Prefab" : 
 		{
