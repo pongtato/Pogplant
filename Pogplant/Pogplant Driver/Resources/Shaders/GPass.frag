@@ -84,20 +84,19 @@ float Shadow(vec3 normal)
         layer = cascadeCount;
     }
 
+    // Map spaces, inverse to get back world space
     vec4 fragPosLightSpace = lightSpaceMatrices[layer] * vec4(vec3(m4_InverseView * fragPosViewSpace),1.0);
-    // perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
-    // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
 
-    // get depth of current fragment from light's perspective
+    // Cull outside
     float currentDepth = projCoords.z;
     if (currentDepth  > 1.0)
     {
         return 0.0;
     }
 
-    // calculate bias (based on depth map resolution and slope)
+    // Bias calc
     float bias = max(0.025 * (1.0 - dot(normal, lightDir)), 0.005);
     if (layer == cascadeCount)
     {
@@ -120,15 +119,8 @@ float Shadow(vec3 normal)
             shadow += (currentDepth - bias) > pcfDepth ? 1.0 : 0.0;        
         }    
     }
-    shadow /= pow((samples * 2 + 1), 2);
     
-    // keep the shadow at 0.0 when outside the far_plane region of the light's frustum.
-    if(projCoords.z > 1.0)
-    {
-        shadow = 0.0;
-    }
-    
-    return shadow;
+    return shadow /= pow((samples * 2 + 1), 2);;
 }
 
 void main()

@@ -73,9 +73,6 @@ namespace Pogplant
 		{
 			it->UpdateProjection();
 		}
-
-		/// QUAT
-		//CameraResource::m_QuatCam.UpdateProjection();
 	}
 	void CameraResource::UpdateActiveCamera(float _Dt)
 	{
@@ -83,19 +80,17 @@ namespace Pogplant
 		{
 			m_ActiveCamera->Update(_Dt);
 		}
-
-		/// QUAT
-		//CameraResource::m_QuatCam.Update(_Dt);
 	}
 
 	void CameraResource::ImGUIWindowSizeOverride(const glm::vec2& _ImGuiWinSize)
 	{
-		if (m_ActiveCamera)
-		{
-			//m_ActiveCamera->UpdateProjection(_ImGuiWinSize);
-		}
+		/// Unsued
+		(void)(_ImGuiWinSize);
+		return;
 
-		/// QUAT
-		//CameraResource::m_QuatCam.UpdateProjection(_ImGuiWinSize);
+		//if (m_ActiveCamera)
+		//{
+		//	m_ActiveCamera->UpdateProjection(_ImGuiWinSize);
+		//}
 	}
 }
