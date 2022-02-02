@@ -7,7 +7,6 @@ in vec2 TexCoords;
 uniform sampler2D text;
 uniform vec3 textColor;
 uniform vec2 offset;
-const float imageSize = 512.0;
 
 float median(float r, float g, float b) 
 {
@@ -26,12 +25,12 @@ void main()
     float w = fwidth(sigDist);
     float opacity = smoothstep(0.5 - w, 0.5 + w, sigDist);
 
-    if(opacity > 0)
+    if(opacity < 0.169)
     {
-        FragColor = vec4(textColor, opacity);
+        discard;
     }
     else
     {
-        discard;
+         FragColor = vec4(textColor, opacity);
     }
 }

@@ -196,28 +196,19 @@ void main()
     lighting = vec3(1.0) - exp(-lighting.rgb * Exposure); 
 
     outColor = mix(vec4(lighting, 1.0),NoLight,NoLight.a);
-    outColor = mix(vec4(outColor.rgb, 1.0), Canvas, Canvas.a);
-
+    
     // Gamma correct
     outColor.rgb = pow(outColor.rgb, vec3(1.0 / Gamma));
 
-    //outColor.rgb = vec3(shadow);
-
-    // So that canvas does not have bleeding bloom/bloom, done this way as you cannot compare 0
-    if(Canvas.a > 0)
+    // So that canvas/text does not have bleeding bloom/bloom, done this way as you cannot compare 0
+    if(NoLight.a > 0)
     {
     }
     else
     {
         // Output bright bixels for bloom
         float brightness = dot(outColor.rgb, vec3(0.2126, 0.7152, 0.0722));
-        //if(brightness > BloomDamp)
-        //    brightColor = vec4(outColor.rgb, brightness);
-        //else
-        //    brightColor = vec4(0.0, 0.0, 0.0, 1.0);
-
         brightColor = vec4(outColor.rgb * 1.0f / (brightness * BloomDamp), 1.0f);
-        //brightColor = vec4(1.0f / (brightness * BloomThresh));
         brightColor += vec4(texture(gEmissive, TexCoords).rgb,1.0);
     }
 }

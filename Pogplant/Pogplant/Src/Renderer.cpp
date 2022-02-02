@@ -320,8 +320,8 @@ namespace Pogplant
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_NOLIGHT_BUFFER]);
 		glActiveTexture(GL_TEXTURE4);
 		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_EMISSIVE_BUFFER]);
-		glActiveTexture(GL_TEXTURE5);
-		glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_CANVAS_BUFFER]);
+		//glActiveTexture(GL_TEXTURE5);
+		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::G_CANVAS_BUFFER]);
 		glActiveTexture(GL_TEXTURE6);
 		//glBindTexture(GL_TEXTURE_2D, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
 		glBindTexture(GL_TEXTURE_2D_ARRAY, FBR::m_FrameBuffers[BufferType::LIGHT_DEPTH_MAP]);
@@ -750,8 +750,8 @@ namespace Pogplant
 
 	void Renderer::DrawText(const entt::registry& registry, bool _EditorMode)
 	{
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//glEnable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
@@ -843,6 +843,6 @@ namespace Pogplant
 		}
 		ShaderLinker::UnUse();
 
-		glDisable(GL_BLEND);
+		//glDisable(GL_BLEND);
 	}
 }
