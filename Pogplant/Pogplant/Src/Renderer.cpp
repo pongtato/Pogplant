@@ -365,8 +365,8 @@ namespace Pogplant
 			ShaderLinker::SetUniform((currLight + "Diffuse").c_str(), dLight.m_Diffuse);
 			ShaderLinker::SetUniform((currLight + "Specular").c_str(), dLight.m_Specular);
 			ShaderLinker::SetUniform((currLight + "Direction").c_str(), dLight.m_Direction);
-			const auto& dLight_trans = dResults.get<const Components::Transform>(*dLight_it);
-			//lightDir = glm::normalize(dLight_trans.m_position);
+			// const auto& dLight_trans = dResults.get<const Components::Transform>(*dLight_it);
+			// lightDir = glm::normalize(dLight_trans.m_position);
 		}
 
 		// Point lights
@@ -420,71 +420,6 @@ namespace Pogplant
 
 	void Renderer::ShadowPass(const entt::registry& registry)
 	{
-		/// Old shadow
-		{
-			//// Default position in case directional light not in scene
-			//glm::vec3 lightPos = { 0,0,0 };
-			//// Directional light
-			//auto dResults = registry.view<Components::Directional_Light, Components::Transform>();
-			//auto dLight_it = dResults.begin();
-			//if (dLight_it != dResults.end())
-			//{
-			//	const auto& dLight = dResults.get<const Components::Transform>(*dLight_it);
-			//	lightPos = dLight.m_position;
-			//}
-
-			//// Editor cam by default;
-			//CameraReturnData ret = GetCurrentCamera(registry, false);
-
-			////printf("%f\n", ret.m_Far);
-			//glm::mat4 orthogalProj = glm::ortho(-ret.m_Far, ret.m_Far, -ret.m_Far, ret.m_Far, ret.m_Near, ret.m_Far);
-			//glm::mat4 lightView = glm::lookAt(lightPos, glm::vec3(0), glm::vec3{ 0.0f, 1.0f, 0.0f });
-			//ShadowCFG::m_LightProj = orthogalProj * lightView;
-
-			//glEnable(GL_DEPTH_TEST);
-			//glViewport(0, 0, ShadowCFG::m_ShadowMapW, ShadowCFG::m_ShadowMapH);
-			//glBindFramebuffer(GL_FRAMEBUFFER, FrameBufferResource::m_FrameBuffers[BufferType::SHADOW_BUFFER]);
-			//glClear(GL_DEPTH_BUFFER_BIT);
-
-			///// Draw
-			//ShaderLinker::Use("SHADOW_I");
-			//ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
-			//// 3D Instanced
-			//for (auto& model : ModelResource::m_ModelPool)
-			//{
-			//	for (auto& mesh : model.second->m_Meshes)
-			//	{
-			//		mesh.second.DrawInstanced(false);
-			//	}
-			//}
-			//ShaderLinker::UnUse();
-
-			///*ShaderLinker::Use("SHADOW");
-			//ShaderLinker::SetUniform("m4_LightProjection", ShadowCFG::m_LightProj);
-			//auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
-			//for (const auto& e : p_results)
-			//{
-			//	const auto& it = p_results.get<const Components::PrimitiveRender>(e);
-			//	const auto& it_trans = p_results.get<const Components::Transform>(e);
-			//	ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
-			//	it.m_Mesh->Draw();
-			//}
-			//ShaderLinker::UnUse();*/
-			/////
-
-			//glDisable(GL_DEPTH_TEST);
-			//glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			//glViewport(0, 0, Window::m_Width, Window::m_Height);
-			//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-			///// Debug draw
-			////glBindFramebuffer(GL_FRAMEBUFFER, FBR::m_FrameBuffers[BufferType::DEBUG_BUFFER]);
-			////ShaderLinker::Use("DEPTH");
-			////MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::SHADOW_DEPTH]);
-			////ShaderLinker::UnUse();
-			////glBindFramebuffer(GL_FRAMEBUFFER,0);
-		}
-
 		//// Default position in case directional light not in scene
 		//glm::vec3 lightDir = glm::normalize(glm::vec3(20.0f, 50.0f, 20.0f));
 		//// Directional light
@@ -642,31 +577,6 @@ namespace Pogplant
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN);
 		ShaderLinker::UnUse();*/
 
-		// lol xd
-		//glDisable(GL_CULL_FACE);
-		
-		/// QUAT TEST
-		//ShaderLinker::Use("MODEL");
-		//ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
-		//ShaderLinker::SetUniform("m4_View", ret.m_View);
-		//ShaderLinker::SetUniform("noTex", true);
-		//ShaderLinker::SetUniform("useLight", true);
-		//ShaderLinker::SetUniform("colorTint", glm::vec3{ 1,1,1 });
-
-		//glm::mat4 t = glm::translate( glm::mat4{1}, m_QuatTestPos );
-
-		//glm::quat xR = glm::angleAxis(glm::radians(m_QuatTestRot.x), glm::vec3{ 1,0,0 });
-		//glm::quat yR = glm::angleAxis(glm::radians(m_QuatTestRot.y), glm::vec3{ 0,1,0 });
-		//glm::quat zR = glm::angleAxis(glm::radians(m_QuatTestRot.z), glm::vec3{ 0,0,1 });
-		//glm::mat4 r = glm::mat4_cast(yR * xR * zR);
-		//glm::mat4 s = glm::scale(glm::mat4{ 1 }, m_QuatTestScale);
-
-		//ShaderLinker::SetUniform("m4_Model", t * r * s);
-		//auto it = std::next(ModelResource::m_ModelPool.begin(),1);
-		//it->second->Draw(false);
-		//ShaderLinker::UnUse();
-		///
-
 		// 3D models
 		ShaderLinker::Use("MODEL_I");
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
@@ -681,56 +591,6 @@ namespace Pogplant
 			}
 		}
 		ShaderLinker::UnUse();
-
-		///// Primitive shapes
-		//ShaderLinker::Use("PRIMITIVE");
-		//ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
-		//ShaderLinker::SetUniform("m4_View", ret.m_View);
-		//auto p_results = registry.view<Components::PrimitiveRender, Components::Transform>();
-		//for (const auto& e : p_results)
-		//{
-		//	const auto& it_pRender = p_results.get<const Components::PrimitiveRender>(e);
-		//	const auto& it_trans = p_results.get<const Components::Transform>(e);
-
-		//	//ShaderLinker::SetUniform("activeTextures", static_cast<int>(it.m_DiffTex.size()));
-		//	ShaderLinker::SetUniform("tile", it_pRender.m_Blend);
-		//	ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
-		//	ShaderLinker::SetUniform("v3_ViewPosition", ret.m_Position);
-
-		//	ShaderLinker::SetUniform("texture_diffuse", 0);
-		//	ShaderLinker::SetUniform("texture_normal", 1);
-		//	ShaderLinker::SetUniform("texture_disp", 2);
-		//	ShaderLinker::SetUniform("texture_specular", 3);
-
-		//	ShaderLinker::SetUniform("texture_diffuse2", 4);
-		//	ShaderLinker::SetUniform("texture_normal2", 5);
-		//	ShaderLinker::SetUniform("texture_disp2", 6);
-		//	ShaderLinker::SetUniform("texture_specular2", 7);
-
-		//	/// WIP, to be updated
-		//	// Tex 1
-		//	glActiveTexture(GL_TEXTURE0);
-		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[0]]);
-		//	glActiveTexture(GL_TEXTURE1);
-		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[0]]);
-		//	glActiveTexture(GL_TEXTURE2);
-		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[0]]);
-		//	glActiveTexture(GL_TEXTURE3);
-		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[0]]);
-
-		//	// Tex 2
-		//	glActiveTexture(GL_TEXTURE4);
-		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_DiffTex[1]]);
-		//	glActiveTexture(GL_TEXTURE5);
-		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_NormTex[1]]);
-		//	glActiveTexture(GL_TEXTURE6);
-		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_BumpTex[1]]);
-		//	glActiveTexture(GL_TEXTURE7);
-		//	glBindTexture(GL_TEXTURE_2D, TextureResource::m_TexturePool[it_pRender.m_SpecTex[1]]);
-
-		//	it_pRender.m_Mesh->Draw();
-		//}
-		//ShaderLinker::UnUse();
 
 		/// Skybox
 		glDepthFunc(GL_LEQUAL);
@@ -786,30 +646,11 @@ namespace Pogplant
 
 		/// Editor cam by default, dont need to search for gam cam since this only appears in debug
 		Camera4D* currCam = CameraResource::GetCamera("EDITOR");
-		//Camera4D* currCam = &CameraResource::m_QuatCam;
 		// Try to get game camera
 		auto cam_results = registry.view<Components::Camera>();
-		//glm::mat4 projection = currCam->GetPerspective();
-		//glm::mat4 view = currCam->GetView();
 		glm::mat4 projection = currCam->m_Projection;
 		glm::mat4 view = currCam->GetView();
 
-		/// What does this do again i cant rmb lmao
-		/*ShaderLinker::Use("DEBUG");
-		ShaderLinker::SetUniform("m4_Projection", projection);
-		ShaderLinker::SetUniform("m4_View", view);
-
-		auto results = registry.view<Components::DebugRender, Components::Transform>();
-
-		for (const auto& e : results)
-		{
-			const auto& it = results.get<const Components::DebugRender>(e);
-			const auto& it_trans = results.get<const Components::Transform>(e);
-			ShaderLinker::SetUniform("m4_Model", it_trans.m_ModelMtx);
-			ShaderLinker::SetUniform("colorTint", it.m_ColorTint);
-			it.m_Mesh->Draw(false);
-		}
-		ShaderLinker::UnUse();*/
 
 		/// Debug
 		// Debug line size
@@ -840,7 +681,8 @@ namespace Pogplant
 			// Debug grid size
 			glLineWidth(DebugDraw::m_GridWidth);
 
-			int camFar = static_cast<int>(currCam->m_Far);
+			//int camFar = static_cast<int>(currCam->m_Far);
+			const int camFar = 420;
 
 			for (int i = -camFar; i <= camFar; i++)
 			{
@@ -898,33 +740,12 @@ namespace Pogplant
 		DebugDraw::NewFrame();
 	}
 
-	void Renderer::Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16])
-	{
-		(void)_Ortho;
-		(void)_View;
-		(void)_Perspective;
-
-		// Use the other draw function after casting to glm type
-		// ... to do
-		// do we even need this?
-	}
-
 	void Renderer::DrawScreen()
 	{
 		// Unused atm, for final game
 		ShaderLinker::Use("SCREEN");
 		MeshResource::Draw(MeshResource::MESH_TYPE::SCREEN, FBR::m_FrameBuffers[BufferType::GAME_COLOR_BUFFER]);
 		ShaderLinker::UnUse();
-	}
-
-	void Renderer::BindTexture(int _Location, unsigned _TexID)
-	{
-		/*ShaderLinker::Use("BASIC");
-		std::string append = "Textures[";
-		append = append + std::to_string(_Location) + "]";
-		ShaderLinker::SetUniform(append.c_str(), _Location);
-		glBindTextureUnit(static_cast<GLint>(_Location), _TexID);
-		ShaderLinker::UnUse();*/
 	}
 
 	void Renderer::DrawText(const entt::registry& registry, bool _EditorMode)

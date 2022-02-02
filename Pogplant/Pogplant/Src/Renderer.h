@@ -43,10 +43,8 @@ namespace Pogplant
 		// Draw mesh in world space
 		static void Draw(const entt::registry& registry, Components::Renderer* _Selected, bool _EditorMode);
 		static void DrawDebug(const entt::registry& registry, Components::Renderer* _Selected);
-		static void Draw(const float(&_View)[16], const float(&_Ortho)[16], const float(&_Perspective)[16]);
 		// Draw screen buffer
 		static void DrawScreen();
-		static void BindTexture(int _Location, unsigned _TexID);
 		static bool m_RenderGrid;
 		static bool m_EnableShadows;
 		static float m_BloomDamp;
