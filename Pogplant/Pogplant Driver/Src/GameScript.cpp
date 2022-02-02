@@ -278,6 +278,7 @@ namespace Scripting
 			GameScript::InvokeEnemyTakeDamage("BaseGattling", object, other, player_projectile_script, enemy_object_script);
 			GameScript::InvokeEnemyTakeDamage("BaseFlock", object, other, player_projectile_script, enemy_object_script);
 			GameScript::InvokeEnemyTakeDamage("L1BossShield", object, other, player_projectile_script, enemy_object_script);
+			GameScript::InvokeEnemyTakeDamage("ExplosiveEnemy", object, other, player_projectile_script, enemy_object_script);
 		}
 		if (player_projectile_script)
 		{

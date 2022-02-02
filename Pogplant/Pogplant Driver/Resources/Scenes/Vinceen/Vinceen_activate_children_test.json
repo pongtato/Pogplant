@@ -21,7 +21,7 @@
 		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "pepe",
+			"m_Name" : "Explosive_Enemy_trigger",
 			"status" : true
 		},
 		"Rigidbody" : 
@@ -33,22 +33,22 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : "pepe_",
+				"Data" : "Enemy_04_",
 				"Name" : "m_Children_name",
 				"Type" : 3
 			},
 			{
-				"Data" : "TetherEnemy",
-				"Name" : "m_Children_script_name",
-				"Type" : 3
-			},
-			{
-				"Data" : 3,
+				"Data" : 2,
 				"Name" : "m_Children_max_index_range",
 				"Type" : 1
 			},
 			{
-				"Data" : "EnableLogic",
+				"Data" : "ExplosiveEnemy",
+				"Name" : "m_Children_script_name",
+				"Type" : 3
+			},
+			{
+				"Data" : "ArmExplosiveEnemy",
 				"Name" : "m_Children_function_name",
 				"Type" : 3
 			}
@@ -84,11 +84,33 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "pepe_0",
+			"m_Name" : "Enemy_04_0",
 			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Enemy_04_Base"
+			],
+			"UseLight" : 1
 		},
 		"Rigidbody" : 
 		{
@@ -96,9 +118,73 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
+				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_2",
+				"Type" : 0
+			},
+			{
+				"Data" : 100.0,
+				"Name" : "m_ExplosiveEnemy_health",
+				"Type" : 0
+			},
+			{
+				"Data" : 7.0,
+				"Name" : "m_ExplosiveEnemy_lifetime",
+				"Type" : 0
+			},
+			{
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
+				"Type" : 0
+			}
+		],
 		"Scripting" : 
 		{
-			"TetherEnemy" : false
+			"ExplosiveEnemy" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY EXPLOSIVE",
+			"isStatic" : false,
+			"isTrigger" : true,
+			"radius" : 111.0
 		},
 		"Tag" : 
 		{
@@ -108,9 +194,64 @@
 		{
 			"m_position" : 
 			[
-				0.0,
+				-2.0,
 				0.0,
 				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.40000000596046448,
+				0.40000000596046448,
+				0.40000000596046448
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Propeller_Base",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Propeller_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.697938204069942e-09,
+				0.082419559359550476,
+				1.3411046495548362e-08
 			],
 			"m_rotation" : 
 			[
@@ -130,18 +271,30 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "pepe_1",
+			"m_Name" : "Propeller",
 			"status" : true
 		},
-		"Rigidbody" : 
+		"Render" : 
 		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"TetherEnemy" : false
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Propeller"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -151,9 +304,9 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				1.3322676295501878e-14,
+				0.99065679311752319,
+				1.3560057254835556e-07
 			],
 			"m_rotation" : 
 			[
@@ -173,8 +326,140 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "pepe_2",
+			"m_Name" : "Eyes",
 			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Eyes"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.7388491474766852e-10,
+				-0.13313589990139008,
+				2.514568109290849e-09
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outline",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.96744143962860107,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.92093020677566528,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.2607835582539906e-10,
+				-0.16333366930484772,
+				1.6763763710514468e-09
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Enemy_04_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Enemy_04_Base"
+			],
+			"UseLight" : 1
 		},
 		"Rigidbody" : 
 		{
@@ -182,9 +467,73 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
+				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_2",
+				"Type" : 0
+			},
+			{
+				"Data" : 100.0,
+				"Name" : "m_ExplosiveEnemy_health",
+				"Type" : 0
+			},
+			{
+				"Data" : 7.0,
+				"Name" : "m_ExplosiveEnemy_lifetime",
+				"Type" : 0
+			},
+			{
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
+				"Type" : 0
+			}
+		],
 		"Scripting" : 
 		{
-			"TetherEnemy" : false
+			"ExplosiveEnemy" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY EXPLOSIVE",
+			"isStatic" : false,
+			"isTrigger" : true,
+			"radius" : 111.0
 		},
 		"Tag" : 
 		{
@@ -197,6 +546,575 @@
 				0.0,
 				0.0,
 				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.40000000596046448,
+				0.40000000596046448,
+				0.40000000596046448
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Propeller_Base",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Propeller_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.697938204069942e-09,
+				0.082419559359550476,
+				1.3411046495548362e-08
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Propeller",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Propeller"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3322676295501878e-14,
+				0.99065679311752319,
+				1.3560057254835556e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Eyes",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Eyes"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.7388491474766852e-10,
+				-0.13313589990139008,
+				2.514568109290849e-09
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outline",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.96744143962860107,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.92093020677566528,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.2607835582539906e-10,
+				-0.16333366930484772,
+				1.6763763710514468e-09
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Enemy_04_2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.99998998641967773,
+				0.99998998641967773
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Enemy_04_Base"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
+				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_2",
+				"Type" : 0
+			},
+			{
+				"Data" : 100.0,
+				"Name" : "m_ExplosiveEnemy_health",
+				"Type" : 0
+			},
+			{
+				"Data" : 7.0,
+				"Name" : "m_ExplosiveEnemy_lifetime",
+				"Type" : 0
+			},
+			{
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"ExplosiveEnemy" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY EXPLOSIVE",
+			"isStatic" : false,
+			"isTrigger" : true,
+			"radius" : 111.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.40000000596046448,
+				0.40000000596046448,
+				0.40000000596046448
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Propeller_Base",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Propeller_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.697938204069942e-09,
+				0.082419559359550476,
+				1.3411046495548362e-08
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Propeller",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Propeller"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3322676295501878e-14,
+				0.99065679311752319,
+				1.3560057254835556e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Eyes",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Eyes"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.7388491474766852e-10,
+				-0.13313589990139008,
+				2.514568109290849e-09
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outline",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.96744143962860107,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.92093020677566528,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.2607835582539906e-10,
+				-0.16333366930484772,
+				1.6763763710514468e-09
 			],
 			"m_rotation" : 
 			[

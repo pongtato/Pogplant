@@ -17,8 +17,13 @@
 				"TRIGGERS" : 3,
 				"WAVETRIGGERS" : 3
 			},
+			"ENEMY EXPLOSIVE" : 
+			{
+				"ENEMY EXPLOSIVE" : 3
+			},
 			"ENEMY PROJECTILES" : 
 			{
+				"ENEMY EXPLOSIVE" : 3,
 				"ENEMY PROJECTILES" : 3,
 				"PLAYERBOX" : 3,
 				"TRIGGERS" : 3,
@@ -26,6 +31,7 @@
 			},
 			"OBSTACLES" : 
 			{
+				"ENEMY EXPLOSIVE" : 3,
 				"OBSTACLES" : 3,
 				"PLAYERBOX" : 3,
 				"TRIGGERS" : 3,
@@ -38,6 +44,7 @@
 			},
 			"PLAYER PROJECTILES" : 
 			{
+				"ENEMY EXPLOSIVE" : 3,
 				"PLAYER PROJECTILES" : 3,
 				"PLAYERBOX" : 3,
 				"TRIGGERS" : 3,
@@ -45,16 +52,19 @@
 			},
 			"PLAYERBOX" : 
 			{
+				"ENEMY EXPLOSIVE" : 3,
 				"PLAYERBOX" : 3,
 				"TRIGGERS" : 3,
 				"WAVETRIGGERS" : 3
 			},
 			"TRIGGERS" : 
 			{
+				"ENEMY EXPLOSIVE" : 3,
 				"TRIGGERS" : 3
 			},
 			"WAVETRIGGERS" : 
 			{
+				"ENEMY EXPLOSIVE" : 3,
 				"WAVETRIGGERS" : 3
 			}
 		},
@@ -62,6 +72,7 @@
 		[
 			"DEFAULT",
 			"ENEMY",
+			"ENEMY EXPLOSIVE",
 			"ENEMY PROJECTILES",
 			"OBSTACLES",
 			"PLAYER",

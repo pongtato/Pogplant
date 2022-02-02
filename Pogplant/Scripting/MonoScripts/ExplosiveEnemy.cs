@@ -29,7 +29,12 @@ namespace Scripting
 
 		//just a timer
 		float m_dt_counter = 0;
-		bool test = false;
+
+		float m_health;
+		
+		//damage it do to other things
+		float m_damage;
+
 		// respective threshold
 		// threshold_3 > threshold_2 > threshold_1 > BOOM
 		// please use common sense, threshold values should be lower arming timer
@@ -38,6 +43,13 @@ namespace Scripting
 
 		float m_flicker_rate_2;
 		float m_flicker_rate_1;
+
+		bool m_exploding = false;
+
+		//i suspect this will be used to create a some leeway after health < 0
+		//float m_leeway
+
+		List<uint> m_enemy_in_range = new List<uint>();
 
 		public override void Init(ref uint _entityID)
 		{
@@ -64,34 +76,41 @@ namespace Scripting
 
 			m_propeller_speed = ECS.GetValue<float>(entityID, 200.0f, "m_ExplosiveEnemy_propeller_speed");
 			m_propeller_rot_axis = ECS.GetValue<Vector3>(entityID, new Vector3(0,1,0), "m_ExplosiveEnemy_propeller_rot_axis");
-			//m_propeller_rot_axis = new Vector3(0, 1, 0);
-			m_armed = true;
+
 			m_lifetime = ECS.GetValue<float>(entityID, 5.69f, "m_ExplosiveEnemy_lifetime");
-			Console.WriteLine("m_player_id id: " + m_player_id);
-			Console.WriteLine("m_outline_id id: " + m_outline_id);
-			Console.WriteLine("m_propeller_id id: " + m_propeller_id);
+
+			m_health = ECS.GetValue<float>(entityID, 69, "m_ExplosiveEnemy_health");
+			m_damage = ECS.GetValue<float>(entityID, 690, " m_ExplosiveEnemy_damage");
+
+			//m_armed = true;
+
+			//Console.WriteLine("m_player_id id: " + m_player_id);
+			//Console.WriteLine("m_outline_id id: " + m_outline_id);
+			//Console.WriteLine("m_propeller_id id: " + m_propeller_id);
 		}
 
 		public override void Update(float dt)
 		{
-			if (m_armed)
+			if (m_armed && !m_exploding)
             {
 				m_lifetime -= dt;
 
 				// threshold_3 > threshold_2 > threshold_1 > BOOM
 				if (m_lifetime < 0)
                 {
-					Console.WriteLine("BOOOOOOOOOOOOOOM");
+					//Console.WriteLine("BOOOOOOOOOOOOOOM");
+					m_armed = false;
+					Explode();
 				}
 				else if(m_lifetime < m_threshold_1)
                 {
-					Console.WriteLine("beep beep beep");
+					//Console.WriteLine("beep beep beep");
 					Flicker(ref dt, ref m_flicker_rate_1);
 				}
 				else if (m_lifetime < m_threshold_2)
 				{
+					//Console.WriteLine("beep beep");
 					Flicker(ref dt, ref m_flicker_rate_2);
-					Console.WriteLine("beep beep");
 				}
 			}
 
@@ -104,12 +123,6 @@ namespace Scripting
 			m_dt_counter += dt;
 			if (m_dt_counter > limit)
             {
-				//if (test)
-				//	ECS.SetActive(m_outline_id, !test);
-    //            else
-				//	ECS.SetActive(m_outline_id, !test);
-
-				test = !test;
 				ECS.ToggleEntity(m_outline_id);
 				m_dt_counter = 0;
 			}
@@ -120,9 +133,6 @@ namespace Scripting
 			if (m_spin_propeller)
 			{
 				m_propeller_rot += axis * spin_speed * dt;
-				//m_propeller_rot.X += x_axis * spin_speed * dt;
-				//m_propeller_rot.Y += y_axis * spin_speed * dt;
-				//m_propeller_rot.Z += z_axis * spin_speed * dt;
 
 				ClampRotationValue(ref m_propeller_rot.X, -360.0f, 360.0f);
 				ClampRotationValue(ref m_propeller_rot.Y, -360.0f, 360.0f);
@@ -152,12 +162,51 @@ namespace Scripting
 			//	if (!m_armed)
 			//		m_armed = true;
 			//}
+			m_enemy_in_range.Add(id);
 			
 		}
 
 		public override void OnTriggerExit(uint id)
 		{
-
+			m_enemy_in_range.Remove(id);
 		}
+
+		public void TakeDamage(float damage)
+		{
+			m_health -= damage;
+
+			if(m_health <= 0 && !m_exploding)
+			{
+				//play vfx and effect
+				//explode
+				Explode();
+			}
+			else if (m_health > 0)
+			{
+				//idk
+				//play hit sound or something
+            }
+		}
+
+		public void Explode()
+        {
+			m_exploding = true;
+			var NoDuplicate = m_enemy_in_range.Distinct();
+
+			foreach (uint entity in NoDuplicate)
+            {
+				GameUtilities.EnemyTakeDamageFromID(entity, m_damage);
+            }
+
+			//disable self
+			ECS.SetActive(entityID, false);
+
+        }
+
+		public void ArmExplosiveEnemy()
+        {
+			m_armed = true;
+			Console.WriteLine(entityID + " started");
+        }
 	}
 }

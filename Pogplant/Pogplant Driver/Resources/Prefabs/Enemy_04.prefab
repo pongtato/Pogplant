@@ -3,7 +3,7 @@
 		"Children" : 3,
 		"Guid" : 
 		{
-			"m_guid" : "4879f0b7-0f11-4a31-be06-2f7ba843f7e5"
+			"m_guid" : "98d4e4ee-2fb3-4126-ac26-f911cc64e14c"
 		},
 		"Name" : 
 		{
@@ -35,6 +35,80 @@
 				"Enemy_04_Base"
 			],
 			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
+				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 100.0,
+				"Name" : "m_ExplosiveEnemy_health",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_2",
+				"Type" : 0
+			},
+			{
+				"Data" : 7.0,
+				"Name" : "m_ExplosiveEnemy_lifetime",
+				"Type" : 0
+			},
+			{
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"ExplosiveEnemy" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY EXPLOSIVE",
+			"isStatic" : false,
+			"isTrigger" : true,
+			"radius" : 111.0
 		},
 		"Tag" : 
 		{
