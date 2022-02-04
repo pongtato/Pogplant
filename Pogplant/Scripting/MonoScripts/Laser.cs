@@ -11,7 +11,7 @@ namespace Scripting
         bool Activate_laser = false;
         uint Laser_Particle;
         uint Laser_object;
-        float charge_window = 3.0f;
+        public float charge_window;
         float acc_charge_window = 0.0f;
 
         bool Once_add_particle = false;
@@ -37,6 +37,10 @@ namespace Scripting
             entityID = _entityID;
             Laser_Particle = ECS.FindChildEntityWithName(entityID, "LaserParticle");
             Laser_object = ECS.FindChildEntityWithName(entityID, "LaserObject");
+
+            //Get the charge time from editor
+            charge_window = ECS.GetValue<float>(entityID, 3.0f, "ChargeWindow");
+
             //Disable the laser to be used
             ECS.SetActive(Laser_Particle, false);
             //Contains the laser component
@@ -45,10 +49,10 @@ namespace Scripting
 
         public override void Update(float dt)
         {
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
-            {       
-                ActivateLaser();
-            }
+            //if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
+            //{       
+            //    ActivateLaser();
+            //}
 
 
             //Sequenctial update of laser

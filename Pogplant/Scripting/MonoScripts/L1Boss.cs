@@ -12,6 +12,7 @@ namespace Scripting
 
     public class MOVING_PARTS
     {
+        //Position
         public float lerp_position_speed_X;
         public float lerp_position_speed_Y;
         public float lerp_position_speed_Z;
@@ -19,6 +20,17 @@ namespace Scripting
         public Vector3 lerp_position_upper_limit;
         public Vector3 lerp_position_lower_limit;
 
+        public bool lerp_position_positive_direction_X;       //+ve means going towards upper limit, -ve going towards lower limit
+        public bool lerp_position_positive_direction_Y;
+        public bool lerp_position_positive_direction_Z;
+
+        public bool lerp_position_ping_pong_X;
+        public bool lerp_position_ping_pong_Y;
+        public bool lerp_position_ping_pong_Z;
+
+        public bool update_position = false;
+
+        //Rotation
         public float lerp_rotation_speed_X;
         public float lerp_rotation_speed_Y;
         public float lerp_rotation_speed_Z;
@@ -26,27 +38,36 @@ namespace Scripting
         public Vector3 lerp_rotation_upper_limit;
         public Vector3 lerp_rotation_lower_limit;
 
-        public bool toggle_spin;
-        public Vector3 spin_rotation;
-
-        public bool lerp_position_positive_direction_X;       //+ve means going towards upper limit, -ve going towards lower limit
-        public bool lerp_position_positive_direction_Y;
-        public bool lerp_position_positive_direction_Z;
-
         public bool lerp_rotation_positive_direction_X;
         public bool lerp_rotation_positive_direction_Y;
         public bool lerp_rotation_positive_direction_Z;
-
-        public bool lerp_position_ping_pong_X;
-        public bool lerp_position_ping_pong_Y;
-        public bool lerp_position_ping_pong_Z;
 
         public bool lerp_rotation_ping_pong_X;
         public bool lerp_rotation_ping_pong_Y;
         public bool lerp_rotation_ping_pong_Z;
 
-        public bool update_position = false;
+        public bool toggle_spin;
+        public Vector3 spin_rotation;
+
         public bool update_rotation = false;
+
+        //Scale
+        public float lerp_scale_speed_X;
+        public float lerp_scale_speed_Y;
+        public float lerp_scale_speed_Z;
+
+        public Vector3 lerp_scale_upper_limit;
+        public Vector3 lerp_scale_lower_limit;
+
+        public bool lerp_scale_positive_direction_X;
+        public bool lerp_scale_positive_direction_Y;
+        public bool lerp_scale_positive_direction_Z;
+
+        public bool lerp_scale_ping_pong_X;
+        public bool lerp_scale_ping_pong_Y;
+        public bool lerp_scale_ping_pong_Z;
+
+        public bool update_scale = false;
 
         //Position
         public void SetLerpPosSpeedX(float value)
@@ -170,10 +191,131 @@ namespace Scripting
             update_rotation = value;
         }
 
+        //Scale
+        public void SetLerpScaleSpeedX(float value)
+        {
+            lerp_scale_speed_X = value;
+        }
+
+        public void SetLerpScaleSpeedY(float value)
+        {
+            lerp_scale_speed_Y = value;
+        }
+
+        public void SetLerpScaleSpeedZ(float value)
+        {
+            lerp_scale_speed_Z = value;
+        }
+
+        public void SetLerpScaleUpperLimit(Vector3 value)
+        {
+            lerp_scale_upper_limit = value;
+        }
+
+        public void SetLerpScaleLowerLimit(Vector3 value)
+        {
+            lerp_scale_lower_limit = value;
+        }
+
+        public void SetLerpScalePositiveDirectionX(bool value)
+        {
+            lerp_scale_positive_direction_X = value;
+        }
+
+        public void SetLerpScalePositiveDirectionY(bool value)
+        {
+            lerp_scale_positive_direction_Y = value;
+        }
+
+        public void SetLerpScalePositiveDirectionZ(bool value)
+        {
+            lerp_scale_positive_direction_Z = value;
+        }
+
+        public void SetLerpScalePingPongX(bool value)
+        {
+            lerp_scale_ping_pong_X = value;
+        }
+
+        public void SetLerpScalePingPongY(bool value)
+        {
+            lerp_scale_ping_pong_Y = value;
+        }
+
+        public void SetLerpScalePingPongZ(bool value)
+        {
+            lerp_scale_ping_pong_Z = value;
+        }
+
+        public void SetUpdateScale(bool value)
+        {
+            update_scale = value;
+        }
+
         //Misc
         public void SetToggleSpin(bool value)
         {
             toggle_spin = value;
+        }
+
+        //Reset all
+        public void ResetAllVariables()
+        {
+            lerp_position_speed_X = 0.0f;
+            lerp_position_speed_Y = 0.0f;
+            lerp_position_speed_Z = 0.0f;
+
+            lerp_position_upper_limit = new Vector3();
+            lerp_position_lower_limit = new Vector3();
+
+            lerp_position_positive_direction_X = false;       //+ve means going towards upper limit, -ve going towards lower limit
+            lerp_position_positive_direction_Y = false;
+            lerp_position_positive_direction_Z = false;
+
+            lerp_position_ping_pong_X = false;
+            lerp_position_ping_pong_Y = false;
+            lerp_position_ping_pong_Z = false;
+
+            update_position = false;
+
+            //Rotation
+            lerp_rotation_speed_X = 0.0f;
+            lerp_rotation_speed_Y = 0.0f;
+            lerp_rotation_speed_Z = 0.0f;
+
+            lerp_rotation_upper_limit = new Vector3();
+            lerp_rotation_lower_limit = new Vector3();
+
+            lerp_rotation_positive_direction_X = false;
+            lerp_rotation_positive_direction_Y = false;
+            lerp_rotation_positive_direction_Z = false;
+
+            lerp_rotation_ping_pong_X = false;
+            lerp_rotation_ping_pong_Y = false;
+            lerp_rotation_ping_pong_Z = false;
+
+            toggle_spin = false;
+            spin_rotation = new Vector3();
+
+            update_rotation = false;
+
+            //Scale
+            lerp_scale_speed_X = 0.0f;
+            lerp_scale_speed_Y = 0.0f;
+            lerp_scale_speed_Z = 0.0f;
+
+            lerp_scale_upper_limit = new Vector3();
+            lerp_scale_lower_limit = new Vector3();
+
+            lerp_scale_positive_direction_X = false;
+            lerp_scale_positive_direction_Y = false;
+            lerp_scale_positive_direction_Z = false;
+
+            lerp_scale_ping_pong_X = false;
+            lerp_scale_ping_pong_Y = false;
+            lerp_scale_ping_pong_Z = false;
+
+            update_scale = false;
         }
     }
 
@@ -229,6 +371,8 @@ namespace Scripting
         uint main_laser_rails_id;
         uint main_laser_rail_vent_id;
         uint main_laser_barrel_id;
+        uint main_laser_beam_id;
+        uint main_laser_object_id;
 
         /////////////////////////////////////////////////////////////////////////
         //  Death sequence
@@ -320,6 +464,8 @@ namespace Scripting
             main_laser_rails_id = ECS.FindEntityWithName("MainLaser_Rails");
             main_laser_rail_vent_id = ECS.FindEntityWithName("RailVent_Panels");
             main_laser_barrel_id = ECS.FindEntityWithName("MainLaser");
+            main_laser_beam_id = ECS.FindEntityWithName("Laser_Beam");
+            main_laser_object_id = ECS.FindEntityWithName("LaserObject");
 
             //Create and initialize the list of moving parts
             moving_parts_dict = new Dictionary<uint, MOVING_PARTS>();
@@ -365,6 +511,7 @@ namespace Scripting
             moving_parts_dict.Add(main_laser_rails_id, new MOVING_PARTS());
             moving_parts_dict.Add(main_laser_rail_vent_id, new MOVING_PARTS());
             moving_parts_dict.Add(main_laser_barrel_id, new MOVING_PARTS());
+            moving_parts_dict.Add(main_laser_object_id, new MOVING_PARTS());
 
             //current_state = BOSS_BEHAVIOUR_STATE.IDLE;
             animation_specs_stack = new List<Animation_Stack>();
@@ -385,24 +532,24 @@ namespace Scripting
             //Under Update() if(m_debugMode).
             //Can toggle by bool, look in the hierachy, Boss > BossBehaviourCore
 
-                //Testing
-                /*if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
-                {
-                    SetState(BOSS_BEHAVIOUR_STATE.MOVING);
+            //Testing
+            /*if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+            {
+                SetState(BOSS_BEHAVIOUR_STATE.MOVING);
 
-                    //TakeDamage(1);
-                }
+                //TakeDamage(1);
+            }
 
-                if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
-                {
-                    SetState(BOSS_BEHAVIOUR_STATE.PROTECTION);
-                    //SetState(BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
-                }//*/
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
+            {
+                SetState(BOSS_BEHAVIOUR_STATE.PROTECTION);
+                //SetState(BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+            }//*/
 
-                //if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
-                //{
-                //    SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
-                //}
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
+            {
+                SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+            }
 
             switch (current_state)
             {
@@ -417,11 +564,6 @@ namespace Scripting
                     SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, laser_spin_addition, dt);
                     break;
             }
-
-            //if (is_shield_broken)
-            //{
-            //    DeathSequence(dt);
-            //}
 
             if (animation_update_stack.Count > 0 && play_animation)
             {
@@ -442,113 +584,6 @@ namespace Scripting
                 }
             }
         }
-
-        //void DeathSequence(float dt)
-        //{
-        //    //Shield break animation
-        //    if (start_shield_break_countdown)
-        //    {
-        //        if (shield_break_delay_timer < shield_break_delay_duration)
-        //        {
-        //            shield_break_delay_timer += dt;
-        //        }
-        //        else
-        //        {
-        //            start_shield_break_countdown = false;
-
-        //            //Stops the sparks particle and disable shields
-        //            ECS.SetParticlePause(sparks_particle_id, true);
-        //            ECS.SetActive(sparks_particle_id, false);
-        //            ECS.SetActive(false_core_id, false);
-
-        //            start_eye_countdown = true;
-        //        }
-        //    }
-
-        //    //Eye rotation and fire particle cannon animation
-        //    if (start_eye_countdown)
-        //    {
-        //        //Rotate the eye lids
-        //        ECS.SetRotation(mouth_left_id, Vector3.Lerp(ECS.GetComponent<Transform>(mouth_left_id).Rotation, rotate_angle, dt * rotate_speed));
-        //        ECS.SetRotation(mouth_right_id, Vector3.Lerp(ECS.GetComponent<Transform>(mouth_left_id).Rotation, -rotate_angle, dt * rotate_speed));
-
-        //        if (eye_delay_timer < eye_delay_duration)
-        //        {
-        //            eye_delay_timer += dt;
-        //        }
-        //        else
-        //        {
-        //            start_eye_countdown = false;
-        //            start_particle_countdown = true;
-
-        //            ECS.SetParticlePause(main_laser_barrel_id, false);
-        //        }
-        //    }
-
-        //    //Collision and black screen
-        //    if (start_particle_countdown)
-        //    {
-        //        if (particle_timer < particle_delay_duration)
-        //        {
-        //            particle_timer += dt;
-        //        }
-        //        else
-        //        {
-        //            //Fire OHK cannon (activate large particle towards player and enable a black screen after being hit)
-        //            ECS.SetActive(black_screen_id, true);
-
-        //            //Play player take severe damage and crashing audio
-        //            //ECS.PlayAudio(entityID, 1);
-
-        //            //Transit to another scene after X seconds
-        //            start_scene_change_countdown = true;
-        //        }
-        //    }
-
-        //    //Countdown for scene changing
-        //    if (start_scene_change_countdown)
-        //    {
-        //        if (scene_change_delay_timer < scene_change_delay_duration)
-        //        {
-        //            scene_change_delay_timer += dt;
-        //        }
-        //        else
-        //        {
-        //            start_scene_change_countdown = false;
-        //            //GameUtilities.LoadScene("Level2");
-        //        }
-        //    }
-        //}
-
-        //public void TakeDamage(float damage)
-        //{
-        //    health -= damage;
-        //    //Make sure it does not accidently overflow
-        //    if (health < -100.0f)
-        //        health = -100.0f;
-        //    //Console.WriteLine("Health: " + health);
-        //    //Triggers the shield depleting and starts the sequence of the OHK
-        //    if (health <= 0)
-        //    {
-        //        //Console.WriteLine("Dead");
-        //        if (!is_shield_broken)
-        //        {
-        //            //Play shield destroyed audio
-        //            //ECS.PlayAudio(entityID, 0);
-        //            Console.WriteLine("shield broken");
-
-        //            //Play electric sparks particle
-        //            ECS.SetActive(sparks_particle_id, true);
-        //            ECS.SetParticlePause(sparks_particle_id, false);
-
-        //            //Start counting down the delay
-        //            start_shield_break_countdown = true;
-
-        //            //Only need to happen once
-        //            is_shield_broken = true;
-        //        }
-        //    }
-        //}
 
         public void SetState(BOSS_BEHAVIOUR_STATE set_state)
         {
@@ -581,8 +616,8 @@ namespace Scripting
                 case BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
                     StopAnimation(true);
                     AddAnimationSpecsStack(SetDeathStateAnimationsOne, 1.5f);
-                    AddAnimationSpecsStack(SetDeathStateAnimationsTwo, 10.0f);
-                    AddAnimationSpecsStack(SetDeathStateAnimationsThree, 1.0f);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsTwo, 7.0f);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsThree, 2.0f);
                     AddAnimationSpecsStack(SetDeathStateAnimationsFour, 0.5f);
                     AddAnimationUpdateStack(RunDeathStateSequenceOne);
                     AddAnimationUpdateStack(RunDeathStateSequenceTwo);
@@ -647,9 +682,20 @@ namespace Scripting
             current_animation_index = 0;
             current_animation_time = 0.0f;
 
+            //Reset all variables
+            ResetAnimationMovingPart();
+
             //Use the function so its easier to track
             animation_specs_stack.Clear();
             animation_update_stack.Clear();
+        }
+
+        void ResetAnimationMovingPart()
+        {
+            foreach (KeyValuePair<uint, MOVING_PARTS> kvp in moving_parts_dict)
+            {
+                kvp.Value.ResetAllVariables();
+            }
         }
 
         void RunNextAnimationStack()
@@ -714,7 +760,7 @@ namespace Scripting
             moving_parts_dict[id].SetUpdatePosition(true);
         }
 
-        void SetMovingPartsRotation(uint id, Vector3 set_pos_lower_limit, Vector3 set_pos_upper_limit, Vector3 lerp_speed,
+        void SetMovingPartsRotation(uint id, Vector3 set_rot_lower_limit, Vector3 set_rot_upper_limit, Vector3 lerp_speed,
             bool set_positive_direction_X, bool set_positive_direction_Y, bool set_positive_direction_Z,
             bool set_ping_pong_X, bool set_ping_pong_Y, bool set_ping_pong_Z)
         {
@@ -723,8 +769,8 @@ namespace Scripting
             moving_parts_dict[id].SetLerpRotSpeedY(lerp_speed.Y);
             moving_parts_dict[id].SetLerpRotSpeedZ(lerp_speed.Z);
 
-            moving_parts_dict[id].SetLerpRotUpperLimit(set_pos_upper_limit);
-            moving_parts_dict[id].SetLerpRotLowerLimit(set_pos_lower_limit);
+            moving_parts_dict[id].SetLerpRotUpperLimit(set_rot_upper_limit);
+            moving_parts_dict[id].SetLerpRotLowerLimit(set_rot_lower_limit);
 
             moving_parts_dict[id].SetLerpRotPingPongX(set_ping_pong_X);
             moving_parts_dict[id].SetLerpRotPingPongY(set_ping_pong_Y);
@@ -738,6 +784,30 @@ namespace Scripting
             moving_parts_dict[id].SetUpdateRotation(true);
         }
 
+        void SetMovingPartsScale(uint id, Vector3 set_scale_lower_limit, Vector3 set_scale_upper_limit, Vector3 lerp_speed,
+            bool set_positive_direction_X, bool set_positive_direction_Y, bool set_positive_direction_Z,
+            bool set_ping_pong_X, bool set_ping_pong_Y, bool set_ping_pong_Z)
+        {
+            //Update the moving part's parameters
+            moving_parts_dict[id].SetLerpScaleSpeedX(lerp_speed.X);
+            moving_parts_dict[id].SetLerpScaleSpeedY(lerp_speed.Y);
+            moving_parts_dict[id].SetLerpScaleSpeedZ(lerp_speed.Z);
+
+            moving_parts_dict[id].SetLerpScaleUpperLimit(set_scale_upper_limit);
+            moving_parts_dict[id].SetLerpScaleLowerLimit(set_scale_lower_limit);
+
+            moving_parts_dict[id].SetLerpScalePingPongX(set_ping_pong_X);
+            moving_parts_dict[id].SetLerpScalePingPongY(set_ping_pong_Y);
+            moving_parts_dict[id].SetLerpScalePingPongZ(set_ping_pong_Z);
+
+            moving_parts_dict[id].SetLerpScalePositiveDirectionX(set_positive_direction_X);
+            moving_parts_dict[id].SetLerpScalePositiveDirectionY(set_positive_direction_Y);
+            moving_parts_dict[id].SetLerpScalePositiveDirectionZ(set_positive_direction_Z);
+
+            //Automatically enable since already setting
+            moving_parts_dict[id].SetUpdateScale(true);
+        }
+
         void UpdateMovingParts(uint id, float dt)
         {
             //Update position only if needed
@@ -749,6 +819,10 @@ namespace Scripting
             if (moving_parts_dict[id].update_rotation)
             {
                 UpdateMovingPartsRotation(id, dt);
+            }
+            if (moving_parts_dict[id].update_scale)
+            {
+                UpdateMovingPartsScale(id, dt);
             }
         }
 
@@ -1032,6 +1106,147 @@ namespace Scripting
                 else
                 {
                     ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, moving_parts_dict[id].lerp_rotation_lower_limit.Z), moving_parts_dict[id].lerp_rotation_speed_Z * dt));
+                }
+            }
+        }
+
+        void UpdateMovingPartsScale(uint id, float dt)
+        {
+            //===============================================================================================================================================//
+            //X Axis
+            //===============================================================================================================================================//
+
+            //Keep playing if ping pong
+            if (moving_parts_dict[id].lerp_scale_ping_pong_X)
+            {
+                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_scale_positive_direction_X)
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(moving_parts_dict[id].lerp_scale_upper_limit.X, scale.Y, scale.Z), moving_parts_dict[id].lerp_scale_speed_X * dt));
+
+                    //Check for limit and reverse
+                    if (scale.X >= moving_parts_dict[id].lerp_scale_upper_limit.X - 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_scale_positive_direction_X = false;
+                    }
+                }
+                else
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(moving_parts_dict[id].lerp_scale_lower_limit.X, scale.Y, scale.Z), moving_parts_dict[id].lerp_scale_speed_X * dt));
+
+                    if (scale.X <= moving_parts_dict[id].lerp_scale_lower_limit.X + 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_scale_positive_direction_X = true;
+                    }
+                }
+            }
+            //Play anim once if no ping pong
+            else
+            {
+                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_scale_positive_direction_X)
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(moving_parts_dict[id].lerp_scale_upper_limit.X, scale.Y, scale.Z), moving_parts_dict[id].lerp_scale_speed_X * dt));
+                }
+                else
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(moving_parts_dict[id].lerp_scale_lower_limit.X, scale.Y, scale.Z), moving_parts_dict[id].lerp_scale_speed_X * dt));
+                }
+            }
+
+            //===============================================================================================================================================//
+            //Y Axis
+            //===============================================================================================================================================//
+
+            //Keep playing if ping pong
+            if (moving_parts_dict[id].lerp_scale_ping_pong_Y)
+            {
+                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_scale_positive_direction_Y)
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, moving_parts_dict[id].lerp_scale_upper_limit.Y, scale.Z), moving_parts_dict[id].lerp_scale_speed_Y * dt));
+
+                    //Check for limit and reverse
+                    if (scale.Y >= moving_parts_dict[id].lerp_scale_upper_limit.Y - 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_scale_positive_direction_Y = false;
+                    }
+                }
+                else
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, moving_parts_dict[id].lerp_scale_lower_limit.Y, scale.Z), moving_parts_dict[id].lerp_scale_speed_Y * dt));
+
+                    if (scale.Y <= moving_parts_dict[id].lerp_scale_lower_limit.Y + 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_scale_positive_direction_Y = true;
+                    }
+                }
+            }
+            //Play anim once if no ping pong
+            else
+            {
+                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_scale_positive_direction_Y)
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, moving_parts_dict[id].lerp_scale_upper_limit.Y, scale.Z), moving_parts_dict[id].lerp_scale_speed_Y * dt));
+                }
+                else
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, moving_parts_dict[id].lerp_scale_lower_limit.Y, scale.Z), moving_parts_dict[id].lerp_scale_speed_Y * dt));
+                }
+            }
+
+            //===============================================================================================================================================//
+            //Z Axis
+            //===============================================================================================================================================//
+
+            //Keep playing if ping pong
+            if (moving_parts_dict[id].lerp_scale_ping_pong_Z)
+            {
+                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_scale_positive_direction_Z)
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, moving_parts_dict[id].lerp_scale_upper_limit.Z), moving_parts_dict[id].lerp_scale_speed_Z * dt));
+
+                    //Check for limit and reverse
+                    if (scale.Z >= moving_parts_dict[id].lerp_scale_upper_limit.Z - 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_scale_positive_direction_Z = false;
+                    }
+                }
+                else
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, moving_parts_dict[id].lerp_scale_lower_limit.Z), moving_parts_dict[id].lerp_scale_speed_Z * dt));
+
+                    if (scale.Z <= moving_parts_dict[id].lerp_scale_lower_limit.Z + 0.1f)
+                    {
+                        moving_parts_dict[id].lerp_scale_positive_direction_Z = true;
+                    }
+                }
+            }
+            //Play anim once if no ping pong
+            else
+            {
+                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+
+                //Rotate 
+                if (moving_parts_dict[id].lerp_scale_positive_direction_Z)
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, moving_parts_dict[id].lerp_scale_upper_limit.Z), moving_parts_dict[id].lerp_scale_speed_Z * dt));
+                }
+                else
+                {
+                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, moving_parts_dict[id].lerp_scale_lower_limit.Z), moving_parts_dict[id].lerp_scale_speed_Z * dt));
                 }
             }
         }
@@ -1589,19 +1804,26 @@ namespace Scripting
             SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, 100.0f, dt);
             SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
             SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+
+            GameUtilities.StartLaser(main_laser_beam_id);
         }
 
         void SetDeathStateAnimationsThree()
         {
             //Body
-            SetMovingPartsPosition(entityID, new Vector3(0, 0, -4), new Vector3(0, 0, 0), new Vector3(0, 0, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, -4), new Vector3(0, 0.2f, 0), new Vector3(0, 5.0f, 10.0f), false, false, false, false, true, false);
+            SetMovingPartsScale(main_laser_object_id, new Vector3(0.1f, 0.1f, 3.0f), new Vector3(3.0f, 3.0f, 3.0f), new Vector3(2.0f, 2.0f, 0), true, true, false, false, false, false);
 
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(true);
         }
 
         void RunDeathStateSequenceThree(float dt)
         {
+            //Body
             UpdateMovingParts(entityID, dt);
+
+            //Laser beam
+            UpdateMovingParts(main_laser_object_id, dt);
 
             SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, 100.0f, dt);
             SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
@@ -1611,7 +1833,10 @@ namespace Scripting
         void SetDeathStateAnimationsFour()
         {
             //Body
-            SetMovingPartsPosition(entityID, new Vector3(0, 0, 0), new Vector3(0, 0, 2), new Vector3(0, 0, 10.0f), false, false, false, false, false, false);
+            SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, 0), new Vector3(0, 0.2f, 2), new Vector3(0, 5.0f, 10.0f), false, false, false, false, true, false);
+
+            //Laser beam
+            SetMovingPartsScale(main_laser_object_id, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(3.0f, 3.0f, 3.0f), new Vector3(8.0f, 8.0f, 8.0f), false, false, false, false, false, false);
 
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(false);
         }
@@ -1619,6 +1844,7 @@ namespace Scripting
         void RunDeathStateSequenceFour(float dt)
         {
             UpdateMovingParts(entityID, dt);
+            UpdateMovingParts(main_laser_object_id, dt);
 
             SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
             SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
