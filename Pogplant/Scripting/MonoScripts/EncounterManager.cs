@@ -125,6 +125,11 @@ namespace Scripting
         private float current_time = 0.0f;
         // Start is called before the first frame update
 
+        public float GetCurrentTime()
+        {
+            return current_time;
+        }
+
         public void Start()
         {
             enemyManager.Start();
@@ -143,7 +148,7 @@ namespace Scripting
         public void AddEncounter(Encounter encounter)
         {
             encounters.Add(encounter); // Add the client created encounter to list of encounters to manage.
-            encounters.Sort(Encounter.EncounterComparer); // Sort the list by start_time so it is in chronological order.
+            //encounters.Sort(Encounter.EncounterComparer); // Sort the list by start_time so it is in chronological order.
         }
 
         void UpdateEncounterTimeline()
@@ -153,7 +158,7 @@ namespace Scripting
             foreach (Encounter encounter in encounters)
             {
                 // Spawn encounter if it is time and it has not spawned yet
-                if (!encounter.is_executed && current_time >= encounter.start_time)
+                if (current_time >= encounter.start_time && !encounter.is_executed)
                 {
                     encounter.ExecuteEncounter();
                     break;

@@ -712,7 +712,7 @@ namespace Scripting
             {
                 BaseAction[] action1 = new BaseAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Far_T7_MidM"), enemyManager.GetWaypoint("7,4,5"), 1.5f);
-                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f, 0.2f);
                 enemy1.AddCommand(new CompositeAction(action1));
             }
 
@@ -753,7 +753,7 @@ namespace Scripting
             {
                 BaseAction[] action1 = new BaseAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("7,1,5"), enemyManager.GetWaypoint("10,3,5"), 1.0f);
-                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.5f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.5f, 0.2f);
                 enemy1.AddCommand(new CompositeAction(action1));
             }
 
@@ -764,7 +764,7 @@ namespace Scripting
             {
                 BaseAction[] action1 = new BaseAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("4,4,5"), enemyManager.GetWaypoint("7,1,5"), 1.0f);
-                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.5f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.5f, 0.2f);
                 enemy2.AddCommand(new CompositeAction(action1));
             }
 
@@ -772,12 +772,12 @@ namespace Scripting
             {
                 BaseAction[] action1 = new BaseAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("7,6,5"), enemyManager.GetWaypoint("Far_T7_MidM"), 1.5f);
-                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.5f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.5f, 0.2f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
                 BaseAction[] action2 = new BaseAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("7,1,5"), enemyManager.GetWaypoint("Far_T7_MidM"), 1.5f);
-                action2[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.5f);
+                action2[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.5f, 0.2f);
                 enemy2.AddCommand(new CompositeAction(action2));
             }
 
@@ -1607,41 +1607,41 @@ namespace Scripting
         void Boss_Low1()
         {
             Boss_LeftChain();
-            Boss_RightChainAltSingle(4.0f);
+            Boss_RightChainAltSingle(encounterManager.GetCurrentTime() + 4.0f);
         }
 
         void Boss_Low2()
         {
             Boss_RightChain();
-            Boss_LeftChainAltSingle(4.0f);
+            Boss_LeftChainAltSingle(encounterManager.GetCurrentTime() + 4.0f);
         }
 
         void Boss_Med1()
         {
             Boss_LeftChain();
-            Boss_RightChainAlt(4.0f);
+            Boss_RightChainAltSingle();
         }
         void Boss_Med2()
         {
             Boss_RightChain();
-            Boss_LeftChainAlt(4.0f);
+            Boss_LeftChainAltSingle();
         }
         void Boss_High1()
         {
             Boss_LeftChain(); // 14s
-            Boss_RightChainAltSingle(); // 10s
+            Boss_RightChainAlt(); // 10s
 
-            Boss_LeftChainAltSingle(15.0f); 
-            Boss_RightChain(11.0f);
+            //Boss_RightChain(encounterManager.GetCurrentTime() + 11.0f);
+            //Boss_LeftChainAltSingle(encounterManager.GetCurrentTime() + 15.0f); 
         }
 
         void Boss_High2()
         {
-            Boss_LeftChain(); // 14s
-            Boss_RightChain(4.0f); // 14s
+            Boss_RightChain(); // 14s
+            Boss_LeftChainAlt(); // 14s
 
-            Boss_LeftChainAlt(15.0f);
-            Boss_RightChainAlt(19.0f);
+            //Boss_LeftChainAlt(encounterManager.GetCurrentTime() + 15.0f);
+            //Boss_RightChainAlt(encounterManager.GetCurrentTime() + 19.0f);
         }
 
         void Boss_LeftChain(float encounter_offset_time = 0.0f)
@@ -1656,9 +1656,9 @@ namespace Scripting
                     Critically they are spaced 1 lane apart and leave the center lane safe.
             */
 
-            float new_firerate = Enemy1_fire_rate * 2;
+            float new_firerate = Enemy1_fire_rate;
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter Boss_LeftChain = new Encounter(0.0f, 10.0f, enemyManager);
+            Encounter Boss_LeftChain = new Encounter(encounter_offset_time, 10.0f, enemyManager);
 
             for (int i = 0; i < 5; ++i)
             {
@@ -1779,7 +1779,7 @@ namespace Scripting
 
             float new_firerate = Enemy2_fire_rate;
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter Boss_LeftChainAlt = new Encounter(0.0f, 10.0f, enemyManager);
+            Encounter Boss_LeftChainAlt = new Encounter(encounter_offset_time, 10.0f, enemyManager);
             {
                 //
                 // Part A
@@ -1794,12 +1794,12 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("3,0,5"), enemyManager.GetWaypoint("3,6,5"), 2.0f);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
                     BaseAction[] action2 = new BaseAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("3,0,5"), enemyManager.GetWaypoint("3,1,5"), 2.0f);
-                    action2[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action2[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy2.AddCommand(new CompositeAction(action2));
 
                 }
@@ -1808,12 +1808,12 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new WaitAction(6);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
                     BaseAction[] action2 = new BaseAction[2];
                     action2[0] = new WaitAction(6);
-                    action2[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f);
+                    action2[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f, 2.0f);
                     enemy2.AddCommand(new CompositeAction(action2));
 
                 }
@@ -1843,7 +1843,7 @@ namespace Scripting
 
             float new_firerate = Enemy2_fire_rate;
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter Boss_LeftChainAlt = new Encounter(0.0f, 10.0f, enemyManager);
+            Encounter Boss_LeftChainAlt = new Encounter(encounter_offset_time, 10.0f, enemyManager);
             {
                 //
                 // Part A
@@ -1856,7 +1856,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("3,0,5"), enemyManager.GetWaypoint("3,6,5"), 2.0f);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
                 }
@@ -1865,7 +1865,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new WaitAction(1);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 1.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 1.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
 
@@ -1875,7 +1875,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("3,6,5"), enemyManager.GetWaypoint("3,1,5"), 2.0f);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
                 }
@@ -1884,7 +1884,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new WaitAction(1);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 1.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 1.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
 
@@ -1894,7 +1894,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("3,1,5"), enemyManager.GetWaypoint("3,6,5"), 2.0f);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
                 }
@@ -1912,7 +1912,7 @@ namespace Scripting
 
         void Boss_RightChain(float encounter_offset_time = 0.0f)
         {
-
+            Console.WriteLine("right chain called");
             /*  total encounter time = 14.0 seconds
                 total enemy count = 20 + 16 = 36 small enemies
              
@@ -1922,9 +1922,9 @@ namespace Scripting
                     Critically they are spaced 1 lane apart and leave the center lane safe.
             */
 
-            float new_firerate = Enemy1_fire_rate * 2;
+            float new_firerate = Enemy1_fire_rate;
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter Boss_LeftChain = new Encounter(0.0f, 10.0f, enemyManager);
+            Encounter Boss_LeftChain = new Encounter(encounter_offset_time, 10.0f, enemyManager);
 
             for (int i = 0; i < 5; ++i)
             {
@@ -2045,7 +2045,7 @@ namespace Scripting
 
             float new_firerate = Enemy2_fire_rate;
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter Boss_RightChainAlt = new Encounter(0.0f, 10.0f, enemyManager);
+            Encounter Boss_RightChainAlt = new Encounter(encounter_offset_time, 10.0f, enemyManager);
             {
                 //
                 // Part A
@@ -2060,12 +2060,12 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("11,0,5"), enemyManager.GetWaypoint("11,6,5"), 2.0f);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
                     BaseAction[] action2 = new BaseAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("11,0,5"), enemyManager.GetWaypoint("11,1,5"), 2.0f);
-                    action2[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action2[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy2.AddCommand(new CompositeAction(action2));
 
                 }
@@ -2074,12 +2074,12 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new WaitAction(6);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
                     BaseAction[] action2 = new BaseAction[2];
                     action2[0] = new WaitAction(6);
-                    action2[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f);
+                    action2[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f, 2.0f);
                     enemy2.AddCommand(new CompositeAction(action2));
 
                 }
@@ -2109,7 +2109,7 @@ namespace Scripting
 
             float new_firerate = Enemy2_fire_rate;
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter Boss_RightChainAlt = new Encounter(0.0f, 10.0f, enemyManager);
+            Encounter Boss_RightChainAlt = new Encounter(encounter_offset_time, 10.0f, enemyManager);
             {
                 //
                 // Part A
@@ -2122,7 +2122,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("11,0,5"), enemyManager.GetWaypoint("11,6,5"), 2.0f);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
                 }
 
@@ -2130,7 +2130,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new WaitAction(1);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 1, 6.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 1, 1.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
                 }
 
@@ -2138,7 +2138,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("11,6,5"), enemyManager.GetWaypoint("11,1,5"), 2.0f);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
                 }
 
@@ -2146,7 +2146,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new WaitAction(1);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 1, 6.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 1, 1.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
                 }
 
@@ -2154,7 +2154,7 @@ namespace Scripting
                 {
                     BaseAction[] action1 = new BaseAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("11,1,5"), enemyManager.GetWaypoint("11,6,5"), 2.0f);
-                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
                 }
 

@@ -144,13 +144,15 @@ namespace Scripting
         private bool is_reseting = false;
         private float primer_timer;
         private float primer_time = 0.5f;
+        private float bullet_speed;
 
-        public AttackAction(string attackPattern, float fireRate, int trueBulletInterval, float totalDuration)
+        public AttackAction(string attackPattern, float fireRate, int trueBulletInterval, float totalDuration, float bulletSpeed = 5.0f)
         {
             fire_rate = 1 / fireRate;
             attack_animation = attackPattern;
             true_bullet_interval = 0; // ignore truebulletinterval param
             duration = totalDuration;
+            bullet_speed = bulletSpeed;
 
         }
         public override bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
@@ -237,11 +239,11 @@ namespace Scripting
 
                     Vector3 direction = forward_vector + right_vector + up_vector;
 
-                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + direction * 0.3f, direction, 0.2f, 10.0f);
+                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + direction * 0.3f, direction, bullet_speed, 10.0f);
 
                 }
                 else
-                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, Transform.GetForwardVector(owner.id), 5.0f, 3.0f);
+                    GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, Transform.GetForwardVector(owner.id), bullet_speed, 3.0f);
 
                 ECS.PlayAudio(owner.id, 3, "SFX");
             }
