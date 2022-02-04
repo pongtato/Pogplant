@@ -264,6 +264,7 @@ namespace Pogplant
 
 		ShaderLinker::SetUniform("v2_Noise", { static_cast<float>(Window::m_Width) * 0.25f, static_cast<float>(Window::m_Height) * 0.25f });
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
+		ShaderLinker::SetUniform("m4_View", glm::transpose(glm::inverse(ret.m_View)));
 		ShaderLinker::SetUniform("Radius", m_AO_Radius);
 		ShaderLinker::SetUniform("Bias", m_AO_Bias);
 		glActiveTexture(GL_TEXTURE0);

@@ -194,6 +194,8 @@ void main()
     // Gamma correct
     outColor.rgb = pow(outColor.rgb, vec3(1.0 / Gamma));
 
+    //outColor = vec4(AmbientOcclusion);
+
     // So that canvas/text does not have bleeding bloom/bloom, done this way as you cannot compare 0
     if(Canvas.a > 0)
     {

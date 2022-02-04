@@ -16,12 +16,13 @@ uniform vec2 v2_Noise;
 uniform mat4 m4_Projection;
 uniform float Radius;
 uniform float Bias;
+uniform mat4 m4_View;
 
 void main()
 {
     // Input for SSAO algorithm
     vec3 fragPos = texture(gPosition, TexCoords).xyz;
-    vec3 normal = normalize(texture(gNormal, TexCoords).rgb);
+    vec3 normal = (m4_View * vec4(normalize(texture(gNormal, TexCoords).rgb),1.0)).xyz;
     vec3 randomVec = normalize(texture(texNoise, TexCoords * v2_Noise).xyz);
 
     // Tangent to view space

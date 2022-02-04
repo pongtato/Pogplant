@@ -42,7 +42,7 @@ void main()
     vec4 viewPos = m4_View * m4_Model * vec4(v3_Pos, 1.0);
     FragPos = viewPos.xyz;
 
-    mat3 normalMatrix = transpose(inverse(mat3(m4_View * m4_Model)));
+    mat3 normalMatrix = transpose(inverse(mat3(m4_Model)));
     Normal = normalMatrix * v3_Normal;
 
     TexCoords = v2_TexCoords;  
