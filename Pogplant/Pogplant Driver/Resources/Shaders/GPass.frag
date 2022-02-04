@@ -64,10 +64,10 @@ uniform int cascadeCount;
 uniform vec3 lightDir;
 uniform float farPlane;
 uniform mat4 m4_InverseView;
+uniform vec3 ViewPos;
 
-float Shadow(vec3 normal)
+float Shadow(vec3 normal, vec4 fragPosViewSpace, vec3 fragPos)
 {
-    vec4 fragPosViewSpace = vec4(texture(gPosition, TexCoords).rgb, 1.0);
     float depthValue = abs(fragPosViewSpace.z);
 
     int layer = -1;
@@ -85,7 +85,7 @@ float Shadow(vec3 normal)
     }
 
     // Map spaces, inverse to get back world space
-    vec4 fragPosLightSpace = lightSpaceMatrices[layer] * vec4(vec3(m4_InverseView * fragPosViewSpace),1.0);
+    vec4 fragPosLightSpace = lightSpaceMatrices[layer] * vec4(fragPos,1.0);
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
     projCoords = projCoords * 0.5 + 0.5;
 
@@ -126,7 +126,7 @@ float Shadow(vec3 normal)
 void main()
 {             
     // gBuffer sample
-    vec3 FragPos = texture(gPosition, TexCoords).rgb;
+    vec3 ViewFragPos = texture(gPosition, TexCoords).rgb;
     vec3 Normal = texture(gNormal, TexCoords).rgb;
     vec3 Diffuse = texture(gAlbedoSpec, TexCoords).rgb;
     float Specular = texture(gAlbedoSpec, TexCoords).a;
@@ -135,6 +135,7 @@ void main()
     Canvas.a *= 6.9f;
     Canvas.a = clamp(Canvas.a, 0.0f, 1.0f);
     float AmbientOcclusion = texture(gAO, TexCoords).r;
+    vec3 FragPos = (m4_InverseView * vec4(ViewFragPos,1.0)).xyz;
     
     // Light calc
     const float ambient = 0.42f;
@@ -144,19 +145,24 @@ void main()
     vec3 colorDebug = vec3(0);
     if(Shadows)
     {
-        shadow = 1.0 - Shadow(Normal);
-
-        // Visualisation of the cascades
-        int layer = int(Shadow(Normal));
-        if(layer == 0)
-            colorDebug = vec3(1,0,0);
-        if(layer == 1)
-            colorDebug = vec3(0,1,0);
-        if(layer == 2)
-            colorDebug = vec3(0,0,1);
+        shadow = 1.0 - Shadow(Normal, vec4(ViewFragPos, 1.0), FragPos);
     }
+
+    // Directional light
+    vec3 lightDir = normalize(-directLight.Direction);
+    vec3 diffuse = max(dot(Normal, lightDir), 0.0) * Diffuse * directLight.Color;
     
-    vec3 viewDir = normalize(-FragPos);
+    // Specular
+    vec3 viewDir = normalize(ViewPos - FragPos);
+    vec3 halfway = normalize(lightDir + viewDir);  
+    float spec = pow(max(dot(Normal, halfway), 0.0), 16.0);
+    vec3 specular = directLight.Color * spec * Specular;
+    diffuse *= directLight.Diffuse;
+    specular *= directLight.Specular;
+    lighting.rgb *= AmbientOcclusion;
+    lighting += shadow * (diffuse + specular);
+    
+    // Point lights
     for(int i = 0; i < activeLights; ++i)
     {
         // Distance cutoff
@@ -169,7 +175,7 @@ void main()
             // Specular
             vec3 halfwayDir = normalize(lightDir + viewDir);  
             float spec = pow(max(dot(Normal, halfwayDir), 0.0), 16.0);
-            vec3 specular = lights[i].Color * spec * Specular;
+            vec3 specular = lights[i].Color * spec;
             // Attenuation
             const float k = 1.0f;
             float attenuation = k / (k + lights[i].Linear * distance + lights[i].Quadratic * distance * distance);
@@ -178,19 +184,6 @@ void main()
             lighting += diffuse + specular;
         }
     }
-
-    // Directional light
-    vec3 lightDir = normalize(-directLight.Direction);
-    vec3 diffuse = max(dot(Normal, lightDir), 0.0) * Diffuse * directLight.Color;
-    
-    // Specular
-    vec3 halfway = normalize(lightDir + viewDir);  
-    float spec = pow(max(dot(Normal, halfway), 0.0), 16.0);
-    vec3 specular = directLight.Color * spec * Specular;
-    diffuse *= directLight.Diffuse;
-    specular *= directLight.Specular;
-    lighting += shadow * (diffuse + specular);
-    lighting.rgb *= AmbientOcclusion;
 
     // HDR light
     lighting = vec3(1.0) - exp(-lighting.rgb * Exposure); 

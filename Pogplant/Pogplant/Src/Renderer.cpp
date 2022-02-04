@@ -333,8 +333,10 @@ namespace Pogplant
 		ShaderLinker::SetUniform("Gamma", m_Gamma);
 		ShaderLinker::SetUniform("Shadows", m_EnableShadows);
 
+
 		//// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
+		ShaderLinker::SetUniform("ViewPos", ret.m_Position);
 
 		/// Shaft pos screen
 		//auto clipSpace = ret.m_Projection * (ret.m_View * glm::vec4(m_LightShaftPos,1.0f));
