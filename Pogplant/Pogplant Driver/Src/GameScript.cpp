@@ -526,6 +526,54 @@ namespace Scripting
 		}
 	}
 
+	void GameScript::UpdateTextColor(std::uint32_t text_object, glm::vec3 color)
+	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(text_object)))
+			return;
+
+		auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(text_object));
+
+		if (text)
+		{
+			text->m_Color = color;
+		}
+	}
+
+	std::uint32_t GameScript::UpdateScore_AddMinus(std::uint32_t dashboardID, std::uint32_t scorechange, bool isAdd)
+	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(dashboardID)))
+			return entt::null;
+
+		entt::entity id = PogplantDriver::Application::GetInstance().m_activeECS->CreateChild(static_cast<entt::entity>(dashboardID), "AddScoreText", glm::vec3(-0.25f, -0.083f, -0.165f), glm::vec3(150.0f, 0.0f, -180.0f), glm::vec3(1.5f,1.5f,1.f)).GetID();
+		static std::string scoreText;
+		// Green
+		if (isAdd)
+		{
+			PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace_or_replace<Components::Text>(static_cast<entt::entity>(id), Components::Text{ glm::vec3(0.0f,1.0f,0.0f), "Bangers" });
+			auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(id));
+
+			if (text)
+			{
+				scoreText = std::to_string(scorechange);
+				text->m_Text = "+" + scoreText;
+			}
+		}
+		// Red
+		else
+		{
+			PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace_or_replace<Components::Text>(static_cast<entt::entity>(id), Components::Text{ glm::vec3(1.0f,0.0f,0.0f), "Bangers" });
+			auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(id));
+
+			if (text)
+			{
+				scoreText = std::to_string(scorechange);
+				text->m_Text = "-" + scoreText;
+			}
+		}
+
+		return static_cast<std::uint32_t>(id);
+	}
+
 	bool GameScript::GetAlive(std::uint32_t entityID)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(entityID)))
@@ -615,6 +663,8 @@ namespace Scripting
 
 				text->m_Text += scoreText;
 			}
+
+			//text->m_Color = color;
 		}
 	}
 

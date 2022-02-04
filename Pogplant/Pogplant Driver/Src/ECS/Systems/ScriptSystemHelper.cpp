@@ -104,10 +104,14 @@ namespace SSH
 
 	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale)
 	{
-		const auto& trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
-		pos = trans->m_position;
-		rot = trans->m_rotation;
-		scale = trans->m_scale;
+		auto trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID));
+
+		if (trans)
+		{
+			pos = trans->m_position;
+			rot = trans->m_rotation;
+			scale = trans->m_scale;
+		}
 	}
 
 	void SetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale)

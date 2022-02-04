@@ -62,6 +62,8 @@ namespace Scripting
 	//static void UpdateDashboardFace(std::uint32_t dashboardEntityID, std::uint32_t faceType);
 
 	static void UpdateScore(std::uint32_t text_object, std::uint32_t score);
+	static void UpdateTextColor(std::uint32_t text_object, glm::vec3 color);
+	static std::uint32_t UpdateScore_AddMinus(std::uint32_t dashboardID, std::uint32_t scorechange, bool isAdd);
 	static void UpdateComboUI(std::uint32_t text_object, std::uint32_t score);
 
 	// Get the player healths

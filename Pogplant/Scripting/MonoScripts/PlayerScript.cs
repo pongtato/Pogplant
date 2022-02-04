@@ -97,7 +97,8 @@ namespace Scripting
         //EnemyManager enemyManager = new EnemyManager();
 
         bool isAlive = true;
-        uint DashboardScreenID;
+        uint DashboardScreenFaceID;
+        static uint DashboardScreenID;
         uint VOEntityID;
         //uint m_TrailRenderer;
 
@@ -157,7 +158,17 @@ namespace Scripting
 
         // Score
         public static uint score = 0;                                    // Current score
+        public static uint m_OldScore = 0;                               // Old score
         private static uint kill_score = 100;                            // Addition to base score everytime an enemy is killed
+        private static uint minus_score = 10;                            // Minus to base score everytime player is hit
+        static uint m_ScoreTextID; 
+        static float m_ScoreResetTimer;
+        const float m_ScoreResetTimeLimit = 1.0f;
+        static List<uint> m_AddScoreListIDs = new List<uint>();
+        static List<int> m_DestroyAddScoreListIndex = new List<int>();
+        Vector3 m_AddScoreEndPos = new Vector3(-0.25f, 0.30f, -0.165f);
+        Vector3 m_AddScoreEndScale = new Vector3(0.3f, 0.3f, 0.3f);
+        const float m_ScoreAnimationSpeed = 3.0f;
 
         public PlayerScript()
         {
@@ -169,7 +180,8 @@ namespace Scripting
             entityID = _entityID;
             shipCameraEntity = ECS.FindEntityWithName("PlayerCam");
             boxEntityID = ECS.FindEntityWithName("PlayerBox");
-            DashboardScreenID = ECS.FindEntityWithName("DashboardScreenFace");
+            DashboardScreenFaceID = ECS.FindEntityWithName("DashboardScreenFace");
+            DashboardScreenID = ECS.FindEntityWithName("DashBoard");
             ECS.PlayAudio(shipCameraEntity, 0, "BGM");
             boxCollider = ECS.GetComponent<BoxCollider>(boxEntityID);
             lastPosition = ECS.GetGlobalPosition(entityID);
@@ -203,6 +215,10 @@ namespace Scripting
             m_ComboBarID = ECS.FindEntityWithName("PlayerComboBar");
             m_ComboTextID = ECS.FindEntityWithName("PlayerComboText");
             m_ComboXID = ECS.FindEntityWithName("PlayerComboX");
+
+            // Variables for Score
+            m_ScoreTextID = ECS.FindEntityWithName("Score_Text");
+            m_ScoreResetTimer = 0.0f;
 
             ECS.SetActive(m_ComboSmallFireID, false);
             ECS.SetActive(m_ComboLargeFireID, false);
@@ -266,6 +282,10 @@ namespace Scripting
 
             // Updates Combo bonus
             UpdateLaser(dt);
+
+            //if(m_OldScore != score)
+                // Update player score
+                UpdateScore(dt);
 
             ECS.GetTransformECS(entityID, ref playerTrans.Position, ref playerTrans.Rotation, ref playerTrans.Scale);
             Camera.GetCamera(shipCameraEntity, ref camera.m_Yaw, ref camera.m_Pitch, ref camera.m_Roll);
@@ -762,6 +782,11 @@ namespace Scripting
             //Increase score
             if (increment)
             {
+                // Just change the color first
+                GameUtilities.UpdateTextColor(m_ScoreTextID, new Vector3(0.0f, 1.0f, 0.0f));
+                
+                m_OldScore = score;
+
                 ++PlayerScript.m_EnemyDestroyedCount;
                 // Max 99
                 if (PlayerScript.m_ComboNumber < 99)
@@ -783,27 +808,39 @@ namespace Scripting
                         ECS.SetActive(PlayerScript.m_ComboSmallFireID, false);
                         ECS.SetActive(PlayerScript.m_ComboLargeFireID, true);
                     }
+                    
+                    uint addscore = kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber;
+                    m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, addscore, true));
+                    m_ScoreResetTimer = 0.0f;
 
-                    score += kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber;
+                    score += addscore;
                 }
                 else
                 {
-                    score += kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
+                    uint addscore = kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
+                    m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, addscore, true));
+                    m_ScoreResetTimer = 0.0f;
+
+                    score += addscore;
                 }
 
                 //GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
+
             }
             //Decrease score
             else
             {
-                if (score > 10)
+                // Just change the color first
+                GameUtilities.UpdateTextColor(m_ScoreTextID, new Vector3(1.0f, 0.0f, 0.0f));
+                if (score > minus_score)
                 {
-                    score -= 10;
+                    score -= minus_score;
+                    m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, minus_score, false));
+                    m_ScoreResetTimer = 0.0f;
                 }
                 ResetCombo();
             }
 
-            GameUtilities.UpdateScore(ECS.FindEntityWithName("Score_Text"), score);
             GameUtilities.UpdateComboUI(PlayerScript.m_ComboNumberID, PlayerScript.m_ComboNumber);
         }
 
@@ -824,6 +861,49 @@ namespace Scripting
             ECS.SetActive(PlayerScript.m_ComboTextID, isEnable);
             ECS.SetActive(PlayerScript.m_ComboXID, isEnable);
             ECS.SetActive(PlayerScript.m_ComboNumberID, isEnable);
+        }
+
+        private void UpdateScore(float dt)
+        {
+            m_ScoreResetTimer += dt;
+            Transform t = new Transform();
+
+            foreach (int index in m_DestroyAddScoreListIndex)
+            {
+                
+                if (index < m_AddScoreListIDs.Count && index >= 0)
+                {
+                    ECS.DestroyEntity(m_AddScoreListIDs[index]);
+                    m_AddScoreListIDs.RemoveAt(index);
+                }
+            }
+            m_DestroyAddScoreListIndex.Clear();
+
+            for (int i = 0; i < m_AddScoreListIDs.Count; ++i)
+            {
+                ECS.GetTransformECS(m_AddScoreListIDs[i], ref t.Position, ref t.Rotation, ref t.Scale);
+                ECS.SetScale(m_AddScoreListIDs[i], Vector3.Lerp(t.Scale, m_AddScoreEndScale, m_ScoreAnimationSpeed * dt));
+                ECS.SetPosition(m_AddScoreListIDs[i], Vector3.Lerp(t.Position, m_AddScoreEndPos, m_ScoreAnimationSpeed * dt));
+
+                if(t.Scale.X <= m_AddScoreEndScale.X + 0.2f)
+                {
+                    m_DestroyAddScoreListIndex.Add(i);
+                }
+            }
+
+            if (m_ScoreResetTimer >= m_ScoreResetTimeLimit)
+            {
+                GameUtilities.UpdateTextColor(m_ScoreTextID, new Vector3(1.0f, 1.0f, 0.0f));
+                m_ScoreResetTimer = 0.0f;
+                m_OldScore = score;
+            }
+            else
+            {
+                if(score > m_OldScore)
+                    GameUtilities.UpdateScore(m_ScoreTextID, m_OldScore + (uint)((score - m_OldScore) * (m_ScoreResetTimer / m_ScoreResetTimeLimit)));
+                else
+                    GameUtilities.UpdateScore(m_ScoreTextID, m_OldScore - (uint)((m_OldScore - score) * (m_ScoreResetTimer / m_ScoreResetTimeLimit)));
+            }
         }
     }
 }
