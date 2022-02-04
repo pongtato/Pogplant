@@ -22,9 +22,10 @@ using System.Threading.Tasks;
 
 namespace Scripting
 {
-
     public class EncounterSystemDriver : MonoBehaviour
     {
+        public static EncounterSystemDriver m_singleton;
+
         float Enemy1_fire_rate = 5;
         float Enemy2_fire_rate = 24f;
 
@@ -33,6 +34,7 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+            m_singleton = this;
         }
 
         public override void Start()

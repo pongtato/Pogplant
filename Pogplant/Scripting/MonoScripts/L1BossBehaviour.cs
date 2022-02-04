@@ -37,7 +37,7 @@ namespace Scripting
 		/**> How many seconds into the animation to choose to spawn enemies*/
 		float mSpawner_timeStartSpawnEnemies = 4.2f;
 		float mSpawner_timeEndSpawnEnemies = 7f;
-		public float mSpawner_durationBetweenSpawns = 0.5f;
+		public float mSpawner_durationBetweenSpawns = 100f;
 
 		#endregion
 
@@ -210,10 +210,17 @@ namespace Scripting
 						{
 							Console.WriteLine("SPAWNING ENEMIES");
 
-							for (int i = 0; i < 6; ++i)
+							/*for (int i = 0; i < 6; ++i)
 							{
 								ECS.GetGlobalPosition(mID_ventSpawnpoints[i]);
-							}
+							}//*/
+
+							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_Low1");
+							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_Low2");
+							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_Med1");
+							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_Med2");
+							EncounterSystemDriver.m_singleton.SpawnWave("Boss_High1");
+							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_High2");
 
 							m_runStateInfo.m_secondaryTimer = 0f;
 						}
