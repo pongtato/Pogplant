@@ -175,7 +175,7 @@ void main()
             // Specular
             vec3 halfwayDir = normalize(lightDir + viewDir);  
             float spec = pow(max(dot(Normal, halfwayDir), 0.0), 16.0);
-            vec3 specular = lights[i].Color * spec;
+            vec3 specular = lights[i].Color * spec * Specular;
             // Attenuation
             const float k = 1.0f;
             float attenuation = k / (k + lights[i].Linear * distance + lights[i].Quadratic * distance * distance);
