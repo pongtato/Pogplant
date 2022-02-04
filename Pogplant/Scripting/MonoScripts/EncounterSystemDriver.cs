@@ -1667,6 +1667,47 @@ namespace Scripting
 
             encounterManager.AddEncounter(segmentNine_BB);
         }
+
+        void Boss_Low1()
+        {
+            Boss_LeftChain();
+            Boss_RightChainAltSingle(4.0f);
+        }
+
+        void Boss_Low2()
+        {
+            Boss_RightChain();
+            Boss_LeftChainAltSingle(4.0f);
+        }
+
+        void Boss_Med1()
+        {
+            Boss_LeftChain();
+            Boss_RightChainAlt(4.0f);
+        }
+        void Boss_Med2()
+        {
+            Boss_RightChain();
+            Boss_LeftChainAlt(4.0f);
+        }
+        void Boss_High1()
+        {
+            Boss_LeftChain(); // 14s
+            Boss_RightChainAltSingle(); // 10s
+
+            Boss_LeftChainAltSingle(15.0f); 
+            Boss_RightChain(11.0f);
+        }
+
+        void Boss_High2()
+        {
+            Boss_LeftChain(); // 14s
+            Boss_RightChain(4.0f); // 14s
+
+            Boss_LeftChainAlt(15.0f);
+            Boss_RightChainAlt(19.0f);
+        }
+
         void Boss_LeftChain(float encounter_offset_time = 0.0f)
         {
 
@@ -1854,6 +1895,85 @@ namespace Scripting
             encounterManager.AddEncounter(Boss_LeftChainAlt);
         }
 
+        void Boss_LeftChainAltSingle(float encounter_offset_time = 0.0f)
+        {
+
+            /*  total encounter time = 10.0 seconds
+                total enemy count = 1 big enemies
+             
+                brief description:
+                    A big enemies come down at x = 3, and shoots in a spiral pattern, this denies the left side of the screen and is harder to dodge.
+            */
+
+            float new_firerate = Enemy2_fire_rate;
+            EnemyManager enemyManager = encounterManager.enemyManager;
+            Encounter Boss_LeftChainAlt = new Encounter(0.0f, 10.0f, enemyManager);
+            {
+                //
+                // Part A
+                //
+                EnemyTemplate enemy1 = new EnemyTemplate(enemyManager.GetWaypoint("Far_T3_MidM"), 10.0f, 50.0f);
+
+                enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("Far_T3_MidM"), enemyManager.GetWaypoint("3,0,5"), 1.0f));
+
+                // Move and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new MoveAction(enemyManager.GetWaypoint("3,0,5"), enemyManager.GetWaypoint("3,6,5"), 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+
+                }
+
+                // Wait and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new WaitAction(1);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 1.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+
+
+                }
+
+                // Move and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new MoveAction(enemyManager.GetWaypoint("3,6,5"), enemyManager.GetWaypoint("3,1,5"), 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+
+                }
+
+                // Wait and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new WaitAction(1);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 1.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+
+
+                }
+
+                // Move and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new MoveAction(enemyManager.GetWaypoint("3,1,5"), enemyManager.GetWaypoint("3,6,5"), 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+
+                }
+
+                enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("3,6,5"), enemyManager.GetWaypoint("Near_L7_Start"), 1.0f));
+
+                //
+                // GET SPAWN POINTS
+                //
+                Boss_LeftChainAlt.AddSpawnAction(new SpawnAction(encounter_offset_time + 0.0f, enemyManager.GetWaypoint("Far_T3_MidM"), enemy1, "Enemy_02"));
+            }
+
+            encounterManager.AddEncounter(Boss_LeftChainAlt);
+        }
+
         void Boss_RightChain(float encounter_offset_time = 0.0f)
         {
 
@@ -2036,6 +2156,78 @@ namespace Scripting
                 //
                 Boss_RightChainAlt.AddSpawnAction(new SpawnAction(encounter_offset_time + 0.0f, enemyManager.GetWaypoint("Far_T3_MidM"), enemy1, "Enemy_02"));
                 Boss_RightChainAlt.AddSpawnAction(new SpawnAction(encounter_offset_time + 1.0f, enemyManager.GetWaypoint("Far_T3_MidM"), enemy2, "Enemy_02"));
+            }
+
+            encounterManager.AddEncounter(Boss_RightChainAlt);
+        }
+
+        void Boss_RightChainAltSingle(float encounter_offset_time = 0.0f)
+        {
+
+            /*  total encounter time = 11.0 seconds
+                total enemy count = 1 big enemies
+
+                brief description:
+                    A big enemies come down at x = 3, and shoots in a spiral pattern, this denies the left side of the screen and is harder to dodge.
+            */
+
+            float new_firerate = Enemy2_fire_rate;
+            EnemyManager enemyManager = encounterManager.enemyManager;
+            Encounter Boss_RightChainAlt = new Encounter(0.0f, 10.0f, enemyManager);
+            {
+                //
+                // Part A
+                //
+                EnemyTemplate enemy1 = new EnemyTemplate(enemyManager.GetWaypoint("Far_T11_MidM"), 10.0f, 50.0f);
+
+                enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("Far_T11_MidM"), enemyManager.GetWaypoint("11,0,5"), 1.0f));
+
+                // Move and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new MoveAction(enemyManager.GetWaypoint("11,0,5"), enemyManager.GetWaypoint("11,6,5"), 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+                }
+
+                // Wait and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new WaitAction(1);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 1, 6.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+                }
+
+                // Move and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new MoveAction(enemyManager.GetWaypoint("11,6,5"), enemyManager.GetWaypoint("11,1,5"), 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+                }
+
+                // Wait and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new WaitAction(1);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 1, 6.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+                }
+
+                // Move and shoot
+                {
+                    BaseAction[] action1 = new BaseAction[2];
+                    action1[0] = new MoveAction(enemyManager.GetWaypoint("11,1,5"), enemyManager.GetWaypoint("11,6,5"), 2.0f);
+                    action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f);
+                    enemy1.AddCommand(new CompositeAction(action1));
+                }
+
+                enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("11,6,5"), enemyManager.GetWaypoint("Near_R7_Start"), 1.0f));
+
+                //
+                // GET SPAWN POINTS
+                //
+                Boss_RightChainAlt.AddSpawnAction(new SpawnAction(encounter_offset_time + 0.0f, enemyManager.GetWaypoint("Far_T3_MidM"), enemy1, "Enemy_02"));
             }
 
             encounterManager.AddEncounter(Boss_RightChainAlt);
