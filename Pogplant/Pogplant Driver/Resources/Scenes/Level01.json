@@ -62330,18 +62330,18 @@
 			"m_position" : 
 			[
 				32.588905334472656,
-				-22.281120300292969,
-				-165.84767150878906
+				-21.595041275024414,
+				-158.19926452636719
 			],
 			"m_rotation" : 
 			[
 				0.00010427394590806216,
 				-89.999946594238281,
-				0.00010427402594359592
+				0.00010427367669763044
 			],
 			"m_scale" : 
 			[
-				5.0,
+				8.9671211242675781,
 				10.0,
 				10.0
 			]
@@ -144025,7 +144025,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 9.8374595642089844,
+				"m_FrameCounter" : 70.105148315429688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144038,8 +144038,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.078125
+					0.0,
+					0.5625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144091,7 +144091,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 9.8374595642089844,
+				"m_FrameCounter" : 70.105148315429688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144104,8 +144104,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.078125
+					0.0,
+					0.5625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144157,7 +144157,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 92.755897521972656,
+				"m_FrameCounter" : 65.604850769042969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144170,8 +144170,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.734375
+					0.5,
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144223,7 +144223,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 9.8374595642089844,
+				"m_FrameCounter" : 70.105148315429688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144236,8 +144236,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.078125
+					0.0,
+					0.5625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144289,7 +144289,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 74.107017517089844,
+				"m_FrameCounter" : 72.393630981445312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -144303,7 +144303,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.59375
+					0.578125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144355,7 +144355,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 9.8374595642089844,
+				"m_FrameCounter" : 70.105148315429688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144368,8 +144368,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.078125
+					0.0,
+					0.5625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144421,7 +144421,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 92.755897521972656,
+				"m_FrameCounter" : 65.604850769042969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144434,8 +144434,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.734375
+					0.5,
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144487,7 +144487,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 111.21633911132812,
+				"m_FrameCounter" : 52.578868865966797,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144500,8 +144500,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.875
+					0.0,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144553,7 +144553,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 92.755897521972656,
+				"m_FrameCounter" : 65.604850769042969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144566,8 +144566,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.734375
+					0.5,
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144619,7 +144619,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 86.508827209472656,
+				"m_FrameCounter" : 80.746658325195312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -144633,7 +144633,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.6875
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144685,7 +144685,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 111.21633911132812,
+				"m_FrameCounter" : 52.578868865966797,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144698,8 +144698,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.875
+					0.0,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144830,6 +144830,162 @@
 			[
 				1.0,
 				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "SceneLighting",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Segment_06",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Light_01",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.92093020677566528,
+				0.78754532337188721,
+				0.47974038124084473
+			],
+			"m_Intensity" : 0.30000001192092896,
+			"m_Linear" : 9.9999999392252903e-09,
+			"m_Quadratic" : 9.9999999392252903e-09
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				32.965854644775391,
+				5.9774932861328125,
+				-261.64248657226562
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Light_02",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.93023252487182617,
+				0.85389786958694458,
+				0.68361276388168335
+			],
+			"m_Intensity" : 0.80000001192092896,
+			"m_Linear" : 9.9999999392252903e-09,
+			"m_Quadratic" : 9.9999999392252903e-09
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-22.489133834838867,
+				7.2405643463134766,
+				-178.54719543457031
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
 				1.0
 			]
 		}
