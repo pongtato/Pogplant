@@ -175,7 +175,7 @@ void main()
             float attenuation = k / (k + lights[i].Linear * distance + lights[i].Quadratic * distance * distance);
             diffuse *= attenuation;
             specular *= attenuation;
-            lighting += shadow * (diffuse + specular);
+            lighting += diffuse + specular;
         }
     }
 
