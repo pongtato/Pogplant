@@ -218,5 +218,10 @@ namespace Scripting
         {
             return new ActivateChildren();
         }
+
+        public static TriggerAudioPlay TriggerAudioPlay()
+        {
+            return new TriggerAudioPlay();
+        }
     }
 }

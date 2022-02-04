@@ -63,6 +63,7 @@
     <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="MonoScripts\GameEndingTrigger.cs" />
     <Compile Include="MonoScripts\TetherEnemy.cs" />
+    <Compile Include="MonoScripts\TriggerAudioPlay.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />
     <Compile Include="PauseScripts\EndGameMenu.cs" />
     <Compile Include="PauseScripts\PauseMenu.cs" />

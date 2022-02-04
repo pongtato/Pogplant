@@ -53,6 +53,7 @@ namespace Scripting
             monoScriptNames.Add("TetherEnemy");
             monoScriptNames.Add("ExplosiveEnemy");
             monoScriptNames.Add("ActivateChildren");
+            monoScriptNames.Add("TriggerAudioPlay");
         }
 
         private void AddPauseScripts()
