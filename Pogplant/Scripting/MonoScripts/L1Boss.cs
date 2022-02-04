@@ -374,6 +374,10 @@ namespace Scripting
         uint main_laser_beam_id;
         uint main_laser_object_id;
 
+        //Eye
+        uint mouth_left_id;
+        uint mouth_right_id;
+
         /////////////////////////////////////////////////////////////////////////
         //  Death sequence
         /////////////////////////////////////////////////////////////////////////
@@ -382,13 +386,11 @@ namespace Scripting
         public float health;
         uint false_core_id;
 
-        //Eye
-        uint mouth_left_id;
-        uint mouth_right_id;
-
         //Laser
         float laser_spin_addition;
         const float laser_spin_addition_speed = 10.0f;
+
+        uint end_screen_trigger_id;
 
         //For ECS get transform
         Vector3 pos = new Vector3();
@@ -618,11 +620,13 @@ namespace Scripting
                     AddAnimationSpecsStack(SetDeathStateAnimationsOne, 1.5f);
                     AddAnimationSpecsStack(SetDeathStateAnimationsTwo, 7.0f);
                     AddAnimationSpecsStack(SetDeathStateAnimationsThree, 2.0f);
-                    AddAnimationSpecsStack(SetDeathStateAnimationsFour, 0.5f);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsFour, 2.0f);
+                    AddAnimationSpecsStack(SetDeathStateAnimationsFive, 0.5f);
                     AddAnimationUpdateStack(RunDeathStateSequenceOne);
                     AddAnimationUpdateStack(RunDeathStateSequenceTwo);
                     AddAnimationUpdateStack(RunDeathStateSequenceThree);
                     AddAnimationUpdateStack(RunDeathStateSequenceFour);
+                    AddAnimationUpdateStack(RunDeathStateSequenceFive);
                     SetStateQueue(BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE);
                     PlayAnimation();
                     break;
@@ -754,7 +758,6 @@ namespace Scripting
             moving_parts_dict[id].SetLerpPosPositiveDirectionX(set_positive_direction_X);
             moving_parts_dict[id].SetLerpPosPositiveDirectionY(set_positive_direction_Y);
             moving_parts_dict[id].SetLerpPosPositiveDirectionZ(set_positive_direction_Z);
-
 
             //Automatically enable since already setting
             moving_parts_dict[id].SetUpdatePosition(true);
@@ -1810,14 +1813,26 @@ namespace Scripting
 
         void SetDeathStateAnimationsThree()
         {
+            
+        }
+
+        void RunDeathStateSequenceThree(float dt)
+        {
+            
+        }
+
+        void SetDeathStateAnimationsFour()
+        {
             //Body
-            SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, -4), new Vector3(0, 0.2f, 0), new Vector3(0, 5.0f, 10.0f), false, false, false, false, true, false);
-            SetMovingPartsScale(main_laser_object_id, new Vector3(0.1f, 0.1f, 3.0f), new Vector3(3.0f, 3.0f, 3.0f), new Vector3(2.0f, 2.0f, 0), true, true, false, false, false, false);
+            SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, -4), new Vector3(0, 0.2f, 0), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
+            SetMovingPartsScale(main_laser_object_id, new Vector3(0.1f, 0.1f, 3.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(2.0f, 2.0f, 0), true, true, false, false, false, false);
+
+            ECS.SetActive(main_laser_rails_id, false);
 
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(true);
         }
 
-        void RunDeathStateSequenceThree(float dt)
+        void RunDeathStateSequenceFour(float dt)
         {
             //Body
             UpdateMovingParts(entityID, dt);
@@ -1830,18 +1845,20 @@ namespace Scripting
             SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
         }
 
-        void SetDeathStateAnimationsFour()
+        void SetDeathStateAnimationsFive()
         {
             //Body
-            SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, 0), new Vector3(0, 0.2f, 2), new Vector3(0, 5.0f, 10.0f), false, false, false, false, true, false);
+            SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, 0), new Vector3(0, 0.2f, 2), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
 
             //Laser beam
-            SetMovingPartsScale(main_laser_object_id, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(3.0f, 3.0f, 3.0f), new Vector3(8.0f, 8.0f, 8.0f), false, false, false, false, false, false);
+            SetMovingPartsScale(main_laser_object_id, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(8.0f, 8.0f, 8.0f), false, false, false, false, false, false);
 
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(false);
+
+            ECS.SetActive(end_screen_trigger_id, true);
         }
 
-        void RunDeathStateSequenceFour(float dt)
+        void RunDeathStateSequenceFive(float dt)
         {
             UpdateMovingParts(entityID, dt);
             UpdateMovingParts(main_laser_object_id, dt);
