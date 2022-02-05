@@ -63,17 +63,14 @@ namespace PogplantDriver
 						m_ECS->CreateChild(m_CurrentEntity);
 					}
 
-					if (ImGui::MenuItem("Delete Entity"))
-					{
-						m_ECS->DestroyEntity(m_CurrentEntity);
-						m_CurrentEntity = entt::null;
+					if (ImGui::MenuItem("Duplicate Entity"))
+						m_ECS->CopyEntity(m_CurrentEntity);
 
-					}
+
 					if (ImGui::MenuItem("Save Prefab"))
 					{
 						SavePrefab(m_CurrentEntity);
 					}
-
 
 					auto prefab_instance = m_ECS->GetReg().try_get<Components::PrefabInstance>(m_CurrentEntity);
 					if (prefab_instance)
@@ -84,8 +81,13 @@ namespace PogplantDriver
 						}
 					}
 
-					if (ImGui::MenuItem("Duplicate Entity"))
-						m_ECS->CopyEntity(m_CurrentEntity);
+					//let this always be last
+					//because it sets m_CurrentEntity to null
+					if (ImGui::MenuItem("Delete Entity"))
+					{
+						m_ECS->DestroyEntity(m_CurrentEntity);
+						m_CurrentEntity = entt::null;
+					}
 
 					ImGui::EndPopup();
 				}
