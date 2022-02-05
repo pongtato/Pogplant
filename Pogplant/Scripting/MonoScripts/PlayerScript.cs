@@ -819,7 +819,7 @@ namespace Scripting
 
 					uint addscore = kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber;
 					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, addscore, true));
-					m_ScoreResetTimer = 0.0f;
+					m_ScoreResetTimer = 0.01f;
 
 					score += addscore;
 				}
@@ -829,7 +829,7 @@ namespace Scripting
 
 					uint addscore = kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
 					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, addscore, true));
-					m_ScoreResetTimer = 0.0f;
+					m_ScoreResetTimer = 0.01f;
 
 					score += addscore;
 				}
@@ -846,8 +846,8 @@ namespace Scripting
 				{
 					score -= minus_score;
 					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, minus_score, false));
-					m_ScoreResetTimer = 0.0f;
 				}
+				m_ScoreResetTimer = 0.01f;
 				ResetCombo();
 			}
 
@@ -875,7 +875,9 @@ namespace Scripting
 
 		private void UpdateScore(float dt)
 		{
-			m_ScoreResetTimer += dt;
+			if(m_ScoreResetTimer >= 0.01f)
+				m_ScoreResetTimer += dt;
+
 			Transform t = new Transform();
 
 			foreach (int index in m_DestroyAddScoreListIndex)
