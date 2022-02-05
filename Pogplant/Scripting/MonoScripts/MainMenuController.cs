@@ -94,6 +94,15 @@ namespace Scripting
 
         uint settings_menu_id;
 
+        //Audio tracks
+        /// <summary>
+        /// 0. BGM
+        /// 1. Select
+        /// 2. Up
+        /// 3. Down
+        /// 4. Back
+        /// </summary>
+
         public MainMenuController()
         {
             
@@ -175,6 +184,7 @@ namespace Scripting
             if (InputUtility.onKeyTriggered("ESCAPE") && menu_state == MENU_STATE.IN_SUB_MENU)
             {
                 menu_state = MENU_STATE.INPUT_READY;
+                ECS.PlayAudio(entityID, 4, "SFX");
             }
 
             if (menu_state == MENU_STATE.INPUT_READY)
@@ -236,6 +246,7 @@ namespace Scripting
                         if (InputUtility.onAnyKey())
                         {
                             begin_any_key_spin = true;
+                            ECS.PlayAudio(entityID, 1, "SFX");
                         }
                         else
                         {
@@ -311,6 +322,8 @@ namespace Scripting
             //Key input
             if (InputUtility.onKeyTriggered("MENUUP"))
             {
+                ECS.PlayAudio(entityID, 2, "SFX");
+
                 --active_index;
                 
                 if (active_index < (int)BUTTONS.START_GAME)
@@ -322,6 +335,8 @@ namespace Scripting
             }
             else if (InputUtility.onKeyTriggered("MENUDOWN"))
             {
+                ECS.PlayAudio(entityID, 3, "SFX");
+
                 ++active_index;
 
                 if (active_index > (int)BUTTONS.SETTINGS)
@@ -478,6 +493,8 @@ namespace Scripting
 
             if (InputUtility.onKeyTriggered("MENUSELECT"))
             {
+                ECS.PlayAudio(entityID, 1, "SFX");
+
                 //Start or quit game based on index
                 switch (active_index)
                 {

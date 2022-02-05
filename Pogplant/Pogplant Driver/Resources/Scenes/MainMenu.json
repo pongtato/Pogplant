@@ -7,6 +7,30 @@
 				"Dir" : "Resources/Audio\\GameBGM_Menu.ogg",
 				"UpdatePos" : true,
 				"Volume" : 0.10000000149011612
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip4" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Back.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
 			}
 		},
 		"Children" : 16,
@@ -1075,6 +1099,27 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 15,
 		"Name" : 
 		{
