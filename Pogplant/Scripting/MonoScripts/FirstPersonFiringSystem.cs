@@ -494,7 +494,8 @@ namespace Scripting
             Transform.LookAt(Turret, ECS.GetGlobalPosition(EnemytoTarget));
             Vector3 AfterTurrRot = ECS.GetComponent<Transform>(Turret).Rotation;
             Vector3 LerpVal = Vector3.Lerp(CurrTurrRot, AfterTurrRot, dt * m_rotspeed);
-            LimitLerp(ref LerpVal, turret_rot_lerp_limit);
+            //Issues with this when you look up straight.
+            //LimitLerp(ref LerpVal, turret_rot_lerp_limit);
             ECS.SetRotation(Turret, LerpVal);
         }
 
