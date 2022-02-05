@@ -7,7 +7,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "GunFire"
+			"m_Name" : "GunFire",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -43,7 +44,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Particle"
+			"m_Name" : "Particle",
+			"status" : true
 		},
 		"ParticleSystem" : 
 		{
@@ -74,11 +76,12 @@
 			"m_Loop" : true,
 			"m_MaxLife" : 0.5,
 			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
 			"m_Play" : true,
 			"m_RandomRotate" : true,
 			"m_Scale" : 
 			{
-				"m_CurveMax" : 0.10000000149011612,
+				"m_CurveMax" : 0.20000000298023224,
 				"m_CurveMin" : 0.0,
 				"m_CurvePoints" : 
 				[
@@ -118,7 +121,7 @@
 				"m_MultiplierMax" : 1.0,
 				"m_MultiplierMin" : 1.0
 			},
-			"m_SpawnCount" : 1,
+			"m_SpawnCount" : 5,
 			"m_SpawnDirection" : 
 			[
 				0.0,
@@ -128,8 +131,8 @@
 			"m_SpawnRadius" : 0.05000000074505806,
 			"m_Speed" : 
 			{
-				"m_CurveMax" : 0.25,
-				"m_CurveMin" : 0.0,
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.25,
 				"m_CurvePoints" : 
 				[
 					[
@@ -168,9 +171,35 @@
 				"m_MultiplierMax" : 2.0,
 				"m_MultiplierMin" : 1.0
 			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
 			"m_SubDelay" : 1.0,
 			"m_SubSpawnCount" : 1,
 			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				4.5906537691281007e-41,
+				8.4965991433882346e+22,
+				1.2611686178923354e-44
+			],
 			"m_TexName" : "Shoot_VFX.dds",
 			"m_Trail" : false
 		},
@@ -193,14 +222,14 @@
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
 			[
+				0.99999988079071045,
 				1.0,
-				1.0,
-				1.0
+				0.99999988079071045
 			]
 		}
 	}

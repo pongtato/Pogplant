@@ -20,13 +20,13 @@ namespace Scripting
 	//Wrapper for instantiate due to monostring calls
 	static std::uint32_t Instantiate(MonoString* name , glm::vec3 _Position, glm::vec3 _Rotation);
 	static std::uint32_t InstantiateParticle(MonoString* name , glm::vec3 _Position, glm::vec3 _Rotation, bool _parented, uint32_t _parentID);
+	static entt::entity InstantiateParticle_C(std::string name, glm::vec3 _Position, glm::vec3 _Rotation);
 
 	static int CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity);
-
 	//Only works via checking for  "name" PlayerCam together with PlayerScript
 	static void FollowPlayerCam(std::uint32_t player_cam, std::uint32_t player_box, std::uint32_t playerShip, glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime);
 
-	static void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation);
+	static void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation, bool homing, uint32_t tracker);
 
 	static void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue = false);
 

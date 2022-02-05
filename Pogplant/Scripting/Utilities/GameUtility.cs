@@ -27,7 +27,7 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         //Get Global _Position for player bullet and Global _Rotation, use forwardvector to shoot
-        public extern static void FirePlayerBullet(Vector3 _Position, Vector3 _ForwardVector, Vector3 _Rotation);
+        public extern static void FirePlayerBullet(Vector3 _Position, Vector3 _ForwardVector, Vector3 _Rotation, bool homing, uint tracker);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SpawnStaticExplosion(Vector3 _Position, int type);

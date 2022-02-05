@@ -83,6 +83,39 @@ namespace Scripting
 		return std::uint32_t(newEntity);
 	}
 
+	entt::entity GameScript::InstantiateParticle_C(std::string name, glm::vec3 _Position, glm::vec3 _Rotation)
+	{
+
+		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
+		entt::entity newEntity = serial.Instantiate(name, _Position, _Rotation);
+
+		auto particleSystem = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ParticleSystem>(newEntity);
+		auto& transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().get<Components::Transform>(newEntity);
+
+		if (particleSystem)
+		{
+			particleSystem->init();
+			particleSystem->m_Play = true;
+		}
+
+		if (!transform.m_children.empty())
+		{
+			for (auto child : transform.m_children)
+			{
+				auto childParticle = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::ParticleSystem>(child);
+
+				if (childParticle)
+				{
+					childParticle->init();
+					childParticle->m_Play = true;
+				}
+			}
+		}
+
+		return newEntity;
+	}
+
+
 
 	// Only checking the bound for player to it's parent and will not work anywhere else
 	int GameScript::CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity)
@@ -155,7 +188,7 @@ namespace Scripting
 		}
 	}
 
-	void GameScript::FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation)
+	void GameScript::FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation, bool homing, uint32_t tracker)
 	{
 		//Need to find player ship transform 
 		//entt::entity player_ship = static_cast<entt::entity>(entityID);
@@ -164,11 +197,10 @@ namespace Scripting
 		float speed = 50.f;
 		PogplantDriver::Serializer serial(*PogplantDriver::Application::GetInstance().m_activeECS);
 		entt::entity bullet = serial.Instantiate("Bullet", _Position, _Rotation);
-		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, 3.f, speed, Components::Projectile::OwnerType::Player);
+		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, 3.f, speed, Components::Projectile::OwnerType::Player, 10.0f, homing, tracker);
 
 		auto body = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(bullet);
-
-		//Add power to the shots
+		//Add power to the shots + enemy velocity
 		glm::vec3 Powershot = _FowardVector * speed;
 		body->AddImpulseForce(Powershot);
 	}
@@ -291,8 +323,10 @@ namespace Scripting
 						const auto& playerbox_scriptable = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(GameScript::GetPlayerBox());
 						if (playerbox_scriptable && playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
 						{
-							PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 							SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
+							auto bullet_transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Transform>(other);
+							GameScript::InstantiateParticle_C("GunFire", bullet_transform->GetGlobalPosition(), bullet_transform->GetGlobalRotation());
+							PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 						}
 					}
 				}
@@ -863,9 +897,10 @@ namespace Scripting
 		bool script_check = enemy_script_p->m_ScriptTypes.contains(_ScriptName);
 		if (player_projectile_p->m_Ownertype == Projectile::OwnerType::Player && script_check)
 		{
-			PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
-			// Should be able to call CallTakeDamageFunction(player_projectile_script->damage, other) here
 			SSH::InvokeFunction(_ScriptName, "TakeDamage", other, player_projectile_p->m_Damage);
+			auto bullet_transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Transform>(other);
+			GameScript::InstantiateParticle_C("GunFire", bullet_transform->GetGlobalPosition(), bullet_transform->GetGlobalRotation());
+			PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 		}
 	}
 
