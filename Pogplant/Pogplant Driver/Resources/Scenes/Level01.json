@@ -105338,6 +105338,27 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 15,
 		"Name" : 
 		{
@@ -109974,6 +109995,39 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Back.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip4" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\PauseMenu_Intro.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Name" : 
 		{
 			"m_Name" : "Pause Menu Controller",
@@ -110388,7 +110442,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				1.5,
 				-0.89999997615814209
 			],
 			"m_rotation" : 
@@ -144025,7 +144079,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 70.105148315429688,
+				"m_FrameCounter" : 127.24900817871094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144038,8 +144092,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.5625
+					0.5,
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144091,7 +144145,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 70.105148315429688,
+				"m_FrameCounter" : 127.24900817871094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144104,8 +144158,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.5625
+					0.5,
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144157,7 +144211,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 65.604850769042969,
+				"m_FrameCounter" : 18.629199981689453,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144170,8 +144224,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.515625
+					0.0,
+					0.15625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144223,7 +144277,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 70.105148315429688,
+				"m_FrameCounter" : 127.24900817871094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144236,8 +144290,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.5625
+					0.5,
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144289,7 +144343,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 72.393630981445312,
+				"m_FrameCounter" : 13.424610137939453,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -144302,8 +144356,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.578125
+					0.5,
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144355,7 +144409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 70.105148315429688,
+				"m_FrameCounter" : 127.24900817871094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144368,8 +144422,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.5625
+					0.5,
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144421,7 +144475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 65.604850769042969,
+				"m_FrameCounter" : 18.629199981689453,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144434,8 +144488,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.515625
+					0.0,
+					0.15625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144487,7 +144541,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.578868865966797,
+				"m_FrameCounter" : 97.678237915039062,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144500,8 +144554,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.421875
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144553,7 +144607,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 65.604850769042969,
+				"m_FrameCounter" : 18.629199981689453,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144566,8 +144620,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.515625
+					0.0,
+					0.15625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144619,7 +144673,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 80.746658325195312,
+				"m_FrameCounter" : 69.856597900390625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -144632,8 +144686,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.640625
+					0.5,
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144685,7 +144739,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.578868865966797,
+				"m_FrameCounter" : 97.678237915039062,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144698,8 +144752,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.421875
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"

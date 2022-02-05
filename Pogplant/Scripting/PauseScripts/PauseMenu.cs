@@ -47,7 +47,17 @@ namespace Scripting
         int confirmation_index;
 
         uint settings_menu_id;
+        const float opening_speed = 8.0f;
+        bool pulling_down;
 
+        //Audio tracks
+        /// <summary>
+        /// 0. Select
+        /// 1. Up
+        /// 2. Down
+        /// 3. Back
+        /// 4. Scrolling
+        /// </summary>
 
         public override void Init(ref uint _entityID)
         {
@@ -132,6 +142,7 @@ namespace Scripting
         {
             if (InputUtility.onKeyTriggered("ESCAPE"))
             {
+                ECS.PlayAudio(entityID, 3, "SFX");
                 menu_state = MENU_STATE.INPUT_READY;
             }
 
@@ -140,6 +151,11 @@ namespace Scripting
                 if (!enabled)
                 {
                     enabled = true;
+                    ECS.PlayAudio(entityID, 4, "SFX");
+                    ECS.SetGlobalPosition(pause_menu_id, new Vector3(0, 1.5f, -0.9f));
+                    ECS.SetActive(pause_menu_id, true);
+                    pulling_down = true;
+                    menu_state = MENU_STATE.OPENING_MENU;
                 }
             }
 
@@ -147,13 +163,15 @@ namespace Scripting
             {
                 switch (menu_state)
                 {
+                    case MENU_STATE.OPENING_MENU:
+                        UpdateOpeningMenu(dt);
+                        break;
                     case MENU_STATE.INPUT_READY:
                         UpdatePauseMenuInput();
                         break;
                     case MENU_STATE.INACTIVE:
                         {
                             UpdatePauseMenuButtonFade();
-                            ECS.SetActive(pause_menu_id, true); 
                             ECS.SetActive(confirm_menu_id, false);
                             menu_state = MENU_STATE.INPUT_READY;
                         }
@@ -165,11 +183,35 @@ namespace Scripting
             }
         }
 
+        void UpdateOpeningMenu(float dt)
+        {
+            if (pulling_down)
+            {
+                ECS.SetGlobalPosition(pause_menu_id, Vector3.Lerp(ECS.GetGlobalPosition(pause_menu_id), new Vector3(0, 0.0f, -0.9f), opening_speed * dt));
+
+                if (ECS.GetGlobalPosition(pause_menu_id).Y <= 0.05f)
+                {
+                    pulling_down = false;
+                }
+            }
+            else
+            {
+                ECS.SetGlobalPosition(pause_menu_id, Vector3.Lerp(ECS.GetGlobalPosition(pause_menu_id), new Vector3(0, 0.1f, -0.9f), opening_speed * dt));
+
+                if (ECS.GetGlobalPosition(pause_menu_id).Y >= 0.09f)
+                {
+                    menu_state = MENU_STATE.INPUT_READY;
+                }
+            }
+        }
+
         void UpdatePauseMenuInput()
         {
             //Key input
             if (InputUtility.onKeyTriggered("MENUUP"))
             {
+                ECS.PlayAudio(entityID, 1, "SFX");
+
                 --active_index;
 
                 if (active_index < (int)PAUSE_MENU_BUTTONS.RESUME_GAME)
@@ -181,6 +223,8 @@ namespace Scripting
             }
             else if (InputUtility.onKeyTriggered("MENUDOWN"))
             {
+                ECS.PlayAudio(entityID, 2, "SFX");
+
                 ++active_index;
 
                 if (active_index > (int)PAUSE_MENU_BUTTONS.SETTINGS)
@@ -192,6 +236,8 @@ namespace Scripting
 
             if (InputUtility.onKeyTriggered("MENUSELECT"))
             {
+                ECS.PlayAudio(entityID, 0, "SFX");
+
                 //Select option on pause menu based on index
                 switch (active_index)
                 {
@@ -222,6 +268,8 @@ namespace Scripting
             //Key input
             if (InputUtility.onKeyTriggered("MENULEFT"))
             {
+                ECS.PlayAudio(entityID, 2, "SFX");
+
                 --confirmation_index;
 
                 if (confirmation_index < (int)CONFIRMATION_MENU_BUTTONS.NO)
@@ -232,6 +280,8 @@ namespace Scripting
             }
             else if (InputUtility.onKeyTriggered("MENURIGHT"))
             {
+                ECS.PlayAudio(entityID, 1, "SFX");
+
                 ++confirmation_index;
 
                 if (confirmation_index > (int)CONFIRMATION_MENU_BUTTONS.YES)
@@ -243,6 +293,8 @@ namespace Scripting
 
             if (InputUtility.onKeyTriggered("MENUSELECT"))
             {
+                ECS.PlayAudio(entityID, 0, "SFX");
+
                 //Cancel or confirm return to main menu based on index
                 switch (confirmation_index)
                 {
