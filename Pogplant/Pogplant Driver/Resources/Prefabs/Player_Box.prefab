@@ -21,7 +21,7 @@
 		"Children" : 2,
 		"Guid" : 
 		{
-			"m_guid" : "6c7160db-1fcb-49d0-adef-78749ecf621a"
+			"m_guid" : "dce0416e-6580-4145-93bf-183871a5da8d"
 		},
 		"Name" : 
 		{
@@ -31,11 +31,6 @@
 		"Prefab" : 
 		{
 			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a5d8b8d6-55d3-47c0-a59d-a0ffb323d652",
-			"prefab_path" : ""
 		},
 		"Rigidbody" : 
 		{
@@ -93,7 +88,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 6,
+		"Children" : 7,
 		"Name" : 
 		{
 			"m_Name" : "PlayerShip",
@@ -131,6 +126,24 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 175.0,
+				"Name" : "MovementSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 2.0,
+				"Name" : "SlowForce",
+				"Type" : 0
+			},
+			{
+				"Data" : false,
+				"Name" : "NewMovement",
+				"Type" : 2
+			}
+		],
 		"Scripting" : 
 		{
 			"PlayerScript" : false
@@ -952,7 +965,7 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Muzzle",
@@ -985,6 +998,65 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "MuzzleFlash",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.35294118523597717,
+				0.27843138575553894
+			],
+			"RenderModel" : 
+			[
+				"Player_Turret_MuzzleFlash",
+				"Resources/Models\\Ship",
+				"Player_Turret_MuzzleFlash"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				4.0,
+				4.0,
+				4.0
 			]
 		}
 	},
@@ -1048,7 +1120,7 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Muzzle",
@@ -1081,6 +1153,65 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "MuzzleFlash",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.35294118523597717,
+				0.27843138575553894
+			],
+			"RenderModel" : 
+			[
+				"Player_Turret_MuzzleFlash",
+				"Resources/Models\\Ship",
+				"Player_Turret_MuzzleFlash"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				4.0,
+				4.0,
+				4.0
 			]
 		}
 	},
@@ -1254,6 +1385,419 @@
 				1.0,
 				1.0,
 				0.99999505281448364
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "BobbleBoard",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Board",
+				"Resources/Models\\Bobbers",
+				"Bobber_Board"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.61999976634979248,
+				-0.05818939208984375,
+				0.0040164287202060223
+			],
+			"m_rotation" : 
+			[
+				1.078407883644104,
+				-14.501582145690918,
+				-4.2992911338806152
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99997472763061523,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleBoobas",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.10000002384185791,
+				0.060394287109375,
+				7.2177499532699585e-09
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				4.0523148869147686e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BoobleBoobasBody",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head_Boobas"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00024658441543579102,
+				0.06269073486328125,
+				-1.8998980522155762e-06
+			],
+			"m_rotation" : 
+			[
+				1.3027551259980896e-11,
+				-7.9513862670781837e-16,
+				4.0523165809806631e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleProf",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.1920928955078125e-07,
+				0.05998992919921875,
+				2.3283064365386963e-10
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.0089556680177338e-06,
+				1.1946321536171478e-11
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BobbleProfBody",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head_Prof_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.063000001013278961,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmy",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.099999427795410156,
+				0.0637054443359375,
+				-4.5299530029296875e-06
+			],
+			"m_rotation" : 
+			[
+				-1.3020047845202498e-05,
+				2.561320798122324e-06,
+				-6.4033019953058101e-07
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999982118606567
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmyBody",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Player_Box.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Body1"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
