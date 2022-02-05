@@ -208,5 +208,9 @@ namespace Scripting
 			m_armed = true;
 			Console.WriteLine(entityID + " started");
         }
+		public bool GetAlive()
+		{
+			return (m_health > 0);
+		}
 	}
 }

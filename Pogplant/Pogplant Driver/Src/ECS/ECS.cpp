@@ -323,7 +323,7 @@ bool ECS::IsChildOf(entt::entity _parent, entt::entity _child)
 
 void ECS::DisableEntity(entt::entity _entity)
 {
-		m_EntitiesToDisable.insert(_entity);
+	m_EntitiesToDisable.insert(_entity);
 }
 
 void ECS::EnableEntity(entt::entity _entity)

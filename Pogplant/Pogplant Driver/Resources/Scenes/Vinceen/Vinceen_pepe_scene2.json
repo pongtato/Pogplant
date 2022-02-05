@@ -1152,7 +1152,7 @@
 		}
 	},
 	{
-		"Children" : 3,
+		"Children" : 4,
 		"Name" : 
 		{
 			"m_Name" : "Enemy_04",
@@ -1189,18 +1189,23 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 2.0,
-				"Name" : "m_ExplosiveEnemy_threshold_1",
-				"Type" : 0
-			},
-			{
 				"Data" : 500.0,
 				"Name" : "m_ExplosiveEnemy_propeller_speed",
 				"Type" : 0
 			},
 			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
 				"Data" : 5.0,
 				"Name" : "m_ExplosiveEnemy_threshold_2",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
 				"Type" : 0
 			},
 			{
@@ -1212,18 +1217,13 @@
 				"Type" : 4
 			},
 			{
-				"Data" : 0.10000000149011612,
-				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
+				"Data" : 100.0,
+				"Name" : "m_ExplosiveEnemy_health",
 				"Type" : 0
 			},
 			{
 				"Data" : 0.5,
 				"Name" : "m_ExplosiveEnemy_flicker_rate_2",
-				"Type" : 0
-			},
-			{
-				"Data" : 100.0,
-				"Name" : "m_ExplosiveEnemy_health",
 				"Type" : 0
 			},
 			{
@@ -1252,7 +1252,7 @@
 			"collisionLayer" : "ENEMY EXPLOSIVE",
 			"isStatic" : false,
 			"isTrigger" : true,
-			"radius" : 111.0
+			"radius" : 1.0
 		},
 		"Tag" : 
 		{
@@ -1277,6 +1277,149 @@
 				0.40000000596046448,
 				0.40000000596046448,
 				0.40000000596046448
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_VFX",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_sphere",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_ring",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -5846,14 +5989,14 @@
 		{
 			"m_position" : 
 			[
-				-8.9406967163085938e-08,
-				2.4427213668823242,
+				-5.7220458984375e-06,
+				2.4427146911621094,
 				-1.9597532749176025
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
