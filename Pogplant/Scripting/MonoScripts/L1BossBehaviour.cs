@@ -1,4 +1,18 @@
-﻿using System;
+﻿/******************************************************************************/
+/*!
+\file	L1BossBehaviour.cs
+\author Gabriel Wong Choon Jieh
+\par	email: c.wong\@digipen.edu
+\details
+
+	This file contains the code to handle the level 1's boss behaviour
+
+\copyright	Copyright (c) 2022 DigiPen Institute of Technology. Reproduction
+			or disclosure of this file or its contents without the prior
+			written consent of DigiPen Institute of Technology is prohibited.
+*/
+/******************************************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
