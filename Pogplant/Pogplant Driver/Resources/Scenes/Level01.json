@@ -47245,7 +47245,7 @@
 		}
 	},
 	{
-		"Children" : 10,
+		"Children" : 11,
 		"Name" : 
 		{
 			"m_Name" : "Segment_04_Final_Merged",
@@ -47270,6 +47270,61 @@
 				"Segment_04_Final_Merged",
 				"Resources/Models\\Environment",
 				"Seg_04_Final_Merged"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Seg_04_Floor_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Seg_04_Floor_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -56445,7 +56500,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -56500,7 +56555,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -56512,15 +56567,15 @@
 		{
 			"m_position" : 
 			[
+				4.863739013671875e-05,
 				0.0,
-				0.0,
-				0.0
+				-9.5367431640625e-07
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				-2.6055102519961792e-11,
+				8.4588881750079659e-16,
+				2.6055102519961792e-11
 			],
 			"m_scale" : 
 			[
@@ -57200,7 +57255,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -57255,7 +57310,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -57315,7 +57370,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -57370,7 +57425,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -58720,7 +58775,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -58775,7 +58830,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -58835,7 +58890,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -58890,7 +58945,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -59640,7 +59695,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -59695,7 +59750,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -59755,7 +59810,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -59810,7 +59865,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -59870,7 +59925,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -59925,7 +59980,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -59985,7 +60040,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60040,7 +60095,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -60100,7 +60155,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60155,7 +60210,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -60215,7 +60270,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60270,7 +60325,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -60330,7 +60385,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60385,7 +60440,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -60445,7 +60500,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60500,7 +60555,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -60905,7 +60960,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60960,7 +61015,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -61250,7 +61305,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -61305,7 +61360,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -61480,7 +61535,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -61535,7 +61590,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -61835,7 +61890,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02"
+				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -61890,7 +61945,7 @@
 			[
 				"Ground_Straight_Type_02",
 				"Resources/Models\\Environment",
-				"Ground_Straight_Type_02_Rocks"
+				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -61902,15 +61957,15 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				-1.1920928955078125e-07,
+				7.4505805969238281e-09,
+				-9.5367431640625e-07
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				-2.6055102519961792e-11,
+				2.2876803482298072e-15,
+				2.6055102519961792e-11
 			],
 			"m_scale" : 
 			[
@@ -143402,7 +143457,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 40.960334777832031,
+				"m_FrameCounter" : 108.57834625244141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -143416,7 +143471,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.328125
+					0.859375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143468,7 +143523,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 40.960334777832031,
+				"m_FrameCounter" : 108.57834625244141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -143482,7 +143537,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.328125
+					0.859375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143534,7 +143589,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 14.609149932861328,
+				"m_FrameCounter" : 37.411998748779297,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -143547,8 +143602,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.125
+					0.5,
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143600,7 +143655,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 40.960334777832031,
+				"m_FrameCounter" : 108.57834625244141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -143614,7 +143669,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.328125
+					0.859375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143666,7 +143721,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 97.984519958496094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -143679,8 +143734,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.015625
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143732,7 +143787,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 40.960334777832031,
+				"m_FrameCounter" : 108.57834625244141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -143746,7 +143801,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.328125
+					0.859375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143798,7 +143853,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 14.609149932861328,
+				"m_FrameCounter" : 37.411998748779297,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -143811,8 +143866,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.125
+					0.5,
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143864,7 +143919,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 127.00839996337891,
+				"m_FrameCounter" : 48.992259979248047,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -143877,8 +143932,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					1.0
+					0.0,
+					0.390625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143930,7 +143985,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 14.609149932861328,
+				"m_FrameCounter" : 37.411998748779297,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -143943,8 +143998,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.125
+					0.5,
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143996,7 +144051,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 15.615850448608398,
+				"m_FrameCounter" : 119.24577331542969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -144010,7 +144065,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.125
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144062,7 +144117,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 127.00839996337891,
+				"m_FrameCounter" : 48.992259979248047,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144075,8 +144130,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					1.0
+					0.0,
+					0.390625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144480,6 +144535,918 @@
 			[
 				0.0,
 				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Cosmetic_HolePatching",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				43.481544494628906,
+				0.061149835586547852,
+				-299.41146850585938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_03_Rocks",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				74.738250732421875,
+				0.061149835586547852,
+				-305.0948486328125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_03_Rocks",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				98.75323486328125,
+				0.061149835586547852,
+				-335.1063232421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_03_Rocks",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				85.965286254882812,
+				0.061149835586547852,
+				-370.21456909179688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_03_Rocks",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				43.920230865478516,
+				-0.24572658538818359,
+				-370.21456909179688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_03_Rocks",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				122.35134887695312,
+				0.73685646057128906,
+				-335.1063232421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				20.0,
+				20.0,
+				20.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_03_Rocks",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				69.207733154296875,
+				0.13731288909912109,
+				-436.124267578125
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				30.0,
+				20.0,
+				30.000015258789062
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_03_Rocks",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				173.16986083984375,
+				0.13757641613483429,
+				-347.36993408203125
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				30.0,
+				20.0,
+				40.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Straight_Type_03_Rocks",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Straight_Type_02",
+				"Resources/Models\\Environment",
+				"Ground_Straight_Type_03_Rocks"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
