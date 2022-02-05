@@ -58,9 +58,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999505281448364,
-				0.99998998641967773,
+				0.19604110717773438,
+				0.76566028594970703,
+				0.91627907752990723,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -173,22 +173,22 @@
 			},
 			"m_SpriteAnimation" : 
 			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
+				"m_Columns" : 8,
+				"m_FrameCounter" : 20.0,
+				"m_MaxFrames" : 64,
 				"m_Play" : true,
 				"m_PlaySpeed" : 1.0,
 				"m_Repeat" : false,
-				"m_Rows" : 1,
+				"m_Rows" : 8,
 				"m_Tiling" : 
 				[
-					1.0,
-					1.0
+					0.125,
+					0.125
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					1.0
+					0.5,
+					0.375
 				]
 			},
 			"m_SubDelay" : 1.0,
@@ -200,7 +200,7 @@
 				8.4965991433882346e+22,
 				1.2611686178923354e-44
 			],
-			"m_TexName" : "Shoot_VFX.dds",
+			"m_TexName" : "256_ExportSheet_01.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
