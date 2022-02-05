@@ -235,7 +235,7 @@ namespace Scripting
 			ECS.GetTransformECS(entityID, ref pos, ref rot, ref scale);
 			playerTrans = new Transform(pos, rot, scale);
 
-			ECS.PlayAudio(VOEntityID, 0, "VO");
+			//ECS.PlayAudio(VOEntityID, 0, "VO");
 
 			movement_speed = ECS.GetValue<float>(entityID, 200.0f, "MovementSpeed");
 			slowForce = ECS.GetValue<float>(entityID, 4f, "SlowForce");
