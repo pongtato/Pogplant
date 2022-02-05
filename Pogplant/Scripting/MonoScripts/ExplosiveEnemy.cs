@@ -46,6 +46,16 @@ namespace Scripting
 
 		bool m_exploding = false;
 
+		uint m_explosion_vfx;
+		uint m_explosion_ring;
+		float m_sphere_scale_value;
+		float m_sphere_max_radius;
+		float m_sphere_rot_speed;
+		Vector3 m_pos, m_rot, m_scale;
+
+		//used to enable VFX explosion
+		bool m_do_once = true;
+
 		//i suspect this will be used to create a some leeway after health < 0
 		//float m_leeway
 
@@ -82,6 +92,14 @@ namespace Scripting
 			m_health = ECS.GetValue<float>(entityID, 69, "m_ExplosiveEnemy_health");
 			m_damage = ECS.GetValue<float>(entityID, 690, " m_ExplosiveEnemy_damage");
 
+			m_explosion_vfx = ECS.FindChildEntityWithName(entityID, "Explosion_VFX");
+			m_explosion_ring = ECS.FindChildEntityWithName(entityID, "Explosion_ring");
+			m_sphere_scale_value = ECS.GetValue<float>(entityID, 690, "m_sphere_value");
+			m_sphere_max_radius = ECS.GetValue<float>(entityID, 5, "m_sphere_max_radius");
+			m_sphere_rot_speed = ECS.GetValue<float>(entityID, 5, "m_sphere_rot_speed");
+			ECS.SetActive(m_explosion_vfx, false);
+			ECS.SetActive(m_explosion_ring, false);
+
 			//m_armed = true;
 
 			//Console.WriteLine("m_player_id id: " + m_player_id);
@@ -100,7 +118,7 @@ namespace Scripting
                 {
 					//Console.WriteLine("BOOOOOOOOOOOOOOM");
 					m_armed = false;
-					Explode();
+					m_exploding = true;
 				}
 				else if(m_lifetime < m_threshold_1)
                 {
@@ -112,6 +130,35 @@ namespace Scripting
 					//Console.WriteLine("beep beep");
 					Flicker(ref dt, ref m_flicker_rate_2);
 				}
+			}
+			else if (m_exploding)
+            {
+				if (m_do_once)
+                {
+					ECS.SetActive(m_explosion_vfx, true);
+					ECS.SetActive(m_explosion_ring, true);
+
+					m_do_once = false;
+
+					//play explosion sfx
+					ECS.PlayAudio(entityID, 1, "SFX");
+				}
+				ECS.GetTransformECS(m_explosion_vfx, ref m_pos, ref m_rot, ref m_scale);
+
+				if (m_scale.X < m_sphere_max_radius)
+                {
+					m_scale.X += dt * m_sphere_scale_value;
+					m_scale.Y += dt * m_sphere_scale_value;
+					m_scale.Z += dt * m_sphere_scale_value;
+
+					ECS.SetTransformECS(m_explosion_vfx, m_pos, m_rot, m_scale);
+                }
+                else
+                {
+					Explode();
+				}
+
+				SpinObjectEndless(m_explosion_ring, m_propeller_rot_axis, m_sphere_rot_speed, dt);
 			}
 
 			SpinObjectEndless(m_propeller_id, m_propeller_rot_axis, m_propeller_speed, dt);
@@ -179,18 +226,20 @@ namespace Scripting
 			{
 				//play vfx and effect
 				//explode
-				Explode();
+
+				m_exploding = true;
+				//Explode();
 			}
 			else if (m_health > 0)
 			{
 				//idk
 				//play hit sound or something
-            }
+				ECS.PlayAudio(entityID, 0, "SFX");
+			}
 		}
 
 		public void Explode()
         {
-			m_exploding = true;
 			var NoDuplicate = m_enemy_in_range.Distinct();
 
 			foreach (uint entity in NoDuplicate)
@@ -206,8 +255,9 @@ namespace Scripting
 		public void ArmExplosiveEnemy()
         {
 			m_armed = true;
-			Console.WriteLine(entityID + " started");
+			//Console.WriteLine(entityID + " started");
         }
+
 		public bool GetAlive()
 		{
 			return (m_health > 0);

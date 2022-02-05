@@ -1,9 +1,24 @@
 [
 	{
-		"Children" : 3,
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\SFX_BombEnemyHit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\SFX_BombEnemyXplode.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"Children" : 4,
 		"Guid" : 
 		{
-			"m_guid" : "98d4e4ee-2fb3-4126-ac26-f911cc64e14c"
+			"m_guid" : "aa1ef08a-2b4c-47f4-ab24-a7580fea93a9"
 		},
 		"Name" : 
 		{
@@ -73,6 +88,11 @@
 				"Type" : 4
 			},
 			{
+				"Data" : 3.0,
+				"Name" : "m_sphere_value",
+				"Type" : 0
+			},
+			{
 				"Data" : 100.0,
 				"Name" : "m_ExplosiveEnemy_health",
 				"Type" : 0
@@ -91,6 +111,16 @@
 				"Data" : 69420.0,
 				"Name" : "m_ExplosiveEnemy_damage",
 				"Type" : 0
+			},
+			{
+				"Data" : 2.5,
+				"Name" : "m_sphere_max_radius",
+				"Type" : 0
+			},
+			{
+				"Data" : 100.0,
+				"Name" : "m_sphere_rot_speed",
+				"Type" : 0
 			}
 		],
 		"Scripting" : 
@@ -108,7 +138,44 @@
 			"collisionLayer" : "ENEMY EXPLOSIVE",
 			"isStatic" : false,
 			"isTrigger" : true,
-			"radius" : 111.0
+			"radius" : 5.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.40000000596046448,
+				0.40000000596046448,
+				0.40000000596046448
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_VFX",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_04.prefab"
 		},
 		"Tag" : 
 		{
@@ -130,9 +197,127 @@
 			],
 			"m_scale" : 
 			[
-				0.40000000596046448,
-				0.40000000596046448,
-				0.40000000596046448
+				0.0,
+				0.0,
+				0.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_sphere",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_04.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_ring",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_04.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
