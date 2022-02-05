@@ -78,7 +78,7 @@ namespace PogplantDriver
 					auto prefab_instance = m_ECS->GetReg().try_get<Components::PrefabInstance>(m_CurrentEntity);
 					if (prefab_instance)
 					{
-						if (ImGui::MenuItem("Make unique"))
+						if (ImGui::MenuItem("Detach"))
 						{
 							m_ECS->RemovePrefabInstance(m_CurrentEntity);
 						}

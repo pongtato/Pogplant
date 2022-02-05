@@ -68,13 +68,17 @@ namespace SSH
 	std::uint32_t FindEntityWithName(MonoString* name)
 	{
 		std::string _name = mono_string_to_utf8(name);
-		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->FindEntityWithName(_name));
+		std::uint32_t result = static_cast<std::uint32_t>(ScriptSystem::GetECS()->FindEntityWithName(_name));
+		assert(result != entt::null);
+		return result;
 	}
 
 	std::uint32_t FindChildEntityWithName(std::uint32_t parentID, MonoString* name)
 	{
 		std::string _name = mono_string_to_utf8(name);
-		return static_cast<std::uint32_t>(ScriptSystem::GetECS()->FindChildEntityWithName(static_cast<entt::entity>(parentID), _name));
+		std::uint32_t result = static_cast<std::uint32_t>(ScriptSystem::GetECS()->FindChildEntityWithName(static_cast<entt::entity>(parentID), _name));
+		assert(result != entt::null);
+		return result;
 	}
 
 	void LookAt(std::uint32_t self_entityID, glm::vec3& target)
