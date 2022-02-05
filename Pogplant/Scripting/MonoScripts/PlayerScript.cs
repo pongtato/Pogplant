@@ -169,10 +169,12 @@ namespace Scripting
 		Vector3 m_AddScoreEndPos = new Vector3(-0.25f, 0.30f, -0.165f);
 		Vector3 m_AddScoreEndScale = new Vector3(0.3f, 0.3f, 0.3f);
 		const float m_ScoreAnimationSpeed = 3.0f;
+		static uint entity_id;
 
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
+			entity_id = _entityID;
 		}
 
 		public override void Start()
@@ -800,13 +802,19 @@ namespace Scripting
 				{
 					if (PlayerScript.m_ComboNumber >= m_ComboThresholdSmall && PlayerScript.m_ComboNumber < m_ComboThresholdLarge)
 					{
+						ECS.PlayAudio(entity_id, 1, "SFX");
 						ECS.SetActive(PlayerScript.m_ComboSmallFireID, true);
 						ECS.SetActive(PlayerScript.m_ComboLargeFireID, false);
 					}
 					else if (PlayerScript.m_ComboNumber >= m_ComboThresholdLarge)
 					{
+						ECS.PlayAudio(entity_id, 2, "SFX");
 						ECS.SetActive(PlayerScript.m_ComboSmallFireID, false);
 						ECS.SetActive(PlayerScript.m_ComboLargeFireID, true);
+					}
+					else
+					{
+						ECS.PlayAudio(entity_id, 0, "SFX");
 					}
 
 					uint addscore = kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber;
@@ -817,6 +825,8 @@ namespace Scripting
 				}
 				else
 				{
+					ECS.PlayAudio(entity_id, 0, "SFX");
+
 					uint addscore = kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
 					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, addscore, true));
 					m_ScoreResetTimer = 0.0f;

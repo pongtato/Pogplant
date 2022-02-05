@@ -49827,6 +49827,27 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplier1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplier2.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplier3.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -49882,13 +49903,13 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 175.0,
-				"Name" : "MovementSpeed",
+				"Data" : 2.0,
+				"Name" : "SlowForce",
 				"Type" : 0
 			},
 			{
-				"Data" : 2.0,
-				"Name" : "SlowForce",
+				"Data" : 175.0,
+				"Name" : "MovementSpeed",
 				"Type" : 0
 			},
 			{
@@ -56514,12 +56535,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -56568,12 +56583,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -57269,12 +57278,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -57323,12 +57326,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -57384,12 +57381,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -57438,12 +57429,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -58789,12 +58774,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -58843,12 +58822,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -58904,12 +58877,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -58958,12 +58925,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -59709,12 +59670,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -59763,12 +59718,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -59823,12 +59772,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -59879,12 +59822,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -59938,12 +59875,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -59994,12 +59925,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -60053,12 +59978,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60109,12 +60028,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -60168,12 +60081,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60224,12 +60131,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -60283,12 +60184,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60339,12 +60234,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -60398,12 +60287,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -60454,12 +60337,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -60514,12 +60391,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -60568,12 +60439,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -60974,12 +60839,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -61028,12 +60887,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -61319,12 +61172,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -61373,12 +61220,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -61549,12 +61390,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -61603,12 +61438,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -61904,12 +61733,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -61958,12 +61781,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -143475,7 +143292,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.862483978271484,
+				"m_FrameCounter" : 48.975799560546875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -143488,7 +143305,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
+					0.0,
 					0.390625
 				]
 			},
@@ -143541,7 +143358,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.862483978271484,
+				"m_FrameCounter" : 48.975799560546875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -143554,7 +143371,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
+					0.0,
 					0.390625
 				]
 			},
@@ -143607,7 +143424,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 74.231353759765625,
+				"m_FrameCounter" : 101.95130157470703,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -143620,8 +143437,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.59375
+					0.5,
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143673,7 +143490,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.862483978271484,
+				"m_FrameCounter" : 48.975799560546875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -143686,7 +143503,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
+					0.0,
 					0.390625
 				]
 			},
@@ -143739,7 +143556,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 92.641983032226562,
+				"m_FrameCounter" : 24.605220794677734,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -143753,7 +143570,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.734375
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143805,7 +143622,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.862483978271484,
+				"m_FrameCounter" : 48.975799560546875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -143818,7 +143635,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
+					0.0,
 					0.390625
 				]
 			},
@@ -143871,7 +143688,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 74.231353759765625,
+				"m_FrameCounter" : 101.95130157470703,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -143884,8 +143701,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.59375
+					0.5,
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -143937,7 +143754,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 7.1564249992370605,
+				"m_FrameCounter" : 22.386627197265625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -143950,8 +143767,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.0625
+					0.0,
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144003,7 +143820,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 74.231353759765625,
+				"m_FrameCounter" : 101.95130157470703,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144016,8 +143833,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.59375
+					0.5,
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144069,7 +143886,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 97.844772338867188,
+				"m_FrameCounter" : 67.679000854492188,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -144083,7 +143900,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.765625
+					0.53125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144135,7 +143952,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 7.1564249992370605,
+				"m_FrameCounter" : 22.386627197265625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144148,8 +143965,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.0625
+					0.0,
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144616,12 +144433,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -144671,12 +144482,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -144725,12 +144530,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -144781,12 +144580,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -144835,12 +144628,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -144891,12 +144678,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -144945,12 +144726,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -145001,12 +144776,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -145055,12 +144824,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -145111,12 +144874,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -145165,12 +144922,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -145221,12 +144972,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -145275,12 +145020,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -145331,12 +145070,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -145386,12 +145119,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -145440,12 +145167,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
