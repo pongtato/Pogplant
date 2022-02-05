@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Scripting.Utilities;
 
-
 namespace Scripting
 {
     public class FirstPersonFiringSystem : MonoBehaviour
@@ -14,6 +13,7 @@ namespace Scripting
         List<uint> enemy_to_target = new List<uint>();
         List<uint> Turrets_A = new List<uint>();
         List<uint> MuzzleGroup = new List<uint>();
+        List<uint> MuzzleFlashGroup = new List<uint>();
         //List<uint> Turrets_B = new List<uint>();
         static List<uint> enemy_in_range_A = new List<uint>();
         static List<uint> enemy_to_target_A = new List<uint>();
@@ -31,8 +31,10 @@ namespace Scripting
         //Player Firing 
         float p_fireRate = 0.1f;
         float p_fire_timer = 0.0f;
-        float m_rotspeed = 30.0f;
+        float m_rotspeed = 20.0f;
         float turret_rot_lerp_limit = 15.0f;
+        float accu_muzzle_on;
+        bool isMuzzleflashed = false;
 
         //Player Crosshair(The smaller one)
         uint Crosshair;
@@ -124,6 +126,9 @@ namespace Scripting
             MuzzleGroup.Add(ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"), "Muzzle"));
             MuzzleGroup.Add(ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"), "Muzzle"));
 
+            MuzzleFlashGroup.Add(ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"), "MuzzleFlash"));
+            MuzzleFlashGroup.Add(ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"), "MuzzleFlash"));
+
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle1"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), "Child")));
@@ -135,6 +140,11 @@ namespace Scripting
             ECS.GetTransformECS(ShootingBox, ref shooting_box_initial_pos, ref burner.Rotation, ref burner.Scale);
             ECS.GetTransformECS(Crosshair, ref original_crosshair_initial.Position, ref original_crosshair_initial.Rotation, ref original_crosshair_initial.Scale);
             ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
+
+            foreach (var t in MuzzleFlashGroup)
+            {
+               ECS.SetActive(t, false);
+            }
         }
 
         public override void Start()
@@ -183,14 +193,17 @@ namespace Scripting
         }
         public override void LateUpdate(float dt)
         {
-
+            OffMuzzleFlash(ref MuzzleFlashGroup, ref isMuzzleflashed);
             p_fire_timer += dt;
-            if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK"))
+            if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK") || InputUtility.onKeyTriggered("LEFTCLICK"))
             {
                 if (p_fire_timer >= p_fireRate)
                 {
                     // Call C++ side bullet firing
                     CallTurretShoot(ref Turrets_A);
+
+                    //GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
+                    OnMuzzleFlash(ref MuzzleFlashGroup,ref isMuzzleflashed);
                     ECS.PlayAudio(shipCamera, 1, "SFX");
                     p_fire_timer = 0.0f;
 
@@ -540,8 +553,6 @@ namespace Scripting
                 Vector3 Position = ECS.GetGlobalPosition(MuzzleGroup[i]);
                 Vector3 Rotation = ECS.GetGlobalRotation(MuzzleGroup[i]);
                 GameUtilities.FirePlayerBullet(Position, Forward, Rotation);
-
-                GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
             }
         }
 
@@ -691,7 +702,32 @@ namespace Scripting
                 enemy_to_target_A[curr_lowest_index] = temp;
             }
         }
+        
+        void OnMuzzleFlash(ref List<uint> MuzzleFlashG,ref bool On)
+        {
+            if (!On)
+            {
+                foreach (var muzzleflash in MuzzleFlashG)
+                {
+                    ECS.SetActive(muzzleflash, true);
+                    float value = PPMath.RandomFloat(0, 90.0f);
+                    ECS.SetRotation(muzzleflash, new Vector3(0, 0, value));
+                }
+                On = !On;
+            }
+        }
 
+        void OffMuzzleFlash(ref List<uint> MuzzleFlashG, ref bool On)
+        {
+            if (On)
+            {
+                foreach (var muzzleflash in MuzzleFlashG)
+                {
+                    ECS.SetActive(muzzleflash, false);
+                }
+                On = !On;
+            }
+        }
 
         void CoutMyEnemy()
         {

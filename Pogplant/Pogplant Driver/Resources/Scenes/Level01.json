@@ -9257,12 +9257,6 @@
 				0.0,
 				0.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Final_Merged"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51365,7 +51359,7 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Muzzle",
@@ -51394,6 +51388,61 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "MuzzleFlash",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.35294118523597717,
+				0.27843138575553894
+			],
+			"RenderModel" : 
+			[
+				"Player_Turret_MuzzleFlash",
+				"Resources/Models\\Ship",
+				"Player_Turret_MuzzleFlash"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.000274658203125,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				9.7706640955069757e-13,
+				0.0
+			],
+			"m_scale" : 
+			[
+				4.0,
+				4.0,
+				4.0
 			]
 		}
 	},
@@ -51453,7 +51502,7 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Muzzle",
@@ -51482,6 +51531,61 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "MuzzleFlash",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.35294118523597717,
+				0.27843138575553894
+			],
+			"RenderModel" : 
+			[
+				"Player_Turret_MuzzleFlash",
+				"Resources/Models\\Ship",
+				"Player_Turret_MuzzleFlash"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.00396728515625,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				1.221332930623209e-12,
+				1.3543659527215368e-08
+			],
+			"m_scale" : 
+			[
+				4.0,
+				4.0,
+				4.0
 			]
 		}
 	},
@@ -105342,7 +105446,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Settings Menu",
-			"status" : true
+			"status" : false
 		},
 		"P_Scripting" : 
 		{
@@ -105418,7 +105522,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Default Volume Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -105484,7 +105588,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar BG",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -105550,7 +105654,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 6",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -105616,7 +105720,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 7",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -105682,7 +105786,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 8",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -105748,7 +105852,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 9",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -105814,7 +105918,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 10",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -105880,7 +105984,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 1",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -105946,7 +106050,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 2",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106012,7 +106116,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 3",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106078,7 +106182,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 4",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106144,7 +106248,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 5",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106210,7 +106314,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Left Arrow",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106276,7 +106380,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Right Arrow",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106342,7 +106446,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Volume Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106408,7 +106512,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar BG",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106474,7 +106578,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 4",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106540,7 +106644,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 5",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106606,7 +106710,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 6",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106672,7 +106776,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 7",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106738,7 +106842,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 8",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106804,7 +106908,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 9",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106870,7 +106974,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 10",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -106936,7 +107040,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 1",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107002,7 +107106,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 2",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107068,7 +107172,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 3",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107134,7 +107238,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Controls Text",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107200,7 +107304,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Default Volume Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107266,7 +107370,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Settings BG",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107332,7 +107436,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Volume Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107398,7 +107502,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Volume Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107464,7 +107568,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Volume Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107530,7 +107634,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Volume Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107596,7 +107700,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Volume Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107662,7 +107766,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar BG",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107728,7 +107832,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 2",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107794,7 +107898,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 3",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107860,7 +107964,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 4",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107926,7 +108030,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 5",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -107992,7 +108096,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 6",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108058,7 +108162,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 7",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108124,7 +108228,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 8",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108190,7 +108294,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 9",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108256,7 +108360,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 10",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108322,7 +108426,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 1",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108355,7 +108459,7 @@
 		"Name" : 
 		{
 			"m_Name" : "EndGameMenu",
-			"status" : true
+			"status" : false
 		},
 		"PrefabInstance" : 
 		{
@@ -108411,7 +108515,7 @@
 		"Name" : 
 		{
 			"m_Name" : "EndGameTrigger",
-			"status" : true
+			"status" : false
 		},
 		"Scripting" : 
 		{
@@ -108448,7 +108552,7 @@
 		"Name" : 
 		{
 			"m_Name" : "EndGameMenuController",
-			"status" : true
+			"status" : false
 		},
 		"P_Scripting" : 
 		{
@@ -108485,7 +108589,7 @@
 		"Name" : 
 		{
 			"m_Name" : "EndScoreText",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108530,7 +108634,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Evasiveness",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108596,7 +108700,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Evasiveness_A",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108662,7 +108766,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Evasiveness_C",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108728,7 +108832,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Evasiveness_B",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108794,7 +108898,7 @@
 		"Name" : 
 		{
 			"m_Name" : "EndGameMenu",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108827,7 +108931,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Destruction",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108893,7 +108997,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Destruction_A",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -108959,7 +109063,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Destruction_B",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109025,7 +109129,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Destruction_C",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109058,7 +109162,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Collectibles",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109124,7 +109228,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Collectibles_B",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109190,7 +109294,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Collectibles_C",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109256,7 +109360,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Collectibles_A",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109289,7 +109393,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Medals",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109355,7 +109459,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Medal_Gold",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109421,7 +109525,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Medal_Silver",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109487,7 +109591,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Medal_Bronze",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -109553,7 +109657,7 @@
 		"Name" : 
 		{
 			"m_Name" : "EndContinue",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110014,7 +110118,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirmation Menu",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110080,7 +110184,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirm Yes Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110146,7 +110250,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirm Yes Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110212,7 +110316,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirm No Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110278,7 +110382,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Confirm No Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110344,7 +110448,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Pop Up Backing",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110377,7 +110481,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Pause Menu",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110443,7 +110547,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Pause Menu Background",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110509,7 +110613,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Resume Game Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110575,7 +110679,7 @@
 		"Name" : 
 		{
 			"m_Name" : "How To Play Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110641,7 +110745,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Settings Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110707,7 +110811,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Resume Game Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110773,7 +110877,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Main Menu Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110839,7 +110943,7 @@
 		"Name" : 
 		{
 			"m_Name" : "How To Play Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110905,7 +111009,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Settings Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110971,7 +111075,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Main Menu Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -144025,7 +144129,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 70.105148315429688,
+				"m_FrameCounter" : 12.356119155883789,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144039,7 +144143,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.5625
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144091,7 +144195,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 70.105148315429688,
+				"m_FrameCounter" : 12.356119155883789,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144105,7 +144209,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.5625
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144157,7 +144261,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 65.604850769042969,
+				"m_FrameCounter" : 63.288223266601562,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144171,7 +144275,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.515625
+					0.5
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144223,7 +144327,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 70.105148315429688,
+				"m_FrameCounter" : 12.356119155883789,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144237,7 +144341,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.5625
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144289,7 +144393,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 72.393630981445312,
+				"m_FrameCounter" : 86.11602783203125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -144303,7 +144407,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.578125
+					0.6875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144355,7 +144459,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 70.105148315429688,
+				"m_FrameCounter" : 12.356119155883789,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144369,7 +144473,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.5625
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144421,7 +144525,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 65.604850769042969,
+				"m_FrameCounter" : 63.288223266601562,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144435,7 +144539,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.515625
+					0.5
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144487,7 +144591,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.578868865966797,
+				"m_FrameCounter" : 24.484697341918945,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144501,7 +144605,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144553,7 +144657,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 65.604850769042969,
+				"m_FrameCounter" : 63.288223266601562,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144567,7 +144671,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.515625
+					0.5
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144619,7 +144723,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 80.746658325195312,
+				"m_FrameCounter" : 103.393798828125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -144632,8 +144736,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.640625
+					0.5,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144685,7 +144789,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.578868865966797,
+				"m_FrameCounter" : 24.484697341918945,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144699,7 +144803,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
