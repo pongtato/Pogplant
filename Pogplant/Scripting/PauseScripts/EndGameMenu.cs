@@ -72,6 +72,15 @@ namespace Scripting
             COUNT
         }
 
+        /// <summary>
+        /// 0. Screen open
+        /// 1. Screen close
+        /// 2. Gold
+        /// 3. Silver
+        /// 4. Bronze
+        /// 5. Tick
+        /// </summary>
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -169,6 +178,7 @@ namespace Scripting
             {
                 if (m_CallOnce)
                 {
+                    ECS.PlayAudio(entityID, 0, "SFX");
                     DisableGrades(m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_A"].id);
                     DisableGrades(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
                     DisableGrades(m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_A"].id);
@@ -232,18 +242,21 @@ namespace Scripting
                 // Grade C for Destruction
                 if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE_DES.C && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE_DES.B)
                 {
+                    ECS.PlayAudio(entityID, 4, "SFX");
                     SwapGrade(m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.BRONZE;
                 }
                 // Grade B for Destruction
                 else if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE_DES.B && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE_DES.A)
                 {
+                    ECS.PlayAudio(entityID, 3, "SFX");
                     SwapGrade(m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.SILVER;
                 }
                 // Grade A for Destruction
                 else
                 {
+                    ECS.PlayAudio(entityID, 2, "SFX");
                     SwapGrade(m_LettersMap["Destruction_A"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_C"].id);
                     m_OverallGrade += (uint)MEDALGRADE.GOLD;
                 }
@@ -263,18 +276,21 @@ namespace Scripting
                 // Grade C for Evasiveness
                 if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA.C)
                 {
+                    ECS.PlayAudio(entityID, 4, "SFX");
                     SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.BRONZE;
                 }
                 // Grade B for Evasiveness
                 else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA.B && PlayerScript.m_PlayerHitCount < (uint)GRADE_EVA.C)
                 {
+                    ECS.PlayAudio(entityID, 3, "SFX");
                     SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.SILVER;
                 }
                 // Grade A for Evasiveness
                 else
                 {
+                    ECS.PlayAudio(entityID, 2, "SFX");
                     SwapGrade(m_LettersMap["Evasiveness_A"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id);
                     m_OverallGrade += (uint)MEDALGRADE.GOLD;
                 }
@@ -293,18 +309,21 @@ namespace Scripting
                 // Grade C for Collectibles
                 if (PlayerScript.m_CollectiblesCount >= (uint)GRADE_COL.C && PlayerScript.m_CollectiblesCount < (uint)GRADE_COL.B)
                 {
+                    ECS.PlayAudio(entityID, 4, "SFX");
                     SwapGrade(m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.BRONZE;
                 }
                 // Grade B for Collectibles
                 else if (PlayerScript.m_CollectiblesCount >= (uint)GRADE_COL.B && PlayerScript.m_CollectiblesCount < (uint)GRADE_COL.A)
                 {
+                    ECS.PlayAudio(entityID, 3, "SFX");
                     SwapGrade(m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.SILVER;
                 }
                 // Grade A for Collectibles
                 else
                 {
+                    ECS.PlayAudio(entityID, 2, "SFX");
                     SwapGrade(m_LettersMap["Collectibles_A"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_C"].id);
                     m_OverallGrade += (uint)MEDALGRADE.GOLD;
                 }
@@ -322,14 +341,17 @@ namespace Scripting
             {
                 if (m_OverallGrade >= (uint)MEDALGRADE.OVERALLBRONZE && m_OverallGrade < (uint)MEDALGRADE.OVERALLSILVER)
                 {
+                    ECS.PlayAudio(entityID, 4, "SFX");
                     SwapGrade(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
                 }
                 else if(m_OverallGrade >= (uint)MEDALGRADE.OVERALLSILVER && m_OverallGrade < (uint)MEDALGRADE.OVERALLGOLD)
                 {
+                    ECS.PlayAudio(entityID, 3, "SFX");
                     SwapGrade(m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Gold"].id);
                 }
                 else
                 {
+                    ECS.PlayAudio(entityID, 2, "SFX");
                     SwapGrade(m_LettersMap["Medal_Gold"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id);
                 }
                 m_CallOnceMedal = false;
@@ -340,6 +362,7 @@ namespace Scripting
         {
             if (m_CallOnceCont)
             {
+                ECS.PlayAudio(entityID, 5, "SFX");
                 ECS.SetActive(m_EndContinueID, true);
                 m_CallOnceCont = false;
             }
@@ -347,6 +370,7 @@ namespace Scripting
             {
                 if(InputUtility.onAnyKey())
                 {
+                    ECS.PlayAudio(entityID, 1, "SFX");
                     GameUtilities.ResumeScene();
                     GameUtilities.LoadScene("Level01_Boss");
                 }

@@ -1,6 +1,6 @@
 [
 	{
-		"Children" : 8,
+		"Children" : 9,
 		"Name" : 
 		{
 			"m_Name" : "InGame_Obst_Group",
@@ -9243,22 +9243,6 @@
 			"prefab_GUID" : "eee0dd57-1648-400d-abed-92a3d302a76f",
 			"prefab_path" : ""
 		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"UseLight" : 1
-		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -12332,7 +12316,7 @@
 		}
 	},
 	{
-		"Children" : 24,
+		"Children" : 20,
 		"Name" : 
 		{
 			"m_Name" : "Segment_6_Obstacals",
@@ -13837,7 +13821,7 @@
 			],
 			"m_scale" : 
 			[
-				9.9961109161376953,
+				9.9960622787475586,
 				10.0,
 				10.0
 			]
@@ -14284,432 +14268,6 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "677d9c42-4a50-4257-8f6c-cee6f7df6a26",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Scafold_02",
-				"Resources/Models\\Environment",
-				"Scafolding010"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-44.395397186279297,
-				4.3566875457763672,
-				-278.99591064453125
-			],
-			"m_rotation" : 
-			[
-				179.99989318847656,
-				-5.0089556680177338e-06,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999144673347473,
-				0.10000000149011612,
-				0.099965095520019531
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				2.0,
-				4.0,
-				2.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-6.75,
-				43.10858154296875,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				2.677308597043293e-09,
-				1.8198857698603632e-10,
-				1.6158760440809772e-10
-			],
-			"m_scale" : 
-			[
-				0.99994516372680664,
-				0.99994516372680664,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				36.0,
-				2.0,
-				2.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				35.999969482421875,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				2.1431258989679236e-09,
-				1.6488715948170807e-10,
-				1.290155760003131e-10
-			],
-			"m_scale" : 
-			[
-				0.99995625019073486,
-				0.99995625019073486,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				2.0,
-				4.0,
-				2.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_3",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				6.7499866485595703,
-				61.201080322265625,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				1.8369554766195506e-09,
-				1.5837227362869299e-10,
-				1.1354413242958827e-10
-			],
-			"m_scale" : 
-			[
-				0.99996155500411987,
-				0.99996155500411987,
-				1.000003457069397
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Scafold_02",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "677d9c42-4a50-4257-8f6c-cee6f7df6a26",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Scafold_02",
-				"Resources/Models\\Environment",
-				"Scafolding010"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-36.604347229003906,
-				1.8004715442657471,
-				-278.99099731445312
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-5.0088856369256973e-06,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099998600780963898,
-				0.099999457597732544,
-				0.099928699433803558
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				2.0,
-				4.0,
-				2.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-6.75,
-				43.10858154296875,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				2.677308597043293e-09,
-				1.8198857698603632e-10,
-				1.6158760440809772e-10
-			],
-			"m_scale" : 
-			[
-				0.99994516372680664,
-				0.99994516372680664,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				36.0,
-				2.0,
-				2.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				35.999969482421875,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				2.1431258989679236e-09,
-				1.6488715948170807e-10,
-				1.290155760003131e-10
-			],
-			"m_scale" : 
-			[
-				0.99995625019073486,
-				0.99995625019073486,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				2.0,
-				4.0,
-				2.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_3",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				6.7499866485595703,
-				61.199981689453125,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				1.8434694881719338e-09,
-				1.4330857334154956e-10,
-				1.1354410467401266e-10
-			],
-			"m_scale" : 
-			[
-				0.99996155500411987,
-				0.99996155500411987,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Scafold_02",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
 			"prefab_GUID" : "ecb1fd18-ada4-42f8-a80f-72bf9d2843cb",
 			"prefab_path" : ""
 		},
@@ -14904,498 +14462,6 @@
 			[
 				0.0,
 				9.7706634449856722e-12,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 8,
-		"Name" : 
-		{
-			"m_Name" : "Obst_VerticalPillar",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_Pillar_Base"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-44.784328460693359,
-				-3.0,
-				-278.87503051757812
-			],
-			"m_rotation" : 
-			[
-				-90.000007629394531,
-				-5.0089556680177338e-06,
-				0.00010427199595142156
-			],
-			"m_scale" : 
-			[
-				9.991607666015625,
-				10.0,
-				9.9999980926513672
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.034468699246644974,
-				0.60900002717971802
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_04"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.019639633595943451,
-				0.041269339621067047,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_05",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_05"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.5,
-				0.10000000149011612
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-5.9604644775390625e-08,
-				0.0064334869384765625,
-				0.36938363313674927
-			],
-			"m_rotation" : 
-			[
-				-4.0711086845418576e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0000002384185791,
-				1.0000002384185791
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.11999999731779099,
-				0.090000003576278687
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.01532745361328125,
-				1.0008034706115723
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				8.1523335174540912e-13,
-				8.8669216413705954e-10
-			],
-			"m_scale" : 
-			[
-				0.99999505281448364,
-				1.0,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_00",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_00"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				6.3835020602809323e-10,
-				-4.5037154734072935e-16,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.9999997615814209,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -16309,7 +15375,7 @@
 			],
 			"m_scale" : 
 			[
-				9.9947490692138672,
+				9.9947052001953125,
 				10.0,
 				10.0
 			]
@@ -17223,498 +16289,6 @@
 			[
 				0.0,
 				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 8,
-		"Name" : 
-		{
-			"m_Name" : "Obst_VerticalPillar",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_Pillar_Base"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-36.08941650390625,
-				-3.0,
-				-278.875
-			],
-			"m_rotation" : 
-			[
-				-89.999946594238281,
-				89.999946594238281,
-				0.00010427400411572307
-			],
-			"m_scale" : 
-			[
-				9.9838476181030273,
-				10.0,
-				9.9997987747192383
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.11999999731779099,
-				0.090000003576278687
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.014248856343328953,
-				1.0008037090301514
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999505281448364,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.5,
-				0.10000000149011612
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-5.9604644775390625e-08,
-				0.0064334869384765625,
-				0.36938363313674927
-			],
-			"m_rotation" : 
-			[
-				-4.0711086845418576e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0000002384185791,
-				1.0000002384185791
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_00",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_00"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.034468699246644974,
-				0.60900002717971802
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_05",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_05"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_04"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.019639633595943451,
-				0.041269339621067047,
 				0.0
 			],
 			"m_rotation" : 
@@ -20884,7 +19458,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -21833,9 +20407,9 @@
 		{
 			"m_position" : 
 			[
-				-40.208602905273438,
-				-4.0153450965881348,
-				-259.4097900390625
+				-39.50738525390625,
+				-4.0153422355651855,
+				-278.6900634765625
 			],
 			"m_rotation" : 
 			[
@@ -21893,20 +20467,20 @@
 		{
 			"m_position" : 
 			[
-				-1.8908538818359375,
-				-0.9195818305015564,
-				-0.474822998046875
+				-1.8909912109375,
+				-0.91958189010620117,
+				-0.47499847412109375
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-2.9732886375199996e-08,
+				-4.5922119440433562e-09,
+				-1.953680476402507e-14
 			],
 			"m_scale" : 
 			[
 				0.10000000149011612,
-				0.10000000149011612,
+				0.10000840574502945,
 				0.10000000149011612
 			]
 		}
@@ -22005,19 +20579,19 @@
 			"m_position" : 
 			[
 				-0.646209716796875,
-				-0.92027133703231812,
-				0.8785858154296875
+				-0.92027044296264648,
+				2.2333908081054688
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-4.406020082114992e-08,
+				-6.8068954917066549e-09,
+				-2.8916956042136441e-14
 			],
 			"m_scale" : 
 			[
 				0.10000000149011612,
-				0.10000000149011612,
+				0.10001245886087418,
 				0.10000000149011612
 			]
 		}
@@ -22116,19 +20690,19 @@
 			"m_position" : 
 			[
 				0.55743408203125,
-				-0.9195818305015564,
+				-0.91958189010620117,
 				-0.474822998046875
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-1.3678874699607491e-09,
+				-2.0355549190664846e-10,
+				-9.007429888023403e-16
 			],
 			"m_scale" : 
 			[
 				0.10000000149011612,
-				0.10000000149011612,
+				0.10000037401914597,
 				0.10000000149011612
 			]
 		}
@@ -22226,20 +20800,20 @@
 		{
 			"m_position" : 
 			[
-				0.5332794189453125,
-				-0.9195818305015564,
-				0.8682098388671875
+				0.533294677734375,
+				-0.91958189010620117,
+				2.2330000400543213
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-1.2701816265447974e-09,
+				-1.8727104589277843e-10,
+				-8.2309272567046001e-16
 			],
 			"m_scale" : 
 			[
 				0.10000000149011612,
-				0.10000000149011612,
+				0.10000034421682358,
 				0.10000000149011612
 			]
 		}
@@ -22338,19 +20912,19 @@
 			"m_position" : 
 			[
 				-0.646209716796875,
-				-0.92027133703231812,
+				-0.92027139663696289,
 				-0.463775634765625
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-1.1724755610842408e-09,
+				-1.7505771832126982e-10,
+				-7.4544246253857973e-16
 			],
 			"m_scale" : 
 			[
 				0.10000000149011612,
-				0.10000000149011612,
+				0.10000032186508179,
 				0.10000000149011612
 			]
 		}
@@ -22448,20 +21022,20 @@
 		{
 			"m_position" : 
 			[
-				1.8572845458984375,
-				-0.9195818305015564,
+				1.857269287109375,
+				-0.91958189010620117,
 				-0.474822998046875
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-1.5958677712646363e-09,
+				-2.401954746211743e-10,
+				-1.0560435150661009e-15
 			],
 			"m_scale" : 
 			[
 				0.10000000149011612,
-				0.10000000149011612,
+				0.10000044107437134,
 				0.10000000149011612
 			]
 		}
@@ -22559,20 +21133,20 @@
 		{
 			"m_position" : 
 			[
-				1.8572845458984375,
-				-0.9195818305015564,
-				0.8682098388671875
+				1.8572998046875,
+				-0.91958189010620117,
+				2.2330000400543213
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-1.3353189665110676e-09,
+				-1.9541326889971344e-10,
+				-8.3862275712101239e-16
 			],
 			"m_scale" : 
 			[
 				0.10000000149011612,
-				0.10000000149011612,
+				0.10000035911798477,
 				0.10000000149011612
 			]
 		}
@@ -22670,20 +21244,20 @@
 		{
 			"m_position" : 
 			[
-				-1.8878631591796875,
-				-0.9195818305015564,
-				0.8682098388671875
+				-1.887847900390625,
+				-0.91958189010620117,
+				2.233001708984375
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-3.810517235081079e-09,
+				-5.9031091126371393e-10,
+				-2.6090486718245882e-15
 			],
 			"m_scale" : 
 			[
 				0.10000000149011612,
-				0.10000000149011612,
+				0.10000108182430267,
 				0.10000000149011612
 			]
 		}
@@ -48612,6 +47186,666 @@
 				1.0,
 				1.0,
 				1.0000039339065552
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_09_Final_Merged",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Segment_09_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_09_Final_Merged"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 10,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Final_Merged",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.61860466003417969,
+				0.61859846115112305,
+				0.61859846115112305
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.56282711029052734,
+				0.12156862020492554
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Seg_04_Final_Merged"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_01_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.25116276741027832,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.1209302544593811,
+				0.1209302544593811
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_01_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_02_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.16744184494018555,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.56841534376144409,
+				0.023255825042724609
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_02_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_03_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.25098040699958801,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.12156862765550613,
+				0.12156862765550613
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_03_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_04_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.32631689310073853,
+				0.027906954288482666
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_04_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_05_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.27906966209411621,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.12156862020492554,
+				0.12156862020492554
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_05_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_06_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.8837209939956665,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.415740966796875,
+				0.12156862020492554
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_06_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_07_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.39122658967971802,
+				0.12156862020492554
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_07_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_08_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.25098040699958801,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.12156862765550613,
+				0.12156862765550613
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_08_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_09_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.12156862765550613,
+				0.12156862765550613
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_09_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Canopy",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Canopy"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -95743,9 +94977,9 @@
 		{
 			"m_position" : 
 			[
-				-3.9916801452636719,
-				-2.9664349555969238,
-				-6.08026123046875
+				-4.6568183898925781,
+				-2.9612777233123779,
+				-25.334564208984375
 			],
 			"m_rotation" : 
 			[
@@ -95804,13 +95038,13 @@
 			],
 			"m_rotation" : 
 			[
-				-179.99989318847656,
-				-85.0,
-				164.99992370605469
+				-30.0,
+				-5.0079302127414849e-06,
+				5.0089556680177338e-06
 			],
 			"m_scale" : 
 			[
-				0.9999421238899231,
+				0.99994087219238281,
 				1.0000371932983398,
 				1.0000045299530029
 			]
@@ -96127,15 +95361,15 @@
 		{
 			"m_position" : 
 			[
-				-3.9930534362792969,
-				-2.9664368629455566,
-				-7.321807861328125
+				-4.6571388244628906,
+				-2.9610826969146729,
+				-26.60150146484375
 			],
 			"m_rotation" : 
 			[
-				-179.99996948242188,
-				89.999977111816406,
-				-179.99996948242188
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
 			],
 			"m_scale" : 
 			[
@@ -96188,9 +95422,9 @@
 			],
 			"m_rotation" : 
 			[
-				-179.99989318847656,
-				-85.0,
-				165.0
+				-30.0,
+				0.0,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -96511,15 +95745,15 @@
 		{
 			"m_position" : 
 			[
-				-3.9930534362792969,
-				-2.9664392471313477,
-				-8.525726318359375
+				-4.6571388244628906,
+				-2.9610850811004639,
+				-27.80523681640625
 			],
 			"m_rotation" : 
 			[
-				-179.99996948242188,
-				89.999977111816406,
-				-179.99996948242188
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
 			],
 			"m_scale" : 
 			[
@@ -96572,9 +95806,9 @@
 			],
 			"m_rotation" : 
 			[
-				-179.99989318847656,
-				-85.0,
-				165.0
+				-30.0,
+				0.0,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -96895,15 +96129,15 @@
 		{
 			"m_position" : 
 			[
-				-2.6513633728027344,
-				-2.9663901329040527,
-				-9.835662841796875
+				-1.9429244995117188,
+				-2.9611332416534424,
+				-29.10272216796875
 			],
 			"m_rotation" : 
 			[
-				-179.99996948242188,
-				89.999977111816406,
-				-179.99996948242188
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
 			],
 			"m_scale" : 
 			[
@@ -96951,18 +96185,18 @@
 			"m_position" : 
 			[
 				0.0003662109375,
-				6.67572021484375e-06,
-				0.000244140625
+				7.62939453125e-06,
+				-0.0022735595703125
 			],
 			"m_rotation" : 
 			[
-				0.00010427065717522055,
-				-84.999954223632812,
-				-15.000073432922363
+				149.99995422363281,
+				-5.0089665819541551e-06,
+				-179.99989318847656
 			],
 			"m_scale" : 
 			[
-				0.99997937679290771,
+				0.99997931718826294,
 				1.0000373125076294,
 				1.0000046491622925
 			]
@@ -97279,15 +96513,15 @@
 		{
 			"m_position" : 
 			[
-				-2.6443901062011719,
-				-2.9664320945739746,
-				-6.094024658203125
+				-1.9400978088378906,
+				-2.9612679481506348,
+				-25.349212646484375
 			],
 			"m_rotation" : 
 			[
-				-179.99996948242188,
-				89.999977111816406,
-				-179.99996948242188
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
 			],
 			"m_scale" : 
 			[
@@ -97340,9 +96574,9 @@
 			],
 			"m_rotation" : 
 			[
-				-179.99989318847656,
-				-95.0,
-				165.0
+				-30.0,
+				180.0,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -97663,15 +96897,15 @@
 		{
 			"m_position" : 
 			[
-				-3.9930534362792969,
-				-2.966392993927002,
-				-9.85113525390625
+				-4.6547889709472656,
+				-2.9611122608184814,
+				-29.121246337890625
 			],
 			"m_rotation" : 
 			[
-				-179.99996948242188,
-				89.999977111816406,
-				-179.99996948242188
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
 			],
 			"m_scale" : 
 			[
@@ -97719,14 +96953,14 @@
 			"m_position" : 
 			[
 				-0.0001220703125,
-				6.67572021484375e-06,
-				-0.0026092529296875
+				7.62939453125e-06,
+				-0.0026397705078125
 			],
 			"m_rotation" : 
 			[
-				-179.99989318847656,
-				-84.999954223632812,
-				164.99992370605469
+				-30.0,
+				9.8588870400817541e-09,
+				-1.8636605848307553e-17
 			],
 			"m_scale" : 
 			[
@@ -98047,15 +97281,15 @@
 		{
 			"m_position" : 
 			[
-				-2.6558647155761719,
-				-2.9664344787597656,
-				-7.323089599609375
+				-1.9431381225585938,
+				-2.9610803127288818,
+				-26.60260009765625
 			],
 			"m_rotation" : 
 			[
-				-179.99996948242188,
-				89.999977111816406,
-				-179.99996948242188
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
 			],
 			"m_scale" : 
 			[
@@ -98108,9 +97342,9 @@
 			],
 			"m_rotation" : 
 			[
-				-179.99989318847656,
-				-95.0,
-				165.0
+				-30.0,
+				180.0,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -98431,9 +97665,9 @@
 		{
 			"m_position" : 
 			[
-				-2.6558647155761719,
-				-2.9664771556854248,
-				-8.502410888671875
+				-1.9431381225585938,
+				-2.961122989654541,
+				-27.78192138671875
 			],
 			"m_rotation" : 
 			[
@@ -98492,9 +97726,9 @@
 			],
 			"m_rotation" : 
 			[
-				0.00010427373490529135,
-				-84.999954223632812,
-				-14.99998950958252
+				-30.0,
+				180.0,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -108569,6 +107803,45 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ResultScreen_Intro.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ResultScreen_Exit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ResultScreen_Gold.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ResultScreen_Silver.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip4" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ResultScreen_Bronze.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip5" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ResultScreen_Tickbox.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 7,
 		"Name" : 
 		{
@@ -110710,7 +109983,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 8,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 12.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : false,
 				"m_PlaySpeed" : 1.0,
@@ -110723,8 +109996,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.125
+					0.5,
+					0.25
 				]
 			},
 			"m_TexName" : "512_ExportSheet_01.dds"
@@ -110733,7 +110006,7 @@
 		"Name" : 
 		{
 			"m_Name" : "How To Play Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -110973,31 +110246,31 @@
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
+				"m_Columns" : 8,
+				"m_FrameCounter" : 13.0,
+				"m_MaxFrames" : 64,
 				"m_Play" : false,
 				"m_PlaySpeed" : 1.0,
 				"m_Repeat" : false,
-				"m_Rows" : 1,
+				"m_Rows" : 8,
 				"m_Tiling" : 
 				[
-					1.0,
-					1.0
+					0.125,
+					0.125
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.0
+					0.625,
+					0.25
 				]
 			},
-			"m_TexName" : "HowToPlay_PM_A.dds"
+			"m_TexName" : "512_ExportSheet_01.dds"
 		},
 		"Children" : 0,
 		"Name" : 
 		{
 			"m_Name" : "How To Play Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -111019,8 +110292,8 @@
 			],
 			"m_scale" : 
 			[
-				0.55000001192092896,
-				0.55000001192092896,
+				0.25,
+				0.25,
 				1.0
 			]
 		}
@@ -111296,8 +110569,8 @@
 			"m_position" : 
 			[
 				-40.372993469238281,
-				4.377892017364502,
-				-261.29354858398438
+				2.2978446483612061,
+				-284.52877807617188
 			],
 			"m_rotation" : 
 			[
@@ -118718,60 +117991,6 @@
 		}
 	},
 	{
-		"Name" : 
-		{
-			"m_Name" : "Segment_09_Final_Merged",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_09_Final_Merged"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 5,
 		"Name" : 
 		{
@@ -121812,7 +121031,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 11,
+		"Children" : 10,
 		"Name" : 
 		{
 			"m_Name" : "MissileTrigger5",
@@ -121894,7 +121113,7 @@
 		{
 			"m_position" : 
 			[
-				-2.2057380676269531,
+				-4.5640182495117188,
 				-5.5227937698364258,
 				-49.222457885742188
 			],
@@ -122233,7 +121452,7 @@
 				"Volume" : 1.0
 			}
 		},
-		"Children" : 3,
+		"Children" : 4,
 		"Name" : 
 		{
 			"m_Name" : "Missile10",
@@ -122622,9 +121841,9 @@
 		{
 			"m_position" : 
 			[
-				0.092678070068359375,
-				-5.2071404457092285,
-				-44.084915161132812
+				-0.110687255859375,
+				-0.13046503067016602,
+				-19.441650390625
 			],
 			"m_rotation" : 
 			[
@@ -122986,7 +122205,7 @@
 		{
 			"m_position" : 
 			[
-				2.7198143005371094,
+				4.1149940490722656,
 				-5.291865348815918,
 				-38.057022094726562
 			],
@@ -123350,9 +122569,9 @@
 		{
 			"m_position" : 
 			[
-				-2.1648101806640625,
+				-4.2467231750488281,
 				-5.4696507453918457,
-				-28.631515502929688
+				-30.892257690429688
 			],
 			"m_rotation" : 
 			[
@@ -124442,7 +123661,7 @@
 		{
 			"m_position" : 
 			[
-				-1.9724273681640625,
+				-2.4361343383789062,
 				-5.5814628601074219,
 				-38.303085327148438
 			],
@@ -124806,9 +124025,9 @@
 		{
 			"m_position" : 
 			[
-				2.7475013732910156,
+				3.7617607116699219,
 				-5.7852315902709961,
-				-28.697494506835938
+				-28.992324829101562
 			],
 			"m_rotation" : 
 			[
@@ -125534,7 +124753,7 @@
 		{
 			"m_position" : 
 			[
-				2.7494735717773438,
+				5.3757514953613281,
 				-5.4234867095947266,
 				-49.205215454101562
 			],
@@ -144183,7 +143402,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.26181030273438,
+				"m_FrameCounter" : 40.960334777832031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144197,7 +143416,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.921875
+					0.328125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144249,7 +143468,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.26181030273438,
+				"m_FrameCounter" : 40.960334777832031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144263,7 +143482,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.921875
+					0.328125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144315,7 +143534,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 83.872200012207031,
+				"m_FrameCounter" : 14.609149932861328,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144328,8 +143547,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.65625
+					0.0,
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144381,7 +143600,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.26181030273438,
+				"m_FrameCounter" : 40.960334777832031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144395,7 +143614,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.921875
+					0.328125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144447,7 +143666,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 98.106529235839844,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -144461,7 +143680,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.78125
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144513,7 +143732,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.26181030273438,
+				"m_FrameCounter" : 40.960334777832031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -144527,7 +143746,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.921875
+					0.328125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144579,7 +143798,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 83.872200012207031,
+				"m_FrameCounter" : 14.609149932861328,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144592,8 +143811,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.65625
+					0.0,
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144645,7 +143864,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 85.933906555175781,
+				"m_FrameCounter" : 127.00839996337891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144659,7 +143878,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.671875
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144711,7 +143930,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 83.872200012207031,
+				"m_FrameCounter" : 14.609149932861328,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -144724,8 +143943,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.65625
+					0.0,
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144777,7 +143996,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 36.014110565185547,
+				"m_FrameCounter" : 15.615850448608398,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -144790,8 +144009,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.296875
+					0.5,
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144843,7 +144062,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 85.933906555175781,
+				"m_FrameCounter" : 127.00839996337891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -144857,7 +144076,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.671875
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -144993,7 +144212,7 @@
 		}
 	},
 	{
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "SceneLighting",
@@ -145133,6 +144352,129 @@
 				-22.489133834838867,
 				7.2405643463134766,
 				-178.54719543457031
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				111.63983917236328,
+				-53.016899108886719,
+				-255.53582763671875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Light_01",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.91162788867950439,
+				0.20352622866630554,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0099999997764825821,
+			"m_Quadratic" : 0.0054000001400709152
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				130.642822265625,
+				-25.52325439453125,
+				-294.50732421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Light_02",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.99534881114959717,
+				0.54516482353210449,
+				0.037036266177892685
+			],
+			"m_Intensity" : 50.0,
+			"m_Linear" : 0.0070000002160668373,
+			"m_Quadratic" : 0.20000000298023224
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				160.29721069335938,
+				-16.968231201171875,
+				-263.0372314453125
 			],
 			"m_rotation" : 
 			[
