@@ -43,7 +43,6 @@ namespace Scripting
 
         public static bool refresh;
 
-        //Audio tracks
         /// <summary>
         /// 0. Select
         /// 1. Up

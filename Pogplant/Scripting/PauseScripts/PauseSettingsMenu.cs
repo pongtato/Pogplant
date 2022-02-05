@@ -44,6 +44,12 @@ namespace Scripting
         public static bool refresh;
         bool enabled;
 
+        /// <summary>
+        /// 0. Select
+        /// 1. Up
+        /// 2. Down
+        /// </summary>
+
         public PauseSettingsMenu()
         {
 
@@ -176,6 +182,8 @@ namespace Scripting
             //Key input
             if (InputUtility.onKeyTriggered("MENUUP"))
             {
+                ECS.PlayAudio(entityID, 1, "SFX");
+
                 --active_index;
 
                 if (active_index < (int)SETTINGS_MENU_BUTTONS.BGM_VOLUME)
@@ -187,6 +195,8 @@ namespace Scripting
             }
             else if (InputUtility.onKeyTriggered("MENUDOWN"))
             {
+                ECS.PlayAudio(entityID, 2, "SFX");
+
                 ++active_index;
 
                 if (active_index > (int)SETTINGS_MENU_BUTTONS.DEFAULT)
@@ -199,6 +209,8 @@ namespace Scripting
 
             if (InputUtility.onKeyTriggered("MENULEFT"))
             {
+                ECS.PlayAudio(entityID, 2, "SFX");
+
                 switch (active_index)
                 {
                     case 0:
@@ -228,6 +240,8 @@ namespace Scripting
             }
             else if (InputUtility.onKeyTriggered("MENURIGHT"))
             {
+                ECS.PlayAudio(entityID, 1, "SFX");
+
                 switch (active_index)
                 {
                     case 0:
@@ -259,6 +273,8 @@ namespace Scripting
             //Set all to default volume
             if (InputUtility.onKeyTriggered("MENUSELECT"))
             {
+                ECS.PlayAudio(entityID, 0, "SFX");
+
                 if (active_index == 3)
                 {
                     AudioEngine.SetChannelGroupVolume("BGM", default_value);
