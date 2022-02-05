@@ -33,7 +33,7 @@ namespace Scripting
         float p_fire_timer = 0.0f;
         float m_rotspeed = 20.0f;
         float turret_rot_lerp_limit = 15.0f;
-        float accu_muzzle_on;
+        bool isHoming = false;
         bool isMuzzleflashed = false;
 
         //Player Crosshair(The smaller one)
@@ -200,8 +200,10 @@ namespace Scripting
                 if (p_fire_timer >= p_fireRate)
                 {
                     // Call C++ side bullet firing
-                    CallTurretShoot(ref Turrets_A);
-
+                    if(isHoming)
+                        CallTurretHomingShoot(ref Turrets_A, dt);
+                    else
+                        CallTurretShoot(ref Turrets_A, dt);
                     //GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
                     OnMuzzleFlash(ref MuzzleFlashGroup,ref isMuzzleflashed);
                     ECS.PlayAudio(shipCamera, 1, "SFX");
@@ -475,6 +477,7 @@ namespace Scripting
 
         void SetTurretStraight(ref List<uint> TurretGroup, int Offset, float dt)
         {
+            isHoming = false;
             for (int i = 0; i < TurretGroup.Count; ++i)
             {
                 Vector3 CurrTurrRot = ECS.GetComponent<Transform>(TurretGroup[i]).Rotation;
@@ -497,6 +500,7 @@ namespace Scripting
             //Issues with this when you look up straight.
             //LimitLerp(ref LerpVal, turret_rot_lerp_limit);
             ECS.SetRotation(Turret, LerpVal);
+            isHoming = true;
         }
 
         public void SetReticleandTurret(ref List<uint> TurretGroup, ref List<uint> EnemytoTarget, int RetOffSet, float dt)
@@ -537,7 +541,7 @@ namespace Scripting
 
         }
 
-        public void CallTurretShoot(ref List<uint> TurretGroup)
+        public void CallTurretShoot(ref List<uint> TurretGroup, float dt)
         {
             //foreach (var Turret in TurretGroup)
             //{
@@ -550,10 +554,30 @@ namespace Scripting
             //}
             for (int i = 0; i < Turrets_A.Count; i++)
             {
+                //Predict the enemy movement a little.
                 Vector3 Forward = Transform.GetForwardVector(MuzzleGroup[i]);
                 Vector3 Position = ECS.GetGlobalPosition(MuzzleGroup[i]);
                 Vector3 Rotation = ECS.GetGlobalRotation(MuzzleGroup[i]);
-                GameUtilities.FirePlayerBullet(Position, Forward, Rotation);
+
+                GameUtilities.FirePlayerBullet(Position, Forward, Rotation, isHoming, 0);
+            }
+        }
+
+        public void CallTurretHomingShoot(ref List<uint> TurretGroup, float dt)
+        {
+            for (int i = 0; i < Turrets_A.Count; i++)
+            {
+                //Predict the enemy movement a little.
+
+                Vector3 Position = ECS.GetGlobalPosition(MuzzleGroup[i]);
+                Vector3 Rotation = ECS.GetGlobalRotation(MuzzleGroup[i]);
+
+                var enemy_velo = ECS.GetVelocity(EntityID_of_FirstTargetablEnemy());
+                var enemy_pos = ECS.GetGlobalPosition(EntityID_of_FirstTargetablEnemy());
+                var new_position = enemy_pos + (enemy_velo * dt * 20.0f);
+                new_position -= Position;
+                var new_forward = Vector3.Normalise(new_position);
+                GameUtilities.FirePlayerBullet(Position, new_forward, Rotation, isHoming, EntityID_of_FirstTargetablEnemy());
             }
         }
 
@@ -728,6 +752,15 @@ namespace Scripting
                 }
                 On = !On;
             }
+        }
+
+        uint EntityID_of_FirstTargetablEnemy()
+        {
+            if(enemy_to_target_A.Count != 0)
+            {
+                return enemy_to_target_A[0];
+            }
+            return 0;
         }
 
         void CoutMyEnemy()

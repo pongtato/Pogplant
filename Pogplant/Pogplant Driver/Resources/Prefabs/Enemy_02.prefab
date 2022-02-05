@@ -38,9 +38,9 @@
 			"collisionLayer" : "ENEMY",
 			"extends" : 
 			[
-				0.5,
-				0.5,
-				0.5
+				2.0,
+				2.0,
+				2.0
 			],
 			"isStatic" : false,
 			"isTrigger" : true
@@ -52,7 +52,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Enemy_02"
+			"m_Name" : "Enemy_02",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -116,65 +117,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Exhaust_Main001"
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_02",
-				"Resources/Models\\Enemy",
-				"Exhaust_Main001"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-1.0971353054046631,
-				-0.67056179046630859
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Spinning_Disk"
+			"m_Name" : "Spinning_Disk",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -232,7 +176,8 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Gun_Horizontal_Pivot001"
+			"m_Name" : "Gun_Horizontal_Pivot001",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -290,7 +235,8 @@
 		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Body"
+			"m_Name" : "Big_Alien_Body",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -348,7 +294,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Arm_R"
+			"m_Name" : "Big_Alien_Arm_R",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -406,7 +353,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Arm_L"
+			"m_Name" : "Big_Alien_Arm_L",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -464,7 +412,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Big_Alien_Head"
+			"m_Name" : "Big_Alien_Head",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -522,7 +471,8 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Gun_Vertical_Pivot001"
+			"m_Name" : "Gun_Vertical_Pivot001",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -580,7 +530,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Gun_Studs"
+			"m_Name" : "Gun_Studs",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -638,7 +589,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Gun_Body"
+			"m_Name" : "Gun_Body",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -677,6 +629,65 @@
 				8.940696005765858e-08,
 				0.83089637756347656,
 				-0.28096675872802734
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main001",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_02",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.0971353054046631,
+				-0.67056179046630859
 			],
 			"m_rotation" : 
 			[

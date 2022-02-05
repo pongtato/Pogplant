@@ -19,6 +19,7 @@
 #include "../Components/GameplayComponents.h"
 #include "../Components/DependantComponents.h"
 #include "../Systems/ScriptSystemHelper.h"
+#include "../../GameScript.h"
 #include "../../Input/GLFWInput.h"
 #include "../../AudioEngine.h"
 
@@ -48,8 +49,25 @@ void GeneralSystem::UpdateGame(float c_dt)
 		//auto& transform = projectiles.get<Components::Transform>(projectileEntity);
 		//auto& rigidbody = projectiles.get<Components::Rigidbody>(projectileEntity);
 
-		//glm::vec3 move = { 0.f,0.f,projectile.m_Speed * c_dt };
 		//transform.m_position += move;
+		//glm::vec3 move = { 0.f,0.f,projectile.m_Speed * c_dt };
+
+		//Doesnt work like its intended to be
+		//if(projectile.m_Homing)
+		//{
+
+		//	if (m_registry->GetReg().valid(static_cast<entt::entity>(projectile.tracker)))
+		//	{
+		//		//transform.LookAt();
+		//		auto enemy_trans = m_registry->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(projectile.tracker));
+		//		auto vector = enemy_trans->m_position - transform.m_position;
+		//		glm::normalize(vector);
+		//		transform.m_rotation = vector;
+		//		////auto  new_pos = glm::mix(transform.m_position, enemy_trans->m_position,  c_dt);
+		//		//rigidbody.AddForce(vector * 500.f);
+		//	}
+
+		//}
 
 		projectile.m_CurentLifetime += c_dt;
 
