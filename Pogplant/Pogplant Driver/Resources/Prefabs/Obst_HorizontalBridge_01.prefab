@@ -7,33 +7,12 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Obst_Bridge"
+			"m_Name" : "Obst_Bridge",
+			"status" : true
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Obst_HorizontalBridge_01.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Bridge",
-				"Resources/Models\\Environment",
-				"Bridge_Type_01"
-			],
-			"UseLight" : 1
+			"file_path" : "Resources\\Prefabs\\Obst_HorizontalBridge_01.prefab"
 		},
 		"Tag" : 
 		{
@@ -55,7 +34,7 @@
 			],
 			"m_scale" : 
 			[
-				9.9942035675048828,
+				9.9925632476806641,
 				10.0,
 				20.0
 			]
@@ -77,16 +56,18 @@
 				0.15000000596046448,
 				0.5
 			],
+			"isStatic" : false,
 			"isTrigger" : false
 		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Collider_1"
+			"m_Name" : "Collider_1",
+			"status" : true
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Obst_HorizontalBridge_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Obst_HorizontalBridge_01.prefab"
 		},
 		"Tag" : 
 		{
@@ -97,20 +78,20 @@
 			"m_position" : 
 			[
 				0.0,
-				-8.0335738061876327e-13,
-				0.079806499183177948
+				-2.6512125828048738e-12,
+				0.085657291114330292
 			],
 			"m_rotation" : 
 			[
-				7.1559930203690669e-10,
+				9.3613650165025319e-10,
 				-0.0,
 				0.0
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.9999997615814209,
+				0.92999988794326782,
+				0.9999997615814209
 			]
 		}
 	},
@@ -118,11 +99,12 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Bridge_Type_01_Ridges"
+			"m_Name" : "Bridge",
+			"status" : true
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Obst_HorizontalBridge_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Obst_HorizontalBridge_01.prefab"
 		},
 		"Render" : 
 		{
@@ -140,9 +122,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Obst_Bridge",
+				"Bridge",
 				"Resources/Models\\Environment",
-				"Bridge_Type_01_Ridges"
+				"Bridge"
 			],
 			"UseLight" : 1
 		},
@@ -154,21 +136,21 @@
 		{
 			"m_position" : 
 			[
-				-0.00027698278427124023,
-				0.00042769312858581543,
-				0.089454233646392822
+				0.0,
+				-8.9695889604612944e-10,
+				0.010260011069476604
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				0.0,
+				90.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.10005167871713638,
+				0.04999997466802597,
+				0.099999949336051941
 			]
 		}
 	}

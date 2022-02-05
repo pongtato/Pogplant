@@ -7,11 +7,12 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Obst_SupportBeam_01"
+			"m_Name" : "Obst_SupportBeam_01",
+			"status" : true
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Obst_SupportBeam_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Obst_SupportBeam_01.prefab"
 		},
 		"Render" : 
 		{
@@ -77,16 +78,18 @@
 				650.0,
 				100.0
 			],
+			"isStatic" : false,
 			"isTrigger" : false
 		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Collider_1"
+			"m_Name" : "Collider_1",
+			"status" : true
 		},
 		"Prefab" : 
 		{
-			"file_path" : "C:\\Users\\jinpe\\Desktop\\BAGD\\GAM300\\engine\\Pogplant\\Pogplant Driver\\Resources\\Prefabs\\Obst_SupportBeam_01.prefab"
+			"file_path" : "Resources\\Prefabs\\Obst_SupportBeam_01.prefab"
 		},
 		"Tag" : 
 		{
