@@ -3,7 +3,7 @@
 		"Children" : 6,
 		"Guid" : 
 		{
-			"m_guid" : "d48ee898-9a2a-4603-8c22-63e247590b4e"
+			"m_guid" : "3bd9807d-45e3-49df-9056-c7cadf34fee7"
 		},
 		"Name" : 
 		{
@@ -13,6 +13,11 @@
 		"Prefab" : 
 		{
 			"file_path" : "Resources\\Prefabs\\PlayerComboUI.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "d48ee898-9a2a-4603-8c22-63e247590b4e",
+			"prefab_path" : "Resources\\Prefabs\\PlayerComboUI.prefab"
 		},
 		"Tag" : 
 		{
@@ -24,7 +29,7 @@
 			[
 				0.20000000298023224,
 				0.0,
-				0.0
+				-1.0
 			],
 			"m_rotation" : 
 			[
