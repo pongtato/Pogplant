@@ -424,6 +424,8 @@ namespace Scripting
 
             health = 5;
             current_animation_index = 0;
+
+            end_screen_trigger_id = ECS.FindEntityWithName("L1 Black Screen");
         }
 
         void FindEntities()

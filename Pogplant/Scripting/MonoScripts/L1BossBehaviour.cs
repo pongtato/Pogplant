@@ -117,6 +117,19 @@ namespace Scripting
 
 		BossStateBehaviour[] m_stateBehaviours = new BossStateBehaviour[(int)L1Boss.BOSS_BEHAVIOUR_STATE.TOTAL];
 
+		/**************************
+		*
+		* Temporary for enemy spawns
+		*
+		**************************/
+		private List<GameObject> m_enemySpawnInstances = new List<GameObject>();
+		Vector3 pos = new Vector3();
+		Vector3 rot = new Vector3();
+		Vector3 scale = new Vector3();
+		private bool c_playedSpawnAnimation = false;
+		private float c_hardCodedUpAnimationSpeed = 8f;
+		private float c_animationDuration = 4f;
+
 		/******************************************************************************/
 		/*!
 		\brief
@@ -244,6 +257,7 @@ namespace Scripting
 						{
 							TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
 
+							c_playedSpawnAnimation = false;
 							m_runStateInfo.m_timeSinceLastSpawnTimer = 0f;
 							m_runStateInfo.m_timeToNextSpawn = PPMath.RandomFloat(m_minDurationBetweenSpawns, m_maxDurationBetweenSpawns);
 						}
@@ -293,6 +307,23 @@ namespace Scripting
 
 							m_runStateInfo.m_secondaryTimer = 0f;
 						}
+
+						if(!c_playedSpawnAnimation)
+						{
+							c_playedSpawnAnimation = true;
+
+							//Console.WriteLine("SpawnAnimation");
+
+							//Do enemy spawn animation
+							for (int i = 0; i < 6; ++i)
+							{
+								ECS.GetTransformECS(mID_ventSpawnpoints[i], ref pos, ref rot, ref scale);
+								GameObject instance = GameUtilities.InstantiateObject("Enemy_01", pos, rot);
+								m_enemySpawnInstances.Add(instance);
+							}
+						}
+
+						UpdateEnemySpawnAnimation(dt);
 					}
 				}
 				break;
@@ -322,6 +353,36 @@ namespace Scripting
 				m_runStateInfo.m_damageTakenPeriod = 0f;
 			}
 		}
+
+		void UpdateEnemySpawnAnimation(float dt)
+		{
+			if (m_runStateInfo.m_timer > c_animationDuration + mSpawner_timeStartSpawnEnemies)
+			{
+				if (m_enemySpawnInstances.Count > 0)
+				{
+					for (int i = 0; i < m_enemySpawnInstances.Count; ++i)
+					{
+						ECS.DestroyEntity(m_enemySpawnInstances[i].id);
+					}
+
+					m_enemySpawnInstances.Clear();
+
+					//Console.WriteLine("Erased animation");
+				}
+			}
+			else
+			{
+				for (int i = 0; i < m_enemySpawnInstances.Count; ++i)
+				{
+					ECS.GetTransformECS(m_enemySpawnInstances[i].id, ref pos, ref rot, ref scale);
+
+					pos.Y += c_hardCodedUpAnimationSpeed * dt;
+
+					ECS.SetTransformECS(m_enemySpawnInstances[i].id, pos, rot, scale);
+				}
+			}
+		}
+
 		public override void LateUpdate(float dt)
 		{
 
