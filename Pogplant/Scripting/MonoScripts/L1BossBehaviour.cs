@@ -42,6 +42,13 @@ namespace Scripting
 		/**> How much time before the damage threshold gets reset*/
 		public float m_coreProtectionDamageDuration;
 
+		public float m_minMovingTime;
+		public float m_maxMovingTime;
+
+		public float m_minDurationBetweenSpawns;
+		public float m_maxDurationBetweenSpawns;
+
+
 		public uint[] mID_ventSpawnpoints = new uint[6];
 
 		//--- Spawner variables
@@ -88,14 +95,18 @@ namespace Scripting
 				m_timer = 0f;
 				m_secondaryTimer = 0f;
 				m_stateDuration = 1f;
-				m_timeSinceLastDamage = 0f;
+				m_timeSinceLastDamageTimer = 0f;
+				m_timeToNextSpawn = 0f;
+				m_timeSinceLastSpawnTimer = 90f;
 				m_damageTakenPeriod = 0f;
 			}
 
 			public float m_timer;
 			public float m_secondaryTimer;
 			public float m_stateDuration;
-			public float m_timeSinceLastDamage;
+			public float m_timeSinceLastDamageTimer;
+			public float m_timeToNextSpawn;
+			public float m_timeSinceLastSpawnTimer;
 
 			/**> Damage taken in this period of time*/
 			public float m_damageTakenPeriod;
@@ -131,6 +142,14 @@ namespace Scripting
 			m_coreProtectionDamageDuration = ECS.GetValue<float>(entityID, 1f, "CoreProtectionDamageDuration");
 			mSpawner_durationBetweenSpawns = ECS.GetValue<float>(entityID, 0.5f, "DurationBetweenEnemySpawns");
 
+			m_minMovingTime = ECS.GetValue<float>(entityID, 5f, "IdleTimeMin");
+			m_maxMovingTime = ECS.GetValue<float>(entityID, 10f, "IdleTimeMax");
+
+			m_minDurationBetweenSpawns = ECS.GetValue<float>(entityID, 10f, "DurationBetweenSpawnMin");
+			m_maxDurationBetweenSpawns = ECS.GetValue<float>(entityID, 15f, "DurationBetweenSpawnMax");
+
+
+
 			InitStateBehaviours();
 
 			uint bossPanelSpawns = ECS.FindEntityWithName("BossPanelSpawnPoints");
@@ -145,8 +164,8 @@ namespace Scripting
 		{
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].isVulnerable = true;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].shouldReturnToDefault = false;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMin = 10f;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMax = 10f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMin = m_minMovingTime;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMax = m_maxMovingTime;
 
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].isVulnerable = false;
@@ -163,6 +182,8 @@ namespace Scripting
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].shouldReturnToDefault = false;
 		}
 
+		private bool c_customInit = true;
+
 		/******************************************************************************/
 		/*!
 		\brief
@@ -171,6 +192,12 @@ namespace Scripting
 		/******************************************************************************/
 		public override void Update(float dt)
 		{
+			if (c_customInit)
+			{
+				//Init late after L1Boss script initialised
+				TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
+				c_customInit = false;
+			}
 			if (m_debugMode)
 			{
 				//Debug stuff
@@ -204,11 +231,24 @@ namespace Scripting
 
 			//Timers
 			m_runStateInfo.m_timer += dt;
-			m_runStateInfo.m_timeSinceLastDamage += dt;
+			m_runStateInfo.m_timeSinceLastDamageTimer += dt;
+			m_runStateInfo.m_timeSinceLastSpawnTimer += dt;
 
 			switch (L1Boss.m_singleton.current_state)
 			{
 				case L1Boss.BOSS_BEHAVIOUR_STATE.MOVING:
+
+					if (m_runStateInfo.m_timer > m_runStateInfo.m_stateDuration)
+					{
+						if (m_runStateInfo.m_timeSinceLastSpawnTimer > m_runStateInfo.m_timeToNextSpawn)
+						{
+							TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+
+							m_runStateInfo.m_timeSinceLastSpawnTimer = 0f;
+							m_runStateInfo.m_timeToNextSpawn = PPMath.RandomFloat(m_minDurationBetweenSpawns, m_maxDurationBetweenSpawns);
+						}
+					}
+
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION:
 					break;
@@ -216,31 +256,56 @@ namespace Scripting
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
 				{
-					if(m_runStateInfo.m_timer > mSpawner_timeStartSpawnEnemies && m_runStateInfo.m_timer < mSpawner_timeEndSpawnEnemies)
+					if (m_runStateInfo.m_timer > mSpawner_timeStartSpawnEnemies && m_runStateInfo.m_timer < mSpawner_timeEndSpawnEnemies)
 					{
 						m_runStateInfo.m_secondaryTimer += dt;
-						
-						if(m_runStateInfo.m_secondaryTimer > mSpawner_durationBetweenSpawns)
+
+						if (m_runStateInfo.m_secondaryTimer > mSpawner_durationBetweenSpawns)
 						{
-							Console.WriteLine("SPAWNING ENEMIES");
+							int randomInt = PPMath.RandomInt(0, 5);
 
-							/*for (int i = 0; i < 6; ++i)
+							Console.WriteLine("SPAWNING ENEMIES Randomed: " + randomInt);
+
+							switch (randomInt)
 							{
-								ECS.GetGlobalPosition(mID_ventSpawnpoints[i]);
-							}//*/
-
-							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_Low1");
-							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_Low2");
-							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_Med1");
-							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_Med2");
-							EncounterSystemDriver.m_singleton.SpawnWave("Boss_High1");
-							//EncounterSystemDriver.m_singleton.SpawnWave("Boss_High2");
+								case 0:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_Low1");
+									break;
+								case 1:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_Low2");
+									break;
+								case 2:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_Med1");
+									break;
+								case 3:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_Med2");
+									break;
+								case 4:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_High1");
+									break;
+								case 5:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_High2");
+									break;
+								default:
+									Console.WriteLine("THIS ISN'T SUPPOSED TO HAPPEN");
+									break;
+							}
 
 							m_runStateInfo.m_secondaryTimer = 0f;
 						}
 					}
 				}
 				break;
+			}
+
+			//When Past the state duration threshold, it will return back to moving state
+			if (m_runStateInfo.m_timer > m_runStateInfo.m_stateDuration)
+			{
+				if (m_stateBehaviours[(int)L1Boss.m_singleton.current_state].shouldReturnToDefault)
+				{
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
+					Console.WriteLine("Boss: Changing to MOVING");
+				}
 			}
 
 			//Enter protection mode if damager threshold is reached
@@ -251,18 +316,8 @@ namespace Scripting
 				Console.WriteLine("Boss hit damage threshold, entering protection");
 			}
 
-			//When Past the state duration threshold, it will return back to moving state
-			if (m_runStateInfo.m_timer > m_runStateInfo.m_stateDuration)
-			{
-				if (m_stateBehaviours[(int)L1Boss.m_singleton.current_state].shouldReturnToDefault)
-				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
-					Console.WriteLine("Changing to MOVING");
-				}
-			}
-
 			//Damage threshold reset if boss doesn't take damage for awhile
-			if (m_runStateInfo.m_timeSinceLastDamage > m_coreProtectionDamageDuration)
+			if (m_runStateInfo.m_timeSinceLastDamageTimer > m_coreProtectionDamageDuration)
 			{
 				m_runStateInfo.m_damageTakenPeriod = 0f;
 			}
@@ -302,7 +357,7 @@ namespace Scripting
 
 			m_coreHealth -= 1f;
 			m_runStateInfo.m_damageTakenPeriod += 1f;
-			m_runStateInfo.m_timeSinceLastDamage = 0f;
+			m_runStateInfo.m_timeSinceLastDamageTimer = 0f;
 
 			if (m_coreHealth <= 0f)
 			{

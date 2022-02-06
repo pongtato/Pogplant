@@ -431,7 +431,7 @@ namespace Components
 			}
 		}
 
-		std::unordered_map<std::string, Variable> m_variables;
+		std::map<std::string, Variable> m_variables;
 	};
 }
 

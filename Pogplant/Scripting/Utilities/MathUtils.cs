@@ -20,6 +20,8 @@ namespace Scripting.Utilities
 
 	public struct PPMath
 	{
+		static Random random = new Random();
+
 		public static float Lerp(float a, float b, float by)
 		{
 			return a * (1 - by) + b * by;
@@ -27,8 +29,12 @@ namespace Scripting.Utilities
 
 		public static float RandomFloat(float min, float max)
 		{
-			Random random = new Random();
 			return (float)(random.NextDouble() * (max - min) + min);
+		}
+
+		public static int RandomInt(int min, int max)
+		{
+			return random.Next(min, max);
 		}
 
 		public static float Clamp(float value, float min, float max)
