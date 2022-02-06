@@ -127,8 +127,8 @@ namespace Scripting
 		Vector3 rot = new Vector3();
 		Vector3 scale = new Vector3();
 		private bool c_playedSpawnAnimation = false;
-		private float c_hardCodedUpAnimationSpeed = 8f;
-		private float c_animationDuration = 4f;
+		private float c_hardCodedUpAnimationSpeed = 10f;
+		private float c_animationDuration = 2f;
 
 		/******************************************************************************/
 		/*!
@@ -334,7 +334,7 @@ namespace Scripting
 			{
 				if (m_stateBehaviours[(int)L1Boss.m_singleton.current_state].shouldReturnToDefault)
 				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
 					Console.WriteLine("Boss: Changing to MOVING");
 				}
 			}
@@ -367,7 +367,7 @@ namespace Scripting
 
 					m_enemySpawnInstances.Clear();
 
-					//Console.WriteLine("Erased animation");
+					Console.WriteLine("Erased animation");
 				}
 			}
 			else
@@ -388,10 +388,13 @@ namespace Scripting
 
 		}
 
-		void TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false)
+		void TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false, bool dontResetTimer = false)
 		{
 			L1Boss.m_singleton.SetState(nextState);
-			m_runStateInfo.m_timer = 0f;
+
+			if(!dontResetTimer)
+				m_runStateInfo.m_timer = 0f;
+
 			m_runStateInfo.m_secondaryTimer = 0f;
 
 			if (forceNonReturn)
