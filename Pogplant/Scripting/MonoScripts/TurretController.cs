@@ -238,12 +238,12 @@ namespace Scripting
                 sixteen_small_group.Turret_type = 1;
             }
 
-            if (_entityID == ECS.FindEntityWithName("TurretGroup17"))
-            {
-                seventeen_small_group.ParentID = _entityID;
-                seventeen_small_group.activated_time = 20.0f;
-                seventeen_small_group.Turret_type = 1;
-            }
+            //if (_entityID == ECS.FindEntityWithName("TurretGroup17"))
+            //{
+            //    seventeen_small_group.ParentID = _entityID;
+            //    seventeen_small_group.activated_time = 20.0f;
+            //    seventeen_small_group.Turret_type = 1;
+            //}
 
 
             Total_turret_groups.Add(first_group);
@@ -270,7 +270,7 @@ namespace Scripting
             Total_turret_groups.Add(fourth_small_group);
             Total_turret_groups.Add(fifteen_small_group);
             Total_turret_groups.Add(sixteen_small_group);
-            Total_turret_groups.Add(seventeen_small_group);
+            //Total_turret_groups.Add(seventeen_small_group);
 
             UpdateTurretGroup(_entityID);
         }
