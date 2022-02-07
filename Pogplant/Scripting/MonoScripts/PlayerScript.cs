@@ -256,7 +256,11 @@ namespace Scripting
 			{
 				GameUtilities.LoadScene("Level02");
 			}
-
+			if (InputUtility.onKeyTriggered("LEVEL_BOSS"))
+			{
+				GameUtilities.LoadScene("Level01_Boss");
+			}
+			
 			//Return to main menu key
 			//if (InputUtility.onKeyTriggered(KEY_ID.KEY_ESCAPE))
 			//{
