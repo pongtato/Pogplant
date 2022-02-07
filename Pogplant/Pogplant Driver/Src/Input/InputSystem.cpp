@@ -43,7 +43,7 @@ namespace PPI
 		InputSystem::Instance().AppendKey("LASER", GLFW_KEY_G, GLFW_GAMEPAD_BUTTON_CIRCLE);
 
 		InputSystem::Instance().AppendKey("SLOWMO", GLFW_KEY_LEFT_CONTROL, GLFW_GAMEPAD_BUTTON_LEFT_BUMPER);
-
+		InputSystem::Instance().AppendKey("LEVEL2", GLFW_KEY_F2, GLFW_KEY_0);
 
 
 		/*Set menu buttons*/

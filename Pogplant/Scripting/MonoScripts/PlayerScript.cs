@@ -252,6 +252,11 @@ namespace Scripting
 			{
 				TimeManager.TriggerTimeAlter(0.5f, 2f);
 			}
+			if (InputUtility.onKeyTriggered("LEVEL2"))
+			{
+				GameUtilities.LoadScene("Level02");
+			}
+
 			//Return to main menu key
 			//if (InputUtility.onKeyTriggered(KEY_ID.KEY_ESCAPE))
 			//{
