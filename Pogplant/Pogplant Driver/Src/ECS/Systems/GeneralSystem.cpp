@@ -46,28 +46,24 @@ void GeneralSystem::UpdateGame(float c_dt)
 	for (auto& projectileEntity : projectiles)
 	{
 		auto& projectile = projectiles.get<Components::Projectile>(projectileEntity);
-		//auto& transform = projectiles.get<Components::Transform>(projectileEntity);
-		//auto& rigidbody = projectiles.get<Components::Rigidbody>(projectileEntity);
+		auto& transform = projectiles.get<Components::Transform>(projectileEntity);
+		auto& rigidbody = projectiles.get<Components::Rigidbody>(projectileEntity);
 
 		//transform.m_position += move;
 		//glm::vec3 move = { 0.f,0.f,projectile.m_Speed * c_dt };
+		
+		if(projectile.m_Homing)
+		{
+			auto enemy_trans = m_registry->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(projectile.tracker));
+			if(enemy_trans)
+			{
+				auto mag = glm::length(rigidbody.velocity);
+				transform.LookAt(enemy_trans->GetGlobalPosition());
+				auto forward_vector = transform.GetForwardVector();
+				rigidbody.velocity = forward_vector * mag;
 
-		//Doesnt work like its intended to be
-		//if(projectile.m_Homing)
-		//{
-
-		//	if (m_registry->GetReg().valid(static_cast<entt::entity>(projectile.tracker)))
-		//	{
-		//		//transform.LookAt();
-		//		auto enemy_trans = m_registry->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(projectile.tracker));
-		//		auto vector = enemy_trans->m_position - transform.m_position;
-		//		glm::normalize(vector);
-		//		transform.m_rotation = vector;
-		//		////auto  new_pos = glm::mix(transform.m_position, enemy_trans->m_position,  c_dt);
-		//		//rigidbody.AddForce(vector * 500.f);
-		//	}
-
-		//}
+			}
+		}
 
 		projectile.m_CurentLifetime += c_dt;
 

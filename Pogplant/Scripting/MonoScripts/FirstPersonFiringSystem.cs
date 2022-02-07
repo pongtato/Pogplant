@@ -32,7 +32,7 @@ namespace Scripting
         float p_fireRate = 0.1f;
         float p_fire_timer = 0.0f;
         float m_rotspeed = 20.0f;
-        float turret_rot_lerp_limit = 15.0f;
+        //float turret_rot_lerp_limit = 15.0f;
         bool isHoming = false;
         bool isMuzzleflashed = false;
 
@@ -482,7 +482,7 @@ namespace Scripting
             {
                 Vector3 CurrTurrRot = ECS.GetComponent<Transform>(TurretGroup[i]).Rotation;
                 Vector3 LerpVal = Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed);
-                LimitLerp(ref LerpVal, turret_rot_lerp_limit);
+                //LimitLerp(ref LerpVal, turret_rot_lerp_limit);
 
                 ECS.SetRotation(TurretGroup[i], LerpVal);
                 //Reset Reticle
@@ -559,7 +559,7 @@ namespace Scripting
                 Vector3 Position = ECS.GetGlobalPosition(MuzzleGroup[i]);
                 Vector3 Rotation = ECS.GetGlobalRotation(MuzzleGroup[i]);
 
-                GameUtilities.FirePlayerBullet(Position, Forward, Rotation, isHoming, 0);
+                GameUtilities.FirePlayerBullet(Position, Forward, Rotation, false, 0);
             }
         }
 
@@ -577,7 +577,7 @@ namespace Scripting
                 var new_position = enemy_pos + (enemy_velo * dt * 20.0f);
                 new_position -= Position;
                 var new_forward = Vector3.Normalise(new_position);
-                GameUtilities.FirePlayerBullet(Position, new_forward, Rotation, isHoming, EntityID_of_FirstTargetablEnemy());
+                GameUtilities.FirePlayerBullet(Position, new_forward, Rotation, true, EntityID_of_FirstTargetablEnemy());
             }
         }
 

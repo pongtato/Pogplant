@@ -22,7 +22,7 @@ namespace Components
 			False
 		};
 
-		bool m_Homing;
+		bool m_Homing = false;
 		float m_Lifetime;
 		float m_CurentLifetime;
 		float m_Speed;
@@ -32,7 +32,7 @@ namespace Components
 		ProjectileType m_Type;
 
 		Projectile(float lifetime, float speed,  OwnerType ownertype, float damage = 10.f, bool homing = false, uint32_t tracker = 0) :
-			m_Lifetime(lifetime), m_CurentLifetime(0.f), m_Speed(speed), m_Damage(damage), m_Ownertype(ownertype) {};
+			m_Lifetime(lifetime), m_CurentLifetime(0.f), m_Speed(speed), m_Damage(damage), m_Ownertype(ownertype), m_Homing(homing), tracker(tracker) {};
 	};
 
 	struct Laser
