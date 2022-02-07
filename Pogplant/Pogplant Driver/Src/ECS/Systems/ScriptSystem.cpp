@@ -511,7 +511,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.PlayerPrefs::GetValueInt", SSH::CustomSaverGetValueMono<int>);
 	mono_add_internal_call("Scripting.PlayerPrefs::SetValueFloat", SSH::CustomSaverSetValueMono<float>);
 	mono_add_internal_call("Scripting.PlayerPrefs::SetValueInt", SSH::CustomSaverSetValueMono<int>);
-	mono_add_internal_call("Scripting.PlayerPrefs::Save", PPU::CustomSaver::Save);
+	mono_add_internal_call("Scripting.PlayerPrefs::Save", PPU::CustomSaver::SaveGame);
 
 	//Audio
 	mono_add_internal_call("Scripting.AudioEngine::PlayAudio", SSH::PlayAudio);

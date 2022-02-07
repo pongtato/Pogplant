@@ -37,7 +37,10 @@ namespace PPU
 	class CustomSaver
 	{
 	public:
-		~CustomSaver() = default;
+		inline ~CustomSaver()
+		{
+			SaveGame();
+		}
 
 		template <typename T>
 		static void Append(const std::string& key, const T& value, bool saveAsDocuments = true);
@@ -57,6 +60,7 @@ namespace PPU
 		static Json::Value GetValueJson(const std::string& key, bool loadFromDocuments = true);
 
 		static void Save();
+		static void SaveGame();
 
 		static CustomSaver& Instance();
 	private:

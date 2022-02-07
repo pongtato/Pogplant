@@ -152,10 +152,35 @@ namespace PPU
 	/**************************************************************************/
 	/*!
 	\brief
-		Saves all the data to both documents and resources folder
+		Saves the internal resources folder
 	*/
 	/**************************************************************************/
 	void CustomSaver::Save()
+	{
+		auto& instance = Instance();
+
+		std::ofstream internalStream(instance.m_internalFilePath, std::ios::out | std::ios::trunc);
+
+		if (internalStream.is_open())
+		{
+			Json::StreamWriterBuilder builder;
+			Json::StreamWriter* writer = builder.newStreamWriter();
+
+			writer->write(instance.m_internalJson, &internalStream);
+
+			delete writer;
+			internalStream.close();
+		}
+
+	}
+
+	/**************************************************************************/
+	/*!
+	\brief
+		Saves all the data to documents folder
+	*/
+	/**************************************************************************/
+	void CustomSaver::SaveGame()
 	{
 		auto& instance = Instance();
 
@@ -171,19 +196,5 @@ namespace PPU
 			delete writer;
 			documentStream.close();
 		}
-
-		std::ofstream internalStream(instance.m_internalFilePath, std::ios::out | std::ios::trunc);
-
-		if (internalStream.is_open())
-		{
-			Json::StreamWriterBuilder builder;
-			Json::StreamWriter* writer = builder.newStreamWriter();
-
-			writer->write(instance.m_internalJson, &internalStream);
-
-			delete writer;
-			internalStream.close();
-		}
-
 	}
 }
