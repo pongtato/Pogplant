@@ -170,7 +170,7 @@
 		"Name" : 
 		{
 			"m_Name" : "ReticleGroup",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -203,7 +203,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Reticle1",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -269,7 +269,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Child",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -302,7 +302,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Reticle2",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -368,7 +368,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Child",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -401,7 +401,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Reticle3",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -467,7 +467,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Child",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -500,7 +500,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Reticle4",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -566,7 +566,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Child",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -2573,9 +2573,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				0.10942103713750839,
-				0.99351584911346436,
-				0.030878113582730293
+				-0.0010471950517967343,
+				0.99965941905975342,
+				0.02607136033475399
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
@@ -8997,7 +8997,7 @@
 		"Name" : 
 		{
 			"m_Name" : "ReticleGroup",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -9030,7 +9030,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Reticle3",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -9096,7 +9096,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Child",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -9129,7 +9129,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Reticle4",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -9195,7 +9195,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Child",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -9228,7 +9228,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Reticle1",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -9294,7 +9294,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Child",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -9327,7 +9327,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Reticle2",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -9393,7 +9393,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Child",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
