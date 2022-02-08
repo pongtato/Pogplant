@@ -88,7 +88,8 @@ namespace Pogplant
 							it_Camera.m_Orthographic,
 							it_Camera.m_Projection,
 							it_Camera.m_View,
-							it_Trans.GetGlobalPosition(),
+							//it_Trans.GetGlobalPosition(),
+							it_Trans.m_position,
 							it_Camera.m_Near,
 							it_Camera.m_Far,
 							it_Camera.m_Fov
@@ -382,7 +383,8 @@ namespace Pogplant
 			auto& it_trans = results.get<Components::Transform>(e);
 
 			const std::string currLight = "lights[" + std::to_string(light_it) + "].";
-			ShaderLinker::SetUniform((currLight + "Position").c_str(), it_trans.GetGlobalPosition());
+			//ShaderLinker::SetUniform((currLight + "Position").c_str(), it_trans.GetGlobalPosition());
+			ShaderLinker::SetUniform((currLight + "Position").c_str(), it_trans.m_position);
 			ShaderLinker::SetUniform((currLight + "Color").c_str(), it_light.m_Color * it_light.m_Intensity);
 
 			// Attenuation
