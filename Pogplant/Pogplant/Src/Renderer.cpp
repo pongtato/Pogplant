@@ -65,7 +65,7 @@ namespace Pogplant
 	};
 
 	/// Helper
-	CameraReturnData GetCurrentCamera(const entt::registry& registry, bool _EditorMode)
+	CameraReturnData GetCurrentCamera(entt::registry& registry, bool _EditorMode)
 	{
 		// Try to get game camera
 		auto cam_results = registry.view<Components::Transform, Components::Camera>();
@@ -77,10 +77,10 @@ namespace Pogplant
 				CameraReturnData ret = {};
 				bool failFlag = true;
 				// Use the game camera
-				for (const auto& e : cam_results)
+				for (auto& e : cam_results)
 				{
-					const auto& it_Trans = cam_results.get<const Components::Transform>(e);
-					const auto& it_Camera = cam_results.get<const Components::Camera>(e);
+					auto& it_Trans = cam_results.get<Components::Transform>(e);
+					auto& it_Camera = cam_results.get<Components::Camera>(e);
 					if (it_Camera.m_Active)
 					{
 						ret =
@@ -88,7 +88,7 @@ namespace Pogplant
 							it_Camera.m_Orthographic,
 							it_Camera.m_Projection,
 							it_Camera.m_View,
-							it_Trans.m_position,
+							it_Trans.GetGlobalPosition(),
 							it_Camera.m_Near,
 							it_Camera.m_Far,
 							it_Camera.m_Fov
@@ -250,7 +250,7 @@ namespace Pogplant
 		glEnable(GL_DEPTH_TEST);
 	}
 
-	void Renderer::AOPass(const entt::registry& registry, bool _EditorMode)
+	void Renderer::AOPass(entt::registry& registry, bool _EditorMode)
 	{
 		FrameBuffer::BindFrameBuffer(BufferType::SSAO_BUFFER);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -288,7 +288,7 @@ namespace Pogplant
 		ShaderLinker::UnUse();
 	}
 
-	void Renderer::DebugPass(const entt::registry& registry)
+	void Renderer::DebugPass(entt::registry& registry)
 	{
 		FrameBuffer::BindFrameBuffer(BufferType::DEBUG_BUFFER);
 		glEnable(GL_DEPTH_TEST);
@@ -308,7 +308,7 @@ namespace Pogplant
 		FrameBuffer::BindFrameBuffer(BufferType::PP_BUFFER);
 	}
 
-	void Renderer::GLightPass(const entt::registry& registry, bool _EditorMode)
+	void Renderer::GLightPass(entt::registry& registry, bool _EditorMode)
 	{
 		ShaderLinker::Use("GPASS");
 		glActiveTexture(GL_TEXTURE0);
@@ -361,7 +361,7 @@ namespace Pogplant
 		auto dLight_it = dResults.begin();
 		if (dLight_it != dResults.end())
 		{
-			const auto& dLight = dResults.get<const Components::Directional_Light>(*dLight_it);
+			const auto& dLight = dResults.get<Components::Directional_Light>(*dLight_it);
 			const std::string currLight = "directLight.";
 			ShaderLinker::SetUniform((currLight + "Direction").c_str(), dLight.m_Direction);
 			ShaderLinker::SetUniform((currLight + "Color").c_str(), dLight.m_Color * dLight.m_Intensity);
@@ -376,13 +376,13 @@ namespace Pogplant
 		auto results = registry.view<Components::Point_Light, Components::Transform>();
 		ShaderLinker::SetUniform("activeLights", static_cast<int>(results.size_hint()));
 		int light_it = 0;
-		for (const auto& e : results)
+		for (auto& e : results)
 		{
-			const auto& it_light = results.get<const Components::Point_Light>(e);
-			const auto& it_trans = results.get<const Components::Transform>(e);
+			auto& it_light = results.get<Components::Point_Light>(e);
+			auto& it_trans = results.get<Components::Transform>(e);
 
 			const std::string currLight = "lights[" + std::to_string(light_it) + "].";
-			ShaderLinker::SetUniform((currLight + "Position").c_str(), it_trans.m_position);
+			ShaderLinker::SetUniform((currLight + "Position").c_str(), it_trans.GetGlobalPosition());
 			ShaderLinker::SetUniform((currLight + "Color").c_str(), it_light.m_Color * it_light.m_Intensity);
 
 			// Attenuation
@@ -421,7 +421,7 @@ namespace Pogplant
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
-	void Renderer::ShadowPass(const entt::registry& registry)
+	void Renderer::ShadowPass(entt::registry& registry)
 	{
 		//// Default position in case directional light not in scene
 		//glm::vec3 lightDir = glm::normalize(glm::vec3(20.0f, 50.0f, 20.0f));
@@ -555,7 +555,7 @@ namespace Pogplant
 		glfwPollEvents();
 	}
 
-	void Renderer::Draw(const entt::registry& registry, Components::Renderer* _Selected, bool _EditorMode)
+	void Renderer::Draw(entt::registry& registry, Components::Renderer* _Selected, bool _EditorMode)
 	{
 		glEnable(GL_CULL_FACE);
 
@@ -642,7 +642,7 @@ namespace Pogplant
 		glDisable(GL_CULL_FACE);
 	}
 
-	void Renderer::DrawDebug(const entt::registry& registry, Components::Renderer* _Selected)
+	void Renderer::DrawDebug(entt::registry& registry, Components::Renderer* _Selected)
 	{
 		// Outline edge thing will be solved later
 		(void)_Selected;
@@ -751,7 +751,7 @@ namespace Pogplant
 		ShaderLinker::UnUse();
 	}
 
-	void Renderer::DrawText(const entt::registry& registry, bool _EditorMode)
+	void Renderer::DrawText(entt::registry& registry, bool _EditorMode)
 	{
 		//glEnable(GL_BLEND);
 		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -765,8 +765,8 @@ namespace Pogplant
 		auto results = registry.view<Components::Transform, Components::Text>(entt::exclude_t<Components::Prefab, Components::Disabled>());
 		for (const auto& e : results)
 		{
-			const auto& it_Text = results.get<const Components::Text>(e);
-			const auto& it_Trans = results.get<const Components::Transform>(e);
+			auto& it_Text = results.get<Components::Text>(e);
+			auto& it_Trans = results.get<Components::Transform>(e);
 
 			Font* currFont = FontResource::m_FontPool[it_Text.m_FontID];
 

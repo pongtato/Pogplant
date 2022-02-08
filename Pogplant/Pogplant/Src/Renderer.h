@@ -29,20 +29,20 @@ namespace Pogplant
 		static void StartEditorBuffer();
 		static void StartGameBuffer();
 		static void StartGBuffer();
-		static void AOPass(const entt::registry& registry, bool _EditorMode);
+		static void AOPass(entt::registry& registry, bool _EditorMode);
 		static void AOBlurPass();
-		static void DebugPass(const entt::registry& registry);
+		static void DebugPass(entt::registry& registry);
 		static void EndBuffer();
 		static void PostProcess();
-		static void GLightPass(const entt::registry& registry, bool _EditorMode);
-		static void ShadowPass(const entt::registry& registry);
+		static void GLightPass(entt::registry& registry, bool _EditorMode);
+		static void ShadowPass(entt::registry& registry);
 		static void BlurPass();
 		static void HDRPass(bool _Bloom);
 		static void ClearBuffer(float _R = 0.0f, float _G = 0.0f, float _B = 0.0f, float _A = 1.0f);
 		static void SwapBuffer();
 		// Draw mesh in world space
-		static void Draw(const entt::registry& registry, Components::Renderer* _Selected, bool _EditorMode);
-		static void DrawDebug(const entt::registry& registry, Components::Renderer* _Selected);
+		static void Draw(entt::registry& registry, Components::Renderer* _Selected, bool _EditorMode);
+		static void DrawDebug(entt::registry& registry, Components::Renderer* _Selected);
 		// Draw screen buffer
 		static void DrawScreen();
 		static bool m_RenderGrid;
@@ -70,6 +70,6 @@ namespace Pogplant
 		static bool m_EditorCamDebug;
 
 	private:
-		static void DrawText(const entt::registry& registry, bool _EditorMode);
+		static void DrawText(entt::registry& registry, bool _EditorMode);
 	};
 }
