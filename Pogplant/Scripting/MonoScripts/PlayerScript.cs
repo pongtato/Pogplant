@@ -850,6 +850,7 @@ namespace Scripting
 			else
 			{
 				// Just change the color first
+				ECS.PlayAudio(entity_id, 3, "SFX");
 				GameUtilities.UpdateTextColor(m_ScoreTextID, new Vector3(1.0f, 0.0f, 0.0f));
 				if (score > minus_score)
 				{

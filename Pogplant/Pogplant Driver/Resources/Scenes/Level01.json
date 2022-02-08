@@ -8016,32 +8016,9 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 2.0,
-				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
 				"Type" : 0
-			},
-			{
-				"Data" : 500.0,
-				"Name" : "m_ExplosiveEnemy_propeller_speed",
-				"Type" : 0
-			},
-			{
-				"Data" : 5.0,
-				"Name" : "m_ExplosiveEnemy_threshold_2",
-				"Type" : 0
-			},
-			{
-				"Data" : 3.0,
-				"Name" : "m_sphere_value",
-				"Type" : 0
-			},
-			{
-				"Data" : true,
-				"Data0" : 0.0,
-				"Data1" : 1.0,
-				"Data2" : 0.0,
-				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
-				"Type" : 4
 			},
 			{
 				"Data" : 0.10000000149011612,
@@ -8064,8 +8041,26 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 69420.0,
-				"Name" : "m_ExplosiveEnemy_damage",
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
 				"Type" : 0
 			},
 			{
@@ -8076,6 +8071,11 @@
 			{
 				"Data" : 100.0,
 				"Name" : "m_sphere_rot_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 3.0,
+				"Name" : "m_sphere_value",
 				"Type" : 0
 			}
 		],
@@ -8598,32 +8598,9 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 2.0,
-				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
 				"Type" : 0
-			},
-			{
-				"Data" : 500.0,
-				"Name" : "m_ExplosiveEnemy_propeller_speed",
-				"Type" : 0
-			},
-			{
-				"Data" : 5.0,
-				"Name" : "m_ExplosiveEnemy_threshold_2",
-				"Type" : 0
-			},
-			{
-				"Data" : 3.0,
-				"Name" : "m_sphere_value",
-				"Type" : 0
-			},
-			{
-				"Data" : true,
-				"Data0" : 0.0,
-				"Data1" : 1.0,
-				"Data2" : 0.0,
-				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
-				"Type" : 4
 			},
 			{
 				"Data" : 0.10000000149011612,
@@ -8646,8 +8623,26 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 69420.0,
-				"Name" : "m_ExplosiveEnemy_damage",
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
 				"Type" : 0
 			},
 			{
@@ -8658,6 +8653,11 @@
 			{
 				"Data" : 100.0,
 				"Name" : "m_sphere_rot_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 3.0,
+				"Name" : "m_sphere_value",
 				"Type" : 0
 			}
 		],
@@ -9180,32 +9180,9 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 2.0,
-				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
 				"Type" : 0
-			},
-			{
-				"Data" : 500.0,
-				"Name" : "m_ExplosiveEnemy_propeller_speed",
-				"Type" : 0
-			},
-			{
-				"Data" : 5.0,
-				"Name" : "m_ExplosiveEnemy_threshold_2",
-				"Type" : 0
-			},
-			{
-				"Data" : 3.0,
-				"Name" : "m_sphere_value",
-				"Type" : 0
-			},
-			{
-				"Data" : true,
-				"Data0" : 0.0,
-				"Data1" : 1.0,
-				"Data2" : 0.0,
-				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
-				"Type" : 4
 			},
 			{
 				"Data" : 0.10000000149011612,
@@ -9228,8 +9205,26 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 69420.0,
-				"Name" : "m_ExplosiveEnemy_damage",
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
 				"Type" : 0
 			},
 			{
@@ -9240,6 +9235,11 @@
 			{
 				"Data" : 100.0,
 				"Name" : "m_sphere_rot_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 3.0,
+				"Name" : "m_sphere_value",
 				"Type" : 0
 			}
 		],
@@ -23234,32 +23234,9 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 2.0,
-				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
 				"Type" : 0
-			},
-			{
-				"Data" : 500.0,
-				"Name" : "m_ExplosiveEnemy_propeller_speed",
-				"Type" : 0
-			},
-			{
-				"Data" : 5.0,
-				"Name" : "m_ExplosiveEnemy_threshold_2",
-				"Type" : 0
-			},
-			{
-				"Data" : 3.0,
-				"Name" : "m_sphere_value",
-				"Type" : 0
-			},
-			{
-				"Data" : true,
-				"Data0" : 0.0,
-				"Data1" : 1.0,
-				"Data2" : 0.0,
-				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
-				"Type" : 4
 			},
 			{
 				"Data" : 0.10000000149011612,
@@ -23282,8 +23259,26 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 69420.0,
-				"Name" : "m_ExplosiveEnemy_damage",
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
 				"Type" : 0
 			},
 			{
@@ -23294,6 +23289,11 @@
 			{
 				"Data" : 100.0,
 				"Name" : "m_sphere_rot_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 3.0,
+				"Name" : "m_sphere_value",
 				"Type" : 0
 			}
 		],
@@ -42327,32 +42327,9 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 2.0,
-				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
 				"Type" : 0
-			},
-			{
-				"Data" : 500.0,
-				"Name" : "m_ExplosiveEnemy_propeller_speed",
-				"Type" : 0
-			},
-			{
-				"Data" : 5.0,
-				"Name" : "m_ExplosiveEnemy_threshold_2",
-				"Type" : 0
-			},
-			{
-				"Data" : 3.0,
-				"Name" : "m_sphere_value",
-				"Type" : 0
-			},
-			{
-				"Data" : true,
-				"Data0" : 0.0,
-				"Data1" : 1.0,
-				"Data2" : 0.0,
-				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
-				"Type" : 4
 			},
 			{
 				"Data" : 0.10000000149011612,
@@ -42375,8 +42352,26 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 69420.0,
-				"Name" : "m_ExplosiveEnemy_damage",
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 500.0,
+				"Name" : "m_ExplosiveEnemy_propeller_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 2.0,
+				"Name" : "m_ExplosiveEnemy_threshold_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 5.0,
+				"Name" : "m_ExplosiveEnemy_threshold_2",
 				"Type" : 0
 			},
 			{
@@ -42387,6 +42382,11 @@
 			{
 				"Data" : 100.0,
 				"Name" : "m_sphere_rot_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 3.0,
+				"Name" : "m_sphere_value",
 				"Type" : 0
 			}
 		],
@@ -50292,12 +50292,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_09_Tunnel"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -50346,12 +50340,6 @@
 				0.75813955068588257,
 				0.44224733114242554,
 				0.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Tunnel_Entry_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -50402,12 +50390,6 @@
 				0.0,
 				0.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Tunnel_Floor_Emissive"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -50456,12 +50438,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Tunnel_Tile"
 			],
 			"UseLight" : 1
 		},
@@ -50512,12 +50488,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Upper_Brridge_01"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -50566,12 +50536,6 @@
 				1.0,
 				0.47244995832443237,
 				0.17209303379058838
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Upper_Brridge_01_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -50622,12 +50586,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Lower_Brridge_01"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -50676,12 +50634,6 @@
 				1.0,
 				0.27906978130340576,
 				0.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Lower_Brridge_01_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -50732,12 +50684,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Part_01"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -50786,12 +50732,6 @@
 				0.99069768190383911,
 				0.5232856273651123,
 				0.10137369483709335
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Building_01_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -50842,12 +50782,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Building_02"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -50896,12 +50830,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Part_02"
 			],
 			"UseLight" : 1
 		},
@@ -50952,12 +50880,6 @@
 				0.0,
 				0.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Building_03_Emissive"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51006,12 +50928,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Part_03"
 			],
 			"UseLight" : 1
 		},
@@ -51062,12 +50978,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Part_04"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51116,12 +51026,6 @@
 				1.0,
 				0.018604636192321777,
 				0.018604636192321777
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Building_05_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -51172,12 +51076,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Part_01"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51226,12 +51124,6 @@
 				0.85581398010253906,
 				0.72362297773361206,
 				0.04378582164645195
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_01_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -51282,12 +51174,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_02"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51336,12 +51222,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Part_02"
 			],
 			"UseLight" : 1
 		},
@@ -51392,12 +51272,6 @@
 				0.19925867021083832,
 				0.055489465594291687
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_03_Emissive"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51446,12 +51320,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_04"
 			],
 			"UseLight" : 1
 		},
@@ -51502,12 +51370,6 @@
 				0.07487795501947403,
 				0.022390492260456085
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_04_Emissive"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51556,12 +51418,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_05"
 			],
 			"UseLight" : 1
 		},
@@ -51612,12 +51468,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Part_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51666,12 +51516,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Part_04"
 			],
 			"UseLight" : 1
 		},
@@ -51722,12 +51566,6 @@
 				0.44651162624359131,
 				0.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_07_Emissive"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51776,12 +51614,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Part_05"
 			],
 			"UseLight" : 1
 		},
@@ -51832,12 +51664,6 @@
 				0.58513790369033813,
 				0.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Building_03_Emissive001"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51886,12 +51712,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_08"
 			],
 			"UseLight" : 1
 		},
@@ -51942,12 +51762,6 @@
 				0.27020013332366943,
 				0.093023240566253662
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_08_Emissive"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -51996,12 +51810,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Part_06"
 			],
 			"UseLight" : 1
 		},
@@ -52052,12 +51860,6 @@
 				0.89767444133758545,
 				0.020876159891486168
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_10_Emissive"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -52106,12 +51908,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_Bridges"
 			],
 			"UseLight" : 1
 		},
@@ -52162,12 +51958,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Center_Building"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -52216,12 +52006,6 @@
 				1.0,
 				0.041860461235046387,
 				0.041860461235046387
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Center_Building_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -52272,12 +52056,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_BG_Extra_01"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -52326,12 +52104,6 @@
 				1.0,
 				0.75595235824584961,
 				0.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Building_05_Emissive001"
 			],
 			"UseLight" : 1
 		},
@@ -52382,12 +52154,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_BG_Extra_02"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -52436,12 +52202,6 @@
 				0.98139536380767822,
 				0.35028752684593201,
 				0.1688913106918335
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Left_Building_03_Emissive002"
 			],
 			"UseLight" : 1
 		},
@@ -52492,12 +52252,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_BG_Extra_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -52546,12 +52300,6 @@
 				0.80000001192092896,
 				0.13724179565906525,
 				0.029767466709017754
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_08_Emissive001"
 			],
 			"UseLight" : 1
 		},
@@ -52602,12 +52350,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_BG_Extra_04"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -52656,12 +52398,6 @@
 				1.0,
 				0.92387235164642334,
 				0.03720933198928833
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Right_Building_01_Emissive001"
 			],
 			"UseLight" : 1
 		},
@@ -52712,12 +52448,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Gate_End"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -52766,12 +52496,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_09_Surround"
 			],
 			"UseLight" : 1
 		},
@@ -52822,12 +52546,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Upper_Brridge_01"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -52876,12 +52594,6 @@
 				1.0,
 				0.14418601989746094,
 				0.14418601989746094
-			],
-			"RenderModel" : 
-			[
-				"Segment_09_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_09_Upper_Brridge_01_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -54834,6 +54546,33 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplier1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplier2.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplier3.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplierEnd.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -54894,14 +54633,14 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 2.0,
-				"Name" : "SlowForce",
-				"Type" : 0
-			},
-			{
 				"Data" : false,
 				"Name" : "NewMovement",
 				"Type" : 2
+			},
+			{
+				"Data" : 2.0,
+				"Name" : "SlowForce",
+				"Type" : 0
 			}
 		],
 		"Scripting" : 
@@ -61466,12 +61205,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -61520,12 +61253,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -62221,12 +61948,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -62275,12 +61996,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -62336,12 +62051,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -62390,12 +62099,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -63741,12 +63444,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -63795,12 +63492,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -63856,12 +63547,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -63910,12 +63595,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -64661,12 +64340,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -64715,12 +64388,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -64775,12 +64442,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -64831,12 +64492,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -64890,12 +64545,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -64946,12 +64595,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -65005,12 +64648,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -65061,12 +64698,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -65120,12 +64751,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -65176,12 +64801,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -65235,12 +64854,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -65291,12 +64904,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -65350,12 +64957,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -65406,12 +65007,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -65466,12 +65061,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -65520,12 +65109,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -65926,12 +65509,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -65980,12 +65557,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -66271,12 +65842,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -66325,12 +65890,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -66501,12 +66060,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -66555,12 +66108,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -66856,12 +66403,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -66910,12 +66451,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -149579,7 +149114,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.770057678222656,
+				"m_FrameCounter" : 32.357662200927734,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -149592,8 +149127,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.75
+					0.0,
+					0.265625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -149645,7 +149180,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.770057678222656,
+				"m_FrameCounter" : 32.357662200927734,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -149658,8 +149193,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.75
+					0.0,
+					0.265625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -149711,7 +149246,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 77.532150268554688,
+				"m_FrameCounter" : 60.131122589111328,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -149724,8 +149259,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.609375
+					0.0,
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -149777,7 +149312,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.770057678222656,
+				"m_FrameCounter" : 32.357662200927734,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -149790,8 +149325,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.75
+					0.0,
+					0.265625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -149843,7 +149378,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 71.998985290527344,
+				"m_FrameCounter" : 29.741489410400391,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -149857,7 +149392,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.5625
+					0.234375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -149909,7 +149444,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.770057678222656,
+				"m_FrameCounter" : 32.357662200927734,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -149922,8 +149457,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.75
+					0.0,
+					0.265625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -149975,7 +149510,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 77.532150268554688,
+				"m_FrameCounter" : 60.131122589111328,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -149988,8 +149523,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.609375
+					0.0,
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -150041,7 +149576,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 104.35979461669922,
+				"m_FrameCounter" : 72.807456970214844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -150055,7 +149590,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.828125
+					0.578125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -150107,7 +149642,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 77.532150268554688,
+				"m_FrameCounter" : 60.131122589111328,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -150120,8 +149655,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.609375
+					0.0,
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -150173,7 +149708,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 112.61917114257812,
+				"m_FrameCounter" : 39.865882873535156,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -150186,8 +149721,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.890625
+					0.5,
+					0.3125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -150239,7 +149774,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 104.35979461669922,
+				"m_FrameCounter" : 72.807456970214844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -150253,7 +149788,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.828125
+					0.578125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -150721,12 +150256,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -150776,12 +150305,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -150830,12 +150353,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -150886,12 +150403,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -150940,12 +150451,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -150996,12 +150501,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -151050,12 +150549,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -151106,12 +150599,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -151160,12 +150647,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -151216,12 +150697,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -151270,12 +150745,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -151326,12 +150795,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -151380,12 +150843,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
 			],
 			"UseLight" : 1
 		},
@@ -151436,12 +150893,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -151491,12 +150942,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -151545,12 +150990,6 @@
 				1.0,
 				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ground_Straight_Type_02",
-				"Resources/Models\\Environment",
-				"Ground_Straight_Type_03_Rocks"
 			],
 			"UseLight" : 1
 		},
@@ -152823,14 +152262,14 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : false,
-				"Name" : "DoubleControlAudio",
-				"Type" : 2
-			},
-			{
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : false,
+				"Name" : "DoubleControlAudio",
+				"Type" : 2
 			}
 		],
 		"Scripting" : 
@@ -153187,14 +152626,14 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : false,
-				"Name" : "DoubleControlAudio",
-				"Type" : 2
-			},
-			{
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : false,
+				"Name" : "DoubleControlAudio",
+				"Type" : 2
 			}
 		],
 		"Scripting" : 
@@ -153551,14 +152990,14 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : false,
-				"Name" : "DoubleControlAudio",
-				"Type" : 2
-			},
-			{
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : false,
+				"Name" : "DoubleControlAudio",
+				"Type" : 2
 			}
 		],
 		"Scripting" : 
@@ -153915,14 +153354,14 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : false,
-				"Name" : "DoubleControlAudio",
-				"Type" : 2
-			},
-			{
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : false,
+				"Name" : "DoubleControlAudio",
+				"Type" : 2
 			}
 		],
 		"Scripting" : 
@@ -154279,14 +153718,14 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : false,
-				"Name" : "DoubleControlAudio",
-				"Type" : 2
-			},
-			{
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : false,
+				"Name" : "DoubleControlAudio",
+				"Type" : 2
 			}
 		],
 		"Scripting" : 
@@ -154643,14 +154082,14 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : false,
-				"Name" : "DoubleControlAudio",
-				"Type" : 2
-			},
-			{
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : false,
+				"Name" : "DoubleControlAudio",
+				"Type" : 2
 			}
 		],
 		"Scripting" : 
@@ -155007,14 +154446,14 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : false,
-				"Name" : "DoubleControlAudio",
-				"Type" : 2
-			},
-			{
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : false,
+				"Name" : "DoubleControlAudio",
+				"Type" : 2
 			}
 		],
 		"Scripting" : 

@@ -217,6 +217,7 @@ namespace Scripting
                         {
                             float amount = AudioEngine.GetChannelGroupVolume("BGM") > 0.1f ? AudioEngine.GetChannelGroupVolume("BGM") - volume_change_amount : 0.0f;
                             AudioEngine.SetChannelGroupVolume("BGM", amount);
+                            PlayerPrefs.SetValue<float>("AudioBGM", amount);
                             UpdateVolumeBars(bgm_bars_list);
                         }
                         break;
@@ -224,6 +225,7 @@ namespace Scripting
                         {
                             float amount = AudioEngine.GetChannelGroupVolume("SFX") > 0.1f ? AudioEngine.GetChannelGroupVolume("SFX") - volume_change_amount : 0.0f;
                             AudioEngine.SetChannelGroupVolume("SFX", amount);
+                            PlayerPrefs.SetValue<float>("AudioSFX", amount);
                             UpdateVolumeBars(sfx_bars_list);
                         }
                         break;
@@ -231,6 +233,7 @@ namespace Scripting
                         {
                             float amount = AudioEngine.GetChannelGroupVolume("VO") > 0.1f ? AudioEngine.GetChannelGroupVolume("VO") - volume_change_amount : 0.0f;
                             AudioEngine.SetChannelGroupVolume("VO", amount);
+                            PlayerPrefs.SetValue<float>("AudioVO", amount);
                             UpdateVolumeBars(vo_bars_list);
                         }
                         break;

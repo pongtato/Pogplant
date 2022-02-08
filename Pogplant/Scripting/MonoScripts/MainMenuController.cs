@@ -499,7 +499,7 @@ namespace Scripting
                 switch (active_index)
                 {
                     case 0:
-                        GameUtilities.LoadScene("Level01_PresentationBuild");
+                        GameUtilities.LoadScene("Level01");
                         break;
                     case 1:
                         menu_state = MENU_STATE.IN_SUB_MENU;
