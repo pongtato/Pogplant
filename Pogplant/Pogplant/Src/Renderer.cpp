@@ -29,7 +29,7 @@ namespace Pogplant
 {
 	bool Renderer::m_RenderGrid = false;
 	bool Renderer::m_EnableShadows = true;
-	float Renderer::m_BloomDamp = 6.9f;
+	float Renderer::m_BloomDamp = 20.f;
 	float Renderer::m_Exposure = 1.0f;
 	float Renderer::m_Gamma = 2.2f;
 	//float Renderer::m_LightShaftDecay = 0.9f;

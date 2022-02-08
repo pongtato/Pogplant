@@ -525,6 +525,10 @@ void ScriptSystem::BindFunctions()
 
 	mono_add_internal_call("Scripting.TimeManager::TriggerTimeAlter", TimeStone::TriggerTimeAlter);
 	mono_add_internal_call("Scripting.TimeManager::ForceNormalTime", TimeStone::ForceNormalTime);
+
+	//Gamma settings
+	mono_add_internal_call("Scripting.GameUtilities::GetGamma", SSH::GetGamma);
+	mono_add_internal_call("Scripting.GameUtilities::SetGamma", SSH::SetGamma);
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)

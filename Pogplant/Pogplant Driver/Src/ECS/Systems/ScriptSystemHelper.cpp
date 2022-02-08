@@ -684,4 +684,14 @@ namespace SSH
 	{
 		PPD::Application::GetInstance().ResumeGame();
 	}
+
+	float GetGamma()
+	{
+		return PP::Renderer::m_Gamma;
+	}
+
+	void SetGamma(float newGamma)
+	{
+		PP::Renderer::m_Gamma = newGamma;
+	}
 }

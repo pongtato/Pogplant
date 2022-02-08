@@ -75,6 +75,11 @@
             "Alpha"     : false
         },
 		{
+            "FileName"  : "Lockon.dds",
+            "Dir"       : "Resources/Textures/UI/",
+            "Alpha"     : true
+        },
+		{
             "FileName" : "BlackBG.dds",
             "Dir"       : "Resources/Textures/UI/Main Menu",
             "Alpha"     : true

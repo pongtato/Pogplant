@@ -87,6 +87,8 @@ void Application::Init()
 	PPA::AudioEngine::SetChannelGroupVolume("SFX", PPU::CustomSaver::GetValue<float>("AudioSFX", 1.f));
 	PPA::AudioEngine::SetChannelGroupVolume("VO", PPU::CustomSaver::GetValue<float>("AudioVO", 1.f));
 
+	Pogplant::Renderer::m_Gamma = PPU::CustomSaver::GetValue<float>("Gamma", 2.2f);
+
 #ifdef PPD_EDITOR_BUILD
 
 #ifdef PPD_DEBUG_OBJECTS

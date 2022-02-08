@@ -140,6 +140,9 @@ namespace SSH
 		return defaultValue;
 	}
 
+	float GetGamma();
+	void SetGamma(float newGamma);
+
 	MonoString* ScriptVariableGetString(std::uint32_t entityID, MonoString* defaultValue, MonoString* monoName);
 }
 

@@ -117,5 +117,11 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint UpdateScore_AddMinus(uint text_object, uint score, bool isAdd);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static float GetGamma();
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetGamma(float newGamma);
     }
 }
