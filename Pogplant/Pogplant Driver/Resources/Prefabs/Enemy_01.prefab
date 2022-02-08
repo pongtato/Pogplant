@@ -6,25 +6,25 @@
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.49799999594688416
+				"Volume" : 1.0
 			},
 			"Clip1" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.49799999594688416
+				"Volume" : 1.0
 			},
 			"Clip2" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_SpawnFlybyBehind.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.49799999594688416
+				"Volume" : 0.5
 			},
 			"Clip3" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.49799999594688416
+				"Volume" : 0.5
 			}
 		},
 		"BoxCollider" : 
@@ -52,7 +52,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Enemy_01"
+			"m_Name" : "Enemy_01",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -116,7 +117,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Exhaust_Main"
+			"m_Name" : "Exhaust_Main",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -170,7 +172,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Spinning_Disk"
+			"m_Name" : "Spinning_Disk",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -224,7 +227,8 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Gun_Horizontal_Pivot"
+			"m_Name" : "Gun_Horizontal_Pivot",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -278,7 +282,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Alien_Arms"
+			"m_Name" : "Alien_Arms",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -332,7 +337,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Gun_Vertical_Pivot"
+			"m_Name" : "Gun_Vertical_Pivot",
+			"status" : true
 		},
 		"Prefab" : 
 		{

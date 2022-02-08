@@ -6,25 +6,25 @@
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.49799999594688416
+				"Volume" : 1.0
 			},
 			"Clip1" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.49799999594688416
+				"Volume" : 1.0
 			},
 			"Clip2" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_SpawnFlybyBehind.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.49799999594688416
+				"Volume" : 0.5
 			},
 			"Clip3" : 
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.49799999594688416
+				"Volume" : 0.5
 			}
 		},
 		"BoxCollider" : 
@@ -110,6 +110,65 @@
 				0.20000000298023224,
 				0.20000000298023224,
 				0.20000000298023224
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Exhaust_Main001",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_02",
+				"Resources/Models\\Enemy",
+				"Exhaust_Main001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.0971353054046631,
+				-0.67056179046630859
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -216,242 +275,6 @@
 				0.0,
 				-0.92894589900970459,
 				6.3888728618621826e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Big_Alien_Body",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_02",
-				"Resources/Models\\Enemy",
-				"Big_Alien_Body"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.9406967163085938e-08,
-				0.75588810443878174,
-				-5.373731255531311e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Big_Alien_Arm_R",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_02",
-				"Resources/Models\\Enemy",
-				"Big_Alien_Arm_R"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.81099998950958252,
-				0.67492818832397461,
-				0.16827553510665894
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Big_Alien_Arm_L",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_02",
-				"Resources/Models\\Enemy",
-				"Big_Alien_Arm_L"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.81128931045532227,
-				0.67492818832397461,
-				0.16827553510665894
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Big_Alien_Head",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_02",
-				"Resources/Models\\Enemy",
-				"Big_Alien_Head"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-8.9406967163085938e-08,
-				-0.75588822364807129,
-				4.0419399738311768e-07
 			],
 			"m_rotation" : 
 			[
@@ -645,10 +468,10 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 3,
 		"Name" : 
 		{
-			"m_Name" : "Exhaust_Main001",
+			"m_Name" : "Big_Alien_Body",
 			"status" : true
 		},
 		"Prefab" : 
@@ -673,7 +496,7 @@
 			[
 				"Enemy_02",
 				"Resources/Models\\Enemy",
-				"Exhaust_Main001"
+				"Big_Alien_Body"
 			],
 			"UseLight" : 1
 		},
@@ -685,9 +508,186 @@
 		{
 			"m_position" : 
 			[
+				8.9406967163085938e-08,
+				0.75588810443878174,
+				-5.373731255531311e-07
+			],
+			"m_rotation" : 
+			[
 				0.0,
-				-1.0971353054046631,
-				-0.67056179046630859
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Big_Alien_Head",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_02",
+				"Resources/Models\\Enemy",
+				"Big_Alien_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-8.9406967163085938e-08,
+				-0.75588822364807129,
+				4.0419399738311768e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Big_Alien_Arm_R",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_02",
+				"Resources/Models\\Enemy",
+				"Big_Alien_Arm_R"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.81099998950958252,
+				0.67492818832397461,
+				0.16827553510665894
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Big_Alien_Arm_L",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_02.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_02",
+				"Resources/Models\\Enemy",
+				"Big_Alien_Arm_L"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.81128931045532227,
+				0.67492818832397461,
+				0.16827553510665894
 			],
 			"m_rotation" : 
 			[
