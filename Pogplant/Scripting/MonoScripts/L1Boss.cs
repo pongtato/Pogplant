@@ -330,7 +330,6 @@ namespace Scripting
             LAUNCH_NORMAL_ADDS,
             DEATH_SEQUENCE,
             TRANSIT_SCENE,
-
             TOTAL
         }
 
@@ -412,6 +411,12 @@ namespace Scripting
         bool play_animation;
         BOSS_BEHAVIOUR_STATE state_queue;
 
+        bool any_key_scale_up;
+        uint any_key_continue_id;
+        Vector3 any_key_max_scale;
+        Vector3 any_key_min_scale;
+        const float any_key_scale_speed = 5.0f;
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -471,6 +476,8 @@ namespace Scripting
             main_laser_beam_id = ECS.FindEntityWithName("Laser_Beam");
             main_laser_object_id = ECS.FindEntityWithName("LaserObject");
 
+            any_key_continue_id = ECS.FindEntityWithName("Any Key Continue");
+
             //Create and initialize the list of moving parts
             moving_parts_dict = new Dictionary<uint, MOVING_PARTS>();
 
@@ -525,6 +532,10 @@ namespace Scripting
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
 
             state_queue = BOSS_BEHAVIOUR_STATE.EMPTY;
+
+            any_key_scale_up = false;
+            any_key_min_scale = new Vector3(0.45f, 0.45f, 1.0f);
+            any_key_max_scale = new Vector3(0.5f, 0.5f, 1.0f);
         }
 
         public override void Update(float dt)
@@ -566,6 +577,9 @@ namespace Scripting
                 case BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
                     laser_spin_addition += laser_spin_addition_speed * dt;
                     SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, laser_spin_addition, dt);
+                    break;
+                case BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE:
+                    UpdateAnyKeyScaling(dt);
                     break;
             }
 
@@ -632,6 +646,38 @@ namespace Scripting
                     SetStateQueue(BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE);
                     PlayAnimation();
                     break;
+                case BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE:
+                    ECS.SetActive(any_key_continue_id, true);
+                    break;
+            }
+        }
+
+        void UpdateAnyKeyScaling(float dt)
+        {
+            ECS.GetTransformECS(any_key_continue_id, ref pos, ref rot, ref scale);
+
+            if (scale.X >= any_key_max_scale.X - 0.01f)
+            {
+                any_key_scale_up = false;
+            }
+            if (scale.X <= any_key_min_scale.X + 0.01f)
+            {
+                any_key_scale_up = true;
+            }
+            Console.WriteLine(scale.X);
+
+            if (any_key_scale_up)
+            {
+                ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_max_scale, any_key_scale_speed * dt));
+            }
+            else
+            {
+                ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_min_scale, any_key_scale_speed * dt));
+            }
+
+            if (InputUtility.onAnyKey())
+            {
+                GameUtilities.LoadScene("Level02");
             }
         }
 
@@ -1858,6 +1904,7 @@ namespace Scripting
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(false);
 
             ECS.SetActive(end_screen_trigger_id, true);
+            SetState(BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE);
         }
 
         void RunDeathStateSequenceFive(float dt)
