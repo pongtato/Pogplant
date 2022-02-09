@@ -335,7 +335,7 @@ namespace Scripting
 				if (m_stateBehaviours[(int)L1Boss.m_singleton.current_state].shouldReturnToDefault)
 				{
 					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
-					Console.WriteLine("Boss: Changing to MOVING");
+					//Console.WriteLine("Boss: Changing to MOVING");
 				}
 			}
 
@@ -367,7 +367,7 @@ namespace Scripting
 
 					m_enemySpawnInstances.Clear();
 
-					Console.WriteLine("Erased animation");
+					//Console.WriteLine("Erased animation");
 				}
 			}
 			else
@@ -417,7 +417,7 @@ namespace Scripting
 				return;
 			}
 
-			Console.WriteLine("Boss Taken damage");
+			//Console.WriteLine("Boss Taken damage");
 
 			m_coreHealth -= 1f;
 			m_runStateInfo.m_damageTakenPeriod += 1f;

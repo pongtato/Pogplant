@@ -46,7 +46,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "Enemy_Turret_Basic"
+			"m_Name" : "Enemy_Turret_Basic",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -114,7 +115,8 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Pivot_Object"
+			"m_Name" : "Pivot_Object",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -172,7 +174,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Alien_Body"
+			"m_Name" : "Alien_Body",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -230,7 +233,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Alien_Arms001"
+			"m_Name" : "Alien_Arms001",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -288,7 +292,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Turret_Gun"
+			"m_Name" : "Turret_Gun",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -346,7 +351,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Turret_Muzzle"
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
 		},
 		"Prefab" : 
 		{

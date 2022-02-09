@@ -588,7 +588,7 @@ namespace PPA
 		FMOD_VECTOR fv;
 		fv.x = vec.x;
 		fv.y = vec.y;
-		fv.z = -vec.z;
+		fv.z = vec.z;
 		return fv;
 	}
 

@@ -24,7 +24,7 @@
 			{
 				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.5
+				"Volume" : 0.78600001335144043
 			}
 		},
 		"BoxCollider" : 
