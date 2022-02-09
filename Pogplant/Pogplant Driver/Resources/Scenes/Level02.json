@@ -1196,7 +1196,7 @@
 				"m_FrameCounter" : 20.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
 				"m_Rows" : 8,
 				"m_Tiling" : 
@@ -4963,7 +4963,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.0706787109375,
+				"m_FrameCounter" : 97.529869079589844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -4976,8 +4976,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.515625
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5029,7 +5029,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.0706787109375,
+				"m_FrameCounter" : 97.529869079589844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -5042,8 +5042,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.515625
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5095,7 +5095,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 88.728805541992188,
+				"m_FrameCounter" : 81.3349609375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -5108,8 +5108,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.703125
+					0.5,
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5161,7 +5161,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.0706787109375,
+				"m_FrameCounter" : 97.529869079589844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -5174,8 +5174,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.515625
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5227,7 +5227,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 111.48326873779297,
+				"m_FrameCounter" : 79.896842956542969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -5241,7 +5241,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.875
+					0.625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5293,7 +5293,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.0706787109375,
+				"m_FrameCounter" : 97.529869079589844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -5306,8 +5306,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.515625
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5359,7 +5359,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 88.728805541992188,
+				"m_FrameCounter" : 81.3349609375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -5372,8 +5372,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.703125
+					0.5,
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5425,7 +5425,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 40.485027313232422,
+				"m_FrameCounter" : 112.83684539794922,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -5439,7 +5439,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.328125
+					0.890625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5491,7 +5491,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 88.728805541992188,
+				"m_FrameCounter" : 81.3349609375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -5504,8 +5504,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.703125
+					0.5,
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5557,7 +5557,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 3.3520700931549072,
+				"m_FrameCounter" : 2.9064998626708984,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -5570,7 +5570,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
+					0.0,
 					0.03125
 				]
 			},
@@ -5623,7 +5623,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 40.485027313232422,
+				"m_FrameCounter" : 112.83684539794922,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -5637,7 +5637,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.328125
+					0.890625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -5741,6 +5741,72 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				0.87442469596862793,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : true,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Arrow_MM.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "ArrowButton",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.22500000894069672,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				0.15000002086162567,
+				0.075000010430812836,
+				0.99886518716812134
 			]
 		}
 	},
@@ -5939,72 +6005,6 @@
 				0.30000001192092896,
 				0.15000000596046448,
 				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				0.0,
-				0.87442469596862793,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : true,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "Arrow_MM.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "ArrowButton",
-			"status" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.22500000894069672,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				-90.0
-			],
-			"m_scale" : 
-			[
-				0.15000002086162567,
-				0.075000010430812836,
-				0.99886518716812134
 			]
 		}
 	},
