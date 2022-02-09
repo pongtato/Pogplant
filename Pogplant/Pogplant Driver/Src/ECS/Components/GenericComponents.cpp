@@ -372,7 +372,7 @@ namespace Components
 		//m_TexID = static_cast<int>(PP::TextureResource::m_TexturePool[m_TexName]);
 		//auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
 		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
-		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
+		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
 
 		m_CurrentLifetime = 0.0f;
 	}
@@ -825,7 +825,7 @@ namespace Components
 	{
 		//auto rawID = PP::TextureResource::m_TexturePool[m_TexName];
 		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[rawID]);
-		m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
+		//m_TexID = static_cast<int>(PP::TextureResource::m_UsedTextures[m_TexName].m_MappedID);
 	}
 
 	ParticleSystem::SubEmitter::SubEmitter(const glm::vec3& _Position, const glm::vec3& _Direction, int _Count)

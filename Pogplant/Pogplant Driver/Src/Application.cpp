@@ -501,6 +501,7 @@ void Application::UpdateTransforms(float _Dt)
 
 			//If to be updated
 			auto& usedTex = PP::TextureResource::m_UsedTextures;
+			//printf("%s \n", pSys.m_TexName.c_str());
 			if (!PP::TextureResource::m_Updated || !usedTex[pSys.m_TexName].m_Used)
 			{
 				if (!usedTex[pSys.m_TexName].m_Used)
@@ -512,8 +513,6 @@ void Application::UpdateTransforms(float _Dt)
 					usedTex[pSys.m_TexName].m_Used = true;
 					PP::TextureResource::m_UsedTexCount++;
 					//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[pSys.m_TexName].m_MappedID, pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID);
-					
-
 					//printf("%s | %d | %d \n", pSys.m_TexName.c_str(), usedTex[pSys.m_TexName].m_ID), usedTex[pSys.m_TexName].m_MappedID;
 				}
 			}
@@ -542,7 +541,6 @@ void Application::UpdateTransforms(float _Dt)
 				PP::TextureResource::m_UsedTexCount++;
 				//printf("Mapped ID: %d|%s| Generated ID: %d\n", usedTex[canvas.m_TexName].m_MappedID, canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID);
 				// Update canvas ID
-				
 				//printf("%s | %d | %d \n", canvas.m_TexName.c_str(), usedTex[canvas.m_TexName].m_ID, usedTex[canvas.m_TexName].m_MappedID);
 			}
 		}
