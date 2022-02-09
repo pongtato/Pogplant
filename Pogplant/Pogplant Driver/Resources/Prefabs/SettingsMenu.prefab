@@ -6,19 +6,19 @@
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.23899999260902405
 			},
 			"Clip1" : 
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.22699999809265137
 			},
 			"Clip2" : 
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.22900000214576721
 			}
 		},
 		"Children" : 10,

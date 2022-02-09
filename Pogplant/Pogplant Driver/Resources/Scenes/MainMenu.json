@@ -12,25 +12,25 @@
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.19499999284744263
 			},
 			"Clip2" : 
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.19200000166893005
 			},
 			"Clip3" : 
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.20000000298023224
 			},
 			"Clip4" : 
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Back.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.21199999749660492
 			}
 		},
 		"Children" : 16,
@@ -1105,19 +1105,19 @@
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.21199999749660492
 			},
 			"Clip1" : 
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.21199999749660492
 			},
 			"Clip2" : 
 			{
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.2070000022649765
 			}
 		},
 		"Children" : 10,
