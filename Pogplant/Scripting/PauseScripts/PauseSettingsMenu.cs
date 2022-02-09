@@ -260,7 +260,7 @@ namespace Scripting
                         break;
                     case 3:
                         {
-                            float amount = GameUtilities.GetGamma() > 1.4f ? GameUtilities.GetGamma() - gamma_change_amount : 1.0f;
+                            float amount = GameUtilities.GetGamma() >= 1.4f ? GameUtilities.GetGamma() - gamma_change_amount : 1.0f;
                             GameUtilities.SetGamma(amount);
                             PlayerPrefs.SetValue<float>("Gamma", amount);
                             UpdateGammaBar(gamma_bars_list);
@@ -302,7 +302,7 @@ namespace Scripting
                         break;
                     case 3:
                         {
-                            float amount = GameUtilities.GetGamma() < 2.6f ? GameUtilities.GetGamma() + gamma_change_amount : 2.6f;
+                            float amount = GameUtilities.GetGamma() <= 2.6 ? GameUtilities.GetGamma() + gamma_change_amount : 3.0f;
                             GameUtilities.SetGamma(amount);
                             PlayerPrefs.SetValue<float>("Gamma", amount);
                             UpdateGammaBar(gamma_bars_list);
@@ -474,7 +474,7 @@ namespace Scripting
                 case 2:
                     volumeLevel = (int)(Math.Round(AudioEngine.GetChannelGroupVolume("VO"), 1) * 10);
                     break;
-                case 3:
+                case 4:
                     volumeLevel = (int)(Math.Round(AudioEngine.GetChannelGroupVolume(channel_type), 1) * 10);
                     break;
             }
@@ -496,23 +496,27 @@ namespace Scripting
         {
             int gamma_level = 0;
 
-            if (GameUtilities.GetGamma() >= 1.0f && GameUtilities.GetGamma() < 1.4f)
+            if (GameUtilities.GetGamma() <= 1.01f)
+            {
+                gamma_level = 0;
+            }
+            if (GameUtilities.GetGamma() > 1.01f && GameUtilities.GetGamma() <= 1.41f)
             {
                 gamma_level = 1;
             }
-            else if (GameUtilities.GetGamma() >= 1.4f && GameUtilities.GetGamma() < 1.8f)
+            else if (GameUtilities.GetGamma() > 1.41f && GameUtilities.GetGamma() <= 1.81f)
             {
                 gamma_level = 2;
             }
-            else if (GameUtilities.GetGamma() >= 1.8f && GameUtilities.GetGamma() < 2.2f)
+            else if (GameUtilities.GetGamma() > 1.81f && GameUtilities.GetGamma() <= 2.21f)
             {
                 gamma_level = 3;
             }
-            else if (GameUtilities.GetGamma() >= 2.2f && GameUtilities.GetGamma() < 2.6f)
+            else if (GameUtilities.GetGamma() > 2.21f && GameUtilities.GetGamma() <= 2.61f)
             {
                 gamma_level = 4;
             }
-            else if (GameUtilities.GetGamma() >= 2.6f)
+            else if (GameUtilities.GetGamma() > 2.61f && GameUtilities.GetGamma() <= 3.1f)
             {
                 gamma_level = 5;
             }
