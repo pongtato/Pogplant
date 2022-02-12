@@ -52,6 +52,7 @@
     <Compile Include="ECS\ECS.cs" />
     <Compile Include="ECS\GameObject.cs" />
     <Compile Include="MonoScripts\ActivateChildren.cs" />
+    <Compile Include="MonoScripts\AnimationSystem.cs" />
     <Compile Include="MonoScripts\BonusItem.cs" />
     <Compile Include="MonoScripts\EndGameMenuTrigger.cs" />
     <Compile Include="MonoScripts\ExplosiveEnemy.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="MonoScripts\L1BossBehaviour.cs" />
     <Compile Include="MonoScripts\BossWarning.cs" />
     <Compile Include="MonoScripts\L1BossCloudMover.cs" />
+    <Compile Include="MonoScripts\Level1OutroCutscene.cs" />
+    <Compile Include="MonoScripts\MovingParts.cs" />
     <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="MonoScripts\GameEndingTrigger.cs" />
     <Compile Include="MonoScripts\TetherEnemy.cs" />

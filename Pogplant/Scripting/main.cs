@@ -68,6 +68,21 @@ namespace Scripting
             return new FollowSpline();
         }
 
+        public static Level1OutroCutscene Level1OutroCutscene()
+        {
+            return new Level1OutroCutscene();
+        }
+
+        public static AnimationSystem AnimationSystem()
+        {
+            return new AnimationSystem();
+        }
+
+        public static MovingParts MovingParts()
+        {
+            return new MovingParts();
+        }
+
         //public static EnemyManager EnemyManager()
         //{
         //    return new EnemyManager();

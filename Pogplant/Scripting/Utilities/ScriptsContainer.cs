@@ -54,6 +54,9 @@ namespace Scripting
             monoScriptNames.Add("ExplosiveEnemy");
             monoScriptNames.Add("ActivateChildren");
             monoScriptNames.Add("TriggerAudioPlay");
+            monoScriptNames.Add("AnimationSystem");
+            monoScriptNames.Add("MovingParts");
+            monoScriptNames.Add("Level1OutroCutscene");
         }
 
         private void AddPauseScripts()

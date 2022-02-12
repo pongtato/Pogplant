@@ -390,7 +390,7 @@ namespace Scripting
 
 		void TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false, bool dontResetTimer = false)
 		{
-			L1Boss.m_singleton.SetState(nextState);
+			L1Boss.m_singleton.SetState(nextState.ToString());
 
 			if(!dontResetTimer)
 				m_runStateInfo.m_timer = 0f;
