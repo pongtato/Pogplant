@@ -1991,9 +1991,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				0.020291384309530258,
-				0.98806619644165039,
-				0.15268771350383759
+				-0.065101452171802521,
+				0.99678176641464233,
+				-0.046774003654718399
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
@@ -4517,7 +4517,7 @@
 		}
 	},
 	{
-		"Children" : 5,
+		"Children" : 6,
 		"Name" : 
 		{
 			"m_Name" : "Warning Screen Parent",
@@ -4609,7 +4609,7 @@
 			[
 				-0.89999997615814209,
 				0.0,
-				0.0
+				-0.10000000149011612
 			],
 			"m_rotation" : 
 			[
@@ -4675,7 +4675,7 @@
 			[
 				0.89999997615814209,
 				0.0,
-				0.0
+				-0.10000000149011612
 			],
 			"m_rotation" : 
 			[
@@ -4885,6 +4885,72 @@
 			[
 				0.60000002384185791,
 				0.60000002384185791,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_TexName" : "BG_01_MM.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Black Screen",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				-0.20000000298023224
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
 				1.0
 			]
 		}

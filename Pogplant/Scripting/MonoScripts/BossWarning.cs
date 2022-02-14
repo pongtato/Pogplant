@@ -26,6 +26,7 @@ namespace Scripting
         uint warning_backing_left;
         uint warning_backing_right;
         uint warning_text;
+        uint black_bg_id;
 
         const float screen_Z = -0.2f;
         const float left_backing_Z = -0.15f;
@@ -62,6 +63,7 @@ namespace Scripting
             warning_backing_left = ECS.FindChildEntityWithName(entityID, "Warning Backing Left");
             warning_backing_right = ECS.FindChildEntityWithName(entityID, "Warning Backing Right");
             warning_text = ECS.FindChildEntityWithName(entityID, "Warning Text");
+            black_bg_id = ECS.FindChildEntityWithName(entityID, "Black Screen");
 
             text_pulse_current_count = 0;
         }
@@ -100,6 +102,7 @@ namespace Scripting
                         if (ECS.GetGlobalPosition(warning_screen_left).X >= -0.001f)
                         {
                             current_anim_state = ANIM_STATE.BACKING_IN;
+                            ECS.SetActive(black_bg_id, false);
                         }
                     }
                     break;

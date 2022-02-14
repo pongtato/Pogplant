@@ -242,7 +242,7 @@ namespace Scripting
                     break;
                 case BOSS_ANIM_STATE.APPROACH_PLAYER:
                     boss_anim_system.StopAnimation(true, moving_parts_dict);
-                    boss_anim_system.AddAnimationSpecsStack(SetApproachingAnimationsOne, 3.0f);
+                    boss_anim_system.AddAnimationSpecsStack(SetApproachingAnimationsOne, 2.0f);
                     boss_anim_system.AddAnimationSpecsStack(SetApproachingAnimationsTwo, 1.0f);
                     boss_anim_system.AddAnimationSpecsStack(SetApproachingAnimationsThree, 0.5f);
                     boss_anim_system.AddAnimationUpdateStack(RunApproachSequenceOne);
