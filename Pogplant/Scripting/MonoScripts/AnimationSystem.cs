@@ -38,10 +38,10 @@ namespace Scripting
             if (animation_update_stack.Count > 0 && play_animation)
             {
                 animation_update_stack[current_animation_index].Invoke(dt);
-
                 //Go to the next stack in the animation if the duration exceeds
                 if (current_animation_time >= animation_specs_stack[current_animation_index].animation_duration)
                 {
+                    
                     RunNextAnimationStack();
                 }
                 else
@@ -97,16 +97,10 @@ namespace Scripting
         public void StopAnimation(bool clear_stack, Dictionary<uint, MovingParts> moving_parts_dict)
         {
             play_animation = false;
+            ResetStateQueue();
 
             if (clear_stack)
                 ClearAnimationStack(moving_parts_dict);
-
-            //if there is a queue of animation state to transition to, transition to that state
-            if (queue_state_func != null)
-            {
-                queue_state_func.Invoke(queue_state);
-                ResetStateQueue();
-            }
         }
 
         public void ClearAnimationStack(Dictionary<uint, MovingParts> moving_parts_dict)
@@ -122,7 +116,7 @@ namespace Scripting
             animation_update_stack.Clear();
         }
 
-        public void ResetAnimationMovingPart(Dictionary<uint, MovingParts> moving_parts_dict)
+        void ResetAnimationMovingPart(Dictionary<uint, MovingParts> moving_parts_dict)
         {
             foreach (KeyValuePair<uint, MovingParts> kvp in moving_parts_dict)
             {
@@ -158,7 +152,6 @@ namespace Scripting
                 if (queue_state_func != null)
                 {
                     queue_state_func.Invoke(queue_state);
-                    ResetStateQueue();
                 }
             }
         }

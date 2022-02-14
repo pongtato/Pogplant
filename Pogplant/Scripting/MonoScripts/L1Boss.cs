@@ -66,7 +66,7 @@ namespace Scripting
         public uint main_laser_beam_id;
         public uint main_laser_object_id;
 
-        //Eye
+        //Mouth
         public uint mouth_left_id;
         public uint mouth_right_id;
 
@@ -241,7 +241,7 @@ namespace Scripting
         public void SetState(string set_state)
         {
             current_state = (BOSS_BEHAVIOUR_STATE)Enum.Parse(typeof(BOSS_BEHAVIOUR_STATE), set_state);
-            Console.WriteLine("Setting state to " + set_state);
+            
             //Update animation sets based on state
             switch (current_state)
             {
