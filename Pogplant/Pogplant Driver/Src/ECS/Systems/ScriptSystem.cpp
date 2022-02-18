@@ -505,6 +505,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::ExitScene", SSH::ExitScene);
 	mono_add_internal_call("Scripting.GameUtilities::PauseScene", SSH::PauseScene);
 	mono_add_internal_call("Scripting.GameUtilities::ResumeScene", SSH::ResumeScene);
+	mono_add_internal_call("Scripting.GameUtilities::GetSceneName", SSH::GetSceneName);
 
 	//Save/loading
 	mono_add_internal_call("Scripting.PlayerPrefs::GetValueFloat", SSH::CustomSaverGetValueMono<float>);

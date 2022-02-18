@@ -252,10 +252,14 @@ namespace Scripting
             {
                 case BOSS_BEHAVIOUR_STATE.FLYING_UP:
                     boss_animation_system.StopAnimation(true, moving_parts_dict);
-                    boss_animation_system.AddAnimationSpecsStack(SetFlyingUpStateAnimationsOne, 5.5f);
-                    boss_animation_system.AddAnimationSpecsStack(SetFlyingUpStateAnimationsTwo, 2.5f);
+                    boss_animation_system.AddAnimationSpecsStack(SetFlyingUpStateAnimationsOne, 7.0f);
+                    boss_animation_system.AddAnimationSpecsStack(SetFlyingUpStateAnimationsTwo, 1.35f);
+                    boss_animation_system.AddAnimationSpecsStack(SetFlyingUpStateAnimationsThree, 4.0f);
+                    boss_animation_system.AddAnimationSpecsStack(SetFlyingUpStateAnimationsFour, 0.75f);
                     boss_animation_system.AddAnimationUpdateStack(RunFlyingUpSequenceOne);
                     boss_animation_system.AddAnimationUpdateStack(RunFlyingUpSequenceTwo);
+                    boss_animation_system.AddAnimationUpdateStack(RunFlyingUpSequenceThree);
+                    boss_animation_system.AddAnimationUpdateStack(RunFlyingUpSequenceFour);
                     boss_animation_system.SetStateQueue(SetState, BOSS_BEHAVIOUR_STATE.MOVING.ToString());
                     boss_animation_system.PlayAnimation();
                     break;
@@ -353,7 +357,21 @@ namespace Scripting
 
         void SetFlyingUpStateAnimationsTwo()
         {
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, -50, 0), new Vector3(0, 0, 0), new Vector3(0, 1.5f, 0), false, true, false, false, false, false);
+            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, -50, 0), new Vector3(0, 5, 0), new Vector3(0, 4.0f, 0), false, true, false, false, false, false);
+            ECS.SetRotation(entityID, new Vector3(-90, 0, 0));
+            moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(-90, 0, 0), new Vector3(0, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, false, false, false);
+        }
+
+        void SetFlyingUpStateAnimationsThree()
+        {
+            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, 0, 0), new Vector3(0, 5, 0), new Vector3(0, 2.0f, 0), false, false, false, false, false, false);
+            moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(ECS.GetGlobalRotation(entityID).X, 0, 0), new Vector3(0, 0, 0), new Vector3(2.0f, 0, 0), true, false, false, false, false, false);
+            //moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(0, 0, 0), new Vector3(10, 0, 0), new Vector3(2.0f, 0, 0), true, false, false, false, false, false);
+        }
+
+        void SetFlyingUpStateAnimationsFour()
+        {
+            
         }
 
         void RunFlyingUpSequenceOne(float dt)
@@ -362,6 +380,18 @@ namespace Scripting
         }
 
         void RunFlyingUpSequenceTwo(float dt)
+        {
+            //Body
+            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+        }
+
+        void RunFlyingUpSequenceThree(float dt)
+        {
+            //Body
+            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+        }
+
+        void RunFlyingUpSequenceFour(float dt)
         {
             //Body
             moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);

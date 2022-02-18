@@ -667,7 +667,7 @@ namespace SSH
 		std::string fileFormat = ".json";
 		sceneName += sceneFileName + fileFormat;
 
-		app.LoadScene(sceneName);
+		app.LoadScene(sceneName, mono_string_to_utf8(levelToLoad));
 	}
 
 	void ExitScene()
@@ -683,6 +683,11 @@ namespace SSH
 	void ResumeScene()
 	{
 		PPD::Application::GetInstance().ResumeGame();
+	}
+
+	MonoString* GetSceneName()
+	{
+		return mono_string_new(mono_domain_get(), PPD::Application::GetInstance().m_currentSceneName.c_str());
 	}
 
 	float GetGamma()

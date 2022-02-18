@@ -107,6 +107,9 @@ namespace Scripting
         public extern static void ResumeScene();
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static string GetSceneName();
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void EnemyTakeDamageFromID(uint entityID, float damage);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

@@ -62,7 +62,7 @@ namespace PogplantDriver
 		void ExitPrefabEditing();
 
 		/**> Loads a scene while in play mode, can be called anywhere*/
-		void LoadScene(const std::string& newScene);
+		void LoadScene(const std::string& newScenePath, const std::string& sceneName);
 
 		inline void PauseGame()
 		{
@@ -153,6 +153,7 @@ namespace PogplantDriver
 		ECS m_editorECS;
 		ECS m_playECS;
 		ECS* m_activeECS;
+		std::string m_currentSceneName;
 
 		GeneralSystem m_sGeneralSystem;
 		PhysicsSystem m_sPhysicsSystem;

@@ -822,10 +822,11 @@ void Application::Run()
 	}
 }
 
-void PogplantDriver::Application::LoadScene(const std::string& newScene)
+void PogplantDriver::Application::LoadScene(const std::string& newScene, const std::string& sceneName)
 {
 	m_nextAppState = APPLICATIONSTATE::NEWSCENETRANSITION;
 	m_genericFilePath = newScene;
+	m_currentSceneName = sceneName;
 }
 
 /******************************************************************************/

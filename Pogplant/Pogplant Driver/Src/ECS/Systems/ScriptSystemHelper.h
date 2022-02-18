@@ -109,6 +109,7 @@ namespace SSH
 
 	void PauseScene();
 	void ResumeScene();
+	MonoString* GetSceneName();
 
 	template <typename T>
 	inline static T CustomSaverGetValueMono(MonoString* monoKey, T defaultValue, bool loadFromDocuments)

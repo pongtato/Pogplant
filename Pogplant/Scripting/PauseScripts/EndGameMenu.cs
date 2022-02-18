@@ -14,6 +14,7 @@ namespace Scripting
         uint m_CollectParentID;
         uint m_MedalsParentID;
         uint m_EndContinueID;
+        uint m_EndGameMenuParentID;
 
         private Dictionary<string, GameObject> m_LettersMap = new Dictionary<string, GameObject>();
         private Dictionary<uint, Vector3> m_ScaleAnimation = new Dictionary<uint, Vector3>();
@@ -36,6 +37,16 @@ namespace Scripting
         Vector3 m_contScaleBig;
 
         bool m_EnablePlayBig = true;
+
+        float m_TransitDelayTimer;
+        const float m_BarsDuration = 1.0f;
+        const float m_SceneChangeDelayDuration = 4.0f;
+        bool m_EnableTransitDelayCountdown;
+
+        bool cinematic_cover_screen;
+        uint cinematic_bar_top_id;
+        uint cinematic_bar_bottom_id;
+        const float cinematic_bar_speed = 3.0f;
 
         // Number of enemies destroyed
         private enum GRADE_DES
@@ -88,6 +99,11 @@ namespace Scripting
             Vector3 pos = new Vector3();
             Vector3 rot = new Vector3();
             Vector3 scale = new Vector3();
+
+            //Menu Parent to toggle enable/disable
+            m_EndGameMenuParentID = ECS.FindEntityWithName("EndGameMenuParent");
+            cinematic_bar_top_id = ECS.FindEntityWithName("Top Cinematic Bar");
+            cinematic_bar_bottom_id = ECS.FindEntityWithName("Bottom Cinematic Bar");
 
             // End Score Text ID
             m_EndScoreID = ECS.FindEntityWithName("EndScoreText");
@@ -166,6 +182,7 @@ namespace Scripting
             m_contScaleBig = new Vector3(0.4f, 0.4f, 1.0f);
 
             ECS.SetActive(entityID, false);
+            m_TransitDelayTimer = 0.0f;
         }
 
         public override void Start()
@@ -223,6 +240,22 @@ namespace Scripting
                 else
                 {
                     UpdateContinue(dt);
+                }
+            }
+
+            if (m_EnableTransitDelayCountdown)
+            {
+                ECS.GetTransformECS(entityID, ref m_pos, ref m_rot, ref m_scale);
+                //ECS.SetPosition(entityID, Vector3.Lerp(m_pos, new Vector3(0, -1.5f, 0), m_AnimationSpeed * dt));
+                
+                m_TransitDelayTimer += dt;
+                cinematic_cover_screen = true;
+                UpdateCinematicBars(dt);
+
+                if (m_TransitDelayTimer > m_SceneChangeDelayDuration)
+                {
+                    GameUtilities.ResumeScene();
+                    GameUtilities.LoadScene("Level01OutroCutscene");
                 }
             }
         }
@@ -368,11 +401,22 @@ namespace Scripting
             }
             else
             {
-                if(InputUtility.onAnyKey())
+                if (InputUtility.onAnyKey())
                 {
-                    ECS.PlayAudio(entityID, 1, "SFX");
-                    GameUtilities.ResumeScene();
-                    GameUtilities.LoadScene("Level01_Boss");
+                    if (!m_EnableTransitDelayCountdown)
+                    {
+                        Console.WriteLine(GameUtilities.GetSceneName());
+                        switch (GameUtilities.GetSceneName())
+                        {
+                            case "Level01":
+                                m_TransitDelayTimer = 0.0f;
+                                m_EnableTransitDelayCountdown = true;
+                                ECS.SetActive(cinematic_bar_top_id, true);
+                                ECS.SetActive(cinematic_bar_bottom_id, true);
+                                ECS.PlayAudio(entityID, 6, "SFX");
+                                break;
+                        }
+                    }
                 }
 
                 ECS.GetTransformECS(m_EndContinueID, ref m_pos, ref m_rot, ref m_scale);
@@ -406,6 +450,36 @@ namespace Scripting
             ECS.SetActive(inactiveID1, false);
             ECS.SetActive(inactiveID2, false);
             ECS.SetActive(inactiveID3, false);
+        }
+
+        private void UpdateCinematicBars(float dt)
+        {
+            if (cinematic_cover_screen)
+            {
+                //Top bar
+                if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 0.8f)
+                {
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 0.79f, 0.0f), cinematic_bar_speed * dt));
+                }
+                //Bottom bar
+                if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -0.8f)
+                {
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -0.79f, 0.0f), cinematic_bar_speed * dt));
+                }
+            }
+            else
+            {
+                //Top bar
+                if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 1.3f || ECS.GetGlobalPosition(cinematic_bar_top_id).Y < 1.29f)
+                {
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, 0.0f), cinematic_bar_speed * dt));
+                }
+                //Bottom bar
+                if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -1.3f || ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < 1.29f)
+                {
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, 0.0f), cinematic_bar_speed * dt));
+                }
+            }
         }
     }
 }
