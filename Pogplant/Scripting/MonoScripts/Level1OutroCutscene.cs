@@ -237,7 +237,7 @@ namespace Scripting
                     boss_anim_system.AddAnimationUpdateStack(RunFlyingSequenceOne);
                     boss_anim_system.AddAnimationUpdateStack(RunFlyingSequenceTwo);
                     boss_anim_system.AddAnimationUpdateStack(RunFlyingSequenceThree);
-                    boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.APPROACH_PLAYER.ToString());
+                    //boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.APPROACH_PLAYER.ToString());
                     boss_anim_system.PlayAnimation();
                     break;
                 case BOSS_ANIM_STATE.APPROACH_PLAYER:
@@ -402,15 +402,16 @@ namespace Scripting
 
         void SetFlyingUpAnimationsThree()
         {
-            //Shrink black bars and move objects around
-            cinematic_cover_screen = false;
-            ECS.SetGlobalPosition(camera_id, new Vector3(-123.0f, 120.66f, -234.4f));
-            ECS.SetGlobalPosition(boss_model_parent_id, new Vector3(-123.5f, 50.0f, -259.7f));
-            Camera.SetCamera(camera_id, 0, 0, 0);
+            ////Shrink black bars and move objects around
+            //cinematic_cover_screen = false;
+            //ECS.SetGlobalPosition(camera_id, new Vector3(-123.0f, 120.66f, -234.4f));
+            //ECS.SetGlobalPosition(boss_model_parent_id, new Vector3(-123.5f, 50.0f, -259.7f));
+            //Camera.SetCamera(camera_id, 0, 0, 0);
 
-            //Body
-            moving_parts_dict[boss_model_parent_id].SetMovingPartsPosition(boss_model_parent_id, new Vector3(), new Vector3(0, 120.7f, 0), new Vector3(0, 1.5f, 0), false, true, false, false, false, false);
-            moving_parts_dict[boss_model_parent_id].SetMovingPartsRotation(boss_model_parent_id, new Vector3(0, 0, 0), new Vector3(), new Vector3(3.0f, 3.0f, 3.0f), false, false, false, false, false, false);
+            ////Body
+            //moving_parts_dict[boss_model_parent_id].SetMovingPartsPosition(boss_model_parent_id, new Vector3(), new Vector3(0, 120.7f, 0), new Vector3(0, 1.5f, 0), false, true, false, false, false, false);
+            //moving_parts_dict[boss_model_parent_id].SetMovingPartsRotation(boss_model_parent_id, new Vector3(0, 0, 0), new Vector3(), new Vector3(3.0f, 3.0f, 3.0f), false, false, false, false, false, false);
+            GameUtilities.LoadScene("Level01_Boss");
         }
 
         void RunFlyingSequenceOne(float dt)
@@ -441,7 +442,7 @@ namespace Scripting
         void RunFlyingSequenceThree(float dt)
         {
             //Body
-            moving_parts_dict[boss_model_parent_id].UpdateMovingParts(boss_model_parent_id, dt);
+            //moving_parts_dict[boss_model_parent_id].UpdateMovingParts(boss_model_parent_id, dt);
         }
 
         #endregion

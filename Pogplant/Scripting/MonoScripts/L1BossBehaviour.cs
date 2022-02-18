@@ -208,8 +208,8 @@ namespace Scripting
 			if (c_customInit)
 			{
 				//Init late after L1Boss script initialised
-				TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
-				c_customInit = false;
+				//TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
+				//c_customInit = false;
 			}
 			if (m_debugMode)
 			{

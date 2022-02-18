@@ -14,6 +14,7 @@ namespace Scripting
         public enum BOSS_BEHAVIOUR_STATE
         {
             EMPTY,
+            FLYING_UP,
             MOVING,
             PROTECTION,
             LAUNCH_NORMAL_ADDS,
@@ -206,6 +207,8 @@ namespace Scripting
             any_key_scale_up = false;
             any_key_min_scale = new Vector3(0.45f, 0.45f, 1.0f);
             any_key_max_scale = new Vector3(0.5f, 0.5f, 1.0f);
+
+            SetState(BOSS_BEHAVIOUR_STATE.FLYING_UP.ToString());
         }
 
         public override void Update(float dt)
@@ -220,6 +223,8 @@ namespace Scripting
 
             switch (current_state)
             {
+                case BOSS_BEHAVIOUR_STATE.FLYING_UP:
+                    break;
                 case BOSS_BEHAVIOUR_STATE.MOVING:
                     RunMovingSequence(dt);
                     break;
@@ -245,6 +250,15 @@ namespace Scripting
             //Update animation sets based on state
             switch (current_state)
             {
+                case BOSS_BEHAVIOUR_STATE.FLYING_UP:
+                    boss_animation_system.StopAnimation(true, moving_parts_dict);
+                    boss_animation_system.AddAnimationSpecsStack(SetFlyingUpStateAnimationsOne, 5.5f);
+                    boss_animation_system.AddAnimationSpecsStack(SetFlyingUpStateAnimationsTwo, 2.5f);
+                    boss_animation_system.AddAnimationUpdateStack(RunFlyingUpSequenceOne);
+                    boss_animation_system.AddAnimationUpdateStack(RunFlyingUpSequenceTwo);
+                    boss_animation_system.SetStateQueue(SetState, BOSS_BEHAVIOUR_STATE.MOVING.ToString());
+                    boss_animation_system.PlayAnimation();
+                    break;
                 case BOSS_BEHAVIOUR_STATE.MOVING:
                     SetMovingStateAnimations();
                     break;
@@ -330,6 +344,29 @@ namespace Scripting
         {
 
         }
+
+        #region[Flying Up Animation Sequence]
+        void SetFlyingUpStateAnimationsOne()
+        {
+            
+        }
+
+        void SetFlyingUpStateAnimationsTwo()
+        {
+            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, -50, 0), new Vector3(0, 0, 0), new Vector3(0, 1.5f, 0), false, true, false, false, false, false);
+        }
+
+        void RunFlyingUpSequenceOne(float dt)
+        {
+
+        }
+
+        void RunFlyingUpSequenceTwo(float dt)
+        {
+            //Body
+            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+        }
+        #endregion
 
         #region[Moving Animation Sequence]
 
