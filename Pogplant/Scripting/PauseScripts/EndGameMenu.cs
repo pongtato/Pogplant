@@ -251,7 +251,6 @@ namespace Scripting
                 m_TransitDelayTimer += dt;
                 cinematic_cover_screen = true;
                 UpdateCinematicBars(dt);
-
                 if (m_TransitDelayTimer > m_SceneChangeDelayDuration)
                 {
                     GameUtilities.ResumeScene();
@@ -405,7 +404,6 @@ namespace Scripting
                 {
                     if (!m_EnableTransitDelayCountdown)
                     {
-                        Console.WriteLine(GameUtilities.GetSceneName());
                         switch (GameUtilities.GetSceneName())
                         {
                             case "Level01":

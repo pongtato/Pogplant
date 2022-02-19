@@ -270,6 +270,7 @@ namespace Scripting
 
         #region[Preparing Animation Sequence]
         /// <summary>
+        /// [Preparing State] 
         /// 1. Arms move down
         /// 2. Arms move up and body rotates to horizontal axis
         /// 3. Vibration up/down
@@ -373,6 +374,7 @@ namespace Scripting
 
         #region[Flying Up Animation Sequence]
         /// <summary>
+        /// [Flying State] 
         /// 1. Arms move down
         /// 2. Main body flies up
         /// 3. Black bars cover full screen, snap camera
@@ -449,6 +451,7 @@ namespace Scripting
 
         #region[Approaching Player Animation Sequence]
         /// <summary>
+        /// [Approaching State] 
         /// 1. Flailing animation for boss idle
         /// 2. Black screen
         /// 3. Change to L1Boss scene

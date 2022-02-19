@@ -40,8 +40,10 @@ namespace Scripting
             {
                 if (double_control_audio)
                 {
+                    //Controller audio
                     if (InputUtility.IsControlledBeingUsed())
                         ECS.PlayAudio(entityID, 0, audio_type);
+                    //Keyboard audio
                     else
                         ECS.PlayAudio(entityID, 1, audio_type);
                 }
