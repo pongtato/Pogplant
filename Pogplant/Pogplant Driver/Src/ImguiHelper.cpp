@@ -1706,7 +1706,10 @@ namespace PogplantDriver
 	{
 		std::string filepath = Pogplant::FileDialogs::OpenFile("Json Files(*.json)\0*.json\0");
 		if (!filepath.empty())
+		{
 			OpenScene(filepath);
+			Application::GetInstance().SetSceneNameFromFilePath(filepath);
+		}
 
 		/// Reupdate the textures
 		PP::TextureResource::m_Updated = false;

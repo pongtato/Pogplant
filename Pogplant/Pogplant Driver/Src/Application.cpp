@@ -829,6 +829,34 @@ void PogplantDriver::Application::LoadScene(const std::string& newScene, const s
 	m_currentSceneName = sceneName;
 }
 
+void PogplantDriver::Application::SetSceneNameFromFilePath(const std::string& scenePath)
+{
+	m_currentSceneName = scenePath;
+
+	size_t strIdx = m_currentSceneName.find(".json");
+
+	if (strIdx != std::string::npos)
+		m_currentSceneName.erase(strIdx, m_currentSceneName.length() - strIdx);
+
+	strIdx = m_currentSceneName.find("/");
+
+	while (strIdx != std::string::npos)
+	{
+		m_currentSceneName.erase(0, strIdx + 1);
+		strIdx = m_currentSceneName.find("/");
+	}
+
+	strIdx = m_currentSceneName.find("\\");
+
+	while (strIdx != std::string::npos)
+	{
+		m_currentSceneName.erase(0, strIdx + 1);
+		strIdx = m_currentSceneName.find("\\");
+	}
+
+	volatile std::string tempStr = m_currentSceneName;
+}
+
 /******************************************************************************/
 /*!
 \brief

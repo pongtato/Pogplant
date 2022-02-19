@@ -63,6 +63,7 @@ namespace PogplantDriver
 
 		/**> Loads a scene while in play mode, can be called anywhere*/
 		void LoadScene(const std::string& newScenePath, const std::string& sceneName);
+		void SetSceneNameFromFilePath(const std::string& scenePath);
 
 		inline void PauseGame()
 		{
