@@ -55,6 +55,9 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void LookAtClamped(uint self_entityID, Vector3 target);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void LookAtDirectionalVector(uint self_entityID, Vector3 directionalVector);
     }
 
     [StructLayout(LayoutKind.Sequential)]

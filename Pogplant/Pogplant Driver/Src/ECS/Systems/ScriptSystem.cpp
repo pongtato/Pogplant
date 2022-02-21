@@ -432,6 +432,9 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::UpdateTextColor", &Scripting::GameScript::UpdateTextColor);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore_AddMinus", &Scripting::GameScript::UpdateScore_AddMinus);
 
+
+	mono_add_internal_call("Scripting.GameUtilities::GetRayCastDirCamera", &Scripting::GameScript::GetRayCastDirCamera);
+
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);
 	mono_add_internal_call("Scripting.ECS::DestroyEntity", SSH::DestroyEntity);
@@ -499,6 +502,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.Transform::GetUpVector", SSH::GetUpVector);
 	mono_add_internal_call("Scripting.Transform::LookAt", SSH::LookAt);
 	mono_add_internal_call("Scripting.Transform::LookAtClamped", SSH::LookAtClamped);
+	mono_add_internal_call("Scripting.Transform::LookAtDirectionalVector", SSH::LookAtDirectionalVector);
 	mono_add_internal_call("Scripting.Camera::GetCamera", SSH::GetCamera);
 	mono_add_internal_call("Scripting.Camera::SetCamera", SSH::SetCamera);
 	

@@ -91,6 +91,11 @@ namespace SSH
 		auto self_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(self_entityID));
 		self_trans->LookAtClamped(target);
 	}
+	void LookAtDirectionalVector(std::uint32_t self_entityID, glm::vec3& directionalVector)
+	{
+		auto self_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(self_entityID));
+		self_trans->LookAtDirectionalVector(directionalVector);
+	}
 
 	glm::vec3 GetUpVector(std::uint32_t self_entityID)
 	{

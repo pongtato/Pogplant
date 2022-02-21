@@ -126,5 +126,23 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetGamma(float newGamma);
+
+
+        /*************************************************************************/
+        /*!
+        \brief
+            Gets a ray direction from the camera, based off the screen coordinates
+            Use the camera position as ray origin, result of this function as
+            the ray's direction.
+
+        \param cameraEntityID
+            The entity ID of the object containing camera component
+
+        \param screenCoordinates
+            The screen coordinate you wanna cast a ray at
+        */
+        /*************************************************************************/
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetRayCastDirCamera(uint cameraEntityID, Vector3 screenCoordinates);
     }
 }

@@ -87,6 +87,9 @@ namespace Scripting
         float animateSpeed = 6.0f;
         uint EnemyTrack = 0;
 
+        //
+        Vector3 m_shootVector = new Vector3(0f, 0f, 1f);
+
         public class Reticle
         {
             public uint parent_id = 0;
@@ -167,16 +170,7 @@ namespace Scripting
             SetTargetEnemies(ref Turrets_A, ref enemy_in_range_A, ref enemy_to_target_A);
             DoRemovalList();
 
-            if (enemy_to_target_A.Count == 0)
-            {
-                SetTurretStraight(ref Turrets_A, 0, dt);
-                SetCrosshairColor(IdleColor, ref Idleflag, ref LockonFlag);
-                SetLargeCrossHair(3, ref LargeIdleflag, ref LargeLockonFlag);
-                RotateSmallCrossHair(crosshair_idle_rot_speed, dt);
-                ResetLargeCrossHairSize();
-                //SetRotateCrosshair(Slow & blue);
-                //SetOuterCrosshair(blue)b
-            }
+            
             if (enemy_to_target_A.Count >= 1)
             {
                 SetNearestEnemy();
@@ -189,7 +183,17 @@ namespace Scripting
                 //SetOuterCrosshair(red)
                 //Play animation of out scaling up a little and back.
             }
-
+            else
+            {
+                m_shootVector = GameUtilities.GetRayCastDirCamera(shipCamera, inner_ret.Position);
+                SetTurretRotation(ref Turrets_A, 0, dt);
+                SetCrosshairColor(IdleColor, ref Idleflag, ref LockonFlag);
+                SetLargeCrossHair(3, ref LargeIdleflag, ref LargeLockonFlag);
+                RotateSmallCrossHair(crosshair_idle_rot_speed, dt);
+                ResetLargeCrossHairSize();
+                //SetRotateCrosshair(Slow & blue);
+                //SetOuterCrosshair(blue)b
+            }
         }
         public override void LateUpdate(float dt)
         {
@@ -352,6 +356,7 @@ namespace Scripting
 
         }
 
+        Transform inner_ret = new Transform();
         void UpdateReticleMovementCanvas(ref Transform transform, ref float dt)
         {
             //Get mouse difference
@@ -393,7 +398,6 @@ namespace Scripting
             //Console.WriteLine("OFFSET Y: " + current_offset_value.Y);
 
             //Update the reticle and hitbox zone
-            Transform inner_ret = new Transform();
             inner_ret.Position = new Vector3(0, 0, 0);
             ECS.GetTransformECS(Crosshair, ref inner_ret.Position, ref inner_ret.Rotation, ref inner_ret.Scale);
             inner_ret.Position = Vector3.Lerp(inner_ret.Position, original_crosshair_initial.Position + current_offset_value, lerp_speed * dt);
@@ -475,13 +479,16 @@ namespace Scripting
             }
         }
 
-        void SetTurretStraight(ref List<uint> TurretGroup, int Offset, float dt)
+        void SetTurretRotation(ref List<uint> TurretGroup, int Offset, float dt)
         {
             isHoming = false;
             for (int i = 0; i < TurretGroup.Count; ++i)
             {
                 Vector3 CurrTurrRot = ECS.GetComponent<Transform>(TurretGroup[i]).Rotation;
-                Vector3 LerpVal = Vector3.Lerp(CurrTurrRot, new Vector3(0, 0, 0), dt * m_rotspeed);
+                Transform.LookAtDirectionalVector(TurretGroup[i], m_shootVector);
+                Vector3 AfterTurrRot = ECS.GetComponent<Transform>(TurretGroup[i]).Rotation;
+
+                Vector3 LerpVal = Vector3.Lerp(CurrTurrRot, AfterTurrRot, dt * m_rotspeed);
                 //LimitLerp(ref LerpVal, turret_rot_lerp_limit);
 
                 ECS.SetRotation(TurretGroup[i], LerpVal);
@@ -552,14 +559,15 @@ namespace Scripting
 
             //    GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
             //}
+
             for (int i = 0; i < Turrets_A.Count; i++)
             {
                 //Predict the enemy movement a little.
-                Vector3 Forward = Transform.GetForwardVector(MuzzleGroup[i]);
+                //Vector3 Forward = Transform.GetForwardVector(MuzzleGroup[i]);
                 Vector3 Position = ECS.GetGlobalPosition(MuzzleGroup[i]);
                 Vector3 Rotation = ECS.GetGlobalRotation(MuzzleGroup[i]);
 
-                GameUtilities.FirePlayerBullet(Position, Forward, Rotation, false, 0);
+                GameUtilities.FirePlayerBullet(Position, m_shootVector, Rotation, false, 0);
             }
         }
 

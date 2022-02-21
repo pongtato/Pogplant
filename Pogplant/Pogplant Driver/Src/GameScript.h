@@ -25,6 +25,8 @@ namespace Scripting
 	static int CheckBounds(glm::vec3& _Position, glm::vec3& _Velocity);
 	//Only works via checking for  "name" PlayerCam together with PlayerScript
 	static void FollowPlayerCam(std::uint32_t player_cam, std::uint32_t player_box, std::uint32_t playerShip, glm::vec3 _Position, glm::vec3 _Rotation, float _deltaTime);
+	static glm::vec3 GetRayCastDirCamera(std::uint32_t playerCamera, glm::vec3 screenCoordinates);
+
 
 	static void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation, bool homing, uint32_t tracker);
 

@@ -159,7 +159,21 @@ namespace Components
 			//{
 			//	Pogplant::Logger::Log({ "PPD::GenericComponents::Transform",Pogplant::LogEntry::LOGTYPE::WARNING, "Angle between look direction and up vector is to small" }, true);
 			//}
+		}
 
+		inline void LookAtDirectionalVector(const glm::vec3& directionalVector)
+		{
+			float angleX = glm::atan(
+				glm::sqrt(directionalVector.x * directionalVector.x + directionalVector.z * directionalVector.z),
+				directionalVector.y);
+
+			SetGlobalRotation(
+				glm::vec3{
+					glm::degrees(angleX) - 90.f,
+					glm::degrees(glm::atan(directionalVector.z, -directionalVector.x)) - 90.f,
+					0.f//Ignore roll for now
+				}
+			);
 		}
 
 		inline void LookAtClamped(const glm::vec3& target)
@@ -328,6 +342,8 @@ namespace Components
 		float m_Near;
 		float m_Far;
 		bool m_Active;
+
+		glm::vec3 GetRayDir(const glm::vec3& position, const glm::vec3& screenCoordinates);
 	};
 
 	struct SpriteAnimation

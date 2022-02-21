@@ -188,6 +188,26 @@ namespace Scripting
 		}
 	}
 
+	glm::vec3 GameScript::GetRayCastDirCamera(std::uint32_t playerCamera, glm::vec3 screenCoordinates)
+	{
+		if (playerCamera != entt::null)
+		{
+			auto transform = PPD::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>((entt::entity)playerCamera);
+			auto cameraComponent = PPD::Application::GetInstance().m_activeECS->GetReg().try_get<Camera>((entt::entity)playerCamera);
+
+			assert(cameraComponent && transform);
+
+			if (cameraComponent && transform)
+			{
+				return cameraComponent->GetRayDir(transform->m_position, screenCoordinates);
+			}
+		}
+
+		assert(false);
+
+		return glm::vec3{ 0.f, 0.f, 0.f };
+	}
+
 	void GameScript::FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation, bool homing, uint32_t tracker)
 	{
 		//Need to find player ship transform 

@@ -264,6 +264,46 @@ namespace Components
 		m_Active = _Active;
 	}
 
+	/*************************************************************************/
+	/*!
+	\brief
+		Gets a ray direction from the camera, based off the screen coordinates
+		Use the camera position as ray origin, result of this function as
+		the ray's direction.
+
+	\param position
+		The position of the camera, get from transform
+
+	\param screenCoordinates
+		The screen coordinate you wanna cast a ray at
+	*/
+	/*************************************************************************/
+	glm::vec3 Camera::GetRayDir(const glm::vec3& position, const glm::vec3& screenCoordinates)
+	{
+		//In our editor, coords go from -0.5 to 0.5
+		//In NDC, it goes from -1 to 1
+		glm::vec4 clipSpace = { screenCoordinates.x * 2.f, screenCoordinates.y * 2.f, -1.f, 1.f };
+
+		//Rest below is Aloysius code copypasta
+
+		glm::vec4 eye = glm::inverse(m_Projection) * clipSpace;
+		// Unproject XY portion only
+		eye = { eye.x,eye.y,-1.0f,0.0f };
+
+		//Get view
+		glm::mat4 view = glm::mat4_cast(glm::conjugate(m_Orientation));
+		view[3][0] = -(view[0][0] * position.x + view[1][0] * position.y + view[2][0] * position.z);
+		view[3][1] = -(view[0][1] * position.x + view[1][1] * position.y + view[2][1] * position.z);
+		view[3][2] = -(view[0][2] * position.x + view[1][2] * position.y + view[2][2] * position.z);
+		view[3][3] = 1;
+
+
+		// World space from view space
+		glm::vec4 world = glm::inverse(view) * eye;
+
+		return glm::normalize(glm::vec3(world));
+	}
+
 	ParticleSystem::ParticleSystem()
 		: m_Color{ glm::vec4{1} }
 		, m_SpawnDirection{ glm::vec3{0,1,0} }

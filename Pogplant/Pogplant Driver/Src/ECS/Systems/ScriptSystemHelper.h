@@ -58,6 +58,7 @@ namespace SSH
 	MonoString* GetTagECS(std::uint32_t entityID);
 	void LookAt(std::uint32_t self_entityID, glm::vec3& target);
 	void LookAtClamped(std::uint32_t self_entityID, glm::vec3& target);
+	void LookAtDirectionalVector(std::uint32_t self_entityID, glm::vec3& directionalVector);
 	glm::vec3 GetUpVector(std::uint32_t self_entityID);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index, MonoString* channelGroupName = nullptr);
 	void CreateAudioChannelGroup(MonoString* channelGroupName);
