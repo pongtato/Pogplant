@@ -138,6 +138,12 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector3 GetColorTint(uint entityID, ref Vector3 Color);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetFOV(uint entityID, float fov);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static float GetFOV(uint entityID);
+
         public static T GetComponent<T>(uint entityID)
         {
             if(typeof(T) == typeof(Transform))

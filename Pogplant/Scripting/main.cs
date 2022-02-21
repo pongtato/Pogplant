@@ -238,5 +238,10 @@ namespace Scripting
         {
             return new TriggerAudioPlay();
         }
+
+        public static CutSceneController CutSceneController()
+        {
+            return new CutSceneController();
+        }
     }
 }

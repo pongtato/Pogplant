@@ -57,6 +57,7 @@ namespace Scripting
             monoScriptNames.Add("AnimationSystem");
             monoScriptNames.Add("MovingParts");
             monoScriptNames.Add("Level1OutroCutscene");
+            monoScriptNames.Add("CutSceneController");
         }
 
         private void AddPauseScripts()

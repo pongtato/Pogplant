@@ -479,6 +479,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::IsLaserComplete", SSH::IsLaserComplete);
 	mono_add_internal_call("Scripting.ECS::ResetLaser", SSH::ResetLaser);
 
+	mono_add_internal_call("Scripting.ECS::SetFOV", SSH::SetFOV);
+	mono_add_internal_call("Scripting.ECS::GetFOV", SSH::GetFOV);
 	mono_add_internal_call("Scripting.ECS::SetFrames", SSH::SetFrames);
 	mono_add_internal_call("Scripting.ECS::SetColorTint", SSH::SetColorTint);
 	mono_add_internal_call("Scripting.ECS::GetColorTint", SSH::GetColorTint);

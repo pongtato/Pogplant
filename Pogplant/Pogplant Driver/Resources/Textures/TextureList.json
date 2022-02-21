@@ -79,26 +79,33 @@
             "Dir"       : "Resources/Textures/UI/",
             "Alpha"     : true
         },
-		{
-            "FileName" : "BlackBG.dds",
-            "Dir"       : "Resources/Textures/UI/Main Menu",
-            "Alpha"     : true
+        {
+          "FileName": "BlackBG.dds",
+          "Dir": "Resources/Textures/UI/Main Menu",
+          "Alpha": true
         }
     ],
 
-    "DEFAULT": 
-    [
-        {
-            "FileName"  : "AI_Happy.dds",
-            "Dir"       : "Resources/Textures/UI"
-        },
-        {
-            "FileName"  : "AI_Hurt.dds",
-            "Dir"       : "Resources/Textures/UI"
-        },
-        {
-            "FileName"  : "AI_Neutral.dds",
-            "Dir"       : "Resources/Textures/UI"
-        }
-    ]
+  "DEFAULT": [
+      {
+        "FileName": "AI_Happy.dds",
+        "Dir": "Resources/Textures/UI"
+      },
+      {
+        "FileName": "AI_Hurt.dds",
+        "Dir": "Resources/Textures/UI"
+      },
+      {
+        "FileName": "AI_Neutral.dds",
+        "Dir": "Resources/Textures/UI"
+      },
+      {
+        "FileName": "Cutscene_NarrationBG.dds",
+        "Dir": "Resources/Textures/UI/Cutscenes"
+      },
+      {
+        "FileName": "Cutscene_NarrationBoard.dds",
+        "Dir": "Resources/Textures/UI/Cutscenes"
+      }
+  ]
 }

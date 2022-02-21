@@ -257,6 +257,25 @@ namespace SSH
 		}
 	}
 
+	void SetFOV(std::uint32_t entityID, float fov)
+	{
+		auto cam = ScriptSystem::GetECS()->GetReg().try_get<Components::Camera>(static_cast<entt::entity>(entityID));
+		if (cam)
+		{
+			cam->m_Fov = fov;
+		}
+	}
+
+	float GetFOV(std::uint32_t entityID)
+	{
+		auto cam = ScriptSystem::GetECS()->GetReg().try_get<Components::Camera>(static_cast<entt::entity>(entityID));
+		if (cam)
+		{
+			return cam->m_Fov;
+		}
+		return 0;
+	}
+
 	void SetParticlePause(std::uint32_t entityID, bool isPaused)
 	{
 		auto particleSys = ScriptSystem::GetECS()->GetReg().try_get<Components::ParticleSystem>(static_cast<entt::entity>(entityID));

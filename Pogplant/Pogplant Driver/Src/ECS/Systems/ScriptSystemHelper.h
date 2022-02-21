@@ -35,10 +35,13 @@ namespace SSH
 	void SetPosition(std::uint32_t entityID, glm::vec3 pos);
 	void SetRotation(std::uint32_t entityID, glm::vec3 rot);
 	void SetScale(std::uint32_t entityID, glm::vec3 sca);
+	void SetFOV(std::uint32_t entityID, float fov);
+	float GetFOV(std::uint32_t entityID);
 	void SetParticlePause(std::uint32_t entityID, bool isPaused);
 	void SetParticlePlay(std::uint32_t entityID, bool setPlay);
 	void SetLaserStart(std::uint32_t entityID, bool isActivated);
 	bool IsLaserComplete(std::uint32_t entityID);
+	
 	void ResetLaser(std::uint32_t entityID);
 	//Canvas Component
 	void SetFrames(std::uint32_t entityID, int frameValue);
