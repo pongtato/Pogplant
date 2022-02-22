@@ -8,242 +8,308 @@ namespace Scripting
 {
     public class MovingParts
     {
+        public uint entity_id;
+
         //For ECS get transform
         Vector3 pos = new Vector3();
         Vector3 rot = new Vector3();
         Vector3 scale = new Vector3();
 
         //Position
-        public float lerp_position_speed_X;
-        public float lerp_position_speed_Y;
-        public float lerp_position_speed_Z;
+        float lerp_position_speed_X;
+        float lerp_position_speed_Y;
+        float lerp_position_speed_Z;
 
-        public Vector3 lerp_position_upper_limit;
-        public Vector3 lerp_position_lower_limit;
+        Vector3 lerp_position_upper_limit;
+        Vector3 lerp_linear_position;
+        Vector3 lerp_position_lower_limit;
 
-        public bool lerp_position_positive_direction_X;       //+ve means going towards upper limit, -ve going towards lower limit
-        public bool lerp_position_positive_direction_Y;
-        public bool lerp_position_positive_direction_Z;
+        bool lerp_position_positive_direction_X;       //+ve means going towards upper limit, -ve going towards lower limit
+        bool lerp_position_positive_direction_Y;
+        bool lerp_position_positive_direction_Z;
 
-        public bool lerp_position_ping_pong_X;
-        public bool lerp_position_ping_pong_Y;
-        public bool lerp_position_ping_pong_Z;
+        bool lerp_position_ping_pong_X;
+        bool lerp_position_ping_pong_Y;
+        bool lerp_position_ping_pong_Z;
 
-        public bool update_position = false;
+        bool update_pingpong_position = false;
+
+        bool lerp_position_linear_X;
+        bool lerp_position_linear_Y;
+        bool lerp_position_linear_Z;
+
+        bool update_linear_position = false;
 
         //Rotation
-        public float lerp_rotation_speed_X;
-        public float lerp_rotation_speed_Y;
-        public float lerp_rotation_speed_Z;
+        float lerp_rotation_speed_X;
+        float lerp_rotation_speed_Y;
+        float lerp_rotation_speed_Z;
 
-        public Vector3 lerp_rotation_upper_limit;
-        public Vector3 lerp_rotation_lower_limit;
+        Vector3 lerp_rotation_upper_limit;
+        Vector3 lerp_linear_rotation;
+        Vector3 lerp_rotation_lower_limit;
 
-        public bool lerp_rotation_positive_direction_X;
-        public bool lerp_rotation_positive_direction_Y;
-        public bool lerp_rotation_positive_direction_Z;
+        bool lerp_rotation_positive_direction_X;
+        bool lerp_rotation_positive_direction_Y;
+        bool lerp_rotation_positive_direction_Z;
 
-        public bool lerp_rotation_ping_pong_X;
-        public bool lerp_rotation_ping_pong_Y;
-        public bool lerp_rotation_ping_pong_Z;
+        bool lerp_rotation_ping_pong_X;
+        bool lerp_rotation_ping_pong_Y;
+        bool lerp_rotation_ping_pong_Z;
 
-        public bool toggle_spin;
-        public Vector3 spin_rotation;
+        bool toggle_spin;
+        Vector3 spin_rotation;
 
-        public bool update_rotation = false;
+        bool update_pingpong_rotation = false;
+
+        bool lerp_rotation_linear_X;
+        bool lerp_rotation_linear_Y;
+        bool lerp_rotation_linear_Z;
+
+        bool update_linear_rotation = false;
 
         //Scale
-        public float lerp_scale_speed_X;
-        public float lerp_scale_speed_Y;
-        public float lerp_scale_speed_Z;
+        float lerp_scale_speed_X;
+        float lerp_scale_speed_Y;
+        float lerp_scale_speed_Z;
 
-        public Vector3 lerp_scale_upper_limit;
-        public Vector3 lerp_scale_lower_limit;
+        Vector3 lerp_scale_upper_limit;
+        Vector3 lerp_scale_lower_limit;
 
-        public bool lerp_scale_positive_direction_X;
-        public bool lerp_scale_positive_direction_Y;
-        public bool lerp_scale_positive_direction_Z;
+        bool lerp_scale_positive_direction_X;
+        bool lerp_scale_positive_direction_Y;
+        bool lerp_scale_positive_direction_Z;
 
-        public bool lerp_scale_ping_pong_X;
-        public bool lerp_scale_ping_pong_Y;
-        public bool lerp_scale_ping_pong_Z;
+        bool lerp_scale_ping_pong_X;
+        bool lerp_scale_ping_pong_Y;
+        bool lerp_scale_ping_pong_Z;
 
-        public bool update_scale = false;
+        bool update_scale = false;
 
         //Position
-        public void SetLerpPosSpeedX(float value)
+        void SetLerpPosSpeedX(float value)
         {
             lerp_position_speed_X = value;
         }
 
-        public void SetLerpPosSpeedY(float value)
+        void SetLerpPosSpeedY(float value)
         {
             lerp_position_speed_Y = value;
         }
 
-        public void SetLerpPosSpeedZ(float value)
+        void SetLerpPosSpeedZ(float value)
         {
             lerp_position_speed_Z = value;
         }
 
-        public void SetLerpPosUpperLimit(Vector3 value)
+        void SetLerpPosUpperLimit(Vector3 value)
         {
             lerp_position_upper_limit = value;
         }
 
-        public void SetLerpPosLowerLimit(Vector3 value)
+        void SetLerpPosLowerLimit(Vector3 value)
         {
             lerp_position_lower_limit = value;
         }
 
-        public void SetLerpPosPositiveDirectionX(bool value)
+        void SetLerpLinearPosition(Vector3 value)
+        {
+            lerp_linear_position = value;
+        }
+
+        void SetLerpPosPositiveDirectionX(bool value)
         {
             lerp_position_positive_direction_X = value;
         }
 
-        public void SetLerpPosPositiveDirectionY(bool value)
+        void SetLerpPosPositiveDirectionY(bool value)
         {
             lerp_position_positive_direction_Y = value;
         }
 
-        public void SetLerpPosPositiveDirectionZ(bool value)
+        void SetLerpPosPositiveDirectionZ(bool value)
         {
             lerp_position_positive_direction_Z = value;
         }
 
-        public void SetLerpPosPingPongX(bool value)
+        void SetLerpPosPingPongX(bool value)
         {
             lerp_position_ping_pong_X = value;
         }
 
-        public void SetLerpPosPingPongY(bool value)
+        void SetLerpPosPingPongY(bool value)
         {
             lerp_position_ping_pong_Y = value;
         }
 
-        public void SetLerpPosPingPongZ(bool value)
+        void SetLerpPosPingPongZ(bool value)
         {
             lerp_position_ping_pong_Z = value;
         }
 
-        public void SetUpdatePosition(bool value)
+        void SetUpdatePingPongPosition(bool value)
         {
-            update_position = value;
+            update_pingpong_position = value;
+        }
+
+        void SetLerpPosLinearX(bool value)
+        {
+            lerp_position_linear_X = value;
+        }
+
+        void SetLerpPosLinearY(bool value)
+        {
+            lerp_position_linear_Y = value;
+        }
+
+        void SetLerpPosLinearZ(bool value)
+        {
+            lerp_position_linear_Z = value;
+        }
+
+        void SetUpdateLinearPosition(bool value)
+        {
+            update_linear_position = value;
         }
 
         //Rotation
-        public void SetLerpRotSpeedX(float value)
+        void SetLerpRotSpeedX(float value)
         {
             lerp_rotation_speed_X = value;
         }
 
-        public void SetLerpRotSpeedY(float value)
+        void SetLerpRotSpeedY(float value)
         {
             lerp_rotation_speed_Y = value;
         }
 
-        public void SetLerpRotSpeedZ(float value)
+        void SetLerpRotSpeedZ(float value)
         {
             lerp_rotation_speed_Z = value;
         }
 
-        public void SetLerpRotUpperLimit(Vector3 value)
+        void SetLerpRotUpperLimit(Vector3 value)
         {
             lerp_rotation_upper_limit = value;
         }
 
-        public void SetLerpRotLowerLimit(Vector3 value)
+        void SetLerpRotLowerLimit(Vector3 value)
         {
             lerp_rotation_lower_limit = value;
         }
 
-        public void SetLerpRotPositiveDirectionX(bool value)
+        void SetLerpRotPositiveDirectionX(bool value)
         {
             lerp_rotation_positive_direction_X = value;
         }
 
-        public void SetLerpRotPositiveDirectionY(bool value)
+        void SetLerpRotPositiveDirectionY(bool value)
         {
             lerp_rotation_positive_direction_Y = value;
         }
 
-        public void SetLerpRotPositiveDirectionZ(bool value)
+        void SetLerpRotPositiveDirectionZ(bool value)
         {
             lerp_rotation_positive_direction_Z = value;
         }
 
-        public void SetLerpRotPingPongX(bool value)
+        void SetLerpRotPingPongX(bool value)
         {
             lerp_rotation_ping_pong_X = value;
         }
 
-        public void SetLerpRotPingPongY(bool value)
+        void SetLerpRotPingPongY(bool value)
         {
             lerp_rotation_ping_pong_Y = value;
         }
 
-        public void SetLerpRotPingPongZ(bool value)
+        void SetLerpRotPingPongZ(bool value)
         {
             lerp_rotation_ping_pong_Z = value;
         }
 
-        public void SetUpdateRotation(bool value)
+        void SetUpdatePingPongRotation(bool value)
         {
-            update_rotation = value;
+            update_pingpong_rotation = value;
+        }
+
+        void SetUpdateLinearRotation(bool value)
+        {
+            update_linear_rotation = value;
+        }
+
+        void SetLerpRotLinearX(bool value)
+        {
+            lerp_rotation_linear_X = value;
+        }
+
+        void SetLerpRotLinearY(bool value)
+        {
+            lerp_rotation_linear_Y = value;
+        }
+
+        void SetLerpRotLinearZ(bool value)
+        {
+            lerp_rotation_linear_Z = value;
+        }
+
+        void SetLerpLinearRotation(Vector3 value)
+        {
+            lerp_linear_rotation = value;
         }
 
         //Scale
-        public void SetLerpScaleSpeedX(float value)
+        void SetLerpScaleSpeedX(float value)
         {
             lerp_scale_speed_X = value;
         }
 
-        public void SetLerpScaleSpeedY(float value)
+        void SetLerpScaleSpeedY(float value)
         {
             lerp_scale_speed_Y = value;
         }
 
-        public void SetLerpScaleSpeedZ(float value)
+        void SetLerpScaleSpeedZ(float value)
         {
             lerp_scale_speed_Z = value;
         }
 
-        public void SetLerpScaleUpperLimit(Vector3 value)
+        void SetLerpScaleUpperLimit(Vector3 value)
         {
             lerp_scale_upper_limit = value;
         }
 
-        public void SetLerpScaleLowerLimit(Vector3 value)
+        void SetLerpScaleLowerLimit(Vector3 value)
         {
             lerp_scale_lower_limit = value;
         }
 
-        public void SetLerpScalePositiveDirectionX(bool value)
+        void SetLerpScalePositiveDirectionX(bool value)
         {
             lerp_scale_positive_direction_X = value;
         }
 
-        public void SetLerpScalePositiveDirectionY(bool value)
+        void SetLerpScalePositiveDirectionY(bool value)
         {
             lerp_scale_positive_direction_Y = value;
         }
 
-        public void SetLerpScalePositiveDirectionZ(bool value)
+        void SetLerpScalePositiveDirectionZ(bool value)
         {
             lerp_scale_positive_direction_Z = value;
         }
 
-        public void SetLerpScalePingPongX(bool value)
+        void SetLerpScalePingPongX(bool value)
         {
             lerp_scale_ping_pong_X = value;
         }
 
-        public void SetLerpScalePingPongY(bool value)
+        void SetLerpScalePingPongY(bool value)
         {
             lerp_scale_ping_pong_Y = value;
         }
 
-        public void SetLerpScalePingPongZ(bool value)
+        void SetLerpScalePingPongZ(bool value)
         {
             lerp_scale_ping_pong_Z = value;
         }
@@ -267,6 +333,7 @@ namespace Scripting
             lerp_position_speed_Z = 0.0f;
 
             lerp_position_upper_limit = new Vector3();
+            lerp_linear_position = new Vector3();
             lerp_position_lower_limit = new Vector3();
 
             lerp_position_positive_direction_X = false;       //+ve means going towards upper limit, -ve going towards lower limit
@@ -277,7 +344,13 @@ namespace Scripting
             lerp_position_ping_pong_Y = false;
             lerp_position_ping_pong_Z = false;
 
-            update_position = false;
+            update_pingpong_position = false;
+
+            lerp_position_linear_X = false;
+            lerp_position_linear_Y = false;
+            lerp_position_linear_Z = false;
+
+            update_linear_position = false;
 
             //Rotation
             lerp_rotation_speed_X = 0.0f;
@@ -285,6 +358,7 @@ namespace Scripting
             lerp_rotation_speed_Z = 0.0f;
 
             lerp_rotation_upper_limit = new Vector3();
+            lerp_linear_rotation = new Vector3();
             lerp_rotation_lower_limit = new Vector3();
 
             lerp_rotation_positive_direction_X = false;
@@ -298,7 +372,13 @@ namespace Scripting
             toggle_spin = false;
             spin_rotation = new Vector3();
 
-            update_rotation = false;
+            update_pingpong_rotation = false;
+
+            lerp_rotation_linear_X = false;
+            lerp_rotation_linear_Y = false;
+            lerp_rotation_linear_Z = false;
+
+            update_linear_rotation = false;
 
             //Scale
             lerp_scale_speed_X = 0.0f;
@@ -321,7 +401,7 @@ namespace Scripting
 
         #region[Set & Update moving parts animation]
 
-        public void SetMovingPartsPosition(uint id, Vector3 set_pos_lower_limit, Vector3 set_pos_upper_limit, Vector3 lerp_speed,
+        public void SetPingPongPosition(Vector3 set_pos_lower_limit, Vector3 set_pos_upper_limit, Vector3 lerp_speed,
             bool set_positive_direction_X, bool set_positive_direction_Y, bool set_positive_direction_Z,
             bool set_ping_pong_X, bool set_ping_pong_Y, bool set_ping_pong_Z)
         {
@@ -342,10 +422,25 @@ namespace Scripting
             SetLerpPosPositiveDirectionZ(set_positive_direction_Z);
 
             //Automatically enable since already setting
-            SetUpdatePosition(true);
+            SetUpdatePingPongPosition(true);
         }
 
-        public void SetMovingPartsRotation(uint id, Vector3 set_rot_lower_limit, Vector3 set_rot_upper_limit, Vector3 lerp_speed,
+        public void SetLinearPosition(Vector3 set_target_pos, Vector3 lerp_speed, bool set_lerp_X, bool set_lerp_Y, bool set_lerp_Z)
+        {
+            SetLerpLinearPosition(set_target_pos);
+
+            SetLerpPosSpeedX(lerp_speed.X);
+            SetLerpPosSpeedY(lerp_speed.Y);
+            SetLerpPosSpeedZ(lerp_speed.Z);
+
+            SetLerpPosLinearX(set_lerp_X);
+            SetLerpPosLinearY(set_lerp_Y);
+            SetLerpPosLinearZ(set_lerp_Z);
+
+            SetUpdateLinearPosition(true);
+        }
+
+        public void SetPingPongRotation(Vector3 set_rot_lower_limit, Vector3 set_rot_upper_limit, Vector3 lerp_speed,
             bool set_positive_direction_X, bool set_positive_direction_Y, bool set_positive_direction_Z,
             bool set_ping_pong_X, bool set_ping_pong_Y, bool set_ping_pong_Z)
         {
@@ -366,10 +461,26 @@ namespace Scripting
             SetLerpRotPositiveDirectionZ(set_positive_direction_Z);
 
             //Automatically enable since already setting
-            SetUpdateRotation(true);
+            SetUpdatePingPongRotation(true);
         }
 
-        public void SetMovingPartsScale(uint id, Vector3 set_scale_lower_limit, Vector3 set_scale_upper_limit, Vector3 lerp_speed,
+        public void SetLinearRotation(Vector3 set_target_rot, Vector3 lerp_speed, bool set_lerp_X, bool set_lerp_Y, bool set_lerp_Z)
+        {
+            SetLerpLinearRotation(set_target_rot);
+
+            SetLerpRotSpeedX(lerp_speed.X);
+            SetLerpRotSpeedY(lerp_speed.Y);
+            SetLerpRotSpeedZ(lerp_speed.Z);
+
+
+            SetLerpRotLinearX(set_lerp_X);
+            SetLerpRotLinearY(set_lerp_Y);
+            SetLerpRotLinearZ(set_lerp_Z);
+
+            SetUpdateLinearRotation(true);
+        }
+
+        public void SetMovingPartsScale(Vector3 set_scale_lower_limit, Vector3 set_scale_upper_limit, Vector3 lerp_speed,
             bool set_positive_direction_X, bool set_positive_direction_Y, bool set_positive_direction_Z,
             bool set_ping_pong_X, bool set_ping_pong_Y, bool set_ping_pong_Z)
         {
@@ -393,25 +504,38 @@ namespace Scripting
             SetUpdateScale(true);
         }
 
-        public void UpdateMovingParts(uint id, float dt)
+        public void UpdateMovingParts(float dt)
         {
-            //Update position only if needed
-            if (update_position)
+            //Update linear position only if needed
+            if (update_linear_position)
             {
-                UpdateMovingPartsPosition(id, dt);
+                UpdateLinearPosition(dt);
             }
+            //Update pingpong position only if needed
+            if (update_pingpong_position)
+            {
+                UpdatePingPongPosition(dt);
+            }
+
             //Update rotation only if needed
-            if (update_rotation)
+            if (update_pingpong_rotation)
             {
-                UpdateMovingPartsRotation(id, dt);
+                UpdatePingPongRotation(dt);
             }
+            //Update linear rotation only if needed
+            if (update_linear_rotation)
+            {
+                UpdateLinearRotation(dt);
+            }
+
+            //Update scale only if needed
             if (update_scale)
             {
-                UpdateMovingPartsScale(id, dt);
+                UpdateMovingPartsScale(dt);
             }
         }
 
-        void UpdateMovingPartsPosition(uint id, float dt)
+        void UpdatePingPongPosition(float dt)
         {
             //===============================================================================================================================================//
             //X Axis
@@ -420,12 +544,12 @@ namespace Scripting
             //Keep playing if ping pong
             if (lerp_position_ping_pong_X)
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Move 
                 if (lerp_position_positive_direction_X)
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(lerp_position_upper_limit.X, pos.Y, pos.Z), lerp_position_speed_X * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(lerp_position_upper_limit.X, pos.Y, pos.Z), lerp_position_speed_X * dt));
 
                     //Check for limit and reverse
                     if (pos.X >= lerp_position_upper_limit.X - 0.1f)
@@ -435,7 +559,7 @@ namespace Scripting
                 }
                 else
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(lerp_position_lower_limit.X, pos.Y, pos.Z), lerp_position_speed_X * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(lerp_position_lower_limit.X, pos.Y, pos.Z), lerp_position_speed_X * dt));
 
                     if (pos.X <= lerp_position_lower_limit.X + 0.1f)
                     {
@@ -446,16 +570,16 @@ namespace Scripting
             //Play anim once if no ping pong
             else
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Move 
                 if (lerp_position_positive_direction_X)
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(lerp_position_upper_limit.X, pos.Y, pos.Z), lerp_position_speed_X * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(lerp_position_upper_limit.X, pos.Y, pos.Z), lerp_position_speed_X * dt));
                 }
                 else
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(lerp_position_lower_limit.X, pos.Y, pos.Z), lerp_position_speed_X * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(lerp_position_lower_limit.X, pos.Y, pos.Z), lerp_position_speed_X * dt));
                 }
             }
 
@@ -466,12 +590,12 @@ namespace Scripting
             //Keep playing if ping pong
             if (lerp_position_ping_pong_Y)
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Move 
                 if (lerp_position_positive_direction_Y)
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, lerp_position_upper_limit.Y, pos.Z), lerp_position_speed_Y * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, lerp_position_upper_limit.Y, pos.Z), lerp_position_speed_Y * dt));
 
                     //Check for limit and reverse
                     if (pos.Y >= lerp_position_upper_limit.Y - 0.1f)
@@ -481,7 +605,7 @@ namespace Scripting
                 }
                 else
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, lerp_position_lower_limit.Y, pos.Z), lerp_position_speed_Y * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, lerp_position_lower_limit.Y, pos.Z), lerp_position_speed_Y * dt));
 
                     if (pos.Y <= lerp_position_lower_limit.Y + 0.1f)
                     {
@@ -492,16 +616,16 @@ namespace Scripting
             //Play anim once if no ping pong
             else
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Move 
                 if (lerp_position_positive_direction_Y)
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, lerp_position_upper_limit.Y, pos.Z), lerp_position_speed_Y * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, lerp_position_upper_limit.Y, pos.Z), lerp_position_speed_Y * dt));
                 }
                 else
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, lerp_position_lower_limit.Y, pos.Z), lerp_position_speed_Y * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, lerp_position_lower_limit.Y, pos.Z), lerp_position_speed_Y * dt));
                 }
             }
 
@@ -512,12 +636,12 @@ namespace Scripting
             //Keep playing if ping pong
             if (lerp_position_ping_pong_Z)
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Move 
                 if (lerp_position_positive_direction_Z)
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, lerp_position_upper_limit.Z), lerp_position_speed_Z * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, lerp_position_upper_limit.Z), lerp_position_speed_Z * dt));
 
                     //Check for limit and reverse
                     if (pos.Z >= lerp_position_upper_limit.Z - 0.1f)
@@ -527,7 +651,7 @@ namespace Scripting
                 }
                 else
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, lerp_position_lower_limit.Z), lerp_position_speed_Z * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, lerp_position_lower_limit.Z), lerp_position_speed_Z * dt));
 
                     if (pos.Z <= lerp_position_lower_limit.Z + 0.1f)
                     {
@@ -538,21 +662,40 @@ namespace Scripting
             //Play anim once if no ping pong
             else
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Move 
                 if (lerp_position_positive_direction_Z)
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, lerp_position_upper_limit.Z), lerp_position_speed_Z * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, lerp_position_upper_limit.Z), lerp_position_speed_Z * dt));
                 }
                 else
                 {
-                    ECS.SetPosition(id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, lerp_position_lower_limit.Z), lerp_position_speed_Z * dt));
+                    ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, lerp_position_lower_limit.Z), lerp_position_speed_Z * dt));
                 }
             }
         }
 
-        void UpdateMovingPartsRotation(uint id, float dt)
+        void UpdateLinearPosition(float dt)
+        {
+            if (lerp_position_linear_X)
+            {
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
+                ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(lerp_linear_position.X, pos.Y, pos.Z), lerp_position_speed_X * dt));
+            }
+            if (lerp_position_linear_Y)
+            {
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
+                ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, lerp_linear_position.Y, pos.Z), lerp_position_speed_Y * dt));
+            }
+            if (lerp_position_linear_Z)
+            {
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
+                ECS.SetPosition(entity_id, Vector3.Lerp(pos, new Vector3(pos.X, pos.Y, lerp_linear_position.Z), lerp_position_speed_Z * dt));
+            }
+        }
+
+        void UpdatePingPongRotation(float dt)
         {
             //===============================================================================================================================================//
             //X Axis
@@ -561,14 +704,14 @@ namespace Scripting
             //Keep playing if ping pong
             if (lerp_rotation_ping_pong_X)
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Rotate 
                 if (lerp_rotation_positive_direction_X)
                 {
 
 
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(lerp_rotation_upper_limit.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(lerp_rotation_upper_limit.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
 
                     //Check for limit and reverse
                     if (rot.X >= lerp_rotation_upper_limit.X - 0.1f)
@@ -578,7 +721,7 @@ namespace Scripting
                 }
                 else
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(lerp_rotation_lower_limit.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(lerp_rotation_lower_limit.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
 
                     if (rot.X <= lerp_rotation_lower_limit.X + 0.1f)
                     {
@@ -589,16 +732,16 @@ namespace Scripting
             //Play anim once if no ping pong
             else
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Rotate 
                 if (lerp_rotation_positive_direction_X)
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(lerp_rotation_upper_limit.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(lerp_rotation_upper_limit.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
                 }
                 else
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(lerp_rotation_lower_limit.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(lerp_rotation_lower_limit.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
                 }
             }
 
@@ -609,12 +752,12 @@ namespace Scripting
             //Keep playing if ping pong
             if (lerp_rotation_ping_pong_Y)
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Rotate 
                 if (lerp_rotation_positive_direction_Y)
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, lerp_rotation_upper_limit.Y, rot.Z), lerp_rotation_speed_Y * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, lerp_rotation_upper_limit.Y, rot.Z), lerp_rotation_speed_Y * dt));
 
                     //Check for limit and reverse
                     if (rot.Y >= lerp_rotation_upper_limit.Y - 0.1f)
@@ -624,7 +767,7 @@ namespace Scripting
                 }
                 else
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, lerp_rotation_lower_limit.Y, rot.Z), lerp_rotation_speed_Y * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, lerp_rotation_lower_limit.Y, rot.Z), lerp_rotation_speed_Y * dt));
 
                     if (rot.Y <= lerp_rotation_lower_limit.Y + 0.1f)
                     {
@@ -635,16 +778,16 @@ namespace Scripting
             //Play anim once if no ping pong
             else
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Rotate 
                 if (lerp_rotation_positive_direction_Y)
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, lerp_rotation_upper_limit.Y, rot.Z), lerp_rotation_speed_Y * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, lerp_rotation_upper_limit.Y, rot.Z), lerp_rotation_speed_Y * dt));
                 }
                 else
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, lerp_rotation_lower_limit.Y, rot.Z), lerp_rotation_speed_Y * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, lerp_rotation_lower_limit.Y, rot.Z), lerp_rotation_speed_Y * dt));
                 }
             }
 
@@ -655,12 +798,12 @@ namespace Scripting
             //Keep playing if ping pong
             if (lerp_rotation_ping_pong_Z)
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Rotate 
                 if (lerp_rotation_positive_direction_Z)
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, lerp_rotation_upper_limit.Z), lerp_rotation_speed_Z * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, lerp_rotation_upper_limit.Z), lerp_rotation_speed_Z * dt));
 
                     //Check for limit and reverse
                     if (rot.Z >= lerp_rotation_upper_limit.Z - 0.1f)
@@ -670,7 +813,7 @@ namespace Scripting
                 }
                 else
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, lerp_rotation_lower_limit.Z), lerp_rotation_speed_Z * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, lerp_rotation_lower_limit.Z), lerp_rotation_speed_Z * dt));
 
                     if (rot.Z <= lerp_rotation_lower_limit.Z + 0.1f)
                     {
@@ -681,21 +824,40 @@ namespace Scripting
             //Play anim once if no ping pong
             else
             {
-                ECS.GetTransformECS(id, ref pos, ref rot, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
 
                 //Rotate 
                 if (lerp_rotation_positive_direction_Z)
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, lerp_rotation_upper_limit.Z), lerp_rotation_speed_Z * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, lerp_rotation_upper_limit.Z), lerp_rotation_speed_Z * dt));
                 }
                 else
                 {
-                    ECS.SetRotation(id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, lerp_rotation_lower_limit.Z), lerp_rotation_speed_Z * dt));
+                    ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, lerp_rotation_lower_limit.Z), lerp_rotation_speed_Z * dt));
                 }
             }
         }
 
-        void UpdateMovingPartsScale(uint id, float dt)
+        void UpdateLinearRotation(float dt)
+        {
+            if (lerp_rotation_linear_X)
+            {
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
+                ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(lerp_linear_rotation.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
+            }
+            if (lerp_rotation_linear_Y)
+            {
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
+                ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, lerp_linear_rotation.Y, rot.Z), lerp_rotation_speed_Y * dt));
+            }
+            if (lerp_rotation_linear_Z)
+            {
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
+                ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(rot.X, rot.Y, lerp_linear_rotation.Z), lerp_rotation_speed_Z * dt));
+            }
+        }
+
+        void UpdateMovingPartsScale(float dt)
         {
             //===============================================================================================================================================//
             //X Axis
@@ -704,12 +866,12 @@ namespace Scripting
             //Keep playing if ping pong
             if (lerp_scale_ping_pong_X)
             {
-                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref scale, ref scale);
 
                 //Rotate 
                 if (lerp_scale_positive_direction_X)
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(lerp_scale_upper_limit.X, scale.Y, scale.Z), lerp_scale_speed_X * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(lerp_scale_upper_limit.X, scale.Y, scale.Z), lerp_scale_speed_X * dt));
 
                     //Check for limit and reverse
                     if (scale.X >= lerp_scale_upper_limit.X - 0.1f)
@@ -719,7 +881,7 @@ namespace Scripting
                 }
                 else
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(lerp_scale_lower_limit.X, scale.Y, scale.Z), lerp_scale_speed_X * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(lerp_scale_lower_limit.X, scale.Y, scale.Z), lerp_scale_speed_X * dt));
 
                     if (scale.X <= lerp_scale_lower_limit.X + 0.1f)
                     {
@@ -730,16 +892,16 @@ namespace Scripting
             //Play anim once if no ping pong
             else
             {
-                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref scale, ref scale);
 
                 //Rotate 
                 if (lerp_scale_positive_direction_X)
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(lerp_scale_upper_limit.X, scale.Y, scale.Z), lerp_scale_speed_X * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(lerp_scale_upper_limit.X, scale.Y, scale.Z), lerp_scale_speed_X * dt));
                 }
                 else
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(lerp_scale_lower_limit.X, scale.Y, scale.Z), lerp_scale_speed_X * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(lerp_scale_lower_limit.X, scale.Y, scale.Z), lerp_scale_speed_X * dt));
                 }
             }
 
@@ -750,12 +912,12 @@ namespace Scripting
             //Keep playing if ping pong
             if (lerp_scale_ping_pong_Y)
             {
-                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref scale, ref scale);
 
                 //Rotate 
                 if (lerp_scale_positive_direction_Y)
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, lerp_scale_upper_limit.Y, scale.Z), lerp_scale_speed_Y * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, lerp_scale_upper_limit.Y, scale.Z), lerp_scale_speed_Y * dt));
 
                     //Check for limit and reverse
                     if (scale.Y >= lerp_scale_upper_limit.Y - 0.1f)
@@ -765,7 +927,7 @@ namespace Scripting
                 }
                 else
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, lerp_scale_lower_limit.Y, scale.Z), lerp_scale_speed_Y * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, lerp_scale_lower_limit.Y, scale.Z), lerp_scale_speed_Y * dt));
 
                     if (scale.Y <= lerp_scale_lower_limit.Y + 0.1f)
                     {
@@ -776,16 +938,16 @@ namespace Scripting
             //Play anim once if no ping pong
             else
             {
-                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref scale, ref scale);
 
                 //Rotate 
                 if (lerp_scale_positive_direction_Y)
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, lerp_scale_upper_limit.Y, scale.Z), lerp_scale_speed_Y * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, lerp_scale_upper_limit.Y, scale.Z), lerp_scale_speed_Y * dt));
                 }
                 else
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, lerp_scale_lower_limit.Y, scale.Z), lerp_scale_speed_Y * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, lerp_scale_lower_limit.Y, scale.Z), lerp_scale_speed_Y * dt));
                 }
             }
 
@@ -796,12 +958,12 @@ namespace Scripting
             //Keep playing if ping pong
             if (lerp_scale_ping_pong_Z)
             {
-                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref scale, ref scale);
 
                 //Rotate 
                 if (lerp_scale_positive_direction_Z)
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_scale_upper_limit.Z), lerp_scale_speed_Z * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_scale_upper_limit.Z), lerp_scale_speed_Z * dt));
 
                     //Check for limit and reverse
                     if (scale.Z >= lerp_scale_upper_limit.Z - 0.1f)
@@ -811,7 +973,7 @@ namespace Scripting
                 }
                 else
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_scale_lower_limit.Z), lerp_scale_speed_Z * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_scale_lower_limit.Z), lerp_scale_speed_Z * dt));
 
                     if (scale.Z <= lerp_scale_lower_limit.Z + 0.1f)
                     {
@@ -822,21 +984,21 @@ namespace Scripting
             //Play anim once if no ping pong
             else
             {
-                ECS.GetTransformECS(id, ref pos, ref scale, ref scale);
+                ECS.GetTransformECS(entity_id, ref pos, ref scale, ref scale);
 
                 //Rotate 
                 if (lerp_scale_positive_direction_Z)
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_scale_upper_limit.Z), lerp_scale_speed_Z * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_scale_upper_limit.Z), lerp_scale_speed_Z * dt));
                 }
                 else
                 {
-                    ECS.SetScale(id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_scale_lower_limit.Z), lerp_scale_speed_Z * dt));
+                    ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_scale_lower_limit.Z), lerp_scale_speed_Z * dt));
                 }
             }
         }
 
-        public void SpinObjectEndless(uint id, float x_axis, float y_axis, float z_axis, float spin_speed, float dt)
+        public void SpinObjectEndless(float x_axis, float y_axis, float z_axis, float spin_speed, float dt)
         {
             if (toggle_spin)
             {
@@ -848,7 +1010,7 @@ namespace Scripting
                 ClampRotationValue(ref spin_rotation.Y, -360.0f, 360.0f);
                 ClampRotationValue(ref spin_rotation.Z, -360.0f, 360.0f);
 
-                ECS.SetRotation(id, spin_rotation);
+                ECS.SetRotation(entity_id, spin_rotation);
             }
         }
 
@@ -865,7 +1027,7 @@ namespace Scripting
                 value = 0.0f;
         }
 
-        public void StopObjectSpin(uint id)
+        public void StopObjectSpin()
         {
             toggle_spin = false;
         }

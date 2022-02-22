@@ -166,47 +166,47 @@ namespace Scripting
             moving_parts_dict = new Dictionary<uint, MovingParts>();
 
             //Boss body
-            moving_parts_dict.Add(entityID, new MovingParts());
+            moving_parts_dict.Add(entityID, new MovingParts() { entity_id = entityID });
 
             //Core
-            moving_parts_dict.Add(false_core_id, new MovingParts());
-            moving_parts_dict.Add(mouth_left_id, new MovingParts());
-            moving_parts_dict.Add(mouth_right_id, new MovingParts());
+            moving_parts_dict.Add(false_core_id, new MovingParts() { entity_id = false_core_id });
+            moving_parts_dict.Add(mouth_left_id, new MovingParts() { entity_id = mouth_left_id });
+            moving_parts_dict.Add(mouth_right_id, new MovingParts() { entity_id = mouth_right_id });
 
             //Arms
-            moving_parts_dict.Add(left_arm_middle_joint_id, new MovingParts());
-            moving_parts_dict.Add(left_arm_end_joint_id, new MovingParts());
-            moving_parts_dict.Add(right_arm_middle_joint_id, new MovingParts());
-            moving_parts_dict.Add(right_arm_end_joint_id, new MovingParts());
+            moving_parts_dict.Add(left_arm_middle_joint_id, new MovingParts() { entity_id = left_arm_middle_joint_id });
+            moving_parts_dict.Add(left_arm_end_joint_id, new MovingParts() { entity_id = left_arm_end_joint_id });
+            moving_parts_dict.Add(right_arm_middle_joint_id, new MovingParts() { entity_id = right_arm_middle_joint_id });
+            moving_parts_dict.Add(right_arm_end_joint_id, new MovingParts() { entity_id = right_arm_end_joint_id });
 
             //Arm Lasers
-            moving_parts_dict.Add(left_large_laser_spin_id, new MovingParts());
-            moving_parts_dict.Add(right_large_laser_spin_id, new MovingParts());
+            moving_parts_dict.Add(left_large_laser_spin_id, new MovingParts() { entity_id = left_large_laser_spin_id });
+            moving_parts_dict.Add(right_large_laser_spin_id, new MovingParts() { entity_id = right_large_laser_spin_id });
 
             //Legs
-            moving_parts_dict.Add(left_leg_middle_joint_id, new MovingParts());
-            moving_parts_dict.Add(right_leg_middle_joint_id, new MovingParts());
-            moving_parts_dict.Add(left_leg_end_joint_id, new MovingParts());
-            moving_parts_dict.Add(right_leg_end_joint_id, new MovingParts());
+            moving_parts_dict.Add(left_leg_middle_joint_id, new MovingParts() { entity_id = left_leg_middle_joint_id });
+            moving_parts_dict.Add(right_leg_middle_joint_id, new MovingParts() { entity_id = right_leg_middle_joint_id });
+            moving_parts_dict.Add(left_leg_end_joint_id, new MovingParts() { entity_id = left_leg_end_joint_id });
+            moving_parts_dict.Add(right_leg_end_joint_id, new MovingParts() { entity_id = right_leg_end_joint_id });
 
             //Launching bays
-            moving_parts_dict.Add(right_launching_bay_one_id, new MovingParts());
-            moving_parts_dict.Add(right_launching_bay_two_id, new MovingParts());
-            moving_parts_dict.Add(right_launching_bay_three_id, new MovingParts());
+            moving_parts_dict.Add(right_launching_bay_one_id, new MovingParts() { entity_id = right_launching_bay_one_id });
+            moving_parts_dict.Add(right_launching_bay_two_id, new MovingParts() { entity_id = right_launching_bay_two_id });
+            moving_parts_dict.Add(right_launching_bay_three_id, new MovingParts() { entity_id = right_launching_bay_three_id });
 
-            moving_parts_dict.Add(left_launching_bay_one_id, new MovingParts());
-            moving_parts_dict.Add(left_launching_bay_two_id, new MovingParts());
-            moving_parts_dict.Add(left_launching_bay_three_id, new MovingParts());
+            moving_parts_dict.Add(left_launching_bay_one_id, new MovingParts() { entity_id = left_launching_bay_one_id });
+            moving_parts_dict.Add(left_launching_bay_two_id, new MovingParts() { entity_id = left_launching_bay_two_id });
+            moving_parts_dict.Add(left_launching_bay_three_id, new MovingParts() { entity_id = left_launching_bay_three_id });
 
             //Artillery
-            moving_parts_dict.Add(artillery_axis_id, new MovingParts());
-            moving_parts_dict.Add(artillery_barrel_id, new MovingParts());
+            moving_parts_dict.Add(artillery_axis_id, new MovingParts() { entity_id = artillery_axis_id });
+            moving_parts_dict.Add(artillery_barrel_id, new MovingParts() { entity_id = artillery_barrel_id });
 
             //Main Laser
-            moving_parts_dict.Add(main_laser_rails_id, new MovingParts());
-            moving_parts_dict.Add(main_laser_rail_vent_id, new MovingParts());
-            moving_parts_dict.Add(main_laser_barrel_id, new MovingParts());
-            moving_parts_dict.Add(main_laser_object_id, new MovingParts());
+            moving_parts_dict.Add(main_laser_rails_id, new MovingParts() { entity_id = main_laser_rails_id });
+            moving_parts_dict.Add(main_laser_rail_vent_id, new MovingParts() { entity_id = main_laser_rail_vent_id });
+            moving_parts_dict.Add(main_laser_barrel_id, new MovingParts() { entity_id = main_laser_barrel_id });
+            moving_parts_dict.Add(main_laser_object_id, new MovingParts() { entity_id = main_laser_object_id });
 
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
@@ -220,8 +220,8 @@ namespace Scripting
 
         public override void Update(float dt)
         {
-            moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
-            moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+            moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
+            moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
             {
@@ -238,7 +238,7 @@ namespace Scripting
                     break;
                 case BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
                     laser_spin_addition += laser_spin_addition_speed * dt;
-                    moving_parts_dict[main_laser_barrel_id].SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, laser_spin_addition, dt);
+                    moving_parts_dict[main_laser_barrel_id].SpinObjectEndless(0, 0, 1.0f, laser_spin_addition, dt);
                     break;
                 case BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE:
                     UpdateAnyKeyScaling(dt);
@@ -387,15 +387,15 @@ namespace Scripting
 
         void SetFlyingUpStateAnimationsTwo()
         {
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, -50, 0), new Vector3(0, 5, 0), new Vector3(0, 4.0f, 0), false, true, false, false, false, false);
+            moving_parts_dict[entityID].SetLinearPosition(new Vector3(0, 5, 0), new Vector3(0, 4.0f, 0), false, true, false);
             ECS.SetRotation(entityID, new Vector3(-90, 0, 0));
-            moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(-90, 0, 0), new Vector3(0, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, false, false, false);
+            moving_parts_dict[entityID].SetLinearRotation(new Vector3(0, 0, 0), new Vector3(1.0f, 0, 0), true, false, false);
         }
 
         void SetFlyingUpStateAnimationsThree()
         {
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, 0, 0), new Vector3(0, 5, 0), new Vector3(0, 2.0f, 0), false, false, false, false, false, false);
-            moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(ECS.GetGlobalRotation(entityID).X, 0, 0), new Vector3(0, 0, 0), new Vector3(2.0f, 0, 0), true, false, false, false, false, false);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, 0, 0), new Vector3(0, 5, 0), new Vector3(0, 2.0f, 0), false, false, false, false, false, false);
+            moving_parts_dict[entityID].SetPingPongRotation(new Vector3(ECS.GetGlobalRotation(entityID).X, 0, 0), new Vector3(0, 0, 0), new Vector3(2.0f, 0, 0), true, false, false, false, false, false);
         }
 
         void RunFlyingUpSequenceOne(float dt)
@@ -406,13 +406,13 @@ namespace Scripting
         void RunFlyingUpSequenceTwo(float dt)
         {
             //Body
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
         }
 
         void RunFlyingUpSequenceThree(float dt)
         {
             //Body
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
         }
 
         #endregion
@@ -425,37 +425,37 @@ namespace Scripting
         void SetMovingStateAnimations()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
-            moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(0, 0, -4), new Vector3(0, 0, 4), new Vector3(0, 0, 3.0f), false, false, true, false, false, true);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
+            moving_parts_dict[entityID].SetPingPongRotation(new Vector3(0, 0, -4), new Vector3(0, 0, 4), new Vector3(0, 0, 3.0f), false, false, true, false, false, true);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
-            moving_parts_dict[left_arm_end_joint_id].SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -85), new Vector3(0, 0, -65), new Vector3(0, 0, 5.0f), false, false, false, false, false, true);
-            moving_parts_dict[right_arm_middle_joint_id].SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
-            moving_parts_dict[right_arm_end_joint_id].SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 65), new Vector3(0, 0, 85), new Vector3(0.0f, 0.0f, 5.0f), false, false, false, false, false, true);
+            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -85), new Vector3(0, 0, -65), new Vector3(0, 0, 5.0f), false, false, false, false, false, true);
+            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 65), new Vector3(0, 0, 85), new Vector3(0.0f, 0.0f, 5.0f), false, false, false, false, false, true);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(-90, 0, -35), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[left_leg_end_joint_id].SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, 50), new Vector3(0, 0, 100), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[right_leg_middle_joint_id].SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(-90, 0, 0), new Vector3(0, 0, 35), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[right_leg_end_joint_id].SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, -100), new Vector3(0, 0, -50), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90, 0, -35), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 50), new Vector3(0, 0, 100), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90, 0, 0), new Vector3(0, 0, 35), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -100), new Vector3(0, 0, -50), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_one_id].SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_three_id].SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
-            moving_parts_dict[left_launching_bay_one_id].SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_two_id].SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_three_id].SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].SetMovingPartsRotation(mouth_left_id, new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 2.0f, 0), false, true, false, false, true, false);
-            moving_parts_dict[mouth_right_id].SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 2.0f, 0), false, false, false, false, true, false);
+            moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 2.0f, 0), false, true, false, false, true, false);
+            moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 2.0f, 0), false, false, false, false, true, false);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[artillery_barrel_id].SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
 
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
@@ -465,40 +465,40 @@ namespace Scripting
         {
             //Set the boss in a moving state where the arms and legs flail a little bit
 
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(left_arm_middle_joint_id, dt);
-            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(left_arm_end_joint_id, dt);
-            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(right_arm_middle_joint_id, dt);
-            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(right_arm_end_joint_id, dt);
+            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
             //Arm Lasers
-            moving_parts_dict[left_large_laser_spin_id].UpdateMovingParts(left_large_laser_spin_id, dt);
-            moving_parts_dict[right_large_laser_spin_id].UpdateMovingParts(right_large_laser_spin_id, dt);
+            moving_parts_dict[left_large_laser_spin_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_large_laser_spin_id].UpdateMovingParts(dt);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(left_leg_middle_joint_id, dt);
-            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(left_leg_end_joint_id, dt);
-            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(right_leg_middle_joint_id, dt);
-            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(right_leg_end_joint_id, dt);
+            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(right_launching_bay_one_id, dt);
-            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(right_launching_bay_two_id, dt);
-            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(right_launching_bay_three_id, dt);
+            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(left_launching_bay_one_id, dt);
-            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(left_launching_bay_two_id, dt);
-            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(left_launching_bay_three_id, dt);
+            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(dt);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].UpdateMovingParts(artillery_axis_id, dt);
-            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(artillery_barrel_id, dt);
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].UpdateMovingParts(mouth_left_id, dt);
-            moving_parts_dict[mouth_right_id].UpdateMovingParts(mouth_right_id, dt);
+            moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
+            moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
         }
         #endregion
 
@@ -510,37 +510,37 @@ namespace Scripting
         void SetProtectionStateAnimations()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
-            moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(0, 0, -4), new Vector3(0, 0, 4), new Vector3(0, 0, 3.0f), false, false, true, false, false, true);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
+            moving_parts_dict[entityID].SetPingPongRotation(new Vector3(0, 0, -4), new Vector3(0, 0, 4), new Vector3(0, 0, 3.0f), false, false, true, false, false, true);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
-            moving_parts_dict[left_arm_end_joint_id].SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -85), new Vector3(0, 0, -65), new Vector3(0, 0, 5.0f), false, false, false, false, false, true);
-            moving_parts_dict[right_arm_middle_joint_id].SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
-            moving_parts_dict[right_arm_end_joint_id].SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 65), new Vector3(0, 0, 85), new Vector3(0.0f, 0.0f, 5.0f), false, false, false, false, false, true);
+            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -85), new Vector3(0, 0, -65), new Vector3(0, 0, 5.0f), false, false, false, false, false, true);
+            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 65), new Vector3(0, 0, 85), new Vector3(0.0f, 0.0f, 5.0f), false, false, false, false, false, true);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(-90, 0, -35), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[left_leg_end_joint_id].SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, 50), new Vector3(0, 0, 100), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[right_leg_middle_joint_id].SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(-90, 0, 0), new Vector3(0, 0, 35), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[right_leg_end_joint_id].SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, -100), new Vector3(0, 0, -50), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90, 0, -35), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 50), new Vector3(0, 0, 100), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90, 0, 0), new Vector3(0, 0, 35), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
+            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -100), new Vector3(0, 0, -50), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_two_id].SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_three_id].SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
-            moving_parts_dict[left_launching_bay_one_id].SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_two_id].SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_three_id].SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].SetMovingPartsRotation(mouth_left_id, new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, false, false);
-            moving_parts_dict[mouth_right_id].SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 10.0f, 0), false, false, false, false, false, false);
+            moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, false, false);
+            moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 10.0f, 0), false, false, false, false, false, false);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[artillery_barrel_id].SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
 
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
@@ -550,40 +550,40 @@ namespace Scripting
         {
             //Set the boss in a moving state where the arms and legs flail a little bit
 
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(left_arm_middle_joint_id, dt);
-            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(left_arm_end_joint_id, dt);
-            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(right_arm_middle_joint_id, dt);
-            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(right_arm_end_joint_id, dt);
+            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
             //Arm Lasers
-            moving_parts_dict[left_large_laser_spin_id].UpdateMovingParts(left_large_laser_spin_id, dt);
-            moving_parts_dict[right_large_laser_spin_id].UpdateMovingParts(right_large_laser_spin_id, dt);
+            moving_parts_dict[left_large_laser_spin_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_large_laser_spin_id].UpdateMovingParts(dt);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(left_leg_middle_joint_id, dt);
-            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(left_leg_end_joint_id, dt);
-            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(right_leg_middle_joint_id, dt);
-            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(right_leg_end_joint_id, dt);
+            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(right_launching_bay_one_id, dt);
-            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(right_launching_bay_two_id, dt);
-            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(right_launching_bay_three_id, dt);
+            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(left_launching_bay_one_id, dt);
-            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(left_launching_bay_two_id, dt);
-            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(left_launching_bay_three_id, dt);
+            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(dt);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].UpdateMovingParts(artillery_axis_id, dt);
-            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(artillery_barrel_id, dt);
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].UpdateMovingParts(mouth_left_id, dt);
-            moving_parts_dict[mouth_right_id].UpdateMovingParts(mouth_right_id, dt);
+            moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
+            moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
         }
         #endregion
 
@@ -601,119 +601,119 @@ namespace Scripting
         void SetLaunchStateAnimationsOne()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(), new Vector3(), new Vector3(1.0f, 0, 0), true, false, false, false, false, false);
-            moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(), new Vector3(), new Vector3(0, 0, 3.0f), false, false, true, false, false, false);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(), new Vector3(), new Vector3(1.0f, 0, 0), true, false, false, false, false, false);
+            moving_parts_dict[entityID].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(0, 0, 3.0f), false, false, true, false, false, false);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(-160.0f, 0, -30.0f), new Vector3(), new Vector3(10.0f, 10.0f, 1.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_arm_end_joint_id].SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -95.0f), new Vector3(0, 0, 0), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_arm_middle_joint_id].SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(-160.0f, 0, 0), new Vector3(0, 0, 30.0f), new Vector3(10.0f, 10.0f, 1.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_arm_end_joint_id].SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 0), new Vector3(0, 0, 95.0f), new Vector3(0.0f, 0.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(-160.0f, 0, -30.0f), new Vector3(), new Vector3(10.0f, 10.0f, 1.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -95.0f), new Vector3(0, 0, 0), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(-160.0f, 0, 0), new Vector3(0, 0, 30.0f), new Vector3(10.0f, 10.0f, 1.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(0, 0, 95.0f), new Vector3(0.0f, 0.0f, 5.0f), false, false, true, false, false, false);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(-90.0f, 0, -35.0f), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[left_leg_end_joint_id].SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, 50.0f), new Vector3(0, 0, 100.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_leg_middle_joint_id].SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(-90.0f, 0, 0), new Vector3(0, 0, 35.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_leg_end_joint_id].SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, -100.0f), new Vector3(0, 0, -50.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 0, -35.0f), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 50.0f), new Vector3(0, 0, 100.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 0, 0), new Vector3(0, 0, 35.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -100.0f), new Vector3(0, 0, -50.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_two_id].SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_three_id].SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
-            moving_parts_dict[left_launching_bay_one_id].SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_two_id].SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_three_id].SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].SetMovingPartsRotation(mouth_left_id, new Vector3(0, -15.0f, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
-            moving_parts_dict[mouth_right_id].SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 15.0f, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
+            moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(0, -15.0f, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
+            moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(), new Vector3(0, 15.0f, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[artillery_barrel_id].SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
         }
 
         void RunLaunchStateSequenceOne(float dt)
         {
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(left_arm_middle_joint_id, dt);
-            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(left_arm_end_joint_id, dt);
-            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(right_arm_middle_joint_id, dt);
-            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(right_arm_end_joint_id, dt);
+            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(left_leg_middle_joint_id, dt);
-            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(left_leg_end_joint_id, dt);
-            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(right_leg_middle_joint_id, dt);
-            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(right_leg_end_joint_id, dt);
+            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(right_launching_bay_one_id, dt);
-            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(right_launching_bay_two_id, dt);
-            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(right_launching_bay_three_id, dt);
+            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(left_launching_bay_one_id, dt);
-            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(left_launching_bay_two_id, dt);
-            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(left_launching_bay_three_id, dt);
+            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(dt);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].UpdateMovingParts(artillery_axis_id, dt);
-            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(artillery_barrel_id, dt);
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].UpdateMovingParts(mouth_left_id, dt);
-            moving_parts_dict[mouth_right_id].UpdateMovingParts(mouth_right_id, dt);
+            moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
+            moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
         }
 
         void SetLaunchStateAnimationsTwo()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(), new Vector3(18.0f, 0, 0), new Vector3(5.0f, 0, 0), true, false, false, false, false, false);
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, -0.1f, 0), new Vector3(), new Vector3(0, 3.0f, 0), false, false, false, false, false, false);
+            moving_parts_dict[entityID].SetPingPongRotation(new Vector3(), new Vector3(18.0f, 0, 0), new Vector3(5.0f, 0, 0), true, false, false, false, false, false);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, -0.1f, 0), new Vector3(), new Vector3(0, 3.0f, 0), false, false, false, false, false, false);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(), new Vector3(130.0f, 0, 0), new Vector3(5.0f, 0, 0), false, false, true, false, false, false);
-            moving_parts_dict[left_arm_end_joint_id].SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -95.0f), new Vector3(0, 0, 0), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_arm_middle_joint_id].SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(), new Vector3(130.0f, 0, 0), new Vector3(5.0f, 0, 0), false, false, true, false, false, false);
-            moving_parts_dict[right_arm_end_joint_id].SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 0), new Vector3(0, 0, 95.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(), new Vector3(130.0f, 0, 0), new Vector3(5.0f, 0, 0), false, false, true, false, false, false);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -95.0f), new Vector3(0, 0, 0), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(), new Vector3(130.0f, 0, 0), new Vector3(5.0f, 0, 0), false, false, true, false, false, false);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(0, 0, 95.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(-90.0f, 0, -35.0f), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[left_leg_end_joint_id].SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, 50.0f), new Vector3(0, 0, 100.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_leg_middle_joint_id].SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(-90.0f, 0, 0), new Vector3(0, 0, 35.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_leg_end_joint_id].SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, -100.0f), new Vector3(0, 0, -50.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 0, -35.0f), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 50.0f), new Vector3(0, 0, 100.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 0, 0), new Vector3(0, 0, 35.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -100.0f), new Vector3(0, 0, -50.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
         }
 
         void RunLaunchStateSequenceTwo(float dt)
         {
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(left_arm_middle_joint_id, dt);
-            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(left_arm_end_joint_id, dt);
-            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(right_arm_middle_joint_id, dt);
-            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(right_arm_end_joint_id, dt);
+            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(left_leg_middle_joint_id, dt);
-            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(left_leg_end_joint_id, dt);
-            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(right_leg_middle_joint_id, dt);
-            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(right_leg_end_joint_id, dt);
+            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
         }
 
         void SetLaunchStateAnimationsThree()
         {
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(0, 0, -90.0f), new Vector3(), new Vector3(0, 0, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_two_id].SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(0, 0, -90.0f), new Vector3(), new Vector3(0, 0, 6.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_three_id].SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(0, 0, -90.0f), new Vector3(), new Vector3(0, 0, 2.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(0, 0, -90.0f), new Vector3(), new Vector3(0, 0, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_two_id].SetPingPongRotation(new Vector3(0, 0, -90.0f), new Vector3(), new Vector3(0, 0, 6.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_three_id].SetPingPongRotation(new Vector3(0, 0, -90.0f), new Vector3(), new Vector3(0, 0, 2.0f), false, false, false, false, false, false);
 
-            moving_parts_dict[left_launching_bay_one_id].SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 10.0f), false, false, true, false, false, false);
-            moving_parts_dict[left_launching_bay_two_id].SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 6.0f), false, false, true, false, false, false);
-            moving_parts_dict[left_launching_bay_three_id].SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 2.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 10.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 6.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 2.0f), false, false, true, false, false, false);
 
             //Enable the launch particles
             ECS.SetParticlePlay(right_launching_bay_one_id, true);
@@ -728,73 +728,73 @@ namespace Scripting
         void RunLaunchStateSequenceThree(float dt)
         {
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(right_launching_bay_one_id, dt);
-            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(right_launching_bay_two_id, dt);
-            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(right_launching_bay_three_id, dt);
+            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(left_launching_bay_one_id, dt);
-            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(left_launching_bay_two_id, dt);
-            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(left_launching_bay_three_id, dt);
+            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(dt);
         }
 
         void SetLaunchStateAnimationsFour()
         {
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(0, 0, 10.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_launching_bay_two_id].SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(0, 0, 6.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_launching_bay_three_id].SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(0, 0, 2.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(0, 0, 10.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(0, 0, 6.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(0, 0, 2.0f), false, false, true, false, false, false);
 
-            moving_parts_dict[left_launching_bay_one_id].SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(0, 0, 10.0f), false, false, true, false, false, false);
-            moving_parts_dict[left_launching_bay_two_id].SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(0, 0, 6.0f), false, false, true, false, false, false);
-            moving_parts_dict[left_launching_bay_three_id].SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(0, 0, 2.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(0, 0, 10.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(0, 0, 6.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(0, 0, 2.0f), false, false, true, false, false, false);
         }
 
         void RunLaunchStateSequenceFour(float dt)
         {
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(right_launching_bay_one_id, dt);
-            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(right_launching_bay_two_id, dt);
-            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(right_launching_bay_three_id, dt);
+            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(left_launching_bay_one_id, dt);
-            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(left_launching_bay_two_id, dt);
-            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(left_launching_bay_three_id, dt);
+            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(dt);
         }
 
         void SetLaunchStateAnimationsFive()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsRotation(entityID, new Vector3(), new Vector3(), new Vector3(5.0f, 0, 0), false, false, false, false, false, false); ;
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(), new Vector3(0, 0.1f, 0), new Vector3(0, 3.0f, 0), false, true, false, false, false, false);
+            moving_parts_dict[entityID].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(5.0f, 0, 0), false, false, false, false, false, false); ;
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(), new Vector3(0, 0.1f, 0), new Vector3(0, 3.0f, 0), false, true, false, false, false, false);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(), new Vector3(130.0f, 0, 0), new Vector3(5.0f, 0, 0), false, false, true, false, false, false);
-            moving_parts_dict[left_arm_end_joint_id].SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -95.0f), new Vector3(0, 0, 0), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_arm_middle_joint_id].SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(), new Vector3(130.0f, 0, 0), new Vector3(5.0f, 0, 0), false, false, true, false, false, false);
-            moving_parts_dict[right_arm_end_joint_id].SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 0), new Vector3(0, 0, 95.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(), new Vector3(130.0f, 0, 0), new Vector3(5.0f, 0, 0), false, false, true, false, false, false);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -95.0f), new Vector3(0, 0, 0), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(), new Vector3(130.0f, 0, 0), new Vector3(5.0f, 0, 0), false, false, true, false, false, false);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(0, 0, 95.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(-90.0f, 0, -35.0f), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[left_leg_end_joint_id].SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, 50.0f), new Vector3(0, 0, 100.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_leg_middle_joint_id].SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(-90.0f, 0, 0), new Vector3(0, 0, 35.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_leg_end_joint_id].SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, -100.0f), new Vector3(0, 0, -50.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 0, -35.0f), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 50.0f), new Vector3(0, 0, 100.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 0, 0), new Vector3(0, 0, 35.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -100.0f), new Vector3(0, 0, -50.0f), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, false);
         }
 
         void RunLaunchStateSequenceFive(float dt)
         {
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(left_arm_middle_joint_id, dt);
-            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(left_arm_end_joint_id, dt);
-            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(right_arm_middle_joint_id, dt);
-            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(right_arm_end_joint_id, dt);
+            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(left_leg_middle_joint_id, dt);
-            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(left_leg_end_joint_id, dt);
-            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(right_leg_middle_joint_id, dt);
-            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(right_leg_end_joint_id, dt);
+            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
         }
         #endregion
 
@@ -811,36 +811,36 @@ namespace Scripting
         void SetSpinningStateAnimationsOne()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(0, -90.0f, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), true, false, true, false, false, false);
-            moving_parts_dict[left_arm_end_joint_id].SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_arm_middle_joint_id].SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(0, 0, 0), new Vector3(0, 90.0f, 0), new Vector3(5.0f, 5.0f, 5.0f), true, true, true, false, false, false);
-            moving_parts_dict[right_arm_end_joint_id].SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(0, -90.0f, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), true, false, true, false, false, false);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(0, 90.0f, 0), new Vector3(5.0f, 5.0f, 5.0f), true, true, true, false, false, false);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, false, false, false, false);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(0, 0, 0), new Vector3(0, 90, 0), new Vector3(5.0f, 5.0f, 5.0f), false, true, false, false, false, false);
-            moving_parts_dict[left_leg_end_joint_id].SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[right_leg_middle_joint_id].SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(0, -90, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, true, false, false, false);
-            moving_parts_dict[right_leg_end_joint_id].SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(0, 90, 0), new Vector3(5.0f, 5.0f, 5.0f), false, true, false, false, false, false);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, true, false, false, true);
+            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(0, -90, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), false, false, false, false, false, false);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_one_id].SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_three_id].SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
-            moving_parts_dict[left_launching_bay_one_id].SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_two_id].SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_three_id].SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].SetMovingPartsRotation(mouth_left_id, new Vector3(0, 0, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
-            moving_parts_dict[mouth_right_id].SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 0, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
+            moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
+            moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(), new Vector3(0, 0, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(61, 0, 0), new Vector3(10.0f, 0, 0), true, false, false, false, false, false);
-            moving_parts_dict[artillery_barrel_id].SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 6.0f, 0), new Vector3(0, 5.0f, 0), false, true, false, false, false, false);
+            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(), new Vector3(61, 0, 0), new Vector3(10.0f, 0, 0), true, false, false, false, false, false);
+            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 6.0f, 0), new Vector3(0, 5.0f, 0), false, true, false, false, false, false);
 
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
@@ -848,40 +848,40 @@ namespace Scripting
 
         void RunSpinningStateAnimationsOne(float dt)
         {
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(left_arm_middle_joint_id, dt);
-            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(left_arm_end_joint_id, dt);
-            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(right_arm_middle_joint_id, dt);
-            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(right_arm_end_joint_id, dt);
+            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
             //Arm Lasers
-            moving_parts_dict[left_large_laser_spin_id].UpdateMovingParts(left_large_laser_spin_id, dt);
-            moving_parts_dict[right_large_laser_spin_id].UpdateMovingParts(right_large_laser_spin_id, dt);
+            moving_parts_dict[left_large_laser_spin_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_large_laser_spin_id].UpdateMovingParts(dt);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(left_leg_middle_joint_id, dt);
-            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(left_leg_end_joint_id, dt);
-            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(right_leg_middle_joint_id, dt);
-            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(right_leg_end_joint_id, dt);
+            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(right_launching_bay_one_id, dt);
-            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(right_launching_bay_two_id, dt);
-            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(right_launching_bay_three_id, dt);
+            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(left_launching_bay_one_id, dt);
-            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(left_launching_bay_two_id, dt);
-            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(left_launching_bay_three_id, dt);
+            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(dt);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].UpdateMovingParts(artillery_axis_id, dt);
-            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(artillery_barrel_id, dt);
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].UpdateMovingParts(mouth_left_id, dt);
-            moving_parts_dict[mouth_right_id].UpdateMovingParts(mouth_right_id, dt);
+            moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
+            moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
         }
 
         void SetSpinningStateAnimationsTwo()
@@ -891,7 +891,7 @@ namespace Scripting
 
         void RunSpinningStateAnimationsTwo(float dt)
         {
-            moving_parts_dict[entityID].SpinObjectEndless(entityID, 0, 0, 1.0f, 200.0f, dt);
+            moving_parts_dict[entityID].SpinObjectEndless(0, 0, 1.0f, 200.0f, dt);
         }
 
         void SetSpinningStateAnimationsThree()
@@ -901,7 +901,7 @@ namespace Scripting
 
         void RunSpinningStateAnimationsThree(float dt)
         {
-            moving_parts_dict[entityID].SpinObjectEndless(entityID, 0, 0, 1.0f, 400.0f, dt);
+            moving_parts_dict[entityID].SpinObjectEndless(0, 0, 1.0f, 400.0f, dt);
         }
 
         void SetSpinningStateAnimationsFour()
@@ -911,19 +911,19 @@ namespace Scripting
 
         void RunSpinningStateAnimationsFour(float dt)
         {
-            moving_parts_dict[entityID].SpinObjectEndless(entityID, 0, 0, 1.0f, 800.0f, dt);
+            moving_parts_dict[entityID].SpinObjectEndless(0, 0, 1.0f, 800.0f, dt);
         }
 
         void SetSpinningStateAnimationsFive()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, 0, 0), new Vector3(0, 0, 40), new Vector3(0, 0, 1.25f), false, false, true, false, false, false);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, 0, 0), new Vector3(0, 0, 40), new Vector3(0, 0, 1.25f), false, false, true, false, false, false);
         }
 
         void RunSpinningStateAnimationsFive(float dt)
         {
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
-            moving_parts_dict[entityID].SpinObjectEndless(entityID, 0, 0, 1.0f, 1000.0f, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
+            moving_parts_dict[entityID].SpinObjectEndless(0, 0, 1.0f, 1000.0f, dt);
         }
 
         #endregion
@@ -939,33 +939,33 @@ namespace Scripting
         void SetDeathStateAnimationsOne()
         {
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetMovingPartsRotation(left_arm_middle_joint_id, new Vector3(-100.0f, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 0, 0), false, false, false, false, false, false);
-            moving_parts_dict[left_arm_end_joint_id].SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -98.0f), new Vector3(0, 0, -95.0f), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_arm_middle_joint_id].SetMovingPartsRotation(right_arm_middle_joint_id, new Vector3(-100.0f, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 0, 0), false, false, false, false, false, false);
-            moving_parts_dict[right_arm_end_joint_id].SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 95.0f), new Vector3(0, 0, 98.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(-100.0f, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 0, 0), false, false, false, false, false, false);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -98.0f), new Vector3(0, 0, -95.0f), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(-100.0f, 0, 0), new Vector3(0, 0, 0), new Vector3(5.0f, 0, 0), false, false, false, false, false, false);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 95.0f), new Vector3(0, 0, 98.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetMovingPartsRotation(left_leg_middle_joint_id, new Vector3(0, 0, 0), new Vector3(75.0f, 0, 0), new Vector3(5.0f, 0, 0), true, false, false, false, false, false);
-            moving_parts_dict[left_leg_end_joint_id].SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, -90.0f), new Vector3(0, 0, -70.0f), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_leg_middle_joint_id].SetMovingPartsRotation(right_leg_middle_joint_id, new Vector3(0, 0, 0), new Vector3(75.0f, 0, 0), new Vector3(5.0f, 0, 0), true, false, false, false, false, false);
-            moving_parts_dict[right_leg_end_joint_id].SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, 70.0f), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
+            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(75.0f, 0, 0), new Vector3(5.0f, 0, 0), true, false, false, false, false, false);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -90.0f), new Vector3(0, 0, -70.0f), new Vector3(0, 0, 5.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(75.0f, 0, 0), new Vector3(5.0f, 0, 0), true, false, false, false, false, false);
+            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 70.0f), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 5.0f), false, false, true, false, false, false);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].SetMovingPartsRotation(right_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_two_id].SetMovingPartsRotation(right_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_three_id].SetMovingPartsRotation(right_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[right_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
-            moving_parts_dict[left_launching_bay_one_id].SetMovingPartsRotation(left_launching_bay_one_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_two_id].SetMovingPartsRotation(left_launching_bay_two_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_three_id].SetMovingPartsRotation(left_launching_bay_three_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[left_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].SetMovingPartsRotation(mouth_left_id, new Vector3(0, -105, 0), new Vector3(), new Vector3(0, 5.0f, 0), false, false, false, false, false, false);
-            moving_parts_dict[mouth_right_id].SetMovingPartsRotation(mouth_right_id, new Vector3(), new Vector3(0, 105, 0), new Vector3(0, 5.0f, 0), false, true, false, false, false, false);
+            moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(0, -105, 0), new Vector3(), new Vector3(0, 5.0f, 0), false, false, false, false, false, false);
+            moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(), new Vector3(0, 105, 0), new Vector3(0, 5.0f, 0), false, true, false, false, false, false);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].SetMovingPartsRotation(artillery_axis_id, new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[artillery_barrel_id].SetMovingPartsPosition(artillery_barrel_id, new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
+            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
 
             ECS.SetActive(false_core_id, false);
         }
@@ -973,83 +973,83 @@ namespace Scripting
         void RunDeathStateSequenceOne(float dt)
         {
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(left_arm_middle_joint_id, dt);
-            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(left_arm_end_joint_id, dt);
-            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(right_arm_middle_joint_id, dt);
-            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(right_arm_end_joint_id, dt);
+            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(left_leg_middle_joint_id, dt);
-            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(left_leg_end_joint_id, dt);
-            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(right_leg_middle_joint_id, dt);
-            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(right_leg_end_joint_id, dt);
+            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
 
             //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(right_launching_bay_one_id, dt);
-            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(right_launching_bay_two_id, dt);
-            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(right_launching_bay_three_id, dt);
+            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(left_launching_bay_one_id, dt);
-            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(left_launching_bay_two_id, dt);
-            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(left_launching_bay_three_id, dt);
+            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(dt);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].UpdateMovingParts(artillery_axis_id, dt);
-            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(artillery_barrel_id, dt);
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
 
             //Mouth
-            moving_parts_dict[mouth_left_id].UpdateMovingParts(mouth_left_id, dt);
-            moving_parts_dict[mouth_right_id].UpdateMovingParts(mouth_right_id, dt);
+            moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
+            moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
 
             //Laser
-            moving_parts_dict[main_laser_rails_id].UpdateMovingParts(main_laser_rails_id, dt);
-            moving_parts_dict[main_laser_barrel_id].UpdateMovingParts(main_laser_barrel_id, dt);
+            moving_parts_dict[main_laser_rails_id].UpdateMovingParts(dt);
+            moving_parts_dict[main_laser_barrel_id].UpdateMovingParts(dt);
         }
 
         void SetDeathStateAnimationsTwo()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, 0), new Vector3(0, 0.2f, 0), new Vector3(0, 5.0f, 0), false, false, false, false, true, false);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, -0.2f, 0), new Vector3(0, 0.2f, 0), new Vector3(0, 5.0f, 0), false, false, false, false, true, false);
 
             //Arms
-            moving_parts_dict[left_arm_end_joint_id].SetMovingPartsRotation(left_arm_end_joint_id, new Vector3(0, 0, -98.0f), new Vector3(0, 0, -95.0f), new Vector3(0, 0, 55.0f), false, false, false, false, false, true);
-            moving_parts_dict[right_arm_end_joint_id].SetMovingPartsRotation(right_arm_end_joint_id, new Vector3(0, 0, 95.0f), new Vector3(0, 0, 98.0f), new Vector3(0, 0, 55.0f), false, false, true, false, false, true);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -98.0f), new Vector3(0, 0, -95.0f), new Vector3(0, 0, 55.0f), false, false, false, false, false, true);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 95.0f), new Vector3(0, 0, 98.0f), new Vector3(0, 0, 55.0f), false, false, true, false, false, true);
 
             //Legs
-            moving_parts_dict[left_leg_end_joint_id].SetMovingPartsRotation(left_leg_end_joint_id, new Vector3(0, 0, -90.0f), new Vector3(0, 0, -70.0f), new Vector3(0, 0, 55.0f), false, false, false, false, false, true);
-            moving_parts_dict[right_leg_end_joint_id].SetMovingPartsRotation(right_leg_end_joint_id, new Vector3(0, 0, 70.0f), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 55.0f), false, false, true, false, false, true);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -90.0f), new Vector3(0, 0, -70.0f), new Vector3(0, 0, 55.0f), false, false, false, false, false, true);
+            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 70.0f), new Vector3(0, 0, 90.0f), new Vector3(0, 0, 55.0f), false, false, true, false, false, true);
 
             //Main Laser
             ECS.SetActive(main_laser_rail_vent_id, false);
-            moving_parts_dict[main_laser_rails_id].SetMovingPartsPosition(main_laser_rails_id, new Vector3(), new Vector3(0, 0, 0.802f), new Vector3(0, 0, 0.5f), false, false, true, false, false, false);
-            moving_parts_dict[main_laser_barrel_id].SetMovingPartsPosition(main_laser_barrel_id, new Vector3(), new Vector3(0, 0, 1.344f), new Vector3(0, 0, 0.25f), false, false, true, false, false, false);
+            moving_parts_dict[main_laser_rails_id].SetPingPongPosition(new Vector3(), new Vector3(0, 0, 0.802f), new Vector3(0, 0, 0.5f), false, false, true, false, false, false);
+            moving_parts_dict[main_laser_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 0, 1.344f), new Vector3(0, 0, 0.25f), false, false, true, false, false, false);
 
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(true);
         }
 
         void RunDeathStateSequenceTwo(float dt)
         {
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
 
             //Arms
-            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(left_arm_end_joint_id, dt);
-            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(right_arm_end_joint_id, dt);
+            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
             //Legs
-            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(left_leg_end_joint_id, dt);
-            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(right_leg_end_joint_id, dt);
+            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].UpdateMovingParts(artillery_axis_id, dt);
-            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(artillery_barrel_id, dt);
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
 
             //Laser
-            moving_parts_dict[main_laser_rails_id].UpdateMovingParts(main_laser_rails_id, dt);
-            moving_parts_dict[main_laser_barrel_id].UpdateMovingParts(main_laser_barrel_id, dt);
+            moving_parts_dict[main_laser_rails_id].UpdateMovingParts(dt);
+            moving_parts_dict[main_laser_barrel_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[main_laser_barrel_id].SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, 100.0f, dt);
-            moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
-            moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+            moving_parts_dict[main_laser_barrel_id].SpinObjectEndless(0, 0, 1.0f, 100.0f, dt);
+            moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
+            moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
 
             GameUtilities.StartLaser(main_laser_beam_id);
         }
@@ -1067,8 +1067,8 @@ namespace Scripting
         void SetDeathStateAnimationsFour()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, -4), new Vector3(0, 0.2f, 0), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
-            moving_parts_dict[main_laser_object_id].SetMovingPartsScale(main_laser_object_id, new Vector3(0.1f, 0.1f, 3.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(2.0f, 2.0f, 0), true, true, false, false, false, false);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, -0.2f, -4), new Vector3(0, 0.2f, 0), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
+            moving_parts_dict[main_laser_object_id].SetMovingPartsScale(new Vector3(0.1f, 0.1f, 3.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(2.0f, 2.0f, 0), true, true, false, false, false, false);
 
             ECS.SetActive(main_laser_rails_id, false);
 
@@ -1078,23 +1078,23 @@ namespace Scripting
         void RunDeathStateSequenceFour(float dt)
         {
             //Body
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
 
             //Laser beam
-            moving_parts_dict[main_laser_object_id].UpdateMovingParts(main_laser_object_id, dt);
+            moving_parts_dict[main_laser_object_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[main_laser_barrel_id].SpinObjectEndless(main_laser_barrel_id, 0, 0, 1.0f, 100.0f, dt);
-            moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
-            moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+            moving_parts_dict[main_laser_barrel_id].SpinObjectEndless(0, 0, 1.0f, 100.0f, dt);
+            moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
+            moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
         }
 
         void SetDeathStateAnimationsFive()
         {
             //Body
-            moving_parts_dict[entityID].SetMovingPartsPosition(entityID, new Vector3(0, -0.2f, 0), new Vector3(0, 0.2f, 2), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, -0.2f, 0), new Vector3(0, 0.2f, 2), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
 
             //Laser beam
-            moving_parts_dict[main_laser_object_id].SetMovingPartsScale(main_laser_object_id, new Vector3(0.0f, 0.0f, 0.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(8.0f, 8.0f, 8.0f), false, false, false, false, false, false);
+            moving_parts_dict[main_laser_object_id].SetMovingPartsScale(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(8.0f, 8.0f, 8.0f), false, false, false, false, false, false);
 
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(false);
 
@@ -1104,11 +1104,11 @@ namespace Scripting
 
         void RunDeathStateSequenceFive(float dt)
         {
-            moving_parts_dict[entityID].UpdateMovingParts(entityID, dt);
-            moving_parts_dict[main_laser_object_id].UpdateMovingParts(main_laser_object_id, dt);
+            moving_parts_dict[entityID].UpdateMovingParts(dt);
+            moving_parts_dict[main_laser_object_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(left_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
-            moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(right_large_laser_spin_id, 1.0f, 0, 0, 200.0f, dt);
+            moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
+            moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
         }
         #endregion
     }
