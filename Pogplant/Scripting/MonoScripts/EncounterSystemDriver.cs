@@ -146,6 +146,7 @@ namespace Scripting
                     Boss_High2();
                     break;
                 default:
+                    Boss_Low1();
                     Console.WriteLine("Unsupported wave name: \"" + waveName + "\"");
                     break;
             }
@@ -1606,7 +1607,7 @@ namespace Scripting
 
             encounterManager.AddEncounter(segmentNine_BB);
         }
-
+        
         void Boss_Low1()
         {
             Boss_LeftChain();
