@@ -133,8 +133,8 @@ namespace Scripting
         private float duration; // how long the enemy will attack for
 
         //private Animator animator = null;
-        private Transform[] muzzle_transforms = new Transform[1];
         //private EnemyManager em;
+        private uint laser_object_id; // entityID to the laser object (optional)
         private float current_time;
         //private int current_interval = 0;
         private float fire_timer = 0.0f;
@@ -241,6 +241,15 @@ namespace Scripting
 
                     GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + direction * 0.3f, direction, bullet_speed, 10.0f);
 
+                }
+                else if (attack_animation == "Lazer")
+                {
+                    if (!ECS.CheckValidEntity(laser_object_id))
+                    {
+                        laser_object_id = ECS.FindChildEntityWithName(owner.id,"Laser1");
+                    }
+
+                    GameUtilities.StartLaser(laser_object_id);
                 }
                 else
                     GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, Transform.GetForwardVector(owner.id), bullet_speed, 3.0f);
