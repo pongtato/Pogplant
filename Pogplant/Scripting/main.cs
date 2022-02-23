@@ -204,6 +204,11 @@ namespace Scripting
             return new L1Boss();
         }
 
+        public static L2Boss L2Boss()
+        {
+            return new L2Boss();
+        }
+
         public static L1BossBehaviour L1BossBehaviour()
 		{
             return new L1BossBehaviour();
