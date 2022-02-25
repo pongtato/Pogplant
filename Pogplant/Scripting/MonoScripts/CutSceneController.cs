@@ -15,6 +15,11 @@ namespace Scripting
         Vector3 InitialCanvasPos = new Vector3(0, -0.3f, 0);
         Vector3 InitialCamPos = new Vector3(-0.28f, 0.38f, 5);
         float InitialFOV = 2.4f;
+        float HeldDownAccu = 0f;
+
+        bool bIsInputHeldDown = false;
+        bool bCanLoadCutScene = false;
+
 
         public CutSceneController() 
         {
@@ -41,6 +46,16 @@ namespace Scripting
 
         public override void Update(float dt)
         {
+            if (InputUtility.onKeyHeld("RIGHTCLICK"))
+            {
+                bIsInputHeldDown = true;
+            }
+            else
+            {
+                bIsInputHeldDown = false;
+                HeldDownAccu = 0;
+            }
+
             //For the first 0.5 sec
             overall_acc_dt += dt;
             Phase_CS_TP(0, 0.5f, new Vector3(0, 0.03f, 0));
@@ -117,6 +132,23 @@ namespace Scripting
             Phase_Cam_POS(72.0f, 79f, new Vector3(0.3f, -0.2f, 5), new Vector3(0.32f, -0.39f, 5));
 
             Phase_Cam_POS(81.0f, 82f, new Vector3(0.32f, -0.39f, 5), new Vector3(0.32f, -0.6f, 5));
+
+            if(bIsInputHeldDown)
+            {
+                HeldDownAccu += dt;
+                if(HeldDownAccu > 2.0f)
+                {
+                    bCanLoadCutScene = true;
+                }
+            }
+            if(overall_acc_dt > 88.0f)
+            {
+                bCanLoadCutScene = true;
+            }
+            if(bCanLoadCutScene)
+            {
+                LoadLevel("Level01");
+            }
         }
 
         public override void LateUpdate(float dt)
@@ -200,6 +232,11 @@ namespace Scripting
                     split_time = 1.0f;
                 ECS.SetGlobalPosition(entityID, Vector3.Lerp(old_pos, Pos, split_time));
             }
+        }
+
+        void LoadLevel(string LevelName)
+        {
+            GameUtilities.LoadScene(LevelName);
         }
 
     }
