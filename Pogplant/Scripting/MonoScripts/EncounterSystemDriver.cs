@@ -621,81 +621,116 @@ namespace Scripting
         void SegmentFive_B()
         {
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter segmentFive_B = new Encounter(0.0f, 8.75f, enemyManager);
+            Encounter segmentFive_B = new Encounter(0.0f, 8.25f, enemyManager);
 
             //
             // Part A
             //
-            EnemyTemplate enemy7 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L5_Start"), 7.5f, small_enemy_health);
-            EnemyTemplate enemy8 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L5_Start"), 7.5f, small_enemy_health);
-            EnemyTemplate enemy9 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L3_Start"), 7.5f, small_enemy_health);
-            EnemyTemplate enemy10 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L3_Start"), 7.5f, small_enemy_health);
-            EnemyTemplate enemy11 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L1_Start"), 7.5f, small_enemy_health);
-            EnemyTemplate enemy12 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L1_Start"), 7.5f, small_enemy_health);
-
-            enemy7.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L5_Start"), enemyManager.GetWaypoint("Near_L5_MidM"), 1.0f));
-            enemy8.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L5_Start"), enemyManager.GetWaypoint("Near_L5_MidM"), 1.0f));
-            enemy9.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L3_Start"), enemyManager.GetWaypoint("Near_L3_MidM"), 1.0f));
-            enemy10.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L3_Start"), enemyManager.GetWaypoint("Near_L3_MidM"), 1.0f));
-            enemy11.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L1_Start"), enemyManager.GetWaypoint("Near_L1_MidM"), 1.0f));
-            enemy12.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L1_Start"), enemyManager.GetWaypoint("Near_L1_MidM"), 1.0f));
+            EnemyTemplate enemy9 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L2_Start"), 7.5f, small_enemy_health);
+            EnemyTemplate enemy10 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L2_Start"), 7.5f, small_enemy_health);
+            EnemyTemplate enemy11 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L0_Start"), 7.5f, small_enemy_health);
+            EnemyTemplate enemy12 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L0_Start"), 7.5f, small_enemy_health);
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
-                action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L5_MidM"), enemyManager.GetWaypoint("6,5,5"), 1.0f);
-                action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
-                enemy7.AddCommand(new CompositeAction(action1));
-
-                BaseAction[] action2 = new BaseAction[2];
-                action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_L5_MidM"), enemyManager.GetWaypoint("3,5,5"), 1.0f);
-                action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
-                enemy8.AddCommand(new CompositeAction(action2));
-
                 BaseAction[] action3 = new BaseAction[2];
-                action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L3_MidM"), enemyManager.GetWaypoint("5,3,5"), 1.0f);
-                action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.5f);
+                action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L2_Start"), enemyManager.GetWaypoint("5,2,5"), 1.0f);
+                action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy9.AddCommand(new CompositeAction(action3));
 
                 BaseAction[] action4 = new BaseAction[2];
-                action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L3_MidM"), enemyManager.GetWaypoint("2,3,5"), 1.0f);
-                action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.5f);
+                action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L2_Start"), enemyManager.GetWaypoint("2,2,5"), 1.0f);
+                action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy10.AddCommand(new CompositeAction(action4));
 
                 BaseAction[] action5 = new BaseAction[2];
-                action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("4,1,5"), 1.0f);
-                action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.5f);
+                action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_L0_Start"), enemyManager.GetWaypoint("4,0,5"), 1.0f);
+                action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy11.AddCommand(new CompositeAction(action5));
 
                 BaseAction[] action6 = new BaseAction[2];
-                action6[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("1,1,5"), 1.0f);
-                action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.5f);
+                action6[0] = new MoveAction(enemyManager.GetWaypoint("Near_L0_Start"), enemyManager.GetWaypoint("1,0,5"), 1.0f);
+                action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy12.AddCommand(new CompositeAction(action6));
             }
 
-            enemy7.AddCommand(new WaitAction(3.0f));
-            enemy8.AddCommand(new WaitAction(3.0f));
-            enemy9.AddCommand(new WaitAction(3.0f));
-            enemy10.AddCommand(new WaitAction(3.0f));
-            enemy11.AddCommand(new WaitAction(3.0f));
-            enemy12.AddCommand(new WaitAction(3.0f));
+            // Move and shoot
+            {
+                BaseAction[] action3 = new BaseAction[2];
+                action3[0] = new MoveAction(enemyManager.GetWaypoint("5,2,5"), enemyManager.GetWaypoint("6,2,5"), 0.5f);
+                action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.5f);
+                enemy9.AddCommand(new CompositeAction(action3));
 
-            enemy7.AddCommand(new MoveAction(enemyManager.GetWaypoint("6,5,5"), enemyManager.GetWaypoint("Far_T6_MidM"), 1.0f));
-            enemy8.AddCommand(new MoveAction(enemyManager.GetWaypoint("3,5,5"), enemyManager.GetWaypoint("Far_T3_MidM"), 1.0f));
-            enemy9.AddCommand(new MoveAction(enemyManager.GetWaypoint("5,3,5"), enemyManager.GetWaypoint("Far_T5_MidM"), 1.0f));
-            enemy10.AddCommand(new MoveAction(enemyManager.GetWaypoint("2,3,5"), enemyManager.GetWaypoint("Far_T2_MidM"), 1.0f));
-            enemy11.AddCommand(new MoveAction(enemyManager.GetWaypoint("4,1,5"), enemyManager.GetWaypoint("Far_T4_MidM"), 1.0f));
-            enemy12.AddCommand(new MoveAction(enemyManager.GetWaypoint("1,1,5"), enemyManager.GetWaypoint("Far_T1_MidM"), 1.0f));
+                BaseAction[] action4 = new BaseAction[2];
+                action4[0] = new MoveAction(enemyManager.GetWaypoint("2,2,5"), enemyManager.GetWaypoint("3,2,5"), 0.5f);
+                action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.5f);
+                enemy10.AddCommand(new CompositeAction(action4));
+
+                BaseAction[] action5 = new BaseAction[2];
+                action5[0] = new MoveAction(enemyManager.GetWaypoint("4,0,5"), enemyManager.GetWaypoint("6,0,5"), 0.5f);
+                action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.5f);
+                enemy11.AddCommand(new CompositeAction(action5));
+
+                BaseAction[] action6 = new BaseAction[2];
+                action6[0] = new MoveAction(enemyManager.GetWaypoint("1,0,5"), enemyManager.GetWaypoint("3,0,5"), 0.5f);
+                action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.5f);
+                enemy12.AddCommand(new CompositeAction(action6));
+            }
+
+            // Move and shoot
+            {
+
+                BaseAction[] action3 = new BaseAction[2];
+                action3[0] = new MoveAction(enemyManager.GetWaypoint("6,2,5"), enemyManager.GetWaypoint("9,2,5"), 0.5f);
+                action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
+                enemy9.AddCommand(new CompositeAction(action3));
+
+                BaseAction[] action4 = new BaseAction[2];
+                action4[0] = new MoveAction(enemyManager.GetWaypoint("3,2,5"), enemyManager.GetWaypoint("5,2,5"), 0.5f);
+                action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
+                enemy10.AddCommand(new CompositeAction(action4));
+
+                BaseAction[] action5 = new BaseAction[2];
+                action5[0] = new MoveAction(enemyManager.GetWaypoint("6,0,5"), enemyManager.GetWaypoint("9,0,5"), 0.5f);
+                action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
+                enemy11.AddCommand(new CompositeAction(action5));
+
+                BaseAction[] action6 = new BaseAction[2];
+                action6[0] = new MoveAction(enemyManager.GetWaypoint("3,0,5"), enemyManager.GetWaypoint("5,0,5"), 0.5f);
+                action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
+                enemy12.AddCommand(new CompositeAction(action6));
+            }
+
+            // Move and shoot
+            {
+                BaseAction[] action3 = new BaseAction[2];
+                action3[0] = new WaitAction(2.0f);
+                action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
+                enemy9.AddCommand(new CompositeAction(action3));
+
+                BaseAction[] action4 = new BaseAction[2];
+                action4[0] = new WaitAction(2.0f);
+                action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
+                enemy10.AddCommand(new CompositeAction(action4));
+
+                BaseAction[] action5 = new BaseAction[2];
+                action5[0] = new WaitAction(2.0f);
+                action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
+                enemy11.AddCommand(new CompositeAction(action5));
+
+                BaseAction[] action6 = new BaseAction[2];
+                action6[0] = new WaitAction(2.0f);
+                action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
+                enemy12.AddCommand(new CompositeAction(action6));
+            }
 
             //
             // GET SPAWN POINTS
             //
-            segmentFive_B.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_L5_Start"), enemy7, "Enemy_01"));
-            segmentFive_B.AddSpawnAction(new SpawnAction(0.25f, enemyManager.GetWaypoint("Near_L5_Start"), enemy8, "Enemy_01"));
-            segmentFive_B.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L3_Start"), enemy9, "Enemy_01"));
-            segmentFive_B.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_L3_Start"), enemy10, "Enemy_01"));
-            segmentFive_B.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Near_L1_Start"), enemy11, "Enemy_01"));
-            segmentFive_B.AddSpawnAction(new SpawnAction(1.25f, enemyManager.GetWaypoint("Near_L1_Start"), enemy12, "Enemy_01"));
+            segmentFive_B.AddSpawnAction(new SpawnAction(0.5f, enemyManager.GetWaypoint("Near_L2_Start"), enemy9, "Enemy_01"));
+            segmentFive_B.AddSpawnAction(new SpawnAction(0.75f, enemyManager.GetWaypoint("Near_L2_Start"), enemy10, "Enemy_01"));
+            segmentFive_B.AddSpawnAction(new SpawnAction(1.0f, enemyManager.GetWaypoint("Near_L0_Start"), enemy11, "Enemy_01"));
+            segmentFive_B.AddSpawnAction(new SpawnAction(1.25f, enemyManager.GetWaypoint("Near_L0_Start"), enemy12, "Enemy_01"));
 
             encounterManager.AddEncounter(segmentFive_B);
         }
@@ -703,31 +738,27 @@ namespace Scripting
         void SegmentSix()
         {
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter segmentSix = new Encounter(0.0f, 9.0f, enemyManager);
+            Encounter segmentSix = new Encounter(0.0f, 7.0f, enemyManager);
 
             //
             //Part A
             //
-            EnemyTemplate enemy1 = new EnemyTemplate(enemyManager.GetWaypoint("Near_T7_MidM"), 9.0f, big_enemy_health);
+            EnemyTemplate enemy1 = new EnemyTemplate(enemyManager.GetWaypoint("Near_T7_Start"), 7.0f, big_enemy_health);
 
-            enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T7_MidM"), enemyManager.GetWaypoint("Far_T7_MidM"), 1.5f));
+            enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T7_Start"), enemyManager.GetWaypoint("7,0,2"), 1.0f));
 
             // Move and shoot
             {
                 BaseAction[] action1 = new BaseAction[2];
-                action1[0] = new MoveAction(enemyManager.GetWaypoint("Far_T7_MidM"), enemyManager.GetWaypoint("7,4,5"), 1.5f);
-                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f, 0.2f);
+                action1[0] = new MoveAction(enemyManager.GetWaypoint("7,4,2"), enemyManager.GetWaypoint("7,4,2"), 1.0f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 5.0f, 0.2f);
                 enemy1.AddCommand(new CompositeAction(action1));
             }
-
-            enemy1.AddCommand(new WaitAction(3.0f));
-
-            enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("7,4,5"), enemyManager.GetWaypoint("Near_T7_MidM"), 1.5f));
 
             //
             //GET SPAWN POINTS
             //
-            segmentSix.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_T7_MidM"), enemy1, "Enemy_02"));
+            segmentSix.AddSpawnAction(new SpawnAction(0.0f, enemyManager.GetWaypoint("Near_T7_Start"), enemy1, "Enemy_02"));
 
             encounterManager.AddEncounter(segmentSix);
         }
@@ -735,53 +766,50 @@ namespace Scripting
         void SegmentSeven_A()
         {
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter segmentSeven_A = new Encounter(0.0f, 7.5f, enemyManager);
+            Encounter segmentSeven_A = new Encounter(0.0f, 6.5f, enemyManager);
 
             //
             // Part A
             //
-            EnemyTemplate enemy1 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L1_Start"), 7.5f, big_enemy_health);
-            EnemyTemplate enemy2 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R6_Start"), 7.5f, big_enemy_health);
+            EnemyTemplate enemy1 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L1_Start"), 6.5f, big_enemy_health);
+            EnemyTemplate enemy2 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R6_Start"), 6.5f, big_enemy_health);
 
-            enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L1_Start"), enemyManager.GetWaypoint("Near_L1_MidM"), 1.5f));
-            enemy2.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R6_Start"), enemyManager.GetWaypoint("Near_R6_MidM"), 1.5f));
+            enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L1_Start"), enemyManager.GetWaypoint("0,1,5"), 0.5f));
+            enemy2.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R6_Start"), enemyManager.GetWaypoint("14,6,5"), 0.5f));
 
-            enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("7,1,5"), 1.0f));
-            enemy2.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R6_MidM"), enemyManager.GetWaypoint("7,6,5"), 1.0f));
+            enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("0,1,5"), enemyManager.GetWaypoint("7,0,2"), 1.0f));
+            enemy2.AddCommand(new MoveAction(enemyManager.GetWaypoint("14,6,5"), enemyManager.GetWaypoint("7,7,2"), 1.0f));
 
-
-            //enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("7,1,5"), enemyManager.GetWaypoint("10,3,5"), 1.0f));
-            enemy2.AddCommand(new MoveAction(enemyManager.GetWaypoint("7,6,5"), enemyManager.GetWaypoint("4,4,5"), 1.0f));
+            enemy2.AddCommand(new MoveAction(enemyManager.GetWaypoint("7,7,2"), enemyManager.GetWaypoint("0,6,2"), 1.0f));
 
             // Move and shoot
             {
                 BaseAction[] action1 = new BaseAction[2];
-                action1[0] = new MoveAction(enemyManager.GetWaypoint("7,1,5"), enemyManager.GetWaypoint("10,3,5"), 1.0f);
-                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.5f, 0.2f);
+                action1[0] = new MoveAction(enemyManager.GetWaypoint("7,0,2"), enemyManager.GetWaypoint("14,1,2"), 2.0f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.0f, 0.2f);
                 enemy1.AddCommand(new CompositeAction(action1));
             }
 
-            enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("10,3,5"), enemyManager.GetWaypoint("7,6,5"), 1.0f));
-            //enemy2.AddCommand(new MoveAction(enemyManager.GetWaypoint("4,4,5"), enemyManager.GetWaypoint("7,1,5"), 1.0f));
+            enemy1.AddCommand(new MoveAction(enemyManager.GetWaypoint("14,1,2"), enemyManager.GetWaypoint("14,6,2"), 1.0f));
 
             // Move and shoot
             {
                 BaseAction[] action1 = new BaseAction[2];
-                action1[0] = new MoveAction(enemyManager.GetWaypoint("4,4,5"), enemyManager.GetWaypoint("7,1,5"), 1.0f);
-                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.5f, 0.2f);
+                action1[0] = new MoveAction(enemyManager.GetWaypoint("0,6,2"), enemyManager.GetWaypoint("0,1,2"), 2.0f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.0f, 0.2f);
                 enemy2.AddCommand(new CompositeAction(action1));
             }
 
             // Move and shoot
             {
                 BaseAction[] action1 = new BaseAction[2];
-                action1[0] = new MoveAction(enemyManager.GetWaypoint("7,6,5"), enemyManager.GetWaypoint("Far_T7_MidM"), 1.5f);
-                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.5f, 0.2f);
+                action1[0] = new MoveAction(enemyManager.GetWaypoint("14,6,2"), enemyManager.GetWaypoint("7,7,2"), 2.0f);
+                action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.0f, 0.2f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
                 BaseAction[] action2 = new BaseAction[2];
-                action2[0] = new MoveAction(enemyManager.GetWaypoint("7,1,5"), enemyManager.GetWaypoint("Far_T7_MidM"), 1.5f);
-                action2[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.5f, 0.2f);
+                action2[0] = new MoveAction(enemyManager.GetWaypoint("0,1,2"), enemyManager.GetWaypoint("7,0,2"), 2.0f);
+                action2[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.0f, 0.2f);
                 enemy2.AddCommand(new CompositeAction(action2));
             }
 
