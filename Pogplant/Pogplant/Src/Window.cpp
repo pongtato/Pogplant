@@ -121,12 +121,15 @@ namespace Pogplant
 	{
 		if (glfwGetKey(Window::GetWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		{
+
+#ifdef PPD_EDITOR_BUILD
 			// Break out of focused mode
 			if (m_Hide)
 			{
 				ShowCursor();
 				return;
 			}
+#endif
 
 			if (m_IsUnhiding)
 			{

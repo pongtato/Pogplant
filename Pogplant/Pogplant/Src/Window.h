@@ -1,5 +1,7 @@
 #pragma once
 
+#define PPD_EDITOR_BUILD
+
 struct GLFWwindow;
 
 namespace Pogplant
