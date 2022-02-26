@@ -709,8 +709,6 @@ namespace Scripting
                 //Rotate 
                 if (lerp_rotation_positive_direction_X)
                 {
-
-
                     ECS.SetRotation(entity_id, Vector3.Lerp(rot, new Vector3(lerp_rotation_upper_limit.X, rot.Y, rot.Z), lerp_rotation_speed_X * dt));
 
                     //Check for limit and reverse
