@@ -54,6 +54,7 @@
     <Compile Include="MonoScripts\ActivateChildren.cs" />
     <Compile Include="MonoScripts\AnimationSystem.cs" />
     <Compile Include="MonoScripts\BonusItem.cs" />
+    <Compile Include="MonoScripts\BonusScoreCoin.cs" />
     <Compile Include="MonoScripts\CutSceneController.cs" />
     <Compile Include="MonoScripts\EndGameMenuTrigger.cs" />
     <Compile Include="MonoScripts\ExplosiveEnemy.cs" />

@@ -146611,7 +146611,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 30.593500137329102,
+				"m_FrameCounter" : 60.519638061523438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146625,7 +146625,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.25
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146677,7 +146677,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 30.593500137329102,
+				"m_FrameCounter" : 60.519638061523438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146691,7 +146691,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.25
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146743,7 +146743,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 65.044204711914062,
+				"m_FrameCounter" : 80.879249572753906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146756,8 +146756,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.515625
+					0.0,
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146809,7 +146809,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 30.593500137329102,
+				"m_FrameCounter" : 60.519638061523438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146823,7 +146823,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.25
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146875,7 +146875,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 23.455381393432617,
+				"m_FrameCounter" : 97.055099487304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -146889,7 +146889,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.1875
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146941,7 +146941,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 30.593500137329102,
+				"m_FrameCounter" : 60.519638061523438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146955,7 +146955,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.25
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -147007,7 +147007,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 65.044204711914062,
+				"m_FrameCounter" : 80.879249572753906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -147020,8 +147020,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.515625
+					0.0,
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -147073,7 +147073,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 118.36655426025391,
+				"m_FrameCounter" : 94.242622375488281,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -147087,7 +147087,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.9375
+					0.75
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -147139,7 +147139,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 65.044204711914062,
+				"m_FrameCounter" : 80.879249572753906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -147152,8 +147152,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.515625
+					0.0,
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -147205,7 +147205,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 50.018032073974609,
+				"m_FrameCounter" : 73.770500183105469,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -147218,8 +147218,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.40625
+					0.5,
+					0.578125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -147271,7 +147271,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 118.36655426025391,
+				"m_FrameCounter" : 94.242622375488281,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -147285,7 +147285,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.9375
+					0.75
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -156080,6 +156080,352 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoinGrp",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "fa1a4954-51d6-4a5a-ae7c-dda448d1a334",
+			"prefab_path" : "Resources\\Prefabs\\BonusScoreCoinGrp.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.77803182601928711,
+				-65.62091064453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				0.80000001192092896,
+				0.80000001192092896,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.88976430892944336,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.2104902267456055,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				0.80000001192092896,
+				0.80000001192092896,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.88976430892944336,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.1775264739990234,
+				-3.0023748874664307
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				0.80000001192092896,
+				0.80000001192092896,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.88976430892944336,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.1215353012084961,
+				-6.6659212112426758
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				0.80000001192092896,
+				0.80000001192092896,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.88976430892944336,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-10.534591674804688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 

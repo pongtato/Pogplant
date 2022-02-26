@@ -248,5 +248,10 @@ namespace Scripting
         {
             return new CutSceneController();
         }
+
+        public static BonusScoreCoin BonusScoreCoin()
+        {
+            return new BonusScoreCoin();
+        }
     }
 }

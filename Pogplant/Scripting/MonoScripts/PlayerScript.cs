@@ -788,7 +788,7 @@ namespace Scripting
 			}
 		}
 
-		public static void AddScore(bool increment)
+		public static void AddScore(bool increment, bool isBonus = false, uint amount = 0)
 		{
 			//Increase score
 			if (increment)
@@ -797,6 +797,16 @@ namespace Scripting
 				GameUtilities.UpdateTextColor(m_ScoreTextID, new Vector3(0.0f, 1.0f, 0.0f));
 
 				m_OldScore = score;
+
+				// Bonus
+				if (isBonus)
+				{
+					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, amount, true));
+					m_ScoreResetTimer = 0.01f;
+					score += amount;
+					ECS.PlayAudio(entity_id, 0, "SFX");
+					return;
+				}
 
 				++PlayerScript.m_EnemyDestroyedCount;
 				// Max 99
@@ -842,9 +852,6 @@ namespace Scripting
 
 					score += addscore;
 				}
-
-				//GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
-
 			}
 			//Decrease score
 			else
@@ -860,7 +867,6 @@ namespace Scripting
 				m_ScoreResetTimer = 0.01f;
 				ResetCombo();
 			}
-
 			GameUtilities.UpdateComboUI(PlayerScript.m_ComboNumberID, PlayerScript.m_ComboNumber);
 		}
 

@@ -1,0 +1,367 @@
+[
+	{
+		"Children" : 4,
+		"Guid" : 
+		{
+			"m_guid" : "fa1a4954-51d6-4a5a-ae7c-dda448d1a334"
+		},
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoinGrp",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\BonusScoreCoinGrp.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				11.288680076599121,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				0.80000001192092896,
+				0.80000001192092896,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\BonusScoreCoinGrp.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.88976430892944336,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.2104902267456055,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				0.80000001192092896,
+				0.80000001192092896,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\BonusScoreCoinGrp.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.88976430892944336,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.1775264739990234,
+				-3.0023748874664307
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				0.80000001192092896,
+				0.80000001192092896,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\BonusScoreCoinGrp.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.88976430892944336,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.1215353012084961,
+				-6.6659212112426758
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				0.80000001192092896,
+				0.80000001192092896,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\BonusScoreCoinGrp.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.88976430892944336,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-10.534591674804688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]
