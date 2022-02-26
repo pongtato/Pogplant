@@ -79,7 +79,7 @@ namespace Scripting
         Vector3 LargeCrosshairBlinkScale = new Vector3(0.35f, 0.35f, 0);
 
         //Reticle stuff
-        Vector3 start_position = new Vector3(0.0f, 0.0f, 0.0f);
+        Vector3 start_position = new Vector3(0.0f, -1000.0f, 0.0f);
         Vector3 Small_hide_reticle = new Vector3(0.01f, 0.01f, 0f);
         Vector3 Show_reticle = new Vector3(1f, 1f, 0f);
         Vector3 start_reticle = new Vector3(0.1f, 0.1f, 0f);
@@ -136,6 +136,11 @@ namespace Scripting
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle2"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle3"), "Child")));
             ReticleGroup.Add(new Reticle(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"), ECS.FindChildEntityWithName(ECS.FindChildEntityWithName(ReticleGroupID, "Reticle4"), "Child")));
+
+            ResetReticle(ReticleGroup[0]);
+            ResetReticle(ReticleGroup[1]);
+            ResetReticle(ReticleGroup[2]);
+            ResetReticle(ReticleGroup[3]);
 
             current_offset_value = new Vector3(0, 0, 0);
 

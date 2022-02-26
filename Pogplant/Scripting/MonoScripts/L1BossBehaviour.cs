@@ -92,24 +92,26 @@ namespace Scripting
 		{
 			RuntimeStateVariables(int defaultVal = 0)
 			{
-				m_timer = 0f;
-				m_secondaryTimer = 0f;
-				m_stateDuration = 1f;
-				m_timeSinceLastDamageTimer = 0f;
-				m_timeToNextSpawn = 0f;
-				m_timeSinceLastSpawnTimer = 90f;
-				m_damageTakenPeriod = 0f;
+				lastState = L1Boss.BOSS_BEHAVIOUR_STATE.TOTAL;
+				timer = 0f;
+				secondaryTimer = 0f;
+				stateDuration = 1f;
+				timeSinceLastDamageTimer = 0f;
+				timeToNextSpawn = 0f;
+				timeSinceLastSpawnTimer = 90f;
+				damageTakenPeriod = 0f;
 			}
 
-			public float m_timer;
-			public float m_secondaryTimer;
-			public float m_stateDuration;
-			public float m_timeSinceLastDamageTimer;
-			public float m_timeToNextSpawn;
-			public float m_timeSinceLastSpawnTimer;
+			public L1Boss.BOSS_BEHAVIOUR_STATE lastState;
+			public float timer;
+			public float secondaryTimer;
+			public float stateDuration;
+			public float timeSinceLastDamageTimer;
+			public float timeToNextSpawn;
+			public float timeSinceLastSpawnTimer;
 
 			/**> Damage taken in this period of time*/
-			public float m_damageTakenPeriod;
+			public float damageTakenPeriod;
 		}
 		#endregion
 
@@ -162,7 +164,6 @@ namespace Scripting
 			m_maxDurationBetweenSpawns = ECS.GetValue<float>(entityID, 15f, "DurationBetweenSpawnMax");
 
 
-
 			InitStateBehaviours();
 
 			uint bossPanelSpawns = ECS.FindEntityWithName("BossPanelSpawnPoints");
@@ -175,6 +176,9 @@ namespace Scripting
 
 		void InitStateBehaviours()
 		{
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].isVulnerable = true;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].shouldReturnToDefault = false;
+
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].isVulnerable = true;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].shouldReturnToDefault = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMin = m_minMovingTime;
@@ -191,11 +195,14 @@ namespace Scripting
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMin = 20f;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMax = 20f;
 
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].isVulnerable = true;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].shouldReturnToDefault = false;
+			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 30f;
+			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 30f;
+
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].shouldReturnToDefault = false;
 		}
-
-		private bool c_customInit = true;
 
 		/******************************************************************************/
 		/*!
@@ -205,12 +212,6 @@ namespace Scripting
 		/******************************************************************************/
 		public override void Update(float dt)
 		{
-			if (c_customInit)
-			{
-				//Init late after L1Boss script initialised
-				//TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
-				//c_customInit = false;
-			}
 			if (m_debugMode)
 			{
 				//Debug stuff
@@ -226,7 +227,7 @@ namespace Scripting
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
 				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION);
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_K))
@@ -237,29 +238,29 @@ namespace Scripting
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
 				{
 					Console.WriteLine("Boss state is: " + L1Boss.m_singleton.current_state);
-					Console.WriteLine("Timer is: " + m_runStateInfo.m_timer);
+					Console.WriteLine("Timer is: " + m_runStateInfo.timer);
 				}
 				//return;
 			}
 
 			//Timers
-			m_runStateInfo.m_timer += dt;
-			m_runStateInfo.m_timeSinceLastDamageTimer += dt;
-			m_runStateInfo.m_timeSinceLastSpawnTimer += dt;
+			m_runStateInfo.timer += dt;
+			m_runStateInfo.timeSinceLastDamageTimer += dt;
+			m_runStateInfo.timeSinceLastSpawnTimer += dt;
 
 			switch (L1Boss.m_singleton.current_state)
 			{
 				case L1Boss.BOSS_BEHAVIOUR_STATE.MOVING:
 
-					if (m_runStateInfo.m_timer > m_runStateInfo.m_stateDuration)
+					if (m_runStateInfo.timer > m_runStateInfo.stateDuration)
 					{
-						if (m_runStateInfo.m_timeSinceLastSpawnTimer > m_runStateInfo.m_timeToNextSpawn)
+						if (m_runStateInfo.timeSinceLastSpawnTimer > m_runStateInfo.timeToNextSpawn)
 						{
 							TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
 
 							c_playedSpawnAnimation = false;
-							m_runStateInfo.m_timeSinceLastSpawnTimer = 0f;
-							m_runStateInfo.m_timeToNextSpawn = PPMath.RandomFloat(m_minDurationBetweenSpawns, m_maxDurationBetweenSpawns);
+							m_runStateInfo.timeSinceLastSpawnTimer = 0f;
+							m_runStateInfo.timeToNextSpawn = PPMath.RandomFloat(m_minDurationBetweenSpawns, m_maxDurationBetweenSpawns);
 						}
 					}
 
@@ -270,11 +271,11 @@ namespace Scripting
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
 				{
-					if (m_runStateInfo.m_timer > mSpawner_timeStartSpawnEnemies && m_runStateInfo.m_timer < mSpawner_timeEndSpawnEnemies)
+					if (m_runStateInfo.timer > mSpawner_timeStartSpawnEnemies && m_runStateInfo.timer < mSpawner_timeEndSpawnEnemies)
 					{
-						m_runStateInfo.m_secondaryTimer += dt;
+						m_runStateInfo.secondaryTimer += dt;
 
-						if (m_runStateInfo.m_secondaryTimer > mSpawner_durationBetweenSpawns)
+						if (m_runStateInfo.secondaryTimer > mSpawner_durationBetweenSpawns)
 						{
 							int randomInt = PPMath.RandomInt(0, 5);
 
@@ -305,10 +306,10 @@ namespace Scripting
 									break;
 							}
 
-							m_runStateInfo.m_secondaryTimer = 0f;
+							m_runStateInfo.secondaryTimer = 0f;
 						}
 
-						if(!c_playedSpawnAnimation)
+						if (!c_playedSpawnAnimation)
 						{
 							c_playedSpawnAnimation = true;
 
@@ -330,7 +331,7 @@ namespace Scripting
 			}
 
 			//When Past the state duration threshold, it will return back to moving state
-			if (m_runStateInfo.m_timer > m_runStateInfo.m_stateDuration)
+			if (m_runStateInfo.timer > m_runStateInfo.stateDuration)
 			{
 				if (m_stateBehaviours[(int)L1Boss.m_singleton.current_state].shouldReturnToDefault)
 				{
@@ -340,23 +341,23 @@ namespace Scripting
 			}
 
 			//Enter protection mode if damager threshold is reached
-			if (m_runStateInfo.m_damageTakenPeriod > m_coreProtectionThreshold)
+			if (m_runStateInfo.damageTakenPeriod > m_coreProtectionThreshold)
 			{
 				TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION);
-				m_runStateInfo.m_damageTakenPeriod = 0f;
+				m_runStateInfo.damageTakenPeriod = 0f;
 				Console.WriteLine("Boss hit damage threshold, entering protection");
 			}
 
 			//Damage threshold reset if boss doesn't take damage for awhile
-			if (m_runStateInfo.m_timeSinceLastDamageTimer > m_coreProtectionDamageDuration)
+			if (m_runStateInfo.timeSinceLastDamageTimer > m_coreProtectionDamageDuration)
 			{
-				m_runStateInfo.m_damageTakenPeriod = 0f;
+				m_runStateInfo.damageTakenPeriod = 0f;
 			}
 		}
 
 		void UpdateEnemySpawnAnimation(float dt)
 		{
-			if (m_runStateInfo.m_timer > c_animationDuration + mSpawner_timeStartSpawnEnemies)
+			if (m_runStateInfo.timer > c_animationDuration + mSpawner_timeStartSpawnEnemies)
 			{
 				if (m_enemySpawnInstances.Count > 0)
 				{
@@ -390,20 +391,21 @@ namespace Scripting
 
 		void TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false, bool dontResetTimer = false)
 		{
+			m_runStateInfo.lastState = L1Boss.m_singleton.current_state;
 			L1Boss.m_singleton.SetState(nextState.ToString());
 
-			if(!dontResetTimer)
-				m_runStateInfo.m_timer = 0f;
+			if (!dontResetTimer)
+				m_runStateInfo.timer = 0f;
 
-			m_runStateInfo.m_secondaryTimer = 0f;
+			m_runStateInfo.secondaryTimer = 0f;
 
 			if (forceNonReturn)
 			{
-				m_runStateInfo.m_stateDuration = float.PositiveInfinity;
+				m_runStateInfo.stateDuration = float.PositiveInfinity;
 			}
 			else
 			{
-				m_runStateInfo.m_stateDuration = PPMath.RandomFloat(
+				m_runStateInfo.stateDuration = PPMath.RandomFloat(
 					m_stateBehaviours[(int)nextState].stateDurationMin,
 					m_stateBehaviours[(int)nextState].stateDurationMax);
 			}
@@ -420,8 +422,8 @@ namespace Scripting
 			//Console.WriteLine("Boss Taken damage");
 
 			m_coreHealth -= 1f;
-			m_runStateInfo.m_damageTakenPeriod += 1f;
-			m_runStateInfo.m_timeSinceLastDamageTimer = 0f;
+			m_runStateInfo.damageTakenPeriod += 1f;
+			m_runStateInfo.timeSinceLastDamageTimer = 0f;
 
 			if (m_coreHealth <= 0f)
 			{
