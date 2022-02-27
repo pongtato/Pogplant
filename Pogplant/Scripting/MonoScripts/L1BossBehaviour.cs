@@ -48,8 +48,13 @@ namespace Scripting
 		public float m_minDurationBetweenSpawns;
 		public float m_maxDurationBetweenSpawns;
 
+		public float m_bossShootingDelay = 0.2f;
+		public float m_bossShootingCoolDown = 3f;
+		public int m_bossShootCountLimit = 10;
+
 
 		public uint[] mID_ventSpawnpoints = new uint[6];
+		public uint[] mID_gunShootpoints = new uint[6];
 
 		//--- Spawner variables
 
@@ -100,6 +105,8 @@ namespace Scripting
 				timeToNextSpawn = 0f;
 				timeSinceLastSpawnTimer = 90f;
 				damageTakenPeriod = 0f;
+				bossShootTimer = 0f;
+				bossShootCount = 0;
 			}
 
 			public L1Boss.BOSS_BEHAVIOUR_STATE lastState;
@@ -112,6 +119,9 @@ namespace Scripting
 
 			/**> Damage taken in this period of time*/
 			public float damageTakenPeriod;
+
+			public float bossShootTimer;
+			public float bossShootCount;
 		}
 		#endregion
 
@@ -167,10 +177,16 @@ namespace Scripting
 			InitStateBehaviours();
 
 			uint bossPanelSpawns = ECS.FindEntityWithName("BossPanelSpawnPoints");
+			uint bossShootPoints = ECS.FindEntityWithName("BossGunShootPoints");
 
 			for (int i = 0; i < 6; ++i)
 			{
 				mID_ventSpawnpoints[i] = ECS.FindChildEntityWithName(bossPanelSpawns, (i + 1).ToString());
+			}
+
+			for (int i = 0; i < 6; ++i)
+			{
+				mID_gunShootpoints[i] = ECS.FindChildEntityWithName(bossShootPoints, (i + 1).ToString());
 			}
 		}
 
@@ -207,7 +223,10 @@ namespace Scripting
 		/******************************************************************************/
 		/*!
 		\brief
-			Update
+			Default boss update
+
+		\param dt
+			Delta time
 		*/
 		/******************************************************************************/
 		public override void Update(float dt)
@@ -251,7 +270,7 @@ namespace Scripting
 			switch (L1Boss.m_singleton.current_state)
 			{
 				case L1Boss.BOSS_BEHAVIOUR_STATE.MOVING:
-
+				{
 					if (m_runStateInfo.timer > m_runStateInfo.stateDuration)
 					{
 						if (m_runStateInfo.timeSinceLastSpawnTimer > m_runStateInfo.timeToNextSpawn)
@@ -264,9 +283,14 @@ namespace Scripting
 						}
 					}
 
-					break;
+					UpdateShootingBehaviour(dt);
+				}
+				break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION:
-					break;
+				{
+					UpdateShootingBehaviour(dt);
+				}
+				break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
@@ -355,6 +379,52 @@ namespace Scripting
 			}
 		}
 
+		/***************************************************************************/
+		/*!
+		\brief
+			Updates shooting behaviour, if this is called,
+			The boss will automatically shoot from the turrets,
+			no prerequisites are needed at all.
+
+		\param dt
+			Delta time
+		*/
+		/***************************************************************************/
+		void UpdateShootingBehaviour(float dt)
+		{
+			m_runStateInfo.bossShootTimer += dt;
+
+			if (m_runStateInfo.bossShootTimer > m_bossShootingDelay)
+			{
+				//Shoot until hit limit
+				if (m_runStateInfo.bossShootCount < m_bossShootCountLimit)
+				{
+					++m_runStateInfo.bossShootCount;
+					m_runStateInfo.bossShootTimer = 0f;
+					//Shoot bullets
+					for (int i = 0; i < 6; ++i)
+					{
+						GameUtilities.FireEnemyBullet(mID_gunShootpoints[i], ECS.GetGlobalPosition(mID_gunShootpoints[i]), Transform.GetForwardVector(mID_gunShootpoints[i]), 8.0f, 10.0f);
+					}
+				}
+				//Once hit limit wait till cooldown ends
+				else if (m_runStateInfo.bossShootTimer > m_bossShootingCoolDown)
+				{
+					m_runStateInfo.bossShootCount = 0;
+					m_runStateInfo.bossShootTimer = 0f;
+				}
+			}
+		}
+
+		/***************************************************************************/
+		/*!
+		\brief
+			Updates the movement of the fake enemy ships
+
+		\param dt
+			Delta time
+		*/
+		/***************************************************************************/
 		void UpdateEnemySpawnAnimation(float dt)
 		{
 			if (m_runStateInfo.timer > c_animationDuration + mSpawner_timeStartSpawnEnemies)

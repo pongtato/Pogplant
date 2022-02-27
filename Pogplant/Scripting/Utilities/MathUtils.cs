@@ -34,7 +34,7 @@ namespace Scripting.Utilities
 
 		public static int RandomInt(int min, int max)
 		{
-			return random.Next(min, max);
+			return random.Next(min, max + 1);
 		}
 
 		public static float Clamp(float value, float min, float max)
