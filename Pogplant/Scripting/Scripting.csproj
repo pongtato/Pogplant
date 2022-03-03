@@ -73,6 +73,7 @@
     <Compile Include="MonoScripts\TriggerAudioPlay.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />
     <Compile Include="PauseScripts\EndGameMenu.cs" />
+    <Compile Include="PauseScripts\HowToPlayMenu.cs" />
     <Compile Include="PauseScripts\PauseMenu.cs" />
     <Compile Include="PauseScripts\PauseSettingsMenu.cs" />
     <Compile Include="ScriptBehaviours\PauseBehaviour.cs" />

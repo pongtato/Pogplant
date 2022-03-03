@@ -72,6 +72,7 @@ namespace Scripting
             pauseScriptNames.Add("PauseSettingsMenu");
             pauseScriptNames.Add("LaserWeapon");
             pauseScriptNames.Add("EndGameMenu");
+            pauseScriptNames.Add("HowToPlayMenu");
         }
 
         public string GetScriptNameElement(int index)

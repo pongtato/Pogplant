@@ -258,5 +258,10 @@ namespace Scripting
         {
             return new Rotation();
         }
+
+        public static HowToPlayMenu HowToPlayMenu()
+        {
+            return new HowToPlayMenu();
+        }
     }
 }
