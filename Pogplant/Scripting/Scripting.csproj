@@ -64,6 +64,7 @@
     <Compile Include="MonoScripts\BossWarning.cs" />
     <Compile Include="MonoScripts\L1BossCloudMover.cs" />
     <Compile Include="MonoScripts\L2Boss.cs" />
+    <Compile Include="MonoScripts\L2FlockController.cs" />
     <Compile Include="MonoScripts\Level1OutroCutscene.cs" />
     <Compile Include="MonoScripts\MovingParts.cs" />
     <Compile Include="MonoScripts\Rotation.cs" />

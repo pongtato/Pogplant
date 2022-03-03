@@ -37,6 +37,7 @@ namespace Scripting
             monoScriptNames.Add("MissileController");
             //monoScriptNames.Add("Missile");
             monoScriptNames.Add("FlockController");
+            monoScriptNames.Add("L2FlockController");
             monoScriptNames.Add("MainMenuController");
             monoScriptNames.Add("Laser");
             monoScriptNames.Add("LaserTriggerController");

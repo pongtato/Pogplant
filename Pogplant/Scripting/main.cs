@@ -263,5 +263,10 @@ namespace Scripting
         {
             return new HowToPlayMenu();
         }
+
+        public static L2FlockController L2FlockController()
+        {
+            return new L2FlockController();
+        }
     }
 }
