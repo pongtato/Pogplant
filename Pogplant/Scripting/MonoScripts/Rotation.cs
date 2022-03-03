@@ -45,22 +45,21 @@ namespace Scripting
 		public override void Update(float dt)
 		{
 			if (m_rotate_endlessly)
-            {
+			{
 				SpinObjectEndless(entityID, m_rotation_axis, m_rotation_speed, dt);
 			}
 			else
-            {
+			{
 				if(m_rotation_degree > 0.0f)
 					FixedRotation(entityID, m_rotation_axis, m_rotation_speed, dt, m_rotation_degree);
 			}
 
-			if (m_do_once)
-            {
-				Console.WriteLine(entityID + " Has be activated");
-				m_do_once = false;
-
-			}
-		}
+            //if (m_do_once)
+            //{
+            //    Console.WriteLine(entityID + " Has be activated");
+            //    m_do_once = false;
+            //}
+        }
 
 		void SpinObjectEndless(uint id, Vector3 axis, float spin_speed, float dt)
 		{
@@ -105,7 +104,7 @@ namespace Scripting
 		}
 
 		public void EnableLogic()
-        {
+		{
 			m_do_once = true;
 		}
 	}
