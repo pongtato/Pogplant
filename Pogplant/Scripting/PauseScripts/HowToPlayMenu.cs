@@ -19,6 +19,7 @@ namespace Scripting
 
         private Dictionary<string, GameObject> mEntities = new Dictionary<string, GameObject>();
         private MENUSTATE m_MenuState = MENUSTATE.IMG1;
+        private MENUSTATE m_PrevMenuState = MENUSTATE.IMG1;
         static public bool m_EnableHTP = false;
         private bool m_isActive = false;
 
@@ -28,6 +29,7 @@ namespace Scripting
             m_EnableHTP = false;
             m_isActive = false;
             m_MenuState = MENUSTATE.IMG1;
+            m_PrevMenuState = MENUSTATE.IMG1;
 
             Vector3 pos = new Vector3();
             Vector3 rot = new Vector3();
@@ -37,44 +39,38 @@ namespace Scripting
                 uint htpImg = ECS.FindEntityWithName("HTP_Image" + i);
                 ECS.GetTransformECS(htpImg, ref pos, ref rot, ref scale);
                 mEntities.Add("HTP_Image" + i, new GameObject(htpImg, new Transform(pos, rot, scale), "HTP_Image" + i));
-                Console.WriteLine(mEntities["HTP_Image" + i].id);
             }
 
             // Add keys
             uint keyA = ECS.FindEntityWithName("HTP_KeyA");
             ECS.GetTransformECS(keyA, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_KeyA", new GameObject(keyA, new Transform(pos, rot, scale), "Key_A"));
-            Console.WriteLine(mEntities["HTP_KeyA"].id);
 
             uint keyD = ECS.FindEntityWithName("HTP_KeyD");
             ECS.GetTransformECS(keyD, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_KeyD", new GameObject(keyD, new Transform(pos, rot, scale), "Key_D"));
-            Console.WriteLine(mEntities["HTP_KeyD"].id);
 
             uint conA = ECS.FindEntityWithName("HTP_ConA");
             ECS.GetTransformECS(keyA, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_ConA", new GameObject(keyA, new Transform(pos, rot, scale), "HTP_ConA"));
-            Console.WriteLine(mEntities["HTP_ConA"].id);
 
             uint conD = ECS.FindEntityWithName("HTP_ConD");
             ECS.GetTransformECS(keyD, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_ConD", new GameObject(keyD, new Transform(pos, rot, scale), "HTP_ConD"));
-            Console.WriteLine(mEntities["HTP_ConD"].id);
 
             // Add Arrows
             uint arrowR = ECS.FindEntityWithName("HTP_ArrowR");
             ECS.GetTransformECS(arrowR, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_ArrowR", new GameObject(arrowR, new Transform(pos, rot, scale), "HTP_ArrowR"));
-            Console.WriteLine(mEntities["HTP_ArrowR"].id);
+            
             uint arrowL = ECS.FindEntityWithName("HTP_ArrowL");
             ECS.GetTransformECS(arrowL, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_ArrowL", new GameObject(arrowL, new Transform(pos, rot, scale), "HTP_ArrowL"));
-            Console.WriteLine(mEntities["HTP_ArrowL"].id);
+
             // Add BG
             uint bg = ECS.FindEntityWithName("HTP_BG");
             ECS.GetTransformECS(bg, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_BG", new GameObject(bg, new Transform(pos, rot, scale), "HTP_BG"));
-            Console.WriteLine(mEntities["HTP_BG"].id);
         }
 
         public override void Start()
@@ -102,8 +98,10 @@ namespace Scripting
                 {
                     UpdateMenuInput();
 
-                    switch (m_MenuState)
+                    if(m_PrevMenuState != m_MenuState)
                     {
+                        switch (m_MenuState)
+                        {
                         case MENUSTATE.IMG1:
                             {
                                 ECS.SetActive(mEntities["HTP_Image1"].id, true);
@@ -157,6 +155,7 @@ namespace Scripting
                                 GameUtilities.ResumeScene();
                             }
                             break;
+                        }
                     }
                 }
             }
@@ -174,16 +173,19 @@ namespace Scripting
         {
             if (InputUtility.onKeyTriggered("MENULEFT"))
             {
+                m_PrevMenuState = m_MenuState;
                 if (m_MenuState > MENUSTATE.IMG1)
                     m_MenuState--;
             }
             else if (InputUtility.onKeyTriggered("MENURIGHT"))
             {
+                m_PrevMenuState = m_MenuState;
                 if (m_MenuState < MENUSTATE.IMG4)
                     m_MenuState++;
             }
             else if (InputUtility.onKeyTriggered("ESCAPE"))
             {
+                m_PrevMenuState = m_MenuState;
                 m_MenuState = MENUSTATE.EXIT;
             }
         }
