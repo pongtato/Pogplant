@@ -60,6 +60,7 @@ namespace Scripting
             monoScriptNames.Add("Level1OutroCutscene");
             monoScriptNames.Add("CutSceneController");
             monoScriptNames.Add("BonusScoreCoin");
+            monoScriptNames.Add("Rotation");
         }
 
         private void AddPauseScripts()

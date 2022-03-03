@@ -253,5 +253,10 @@ namespace Scripting
         {
             return new BonusScoreCoin();
         }
+
+        public static Rotation Rotation()
+        {
+            return new Rotation();
+        }
     }
 }
