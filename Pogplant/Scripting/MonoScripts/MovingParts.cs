@@ -228,12 +228,12 @@ namespace Scripting
             lerp_rotation_ping_pong_Z = value;
         }
 
-        void SetUpdatePingPongRotation(bool value)
+        public void SetUpdatePingPongRotation(bool value)
         {
             update_pingpong_rotation = value;
         }
 
-        void SetUpdateLinearRotation(bool value)
+        public void SetUpdateLinearRotation(bool value)
         {
             update_linear_rotation = value;
         }

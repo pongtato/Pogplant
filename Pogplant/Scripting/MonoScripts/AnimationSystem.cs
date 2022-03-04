@@ -109,19 +109,30 @@ namespace Scripting
             current_animation_time = 0.0f;
 
             //Reset all variables
-            ResetAnimationMovingPart(moving_parts_dict);
+            ResetAllAnimation(moving_parts_dict);
 
             //Use the function so its easier to track
             animation_specs_stack.Clear();
             animation_update_stack.Clear();
         }
 
-        void ResetAnimationMovingPart(Dictionary<uint, MovingParts> moving_parts_dict)
+        public void ResetAllAnimation(Dictionary<uint, MovingParts> moving_parts_dict)
         {
             foreach (KeyValuePair<uint, MovingParts> kvp in moving_parts_dict)
             {
                 kvp.Value.ResetAllVariables();
             }
+        }
+
+        public void ResetSingleAnimation(MovingParts part)
+        {
+            part.ResetAllVariables();
+        }
+
+        public void PauseSingleAnimationPartRotation(MovingParts part)
+        {
+            part.SetUpdateLinearRotation(false);
+            part.SetUpdatePingPongRotation(false);
         }
 
         void RunNextAnimationStack()

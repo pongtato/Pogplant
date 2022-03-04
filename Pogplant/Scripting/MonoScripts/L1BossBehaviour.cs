@@ -215,8 +215,8 @@ namespace Scripting
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMax = m_maxMovingTime;
 
 
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].isVulnerable = false;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].shouldReturnToDefault = false;
+			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].isVulnerable = false;
+			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].shouldReturnToDefault = false;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].shouldReturnToDefault = false;
@@ -279,6 +279,22 @@ namespace Scripting
 			m_runStateInfo.timeSinceLastDamageTimer += dt;
 			m_runStateInfo.timeSinceLastSpawnTimer += dt;
 
+			if (L1Boss.m_singleton.left_ball_protection || L1Boss.m_singleton.right_ball_protection)
+			{
+				UpdateShootingBehaviour(dt);
+
+				if (m_runStateInfo.leftBallHealth <= 0 && m_runStateInfo.rightBallHealth <= 0)
+				{
+					//Reset health
+					m_runStateInfo.leftBallHealth = mh_leftBallHealth;
+					m_runStateInfo.rightBallHealth = mh_rightBallHealth;
+
+					//Go back to moving state
+					Console.WriteLine("L1BossBehaviour.cs: Boss returning to moving state");
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
+				}
+			}
+
 			switch (L1Boss.m_singleton.current_state)
 			{
 				case L1Boss.BOSS_BEHAVIOUR_STATE.MOVING:
@@ -298,22 +314,11 @@ namespace Scripting
 					UpdateShootingBehaviour(dt);
 				}
 				break;
-				case L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION:
-				{
-					UpdateShootingBehaviour(dt);
+				//case L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION:
+				//{
 
-					if(m_runStateInfo.leftBallHealth <= 0 && m_runStateInfo.rightBallHealth <= 0)
-					{
-						//Reset health
-						m_runStateInfo.leftBallHealth = mh_leftBallHealth;
-						m_runStateInfo.rightBallHealth = mh_rightBallHealth;
-
-						//Go back to moving state
-						Console.WriteLine("L1BossBehaviour.cs: Boss returning to moving state");
-						TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
-					}
-				}
-				break;
+				//}
+				//break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
@@ -390,7 +395,8 @@ namespace Scripting
 			//Enter protection mode if damager threshold is reached
 			if (m_runStateInfo.damageTakenPeriod > m_coreProtectionThreshold)
 			{
-				TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION);
+				//TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION);
+				L1Boss.m_singleton.EnableProtection();
 				m_runStateInfo.damageTakenPeriod = 0f;
 				Console.WriteLine("Boss hit damage threshold, entering protection");
 			}
@@ -511,8 +517,9 @@ namespace Scripting
 			if(m_runStateInfo.leftBallHealth <= 0f)
 			{
 				m_runStateInfo.leftBallHealth = 0f;
+				
 				//Trigger left core death
-
+				L1Boss.m_singleton.DamagedLeftBall();
 				Console.WriteLine("L1BossBehaviour.cs: Left core dead");
 			}
 		}
@@ -524,8 +531,9 @@ namespace Scripting
 			if (m_runStateInfo.rightBallHealth <= 0f)
 			{
 				m_runStateInfo.rightBallHealth = 0f;
-				//Trigger right core death
 
+				//Trigger right core death
+				L1Boss.m_singleton.DamagedRightBall();
 				Console.WriteLine("L1BossBehaviour.cs: Right core dead");
 			}
 		}
