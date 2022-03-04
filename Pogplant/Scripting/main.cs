@@ -268,5 +268,10 @@ namespace Scripting
         {
             return new L2FlockController();
         }
+
+        public static L2TurretController L2TurretController()
+        {
+            return new L2TurretController();
+        }
     }
 }

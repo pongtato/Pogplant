@@ -34,6 +34,7 @@ namespace Scripting
             monoScriptNames.Add("BaseFlock");
             monoScriptNames.Add("BaseGattling");
             monoScriptNames.Add("TurretController");
+            monoScriptNames.Add("L2TurretController");
             monoScriptNames.Add("MissileController");
             //monoScriptNames.Add("Missile");
             monoScriptNames.Add("FlockController");
