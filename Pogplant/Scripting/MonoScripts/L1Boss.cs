@@ -82,6 +82,16 @@ namespace Scripting
         //Eyes
         public uint left_eyeball_id;
         public uint right_eyeball_id;
+
+        //Protection
+        bool left_color_one_active;
+        bool right_color_one_active;
+        Vector3 protection_color_one;
+        Vector3 protection_color_two;
+        Vector3 default_color;
+        float left_protection_count_timer;
+        float right_protection_count_timer;
+        const float color_change_duration = 0.1f;
         public bool left_ball_protection;
         public bool right_ball_protection;
 
@@ -115,6 +125,11 @@ namespace Scripting
 
             boss_animation_system = new AnimationSystem();
             boss_animation_system.Init();
+
+            protection_color_one = new Vector3(0.0f, 1.0f, 1.0f);
+            protection_color_two = new Vector3(0.0f, 0.55f, 1.0f);
+            default_color = new Vector3(1.0f, 1.0f, 1.0f);
+
             FindEntities();
         }
 
@@ -352,20 +367,62 @@ namespace Scripting
 
         void UpdateMouths(float dt)
         {
-            ECS.GetTransformECS(left_mouth_id, ref pos, ref rot, ref scale);
-
             if (left_ball_protection)
             {
+                ECS.GetTransformECS(left_mouth_id, ref pos, ref rot, ref scale);
+
+                //Pulse color
+                if (left_protection_count_timer < color_change_duration)
+                {
+                    left_protection_count_timer += dt;
+                }
+                else
+                {
+                    left_protection_count_timer = 0.0f;
+
+                    if (left_color_one_active)
+                    {
+                        ECS.SetDiffuseTint(left_eyeball_id, ref protection_color_one);
+                        left_color_one_active = false;
+                    }
+                    else
+                    {
+                        ECS.SetDiffuseTint(left_eyeball_id, ref protection_color_two);
+                        left_color_one_active = true;
+                    }
+                }
+
                 if (rot.Y > 0.0f)
                 {
                     ECS.SetRotation(left_mouth_id, Vector3.Lerp(rot, new Vector3(), 3.0f * dt));
                 }
             }
 
-            ECS.GetTransformECS(right_mouth_id, ref pos, ref rot, ref scale);
-
             if (right_ball_protection)
             {
+                ECS.GetTransformECS(right_mouth_id, ref pos, ref rot, ref scale);
+
+                //Pulse color
+                if (right_protection_count_timer < color_change_duration)
+                {
+                    right_protection_count_timer += dt;
+                }
+                else
+                {
+                    right_protection_count_timer = 0.0f;
+
+                    if (right_color_one_active)
+                    {
+                        ECS.SetDiffuseTint(right_eyeball_id, ref protection_color_one);
+                        right_color_one_active = false;
+                    }
+                    else
+                    {
+                        ECS.SetDiffuseTint(right_eyeball_id, ref protection_color_two);
+                        right_color_one_active = true;
+                    }
+                }
+
                 if (rot.Y < 0.0f)
                 {
                     ECS.SetRotation(right_mouth_id, Vector3.Lerp(rot, new Vector3(), 3.0f * dt));
@@ -664,17 +721,17 @@ namespace Scripting
         public void DamagedLeftBall()
         {
             left_ball_protection = false;
-            
-            //Change color of eye to another color
 
+            //Change color of eye to default
+            ECS.SetDiffuseTint(left_eyeball_id, ref default_color);
         }
 
         public void DamagedRightBall()
         {
             right_ball_protection = false;
 
-            //Change color of eye to another color
-
+            //Change color of eye to default
+            ECS.SetDiffuseTint(right_eyeball_id, ref default_color);
         }
 
         #region[Launch Animation Sequence]
