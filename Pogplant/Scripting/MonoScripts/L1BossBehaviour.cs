@@ -51,13 +51,17 @@ namespace Scripting
 		public float m_minDurationBetweenSpawns;
 		public float m_maxDurationBetweenSpawns;
 
-		public float m_bossShootingDelay = 0.2f;
-		public float m_bossShootingCoolDown = 3f;
-		public int m_bossShootCountLimit = 10;
+		public float m_bossShootingDelay = 0.15f;
+		public float m_bossShootingCoolDown = 1f;
+		public int m_bossShootCountLimit = 20;
 
+		public float m_gunBarrelYRotationLimit = 25f;
+		public float m_gunBarrelYRotationSpeedMin = 10f;
+		public float m_gunBarrelYRotationSpeedMax = 20f;
 
 		public uint[] mID_ventSpawnpoints = new uint[6];
-		public uint[] mID_gunShootpoints = new uint[6];
+
+		public GunBarrel[] m_gunBarrels = new GunBarrel[6];
 
 		//--- Spawner variables
 
@@ -66,7 +70,7 @@ namespace Scripting
 		/**> How many seconds into the animation to choose to spawn enemies*/
 		float mSpawner_timeStartSpawnEnemies = 4.2f;
 		float mSpawner_timeEndSpawnEnemies = 7f;
-		public float mSpawner_durationBetweenSpawns = 100f;
+		public float mSpawner_durationBetweenSpawns = 2f;
 
 		#endregion
 
@@ -131,6 +135,16 @@ namespace Scripting
 			public float leftBallHealth;
 			public float rightBallHealth;
 		}
+
+		public struct GunBarrel
+		{
+			public uint ID_barrel;
+			public uint ID_shootPoint;
+			public float rotationXLock;
+
+			public bool rotationState;
+			public float rotationSpeed;
+		}
 		#endregion
 
 		RuntimeStateVariables m_runStateInfo;
@@ -176,7 +190,6 @@ namespace Scripting
 
 			m_coreProtectionThreshold = ECS.GetValue<float>(entityID, 1f, "CoreProtectionThreshold");
 			m_coreProtectionDamageDuration = ECS.GetValue<float>(entityID, 1f, "CoreProtectionDamageDuration");
-			mSpawner_durationBetweenSpawns = ECS.GetValue<float>(entityID, 0.5f, "DurationBetweenEnemySpawns");
 
 			m_minMovingTime = ECS.GetValue<float>(entityID, 5f, "IdleTimeMin");
 			m_maxMovingTime = ECS.GetValue<float>(entityID, 10f, "IdleTimeMax");
@@ -184,21 +197,40 @@ namespace Scripting
 			m_minDurationBetweenSpawns = ECS.GetValue<float>(entityID, 10f, "DurationBetweenSpawnMin");
 			m_maxDurationBetweenSpawns = ECS.GetValue<float>(entityID, 15f, "DurationBetweenSpawnMax");
 
+			m_gunBarrelYRotationLimit = ECS.GetValue<float>(entityID, 25f, "GunBarrelRotationLimit");
+			m_gunBarrelYRotationSpeedMin = ECS.GetValue<float>(entityID, 10f, "GunBarrelRotationSpeedMin");
+			m_gunBarrelYRotationSpeedMax = ECS.GetValue<float>(entityID, 20f, "GunBarrelRotationSpeedMax");
+
 
 			InitStateBehaviours();
 
 			uint bossPanelSpawns = ECS.FindEntityWithName("BossPanelSpawnPoints");
-			uint bossShootPoints = ECS.FindEntityWithName("BossGunShootPoints");
+			uint bossShootPoints = ECS.FindEntityWithName("Boss");
 
 			for (int i = 0; i < 6; ++i)
 			{
 				mID_ventSpawnpoints[i] = ECS.FindChildEntityWithName(bossPanelSpawns, (i + 1).ToString());
 			}
+			
+			m_gunBarrels[0].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Right_MiniLaser_Launcher_01");
+			m_gunBarrels[1].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Right_MiniLaser_Launcher_02");
+			m_gunBarrels[2].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Right_MiniLaser_Launcher_03");
 
-			for (int i = 0; i < 6; ++i)
+			m_gunBarrels[3].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Left_MiniLaser_Launcher_01");
+			m_gunBarrels[4].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Left_MiniLaser_Launcher_02");
+			m_gunBarrels[5].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Left_MiniLaser_Launcher_03");
+
+			for(int i = 0; i < 6; ++i)
 			{
-				mID_gunShootpoints[i] = ECS.FindChildEntityWithName(bossShootPoints, (i + 1).ToString());
+				m_gunBarrels[i].rotationState = (PPMath.RandomInt(0, 1) == 0);
+				m_gunBarrels[i].rotationSpeed = PPMath.RandomFloat(m_gunBarrelYRotationSpeedMin, m_gunBarrelYRotationSpeedMax);
+				m_gunBarrels[i].rotationXLock = 0f;
+				m_gunBarrels[i].ID_shootPoint = ECS.FindChildEntityWithName(m_gunBarrels[i].ID_barrel, "Shoot");
 			}
+
+			//Hardcode right and left 1 launcher to shoot around player angle
+			m_gunBarrels[0].rotationXLock = 20f;
+			m_gunBarrels[3].rotationXLock = 20f;
 
 			m_runStateInfo.leftBallHealth = mh_leftBallHealth;
 			m_runStateInfo.rightBallHealth = mh_rightBallHealth;
@@ -206,8 +238,12 @@ namespace Scripting
 
 		void InitStateBehaviours()
 		{
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].isVulnerable = true;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].shouldReturnToDefault = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].isVulnerable = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].shouldReturnToDefault = true;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMin = 12.5f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMax = 12.5f;
+
+			m_runStateInfo.stateDuration = 9f;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].isVulnerable = true;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].shouldReturnToDefault = false;
@@ -223,7 +259,7 @@ namespace Scripting
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMin = 20f;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMax = 20f;
 
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].isVulnerable = true;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].shouldReturnToDefault = false;
 			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 30f;
 			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 30f;
@@ -382,6 +418,8 @@ namespace Scripting
 				break;
 			}
 
+			UpdateGunRotationBehaviour(dt);
+
 			//When Past the state duration threshold, it will return back to moving state
 			if (m_runStateInfo.timer > m_runStateInfo.stateDuration)
 			{
@@ -433,7 +471,7 @@ namespace Scripting
 					//Shoot bullets
 					for (int i = 0; i < 6; ++i)
 					{
-						GameUtilities.FireEnemyBullet(mID_gunShootpoints[i], ECS.GetGlobalPosition(mID_gunShootpoints[i]), Transform.GetForwardVector(mID_gunShootpoints[i]), 8.0f, 10.0f);
+						GameUtilities.FireEnemyBullet(m_gunBarrels[i].ID_shootPoint, ECS.GetGlobalPosition(m_gunBarrels[i].ID_shootPoint), Transform.GetForwardVector(m_gunBarrels[i].ID_shootPoint), 4.0f, 10.0f);
 					}
 				}
 				//Once hit limit wait till cooldown ends
@@ -442,6 +480,49 @@ namespace Scripting
 					m_runStateInfo.bossShootCount = 0;
 					m_runStateInfo.bossShootTimer = 0f;
 				}
+			}
+		}
+
+		/***************************************************************************/
+		/*!
+		\brief
+			Rotates the gun barrel randomly, will just randomly rotate the guns
+			no prerequisites are needed at all.
+
+		\param dt
+			Delta time
+		*/
+		/***************************************************************************/
+		void UpdateGunRotationBehaviour(float dt)
+		{
+			for(int i = 0; i < 6; ++i)
+			{
+				ECS.GetTransformECS(m_gunBarrels[i].ID_barrel, ref pos, ref rot, ref scale);
+
+				if (m_gunBarrels[i].rotationState)
+				{
+					rot.Y += dt * m_gunBarrels[i].rotationSpeed;
+
+					if (rot.Y > m_gunBarrelYRotationLimit)
+					{
+						m_gunBarrels[i].rotationState = false;
+						m_gunBarrels[i].rotationSpeed = PPMath.RandomFloat(m_gunBarrelYRotationSpeedMin, m_gunBarrelYRotationSpeedMax);
+					}
+				}
+				else
+				{
+					rot.Y -= dt * m_gunBarrels[i].rotationSpeed;
+
+					if (rot.Y < -m_gunBarrelYRotationLimit)
+					{
+						m_gunBarrels[i].rotationState = true;
+						m_gunBarrels[i].rotationSpeed = PPMath.RandomFloat(m_gunBarrelYRotationSpeedMin, m_gunBarrelYRotationSpeedMax);
+					}
+				}
+
+				rot.X = m_gunBarrels[i].rotationXLock;
+
+				ECS.SetRotation(m_gunBarrels[i].ID_barrel, rot);
 			}
 		}
 

@@ -10458,7 +10458,7 @@
 		}
 	},
 	{
-		"Children" : 21,
+		"Children" : 18,
 		"Name" : 
 		{
 			"m_Name" : "Boss",
@@ -11626,7 +11626,7 @@
 		}
 	},
 	{
-		"Children" : 6,
+		"Children" : 0,
 		"Name" : 
 		{
 			"m_Name" : "BossGunShootPoints",
@@ -11659,205 +11659,7 @@
 		}
 	},
 	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "4",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-5.9400300979614258,
-				3.5843086242675781,
-				0.96352720260620117
-			],
-			"m_rotation" : 
-			[
-				-15.099148750305176,
-				-0.398811936378479,
-				-3.1327340602874756
-			],
-			"m_scale" : 
-			[
-				0.99990189075469971,
-				0.99998927116394043,
-				0.99998533725738525
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "3",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.9893293380737305,
-				3.5770111083984375,
-				-2.232778787612915
-			],
-			"m_rotation" : 
-			[
-				-16.787254333496094,
-				88.493766784667969,
-				-0.00042467413004487753
-			],
-			"m_scale" : 
-			[
-				0.99999892711639404,
-				0.99999284744262695,
-				0.99999511241912842
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "6",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.0806732177734375,
-				3.5761337280273438,
-				-2.2451775074005127
-			],
-			"m_rotation" : 
-			[
-				-64.555976867675781,
-				-89.518348693847656,
-				47.773002624511719
-			],
-			"m_scale" : 
-			[
-				0.99999892711639404,
-				0.99999231100082397,
-				0.99998390674591064
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "5",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-8.1622428894042969,
-				3.5537033081054688,
-				0.020493621006608009
-			],
-			"m_rotation" : 
-			[
-				-17.228006362915039,
-				-44.055091857910156,
-				2.4356910444112145e-07
-			],
-			"m_scale" : 
-			[
-				0.99990266561508179,
-				0.99998593330383301,
-				0.99998730421066284
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.0602226257324219,
-				3.5537033081054688,
-				0.035418897867202759
-			],
-			"m_rotation" : 
-			[
-				-17.613386154174805,
-				44.276481628417969,
-				0.27763637900352478
-			],
-			"m_scale" : 
-			[
-				0.99990248680114746,
-				0.9999881386756897,
-				0.99998623132705688
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				5.8144850730895996,
-				3.5773849487304688,
-				0.9644055962562561
-			],
-			"m_rotation" : 
-			[
-				-15.099148750305176,
-				-0.398811936378479,
-				-3.1327340602874756
-			],
-			"m_scale" : 
-			[
-				0.99990189075469971,
-				0.99998927116394043,
-				0.99998533725738525
-			]
-		}
-	},
-	{
-		"Children" : 0,
+		"Children" : 3,
 		"Name" : 
 		{
 			"m_Name" : "Right_MiniLaser_Rack",
@@ -11912,6 +11714,270 @@
 		}
 	},
 	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Right_MiniLaser_Launcher_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_MiniLaser_Launcher_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.0606565475463867,
+				1.2000007629394531,
+				1.0606616735458374
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shoot",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.1632480621337891,
+				0.3497772216796875,
+				1.1662683486938477
+			],
+			"m_rotation" : 
+			[
+				-17.228006362915039,
+				-44.055091857910156,
+				2.4356910444112145e-07
+			],
+			"m_scale" : 
+			[
+				0.99990266561508179,
+				0.99998593330383301,
+				0.99998730421066284
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Right_MiniLaser_Launcher_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_MiniLaser_Launcher_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.5025644302368164,
+				1.2000007629394531,
+				-0.039154767990112305
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shoot",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.6397705078125,
+				0.3722076416015625,
+				0.00041365623474121094
+			],
+			"m_rotation" : 
+			[
+				-64.555976867675781,
+				-89.518348693847656,
+				47.773002624511719
+			],
+			"m_scale" : 
+			[
+				0.99999892711639404,
+				0.99999231100082397,
+				0.99998390674591064
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Right_MiniLaser_Launcher_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Boss",
+				"Resources/Models\\Enemy",
+				"Right_MiniLaser_Launcher_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.86102294921875e-06,
+				1.2000007629394531,
+				1.5025699138641357
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shoot",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0016889572143554688,
+				0.38038253784179688,
+				1.667393684387207
+			],
+			"m_rotation" : 
+			[
+				-15.099148750305176,
+				-0.398811936378479,
+				-3.1327340602874756
+			],
+			"m_scale" : 
+			[
+				0.99990189075469971,
+				0.99998927116394043,
+				0.99998533725738525
+			]
+		}
+	},
+	{
 		"Children" : 0,
 		"Name" : 
 		{
@@ -11942,11 +12008,6 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 2.0,
-				"Name" : "DurationBetweenEnemySpawns",
-				"Type" : 0
-			},
-			{
 				"Data" : 10.0,
 				"Name" : "DurationBetweenSpawnMax",
 				"Type" : 0
@@ -11954,6 +12015,21 @@
 			{
 				"Data" : 15.0,
 				"Name" : "DurationBetweenSpawnMin",
+				"Type" : 0
+			},
+			{
+				"Data" : 25.0,
+				"Name" : "GunBarrelRotationLimit",
+				"Type" : 0
+			},
+			{
+				"Data" : 20.0,
+				"Name" : "GunBarrelRotationSpeedMax",
+				"Type" : 0
+			},
+			{
+				"Data" : 10.0,
+				"Name" : "GunBarrelRotationSpeedMin",
 				"Type" : 0
 			},
 			{
@@ -11992,11 +12068,11 @@
 			"collisionLayer" : "ENEMY",
 			"isStatic" : false,
 			"isTrigger" : true,
-			"radius" : 1.190000057220459
+			"radius" : 1.0499999523162842
 		},
 		"Tag" : 
 		{
-			"m_tag" : "BossBehaviourController"
+			"m_tag" : "Targetable"
 		},
 		"Transform" : 
 		{
@@ -12004,7 +12080,7 @@
 			[
 				0.00024094304535537958,
 				0.01019287109375,
-				0.34172117710113525
+				0.093808606266975403
 			],
 			"m_rotation" : 
 			[
@@ -12234,63 +12310,8 @@
 			"m_position" : 
 			[
 				-4.7699332237243652,
-				3.4958646297454834,
+				3.4958648681640625,
 				-2.5277678966522217
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Right_MiniLaser_Launcher_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Boss",
-				"Resources/Models\\Enemy",
-				"Right_MiniLaser_Launcher_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-6.9989948272705078,
-				3.2039260864257812,
-				-1.1457747220993042
 			],
 			"m_rotation" : 
 			[
@@ -12406,116 +12427,6 @@
 			[
 				0.0,
 				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Right_MiniLaser_Launcher_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Boss",
-				"Resources/Models\\Enemy",
-				"Right_MiniLaser_Launcher_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-7.4409027099609375,
-				3.2039246559143066,
-				-2.2455911636352539
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Right_MiniLaser_Launcher_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Boss",
-				"Resources/Models\\Enemy",
-				"Right_MiniLaser_Launcher_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-5.9383411407470703,
-				3.2039260864257812,
-				-0.70386648178100586
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -12790,7 +12701,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -12839,13 +12750,13 @@
 			"m_position" : 
 			[
 				-2.8943759389221668e-08,
-				-4.2487101836741203e-08,
+				0.0,
 				0.30243980884552002
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -14015,7 +13926,7 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Left_MiniLaser_Launcher_03",
@@ -14052,13 +13963,13 @@
 			"m_position" : 
 			[
 				1.5025711059570312,
-				1.1999983787536621,
+				1.1999969482421875,
 				-0.039159297943115234
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -14071,6 +13982,39 @@
 	},
 	{
 		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shoot",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.6659641265869141,
+				0.37308502197265625,
+				0.012812614440917969
+			],
+			"m_rotation" : 
+			[
+				-16.787254333496094,
+				88.493766784667969,
+				-0.00042467413004487753
+			],
+			"m_scale" : 
+			[
+				0.99999892711639404,
+				0.99999284744262695,
+				0.99999511241912842
+			]
+		}
+	},
+	{
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Left_MiniLaser_Launcher_02",
@@ -14107,13 +14051,13 @@
 			"m_position" : 
 			[
 				1.0606594085693359,
-				1.1999971866607666,
+				1.1999969482421875,
 				1.0606594085693359
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -14126,6 +14070,39 @@
 	},
 	{
 		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shoot",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.1787691116333008,
+				0.3497772216796875,
+				1.1811915636062622
+			],
+			"m_rotation" : 
+			[
+				-17.613386154174805,
+				44.276481628417969,
+				0.27763637900352478
+			],
+			"m_scale" : 
+			[
+				0.99990248680114746,
+				0.9999881386756897,
+				0.99998623132705688
+			]
+		}
+	},
+	{
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Left_MiniLaser_Launcher_01",
@@ -14162,13 +14139,13 @@
 			"m_position" : 
 			[
 				-1.9073486328125e-06,
-				1.1999998092651367,
+				1.2000007629394531,
 				1.5025647878646851
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -14176,6 +14153,39 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shoot",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0063071250915527344,
+				0.37345504760742188,
+				1.6682729721069336
+			],
+			"m_rotation" : 
+			[
+				-15.099148750305176,
+				-0.398811936378479,
+				-3.1327340602874756
+			],
+			"m_scale" : 
+			[
+				0.99990189075469971,
+				0.99998927116394043,
+				0.99998533725738525
 			]
 		}
 	},
@@ -14511,9 +14521,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				0.14459262788295746,
-				0.98949044942855835,
-				-0.0012648156844079494
+				-0.12377934902906418,
+				0.98890280723571777,
+				0.082158558070659637
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
