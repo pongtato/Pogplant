@@ -77,9 +77,9 @@ namespace Scripting
             button_map.Add("Resume Game Button", new GameObject(resume_game_button_id, new Transform(pos, rot, scale), "Resume Game Button"));
 
             uint how_to_play_button_id = ECS.FindChildEntityWithName(pause_menu_id, "How To Play Button");
-            //ECS.GetTransformECS(how_to_play_button_id, ref pos, ref rot, ref scale);
-            //button_map.Add("How To Play Button", new GameObject(how_to_play_button_id, new Transform(pos, rot, scale), "How To Play Button"));
-            ECS.SetActive(how_to_play_button_id, false);
+            ECS.GetTransformECS(how_to_play_button_id, ref pos, ref rot, ref scale);
+            button_map.Add("How To Play Button", new GameObject(how_to_play_button_id, new Transform(pos, rot, scale), "How To Play Button"));
+            //ECS.SetActive(how_to_play_button_id, false);
 
             uint settings_button_id = ECS.FindChildEntityWithName(pause_menu_id, "Settings Button");
             ECS.GetTransformECS(settings_button_id, ref pos, ref rot, ref scale);
@@ -95,9 +95,9 @@ namespace Scripting
             faded_button_map.Add("Resume Game Button Faded", new GameObject(resume_game_button_faded_id, new Transform(pos, rot, scale), "Resume Game Button Faded"));
 
             uint how_to_play_button_faded_id = ECS.FindChildEntityWithName(pause_menu_id, "How To Play Button Faded");
-            //ECS.GetTransformECS(how_to_play_button_faded_id, ref pos, ref rot, ref scale);
-            //faded_button_map.Add("How To Play Button Faded", new GameObject(how_to_play_button_faded_id, new Transform(pos, rot, scale), "How To Play Button Faded"));
-            ECS.SetActive(how_to_play_button_faded_id, false);
+            ECS.GetTransformECS(how_to_play_button_faded_id, ref pos, ref rot, ref scale);
+            faded_button_map.Add("How To Play Button Faded", new GameObject(how_to_play_button_faded_id, new Transform(pos, rot, scale), "How To Play Button Faded"));
+            //ECS.SetActive(how_to_play_button_faded_id, false);
 
             uint settings_button_faded_id = ECS.FindChildEntityWithName(pause_menu_id, "Settings Button Faded");
             ECS.GetTransformECS(settings_button_faded_id, ref pos, ref rot, ref scale);
@@ -216,7 +216,7 @@ namespace Scripting
 
                 if (active_index < (int)PAUSE_MENU_BUTTONS.RESUME_GAME)
                 {
-                    active_index = (int)PAUSE_MENU_BUTTONS.SETTINGS;
+                    active_index = (int)PAUSE_MENU_BUTTONS.RETURN_TO_MENU;
 
                 }
                 UpdatePauseMenuButtonFade();
@@ -227,7 +227,7 @@ namespace Scripting
 
                 ++active_index;
 
-                if (active_index > (int)PAUSE_MENU_BUTTONS.SETTINGS)
+                if (active_index > (int)PAUSE_MENU_BUTTONS.RETURN_TO_MENU)
                 {
                     active_index = (int)PAUSE_MENU_BUTTONS.RESUME_GAME;
                 }
@@ -251,9 +251,14 @@ namespace Scripting
                     case 1:
                         menu_state = MENU_STATE.IN_SUB_MENU;
                         PauseSettingsMenu.refresh = true;
-                        ECS.SetActive(settings_menu_id, true);
+                        HowToPlayMenu.EnableHowToPlayMenu(false);
                         break;
                     case 2:
+                        menu_state = MENU_STATE.IN_SUB_MENU;
+                        PauseSettingsMenu.refresh = true;
+                        ECS.SetActive(settings_menu_id, true);
+                        break;
+                    case 3:
                         menu_state = MENU_STATE.CONFIRMATION;
                         ECS.SetActive(confirm_menu_id, true);
                         break;
@@ -326,21 +331,21 @@ namespace Scripting
                 case 1:
                     {
                         //Set only the selected button to be non faded
-                        //ToggleButtonFade(button_map, faded_button_map, "How To Play Button", "How To Play Button Faded");
-                        ToggleButtonFade(button_map, faded_button_map, "Settings Button", "Settings Button Faded");
+                        ToggleButtonFade(button_map, faded_button_map, "How To Play Button", "How To Play Button Faded");
+                        //ToggleButtonFade(button_map, faded_button_map, "Settings Button", "Settings Button Faded");
                     }
                     break;
                 case 2:
                     {
                         //Set only the selected button to be non faded
-                        //ToggleButtonFade(button_map, faded_button_map, "Settings Button", "Settings Button Faded");
-                        ToggleButtonFade(button_map, faded_button_map, "Main Menu Button", "Main Menu Button Faded");
+                        ToggleButtonFade(button_map, faded_button_map, "Settings Button", "Settings Button Faded");
+                        //ToggleButtonFade(button_map, faded_button_map, "Main Menu Button", "Main Menu Button Faded");
                     }
                     break;
                 case 3:
                     {
                         //Set only the selected button to be non faded
-                        //ToggleButtonFade(button_map, faded_button_map, "Main Menu Button", "Main Menu Button Faded");
+                        ToggleButtonFade(button_map, faded_button_map, "Main Menu Button", "Main Menu Button Faded");
                     }
                     break;
             }

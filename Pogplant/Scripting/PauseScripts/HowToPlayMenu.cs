@@ -21,6 +21,7 @@ namespace Scripting
         private MENUSTATE m_MenuState = MENUSTATE.IMG1;
         private MENUSTATE m_PrevMenuState = MENUSTATE.IMG1;
         static public bool m_EnableHTP = false;
+        static public bool m_IsResumeScene = false;
         private bool m_isActive = false;
 
         public override void Init(ref uint _entityID)
@@ -71,6 +72,11 @@ namespace Scripting
             uint bg = ECS.FindEntityWithName("HTP_BG");
             ECS.GetTransformECS(bg, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_BG", new GameObject(bg, new Transform(pos, rot, scale), "HTP_BG"));
+
+            uint ct = ECS.FindEntityWithName("HTP_ControlText");
+            ECS.GetTransformECS(ct, ref pos, ref rot, ref scale);
+            mEntities.Add("HTP_ControlText", new GameObject(ct, new Transform(pos, rot, scale), "HTP_ControlText"));
+            
         }
 
         public override void Start()
@@ -79,11 +85,6 @@ namespace Scripting
 
         public override void Update(float dt)
         {
-            if(InputUtility.onKeyTriggered(KEY_ID.KEY_F10))
-            {
-                m_EnableHTP = true;
-            }
-
             if (m_EnableHTP)
             {
                 if (!m_isActive)
@@ -92,6 +93,9 @@ namespace Scripting
                     ECS.SetActive(mEntities["HTP_Image1"].id, true);
                     ECS.SetActive(mEntities["HTP_KeyD"].id, true);
                     ECS.SetActive(mEntities["HTP_ArrowR"].id, true);
+                    ECS.SetActive(mEntities["HTP_ControlText"].id, true);
+                    m_MenuState = MENUSTATE.IMG1;
+                    m_PrevMenuState = MENUSTATE.IMG1;
                     m_isActive = true;
                 }
                 else
@@ -152,7 +156,8 @@ namespace Scripting
                                 {
                                     ECS.SetActive(entity.Value.id, false);
                                 }
-                                GameUtilities.ResumeScene();
+                                if(m_IsResumeScene)
+                                    GameUtilities.ResumeScene();
                             }
                             break;
                         }
@@ -171,22 +176,31 @@ namespace Scripting
         {
         }
 
+        public static void EnableHowToPlayMenu(bool isResumeScene)
+        {
+            m_EnableHTP = true;
+            m_IsResumeScene = isResumeScene;
+        }
+
         private void UpdateMenuInput()
         {
             if (InputUtility.onKeyTriggered("MENULEFT"))
             {
+                ECS.PlayAudio(entityID, 0, "SFX");
                 m_PrevMenuState = m_MenuState;
                 if (m_MenuState > MENUSTATE.IMG1)
                     m_MenuState--;
             }
             else if (InputUtility.onKeyTriggered("MENURIGHT"))
             {
+                ECS.PlayAudio(entityID, 1, "SFX");
                 m_PrevMenuState = m_MenuState;
                 if (m_MenuState < MENUSTATE.IMG4)
                     m_MenuState++;
             }
             else if (InputUtility.onKeyTriggered("ESCAPE"))
             {
+                ECS.PlayAudio(entityID, 3, "SFX");
                 m_PrevMenuState = m_MenuState;
                 m_MenuState = MENUSTATE.EXIT;
             }
