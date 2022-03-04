@@ -156,6 +156,8 @@ namespace Scripting
                             }
                             break;
                         }
+
+                        m_PrevMenuState = m_MenuState;
                     }
                 }
             }

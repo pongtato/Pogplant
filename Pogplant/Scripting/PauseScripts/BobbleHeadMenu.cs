@@ -8,17 +8,17 @@ namespace Scripting
 {
     public class BobbleHeadMenu : PauseBehaviour
     {
-        public enum BUTTONS
+        public enum IMAGENUM
         {
-            FIRST = 0,
-            SECOND = 1,
-            THIRD = 2,
+            FIRST = 1,
+            SECOND = 2,
+            THIRD = 3,
         }
 
-        private int m_activeIndex = 0;
-        private Dictionary<string, GameObject> buttonMap = new Dictionary<string, GameObject>();
+        private IMAGENUM m_currImg = IMAGENUM.FIRST;
+        private IMAGENUM m_prevImg = IMAGENUM.FIRST;
+        private Dictionary<string, GameObject> m_Entities = new Dictionary<string, GameObject>();
         private bool m_menuActive = false;
-        private float m_arrowOffsetY = 0.15f;
 
         public BobbleHeadMenu()
         {
@@ -33,23 +33,37 @@ namespace Scripting
             Vector3 rot = new Vector3();
             Vector3 scale = new Vector3();
 
-            uint arrowButton = ECS.FindChildEntityWithName(entityID, "ArrowButton");
-            ECS.GetTransformECS(arrowButton, ref pos, ref rot, ref scale);
-            buttonMap.Add("ArrowButton", new GameObject(arrowButton, new Transform(pos, rot, scale), "ArrowButton"));
+            // Boxes
+            uint bg = ECS.FindEntityWithName("TS_BG");
+            ECS.GetTransformECS(bg, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_BG", new GameObject(bg, new Transform(pos, rot, scale), "TS_BG"));
 
-            uint first = ECS.FindChildEntityWithName(entityID, "FirstButton");
-            ECS.GetTransformECS(first, ref pos, ref rot, ref scale);
-            buttonMap.Add("FirstButton", new GameObject(first, new Transform(pos, rot, scale), "FirstButton"));
+            uint mBox = ECS.FindEntityWithName("TS_MBox");
+            ECS.GetTransformECS(mBox, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_MBox", new GameObject(mBox, new Transform(pos, rot, scale), "TS_MBox"));
 
-            uint second = ECS.FindChildEntityWithName(entityID, "SecondButton");
-            ECS.GetTransformECS(second, ref pos, ref rot, ref scale);
-            buttonMap.Add("SecondButton", new GameObject(second, new Transform(pos, rot, scale), "SecondButton"));
+            uint lBox = ECS.FindEntityWithName("TS_LBox");
+            ECS.GetTransformECS(lBox, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_LBox", new GameObject(lBox, new Transform(pos, rot, scale), "TS_LBox"));
 
-            uint third = ECS.FindChildEntityWithName(entityID, "ThirdButton");
-            ECS.GetTransformECS(third, ref pos, ref rot, ref scale);
-            buttonMap.Add("ThirdButton", new GameObject(third, new Transform(pos, rot, scale), "ThirdButton"));
+            uint rBox = ECS.FindEntityWithName("TS_RBox");
+            ECS.GetTransformECS(rBox, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_RBox", new GameObject(rBox, new Transform(pos, rot, scale), "TS_RBox"));
 
-            ECS.SetActive(entityID, false);
+            uint img1 = ECS.FindEntityWithName("TS_IMG1");
+            ECS.GetTransformECS(img1, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_IMG1", new GameObject(img1, new Transform(pos, rot, scale), "TS_IMG1"));
+
+            uint img2 = ECS.FindEntityWithName("TS_IMG2");
+            ECS.GetTransformECS(img2, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_IMG2", new GameObject(img2, new Transform(pos, rot, scale), "TS_IMG2"));
+
+            uint img3 = ECS.FindEntityWithName("TS_IMG3");
+            ECS.GetTransformECS(img3, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_IMG3", new GameObject(img3, new Transform(pos, rot, scale), "TS_IMG3"));
+
+            m_currImg = IMAGENUM.FIRST;
+            m_prevImg = IMAGENUM.FIRST;
             m_menuActive = false;
         }
 
@@ -59,14 +73,19 @@ namespace Scripting
 
         public override void Update(float dt)
         {
-            if (PlayerScript.m_EnableBonusScreen)
-            {
-                if(!m_menuActive)
+            //if (PlayerScript.m_EnableBonusScreen)
+            //{
+                if (!m_menuActive)
                 {
                     m_menuActive = true;
+                    ECS.SetActive(m_Entities["TS_BG"].id, true);
+                    ECS.SetActive(m_Entities["TS_IMG1"].id, true);
+                    ECS.SetActive(m_Entities["TS_IMG2"].id, true);
+                    ECS.SetActive(m_Entities["TS_IMG3"].id, true);
                 }
-                UpdateInputs();
-            }
+                else
+                    UpdateInputs();
+            //}
         }
 
         public override void OnTriggerEnter(uint id)
@@ -82,67 +101,85 @@ namespace Scripting
             //Key input
             if (InputUtility.onKeyTriggered("MENULEFT"))
             {
-                --m_activeIndex;
-
-                if (m_activeIndex < (int)BUTTONS.FIRST)
-                {
-                    m_activeIndex = (int)BUTTONS.THIRD;
-
-                }
-                //Console.WriteLine("Active index is: " + active_index);
+                m_prevImg = m_currImg;
+                if (m_currImg > IMAGENUM.FIRST)
+                    --m_currImg;
+                else
+                    m_currImg = IMAGENUM.THIRD;
             }
             else if (InputUtility.onKeyTriggered("MENURIGHT"))
             {
-                ++m_activeIndex;
-
-                if (m_activeIndex > (int)BUTTONS.THIRD)
-                {
-                    m_activeIndex = (int)BUTTONS.FIRST;
-
-                }
+                m_prevImg = m_currImg;
+                if (m_currImg < IMAGENUM.THIRD)
+                    ++m_currImg;
+                else
+                    m_currImg = IMAGENUM.FIRST;
             }
+
+            //Console.WriteLine(m_currImg);
 
             bool selected = InputUtility.onKeyHeld("MENUSELECT");
 
             if(selected)
             {
-                switch (m_activeIndex)
+                switch (m_currImg)
                 {
-                    case 0:
+                    case IMAGENUM.FIRST:
                         Console.WriteLine("Score Multiplier Boost Selected.");
-                        ++PlayerScript.m_ScoreMultiplierBobbleCount;
+                        //++PlayerScript.m_ScoreMultiplierBobbleCount;
                         break;
-                    case 1:
+                    case IMAGENUM.SECOND:
                         Console.WriteLine("Shield Invulnerable Duration Boost Selected.");
-                        ++PlayerScript.m_ShieldBobbleCount;
+                        //++PlayerScript.m_ShieldBobbleCount;
                         break;
-                    case 2:
+                    case IMAGENUM.THIRD:
                         Console.WriteLine("Combo Decay Timer Boost Selected");
-                        ++PlayerScript.m_ComboDecayBobbleCount;
+                        //++PlayerScript.m_ComboDecayBobbleCount;
                         break;
                 }
-                PlayerScript.m_EnableBonusScreen = false;
-                PlayerScript.m_BonusItem = 0;
+                //PlayerScript.m_EnableBonusScreen = false;
+                //PlayerScript.m_BonusItem = 0;
                 m_menuActive = false;
-                ECS.SetActive(entityID, false);
+                m_currImg = IMAGENUM.FIRST;
+                m_prevImg = IMAGENUM.FIRST;
+                ECS.SetActive(m_Entities["TS_BG"].id, false);
+                ECS.SetActive(m_Entities["TS_IMG1"].id, false);
+                ECS.SetActive(m_Entities["TS_IMG2"].id, false);
+                ECS.SetActive(m_Entities["TS_IMG3"].id, false);
                 GameUtilities.ResumeScene();
             }
             else 
             {
-                switch (m_activeIndex)
+                if(m_prevImg != m_currImg)
                 {
-                    case 0:
-                        ECS.SetPosition(buttonMap["ArrowButton"].id, 
-                            new Vector3(buttonMap["FirstButton"].transform.Position.X, buttonMap["FirstButton"].transform.Position.Y + m_arrowOffsetY, buttonMap["FirstButton"].transform.Position.Z));
-                        break;
-                    case 1:
-                        ECS.SetPosition(buttonMap["ArrowButton"].id,
-                            new Vector3(buttonMap["SecondButton"].transform.Position.X, buttonMap["SecondButton"].transform.Position.Y + m_arrowOffsetY, buttonMap["SecondButton"].transform.Position.Z));
-                        break;
-                    case 2:
-                        ECS.SetPosition(buttonMap["ArrowButton"].id,
-                            new Vector3(buttonMap["ThirdButton"].transform.Position.X, buttonMap["ThirdButton"].transform.Position.Y + m_arrowOffsetY, buttonMap["ThirdButton"].transform.Position.Z));
-                        break;
+                    switch (m_currImg)
+                    {
+                        case IMAGENUM.FIRST:
+                            ECS.SetPosition(m_Entities["TS_IMG1"].id,
+                                new Vector3(m_Entities["TS_MBox"].transform.Position.X, m_Entities["TS_MBox"].transform.Position.Y, m_Entities["TS_IMG1"].transform.Position.Z));
+                            ECS.SetPosition(m_Entities["TS_IMG2"].id,
+                                new Vector3(m_Entities["TS_LBox"].transform.Position.X, m_Entities["TS_LBox"].transform.Position.Y, m_Entities["TS_IMG2"].transform.Position.Z));
+                            ECS.SetPosition(m_Entities["TS_IMG3"].id,
+                                new Vector3(m_Entities["TS_RBox"].transform.Position.X, m_Entities["TS_RBox"].transform.Position.Y, m_Entities["TS_IMG3"].transform.Position.Z));
+                            break;
+                        case IMAGENUM.SECOND:
+                            ECS.SetPosition(m_Entities["TS_IMG2"].id,
+                                new Vector3(m_Entities["TS_MBox"].transform.Position.X, m_Entities["TS_MBox"].transform.Position.Y, m_Entities["TS_IMG1"].transform.Position.Z));
+                            ECS.SetPosition(m_Entities["TS_IMG3"].id,
+                                new Vector3(m_Entities["TS_LBox"].transform.Position.X, m_Entities["TS_LBox"].transform.Position.Y, m_Entities["TS_IMG3"].transform.Position.Z));
+                            ECS.SetPosition(m_Entities["TS_IMG1"].id,
+                                new Vector3(m_Entities["TS_RBox"].transform.Position.X, m_Entities["TS_RBox"].transform.Position.Y, m_Entities["TS_IMG1"].transform.Position.Z));
+                            break;
+                        case IMAGENUM.THIRD:
+                            ECS.SetPosition(m_Entities["TS_IMG3"].id,
+                                new Vector3(m_Entities["TS_MBox"].transform.Position.X, m_Entities["TS_MBox"].transform.Position.Y, m_Entities["TS_IMG3"].transform.Position.Z));
+                            ECS.SetPosition(m_Entities["TS_IMG1"].id,
+                                new Vector3(m_Entities["TS_LBox"].transform.Position.X, m_Entities["TS_LBox"].transform.Position.Y, m_Entities["TS_IMG1"].transform.Position.Z));
+                            ECS.SetPosition(m_Entities["TS_IMG2"].id,
+                                new Vector3(m_Entities["TS_RBox"].transform.Position.X, m_Entities["TS_RBox"].transform.Position.Y, m_Entities["TS_IMG2"].transform.Position.Z));
+                            break;
+                    }
+                    m_prevImg = m_currImg;
                 }
             }
         }

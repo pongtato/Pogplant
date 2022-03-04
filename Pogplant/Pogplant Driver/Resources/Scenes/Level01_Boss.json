@@ -1986,9 +1986,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				0.14347316324710846,
-				0.9884788990020752,
-				-0.048218004405498505
+				-0.12753282487392426,
+				0.99182343482971191,
+				-0.0046661742962896824
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
@@ -7865,104 +7865,33 @@
 				1.0,
 				1.0
 			],
-			"m_ForceAlpha" : true,
+			"m_ForceAlpha" : false,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
+				"m_Columns" : 4,
+				"m_FrameCounter" : 5.0,
+				"m_MaxFrames" : 16,
 				"m_Play" : false,
 				"m_PlaySpeed" : 1.0,
 				"m_Repeat" : false,
-				"m_Rows" : 1,
+				"m_Rows" : 4,
 				"m_Tiling" : 
 				[
-					1.0,
-					1.0
+					0.25,
+					0.25
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					1.0
+					0.25,
+					0.5
 				]
 			},
-			"m_TexName" : "BG_01_MM.dds"
+			"m_TexName" : "1024_ExportSheet_01.dds"
 		},
-		"Children" : 4,
 		"Name" : 
 		{
-			"m_Name" : "BobbleHeadMenu",
-			"status" : false
-		},
-		"P_Scripting" : 
-		{
-			"BobbleHeadMenu" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				-0.40000000596046448
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				0.0,
-				0.26046991348266602,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : true,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "AI_Happy.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "SecondButton",
+			"m_Name" : "Any Key Continue",
 			"status" : false
 		},
 		"Tag" : 
@@ -7975,216 +7904,18 @@
 			[
 				0.0,
 				0.0,
-				0.0
+				-0.36000001430511475
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
 			[
-				0.30000001192092896,
-				0.15000000596046448,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				0.0,
-				1.0,
-				0.2046511173248291,
-				1.0
-			],
-			"m_ForceAlpha" : true,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "AI_Happy.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "ThirdButton",
-			"status" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.45000001788139343,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.30000001192092896,
-				0.15000000596046448,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				0.0,
-				0.87442469596862793,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : true,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "Arrow_MM.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "ArrowButton",
-			"status" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.22500000894069672,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				-90.0
-			],
-			"m_scale" : 
-			[
-				0.15000002086162567,
-				0.075000010430812836,
-				0.99886518716812134
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				0.0,
-				0.0,
-				1.0
-			],
-			"m_ForceAlpha" : true,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "AI_Happy.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "FirstButton",
-			"status" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.45000001788139343,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.30000001192092896,
-				0.15000000596046448,
+				0.40000000596046448,
+				0.40000000596046448,
 				1.0
 			]
 		}
@@ -13912,71 +13643,6 @@
 			[
 				0.15000000596046448,
 				0.15000000596046448,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 4,
-				"m_FrameCounter" : 5.0,
-				"m_MaxFrames" : 16,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 4,
-				"m_Tiling" : 
-				[
-					0.25,
-					0.25
-				],
-				"m_UV_Offset" : 
-				[
-					0.25,
-					0.5
-				]
-			},
-			"m_TexName" : "1024_ExportSheet_01.dds"
-		},
-		"Name" : 
-		{
-			"m_Name" : "Any Key Continue",
-			"status" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				-0.36000001430511475
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.40000000596046448,
-				0.40000000596046448,
 				1.0
 			]
 		}
