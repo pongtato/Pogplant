@@ -354,6 +354,24 @@ namespace SSH
 		}
 	}
 
+	void SetDiffuseTint(std::uint32_t entityID, glm::vec3& color)
+	{
+		auto renderer = ScriptSystem::GetECS()->GetReg().try_get<Components::Renderer>(static_cast<entt::entity>(entityID));
+		if (renderer)
+		{
+			renderer->m_ColorTint = color;
+		}
+	}
+
+	void SetEmissiveTint(std::uint32_t entityID, glm::vec3& color)
+	{
+		auto renderer = ScriptSystem::GetECS()->GetReg().try_get<Components::Renderer>(static_cast<entt::entity>(entityID));
+		if (renderer)
+		{
+			renderer->m_EmissiveTint = color;
+		}
+	}
+
 	glm::vec3 GetColorTint(std::uint32_t entityID, glm::vec3& color)
 	{
 		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));

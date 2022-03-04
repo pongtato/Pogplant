@@ -1,6 +1,6 @@
 #pragma once
 
-#define PPD_EDITOR_BUILD
+//#define PPD_EDITOR_BUILD
 
 struct GLFWwindow;
 
@@ -20,10 +20,15 @@ namespace Pogplant
 		static void HideCursor();
 		static void ShowCursor();
 
+		static void GameSetWindowSize(int _Width, int _Height);
+		static void GameSetFullscreen(bool _Fullscreen);
+
 		/// Variables
 		static GLFWwindow* m_Window;
 		static int m_Width;
 		static int m_Height;
+		static int m_xPos;
+		static int m_yPos;
 		static bool m_VSync;
 		static float m_Aspect;
 		static float m_TargetAspect;

@@ -46,6 +46,8 @@ namespace SSH
 	//Canvas Component
 	void SetFrames(std::uint32_t entityID, int frameValue);
 	void SetColorTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
+	void SetDiffuseTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
+	void SetEmissiveTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
 	glm::vec3 GetColorTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
 
 

@@ -12,6 +12,8 @@ namespace Pogplant
 	GLFWwindow* Window::m_Window = nullptr;
 	int Window::m_Width = 0;
 	int Window::m_Height = 0;
+	int Window::m_xPos = 0;
+	int Window::m_yPos = 0;
 	float Window::m_Aspect = 0.0f;
 	// 16:9
 	float Window::m_TargetAspect = 1.77778f;
@@ -60,18 +62,24 @@ namespace Pogplant
 	int Window::InitWindow(int _Width, int _Height, const char* _Window_Name)
 	{
 		m_Width = _Width;
-		m_Height = _Height;
+		// So that it will never / 0
+		m_Height = std::max(1,_Height);
 		m_Aspect = static_cast<float>(m_Width) / m_Height;
 
 		glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
+		//glfwWindowHint(GLFW_MAXIMIZED, GL_TRUE);
 
-		//m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, glfwGetPrimaryMonitor(), NULL);
-		m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, NULL, NULL);
 		
+#ifdef PPD_EDITOR_BUILD
+		m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, NULL, NULL);
+#else
+		//m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, glfwGetPrimaryMonitor(), NULL);
+#endif
+		m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, NULL, NULL);
+
 		if (m_Window == NULL)
 		{
 			std::cout << "[PP::WINDOW] Failed to create GLFW window" << std::endl;
@@ -164,6 +172,8 @@ namespace Pogplant
 	{
 		m_Width = _Width;
 		m_Height = _Height;
+		// So that it will never / 0
+		m_Height = std::max(1, _Height);
 		m_Aspect = static_cast<float>(m_Width) / m_Height;
 	}
 
@@ -183,5 +193,26 @@ namespace Pogplant
 	{
 		m_Hide = false;
 		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	}
+
+	void Window::GameSetWindowSize(int _Width, int _Height)
+	{
+		glfwSetWindowSize(m_Window, _Width, _Height);
+		glfwRestoreWindow(m_Window);
+	}
+
+	void Window::GameSetFullscreen(bool _Fullscreen)
+	{
+		if (_Fullscreen)
+		{
+			// Store previous pos
+			glfwGetWindowPos(m_Window, &m_xPos, &m_yPos);
+			glfwSetWindowMonitor(m_Window, glfwGetPrimaryMonitor(), 0, 0, m_Width, m_Height, GLFW_DONT_CARE);
+		}
+		else
+		{
+			// Restore
+			glfwSetWindowMonitor(m_Window, nullptr, m_xPos, m_yPos, m_Width, m_Height, GLFW_DONT_CARE);
+		}
 	}
 }

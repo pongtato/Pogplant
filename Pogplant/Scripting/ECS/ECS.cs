@@ -136,6 +136,12 @@ namespace Scripting
         public extern static void SetColorTint(uint entityID, ref Vector3 Color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetDiffuseTint(uint entityID, ref Vector3 Color);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetEmissiveTint(uint entityID, ref Vector3 Color);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector3 GetColorTint(uint entityID, ref Vector3 Color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
