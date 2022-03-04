@@ -214,6 +214,12 @@ namespace Scripting
             return new L1BossBehaviour();
 		}
 
+        public static BossHitbox BossHitbox()
+        {
+            return new BossHitbox();
+        }
+
+
         public static EndGameMenu EndGameMenu()
         {
             return new EndGameMenu();

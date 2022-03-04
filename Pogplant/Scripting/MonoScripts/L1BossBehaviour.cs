@@ -34,7 +34,10 @@ namespace Scripting
 		**************************/
 		#region[Core Variables]
 		/**> The health of the boss core*/
-		public float m_coreHealth;
+		public float mh_coreHealth;
+
+		public float mh_leftBallHealth;
+		public float mh_rightBallHealth;
 
 		/**> How much damage the boss will take before going into protection mode*/
 		public float m_coreProtectionThreshold;
@@ -107,6 +110,8 @@ namespace Scripting
 				damageTakenPeriod = 0f;
 				bossShootTimer = 0f;
 				bossShootCount = 0;
+				leftBallHealth = 0f;
+				rightBallHealth = 0f;
 			}
 
 			public L1Boss.BOSS_BEHAVIOUR_STATE lastState;
@@ -122,6 +127,9 @@ namespace Scripting
 
 			public float bossShootTimer;
 			public float bossShootCount;
+
+			public float leftBallHealth;
+			public float rightBallHealth;
 		}
 		#endregion
 
@@ -162,7 +170,10 @@ namespace Scripting
 		/******************************************************************************/
 		public override void Start()
 		{
-			m_coreHealth = ECS.GetValue<float>(entityID, 100f, "CoreHealth");
+			mh_coreHealth = ECS.GetValue<float>(entityID, 100f, "CoreHealth");
+			mh_leftBallHealth = ECS.GetValue<float>(entityID, 50f, "LeftBallHealth");
+			mh_rightBallHealth = ECS.GetValue<float>(entityID, 50f, "RightBallHealth");
+
 			m_coreProtectionThreshold = ECS.GetValue<float>(entityID, 1f, "CoreProtectionThreshold");
 			m_coreProtectionDamageDuration = ECS.GetValue<float>(entityID, 1f, "CoreProtectionDamageDuration");
 			mSpawner_durationBetweenSpawns = ECS.GetValue<float>(entityID, 0.5f, "DurationBetweenEnemySpawns");
@@ -188,6 +199,9 @@ namespace Scripting
 			{
 				mID_gunShootpoints[i] = ECS.FindChildEntityWithName(bossShootPoints, (i + 1).ToString());
 			}
+
+			m_runStateInfo.leftBallHealth = mh_leftBallHealth;
+			m_runStateInfo.rightBallHealth = mh_rightBallHealth;
 		}
 
 		void InitStateBehaviours()
@@ -202,9 +216,7 @@ namespace Scripting
 
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].isVulnerable = false;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].shouldReturnToDefault = true;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].stateDurationMin = 5f;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].stateDurationMax = 10f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].shouldReturnToDefault = false;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].shouldReturnToDefault = false;
@@ -289,6 +301,17 @@ namespace Scripting
 				case L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION:
 				{
 					UpdateShootingBehaviour(dt);
+
+					if(m_runStateInfo.leftBallHealth <= 0 && m_runStateInfo.rightBallHealth <= 0)
+					{
+						//Reset health
+						m_runStateInfo.leftBallHealth = mh_leftBallHealth;
+						m_runStateInfo.rightBallHealth = mh_rightBallHealth;
+
+						//Go back to moving state
+						Console.WriteLine("L1BossBehaviour.cs: Boss returning to moving state");
+						TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
+					}
 				}
 				break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
@@ -481,6 +504,32 @@ namespace Scripting
 			}
 		}
 
+		public void DamageLeftCore(float damageAmount)
+		{
+			m_runStateInfo.leftBallHealth -= damageAmount;
+
+			if(m_runStateInfo.leftBallHealth <= 0f)
+			{
+				m_runStateInfo.leftBallHealth = 0f;
+				//Trigger left core death
+
+				Console.WriteLine("L1BossBehaviour.cs: Left core dead");
+			}
+		}
+
+		public void DamageRightCore(float damageAmount)
+		{
+			m_runStateInfo.rightBallHealth -= damageAmount;
+
+			if (m_runStateInfo.rightBallHealth <= 0f)
+			{
+				m_runStateInfo.rightBallHealth = 0f;
+				//Trigger right core death
+
+				Console.WriteLine("L1BossBehaviour.cs: Right core dead");
+			}
+		}
+
 		public override void OnTriggerEnter(uint id)
 		{
 			//Invulnerable in protection mode
@@ -491,13 +540,13 @@ namespace Scripting
 
 			//Console.WriteLine("Boss Taken damage");
 
-			m_coreHealth -= 1f;
+			mh_coreHealth -= 1f;
 			m_runStateInfo.damageTakenPeriod += 1f;
 			m_runStateInfo.timeSinceLastDamageTimer = 0f;
 
-			if (m_coreHealth <= 0f)
+			if (mh_coreHealth <= 0f)
 			{
-				m_coreHealth = 0f;
+				mh_coreHealth = 0f;
 
 				if (L1Boss.m_singleton.current_state != L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE)
 				{
