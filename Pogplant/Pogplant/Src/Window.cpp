@@ -76,9 +76,8 @@ namespace Pogplant
 #ifdef PPD_EDITOR_BUILD
 		m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, NULL, NULL);
 #else
-		//m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, glfwGetPrimaryMonitor(), NULL);
+		m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, glfwGetPrimaryMonitor(), NULL);
 #endif
-		m_Window = glfwCreateWindow(m_Width, m_Height, _Window_Name, NULL, NULL);
 
 		if (m_Window == NULL)
 		{
