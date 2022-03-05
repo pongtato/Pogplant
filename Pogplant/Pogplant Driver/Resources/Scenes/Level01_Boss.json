@@ -598,34 +598,34 @@
 				1.0,
 				1.0
 			],
-			"m_ForceAlpha" : true,
+			"m_ForceAlpha" : false,
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
+				"m_Columns" : 2,
+				"m_FrameCounter" : 2.0,
+				"m_MaxFrames" : 4,
 				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
-				"m_Rows" : 1,
+				"m_Rows" : 2,
 				"m_Tiling" : 
 				[
-					1.0,
-					1.0
+					0.5,
+					0.5
 				],
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.0
+					1.0
 				]
 			},
-			"m_TexName" : "snow_diff.dds"
+			"m_TexName" : "2048_ExportSheet_03.dds"
 		},
 		"Name" : 
 		{
-			"m_Name" : "L1 Black Screen",
-			"status" : false
+			"m_Name" : "White_Flash",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -637,7 +637,7 @@
 			[
 				0.0,
 				0.0,
-				-0.34999999403953552
+				0.0
 			],
 			"m_rotation" : 
 			[
@@ -647,8 +647,8 @@
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
+				0.0,
+				0.0,
 				1.0
 			]
 		}
@@ -9472,7 +9472,7 @@
 			[
 				0.0,
 				0.0,
-				-0.36000001430511475
+				0.0
 			],
 			"m_rotation" : 
 			[
@@ -10458,6 +10458,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Timmy_9.ogg",
+				"UpdatePos" : false,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 18,
 		"Name" : 
 		{
@@ -14521,9 +14530,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				0.061604030430316925,
-				0.98724985122680664,
-				-0.14677391946315765
+				0.10825531184673309,
+				0.98721730709075928,
+				-0.11697398871183395
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 

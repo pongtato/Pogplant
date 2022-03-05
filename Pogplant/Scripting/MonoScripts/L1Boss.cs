@@ -98,13 +98,22 @@ namespace Scripting
         //Player
         uint player_ship_id;
 
-        uint end_screen_trigger_id;
+        //Ending sequence
+        uint white_flash_id;
+        bool show_white_flash;
+        bool fade_to_black;
+        bool increase_any_key_timer;
+        const float white_flash_scale_speed = 25.0f;
+        const float time_until_any_key = 1.0f;
+        float any_key_timer;
+        Vector3 flash_color;
 
         bool any_key_scale_up;
         uint any_key_continue_id;
         Vector3 any_key_max_scale;
         Vector3 any_key_min_scale;
         const float any_key_scale_speed = 5.0f;
+
         float fly_up_delay;
         const float fly_up_short_delay = 2.5f;
 
@@ -129,13 +138,14 @@ namespace Scripting
             protection_color_one = new Vector3(0.0f, 1.0f, 1.0f);
             protection_color_two = new Vector3(0.0f, 0.55f, 1.0f);
             default_color = new Vector3(1.0f, 1.0f, 1.0f);
-
+            flash_color = new Vector3(1.0f, 1.0f, 1.0f);
             FindEntities();
         }
 
         void FindEntities()
         {
-            end_screen_trigger_id = ECS.FindEntityWithName("L1 Black Screen");
+            white_flash_id = ECS.FindEntityWithName("White_Flash");
+            any_key_continue_id = ECS.FindEntityWithName("Any Key Continue");
 
             //Player ship
             player_ship_id = ECS.FindEntityWithName("PlayerBox");
@@ -254,20 +264,26 @@ namespace Scripting
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_I))
             {
-                EnableProtection();
-            }
-
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_O))
-            {
-                DamagedLeftBall();
-            }
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_P))
-            {
-                DamagedRightBall();
+                SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE.ToString());
             }
 
             //Update mouths based on eye damage state
             UpdateMouths(dt);
+
+            if (show_white_flash)
+            {
+                ECS.SetGlobalScale(white_flash_id, Vector3.Lerp(ECS.GetGlobalScale(white_flash_id), new Vector3(4.0f, 4.0f, 1.0f), white_flash_scale_speed * dt));
+
+                if (ECS.GetGlobalScale(white_flash_id).X > 3.9f)
+                {
+                    //Plays the level ending VO
+                    ECS.PlayAudio(entityID, 0, "VO");
+                    show_white_flash = false;
+                    increase_any_key_timer = true;
+                    fade_to_black = true;
+                    any_key_timer = 0.0f;
+                }
+            }
 
             switch (current_state)
             {
@@ -282,7 +298,43 @@ namespace Scripting
                     moving_parts_dict[main_laser_barrel_id].SpinObjectEndless(0, 0, 1.0f, laser_spin_addition, dt);
                     break;
                 case BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE:
-                    UpdateAnyKeyScaling(dt);
+
+                    if (fade_to_black)
+                    {
+                        //Update white flash and fade to black
+                        if (flash_color.X > 0)
+                        {
+                            flash_color.X -= dt;
+                            flash_color.Y -= dt;
+                            flash_color.Z -= dt;
+
+                            ECS.SetColorTint(white_flash_id, ref flash_color);
+                        }
+                    }
+
+                    //Update until any key to continue appears
+                    if (increase_any_key_timer)
+                    {
+                        if (any_key_timer < time_until_any_key)
+                        {
+                            any_key_timer += dt;
+                        }
+                        else
+                        {
+                            increase_any_key_timer = false;
+                            ECS.SetActive(any_key_continue_id, true);
+                        }
+                    }
+                    
+                    if (!increase_any_key_timer)
+                    {
+                        UpdateAnyKeyScaling(dt);
+                        
+                        if (InputUtility.onAnyKey())
+                        {
+                            GameUtilities.LoadScene("Level02");
+                        }
+                    }
                     break;
             }
 
@@ -349,7 +401,7 @@ namespace Scripting
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsOne, 1.5f);
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsTwo, 7.0f);
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsThree, 2.0f);
-                    boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsFour, 2.0f);
+                    boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsFour, 0.25f);
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsFive, 0.5f);
                     boss_animation_system.AddAnimationUpdateStack(RunDeathStateSequenceOne);
                     boss_animation_system.AddAnimationUpdateStack(RunDeathStateSequenceTwo);
@@ -360,7 +412,7 @@ namespace Scripting
                     boss_animation_system.PlayAnimation();
                     break;
                 case BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE:
-                    ECS.SetActive(any_key_continue_id, true);
+                    
                     break;
             }
         }
@@ -441,7 +493,6 @@ namespace Scripting
             {
                 any_key_scale_up = true;
             }
-            Console.WriteLine(scale.X);
 
             if (any_key_scale_up)
             {
@@ -450,11 +501,6 @@ namespace Scripting
             else
             {
                 ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_min_scale, any_key_scale_speed * dt));
-            }
-
-            if (InputUtility.onAnyKey())
-            {
-                GameUtilities.LoadScene("Level02");
             }
         }
 
@@ -1226,7 +1272,7 @@ namespace Scripting
         {
             //Body
             moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, -0.2f, -4), new Vector3(0, 0.2f, 0), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
-            moving_parts_dict[main_laser_object_id].SetMovingPartsScale(new Vector3(0.1f, 0.1f, 3.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(2.0f, 2.0f, 0), true, true, false, false, false, false);
+            moving_parts_dict[main_laser_object_id].SetMovingPartsScale(new Vector3(0.1f, 0.1f, 3.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(8.0f, 8.0f, 0), true, true, false, false, false, false);
 
             ECS.SetActive(main_laser_rails_id, false);
 
@@ -1256,7 +1302,9 @@ namespace Scripting
 
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(false);
 
-            ECS.SetActive(end_screen_trigger_id, true);
+            //ECS.SetActive(end_screen_trigger_id, true);
+            show_white_flash = true;
+
             SetState(BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE.ToString());
         }
 
