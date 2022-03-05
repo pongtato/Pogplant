@@ -181,6 +181,8 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint[] GetChildren(uint entityID);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static bool RayCastEntity(Vector3 rayOrigin, Vector3 rayDir, uint entityIDToCast);
 
 
         public static T GetValue<T>(uint entityID, T defaultValue, string name)

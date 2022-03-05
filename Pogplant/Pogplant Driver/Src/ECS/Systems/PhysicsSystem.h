@@ -58,6 +58,8 @@ public:
 	void LoadLayers();
 	void SaveLayers();
 
+	bool RayCastObject(const glm::vec3& pos, const glm::vec3& dir, entt::entity entityToCast);
+
 	inline void RemoveEntityFromTree(const entt::entity& entity)
 	{
 		m_broadphase.RemoveData(entity);

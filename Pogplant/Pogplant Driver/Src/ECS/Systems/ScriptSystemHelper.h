@@ -81,7 +81,7 @@ namespace SSH
 	void SetGlobalRotation(std::uint32_t entityID, glm::vec3 rot);
 	void SetGlobalScale(std::uint32_t entityID, glm::vec3 scale);
 	glm::vec3 GetForwardVector(std::uint32_t entityID);
-
+	bool RayCastEntity(glm::vec3 rayOrigin, glm::vec3 rayDir, std::uint32_t entityIDToCast);
 
 	// Components for GambObject
 	void AddComponentTransform(unsigned int id, Components::Transform transform);

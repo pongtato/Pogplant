@@ -474,6 +474,11 @@ namespace SSH
 		return fv;
 	}
 
+	bool RayCastEntity(glm::vec3 rayOrigin, glm::vec3 rayDir, std::uint32_t entityIDToCast)
+	{
+		return PogplantDriver::Application::GetInstance().m_sPhysicsSystem.RayCastObject(rayOrigin, rayDir, static_cast<entt::entity>(entityIDToCast));
+	}
+
 	void AddComponentTransform(unsigned int id, Components::Transform transform)
 	{
 		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Transform>(static_cast<entt::entity>(id), transform);

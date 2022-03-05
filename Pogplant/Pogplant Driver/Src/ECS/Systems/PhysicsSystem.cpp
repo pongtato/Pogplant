@@ -1085,3 +1085,29 @@ void PhysicsSystem::SaveLayers()
 	PPU::CustomSaver::Append("CollisionLayers", physicsLayers, false);
 	PPU::CustomSaver::Save();
 }
+
+bool PhysicsSystem::RayCastObject(const glm::vec3& pos, const glm::vec3& dir, entt::entity entityToCast)
+{
+	if (!m_registry->GetReg().valid(entityToCast))
+	{
+		std::cout << "RayCastObject: You casted an invalid entity!" << std::endl;
+		return false;
+	}
+
+	PhysicsDLC::Collision::Shapes::Ray ray{ pos, dir };
+	auto boxCollider = m_registry->GetReg().try_get<Components::BoxCollider>(entityToCast);
+	auto sphereCollider = m_registry->GetReg().try_get<Components::SphereCollider>(entityToCast);
+
+	if (boxCollider)
+	{
+		float castTime;
+		return PhysicsDLC::Collision::RayAABB(ray, boxCollider->aabb, castTime);
+	}
+	else if (sphereCollider)
+	{
+		float castTime;
+		return PhysicsDLC::Collision::RaySphere(ray, sphereCollider->sphere, castTime);
+	}
+
+	return false;
+}

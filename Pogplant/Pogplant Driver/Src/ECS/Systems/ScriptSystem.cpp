@@ -490,6 +490,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetEmissiveTint", SSH::SetEmissiveTint);
 	mono_add_internal_call("Scripting.ECS::GetColorTint", SSH::GetColorTint);
 
+	mono_add_internal_call("Scripting.ECS::RayCastEntity", SSH::RayCastEntity);
+
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRenderer", SSH::AddComponentRenderer);
