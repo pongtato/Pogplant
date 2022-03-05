@@ -182,8 +182,8 @@ namespace Scripting
 			{
 				if (ECS.RayCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, m_enemiesToRayCast[i]))
 					AddEnemyToListOfTargets(m_enemiesToRayCast[i], 0);
-				else
-					RemoveEnemyFromListOfTargets(m_enemiesToRayCast[i], 0);
+				//else
+				//	RemoveEnemyFromListOfTargets(m_enemiesToRayCast[i], 0);
 			}
 
 			//Add homing capablities

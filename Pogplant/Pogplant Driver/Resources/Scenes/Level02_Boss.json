@@ -6339,7 +6339,7 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : "DEFAULT",
+			"collisionLayer" : "PLAYER PROJECTILES",
 			"extends" : 
 			[
 				1.0,
