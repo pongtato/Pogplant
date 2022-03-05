@@ -1,6 +1,6 @@
 #pragma once
 
-//#define PPD_EDITOR_BUILD
+#define PPD_EDITOR_BUILD
 
 struct GLFWwindow;
 
