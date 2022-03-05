@@ -33,44 +33,44 @@ namespace Scripting
 
         //Entities
         //Arms
-        public uint left_arm_middle_joint_id;
-        public uint left_arm_end_joint_id;
-        public uint right_arm_middle_joint_id;
-        public uint right_arm_end_joint_id;
+        uint left_arm_middle_joint_id;
+        uint left_arm_end_joint_id;
+        uint right_arm_middle_joint_id;
+        uint right_arm_end_joint_id;
 
         //Arm lasers
-        public uint left_large_laser_spin_id;
-        public uint right_large_laser_spin_id;
+        uint left_large_laser_spin_id;
+        uint right_large_laser_spin_id;
 
         //Legs
-        public uint left_leg_middle_joint_id;
-        public uint right_leg_middle_joint_id;
-        public uint left_leg_end_joint_id;
-        public uint right_leg_end_joint_id;
+        uint left_leg_middle_joint_id;
+        uint right_leg_middle_joint_id;
+        uint left_leg_end_joint_id;
+        uint right_leg_end_joint_id;
 
         //Launching bays
-        public uint right_launching_bay_one_id;
-        public uint right_launching_bay_two_id;
-        public uint right_launching_bay_three_id;
+        uint right_launching_bay_one_id;
+        uint right_launching_bay_two_id;
+        uint right_launching_bay_three_id;
 
-        public uint left_launching_bay_one_id;
-        public uint left_launching_bay_two_id;
-        public uint left_launching_bay_three_id;
+        uint left_launching_bay_one_id;
+        uint left_launching_bay_two_id;
+        uint left_launching_bay_three_id;
 
         //Artillery
-        public uint artillery_axis_id;
-        public uint artillery_barrel_id;
+        uint artillery_axis_id;
+        uint artillery_barrel_id;
 
         //Main Laser
-        public uint main_laser_rails_id;
-        public uint main_laser_rail_vent_id;
-        public uint main_laser_barrel_id;
-        public uint main_laser_beam_id;
-        public uint main_laser_object_id;
+        uint main_laser_rails_id;
+        uint main_laser_rail_vent_id;
+        uint main_laser_barrel_id;
+        uint main_laser_beam_id;
+        uint main_laser_object_id;
 
         //Mouth
-        public uint left_mouth_id;
-        public uint right_mouth_id;
+        uint left_mouth_id;
+        uint right_mouth_id;
 
         //Shield
         uint false_core_id;
@@ -80,8 +80,8 @@ namespace Scripting
         const float laser_spin_addition_speed = 10.0f;
 
         //Eyes
-        public uint left_eyeball_id;
-        public uint right_eyeball_id;
+        uint left_eyeball_id;
+        uint right_eyeball_id;
 
         //Protection
         bool left_color_one_active;
@@ -364,7 +364,6 @@ namespace Scripting
                     break;
             }
         }
-
         void UpdateMouths(float dt)
         {
             if (left_ball_protection)
@@ -610,7 +609,7 @@ namespace Scripting
         }
         #endregion
 
-        //#region[Protection Animation Sequence]
+        #region[Protection]
 
         ///// <summary>
         ///// [Protection State] Boss swaying around and flailing its arms
@@ -705,7 +704,6 @@ namespace Scripting
         //        moving_parts_dict[right_mouth_id].UpdateMovingParts(dt);
         //    }
         //}
-        //#endregion
 
         public void EnableProtection()
         {
@@ -733,6 +731,7 @@ namespace Scripting
             //Change color of eye to default
             ECS.SetDiffuseTint(right_eyeball_id, ref default_color);
         }
+        #endregion
 
         #region[Launch Animation Sequence]
 
