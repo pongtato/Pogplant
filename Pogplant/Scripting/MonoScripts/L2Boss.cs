@@ -349,6 +349,20 @@ namespace Scripting
                 SetTurretColors();
                 SetColorTurretPreparingFire();
             }
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_I))
+            {
+                //SetState(BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK.ToString());
+                SetState(BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK.ToString());
+                SetTurretColors();
+                SetColorTurretPreparingFire();
+            }
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_O))
+            {
+                //SetState(BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK.ToString());
+                SetState(BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK.ToString());
+                SetTurretColors();
+                SetColorTurretPreparingFire();
+            }
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_K))
             {
                 //SetState(BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK.ToString());
@@ -356,7 +370,7 @@ namespace Scripting
             }
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_L))
             {
-                
+                ResetAllColors();
                 SetColorTurretRecovery();
             }
 
@@ -1582,6 +1596,14 @@ namespace Scripting
             ECS.SetDiffuseTint(right_color_turret_light_3_id, ref default_color);
             ECS.SetEmissiveTint(right_color_turret_light_3_id, ref default_color);
             ECS.SetDiffuseTint(right_color_turret_light_toggle_id, ref default_color);
+
+            ECS.SetDiffuseTint(left_color_turret_light_1_id, ref default_color);
+            ECS.SetEmissiveTint(left_color_turret_light_1_id, ref default_color);
+            ECS.SetDiffuseTint(left_color_turret_light_2_id, ref default_color);
+            ECS.SetEmissiveTint(left_color_turret_light_2_id, ref default_color);
+            ECS.SetDiffuseTint(left_color_turret_light_3_id, ref default_color);
+            ECS.SetEmissiveTint(left_color_turret_light_3_id, ref default_color);
+            ECS.SetDiffuseTint(left_color_turret_light_toggle_id, ref default_color);
         }
 
         public void SetColorTurretPreparingFire()
