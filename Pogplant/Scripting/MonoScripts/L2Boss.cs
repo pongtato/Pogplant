@@ -457,13 +457,16 @@ namespace Scripting
                 case BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK:
                     ResetCheekVars();
                     boss_animation_system.StopAnimation(true, moving_parts_dict);
-
+                    boss_animation_system.PlayAnimation();
+                    break;
+                case BOSS_BEHAVIOUR_STATE.REPEL_ATTACK:
+                    ResetCheekVars();
+                    boss_animation_system.StopAnimation(true, moving_parts_dict);
                     boss_animation_system.PlayAnimation();
                     break;
                 case BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK:
                     ResetCheekVars();
                     boss_animation_system.StopAnimation(true, moving_parts_dict);
-
                     boss_animation_system.PlayAnimation();
                     break;
                 case BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
@@ -590,15 +593,21 @@ namespace Scripting
                     if (cheek_lights_color_one_active)
                     {
                         ECS.SetDiffuseTint(cheek_lights_one_id, ref color_to_flash);
+                        ECS.SetEmissiveTint(cheek_lights_one_id, ref color_to_flash);
                         ECS.SetDiffuseTint(cheek_lights_two_id, ref color_to_flash);
+                        ECS.SetEmissiveTint(cheek_lights_two_id, ref color_to_flash);
                         ECS.SetDiffuseTint(cheek_lights_three_id, ref color_to_flash);
+                        ECS.SetEmissiveTint(cheek_lights_three_id, ref color_to_flash);
                         cheek_lights_color_one_active = false;
                     }
                     else
                     {
                         ECS.SetDiffuseTint(cheek_lights_one_id, ref default_color);
+                        ECS.SetEmissiveTint(cheek_lights_one_id, ref default_color);
                         ECS.SetDiffuseTint(cheek_lights_two_id, ref default_color);
+                        ECS.SetEmissiveTint(cheek_lights_two_id, ref default_color);
                         ECS.SetDiffuseTint(cheek_lights_three_id, ref default_color);
+                        ECS.SetEmissiveTint(cheek_lights_three_id, ref default_color);
                         cheek_lights_color_one_active = true;
                     }
                 }
