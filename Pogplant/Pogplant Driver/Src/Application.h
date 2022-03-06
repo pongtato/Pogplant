@@ -4,7 +4,7 @@
 #define APPLICATION_H_
 
 // Use the PPD_EDITOR_BUILD in pogplant windows.h instead
-#define PPD_EDITOR_BUILD //If defined, will mean this is in editor mode, remove for final game
+//#define PPD_EDITOR_BUILD //If defined, will mean this is in editor mode, remove for final game
 //#define PPD_UPDATE_EDITOR_AS_GAME //Defines if stuff should update as a game even in editor state
 //#define PPD_DEBUG_OBJECTS //Whether we should spawn those random debug stuff we using
 
