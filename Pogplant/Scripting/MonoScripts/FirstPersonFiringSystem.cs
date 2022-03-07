@@ -13,8 +13,6 @@ namespace Scripting
 
 		/**> list to raycast against before adding to lock on list*/
 		public Dictionary<uint, bool> m_enemiesToRayCast = new Dictionary<uint, bool>();
-		List<uint> enemy_in_range = new List<uint>();
-		List<uint> enemy_to_target = new List<uint>();
 		List<uint> Turrets_A = new List<uint>();
 		List<uint> MuzzleGroup = new List<uint>();
 		List<uint> MuzzleFlashGroup = new List<uint>();
@@ -182,18 +180,20 @@ namespace Scripting
 			{
 				if (ECS.CheckValidEntity(m_enemiesToRayCast.ElementAt(i).Key))
 				{
+					//if (ECS.GetTagECS(m_enemiesToRayCast.ElementAt(i).Key) == "BossCore")
+					//	Console.WriteLine("Yes");
 					//Ray cast against hitboxes, if hit, add to list of enemies in range
 					//If value is true, means it's overwritten and should target immediately
 					if (ECS.RayCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, m_enemiesToRayCast.ElementAt(i).Key))
 					{
 						if (m_enemiesToRayCast.ElementAt(i).Value)
-							enemy_to_target_A.Add(m_enemiesToRayCast.ElementAt(i).Key);
+							enemy_in_range_A.Add(m_enemiesToRayCast.ElementAt(i).Key);
 						else
 							AddEnemyToListOfTargets(m_enemiesToRayCast.ElementAt(i).Key, 0);
 					}
 					else if (m_enemiesToRayCast.ElementAt(i).Value)
 					{
-						m_enemiesToRayCast.Remove(m_enemiesToRayCast.ElementAt(i).Key);
+						enemy_in_range_A.Remove(m_enemiesToRayCast.ElementAt(i).Key);
 						enemy_to_target_A.Remove(m_enemiesToRayCast.ElementAt(i).Key);
 					}
 				}
@@ -202,6 +202,8 @@ namespace Scripting
 					//Erase invalid entities
 					m_enemiesToRayCast.Remove(m_enemiesToRayCast.ElementAt(i).Key);
 					--i;
+
+					Console.Write("FPSSystem: Removal");
 				}
 			}
 
@@ -553,18 +555,18 @@ namespace Scripting
 			for (int i = 0; i < TurretGroup.Count; ++i)
 			{
 				//Turret in use
-				LockonEnemies(TurretGroup[i], EnemytoTarget[0], dt);
+				LockonEnemies(TurretGroup[i], EnemytoTarget[EnemytoTarget.Count - 1], dt);
 
 			}
 			//Update Reticle 
 			//To ensure the reticle doesnt clip agaisnt big enemies
-			Vector3 EnemyPos = ECS.GetGlobalPosition(EnemytoTarget[0]) - (Transform.GetForwardVector(shipCamera) * 0.3F);
+			Vector3 EnemyPos = ECS.GetGlobalPosition(EnemytoTarget[EnemytoTarget.Count - 1]) - (Transform.GetForwardVector(shipCamera) * 0.3F);
 			int k = 0;
-			if (EnemyTrack != EnemytoTarget[0])
+			if (EnemyTrack != EnemytoTarget[EnemytoTarget.Count - 1])
 			{
 				ReticleGroup[k].step = 0;
 			}
-			EnemyTrack = EnemytoTarget[0];
+			EnemyTrack = EnemytoTarget[EnemytoTarget.Count - 1];
 			Vector3 Rot = ECS.GetGlobalRotation(shipCamera);
 			if (Rot.X < 0)
 				Rot.X += 180.0f;

@@ -381,6 +381,7 @@ namespace PogplantDriver
 					if (ImGui::Button(ICON_FA_PLAY_CIRCLE " Play"))
 					{
 						Application::GetInstance().TransitionApplicationState(Application::APPLICATIONSTATE::PLAY);
+						PP::Logger::m_Logs.clear();
 					}
 				}
 				break;

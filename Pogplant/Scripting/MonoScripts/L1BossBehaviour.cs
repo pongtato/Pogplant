@@ -63,6 +63,9 @@ namespace Scripting
 
 		public GunBarrel[] m_gunBarrels = new GunBarrel[6];
 
+		public uint mID_leftCore;
+		public uint mID_rightCore;
+
 		//--- Spawner variables
 
 		//This is hardcoded second for spawner
@@ -207,8 +210,10 @@ namespace Scripting
 			m_gunBarrelYRotationSpeedMin = ECS.GetValue<float>(entityID, 10f, "GunBarrelRotationSpeedMin");
 			m_gunBarrelYRotationSpeedMax = ECS.GetValue<float>(entityID, 20f, "GunBarrelRotationSpeedMax");
 
-
 			InitStateBehaviours();
+
+			mID_leftCore = ECS.FindEntityWithName("Left_Eye");
+			mID_rightCore = ECS.FindEntityWithName("Right_Eye");
 
 			uint bossPanelSpawns = ECS.FindEntityWithName("BossPanelSpawnPoints");
 			uint bossShootPoints = ECS.FindEntityWithName("Boss");
@@ -277,6 +282,8 @@ namespace Scripting
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].shouldReturnToDefault = false;
 		}
 
+		bool delayedInit = true;
+
 		/******************************************************************************/
 		/*!
 		\brief
@@ -308,6 +315,7 @@ namespace Scripting
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_K))
 				{
+					//DestroyedBothCores();
 					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
 				}
 
@@ -317,6 +325,13 @@ namespace Scripting
 					Console.WriteLine("L1BossBehaviour.cs: Timer is: " + m_runStateInfo.timer);
 				}
 				//return;
+			}
+
+			if(delayedInit)
+			{
+				//Add core to lock on list
+				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
+				delayedInit = false;
 			}
 
 			//Timers
@@ -442,13 +457,7 @@ namespace Scripting
 			//Enter protection mode if damager threshold is reached
 			if (m_runStateInfo.damageTakenPeriod > m_coreProtectionThreshold)
 			{
-				//TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION);
-				L1Boss.m_singleton.EnableProtection();
-				m_runStateInfo.canDamageMainCore = false;
-				m_runStateInfo.canDamageSideCores = true;
-
-				m_runStateInfo.damageTakenPeriod = 0f;
-				Console.WriteLine("L1BossBehaviour.cs: Boss hit damage threshold, entering protection");
+				TriggerProtectionState();
 			}
 
 			//Damage threshold reset if boss doesn't take damage for awhile
@@ -583,6 +592,12 @@ namespace Scripting
 
 		void TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false, bool dontResetTimer = false)
 		{
+			if(nextState == L1Boss.BOSS_BEHAVIOUR_STATE.MOVING)
+			{
+				//Add boss core to lock on list
+				//FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
+			}
+
 			m_runStateInfo.lastState = L1Boss.m_singleton.current_state;
 			L1Boss.m_singleton.SetState(nextState.ToString());
 
@@ -610,20 +625,19 @@ namespace Scripting
 				//Console.WriteLine("L1BossBehaviour.cs: Left damage taken");
 				m_runStateInfo.leftBallHealth -= damageAmount;
 
-				if (m_runStateInfo.leftBallHealth <= 0f)
+				if (m_runStateInfo.leftBallHealth <= 0f && L1Boss.m_singleton.left_ball_protection)
 				{
 					m_runStateInfo.leftBallHealth = 0f;
 
 					//Trigger left core death
 					L1Boss.m_singleton.DamagedLeftBall();
 
-					if(!L1Boss.m_singleton.right_ball_protection)
-					{
-						m_runStateInfo.canDamageMainCore = true;
-						m_runStateInfo.canDamageSideCores = false;
-						m_runStateInfo.leftBallHealth = mh_leftBallHealth;
-						m_runStateInfo.rightBallHealth = mh_rightBallHealth;
-					}
+					//remove left core from lock on
+					FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Remove(mID_leftCore);
+					FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(mID_leftCore, 0);
+
+					if (!L1Boss.m_singleton.right_ball_protection)
+						DestroyedBothCores();
 
 					Console.WriteLine("L1BossBehaviour.cs: Left core dead");
 				}
@@ -637,24 +651,55 @@ namespace Scripting
 				//Console.WriteLine("Right damage taken");
 				m_runStateInfo.rightBallHealth -= damageAmount;
 
-				if (m_runStateInfo.rightBallHealth <= 0f)
+				if (m_runStateInfo.rightBallHealth <= 0f && L1Boss.m_singleton.right_ball_protection)
 				{
 					m_runStateInfo.rightBallHealth = 0f;
 
 					//Trigger right core death
 					L1Boss.m_singleton.DamagedRightBall();
 
+					//remove right core from lock on
+					FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Remove(mID_rightCore);
+					FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(mID_rightCore, 0);
+
 					if (!L1Boss.m_singleton.left_ball_protection)
-					{
-						m_runStateInfo.canDamageMainCore = true;
-						m_runStateInfo.canDamageSideCores = false;
-						m_runStateInfo.leftBallHealth = mh_leftBallHealth;
-						m_runStateInfo.rightBallHealth = mh_rightBallHealth;
-					}
+						DestroyedBothCores();
 
 					Console.WriteLine("L1BossBehaviour.cs: L1BossBehaviour.cs: Right core dead");
 				}
 			}
+		}
+
+		public void DestroyedBothCores()
+		{
+			m_runStateInfo.canDamageMainCore = true;
+			m_runStateInfo.canDamageSideCores = false;
+			
+			//reset health
+			m_runStateInfo.leftBallHealth = mh_leftBallHealth;
+			m_runStateInfo.rightBallHealth = mh_rightBallHealth;
+
+			//Add core back to lock on list
+			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
+		}
+
+		public void TriggerProtectionState()
+		{
+			L1Boss.m_singleton.EnableProtection();
+			m_runStateInfo.canDamageMainCore = false;
+			m_runStateInfo.canDamageSideCores = true;
+
+			m_runStateInfo.damageTakenPeriod = 0f;
+
+			//Remove core from lock on list
+			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Remove(entityID);
+			FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(entityID, 0);
+
+			//add left and right cores to list
+			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(mID_leftCore, true);
+			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(mID_rightCore, true);
+
+			Console.WriteLine("L1BossBehaviour.cs: Boss hit damage threshold, entering protection");
 		}
 
 		public override void OnTriggerEnter(uint id)

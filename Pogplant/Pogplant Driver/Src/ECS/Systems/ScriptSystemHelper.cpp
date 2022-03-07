@@ -69,7 +69,16 @@ namespace SSH
 	{
 		std::string _name = mono_string_to_utf8(name);
 		std::uint32_t result = static_cast<std::uint32_t>(ScriptSystem::GetECS()->FindEntityWithName(_name));
-		assert(result != entt::null);
+		//assert(result != entt::null);
+
+		if (result == entt::null)
+		{
+			std::stringstream ss;
+			ss << "Unable to find entity: \"" << _name << "\"";
+			Pogplant::Logger::Log(
+				Pogplant::LogEntry{ "FindEntityWithName()", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+		}
+
 		return result;
 	}
 
@@ -77,7 +86,16 @@ namespace SSH
 	{
 		std::string _name = mono_string_to_utf8(name);
 		std::uint32_t result = static_cast<std::uint32_t>(ScriptSystem::GetECS()->FindChildEntityWithName(static_cast<entt::entity>(parentID), _name));
-		assert(result != entt::null);
+		//assert(result != entt::null);
+
+		if (result == entt::null)
+		{
+			std::stringstream ss;
+			ss << "Unable to find entity: \"" << _name << "\"";
+			Pogplant::Logger::Log(
+				Pogplant::LogEntry{ "FindChildEntityWithName()", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+		}
+
 		return result;
 	}
 
