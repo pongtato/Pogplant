@@ -602,8 +602,8 @@ namespace Scripting
             moving_parts_dict[right_mouth_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 2.0f, 0), false, false, false, false, true, false);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+            moving_parts_dict[artillery_axis_id].SetLinearRotation(new Vector3(50, 0, 0), new Vector3(10.0f, 10.0f, 10.0f), true, false, false);
+            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 6.5f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
 
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
@@ -820,10 +820,10 @@ namespace Scripting
             //Mouth
             moving_parts_dict[left_mouth_id].SetPingPongRotation(new Vector3(), new Vector3(0, 15.0f, 0), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
             moving_parts_dict[right_mouth_id].SetPingPongRotation(new Vector3(0, -15.0f, 0), new Vector3(), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
-            
+
             //Artillery
-            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+            moving_parts_dict[artillery_axis_id].SetLinearRotation(new Vector3(50, 0, 0), new Vector3(10.0f, 10.0f, 10.0f), true, false, false);
+            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 6.5f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
         }
 
         void RunLaunchStateSequenceOne(float dt)
@@ -1168,8 +1168,8 @@ namespace Scripting
             moving_parts_dict[right_mouth_id].SetPingPongRotation(new Vector3(), new Vector3(0, 105, 0), new Vector3(0, 5.0f, 0), false, true, false, false, false, false);
 
             //Artillery
-            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
+            moving_parts_dict[artillery_axis_id].SetLinearRotation(new Vector3(50, 0, 0), new Vector3(10.0f, 10.0f, 10.0f), true, false, false);
+            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 6.5f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
 
             ECS.SetActive(false_core_id, false);
         }
