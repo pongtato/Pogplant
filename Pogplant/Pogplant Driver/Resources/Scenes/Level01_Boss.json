@@ -11589,6 +11589,11 @@
 				"Data" : 1,
 				"Name" : "CoreNumber",
 				"Type" : 1
+			},
+			{
+				"Data" : 1.0,
+				"Name" : "LockOnOffSet",
+				"Type" : 0
 			}
 		],
 		"Scripting" : 
@@ -11969,7 +11974,7 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 200.0,
+				"Data" : 350.0,
 				"Name" : "CoreHealth",
 				"Type" : 0
 			},
@@ -12019,12 +12024,17 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 50.0,
+				"Data" : 70.0,
 				"Name" : "LeftBallHealth",
 				"Type" : 0
 			},
 			{
-				"Data" : 50.0,
+				"Data" : 1.7000000476837158,
+				"Name" : "LockOnOffSet",
+				"Type" : 0
+			},
+			{
+				"Data" : 70.0,
 				"Name" : "RightBallHealth",
 				"Type" : 0
 			}
@@ -13003,6 +13013,11 @@
 				"Data" : 0,
 				"Name" : "CoreNumber",
 				"Type" : 1
+			},
+			{
+				"Data" : 1.0,
+				"Name" : "LockOnOffSet",
+				"Type" : 0
 			}
 		],
 		"Scripting" : 
@@ -14497,9 +14512,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				-0.012483734637498856,
-				0.99651354551315308,
-				0.08249250054359436
+				0.076944701373577118,
+				0.99513715505599976,
+				-0.061493724584579468
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 

@@ -155,6 +155,12 @@ namespace Scripting
             return rtnvector;
         }
 
+        public Vector3 Normalised()
+		{
+            float length = 1f / magnitude();
+            return new Vector3(X * length, Y * length, Z * length);
+		}
+
         public static Vector3 Abs(Vector3 v1)
         {
             Single x, y, z;

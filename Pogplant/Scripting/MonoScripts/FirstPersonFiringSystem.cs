@@ -186,6 +186,9 @@ namespace Scripting
 					//If value is true, means it's overwritten and should target immediately
 					if (ECS.RayCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, m_enemiesToRayCast.ElementAt(i).Key))
 					{
+						//if (ECS.GetTagECS(m_enemiesToRayCast.ElementAt(i).Key) == "BossCore")
+						//	Console.WriteLine("Yes");
+
 						if (m_enemiesToRayCast.ElementAt(i).Value)
 							enemy_in_range_A.Add(m_enemiesToRayCast.ElementAt(i).Key);
 						else
@@ -193,8 +196,12 @@ namespace Scripting
 					}
 					else if (m_enemiesToRayCast.ElementAt(i).Value)
 					{
-						enemy_in_range_A.Remove(m_enemiesToRayCast.ElementAt(i).Key);
-						enemy_to_target_A.Remove(m_enemiesToRayCast.ElementAt(i).Key);
+						//if (ECS.GetTagECS(m_enemiesToRayCast.ElementAt(i).Key) == "BossCore")
+						//	Console.WriteLine("No");
+
+						removal_list.Add(m_enemiesToRayCast.ElementAt(i).Key);
+						//enemy_in_range_A.Remove(m_enemiesToRayCast.ElementAt(i).Key);
+						//enemy_to_target_A.Remove(m_enemiesToRayCast.ElementAt(i).Key);
 					}
 				}
 				else
@@ -560,7 +567,12 @@ namespace Scripting
 			}
 			//Update Reticle 
 			//To ensure the reticle doesnt clip agaisnt big enemies
-			Vector3 EnemyPos = ECS.GetGlobalPosition(EnemytoTarget[EnemytoTarget.Count - 1]) - (Transform.GetForwardVector(shipCamera) * 0.3F);
+			float offsetMultiplier = ECS.GetValue<float>(EnemytoTarget[EnemytoTarget.Count - 1], 0.3f, "LockOnOffSet");
+
+			Vector3 EnemyPos = ECS.GetGlobalPosition(EnemytoTarget[EnemytoTarget.Count - 1]);
+
+			EnemyPos += (ECS.GetGlobalPosition(PlayerShip) - EnemyPos).Normalised() * offsetMultiplier;
+
 			int k = 0;
 			if (EnemyTrack != EnemytoTarget[EnemytoTarget.Count - 1])
 			{
@@ -575,6 +587,7 @@ namespace Scripting
 			ReticleGroup[k].step += dt * animateSpeed;
 			if (ReticleGroup[k].step >= 1.0f)
 				ReticleGroup[k].step = 1.0f;
+
 			ECS.SetTransformECS(ReticleGroup[k].parent_id, EnemyPos, Rot, Vector3.Lerp(start_reticle, Show_reticle, ReticleGroup[k].step));
 			//Rotate child reticle aftewards
 			if (!ReticleGroup[k].enabled)

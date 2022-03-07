@@ -58,13 +58,22 @@ namespace SSH
 		volatile std::string test2 = funcName;
 		test2;
 
-		MonoMethod* method = mono_class_get_method_from_name(klass, funcName.c_str(), (int)sizeof...(args));
-		//MonoMethod* method = FindMethod(klass, funcName, -1);
-		if (method)
+		try
 		{
-			void* argss[] = { &args... };
-			mono_runtime_invoke(method, monoObj, argss, nullptr);
+			MonoMethod* method = mono_class_get_method_from_name(klass, funcName.c_str(), (int)sizeof...(args));
+			//MonoMethod* method = FindMethod(klass, funcName, -1);
+			if (method)
+			{
+				void* argss[] = { &args... };
+				mono_runtime_invoke(method, monoObj, argss, nullptr);
+			}
 		}
+		catch (...)
+		{
+			Pogplant::Logger::Log(
+				Pogplant::LogEntry{ "ScriptSystemHelper::InvokeFunction", Pogplant::LogEntry::LOGTYPE::ERROR, "Unknown error occured in invoke function" }, true);
+		}
+		
 	}
 
 	template<typename T, typename ...Args>
