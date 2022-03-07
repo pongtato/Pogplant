@@ -8,10 +8,6 @@ namespace Scripting
 {
 	public class FirstPersonFiringBox : MonoBehaviour
 	{
-		uint PlayerShip;
-		uint BoxA;
-		//uint BoxB;
-
 		public FirstPersonFiringBox()
 		{
 		}
@@ -19,13 +15,11 @@ namespace Scripting
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
-			PlayerShip = ECS.FindEntityWithName("PlayerShip");
-			BoxA = ECS.FindChildEntityWithName(PlayerShip, "BoxA");
-			//BoxB = ECS.FindChildEntityWithName(PlayerShip, "BoxB");
 		}
 
 		public override void Start()
 		{
+			
 		}
 
 		public override void Update(float dt)
@@ -40,9 +34,11 @@ namespace Scripting
 		public override void OnTriggerEnter(uint id)
 		{
 			Tag other_tag = ECS.GetComponent<Tag>(id);
-			if (other_tag.tag == "Targetable" && entityID == BoxA)
+			
+			if (other_tag.tag == "Targetable")
 			{
-				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(id);
+				//Console.WriteLine(other_tag.tag + "ID: " + id + " entered " + entityID);
+				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(id, false);
 			}
 			//if (other_tag.tag == "Targetable" && entityID == BoxB)
 			//{
@@ -52,7 +48,7 @@ namespace Scripting
 		public override void OnTriggerExit(uint id)
 		{
 			Tag other_tag = ECS.GetComponent<Tag>(id);
-			if (other_tag.tag == "Targetable" && entityID == BoxA)
+			if (other_tag.tag == "Targetable")
 			{
 				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Remove(id);
 				FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(id, 0);

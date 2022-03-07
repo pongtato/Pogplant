@@ -116,6 +116,8 @@ namespace Scripting
 				bossShootCount = 0;
 				leftBallHealth = 0f;
 				rightBallHealth = 0f;
+				canDamageSideCores = false;
+				canDamageMainCore = false;
 			}
 
 			public L1Boss.BOSS_BEHAVIOUR_STATE lastState;
@@ -134,6 +136,10 @@ namespace Scripting
 
 			public float leftBallHealth;
 			public float rightBallHealth;
+
+			public bool canDamageSideCores;
+			public bool canDamageMainCore;
+
 		}
 
 		public struct GunBarrel
@@ -234,6 +240,9 @@ namespace Scripting
 
 			m_runStateInfo.leftBallHealth = mh_leftBallHealth;
 			m_runStateInfo.rightBallHealth = mh_rightBallHealth;
+
+			m_runStateInfo.canDamageMainCore = true;
+			m_runStateInfo.canDamageSideCores = false;
 		}
 
 		void InitStateBehaviours()
@@ -304,8 +313,8 @@ namespace Scripting
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
 				{
-					Console.WriteLine("Boss state is: " + L1Boss.m_singleton.current_state);
-					Console.WriteLine("Timer is: " + m_runStateInfo.timer);
+					Console.WriteLine("L1BossBehaviour.cs: Boss state is: " + L1Boss.m_singleton.current_state);
+					Console.WriteLine("L1BossBehaviour.cs: Timer is: " + m_runStateInfo.timer);
 				}
 				//return;
 			}
@@ -315,7 +324,7 @@ namespace Scripting
 			m_runStateInfo.timeSinceLastDamageTimer += dt;
 			m_runStateInfo.timeSinceLastSpawnTimer += dt;
 
-			if (L1Boss.m_singleton.left_ball_protection || L1Boss.m_singleton.right_ball_protection)
+			/*if (L1Boss.m_singleton.left_ball_protection || L1Boss.m_singleton.right_ball_protection)
 			{
 				UpdateShootingBehaviour(dt);
 
@@ -329,7 +338,7 @@ namespace Scripting
 					Console.WriteLine("L1BossBehaviour.cs: Boss returning to moving state");
 					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
 				}
-			}
+			}//*/
 
 			switch (L1Boss.m_singleton.current_state)
 			{
@@ -367,7 +376,7 @@ namespace Scripting
 						{
 							int randomInt = PPMath.RandomInt(0, 5);
 
-							Console.WriteLine("SPAWNING ENEMIES Randomed: " + randomInt);
+							Console.WriteLine("L1BossBehaviour.cs: SPAWNING ENEMIES Randomed: " + randomInt);
 
 							switch (randomInt)
 							{
@@ -435,8 +444,11 @@ namespace Scripting
 			{
 				//TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION);
 				L1Boss.m_singleton.EnableProtection();
+				m_runStateInfo.canDamageMainCore = false;
+				m_runStateInfo.canDamageSideCores = true;
+
 				m_runStateInfo.damageTakenPeriod = 0f;
-				Console.WriteLine("Boss hit damage threshold, entering protection");
+				Console.WriteLine("L1BossBehaviour.cs: Boss hit damage threshold, entering protection");
 			}
 
 			//Damage threshold reset if boss doesn't take damage for awhile
@@ -593,36 +605,62 @@ namespace Scripting
 
 		public void DamageLeftCore(float damageAmount)
 		{
-			m_runStateInfo.leftBallHealth -= damageAmount;
-
-			if(m_runStateInfo.leftBallHealth <= 0f)
+			if (m_runStateInfo.canDamageSideCores)
 			{
-				m_runStateInfo.leftBallHealth = 0f;
-				
-				//Trigger left core death
-				L1Boss.m_singleton.DamagedLeftBall();
-				Console.WriteLine("L1BossBehaviour.cs: Left core dead");
+				//Console.WriteLine("L1BossBehaviour.cs: Left damage taken");
+				m_runStateInfo.leftBallHealth -= damageAmount;
+
+				if (m_runStateInfo.leftBallHealth <= 0f)
+				{
+					m_runStateInfo.leftBallHealth = 0f;
+
+					//Trigger left core death
+					L1Boss.m_singleton.DamagedLeftBall();
+
+					if(!L1Boss.m_singleton.right_ball_protection)
+					{
+						m_runStateInfo.canDamageMainCore = true;
+						m_runStateInfo.canDamageSideCores = false;
+						m_runStateInfo.leftBallHealth = mh_leftBallHealth;
+						m_runStateInfo.rightBallHealth = mh_rightBallHealth;
+					}
+
+					Console.WriteLine("L1BossBehaviour.cs: Left core dead");
+				}
 			}
 		}
 
 		public void DamageRightCore(float damageAmount)
 		{
-			m_runStateInfo.rightBallHealth -= damageAmount;
-
-			if (m_runStateInfo.rightBallHealth <= 0f)
+			if (m_runStateInfo.canDamageSideCores)
 			{
-				m_runStateInfo.rightBallHealth = 0f;
+				//Console.WriteLine("Right damage taken");
+				m_runStateInfo.rightBallHealth -= damageAmount;
 
-				//Trigger right core death
-				L1Boss.m_singleton.DamagedRightBall();
-				Console.WriteLine("L1BossBehaviour.cs: Right core dead");
+				if (m_runStateInfo.rightBallHealth <= 0f)
+				{
+					m_runStateInfo.rightBallHealth = 0f;
+
+					//Trigger right core death
+					L1Boss.m_singleton.DamagedRightBall();
+
+					if (!L1Boss.m_singleton.left_ball_protection)
+					{
+						m_runStateInfo.canDamageMainCore = true;
+						m_runStateInfo.canDamageSideCores = false;
+						m_runStateInfo.leftBallHealth = mh_leftBallHealth;
+						m_runStateInfo.rightBallHealth = mh_rightBallHealth;
+					}
+
+					Console.WriteLine("L1BossBehaviour.cs: L1BossBehaviour.cs: Right core dead");
+				}
 			}
 		}
 
 		public override void OnTriggerEnter(uint id)
 		{
 			//Invulnerable in protection mode
-			if (!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable)
+			if (!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore)
 			{
 				return;
 			}
@@ -639,7 +677,7 @@ namespace Scripting
 
 				if (L1Boss.m_singleton.current_state != L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE)
 				{
-					Console.WriteLine("Boss is dead, triggering sequence");
+					Console.WriteLine("L1BossBehaviour.cs: Boss is dead, triggering sequence");
 					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
 				}
 			}

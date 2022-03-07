@@ -12,7 +12,7 @@ namespace Scripting
 		public static FirstPersonFiringSystem m_singleton;
 
 		/**> list to raycast against before adding to lock on list*/
-		public List<uint> m_enemiesToRayCast = new List<uint>();
+		public Dictionary<uint, bool> m_enemiesToRayCast = new Dictionary<uint, bool>();
 		List<uint> enemy_in_range = new List<uint>();
 		List<uint> enemy_to_target = new List<uint>();
 		List<uint> Turrets_A = new List<uint>();
@@ -178,12 +178,31 @@ namespace Scripting
 			m_shootVector = GameUtilities.GetRayCastDirCamera(shipCamera, inner_ret.Position);
 
 			//Update lockon list
-			for(int i = 0; i < m_enemiesToRayCast.Count; ++i)
+			for (int i = 0; i < m_enemiesToRayCast.Count; ++i)
 			{
-				if (ECS.RayCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, m_enemiesToRayCast[i]))
-					AddEnemyToListOfTargets(m_enemiesToRayCast[i], 0);
-				//else
-				//	RemoveEnemyFromListOfTargets(m_enemiesToRayCast[i], 0);
+				if (ECS.CheckValidEntity(m_enemiesToRayCast.ElementAt(i).Key))
+				{
+					//Ray cast against hitboxes, if hit, add to list of enemies in range
+					//If value is true, means it's overwritten and should target immediately
+					if (ECS.RayCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, m_enemiesToRayCast.ElementAt(i).Key))
+					{
+						if (m_enemiesToRayCast.ElementAt(i).Value)
+							enemy_to_target_A.Add(m_enemiesToRayCast.ElementAt(i).Key);
+						else
+							AddEnemyToListOfTargets(m_enemiesToRayCast.ElementAt(i).Key, 0);
+					}
+					else if (m_enemiesToRayCast.ElementAt(i).Value)
+					{
+						m_enemiesToRayCast.Remove(m_enemiesToRayCast.ElementAt(i).Key);
+						enemy_to_target_A.Remove(m_enemiesToRayCast.ElementAt(i).Key);
+					}
+				}
+				else
+				{
+					//Erase invalid entities
+					m_enemiesToRayCast.Remove(m_enemiesToRayCast.ElementAt(i).Key);
+					--i;
+				}
 			}
 
 			//Add homing capablities
@@ -484,7 +503,7 @@ namespace Scripting
 			int lower_count = EnemyinRangeGroup.Count < TurretGroup.Count ? EnemyinRangeGroup.Count : TurretGroup.Count;
 			for (int i = 0; i < lower_count; ++i)
 			{
-				if (GameUtilities.GetAlive(EnemyinRangeGroup[i]))
+				if (GameUtilities.GetAlive(EnemyinRangeGroup[i]) || (m_enemiesToRayCast.ContainsKey(EnemyinRangeGroup[i]) && m_enemiesToRayCast[EnemyinRangeGroup[i]] == true))
 				{
 					if (EnemytoTarget.Contains(EnemyinRangeGroup[i]))
 						continue;
