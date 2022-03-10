@@ -37,10 +37,11 @@ namespace Scripting
             playerID = ECS.FindEntityWithName("PlayerShip");
  
             AddTurretGroup("GatlingTurretGroup1");
+            AddTurretGroup("GatlingTurretGroup2");
 
             AddTurretGroup("TurretGroup1");
             AddTurretGroup("TurretGroup2");
-
+            AddTurretGroup("TurretGroup3");
         }
 
         public override void Start()
