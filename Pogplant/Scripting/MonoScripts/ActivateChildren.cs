@@ -18,7 +18,7 @@ namespace Scripting
 		List<uint> m_list_of_children = new List<uint>();
 
 		bool m_do_once = false;
-
+		bool single_child_activate = false;
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
@@ -33,14 +33,21 @@ namespace Scripting
 			Console.WriteLine(m_generic_child_function_name);
 			m_generic_child_name = ECS.GetValue<String>(entityID, "Default", "m_Children_name");
 			m_max_children = ECS.GetValue<int>(entityID, 0, "m_Children_max_index_range");
+			single_child_activate = ECS.GetValue<bool>(entityID, false, "m_Children_Single");
 
 			m_player_id = ECS.FindEntityWithName("PlayerShip");
 
-
-			for (int i = 0; i < m_max_children; i++)
-			{
-				m_list_of_children.Add(ECS.FindChildEntityWithName(entityID, m_generic_child_name + i));
+			if (single_child_activate)
+            {
+				m_list_of_children.Add(ECS.FindChildEntityWithName(entityID, m_generic_child_name));
 			}
+			else
+            {
+				for (int i = 0; i < m_max_children; i++)
+					m_list_of_children.Add(ECS.FindChildEntityWithName(entityID, m_generic_child_name + i));
+
+			}
+
 		}
 
 		void ErrorCheck()
@@ -63,10 +70,16 @@ namespace Scripting
 		{
 			if (m_do_once)
             {
-				foreach (uint entity in m_list_of_children)
+				if (single_child_activate)
                 {
-					GameUtilities.InvokeScriptFunction(entity, m_generic_child_script_name, m_generic_child_function_name);
-                }
+					GameUtilities.InvokeScriptFunction(m_list_of_children[0], m_generic_child_script_name, m_generic_child_function_name);
+				}
+				else
+                {
+					foreach (uint entity in m_list_of_children)
+						GameUtilities.InvokeScriptFunction(entity, m_generic_child_script_name, m_generic_child_function_name);
+				}
+
 				m_do_once = false;
 			}
 		}
