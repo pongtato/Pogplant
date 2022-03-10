@@ -10,8 +10,7 @@ namespace Scripting
     {
         public GameEndingTrigger() 
         {
-            Player = ECS.FindEntityWithName("PlayerShip");
-            Game_Over_Screen_ID = ECS.FindEntityWithName("Game Over Menu");
+            
         }
 
         uint Player;
@@ -19,7 +18,8 @@ namespace Scripting
 
         public override void Start()
         {
-
+            Player = ECS.FindEntityWithName("PlayerShip");
+            Game_Over_Screen_ID = ECS.FindEntityWithName("Game Over Menu");
         }
 
         public override void Init(ref uint _entityID)
