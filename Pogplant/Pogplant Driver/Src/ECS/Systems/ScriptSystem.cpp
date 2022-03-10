@@ -460,6 +460,11 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetValueBool", SSH::ScriptVariableGet<bool>);
 	mono_add_internal_call("Scripting.ECS::GetValueVector3", SSH::ScriptVariableGet<glm::vec3>);
 	mono_add_internal_call("Scripting.ECS::GetValueString", SSH::ScriptVariableGetString);
+
+	mono_add_internal_call("Scripting.ECS::SetValueFloat", SSH::ScriptVariableSet<float>);
+	mono_add_internal_call("Scripting.ECS::SetValueInt", SSH::ScriptVariableSet<int>);
+	mono_add_internal_call("Scripting.ECS::SetValueBool", SSH::ScriptVariableSet<bool>);
+	mono_add_internal_call("Scripting.ECS::SetValueVector3", SSH::ScriptVariableSet<glm::vec3>);
 	
 	mono_add_internal_call("Scripting.ECS::GetBoxColliderECS", SSH::GetBoxColliderECS);
 	mono_add_internal_call("Scripting.ECS::GetTagECS", SSH::GetTagECS);

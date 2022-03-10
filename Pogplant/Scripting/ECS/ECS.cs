@@ -229,5 +229,58 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static Vector3 GetValueVector3(uint entityID, Vector3 defaultValue, string name);
+
+        public static void SetValue<T>(uint entityID, T value, string name)
+        {
+            /*switch(Type.GetTypeCode(value.GetType()))
+			{
+                //float
+                case TypeCode.Single:
+                    break;
+                case TypeCode.Int16:
+                    break;
+                case TypeCode.Boolean:
+                    break;
+                case TypeCode.Object:
+                    if (typeof(T) == typeof(Vector3))
+					{
+
+					}
+                    break;
+			}
+            //*/
+            if (typeof(T) == typeof(float))
+            {
+                SetValueFloat(entityID, (float)(object)value, name);
+            }
+            else if (typeof(T) == typeof(int))
+            {
+                SetValueInt(entityID, (int)(object)value, name);
+            }
+            else if (typeof(T) == typeof(bool))
+            {
+                SetValueBool(entityID, (bool)(object)value, name);
+            }
+            else if (typeof(T) == typeof(Vector3))
+            {
+                SetValueVector3(entityID, (Vector3)(object)value, name);
+            }
+            else
+            {
+                Console.WriteLine("Value not supported.");
+            }
+        }
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static void SetValueFloat(uint entityID, float value, string name);
+        
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static void SetValueInt(uint entityID, int value, string name);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static void SetValueBool(uint entityID, bool value, string name);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static void SetValueVector3(uint entityID, Vector3 value, string name);
     }
 }

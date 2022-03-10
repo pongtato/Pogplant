@@ -147,6 +147,21 @@ namespace SSH
 		return defaultValue;
 	}
 
+	template <typename T>
+	inline static void ScriptVariableSet(std::uint32_t entityID, T value, MonoString* monoName)
+	{
+		auto scriptVarCom = ScriptSystem::GetECS()->GetReg().try_get<Components::ScriptVariables>(static_cast<entt::entity>(entityID));
+		const char* key = mono_string_to_utf8(monoName);
+
+		if (scriptVarCom)
+		{
+			if (scriptVarCom->m_variables.find(key) != scriptVarCom->m_variables.end())
+			{
+				scriptVarCom->SetValue<T>(key, value);
+			}
+		}
+	}
+
 	float GetGamma();
 	void SetGamma(float newGamma);
 

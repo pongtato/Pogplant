@@ -25,6 +25,8 @@ namespace Scripting
 	// Player script class
 	public class PlayerScript : MonoBehaviour
 	{
+		public static PlayerScript m_singleton;
+
 		public bool mm_useNewMovementSystem = false;
 		public float movement_speed = 200.0f;
 		private float horizontal_input = 0;
@@ -175,6 +177,7 @@ namespace Scripting
 		{
 			entityID = _entityID;
 			entity_id = _entityID;
+			m_singleton = this;
 		}
 
 		public override void Start()
@@ -633,7 +636,7 @@ namespace Scripting
 			//GameUtilities.UpdateDashboardFace(DashboardScreenID, 2);
 			DashboardScreen.SwapFace(DashboardScreen.FACES.HURT);
 			ECS.PlayAudio(shipCameraEntity, 2, "SFX");
-			AddScore(false);
+			AddScore(false, false, 10);
 
 			//Triggers a random camera shake upon taking damage, scales with damage taken
 			TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage, GetRandFloat() * cameraShakeInitMultiplier * damage),
@@ -859,10 +862,10 @@ namespace Scripting
 				// Just change the color first
 				ECS.PlayAudio(entity_id, 3, "SFX");
 				GameUtilities.UpdateTextColor(m_ScoreTextID, new Vector3(1.0f, 0.0f, 0.0f));
-				if (score > minus_score)
+				if (score > amount)
 				{
-					score -= minus_score;
-					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, minus_score, false));
+					score -= amount;
+					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, amount, false));
 				}
 				m_ScoreResetTimer = 0.01f;
 				ResetCombo();
