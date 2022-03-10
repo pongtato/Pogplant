@@ -39,6 +39,7 @@ namespace Scripting
             AddTurretGroup("GatlingTurretGroup1");
 
             AddTurretGroup("TurretGroup1");
+            AddTurretGroup("TurretGroup2");
 
         }
 
