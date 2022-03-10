@@ -431,7 +431,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::UpdateComboUI", &Scripting::GameScript::UpdateComboUI);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateTextColor", &Scripting::GameScript::UpdateTextColor);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore_AddMinus", &Scripting::GameScript::UpdateScore_AddMinus);
-
+	mono_add_internal_call("Scripting.GameUtilities::MoveWithImpulse", &Scripting::GameScript::MoveWithImpulse);
+	mono_add_internal_call("Scripting.GameUtilities::StopMoving", &Scripting::GameScript::StopMoving);
 
 	mono_add_internal_call("Scripting.GameUtilities::GetRayCastDirCamera", &Scripting::GameScript::GetRayCastDirCamera);
 
@@ -441,6 +442,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::CreateChild", SSH::CreateChild);
 	mono_add_internal_call("Scripting.ECS::FindEntityWithName", SSH::FindEntityWithName);
 	mono_add_internal_call("Scripting.ECS::FindChildEntityWithName", SSH::FindChildEntityWithName);
+	mono_add_internal_call("Scripting.ECS::GetParent", SSH::GetParent);
+	mono_add_internal_call("Scripting.ECS::GetNull", SSH::GetNull);
 	mono_add_internal_call("Scripting.ECS::GetTransformECS", SSH::GetTransformECS);
 	mono_add_internal_call("Scripting.ECS::SetTransformECS", SSH::SetTransformECS);
 	mono_add_internal_call("Scripting.ECS::SetTransformParent", SSH::SetTransformParent);

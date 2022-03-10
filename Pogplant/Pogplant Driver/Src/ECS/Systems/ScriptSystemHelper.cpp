@@ -99,6 +99,31 @@ namespace SSH
 		return result;
 	}
 
+
+	std::uint32_t GetParent(std::uint32_t m_id)
+	{
+		std::uint32_t result = static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetParent(static_cast<entt::entity>(m_id)));
+		//assert(result != entt::null);
+
+		if (result == entt::null)
+		{
+			std::stringstream ss;
+			ss << "Unable to find entity's parent: \"" << m_id << "\"";
+			Pogplant::Logger::Log(
+				Pogplant::LogEntry{ "GetParent()", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+		}
+
+		return result;
+	}
+
+
+	std::uint32_t GetNull()
+	{
+		//no need error check lol
+
+		return static_cast<std::uint32_t>(entt::null);
+	}
+
 	void LookAt(std::uint32_t self_entityID, glm::vec3& target)
 	{
 		const auto& self_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(self_entityID));

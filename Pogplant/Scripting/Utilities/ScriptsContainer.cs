@@ -64,6 +64,7 @@ namespace Scripting
             monoScriptNames.Add("CutSceneController");
             monoScriptNames.Add("BonusScoreCoin");
             monoScriptNames.Add("Rotation");
+            monoScriptNames.Add("SimpleMovement");
         }
 
         private void AddPauseScripts()

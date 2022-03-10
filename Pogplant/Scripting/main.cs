@@ -279,5 +279,10 @@ namespace Scripting
         {
             return new L2TurretController();
         }
+
+        public static SimpleMovement SimpleMovement()
+        {
+            return new SimpleMovement();
+        }
     }
 }

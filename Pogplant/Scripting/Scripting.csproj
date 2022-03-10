@@ -72,6 +72,7 @@
     <Compile Include="MonoScripts\Rotation.cs" />
     <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="MonoScripts\GameEndingTrigger.cs" />
+    <Compile Include="MonoScripts\SimpleMovement.cs" />
     <Compile Include="MonoScripts\TetherEnemy.cs" />
     <Compile Include="MonoScripts\TriggerAudioPlay.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />

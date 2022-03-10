@@ -26,6 +26,12 @@ namespace Scripting
         public extern static uint FindChildEntityWithName(uint parentID, string name);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static uint GetParent(uint entity_id);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static uint GetNull();
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void GetTransformECS(uint entityID, ref Vector3 pos, ref Vector3 rot, ref Vector3 scale);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

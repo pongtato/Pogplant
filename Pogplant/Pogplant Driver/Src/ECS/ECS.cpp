@@ -143,6 +143,16 @@ entt::entity ECS::FindChildEntityWithName(entt::entity parentID, const std::stri
 	return entt::null;
 }
 
+//returns the immediate parent of entity_id
+entt::entity ECS::GetParent(entt::entity entity_id)
+{
+	return m_registry.get<Transform>(entity_id).m_parent;
+}
+
+entt::entity ECS::GetNull()
+{
+	return entt::null;
+}
 
 //returns the first entity with the tag
 entt::entity ECS::FindEntityWithTag(std::string _tag)

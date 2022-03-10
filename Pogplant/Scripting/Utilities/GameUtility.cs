@@ -127,6 +127,11 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetGamma(float newGamma);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void MoveWithImpulse(uint obj_to_move, Vector3 dir, float speed);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void StopMoving(uint obj_to_move);
 
         /*************************************************************************/
         /*!

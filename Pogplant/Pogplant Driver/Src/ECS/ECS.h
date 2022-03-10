@@ -50,6 +50,8 @@ public:
 	entt::entity FindEntityWithName(std::string _name);
 	entt::entity FindEntityWithTag(std::string _tag);
 	entt::entity FindChildEntityWithName(entt::entity parentID, const std::string& _name);
+	entt::entity GetParent(entt::entity entity_id);
+	entt::entity GetNull();
 	//std::vector<entt::entity> FindAllEntityWithName(std::string& _name);
 
 	bool IsChildOf(entt::entity _parent, entt::entity _child);

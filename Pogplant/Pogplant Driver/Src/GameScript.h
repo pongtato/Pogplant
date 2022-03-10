@@ -89,6 +89,9 @@ namespace Scripting
 																		Components::Projectile* player_projectile_pointer, Components::Scriptable* enemy_script_pointer);
 	static void EnemyTakeDamageFromID(std::uint32_t entityID, float damage);
 
+	//used for moving entities;
+	static void MoveWithImpulse(std::uint32_t obj_to_move, glm::vec3 dir, float speed);
+	static void StopMoving(std::uint32_t obj_to_move);
 	private:
 
 	static entt::entity m_playerbox;

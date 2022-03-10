@@ -19,6 +19,8 @@ namespace SSH
 	std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	std::uint32_t FindEntityWithName(MonoString* name);
 	std::uint32_t FindChildEntityWithName(std::uint32_t parentID, MonoString* name);
+	std::uint32_t GetParent(std::uint32_t m_id);
+	std::uint32_t GetNull();
 	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
 	void SetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
 	void SetTransformParent(std::uint32_t childID, std::uint32_t parentID);

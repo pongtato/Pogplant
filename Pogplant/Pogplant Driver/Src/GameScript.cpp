@@ -941,6 +941,36 @@ namespace Scripting
 				SSH::InvokeFunction("L1BossShield", "TakeDamage", static_cast<entt::entity>(entityID), damage);
 		}
 	}
+
+	void GameScript::MoveWithImpulse(std::uint32_t obj_to_move, glm::vec3 dir, float speed)
+	{
+		entt::entity _entity = static_cast<entt::entity>(obj_to_move);
+
+		if (_entity == entt::null)
+			return;
+
+		auto rb = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(_entity);
+
+		if (rb)
+			rb->AddImpulseForce(dir * speed);
+
+	}
+
+	void GameScript::StopMoving(std::uint32_t obj_to_move)
+	{
+		entt::entity _entity = static_cast<entt::entity>(obj_to_move);
+
+		if (_entity == entt::null)
+			return;
+
+		auto rb = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(_entity);
+
+		if (rb)
+		{
+			rb->velocity = PhysicsDLC::Vector::Zero;
+		}
+
+	}
 }
 
 
