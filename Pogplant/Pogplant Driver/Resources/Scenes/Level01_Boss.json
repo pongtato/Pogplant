@@ -11959,6 +11959,21 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\CoreHit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\CoreHitProtected.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 0,
 		"Name" : 
 		{
@@ -14512,9 +14527,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				0.089737892150878906,
-				0.98716956377029419,
-				-0.13207387924194336
+				-0.14972230792045593,
+				0.98719549179077148,
+				0.055031381547451019
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
