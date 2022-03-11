@@ -3949,7 +3949,7 @@
 		}
 	},
 	{
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "Level_02_Segment_02_and_03",
@@ -4000,6 +4000,919 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 16,
+		"Name" : 
+		{
+			"m_Name" : "Segment_03_Environmental_Addons",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-96.029556274414062,
+				-33.749156951904297,
+				-308.31527709960938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.6156001091003418,
+				0.6156001091003418,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-95.705436706542969,
+				-44.776924133300781,
+				-329.2315673828125
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.61539953947067261,
+				0.92991411685943604,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-95.705001831054688,
+				-54.148323059082031,
+				-329.2315673828125
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.61550581455230713,
+				0.92991411685943604,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-95.705001831054688,
+				-64.081588745117188,
+				-329.2315673828125
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.61534798145294189,
+				0.92991411685943604,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-101.75717163085938,
+				-97.724945068359375,
+				-299.9334716796875
+			],
+			"m_rotation" : 
+			[
+				179.99989318847656,
+				89.999946594238281,
+				179.9998779296875
+			],
+			"m_scale" : 
+			[
+				0.99999934434890747,
+				0.99999767541885376,
+				1.2491201162338257
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-79.47357177734375,
+				-100.67623138427734,
+				-316.07308959960938
+			],
+			"m_rotation" : 
+			[
+				-179.999755859375,
+				-0.0,
+				179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999964237213135,
+				0.99999767541885376,
+				1.249119758605957
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-97.230117797851562,
+				-88.633003234863281,
+				-308.31527709960938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.6156001091003418,
+				0.6156001091003418,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_Pillar_2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-110.0013427734375,
+				-112.51198577880859,
+				-307.03860473632812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.7434739688516419e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				8.0,
+				0.20000000298023224,
+				0.19997261464595795
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-119.46272277832031,
+				27.422605514526367,
+				-322.92694091796875
+			],
+			"m_rotation" : 
+			[
+				-60.0,
+				-3.7443623370067222e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.49999943375587463,
+				0.49998775124549866
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-112.03799438476562,
+				14.954708099365234,
+				-333.510498046875
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999994039535522,
+				0.99999779462814331,
+				1.2491198778152466
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-116.69996643066406,
+				-38.238399505615234,
+				-311.92111206054688
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.999755859375
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999779462814331,
+				1.2491196393966675
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-95.064048767089844,
+				-42.608554840087891,
+				-299.9334716796875
+			],
+			"m_rotation" : 
+			[
+				179.99989318847656,
+				89.999946594238281,
+				179.9998779296875
+			],
+			"m_scale" : 
+			[
+				0.99999934434890747,
+				0.99999767541885376,
+				1.2491201162338257
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_Mini_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-111.73865509033203,
+				27.422605514526367,
+				-328.63250732421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.7443758895338783e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.19999302923679352
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_Pillar_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-119.46272277832031,
+				-115.34500122070312,
+				-322.92694091796875
+			],
+			"m_rotation" : 
+			[
+				-60.0,
+				-3.7441787002637575e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				0.5,
+				0.49998775124549866
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_Mini_2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-107.33866119384766,
+				27.422605514526367,
+				-328.63250732421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.7443755507206994e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.19999095797538757
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-116.70011138916016,
+				-5.4063577651977539,
+				-311.92111206054688
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.999755859375
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999779462814331,
+				1.2491196393966675
 			]
 		}
 	},
@@ -14831,7 +15744,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 106.95899963378906,
+				"m_FrameCounter" : 22.261802673339844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -14845,7 +15758,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.84375
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -14897,7 +15810,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 106.95899963378906,
+				"m_FrameCounter" : 22.261802673339844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -14911,7 +15824,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.84375
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -14963,7 +15876,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.510574340820312,
+				"m_FrameCounter" : 84.141090393066406,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -14977,7 +15890,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.515625
+					0.671875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15029,7 +15942,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 106.95899963378906,
+				"m_FrameCounter" : 22.261802673339844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -15043,7 +15956,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.84375
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15095,7 +16008,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 38.728351593017578,
+				"m_FrameCounter" : 27.750391006469727,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -15108,8 +16021,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.3125
+					0.5,
+					0.21875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15161,7 +16074,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 106.95899963378906,
+				"m_FrameCounter" : 22.261802673339844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -15175,7 +16088,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.84375
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15227,7 +16140,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.510574340820312,
+				"m_FrameCounter" : 84.141090393066406,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -15241,7 +16154,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.515625
+					0.671875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15293,7 +16206,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 13.843140602111816,
+				"m_FrameCounter" : 92.613792419433594,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -15306,8 +16219,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.109375
+					0.0,
+					0.734375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15359,7 +16272,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.510574340820312,
+				"m_FrameCounter" : 84.141090393066406,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -15373,7 +16286,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.515625
+					0.671875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15425,7 +16338,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 60.885334014892578,
+				"m_FrameCounter" : 18.664239883422852,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -15439,7 +16352,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.484375
+					0.15625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15491,7 +16404,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 13.843140602111816,
+				"m_FrameCounter" : 92.613792419433594,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -15504,8 +16417,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.109375
+					0.0,
+					0.734375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
