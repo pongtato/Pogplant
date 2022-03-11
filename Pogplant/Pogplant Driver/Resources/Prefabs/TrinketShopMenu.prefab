@@ -1,10 +1,18 @@
 [
 	{
 		"Children" : 8,
+		"Guid" : 
+		{
+			"m_guid" : "71862cc5-4fa5-42c8-b777-fc0f2bb5bbb4"
+		},
 		"Name" : 
 		{
 			"m_Name" : "TrinketShopMenuGroup",
 			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
 		},
 		"Tag" : 
 		{
@@ -72,6 +80,10 @@
 			"m_Name" : "TS_BG",
 			"status" : false
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
+		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -137,6 +149,10 @@
 		{
 			"m_Name" : "TS_LArrow",
 			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
 		},
 		"Tag" : 
 		{
@@ -204,6 +220,10 @@
 			"m_Name" : "TS_MBox",
 			"status" : false
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
+		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -269,6 +289,10 @@
 		{
 			"m_Name" : "TS_LBox",
 			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
 		},
 		"Tag" : 
 		{
@@ -336,6 +360,10 @@
 			"m_Name" : "TS_RBox",
 			"status" : false
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
+		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -401,6 +429,10 @@
 		{
 			"m_Name" : "TS_RArrow",
 			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
 		},
 		"Tag" : 
 		{
@@ -468,6 +500,10 @@
 			"m_Name" : "TS_IMG1",
 			"status" : false
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
+		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -504,6 +540,10 @@
 		"P_Scripting" : 
 		{
 			"BobbleHeadMenu" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
 		},
 		"Tag" : 
 		{
@@ -571,6 +611,10 @@
 			"m_Name" : "TS_IMG3",
 			"status" : false
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
+		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -636,6 +680,10 @@
 		{
 			"m_Name" : "TS_IMG2",
 			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
 		},
 		"Tag" : 
 		{
@@ -703,6 +751,10 @@
 			"m_Name" : "TS_TXT1",
 			"status" : false
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
+		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -769,6 +821,10 @@
 			"m_Name" : "TS_TXT2",
 			"status" : false
 		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
+		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -834,6 +890,10 @@
 		{
 			"m_Name" : "TS_TXT3",
 			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\TrinketShopMenu.prefab"
 		},
 		"Tag" : 
 		{

@@ -331,7 +331,7 @@ namespace Scripting
                     active_index = (int)BUTTONS.CREDITS;
 
                 }
-                Console.WriteLine("Active index is: " + active_index);
+                //Console.WriteLine("Active index is: " + active_index);
             }
             else if (InputUtility.onKeyTriggered("MENUDOWN"))
             {
@@ -343,7 +343,7 @@ namespace Scripting
                 {
                     active_index = (int)BUTTONS.START_GAME;
                 }
-                Console.WriteLine("Active index is: " + active_index);
+                //Console.WriteLine("Active index is: " + active_index);
             }
             
             switch (active_index)
