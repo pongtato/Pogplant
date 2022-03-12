@@ -113,22 +113,20 @@ namespace Scripting
 
 		// Bonus Item / Bonus Effects
 		static public int m_BonusItem = 0;
-		const int m_BonusItemMax = 4;
+		const int m_BonusItemMax = 1;
 		static public bool m_EnableBonusScreen = false;
 		uint m_BobHeadMenuID;
 		static public uint m_ScoreMultiplierBobbleCount = 1;
 		static public uint m_ShieldBobbleCount = 1;
-		static public uint m_ComboDecayBobbleCount = 1;
+		static public uint m_ComboBonusBobbleCount = 1;
 		static public float m_ComboDecayTimeLimit = 3.0f;
 		static public float m_ComboDecayTimer = m_ComboDecayTimeLimit;
 		static public bool m_ComboActive = false;
 		static public bool m_ActivateBobble = false;
-		uint m_BobbleTimmy;
-		uint m_BobbleProf;
-		uint m_BobbleBoobas;
 
 		// Bonus Effects
-
+		static public uint m_ShieldHitCountMax = 2;
+		static public uint m_ShieldHitCount = 0;
 		//Pause menu
 		static public bool m_EnablePauseMenu = false;
 
@@ -196,12 +194,9 @@ namespace Scripting
 
 			// For the bobble things
 			m_BobHeadMenuID = ECS.FindEntityWithName("BobbleHeadMenu");
-			m_BobbleTimmy = ECS.FindEntityWithName("BobbleTimmy");
-			m_BobbleProf = ECS.FindEntityWithName("BobbleProf");
-			m_BobbleBoobas = ECS.FindEntityWithName("BobbleBoobas");
 			m_ScoreMultiplierBobbleCount = 1;
 			m_ShieldBobbleCount = 1;
-			m_ComboDecayBobbleCount = 1;
+			m_ComboBonusBobbleCount = 1;
 			m_ComboDecayTimer = m_ComboDecayTimeLimit;
 			m_ComboActive = false;
 
@@ -239,6 +234,7 @@ namespace Scripting
 			playerTrans = new Transform(pos, rot, scale);
 
 			//ECS.PlayAudio(VOEntityID, 0, "VO");
+			ECS.SetScale(m_ComboBarID, m_EmptyComboBarScale);
 
 			movement_speed = ECS.GetValue<float>(entityID, 200.0f, "MovementSpeed");
 			slowForce = ECS.GetValue<float>(entityID, 4f, "SlowForce");
@@ -485,7 +481,6 @@ namespace Scripting
 			}
 		}
 
-
 		private Vector3 m_initialCameraPosition;
 		private Vector3 m_cameraPosition;
 		private Vector3 m_cameraRotation;
@@ -687,14 +682,14 @@ namespace Scripting
 
 		void UpdateBonusItem()
 		{
-			//if(m_BonusItem >= m_BonusItemMax)
-			//{
-			//    m_EnableBonusScreen = true;
-			//    ECS.SetActive(m_BobHeadMenuID, true);
-			//    GameUtilities.PauseScene();
-			//}
-
-			if (m_ActivateBobble)
+            if (m_BonusItem >= m_BonusItemMax)
+            {
+                m_EnableBonusScreen = true;
+                ECS.SetActive(m_BobHeadMenuID, true);
+                GameUtilities.PauseScene();
+			}
+			/*
+            if (m_ActivateBobble)
 			{
 				switch (m_CollectiblesCount)
 				{
@@ -704,7 +699,7 @@ namespace Scripting
 						break;
 					case 2:
 						ECS.SetActive(m_BobbleProf, true);
-						++m_ComboDecayBobbleCount;
+						++m_ComboBonusBobbleCount;
 						break;
 					case 3:
 						ECS.SetActive(m_BobbleTimmy, true);
@@ -715,17 +710,17 @@ namespace Scripting
 				}
 				m_ActivateBobble = false;
 			}
-
+			*/
 		}
 
 		void UpdateCombo(float dt)
 		{
 			//ECS.GetTransformECS(m_ComboBarID, ref m_ComboBarTrans.Position, ref m_ComboBarTrans.Rotation, ref m_ComboBarTrans.Scale);
 
-			if (m_ComboDecayTimer <= 0.0f)
-			{
-				ResetCombo();
-			}
+			//if (m_ComboDecayTimer <= 0.0f)
+			//{
+			//	ResetCombo();
+			//}
 
 			// Have to put this here cause of the update enable/disable entity doesn't function correctly
 			if (m_ComboNumber >= m_ComboThresholdSmall && m_ComboNumber < m_ComboThresholdLarge)
@@ -752,16 +747,16 @@ namespace Scripting
 			// Combo is active
 			if (m_ComboActive)
 			{
-				m_ComboDecayTimer -= dt;
+				//m_ComboDecayTimer -= dt;
 				//ECS.SetScale(m_ComboBarID, Vector3.Lerp(m_ComboBarTrans.Scale, m_EmptyComboBarScale, 1.5f * dt));
 				EnableComboUI(true);
-				ECS.SetScale(m_ComboBarID, new Vector3(m_FullComboBarScale.X * (m_ComboDecayTimer / m_ComboDecayTimeLimit), m_FullComboBarScale.Y, m_FullComboBarScale.Z));
+				//ECS.SetScale(m_ComboBarID, new Vector3(m_FullComboBarScale.X * (m_ComboDecayTimer / m_ComboDecayTimeLimit), m_FullComboBarScale.Y, m_FullComboBarScale.Z));
 			}
 			// Combo is inactive
-			else
-			{
-				ECS.SetScale(m_ComboBarID, m_EmptyComboBarScale);
-			}
+			//else
+			//{
+				//ECS.SetScale(m_ComboBarID, m_EmptyComboBarScale);
+			//}
 		}
 
 		private void UpdateLaser(float dt)
@@ -814,11 +809,11 @@ namespace Scripting
 				++PlayerScript.m_EnemyDestroyedCount;
 				// Max 99
 				if (PlayerScript.m_ComboNumber < 99)
-					++PlayerScript.m_ComboNumber;
+					PlayerScript.m_ComboNumber += m_ComboBonusBobbleCount;
 
 				// Start the combo decay timer
-				PlayerScript.m_ComboDecayTimer = PlayerScript.m_ComboDecayTimeLimit;
-				ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_FullComboBarScale);
+				//PlayerScript.m_ComboDecayTimer = PlayerScript.m_ComboDecayTimeLimit;
+				//ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_FullComboBarScale);
 
 				if (PlayerScript.m_ComboActive)
 				{
@@ -859,6 +854,15 @@ namespace Scripting
 			//Decrease score
 			else
 			{
+				if(m_ShieldHitCount > 0)
+                {
+					--m_ShieldHitCount;
+					//Console.WriteLine("Shield Count:" + m_ShieldHitCount);
+					//Console.WriteLine("Max Shield Count:" + m_ShieldHitCountMax);
+					//Console.WriteLine("SHIELD/MAX:" + ((float)m_ShieldHitCount / (float)m_ShieldHitCountMax));
+					ECS.SetScale(m_ComboBarID, new Vector3(m_FullComboBarScale.X * ((float)m_ShieldHitCount / (float)m_ShieldHitCountMax), m_FullComboBarScale.Y, m_FullComboBarScale.Z));
+					return;
+				}
 				// Just change the color first
 				ECS.PlayAudio(entity_id, 3, "SFX");
 				GameUtilities.UpdateTextColor(m_ScoreTextID, new Vector3(1.0f, 0.0f, 0.0f));
@@ -876,8 +880,8 @@ namespace Scripting
 		private static void ResetCombo()
 		{
 			PlayerScript.m_ComboNumber = 0;
-			ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_EmptyComboBarScale);
-			PlayerScript.m_ComboDecayTimer = 0.0f;
+			//ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_EmptyComboBarScale);
+			//PlayerScript.m_ComboDecayTimer = 0.0f;
 			PlayerScript.m_ComboActive = false;
 			ECS.SetActive(PlayerScript.m_ComboSmallFireID, false);
 			ECS.SetActive(PlayerScript.m_ComboLargeFireID, false);

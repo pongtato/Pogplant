@@ -28,6 +28,10 @@
 
 #include "../../Serialiser/CustomSaver.h"
 
+#ifdef TRACY_ENABLE
+#include "../../Tools/Tracy/Tracy.hpp"
+#endif
+
 PhysicsSystem::PhysicsSystem()
 	:
 	m_registry{ nullptr },
@@ -662,6 +666,10 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 /******************************************************************************/
 void PhysicsSystem::UpdateEditor()
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
+
 	//Update all colliders
 	auto boxColliders = m_registry->view<Components::Transform, Components::BoxCollider>();
 	for (auto& collidable : boxColliders)

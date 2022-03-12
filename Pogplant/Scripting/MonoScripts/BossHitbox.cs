@@ -66,14 +66,16 @@ namespace Scripting
 
 		public override void OnTriggerEnter(uint id)
 		{
-			PPMath.RandomFloat(-5f, 5f);
-			if (m_damageHitBox && id == mID_playerShip)
+			if (m_damageHitBox)
 			{
-				PlayerScript.m_singleton.TriggerCameraShake(
-					new Vector3(PPMath.RandomFloat(-m_cameraShakeInitMul.X, m_cameraShakeInitMul.X), PPMath.RandomFloat(-m_cameraShakeInitMul.Y, m_cameraShakeInitMul.Y), PPMath.RandomFloat(-m_cameraShakeInitMul.Z, m_cameraShakeInitMul.Z)),
-					new Vector3(PPMath.RandomFloat(-m_cameraShakeMag.X, m_cameraShakeMag.X), PPMath.RandomFloat(-m_cameraShakeMag.Y, m_cameraShakeMag.Y), PPMath.RandomFloat(-m_cameraShakeMag.Z, m_cameraShakeMag.Z)),
-					m_cameraShakeDuration);
-				PlayerScript.AddScore(false, false, (uint)m_damageAmount);
+				if (id == mID_playerShip)
+				{
+					PlayerScript.m_singleton.TriggerCameraShake(
+						new Vector3(PPMath.RandomFloat(-m_cameraShakeInitMul.X, m_cameraShakeInitMul.X), PPMath.RandomFloat(-m_cameraShakeInitMul.Y, m_cameraShakeInitMul.Y), PPMath.RandomFloat(-m_cameraShakeInitMul.Z, m_cameraShakeInitMul.Z)),
+						new Vector3(PPMath.RandomFloat(-m_cameraShakeMag.X, m_cameraShakeMag.X), PPMath.RandomFloat(-m_cameraShakeMag.Y, m_cameraShakeMag.Y), PPMath.RandomFloat(-m_cameraShakeMag.Z, m_cameraShakeMag.Z)),
+						m_cameraShakeDuration);
+					PlayerScript.AddScore(false, false, (uint)m_damageAmount);
+				}
 			}
 			else
 			{

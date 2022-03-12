@@ -19,6 +19,9 @@ namespace Scripting
         private IMAGENUM m_prevImg = IMAGENUM.FIRST;
         private Dictionary<string, GameObject> m_Entities = new Dictionary<string, GameObject>();
         private bool m_menuActive = false;
+        uint m_BobbleTimmy;
+        uint m_BobbleProf;
+        uint m_BobbleBoobas;
 
         public BobbleHeadMenu()
         {
@@ -62,6 +65,22 @@ namespace Scripting
             ECS.GetTransformECS(img3, ref pos, ref rot, ref scale);
             m_Entities.Add("TS_IMG3", new GameObject(img3, new Transform(pos, rot, scale), "TS_IMG3"));
 
+            uint txt1 = ECS.FindEntityWithName("TS_TXT1");
+            ECS.GetTransformECS(txt1, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_TXT1", new GameObject(txt1, new Transform(pos, rot, scale), "TS_TXT1"));
+
+            uint txt2 = ECS.FindEntityWithName("TS_TXT2");
+            ECS.GetTransformECS(txt2, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_TXT2", new GameObject(txt2, new Transform(pos, rot, scale), "TS_TXT2"));
+
+            uint txt3 = ECS.FindEntityWithName("TS_TXT3");
+            ECS.GetTransformECS(txt3, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_TXT3", new GameObject(txt3, new Transform(pos, rot, scale), "TS_TXT3"));
+
+            m_BobbleTimmy = ECS.FindEntityWithName("BobbleTimmy");
+            m_BobbleProf = ECS.FindEntityWithName("BobbleProf");
+            m_BobbleBoobas = ECS.FindEntityWithName("BobbleBoobas");
+
             m_currImg = IMAGENUM.FIRST;
             m_prevImg = IMAGENUM.FIRST;
             m_menuActive = false;
@@ -73,19 +92,28 @@ namespace Scripting
 
         public override void Update(float dt)
         {
-            //if (PlayerScript.m_EnableBonusScreen)
-            //{
+            if (PlayerScript.m_EnableBonusScreen)
+            {
                 if (!m_menuActive)
                 {
                     m_menuActive = true;
                     ECS.SetActive(m_Entities["TS_BG"].id, true);
+                    ECS.SetActive(m_Entities["TS_TXT1"].id, true);
                     ECS.SetActive(m_Entities["TS_IMG1"].id, true);
                     ECS.SetActive(m_Entities["TS_IMG2"].id, true);
                     ECS.SetActive(m_Entities["TS_IMG3"].id, true);
+                    ECS.SetPosition(m_Entities["TS_IMG1"].id,
+                        new Vector3(m_Entities["TS_MBox"].transform.Position.X, m_Entities["TS_MBox"].transform.Position.Y, m_Entities["TS_IMG1"].transform.Position.Z));
+                    ECS.SetPosition(m_Entities["TS_IMG2"].id,
+                        new Vector3(m_Entities["TS_LBox"].transform.Position.X, m_Entities["TS_LBox"].transform.Position.Y, m_Entities["TS_IMG2"].transform.Position.Z));
+                    ECS.SetPosition(m_Entities["TS_IMG3"].id,
+                        new Vector3(m_Entities["TS_RBox"].transform.Position.X, m_Entities["TS_RBox"].transform.Position.Y, m_Entities["TS_IMG3"].transform.Position.Z));
+                    m_currImg = IMAGENUM.FIRST;
+                    m_prevImg = IMAGENUM.FIRST;
                 }
                 else
                     UpdateInputs();
-            //}
+            }
         }
 
         public override void OnTriggerEnter(uint id)
@@ -102,18 +130,20 @@ namespace Scripting
             if (InputUtility.onKeyTriggered("MENULEFT"))
             {
                 m_prevImg = m_currImg;
-                if (m_currImg > IMAGENUM.FIRST)
-                    --m_currImg;
+                if (m_currImg >= IMAGENUM.THIRD)
+                    m_currImg = IMAGENUM.FIRST;
                 else
-                    m_currImg = IMAGENUM.THIRD;
+                    ++m_currImg;
+
             }
             else if (InputUtility.onKeyTriggered("MENURIGHT"))
             {
                 m_prevImg = m_currImg;
-                if (m_currImg < IMAGENUM.THIRD)
-                    ++m_currImg;
+                if (m_currImg <= IMAGENUM.FIRST)
+                    m_currImg = IMAGENUM.THIRD;
                 else
-                    m_currImg = IMAGENUM.FIRST;
+                    --m_currImg;
+
             }
 
             //Console.WriteLine(m_currImg);
@@ -125,20 +155,28 @@ namespace Scripting
                 switch (m_currImg)
                 {
                     case IMAGENUM.FIRST:
-                        Console.WriteLine("Score Multiplier Boost Selected.");
-                        //++PlayerScript.m_ScoreMultiplierBobbleCount;
+                        ECS.SetActive(m_BobbleBoobas, true);
+                        //Console.WriteLine("Score Multiplier Boost Selected.");
+                        ++PlayerScript.m_ScoreMultiplierBobbleCount;
                         break;
                     case IMAGENUM.SECOND:
-                        Console.WriteLine("Shield Invulnerable Duration Boost Selected.");
-                        //++PlayerScript.m_ShieldBobbleCount;
+                        ECS.SetActive(m_BobbleProf, true);
+                        //Console.WriteLine("Combo Decay Timer Boost Selected");
+                        ++PlayerScript.m_ComboBonusBobbleCount;
                         break;
                     case IMAGENUM.THIRD:
-                        Console.WriteLine("Combo Decay Timer Boost Selected");
-                        //++PlayerScript.m_ComboDecayBobbleCount;
+                        ECS.SetActive(m_BobbleTimmy, true);
+                        //Console.WriteLine("Shield Invulnerable Duration Boost Selected.");
+                        PlayerScript.m_ShieldHitCountMax = PlayerScript.m_ShieldHitCountMax * PlayerScript.m_ShieldBobbleCount;
+                        PlayerScript.m_ShieldHitCount = PlayerScript.m_ShieldHitCountMax;
+                        //Console.WriteLine("Max Shield Count:" + PlayerScript.m_ShieldHitCountMax);
+                        //Console.WriteLine("Shield Count:" + PlayerScript.m_ShieldHitCount);
+                        ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_FullComboBarScale);
+                        ++PlayerScript.m_ShieldBobbleCount;
                         break;
                 }
-                //PlayerScript.m_EnableBonusScreen = false;
-                //PlayerScript.m_BonusItem = 0;
+                PlayerScript.m_EnableBonusScreen = false;
+                PlayerScript.m_BonusItem = 0;
                 m_menuActive = false;
                 m_currImg = IMAGENUM.FIRST;
                 m_prevImg = IMAGENUM.FIRST;
@@ -146,6 +184,9 @@ namespace Scripting
                 ECS.SetActive(m_Entities["TS_IMG1"].id, false);
                 ECS.SetActive(m_Entities["TS_IMG2"].id, false);
                 ECS.SetActive(m_Entities["TS_IMG3"].id, false);
+                ECS.SetActive(m_Entities["TS_TXT1"].id, false);
+                ECS.SetActive(m_Entities["TS_TXT2"].id, false);
+                ECS.SetActive(m_Entities["TS_TXT3"].id, false);
                 GameUtilities.ResumeScene();
             }
             else 
@@ -161,6 +202,9 @@ namespace Scripting
                                 new Vector3(m_Entities["TS_LBox"].transform.Position.X, m_Entities["TS_LBox"].transform.Position.Y, m_Entities["TS_IMG2"].transform.Position.Z));
                             ECS.SetPosition(m_Entities["TS_IMG3"].id,
                                 new Vector3(m_Entities["TS_RBox"].transform.Position.X, m_Entities["TS_RBox"].transform.Position.Y, m_Entities["TS_IMG3"].transform.Position.Z));
+                            ECS.SetActive(m_Entities["TS_TXT1"].id, true);
+                            ECS.SetActive(m_Entities["TS_TXT2"].id, false);
+                            ECS.SetActive(m_Entities["TS_TXT3"].id, false);
                             break;
                         case IMAGENUM.SECOND:
                             ECS.SetPosition(m_Entities["TS_IMG2"].id,
@@ -169,6 +213,9 @@ namespace Scripting
                                 new Vector3(m_Entities["TS_LBox"].transform.Position.X, m_Entities["TS_LBox"].transform.Position.Y, m_Entities["TS_IMG3"].transform.Position.Z));
                             ECS.SetPosition(m_Entities["TS_IMG1"].id,
                                 new Vector3(m_Entities["TS_RBox"].transform.Position.X, m_Entities["TS_RBox"].transform.Position.Y, m_Entities["TS_IMG1"].transform.Position.Z));
+                            ECS.SetActive(m_Entities["TS_TXT1"].id, false);
+                            ECS.SetActive(m_Entities["TS_TXT2"].id, true);
+                            ECS.SetActive(m_Entities["TS_TXT3"].id, false);
                             break;
                         case IMAGENUM.THIRD:
                             ECS.SetPosition(m_Entities["TS_IMG3"].id,
@@ -177,6 +224,9 @@ namespace Scripting
                                 new Vector3(m_Entities["TS_LBox"].transform.Position.X, m_Entities["TS_LBox"].transform.Position.Y, m_Entities["TS_IMG1"].transform.Position.Z));
                             ECS.SetPosition(m_Entities["TS_IMG2"].id,
                                 new Vector3(m_Entities["TS_RBox"].transform.Position.X, m_Entities["TS_RBox"].transform.Position.Y, m_Entities["TS_IMG2"].transform.Position.Z));
+                            ECS.SetActive(m_Entities["TS_TXT1"].id, false);
+                            ECS.SetActive(m_Entities["TS_TXT2"].id, false);
+                            ECS.SetActive(m_Entities["TS_TXT3"].id, true);
                             break;
                     }
                     m_prevImg = m_currImg;

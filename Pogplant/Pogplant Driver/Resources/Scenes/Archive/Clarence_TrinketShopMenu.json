@@ -1,6 +1,6 @@
 [
 	{
-		"Children" : 5,
+		"Children" : 8,
 		"Name" : 
 		{
 			"m_Name" : "TrinketShopMenuGroup",
@@ -70,7 +70,7 @@
 		"Name" : 
 		{
 			"m_Name" : "TS_BG",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -136,7 +136,7 @@
 		"Name" : 
 		{
 			"m_Name" : "TS_LArrow",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -202,7 +202,7 @@
 		"Name" : 
 		{
 			"m_Name" : "TS_MBox",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -268,7 +268,7 @@
 		"Name" : 
 		{
 			"m_Name" : "TS_LBox",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -334,7 +334,7 @@
 		"Name" : 
 		{
 			"m_Name" : "TS_RBox",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -400,7 +400,7 @@
 		"Name" : 
 		{
 			"m_Name" : "TS_RArrow",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -466,7 +466,7 @@
 		"Name" : 
 		{
 			"m_Name" : "TS_IMG1",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -569,7 +569,7 @@
 		"Name" : 
 		{
 			"m_Name" : "TS_IMG3",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -635,7 +635,7 @@
 		"Name" : 
 		{
 			"m_Name" : "TS_IMG2",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -659,6 +659,204 @@
 			[
 				0.11999999731779099,
 				0.11999999731779099,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 11.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 4,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.25
+				],
+				"m_UV_Offset" : 
+				[
+					0.75,
+					0.75
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "TS_TXT1",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 12.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 4,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.25
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "TS_TXT2",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 13.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 4,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.25
+				],
+				"m_UV_Offset" : 
+				[
+					0.25,
+					1.0
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "TS_TXT3",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
 				1.0
 			]
 		}

@@ -25,6 +25,10 @@
 
 #include "GeneralSystem.h"
 
+#ifdef TRACY_ENABLE
+#include "../../Tools/Tracy/Tracy.hpp"
+#endif
+
 using namespace Components;
 
 GeneralSystem::GeneralSystem()
@@ -168,6 +172,9 @@ void GeneralSystem::UpdateGame(float c_dt)
 
 void GeneralSystem::Update(float c_dt)
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
 	/*//entities will be a container of objects with it
 	//get all entities with the imaginary_object component
 	auto entities = m_registry->view<Imaginary_object, Transform, Tag>();

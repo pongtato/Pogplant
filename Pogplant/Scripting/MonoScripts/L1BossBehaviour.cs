@@ -121,6 +121,7 @@ namespace Scripting
 				rightBallHealth = 0f;
 				canDamageSideCores = false;
 				canDamageMainCore = false;
+				lastAttackIsSpin = false;
 			}
 
 			public L1Boss.BOSS_BEHAVIOUR_STATE lastState;
@@ -143,6 +144,7 @@ namespace Scripting
 			public bool canDamageSideCores;
 			public bool canDamageMainCore;
 
+			public bool lastAttackIsSpin;
 		}
 
 		public struct GunBarrel
@@ -361,13 +363,32 @@ namespace Scripting
 				{
 					if (m_runStateInfo.timer > m_runStateInfo.stateDuration)
 					{
+						//When timer is hit
 						if (m_runStateInfo.timeSinceLastSpawnTimer > m_runStateInfo.timeToNextSpawn)
 						{
-							TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+							bool shouldSpawn = false;
 
-							c_playedSpawnAnimation = false;
-							m_runStateInfo.timeSinceLastSpawnTimer = 0f;
-							m_runStateInfo.timeToNextSpawn = PPMath.RandomFloat(m_minDurationBetweenSpawns, m_maxDurationBetweenSpawns);
+							//Randomise a chance to either spawn enemies or do a spin attack
+							if (m_runStateInfo.lastAttackIsSpin)
+								shouldSpawn = true;
+							else if (PPMath.RandomInt(0, 100) > 60)
+								shouldSpawn = true;
+
+							if(shouldSpawn)
+							{
+								m_runStateInfo.lastAttackIsSpin = false;
+
+								TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+
+								c_playedSpawnAnimation = false;
+								m_runStateInfo.timeSinceLastSpawnTimer = 0f;
+								m_runStateInfo.timeToNextSpawn = PPMath.RandomFloat(m_minDurationBetweenSpawns, m_maxDurationBetweenSpawns);
+							}
+							else
+							{
+								m_runStateInfo.lastAttackIsSpin = true;
+								TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
+							}
 						}
 					}
 
@@ -622,6 +643,8 @@ namespace Scripting
 		{
 			if (m_runStateInfo.canDamageSideCores)
 			{
+				ECS.PlayAudio(entityID, 0, "SFX");
+
 				//Console.WriteLine("L1BossBehaviour.cs: Left damage taken");
 				m_runStateInfo.leftBallHealth -= damageAmount;
 
@@ -642,12 +665,18 @@ namespace Scripting
 					Console.WriteLine("L1BossBehaviour.cs: Left core dead");
 				}
 			}
+			else
+			{
+				ECS.PlayAudio(entityID, 1, "SFX");
+			}
 		}
 
 		public void DamageRightCore(float damageAmount)
 		{
 			if (m_runStateInfo.canDamageSideCores)
 			{
+				ECS.PlayAudio(entityID, 0, "SFX");
+
 				//Console.WriteLine("Right damage taken");
 				m_runStateInfo.rightBallHealth -= damageAmount;
 
@@ -667,6 +696,10 @@ namespace Scripting
 
 					Console.WriteLine("L1BossBehaviour.cs: L1BossBehaviour.cs: Right core dead");
 				}
+			}
+			else
+			{
+				ECS.PlayAudio(entityID, 1, "SFX");
 			}
 		}
 
@@ -707,10 +740,12 @@ namespace Scripting
 			//Invulnerable in protection mode
 			if (!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore)
 			{
+				ECS.PlayAudio(entityID, 1, "SFX");
 				return;
 			}
 
-			//Console.WriteLine("Boss Taken damage");
+			Console.WriteLine("Boss Taken damage");
+			ECS.PlayAudio(entityID, 0, "SFX");
 
 			mh_coreHealth -= 1f;
 			m_runStateInfo.damageTakenPeriod += 1f;

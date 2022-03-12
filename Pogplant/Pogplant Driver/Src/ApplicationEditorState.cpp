@@ -13,6 +13,10 @@
 #include "Application.h"
 #include "Serialiser/Serializer.h"
 
+#ifdef TRACY_ENABLE
+#include "../../Tools/Tracy/Tracy.hpp"
+#endif
+
 namespace PPD = PogplantDriver;
 using namespace Components;
 using namespace PogplantDriver;
@@ -43,6 +47,10 @@ void Application::EnterEditorState()
 /******************************************************************************/
 void Application::UpdateEditorState(float c_dt)
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
+
 #ifdef PPD_UPDATE_EDITOR_AS_GAME
 	m_sPhysicsSystem.UpdateEditor();
 
@@ -71,6 +79,7 @@ void Application::UpdateEditorState(float c_dt)
 #endif // PPD_UPDATE_EDITOR_AS_GAME
 
 	m_sGeneralSystem.Update(c_dt);
+
 	PPF::FileHandler& fh = fh.GetInstance();
 	if (fh.m_Modified)
 	{
@@ -94,6 +103,10 @@ void Application::UpdateEditorState(float c_dt)
 /******************************************************************************/
 void Application::RenderEditorState()
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
+
 	// Debug draw colliders
 	m_sPhysicsSystem.DrawColliders();
 
