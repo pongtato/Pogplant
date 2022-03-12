@@ -106,6 +106,10 @@
       {
         "FileName": "Cutscene_NarrationBoard.dds",
         "Dir": "Resources/Textures/UI/Cutscenes"
+      },
+	        {
+        "FileName": "Cutscene2_NarrationBoard.dds",
+        "Dir": "Resources/Textures/UI/Cutscenes"
       }
   ]
 }

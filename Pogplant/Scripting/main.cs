@@ -260,6 +260,11 @@ namespace Scripting
             return new CutSceneController();
         }
 
+        public static CutScene2Controller CutScene2Controller()
+        {
+            return new CutScene2Controller();
+        }
+
         public static BonusScoreCoin BonusScoreCoin()
         {
             return new BonusScoreCoin();

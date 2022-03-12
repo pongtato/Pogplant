@@ -58,6 +58,7 @@
     <Compile Include="MonoScripts\BonusScoreCoin.cs" />
     <Compile Include="MonoScripts\BossHitbox.cs" />
     <Compile Include="MonoScripts\L2BossBehaviour.cs" />
+    <Compile Include="MonoScripts\CutScene2Controller.cs" />
     <Compile Include="MonoScripts\CutSceneController.cs" />
     <Compile Include="MonoScripts\EndGameMenuTrigger.cs" />
     <Compile Include="MonoScripts\ExplosiveEnemy.cs" />

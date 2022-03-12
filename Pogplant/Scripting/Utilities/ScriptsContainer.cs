@@ -64,6 +64,7 @@ namespace Scripting
             monoScriptNames.Add("MovingParts");
             monoScriptNames.Add("Level1OutroCutscene");
             monoScriptNames.Add("CutSceneController");
+            monoScriptNames.Add("CutScene2Controller");
             monoScriptNames.Add("BonusScoreCoin");
             monoScriptNames.Add("Rotation");
             monoScriptNames.Add("SimpleMovement");
