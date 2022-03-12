@@ -90,7 +90,7 @@ namespace Scripting
 		uint EnemyTrack = 0;
 
 		//
-		Vector3 m_shootVector = new Vector3(0f, 0f, 1f);
+		public Vector3 m_shootVector = new Vector3(0f, 0f, 1f);
 
 		public class Reticle
 		{
