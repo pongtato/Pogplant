@@ -77,22 +77,22 @@ namespace Scripting
             
             //Smack
             Phase_Cam_TP_POS(40.8f, 42.0f, new Vector3(0.382f, 0.302f, 3.25f), new Vector3(0.386f, 0.147f, 3.25f));
-            Phase_Cam_POS(41.5f, 50.0f, new Vector3(0.386f, 0.147f, 3.25f), new Vector3(0.11f, 0.094f, 6.19f));
+            Phase_Cam_POS(43.0f, 50.0f, new Vector3(0.386f, 0.147f, 3.25f), new Vector3(0.11f, 0.094f, 6.19f));
             //Phase_Cam_POS(50.0f, 53.0f, new Vector3(0.11f, 0.094f, 6.19f), new Vector3(0.11f, 0.094f, 6.19f));
-            Phase_Cam_TP_POS(53.5f, 54.0f, new Vector3(0.11f, 0.094f, 6.19f), new Vector3(-0.187f, 0.098f, 4.9f));
+            Phase_Cam_TP_POS(53.8f, 54.3f, new Vector3(0.11f, 0.094f, 6.19f), new Vector3(-0.187f, 0.098f, 4.9f));
             //Phase_Cam_TP_POS(54.0f, 56.0f, new Vector3(-0.187f, 0.098f, 4.9f), new Vector3(-0.187f, 0.098f, 4.9f));
-            Phase_Cam_POS(56.0f, 59.0f, new Vector3(-0.187f, 0.098f, 4.9f), new Vector3(-0.346f, 0.015f, 3.75f));
+            Phase_Cam_POS(57.0f, 59.0f, new Vector3(-0.187f, 0.098f, 4.9f), new Vector3(-0.346f, 0.015f, 3.75f));
             Phase_Cam_POS(59.0f, 61.0f, new Vector3(-0.346f, 0.015f, 3.75f), new Vector3(-0.35f, -0.143f, 3.75f));
-            Phase_Cam_TP_POS(63.4f, 64.0f, new Vector3(-0.35f, -0.143f, 3.75f), new Vector3(-0.35f, -0.281f, 4.0f));
-            Phase_Cam_POS(66.5f, 70.0f, new Vector3(-0.35f, -0.281f, 4.0f), new Vector3(-0.157f, -0.336f, 3.7f));
-            Phase_Cam_POS(70.0f, 72.0f, new Vector3(-0.157f, -0.336f, 3.7f), new Vector3(-0.173f, -0.359f, 3.4f));
-            Phase_Cam_POS(72.0f, 73.0f, new Vector3(-0.173f, -0.359f, 3.4f), new Vector3(-0.095f, -0.276f, 3.6f));
+            Phase_Cam_TP_POS(63.2f, 63.7f, new Vector3(-0.35f, -0.143f, 3.75f), new Vector3(-0.35f, -0.281f, 4.0f));
+            Phase_Cam_POS(67.3f, 70.5f, new Vector3(-0.35f, -0.281f, 4.0f), new Vector3(-0.157f, -0.336f, 3.7f));
+            Phase_Cam_POS(70.5f, 72.5f, new Vector3(-0.157f, -0.336f, 3.7f), new Vector3(-0.173f, -0.359f, 3.4f));
+            Phase_Cam_POS(72.5f, 74.0f, new Vector3(-0.173f, -0.359f, 3.4f), new Vector3(-0.095f, -0.276f, 3.6f));
             Phase_Cam_TP_POS(74.0f, 74.7f, new Vector3(-0.095f, -0.276f, 3.6f), new Vector3(-0.108f, -0.169f, 3.1f));
             Phase_Cam_POS(74.7f, 77.5f, new Vector3(-0.108f, -0.169f, 3.1f), new Vector3(-0.091f, -0.138f, 4.0f));
 
             //Energy depleted
-            Phase_Cam_TP_POS(77.5f, 78.0f, new Vector3(-0.091f, -0.138f, 4.0f), new Vector3(0.074f, -0.197f, 3.45f));
-            Phase_Cam_POS(79.0f, 88.0f, new Vector3(0.074f, -0.197f, 3.45f), new Vector3(0.264f, -0.201f, 6.3f));
+            Phase_Cam_TP_POS(78.0f, 78.5f, new Vector3(-0.091f, -0.138f, 4.0f), new Vector3(0.074f, -0.197f, 3.45f));
+            Phase_Cam_POS(79.7f, 88.0f, new Vector3(0.074f, -0.197f, 3.45f), new Vector3(0.264f, -0.201f, 6.3f));
             Phase_Cam_POS(90.0f, 100.0f, new Vector3(0.264f, -0.201f, 6.3f), new Vector3(0.264f, -0.65f, 6.3f));
             //Phase_CS_TP(0.9f, 1.3f, new Vector3(0, 0, 0));
 
@@ -175,7 +175,7 @@ namespace Scripting
                     bCanLoadCutScene = true;
                 }
             }
-            if (overall_acc_dt > 88.0f)
+            if (overall_acc_dt > 100.0f)
             {
                 bCanLoadCutScene = true;
             }
