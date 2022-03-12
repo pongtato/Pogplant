@@ -256,8 +256,8 @@ namespace Scripting
 		{
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].shouldReturnToDefault = true;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMin = 12.5f;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMax = 12.5f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMin = 20.5f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMax = 20.5f;
 
 			m_runStateInfo.stateDuration = 9f;
 
@@ -641,14 +641,14 @@ namespace Scripting
 
 		public void DamageLeftCore(float damageAmount)
 		{
-			if (m_runStateInfo.canDamageSideCores)
+			if (m_runStateInfo.canDamageSideCores && L1Boss.m_singleton.left_ball_protection)
 			{
 				ECS.PlayAudio(entityID, 0, "SFX");
 
 				//Console.WriteLine("L1BossBehaviour.cs: Left damage taken");
 				m_runStateInfo.leftBallHealth -= damageAmount;
 
-				if (m_runStateInfo.leftBallHealth <= 0f && L1Boss.m_singleton.left_ball_protection)
+				if (m_runStateInfo.leftBallHealth <= 0f)
 				{
 					m_runStateInfo.leftBallHealth = 0f;
 
@@ -673,14 +673,14 @@ namespace Scripting
 
 		public void DamageRightCore(float damageAmount)
 		{
-			if (m_runStateInfo.canDamageSideCores)
+			if (m_runStateInfo.canDamageSideCores && L1Boss.m_singleton.right_ball_protection)
 			{
 				ECS.PlayAudio(entityID, 0, "SFX");
 
 				//Console.WriteLine("Right damage taken");
 				m_runStateInfo.rightBallHealth -= damageAmount;
 
-				if (m_runStateInfo.rightBallHealth <= 0f && L1Boss.m_singleton.right_ball_protection)
+				if (m_runStateInfo.rightBallHealth <= 0f)
 				{
 					m_runStateInfo.rightBallHealth = 0f;
 
@@ -694,7 +694,7 @@ namespace Scripting
 					if (!L1Boss.m_singleton.left_ball_protection)
 						DestroyedBothCores();
 
-					Console.WriteLine("L1BossBehaviour.cs: L1BossBehaviour.cs: Right core dead");
+					Console.WriteLine("L1BossBehaviour.cs: Right core dead");
 				}
 			}
 			else
@@ -744,7 +744,7 @@ namespace Scripting
 				return;
 			}
 
-			Console.WriteLine("Boss Taken damage");
+			//Console.WriteLine("Boss Taken damage");
 			ECS.PlayAudio(entityID, 0, "SFX");
 
 			mh_coreHealth -= 1f;

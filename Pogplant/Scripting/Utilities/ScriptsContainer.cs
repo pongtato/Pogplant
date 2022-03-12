@@ -50,6 +50,7 @@ namespace Scripting
             monoScriptNames.Add("BossWarning");
             monoScriptNames.Add("L1Boss");
             monoScriptNames.Add("L1BossBehaviour");
+            monoScriptNames.Add("L2BossBehaviour");
             monoScriptNames.Add("BossHitbox");
             monoScriptNames.Add("L2Boss");
             monoScriptNames.Add("L1BossCloudMover");

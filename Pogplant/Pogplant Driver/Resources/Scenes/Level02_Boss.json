@@ -654,16 +654,11 @@
 		}
 	},
 	{
-		"Children" : 18,
+		"Children" : 19,
 		"Name" : 
 		{
 			"m_Name" : "Boss_Mk2",
 			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a323b877-d29a-4111-a494-1077a989c6b6",
-			"prefab_path" : "Resources\\Prefabs\\Boss_Mk2.prefab"
 		},
 		"Render" : 
 		{
@@ -708,6 +703,70 @@
 				0.0,
 				0.0,
 				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BossBehaviourCore",
+			"status" : true
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 1.7000000476837158,
+				"Name" : "LockOnOffSet",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"L2BossBehaviour" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"isStatic" : false,
+			"isTrigger" : true,
+			"radius" : 1.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "BossCore"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.10349225997924805
 			],
 			"m_rotation" : 
 			[

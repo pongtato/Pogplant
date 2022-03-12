@@ -214,6 +214,11 @@ namespace Scripting
             return new L1BossBehaviour();
 		}
 
+        public static L2BossBehaviour L2BossBehaviour()
+        {
+            return new L2BossBehaviour();
+        }
+
         public static BossHitbox BossHitbox()
         {
             return new BossHitbox();
