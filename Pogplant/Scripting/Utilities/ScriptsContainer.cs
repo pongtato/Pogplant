@@ -57,6 +57,7 @@ namespace Scripting
             monoScriptNames.Add("TetherEnemy");
             monoScriptNames.Add("ExplosiveEnemy");
             monoScriptNames.Add("ActivateChildren");
+            monoScriptNames.Add("ActivateChildrenGravity");
             monoScriptNames.Add("TriggerAudioPlay");
             monoScriptNames.Add("AnimationSystem");
             monoScriptNames.Add("MovingParts");
@@ -65,6 +66,10 @@ namespace Scripting
             monoScriptNames.Add("BonusScoreCoin");
             monoScriptNames.Add("Rotation");
             monoScriptNames.Add("SimpleMovement");
+
+
+            //let this be last lol
+            monoScriptNames.Sort();
         }
 
         private void AddPauseScripts()
@@ -77,6 +82,10 @@ namespace Scripting
             pauseScriptNames.Add("LaserWeapon");
             pauseScriptNames.Add("EndGameMenu");
             pauseScriptNames.Add("HowToPlayMenu");
+
+
+            //let this be last lol
+            pauseScriptNames.Sort();
         }
 
         public string GetScriptNameElement(int index)

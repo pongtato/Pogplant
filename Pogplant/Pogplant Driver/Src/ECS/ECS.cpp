@@ -180,6 +180,17 @@ entt::entity ECS::CopyEntity(entt::entity _target, entt::entity _override)
 	entt::entity new_entity = m_registry.create();
 
 	auto& new_transform = m_registry.emplace_or_replace<Transform>(new_entity, transform.m_position, transform.m_rotation, transform.m_scale);
+
+	if (transform.m_parent != entt::null)
+	{
+		//set new parent
+		new_transform.m_parent = transform.m_parent;
+
+		//set children in parent
+		m_registry.get<Transform>(transform.m_parent).m_children.insert(new_entity);
+	}
+
+
 	if (_override != entt::null)
 	{
 		const auto override_transform = m_registry.get<Transform>(_override);

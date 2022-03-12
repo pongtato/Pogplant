@@ -71,6 +71,9 @@ namespace Scripting
         public extern static void RigidbodyAddForce(uint entityID, Vector3 dir);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void RigidbodySetGravity(uint entityID, bool boolean);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static bool CheckValidEntity(uint entityID);
 
         // Temp to test stuff

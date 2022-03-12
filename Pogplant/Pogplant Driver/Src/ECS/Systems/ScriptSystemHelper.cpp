@@ -254,6 +254,16 @@ namespace SSH
 		}
 	}
 
+	void RigidbodySetGravity(std::uint32_t entityID, bool boolean)
+	{
+		auto rb = ScriptSystem::GetECS()->GetReg().try_get<Components::Rigidbody>(static_cast<entt::entity>(entityID));
+
+		if (rb)
+		{
+			rb->useGravity = boolean;
+		}
+	}
+
 	void GetCamera(std::uint32_t entityID, float& yaw, float& pitch, float& roll)
 	{
 		auto cam = ScriptSystem::GetECS()->GetReg().try_get<Components::Camera>(static_cast<entt::entity>(entityID));

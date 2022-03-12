@@ -284,5 +284,10 @@ namespace Scripting
         {
             return new SimpleMovement();
         }
+
+        public static ActivateChildrenGravity ActivateChildrenGravity()
+        {
+            return new ActivateChildrenGravity();
+        }
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="ECS\ECS.cs" />
     <Compile Include="ECS\GameObject.cs" />
     <Compile Include="MonoScripts\ActivateChildren.cs" />
+    <Compile Include="MonoScripts\ActivateChildrenGravity.cs" />
     <Compile Include="MonoScripts\AnimationSystem.cs" />
     <Compile Include="MonoScripts\BonusItem.cs" />
     <Compile Include="MonoScripts\BonusScoreCoin.cs" />
