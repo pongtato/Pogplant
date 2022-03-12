@@ -28,6 +28,9 @@ namespace Scripting
 		public static PlayerScript m_singleton;
 
 		public bool mm_useNewMovementSystem = false;
+		public bool mm_enableTurbulence = false;
+		float m_turbulenceTimer = 0f;
+
 		public float movement_speed = 200.0f;
 		private float horizontal_input = 0;
 		private float vertical_input = 0;
@@ -239,6 +242,7 @@ namespace Scripting
 			movement_speed = ECS.GetValue<float>(entityID, 200.0f, "MovementSpeed");
 			slowForce = ECS.GetValue<float>(entityID, 4f, "SlowForce");
 			mm_useNewMovementSystem = ECS.GetValue<bool>(entityID, false, "NewMovement");
+			mm_enableTurbulence = ECS.GetValue<bool>(entityID, false, "Turbulence");
 		}
 
 		public void Awake()
@@ -378,6 +382,17 @@ namespace Scripting
 				direc_vector *= 1 / directionalMag;
 
 			Vector3 force_dir = direc_vector * movement_speed;
+
+			if(mm_enableTurbulence)
+			{
+				m_turbulenceTimer += dt;
+
+				if (m_turbulenceTimer > 2f * Math.PI)
+					m_turbulenceTimer -= 2f * (float)Math.PI;
+
+				force_dir += new Vector3((float)Math.Sin(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), (float)Math.Cos(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), 0);
+			}
+
 			ECS.RigidbodyAddForce(entityID, force_dir);
 			//rigidbody.AddForce(force_dir);
 
@@ -391,7 +406,7 @@ namespace Scripting
 				playerVel += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
 			}
 
-			if (dt > 0)
+			if (dt > float.Epsilon)
 			{
 				calculatedVelocity = lastPosition - playerGlobalPos;
 				calculatedVelocity = calculatedVelocity * (1 / dt);

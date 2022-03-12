@@ -259,7 +259,8 @@ namespace Scripting
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMin = 20.5f;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMax = 20.5f;
 
-			m_runStateInfo.stateDuration = 9f;
+			m_runStateInfo.stateDuration = 9.5f;
+			m_runStateInfo.lastAttackIsSpin = true;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].isVulnerable = true;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].shouldReturnToDefault = false;
