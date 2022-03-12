@@ -229,6 +229,14 @@ namespace Pogplant
 			sample *= scale;
 			m_AOKernel.push_back(sample);
 		}
+
+		ShaderLinker::Use("SSAO");
+		// Send kernel + rotation 
+		for (unsigned int i = 0; i < m_AOKernel.size(); ++i)
+		{
+			ShaderLinker::SetUniform(("v3_Samples[" + std::to_string(i) + "]").c_str(), m_AOKernel[i]);
+		}
+		ShaderLinker::UnUse();
 	}
 
 	void Renderer::StartEditorBuffer()
@@ -253,16 +261,10 @@ namespace Pogplant
 
 	void Renderer::AOPass(entt::registry& registry, bool _EditorMode)
 	{
+		ShaderLinker::Use("SSAO");
 		FrameBuffer::BindFrameBuffer(BufferType::SSAO_BUFFER);
 		glClear(GL_COLOR_BUFFER_BIT);
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
-		ShaderLinker::Use("SSAO");
-		// Send kernel + rotation 
-		for (unsigned int i = 0; i < m_AOKernel.size(); ++i)
-		{
-			ShaderLinker::SetUniform(("v3_Samples[" + std::to_string(i) + "]").c_str(), m_AOKernel[i]);
-		}
-
 		ShaderLinker::SetUniform("v2_Noise", { static_cast<float>(Window::m_Width) * 0.25f, static_cast<float>(Window::m_Height) * 0.25f });
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", glm::transpose(glm::inverse(ret.m_View)));
@@ -334,7 +336,6 @@ namespace Pogplant
 		ShaderLinker::SetUniform("Exposure", m_Exposure);
 		ShaderLinker::SetUniform("Gamma", m_Gamma);
 		ShaderLinker::SetUniform("Shadows", m_EnableShadows);
-
 
 		//// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);

@@ -61,6 +61,9 @@
     <Filter Include="Source Files\ImguiPanels">
       <UniqueIdentifier>{36d483fd-7908-4ea1-af58-f58b09afe60e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Tracy">
+      <UniqueIdentifier>{dea30c0f-50f7-4812-88dd-dd829a91bcfa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\ImguiHelper.cpp">
@@ -188,6 +191,9 @@
     </ClCompile>
     <ClCompile Include="Src\Utils\TimeStone.cpp">
       <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Tools\Tracy\TracyClient.cpp">
+      <Filter>Source Files\Tracy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -346,6 +352,9 @@
     </ClInclude>
     <ClInclude Include="Src\Utils\TimeStone.h">
       <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Tools\Tracy\Tracy.hpp">
+      <Filter>Source Files\Tracy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
