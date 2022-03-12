@@ -342,7 +342,7 @@ namespace Scripting
             moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
             moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
 
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
+            /*if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
             {
                 //SetState(BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK.ToString());
                 SetState(BOSS_BEHAVIOUR_STATE.REPEL_ATTACK.ToString());
@@ -372,7 +372,7 @@ namespace Scripting
             {
                 ResetAllColors();
                 SetColorTurretRecovery();
-            }
+            }*/
 
             UpdateMouths(dt);
 

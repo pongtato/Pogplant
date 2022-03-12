@@ -45,13 +45,35 @@ namespace Scripting
 		public float m_coreProtectionDamageDuration;
 
 		//Shooting stuff
-		public float m_bossShootingDelay = 0.7f;
+		public float m_bossShootingDelay = 0.6f;
 		public float m_bossShootingCoolDown = 5f;
+		public int m_bossShootCountLimit = 8;
 
 		//IDs
 		public uint mID_leftCore;
 		public uint mID_rightCore;
 		public uint mID_playerShip;
+		public uint[] mID_ventSpawnpoints = new uint[6];
+
+		
+
+		/**************************
+		*
+		* Temporary for enemy spawns
+		*
+		**************************/
+		private List<GameObject> m_enemySpawnInstances = new List<GameObject>();
+		private bool c_spawnedEnemies = false;
+		private bool c_playedSpawnAnimation = false;
+		private float c_hardCodedUpAnimationSpeed = 10f;
+		private float c_animationDuration = 2f;
+
+		//--- Spawner variables
+		//This is hardcoded second for spawner
+		/**> How many seconds into the animation to choose to spawn enemies*/
+		float mSpawner_timeStartSpawnEnemies = 4.2f;
+		float mSpawner_durationToSpawn = 6f;
+		float mSpawner_timeEndSpawnEnemies = 7f;
 
 		#endregion
 
@@ -102,10 +124,12 @@ namespace Scripting
 				bossShootCount = 0;
 				bossShootReloading = false;
 				bossTurretReady = false;
+				bossTurretShouldFire = false;
 				leftBallHealth = 0f;
 				rightBallHealth = 0f;
 				canDamageSideCores = false;
 				canDamageMainCore = false;
+				lastRNGState = 0;
 			}
 
 			public L2Boss.BOSS_BEHAVIOUR_STATE lastState;
@@ -121,12 +145,16 @@ namespace Scripting
 			public float bossShootCount;
 			public bool bossShootReloading;
 			public bool bossTurretReady;
+			public bool bossTurretShouldFire;
 
 			public float leftBallHealth;
 			public float rightBallHealth;
 
 			public bool canDamageSideCores;
 			public bool canDamageMainCore;
+
+			/**> The last state randomised, doesn't allow same number again*/
+			public int lastRNGState;
 		}
 		#endregion
 
@@ -171,6 +199,13 @@ namespace Scripting
 			m_turretGuns[0].ID_turretBody = ECS.FindEntityWithName("Left_ColourTurret_Body_Pivot");
 			m_turretGuns[1].ID_turretBody = ECS.FindEntityWithName("Right_ColourTurret_Body_Pivot");
 
+			uint bossPanelSpawns = ECS.FindEntityWithName("BossPanelSpawnPoints");
+
+			for (int i = 0; i < 6; ++i)
+			{
+				mID_ventSpawnpoints[i] = ECS.FindChildEntityWithName(bossPanelSpawns, (i + 1).ToString());
+			}
+
 			for (int i = 0; i < 2; ++i)
 			{
 				m_turretGuns[i].ID_shootPoint = ECS.FindChildEntityWithName(m_turretGuns[i].ID_turretBody, "Shoot");
@@ -189,6 +224,18 @@ namespace Scripting
 		{
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.MOVING].isVulnerable = true;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.MOVING].shouldReturnToDefault = false;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMin = 1f;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMax = 5f;
+
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK].isVulnerable = true;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK].shouldReturnToDefault = true;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK].stateDurationMin = 6f;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK].stateDurationMax = 6f;
+
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].isVulnerable = true;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].shouldReturnToDefault = true;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMin = 20f;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMax = 20f;
 
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].isVulnerable = false;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].shouldReturnToDefault = true;
@@ -209,13 +256,19 @@ namespace Scripting
 		/******************************************************************************/
 		public override void Update(float dt)
 		{
-			m_runStateInfo.bossTurretReady = InputUtility.onKeyHeld(KEY_ID.KEY_9);
-			if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
+			//Debug test codes
 			{
-				Console.WriteLine("L2BossBehaviour.cs: Boss state is: " + L2Boss.m_singleton.current_state);
-				Console.WriteLine("L2BossBehaviour.cs: Timer is: " + m_runStateInfo.timer);
-			}
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
+				{
+					Console.WriteLine("L2BossBehaviour.cs: Boss state is: " + L2Boss.m_singleton.current_state);
+					Console.WriteLine("L2BossBehaviour.cs: Timer is: " + m_runStateInfo.timer);
+				}
 
+				if(InputUtility.onKeyTriggered(KEY_ID.KEY_J))
+				{
+					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+				}
+			}
 			if (delayedInit)
 			{
 				//Add core to lock on list
@@ -225,16 +278,104 @@ namespace Scripting
 
 			UpdateGunBehaviour(dt);
 
+			m_runStateInfo.bossTurretReady = false;
+			m_runStateInfo.bossTurretShouldFire = false;
+
 			switch (L2Boss.m_singleton.current_state)
 			{
 				case L2Boss.BOSS_BEHAVIOUR_STATE.MOVING:
 				{
+					//m_runStateInfo.bossTurretReady = true;
+					//m_runStateInfo.bossTurretShouldFire = true;
 
+					if (m_runStateInfo.timer > m_runStateInfo.stateDuration)
+					{
+						int stateSelection;
+
+						do
+						{
+							stateSelection = PPMath.RandomInt(0, 1);
+						}
+						while (m_runStateInfo.lastRNGState == stateSelection);
+
+						switch (stateSelection)
+						{
+							case 0:
+								TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK);
+								break;
+							case 1:
+								TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+								break;
+							default:
+								Console.WriteLine("L2BossBehaviour.cs: RNG out of range");
+								break;
+						}
+
+						m_runStateInfo.lastRNGState = stateSelection;
+					}
 				}
 				break;
 				case L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK:
 				{
+					m_runStateInfo.bossTurretReady = true;
+					m_runStateInfo.bossTurretShouldFire = true;
+				}
+				break;
 
+				case L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
+				{
+					if (m_runStateInfo.timer > mSpawner_timeStartSpawnEnemies && m_runStateInfo.timer < mSpawner_timeEndSpawnEnemies)
+					{
+						if (m_runStateInfo.timer > mSpawner_durationToSpawn && !c_spawnedEnemies)
+						{
+							c_spawnedEnemies = true;
+							int randomInt = PPMath.RandomInt(0, 5);
+
+							Console.WriteLine("L1BossBehaviour.cs: SPAWNING ENEMIES Randomed: " + randomInt);
+
+							switch (randomInt)
+							{
+								case 0:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_Low1");
+									break;
+								case 1:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_Low2");
+									break;
+								case 2:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_Med1");
+									break;
+								case 3:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_Med2");
+									break;
+								case 4:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_High1");
+									break;
+								case 5:
+									EncounterSystemDriver.m_singleton.SpawnWave("Boss_High2");
+									break;
+								default:
+									Console.WriteLine("THIS ISN'T SUPPOSED TO HAPPEN");
+									break;
+							}
+						}
+
+						if (!c_playedSpawnAnimation)
+						{
+							c_playedSpawnAnimation = true;
+
+							Console.WriteLine("L2BossBehaviour.cs: SpawnAnimation");
+
+							//Do enemy spawn animation
+							for (int i = 0; i < 6; ++i)
+							{
+								ECS.GetTransformECS(mID_ventSpawnpoints[i], ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
+								GameObject instance = GameUtilities.InstantiateObject("Enemy_01", m_tempTransform.Position, m_tempTransform.Rotation);
+								m_enemySpawnInstances.Add(instance);
+							}
+						}
+
+						UpdateEnemySpawnAnimation(dt);
+					}
 				}
 				break;
 			}
@@ -254,7 +395,7 @@ namespace Scripting
 			{
 				if (m_stateBehaviours[(int)L2Boss.m_singleton.current_state].shouldReturnToDefault)
 				{
-					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
+					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.MOVING);
 				}
 			}
 
@@ -262,6 +403,44 @@ namespace Scripting
 			if (m_runStateInfo.timeSinceLastDamageTimer > m_coreProtectionDamageDuration)
 			{
 				m_runStateInfo.damageTakenPeriod = 0f;
+			}
+		}
+
+		/***************************************************************************/
+		/*!
+		\brief
+			Updates the movement of the fake enemy ships
+
+		\param dt
+			Delta time
+		*/
+		/***************************************************************************/
+		void UpdateEnemySpawnAnimation(float dt)
+		{
+			if (m_runStateInfo.timer > c_animationDuration + mSpawner_timeStartSpawnEnemies)
+			{
+				if (m_enemySpawnInstances.Count > 0)
+				{
+					for (int i = 0; i < m_enemySpawnInstances.Count; ++i)
+					{
+						ECS.DestroyEntity(m_enemySpawnInstances[i].id);
+					}
+
+					m_enemySpawnInstances.Clear();
+
+					Console.WriteLine("L2BossBehaviour.cs: Erased animation");
+				}
+			}
+			else
+			{
+				for (int i = 0; i < m_enemySpawnInstances.Count; ++i)
+				{
+					ECS.GetTransformECS(m_enemySpawnInstances[i].id, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
+
+					m_tempTransform.Position.Y += c_hardCodedUpAnimationSpeed * dt;
+					
+					ECS.SetTransformECS(m_enemySpawnInstances[i].id, m_tempTransform.Position, m_tempTransform.Rotation, m_tempTransform.Scale);
+				}
 			}
 		}
 
@@ -274,58 +453,94 @@ namespace Scripting
 		{
 			Vector3 shipPos = ECS.GetGlobalPosition(mID_playerShip);
 
-			//Lerp gun target
-			for (int i = 0; i < 2; ++i)
+			if(m_runStateInfo.bossTurretReady)
 			{
-				ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
-				Vector3 beforeLerp = m_tempTransform.Rotation;
-				Transform.LookAt(m_turretGuns[i].ID_turretBody, shipPos);
-				ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
+				//Lerp gun target
+				for (int i = 0; i < 2; ++i)
+				{
+					ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
+					Vector3 beforeLerp = m_tempTransform.Rotation;
+					Transform.LookAt(m_turretGuns[i].ID_turretBody, shipPos);
+					ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
 
-				m_tempTransform.Rotation = Vector3.Lerp(beforeLerp, m_tempTransform.Rotation, dt * 20f);
+					m_tempTransform.Rotation = Vector3.Lerp(beforeLerp, m_tempTransform.Rotation, dt * 10f);
 
-				ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
+					ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
+				}
+			}
+			else
+			{
+				for (int i = 0; i < 2; ++i)
+				{
+					ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
+
+					m_tempTransform.Rotation = Vector3.Lerp(m_tempTransform.Rotation, m_turretGuns[i].restingRotation, dt * 10f);
+
+					ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
+				}
 			}
 
-
 			//Fire
-			if(m_runStateInfo.bossTurretReady)
+			if(m_runStateInfo.bossTurretShouldFire && m_runStateInfo.bossTurretReady)
 			{
 				m_runStateInfo.bossShootTimer += dt;
 
-				if (m_runStateInfo.bossShootTimer > m_bossShootingDelay)
+				if (m_runStateInfo.bossShootTimer > m_bossShootingDelay && !m_runStateInfo.bossShootReloading)
 				{
-					ECS.PlayAudio(entityID, 3, "SFX");
 					m_runStateInfo.bossShootTimer = 0f;
+					m_runStateInfo.bossShootCount++;
 
-					L2Boss.m_singleton.SetColorTurretFiring();
-
-					for (int i = 0; i < 2; ++i)
+					if (m_runStateInfo.bossShootCount > m_bossShootCountLimit)
 					{
-						Vector3 up = Transform.GetUpVector(m_turretGuns[i].ID_shootPoint);
-						Vector3 shootPos = ECS.GetGlobalPosition(m_turretGuns[i].ID_shootPoint);
-						Vector3 forwardVec = Transform.GetForwardVector(m_turretGuns[i].ID_shootPoint);
-						Vector3 right = Vector3.CrossProduct(forwardVec, up);
+						m_runStateInfo.bossShootCount = 0;
+						m_runStateInfo.bossShootTimer = 0f;
+						m_runStateInfo.bossShootReloading = true;
 
-						GameUtilities.FireEnemyBullet(
-							m_turretGuns[i].ID_shootPoint,
-							shootPos + up * 0.2f,
-							forwardVec, 14.0f, 3.0f);
+						L2Boss.m_singleton.SetColorTurretRecovery();
+					}
+					else
+					{
+						L2Boss.m_singleton.SetColorTurretFiring();
+						ECS.PlayAudio(entityID, 3, "SFX");
 
-						GameUtilities.FireEnemyBullet(
-							m_turretGuns[i].ID_shootPoint,
-							shootPos - up * 0.2f,
-							forwardVec, 14.0f, 3.0f);
+						for (int i = 0; i < 2; ++i)
+						{
+							Vector3 up = Transform.GetUpVector(m_turretGuns[i].ID_shootPoint);
+							Vector3 shootPos = ECS.GetGlobalPosition(m_turretGuns[i].ID_shootPoint);
+							Vector3 forwardVec = Transform.GetForwardVector(m_turretGuns[i].ID_shootPoint);
+							Vector3 right = Vector3.CrossProduct(forwardVec, up);
 
-						GameUtilities.FireEnemyBullet(
-							m_turretGuns[i].ID_shootPoint,
-							shootPos + right * 0.2f,
-							forwardVec, 14.0f, 3.0f);
+							GameUtilities.FireEnemyBullet(
+								m_turretGuns[i].ID_shootPoint,
+								shootPos + up * 0.2f,
+								forwardVec, 14.0f, 3.0f);
 
-						GameUtilities.FireEnemyBullet(
-							m_turretGuns[i].ID_shootPoint,
-							shootPos - right * 0.2f,
-							forwardVec, 14.0f, 3.0f);
+							GameUtilities.FireEnemyBullet(
+								m_turretGuns[i].ID_shootPoint,
+								shootPos - up * 0.2f,
+								forwardVec, 14.0f, 3.0f);
+
+							GameUtilities.FireEnemyBullet(
+								m_turretGuns[i].ID_shootPoint,
+								shootPos + right * 0.2f,
+								forwardVec, 14.0f, 3.0f);
+
+							GameUtilities.FireEnemyBullet(
+								m_turretGuns[i].ID_shootPoint,
+								shootPos - right * 0.2f,
+								forwardVec, 14.0f, 3.0f);
+						}
+					}
+				}
+				else if(m_runStateInfo.bossShootReloading)
+				{
+					if(m_runStateInfo.bossShootTimer > m_bossShootingCoolDown)
+					{
+						m_runStateInfo.bossShootReloading = false;
+						m_runStateInfo.bossShootTimer = -0.2f;
+
+						L2Boss.m_singleton.SetTurretColors();
+						L2Boss.m_singleton.SetColorTurretPreparingFire();
 					}
 				}
 			}
@@ -335,6 +550,24 @@ namespace Scripting
 		{
 			m_runStateInfo.lastState = L2Boss.m_singleton.current_state;
 			L2Boss.m_singleton.SetState(nextState.ToString());
+
+
+			switch (L2Boss.m_singleton.current_state)
+			{
+				case L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK:
+				{
+					m_runStateInfo.bossShootReloading = true;
+					m_runStateInfo.bossShootTimer = m_bossShootingCoolDown;
+					m_runStateInfo.bossShootCount = 0;
+				}
+				break;
+				case L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
+				{
+					c_playedSpawnAnimation = false;
+					c_spawnedEnemies = false;
+				}
+				break;
+			}
 
 			if (!dontResetTimer)
 				m_runStateInfo.timer = 0f;
