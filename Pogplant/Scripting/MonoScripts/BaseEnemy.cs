@@ -135,7 +135,6 @@ namespace Scripting
         //private Animator animator = null;
         //private EnemyManager em;
         private uint laser_object_id; // entityID to the laser object (optional)
-        private uint Laser_Particle;
         private uint Laser_object;
         private float current_time;
         //private int current_interval = 0;
@@ -171,9 +170,7 @@ namespace Scripting
                 if (attack_animation == "Laser")
                 {
                     laser_object_id = ECS.FindChildEntityWithName(owner.id, "Laser1");
-                    Laser_Particle = ECS.FindChildEntityWithName(laser_object_id, "LaserParticle");
                     Laser_object = ECS.FindChildEntityWithName(laser_object_id, "LaserObject");
-                    ECS.SetActive(Laser_Particle, false);
                     ECS.SetActive(Laser_object, false);
                     Console.WriteLine("Laser entity is " + laser_object_id);
                 }
@@ -240,7 +237,6 @@ namespace Scripting
                 is_finished = true;
                 if (attack_animation == "Laser")
                 {
-                    ECS.SetActive(Laser_Particle, false);
                     ECS.ResetLaser(Laser_object);
                     //GameUtilities.StartLaser(laser_object_id);
                 }

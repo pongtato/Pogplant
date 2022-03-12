@@ -165,9 +165,7 @@ namespace Scripting
             if (prefab_name == "Enemy_03")
             {
                 uint laser_object_id = ECS.FindChildEntityWithName(instance.id, "Laser1");
-                uint Laser_Particle = ECS.FindChildEntityWithName(laser_object_id, "LaserParticle");
                 uint Laser_object = ECS.FindChildEntityWithName(laser_object_id, "LaserObject");
-                ECS.SetActive(Laser_Particle, false);
                 ECS.SetActive(Laser_object, false);
             }
 
