@@ -160,6 +160,17 @@ namespace Scripting
         GameObject CreateEnemyInstance(string prefab_name, Transform location)
         {
             GameObject instance = GameUtilities.InstantiateObject(prefab_name, location.Position, location.Rotation);
+
+            // override some behaviour for laser enemy
+            if (prefab_name == "Enemy_03")
+            {
+                uint laser_object_id = ECS.FindChildEntityWithName(instance.id, "Laser1");
+                uint Laser_Particle = ECS.FindChildEntityWithName(laser_object_id, "LaserParticle");
+                uint Laser_object = ECS.FindChildEntityWithName(laser_object_id, "LaserObject");
+                ECS.SetActive(Laser_Particle, false);
+                ECS.SetActive(Laser_object, false);
+            }
+
             enemy_instances.Add(instance);
             return instance;
         }

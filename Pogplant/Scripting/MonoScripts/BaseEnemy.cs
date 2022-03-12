@@ -135,11 +135,14 @@ namespace Scripting
         //private Animator animator = null;
         //private EnemyManager em;
         private uint laser_object_id; // entityID to the laser object (optional)
+        private uint Laser_Particle;
+        private uint Laser_object;
         private float current_time;
         //private int current_interval = 0;
         private float fire_timer = 0.0f;
         private bool is_finished = false;
 
+        private bool isInit = false;
         private bool is_primed = false;
         private bool is_reseting = false;
         private float primer_timer;
@@ -162,35 +165,28 @@ namespace Scripting
 
 
             // Play animation once, runtime initialization
-            if (owner != null)
+            if (!isInit)
             {
-                //animator = owner.GetComponentInChildren<Animator>();
-                //em = manager;
-                //animator.Play(attack_animation);
-
-                //muzzle_transforms = owner.GetComponent<BaseEnemy>().muzzles;
-                //is_primed = false;
-                //primer_timer = primer_time;
+                isInit = true;
+                if (attack_animation == "Laser")
+                {
+                    laser_object_id = ECS.FindChildEntityWithName(owner.id, "Laser1");
+                    Laser_Particle = ECS.FindChildEntityWithName(laser_object_id, "LaserParticle");
+                    Laser_object = ECS.FindChildEntityWithName(laser_object_id, "LaserObject");
+                    ECS.SetActive(Laser_Particle, false);
+                    ECS.SetActive(Laser_object, false);
+                    Console.WriteLine("Laser entity is " + laser_object_id);
+                }
             }
 
             if (is_reseting)
             {
-                //resets primer and reset
-                //is_primed = false;
-                //is_reseting = false;
                 primer_timer = primer_time;
             }
 
             //countdown for attack to prime itself
             primer_timer -= dt;
             if (primer_timer <= 0.001f) is_primed = true;
-
-            //checks for is_reseting
-            //if (is_reseting == false)
-            //{
-            //    float temp = current_time + primer_time;
-            //    if (temp <= duration) is_reseting = true;
-            //}
 
             current_time += dt;
             fire_timer += dt;
@@ -199,26 +195,6 @@ namespace Scripting
             if (fire_timer >= fire_rate && is_primed == true && is_reseting == false)
             {
                 fire_timer = 0.0f;
-
-                //for (int i = 0; i < muzzle_transforms.Length; ++i)
-                //{
-                //    if (current_interval == true_bullet_interval)
-                //    {
-                //        current_interval = 0;
-
-                //        //FireBullet(em.GetBullet(true), i);
-                //        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id), true);
-                //        //Debug.Log("Firing true bullet");
-                //    }
-                //    else
-                //    {
-                //        ++current_interval;
-                //        //FireBullet(em.GetBullet(false), i);
-                //        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id));
-                //        //Debug.Log("Firing false bullet");
-                //    }
-                //}
-                //Console.WriteLine("Firing bullet");
 
                 if (attack_animation == "Spiral")
                 {
@@ -242,26 +218,32 @@ namespace Scripting
                     GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + direction * 0.3f, direction, bullet_speed, 10.0f);
 
                 }
-                else if (attack_animation == "Lazer")
+                else if (attack_animation == "Laser")
                 {
-                    if (!ECS.CheckValidEntity(laser_object_id))
-                    {
-                        laser_object_id = ECS.FindChildEntityWithName(owner.id,"Laser1");
-                    }
-
-                    GameUtilities.StartLaser(laser_object_id);
+                    //ECS.SetActive(Laser_Particle, false);
+                    ECS.ResetLaser(Laser_object);
                 }
                 else
                     GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, Transform.GetForwardVector(owner.id), bullet_speed, 3.0f);
 
                 ECS.PlayAudio(owner.id, 3, "SFX");
             }
+            else if (attack_animation == "Laser")
+            {
+                //ECS.SetActive(Laser_Particle, true);
+                ECS.SetLaserStart(Laser_object, true);
+            }
 
 
             if (current_time >= duration)
             {
                 is_finished = true;
-                //animator.Play("Default");
+                if (attack_animation == "Laser")
+                {
+                    ECS.SetActive(Laser_Particle, false);
+                    ECS.ResetLaser(Laser_object);
+                    //GameUtilities.StartLaser(laser_object_id);
+                }
             }
 
             return is_finished;

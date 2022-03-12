@@ -20,7 +20,6 @@ namespace Scripting
 
         public Laser() 
         {
-
         }
 
         public override void Start()
@@ -32,7 +31,6 @@ namespace Scripting
         {
             //If do not want the charging stuff, add bool to laser component to enable/disable it.
             //There will be a check with ECS at start for the bool here to skip the charge particle stuff
-
             //Self-laser ID
             entityID = _entityID;
             Laser_Particle = ECS.FindChildEntityWithName(entityID, "LaserParticle");
