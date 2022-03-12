@@ -15744,7 +15744,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 15.876339912414551,
+				"m_FrameCounter" : 24.424020767211914,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -15757,8 +15757,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.125
+					0.0,
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15810,7 +15810,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 15.876339912414551,
+				"m_FrameCounter" : 24.424020767211914,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -15823,8 +15823,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.125
+					0.0,
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15876,7 +15876,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 118.54222106933594,
+				"m_FrameCounter" : 76.284751892089844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -15890,7 +15890,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.9375
+					0.609375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -15942,7 +15942,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 15.876339912414551,
+				"m_FrameCounter" : 24.424020767211914,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -15955,8 +15955,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.125
+					0.0,
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -16008,7 +16008,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 89.103599548339844,
+				"m_FrameCounter" : 64.213676452636719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -16021,8 +16021,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.703125
+					0.0,
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -16074,7 +16074,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 15.876339912414551,
+				"m_FrameCounter" : 24.424020767211914,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -16087,8 +16087,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.125
+					0.0,
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -16140,7 +16140,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 118.54222106933594,
+				"m_FrameCounter" : 76.284751892089844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -16154,7 +16154,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.9375
+					0.609375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -16206,7 +16206,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 59.350734710693359,
+				"m_FrameCounter" : 36.599369049072266,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -16219,8 +16219,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.46875
+					0.0,
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -16272,7 +16272,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 118.54222106933594,
+				"m_FrameCounter" : 76.284751892089844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -16286,7 +16286,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.9375
+					0.609375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -16338,7 +16338,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 88.948165893554688,
+				"m_FrameCounter" : 39.68182373046875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -16351,8 +16351,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.703125
+					0.5,
+					0.3125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -16404,7 +16404,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 59.350734710693359,
+				"m_FrameCounter" : 36.599369049072266,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -16417,8 +16417,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.46875
+					0.0,
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -72733,6 +72733,197 @@
 				0.99999523162841797,
 				0.99999392032623291,
 				0.99977284669876099
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Level2_SegmentTriggers",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "421b11bb-886c-463c-a149-6cece48ab115",
+			"prefab_path" : "Resources\\Prefabs\\Level2_SegmentTriggers.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "WAVETRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_5",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Level2_SegmentFive"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.651065826416016,
+				-130.35838317871094,
+				-329.46307373046875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "WAVETRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				1.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_4",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Level2_SegmentFour"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-101.36864471435547,
+				84.614753723144531,
+				-322.5133056640625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "WAVETRIGGERS",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				5.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Level2_SegmentTwo"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				8.490260124206543,
+				-140.01803588867188
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	}
