@@ -342,21 +342,6 @@ namespace Scripting
 			m_runStateInfo.timeSinceLastDamageTimer += dt;
 			m_runStateInfo.timeSinceLastSpawnTimer += dt;
 
-			/*if (L1Boss.m_singleton.left_ball_protection || L1Boss.m_singleton.right_ball_protection)
-			{
-				UpdateShootingBehaviour(dt);
-
-				if (m_runStateInfo.leftBallHealth <= 0 && m_runStateInfo.rightBallHealth <= 0)
-				{
-					//Reset health
-					m_runStateInfo.leftBallHealth = mh_leftBallHealth;
-					m_runStateInfo.rightBallHealth = mh_rightBallHealth;
-
-					//Go back to moving state
-					Console.WriteLine("L1BossBehaviour.cs: Boss returning to moving state");
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
-				}
-			}//*/
 
 			switch (L1Boss.m_singleton.current_state)
 			{
@@ -614,12 +599,6 @@ namespace Scripting
 
 		void TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false, bool dontResetTimer = false)
 		{
-			if(nextState == L1Boss.BOSS_BEHAVIOUR_STATE.MOVING)
-			{
-				//Add boss core to lock on list
-				//FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
-			}
-
 			m_runStateInfo.lastState = L1Boss.m_singleton.current_state;
 			L1Boss.m_singleton.SetState(nextState.ToString());
 

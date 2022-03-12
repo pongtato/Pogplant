@@ -719,6 +719,33 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\CoreHit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\CoreHitProtected.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\BossGunCharge.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\BossGunFire.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.55400002002716064
+			}
+		},
 		"Children" : 0,
 		"Name" : 
 		{
@@ -734,8 +761,23 @@
 		"ScriptVariables" : 
 		[
 			{
+				"Data" : 200.0,
+				"Name" : "CoreHealth",
+				"Type" : 0
+			},
+			{
+				"Data" : 70.0,
+				"Name" : "LeftBallHealth",
+				"Type" : 0
+			},
+			{
 				"Data" : 1.7000000476837158,
 				"Name" : "LockOnOffSet",
+				"Type" : 0
+			},
+			{
+				"Data" : 70.0,
+				"Name" : "RightBallHealth",
 				"Type" : 0
 			}
 		],
@@ -1443,7 +1485,7 @@
 		}
 	},
 	{
-		"Children" : 5,
+		"Children" : 6,
 		"Name" : 
 		{
 			"m_Name" : "Left_ColourTurret_Body_Pivot",
@@ -1494,6 +1536,39 @@
 				0.99993479251861572,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shoot",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.000476837158203125,
+				0.53360223770141602,
+				4.3017935752868652
+			],
+			"m_rotation" : 
+			[
+				5.0669033413441866e-09,
+				2.5337718589923952e-09,
+				-5.0628154521102555e-16
+			],
+			"m_scale" : 
+			[
+				1.0000004768371582,
+				1.0,
+				1.0007418394088745
 			]
 		}
 	},
@@ -2131,9 +2206,44 @@
 			],
 			"UseLight" : 1
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 2,
+				"Name" : "BossLevel",
+				"Type" : 1
+			},
+			{
+				"Data" : 0,
+				"Name" : "CoreNumber",
+				"Type" : 1
+			},
+			{
+				"Data" : 1.0,
+				"Name" : "LockOnOffSet",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"BossHitbox" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"isStatic" : false,
+			"isTrigger" : true,
+			"radius" : 0.72000002861022949
+		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "Targetable"
 		},
 		"Transform" : 
 		{
@@ -2146,7 +2256,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -3038,7 +3148,7 @@
 		}
 	},
 	{
-		"Children" : 5,
+		"Children" : 6,
 		"Name" : 
 		{
 			"m_Name" : "Right_ColourTurret_Body_Pivot",
@@ -3089,6 +3199,39 @@
 				1.0,
 				1.0000002384185791,
 				1.0000002384185791
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shoot",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.5367431640625e-07,
+				0.53400039672851562,
+				4.28179931640625
+			],
+			"m_rotation" : 
+			[
+				-3.4874766186021589e-08,
+				1.7414405917293152e-08,
+				-3.1194190568302471e-15
+			],
+			"m_scale" : 
+			[
+				1.0000003576278687,
+				0.99999970197677612,
+				1.0007416009902954
 			]
 		}
 	},
@@ -4056,9 +4199,44 @@
 			],
 			"UseLight" : 1
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 2,
+				"Name" : "BossLevel",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "CoreNumber",
+				"Type" : 1
+			},
+			{
+				"Data" : 1.0,
+				"Name" : "LockOnOffSet",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"BossHitbox" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"isStatic" : false,
+			"isTrigger" : true,
+			"radius" : 0.72000002861022949
+		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "Targetable"
 		},
 		"Transform" : 
 		{
@@ -4071,7 +4249,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -5868,6 +6046,11 @@
 				"Data" : 2.0,
 				"Name" : "SlowForce",
 				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Name" : "Turbulence",
+				"Type" : 2
 			}
 		],
 		"Scripting" : 

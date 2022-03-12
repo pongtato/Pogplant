@@ -91,13 +91,25 @@ namespace Scripting
 							case 1:
 								L1BossBehaviour.m_singleton?.DamageRightCore(1f);
 								break;
-							case 2:
-							{
-
-								break;
-							}
 							default:
-								Console.WriteLine("BossHitbox.cs: Unknown core number");
+								Console.WriteLine("BossHitbox.cs: Lvl1 Unknown core number");
+								break;
+						}
+					}
+					break;
+
+					case 2:
+					{
+						switch (m_coreNumber)
+						{
+							case 0:
+								L2BossBehaviour.m_singleton?.DamageLeftCore(1f);
+								break;
+							case 1:
+								L2BossBehaviour.m_singleton?.DamageRightCore(1f);
+								break;
+							default:
+								Console.WriteLine("BossHitbox.cs: Lvl2 Unknown core number");
 								break;
 						}
 					}
