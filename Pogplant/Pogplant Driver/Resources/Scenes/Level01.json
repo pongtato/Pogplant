@@ -54921,7 +54921,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : false,
+				"Data" : true,
 				"Name" : "NewMovement",
 				"Type" : 2
 			},
@@ -146277,7 +146277,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 113.13611602783203,
+				"m_FrameCounter" : 101.39767456054688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146291,7 +146291,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.890625
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146343,7 +146343,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 113.13611602783203,
+				"m_FrameCounter" : 101.39767456054688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146357,7 +146357,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.890625
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146409,7 +146409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.59203338623047,
+				"m_FrameCounter" : 53.284927368164062,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146422,8 +146422,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.921875
+					0.5,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146475,7 +146475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 113.13611602783203,
+				"m_FrameCounter" : 101.39767456054688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146489,7 +146489,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.890625
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146541,7 +146541,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 104.80328369140625,
+				"m_FrameCounter" : 7.2465295791625977,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -146554,8 +146554,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.828125
+					0.5,
+					0.0625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146607,7 +146607,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 113.13611602783203,
+				"m_FrameCounter" : 101.39767456054688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146621,7 +146621,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.890625
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146673,7 +146673,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.59203338623047,
+				"m_FrameCounter" : 53.284927368164062,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146686,8 +146686,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.921875
+					0.5,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146739,7 +146739,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 12.367574691772461,
+				"m_FrameCounter" : 116.69718933105469,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146753,7 +146753,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.109375
+					0.921875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146805,7 +146805,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.59203338623047,
+				"m_FrameCounter" : 53.284927368164062,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146818,8 +146818,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.921875
+					0.5,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146871,7 +146871,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 59.953929901123047,
+				"m_FrameCounter" : 3.6025700569152832,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -146885,7 +146885,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.46875
+					0.03125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146937,7 +146937,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 12.367574691772461,
+				"m_FrameCounter" : 116.69718933105469,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146951,7 +146951,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.109375
+					0.921875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -161731,6 +161731,619 @@
 			[
 				0.5,
 				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 10,
+		"Name" : 
+		{
+			"m_Name" : "MovementRigging",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.5,
+			"maxY" : 6.0,
+			"minX" : 4.5,
+			"minY" : 2.5
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 1 - Main straight",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				3.7222959995269775,
+				-24.372751235961914
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.5,
+			"maxY" : 5.5,
+			"minX" : 4.5,
+			"minY" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 3 - Top part after branch",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				63.849712371826172,
+				15.278290748596191,
+				-113.1578369140625
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 8.0,
+			"maxY" : 4.0,
+			"minX" : 9.5,
+			"minY" : 1.6000000238418579
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 4 - What they doing in my backyard",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				156.34605407714844,
+				3.3753936290740967,
+				-150.56048583984375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				15.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.0,
+			"maxY" : 2.0,
+			"minX" : 4.5,
+			"minY" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 5 - Entering Tunnel",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				156.42417907714844,
+				3.3889999389648438,
+				-218.36863708496094
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				15.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.5,
+			"maxY" : 4.0,
+			"minX" : 4.5,
+			"minY" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 6 - Underground Segment",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				147.541015625,
+				-35.064239501953125,
+				-262.60589599609375
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999988079071045,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				15.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.5,
+			"maxY" : 2.0,
+			"minX" : 4.5,
+			"minY" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 7 - Exiting Tunnel",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				72.356544494628906,
+				-35.064239501953125,
+				-262.60589599609375
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999988079071045,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.5,
+			"maxY" : 2.0,
+			"minX" : 4.5,
+			"minY" : 1.5
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 8 - After tunnel",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				35.350910186767578,
+				-5.8829746246337891,
+				-256.66729736328125
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				5.0089556680177338e-06,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999690055847168,
+				0.99999988079071045,
+				0.99999690055847168
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.0,
+			"maxY" : 2.0,
+			"minX" : 4.0,
+			"minY" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 9 - After tunnel2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				33.72625732421875,
+				-4.2215113639831543,
+				-207.25810241699219
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-42.999984741210938,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999690055847168,
+				0.99999988079071045,
+				0.99999690055847168
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 5.0,
+			"maxY" : 4.0,
+			"minX" : 5.0,
+			"minY" : 1.5
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 10 - Just before picnic",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				13.191885948181152,
+				3.2088899612426758,
+				-181.74937438964844
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999690055847168,
+				0.99999982118606567,
+				0.99999690055847168
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.5,
+			"maxY" : 5.5,
+			"minX" : 4.5,
+			"minY" : 3.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Section 2 - Top part",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				18.001436233520508,
+				15.27812671661377,
+				-113.1578369140625
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999994039535522,
 				1.0
 			]
 		}
