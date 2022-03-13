@@ -36930,7 +36930,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 8.9043397903442383,
+				"m_FrameCounter" : 103.08371734619141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -36943,8 +36943,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.078125
+					0.5,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -36996,7 +36996,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 8.9043397903442383,
+				"m_FrameCounter" : 103.08371734619141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -37009,8 +37009,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.078125
+					0.5,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37062,7 +37062,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 11.130424499511719,
+				"m_FrameCounter" : 46.605625152587891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -37075,8 +37075,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.09375
+					0.0,
+					0.375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37128,7 +37128,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 8.9043397903442383,
+				"m_FrameCounter" : 103.08371734619141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -37141,8 +37141,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.078125
+					0.5,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37194,7 +37194,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 27.697292327880859,
+				"m_FrameCounter" : 49.785240173339844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -37208,7 +37208,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.21875
+					0.390625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37260,7 +37260,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 8.9043397903442383,
+				"m_FrameCounter" : 103.08371734619141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -37273,8 +37273,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.078125
+					0.5,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37326,7 +37326,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 11.130424499511719,
+				"m_FrameCounter" : 46.605625152587891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -37339,8 +37339,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.09375
+					0.0,
+					0.375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37392,7 +37392,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 118.19901275634766,
+				"m_FrameCounter" : 43.3243408203125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -37405,8 +37405,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.9375
+					0.5,
+					0.34375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37458,7 +37458,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 11.130424499511719,
+				"m_FrameCounter" : 46.605625152587891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -37471,8 +37471,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.09375
+					0.0,
+					0.375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37524,7 +37524,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 78.799339294433594,
+				"m_FrameCounter" : 95.084892272949219,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -37537,8 +37537,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.625
+					0.5,
+					0.75
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37590,7 +37590,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 118.19901275634766,
+				"m_FrameCounter" : 43.3243408203125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -37603,8 +37603,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.9375
+					0.5,
+					0.34375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -41030,64 +41030,73 @@
 		}
 	},
 	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "PLAYERBOX",
-			"extends" : 
-			[
-				50.0,
-				20.0,
-				50.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 2,
+		"Children" : 20,
 		"Name" : 
 		{
-			"m_Name" : "PlayerBox",
+			"m_Name" : "VO Trigger Zone Parent",
 			"status" : true
 		},
-		"Rigidbody" : 
+		"PrefabInstance" : 
 		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"EncounterSystemDriver" : false,
-			"FollowSpline" : false
+			"prefab_GUID" : "3352d0f2-eea9-40eb-b7a2-8bb4bf5c80f0",
+			"prefab_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
 		},
 		"Tag" : 
 		{
-			"m_tag" : "Player"
+			"m_tag" : "Untagged"
 		},
 		"Transform" : 
 		{
 			"m_position" : 
 			[
-				1.9965819362394166e-12,
-				13.5,
-				0.60280877351760864
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				0.0001042740695993416,
+				0.0,
 				-0.0,
-				0.0001042740695993416
+				0.0
 			],
 			"m_scale" : 
 			[
-				0.10000000149011612,
-				0.10000000149011612,
-				0.10000000149011612
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_11",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -41096,44 +41105,11 @@
 		{
 			"Clip0" : 
 			{
-				"Dir" : "Resources/Audio\\VO\\GAM300_Level1_VO.ogg",
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_53.ogg",
 				"UpdatePos" : true,
 				"Volume" : 1.0
 			}
 		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "VO_AudioSource",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-8.4829371189698577e-06,
-				-4.766021728515625,
-				-6.028078556060791
-			],
-			"m_rotation" : 
-			[
-				-0.00010427404777146876,
-				-1.8977099058847813e-10,
-				-0.00010427404777146876
-			],
-			"m_scale" : 
-			[
-				10.0,
-				10.0,
-				10.0
-			]
-		}
-	},
-	{
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -41142,71 +41118,33 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : "PLAYER",
+			"collisionLayer" : "DEFAULT",
 			"extends" : 
 			[
-				1.0,
-				1.0,
+				15.0,
+				15.0,
 				1.0
 			],
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 7,
+		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "PlayerShip",
+			"m_Name" : "Prof_11",
 			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ship_Cockpit_Final_M03",
-				"Resources/Models\\Ship",
-				"Cockpit"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
 		},
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 175.0,
-				"Name" : "MovementSpeed",
-				"Type" : 0
-			},
-			{
-				"Data" : true,
-				"Name" : "NewMovement",
-				"Type" : 2
-			},
-			{
-				"Data" : 2.0,
-				"Name" : "SlowForce",
-				"Type" : 0
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
 			}
 		],
 		"Scripting" : 
 		{
-			"PlayerScript" : false
+			"TriggerAudioPlay" : false
 		},
 		"Tag" : 
 		{
@@ -41216,102 +41154,14 @@
 		{
 			"m_position" : 
 			[
-				0.035429079085588455,
-				-3.538909912109375,
-				-6.028052806854248
+				11.353147506713867,
+				-33.490291595458984,
+				-465.87368774414062
 			],
 			"m_rotation" : 
 			[
-				-179.999755859375,
+				0.0,
 				-0.0,
-				-179.999755859375
-			],
-			"m_scale" : 
-			[
-				1.9999979734420776,
-				2.0,
-				1.9999979734420776
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "PlayerTurret2",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Player_Gun",
-				"Resources/Models\\Ship",
-				"Guns"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				2.5000035762786865,
-				-0.5,
-				0.00019338043057359755
-			],
-			"m_rotation" : 
-			[
-				0.0001042740695993416,
-				-5.0089556680177338e-06,
-				0.00010427409870317206
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Muzzle",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				2.2000000476837158
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -41319,204 +41169,6 @@
 				1.0,
 				1.0,
 				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "MuzzleFlash",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				0.0,
-				0.35294118523597717,
-				0.27843138575553894
-			],
-			"RenderModel" : 
-			[
-				"Player_Turret_MuzzleFlash",
-				"Resources/Models\\Ship",
-				"Player_Turret_MuzzleFlash"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				4.0,
-				4.0,
-				4.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "PlayerTurret1",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Player_Gun",
-				"Resources/Models\\Ship",
-				"Guns"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-2.5,
-				-0.5,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0001042740695993416,
-				-5.0089556680177338e-06,
-				0.00010427409870317206
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Muzzle",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				2.2000000476837158
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "MuzzleFlash",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				0.0,
-				0.35294118523597717,
-				0.27843138575553894
-			],
-			"RenderModel" : 
-			[
-				"Player_Turret_MuzzleFlash",
-				"Resources/Models\\Ship",
-				"Player_Turret_MuzzleFlash"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				4.0,
-				4.0,
-				4.0
 			]
 		}
 	},
@@ -41525,37 +41177,46 @@
 		{
 			"Clip0" : 
 			{
-				"Dir" : "Resources/Audio\\GameBGM_JP_Low.ogg",
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_41.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.11800000071525574
-			},
-			"Clip1" : 
-			{
-				"Dir" : "Resources/Audio\\Player\\Player_Shoot.ogg",
-				"UpdatePos" : true,
-				"Volume" : 0.40700000524520874
-			},
-			"Clip2" : 
-			{
-				"Dir" : "Resources/Audio\\Player\\Player_Damaged.ogg",
-				"UpdatePos" : true,
-				"Volume" : 0.50199997425079346
+				"Volume" : 1.0
 			}
 		},
-		"Camera" : 
+		"BoxCollider" : 
 		{
-			"m_Active" : true,
-			"m_Far" : 420.0,
-			"m_Fov" : 80.0,
-			"m_Near" : 0.10000000149011612,
-			"m_Pitch" : 0.0,
-			"m_Yaw" : 0.0
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "PlayerCam",
+			"m_Name" : "Timmy_11",
 			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
 		},
 		"Tag" : 
 		{
@@ -41565,15 +41226,15 @@
 		{
 			"m_position" : 
 			[
-				-4.8056244850158691e-07,
-				0.5,
-				-1.0000004768371582
+				-1.6638021469116211,
+				-28.898445129394531,
+				-494.78744506835938
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-5.9340202022972743e-12,
-				2.0844188874935554e-10
+				-0.0,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -41587,18 +41248,8 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "ShootingBox",
+			"m_Name" : "Group_09",
 			"status" : true
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"FirstPersonFiringSystem" : false
 		},
 		"Tag" : 
 		{
@@ -41608,15 +41259,15 @@
 		{
 			"m_position" : 
 			[
-				-2.0675361156463623e-07,
-				1.0,
-				20.000019073486328
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-9.799586272660199e-13,
-				2.0844186099377993e-10
+				-0.0,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -41627,13 +41278,16 @@
 		}
 	},
 	{
-		"Children" : 0,
-		"Name" : 
+		"AudioSource" : 
 		{
-			"m_Name" : "BoxA",
-			"status" : true
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_51.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
 		},
-		"OBBBoxCollider" : 
+		"BoxCollider" : 
 		{
 			"centre" : 
 			[
@@ -41641,74 +41295,2007 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : "PLAYER PROJECTILES",
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				15.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_09",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.996109962463379,
+				-125.41874694824219,
+				-329.59732055664062
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_08",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_40.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
 			"extends" : 
 			[
 				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_08",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.1103391647338867,
+				-135.73396301269531,
+				-316.81121826171875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_50.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_08",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-82.912673950195312,
+				-144.52943420410156,
+				-316.81121826171875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_07",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_49.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				1.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_07",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-99.758819580078125,
+				-37.122951507568359,
+				-316.81121826171875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_06",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_48.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				1.0,
+				10.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_06",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-105.79041290283203,
+				83.624275207519531,
+				-324.87557983398438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_05",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_46.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_05",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-105.40421295166016,
+				101.63051605224609,
+				-243.79612731933594
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_04",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_38.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_04",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-105.76580047607422,
+				98.2030029296875,
+				-220.36711120605469
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_45.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_04",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-107.28043365478516,
+				98.202690124511719,
+				-175.83760070800781
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_03",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_44.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_03",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-25.151342391967773,
+				7.6145496368408203,
+				-164.54385375976562
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_02",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_43.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_02",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0084615945816040039,
+				5.5725345611572266,
+				-65.957160949707031
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_20",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_62.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_20",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-602.236572265625,
+				223.43386840820312,
+				-512.0106201171875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_48.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_20",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-571.47998046875,
+				223.65924072265625,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_12",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_42.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				1.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_12",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-32.299468994140625,
+				33.143478393554688,
+				-496.19482421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_54.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				18.0,
+				1.0,
+				18.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_12",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-29.155294418334961,
+				-19.38121223449707,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_13",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_43.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				1.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_13",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-32.299468994140625,
+				54.062446594238281,
+				-496.52932739257812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_14",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_55.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_14",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-63.634330749511719,
+				99.822731018066406,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_44.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_14",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-90.75640869140625,
+				94.416107177734375,
+				-496.52932739257812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_17",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_45.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_17",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-346.13153076171875,
+				127.96757507324219,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_59.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_17",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-365.66635131835938,
+				126.69013214111328,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_18",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_46.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.69999998807907104
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_18",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-539.06170654296875,
+				130.32826232910156,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_60.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_18",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-508.10671997070312,
+				137.50187683105469,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_19",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_61.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				20.0,
 				1.0,
 				20.0
 			],
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Scripting" : 
-		{
-			"FirstPersonFiringBox" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				1.5459954738616943e-07,
-				0.0,
-				-8.7618827819824219e-06
-			],
-			"m_rotation" : 
-			[
-				-6.7580420426427423e-11,
-				1.2380308367018755e-12,
-				9.8796260665582605e-16
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999505281448364
-			]
-		}
-	},
-	{
-		"Children" : 3,
+		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "BobbleBoard",
+			"m_Name" : "Prof_19",
 			"status" : true
 		},
-		"Render" : 
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
 		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Board",
-				"Resources/Models\\Bobbers",
-				"Bobber_Board"
-			],
-			"UseLight" : 1
+			"TriggerAudioPlay" : false
 		},
 		"Tag" : 
 		{
@@ -41718,234 +43305,14 @@
 		{
 			"m_position" : 
 			[
-				-0.61999976634979248,
-				-0.05818939208984375,
-				0.0040164287202060223
-			],
-			"m_rotation" : 
-			[
-				1.078407883644104,
-				-14.501582145690918,
-				-4.2992911338806152
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99997472763061523,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "BobbleBoobas",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Boobas",
-				"Resources/Models\\Bobbers",
-				"Hula_Head"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.10000002384185791,
-				0.060394287109375,
-				7.2177499532699585e-09
+				-554.589111328125,
+				198.71315002441406,
+				-496.93710327148438
 			],
 			"m_rotation" : 
 			[
 				0.0,
 				-0.0,
-				4.0523148869147686e-15
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "BoobleBoobasBody",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Boobas",
-				"Resources/Models\\Bobbers",
-				"Hula_Head_Boobas"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.00024658441543579102,
-				0.06269073486328125,
-				-1.8998980522155762e-06
-			],
-			"m_rotation" : 
-			[
-				1.3027551259980896e-11,
-				-7.9513862670781837e-16,
-				4.0523165809806631e-15
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "BobbleProf",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Prof",
-				"Resources/Models\\Bobbers",
-				"Prrof_Head"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				1.1920928955078125e-07,
-				0.05998992919921875,
-				2.3283064365386963e-10
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-5.0089556680177338e-06,
-				1.1946321536171478e-11
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "BobbleProfBody",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Prof",
-				"Resources/Models\\Bobbers",
-				"Prrof_Head_Prof_Body"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.063000001013278961,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -41957,116 +43324,15 @@
 		}
 	},
 	{
-		"Children" : 1,
-		"Name" : 
+		"AudioSource" : 
 		{
-			"m_Name" : "BobbleTimmy",
-			"status" : false
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_47.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.89899998903274536
+			}
 		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Timmy",
-				"Resources/Models\\Bobbers",
-				"Timmy_Head"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.099999427795410156,
-				0.0637054443359375,
-				-4.5299530029296875e-06
-			],
-			"m_rotation" : 
-			[
-				-1.3020047845202498e-05,
-				2.561320798122324e-06,
-				-6.4033019953058101e-07
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999982118606567
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "BobbleTimmyBody",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Timmy",
-				"Resources/Models\\Bobbers",
-				"Timmy_Body1"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -42075,12 +43341,12 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : "PLAYER PROJECTILES",
+			"collisionLayer" : "DEFAULT",
 			"extends" : 
 			[
-				50.0,
-				30.0,
-				50.0
+				20.0,
+				1.0,
+				20.0
 			],
 			"isStatic" : false,
 			"isTrigger" : true
@@ -42088,12 +43354,20 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "LaserWeapon",
+			"m_Name" : "Timmy_19",
 			"status" : true
 		},
-		"P_Scripting" : 
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
 		{
-			"LaserWeapon" : false
+			"TriggerAudioPlay" : false
 		},
 		"Tag" : 
 		{
@@ -42103,15 +43377,579 @@
 		{
 			"m_position" : 
 			[
-				-3.7252902984619141e-09,
-				0.0,
-				55.0
+				-554.589111328125,
+				168.7333984375,
+				-496.93710327148438
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-1.2071197990834448e-13,
-				2.0844186099377993e-10
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_01",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_42.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				11.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_01",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				5.6031007766723633,
+				-1.8284621238708496
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_37.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_01",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				5.6031007766723633,
+				-48.739521026611328
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_15",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_56.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_15",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-124.57440948486328,
+				99.822731018066406,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_16",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_57.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_16",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-246.95968627929688,
+				100.25508117675781,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_58.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_16_2",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-302.1162109375,
+				126.69013214111328,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_10",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_52.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				1.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_10",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.522404670715332,
+				-107.45841217041016,
+				-449.76406860351562
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -42125,138 +43963,28 @@
 		"Children" : 5,
 		"Name" : 
 		{
-			"m_Name" : "DashBoard",
+			"m_Name" : "Actual_Nuke",
 			"status" : true
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
-				1.0,
-				1.0,
+				0.0,
+				0.20468282699584961,
 				1.0
 			],
 			"EmissiveTint" : 
 			[
-				1.0,
-				1.0,
+				0.0,
+				0.20392157137393951,
 				1.0
 			],
 			"RenderModel" : 
 			[
-				"Ship_Cockpit_Final_M03",
+				"Nuke",
 				"Resources/Models\\Ship",
-				"DashBoard"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-3.1726032391488079e-13,
-				2.0844186099377993e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Projector",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ship_Cockpit_Final_M03",
-				"Resources/Models\\Ship",
-				"Projector"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-3.6775163602818968e-15,
-				1.0453986402597193e-15
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 4,
-		"Name" : 
-		{
-			"m_Name" : "DashboardScreenFace",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ship_Cockpit_Final_M03",
-				"Resources/Models\\Ship",
-				"AI_PC"
+				"Nuke_Inner"
 			],
 			"UseLight" : 1
 		},
@@ -42266,9 +43994,45 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "s1_s2_transition",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "s2_s3_transition",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.30000001192092896,
+				"Name" : "s3_s4_transition",
+				"Type" : 0
+			},
+			{
+				"Data" : 1.0,
+				"Name" : "s4_s5_transition",
+				"Type" : 0
+			}
+		],
 		"Scripting" : 
 		{
-			"DashboardScreen" : false
+			"PlayerNuke" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 2.2599999904632568
 		},
 		"Tag" : 
 		{
@@ -42278,15 +44042,15 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
+				6.9405040740966797,
+				-10.15313720703125,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-5.2677936136975335e-15,
-				1.0459477293677769e-15
+				-0.0,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -42300,336 +44064,28 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Screen",
+			"m_Name" : "Nuke_Outer_Outline",
 			"status" : true
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
-				1.0,
-				1.0,
+				0.0,
+				0.34525251388549805,
 				1.0
 			],
 			"EmissiveTint" : 
 			[
-				1.0,
-				1.0,
+				0.0,
+				0.2046511173248291,
 				1.0
 			],
 			"RenderModel" : 
 			[
-				"Ship_Cockpit_Final_M03",
+				"Nuke",
 				"Resources/Models\\Ship",
-				"Screen"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-1.6499126080670758e-14,
-				1.045987328158061e-15
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : true,
-			"m_Ortho" : false,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "AI_Neutral.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Neutral Face",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.58779358863830566,
-				0.1086883544921875,
-				-0.17139142751693726
-			],
-			"m_rotation" : 
-			[
-				164.99992370605469,
-				-9.9999446868896484,
-				179.99989318847656
-			],
-			"m_scale" : 
-			[
-				0.17500001192092896,
-				0.17500001192092896,
-				1.0000004768371582
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : true,
-			"m_Ortho" : false,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "AI_Happy.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Happy Face",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.58822435140609741,
-				0.10756683349609375,
-				-0.17089886963367462
-			],
-			"m_rotation" : 
-			[
-				164.99992370605469,
-				-9.9999961853027344,
-				-179.99989318847656
-			],
-			"m_scale" : 
-			[
-				0.1749994307756424,
-				0.1750018298625946,
-				1.0000002384185791
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : true,
-			"m_Ortho" : false,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "AI_Hurt.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Hurt Face",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.58634364604949951,
-				0.1082916259765625,
-				-0.17200000584125519
-			],
-			"m_rotation" : 
-			[
-				164.99992370605469,
-				-9.9999475479125977,
-				-179.99989318847656
-			],
-			"m_scale" : 
-			[
-				0.17500001192092896,
-				0.17499998211860657,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Screen_Shell",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ship_Cockpit_Final_M03",
-				"Resources/Models\\Ship",
-				"Screen_Shell"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-5.8641471602119237e-15,
-				1.0454038283365212e-15
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Screen001",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Ship_Cockpit_Final_M03",
-				"Resources/Models\\Ship",
-				"Screen001"
+				"Nuke_Outer_Outline"
 			],
 			"UseLight" : 1
 		},
@@ -42649,7 +44105,7 @@
 			[
 				0.0,
 				-0.0,
-				1.0454041459738764e-15
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -42663,44 +44119,54 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Score_Text_Title",
+			"m_Name" : "Nuke_Outer_Spikes",
 			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.962119460105896,
+				0.52093023061752319
+			],
+			"EmissiveTint" : 
+			[
+				0.96744191646575928,
+				1.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer_Spikes"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
 		},
-		"Text" : 
+		"Transform" : 
 		{
-			"m_Color" : 
+			"m_position" : 
 			[
 				0.0,
-				0.42790699005126953,
-				1.0
-			],
-			"m_FontID" : "Ruda",
-			"m_Ortho" : false,
-			"m_Text" : "Score"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.17691507935523987,
-				0.00553131103515625,
-				-0.12679430842399597
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				149.99995422363281,
-				2.6055158031113024e-11,
-				-179.99989318847656
+				0.0,
+				-0.0,
+				0.0
 			],
 			"m_scale" : 
 			[
-				0.99999213218688965,
-				0.99999874830245972,
-				0.99999386072158813
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -42708,44 +44174,164 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Score_Text",
+			"m_Name" : "Nuke_Swirl",
 			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.96724772453308105,
+				0.5767441987991333
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.83529412746429443,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Swirl"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
 		},
-		"Text" : 
+		"Transform" : 
 		{
-			"m_Color" : 
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
 			[
 				1.0,
-				0.72685772180557251,
-				0.004651188850402832
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.49302327632904053,
+				0.73826372623443604,
+				1.0
 			],
-			"m_FontID" : "Ruda",
-			"m_Ortho" : false,
-			"m_Text" : "00000000"
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.59536528587341309,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
 		},
 		"Transform" : 
 		{
 			"m_position" : 
 			[
-				0.24571403861045837,
-				-0.082672119140625,
-				-0.16531179845333099
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				149.99995422363281,
-				2.3958174333316151e-10,
-				-179.99989318847656
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_scale" : 
 			[
-				0.79999971389770508,
-				0.80000406503677368,
-				0.80000615119934082
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwaves",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.53023254871368408,
+				0.78368842601776123,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.32093024253845215,
+				0.89577066898345947,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Shockwaves"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -92797,73 +94383,64 @@
 		}
 	},
 	{
-		"Children" : 20,
-		"Name" : 
+		"BoxCollider" : 
 		{
-			"m_Name" : "VO Trigger Zone Parent",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "3352d0f2-eea9-40eb-b7a2-8bb4bf5c80f0",
-			"prefab_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
+			"centre" : 
 			[
 				0.0,
 				0.0,
 				0.0
 			],
-			"m_rotation" : 
+			"collisionLayer" : "PLAYERBOX",
+			"extends" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				50.0,
+				20.0,
+				50.0
 			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
+			"isStatic" : false,
+			"isTrigger" : true
+		},
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Group_11",
+			"m_Name" : "PlayerBox",
 			"status" : true
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"EncounterSystemDriver" : false,
+			"FollowSpline" : false
 		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "Player"
 		},
 		"Transform" : 
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				1.9965819362394166e-12,
+				13.5,
+				0.60280877351760864
 			],
 			"m_rotation" : 
 			[
-				0.0,
+				0.0001042740695993416,
 				-0.0,
-				0.0
+				0.0001042740695993416
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
 			]
 		}
 	},
@@ -92872,150 +94449,15 @@
 		{
 			"Clip0" : 
 			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_53.ogg",
+				"Dir" : "Resources/Audio\\VO\\GAM300_Level1_VO.ogg",
 				"UpdatePos" : true,
 				"Volume" : 1.0
 			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				15.0,
-				15.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
 		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Prof_11",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				11.353147506713867,
-				-33.490291595458984,
-				-465.87368774414062
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_41.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				15.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_11",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-1.6638021469116211,
-				-28.898445129394531,
-				-494.78744506835938
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Group_09",
+			"m_Name" : "VO_AudioSource",
 			"status" : true
 		},
 		"Tag" : 
@@ -93026,843 +94468,125 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				-8.4829371189698577e-06,
+				-4.766021728515625,
+				-6.028078556060791
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-0.00010427404777146876,
+				-1.8977099058847813e-10,
+				-0.00010427404777146876
 			],
 			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_51.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				15.0,
-				15.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_09",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				12.996109962463379,
-				-125.41874694824219,
-				-329.59732055664062
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_08",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_40.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				15.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_08",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-6.1103391647338867,
-				-135.73396301269531,
-				-316.81121826171875
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_50.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				15.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_08",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-82.912673950195312,
-				-144.52943420410156,
-				-316.81121826171875
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Group_07",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_49.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				15.0,
-				1.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_07",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-99.758819580078125,
-				-37.122951507568359,
-				-316.81121826171875
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Group_06",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_48.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
 			[
 				10.0,
-				1.0,
-				10.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_06",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-105.79041290283203,
-				83.624275207519531,
-				-324.87557983398438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Group_05",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_46.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				12.0,
-				12.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_05",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-105.40421295166016,
-				101.63051605224609,
-				-243.79612731933594
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_04",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_38.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				10.0,
-				10.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_04",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-105.76580047607422,
-				98.2030029296875,
-				-220.36711120605469
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_45.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				10.0,
-				10.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_04",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-107.28043365478516,
-				98.202690124511719,
-				-175.83760070800781
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Group_03",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_44.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
 				10.0,
 				10.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplier1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplier2.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplier3.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplierEnd.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.50199997425079346
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYER",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			],
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 0,
+		"Children" : 7,
 		"Name" : 
 		{
-			"m_Name" : "Prof_03",
+			"m_Name" : "PlayerShip",
 			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"Cockpit"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
 		},
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
+				"Data" : 175.0,
+				"Name" : "MovementSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Name" : "NewMovement",
+				"Type" : 2
+			},
+			{
+				"Data" : 2.0,
+				"Name" : "SlowForce",
+				"Type" : 0
 			}
 		],
 		"Scripting" : 
 		{
-			"TriggerAudioPlay" : false
+			"PlayerScript" : false
 		},
 		"Tag" : 
 		{
@@ -93872,14 +94596,179 @@
 		{
 			"m_position" : 
 			[
-				-25.151342391967773,
-				7.6145496368408203,
-				-164.54385375976562
+				0.035429079085588455,
+				-3.538909912109375,
+				-6.028052806854248
+			],
+			"m_rotation" : 
+			[
+				-179.999755859375,
+				-0.0,
+				-179.999755859375
+			],
+			"m_scale" : 
+			[
+				1.9999979734420776,
+				2.0,
+				1.9999979734420776
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "BobbleBoard",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Board",
+				"Resources/Models\\Bobbers",
+				"Bobber_Board"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.61999976634979248,
+				-0.05818939208984375,
+				0.0040164287202060223
+			],
+			"m_rotation" : 
+			[
+				1.078407883644104,
+				-14.501582145690918,
+				-4.2992911338806152
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99997472763061523,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmy",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.099999427795410156,
+				0.0637054443359375,
+				-4.5299530029296875e-06
+			],
+			"m_rotation" : 
+			[
+				-1.3020047845202498e-05,
+				2.561320798122324e-06,
+				-6.4033019953058101e-07
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999982118606567
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmyBody",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Body1"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -93894,8 +94783,30 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Group_02",
-			"status" : true
+			"m_Name" : "BobbleBoobas",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -93905,15 +94816,15 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				0.10000002384185791,
+				0.060394287109375,
+				7.2177499532699585e-09
 			],
 			"m_rotation" : 
 			[
 				0.0,
 				-0.0,
-				0.0
+				4.0523148869147686e-15
 			],
 			"m_scale" : 
 			[
@@ -93924,50 +94835,33 @@
 		}
 	},
 	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_43.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				10.0,
-				10.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Prof_02",
-			"status" : true
+			"m_Name" : "BoobleBoobasBody",
+			"status" : false
 		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
+		"Render" : 
 		{
-			"TriggerAudioPlay" : false
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head_Boobas"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -93977,15 +94871,15 @@
 		{
 			"m_position" : 
 			[
-				0.0084615945816040039,
-				5.5725345611572266,
-				-65.957160949707031
+				0.00024658441543579102,
+				0.06269073486328125,
+				-1.8998980522155762e-06
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				1.3027551259980896e-11,
+				-7.9513862670781837e-16,
+				4.0523165809806631e-15
 			],
 			"m_scale" : 
 			[
@@ -93996,11 +94890,33 @@
 		}
 	},
 	{
-		"Children" : 2,
+		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Group_20",
-			"status" : true
+			"m_Name" : "BobbleProf",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -94010,15 +94926,15 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				1.1920928955078125e-07,
+				0.05998992919921875,
+				2.3283064365386963e-10
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
-				0.0
+				-5.0089556680177338e-06,
+				1.1946321536171478e-11
 			],
 			"m_scale" : 
 			[
@@ -94029,155 +94945,33 @@
 		}
 	},
 	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_62.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				20.0,
-				20.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Prof_20",
-			"status" : true
+			"m_Name" : "BobbleProfBody",
+			"status" : false
 		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
+		"Render" : 
 		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
+			"ColorTint" : 
 			[
-				-602.236572265625,
-				223.43386840820312,
-				-512.0106201171875
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
 			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
+			"EmissiveTint" : 
 			[
 				1.0,
 				1.0,
 				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_48.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
 			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
+			"RenderModel" : 
 			[
-				1.0,
-				20.0,
-				20.0
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head_Prof_Body"
 			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_20",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-571.47998046875,
-				223.65924072265625,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_12",
-			"status" : true
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -94188,157 +94982,13 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				0.063000001013278961,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_42.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
 				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				15.0,
-				1.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_12",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-32.299468994140625,
-				33.143478393554688,
-				-496.19482421875
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_54.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				18.0,
-				1.0,
-				18.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_12",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-29.155294418334961,
-				-19.38121223449707,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -94353,8 +95003,18 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Group_13",
+			"m_Name" : "ShootingBox",
 			"status" : true
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"FirstPersonFiringSystem" : false
 		},
 		"Tag" : 
 		{
@@ -94364,15 +95024,15 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				-2.0675361156463623e-07,
+				1.0,
+				20.000019073486328
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
-				0.0
+				-9.799586272660199e-13,
+				2.0844186099377993e-10
 			],
 			"m_scale" : 
 			[
@@ -94383,121 +95043,13 @@
 		}
 	},
 	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_43.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				15.0,
-				1.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Timmy_13",
+			"m_Name" : "BoxA",
 			"status" : true
 		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-32.299468994140625,
-				54.062446594238281,
-				-496.52932739257812
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_14",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_55.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
+		"OBBBoxCollider" : 
 		{
 			"centre" : 
 			[
@@ -94505,564 +95057,19 @@
 				0.0,
 				0.0
 			],
-			"collisionLayer" : "DEFAULT",
+			"collisionLayer" : "PLAYER PROJECTILES",
 			"extends" : 
 			[
 				1.0,
-				15.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_14",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-63.634330749511719,
-				99.822731018066406,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_44.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				15.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_14",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-90.75640869140625,
-				94.416107177734375,
-				-496.52932739257812
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_17",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_45.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				20.0,
-				20.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_17",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-346.13153076171875,
-				127.96757507324219,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_59.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				20.0,
-				20.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_17",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-365.66635131835938,
-				126.69013214111328,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_18",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_46.ogg",
-				"UpdatePos" : true,
-				"Volume" : 0.69999998807907104
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				20.0,
-				20.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_18",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-539.06170654296875,
-				130.32826232910156,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_60.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				20.0,
-				20.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_18",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-508.10671997070312,
-				137.50187683105469,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_19",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_61.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				20.0,
 				1.0,
 				20.0
 			],
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_19",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
 		"Scripting" : 
 		{
-			"TriggerAudioPlay" : false
+			"FirstPersonFiringBox" : false
 		},
 		"Tag" : 
 		{
@@ -95072,69 +95079,52 @@
 		{
 			"m_position" : 
 			[
-				-554.589111328125,
-				198.71315002441406,
-				-496.93710327148438
+				1.5459954738616943e-07,
+				0.0,
+				-8.7618827819824219e-06
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				-6.7580420426427423e-11,
+				1.2380308367018755e-12,
+				9.8796260665582605e-16
 			],
 			"m_scale" : 
 			[
 				1.0,
 				1.0,
-				1.0
+				0.99999505281448364
 			]
 		}
 	},
 	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_47.ogg",
-				"UpdatePos" : true,
-				"Volume" : 0.89899998903274536
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				20.0,
-				1.0,
-				20.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Timmy_19",
+			"m_Name" : "PlayerTurret2",
 			"status" : true
 		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
+		"Render" : 
 		{
-			"TriggerAudioPlay" : false
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Player_Gun",
+				"Resources/Models\\Ship",
+				"Guns"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -95144,192 +95134,15 @@
 		{
 			"m_position" : 
 			[
-				-554.589111328125,
-				168.7333984375,
-				-496.93710327148438
+				2.5000035762786865,
+				-0.5,
+				0.00019338043057359755
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_01",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_42.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				11.0,
-				10.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_01",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				5.6031007766723633,
-				-1.8284621238708496
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_37.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				10.0,
-				10.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_01",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				5.6031007766723633,
-				-48.739521026611328
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
+				0.0001042740695993416,
+				-5.0089556680177338e-06,
+				0.00010427409870317206
 			],
 			"m_scale" : 
 			[
@@ -95343,8 +95156,63 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Group_15",
+			"m_Name" : "Muzzle",
 			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				2.2000000476837158
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "MuzzleFlash",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.35294118523597717,
+				0.27843138575553894
+			],
+			"RenderModel" : 
+			[
+				"Player_Turret_MuzzleFlash",
+				"Resources/Models\\Ship",
+				"Player_Turret_MuzzleFlash"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -95361,14 +95229,14 @@
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				4.0,
+				4.0,
+				4.0
 			]
 		}
 	},
@@ -95377,78 +95245,36 @@
 		{
 			"Clip0" : 
 			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_56.ogg",
+				"Dir" : "Resources/Audio\\GameBGM_JP_Low.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.125
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_Shoot.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.50199997425079346
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_Damaged.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.50199997425079346
 			}
 		},
-		"BoxCollider" : 
+		"Camera" : 
 		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				15.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
+			"m_Active" : true,
+			"m_Far" : 420.0,
+			"m_Fov" : 80.0,
+			"m_Near" : 0.10000000149011612,
+			"m_Pitch" : 0.0,
+			"m_Yaw" : 0.0
 		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Prof_15",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-124.57440948486328,
-				99.822731018066406,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_16",
+			"m_Name" : "PlayerCam",
 			"status" : true
 		},
 		"Tag" : 
@@ -95459,159 +95285,15 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				-4.8056244850158691e-07,
+				0.5,
+				-1.0000004768371582
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_57.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				20.0,
-				20.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_16",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-246.95968627929688,
-				100.25508117675781,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_58.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				20.0,
-				20.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_16_2",
-			"status" : true
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-302.1162109375,
-				126.69013214111328,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
+				-5.9340202022972743e-12,
+				2.0844188874935554e-10
 			],
 			"m_scale" : 
 			[
@@ -95625,7 +95307,62 @@
 		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Group_10",
+			"m_Name" : "PlayerTurret1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Player_Gun",
+				"Resources/Models\\Ship",
+				"Guns"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.5,
+				-0.5,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0001042740695993416,
+				-5.0089556680177338e-06,
+				0.00010427409870317206
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Muzzle",
 			"status" : true
 		},
 		"Tag" : 
@@ -95638,12 +95375,12 @@
 			[
 				0.0,
 				0.0,
-				0.0
+				2.2000000476837158
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -95655,50 +95392,33 @@
 		}
 	},
 	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_52.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				15.0,
-				1.0,
-				15.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Prof_10",
+			"m_Name" : "MuzzleFlash",
 			"status" : true
 		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
+		"Render" : 
 		{
-			"TriggerAudioPlay" : false
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.35294118523597717,
+				0.27843138575553894
+			],
+			"RenderModel" : 
+			[
+				"Player_Turret_MuzzleFlash",
+				"Resources/Models\\Ship",
+				"Player_Turret_MuzzleFlash"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -95708,15 +95428,70 @@
 		{
 			"m_position" : 
 			[
-				12.522404670715332,
-				-107.45841217041016,
-				-449.76406860351562
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
+			],
+			"m_scale" : 
+			[
+				4.0,
+				4.0,
+				4.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "PLAYER PROJECTILES",
+			"extends" : 
+			[
+				50.0,
+				30.0,
+				50.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserWeapon",
+			"status" : true
+		},
+		"P_Scripting" : 
+		{
+			"LaserWeapon" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.7252902984619141e-09,
+				0.0,
+				55.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-1.2071197990834448e-13,
+				2.0844186099377993e-10
 			],
 			"m_scale" : 
 			[
@@ -95730,28 +95505,293 @@
 		"Children" : 5,
 		"Name" : 
 		{
-			"m_Name" : "Actual_Nuke",
+			"m_Name" : "DashBoard",
 			"status" : true
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
-				0.0,
-				0.20468282699584961,
+				1.0,
+				1.0,
 				1.0
 			],
 			"EmissiveTint" : 
 			[
-				0.0,
-				0.20392157137393951,
+				1.0,
+				1.0,
 				1.0
 			],
 			"RenderModel" : 
 			[
-				"Nuke",
+				"Ship_Cockpit_Final_M03",
 				"Resources/Models\\Ship",
-				"Nuke_Inner"
+				"DashBoard"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.1726032391488079e-13,
+				2.0844186099377993e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Score_Text_Title",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				0.42790699005126953,
+				1.0
+			],
+			"m_FontID" : "Ruda",
+			"m_Ortho" : false,
+			"m_Text" : "Score"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.17691507935523987,
+				0.00553131103515625,
+				-0.12679430842399597
+			],
+			"m_rotation" : 
+			[
+				149.99995422363281,
+				2.6055158031113024e-11,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999213218688965,
+				0.99999874830245972,
+				0.99999386072158813
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Screen_Shell",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"Screen_Shell"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.8641471602119237e-15,
+				1.0454038283365212e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Screen001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"Screen001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				1.0454041459738764e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Projector",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"Projector"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.6775163602818968e-15,
+				1.0453986402597193e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "DashboardScreenFace",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ship_Cockpit_Final_M03",
+				"Resources/Models\\Ship",
+				"AI_PC"
 			],
 			"UseLight" : 1
 		},
@@ -95761,100 +95801,9 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : 0.10000000149011612,
-				"Name" : "s1_s2_transition",
-				"Type" : 0
-			},
-			{
-				"Data" : 0.10000000149011612,
-				"Name" : "s2_s3_transition",
-				"Type" : 0
-			},
-			{
-				"Data" : 0.30000001192092896,
-				"Name" : "s3_s4_transition",
-				"Type" : 0
-			},
-			{
-				"Data" : 1.0,
-				"Name" : "s4_s5_transition",
-				"Type" : 0
-			}
-		],
 		"Scripting" : 
 		{
-			"PlayerNuke" : false
-		},
-		"SphereCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"isStatic" : false,
-			"isTrigger" : false,
-			"radius" : 2.2599999904632568
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				6.9405040740966797,
-				-10.15313720703125,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Nuke_Outer_Outline",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.0,
-				0.34525251388549805,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				0.0,
-				0.2046511173248291,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Outer_Outline"
-			],
-			"UseLight" : 1
+			"DashboardScreen" : false
 		},
 		"Tag" : 
 		{
@@ -95871,8 +95820,8 @@
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
-				0.0
+				-5.2677936136975335e-15,
+				1.0459477293677769e-15
 			],
 			"m_scale" : 
 			[
@@ -95886,7 +95835,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Nuke_Outer_Spikes",
+			"m_Name" : "Screen",
 			"status" : true
 		},
 		"Render" : 
@@ -95894,20 +95843,20 @@
 			"ColorTint" : 
 			[
 				1.0,
-				0.962119460105896,
-				0.52093023061752319
+				1.0,
+				1.0
 			],
 			"EmissiveTint" : 
 			[
-				0.96744191646575928,
 				1.0,
-				0.0
+				1.0,
+				1.0
 			],
 			"RenderModel" : 
 			[
-				"Nuke",
+				"Ship_Cockpit_Final_M03",
 				"Resources/Models\\Ship",
-				"Nuke_Outer_Spikes"
+				"Screen"
 			],
 			"UseLight" : 1
 		},
@@ -95926,8 +95875,8 @@
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
-				0.0
+				-1.6499126080670758e-14,
+				1.045987328158061e-15
 			],
 			"m_scale" : 
 			[
@@ -95938,34 +95887,45 @@
 		}
 	},
 	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : true,
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "AI_Hurt.dds"
+		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Nuke_Swirl",
+			"m_Name" : "Hurt Face",
 			"status" : true
 		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.96724772453308105,
-				0.5767441987991333
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.83529412746429443,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Swirl"
-			],
-			"UseLight" : 1
-		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -95974,52 +95934,129 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				0.58634364604949951,
+				0.1082916259765625,
+				-0.17200000584125519
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				164.99992370605469,
+				-9.9999475479125977,
+				-179.99989318847656
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
+				0.17500001192092896,
+				0.17499998211860657,
 				1.0
 			]
 		}
 	},
 	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : true,
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "AI_Happy.dds"
+		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Nuke_Outer",
+			"m_Name" : "Happy Face",
 			"status" : true
 		},
-		"Render" : 
+		"Tag" : 
 		{
-			"ColorTint" : 
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
 			[
-				0.49302327632904053,
-				0.73826372623443604,
+				0.58822435140609741,
+				0.10756683349609375,
+				-0.17089886963367462
+			],
+			"m_rotation" : 
+			[
+				164.99992370605469,
+				-9.9999961853027344,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.1749994307756424,
+				0.1750018298625946,
+				1.0000002384185791
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
 				1.0
 			],
-			"EmissiveTint" : 
-			[
-				0.0,
-				0.59536528587341309,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Outer"
-			],
-			"UseLight" : 1
+			"m_ForceAlpha" : true,
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "AI_Neutral.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Neutral Face",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -96029,21 +96066,21 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				0.58779358863830566,
+				0.1086883544921875,
+				-0.17139142751693726
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				164.99992370605469,
+				-9.9999446868896484,
+				179.99989318847656
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.17500001192092896,
+				0.17500001192092896,
+				1.0000004768371582
 			]
 		}
 	},
@@ -96051,54 +96088,44 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Shockwaves",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.53023254871368408,
-				0.78368842601776123,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				0.32093024253845215,
-				0.89577066898345947,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Shockwaves"
-			],
-			"UseLight" : 1
+			"m_Name" : "Score_Text",
+			"status" : true
 		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
 		},
+		"Text" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.72685772180557251,
+				0.004651188850402832
+			],
+			"m_FontID" : "Ruda",
+			"m_Ortho" : false,
+			"m_Text" : "00000000"
+		},
 		"Transform" : 
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				0.24571403861045837,
+				-0.082672119140625,
+				-0.16531179845333099
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				149.99995422363281,
+				2.3958174333316151e-10,
+				-179.99989318847656
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.79999971389770508,
+				0.80000406503677368,
+				0.80000615119934082
 			]
 		}
 	}
