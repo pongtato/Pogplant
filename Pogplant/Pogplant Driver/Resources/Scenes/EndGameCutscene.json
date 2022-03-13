@@ -65302,6 +65302,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\SFX_BossDie.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Camera" : 
 		{
 			"m_Active" : true,
@@ -69938,9 +69947,9 @@
 			"m_SpawnCount" : 1,
 			"m_SpawnDirection" : 
 			[
-				-0.30468568205833435,
-				-0.27767878770828247,
-				-0.91107696294784546
+				0.69954448938369751,
+				0.53971034288406372,
+				-0.46834847331047058
 			],
 			"m_SpawnRadius" : 6.5,
 			"m_Speed" : 

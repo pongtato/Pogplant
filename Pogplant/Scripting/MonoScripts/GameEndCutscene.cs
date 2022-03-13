@@ -123,6 +123,8 @@ namespace Scripting
 
         public override void Start()
         {
+            ECS.PlayAudio(entityID, 0, "SFX");
+
             boss_anim_system = new AnimationSystem();
             boss_anim_system.Init();
 
