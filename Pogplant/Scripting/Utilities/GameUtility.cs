@@ -34,7 +34,7 @@ namespace Scripting
 
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void FireEnemyBullet(uint entityID, Vector3 _Position, Vector3 _Rotation, float _Speed, float _Lifetime, bool isTrue = false);
+        public extern static void FireEnemyBullet(uint entityID, Vector3 _Position, Vector3 _Rotation, float _Speed, float _Lifetime, bool isTrue = false, float scaleMultiplier = 1f);
         //[MethodImplAttribute(MethodImplOptions.InternalCall)]
         //public extern static void DebugSphere(float pos_x, float pos_y, float pos_z, float camdir_x, float camdir_y, float camdit_z, float _Radius);
 

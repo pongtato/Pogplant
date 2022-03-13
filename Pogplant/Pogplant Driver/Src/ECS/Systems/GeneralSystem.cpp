@@ -53,26 +53,34 @@ void GeneralSystem::UpdateGame(float c_dt)
 		auto& transform = projectiles.get<Components::Transform>(projectileEntity);
 		auto& rigidbody = projectiles.get<Components::Rigidbody>(projectileEntity);
 
-		//transform.m_position += move;
-		//glm::vec3 move = { 0.f,0.f,projectile.m_Speed * c_dt };
-		
-		if(projectile.m_Homing)
+		if (m_registry->GetReg().valid(projectileEntity))
 		{
-			auto enemy_trans = m_registry->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(projectile.tracker));
-			if(enemy_trans)
+
+			//transform.m_position += move;
+			//glm::vec3 move = { 0.f,0.f,projectile.m_Speed * c_dt };
+
+			if (projectile.m_Homing)
 			{
-				auto mag = glm::length(rigidbody.velocity);
-				transform.LookAt(enemy_trans->GetGlobalPosition());
-				auto forward_vector = transform.GetForwardVector();
-				rigidbody.velocity = forward_vector * mag;
+				auto enemy_trans = m_registry->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(projectile.tracker));
+				if (enemy_trans)
+				{
+					auto mag = glm::length(rigidbody.velocity);
+					transform.LookAt(enemy_trans->GetGlobalPosition());
+					auto forward_vector = transform.GetForwardVector();
+					rigidbody.velocity = forward_vector * mag;
 
+				}
 			}
+
+			projectile.m_CurentLifetime += c_dt;
+
+			if (projectile.m_CurentLifetime > projectile.m_Lifetime)
+				m_registry->DestroyEntity(projectileEntity);
 		}
-
-		projectile.m_CurentLifetime += c_dt;
-
-		if (projectile.m_CurentLifetime > projectile.m_Lifetime)
-			m_registry->DestroyEntity(projectileEntity);
+		else
+		{
+			std::cout << "UpdateGame()????: " << (std::uint32_t)projectileEntity << "\n";
+		}
 	}
 
 	auto lasers = m_registry->view<Components::Transform, Components::Laser>();

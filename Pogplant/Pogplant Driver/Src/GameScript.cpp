@@ -225,7 +225,7 @@ namespace Scripting
 		body->AddImpulseForce(Powershot);
 	}
 
-	void GameScript::FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue)
+	void GameScript::FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue, float scaleMultiplier)
 	{
 		//Get enemy transform 
 		entt::entity enemy = static_cast<entt::entity>(entityID);
@@ -247,12 +247,21 @@ namespace Scripting
 		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, _Lifetime, 1.f, Components::Projectile::OwnerType::Enemy);
 
 		auto body = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(bullet);
-		//Hardcoded for now
-		glm::vec3 forward_vec = _Rotation;
+		auto transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(bullet);
+		
+		if (body)
+		{
+			//Hardcoded for now
+			glm::vec3 forward_vec = _Rotation;
 
-		//Add power to the shots
-		forward_vec *= _Speed;
-		body->AddImpulseForce(forward_vec);
+			//Add power to the shots
+			forward_vec *= _Speed;
+			body->AddImpulseForce(forward_vec);
+		}
+		if (transform)
+		{
+			transform->m_scale *= scaleMultiplier;
+		}
 	}
 
 	void GameScript::SpawnStaticExplosion(glm::vec3& position, int type)

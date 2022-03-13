@@ -244,13 +244,18 @@ namespace Scripting
 			{
 				TimeManager.TriggerTimeAlter(0.5f, 2f);
 			}
-			if (InputUtility.onKeyTriggered("LEVEL2"))
+			if (InputUtility.onKeyTriggered(KEY_ID.KEY_F1))
+			{
+				GameUtilities.LoadScene("Level01_Boss");
+			}
+			if (InputUtility.onKeyTriggered(KEY_ID.KEY_F2))
 			{
 				GameUtilities.LoadScene("Level02");
 			}
-			if (InputUtility.onKeyTriggered("LEVEL_BOSS"))
+
+			if (InputUtility.onKeyTriggered(KEY_ID.KEY_F3))
 			{
-				GameUtilities.LoadScene("Level01_Boss");
+				GameUtilities.LoadScene("Level02_Boss");
 			}
 
 			//Return to main menu key

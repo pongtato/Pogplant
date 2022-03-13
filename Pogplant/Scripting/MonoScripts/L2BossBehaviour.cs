@@ -46,7 +46,7 @@ namespace Scripting
 
 		//Shooting stuff
 		public float m_bossShootingDelay = 0.6f;
-		public float m_bossShootingCoolDown = 5f;
+		public float m_bossShootingCoolDown = 3f;
 		public int m_bossShootCountLimit = 8;
 
 		//IDs
@@ -109,6 +109,8 @@ namespace Scripting
 			public uint ID_shootPoint;
 
 			public Vector3 restingRotation;
+
+			public Vector3 targetRotation;
 		}
 
 		struct RuntimeStateVariables
@@ -123,7 +125,7 @@ namespace Scripting
 				bossShootTimer = 0f;
 				bossShootCount = 0;
 				bossShootReloading = false;
-				bossTurretReady = false;
+				bossTurretAimState = 0;
 				bossTurretShouldFire = false;
 				leftBallHealth = 0f;
 				rightBallHealth = 0f;
@@ -144,7 +146,7 @@ namespace Scripting
 			public float bossShootTimer;
 			public float bossShootCount;
 			public bool bossShootReloading;
-			public bool bossTurretReady;
+			public int bossTurretAimState;
 			public bool bossTurretShouldFire;
 
 			public float leftBallHealth;
@@ -163,6 +165,18 @@ namespace Scripting
 		TurretGun[] m_turretGuns = new TurretGun[2];
 
 		Transform m_tempTransform;
+
+
+		#region[TEMPORARY SWEEP ATTACK]
+
+		float tmp_sweepMinRotX = 7f;
+		float tmp_sweepMaxRotX = 15f;
+
+		float tmp_sweepMinRotY = 20f;
+		float tmp_sweepMaxRotY = 40f;
+
+
+		#endregion
 
 		/******************************************************************************/
 		/*!
@@ -212,7 +226,15 @@ namespace Scripting
 
 				ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
 				m_turretGuns[i].restingRotation = m_tempTransform.Rotation;
+
+				m_turretGuns[i].targetRotation.Z = 0f;
 			}
+
+			m_turretGuns[0].targetRotation.X = PPMath.RandomFloat(tmp_sweepMinRotX, tmp_sweepMaxRotX);
+			m_turretGuns[0].targetRotation.Y = -PPMath.RandomFloat(tmp_sweepMinRotY, tmp_sweepMaxRotY);
+
+			m_turretGuns[1].targetRotation.X = PPMath.RandomFloat(tmp_sweepMinRotX, tmp_sweepMaxRotX);
+			m_turretGuns[1].targetRotation.Y = PPMath.RandomFloat(tmp_sweepMinRotY, tmp_sweepMaxRotY);
 
 			m_runStateInfo.canDamageSideCores = false;
 			m_runStateInfo.canDamageMainCore = true;
@@ -227,10 +249,15 @@ namespace Scripting
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMin = 1f;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.MOVING].stateDurationMax = 5f;
 
-			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK].isVulnerable = true;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK].isVulnerable = false;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK].shouldReturnToDefault = true;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK].stateDurationMin = 6f;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK].stateDurationMax = 6f;
+
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK].isVulnerable = false;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK].shouldReturnToDefault = true;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK].stateDurationMin = 12.6f;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK].stateDurationMax = 12.6f;
 
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].isVulnerable = true;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].shouldReturnToDefault = true;
@@ -262,11 +289,12 @@ namespace Scripting
 				{
 					Console.WriteLine("L2BossBehaviour.cs: Boss state is: " + L2Boss.m_singleton.current_state);
 					Console.WriteLine("L2BossBehaviour.cs: Timer is: " + m_runStateInfo.timer);
+					Console.WriteLine("L2BossBehaviour.cs: AimState is: " + m_runStateInfo.bossTurretAimState);
 				}
 
 				if(InputUtility.onKeyTriggered(KEY_ID.KEY_J))
 				{
-					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK);
 				}
 			}
 			if (delayedInit)
@@ -276,9 +304,10 @@ namespace Scripting
 				delayedInit = false;
 			}
 
+			//Update shooting gun behaviour
 			UpdateGunBehaviour(dt);
 
-			m_runStateInfo.bossTurretReady = false;
+			m_runStateInfo.bossTurretAimState = 0;
 			m_runStateInfo.bossTurretShouldFire = false;
 
 			switch (L2Boss.m_singleton.current_state)
@@ -301,10 +330,17 @@ namespace Scripting
 						switch (stateSelection)
 						{
 							case 0:
-								TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK);
+								//Temp 2 shoot modes
+								if(PPMath.RandomInt(0, 1) == 0)
+									TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK);
+								else
+									TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK);
 								break;
 							case 1:
 								TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+								break;
+							case 2:
+								TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK);
 								break;
 							default:
 								Console.WriteLine("L2BossBehaviour.cs: RNG out of range");
@@ -317,7 +353,13 @@ namespace Scripting
 				break;
 				case L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK:
 				{
-					m_runStateInfo.bossTurretReady = true;
+					m_runStateInfo.bossTurretAimState = 1;
+					m_runStateInfo.bossTurretShouldFire = true;
+				}
+				break;
+				case L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK:
+				{
+					m_runStateInfo.bossTurretAimState = 2;
 					m_runStateInfo.bossTurretShouldFire = true;
 				}
 				break;
@@ -451,37 +493,114 @@ namespace Scripting
 
 		void UpdateGunBehaviour(float dt)
 		{
+			switch(m_runStateInfo.bossTurretAimState)
+			{
+				//Resting state
+				case 0:
+				{
+					for (int i = 0; i < 2; ++i)
+					{
+						ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
+						m_tempTransform.Rotation = Vector3.Lerp(m_tempTransform.Rotation, m_turretGuns[i].restingRotation, dt * 2f);
+						ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
+					}
+				}
+				break;
+
+				//Aim at player
+				case 1:
+				{
+					UpdateAimAtPlayerFireBehaviour(dt);
+				}
+				break;
+
+				//Sweep attack
+				case 2:
+				{
+					//Lerp gun to random target
+					for (int i = 0; i < 2; ++i)
+					{
+						m_tempTransform.Rotation = ECS.GetGlobalRotation(m_turretGuns[i].ID_turretBody);
+						m_tempTransform.Rotation = Vector3.Lerp(m_tempTransform.Rotation, m_turretGuns[i].targetRotation, dt * 2f);
+						ECS.SetGlobalRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
+					}
+
+					//Fire
+					if (m_runStateInfo.bossTurretShouldFire)
+					{
+						m_runStateInfo.bossShootTimer += dt;
+
+						if (m_runStateInfo.bossShootTimer > m_bossShootingDelay - 0.2f && !m_runStateInfo.bossShootReloading)
+						{
+							m_runStateInfo.bossShootTimer = 0f;
+							m_runStateInfo.bossShootCount++;
+
+							if (m_runStateInfo.bossShootCount > m_bossShootCountLimit)
+							{
+								m_runStateInfo.bossShootCount = 0;
+								m_runStateInfo.bossShootTimer = 0f;
+								m_runStateInfo.bossShootReloading = true;
+
+								L2Boss.m_singleton.SetColorTurretRecovery();
+							}
+							else
+							{
+								L2Boss.m_singleton.SetColorTurretFiring();
+								ECS.PlayAudio(entityID, 3, "SFX");
+
+								InputUtility.VibrateControllerHeavyMotor(1f, 0.15f);
+
+								for (int i = 0; i < 2; ++i)
+								{
+									GameUtilities.FireEnemyBullet(
+										m_turretGuns[i].ID_shootPoint,
+										ECS.GetGlobalPosition(m_turretGuns[i].ID_shootPoint),
+										Transform.GetForwardVector(m_turretGuns[i].ID_shootPoint), 22.0f, 3.0f, false, 3f);
+								}
+
+								m_turretGuns[0].targetRotation.X = PPMath.RandomFloat(tmp_sweepMinRotX, tmp_sweepMaxRotX);
+								m_turretGuns[0].targetRotation.Y = -PPMath.RandomFloat(tmp_sweepMinRotY, tmp_sweepMaxRotY);
+
+								m_turretGuns[1].targetRotation.X = PPMath.RandomFloat(tmp_sweepMinRotX, tmp_sweepMaxRotX);
+								m_turretGuns[1].targetRotation.Y = PPMath.RandomFloat(tmp_sweepMinRotY, tmp_sweepMaxRotY);
+							}
+						}
+						else if (m_runStateInfo.bossShootReloading)
+						{
+							if (m_runStateInfo.bossShootTimer > m_bossShootingCoolDown)
+							{
+								m_runStateInfo.bossShootReloading = false;
+								m_runStateInfo.bossShootTimer = -0.2f;
+
+								L2Boss.m_singleton.SetTurretColors();
+								L2Boss.m_singleton.SetColorTurretPreparingFire();
+							}
+						}
+					}
+				}
+				break;//*/
+			}
+		}
+
+		void UpdateAimAtPlayerFireBehaviour(float dt)
+		{
 			Vector3 shipPos = ECS.GetGlobalPosition(mID_playerShip);
 
-			if(m_runStateInfo.bossTurretReady)
+			//Lerp gun to target player
+			for (int i = 0; i < 2; ++i)
 			{
-				//Lerp gun target
-				for (int i = 0; i < 2; ++i)
-				{
-					ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
-					Vector3 beforeLerp = m_tempTransform.Rotation;
-					Transform.LookAt(m_turretGuns[i].ID_turretBody, shipPos);
-					ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
+				ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
+				Vector3 beforeLerp = m_tempTransform.Rotation;
+				Transform.LookAt(m_turretGuns[i].ID_turretBody, shipPos);
+				ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
 
-					m_tempTransform.Rotation = Vector3.Lerp(beforeLerp, m_tempTransform.Rotation, dt * 10f);
+				m_tempTransform.Rotation = Vector3.Lerp(beforeLerp, m_tempTransform.Rotation, dt * 10f);
 
-					ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
-				}
-			}
-			else
-			{
-				for (int i = 0; i < 2; ++i)
-				{
-					ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
-
-					m_tempTransform.Rotation = Vector3.Lerp(m_tempTransform.Rotation, m_turretGuns[i].restingRotation, dt * 2f);
-
-					ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
-				}
+				ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
 			}
 
 			//Fire
-			if(m_runStateInfo.bossTurretShouldFire && m_runStateInfo.bossTurretReady)
+			if (m_runStateInfo.bossTurretShouldFire)
 			{
 				m_runStateInfo.bossShootTimer += dt;
 
@@ -534,9 +653,9 @@ namespace Scripting
 						}
 					}
 				}
-				else if(m_runStateInfo.bossShootReloading)
+				else if (m_runStateInfo.bossShootReloading)
 				{
-					if(m_runStateInfo.bossShootTimer > m_bossShootingCoolDown)
+					if (m_runStateInfo.bossShootTimer > m_bossShootingCoolDown)
 					{
 						m_runStateInfo.bossShootReloading = false;
 						m_runStateInfo.bossShootTimer = -0.2f;
@@ -556,6 +675,7 @@ namespace Scripting
 
 			switch (L2Boss.m_singleton.current_state)
 			{
+				case L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK:
 				case L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK:
 				{
 					m_runStateInfo.bossShootReloading = true;
@@ -707,7 +827,9 @@ namespace Scripting
 				if (L2Boss.m_singleton.current_state != L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE)
 				{
 					Console.WriteLine("L2BossBehaviour.cs: Boss is dead, triggering sequence");
-					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+					//TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+
+					GameUtilities.LoadScene("EndGameCutscene");
 				}
 			}
 		}
