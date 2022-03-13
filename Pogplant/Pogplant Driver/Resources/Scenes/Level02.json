@@ -53,6 +53,12 @@
 				0.27554351091384888,
 				0.032558143138885498
 			],
+			"RenderModel" : 
+			[
+				"Level_02_Segment_02_and_03",
+				"Resources/Models\\Environment",
+				"Level_02_Segment_02_and_03"
+			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -1065,7 +1071,7 @@
 			"m_position" : 
 			[
 				-14.180366516113281,
-				-282.72021484375,
+				-288.1234130859375,
 				0.660919189453125
 			],
 			"m_rotation" : 
@@ -1078,7 +1084,7 @@
 			[
 				1.0,
 				1.8999999761581421,
-				1.8998854160308838
+				1.8997801542282104
 			]
 		}
 	},
@@ -32885,7 +32891,7 @@
 				"m_FrameCounter" : 20.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
 				"m_Rows" : 8,
 				"m_Tiling" : 
@@ -33765,7 +33771,7 @@
 				"m_FrameCounter" : 20.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
 				"m_Rows" : 8,
 				"m_Tiling" : 
@@ -34068,7 +34074,7 @@
 				"m_FrameCounter" : 20.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
 				"m_Rows" : 8,
 				"m_Tiling" : 
@@ -34508,7 +34514,7 @@
 				"m_FrameCounter" : 20.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
 				"m_Rows" : 8,
 				"m_Tiling" : 
@@ -34948,7 +34954,7 @@
 				"m_FrameCounter" : 20.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
 				"m_Rows" : 8,
 				"m_Tiling" : 
@@ -35314,9 +35320,9 @@
 		{
 			"m_position" : 
 			[
-				28.750396728515625,
+				28.75,
 				-47.279190063476562,
-				-116.22209167480469
+				-116.22200012207031
 			],
 			"m_rotation" : 
 			[
@@ -36930,10 +36936,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 103.08371734619141,
+				"m_FrameCounter" : 126.673583984375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 200.0,
+				"m_PlaySpeed" : 300.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -36943,8 +36949,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.8125
+					0.0,
+					1.0
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -36996,10 +37002,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 103.08371734619141,
+				"m_FrameCounter" : 25.526496887207031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 200.0,
+				"m_PlaySpeed" : 290.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -37010,7 +37016,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.8125
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37062,10 +37068,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.605625152587891,
+				"m_FrameCounter" : 119.32898712158203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 250.0,
+				"m_PlaySpeed" : 320.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -37075,8 +37081,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.375
+					0.5,
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37128,10 +37134,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 103.08371734619141,
+				"m_FrameCounter" : 82.917839050292969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 200.0,
+				"m_PlaySpeed" : 270.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -37141,8 +37147,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.8125
+					0.0,
+					0.65625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37194,7 +37200,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.785240173339844,
+				"m_FrameCounter" : 98.632766723632812,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -37207,8 +37213,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.390625
+					0.0,
+					0.78125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37260,10 +37266,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 103.08371734619141,
+				"m_FrameCounter" : 119.32898712158203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 200.0,
+				"m_PlaySpeed" : 320.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -37274,7 +37280,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.8125
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37326,10 +37332,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.605625152587891,
+				"m_FrameCounter" : 55.325366973876953,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 250.0,
+				"m_PlaySpeed" : 280.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -37339,8 +37345,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.375
+					0.5,
+					0.4375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37392,10 +37398,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 43.3243408203125,
+				"m_FrameCounter" : 98.632766723632812,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 150.0,
+				"m_PlaySpeed" : 300.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -37405,8 +37411,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.34375
+					0.0,
+					0.78125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37458,10 +37464,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.605625152587891,
+				"m_FrameCounter" : 55.325366973876953,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 250.0,
+				"m_PlaySpeed" : 280.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -37471,8 +37477,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.375
+					0.5,
+					0.4375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37524,10 +37530,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.084892272949219,
+				"m_FrameCounter" : 67.985328674316406,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 100.0,
+				"m_PlaySpeed" : 310.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -37538,7 +37544,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.75
+					0.53125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37590,10 +37596,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 43.3243408203125,
+				"m_FrameCounter" : 25.526496887207031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
-				"m_PlaySpeed" : 150.0,
+				"m_PlaySpeed" : 290.0,
 				"m_Repeat" : true,
 				"m_Rows" : 64,
 				"m_Tiling" : 
@@ -37604,7 +37610,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.34375
+					0.203125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -41035,11 +41041,6 @@
 		{
 			"m_Name" : "VO Trigger Zone Parent",
 			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "3352d0f2-eea9-40eb-b7a2-8bb4bf5c80f0",
-			"prefab_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
 		},
 		"Tag" : 
 		{
@@ -54970,8 +54971,8 @@
 		{
 			"m_position" : 
 			[
-				-85.15582275390625,
-				-154.32275390625,
+				-83.707939147949219,
+				-153.56544494628906,
 				-317.17291259765625
 			],
 			"m_rotation" : 
@@ -55025,8 +55026,8 @@
 		{
 			"m_position" : 
 			[
-				-92.033538818359375,
-				-151.38021850585938,
+				-88.780891418457031,
+				-149.7049560546875,
 				-317.17291259765625
 			],
 			"m_rotation" : 
@@ -55080,7 +55081,7 @@
 		{
 			"m_position" : 
 			[
-				-95.067893981933594,
+				-93.735221862792969,
 				-145.68846130371094,
 				-319.43270874023438
 			],
@@ -95012,6 +95013,14 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 500.0,
+				"Name" : "m_actual_nuke_speed",
+				"Type" : 0
+			}
+		],
 		"Scripting" : 
 		{
 			"FirstPersonFiringSystem" : false
@@ -95031,7 +95040,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				-9.799586272660199e-13,
+				-9.8776097978009458e-13,
 				2.0844186099377993e-10
 			],
 			"m_scale" : 
