@@ -1885,7 +1885,7 @@ namespace Scripting
         {
             //Body
             moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, -0.2f, -4), new Vector3(0, 0.2f, 0), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
-            moving_parts_dict[main_laser_object_id].SetMovingPartsScale(new Vector3(0.1f, 0.1f, 3.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(2.0f, 2.0f, 0), true, true, false, false, false, false);
+            moving_parts_dict[main_laser_object_id].SetPingPongScale(new Vector3(0.1f, 0.1f, 3.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(2.0f, 2.0f, 0), true, true, false, false, false, false);
 
             ECS.SetActive(main_laser_rails_id, false);
 
@@ -1911,7 +1911,7 @@ namespace Scripting
             moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, -0.2f, 0), new Vector3(0, 0.2f, 2), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
 
             //Laser beam
-            moving_parts_dict[main_laser_object_id].SetMovingPartsScale(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(8.0f, 8.0f, 8.0f), false, false, false, false, false, false);
+            moving_parts_dict[main_laser_object_id].SetPingPongScale(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(8.0f, 8.0f, 8.0f), false, false, false, false, false, false);
 
             moving_parts_dict[main_laser_barrel_id].SetToggleSpin(false);
 

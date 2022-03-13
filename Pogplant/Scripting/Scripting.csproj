@@ -57,6 +57,7 @@
     <Compile Include="MonoScripts\BonusItem.cs" />
     <Compile Include="MonoScripts\BonusScoreCoin.cs" />
     <Compile Include="MonoScripts\BossHitbox.cs" />
+    <Compile Include="MonoScripts\GameEndCutscene.cs" />
     <Compile Include="MonoScripts\L2BossBehaviour.cs" />
     <Compile Include="MonoScripts\CutScene2Controller.cs" />
     <Compile Include="MonoScripts\CutSceneController.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="MonoScripts\L2FlockController.cs" />
     <Compile Include="MonoScripts\L2TurretController.cs" />
     <Compile Include="MonoScripts\Level1OutroCutscene.cs" />
+    <Compile Include="MonoScripts\Level2OutroCutscene.cs" />
     <Compile Include="MonoScripts\MovingParts.cs" />
     <Compile Include="MonoScripts\PlayerNuke.cs" />
     <Compile Include="MonoScripts\Rotation.cs" />

@@ -73,6 +73,11 @@ namespace Scripting
             return new Level1OutroCutscene();
         }
 
+        public static Level2OutroCutscene Level2OutroCutscene()
+        {
+            return new Level2OutroCutscene();
+        }
+
         public static AnimationSystem AnimationSystem()
         {
             return new AnimationSystem();
@@ -263,6 +268,11 @@ namespace Scripting
         public static CutScene2Controller CutScene2Controller()
         {
             return new CutScene2Controller();
+        }
+
+        public static GameEndCutscene GameEndCutscene()
+        {
+            return new GameEndCutscene();
         }
 
         public static BonusScoreCoin BonusScoreCoin()

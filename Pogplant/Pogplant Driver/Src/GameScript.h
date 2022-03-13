@@ -30,7 +30,7 @@ namespace Scripting
 
 	static void FirePlayerBullet(glm::vec3 _Position, glm::vec3 _FowardVector, glm::vec3 _Rotation, bool homing, uint32_t tracker);
 
-	static void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue = false);
+	static void FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue = false, float scaleMultiplier = 1.f);
 
 	static void SpawnStaticExplosion(glm::vec3& position, int type);
 
