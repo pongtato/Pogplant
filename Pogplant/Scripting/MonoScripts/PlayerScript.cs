@@ -31,6 +31,7 @@ namespace Scripting
 		public bool mm_enableTurbulence = false;
 		float m_turbulenceTimer = 0f;
 
+		float moveBackSpeed = 50f;
 		public float movement_speed = 200.0f;
 		private float horizontal_input = 0;
 		private float vertical_input = 0;
@@ -431,22 +432,26 @@ namespace Scripting
 
 
 				//Handle if it goes beyond the edge
-				/*if (deltaX > m_newMovementLimits.Y)
+				if (deltaX > m_newMovementLimits.Y)
 				{
-
+					//Console.WriteLine("Limit Right");
+					rightForce -= right_vec * (deltaX - m_newMovementLimits.Y) * moveBackSpeed;
 				}
 				else if(deltaX < -m_newMovementLimits.X)
 				{
-
+					//Console.WriteLine("Limit Left");
+					rightForce += right_vec * (-m_newMovementLimits.X - deltaX) * moveBackSpeed;
 				}
 
 				if (deltaY > m_newMovementLimits.W)
 				{
-
+					//Console.WriteLine("Limit Up");
+					upForce -= up_vec * (deltaY - m_newMovementLimits.W) * moveBackSpeed;
 				}
 				else if (deltaY < -m_newMovementLimits.Z)
 				{
-
+					//Console.WriteLine("Limit Down");
+					upForce += up_vec * (-m_newMovementLimits.Z - deltaY) * moveBackSpeed;
 				}//*/
 
 				ECS.RigidbodyAddForce(entityID, upForce + rightForce);
