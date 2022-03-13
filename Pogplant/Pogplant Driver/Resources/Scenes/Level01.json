@@ -146277,7 +146277,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.710899353027344,
+				"m_FrameCounter" : 113.13611602783203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146290,8 +146290,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.609375
+					0.5,
+					0.890625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146343,7 +146343,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.710899353027344,
+				"m_FrameCounter" : 113.13611602783203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146356,8 +146356,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.609375
+					0.5,
+					0.890625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146409,7 +146409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 102.08769226074219,
+				"m_FrameCounter" : 116.59203338623047,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146423,7 +146423,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.8125
+					0.921875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146475,7 +146475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.710899353027344,
+				"m_FrameCounter" : 113.13611602783203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146488,8 +146488,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.609375
+					0.5,
+					0.890625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146541,7 +146541,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 43.327831268310547,
+				"m_FrameCounter" : 104.80328369140625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -146554,8 +146554,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.34375
+					0.0,
+					0.828125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146607,7 +146607,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.710899353027344,
+				"m_FrameCounter" : 113.13611602783203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146620,8 +146620,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.609375
+					0.5,
+					0.890625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146673,7 +146673,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 102.08769226074219,
+				"m_FrameCounter" : 116.59203338623047,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146687,7 +146687,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.8125
+					0.921875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146739,7 +146739,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 107.87274932861328,
+				"m_FrameCounter" : 12.367574691772461,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146752,8 +146752,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.84375
+					0.0,
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146805,7 +146805,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 102.08769226074219,
+				"m_FrameCounter" : 116.59203338623047,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146819,7 +146819,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.8125
+					0.921875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146871,7 +146871,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 55.076511383056641,
+				"m_FrameCounter" : 59.953929901123047,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -146885,7 +146885,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.4375
+					0.46875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146937,7 +146937,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 107.87274932861328,
+				"m_FrameCounter" : 12.367574691772461,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146950,8 +146950,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.84375
+					0.0,
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -155757,7 +155757,7 @@
 		}
 	},
 	{
-		"Children" : 4,
+		"Children" : 10,
 		"Name" : 
 		{
 			"m_Name" : "BonusScoreCoinGrp",
@@ -155795,6 +155795,39 @@
 		}
 	},
 	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.1744694709777832,
+				-0.35968750715255737,
+				7.5798377990722656
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -155806,8 +155839,8 @@
 			"collisionLayer" : "TRIGGERS",
 			"extends" : 
 			[
-				0.80000001192092896,
-				0.80000001192092896,
+				1.6000000238418579,
+				1.6000000238418579,
 				0.80000001192092896
 			],
 			"isStatic" : true,
@@ -155823,239 +155856,8 @@
 		{
 			"ColorTint" : 
 			[
-				0.88976430892944336,
 				1.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Collectible_Coin",
-				"Resources/Models\\IngameObjects",
-				"Collectible"
-			],
-			"UseLight" : 1
-		},
-		"Scripting" : 
-		{
-			"BonusScoreCoin" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				2.2104902267456055,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				0.80000001192092896,
-				0.80000001192092896,
-				0.80000001192092896
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "BonusScoreCoin2",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.88976430892944336,
-				1.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Collectible_Coin",
-				"Resources/Models\\IngameObjects",
-				"Collectible"
-			],
-			"UseLight" : 1
-		},
-		"Scripting" : 
-		{
-			"BonusScoreCoin" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				2.1775264739990234,
-				-3.0023748874664307
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				0.80000001192092896,
-				0.80000001192092896,
-				0.80000001192092896
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "BonusScoreCoin3",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.88976430892944336,
-				1.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Collectible_Coin",
-				"Resources/Models\\IngameObjects",
-				"Collectible"
-			],
-			"UseLight" : 1
-		},
-		"Scripting" : 
-		{
-			"BonusScoreCoin" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				2.1215353012084961,
-				-6.6659212112426758
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				0.80000001192092896,
-				0.80000001192092896,
-				0.80000001192092896
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "BonusScoreCoin4",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.88976430892944336,
-				1.0,
+				0.75348836183547974,
 				0.0
 			],
 			"EmissiveTint" : 
@@ -156086,7 +155888,2020 @@
 			[
 				0.0,
 				2.134404182434082,
-				-10.534591674804688
+				0.62091064453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-9.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-1.87908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-4.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-6.87908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				53.810989379882812,
+				11.062839508056641,
+				-46.605705261230469
+			],
+			"m_rotation" : 
+			[
+				0.00010427392408018932,
+				-89.999946594238281,
+				-0.00010427199595142156
+			],
+			"m_scale" : 
+			[
+				0.99999767541885376,
+				0.99999994039535522,
+				0.99999767541885376
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				0.62091064453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-9.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-1.87908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-4.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.1352701187133789,
+				-6.8825531005859375
+			],
+			"m_rotation" : 
+			[
+				1.8058281649538377e-13,
+				-0.0,
+				-5.6405147920272642e-15
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_3",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				152.6376953125,
+				1.4141590595245361,
+				-119.27963256835938
+			],
+			"m_rotation" : 
+			[
+				0.00010427392408018932,
+				-0.0,
+				-0.00010427199595142156
+			],
+			"m_scale" : 
+			[
+				0.99999767541885376,
+				0.99999994039535522,
+				0.99999767541885376
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				0.62091064453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-9.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-1.87908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-4.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.1352701187133789,
+				-6.8825531005859375
+			],
+			"m_rotation" : 
+			[
+				1.8058281649538377e-13,
+				-0.0,
+				-5.6405147920272642e-15
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_4",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				125.27749633789062,
+				-37.160812377929688,
+				-194.57742309570312
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999767541885376,
+				0.99999988079071045,
+				0.99999767541885376
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.0,
+				2.1330680847167969,
+				0.6177215576171875
+			],
+			"m_rotation" : 
+			[
+				-4.5726706865423239e-09,
+				-8.9566293270948449e-10,
+				8.3864038599422712e-16
+			],
+			"m_scale" : 
+			[
+				0.49998953938484192,
+				0.5,
+				0.99997907876968384
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.0,
+				2.134404182434082,
+				-9.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.0,
+				2.134404182434082,
+				-1.87908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-4.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.9970703125,
+				2.1352653503417969,
+				-6.8832855224609375
+			],
+			"m_rotation" : 
+			[
+				-1.2506448099358636e-09,
+				-2.4752488947399343e-10,
+				-5.3734283630990382e-15
+			],
+			"m_scale" : 
+			[
+				0.49999713897705078,
+				0.5,
+				0.99999427795410156
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_5",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-11.981990814208984,
+				2.4560849666595459,
+				-116.20050048828125
+			],
+			"m_rotation" : 
+			[
+				0.00010427199595142156,
+				89.999946594238281,
+				-0.00010427199595142156
+			],
+			"m_scale" : 
+			[
+				0.99999767541885376,
+				0.99999988079071045,
+				0.99999767541885376
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				0.62091064453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				3.5286643505096436,
+				-9.378809928894043
+			],
+			"m_rotation" : 
+			[
+				-4.6638635176066146e-09,
+				9.184619176316744e-10,
+				-2.770620206513346e-15
+			],
+			"m_scale" : 
+			[
+				0.49998933076858521,
+				0.5,
+				0.99997866153717041
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.006500244140625,
+				3.0432577133178711,
+				-1.8788433074951172
+			],
+			"m_rotation" : 
+			[
+				-5.5497366702184081e-09,
+				1.0910851111489706e-09,
+				-3.3235154571194334e-15
+			],
+			"m_scale" : 
+			[
+				0.49998730421066284,
+				0.5,
+				0.99997460842132568
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0029144287109375,
+				3.6916482448577881,
+				-4.378758430480957
+			],
+			"m_rotation" : 
+			[
+				-2.4882622629007756e-09,
+				4.7876796971380031e-10,
+				-1.4660536248328076e-15
+			],
+			"m_scale" : 
+			[
+				0.49999430775642395,
+				0.5,
+				0.9999886155128479
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.004425048828125,
+				4.1121921539306641,
+				-6.882014274597168
+			],
+			"m_rotation" : 
+			[
+				-3.7779899209056111e-09,
+				7.4258321713926989e-10,
+				-7.8894029370969558e-15
+			],
+			"m_scale" : 
+			[
+				0.49999135732650757,
+				0.5,
+				0.99998271465301514
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_6",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-43.032821655273438,
+				-0.034078836441040039,
+				-188.20822143554688
 			],
 			"m_rotation" : 
 			[
@@ -156098,6 +157913,2063 @@
 			[
 				1.0,
 				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75348836183547974,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				0.62091064453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-9.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-1.87908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-4.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-6.87908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_7",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-5.1339478492736816,
+				19.328069686889648,
+				-277.46658325195312
+			],
+			"m_rotation" : 
+			[
+				0.00010427392408018932,
+				-89.999946594238281,
+				-0.00010427199595142156
+			],
+			"m_scale" : 
+			[
+				0.99999767541885376,
+				0.99999994039535522,
+				0.99999767541885376
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				0.62091064453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.961883544921875,
+				2.1347503662109375,
+				-9.37908935546875
+			],
+			"m_rotation" : 
+			[
+				3.6265149818684103e-14,
+				-0.0,
+				-1.1305877083803996e-15
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.29461669921875,
+				2.1346111297607422,
+				-1.8790371417999268
+			],
+			"m_rotation" : 
+			[
+				2.1753871151815839e-14,
+				-0.0,
+				-6.7711025004076639e-16
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.7899169921875,
+				2.1346797943115234,
+				-4.37908935546875
+			],
+			"m_rotation" : 
+			[
+				2.8910118792186204e-14,
+				-0.0,
+				-9.007429888023403e-16
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.304901123046875,
+				2.1355495452880859,
+				-6.8825182914733887
+			],
+			"m_rotation" : 
+			[
+				2.0980415213305015e-13,
+				-0.0,
+				-6.5536815307043386e-15
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_8",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				46.441059112548828,
+				-38.581623077392578,
+				-325.35797119140625
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999767541885376,
+				0.99999988079071045,
+				0.99999767541885376
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				0.62091064453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-9.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-1.87908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				-4.37908935546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.1352701187133789,
+				-6.8825531005859375
+			],
+			"m_rotation" : 
+			[
+				1.8058281649538377e-13,
+				-0.0,
+				-5.6405147920272642e-15
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_9",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-72.851234436035156,
+				-36.494949340820312,
+				-322.3570556640625
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999767541885376,
+				0.99999988079071045,
+				0.99999767541885376
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.464019775390625,
+				0.1680908203125,
+				0.62500762939453125
+			],
+			"m_rotation" : 
+			[
+				-6.3834999508571855e-09,
+				-1.2571953478257569e-09,
+				1.2113794049554093e-15
+			],
+			"m_scale" : 
+			[
+				0.49998539686203003,
+				0.5,
+				0.99997079372406006
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				1.8831291198730469,
+				-9.3775787353515625
+			],
+			"m_rotation" : 
+			[
+				-1.2897274359602307e-09,
+				-2.5729568475796327e-10,
+				3.0439081871648944e-16
+			],
+			"m_scale" : 
+			[
+				0.49999704957008362,
+				0.5,
+				0.99999409914016724
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.939788818359375,
+				0.73085784912109375,
+				-1.8771514892578125
+			],
+			"m_rotation" : 
+			[
+				-4.5466155285112109e-09,
+				-8.8914897666825254e-10,
+				8.2621600084478264e-16
+			],
+			"m_scale" : 
+			[
+				0.49998959898948669,
+				0.5,
+				0.99997919797897339
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.8797607421875,
+				1.6331901550292969,
+				-4.37750244140625
+			],
+			"m_rotation" : 
+			[
+				-4.7420285476107438e-09,
+				-9.2497620673981373e-10,
+				8.8212605165463804e-16
+			],
+			"m_scale" : 
+			[
+				0.49998915195465088,
+				0.5,
+				0.99997830390930176
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.375030517578125,
+				2.1352691650390625,
+				-6.883331298828125
+			],
+			"m_rotation" : 
+			[
+				-4.6638635176066146e-09,
+				-9.184619176316744e-10,
+				-4.7895702466225435e-15
+			],
+			"m_scale" : 
+			[
+				0.49998933076858521,
+				0.5,
+				0.99997866153717041
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Group_10",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-126.03748321533203,
+				-35.460151672363281,
+				-325.29971313476562
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999767541885376,
+				0.99999988079071045,
+				0.99999767541885376
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.494873046875,
+				2.1352653503417969,
+				-6.8825531005859375
+			],
+			"m_rotation" : 
+			[
+				-3.2438602914908188e-09,
+				-6.416164266553892e-10,
+				-4.9945386673309281e-15
+			],
+			"m_scale" : 
+			[
+				0.49999257922172546,
+				0.5,
+				0.99998515844345093
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.84130859375,
+				2.1344032287597656,
+				-4.37493896484375
+			],
+			"m_rotation" : 
+			[
+				-3.5434939427148038e-09,
+				-7.0024219755993045e-10,
+				6.8333334816468453e-16
+			],
+			"m_scale" : 
+			[
+				0.49999189376831055,
+				0.5,
+				0.99998378753662109
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.4202880859375,
+				2.1344032287597656,
+				-1.8767242431640625
+			],
+			"m_rotation" : 
+			[
+				-2.0192705285637658e-09,
+				-3.9408706853372166e-10,
+				3.9757301912305342e-16
+			],
+			"m_scale" : 
+			[
+				0.49999538064002991,
+				0.5,
+				0.99999076128005981
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.177581787109375,
+				2.1344032287597656,
+				-9.3773193359375
+			],
+			"m_rotation" : 
+			[
+				-2.0713806225813869e-09,
+				-4.0711484183830748e-10,
+				4.099972454538203e-16
+			],
+			"m_scale" : 
+			[
+				0.49999526143074036,
+				0.5,
+				0.99999052286148071
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.6000000238418579,
+				1.6000000238418579,
+				0.80000001192092896
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BonusScoreCoin1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.75294119119644165,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Collectible_Coin",
+				"Resources/Models\\IngameObjects",
+				"Collectible"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"BonusScoreCoin" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				2.134404182434082,
+				0.62091064453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
 				1.0
 			]
 		}
