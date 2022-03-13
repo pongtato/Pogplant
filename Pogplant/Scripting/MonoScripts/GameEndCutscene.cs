@@ -349,9 +349,13 @@ namespace Scripting
                 case BOSS_ANIM_STATE.FLYING_DOWN:
                     boss_anim_system.StopAnimation(true, moving_parts_dict);
                     boss_anim_system.AddAnimationSpecsStack(SetFlyingDownAnimationsOne, 6.0f);
-                    boss_anim_system.AddAnimationSpecsStack(SetFlyingDownAnimationsTwo, 8.0f);
+                    boss_anim_system.AddAnimationSpecsStack(SetFlyingDownAnimationsTwo, 4.0f);
+                    boss_anim_system.AddAnimationSpecsStack(MoveBlackBars, 2.0f);
+                    boss_anim_system.AddAnimationSpecsStack(GoToMenu, 0.1f);
                     boss_anim_system.AddAnimationUpdateStack(RunFlyingDownSequenceOne);
                     boss_anim_system.AddAnimationUpdateStack(RunFlyingDownSequenceTwo);
+                    boss_anim_system.AddAnimationUpdateStack(EmptyUpdate);
+                    boss_anim_system.AddAnimationUpdateStack(EmptyUpdate);
                     //boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.CRASHING.ToString());
                     boss_anim_system.PlayAnimation();
                     break;
@@ -644,6 +648,21 @@ namespace Scripting
 
             moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
             moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
+        }
+
+        void MoveBlackBars()
+        {
+            cinematic_cover_screen = true;
+        }
+
+        void EmptyUpdate(float dt)
+        {
+
+        }
+
+        void GoToMenu()
+        {
+            GameUtilities.LoadScene("MainMenu");
         }
         #endregion
 
