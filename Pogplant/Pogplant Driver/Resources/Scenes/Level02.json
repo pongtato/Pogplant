@@ -33,3757 +33,6 @@
 		}
 	},
 	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "02_Segment_07_GB",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"02_Segment_07_GB",
-				"Resources/Models\\Level",
-				"02_Segment_07_GB"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Segment_01",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 17,
-		"Name" : 
-		{
-			"m_Name" : "Segment_01_Art",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Final_Merged"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Hole_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Laser_Hole_04"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				9.0,
-				-102.0,
-				-32.299999237060547
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.80000001192092896,
-				0.80000001192092896,
-				0.80000001192092896
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Hole_01_Btm",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Laser_Hole_01_Btm"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-1.0,
-				-8.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.85000002384185791,
-				0.85000002384185791,
-				0.85000002384185791
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Hole_02_Btm",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Laser_Hole_02_Btm"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				1.7999999523162842,
-				-1.0,
-				2.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Soil",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Soil"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Hole_03_Btm",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Laser_Hole_03_Btm"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-1.0,
-				-1.0,
-				-0.40000000596046448
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Claw_Center",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Claw_Center"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Building_Right_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Building_Right_04"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Building_Right_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Building_Right_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Building_Right_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Building_Right_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Building_Right_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Building_Right_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Crane_Right_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Crane_Right_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Building_Left_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Building_Left_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Building_Left_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Building_Left_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Building_Left_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Building_Left_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Crane_Left_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Level_02_Crane_Left_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Hole_06_Btm",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Laser_Hole_06_Btm"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-1.0,
-				0.5,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Hole_05_Btm",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Final_Merged",
-				"Resources/Models\\Environment",
-				"Laser_Hole_05_Btm"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-12.0,
-				-1.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 6,
-		"Name" : 
-		{
-			"m_Name" : "Giant_Lasers",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				20.0,
-				20.0,
-				1.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "LaserTriggerGroup3",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "e93cb2b2-aece-4f65-85ac-a35405744907",
-			"prefab_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"LaserTriggerController" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.095849275588989258,
-				10.071174621582031,
-				-100.46553039550781
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Laser1",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
-			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"Laser" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				7.0,
-				-1.9073486328125e-06,
-				-30.5650634765625
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99964690208435059,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				100.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.40000000596046448,
-				10.0,
-				0.40000000596046448
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Laser" : 
-		{
-			"m_ActivateLaser" : false,
-			"m_Activetime" : 0.0,
-			"m_ChargeParticletime" : 0.0,
-			"m_Inactivetime" : 0.0,
-			"m_LaserLerptime" : 0.0,
-			"m_Spawntime" : 5.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "LaserObject",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Beam"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.003551483154296875,
-				-8.2874011993408203
-			],
-			"m_rotation" : 
-			[
-				1.4392187441814031e-09,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				10.005908966064453,
-				10.0,
-				10.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserOutLine",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.30697673559188843,
-				0.30697673559188843
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Outline"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-1.9550323486328125e-05,
-				-1.1920928955078125e-07
-			],
-			"m_rotation" : 
-			[
-				9.1599991480784126e-12,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserParticle",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.079069793224334717,
-				0.079069793224334717,
-				1.0
-			],
-			"m_ConeRadiusMax" : 2.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.019999999552965164,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 5.0,
-			"m_MinLife" : 2.0,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 2.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						0.94921875
-					],
-					[
-						0.1428571492433548,
-						0.77747905254364014
-					],
-					[
-						0.28571429848670959,
-						0.56611621379852295
-					],
-					[
-						0.4285714328289032,
-						0.37651020288467407
-					],
-					[
-						0.57142859697341919,
-						0.21816849708557129
-					],
-					[
-						0.71428573131561279,
-						0.09903109073638916
-					],
-					[
-						0.8571428656578064,
-						0.025072097778320312
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 100,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_SpawnRadius" : 5.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 100.0,
-				"m_CurveMin" : 50.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						1.0
-					],
-					[
-						0.28571429848670959,
-						1.0
-					],
-					[
-						0.42857146263122559,
-						1.0
-					],
-					[
-						0.57142859697341919,
-						1.0
-					],
-					[
-						0.71428573131561279,
-						1.0
-					],
-					[
-						0.85714292526245117,
-						1.0
-					],
-					[
-						1.0,
-						1.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 20.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.375
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 200,
-			"m_TargetConeScale" : 10.0,
-			"m_TargetPos" : 
-			[
-				7.2867520144890488e-43,
-				1.233142648605839e-43,
-				0.0
-			],
-			"m_TexName" : "256_ExportSheet_01.dds",
-			"m_Trail" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.0644073486328125,
-				-3.4476194381713867
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				20.0,
-				20.0,
-				1.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "LaserTriggerGroup4",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "33c4795c-028c-436f-8c22-ac3654756ab2",
-			"prefab_path" : "Resources\\Prefabs\\Laser_Horizontal_Giant.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"LaserTriggerController" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-106.0,
-				-115.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Laser1",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
-			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"Laser" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				24.955547332763672,
-				1.2979412078857422,
-				-50.141487121582031
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.99957901239395142,
-				0.99983733892440796,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserParticle",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.079069793224334717,
-				0.079069793224334717,
-				1.0
-			],
-			"m_ConeRadiusMax" : 2.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.019999999552965164,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 5.0,
-			"m_MinLife" : 2.0,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 2.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						0.94921875
-					],
-					[
-						0.1428571492433548,
-						0.77747905254364014
-					],
-					[
-						0.28571429848670959,
-						0.56611621379852295
-					],
-					[
-						0.4285714328289032,
-						0.37651020288467407
-					],
-					[
-						0.57142859697341919,
-						0.21816849708557129
-					],
-					[
-						0.71428573131561279,
-						0.09903109073638916
-					],
-					[
-						0.8571428656578064,
-						0.025072097778320312
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 100,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_SpawnRadius" : 5.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 100.0,
-				"m_CurveMin" : 50.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						1.0
-					],
-					[
-						0.28571429848670959,
-						1.0
-					],
-					[
-						0.42857146263122559,
-						1.0
-					],
-					[
-						0.57142859697341919,
-						1.0
-					],
-					[
-						0.71428573131561279,
-						1.0
-					],
-					[
-						0.85714292526245117,
-						1.0
-					],
-					[
-						1.0,
-						1.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 20.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : true,
-				"m_PlaySpeed" : 0.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.375
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 200,
-			"m_TargetConeScale" : 10.0,
-			"m_TargetPos" : 
-			[
-				7.2867520144890488e-43,
-				1.233142648605839e-43,
-				0.0
-			],
-			"m_TexName" : "256_ExportSheet_01.dds",
-			"m_Trail" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.63885498046875,
-				-3.4457645416259766
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				1.0158509450297615e-10,
-				-3.892568757031e-19
-			],
-			"m_scale" : 
-			[
-				0.99989265203475952,
-				0.99994456768035889,
-				0.99998027086257935
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				-100.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				10.0,
-				0.40000000596046448,
-				0.40000000596046448
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Laser" : 
-		{
-			"m_ActivateLaser" : false,
-			"m_Activetime" : 0.0,
-			"m_ChargeParticletime" : 0.0,
-			"m_Inactivetime" : 0.0,
-			"m_LaserLerptime" : 0.0,
-			"m_Spawntime" : 2.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "LaserObject",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Beam"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.0002765655517578125,
-				-0.00537109375,
-				-8.2863426208496094
-			],
-			"m_rotation" : 
-			[
-				1.5141892184544758e-09,
-				7.6786504932258026e-10,
-				-1.1101573630281321e-17
-			],
-			"m_scale" : 
-			[
-				10.005661964416504,
-				9.9995899200439453,
-				9.9994049072265625
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserOutLine",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.30697673559188843,
-				0.30697673559188843
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Outline"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-1.9550323486328125e-05,
-				-1.1920928955078125e-07
-			],
-			"m_rotation" : 
-			[
-				9.1599991480784126e-12,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				20.0,
-				20.0,
-				1.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "LaserTriggerGroup2",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "e93cb2b2-aece-4f65-85ac-a35405744907",
-			"prefab_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"LaserTriggerController" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.095849275588989258,
-				10.071174621582031,
-				-81.215362548828125
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Laser1",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
-			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"Laser" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-7.0,
-				-1.9073486328125e-06,
-				-30.5650634765625
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99966400861740112,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				100.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.40000000596046448,
-				10.0,
-				0.40000000596046448
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Laser" : 
-		{
-			"m_ActivateLaser" : false,
-			"m_Activetime" : 0.0,
-			"m_ChargeParticletime" : 0.0,
-			"m_Inactivetime" : 0.0,
-			"m_LaserLerptime" : 0.0,
-			"m_Spawntime" : 5.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "LaserObject",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Beam"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.003551483154296875,
-				-8.2874011993408203
-			],
-			"m_rotation" : 
-			[
-				1.4392187441814031e-09,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				10.005908966064453,
-				10.0,
-				10.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserOutLine",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.30697673559188843,
-				0.30697673559188843
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Outline"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-1.9550323486328125e-05,
-				-1.1920928955078125e-07
-			],
-			"m_rotation" : 
-			[
-				9.1599991480784126e-12,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserParticle",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.079069793224334717,
-				0.079069793224334717,
-				1.0
-			],
-			"m_ConeRadiusMax" : 2.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.019999999552965164,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 5.0,
-			"m_MinLife" : 2.0,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 2.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						0.94921875
-					],
-					[
-						0.1428571492433548,
-						0.77747905254364014
-					],
-					[
-						0.28571429848670959,
-						0.56611621379852295
-					],
-					[
-						0.4285714328289032,
-						0.37651020288467407
-					],
-					[
-						0.57142859697341919,
-						0.21816849708557129
-					],
-					[
-						0.71428573131561279,
-						0.09903109073638916
-					],
-					[
-						0.8571428656578064,
-						0.025072097778320312
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 100,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_SpawnRadius" : 5.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 100.0,
-				"m_CurveMin" : 50.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						1.0
-					],
-					[
-						0.28571429848670959,
-						1.0
-					],
-					[
-						0.42857146263122559,
-						1.0
-					],
-					[
-						0.57142859697341919,
-						1.0
-					],
-					[
-						0.71428573131561279,
-						1.0
-					],
-					[
-						0.85714292526245117,
-						1.0
-					],
-					[
-						1.0,
-						1.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 20.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.375
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 200,
-			"m_TargetConeScale" : 10.0,
-			"m_TargetPos" : 
-			[
-				7.2867520144890488e-43,
-				1.233142648605839e-43,
-				0.0
-			],
-			"m_TexName" : "256_ExportSheet_01.dds",
-			"m_Trail" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.06500244140625,
-				-3.4475345611572266
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999070167541504,
-				0.99999535083770752,
-				0.99999535083770752
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				20.0,
-				20.0,
-				1.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "LaserTriggerGroup1",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "e93cb2b2-aece-4f65-85ac-a35405744907",
-			"prefab_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"LaserTriggerController" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				10.071000099182129,
-				-8.0790004730224609
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Laser1",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
-			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"Laser" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.036664962768554688,
-				-1.9073486328125e-06,
-				-55.359001159667969
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99975419044494629,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserParticle",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.079069793224334717,
-				0.079069793224334717,
-				1.0
-			],
-			"m_ConeRadiusMax" : 2.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.019999999552965164,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 5.0,
-			"m_MinLife" : 2.0,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 2.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						0.94921875
-					],
-					[
-						0.1428571492433548,
-						0.77747905254364014
-					],
-					[
-						0.28571429848670959,
-						0.56611621379852295
-					],
-					[
-						0.4285714328289032,
-						0.37651020288467407
-					],
-					[
-						0.57142859697341919,
-						0.21816849708557129
-					],
-					[
-						0.71428573131561279,
-						0.09903109073638916
-					],
-					[
-						0.8571428656578064,
-						0.025072097778320312
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 100,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_SpawnRadius" : 5.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 100.0,
-				"m_CurveMin" : 50.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						1.0
-					],
-					[
-						0.28571429848670959,
-						1.0
-					],
-					[
-						0.42857146263122559,
-						1.0
-					],
-					[
-						0.57142859697341919,
-						1.0
-					],
-					[
-						0.71428573131561279,
-						1.0
-					],
-					[
-						0.85714292526245117,
-						1.0
-					],
-					[
-						1.0,
-						1.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 20.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.375
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 200,
-			"m_TargetConeScale" : 10.0,
-			"m_TargetPos" : 
-			[
-				7.2867520144890488e-43,
-				1.233142648605839e-43,
-				0.0
-			],
-			"m_TexName" : "256_ExportSheet_01.dds",
-			"m_Trail" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.0644073486328125,
-				-3.4474835395812988
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999654293060303,
-				0.99999827146530151,
-				0.99999827146530151
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				100.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.40000000596046448,
-				10.0,
-				0.40000000596046448
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Laser" : 
-		{
-			"m_ActivateLaser" : false,
-			"m_Activetime" : 0.0,
-			"m_ChargeParticletime" : 0.0,
-			"m_Inactivetime" : 0.0,
-			"m_LaserLerptime" : 0.0,
-			"m_Spawntime" : 2.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "LaserObject",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Beam"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.00537109375,
-				-8.287083625793457
-			],
-			"m_rotation" : 
-			[
-				1.4983787544053939e-09,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				10.005908966064453,
-				9.9996824264526367,
-				9.9996824264526367
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserOutLine",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.30697673559188843,
-				0.30697673559188843
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Outline"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-1.9550323486328125e-05,
-				-1.1920928955078125e-07
-			],
-			"m_rotation" : 
-			[
-				9.1599991480784126e-12,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				1.0,
-				20.0,
-				20.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "LaserTriggerGroup5",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "33c4795c-028c-436f-8c22-ac3654756ab2",
-			"prefab_path" : "Resources\\Prefabs\\Laser_Horizontal_Giant.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"LaserTriggerController" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-20.220554351806641,
-				9.9962711334228516,
-				-165.5625
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Laser1",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
-			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"Laser" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-39.074897766113281,
-				-13.699999809265137,
-				-4.4183197021484375
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				-89.999946594238281
-			],
-			"m_scale" : 
-			[
-				0.99954283237457275,
-				0.99981361627578735,
-				0.99999719858169556
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserParticle",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.079069793224334717,
-				0.079069793224334717,
-				1.0
-			],
-			"m_ConeRadiusMax" : 2.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.019999999552965164,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 5.0,
-			"m_MinLife" : 2.0,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 2.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						0.94921875
-					],
-					[
-						0.1428571492433548,
-						0.77747905254364014
-					],
-					[
-						0.28571429848670959,
-						0.56611621379852295
-					],
-					[
-						0.4285714328289032,
-						0.37651020288467407
-					],
-					[
-						0.57142859697341919,
-						0.21816849708557129
-					],
-					[
-						0.71428573131561279,
-						0.09903109073638916
-					],
-					[
-						0.8571428656578064,
-						0.025072097778320312
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 100,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_SpawnRadius" : 5.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 100.0,
-				"m_CurveMin" : 50.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						1.0
-					],
-					[
-						0.28571429848670959,
-						1.0
-					],
-					[
-						0.42857146263122559,
-						1.0
-					],
-					[
-						0.57142859697341919,
-						1.0
-					],
-					[
-						0.71428573131561279,
-						1.0
-					],
-					[
-						0.85714292526245117,
-						1.0
-					],
-					[
-						1.0,
-						1.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 20.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.375
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 200,
-			"m_TargetConeScale" : 10.0,
-			"m_TargetPos" : 
-			[
-				7.2867520144890488e-43,
-				1.233142648605839e-43,
-				0.0
-			],
-			"m_TexName" : "256_ExportSheet_01.dds",
-			"m_Trail" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.0634307861328125,
-				-3.4474945068359375
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				-5.8625035381787427e-11
-			],
-			"m_scale" : 
-			[
-				0.99998199939727783,
-				1.0,
-				0.99999827146530151
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				100.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.40000000596046448,
-				0.40000000596046448,
-				10.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Laser" : 
-		{
-			"m_ActivateLaser" : false,
-			"m_Activetime" : 0.0,
-			"m_ChargeParticletime" : 0.0,
-			"m_Inactivetime" : 0.0,
-			"m_LaserLerptime" : 0.0,
-			"m_Spawntime" : 2.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "LaserObject",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Beam"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.00011301040649414062,
-				0.0337066650390625,
-				-8.287078857421875
-			],
-			"m_rotation" : 
-			[
-				1.5139447473444534e-09,
-				7.1032207893395594e-10,
-				1.3962721645555121e-08
-			],
-			"m_scale" : 
-			[
-				10.005746841430664,
-				10.000639915466309,
-				10.004502296447754
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserOutLine",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.30697673559188843,
-				0.30697673559188843
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Outline"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-1.9550323486328125e-05,
-				-1.1920928955078125e-07
-			],
-			"m_rotation" : 
-			[
-				9.1599991480784126e-12,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				1.0,
-				20.0,
-				20.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "LaserTriggerGroup6",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "33c4795c-028c-436f-8c22-ac3654756ab2",
-			"prefab_path" : "Resources\\Prefabs\\Laser_Horizontal_Giant.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"LaserTriggerController" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-36.037696838378906,
-				10.071174621582031,
-				-165.5625
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Laser1",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
-			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Scripting" : 
-		{
-			"Laser" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-39.956771850585938,
-				-3.0,
-				-4.4183197021484375
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				-89.999946594238281
-			],
-			"m_scale" : 
-			[
-				0.99954283237457275,
-				0.99981361627578735,
-				0.99999719858169556
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserParticle",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.079069793224334717,
-				0.079069793224334717,
-				1.0
-			],
-			"m_ConeRadiusMax" : 2.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.019999999552965164,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 5.0,
-			"m_MinLife" : 2.0,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 2.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						0.94921875
-					],
-					[
-						0.1428571492433548,
-						0.77747905254364014
-					],
-					[
-						0.28571429848670959,
-						0.56611621379852295
-					],
-					[
-						0.4285714328289032,
-						0.37651020288467407
-					],
-					[
-						0.57142859697341919,
-						0.21816849708557129
-					],
-					[
-						0.71428573131561279,
-						0.09903109073638916
-					],
-					[
-						0.8571428656578064,
-						0.025072097778320312
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 100,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_SpawnRadius" : 5.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 100.0,
-				"m_CurveMin" : 50.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						1.0
-					],
-					[
-						0.28571429848670959,
-						1.0
-					],
-					[
-						0.42857146263122559,
-						1.0
-					],
-					[
-						0.57142859697341919,
-						1.0
-					],
-					[
-						0.71428573131561279,
-						1.0
-					],
-					[
-						0.85714292526245117,
-						1.0
-					],
-					[
-						1.0,
-						1.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 20.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.375
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 200,
-			"m_TargetConeScale" : 10.0,
-			"m_TargetPos" : 
-			[
-				7.2867520144890488e-43,
-				1.233142648605839e-43,
-				0.0
-			],
-			"m_TexName" : "256_ExportSheet_01.dds",
-			"m_Trail" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.0634307861328125,
-				-3.4474945068359375
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				-5.8624959053954484e-11
-			],
-			"m_scale" : 
-			[
-				0.99998337030410767,
-				1.0,
-				0.99999827146530151
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				100.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.40000000596046448,
-				0.40000000596046448,
-				10.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 1,
-		"Laser" : 
-		{
-			"m_ActivateLaser" : false,
-			"m_Activetime" : 0.0,
-			"m_ChargeParticletime" : 0.0,
-			"m_Inactivetime" : 0.0,
-			"m_LaserLerptime" : 0.0,
-			"m_Spawntime" : 2.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "LaserObject",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Beam"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				4.1723251342773438e-05,
-				0.0337066650390625,
-				-8.287078857421875
-			],
-			"m_rotation" : 
-			[
-				1.5139448583667559e-09,
-				7.1031974746560422e-10,
-				1.3962721645555121e-08
-			],
-			"m_scale" : 
-			[
-				10.005746841430664,
-				10.000639915466309,
-				10.004359245300293
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserOutLine",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.30697673559188843,
-				0.30697673559188843
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Outline"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-1.9550323486328125e-05,
-				-1.1920928955078125e-07
-			],
-			"m_rotation" : 
-			[
-				9.1599991480784126e-12,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
 		"Children" : 2,
 		"Name" : 
 		{
@@ -3803,12 +52,6 @@
 				1.0,
 				0.27554351091384888,
 				0.032558143138885498
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Segment_02_and_03",
-				"Resources/Models\\Environment",
-				"Level_02_Segment_02_and_03"
 			],
 			"UseLight" : 1
 		},
@@ -35144,6 +31387,3757 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "02_Segment_07_GB",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"02_Segment_07_GB",
+				"Resources/Models\\Level",
+				"02_Segment_07_GB"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Segment_01",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 17,
+		"Name" : 
+		{
+			"m_Name" : "Segment_01_Art",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Final_Merged"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Hole_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Laser_Hole_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.0,
+				-102.0,
+				-32.299999237060547
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.80000001192092896,
+				0.80000001192092896,
+				0.80000001192092896
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Hole_01_Btm",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Laser_Hole_01_Btm"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.0,
+				-8.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.85000002384185791,
+				0.85000002384185791,
+				0.85000002384185791
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Hole_02_Btm",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Laser_Hole_02_Btm"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.7999999523162842,
+				-1.0,
+				2.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Soil",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Soil"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Hole_03_Btm",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Laser_Hole_03_Btm"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.0,
+				-1.0,
+				-0.40000000596046448
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Claw_Center",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Claw_Center"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Building_Right_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Building_Right_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Building_Right_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Building_Right_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Building_Right_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Building_Right_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Building_Right_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Building_Right_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Crane_Right_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Crane_Right_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Building_Left_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Building_Left_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Building_Left_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Building_Left_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Building_Left_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Building_Left_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Crane_Left_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Level_02_Crane_Left_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Hole_06_Btm",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Laser_Hole_06_Btm"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.0,
+				0.5,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Hole_05_Btm",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Final_Merged",
+				"Resources/Models\\Environment",
+				"Laser_Hole_05_Btm"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-12.0,
+				-1.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 6,
+		"Name" : 
+		{
+			"m_Name" : "Giant_Lasers",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "LaserTriggerGroup3",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "e93cb2b2-aece-4f65-85ac-a35405744907",
+			"prefab_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"LaserTriggerController" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.095849275588989258,
+				10.071174621582031,
+				-100.46553039550781
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Laser1",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
+			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Laser" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				7.0,
+				-1.9073486328125e-06,
+				-30.5650634765625
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99964690208435059,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				100.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.40000000596046448,
+				10.0,
+				0.40000000596046448
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 5.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "LaserObject",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.003551483154296875,
+				-8.2874011993408203
+			],
+			"m_rotation" : 
+			[
+				1.4392187441814031e-09,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.005908966064453,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserOutLine",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.30697673559188843,
+				0.30697673559188843
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.9550323486328125e-05,
+				-1.1920928955078125e-07
+			],
+			"m_rotation" : 
+			[
+				9.1599991480784126e-12,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserParticle",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				0.079069793224334717,
+				0.079069793224334717,
+				1.0
+			],
+			"m_ConeRadiusMax" : 2.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.019999999552965164,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 5.0,
+			"m_MinLife" : 2.0,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.94921875
+					],
+					[
+						0.1428571492433548,
+						0.77747905254364014
+					],
+					[
+						0.28571429848670959,
+						0.56611621379852295
+					],
+					[
+						0.4285714328289032,
+						0.37651020288467407
+					],
+					[
+						0.57142859697341919,
+						0.21816849708557129
+					],
+					[
+						0.71428573131561279,
+						0.09903109073638916
+					],
+					[
+						0.8571428656578064,
+						0.025072097778320312
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 100,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_SpawnRadius" : 5.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 100.0,
+				"m_CurveMin" : 50.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 20.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.375
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 200,
+			"m_TargetConeScale" : 10.0,
+			"m_TargetPos" : 
+			[
+				7.2867520144890488e-43,
+				1.233142648605839e-43,
+				0.0
+			],
+			"m_TexName" : "256_ExportSheet_01.dds",
+			"m_Trail" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.0644073486328125,
+				-3.4476194381713867
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "LaserTriggerGroup4",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "33c4795c-028c-436f-8c22-ac3654756ab2",
+			"prefab_path" : "Resources\\Prefabs\\Laser_Horizontal_Giant.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"LaserTriggerController" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-106.0,
+				-115.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Laser1",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
+			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Laser" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				24.955547332763672,
+				1.2979412078857422,
+				-50.141487121582031
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.99957901239395142,
+				0.99983733892440796,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserParticle",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				0.079069793224334717,
+				0.079069793224334717,
+				1.0
+			],
+			"m_ConeRadiusMax" : 2.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.019999999552965164,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 5.0,
+			"m_MinLife" : 2.0,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.94921875
+					],
+					[
+						0.1428571492433548,
+						0.77747905254364014
+					],
+					[
+						0.28571429848670959,
+						0.56611621379852295
+					],
+					[
+						0.4285714328289032,
+						0.37651020288467407
+					],
+					[
+						0.57142859697341919,
+						0.21816849708557129
+					],
+					[
+						0.71428573131561279,
+						0.09903109073638916
+					],
+					[
+						0.8571428656578064,
+						0.025072097778320312
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 100,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_SpawnRadius" : 5.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 100.0,
+				"m_CurveMin" : 50.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 20.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : true,
+				"m_PlaySpeed" : 0.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.375
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 200,
+			"m_TargetConeScale" : 10.0,
+			"m_TargetPos" : 
+			[
+				7.2867520144890488e-43,
+				1.233142648605839e-43,
+				0.0
+			],
+			"m_TexName" : "256_ExportSheet_01.dds",
+			"m_Trail" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.63885498046875,
+				-3.4457645416259766
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				1.0158509450297615e-10,
+				-3.892568757031e-19
+			],
+			"m_scale" : 
+			[
+				0.99989265203475952,
+				0.99994456768035889,
+				0.99998027086257935
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				-100.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				10.0,
+				0.40000000596046448,
+				0.40000000596046448
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "LaserObject",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0002765655517578125,
+				-0.00537109375,
+				-8.2863426208496094
+			],
+			"m_rotation" : 
+			[
+				1.5141892184544758e-09,
+				7.6786504932258026e-10,
+				-1.1101573630281321e-17
+			],
+			"m_scale" : 
+			[
+				10.005661964416504,
+				9.9995899200439453,
+				9.9994049072265625
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserOutLine",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.30697673559188843,
+				0.30697673559188843
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.9550323486328125e-05,
+				-1.1920928955078125e-07
+			],
+			"m_rotation" : 
+			[
+				9.1599991480784126e-12,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "LaserTriggerGroup2",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "e93cb2b2-aece-4f65-85ac-a35405744907",
+			"prefab_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"LaserTriggerController" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.095849275588989258,
+				10.071174621582031,
+				-81.215362548828125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Laser1",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
+			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Laser" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-7.0,
+				-1.9073486328125e-06,
+				-30.5650634765625
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99966400861740112,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				100.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.40000000596046448,
+				10.0,
+				0.40000000596046448
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 5.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "LaserObject",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.003551483154296875,
+				-8.2874011993408203
+			],
+			"m_rotation" : 
+			[
+				1.4392187441814031e-09,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.005908966064453,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserOutLine",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.30697673559188843,
+				0.30697673559188843
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.9550323486328125e-05,
+				-1.1920928955078125e-07
+			],
+			"m_rotation" : 
+			[
+				9.1599991480784126e-12,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserParticle",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				0.079069793224334717,
+				0.079069793224334717,
+				1.0
+			],
+			"m_ConeRadiusMax" : 2.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.019999999552965164,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 5.0,
+			"m_MinLife" : 2.0,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.94921875
+					],
+					[
+						0.1428571492433548,
+						0.77747905254364014
+					],
+					[
+						0.28571429848670959,
+						0.56611621379852295
+					],
+					[
+						0.4285714328289032,
+						0.37651020288467407
+					],
+					[
+						0.57142859697341919,
+						0.21816849708557129
+					],
+					[
+						0.71428573131561279,
+						0.09903109073638916
+					],
+					[
+						0.8571428656578064,
+						0.025072097778320312
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 100,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_SpawnRadius" : 5.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 100.0,
+				"m_CurveMin" : 50.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 20.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.375
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 200,
+			"m_TargetConeScale" : 10.0,
+			"m_TargetPos" : 
+			[
+				7.2867520144890488e-43,
+				1.233142648605839e-43,
+				0.0
+			],
+			"m_TexName" : "256_ExportSheet_01.dds",
+			"m_Trail" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.06500244140625,
+				-3.4475345611572266
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999070167541504,
+				0.99999535083770752,
+				0.99999535083770752
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "LaserTriggerGroup1",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "e93cb2b2-aece-4f65-85ac-a35405744907",
+			"prefab_path" : "Resources\\Prefabs\\Laser_Vertical_Giant.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"LaserTriggerController" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				10.071000099182129,
+				-8.0790004730224609
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Laser1",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
+			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Laser" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.036664962768554688,
+				-1.9073486328125e-06,
+				-55.359001159667969
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99975419044494629,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserParticle",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				0.079069793224334717,
+				0.079069793224334717,
+				1.0
+			],
+			"m_ConeRadiusMax" : 2.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.019999999552965164,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 5.0,
+			"m_MinLife" : 2.0,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.94921875
+					],
+					[
+						0.1428571492433548,
+						0.77747905254364014
+					],
+					[
+						0.28571429848670959,
+						0.56611621379852295
+					],
+					[
+						0.4285714328289032,
+						0.37651020288467407
+					],
+					[
+						0.57142859697341919,
+						0.21816849708557129
+					],
+					[
+						0.71428573131561279,
+						0.09903109073638916
+					],
+					[
+						0.8571428656578064,
+						0.025072097778320312
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 100,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_SpawnRadius" : 5.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 100.0,
+				"m_CurveMin" : 50.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 20.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.375
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 200,
+			"m_TargetConeScale" : 10.0,
+			"m_TargetPos" : 
+			[
+				7.2867520144890488e-43,
+				1.233142648605839e-43,
+				0.0
+			],
+			"m_TexName" : "256_ExportSheet_01.dds",
+			"m_Trail" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.0644073486328125,
+				-3.4474835395812988
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999654293060303,
+				0.99999827146530151,
+				0.99999827146530151
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				100.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.40000000596046448,
+				10.0,
+				0.40000000596046448
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "LaserObject",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.00537109375,
+				-8.287083625793457
+			],
+			"m_rotation" : 
+			[
+				1.4983787544053939e-09,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				10.005908966064453,
+				9.9996824264526367,
+				9.9996824264526367
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserOutLine",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.30697673559188843,
+				0.30697673559188843
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.9550323486328125e-05,
+				-1.1920928955078125e-07
+			],
+			"m_rotation" : 
+			[
+				9.1599991480784126e-12,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "LaserTriggerGroup5",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "33c4795c-028c-436f-8c22-ac3654756ab2",
+			"prefab_path" : "Resources\\Prefabs\\Laser_Horizontal_Giant.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"LaserTriggerController" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-20.220554351806641,
+				9.9962711334228516,
+				-165.5625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Laser1",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
+			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Laser" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-39.074897766113281,
+				-13.699999809265137,
+				-4.4183197021484375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-89.999946594238281
+			],
+			"m_scale" : 
+			[
+				0.99954283237457275,
+				0.99981361627578735,
+				0.99999719858169556
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserParticle",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				0.079069793224334717,
+				0.079069793224334717,
+				1.0
+			],
+			"m_ConeRadiusMax" : 2.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.019999999552965164,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 5.0,
+			"m_MinLife" : 2.0,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.94921875
+					],
+					[
+						0.1428571492433548,
+						0.77747905254364014
+					],
+					[
+						0.28571429848670959,
+						0.56611621379852295
+					],
+					[
+						0.4285714328289032,
+						0.37651020288467407
+					],
+					[
+						0.57142859697341919,
+						0.21816849708557129
+					],
+					[
+						0.71428573131561279,
+						0.09903109073638916
+					],
+					[
+						0.8571428656578064,
+						0.025072097778320312
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 100,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_SpawnRadius" : 5.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 100.0,
+				"m_CurveMin" : 50.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 20.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.375
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 200,
+			"m_TargetConeScale" : 10.0,
+			"m_TargetPos" : 
+			[
+				7.2867520144890488e-43,
+				1.233142648605839e-43,
+				0.0
+			],
+			"m_TexName" : "256_ExportSheet_01.dds",
+			"m_Trail" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.0634307861328125,
+				-3.4474945068359375
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				-5.8625035381787427e-11
+			],
+			"m_scale" : 
+			[
+				0.99998199939727783,
+				1.0,
+				0.99999827146530151
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				100.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.40000000596046448,
+				0.40000000596046448,
+				10.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "LaserObject",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00011301040649414062,
+				0.0337066650390625,
+				-8.287078857421875
+			],
+			"m_rotation" : 
+			[
+				1.5139447473444534e-09,
+				7.1032207893395594e-10,
+				1.3962721645555121e-08
+			],
+			"m_scale" : 
+			[
+				10.005746841430664,
+				10.000639915466309,
+				10.004502296447754
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserOutLine",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.30697673559188843,
+				0.30697673559188843
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.9550323486328125e-05,
+				-1.1920928955078125e-07
+			],
+			"m_rotation" : 
+			[
+				9.1599991480784126e-12,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "LaserTriggerGroup6",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "33c4795c-028c-436f-8c22-ac3654756ab2",
+			"prefab_path" : "Resources\\Prefabs\\Laser_Horizontal_Giant.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"LaserTriggerController" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-36.037696838378906,
+				10.071174621582031,
+				-165.5625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Laser1",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
+			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"Laser" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-39.956771850585938,
+				-3.0,
+				-4.4183197021484375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-89.999946594238281
+			],
+			"m_scale" : 
+			[
+				0.99954283237457275,
+				0.99981361627578735,
+				0.99999719858169556
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserParticle",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				0.079069793224334717,
+				0.079069793224334717,
+				1.0
+			],
+			"m_ConeRadiusMax" : 2.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.019999999552965164,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 5.0,
+			"m_MinLife" : 2.0,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						0.94921875
+					],
+					[
+						0.1428571492433548,
+						0.77747905254364014
+					],
+					[
+						0.28571429848670959,
+						0.56611621379852295
+					],
+					[
+						0.4285714328289032,
+						0.37651020288467407
+					],
+					[
+						0.57142859697341919,
+						0.21816849708557129
+					],
+					[
+						0.71428573131561279,
+						0.09903109073638916
+					],
+					[
+						0.8571428656578064,
+						0.025072097778320312
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 100,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_SpawnRadius" : 5.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 100.0,
+				"m_CurveMin" : 50.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						1.0
+					],
+					[
+						0.28571429848670959,
+						1.0
+					],
+					[
+						0.42857146263122559,
+						1.0
+					],
+					[
+						0.57142859697341919,
+						1.0
+					],
+					[
+						0.71428573131561279,
+						1.0
+					],
+					[
+						0.85714292526245117,
+						1.0
+					],
+					[
+						1.0,
+						1.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 20.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.375
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 200,
+			"m_TargetConeScale" : 10.0,
+			"m_TargetPos" : 
+			[
+				7.2867520144890488e-43,
+				1.233142648605839e-43,
+				0.0
+			],
+			"m_TexName" : "256_ExportSheet_01.dds",
+			"m_Trail" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.0634307861328125,
+				-3.4474945068359375
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				-5.8624959053954484e-11
+			],
+			"m_scale" : 
+			[
+				0.99998337030410767,
+				1.0,
+				0.99999827146530151
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				100.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.40000000596046448,
+				0.40000000596046448,
+				10.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "LaserObject",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				4.1723251342773438e-05,
+				0.0337066650390625,
+				-8.287078857421875
+			],
+			"m_rotation" : 
+			[
+				1.5139448583667559e-09,
+				7.1031974746560422e-10,
+				1.3962721645555121e-08
+			],
+			"m_scale" : 
+			[
+				10.005746841430664,
+				10.000639915466309,
+				10.004359245300293
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserOutLine",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.30697673559188843,
+				0.30697673559188843
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-1.9550323486328125e-05,
+				-1.1920928955078125e-07
+			],
+			"m_rotation" : 
+			[
+				9.1599991480784126e-12,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
 		"Children" : 2,
 		"Name" : 
 		{
@@ -36936,7 +36930,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.618064880371094,
+				"m_FrameCounter" : 104.22259521484375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -36950,7 +36944,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.828125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37002,7 +36996,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.618064880371094,
+				"m_FrameCounter" : 104.22259521484375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -37016,7 +37010,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.828125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37068,7 +37062,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 97.910247802734375,
+				"m_FrameCounter" : 101.39865112304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -37082,7 +37076,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.765625
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37134,7 +37128,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.618064880371094,
+				"m_FrameCounter" : 104.22259521484375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -37148,7 +37142,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.828125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37200,7 +37194,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 32.735252380371094,
+				"m_FrameCounter" : 52.235221862792969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -37214,7 +37208,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.265625
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37266,7 +37260,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.618064880371094,
+				"m_FrameCounter" : 104.22259521484375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -37280,7 +37274,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.828125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37332,7 +37326,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 97.910247802734375,
+				"m_FrameCounter" : 101.39865112304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -37346,7 +37340,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.765625
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37398,7 +37392,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 62.321128845214844,
+				"m_FrameCounter" : 69.489013671875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -37411,8 +37405,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.5
+					0.5,
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37464,7 +37458,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 97.910247802734375,
+				"m_FrameCounter" : 101.39865112304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -37478,7 +37472,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.765625
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37530,7 +37524,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 101.27886962890625,
+				"m_FrameCounter" : 92.525093078613281,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -37543,8 +37537,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.796875
+					0.0,
+					0.734375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -37596,7 +37590,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 62.321128845214844,
+				"m_FrameCounter" : 69.489013671875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -37609,8 +37603,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.5
+					0.5,
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -92803,68 +92797,87 @@
 		}
 	},
 	{
-		"Children" : 5,
+		"Children" : 20,
 		"Name" : 
 		{
-			"m_Name" : "Actual_Nuke",
+			"m_Name" : "VO Trigger Zone Parent",
 			"status" : true
 		},
-		"Render" : 
+		"PrefabInstance" : 
 		{
-			"ColorTint" : 
+			"prefab_GUID" : "3352d0f2-eea9-40eb-b7a2-8bb4bf5c80f0",
+			"prefab_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
 			[
 				0.0,
-				0.20468282699584961,
-				1.0
+				0.0,
+				0.0
 			],
-			"EmissiveTint" : 
+			"m_rotation" : 
 			[
 				0.0,
-				0.20392157137393951,
-				1.0
+				-0.0,
+				0.0
 			],
-			"RenderModel" : 
+			"m_scale" : 
 			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Inner"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
 		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
+			"m_Name" : "Group_11",
+			"status" : true
 		},
-		"ScriptVariables" : 
-		[
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
 			{
-				"Data" : 0.10000000149011612,
-				"Name" : "s1_s2_transition",
-				"Type" : 0
-			},
-			{
-				"Data" : 0.10000000149011612,
-				"Name" : "s2_s3_transition",
-				"Type" : 0
-			},
-			{
-				"Data" : 0.30000001192092896,
-				"Name" : "s3_s4_transition",
-				"Type" : 0
-			},
-			{
-				"Data" : 1.0,
-				"Name" : "s4_s5_transition",
-				"Type" : 0
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_53.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
 			}
-		],
-		"Scripting" : 
-		{
-			"PlayerNuke" : false
 		},
-		"SphereCollider" : 
+		"BoxCollider" : 
 		{
 			"centre" : 
 			[
@@ -92873,9 +92886,32 @@
 				0.0
 			],
 			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				15.0,
+				1.0
+			],
 			"isStatic" : false,
-			"isTrigger" : false,
-			"radius" : 2.2599999904632568
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_11",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
 		},
 		"Tag" : 
 		{
@@ -92885,8 +92921,113 @@
 		{
 			"m_position" : 
 			[
-				6.9405040740966797,
-				-10.15313720703125,
+				11.353147506713867,
+				-33.490291595458984,
+				-465.87368774414062
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_41.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_11",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.6638021469116211,
+				-28.898445129394531,
+				-494.78744506835938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_09",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -92904,33 +93045,83 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_51.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				15.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Nuke_Outer_Outline",
+			"m_Name" : "Prof_09",
 			"status" : true
 		},
-		"Render" : 
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
 		{
-			"ColorTint" : 
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.996109962463379,
+				-125.41874694824219,
+				-329.59732055664062
+			],
+			"m_rotation" : 
 			[
 				0.0,
-				0.34525251388549805,
-				1.0
+				-0.0,
+				0.0
 			],
-			"EmissiveTint" : 
+			"m_scale" : 
 			[
-				0.0,
-				0.2046511173248291,
+				1.0,
+				1.0,
 				1.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Outer_Outline"
-			],
-			"UseLight" : 1
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_08",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -92959,33 +93150,155 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_40.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Nuke_Outer_Spikes",
+			"m_Name" : "Timmy_08",
 			"status" : true
 		},
-		"Render" : 
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
 		{
-			"ColorTint" : 
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
 			[
-				1.0,
-				0.962119460105896,
-				0.52093023061752319
+				-6.1103391647338867,
+				-135.73396301269531,
+				-316.81121826171875
 			],
-			"EmissiveTint" : 
+			"m_rotation" : 
 			[
-				0.96744191646575928,
-				1.0,
+				0.0,
+				-0.0,
 				0.0
 			],
-			"RenderModel" : 
+			"m_scale" : 
 			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Outer_Spikes"
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_50.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
 			],
-			"UseLight" : 1
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_08",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-82.912673950195312,
+				-144.52943420410156,
+				-316.81121826171875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_07",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -93014,33 +93327,50 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_49.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				1.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Nuke_Swirl",
+			"m_Name" : "Prof_07",
 			"status" : true
 		},
-		"Render" : 
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
 		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.96724772453308105,
-				0.5767441987991333
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.83529412746429443,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Swirl"
-			],
-			"UseLight" : 1
+			"TriggerAudioPlay" : false
 		},
 		"Tag" : 
 		{
@@ -93050,14 +93380,14 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				-99.758819580078125,
+				-37.122951507568359,
+				-316.81121826171875
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -93069,33 +93399,11 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
-			"m_Name" : "Nuke_Outer",
+			"m_Name" : "Group_06",
 			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.49302327632904053,
-				0.73826372623443604,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				0.0,
-				0.59536528587341309,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Outer"
-			],
-			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -93112,7 +93420,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -93124,33 +93432,83 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_48.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				1.0,
+				10.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Shockwaves",
-			"status" : false
+			"m_Name" : "Prof_06",
+			"status" : true
 		},
-		"Render" : 
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
 		{
-			"ColorTint" : 
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
 			[
-				0.53023254871368408,
-				0.78368842601776123,
+				-105.79041290283203,
+				83.624275207519531,
+				-324.87557983398438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
 				1.0
-			],
-			"EmissiveTint" : 
-			[
-				0.32093024253845215,
-				0.89577066898345947,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Shockwaves"
-			],
-			"UseLight" : 1
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_05",
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -93167,7 +93525,2197 @@
 			"m_rotation" : 
 			[
 				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_46.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
 				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_05",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-105.40421295166016,
+				101.63051605224609,
+				-243.79612731933594
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_04",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_38.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_04",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-105.76580047607422,
+				98.2030029296875,
+				-220.36711120605469
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_45.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_04",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-107.28043365478516,
+				98.202690124511719,
+				-175.83760070800781
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_03",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_44.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				10.0,
+				10.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_03",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-25.151342391967773,
+				7.6145496368408203,
+				-164.54385375976562
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_02",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_43.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_02",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0084615945816040039,
+				5.5725345611572266,
+				-65.957160949707031
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_20",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_62.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_20",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-602.236572265625,
+				223.43386840820312,
+				-512.0106201171875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_48.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_20",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-571.47998046875,
+				223.65924072265625,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_12",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_42.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				1.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_12",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-32.299468994140625,
+				33.143478393554688,
+				-496.19482421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_54.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				18.0,
+				1.0,
+				18.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_12",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-29.155294418334961,
+				-19.38121223449707,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_13",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_43.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				1.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_13",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-32.299468994140625,
+				54.062446594238281,
+				-496.52932739257812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_14",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_55.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_14",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-63.634330749511719,
+				99.822731018066406,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_44.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_14",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-90.75640869140625,
+				94.416107177734375,
+				-496.52932739257812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_17",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_45.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_17",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-346.13153076171875,
+				127.96757507324219,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_59.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_17",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-365.66635131835938,
+				126.69013214111328,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_18",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_46.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.69999998807907104
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_18",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-539.06170654296875,
+				130.32826232910156,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_60.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_18",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-508.10671997070312,
+				137.50187683105469,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_19",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_61.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				20.0,
+				1.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_19",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-554.589111328125,
+				198.71315002441406,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_47.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.89899998903274536
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				20.0,
+				1.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_19",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-554.589111328125,
+				168.7333984375,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_01",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_42.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				11.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_01",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				5.6031007766723633,
+				-1.8284621238708496
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_37.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_01",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				5.6031007766723633,
+				-48.739521026611328
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_15",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_56.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				15.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_15",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-124.57440948486328,
+				99.822731018066406,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_16",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_57.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_16",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-246.95968627929688,
+				100.25508117675781,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_58.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				20.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_16_2",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-302.1162109375,
+				126.69013214111328,
+				-496.93710327148438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Group_10",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_52.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				15.0,
+				1.0,
+				15.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_10",
+			"status" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.522404670715332,
+				-107.45841217041016,
+				-449.76406860351562
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
