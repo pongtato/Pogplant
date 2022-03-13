@@ -936,18 +936,21 @@ namespace Scripting
 	//Helper function for Playerbullet taking damage
 	void GameScript::EnemyTakeDamageFromID(std::uint32_t entityID, float damage)
 	{
-		auto enemy_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(entityID));
-
-		if (enemy_script)
+		if (PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(entityID)))
 		{
-			if (enemy_script->m_ScriptTypes.contains("BaseTurret"))
-				SSH::InvokeFunction("BaseTurret", "TakeDamage", static_cast<entt::entity>(entityID), damage);
-			else if (enemy_script->m_ScriptTypes.contains("BaseGattling"))
-				SSH::InvokeFunction("BaseGattling", "TakeDamage", static_cast<entt::entity>(entityID), damage);
-			else if (enemy_script->m_ScriptTypes.contains("BaseFlock"))
-				SSH::InvokeFunction("BaseFlock", "TakeDamage", static_cast<entt::entity>(entityID), damage);
-			else if (enemy_script->m_ScriptTypes.contains("L1BossShield"))
-				SSH::InvokeFunction("L1BossShield", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			auto enemy_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(entityID));
+
+			if (enemy_script)
+			{
+				if (enemy_script->m_ScriptTypes.contains("BaseTurret"))
+					SSH::InvokeFunction("BaseTurret", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+				else if (enemy_script->m_ScriptTypes.contains("BaseGattling"))
+					SSH::InvokeFunction("BaseGattling", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+				else if (enemy_script->m_ScriptTypes.contains("BaseFlock"))
+					SSH::InvokeFunction("BaseFlock", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+				else if (enemy_script->m_ScriptTypes.contains("L1BossShield"))
+					SSH::InvokeFunction("L1BossShield", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			}
 		}
 	}
 

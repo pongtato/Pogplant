@@ -386,6 +386,9 @@ void ECS::TrulyDisableEntity(entt::entity _entity)
 
 void ECS::TrulyEnableEntity(entt::entity _entity)
 {
+	if (!m_registry.valid(_entity))
+		return;
+
 	//assert(m_registry.try_get<Disabled>(_entity) != nullptr);
 	if (m_registry.try_get<Disabled>(_entity) == nullptr)
 		return;

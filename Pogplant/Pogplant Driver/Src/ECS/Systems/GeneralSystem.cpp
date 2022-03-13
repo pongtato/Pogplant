@@ -61,14 +61,16 @@ void GeneralSystem::UpdateGame(float c_dt)
 
 			if (projectile.m_Homing)
 			{
-				auto enemy_trans = m_registry->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(projectile.tracker));
-				if (enemy_trans)
+				if (m_registry->GetReg().valid(static_cast<entt::entity>(projectile.tracker)))
 				{
-					auto mag = glm::length(rigidbody.velocity);
-					transform.LookAt(enemy_trans->GetGlobalPosition());
-					auto forward_vector = transform.GetForwardVector();
-					rigidbody.velocity = forward_vector * mag;
-
+					auto enemy_trans = m_registry->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(projectile.tracker));
+					if (enemy_trans)
+					{
+						auto mag = glm::length(rigidbody.velocity);
+						transform.LookAt(enemy_trans->GetGlobalPosition());
+						auto forward_vector = transform.GetForwardVector();
+						rigidbody.velocity = forward_vector * mag;
+					}
 				}
 			}
 
