@@ -761,7 +761,7 @@
 			[
 				0.0,
 				0.0,
-				2.0
+				4.0
 			],
 			"collisionLayer" : "OBSTACLES",
 			"extends" : 
@@ -786,7 +786,7 @@
 		"Name" : 
 		{
 			"m_Name" : "LaserObject",
-			"status" : false
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -836,7 +836,7 @@
 			[
 				1.0,
 				1.0,
-				1.0
+				2.0
 			]
 		}
 	},
@@ -845,7 +845,7 @@
 		"Name" : 
 		{
 			"m_Name" : "LaserOutLine",
-			"status" : false
+			"status" : true
 		},
 		"Prefab" : 
 		{

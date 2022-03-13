@@ -136,6 +136,7 @@ namespace Scripting
         //private EnemyManager em;
         private uint laser_object_id; // entityID to the laser object (optional)
         private uint Laser_object;
+        private bool laser_state = false;
         private float current_time;
         //private int current_interval = 0;
         private float fire_timer = 0.0f;
@@ -217,18 +218,16 @@ namespace Scripting
                 }
                 else if (attack_animation == "Laser")
                 {
-                    //ECS.SetActive(Laser_Particle, false);
-                    ECS.ResetLaser(Laser_object);
+                    laser_state = !laser_state;
+                    if (laser_state)
+                        ECS.SetLaserStart(Laser_object, laser_state);
+                    else
+                        ECS.ResetLaser(Laser_object);
                 }
                 else
                     GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, Transform.GetForwardVector(owner.id), bullet_speed, 3.0f);
 
                 ECS.PlayAudio(owner.id, 3, "SFX");
-            }
-            else if (attack_animation == "Laser")
-            {
-                //ECS.SetActive(Laser_Particle, true);
-                ECS.SetLaserStart(Laser_object, true);
             }
 
 
@@ -238,7 +237,6 @@ namespace Scripting
                 if (attack_animation == "Laser")
                 {
                     ECS.ResetLaser(Laser_object);
-                    //GameUtilities.StartLaser(laser_object_id);
                 }
             }
 
