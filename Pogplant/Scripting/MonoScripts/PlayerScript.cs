@@ -408,9 +408,9 @@ namespace Scripting
 				float forceDotY = Vector3.Dot(upForce, up_vec);
 				float forceDotX = Vector3.Dot(rightForce, right_vec);
 
-				Console.WriteLine("PlayerScript.cs: X:" + deltaX + " Y:" + deltaY);
+				//Console.WriteLine("PlayerScript.cs: X:" + deltaX + " Y:" + deltaY);
 
-				//Slow movement as it reaches edges
+				//Reduce force as it reaches edges
 				if (deltaX > 0 && forceDotX > 0)
 				{
 					rightForce = rightForce * ((m_newMovementLimits.Y - deltaX) / m_newMovementLimits.Y);
@@ -422,11 +422,11 @@ namespace Scripting
 
 				if (deltaY > 0 && forceDotY > 0)
 				{
-					upForce = upForce * ((m_newMovementLimits.Z - deltaY) / m_newMovementLimits.Z);
+					upForce = upForce * ((m_newMovementLimits.W - deltaY) / m_newMovementLimits.W);
 				}
 				else if (deltaY < 0 && forceDotY < 0)
 				{
-					upForce = upForce * ((m_newMovementLimits.W + deltaY) / m_newMovementLimits.W);
+					upForce = upForce * ((m_newMovementLimits.Z + deltaY) / m_newMovementLimits.Z);
 				}
 
 
@@ -666,6 +666,8 @@ namespace Scripting
 			{
 				var newBounds = GameUtilities.GetMovementBounds(id);
 				m_newMovementLimits = newBounds;
+
+				Console.WriteLine("PlayerScript.cs: New bounds set: " + m_newMovementLimits.ToString());
 			}
 		}
 
