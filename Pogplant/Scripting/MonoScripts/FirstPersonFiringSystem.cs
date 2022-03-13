@@ -27,8 +27,11 @@ namespace Scripting
 		uint ShootingBox;
 		uint ReticleGroupID;
 		uint PlayerBox;
-
 		uint ScoreText; // id of score text object
+
+		//used for nuke
+		uint m_actual_nuke;
+		float m_actual_nuke_speed;
 
 		//Player Firing 
 		float p_fireRate = 0.1f;
@@ -128,6 +131,9 @@ namespace Scripting
 			LargeCrosshair = ECS.FindEntityWithName("LargeCrosshair");
 			ReticleGroupID = ECS.FindEntityWithName("ReticleGroup");
 			ScoreText = ECS.FindEntityWithName("Score_Text");
+			m_actual_nuke = ECS.FindEntityWithName("Actual_Nuke");
+			m_actual_nuke_speed = ECS.GetValue<float>(entityID, 300, "m_actual_nuke_speed");
+
 
 			Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
 			Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
@@ -262,6 +268,13 @@ namespace Scripting
 					//Vibrate controller
 					InputUtility.VibrateControllerLightMotor(0.25f, 0.05f);
 				}
+			}
+			else if (InputUtility.onKeyReleased(KEY_ID.KEY_P))
+            {
+				ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
+				ECS.SetActive(m_actual_nuke, true);
+				//uint ret_id = GameUtilities.Instantiate("Nuke", transform.Position, new Vector3(0,0,0));
+				GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
 			}
 		}
 

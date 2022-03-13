@@ -27,7 +27,6 @@ namespace Scripting
 		//or = original
 		bool set_transition = true;
 
-		
 		Vector3 or_Overall_scale;
 		Vector3 or_Shockwaves_scale;
 		Vector3 or_Nuke_Outer_scale;
@@ -129,7 +128,6 @@ namespace Scripting
 			m_Nuke_Swirl_scale.Add(ECS.GetValue<Vector3>(entityID, new Vector3(0, 0, 0), "s5_Nuke_Swirl"));
 			m_Nuke_Outer_Spikes_scale.Add(ECS.GetValue<Vector3>(entityID, new Vector3(1, 1, 1), "s5_Nuke_Outer_Spikes"));
 			m_Nuke_Outer_Outline_scale.Add(ECS.GetValue<Vector3>(entityID, new Vector3(1.1f, 1.1f, 1.1f), "s5_Nuke_Outer_Outline"));
-
 		}
 
 		void SetActiveAndScale(uint entity, bool state, Vector3 scale)
@@ -254,6 +252,8 @@ namespace Scripting
 							or_Nuke_Swirl_scale = m_Nuke_Swirl_scale[2];
 							or_Nuke_Outer_Spikes_scale = m_Nuke_Outer_Spikes_scale[2];
 							or_Nuke_Outer_Outline_scale = m_Nuke_Outer_Outline_scale[2];
+
+							GameUtilities.StopMoving(entityID);
 						}
 
 						GrowShrink(dt);
@@ -334,15 +334,20 @@ namespace Scripting
 				//if exceed, hit everyone
 
 				var NoDuplicate = m_enemy_in_range.Distinct();
-
+				Console.WriteLine(NoDuplicate.Count());
 				foreach (uint entity in NoDuplicate)
                 {
-                    GameUtilities.EnemyTakeDamageFromID(entity, 999);
+                    GameUtilities.EnemyTakeDamageFromID(entity, 9999);
                 }
 
                 //disable self
-                //ECS.SetActive(entityID, false);
-            }
+                ECS.SetActive(entityID, false);
+
+				//reset variables 
+				m_timer = 0;
+				m_state_counter = 0;
+				set_transition = true;
+			}
 
 		}
 
