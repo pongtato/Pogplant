@@ -517,7 +517,7 @@ namespace Scripting
                 switch (active_index)
                 {
                     case 0:
-                        GameUtilities.LoadScene("Level01");
+                        GameUtilities.LoadScene("CutScene");
                         break;
                     case 1:
                         HowToPlayMenu.EnableHowToPlayMenu(true);
