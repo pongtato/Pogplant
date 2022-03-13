@@ -232,6 +232,7 @@ namespace PogplantDriver
 		Try_Save_Component<Components::SpriteAnimation>(subroot, id);
 		Try_Save_Component<Prefab>(subroot, id);
 		Try_Save_Component<PrefabInstance>(subroot, id);
+		Try_Save_Component<MovementBounds>(subroot, id);
 
 		if (!transform_component.m_children.empty() || transform_component.m_parent != entt::null)
 		{
@@ -418,6 +419,8 @@ namespace PogplantDriver
 		Try_Load_Component<Camera>(root, "Camera", id);
 		Try_Load_Component<Rigidbody>(root, "Rigidbody", id);
 		Try_Load_Component<Laser>(root, "Laser", id);
+		Try_Load_Component<MovementBounds>(root, "MovementBounds", id);
+
 		Try_Load_Component<Components::SpriteAnimation>(root, "SpriteAnimation", id);
 
 		Try_Load_Component<Components::Guid>(root, "Guid", id);

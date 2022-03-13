@@ -474,7 +474,7 @@ namespace Scripting
 				{
 					ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
 
-					m_tempTransform.Rotation = Vector3.Lerp(m_tempTransform.Rotation, m_turretGuns[i].restingRotation, dt * 10f);
+					m_tempTransform.Rotation = Vector3.Lerp(m_tempTransform.Rotation, m_turretGuns[i].restingRotation, dt * 2f);
 
 					ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
 				}
@@ -502,6 +502,8 @@ namespace Scripting
 					{
 						L2Boss.m_singleton.SetColorTurretFiring();
 						ECS.PlayAudio(entityID, 3, "SFX");
+
+						InputUtility.VibrateControllerHeavyMotor(1f, 0.15f);
 
 						for (int i = 0; i < 2; ++i)
 						{

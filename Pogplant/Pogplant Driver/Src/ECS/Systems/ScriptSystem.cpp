@@ -435,6 +435,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::StopMoving", &Scripting::GameScript::StopMoving);
 
 	mono_add_internal_call("Scripting.GameUtilities::GetRayCastDirCamera", &Scripting::GameScript::GetRayCastDirCamera);
+	mono_add_internal_call("Scripting.GameUtilities::GetMovementBounds", &SSH::GetMovementBounds);
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);

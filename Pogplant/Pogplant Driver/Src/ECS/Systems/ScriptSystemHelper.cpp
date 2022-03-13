@@ -532,6 +532,23 @@ namespace SSH
 		return PogplantDriver::Application::GetInstance().m_sPhysicsSystem.RayCastObject(rayOrigin, rayDir, static_cast<entt::entity>(entityIDToCast));
 	}
 
+	glm::vec4 GetMovementBounds(std::uint32_t entityID)
+	{
+		auto movementBounds = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::MovementBounds>((entt::entity)entityID);
+
+		if (movementBounds)
+		{
+			return glm::vec4{movementBounds->minX, movementBounds->maxX, movementBounds->minY, movementBounds->maxY};
+		}
+
+		std::stringstream ss;
+		ss << "Unable to get movementBound: " << entityID;
+		Pogplant::Logger::Log(
+			Pogplant::LogEntry{ "GetMovementBounds()", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+
+		return glm::vec4{ 0.f, 0.f, 0.f, 0.f };
+	}
+
 	void AddComponentTransform(unsigned int id, Components::Transform transform)
 	{
 		ScriptSystem::GetECS()->GetReg().emplace_or_replace<Components::Transform>(static_cast<entt::entity>(id), transform);
