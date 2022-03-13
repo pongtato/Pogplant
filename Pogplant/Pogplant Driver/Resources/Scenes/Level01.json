@@ -146277,7 +146277,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 101.39767456054688,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146290,8 +146290,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.796875
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146343,7 +146343,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 101.39767456054688,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146356,8 +146356,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.796875
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146409,7 +146409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.284927368164062,
+				"m_FrameCounter" : 34.484001159667969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146422,8 +146422,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.28125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146475,7 +146475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 101.39767456054688,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146488,8 +146488,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.796875
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146541,7 +146541,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 7.2465295791625977,
+				"m_FrameCounter" : 20.754360198974609,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -146554,8 +146554,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.0625
+					0.0,
+					0.171875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146607,7 +146607,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 101.39767456054688,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146620,8 +146620,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.796875
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146673,7 +146673,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.284927368164062,
+				"m_FrameCounter" : 34.484001159667969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146686,8 +146686,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.28125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146739,7 +146739,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.69718933105469,
+				"m_FrameCounter" : 119.36754608154297,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146752,8 +146752,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.921875
+					0.5,
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146805,7 +146805,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.284927368164062,
+				"m_FrameCounter" : 34.484001159667969,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146818,8 +146818,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.28125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146871,7 +146871,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 3.6025700569152832,
+				"m_FrameCounter" : 81.871231079101562,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -146885,7 +146885,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.03125
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146937,7 +146937,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.69718933105469,
+				"m_FrameCounter" : 119.36754608154297,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146950,8 +146950,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.921875
+					0.5,
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -162344,6 +162344,382 @@
 			[
 				1.0,
 				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Actual_Nuke",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.0,
+				0.20468282699584961,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.20392157137393951,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Inner"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "s1_s2_transition",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "s2_s3_transition",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.30000001192092896,
+				"Name" : "s3_s4_transition",
+				"Type" : 0
+			},
+			{
+				"Data" : 1.0,
+				"Name" : "s4_s5_transition",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"PlayerNuke" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 2.2599999904632568
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.9405040740966797,
+				-10.15313720703125,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer_Outline",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.0,
+				0.34525251388549805,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.2046511173248291,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer_Spikes",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.962119460105896,
+				0.52093023061752319
+			],
+			"EmissiveTint" : 
+			[
+				0.96744191646575928,
+				1.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer_Spikes"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Swirl",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.96724772453308105,
+				0.5767441987991333
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.83529412746429443,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Swirl"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.49302327632904053,
+				0.73826372623443604,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.59536528587341309,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwaves",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.53023254871368408,
+				0.78368842601776123,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.32093024253845215,
+				0.89577066898345947,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Shockwaves"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
 				1.0
 			]
 		}
