@@ -22,7 +22,7 @@
 		"Name" : 
 		{
 			"m_Name" : "PlayerBox",
-			"status" : true
+			"status" : false
 		},
 		"Rigidbody" : 
 		{
@@ -79,7 +79,7 @@
 		"Name" : 
 		{
 			"m_Name" : "PlayerShip",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -154,7 +154,7 @@
 		"Name" : 
 		{
 			"m_Name" : "PlayerCam",
-			"status" : true
+			"status" : false
 		},
 		"Transform" : 
 		{
@@ -201,7 +201,7 @@
 		"Name" : 
 		{
 			"m_Name" : "ShootingBox",
-			"status" : true
+			"status" : false
 		},
 		"Rigidbody" : 
 		{
@@ -240,7 +240,7 @@
 		"Name" : 
 		{
 			"m_Name" : "PlayerTurret3",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -273,7 +273,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart2",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -328,7 +328,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart3",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -383,7 +383,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart1",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -438,7 +438,7 @@
 		"Name" : 
 		{
 			"m_Name" : "PlayerTurret2",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -471,7 +471,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart2",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -526,7 +526,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart3",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -581,7 +581,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart1",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -636,7 +636,7 @@
 		"Name" : 
 		{
 			"m_Name" : "PlayerTurret4",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -669,7 +669,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart2",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -724,7 +724,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart3",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -779,7 +779,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart1",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -867,7 +867,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Crosshair",
-			"status" : true
+			"status" : false
 		},
 		"Transform" : 
 		{
@@ -929,7 +929,7 @@
 		"Name" : 
 		{
 			"m_Name" : "LargeCrosshair",
-			"status" : true
+			"status" : false
 		},
 		"Transform" : 
 		{
@@ -958,7 +958,7 @@
 		"Name" : 
 		{
 			"m_Name" : "PlayerTurret1",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -991,7 +991,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart2",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -1046,7 +1046,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart3",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -1101,7 +1101,7 @@
 		"Name" : 
 		{
 			"m_Name" : "GunPart1",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -1171,7 +1171,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Enemy_04",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -1204,6 +1204,39 @@
 		"ScriptVariables" : 
 		[
 			{
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_2",
+				"Type" : 0
+			},
+			{
+				"Data" : 100.0,
+				"Name" : "m_ExplosiveEnemy_health",
+				"Type" : 0
+			},
+			{
+				"Data" : 7.0,
+				"Name" : "m_ExplosiveEnemy_lifetime",
+				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
 				"Data" : 500.0,
 				"Name" : "m_ExplosiveEnemy_propeller_speed",
 				"Type" : 0
@@ -1219,44 +1252,6 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 0.10000000149011612,
-				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
-				"Type" : 0
-			},
-			{
-				"Data" : 3.0,
-				"Name" : "m_sphere_value",
-				"Type" : 0
-			},
-			{
-				"Data" : true,
-				"Data0" : 0.0,
-				"Data1" : 1.0,
-				"Data2" : 0.0,
-				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
-				"Type" : 4
-			},
-			{
-				"Data" : 100.0,
-				"Name" : "m_ExplosiveEnemy_health",
-				"Type" : 0
-			},
-			{
-				"Data" : 0.5,
-				"Name" : "m_ExplosiveEnemy_flicker_rate_2",
-				"Type" : 0
-			},
-			{
-				"Data" : 7.0,
-				"Name" : "m_ExplosiveEnemy_lifetime",
-				"Type" : 0
-			},
-			{
-				"Data" : 69420.0,
-				"Name" : "m_ExplosiveEnemy_damage",
-				"Type" : 0
-			},
-			{
 				"Data" : 2.5,
 				"Name" : "m_sphere_max_radius",
 				"Type" : 0
@@ -1264,6 +1259,11 @@
 			{
 				"Data" : 100.0,
 				"Name" : "m_sphere_rot_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 3.0,
+				"Name" : "m_sphere_value",
 				"Type" : 0
 			}
 		],
@@ -1458,7 +1458,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Propeller_Base",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -1513,7 +1513,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Propeller",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -1568,7 +1568,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Eyes",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -1623,7 +1623,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Outline",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -6242,6 +6242,382 @@
 				-8.9406967163085938e-08,
 				-0.75588893890380859,
 				2.384185791015625e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 5,
+		"Name" : 
+		{
+			"m_Name" : "Actual_Nuke",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.0,
+				0.20468282699584961,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.20392157137393951,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Inner"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "s1_s2_transition",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "s2_s3_transition",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.30000001192092896,
+				"Name" : "s3_s4_transition",
+				"Type" : 0
+			},
+			{
+				"Data" : 1.0,
+				"Name" : "s4_s5_transition",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"PlayerNuke" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 2.2599999904632568
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.5478525161743164,
+				-3.1820111274719238,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer_Outline",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.0,
+				0.34525251388549805,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.2046511173248291,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer_Spikes",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.962119460105896,
+				0.52093023061752319
+			],
+			"EmissiveTint" : 
+			[
+				0.96744191646575928,
+				1.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer_Spikes"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Swirl",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.96724772453308105,
+				0.5767441987991333
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.83529412746429443,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Swirl"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.49302327632904053,
+				0.73826372623443604,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.59536528587341309,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwaves",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.53023254871368408,
+				0.78368842601776123,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.32093024253845215,
+				0.89577066898345947,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Shockwaves"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[

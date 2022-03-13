@@ -72,6 +72,7 @@
     <Compile Include="MonoScripts\L2TurretController.cs" />
     <Compile Include="MonoScripts\Level1OutroCutscene.cs" />
     <Compile Include="MonoScripts\MovingParts.cs" />
+    <Compile Include="MonoScripts\PlayerNuke.cs" />
     <Compile Include="MonoScripts\Rotation.cs" />
     <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="MonoScripts\GameEndingTrigger.cs" />

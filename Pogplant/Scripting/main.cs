@@ -299,5 +299,10 @@ namespace Scripting
         {
             return new ActivateChildrenGravity();
         }
+
+        public static PlayerNuke PlayerNuke()
+        {
+            return new PlayerNuke();
+        }
     }
 }

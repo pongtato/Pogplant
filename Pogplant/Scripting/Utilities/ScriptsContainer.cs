@@ -68,7 +68,7 @@ namespace Scripting
             monoScriptNames.Add("BonusScoreCoin");
             monoScriptNames.Add("Rotation");
             monoScriptNames.Add("SimpleMovement");
-
+            monoScriptNames.Add("PlayerNuke");
 
             //let this be last lol
             monoScriptNames.Sort();
