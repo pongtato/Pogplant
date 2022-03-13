@@ -41,7 +41,7 @@ namespace Scripting
             ECS.SetGlobalPosition(CS_Board, InitialCanvasPos);
             ECS.SetGlobalPosition(entityID, InitialCamPos);
             ECS.SetFOV(entityID, InitialFOV);
-            ECS.PlayAudio(entityID, 0);
+            ECS.PlayAudio(entityID, 0, "VO");
         }
 
         public override void Update(float dt)
