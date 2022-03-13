@@ -332,7 +332,7 @@ namespace Scripting
                         
                         if (InputUtility.onAnyKey())
                         {
-                            GameUtilities.LoadScene("Level02");
+                            GameUtilities.LoadScene("CutScene2");
                         }
                     }
                     break;
