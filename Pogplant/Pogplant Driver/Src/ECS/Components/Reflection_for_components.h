@@ -159,6 +159,12 @@ namespace Components
 				rttr::value("BURST", ParticleSystem::EMITTER_TYPE::BURST),
 				rttr::value("CONE", ParticleSystem::EMITTER_TYPE::CONE)
 			);
+
+		rttr::registration::class_<MovementBounds>("MovementBounds")
+			.property("maxX", &MovementBounds::maxX)
+			.property("minX", &MovementBounds::minX)
+			.property("maxY", &MovementBounds::maxY)
+			.property("minY", &MovementBounds::minY);
 	}
 }
 

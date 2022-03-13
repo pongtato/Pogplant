@@ -37,21 +37,8 @@ namespace Scripting
 		private float slowForce = 4.0f;
 		//private float maxSpeed = 10.0f;
 
-
-		//Player Rotation movement (Camera duplicates this effect)
-		//float camera_roll = -1.5f;
-
-		/*public float max_rotate_angle = 12.5f;
-		public float rotation_speed_horizontal = 1.0f;
-		public float rotation_speed_vertical = 1.0f;
-		public float revert_speed = 2.0f; // changed from 20
-		public float max_dampening_speed = 100.0f;
-
-		public float dampening_reduction = 1.0f;
-		public float dampening_modifier = 4.0f;//*/
-
-		//private float current_vertical_dampening;
-		//private float current_horizontal_dampening;
+		/**> Min X Max X, Min Y, Max Y*/
+		public Vector4 m_newMovementLimits = new Vector4(5f, 5f, 5f, 5f);
 
 		//private float timeCount;
 		public float ship_follow_rot_speed;
@@ -100,6 +87,8 @@ namespace Scripting
 		Camera camera;
 		Transform playerTrans;
 		//EnemyManager enemyManager = new EnemyManager();
+
+
 
 		bool isAlive = true;
 		uint DashboardScreenFaceID;
@@ -163,7 +152,6 @@ namespace Scripting
 		public static uint score = 0;                                    // Current score
 		public static uint m_OldScore = 0;                               // Old score
 		private static uint kill_score = 100;                            // Addition to base score everytime an enemy is killed
-		private static uint minus_score = 10;                            // Minus to base score everytime player is hit
 		static uint m_ScoreTextID;
 		static float m_ScoreResetTimer;
 		const float m_ScoreResetTimeLimit = 1.0f;
@@ -263,7 +251,7 @@ namespace Scripting
 			{
 				GameUtilities.LoadScene("Level01_Boss");
 			}
-			
+
 			//Return to main menu key
 			//if (InputUtility.onKeyTriggered(KEY_ID.KEY_ESCAPE))
 			//{
@@ -316,23 +304,21 @@ namespace Scripting
 			else
 				vertical_input = -InputUtility.GetAxis("MOVEY");
 
-			Vector3 up_vec = Transform.GetUpVector(entityID);
-			Vector3 forward_vec = Transform.GetForwardVector(entityID);
+			Vector3 up_vec = Transform.GetUpVector(boxEntityID);
+			Vector3 forward_vec = Transform.GetForwardVector(boxEntityID);
 			Vector3 right_vec = Vector3.CrossProduct(forward_vec, up_vec);
-			Vector3 direc_vector = (right_vec * horizontal_input) + (up_vec * vertical_input);
+			
 
-			//BoxCollider boxCollider =  ECS.GetComponent<BoxCollider>(boxEntityID);
-			Transform boxTransform = ECS.GetComponent<Transform>(boxEntityID);
 			float length = playerTrans.Position.magnitude();
 
 			Vector3 playerGlobalPos = ECS.GetGlobalPosition(entityID);
 			Vector3 boxGlobalPos = ECS.GetGlobalPosition(boxEntityID);
 
-			//Console.WriteLine("playerGlobalPos Vector: " + playerGlobalPos.X + " | " + playerGlobalPos.Y + " | " + playerGlobalPos.Z);
-			//Console.WriteLine("boxGlobalPos Vector: " + boxGlobalPos.X + " | " + boxGlobalPos.Y + " | " + boxGlobalPos.Z);
-
+			//Old movement system
 			if (!mm_useNewMovementSystem)
 			{
+				Vector3 direc_vector = (right_vec * horizontal_input) + (up_vec * vertical_input);
+
 				if (length > boxCollider.extends.X)
 				{
 					Vector3 newPosNoY = new Vector3(playerGlobalPos.X, 0.0f, playerGlobalPos.Z);
@@ -342,59 +328,129 @@ namespace Scripting
 
 					float dotproduct = Vector3.Dot(right_vec, boxtoplayer);
 
-					//Console.WriteLine("BoxToPlayer Vector: " + boxtoplayer.X + " | " + boxtoplayer.Y + " | " + boxtoplayer.Z);
-					//Console.WriteLine("Forward Vector: " + newForwardNoY.X + " | " + newForwardNoY.Y + " | " + newForwardNoY.Z);
-					//Console.WriteLine("Right Vector: " + right_vec.X + " | " + right_vec.Y + " | " + right_vec.Z);
-					//Console.WriteLine("Dot Product: " + dotproduct);
-
 					if (dotproduct > 0.0f)
 					{
 						ECS.RigidbodyAddForce(entityID, right_vec * -dotproduct * 300f);
-						//rigidbody.AddForce(right_vec * -dotproduct * 700f);
-						//Console.WriteLine("Exceed +X bounds");
 					}
 					else
 					{
 						ECS.RigidbodyAddForce(entityID, right_vec * -dotproduct * 300f);
-						//rigidbody.AddForce(right_vec * -dotproduct * 700f);
-						//Console.WriteLine("Exceed -X bounds");
 					}
 				}
 
 				if (playerTrans.Position.Y > boxCollider.extends.Y)
 				{
 					ECS.RigidbodyAddForce(entityID, up_vec * (boxCollider.extends.Y - playerTrans.Position.Y) * 150f);
-					//rigidbody.AddForce(up_vec * (boxCollider.extends.Y - transform.Position.Y) * 150f);
-					//Console.WriteLine("Exceed +Y bounds");
 				}
 
 				if (playerTrans.Position.Y < -boxCollider.extends.Y)
 				{
 					ECS.RigidbodyAddForce(entityID, up_vec * (-boxCollider.extends.Y - playerTrans.Position.Y) * 350f);
-					//rigidbody.AddForce(up_vec * (-boxCollider.extends.Y - transform.Position.Y) * 450f);
-					//Console.WriteLine("Exceed -Y bounds");
 				}
+
+
+				float directionalMag = direc_vector.magnitude();
+
+				if (directionalMag > 1.0f)
+					direc_vector *= 1 / directionalMag;
+
+				Vector3 force_dir = direc_vector * movement_speed;
+
+				if (mm_enableTurbulence)
+				{
+					m_turbulenceTimer += dt;
+
+					if (m_turbulenceTimer > 2f * Math.PI)
+						m_turbulenceTimer -= 2f * (float)Math.PI;
+
+					force_dir += new Vector3((float)Math.Sin(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), (float)Math.Cos(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), 0);
+				}
+
+				ECS.RigidbodyAddForce(entityID, force_dir);
 			}
-
-			float directionalMag = direc_vector.magnitude();
-
-			if (directionalMag > 1.0f)
-				direc_vector *= 1 / directionalMag;
-
-			Vector3 force_dir = direc_vector * movement_speed;
-
-			if(mm_enableTurbulence)
+			else//New movement system
 			{
-				m_turbulenceTimer += dt;
+				Vector3 rightForce;
+				Vector3 upForce;
 
-				if (m_turbulenceTimer > 2f * Math.PI)
-					m_turbulenceTimer -= 2f * (float)Math.PI;
+				rightForce = (right_vec * horizontal_input);
+				upForce = (up_vec * vertical_input);
 
-				force_dir += new Vector3((float)Math.Sin(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), (float)Math.Cos(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), 0);
+				Vector3 deltaPosition = playerGlobalPos - boxGlobalPos;
+
+				//Normalise movement
+				float directionalMag = (upForce + rightForce).magnitude();
+
+				if (directionalMag > 1.0f)
+				{
+					upForce *= 1 / directionalMag;
+					rightForce *= 1 / directionalMag;
+				}
+
+				upForce = upForce * movement_speed;
+				rightForce = rightForce * movement_speed;
+
+				//Apply turbulence
+				if (mm_enableTurbulence)
+				{
+					m_turbulenceTimer += dt;
+
+					if (m_turbulenceTimer > 2f * Math.PI)
+						m_turbulenceTimer -= 2f * (float)Math.PI;
+
+					rightForce += right_vec * (float)Math.Sin(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f);
+					upForce += up_vec * (float)Math.Cos(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f);
+				}
+
+				float deltaY = Vector3.Dot(deltaPosition, up_vec);
+				float deltaX = Vector3.Dot(deltaPosition, right_vec);
+
+				float forceDotY = Vector3.Dot(upForce, up_vec);
+				float forceDotX = Vector3.Dot(rightForce, right_vec);
+
+				Console.WriteLine("PlayerScript.cs: X:" + deltaX + " Y:" + deltaY);
+
+				//Slow movement as it reaches edges
+				if (deltaX > 0 && forceDotX > 0)
+				{
+					rightForce = rightForce * ((m_newMovementLimits.Y - deltaX) / m_newMovementLimits.Y);
+				}
+				else if(deltaX < 0 && forceDotX < 0)
+				{
+					rightForce = rightForce * ((m_newMovementLimits.X + deltaX) / m_newMovementLimits.X);
+				}
+
+				if (deltaY > 0 && forceDotY > 0)
+				{
+					upForce = upForce * ((m_newMovementLimits.Z - deltaY) / m_newMovementLimits.Z);
+				}
+				else if (deltaY < 0 && forceDotY < 0)
+				{
+					upForce = upForce * ((m_newMovementLimits.W + deltaY) / m_newMovementLimits.W);
+				}
+
+
+				//Handle if it goes beyond the edge
+				/*if (deltaX > m_newMovementLimits.Y)
+				{
+
+				}
+				else if(deltaX < -m_newMovementLimits.X)
+				{
+
+				}
+
+				if (deltaY > m_newMovementLimits.W)
+				{
+
+				}
+				else if (deltaY < -m_newMovementLimits.Z)
+				{
+
+				}//*/
+
+				ECS.RigidbodyAddForce(entityID, upForce + rightForce);
 			}
-
-			ECS.RigidbodyAddForce(entityID, force_dir);
-			//rigidbody.AddForce(force_dir);
 
 			Vector3 playerVel = ECS.GetVelocity(entityID);
 			float maxslowforce = playerVel.magnitude();
@@ -599,10 +655,17 @@ namespace Scripting
 
 		public override void OnTriggerEnter(uint id)
 		{
+			var tagName = ECS.GetComponent<Tag>(id).tag;
 			//Console.WriteLine(" Other ID" + id);
-			if (ECS.GetComponent<Tag>(id).tag == "BonusCoin")
+
+			if (tagName == "BonusCoin")
 			{
 				++m_BonusItem;
+			}
+			else if (mm_useNewMovementSystem && tagName == "Movement")
+			{
+				var newBounds = GameUtilities.GetMovementBounds(id);
+				m_newMovementLimits = newBounds;
 			}
 		}
 
@@ -697,14 +760,14 @@ namespace Scripting
 
 		void UpdateBonusItem()
 		{
-            if (m_BonusItem >= m_BonusItemMax)
-            {
-                m_EnableBonusScreen = true;
-                ECS.SetActive(m_BobHeadMenuID, true);
-                GameUtilities.PauseScene();
+			if (m_BonusItem >= m_BonusItemMax)
+			{
+				m_EnableBonusScreen = true;
+				ECS.SetActive(m_BobHeadMenuID, true);
+				GameUtilities.PauseScene();
 			}
 			/*
-            if (m_ActivateBobble)
+			if (m_ActivateBobble)
 			{
 				switch (m_CollectiblesCount)
 				{
@@ -770,7 +833,7 @@ namespace Scripting
 			// Combo is inactive
 			//else
 			//{
-				//ECS.SetScale(m_ComboBarID, m_EmptyComboBarScale);
+			//ECS.SetScale(m_ComboBarID, m_EmptyComboBarScale);
 			//}
 		}
 
@@ -869,8 +932,8 @@ namespace Scripting
 			//Decrease score
 			else
 			{
-				if(m_ShieldHitCount > 0)
-                {
+				if (m_ShieldHitCount > 0)
+				{
 					--m_ShieldHitCount;
 					//Console.WriteLine("Shield Count:" + m_ShieldHitCount);
 					//Console.WriteLine("Max Shield Count:" + m_ShieldHitCountMax);
@@ -913,7 +976,7 @@ namespace Scripting
 
 		private void UpdateScore(float dt)
 		{
-			if(m_ScoreResetTimer >= 0.01f)
+			if (m_ScoreResetTimer >= 0.01f)
 				m_ScoreResetTimer += dt;
 
 			Transform t = new Transform();

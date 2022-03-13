@@ -149,5 +149,9 @@ namespace Scripting
         /*************************************************************************/
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector3 GetRayCastDirCamera(uint cameraEntityID, Vector3 screenCoordinates);
+
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector4 GetMovementBounds(uint entityID);
     }
 }

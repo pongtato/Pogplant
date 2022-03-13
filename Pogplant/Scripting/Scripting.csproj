@@ -121,6 +121,7 @@
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MonoScripts\PlayerScript.cs" />
+    <Compile Include="Utilities\Vector4.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

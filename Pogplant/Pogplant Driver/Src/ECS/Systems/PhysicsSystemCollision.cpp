@@ -285,6 +285,22 @@ void PhysicsSystem::DrawColliders()
 			cam.m_Front
 		);
 	}
+
+	auto movementBounds = m_registry->view<Components::Transform, Components::MovementBounds>();
+
+	for (auto& movementBoundObj : movementBounds)
+	{
+		auto& movementLimit = movementBounds.get<Components::MovementBounds>(movementBoundObj);
+		auto& transform = movementBounds.get<Components::Transform>(movementBoundObj);
+
+		glm::vec3 maxPtY = transform.m_ModelMtx * glm::vec4{0.f, movementLimit.maxY, 0.f, 1.f};
+		glm::vec3 maxPtX = transform.m_ModelMtx * glm::vec4{ movementLimit.maxX, 0.f, 0.f, 1.f};
+		glm::vec3 minPtY = transform.m_ModelMtx * glm::vec4{0.f, -movementLimit.minY, 0.f, 1.f};
+		glm::vec3 minPtX = transform.m_ModelMtx * glm::vec4{ -movementLimit.minX, 0.f, 0.f, 1.f};
+
+		PP::DebugDraw::DebugLine(maxPtY, minPtY);
+		PP::DebugDraw::DebugLine(maxPtX, minPtX);
+	}
 }
 
 void PhysicsSystem::SetCollisionRule(int collisionLayer1, int collisionLayer2, Components::Collider::COLLISION_RULE collisionRule)

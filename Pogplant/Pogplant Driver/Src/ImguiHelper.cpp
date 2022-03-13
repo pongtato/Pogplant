@@ -152,6 +152,11 @@ namespace PogplantDriver
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::ParticleSystem>(PPD::ImguiHelper::m_CurrentEntity);
 		}
 
+		if (ImGui::MenuItem("MovementBounds", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::MovementBounds>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+
 		if (ImGui::MenuItem("Transform Debugger", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::TransformDebugger>(PPD::ImguiHelper::m_CurrentEntity);
@@ -883,6 +888,24 @@ namespace PogplantDriver
 						if (m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity))
 							m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
 					}
+				}
+
+				auto movementBound = m_ecs->GetReg().try_get<Components::MovementBounds>(m_CurrentEntity);
+				if (movementBound)
+				{
+					bool enable_move_bound = true;
+					if (ImGui::CollapsingHeader(ICON_FA_BOXES "  Movement Bounds", &enable_move_bound, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						//Reflect_ImGui(movementBound);//didn't work
+
+						ImGui::DragFloat("minX", &movementBound->minX, 1.f , 0.1f);
+						ImGui::DragFloat("maxX", &movementBound->maxX, 1.f , 0.1f);
+						ImGui::DragFloat("minY", &movementBound->minY, 1.f , 0.1f);
+						ImGui::DragFloat("maxY", &movementBound->maxY, 1.f , 0.1f);
+					}
+					
+					if (!enable_move_bound)
+						m_ecs->GetReg().remove<Components::MovementBounds>(m_CurrentEntity);
 				}
 
 				auto box_colliderOBB = m_ecs->GetReg().try_get <Components::OBBBoxCollider> (m_CurrentEntity);
