@@ -110,18 +110,18 @@ namespace Scripting
 		public override void Update(float dt)
 		{
 			if (m_armed && !m_exploding)
-            {
+			{
 				m_lifetime -= dt;
 
 				// threshold_3 > threshold_2 > threshold_1 > BOOM
 				if (m_lifetime < 0)
-                {
+				{
 					//Console.WriteLine("BOOOOOOOOOOOOOOM");
 					m_armed = false;
 					m_exploding = true;
 				}
 				else if(m_lifetime < m_threshold_1)
-                {
+				{
 					//Console.WriteLine("beep beep beep");
 					Flicker(ref dt, ref m_flicker_rate_1);
 				}
@@ -132,9 +132,9 @@ namespace Scripting
 				}
 			}
 			else if (m_exploding)
-            {
+			{
 				if (m_do_once)
-                {
+				{
 					ECS.SetActive(m_explosion_vfx, true);
 					ECS.SetActive(m_explosion_ring, true);
 
@@ -146,15 +146,15 @@ namespace Scripting
 				ECS.GetTransformECS(m_explosion_vfx, ref m_pos, ref m_rot, ref m_scale);
 
 				if (m_scale.X < m_sphere_max_radius)
-                {
+				{
 					m_scale.X += dt * m_sphere_scale_value;
 					m_scale.Y += dt * m_sphere_scale_value;
 					m_scale.Z += dt * m_sphere_scale_value;
 
 					ECS.SetTransformECS(m_explosion_vfx, m_pos, m_rot, m_scale);
-                }
-                else
-                {
+				}
+				else
+				{
 					Explode();
 				}
 
@@ -166,14 +166,14 @@ namespace Scripting
 		}
 
 		void Flicker(ref float dt, ref float limit)
-        {
+		{
 			m_dt_counter += dt;
 			if (m_dt_counter > limit)
-            {
+			{
 				ECS.ToggleEntity(m_outline_id);
 				m_dt_counter = 0;
 			}
-        }
+		}
 
 		void SpinObjectEndless(uint id, Vector3 axis, float spin_speed, float dt)
 		{
@@ -239,24 +239,29 @@ namespace Scripting
 		}
 
 		public void Explode()
-        {
+		{
 			var NoDuplicate = m_enemy_in_range.Distinct();
 
 			foreach (uint entity in NoDuplicate)
-            {
-				GameUtilities.EnemyTakeDamageFromID(entity, m_damage);
-            }
+			{
+				if (entity == m_player_id)
+                {
+					GameUtilities.PlayerTakeDamage(entity, m_damage, entityID, 0);
+                }
+                else
+                    GameUtilities.EnemyTakeDamageFromID(entity, m_damage);
+			}
 
 			//disable self
 			ECS.SetActive(entityID, false);
 
-        }
+		}
 
 		public void ArmExplosiveEnemy()
-        {
+		{
 			m_armed = true;
 			//Console.WriteLine(entityID + " started");
-        }
+		}
 
 		public bool GetAlive()
 		{
