@@ -135,7 +135,7 @@ namespace Scripting
                 transform.Position += (Vector3.Lerp(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position, alpha) - transform.Position) * translation_lerpSpeed * dt;
                 ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
 
-                float rotation_lerp_speed = 1.5f;
+                float rotation_lerp_speed = 1.2f;
 
                 // Rotate the game object by finding a waypoint infront to look at
                 Vector3 forward = Transform.GetForwardVector(entityID);
