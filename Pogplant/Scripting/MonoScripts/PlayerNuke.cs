@@ -334,7 +334,7 @@ namespace Scripting
 				//if exceed, hit everyone
 
 				var NoDuplicate = m_enemy_in_range.Distinct();
-				Console.WriteLine(NoDuplicate.Count());
+				//Console.WriteLine(NoDuplicate.Count());
 				foreach (uint entity in NoDuplicate)
                 {
                     GameUtilities.EnemyTakeDamageFromID(entity, 9999);

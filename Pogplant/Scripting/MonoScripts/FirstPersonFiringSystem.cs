@@ -32,9 +32,11 @@ namespace Scripting
 		//used for nuke
 		uint m_actual_nuke;
 		float m_actual_nuke_speed;
+        float m_actual_nuke_cooldown;
+		float m_actual_nuke_timer;
 
-		//Player Firing 
-		float p_fireRate = 0.1f;
+        //Player Firing 
+        float p_fireRate = 0.1f;
 		float p_fire_timer = 0.0f;
 		float m_rotspeed = 20.0f;
 		//float turret_rot_lerp_limit = 15.0f;
@@ -131,9 +133,12 @@ namespace Scripting
 			LargeCrosshair = ECS.FindEntityWithName("LargeCrosshair");
 			ReticleGroupID = ECS.FindEntityWithName("ReticleGroup");
 			ScoreText = ECS.FindEntityWithName("Score_Text");
+
+			//variables for actual nuke
 			m_actual_nuke = ECS.FindEntityWithName("Actual_Nuke");
 			m_actual_nuke_speed = ECS.GetValue<float>(entityID, 300, "m_actual_nuke_speed");
-
+			m_actual_nuke_cooldown = ECS.GetValue<float>(entityID, 5, "m_actual_nuke_cooldown");
+			m_actual_nuke_timer = m_actual_nuke_cooldown;
 
 			Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
 			Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
@@ -250,7 +255,10 @@ namespace Scripting
 		public override void LateUpdate(float dt)
 		{
 			OffMuzzleFlash(ref MuzzleFlashGroup, ref isMuzzleflashed);
+
 			p_fire_timer += dt;
+			m_actual_nuke_timer += dt;
+
 			if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK") || InputUtility.onKeyTriggered("LEFTCLICK"))
 			{
 				if (p_fire_timer >= p_fireRate)
@@ -269,12 +277,17 @@ namespace Scripting
 					InputUtility.VibrateControllerLightMotor(0.25f, 0.05f);
 				}
 			}
+			//used for nuke
 			else if (InputUtility.onKeyReleased(KEY_ID.KEY_P))
             {
-				ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
-				ECS.SetActive(m_actual_nuke, true);
-				//uint ret_id = GameUtilities.Instantiate("Nuke", transform.Position, new Vector3(0,0,0));
-				GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
+				if (m_actual_nuke_timer > m_actual_nuke_cooldown)
+                {
+					ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
+					ECS.SetActive(m_actual_nuke, true);
+					GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
+
+					m_actual_nuke_timer = 0;
+				}
 			}
 		}
 
