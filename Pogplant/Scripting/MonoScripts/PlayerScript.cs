@@ -250,7 +250,7 @@ namespace Scripting
 			}
 			if (InputUtility.onKeyTriggered(KEY_ID.KEY_F2))
 			{
-				GameUtilities.LoadScene("Level02");
+				GameUtilities.LoadScene("CutScene2");
 			}
 
 			if (InputUtility.onKeyTriggered(KEY_ID.KEY_F3))
