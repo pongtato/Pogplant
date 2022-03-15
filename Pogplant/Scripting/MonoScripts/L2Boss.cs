@@ -44,61 +44,61 @@ namespace Scripting
         uint right_arm_end_joint_id;
 
         //Arm lasers
-        public uint left_large_laser_spin_id;
-        public uint right_large_laser_spin_id;
+        uint left_large_laser_spin_id;
+        uint right_large_laser_spin_id;
 
         //Legs
-        public uint left_leg_middle_joint_id;
-        public uint right_leg_middle_joint_id;
-        public uint left_leg_end_joint_id;
-        public uint right_leg_end_joint_id;
+        uint left_leg_middle_joint_id;
+        uint right_leg_middle_joint_id;
+        uint left_leg_end_joint_id;
+        uint right_leg_end_joint_id;
 
         //Launching bays
-        public uint right_launching_bay_one_id;
-        public uint right_launching_bay_two_id;
-        public uint right_launching_bay_three_id;
+        uint right_launching_bay_one_id;
+        uint right_launching_bay_two_id;
+        uint right_launching_bay_three_id;
 
-        public uint left_launching_bay_one_id;
-        public uint left_launching_bay_two_id;
-        public uint left_launching_bay_three_id;
+        uint left_launching_bay_one_id;
+        uint left_launching_bay_two_id;
+        uint left_launching_bay_three_id;
 
         //Artillery
-        public uint artillery_axis_id;
-        public uint artillery_barrel_id;
+        uint artillery_axis_id;
+        uint artillery_barrel_id;
 
         //Main Laser
-        public uint main_laser_rails_id;
-        public uint main_laser_rail_vent_id;
-        public uint main_laser_barrel_id;
-        public uint main_laser_beam_id;
-        public uint main_laser_object_id;
+        uint main_laser_rails_id;
+        uint main_laser_rail_vent_id;
+        uint main_laser_barrel_id;
+        uint main_laser_beam_id;
+        uint main_laser_object_id;
 
         //Mouth
-        public uint left_mouth_id;
-        public uint right_mouth_id;
+        uint left_mouth_id;
+        uint right_mouth_id;
 
         //Color turret
-        public uint right_color_turret_1_id;
-        public uint right_color_turret_2_id;
-        public uint right_color_turret_tube_1_id;
-        public uint right_color_turret_tube_2_id;
-        public uint right_color_turret_tube_3_id;
-        public uint right_color_turret_light_1_id;
-        public uint right_color_turret_light_2_id;
-        public uint right_color_turret_light_3_id;
-        public uint right_color_turret_light_toggle_id;
-        public uint right_color_turret_body_pivot_id;
+        uint right_color_turret_1_id;
+        uint right_color_turret_2_id;
+        uint right_color_turret_tube_1_id;
+        uint right_color_turret_tube_2_id;
+        uint right_color_turret_tube_3_id;
+        uint right_color_turret_light_1_id;
+        uint right_color_turret_light_2_id;
+        uint right_color_turret_light_3_id;
+        uint right_color_turret_light_toggle_id;
+        uint right_color_turret_body_pivot_id;
 
-        public uint left_color_turret_1_id;
-        public uint left_color_turret_2_id;
-        public uint left_color_turret_tube_1_id;
-        public uint left_color_turret_tube_2_id;
-        public uint left_color_turret_tube_3_id;
-        public uint left_color_turret_light_1_id;
-        public uint left_color_turret_light_2_id;
-        public uint left_color_turret_light_3_id;
-        public uint left_color_turret_light_toggle_id;
-        public uint left_color_turret_body_pivot_id;
+        uint left_color_turret_1_id;
+        uint left_color_turret_2_id;
+        uint left_color_turret_tube_1_id;
+        uint left_color_turret_tube_2_id;
+        uint left_color_turret_tube_3_id;
+        uint left_color_turret_light_1_id;
+        uint left_color_turret_light_2_id;
+        uint left_color_turret_light_3_id;
+        uint left_color_turret_light_toggle_id;
+        uint left_color_turret_body_pivot_id;
         
         //Shield
         uint false_core_id;
@@ -188,6 +188,7 @@ namespace Scripting
         void FindEntities()
         {
             end_screen_trigger_id = ECS.FindEntityWithName("L1 Black Screen");
+            any_key_continue_id = ECS.FindEntityWithName("Any Key Continue");
 
             //Player ship
             player_ship_id = ECS.FindEntityWithName("PlayerBox");
@@ -626,7 +627,6 @@ namespace Scripting
             {
                 any_key_scale_up = true;
             }
-            Console.WriteLine(scale.X);
 
             if (any_key_scale_up)
             {

@@ -243,7 +243,7 @@ namespace Scripting
                 case MENU_STATE.ANY_KEY_FLASHING:
                     {
                         //Button spin out
-                        if (InputUtility.onAnyKey())
+                        if (InputUtility.onAnyKey() && !begin_any_key_spin)
                         {
                             begin_any_key_spin = true;
                             ECS.PlayAudio(entityID, 1, "SFX");

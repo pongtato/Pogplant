@@ -154,7 +154,7 @@ namespace Scripting
             lerp_position_ping_pong_Z = value;
         }
 
-        void SetUpdatePingPongPosition(bool value)
+        public void SetUpdatePingPongPosition(bool value)
         {
             update_pingpong_position = value;
         }
@@ -321,7 +321,7 @@ namespace Scripting
             lerp_scale_ping_pong_Z = value;
         }
 
-        public void SetUpdateScale(bool value)
+        public void SetUpdatePingPongScale(bool value)
         {
             update_pingpong_scale = value;
         }
@@ -539,7 +539,7 @@ namespace Scripting
             SetLerpScalePositiveDirectionZ(set_positive_direction_Z);
 
             //Automatically enable since already setting
-            SetUpdateScale(true);
+            SetUpdatePingPongScale(true);
         }
 
         public void SetLinearScale(Vector3 set_target_scale, Vector3 lerp_speed, bool set_lerp_X, bool set_lerp_Y, bool set_lerp_Z)

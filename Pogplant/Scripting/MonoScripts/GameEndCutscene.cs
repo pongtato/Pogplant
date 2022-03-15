@@ -105,7 +105,7 @@ namespace Scripting
         uint cinematic_bar_bottom_id;
         bool cinematic_cover_screen;
         const float cinematic_bar_speed = 3.0f;
-        float yaw, pitch, roll;
+        //float yaw, pitch, roll;
 
         float flash_timer;
         const float flash_duration = 0.05f;
