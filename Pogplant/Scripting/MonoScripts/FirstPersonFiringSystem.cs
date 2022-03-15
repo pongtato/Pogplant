@@ -325,6 +325,15 @@ namespace Scripting
 		}
 		void DoRemovalList()
 		{
+			foreach(uint ID in enemy_to_target_A)
+			{
+				if (!ECS.CheckValidEntity(ID) && !removal_list.Contains(ID))
+				{
+					Console.WriteLine("FPS System: Prevented a crash by removing invalid");
+					removal_list.Add(ID);
+				}
+			}
+
 			foreach (uint removable in removal_list)
 			{
 				enemy_in_range_A.Remove(removable);
@@ -657,6 +666,12 @@ namespace Scripting
 
 		public void CallTurretHomingShoot(ref List<uint> TurretGroup, float dt)
 		{
+			if(enemy_to_target_A.Count == 0)
+			{
+				Console.WriteLine("FPS System: Prevented a crash by preventing shoot");
+				return;
+			}
+
 			for (int i = 0; i < Turrets_A.Count; i++)
 			{
 				//Predict the enemy movement a little.

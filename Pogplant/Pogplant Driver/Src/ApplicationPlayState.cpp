@@ -83,7 +83,7 @@ void Application::UpdatePlayState(float c_dt)
 		{
 			float timeToUpdate = m_minFixedUpdateTime * timeMulti;
 
-			while (m_accumulatedFixedTime > timeToUpdate)
+			while (m_accumulatedFixedTime > m_minFixedUpdateTime)
 			{
 				
 				m_sPhysicsSystem.Update(timeToUpdate);
@@ -94,7 +94,7 @@ void Application::UpdatePlayState(float c_dt)
 
 				PPI::InputSystem::PollEvents(timeToUpdate);
 
-				m_accumulatedFixedTime -= timeToUpdate * timeMulti;
+				m_accumulatedFixedTime -= m_minFixedUpdateTime;
 			}
 		}
 
