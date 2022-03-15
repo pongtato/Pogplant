@@ -173,7 +173,6 @@ namespace Scripting
                     laser_object_id = ECS.FindChildEntityWithName(owner.id, "Laser1");
                     Laser_object = ECS.FindChildEntityWithName(laser_object_id, "LaserObject");
                     ECS.SetActive(Laser_object, false);
-                    Console.WriteLine("Laser entity is " + laser_object_id);
                 }
             }
 

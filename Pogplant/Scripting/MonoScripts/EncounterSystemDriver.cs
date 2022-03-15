@@ -1582,18 +1582,6 @@ namespace Scripting
             enemy12.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L2_Start"), enemyManager.GetWaypoint("Near_L2_MidM"), 1.0f));
             enemy13.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T7_Start"), enemyManager.GetWaypoint("Near_T7_MidM"), 1.5f));
 
-            //enemy9.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("9,5,5"), 1.0f));
-            //enemy10.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L5_MidM"), enemyManager.GetWaypoint("5,5,5"), 1.0f));
-            //enemy11.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R2_MidM"), enemyManager.GetWaypoint("10,2,5"), 1.0f));
-            //enemy12.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L2_MidM"), enemyManager.GetWaypoint("4,2,5"), 1.0f));
-            //enemy13.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T7_MidM"), enemyManager.GetWaypoint("7,3,5"), 1.5f));
-
-            //enemy9.AddCommand(new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.5f));
-            //enemy10.AddCommand(new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.5f));
-            //enemy11.AddCommand(new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.5f));
-            //enemy12.AddCommand(new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.5f));
-            //enemy13.AddCommand(new AttackAction("Shoot_D_1", Enemy2_fire_rate, 2, 1.5f));
-
             // Move and shoot
             {
                 BaseAction[] action1 = new BaseAction[2];
@@ -1736,8 +1724,8 @@ namespace Scripting
                 enemy10.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 1.0f));
 
                 enemy12.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L7_Start"), enemyManager.GetWaypoint("10,7,5"), 1.0f));
-                enemy12.AddCommand(new WaitAction(1.0f));
-                enemy12.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 1.0f));
+                enemy12.AddCommand(new WaitAction(1.4f));
+                enemy12.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 0.6f));
 
                 // Move and shoot part 2b
                 {
@@ -1954,16 +1942,16 @@ namespace Scripting
                 enemy10.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 3.0f));
 
                 enemy12.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L0_Start"), enemyManager.GetWaypoint("10,0,5"), 1.0f));
-                enemy12.AddCommand(new WaitAction(1.0f));
-                enemy12.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 3.0f));
+                enemy12.AddCommand(new WaitAction(1.4f));
+                enemy12.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 2.6f));
 
                 enemy14.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L6_Start"), enemyManager.GetWaypoint("4,6,5"), 1.0f));
-                enemy14.AddCommand(new WaitAction(1.0f));
-                enemy14.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 3.0f));
+                enemy14.AddCommand(new WaitAction(1.8f));
+                enemy14.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 1.2f));
 
                 enemy15.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L6_Start"), enemyManager.GetWaypoint("10,6,5"), 1.0f));
-                enemy15.AddCommand(new WaitAction(1.0f));
-                enemy15.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 3.0f));
+                enemy15.AddCommand(new WaitAction(2.2f));
+                enemy15.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 0.8f));
 
 
                 enemy9.AddCommand(new MoveAction(enemyManager.GetWaypoint("2,3,5"), enemyManager.GetWaypoint("Near_R3_Start"), 1.0f));
@@ -2030,12 +2018,12 @@ namespace Scripting
                 enemy9.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 3.0f));
 
                 enemy11.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("7,3,5"), 1.0f));
-                enemy11.AddCommand(new WaitAction(1.0f));
-                enemy11.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 3.0f));
+                enemy11.AddCommand(new WaitAction(1.4f));
+                enemy11.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 2.6f));
 
                 enemy13.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("12,3,5"), 1.0f));
-                enemy13.AddCommand(new WaitAction(1.0f));
-                enemy13.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 3.0f));
+                enemy13.AddCommand(new WaitAction(1.8f));
+                enemy13.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 1.8f));
 
 
                 enemy9.AddCommand(new MoveAction(enemyManager.GetWaypoint("2,3,5"), enemyManager.GetWaypoint("Near_L3_Start"), 1.0f));
