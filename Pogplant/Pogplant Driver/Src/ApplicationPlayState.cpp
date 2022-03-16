@@ -79,7 +79,7 @@ void Application::UpdatePlayState(float c_dt)
 
 			m_accumulatedFixedTime = 0.f;
 		}
-		else
+		else if(m_accumulatedFixedTime > m_maxFixedUpdateTime * timeMulti)
 		{
 			float timeToUpdate = m_minFixedUpdateTime * timeMulti;
 
