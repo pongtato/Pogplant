@@ -6880,6 +6880,12 @@
 				"Dir" : "Resources/Audio\\Player\\Player_Damaged.ogg",
 				"UpdatePos" : true,
 				"Volume" : 0.50199997425079346
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\SFX_Boss_Warning.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.89899998903274536
 			}
 		},
 		"Camera" : 
