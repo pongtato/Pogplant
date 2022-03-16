@@ -14664,7 +14664,7 @@
 			"collisionLayer" : "DEFAULT",
 			"isStatic" : false,
 			"isTrigger" : false,
-			"radius" : 100.0
+			"radius" : 2.2599999904632568
 		},
 		"Tag" : 
 		{
@@ -14696,138 +14696,28 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Nuke_Outer_Outline",
-			"status" : true
+			"m_Name" : "Shockwaves",
+			"status" : false
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
-				0.0,
-				0.34525251388549805,
+				0.53023254871368408,
+				0.78368842601776123,
 				1.0
 			],
 			"EmissiveTint" : 
 			[
-				0.0,
-				0.2046511173248291,
+				0.32093024253845215,
+				0.89577066898345947,
 				1.0
 			],
 			"RenderModel" : 
 			[
 				"Nuke",
 				"Resources/Models\\Ship",
-				"Nuke_Outer_Outline"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Nuke_Outer_Spikes",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.962119460105896,
-				0.52093023061752319
-			],
-			"EmissiveTint" : 
-			[
-				0.96744191646575928,
-				1.0,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Outer_Spikes"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Nuke_Swirl",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.96724772453308105,
-				0.5767441987991333
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.83529412746429443,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Nuke",
-				"Resources/Models\\Ship",
-				"Nuke_Swirl"
+				"Shockwaves"
 			],
 			"UseLight" : 1
 		},
@@ -14916,28 +14806,28 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Shockwaves",
-			"status" : false
+			"m_Name" : "Nuke_Swirl",
+			"status" : true
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
-				0.53023254871368408,
-				0.78368842601776123,
-				1.0
+				1.0,
+				0.96724772453308105,
+				0.5767441987991333
 			],
 			"EmissiveTint" : 
 			[
-				0.32093024253845215,
-				0.89577066898345947,
-				1.0
+				1.0,
+				0.83529412746429443,
+				0.0
 			],
 			"RenderModel" : 
 			[
 				"Nuke",
 				"Resources/Models\\Ship",
-				"Shockwaves"
+				"Nuke_Swirl"
 			],
 			"UseLight" : 1
 		},
@@ -14957,6 +14847,116 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer_Spikes",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.962119460105896,
+				0.52093023061752319
+			],
+			"EmissiveTint" : 
+			[
+				0.96744191646575928,
+				1.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer_Spikes"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer_Outline",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.0,
+				0.34525251388549805,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.2046511173248291,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
