@@ -334,14 +334,17 @@ namespace Scripting
 				//if exceed, hit everyone
 
 				var NoDuplicate = m_enemy_in_range.Distinct();
-				//Console.WriteLine(NoDuplicate.Count());
+				//Console.WriteLine( "in range of nuke: " + NoDuplicate.Count());
 				foreach (uint entity in NoDuplicate)
                 {
+					//SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
                     GameUtilities.EnemyTakeDamageFromID(entity, 9999);
                 }
 
-                //disable self
-                ECS.SetActive(entityID, false);
+				m_enemy_in_range.Clear();
+
+				//disable self
+				ECS.SetActive(entityID, false);
 
 				//reset variables 
 				m_timer = 0;
