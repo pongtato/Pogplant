@@ -12,17 +12,10 @@ namespace Scripting
 
         public enum BOSS_ANIM_STATE
         {
-            PREPARE_TAKEOFF,
-            GATE_OPEN,
-            TAKEOFF
+            TAKEOFF,
         }
 
         BOSS_ANIM_STATE current_state;
-
-        //For ECS get transform
-        Vector3 pos = new Vector3();
-        Vector3 rot = new Vector3();
-        Vector3 scale = new Vector3();
 
         //Entities
         uint boss_model_parent_id;
@@ -93,23 +86,27 @@ namespace Scripting
         uint gate_lower_id;
         uint gate_lower_2_id;
 
-        //Cheeks
-        uint cheek_lights_one_id;
-        uint cheek_lights_two_id;
-        uint cheek_lights_three_id;
-
         uint camera_id;
         uint cinematic_bar_top_id;
         uint cinematic_bar_bottom_id;
         bool cinematic_cover_screen;
         const float cinematic_bar_speed = 3.0f;
 
-        //Glow for eye before launch
-        Vector3 red_color;
+        //Glow for turret before launch
+        Vector3 turret_green_color;
+        Vector3 turret_blue_color;
+        Vector3 turret_emissive_blue_color;
+        Vector3 turret_red_color;
+        int current_color_index;
         float glow_timer;
-        const float glow_duration = 0.25f;
+        bool glow_change_fast;
+        bool begin_glow;
+        const float glow_change_slow_duration = 0.25f;
+        const float glow_change_fast_duration = 0.1f;
+        
         float yaw, pitch, roll;
         float cam_lerp_value;
+        
         AnimationSystem boss_anim_system;
 
         public override void Init(ref uint _entityID)
@@ -122,8 +119,14 @@ namespace Scripting
             boss_anim_system = new AnimationSystem();
             boss_anim_system.Init();
 
-            red_color = new Vector3(1.0f, 0.0f, 0.0f);
-            glow_timer = 0;
+            turret_green_color = new Vector3(0, 1.0f, 0);
+            turret_blue_color = new Vector3(0, 0, 1.0f);
+            turret_emissive_blue_color = new Vector3(0, 0.28f, 1.0f);
+            turret_red_color = new Vector3(1.0f, 0, 0);
+
+            glow_timer = 0.0f;
+            current_color_index = 0;
+            glow_change_fast = false;
 
             FindEntities();
         }
@@ -188,11 +191,6 @@ namespace Scripting
             left_color_turret_tube_2_id = ECS.FindEntityWithName("Left_ColourTube_Light_02");
             left_color_turret_tube_3_id = ECS.FindEntityWithName("Left_ColourTube_Light_03");
             left_color_turret_light_toggle_id = ECS.FindEntityWithName("Left_Colour_ToggleObj");
-
-            //Cheeks
-            cheek_lights_one_id = ECS.FindEntityWithName("Cheeck_Lights_1");
-            cheek_lights_two_id = ECS.FindEntityWithName("Cheeck_Lights_2");
-            cheek_lights_three_id = ECS.FindEntityWithName("Cheeck_Lights_3");
 
             //Artillery
             artillery_axis_id = ECS.FindEntityWithName("Arti_Axis");
@@ -278,7 +276,7 @@ namespace Scripting
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
 
-            SetState(BOSS_ANIM_STATE.PREPARE_TAKEOFF.ToString());
+            SetState(BOSS_ANIM_STATE.TAKEOFF.ToString());
         }
 
         public override void Update(float dt)
@@ -287,7 +285,10 @@ namespace Scripting
             moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
 
             UpdateCinematicBars(dt);
-            UpdateFlashingLights(dt);
+            if (begin_glow)
+            {
+                UpdateFlashingLights(dt);
+            }
             boss_anim_system.Update(dt);
         }
 
@@ -327,7 +328,7 @@ namespace Scripting
 
             switch (current_state)
             {
-                case BOSS_ANIM_STATE.PREPARE_TAKEOFF:
+                case BOSS_ANIM_STATE.TAKEOFF:
                     boss_anim_system.StopAnimation(true, moving_parts_dict);
                     boss_anim_system.AddAnimationSpecsStack(SetTakeOffAnimationsOne, 3.5f);
                     boss_anim_system.AddAnimationSpecsStack(SetTakeOffAnimationsTwo, 3.0f);
@@ -344,18 +345,6 @@ namespace Scripting
                     boss_anim_system.AddAnimationUpdateStack(RunTakeOffSequenceFive);
                     boss_anim_system.AddAnimationUpdateStack(RunTakeOffSequenceSix);
                     boss_anim_system.AddAnimationUpdateStack(RunTakeOffSequenceEight);
-                    boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.GATE_OPEN.ToString());
-                    boss_anim_system.PlayAnimation();
-                    break;
-                case BOSS_ANIM_STATE.GATE_OPEN:
-                    boss_anim_system.StopAnimation(true, moving_parts_dict);
-
-                    boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.TAKEOFF.ToString());
-                    boss_anim_system.PlayAnimation();
-                    break;
-                case BOSS_ANIM_STATE.TAKEOFF:
-                    boss_anim_system.StopAnimation(true, moving_parts_dict);
-
                     boss_anim_system.PlayAnimation();
                     break;
             }
@@ -363,7 +352,103 @@ namespace Scripting
 
         void UpdateFlashingLights(float dt)
         {
-           
+            if (glow_change_fast)
+            {
+                if (glow_timer < glow_change_fast_duration)
+                {
+                    glow_timer += dt;
+                }
+                else
+                {
+                    glow_timer = 0.0f;
+                    ChangeTurretLightColor();
+                }
+            }
+            else
+            {
+                if (glow_timer < glow_change_slow_duration)
+                {
+                    glow_timer += dt;
+                }
+                else
+                {
+                    glow_timer = 0.0f;
+                    ChangeTurretLightColor();
+                }
+            }
+        }
+
+        void ChangeTurretLightColor()
+        {
+            if (current_color_index < 2) //Only 3 colors (R,G,B)
+            {
+                ++current_color_index;
+            }
+            else
+            {
+                current_color_index = 0;
+            }
+
+            switch (current_color_index)
+            {
+                case 0:
+                    {
+                        ECS.SetDiffuseTint(right_color_turret_light_1_id, ref turret_blue_color);
+                        ECS.SetEmissiveTint(right_color_turret_light_1_id, ref turret_emissive_blue_color);
+                        ECS.SetDiffuseTint(right_color_turret_light_2_id, ref turret_blue_color);
+                        ECS.SetEmissiveTint(right_color_turret_light_2_id, ref turret_emissive_blue_color);
+                        ECS.SetDiffuseTint(right_color_turret_light_3_id, ref turret_blue_color);
+                        ECS.SetEmissiveTint(right_color_turret_light_3_id, ref turret_emissive_blue_color);
+                        ECS.SetDiffuseTint(right_color_turret_light_toggle_id, ref turret_blue_color);
+
+                        ECS.SetDiffuseTint(left_color_turret_light_1_id, ref turret_blue_color);
+                        ECS.SetEmissiveTint(left_color_turret_light_1_id, ref turret_emissive_blue_color);
+                        ECS.SetDiffuseTint(left_color_turret_light_2_id, ref turret_blue_color);
+                        ECS.SetEmissiveTint(left_color_turret_light_2_id, ref turret_emissive_blue_color);
+                        ECS.SetDiffuseTint(left_color_turret_light_3_id, ref turret_blue_color);
+                        ECS.SetEmissiveTint(left_color_turret_light_3_id, ref turret_emissive_blue_color);
+                        ECS.SetDiffuseTint(left_color_turret_light_toggle_id, ref turret_blue_color);
+                    }
+                    break;
+                case 1:
+                    {
+                        ECS.SetDiffuseTint(right_color_turret_light_1_id, ref turret_green_color);
+                        ECS.SetEmissiveTint(right_color_turret_light_1_id, ref turret_green_color);
+                        ECS.SetDiffuseTint(right_color_turret_light_2_id, ref turret_green_color);
+                        ECS.SetEmissiveTint(right_color_turret_light_2_id, ref turret_green_color);
+                        ECS.SetDiffuseTint(right_color_turret_light_3_id, ref turret_green_color);
+                        ECS.SetEmissiveTint(right_color_turret_light_3_id, ref turret_green_color);
+                        ECS.SetDiffuseTint(right_color_turret_light_toggle_id, ref turret_green_color);
+
+                        ECS.SetDiffuseTint(left_color_turret_light_1_id, ref turret_green_color);
+                        ECS.SetEmissiveTint(left_color_turret_light_1_id, ref turret_green_color);
+                        ECS.SetDiffuseTint(left_color_turret_light_2_id, ref turret_green_color);
+                        ECS.SetEmissiveTint(left_color_turret_light_2_id, ref turret_green_color);
+                        ECS.SetDiffuseTint(left_color_turret_light_3_id, ref turret_green_color);
+                        ECS.SetEmissiveTint(left_color_turret_light_3_id, ref turret_green_color);
+                        ECS.SetDiffuseTint(left_color_turret_light_toggle_id, ref turret_green_color);
+                    }
+                    break;
+                case 2:
+                    {
+                        ECS.SetDiffuseTint(right_color_turret_light_1_id, ref turret_red_color);
+                        ECS.SetEmissiveTint(right_color_turret_light_1_id, ref turret_red_color);
+                        ECS.SetDiffuseTint(right_color_turret_light_2_id, ref turret_red_color);
+                        ECS.SetEmissiveTint(right_color_turret_light_2_id, ref turret_red_color);
+                        ECS.SetDiffuseTint(right_color_turret_light_3_id, ref turret_red_color);
+                        ECS.SetEmissiveTint(right_color_turret_light_3_id, ref turret_red_color);
+                        ECS.SetDiffuseTint(right_color_turret_light_toggle_id, ref turret_red_color);
+
+                        ECS.SetDiffuseTint(left_color_turret_light_1_id, ref turret_red_color);
+                        ECS.SetEmissiveTint(left_color_turret_light_1_id, ref turret_red_color);
+                        ECS.SetDiffuseTint(left_color_turret_light_2_id, ref turret_red_color);
+                        ECS.SetEmissiveTint(left_color_turret_light_2_id, ref turret_red_color);
+                        ECS.SetDiffuseTint(left_color_turret_light_3_id, ref turret_red_color);
+                        ECS.SetEmissiveTint(left_color_turret_light_3_id, ref turret_red_color);
+                        ECS.SetDiffuseTint(left_color_turret_light_toggle_id, ref turret_red_color);
+                    }
+                    break;
+            }
         }
 
         public override void LateUpdate(float dt)
@@ -460,6 +545,8 @@ namespace Scripting
 
             moving_parts_dict[runway_right_wing_id].SetLinearRotation(new Vector3(0, 0, 35), new Vector3(0, 0, 1.5f), false, false, true);
             moving_parts_dict[runway_left_wing_id].SetLinearRotation(new Vector3(0, 0, -35), new Vector3(0, 0, 1.5f), false, false, true);
+
+            begin_glow = true;
         }
 
         void RunTakeOffSequenceThree(float dt)
@@ -498,6 +585,7 @@ namespace Scripting
 
         void SetTakeOffAnimationsFive()
         {
+            glow_change_fast = true;
             moving_parts_dict[boss_model_parent_id].SetPingPongPosition(new Vector3(0, 220.75f, 0), new Vector3(0, 221.0f, 0), new Vector3(0, 16.0f, 0), false, true, false, false, true, false);
 
             moving_parts_dict[gate_upper_2_id].SetLinearPosition(new Vector3(0, 7.0f, 0), new Vector3(0, 1.0f, 0), true, true, true);
