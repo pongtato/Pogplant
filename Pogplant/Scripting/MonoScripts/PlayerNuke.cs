@@ -339,7 +339,9 @@ namespace Scripting
                 {
 					//SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
                     GameUtilities.EnemyTakeDamageFromID(entity, 9999);
-                }
+					EncounterSystemDriver.TakeDamage(entity, 9999);
+
+				}
 
 				m_enemy_in_range.Clear();
 
