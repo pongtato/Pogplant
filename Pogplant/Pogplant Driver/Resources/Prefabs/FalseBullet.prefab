@@ -11,10 +11,11 @@
 			"collisionLayer" : "ENEMY PROJECTILES",
 			"extends" : 
 			[
-				0.035000000149011612,
-				0.035000000149011612,
-				0.035000000149011612
+				0.30000001192092896,
+				0.30000001192092896,
+				0.30000001192092896
 			],
+			"isStatic" : false,
 			"isTrigger" : true
 		},
 		"Guid" : 
@@ -23,7 +24,8 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "False_Bullet"
+			"m_Name" : "False_Bullet",
+			"status" : true
 		},
 		"Prefab" : 
 		{

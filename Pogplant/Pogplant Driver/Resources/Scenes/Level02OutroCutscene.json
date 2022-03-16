@@ -31413,12 +31413,6 @@
 				1.0,
 				1.0
 			],
-			"RenderModel" : 
-			[
-				"Level_02_Segment_7_End_Tunnel",
-				"Resources/Models\\Environment",
-				"Level_02_Segment_7_End_Tunnel"
-			],
 			"UseLight" : 1
 		},
 		"Tag" : 
@@ -42895,6 +42889,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\SFX_Boss2Launch.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.89899998903274536
+			}
+		},
 		"Camera" : 
 		{
 			"m_Active" : true,
