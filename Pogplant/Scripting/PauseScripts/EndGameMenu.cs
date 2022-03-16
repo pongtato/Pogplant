@@ -48,6 +48,8 @@ namespace Scripting
         uint cinematic_bar_bottom_id;
         const float cinematic_bar_speed = 3.0f;
 
+        public string scene_to_load;
+
         // Number of enemies destroyed
         private enum GRADE_DES
         {
@@ -183,6 +185,8 @@ namespace Scripting
 
             ECS.SetActive(entityID, false);
             m_TransitDelayTimer = 0.0f;
+
+            scene_to_load = ECS.GetValue<string>(entityID, "Level01OutroCutscene", "SceneToLoad");
         }
 
         public override void Start()
@@ -254,7 +258,7 @@ namespace Scripting
                 if (m_TransitDelayTimer > m_SceneChangeDelayDuration)
                 {
                     GameUtilities.ResumeScene();
-                    GameUtilities.LoadScene("Level01OutroCutscene");
+                    GameUtilities.LoadScene(scene_to_load);
                 }
             }
         }
@@ -404,16 +408,11 @@ namespace Scripting
                 {
                     if (!m_EnableTransitDelayCountdown)
                     {
-                        switch (GameUtilities.GetSceneName())
-                        {
-                            case "Level01":
-                                m_TransitDelayTimer = 0.0f;
-                                m_EnableTransitDelayCountdown = true;
-                                ECS.SetActive(cinematic_bar_top_id, true);
-                                ECS.SetActive(cinematic_bar_bottom_id, true);
-                                ECS.PlayAudio(entityID, 6, "SFX");
-                                break;
-                        }
+                        m_TransitDelayTimer = 0.0f;
+                        m_EnableTransitDelayCountdown = true;
+                        ECS.SetActive(cinematic_bar_top_id, true);
+                        ECS.SetActive(cinematic_bar_bottom_id, true);
+                        ECS.PlayAudio(entityID, 6, "SFX");
                     }
                 }
 
