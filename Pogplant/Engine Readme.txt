@@ -6,10 +6,9 @@ Pogplant.sln is the main project, and PogplantDriver project should be the start
 ScriptingBuild.sln is the project for the C# scripts, and can be added/built while the editor is still running.
 
 To play the game in our editor, either remove #define PPD_EDITOR_BUILD, or do
-file->open..-> and open Level01_M3_Blockout.json in Resources/Scenes, then press play.
+file->open..-> and open Level01.json in Resources/Scenes, then press play.
 
-
-Editor: (Uncomment out #define PPD_EDITOR_BUILD on Application.h line 6 to access editor)
+Editor: (Uncomment out #define PPD_EDITOR_BUILD on Windows.h line 3 under Pogplant > Source Files > Window to access editor)
 	
 	WASD 	- Movement
 	Q/R 	- Up/Down
@@ -35,13 +34,16 @@ Keyboard
 
 Move - WASD
 Fire - Spacebar/Left mouse button
+Fire Nuke - Right mouse button
 
 Xbox Controller:
 
 Move - Left thumbstick
 Fire - RT
+Fire Nuke - B button
 
 Dualshock Controller
 
 Move - Left thumbstick
 Fire - R2
+Fire Nuke - Circle
