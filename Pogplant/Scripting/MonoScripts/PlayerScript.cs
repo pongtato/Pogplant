@@ -124,11 +124,11 @@ namespace Scripting
 		static public bool m_EnablePauseMenu = false;
 
 		// Laser Attack
-		uint m_LaserWeaponID;
-		static public bool m_EnableLaserAttack = false;
-		bool m_LaserReady = false;
-		const float m_LaserCooldown = 2.0f;
-		float m_LaserTimer = m_LaserCooldown;
+		//uint m_LaserWeaponID;
+		//static public bool m_EnableLaserAttack = false;
+		//bool m_LaserReady = false;
+		//const float m_LaserCooldown = 2.0f;
+		//float m_LaserTimer = m_LaserCooldown;
 
 		// EndGameMenu Stats
 		public static uint m_EnemyDestroyedCount = 0;
@@ -193,10 +193,10 @@ namespace Scripting
 			m_ComboActive = false;
 
 			// Variables for the laser
-			m_LaserWeaponID = ECS.FindEntityWithName("LaserWeapon");
-			m_EnableLaserAttack = false;
-			m_LaserReady = false;
-			m_LaserTimer = m_LaserCooldown;
+			//m_LaserWeaponID = ECS.FindEntityWithName("LaserWeapon");
+			//m_EnableLaserAttack = false;
+			//m_LaserReady = false;
+			//m_LaserTimer = m_LaserCooldown;
 
 			// Variables for the ComboNumber
 			m_ComboNumber = 0;
@@ -285,8 +285,8 @@ namespace Scripting
 			// Updates the combo bonus
 			UpdateCombo(dt);
 
-			// Updates Combo bonus
-			UpdateLaser(dt);
+			// Updates laser
+			//UpdateLaser(dt);
 
 			//if(m_OldScore != score)
 			// Update player score
@@ -849,32 +849,32 @@ namespace Scripting
 			//}
 		}
 
-		private void UpdateLaser(float dt)
-		{
-			if (m_LaserTimer <= 0.0f && !m_LaserReady)
-			{
-				//Console.WriteLine("Special Ready");
-				//ECS.SetActive(m_LaserWeaponID, true);
-				m_LaserReady = true;
-			}
-			else
-			{
-				m_LaserTimer -= dt;
-			}
+		//private void UpdateLaser(float dt)
+		//{
+		//	if (m_LaserTimer <= 0.0f && !m_LaserReady)
+		//	{
+		//		//Console.WriteLine("Special Ready");
+		//		//ECS.SetActive(m_LaserWeaponID, true);
+		//		m_LaserReady = true;
+		//	}
+		//	else
+		//	{
+		//		m_LaserTimer -= dt;
+		//	}
 
-			if (InputUtility.onKeyHeld("LASER") && m_LaserReady)
-			{
-				//Console.WriteLine("Special Used");
-				m_EnableLaserAttack = true;
-				m_LaserReady = false;
-				m_LaserTimer = m_LaserCooldown;
-				GameUtilities.PauseScene();
-			}
-			else if (InputUtility.onKeyHeld("LASER") && !m_LaserReady)
-			{
-				//Console.WriteLine("Special Not Ready");
-			}
-		}
+		//	if (InputUtility.onKeyHeld("LASER") && m_LaserReady)
+		//	{
+		//		//Console.WriteLine("Special Used");
+		//		m_EnableLaserAttack = true;
+		//		m_LaserReady = false;
+		//		m_LaserTimer = m_LaserCooldown;
+		//		GameUtilities.PauseScene();
+		//	}
+		//	else if (InputUtility.onKeyHeld("LASER") && !m_LaserReady)
+		//	{
+		//		//Console.WriteLine("Special Not Ready");
+		//	}
+		//}
 
 		public static void AddScore(bool increment, bool isBonus = false, uint amount = 0)
 		{

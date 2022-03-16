@@ -278,7 +278,7 @@ namespace Scripting
 				}
 			}
 			//used for nuke
-			else if (InputUtility.onKeyReleased(KEY_ID.KEY_P))
+			else if (InputUtility.onKeyReleased("NUKE"))
             {
 				if (m_actual_nuke_timer > m_actual_nuke_cooldown)
                 {
