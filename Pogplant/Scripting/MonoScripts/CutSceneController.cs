@@ -46,7 +46,7 @@ namespace Scripting
 
         public override void Update(float dt)
         {
-            if (InputUtility.onKeyHeld("RIGHTCLICK"))
+            if (InputUtility.onKeyHeld(KEY_ID.KEY_ESCAPE))
             {
                 bIsInputHeldDown = true;
             }
