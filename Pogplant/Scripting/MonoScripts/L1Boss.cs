@@ -1164,8 +1164,8 @@ namespace Scripting
             moving_parts_dict[left_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
 
             //Mouth
-            moving_parts_dict[left_mouth_id].SetPingPongRotation(new Vector3(0, -105, 0), new Vector3(), new Vector3(0, 5.0f, 0), false, false, false, false, false, false);
-            moving_parts_dict[right_mouth_id].SetPingPongRotation(new Vector3(), new Vector3(0, 105, 0), new Vector3(0, 5.0f, 0), false, true, false, false, false, false);
+            moving_parts_dict[left_mouth_id].SetPingPongRotation(new Vector3(), new Vector3(0, 105, 0), new Vector3(0, 2.5f, 0), false, true, false, false, false, false);
+            moving_parts_dict[right_mouth_id].SetPingPongRotation(new Vector3(0, -105, 0), new Vector3(), new Vector3(0, 2.5f, 0), false, false, false, false, false, false);
 
             //Artillery
             moving_parts_dict[artillery_axis_id].SetLinearRotation(new Vector3(50, 0, 0), new Vector3(10.0f, 10.0f, 10.0f), true, false, false);
