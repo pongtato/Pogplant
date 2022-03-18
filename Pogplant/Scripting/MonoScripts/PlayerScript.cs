@@ -559,6 +559,7 @@ namespace Scripting
 			if (InputUtility.onKeyTriggered("ESCAPE"))
 			{
 				m_EnablePauseMenu = true;
+				AudioEngine.PauseChannelGroup("VO");
 				GameUtilities.PauseScene();
 			}
 		}

@@ -247,6 +247,7 @@ namespace Scripting
                         enabled = false;
                         PlayerScript.m_EnablePauseMenu = false;
                         GameUtilities.ResumeScene();
+                        AudioEngine.ResumeChannelGroup("VO");
                         break;
                     case 1:
                         menu_state = MENU_STATE.IN_SUB_MENU;
