@@ -39,6 +39,7 @@ namespace Components
 			.property("m_Color", &Text::m_Color)
 			.property("m_FontID", &Text::m_FontID)
 			.property("m_Text", &Text::m_Text)
+			.property("m_PlaySpeed", &Text::m_PlaySpeed)
 			.property("m_Ortho", &Text::m_Ortho);
 
 		rttr::registration::class_<Rigidbody>("Rigidbody")

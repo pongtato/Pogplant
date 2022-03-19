@@ -793,6 +793,29 @@ namespace PogplantDriver
 
 						ImguiBlankSeperator(1);
 						ImGui::Checkbox("Use Ortho", &text->m_Ortho);
+						ImguiBlankSeperator(1);
+						ImGui::Checkbox("Center text", &text->m_Center);
+						ImguiBlankSeperator(1);
+						ImGui::Text("Play Speed");
+						ImGui::DragFloat("###PlaySpeedText", &text->m_PlaySpeed);
+						ImGui::Text("Current Index %d, Min. Index %d, Max. Index %d", text->m_CurrentIndex, text->m_IndexMin, text->m_IndexMax);
+						ImGui::Text("Timer %f, Delay %f", text->m_Timer, text->m_Delay);
+						ImguiBlankSeperator(1);
+						if (text->m_Play)
+						{
+							if (ImGui::Button("Pause"))
+							{
+								text->m_Play = false;
+							}
+						}
+						else
+						{
+							if (ImGui::Button("Play"))
+							{
+								text->m_Play = true;
+							}
+						}
+
 						ImguiBlankSeperator(2);
 					}
 					if (!enable_text)

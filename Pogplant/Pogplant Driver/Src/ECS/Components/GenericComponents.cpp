@@ -995,4 +995,42 @@ namespace Components
 		int xOffset = currFrame % m_Columns;
 		m_UV_Offset = { xOffset * m_Tiling.x, (1.0f + yOffset) * m_Tiling.y };
 	}
+
+	void Text::Update(float _Dt)
+	{
+		// Debug
+		// m_IndexMax = 1;
+		// m_LevelID = "Level 1";
+
+		if (m_Play)
+		{
+			if (m_CurrentIndex <= m_IndexMax)
+			{
+				const auto& currTextContainer = PP::FontResource::m_Subtitles[m_LevelID];
+				if (m_CurrentIndex >= currTextContainer.size())
+				{
+					return;
+				}
+
+				m_Delay = currTextContainer[m_CurrentIndex].m_Delay;
+				if (m_Timer < m_Delay)
+				{
+					// Display the text
+					m_Text = currTextContainer[m_CurrentIndex].m_Text;
+					// How long to display this for
+					m_Timer += m_PlaySpeed * _Dt;
+				}
+				else
+				{
+					m_Timer = 0.0f;
+					m_CurrentIndex++;
+				}
+			}
+			else
+			{
+				// Clear text
+				m_Text = "";
+			}
+		}
+	}
 }

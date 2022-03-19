@@ -437,6 +437,36 @@ namespace SSH
 		return Vec3Val;
 	}
 
+	void SetSubtitles(std::uint32_t entityID, std::string levelID, int indexMin, int indexMax)
+	{
+		auto text = ScriptSystem::GetECS()->GetReg().try_get<Components::Text>(static_cast<entt::entity>(entityID));
+		if (text)
+		{
+			text->m_LevelID = levelID;
+			text->m_IndexMin = indexMin;
+			text->m_IndexMax = indexMax;
+			text->m_CurrentIndex = text->m_IndexMin;
+		}
+	}
+
+	void PlaySubtitles(std::uint32_t entityID)
+	{
+		auto text = ScriptSystem::GetECS()->GetReg().try_get<Components::Text>(static_cast<entt::entity>(entityID));
+		if (text)
+		{
+			text->m_Play = true;
+		}
+	}
+
+	void PauseSubtitles(std::uint32_t entityID)
+	{
+		auto text = ScriptSystem::GetECS()->GetReg().try_get<Components::Text>(static_cast<entt::entity>(entityID));
+		if (text)
+		{
+			text->m_Play = false;
+		}
+	}
+
 	void SetActive(std::uint32_t entityID, bool isEnabled)
 	{
 		if (isEnabled)

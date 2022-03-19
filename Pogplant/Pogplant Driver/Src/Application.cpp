@@ -528,6 +528,14 @@ void Application::UpdateTransforms(float _Dt)
 		}
 	}
 
+	/// Text
+	auto textView = m_activeECS->view<Text>();
+	for (auto it : textView)
+	{
+		auto& text = textView.get<Text>(it);
+		text.Update(_Dt);
+	}
+
 	/// Canvas
 	auto canvasView = m_activeECS->view<Transform, Canvas>();
 	for (auto it : canvasView)

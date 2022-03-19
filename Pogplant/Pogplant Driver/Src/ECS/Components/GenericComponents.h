@@ -315,12 +315,37 @@ namespace Components
 	struct Text
 	{
 		Text() = default;
-		Text(glm::vec3 Color, std::string FontID, std::string Text = "", bool Ortho = false) :
-			m_Color(Color), m_FontID(FontID), m_Text(Text), m_Ortho(Ortho) {};
+		Text(glm::vec3 Color, std::string FontID, std::string Text = "", float PlaySpeed = 1.0, bool Ortho = false) :
+			m_Color(Color),
+			m_FontID(FontID),
+			m_Text(Text),
+			m_PlaySpeed(PlaySpeed),
+			m_Timer(0.0f),
+			m_Delay(0.0f),
+			m_Ortho(Ortho),
+			m_CurrentIndex(0),
+			m_IndexMin(0),
+			m_IndexMax(0),
+			m_Center(false),
+			m_Play(false)
+		{
+		};
+
+		void Update(float _Dt);
+
 		glm::vec3 m_Color;
 		std::string m_FontID;
 		std::string m_Text;
+		float m_PlaySpeed;
+		float m_Timer;
+		float m_Delay;
+		std::string m_LevelID;
+		int m_IndexMin;
+		int m_IndexMax;
+		int m_CurrentIndex;
 		bool m_Ortho;
+		bool m_Center;
+		bool m_Play;
 	};
 
 	struct Camera
