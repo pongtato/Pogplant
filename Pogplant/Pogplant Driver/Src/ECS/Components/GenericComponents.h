@@ -318,10 +318,10 @@ namespace Components
 			m_Color{ glm::vec3(1) },
 			m_FontID{ "" },
 			m_Text{ "" },
+			m_LevelID{ "" },
 			m_PlaySpeed{ 1.0f },
 			m_Timer{ 0.0f },
 			m_Delay{ 0.0f },
-			m_LevelID{ "" },
 			m_IndexMin{ 0 },
 			m_IndexMax{ 0 },
 			m_CurrentIndex{ 0 },
@@ -335,10 +335,10 @@ namespace Components
 			m_Color{Color},
 			m_FontID{FontID},
 			m_Text{Text},
+			m_LevelID{ "" },
 			m_PlaySpeed{PlaySpeed},
 			m_Timer{0.0f},
 			m_Delay{0.0f},
-			m_LevelID{""},
 			m_IndexMin{0},
 			m_IndexMax{0},
 			m_CurrentIndex{0},
@@ -353,10 +353,10 @@ namespace Components
 		glm::vec3 m_Color;
 		std::string m_FontID;
 		std::string m_Text;
+		std::string m_LevelID;
 		float m_PlaySpeed;
 		float m_Timer;
 		float m_Delay;
-		std::string m_LevelID;
 		int m_IndexMin;
 		int m_IndexMax;
 		int m_CurrentIndex;
