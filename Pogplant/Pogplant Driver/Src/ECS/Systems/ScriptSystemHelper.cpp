@@ -437,12 +437,13 @@ namespace SSH
 		return Vec3Val;
 	}
 
-	void SetSubtitles(std::uint32_t entityID, const std::string& levelID, int indexMin, int indexMax)
+	void SetSubtitles(std::uint32_t entityID, MonoString* levelID, int indexMin, int indexMax)
 	{
 		auto text = ScriptSystem::GetECS()->GetReg().try_get<Components::Text>(static_cast<entt::entity>(entityID));
 		if (text)
 		{
-			text->m_LevelID = levelID;
+			std::string lvlID = mono_string_to_utf8(levelID);
+			text->m_LevelID = lvlID;
 			text->m_IndexMin = indexMin;
 			text->m_IndexMax = indexMax;
 			text->m_CurrentIndex = text->m_IndexMin;

@@ -54,7 +54,7 @@ namespace SSH
 	glm::vec3 GetColorTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
 
 	// Text Component
-	void SetSubtitles(std::uint32_t entityID, const std::string& levelID, int indexMin, int indexMax);
+	void SetSubtitles(std::uint32_t entityID, MonoString* levelID, int indexMin, int indexMax);
 	void PlaySubtitles(std::uint32_t entityID);
 	void PauseSubtitles(std::uint32_t entityID);
 
