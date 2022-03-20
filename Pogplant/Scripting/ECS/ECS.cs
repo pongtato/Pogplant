@@ -154,7 +154,7 @@ namespace Scripting
         public extern static Vector3 GetColorTint(uint entityID, ref Vector3 Color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void SetSubtitles(uint entityID, ref Vector3 Color, ref string levelID, ref int indexMin, ref int indexMax);
+        public extern static void SetSubtitles(uint entityID, string levelID, int indexMin, int indexMax);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void PlaySubtitles(uint entityID);
