@@ -1,28 +1,36 @@
 {
   "Subtitles": [
     {
-      "Level":"Level 1",
-      "Lines" : [
+      "Level": "Level01",
+      "Lines": [
         {
           "Text": "This is a test line 1",
-          "Timer": 3.0
+          "Timer": 3.1
         },
         {
           "Text": "This is a test line 2",
-          "Timer": 3.0
+          "Timer": 3
+        },
+        {
+          "Text": "This is a test line 3",
+          "Timer": 3.1
+        },
+        {
+          "Text": "This is a test line 4",
+          "Timer": 3.1
         }
       ]
     },
     {
-      "Level":"Level 2",
-      "Lines" : [
+      "Level": "Level02",
+      "Lines": [
         {
           "Text": "This is a test line 1 for level 2",
-          "Timer": 3.0
+          "Timer": 3
         },
         {
           "Text": "This is a test line 2 for level 2",
-          "Timer": 3.0
+          "Timer": 3
         }
       ]
     }

@@ -163,6 +163,9 @@ namespace Scripting
 		const float m_ScoreAnimationSpeed = 3.0f;
 		static uint entity_id;
 
+		//Subs
+		uint sub_renderer_id;
+
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
@@ -233,6 +236,9 @@ namespace Scripting
 			slowForce = ECS.GetValue<float>(entityID, 4f, "SlowForce");
 			mm_useNewMovementSystem = ECS.GetValue<bool>(entityID, false, "NewMovement");
 			mm_enableTurbulence = ECS.GetValue<bool>(entityID, false, "Turbulence");
+
+			sub_renderer_id = ECS.FindEntityWithName("Subs_Renderer");
+			ECS.PlaySubtitles(sub_renderer_id);
 		}
 
 		public void Awake()

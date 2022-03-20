@@ -55084,6 +55084,7 @@
 		},
 		"Text" : 
 		{
+			"m_Center" : false,
 			"m_Color" : 
 			[
 				1.0,
@@ -55092,6 +55093,7 @@
 			],
 			"m_FontID" : "Ruda",
 			"m_Ortho" : false,
+			"m_PlaySpeed" : 1.0,
 			"m_Text" : "00000000"
 		},
 		"Transform" : 
@@ -55612,6 +55614,7 @@
 		},
 		"Text" : 
 		{
+			"m_Center" : false,
 			"m_Color" : 
 			[
 				0.0,
@@ -55620,6 +55623,7 @@
 			],
 			"m_FontID" : "Ruda",
 			"m_Ortho" : false,
+			"m_PlaySpeed" : 1.0,
 			"m_Text" : "Score"
 		},
 		"Transform" : 
@@ -111124,6 +111128,7 @@
 		},
 		"Text" : 
 		{
+			"m_Center" : false,
 			"m_Color" : 
 			[
 				1.0,
@@ -111132,6 +111137,7 @@
 			],
 			"m_FontID" : "Bangers",
 			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
 			"m_Text" : "00000000"
 		},
 		"Transform" : 
@@ -112263,6 +112269,7 @@
 		},
 		"Text" : 
 		{
+			"m_Center" : false,
 			"m_Color" : 
 			[
 				0.83499997854232788,
@@ -112271,6 +112278,7 @@
 			],
 			"m_FontID" : "Bangers",
 			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
 			"m_Text" : "x"
 		},
 		"Transform" : 
@@ -112440,6 +112448,7 @@
 		},
 		"Text" : 
 		{
+			"m_Center" : false,
 			"m_Color" : 
 			[
 				0.83499997854232788,
@@ -112448,6 +112457,7 @@
 			],
 			"m_FontID" : "Bangers",
 			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
 			"m_Text" : "00"
 		},
 		"Transform" : 
@@ -146301,7 +146311,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 54.180778503417969,
+				"m_FrameCounter" : 89.51202392578125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146314,8 +146324,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.4375
+					0.5,
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146367,7 +146377,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 54.180778503417969,
+				"m_FrameCounter" : 89.51202392578125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146380,8 +146390,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.4375
+					0.5,
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146433,7 +146443,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 54.777172088623047,
+				"m_FrameCounter" : 9.1906251907348633,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146446,8 +146456,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.4375
+					0.5,
+					0.078125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146499,7 +146509,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 54.180778503417969,
+				"m_FrameCounter" : 89.51202392578125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146512,8 +146522,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.4375
+					0.5,
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146565,7 +146575,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 70.913642883300781,
+				"m_FrameCounter" : 100.70442199707031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -146579,7 +146589,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.5625
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146631,7 +146641,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 54.180778503417969,
+				"m_FrameCounter" : 89.51202392578125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146644,8 +146654,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.4375
+					0.5,
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146697,7 +146707,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 54.777172088623047,
+				"m_FrameCounter" : 9.1906251907348633,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146710,8 +146720,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.4375
+					0.5,
+					0.078125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146763,7 +146773,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 43.362403869628906,
+				"m_FrameCounter" : 75.633201599121094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146777,7 +146787,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.34375
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146829,7 +146839,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 54.777172088623047,
+				"m_FrameCounter" : 9.1906251907348633,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146842,8 +146852,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.4375
+					0.5,
+					0.078125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146895,7 +146905,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 27.090389251708984,
+				"m_FrameCounter" : 105.63546752929688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -146909,7 +146919,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.21875
+					0.828125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146961,7 +146971,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 43.362403869628906,
+				"m_FrameCounter" : 75.633201599121094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146975,7 +146985,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.34375
+					0.59375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -150098,6 +150108,16 @@
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : 2,
+				"Name" : "SubBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 3,
+				"Name" : "SubEndIndex",
+				"Type" : 1
 			}
 		],
 		"Scripting" : 
@@ -162434,6 +162454,52 @@
 			[
 				1.0,
 				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Subs_Renderer",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "Lorem ipsum dolor sit amet"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.30000001192092896,
+				-0.40000000596046448,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
 				1.0
 			]
 		}
