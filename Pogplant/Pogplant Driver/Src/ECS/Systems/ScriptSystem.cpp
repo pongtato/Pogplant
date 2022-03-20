@@ -500,6 +500,10 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetEmissiveTint", SSH::SetEmissiveTint);
 	mono_add_internal_call("Scripting.ECS::GetColorTint", SSH::GetColorTint);
 
+	mono_add_internal_call("Scripting.ECS::SetSubtitles", SSH::SetSubtitles);
+	mono_add_internal_call("Scripting.ECS::PlaySubtitles", SSH::PlaySubtitles);
+	mono_add_internal_call("Scripting.ECS::PauseSubtitles", SSH::PauseSubtitles);
+
 	mono_add_internal_call("Scripting.ECS::RayCastEntity", SSH::RayCastEntity);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
