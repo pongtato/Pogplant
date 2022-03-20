@@ -349,6 +349,7 @@ namespace Components
 		};
 
 		void Update(float _Dt);
+		void SetSubtitle(std::string _levelID, int _Min, int _Max);
 
 		glm::vec3 m_Color;
 		std::string m_FontID;

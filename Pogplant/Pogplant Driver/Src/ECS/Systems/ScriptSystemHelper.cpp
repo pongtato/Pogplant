@@ -443,10 +443,11 @@ namespace SSH
 		if (text)
 		{
 			std::string lvlID = mono_string_to_utf8(levelID);
-			text->m_LevelID = lvlID;
-			text->m_IndexMin = indexMin;
-			text->m_IndexMax = indexMax;
-			text->m_CurrentIndex = text->m_IndexMin;
+			//text->m_LevelID = lvlID;
+			//text->m_IndexMin = indexMin;
+			//text->m_IndexMax = indexMax;
+			//text->m_CurrentIndex = text->m_IndexMin;
+			text->SetSubtitle(lvlID, indexMin, indexMax);
 		}
 	}
 

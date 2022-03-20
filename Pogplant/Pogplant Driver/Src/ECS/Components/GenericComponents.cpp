@@ -1033,4 +1033,12 @@ namespace Components
 			}
 		}
 	}
+
+	void Text::SetSubtitle(std::string _levelID, int _Min, int _Max)
+	{
+		m_LevelID = _levelID;
+		m_IndexMin = _Min;
+		m_IndexMax = _Max;
+		m_CurrentIndex = _Min;
+	}
 }
