@@ -40,7 +40,8 @@ namespace Components
 			.property("m_FontID", &Text::m_FontID)
 			.property("m_Text", &Text::m_Text)
 			.property("m_PlaySpeed", &Text::m_PlaySpeed)
-			.property("m_Ortho", &Text::m_Ortho);
+			.property("m_Ortho", &Text::m_Ortho)
+			.property("m_Center", &Text::m_Center);
 
 		rttr::registration::class_<Rigidbody>("Rigidbody")
 			.property("mass", &Rigidbody::mass)

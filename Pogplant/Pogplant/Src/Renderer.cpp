@@ -822,19 +822,33 @@ namespace Pogplant
 			// Use this as the basis for all offsets
 			const  auto& refChar = currFont->m_Font['A'];
 			const float yOffset = -(refChar.m_Size.y - refChar.m_Offsets.y);
+
+			// Centering
+			float size = 0;
+			float accumulate = 0;
+			if (it_Text.m_Center)
+			{
+				// Get Size
+				for (const auto& it : it_Text.m_Text)
+				{
+					const auto& currChar = currFont->m_Font[it];
+					float x = accumulate + currChar.m_Offsets.x;
+					accumulate += currChar.m_Advance;
+					size = x + currChar.m_Size.x;
+				}
+				size *= 0.5f;
+			}
+
 			for (const auto& it : it_Text.m_Text)
 			{
 				const auto& currChar = currFont->m_Font[it];
 				ShaderLinker::SetUniform("offset", currChar.m_TexCoords);
 
-				const float xPos = xAccumulate + currChar.m_Offsets.x;
-				float yPos = -(currChar.m_Size.y - currChar.m_Offsets.y) - yOffset;
+				const float xPos = xAccumulate + currChar.m_Offsets.x - size;
+				const float yPos = -(currChar.m_Size.y - currChar.m_Offsets.y) - yOffset;
 				//const float yPos = 0.0f; // By line
 
-				const float width = currChar.m_Size.x;
-				const float height = currChar.m_Size.y;
-
-				MeshBuilder::RebindTextQuad(xPos, yPos, width, height, currChar.m_Size.x, currChar.m_Size.y);
+				MeshBuilder::RebindTextQuad(xPos, yPos, currChar.m_Size.x, currChar.m_Size.y, currChar.m_Size.x, currChar.m_Size.y);
 
 				/// Draw
 				glBindVertexArray(MeshResource::m_MeshPool[MeshResource::MESH_TYPE::TEXT_QUAD]->m_VAO);

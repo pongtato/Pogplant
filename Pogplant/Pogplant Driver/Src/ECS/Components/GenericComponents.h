@@ -314,20 +314,37 @@ namespace Components
 
 	struct Text
 	{
-		Text() = default;
+		Text():
+			m_Color{ glm::vec3(1) },
+			m_FontID{ "" },
+			m_Text{ "" },
+			m_PlaySpeed{ 1.0f },
+			m_Timer{ 0.0f },
+			m_Delay{ 0.0f },
+			m_LevelID{ "" },
+			m_IndexMin{ 0 },
+			m_IndexMax{ 0 },
+			m_CurrentIndex{ 0 },
+			m_Ortho{ false },
+			m_Center{ false },
+			m_Play{ false }
+		{
+		};
+
 		Text(glm::vec3 Color, std::string FontID, std::string Text = "", float PlaySpeed = 1.0, bool Ortho = false) :
-			m_Color(Color),
-			m_FontID(FontID),
-			m_Text(Text),
-			m_PlaySpeed(PlaySpeed),
-			m_Timer(0.0f),
-			m_Delay(0.0f),
-			m_Ortho(Ortho),
-			m_CurrentIndex(0),
-			m_IndexMin(0),
-			m_IndexMax(0),
-			m_Center(false),
-			m_Play(false)
+			m_Color{Color},
+			m_FontID{FontID},
+			m_Text{Text},
+			m_PlaySpeed{PlaySpeed},
+			m_Timer{0.0f},
+			m_Delay{0.0f},
+			m_LevelID{""},
+			m_IndexMin{0},
+			m_IndexMax{0},
+			m_CurrentIndex{0},
+			m_Ortho{Ortho},
+			m_Center{false},
+			m_Play{false}
 		{
 		};
 

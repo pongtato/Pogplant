@@ -790,7 +790,6 @@ namespace PogplantDriver
 						sprintf_s(font_stuff, IM_ARRAYSIZE(font_stuff), text->m_Text.c_str());
 						ImGui::InputText("TextInput", font_stuff, IM_ARRAYSIZE(font_stuff));
 						text->m_Text = font_stuff;
-
 						ImguiBlankSeperator(1);
 						ImGui::Checkbox("Use Ortho", &text->m_Ortho);
 						ImguiBlankSeperator(1);
