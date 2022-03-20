@@ -1,0 +1,30 @@
+{
+  "Subtitles": [
+    {
+      "Level":"Level 1",
+      "Lines" : [
+        {
+          "Text": "This is a test line 1",
+          "Timer": 3.0
+        },
+        {
+          "Text": "This is a test line 2",
+          "Timer": 3.0
+        }
+      ]
+    },
+    {
+      "Level":"Level 2",
+      "Lines" : [
+        {
+          "Text": "This is a test line 1 for level 2",
+          "Timer": 3.0
+        },
+        {
+          "Text": "This is a test line 2 for level 2",
+          "Timer": 3.0
+        }
+      ]
+    }
+  ]
+}
