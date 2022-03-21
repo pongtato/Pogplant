@@ -59,6 +59,7 @@ public:
 	void SaveLayers();
 
 	bool RayCastObject(const glm::vec3& pos, const glm::vec3& dir, entt::entity entityToCast);
+	bool SphereCastObject(const glm::vec3& pos, const glm::vec3& dir, float radius, entt::entity entityToCast);
 
 	inline void RemoveEntityFromTree(const entt::entity& entity)
 	{

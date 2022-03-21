@@ -202,6 +202,9 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static bool RayCastEntity(Vector3 rayOrigin, Vector3 rayDir, uint entityIDToCast);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static bool SphereCastEntity(Vector3 rayOrigin, Vector3 rayDir, float radius, uint entityIDToCast);
+
 
         public static T GetValue<T>(uint entityID, T defaultValue, string name)
         {

@@ -18,6 +18,35 @@ namespace PhysicsDLC
 {
 	namespace Collision
 	{
+		bool SphereCastSphere(const vec3& rayStart, const vec3& rayDir, float castRadius, const vec3& spherePos, float sphereRadius, float& collisionTime)
+		{
+			vec3 v0 = rayStart - spherePos;
+
+			float rayProjection = glm::dot(rayDir, v0);
+
+			float rayPosProj = glm::length2(v0) - (sphereRadius + castRadius) * (sphereRadius + castRadius);
+
+			if (rayPosProj < 0.f)//Ray in sphere
+			{
+				collisionTime = 0.f;
+				return true;
+			}
+			else if (rayProjection > 0.f)
+			{
+				return false;
+			}
+
+			float discriminant = rayProjection * rayProjection - rayPosProj;
+
+			if (discriminant >= 0.f)
+			{
+				collisionTime = -rayProjection - sqrtf(discriminant);
+				return true;
+			}
+
+			return false;
+		}
+
 		bool RaySphere(const Shapes::Ray& ray, const Shapes::Sphere& sphere, float& collisionTime)
 		{
 			return RaySphere(ray.m_start, ray.m_dir, sphere.m_pos, sphere.m_radius, collisionTime);
@@ -50,6 +79,29 @@ namespace PhysicsDLC
 			}
 
 			return false;
+		}
+
+		//A faked sphere case by doing multiple raycasts
+		bool SphereCastAABB(const vec3& rayStart, const vec3& rayDir, float castRadius, const vec3& aabbMin, const vec3& aabbMax, float& collisionTime)
+		{
+			return SphereCastSphere(rayStart, rayDir, castRadius, (aabbMax + aabbMin) * 0.5f, (float)(aabbMax - aabbMin).length() * 0.5f, collisionTime);
+			/*glm::vec3 right = glm::cross(glm::vec3{0.f, 1.f, 0.f}, rayDir);
+			
+			right = glm::normalize(right);
+
+			//center
+			if (RayAABB(rayStart, rayDir, aabbMin, aabbMax, collisionTime))
+				return true;
+
+			//right
+			if (RayAABB(rayStart + right, rayDir, aabbMin, aabbMax, collisionTime))
+				return true;
+
+			//left
+			if (RayAABB(rayStart - right, rayDir, aabbMin, aabbMax, collisionTime))
+				return true;
+
+			return false;//*/
 		}
 
 		bool RayAABB(const Shapes::Ray& ray, const Shapes::AABB aabb, float& collisionTime)

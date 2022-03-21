@@ -1119,3 +1119,28 @@ bool PhysicsSystem::RayCastObject(const glm::vec3& pos, const glm::vec3& dir, en
 
 	return false;
 }
+
+bool PhysicsSystem::SphereCastObject(const glm::vec3& pos, const glm::vec3& dir, float radius, entt::entity entityToCast)
+{
+	if (!m_registry->GetReg().valid(entityToCast))
+	{
+		std::cout << "SphereCastObject: You casted an invalid entity!" << std::endl;
+		return false;
+	}
+
+	auto boxCollider = m_registry->GetReg().try_get<Components::BoxCollider>(entityToCast);
+	auto sphereCollider = m_registry->GetReg().try_get<Components::SphereCollider>(entityToCast);
+
+	if (boxCollider)
+	{
+		float castTime;
+		return PhysicsDLC::Collision::SphereCastAABB(pos, dir, radius, boxCollider->aabb.m_min, boxCollider->aabb.m_max, castTime);
+	}
+	else if (sphereCollider)
+	{
+		float castTime;
+		return PhysicsDLC::Collision::SphereCastSphere(pos, dir, radius, sphereCollider->sphere.m_pos, sphereCollider->sphere.m_radius, castTime);
+	}
+
+	return false;
+}

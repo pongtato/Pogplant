@@ -35,9 +35,13 @@ namespace PhysicsDLC
 			}
 		};
 
+		bool SphereCastSphere(const vec3& rayStart, const vec3& rayDir, float castRadius, const vec3& spherePos, float sphereRadius, float& collisionTime);
+
 		bool RaySphere(const Shapes::Ray& ray, const Shapes::Sphere& sphere, float& collisionTime);
 		bool RaySphere(const vec3& rayStart, const vec3& rayDir, const vec3& spherePos, float sphereRadius, float& collisionTime);
 		
+		bool SphereCastAABB(const vec3& rayStart, const vec3& rayDir, float castRadius, const vec3& aabbMin, const vec3& aabbMax, float& collisionTime);
+
 		bool RayAABB(const Shapes::Ray& ray, const Shapes::AABB, float &collisionTime);
 		bool RayAABB(const vec3& rayStart, const vec3& rayDir, const vec3& aabbMin, const vec3& aabbMax, float& collisionTime);
 

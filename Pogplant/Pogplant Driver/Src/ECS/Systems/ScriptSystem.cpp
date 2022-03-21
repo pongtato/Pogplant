@@ -505,6 +505,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::PauseSubtitles", SSH::PauseSubtitles);
 
 	mono_add_internal_call("Scripting.ECS::RayCastEntity", SSH::RayCastEntity);
+	mono_add_internal_call("Scripting.ECS::SphereCastEntity", SSH::SphereCastEntity);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);

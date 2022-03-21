@@ -564,6 +564,11 @@ namespace SSH
 		return PogplantDriver::Application::GetInstance().m_sPhysicsSystem.RayCastObject(rayOrigin, rayDir, static_cast<entt::entity>(entityIDToCast));
 	}
 
+	bool SphereCastEntity(glm::vec3 rayOrigin, glm::vec3 rayDir, float radius, std::uint32_t entityIDToCast)
+	{
+		return PogplantDriver::Application::GetInstance().m_sPhysicsSystem.SphereCastObject(rayOrigin, rayDir, radius, static_cast<entt::entity>(entityIDToCast));
+	}
+
 	glm::vec4 GetMovementBounds(std::uint32_t entityID)
 	{
 		auto movementBounds = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::MovementBounds>((entt::entity)entityID);

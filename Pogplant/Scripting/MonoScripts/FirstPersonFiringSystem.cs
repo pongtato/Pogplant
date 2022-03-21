@@ -195,7 +195,7 @@ namespace Scripting
 					//	Console.WriteLine("Yes");
 					//Ray cast against hitboxes, if hit, add to list of enemies in range
 					//If value is true, means it's overwritten and should target immediately
-					if (ECS.RayCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, m_enemiesToRayCast.ElementAt(i).Key) && !float.IsNaN(m_shootVector.X))
+					if (ECS.SphereCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, 0.5f, m_enemiesToRayCast.ElementAt(i).Key) && !float.IsNaN(m_shootVector.X))
 					{
 						//if (ECS.GetTagECS(m_enemiesToRayCast.ElementAt(i).Key) == "BossCore")
 						//	Console.WriteLine("Yes");
