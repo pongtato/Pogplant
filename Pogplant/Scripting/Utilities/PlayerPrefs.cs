@@ -22,7 +22,7 @@ namespace Scripting
             }
             else
             {
-                Console.WriteLine("Value not supported.");
+                Console.WriteLine("Get Value not supported.");
             }
 
             return defaultValue;
@@ -40,7 +40,7 @@ namespace Scripting
             }
             else
             {
-                Console.WriteLine("Value not supported.");
+                Console.WriteLine("Set Value not supported.");
             }
         }
 

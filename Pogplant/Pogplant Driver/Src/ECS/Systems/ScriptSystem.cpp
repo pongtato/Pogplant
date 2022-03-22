@@ -12,6 +12,8 @@
 */
 /*****************************************************************************/
 
+#include <Pogplant.h>
+
 #include "ScriptSystem.h"
 #include "ScriptSystemHelper.h"
 #include "ScriptResource.h"
@@ -555,6 +557,10 @@ void ScriptSystem::BindFunctions()
 	//Gamma settings
 	mono_add_internal_call("Scripting.GameUtilities::GetGamma", SSH::GetGamma);
 	mono_add_internal_call("Scripting.GameUtilities::SetGamma", SSH::SetGamma);
+	
+	//Windows Resolution Settings
+	mono_add_internal_call("Scripting.GameUtilities::GameSetFullscreen", Pogplant::Window::GameSetFullscreen);
+	mono_add_internal_call("Scripting.GameUtilities::GameSetWindowSize", Pogplant::Window::GameSetWindowSize);
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)

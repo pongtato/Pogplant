@@ -153,5 +153,11 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector4 GetMovementBounds(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void GameSetWindowSize(int _Width, int _Height);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void GameSetFullscreen(bool _Fullscreen);
     }
 }

@@ -8,22 +8,44 @@ namespace Scripting
 {
     public class SettingsMenu : MonoBehaviour
     {
+        enum SETTINGS_MODE
+        {
+            LEFT,
+            RIGHT
+        }
         enum SETTINGS_MENU_BUTTONS
         {
             BGM_VOLUME,
             SFX_VOLUME,
             VOICE_OVERS,
+            //GAMMA,
+            DEFAULT
+        }
+
+        enum RESOLUTIONS
+        {
+            FULLSCREEN,
+            WINDOWED_1920x1080,
+            WINDOWED_1280x720
+        }
+
+        enum SETTINGS_RIGHT_MENU_BUTTONS
+        {
+            RESOLUTION,
             GAMMA,
             DEFAULT
         }
 
         private Dictionary<string, GameObject> button_map = new Dictionary<string, GameObject>();
+        private Dictionary<string, GameObject> button_map_right = new Dictionary<string, GameObject>();
         private Dictionary<string, GameObject> faded_button_map = new Dictionary<string, GameObject>();
+        private Dictionary<string, GameObject> faded_button_map_right = new Dictionary<string, GameObject>();
 
         private List<uint> bgm_bars_list;
         private List<uint> sfx_bars_list;
         private List<uint> vo_bars_list;
         private List<uint> gamma_bars_list;
+        private List<uint> resolution_bars_list;
 
         const float default_value = 0.5f;
         const float gamma_default_value = 2.2f;
@@ -45,13 +67,22 @@ namespace Scripting
         uint sfx_bar_fg_id;
         uint vo_bar_fg_id;
         uint gamma_bar_fg_id;
+        uint resolution_bar_fg_id;
 
         uint bgm_parent_id;
         uint sfx_parent_id;
         uint vo_parent_id;
         uint gamma_parent_id;
+        uint resolution_parent_id;
+
+        uint rightBarID;
+        uint leftBarID;
 
         public static bool refresh;
+        private bool m_resetBars;
+        private SETTINGS_MODE m_Mode;
+        private RESOLUTIONS m_currentResolution;
+        private SETTINGS_RIGHT_MENU_BUTTONS m_rightIndex = SETTINGS_RIGHT_MENU_BUTTONS.RESOLUTION;
 
         /// <summary>
         /// 0. Select
@@ -81,11 +112,13 @@ namespace Scripting
             sfx_bars_list = new List<uint>();
             vo_bars_list = new List<uint>();
             gamma_bars_list = new List<uint>();
+            resolution_bars_list = new List<uint>();
 
             bgm_parent_id = ECS.FindChildEntityWithName(entityID, "BGM Parent");
             sfx_parent_id = ECS.FindChildEntityWithName(entityID, "SFX Parent");
             vo_parent_id = ECS.FindChildEntityWithName(entityID, "VO Parent");
             gamma_parent_id = ECS.FindChildEntityWithName(entityID, "Gamma Parent");
+            resolution_parent_id = ECS.FindChildEntityWithName(entityID, "Resolution Parent");
 
             //Settings menu full opacity
             uint bgm_volume_button_id = ECS.FindChildEntityWithName(bgm_parent_id, "BGM Volume Button");
@@ -100,13 +133,10 @@ namespace Scripting
             ECS.GetTransformECS(vo_volume_button_id, ref pos, ref rot, ref scale);
             button_map.Add("VO Volume Button", new GameObject(vo_volume_button_id, new Transform(pos, rot, scale), "VO Volume Button"));
 
-            uint default_gamma_button_id = ECS.FindChildEntityWithName(gamma_parent_id, "Gamma Button");
-            ECS.GetTransformECS(default_gamma_button_id, ref pos, ref rot, ref scale);
-            button_map.Add("Gamma Button", new GameObject(default_gamma_button_id, new Transform(pos, rot, scale), "Gamma Button"));
-
             uint default_volume_button_id = ECS.FindChildEntityWithName(entityID, "Default Volume Button");
             ECS.GetTransformECS(default_volume_button_id, ref pos, ref rot, ref scale);
-            button_map.Add("Default Volume Button", new GameObject(default_volume_button_id, new Transform(pos, rot, scale), "Default Volume Button"));         
+            button_map.Add("Default Volume Button", new GameObject(default_volume_button_id, new Transform(pos, rot, scale), "Default Volume Button"));
+            button_map_right.Add("Default Volume Button", new GameObject(default_volume_button_id, new Transform(pos, rot, scale), "Default Volume Button"));
 
             //Settings menu faded
             uint bgm_volume_button_faded_id = ECS.FindChildEntityWithName(bgm_parent_id, "BGM Volume Button Faded");
@@ -121,18 +151,35 @@ namespace Scripting
             ECS.GetTransformECS(vo_volume_button_faded_id, ref pos, ref rot, ref scale);
             faded_button_map.Add("VO Volume Button Faded", new GameObject(vo_volume_button_faded_id, new Transform(pos, rot, scale), "VO Volume Button Faded"));
 
-            uint default_gamma_button_faded_id = ECS.FindChildEntityWithName(gamma_parent_id, "Gamma Button Faded");
-            ECS.GetTransformECS(default_gamma_button_faded_id, ref pos, ref rot, ref scale);
-            faded_button_map.Add("Gamma Button Faded", new GameObject(default_gamma_button_faded_id, new Transform(pos, rot, scale), "Gamma Button Faded"));
-
             uint default_volume_button_faded_id = ECS.FindChildEntityWithName(entityID, "Default Volume Button Faded");
             ECS.GetTransformECS(default_volume_button_faded_id, ref pos, ref rot, ref scale);
             faded_button_map.Add("Default Volume Button Faded", new GameObject(default_volume_button_faded_id, new Transform(pos, rot, scale), "Default Volume Button Faded"));
+            faded_button_map_right.Add("Default Volume Button Faded", new GameObject(default_volume_button_faded_id, new Transform(pos, rot, scale), "Default Volume Button Faded"));
+
+            // For the right bar
+            uint default_gamma_button_id = ECS.FindChildEntityWithName(gamma_parent_id, "Gamma Button");
+            ECS.GetTransformECS(default_gamma_button_id, ref pos, ref rot, ref scale);
+            button_map_right.Add("Gamma Button", new GameObject(default_gamma_button_id, new Transform(pos, rot, scale), "Gamma Button"));
+
+            uint default_gamma_button_faded_id = ECS.FindChildEntityWithName(gamma_parent_id, "Gamma Button Faded");
+            ECS.GetTransformECS(default_gamma_button_faded_id, ref pos, ref rot, ref scale);
+            faded_button_map_right.Add("Gamma Button Faded", new GameObject(default_gamma_button_faded_id, new Transform(pos, rot, scale), "Gamma Button Faded"));
+
+            uint resolution_button_id = ECS.FindChildEntityWithName(resolution_parent_id, "Resolution Button");
+            ECS.GetTransformECS(resolution_button_id, ref pos, ref rot, ref scale);
+            button_map_right.Add("Resolution Button", new GameObject(resolution_button_id, new Transform(pos, rot, scale), "Resolution Button"));
+
+            uint resolution_button_faded_id = ECS.FindChildEntityWithName(resolution_parent_id, "Resolution Button Faded");
+            ECS.GetTransformECS(resolution_button_faded_id, ref pos, ref rot, ref scale);
+            faded_button_map_right.Add("Resolution Button Faded", new GameObject(resolution_button_faded_id, new Transform(pos, rot, scale), "Resolution Button Faded"));
 
             bgm_bar_fg_id = ECS.FindChildEntityWithName(bgm_parent_id, "BGM Bar BG");
             sfx_bar_fg_id = ECS.FindChildEntityWithName(sfx_parent_id, "SFX Bar BG");
             vo_bar_fg_id = ECS.FindChildEntityWithName(vo_parent_id, "VO Bar BG");
             gamma_bar_fg_id = ECS.FindChildEntityWithName(gamma_parent_id, "Gamma Bar BG");
+            resolution_bar_fg_id = ECS.FindChildEntityWithName(resolution_parent_id, "Resolution Bar BG");
+            rightBarID = ECS.FindEntityWithName("SM_RightTab");
+            leftBarID = ECS.FindEntityWithName("SM_LeftTab");
 
             //BGM bars
             bgm_bars_list.Add(ECS.FindChildEntityWithName(bgm_parent_id, "BGM Bar 1"));
@@ -174,11 +221,18 @@ namespace Scripting
             gamma_bars_list.Add(ECS.FindChildEntityWithName(gamma_parent_id, "Gamma Bar 4"));
             gamma_bars_list.Add(ECS.FindChildEntityWithName(gamma_parent_id, "Gamma Bar 5"));
 
+            resolution_bars_list.Add(ECS.FindChildEntityWithName(resolution_parent_id, "Resolution Bar 1"));
+            resolution_bars_list.Add(ECS.FindChildEntityWithName(resolution_parent_id, "Resolution Bar 2"));
+            resolution_bars_list.Add(ECS.FindChildEntityWithName(resolution_parent_id, "Resolution Bar 3"));
+
             left_arrow_id = ECS.FindChildEntityWithName(entityID, "Left Arrow");
             right_arrow_id = ECS.FindChildEntityWithName(entityID, "Right Arrow");
 
             active_index = 0;
-
+            m_Mode = SETTINGS_MODE.LEFT;
+            m_rightIndex = SETTINGS_RIGHT_MENU_BUTTONS.RESOLUTION;
+            m_currentResolution = (RESOLUTIONS)PlayerPrefs.GetValue<int>("Resolution", (int)RESOLUTIONS.FULLSCREEN);
+            m_resetBars = false;
             ECS.SetActive(entityID, false);
         }
 
@@ -186,12 +240,42 @@ namespace Scripting
         {
             if (refresh)
             {
+                if (m_Mode == SETTINGS_MODE.LEFT)
+                {
+                    ECS.SetActive(leftBarID, true);
+                    ECS.SetActive(rightBarID, false);
+                    RefreshVolumeBars(bgm_bars_list, "BGM");
+                    RefreshVolumeBars(sfx_bars_list, "SFX");
+                    RefreshVolumeBars(vo_bars_list, "VO");
+                }
+                else if (m_Mode == SETTINGS_MODE.RIGHT)
+                {
+                    ECS.SetActive(leftBarID, false);
+                    ECS.SetActive(rightBarID, true);
+                    UpdateGammaBar(gamma_bars_list);
+                    UpdateResolutionBar(resolution_bars_list);
+                }
                 UpdatePauseMenuButtonFade();
-                RefreshVolumeBars(bgm_bars_list, "BGM");
-                RefreshVolumeBars(sfx_bars_list, "SFX");
-                RefreshVolumeBars(vo_bars_list, "VO");
-                UpdateGammaBar(gamma_bars_list);
+                ResetArrowAnimation();
                 refresh = false;
+            }
+
+            if (m_resetBars)
+            {
+                if (m_Mode == SETTINGS_MODE.LEFT)
+                {
+                    RefreshVolumeBars(bgm_bars_list, "BGM");
+                    RefreshVolumeBars(sfx_bars_list, "SFX");
+                    RefreshVolumeBars(vo_bars_list, "VO");
+                }
+                else if (m_Mode == SETTINGS_MODE.RIGHT)
+                {
+                    UpdateGammaBar(gamma_bars_list);
+                    UpdateResolutionBar(resolution_bars_list);
+                }
+                UpdatePauseMenuButtonFade();
+                ResetArrowAnimation();
+                m_resetBars = false;
             }
 
             UpdateSettingsMenuInput(dt);
@@ -199,205 +283,398 @@ namespace Scripting
 
         void UpdateSettingsMenuInput(float dt)
         {
-            //Key input
-            if (InputUtility.onKeyTriggered("MENUUP"))
-            {
-                ECS.PlayAudio(entityID, 1, "SFX");
-
-                --active_index;
-
-                if (active_index < (int)SETTINGS_MENU_BUTTONS.BGM_VOLUME)
-                {
-                    active_index = (int)SETTINGS_MENU_BUTTONS.DEFAULT;
-                }
-                UpdatePauseMenuButtonFade();
-                ResetArrowAnimation();
-            }
-            else if (InputUtility.onKeyTriggered("MENUDOWN"))
-            {
-                ECS.PlayAudio(entityID, 2, "SFX");
-
-                ++active_index;
-
-                if (active_index > (int)SETTINGS_MENU_BUTTONS.DEFAULT)
-                {
-                    active_index = (int)SETTINGS_MENU_BUTTONS.BGM_VOLUME;
-                }
-                UpdatePauseMenuButtonFade();
-                ResetArrowAnimation();
-            }
-
-            if (InputUtility.onKeyTriggered("MENULEFT"))
-            {
-                ECS.PlayAudio(entityID, 1, "SFX");
-
-                switch (active_index)
-                {
-                    case 0:
-                        {
-                            float amount = AudioEngine.GetChannelGroupVolume("BGM") > 0.1f ? AudioEngine.GetChannelGroupVolume("BGM") - volume_change_amount : 0.0f;
-                            AudioEngine.SetChannelGroupVolume("BGM", amount);
-                            PlayerPrefs.SetValue<float>("AudioBGM", amount);
-                            UpdateVolumeBars(bgm_bars_list);
-                        }
-                        break;
-                    case 1:
-                        {
-                            float amount = AudioEngine.GetChannelGroupVolume("SFX") > 0.1f ? AudioEngine.GetChannelGroupVolume("SFX") - volume_change_amount : 0.0f;
-                            AudioEngine.SetChannelGroupVolume("SFX", amount);
-                            PlayerPrefs.SetValue<float>("AudioSFX", amount);
-                            UpdateVolumeBars(sfx_bars_list);
-                        }
-                        break;
-                    case 2:
-                        {
-                            float amount = AudioEngine.GetChannelGroupVolume("VO") > 0.1f ? AudioEngine.GetChannelGroupVolume("VO") - volume_change_amount : 0.0f;
-                            AudioEngine.SetChannelGroupVolume("VO", amount);
-                            PlayerPrefs.SetValue<float>("AudioVO", amount);
-                            UpdateVolumeBars(vo_bars_list);
-                        }
-                        break;
-                    case 3:
-                        {
-                            float amount = GameUtilities.GetGamma() >= 1.4f ? GameUtilities.GetGamma() - gamma_change_amount : 1.0f;
-                            GameUtilities.SetGamma(amount);
-                            PlayerPrefs.SetValue<float>("Gamma", amount);
-                            UpdateGammaBar(gamma_bars_list);
-                        }
-                        break;
-                }
-                scale_left_arrow = true;
-                play_left_arrow_anim = true;
-            }
-            else if (InputUtility.onKeyTriggered("MENURIGHT"))
-            {
-                ECS.PlayAudio(entityID, 2, "SFX");
-
-                switch (active_index)
-                {
-                    case 0:
-                        {
-                            float amount = AudioEngine.GetChannelGroupVolume("BGM") < 0.9f ? AudioEngine.GetChannelGroupVolume("BGM") + volume_change_amount : 1.0f;
-                            AudioEngine.SetChannelGroupVolume("BGM", amount);
-                            PlayerPrefs.SetValue<float>("AudioBGM", amount);
-                            UpdateVolumeBars(bgm_bars_list);
-                        }
-                        break;
-                    case 1:
-                        {
-                            float amount = AudioEngine.GetChannelGroupVolume("SFX") < 0.9f ? AudioEngine.GetChannelGroupVolume("SFX") + volume_change_amount : 1.0f;
-                            AudioEngine.SetChannelGroupVolume("SFX", amount);
-                            PlayerPrefs.SetValue<float>("AudioSFX", amount);
-                            UpdateVolumeBars(sfx_bars_list);
-                        }
-                        break;
-                    case 2:
-                        {
-                            float amount = AudioEngine.GetChannelGroupVolume("VO") < 0.9f ? AudioEngine.GetChannelGroupVolume("VO") + volume_change_amount : 1.0f;
-                            AudioEngine.SetChannelGroupVolume("VO", amount);
-                            PlayerPrefs.SetValue<float>("AudioVO", amount);
-                            UpdateVolumeBars(vo_bars_list);
-                        }
-                        break;
-                    case 3:
-                        {
-                            float amount = GameUtilities.GetGamma() <= 2.6 ? GameUtilities.GetGamma() + gamma_change_amount : 3.0f;
-                            GameUtilities.SetGamma(amount);
-                            PlayerPrefs.SetValue<float>("Gamma", amount);
-                            UpdateGammaBar(gamma_bars_list);
-                        }
-                        break;
-                }
-                scale_right_arrow = true;
-                play_right_arrow_anim = true;
-            }
-
-            //Set all to default volume
-            if (InputUtility.onKeyTriggered("MENUSELECT"))
-            {
-                ECS.PlayAudio(entityID, 0, "SFX");
-
-                if (active_index == 4)
-                {
-                    AudioEngine.SetChannelGroupVolume("BGM", default_value);
-                    AudioEngine.SetChannelGroupVolume("SFX", default_value);
-                    AudioEngine.SetChannelGroupVolume("VO", default_value);
-                    GameUtilities.SetGamma(gamma_default_value);
-                    PlayerPrefs.SetValue<float>("AudioBGM", default_value);
-                    PlayerPrefs.SetValue<float>("AudioSFX", default_value);
-                    PlayerPrefs.SetValue<float>("AudioVO", default_value);
-                    PlayerPrefs.SetValue<float>("Gamma", gamma_default_value);
-
-                    RefreshVolumeBars(bgm_bars_list, "BGM");
-                    RefreshVolumeBars(sfx_bars_list, "SFX");
-                    RefreshVolumeBars(vo_bars_list, "VO");
-                    UpdateGammaBar(gamma_bars_list);
-                }
-            }
-
             if (InputUtility.onKeyTriggered("ESCAPE"))
             {
                 ECS.SetActive(entityID, false);
             }
 
-            if(play_left_arrow_anim)
-                UpdateArrowAnimation(true, dt);
-            if(play_right_arrow_anim)
-                UpdateArrowAnimation(false, dt);
+            //Key input
+            if (m_Mode == SETTINGS_MODE.LEFT)
+            {
+                if (InputUtility.onKeyTriggered(KEY_ID.KEY_E))
+                {
+                    m_Mode = SETTINGS_MODE.RIGHT;
+                    ECS.SetActive(rightBarID, true);
+                    ECS.SetActive(leftBarID, false);
+                    UpdatePauseMenuButtonFade();
+                    ResetArrowAnimation();
+                    m_resetBars = true;
+                    return;
+                }
+
+                if (InputUtility.onKeyTriggered("MENUUP"))
+                {
+                    ECS.PlayAudio(entityID, 1, "SFX");
+
+                    --active_index;
+
+                    if (active_index < (int)SETTINGS_MENU_BUTTONS.BGM_VOLUME)
+                    {
+                        active_index = (int)SETTINGS_MENU_BUTTONS.DEFAULT;
+                    }
+                    UpdatePauseMenuButtonFade();
+                    ResetArrowAnimation();
+                }
+                else if (InputUtility.onKeyTriggered("MENUDOWN"))
+                {
+                    ECS.PlayAudio(entityID, 2, "SFX");
+
+                    ++active_index;
+
+                    if (active_index > (int)SETTINGS_MENU_BUTTONS.DEFAULT)
+                    {
+                        active_index = (int)SETTINGS_MENU_BUTTONS.BGM_VOLUME;
+                    }
+                    UpdatePauseMenuButtonFade();
+                    ResetArrowAnimation();
+                }
+
+                if (InputUtility.onKeyTriggered("MENULEFT"))
+                {
+                    ECS.PlayAudio(entityID, 1, "SFX");
+
+                    switch (active_index)
+                    {
+                        case 0:
+                            {
+                                float amount = AudioEngine.GetChannelGroupVolume("BGM") > 0.1f ? AudioEngine.GetChannelGroupVolume("BGM") - volume_change_amount : 0.0f;
+                                AudioEngine.SetChannelGroupVolume("BGM", amount);
+                                PlayerPrefs.SetValue<float>("AudioBGM", amount);
+                                UpdateVolumeBars(bgm_bars_list);
+                            }
+                            break;
+                        case 1:
+                            {
+                                float amount = AudioEngine.GetChannelGroupVolume("SFX") > 0.1f ? AudioEngine.GetChannelGroupVolume("SFX") - volume_change_amount : 0.0f;
+                                AudioEngine.SetChannelGroupVolume("SFX", amount);
+                                PlayerPrefs.SetValue<float>("AudioSFX", amount);
+                                UpdateVolumeBars(sfx_bars_list);
+                            }
+                            break;
+                        case 2:
+                            {
+                                float amount = AudioEngine.GetChannelGroupVolume("VO") > 0.1f ? AudioEngine.GetChannelGroupVolume("VO") - volume_change_amount : 0.0f;
+                                AudioEngine.SetChannelGroupVolume("VO", amount);
+                                PlayerPrefs.SetValue<float>("AudioVO", amount);
+                                UpdateVolumeBars(vo_bars_list);
+                            }
+                            break;
+                            //case 3:
+                            //    {
+                            //        float amount = GameUtilities.GetGamma() >= 1.4f ? GameUtilities.GetGamma() - gamma_change_amount : 1.0f;
+                            //        GameUtilities.SetGamma(amount);
+                            //        PlayerPrefs.SetValue<float>("Gamma", amount);
+                            //        UpdateGammaBar(gamma_bars_list);
+                            //    }
+                            //    break;
+                    }
+                    scale_left_arrow = true;
+                    play_left_arrow_anim = true;
+                }
+                else if (InputUtility.onKeyTriggered("MENURIGHT"))
+                {
+                    ECS.PlayAudio(entityID, 2, "SFX");
+
+                    switch (active_index)
+                    {
+                        case 0:
+                            {
+                                float amount = AudioEngine.GetChannelGroupVolume("BGM") < 0.9f ? AudioEngine.GetChannelGroupVolume("BGM") + volume_change_amount : 1.0f;
+                                AudioEngine.SetChannelGroupVolume("BGM", amount);
+                                PlayerPrefs.SetValue<float>("AudioBGM", amount);
+                                UpdateVolumeBars(bgm_bars_list);
+                            }
+                            break;
+                        case 1:
+                            {
+                                float amount = AudioEngine.GetChannelGroupVolume("SFX") < 0.9f ? AudioEngine.GetChannelGroupVolume("SFX") + volume_change_amount : 1.0f;
+                                AudioEngine.SetChannelGroupVolume("SFX", amount);
+                                PlayerPrefs.SetValue<float>("AudioSFX", amount);
+                                UpdateVolumeBars(sfx_bars_list);
+                            }
+                            break;
+                        case 2:
+                            {
+                                float amount = AudioEngine.GetChannelGroupVolume("VO") < 0.9f ? AudioEngine.GetChannelGroupVolume("VO") + volume_change_amount : 1.0f;
+                                AudioEngine.SetChannelGroupVolume("VO", amount);
+                                PlayerPrefs.SetValue<float>("AudioVO", amount);
+                                UpdateVolumeBars(vo_bars_list);
+                            }
+                            break;
+                            //case 3:
+                            //    {
+                            //        float amount = GameUtilities.GetGamma() <= 2.6 ? GameUtilities.GetGamma() + gamma_change_amount : 3.0f;
+                            //        GameUtilities.SetGamma(amount);
+                            //        PlayerPrefs.SetValue<float>("Gamma", amount);
+                            //        UpdateGammaBar(gamma_bars_list);
+                            //    }
+                            //    break;
+                    }
+                    scale_right_arrow = true;
+                    play_right_arrow_anim = true;
+                }
+
+                //Set all to default volume
+                if (InputUtility.onKeyTriggered("MENUSELECT"))
+                {
+                    ECS.PlayAudio(entityID, 0, "SFX");
+
+                    if (active_index == 4)
+                    {
+                        AudioEngine.SetChannelGroupVolume("BGM", default_value);
+                        AudioEngine.SetChannelGroupVolume("SFX", default_value);
+                        AudioEngine.SetChannelGroupVolume("VO", default_value);
+
+                        PlayerPrefs.SetValue<float>("AudioBGM", default_value);
+                        PlayerPrefs.SetValue<float>("AudioSFX", default_value);
+                        PlayerPrefs.SetValue<float>("AudioVO", default_value);
+
+                        RefreshVolumeBars(bgm_bars_list, "BGM");
+                        RefreshVolumeBars(sfx_bars_list, "SFX");
+                        RefreshVolumeBars(vo_bars_list, "VO");
+                    }
+                }
+
+                if (play_left_arrow_anim)
+                    UpdateArrowAnimation(true, dt);
+                if (play_right_arrow_anim)
+                    UpdateArrowAnimation(false, dt);
+            }
+            else if (m_Mode == SETTINGS_MODE.RIGHT)
+            {
+                if (InputUtility.onKeyTriggered(KEY_ID.KEY_Q))
+                {
+                    m_Mode = SETTINGS_MODE.LEFT;
+                    ECS.SetActive(leftBarID, true);
+                    ECS.SetActive(rightBarID, false);
+                    UpdatePauseMenuButtonFade();
+                    ResetArrowAnimation();
+                    m_resetBars = true;
+                    return;
+                }
+
+                if (InputUtility.onKeyTriggered("MENUUP"))
+                {
+                    ECS.PlayAudio(entityID, 1, "SFX");
+
+                    --m_rightIndex;
+
+                    if (m_rightIndex < SETTINGS_RIGHT_MENU_BUTTONS.RESOLUTION)
+                    {
+                        m_rightIndex = SETTINGS_RIGHT_MENU_BUTTONS.DEFAULT;
+                    }
+                    UpdatePauseMenuButtonFade();
+                    ResetArrowAnimation();
+                }
+                else if (InputUtility.onKeyTriggered("MENUDOWN"))
+                {
+                    ECS.PlayAudio(entityID, 2, "SFX");
+
+                    ++m_rightIndex;
+
+                    if (m_rightIndex > SETTINGS_RIGHT_MENU_BUTTONS.DEFAULT)
+                    {
+                        m_rightIndex = SETTINGS_RIGHT_MENU_BUTTONS.RESOLUTION;
+                    }
+                    UpdatePauseMenuButtonFade();
+                    ResetArrowAnimation();
+                }
+
+                if (InputUtility.onKeyTriggered("MENULEFT"))
+                {
+                    ECS.PlayAudio(entityID, 1, "SFX");
+
+                    switch (m_rightIndex)
+                    {
+                        case SETTINGS_RIGHT_MENU_BUTTONS.RESOLUTION:
+                            {
+                                ++m_currentResolution;
+
+                                if (m_currentResolution > RESOLUTIONS.WINDOWED_1280x720)
+                                {
+                                    m_currentResolution = RESOLUTIONS.FULLSCREEN;
+                                }
+                                UpdateResolutionBar(resolution_bars_list);
+                            }
+                            break;
+                        case SETTINGS_RIGHT_MENU_BUTTONS.GAMMA:
+                            {
+                                float amount = GameUtilities.GetGamma() >= 1.4f ? GameUtilities.GetGamma() - gamma_change_amount : 1.0f;
+                                GameUtilities.SetGamma(amount);
+                                PlayerPrefs.SetValue<float>("Gamma", amount);
+                                UpdateGammaBar(gamma_bars_list);
+                            }
+                            break;
+                    }
+                    scale_left_arrow = true;
+                    play_left_arrow_anim = true;
+                }
+                else if (InputUtility.onKeyTriggered("MENURIGHT"))
+                {
+                    ECS.PlayAudio(entityID, 2, "SFX");
+
+                    switch (m_rightIndex)
+                    {
+                        case SETTINGS_RIGHT_MENU_BUTTONS.RESOLUTION:
+                            {
+                                --m_currentResolution;
+                                if (m_currentResolution < RESOLUTIONS.FULLSCREEN)
+                                {
+                                    m_currentResolution = RESOLUTIONS.WINDOWED_1280x720;
+                                }
+                                UpdateResolutionBar(resolution_bars_list);
+                            }
+                            break;
+                        case SETTINGS_RIGHT_MENU_BUTTONS.GAMMA:
+                            {
+                                float amount = GameUtilities.GetGamma() <= 2.6 ? GameUtilities.GetGamma() + gamma_change_amount : 3.0f;
+                                GameUtilities.SetGamma(amount);
+                                PlayerPrefs.SetValue<float>("Gamma", amount);
+                                UpdateGammaBar(gamma_bars_list);
+                            }
+                            break;
+                    }
+                    scale_right_arrow = true;
+                    play_right_arrow_anim = true;
+                }
+
+                //Set all to default resolution & gamma
+                if (InputUtility.onKeyTriggered("MENUSELECT"))
+                {
+                    ECS.PlayAudio(entityID, 0, "SFX");
+
+                    if (m_rightIndex == SETTINGS_RIGHT_MENU_BUTTONS.DEFAULT)
+                    {
+                        GameUtilities.SetGamma(gamma_default_value);
+                        PlayerPrefs.SetValue<float>("Gamma", gamma_default_value);
+                        GameUtilities.GameSetWindowSize(1920, 1080);
+                        GameUtilities.GameSetFullscreen(false);
+                        PlayerPrefs.SetValue<int>("Resolution", (int)RESOLUTIONS.WINDOWED_1920x1080);
+                        UpdateResolutionBar(resolution_bars_list);
+                        UpdateGammaBar(gamma_bars_list);
+                    }
+                    else if(m_rightIndex == SETTINGS_RIGHT_MENU_BUTTONS.RESOLUTION)
+                    {
+                        switch(m_currentResolution)
+                        {
+                            case RESOLUTIONS.FULLSCREEN:
+                            {
+                                GameUtilities.GameSetFullscreen(true);
+                            }
+                            break;
+                            case RESOLUTIONS.WINDOWED_1920x1080:
+                            {
+                                GameUtilities.GameSetFullscreen(false);
+                                GameUtilities.GameSetWindowSize(1920, 1080);
+                            }
+                            break;
+                            case RESOLUTIONS.WINDOWED_1280x720:
+                            {
+                                GameUtilities.GameSetFullscreen(false);
+                                GameUtilities.GameSetWindowSize(1280, 720);
+                            }
+                            break;
+                        }
+                        PlayerPrefs.SetValue<int>("Resolution", (int)m_currentResolution);
+                        UpdateResolutionBar(resolution_bars_list);
+                    }
+                }
+
+                if (play_left_arrow_anim)
+                    UpdateArrowAnimation(true, dt);
+                if (play_right_arrow_anim)
+                    UpdateArrowAnimation(false, dt);
+            }
         }
 
         public void UpdatePauseMenuButtonFade()
         {
-            switch (active_index)
+            if (m_Mode == SETTINGS_MODE.LEFT)
             {
-                case 0:
-                    {
-                        //Set only the selected button to be non faded
-                        ToggleButtonFade(button_map, faded_button_map, "BGM Volume Button", "BGM Volume Button Faded");
-                        ECS.SetGlobalPosition(left_arrow_id, new Vector3(ECS.GetGlobalPosition(left_arrow_id).X, ECS.GetGlobalPosition(bgm_bar_fg_id).Y, ECS.GetGlobalPosition(left_arrow_id).Z));
-                        ECS.SetGlobalPosition(right_arrow_id, new Vector3(ECS.GetGlobalPosition(right_arrow_id).X, ECS.GetGlobalPosition(bgm_bar_fg_id).Y, ECS.GetGlobalPosition(right_arrow_id).Z));
-                        ECS.SetActive(left_arrow_id, true);
-                        ECS.SetActive(right_arrow_id, true);
-                    }
-                    break;
-                case 1:
-                    {
-                        //Set only the selected button to be non faded
-                        ToggleButtonFade(button_map, faded_button_map, "SFX Volume Button", "SFX Volume Button Faded");
-                        ECS.SetGlobalPosition(left_arrow_id, new Vector3(ECS.GetGlobalPosition(left_arrow_id).X, ECS.GetGlobalPosition(sfx_bar_fg_id).Y, ECS.GetGlobalPosition(left_arrow_id).Z));
-                        ECS.SetGlobalPosition(right_arrow_id, new Vector3(ECS.GetGlobalPosition(right_arrow_id).X, ECS.GetGlobalPosition(sfx_bar_fg_id).Y, ECS.GetGlobalPosition(right_arrow_id).Z));
-                        ECS.SetActive(left_arrow_id, true);
-                        ECS.SetActive(right_arrow_id, true);
-                    }
-                    break;
-                case 2:
-                    {
-                        //Set only the selected button to be non faded
-                        ToggleButtonFade(button_map, faded_button_map, "VO Volume Button", "VO Volume Button Faded");
-                        ECS.SetGlobalPosition(left_arrow_id, new Vector3(ECS.GetGlobalPosition(left_arrow_id).X, ECS.GetGlobalPosition(vo_bar_fg_id).Y, ECS.GetGlobalPosition(left_arrow_id).Z));
-                        ECS.SetGlobalPosition(right_arrow_id, new Vector3(ECS.GetGlobalPosition(right_arrow_id).X, ECS.GetGlobalPosition(vo_bar_fg_id).Y, ECS.GetGlobalPosition(right_arrow_id).Z));
-                        ECS.SetActive(left_arrow_id, true);
-                        ECS.SetActive(right_arrow_id, true);
-                    }
-                    break;
-                case 3:
-                    {
-                        //Set only the selected button to be non faded
-                        ToggleButtonFade(button_map, faded_button_map, "Gamma Button", "Gamma Button Faded");
-                        ECS.SetGlobalPosition(left_arrow_id, new Vector3(ECS.GetGlobalPosition(left_arrow_id).X, ECS.GetGlobalPosition(gamma_bar_fg_id).Y, ECS.GetGlobalPosition(left_arrow_id).Z));
-                        ECS.SetGlobalPosition(right_arrow_id, new Vector3(ECS.GetGlobalPosition(right_arrow_id).X, ECS.GetGlobalPosition(gamma_bar_fg_id).Y, ECS.GetGlobalPosition(right_arrow_id).Z));
-                        ECS.SetActive(left_arrow_id, true);
-                        ECS.SetActive(right_arrow_id, true);
-                    }
-                    break;
-                case 4:
-                    {
-                        //Set only the selected button to be non faded
-                        ToggleButtonFade(button_map, faded_button_map, "Default Volume Button", "Default Volume Button Faded");
-                        ECS.SetActive(left_arrow_id, false);
-                        ECS.SetActive(right_arrow_id, false);
-                    }
-                    break;
+                switch (active_index)
+                {
+                    case 0:
+                        {
+                            //Set only the selected button to be non faded
+                            ToggleButtonFade(button_map, faded_button_map, "BGM Volume Button", "BGM Volume Button Faded");
+                            ECS.SetGlobalPosition(left_arrow_id, new Vector3(ECS.GetGlobalPosition(left_arrow_id).X, ECS.GetGlobalPosition(bgm_bar_fg_id).Y, ECS.GetGlobalPosition(left_arrow_id).Z));
+                            ECS.SetGlobalPosition(right_arrow_id, new Vector3(ECS.GetGlobalPosition(right_arrow_id).X, ECS.GetGlobalPosition(bgm_bar_fg_id).Y, ECS.GetGlobalPosition(right_arrow_id).Z));
+                            ECS.SetActive(left_arrow_id, true);
+                            ECS.SetActive(right_arrow_id, true);
+                        }
+                        break;
+                    case 1:
+                        {
+                            //Set only the selected button to be non faded
+                            ToggleButtonFade(button_map, faded_button_map, "SFX Volume Button", "SFX Volume Button Faded");
+                            ECS.SetGlobalPosition(left_arrow_id, new Vector3(ECS.GetGlobalPosition(left_arrow_id).X, ECS.GetGlobalPosition(sfx_bar_fg_id).Y, ECS.GetGlobalPosition(left_arrow_id).Z));
+                            ECS.SetGlobalPosition(right_arrow_id, new Vector3(ECS.GetGlobalPosition(right_arrow_id).X, ECS.GetGlobalPosition(sfx_bar_fg_id).Y, ECS.GetGlobalPosition(right_arrow_id).Z));
+                            ECS.SetActive(left_arrow_id, true);
+                            ECS.SetActive(right_arrow_id, true);
+                        }
+                        break;
+                    case 2:
+                        {
+                            //Set only the selected button to be non faded
+                            ToggleButtonFade(button_map, faded_button_map, "VO Volume Button", "VO Volume Button Faded");
+                            ECS.SetGlobalPosition(left_arrow_id, new Vector3(ECS.GetGlobalPosition(left_arrow_id).X, ECS.GetGlobalPosition(vo_bar_fg_id).Y, ECS.GetGlobalPosition(left_arrow_id).Z));
+                            ECS.SetGlobalPosition(right_arrow_id, new Vector3(ECS.GetGlobalPosition(right_arrow_id).X, ECS.GetGlobalPosition(vo_bar_fg_id).Y, ECS.GetGlobalPosition(right_arrow_id).Z));
+                            ECS.SetActive(left_arrow_id, true);
+                            ECS.SetActive(right_arrow_id, true);
+                        }
+                        break;
+                    case 3:
+                        {
+                            //Set only the selected button to be non faded
+                            ToggleButtonFade(button_map, faded_button_map, "Default Volume Button", "Default Volume Button Faded");
+                            ECS.SetActive(left_arrow_id, false);
+                            ECS.SetActive(right_arrow_id, false);
+                        }
+                        break;
+                        //case 4:
+                        //    {
+                        //        //Set only the selected button to be non faded
+                        //        ToggleButtonFade(button_map, faded_button_map, "Default Volume Button", "Default Volume Button Faded");
+                        //        ECS.SetActive(left_arrow_id, false);
+                        //        ECS.SetActive(right_arrow_id, false);
+                        //    }
+                        //    break;
+                }
+
+            }
+            else if (m_Mode == SETTINGS_MODE.RIGHT)
+            {
+                switch (m_rightIndex)
+                {
+                    case SETTINGS_RIGHT_MENU_BUTTONS.RESOLUTION:
+                        {
+                            //Set only the selected button to be non faded
+                            ToggleButtonFade(button_map_right, faded_button_map_right, "Resolution Button", "Resolution Button Faded");
+                            ECS.SetGlobalPosition(left_arrow_id, new Vector3(ECS.GetGlobalPosition(left_arrow_id).X, ECS.GetGlobalPosition(resolution_bar_fg_id).Y, ECS.GetGlobalPosition(left_arrow_id).Z));
+                            ECS.SetGlobalPosition(right_arrow_id, new Vector3(ECS.GetGlobalPosition(right_arrow_id).X, ECS.GetGlobalPosition(resolution_bar_fg_id).Y, ECS.GetGlobalPosition(right_arrow_id).Z));
+                            ECS.SetActive(left_arrow_id, true);
+                            ECS.SetActive(right_arrow_id, true);
+                        }
+                        break;
+                    case SETTINGS_RIGHT_MENU_BUTTONS.GAMMA:
+                        {
+                            //Set only the selected button to be non faded
+                            ToggleButtonFade(button_map_right, faded_button_map_right, "Gamma Button", "Gamma Button Faded");
+                            ECS.SetGlobalPosition(left_arrow_id, new Vector3(ECS.GetGlobalPosition(left_arrow_id).X, ECS.GetGlobalPosition(gamma_bar_fg_id).Y, ECS.GetGlobalPosition(left_arrow_id).Z));
+                            ECS.SetGlobalPosition(right_arrow_id, new Vector3(ECS.GetGlobalPosition(right_arrow_id).X, ECS.GetGlobalPosition(gamma_bar_fg_id).Y, ECS.GetGlobalPosition(right_arrow_id).Z));
+                            ECS.SetActive(left_arrow_id, true);
+                            ECS.SetActive(right_arrow_id, true);
+                        }
+                        break;
+                    case SETTINGS_RIGHT_MENU_BUTTONS.DEFAULT:
+                        {
+                            //Set only the selected button to be non faded
+                            ToggleButtonFade(button_map_right, faded_button_map_right, "Default Volume Button", "Default Volume Button Faded");
+                            ECS.SetActive(left_arrow_id, false);
+                            ECS.SetActive(right_arrow_id, false);
+                        }
+                        break;
+                }
             }
         }
 
@@ -526,7 +803,7 @@ namespace Scripting
                 {
                     ECS.SetActive(bars_to_update[i], true);
                 }
-                else if (i >= gamma_level)
+                else
                 {
                     ECS.SetActive(bars_to_update[i], false);
                 }
@@ -546,6 +823,21 @@ namespace Scripting
                 else
                 {
                     ECS.SetActive(bars_to_update[i], false);
+                }
+            }
+        }
+
+        private void UpdateResolutionBar(List<uint> resolution_bars_list)
+        {
+            for(int i = 0; i < resolution_bars_list.Count; ++i)
+            {
+                if(i == (int)m_currentResolution)
+                {
+                    ECS.SetActive(resolution_bars_list[i], true);
+                }
+                else
+                {
+                    ECS.SetActive(resolution_bars_list[i], false);
                 }
             }
         }
@@ -579,7 +871,6 @@ namespace Scripting
 
         public override void LateUpdate(float dt)
         {
-
         }
 
         public override void OnTriggerEnter(uint id)
