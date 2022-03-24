@@ -34,6 +34,12 @@ namespace Scripting
 		float m_actual_nuke_speed;
         float m_actual_nuke_cooldown;
 		float m_actual_nuke_timer;
+		uint m_actual_nuke_bar_charging_id;
+		Vector3 m_actual_nuke_bar_charging_scale = new Vector3();
+		uint m_actual_nuke_bar_filled_id;
+		Vector3 m_actual_nuke_bar_filled_scale = new Vector3();
+		float m_actual_nuke_bar_per_second;
+		bool m_actual_nuke_set_scale = false;
 
         //Player Firing 
         float p_fireRate = 0.1f;
@@ -97,6 +103,9 @@ namespace Scripting
 		//
 		public Vector3 m_shootVector = new Vector3(0f, 0f, 1f);
 
+		//null entity
+		uint m_null_entity;
+
 		public class Reticle
 		{
 			public uint parent_id = 0;
@@ -119,6 +128,7 @@ namespace Scripting
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
+			m_null_entity = ECS.GetNull();
 			m_singleton = this;
 		}
 
@@ -136,9 +146,25 @@ namespace Scripting
 
 			//variables for actual nuke
 			m_actual_nuke = ECS.FindEntityWithName("Actual_Nuke");
+			m_actual_nuke_bar_charging_id = ECS.FindEntityWithName("Bar_Charging");
+			m_actual_nuke_bar_filled_id = ECS.FindEntityWithName("Bar_Filled");
 			m_actual_nuke_speed = ECS.GetValue<float>(entityID, 300, "m_actual_nuke_speed");
 			m_actual_nuke_cooldown = ECS.GetValue<float>(entityID, 5, "m_actual_nuke_cooldown");
 			m_actual_nuke_timer = m_actual_nuke_cooldown;
+
+			Vector3 throw_away_pos = new Vector3();
+			Vector3 throw_away_rot = new Vector3();
+
+			if (m_actual_nuke_bar_charging_id != m_null_entity)
+				ECS.GetTransformECS(m_actual_nuke_bar_charging_id, ref throw_away_pos, ref throw_away_rot, ref m_actual_nuke_bar_charging_scale);
+
+			if (m_actual_nuke_bar_filled_id != m_null_entity)
+				ECS.GetTransformECS(m_actual_nuke_bar_filled_id, ref throw_away_pos, ref throw_away_rot, ref m_actual_nuke_bar_filled_scale);
+
+			if (m_actual_nuke_bar_charging_id != m_null_entity && m_actual_nuke_bar_filled_id != m_null_entity)
+            {
+				m_actual_nuke_bar_per_second = m_actual_nuke_bar_filled_scale.X / m_actual_nuke_cooldown;
+			}
 
 			Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
 			Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
@@ -259,7 +285,19 @@ namespace Scripting
 			p_fire_timer += dt;
 			m_actual_nuke_timer += dt;
 
-			if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK") || InputUtility.onKeyTriggered("LEFTCLICK"))
+			if (!m_actual_nuke_set_scale && m_actual_nuke_timer > m_actual_nuke_cooldown)
+			{
+				m_actual_nuke_set_scale = true;
+				ECS.SetActive(m_actual_nuke_bar_charging_id, false);
+				ECS.SetActive(m_actual_nuke_bar_filled_id, true);
+			}
+			else
+            {
+				m_actual_nuke_bar_charging_scale.X += dt * m_actual_nuke_bar_per_second;
+				ECS.SetScale(m_actual_nuke_bar_charging_id, new Vector3(m_actual_nuke_bar_charging_scale.X, m_actual_nuke_bar_filled_scale.Y, m_actual_nuke_bar_filled_scale.Z));
+            }
+
+                if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK") || InputUtility.onKeyTriggered("LEFTCLICK"))
 			{
 				if (p_fire_timer >= p_fireRate)
 				{
@@ -287,6 +325,12 @@ namespace Scripting
 					GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
 
 					m_actual_nuke_timer = 0;
+
+					ECS.SetActive(m_actual_nuke_bar_charging_id, true);
+					ECS.SetActive(m_actual_nuke_bar_filled_id, false);
+
+					m_actual_nuke_bar_charging_scale.X = 0;
+					m_actual_nuke_set_scale = false;
 				}
 			}
 		}

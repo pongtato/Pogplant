@@ -344,12 +344,14 @@ bool ECS::IsChildOf(entt::entity _parent, entt::entity _child)
 
 void ECS::DisableEntity(entt::entity _entity)
 {
-	m_EntitiesToDisable.insert(_entity);
+	if(_entity != entt::null)
+		m_EntitiesToDisable.insert(_entity);
 }
 
 void ECS::EnableEntity(entt::entity _entity)
 {
-	m_EntitiesToEnable.insert(_entity);
+	if(_entity != entt::null)
+		m_EntitiesToEnable.insert(_entity);
 }
 
 void ECS::ToggleEntity(entt::entity _entity)
