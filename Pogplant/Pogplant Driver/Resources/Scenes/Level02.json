@@ -70931,7 +70931,7 @@
 		}
 	},
 	{
-		"Children" : 5,
+		"Children" : 6,
 		"Name" : 
 		{
 			"m_Name" : "DashBoard",
@@ -71366,12 +71366,12 @@
 			"m_position" : 
 			[
 				0.58634364604949951,
-				0.1082916259765625,
+				0.1080000028014183,
 				-0.17200000584125519
 			],
 			"m_rotation" : 
 			[
-				164.99992370605469,
+				165.0,
 				-9.9999475479125977,
 				-179.99989318847656
 			],
@@ -71431,7 +71431,7 @@
 		{
 			"m_position" : 
 			[
-				0.58822435140609741,
+				0.58799999952316284,
 				0.10756683349609375,
 				-0.17089886963367462
 			],
@@ -71505,7 +71505,7 @@
 			[
 				164.99992370605469,
 				-9.9999446868896484,
-				179.99989318847656
+				-180.0
 			],
 			"m_scale" : 
 			[
@@ -71559,6 +71559,303 @@
 				0.79999971389770508,
 				0.80000406503677368,
 				0.80000615119934082
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Charge_Bar",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.60000002384185791,
+				0.0,
+				-0.10000000149011612
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : true,
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 43.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.375,
+					0.75
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Background",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.029999999329447746,
+				-0.024000000208616257,
+				-0.10000000149011612
+			],
+			"m_rotation" : 
+			[
+				158.0,
+				9.0,
+				175.0
+			],
+			"m_scale" : 
+			[
+				0.18000000715255737,
+				0.18000000715255737,
+				5.0000057220458984
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : true,
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 45.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.625,
+					0.75
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke icon",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.029999999329447746,
+				-0.024000000208616257,
+				-0.10199999809265137
+			],
+			"m_rotation" : 
+			[
+				158.0,
+				9.0,
+				175.0
+			],
+			"m_scale" : 
+			[
+				0.18000000715255737,
+				0.18000000715255737,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				0.019607843831181526,
+				0.69803923368453979,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : true,
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 44.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.75
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bar_Charging",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.029999999329447746,
+				-0.024000000208616257,
+				-0.10100000351667404
+			],
+			"m_rotation" : 
+			[
+				158.0,
+				9.0,
+				175.0
+			],
+			"m_scale" : 
+			[
+				0.18000000715255737,
+				0.18000000715255737,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				0.98039215803146362,
+				0.53333336114883423,
+				0.0,
+				1.0
+			],
+			"m_ForceAlpha" : true,
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 44.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.75
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bar_Filled",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.029999999329447746,
+				-0.024000000208616257,
+				-0.10100000351667404
+			],
+			"m_rotation" : 
+			[
+				158.0,
+				9.0,
+				175.0
+			],
+			"m_scale" : 
+			[
+				0.18000000715255737,
+				0.18000000715255737,
+				1.0
 			]
 		}
 	},
@@ -72830,7 +73127,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 40.6785888671875,
+				"m_FrameCounter" : 97.350418090820312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -72843,8 +73140,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.328125
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -72896,7 +73193,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 126.77584838867188,
+				"m_FrameCounter" : 36.376178741455078,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -72910,7 +73207,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					1.0
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -72962,7 +73259,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 86.192962646484375,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -72976,7 +73273,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.6875
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73028,7 +73325,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 27.425872802734375,
+				"m_FrameCounter" : 101.13964080810547,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -73042,7 +73339,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.21875
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73094,7 +73391,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 40.6785888671875,
+				"m_FrameCounter" : 97.350418090820312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -73107,8 +73404,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.328125
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73160,7 +73457,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 86.192962646484375,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -73174,7 +73471,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.6875
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73226,7 +73523,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 122.40426635742188,
+				"m_FrameCounter" : 112.05735015869141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -73240,7 +73537,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.96875
+					0.890625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73292,7 +73589,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 40.6785888671875,
+				"m_FrameCounter" : 97.350418090820312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -73305,8 +73602,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.328125
+					0.5,
+					0.765625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73358,7 +73655,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 122.40426635742188,
+				"m_FrameCounter" : 112.05735015869141,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -73372,7 +73669,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.96875
+					0.890625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73424,7 +73721,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.337982177734375,
+				"m_FrameCounter" : 92.694091796875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -73438,7 +73735,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.734375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73490,7 +73787,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 126.77584838867188,
+				"m_FrameCounter" : 36.376178741455078,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -73504,7 +73801,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					1.0
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -74269,7 +74566,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -148903,21 +149200,21 @@
 		{
 			"m_position" : 
 			[
-				-0.067291259765625,
+				-0.072998046875,
 				-0.020294189453125,
 				-0.00017547607421875
 			],
 			"m_rotation" : 
 			[
-				-6.8608847492157565e-09,
-				3.6461265898060733e-15,
-				-4.5198658149558923e-09
+				-7.5038988356368463e-09,
+				3.771291801388894e-15,
+				-4.8642228023254575e-09
 			],
 			"m_scale" : 
 			[
-				1.5895813703536987,
-				2.4114952087402344,
-				1.1997640132904053
+				1.5895348787307739,
+				2.4114487171173096,
+				1.1997407674789429
 			]
 		}
 	},
@@ -152373,7 +152670,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SM_LeftTab",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -152439,7 +152736,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SM_E",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -152472,7 +152769,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Parent",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -152538,7 +152835,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar BG",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -152604,7 +152901,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 4",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -152670,7 +152967,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 6",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -152736,7 +153033,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 9",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -152802,7 +153099,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 8",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -152868,7 +153165,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 7",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -152934,7 +153231,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 5",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153000,7 +153297,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 3",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153066,7 +153363,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 2",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153132,7 +153429,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 1",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153198,7 +153495,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Bar 10",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153264,7 +153561,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Volume Button",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153330,7 +153627,7 @@
 		"Name" : 
 		{
 			"m_Name" : "VO Volume Button Faded",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153363,7 +153660,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Parent",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153429,7 +153726,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Volume Button",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153495,7 +153792,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar BG",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153561,7 +153858,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 8",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153627,7 +153924,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 9",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153693,7 +153990,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 3",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153759,7 +154056,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 2",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153825,7 +154122,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 1",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153891,7 +154188,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 10",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -153957,7 +154254,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 7",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154023,7 +154320,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 6",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154089,7 +154386,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 5",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154155,7 +154452,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Bar 4",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154221,7 +154518,7 @@
 		"Name" : 
 		{
 			"m_Name" : "BGM Volume Button Faded",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154254,7 +154551,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Parent",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154320,7 +154617,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Volume Button Faded",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154386,7 +154683,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Volume Button",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154452,7 +154749,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar BG",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154518,7 +154815,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 5",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154584,7 +154881,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 4",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154650,7 +154947,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 3",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154716,7 +155013,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 2",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154782,7 +155079,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 1",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154848,7 +155145,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 10",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154914,7 +155211,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 9",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -154980,7 +155277,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 8",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -155046,7 +155343,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 7",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -155112,7 +155409,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SFX Bar 6",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
