@@ -159,7 +159,7 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 
 				if (collisionResult)
 				{
-					std::cout << "COLLIDE: " << c_dt << std::endl;
+					//std::cout << "COLLIDE: " << c_dt << std::endl;
 					PhysicsDLC::Physics::ResolveSphereSphereDynamic(
 						c_1transform.GetGlobalPosition(),
 						c_1rigidbody,
@@ -168,7 +168,6 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 						_2collider->sphere,
 						collisionResult,
 						c_dt);
-					//	PhysicsDLC::Physics::ResolveAABBAABBDynamic(c_1transform.m_position, c_1rigidbody, c_2rigidbody, _1collider->aabb, _2collider->aabb, collisionResult.collisionTime, c_dt);
 				}
 			}
 

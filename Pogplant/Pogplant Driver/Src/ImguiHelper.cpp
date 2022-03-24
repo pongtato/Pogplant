@@ -98,10 +98,10 @@ namespace PogplantDriver
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::OBBBoxCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
-		if (ImGui::MenuItem("Mesh Collider", NULL, false, adding_enabled))
+		/*if (ImGui::MenuItem("Mesh Collider", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::MeshCollider>(PPD::ImguiHelper::m_CurrentEntity);
-		}
+		}//*/
 		if (ImGui::MenuItem(ICON_FA_CAMERA "  Camera", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Camera>(PPD::ImguiHelper::m_CurrentEntity);
@@ -1579,7 +1579,7 @@ namespace PogplantDriver
 			{
 				PP::Window::HideCursor();
 			}
-			if (ImGui::IsKeyPressed(GLFW_KEY_Z))
+			/*if (ImGui::IsKeyPressed(GLFW_KEY_Z))
 			{
 				Application::GetInstance().SetPlayState(Application::PLAYSTATE::PAUSE);
 			}
@@ -1590,7 +1590,7 @@ namespace PogplantDriver
 			if (ImGui::IsKeyPressed(GLFW_KEY_C))
 			{
 				Application::GetInstance().SetPlayState(Application::PLAYSTATE::STEPNEXT);
-			}
+			}*/
 		}
 		ImGui::End();
 

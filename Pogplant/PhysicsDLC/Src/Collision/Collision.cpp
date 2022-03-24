@@ -84,7 +84,7 @@ namespace PhysicsDLC
 		//A faked sphere case by doing multiple raycasts
 		bool SphereCastAABB(const vec3& rayStart, const vec3& rayDir, float castRadius, const vec3& aabbMin, const vec3& aabbMax, float& collisionTime)
 		{
-			return SphereCastSphere(rayStart, rayDir, castRadius, (aabbMax + aabbMin) * 0.5f, (float)(aabbMax - aabbMin).length() * 0.5f, collisionTime);
+			return SphereCastSphere(rayStart, rayDir, castRadius, (aabbMax + aabbMin) * 0.5f, (float)(aabbMax - aabbMin).length() * 0.3f, collisionTime);
 			/*glm::vec3 right = glm::cross(glm::vec3{0.f, 1.f, 0.f}, rayDir);
 			
 			right = glm::normalize(right);

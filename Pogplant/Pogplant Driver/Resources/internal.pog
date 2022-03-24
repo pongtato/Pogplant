@@ -6,6 +6,10 @@
 			"DEFAULT" : 
 			{
 				"DEFAULT" : 0,
+				"ENEMY EXPLOSIVE" : 3,
+				"ENEMY PROJECTILES" : 3,
+				"OBSTACLES" : 3,
+				"PLAYER PROJECTILES" : 3,
 				"PLAYERBOX" : 3
 			},
 			"ENEMY" : 
@@ -30,6 +34,7 @@
 			"ENEMY PROJECTILES" : 
 			{
 				"ENEMY PROJECTILES" : 3,
+				"PLAYER PROJECTILES" : 3,
 				"PLAYERBOX" : 3,
 				"TRIGGERS" : 3,
 				"WAVETRIGGERS" : 3

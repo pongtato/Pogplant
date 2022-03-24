@@ -338,7 +338,6 @@ namespace Scripting
 			GameScript::InvokeEnemyTakeDamage("BaseTurret", object, other, player_projectile_script, enemy_object_script);
 			GameScript::InvokeEnemyTakeDamage("BaseGattling", object, other, player_projectile_script, enemy_object_script);
 			GameScript::InvokeEnemyTakeDamage("BaseFlock", object, other, player_projectile_script, enemy_object_script);
-			GameScript::InvokeEnemyTakeDamage("L1BossShield", object, other, player_projectile_script, enemy_object_script);
 			GameScript::InvokeEnemyTakeDamage("ExplosiveEnemy", object, other, player_projectile_script, enemy_object_script);
 		}
 		if (player_projectile_script)
@@ -353,12 +352,13 @@ namespace Scripting
 						if (playerbox_scriptable && playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
 						{
 							SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
-							auto bullet_transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Transform>(other);
-							GameScript::InstantiateParticle_C("GunFire", bullet_transform->GetGlobalPosition(), bullet_transform->GetGlobalRotation());
-							PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 						}
 					}
 				}
+
+				auto bullet_transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Transform>(object);
+				GameScript::InstantiateParticle_C("GunFire", bullet_transform->GetGlobalPosition(), bullet_transform->GetGlobalRotation());
+				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 			}
 		}
 	}
