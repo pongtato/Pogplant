@@ -66,7 +66,7 @@ namespace Scripting
 		private bool c_spawnedEnemies = false;
 		private bool c_playedSpawnAnimation = false;
 		private float c_hardCodedUpAnimationSpeed = 10f;
-		private float c_animationDuration = 2f;
+		private float c_animationDuration = 2.5f;
 
 		//--- Spawner variables
 		//This is hardcoded second for spawner
@@ -270,7 +270,6 @@ namespace Scripting
 			m_runStateInfo.stateDuration = 9.5f;
 		}
 
-		bool delayedInit = true;
 
 		/******************************************************************************/
 		/*!
@@ -296,12 +295,6 @@ namespace Scripting
 				{
 					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK);
 				}
-			}
-			if (delayedInit)
-			{
-				//Add core to lock on list
-				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
-				delayedInit = false;
 			}
 
 			//Update shooting gun behaviour
@@ -410,7 +403,8 @@ namespace Scripting
 							//Do enemy spawn animation
 							for (int i = 0; i < 6; ++i)
 							{
-								ECS.GetTransformECS(mID_ventSpawnpoints[i], ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
+								m_tempTransform.Rotation = ECS.GetGlobalRotation(mID_ventSpawnpoints[i]);
+								m_tempTransform.Position = ECS.GetGlobalPosition(mID_ventSpawnpoints[i]);
 								GameObject instance = GameUtilities.InstantiateObject("Enemy_01", m_tempTransform.Position, m_tempTransform.Rotation);
 								m_enemySpawnInstances.Add(instance);
 							}
@@ -421,6 +415,9 @@ namespace Scripting
 				}
 				break;
 			}
+
+			UpdateLockOnBehaviour();
+
 
 			//Enter protection mode if damager threshold is reached
 			if (m_runStateInfo.damageTakenPeriod > m_coreProtectionThreshold)
@@ -445,6 +442,28 @@ namespace Scripting
 			if (m_runStateInfo.timeSinceLastDamageTimer > m_coreProtectionDamageDuration)
 			{
 				m_runStateInfo.damageTakenPeriod = 0f;
+			}
+		}
+
+		bool updateCoreLockOn = false;
+		void UpdateLockOnBehaviour()
+		{
+			//if Is invulnerable to main core
+			if ((!m_stateBehaviours[(int)L2Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore) && updateCoreLockOn)
+			{
+				updateCoreLockOn = false;
+
+				//Remove core from lock on list
+				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Remove(entityID);
+				FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(entityID, 0);
+			}
+			//If is vulnerable
+			else if (!updateCoreLockOn && m_stateBehaviours[(int)L2Boss.m_singleton.current_state].isVulnerable && m_runStateInfo.canDamageMainCore)
+			{
+				updateCoreLockOn = true;
+
+				//Add core to lock on list
+				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
 			}
 		}
 
@@ -778,9 +797,6 @@ namespace Scripting
 			//reset health
 			m_runStateInfo.leftBallHealth = mh_leftBallHealth;
 			m_runStateInfo.rightBallHealth = mh_rightBallHealth;
-
-			//Add core back to lock on list
-			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
 		}
 
 		public void TriggerProtectionState()
@@ -792,10 +808,6 @@ namespace Scripting
 			m_runStateInfo.damageTakenPeriod = 0f;
 			m_runStateInfo.leftBallHealth = mh_leftBallHealth;
 			m_runStateInfo.rightBallHealth = mh_rightBallHealth;
-
-			//Remove core from lock on list
-			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Remove(entityID);
-			FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(entityID, 0);
 
 			//add left and right cores to list
 			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(mID_leftCore, true);
