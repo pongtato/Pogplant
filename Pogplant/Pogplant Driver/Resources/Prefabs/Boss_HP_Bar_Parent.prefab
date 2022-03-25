@@ -1,0 +1,258 @@
+[
+	{
+		"Children" : 3,
+		"Guid" : 
+		{
+			"m_guid" : "bc0be879-a085-43bd-8e50-514fe1645f28"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Boss_HP_Bar_Parent",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Boss_HP_Bar_Parent.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "1dff9c10-8c6d-4e69-9d4d-2f0be7dafc5f",
+			"prefab_path" : "Resources\\Prefabs\\Boss_HP_Bar_Parent.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				-0.9100000262260437
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 11.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.75
+				]
+			},
+			"m_TexName" : "2048_ExportSheet_03.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HP_Bar_Frame_Background",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Boss_HP_Bar_Parent.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.40000000596046448,
+				-0.10000000149011612
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.30000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 13.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.875
+				]
+			},
+			"m_TexName" : "2048_ExportSheet_03.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HP_Bar_Frame_Foreground",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Boss_HP_Bar_Parent.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.40000000596046448,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.30000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 9.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.625
+				]
+			},
+			"m_TexName" : "2048_ExportSheet_03.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HP_Bar_Red",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Boss_HP_Bar_Parent.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.36500000953674316,
+				0.40000000596046448,
+				-0.05000000074505806
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.30000001192092896,
+				1.0
+			]
+		}
+	}
+]

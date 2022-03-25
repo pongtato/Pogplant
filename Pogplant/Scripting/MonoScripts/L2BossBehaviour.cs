@@ -34,6 +34,7 @@ namespace Scripting
 		#region[Core Variables]
 		/**> The health of the boss core*/
 		public float mh_coreHealth;
+		float mh_defaultHealth;
 
 		public float mh_leftBallHealth;
 		public float mh_rightBallHealth;
@@ -55,7 +56,15 @@ namespace Scripting
 		public uint mID_playerShip;
 		public uint[] mID_ventSpawnpoints = new uint[6];
 
-		
+		//HP Bar vars
+		uint mID_hpBar;
+		Vector3 m_bossHpScale;
+		const float m_bossHPDefaultScaling = 2.0f;
+		const float m_bossHPOffset = 0.1f;
+		const float m_bossHPBarAnimateSpeed = 3.0f;
+		float m_bossHPBarLerpValue;
+		bool m_hasBossHPBarAnimated;
+		public bool m_beginBossHPBarAnimation;
 
 		/**************************
 		*
@@ -74,7 +83,6 @@ namespace Scripting
 		float mSpawner_timeStartSpawnEnemies = 4.2f;
 		float mSpawner_durationToSpawn = 6f;
 		float mSpawner_timeEndSpawnEnemies = 7f;
-
 		#endregion
 
 		/**************************
@@ -198,7 +206,8 @@ namespace Scripting
 		/******************************************************************************/
 		public override void Start()
 		{
-			mh_coreHealth = ECS.GetValue<float>(entityID, 200f, "CoreHealth");
+			//mh_coreHealth = ECS.GetValue<float>(entityID, 200f, "CoreHealth");
+			mh_defaultHealth = ECS.GetValue<float>(entityID, 200f, "CoreHealth");
 			mh_leftBallHealth = ECS.GetValue<float>(entityID, 70f, "LeftBallHealth");
 			mh_rightBallHealth = ECS.GetValue<float>(entityID, 70f, "RightBallHealth");
 
@@ -240,6 +249,11 @@ namespace Scripting
 			m_runStateInfo.canDamageMainCore = true;
 
 			InitStateBehaviours();
+
+			//Init default hp scale
+			mID_hpBar = ECS.FindEntityWithName("HP_Bar_Red");
+			m_bossHpScale = new Vector3(2.1f, 0.3f, 1.0f);
+			m_bossHPBarLerpValue = 0.0f;
 		}
 
 		void InitStateBehaviours()
@@ -443,6 +457,19 @@ namespace Scripting
 			{
 				m_runStateInfo.damageTakenPeriod = 0f;
 			}
+
+			//Update the hp bar to lerp when the boss first appears
+			if (!m_hasBossHPBarAnimated && m_beginBossHPBarAnimation)
+			{
+				m_bossHPBarLerpValue += m_bossHPBarAnimateSpeed * dt;
+				mh_coreHealth = PPMath.Lerp(mh_coreHealth, mh_defaultHealth, m_bossHPBarLerpValue);
+				if (mh_coreHealth >= mh_defaultHealth)
+				{
+					m_hasBossHPBarAnimated = true;
+				}
+			}
+
+			UpdateHPBar(dt);
 		}
 
 		bool updateCoreLockOn = false;
@@ -816,6 +843,13 @@ namespace Scripting
 			Console.WriteLine("L2BossBehaviour.cs: Boss hit damage threshold, entering protection");
 		}
 
+		void UpdateHPBar(float dt)
+		{
+			//Hp Bar
+			m_bossHpScale.X = PPMath.Lerp(m_bossHpScale.X, (((mh_coreHealth / mh_defaultHealth) * m_bossHPDefaultScaling) + m_bossHPOffset), m_bossHPBarAnimateSpeed * dt);
+			ECS.SetScale(mID_hpBar, m_bossHpScale);
+		}
+
 		public override void OnTriggerEnter(uint id)
 		{
 			//Invulnerable in protection mode
@@ -835,12 +869,10 @@ namespace Scripting
 			if (mh_coreHealth <= 0f)
 			{
 				mh_coreHealth = 0f;
-
 				if (L2Boss.m_singleton.current_state != L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE)
 				{
 					Console.WriteLine("L2BossBehaviour.cs: Boss is dead, triggering sequence");
 					//TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
-
 					GameUtilities.LoadScene("EndGameCutscene");
 				}
 			}

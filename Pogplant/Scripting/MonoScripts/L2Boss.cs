@@ -165,7 +165,7 @@ namespace Scripting
 
         public override void Start()
         {
-            fly_up_delay = 7.0f;
+            fly_up_delay = 6.0f;
             boss_animation_system = new AnimationSystem();
             boss_animation_system.Init();
 
@@ -640,6 +640,7 @@ namespace Scripting
             moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, -50, 0), new Vector3(0, 5, 0), new Vector3(0, 4.0f, 0), false, true, false, false, false, false);
             ECS.SetRotation(entityID, new Vector3(-90, 0, 0));
             moving_parts_dict[entityID].SetPingPongRotation(new Vector3(-90, 0, 0), new Vector3(0, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, false, false, false);
+            L2BossBehaviour.m_singleton.m_beginBossHPBarAnimation = true;
         }
 
         void SetFlyingUpStateAnimationsThree()

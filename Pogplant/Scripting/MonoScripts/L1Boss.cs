@@ -134,7 +134,7 @@ namespace Scripting
         public override void Start()
         {
             //Set the variables
-            fly_up_delay = 7.0f;
+            fly_up_delay = 6.0f;
             left_ball_protection = false;
             right_ball_protection = false;
 
@@ -587,6 +587,7 @@ namespace Scripting
             moving_parts_dict[entityID].SetLinearPosition(new Vector3(0, 5, 0), new Vector3(0, 4.0f, 0), false, true, false);
             ECS.SetRotation(entityID, new Vector3(-90, 0, 0));
             moving_parts_dict[entityID].SetLinearRotation(new Vector3(0, 0, 0), new Vector3(1.0f, 0, 0), true, false, false);
+            L1BossBehaviour.m_singleton.m_beginBossHPBarAnimation = true;
         }
 
         void SetFlyingUpStateAnimationsThree()
