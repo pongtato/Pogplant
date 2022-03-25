@@ -35239,7 +35239,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -35400,8 +35400,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86782044172286987,
+				0.39534884691238403
 			],
 			"RenderModel" : 
 			[
@@ -35460,7 +35460,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -35515,8 +35515,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -35714,7 +35714,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.53023254871368408,
 				0.0
 			],
 			"RenderModel" : 
@@ -35745,7 +35745,7 @@
 			],
 			"m_scale" : 
 			[
-				0.99955916404724121,
+				0.99955463409423828,
 				0.99999988079071045,
 				1.9999997615814209
 			]
@@ -35875,8 +35875,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -35935,7 +35935,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -36096,8 +36096,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -36189,7 +36189,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -36350,8 +36350,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -36410,7 +36410,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -36571,8 +36571,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -38785,7 +38785,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -38946,8 +38946,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -39006,7 +39006,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -39061,8 +39061,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -39260,7 +39260,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -39421,8 +39421,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -39481,7 +39481,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -39591,8 +39591,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -40685,7 +40685,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -40846,8 +40846,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -40906,7 +40906,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -40961,8 +40961,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -41160,7 +41160,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -41266,8 +41266,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -41381,7 +41381,7 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
+				0.52941179275512695,
 				0.0
 			],
 			"RenderModel" : 
@@ -41436,8 +41436,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.0,
-				0.0
+				0.86666667461395264,
+				0.3960784375667572
 			],
 			"RenderModel" : 
 			[
@@ -53755,7 +53755,7 @@
 		}
 	},
 	{
-		"Children" : 7,
+		"Children" : 9,
 		"Name" : 
 		{
 			"m_Name" : "Level_02_Segment_04",
@@ -58936,6 +58936,2599 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_Scafold_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.233494758605957,
+				-135.28256225585938,
+				-375.89605712890625
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.10000007599592209,
+				0.10000007599592209,
+				0.099983245134353638
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0fc6b846-2a34-47bd-ad5b-98c01f437046",
+			"prefab_path" : "Resources\\Prefabs\\Obst_Scafold_01.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0001220703125,
+				-106.19136047363281,
+				-0.000244140625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				2.035554884372015e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0000412464141846
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				35.999984741210938,
+				-0.014892578125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				6.1066646531160451e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0fc6b846-2a34-47bd-ad5b-98c01f437046",
+			"prefab_path" : "Resources\\Prefabs\\Obst_Scafold_01.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0001220703125,
+				-34.583663940429688,
+				-0.000244140625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				2.035554884372015e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0000234842300415
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				35.999984741210938,
+				-0.014892578125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				6.1066646531160451e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0fc6b846-2a34-47bd-ad5b-98c01f437046",
+			"prefab_path" : "Resources\\Prefabs\\Obst_Scafold_01.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0001220703125,
+				36.968215942382812,
+				-0.000244140625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				2.035554884372015e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0000103712081909
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				35.999984741210938,
+				-0.014892578125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				6.1066646531160451e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 7,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_4x2",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "1b26406e-8b0a-47ba-b85a-7efa57953bae",
+			"prefab_path" : "Resources\\Prefabs\\Obst_Scafold_4x2.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				31.7574462890625,
+				38.261337280273438,
+				4.324462890625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.00024081033188849688,
+				4.3850886810581358e-10
+			],
+			"m_scale" : 
+			[
+				10.000857353210449,
+				9.999974250793457,
+				9.9999866485595703
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0fc6b846-2a34-47bd-ad5b-98c01f437046",
+			"prefab_path" : "Resources\\Prefabs\\Obst_Scafold_01.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.35614013671875,
+				-8.2120218276977539,
+				-0.4193115234375
+			],
+			"m_rotation" : 
+			[
+				-0.00024084909819066525,
+				-2.4437179035885492e-07,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				0.10000025480985641,
+				0.09999142587184906,
+				0.10000453144311905
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.288818359375e-05,
+				35.9708251953125,
+				-0.015380859375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				6.106525875237967e-13
+			],
+			"m_scale" : 
+			[
+				1.0000227689743042,
+				1.0000227689743042,
+				1.0000227689743042
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0fc6b846-2a34-47bd-ad5b-98c01f437046",
+			"prefab_path" : "Resources\\Prefabs\\Obst_Scafold_01.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.35614013671875,
+				6.4168910980224609,
+				-0.458099365234375
+			],
+			"m_rotation" : 
+			[
+				-0.0002408545115031302,
+				-2.4437619572381664e-07,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				0.10000025480985641,
+				0.09999142587184906,
+				0.10000518709421158
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.288818359375e-05,
+				35.9708251953125,
+				-0.015380859375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				6.106525875237967e-13
+			],
+			"m_scale" : 
+			[
+				1.0000227689743042,
+				1.0000227689743042,
+				1.0000227689743042
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.83477783203125,
+				-0.91991996765136719,
+				-0.474822998046875
+			],
+			"m_rotation" : 
+			[
+				1.4411728477270458e-09,
+				-0.0,
+				7.8209337064320122e-14
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0177001953125,
+				35.999557495117188,
+				-0.001708984375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.2110205039923585e-11,
+				6.1974253853791517e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.55743408203125,
+				-0.91977310180664062,
+				-0.474822998046875
+			],
+			"m_rotation" : 
+			[
+				8.1422196762659382e-10,
+				-0.0,
+				7.8209337064320122e-14
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				35.999687194824219,
+				0.02294921875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.2110205039923585e-11,
+				6.1974253853791517e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.858612060546875,
+				-0.91974830627441406,
+				-0.474822998046875
+			],
+			"m_rotation" : 
+			[
+				7.0837308241422647e-10,
+				-0.0,
+				7.8209337064320122e-14
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				35.999778747558594,
+				-0.001708984375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.2110205039923585e-11,
+				6.1974253853791517e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_02",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "677d9c42-4a50-4257-8f6c-cee6f7df6a26",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_02",
+				"Resources/Models\\Environment",
+				"Scafolding010"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.6257171630859375,
+				-0.92049503326416016,
+				-0.46734619140625
+			],
+			"m_rotation" : 
+			[
+				9.5263963384439876e-10,
+				-0.0,
+				7.8209337064320122e-14
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0003662109375,
+				35.999618530273438,
+				0.041748046875
+			],
+			"m_rotation" : 
+			[
+				-1.0686664227155251e-12,
+				-5.2110205039923585e-11,
+				6.1974253853791517e-13
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999988079071045,
+				0.99999701976776123
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_4x2",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "1b26406e-8b0a-47ba-b85a-7efa57953bae",
+			"prefab_path" : "Resources\\Prefabs\\Obst_Scafold_4x2.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0017242431640625,
+				-7.1290073394775391,
+				-0.876068115234375
+			],
+			"m_rotation" : 
+			[
+				179.99974060058594,
+				-0.00024086081248242408,
+				-179.99974060058594
+			],
+			"m_scale" : 
+			[
+				0.99999624490737915,
+				1.0,
+				0.99997854232788086
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_02",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "677d9c42-4a50-4257-8f6c-cee6f7df6a26",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_02",
+				"Resources/Models\\Environment",
+				"Scafolding010"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.5557861328125,
+				-0.91983509063720703,
+				-0.47015380859375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				2.633986507637881e-14,
+				-1.5372984663031275e-08
+			],
+			"m_scale" : 
+			[
+				0.099996596574783325,
+				0.10000000149011612,
+				0.099996045231819153
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0003662109375,
+				35.9996337890625,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				1.0422043783542279e-10,
+				-3.4191237081176995e-14,
+				-2.0583432736032137e-09
+			],
+			"m_scale" : 
+			[
+				0.99999195337295532,
+				0.99999982118606567,
+				0.99998629093170166
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				4.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.288818359375,
+				43.106735229492188,
+				0.0048828125
+			],
+			"m_rotation" : 
+			[
+				179.99989318847656,
+				0.00025478689349256456,
+				-89.999740600585938
+			],
+			"m_scale" : 
+			[
+				0.99999982118606567,
+				0.9999765157699585,
+				0.99996864795684814
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				4.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_3",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.8126220703125,
+				61.173873901367188,
+				0.1396484375
+			],
+			"m_rotation" : 
+			[
+				179.99989318847656,
+				0.0002547868643887341,
+				-89.999702453613281
+			],
+			"m_scale" : 
+			[
+				0.99999982118606567,
+				0.99994093179702759,
+				0.99992114305496216
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				4.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_4",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				17.77294921875,
+				114.41079711914062,
+				0.139892578125
+			],
+			"m_rotation" : 
+			[
+				179.99989318847656,
+				0.00025478695170022547,
+				-89.999618530273438
+			],
+			"m_scale" : 
+			[
+				0.99999982118606567,
+				0.99994087219238281,
+				0.99992108345031738
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.8572845458984375,
+				-0.91958236694335938,
+				-0.478515625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-4.3208903997642677e-15,
+				1.9704171627665801e-09
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				-0.002197265625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.631988525390625,
+				-0.91958999633789062,
+				-0.47821044921875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.9073701854641391e-15,
+				1.8075727581390311e-09
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				-0.002197265625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.855316162109375,
+				-0.91958236694335938,
+				-0.48016357421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-5.5283282427787475e-15,
+				2.5729414154795904e-09
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000000149011612,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				36.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				-0.002197265625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_02",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "677d9c42-4a50-4257-8f6c-cee6f7df6a26",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_02",
+				"Resources/Models\\Environment",
+				"Scafolding010"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.5483927726745605,
+				-141.26629638671875,
+				-392.02957153320312
+			],
+			"m_rotation" : 
+			[
+				63.434955596923828,
+				-89.9998779296875,
+				-63.435386657714844
+			],
+			"m_scale" : 
+			[
+				0.10000000149011612,
+				0.10000315308570862,
+				0.10000000149011612
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_02",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "677d9c42-4a50-4257-8f6c-cee6f7df6a26",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_02",
+				"Resources/Models\\Environment",
+				"Scafolding010"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-50.68359375,
+				0.0,
+				4.76837158203125e-06
+			],
+			"m_rotation" : 
+			[
+				2.3105581684057519e-11,
+				-0.0,
+				-1.3027552994704372e-11
+			],
+			"m_scale" : 
+			[
+				0.99999994039535522,
+				0.99999994039535522,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				25.034912109375,
+				0.0068359375,
+				-0.10375785827636719
+			],
+			"m_rotation" : 
+			[
+				4.9156984038845053e-11,
+				-3.2568878149952241e-12,
+				-6.5137756299904481e-12
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-13.239990234375,
+				-0.0001220703125,
+				1.9073486328125e-06
+			],
+			"m_rotation" : 
+			[
+				4.9156984038845053e-11,
+				-3.2568878149952241e-12,
+				-6.5137756299904481e-12
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-24.211181640625,
+				-0.0001220703125,
+				1.9073486328125e-06
+			],
+			"m_rotation" : 
+			[
+				4.9156984038845053e-11,
+				-3.2568878149952241e-12,
+				-6.5137756299904481e-12
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				25.034912109375,
+				0.0068359375,
+				-0.10375785827636719
+			],
+			"m_rotation" : 
+			[
+				4.9156984038845053e-11,
+				-3.2568878149952241e-12,
+				-6.5137756299904481e-12
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-13.239990234375,
+				-0.0001220703125,
+				1.9073486328125e-06
+			],
+			"m_rotation" : 
+			[
+				4.9156984038845053e-11,
+				-3.2568878149952241e-12,
+				-6.5137756299904481e-12
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Scafold_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f296c90b-b9e9-47de-8cfb-b6eb02750e97",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Scafold_01",
+				"Resources/Models\\Environment",
+				"Scafolding018"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-24.211181640625,
+				-0.0001220703125,
+				1.9073486328125e-06
+			],
+			"m_rotation" : 
+			[
+				4.9156984038845053e-11,
+				-3.2568878149952241e-12,
+				-6.5137756299904481e-12
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0000001192092896,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.0,
+				36.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				36.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -65573,7 +68166,7 @@
 			"m_position" : 
 			[
 				0.02056884765625,
-				0.0085296630859375,
+				0.0415496826171875,
 				-0.07843017578125
 			],
 			"m_rotation" : 
@@ -73127,7 +75720,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 61.6361083984375,
+				"m_FrameCounter" : 118.24304962158203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -73140,8 +75733,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.484375
+					0.0,
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73193,7 +75786,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 59.581573486328125,
+				"m_FrameCounter" : 73.388442993164062,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -73207,7 +75800,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.46875
+					0.578125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73259,7 +75852,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 88.318946838378906,
+				"m_FrameCounter" : 80.980354309082031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -73273,7 +75866,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.703125
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73325,7 +75918,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 55.472496032714844,
+				"m_FrameCounter" : 114.14506530761719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -73338,8 +75931,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.4375
+					0.0,
+					0.90625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73391,7 +75984,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 61.6361083984375,
+				"m_FrameCounter" : 118.24304962158203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -73404,8 +75997,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.484375
+					0.0,
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73457,7 +76050,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 88.318946838378906,
+				"m_FrameCounter" : 80.980354309082031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -73471,7 +76064,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.703125
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73523,7 +76116,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 121.63810729980469,
+				"m_FrameCounter" : 23.713228225708008,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -73537,7 +76130,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.953125
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73589,7 +76182,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 61.6361083984375,
+				"m_FrameCounter" : 118.24304962158203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -73602,8 +76195,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.484375
+					0.0,
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73655,7 +76248,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 121.63810729980469,
+				"m_FrameCounter" : 23.713228225708008,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -73669,7 +76262,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.953125
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73721,7 +76314,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 85.558975219726562,
+				"m_FrameCounter" : 52.402988433837891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -73734,8 +76327,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.671875
+					0.0,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -73787,7 +76380,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 59.581573486328125,
+				"m_FrameCounter" : 73.388442993164062,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -73801,7 +76394,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.46875
+					0.578125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -129272,7 +131865,7 @@
 		}
 	},
 	{
-		"Children" : 4,
+		"Children" : 6,
 		"Name" : 
 		{
 			"m_Name" : "Small_Turret_Group",
@@ -150421,6 +153014,10916 @@
 		}
 	},
 	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 12,
+		"Name" : 
+		{
+			"m_Name" : "TurretGroup5",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "28c45141-2c7e-4c0c-9263-717327ef2cfa",
+			"prefab_path" : "Resources\\Prefabs\\L2SmallTurretController.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 10.0,
+				"Name" : "ActivationTime",
+				"Type" : 0
+			},
+			{
+				"Data" : 1,
+				"Name" : "Type",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"L2TurretController" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.491023063659668,
+				-131.57661437988281,
+				-335.528564453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999995231628418,
+				0.99999183416366577,
+				0.99999904632568359
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret3",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.628046989440918,
+				1.8727874755859375,
+				-40.353515625
+			],
+			"m_rotation" : 
+			[
+				-8.4679081524541289e-09,
+				-5.3734015121546103e-14,
+				-2.9507623011681972e-08
+			],
+			"m_scale" : 
+			[
+				0.20000007748603821,
+				0.2000001072883606,
+				0.20000018179416656
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret4",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.9437217712402344,
+				1.8727569580078125,
+				-40.353515625
+			],
+			"m_rotation" : 
+			[
+				-8.4679081524541289e-09,
+				-5.3734015121546103e-14,
+				-2.9507623011681972e-08
+			],
+			"m_scale" : 
+			[
+				0.20000007748603821,
+				0.2000001072883606,
+				0.20000018179416656
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret2",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.4206790924072266,
+				1.8727874755859375,
+				-40.353515625
+			],
+			"m_rotation" : 
+			[
+				-8.4679081524541289e-09,
+				-5.3734015121546103e-14,
+				-2.9507623011681972e-08
+			],
+			"m_scale" : 
+			[
+				0.20000007748603821,
+				0.2000001072883606,
+				0.20000018179416656
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.044921875,
+				0.146240234375
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.0000579357147217,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret9",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.7668495178222656,
+				-0.6306304931640625,
+				-40.353515625
+			],
+			"m_rotation" : 
+			[
+				-8.4679081524541289e-09,
+				-5.3734015121546103e-14,
+				-2.9507623011681972e-08
+			],
+			"m_scale" : 
+			[
+				0.20000007748603821,
+				0.2000001072883606,
+				0.20000018179416656
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret10",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.9742164611816406,
+				-0.6306304931640625,
+				-40.353515625
+			],
+			"m_rotation" : 
+			[
+				-8.4679081524541289e-09,
+				-5.3734015121546103e-14,
+				-2.9507623011681972e-08
+			],
+			"m_scale" : 
+			[
+				0.20000007748603821,
+				0.2000001072883606,
+				0.20000018179416656
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.044921875,
+				0.146240234375
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.0000579357147217,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret11",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				4.4511737823486328,
+				-0.6306610107421875,
+				-40.353515625
+			],
+			"m_rotation" : 
+			[
+				-8.4679081524541289e-09,
+				-5.3734015121546103e-14,
+				-2.9507623011681972e-08
+			],
+			"m_scale" : 
+			[
+				0.20000007748603821,
+				0.2000001072883606,
+				0.20000018179416656
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret12",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				8.2739601135253906,
+				-0.6252288818359375,
+				-40.363861083984375
+			],
+			"m_rotation" : 
+			[
+				-8.4676106126835293e-09,
+				-9.3924773015598151e-14,
+				-2.9539883428242319e-08
+			],
+			"m_scale" : 
+			[
+				0.20000216364860535,
+				0.20000727474689484,
+				0.2000022679567337
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0008544921875
+			],
+			"m_rotation" : 
+			[
+				19.999992370605469,
+				-6.0665187825536801e-21,
+				-6.3612051519020604e-15
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.000057578086853,
+				1.000003457069397
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret1",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.12093544006347656,
+				1.8781890869140625,
+				-40.363861083984375
+			],
+			"m_rotation" : 
+			[
+				-8.4676106126835293e-09,
+				-9.3924773015598151e-14,
+				-2.9539883428242319e-08
+			],
+			"m_scale" : 
+			[
+				0.20000216364860535,
+				0.20000727474689484,
+				0.2000022679567337
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0008544921875
+			],
+			"m_rotation" : 
+			[
+				19.999992370605469,
+				-6.0665187825536801e-21,
+				-6.3612051519020604e-15
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.000057578086853,
+				1.000003457069397
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret5",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				2.392791748046875,
+				-3.3708343505859375,
+				-40.363861083984375
+			],
+			"m_rotation" : 
+			[
+				-8.4676106126835293e-09,
+				-9.3924773015598151e-14,
+				-2.9539883428242319e-08
+			],
+			"m_scale" : 
+			[
+				0.20000216364860535,
+				0.20000727474689484,
+				0.2000022679567337
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0008544921875
+			],
+			"m_rotation" : 
+			[
+				19.999992370605469,
+				-6.0665187825536801e-21,
+				-6.3612051519020604e-15
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.000057578086853,
+				1.000003457069397
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret6",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.4299936294555664,
+				-3.3762664794921875,
+				-40.353515625
+			],
+			"m_rotation" : 
+			[
+				-8.4679081524541289e-09,
+				-5.3734015121546103e-14,
+				-2.9507623011681972e-08
+			],
+			"m_scale" : 
+			[
+				0.20000007748603821,
+				0.2000001072883606,
+				0.20000018179416656
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret7",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.093048095703125,
+				-3.3762359619140625,
+				-40.353515625
+			],
+			"m_rotation" : 
+			[
+				-8.4679081524541289e-09,
+				-5.3734015121546103e-14,
+				-2.9507623011681972e-08
+			],
+			"m_scale" : 
+			[
+				0.20000007748603821,
+				0.2000001072883606,
+				0.20000018179416656
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.044921875,
+				0.146240234375
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.0000579357147217,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret8",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.11431980133056641,
+				-3.3762359619140625,
+				-40.353515625
+			],
+			"m_rotation" : 
+			[
+				-8.4679081524541289e-09,
+				-5.3734015121546103e-14,
+				-2.9507623011681972e-08
+			],
+			"m_scale" : 
+			[
+				0.20000007748603821,
+				0.2000001072883606,
+				0.20000018179416656
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				14.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 16,
+		"Name" : 
+		{
+			"m_Name" : "TurretGroup6",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "28c45141-2c7e-4c0c-9263-717327ef2cfa",
+			"prefab_path" : "Resources\\Prefabs\\L2SmallTurretController.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 10.0,
+				"Name" : "ActivationTime",
+				"Type" : 0
+			},
+			{
+				"Data" : 1,
+				"Name" : "Type",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"L2TurretController" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.491023063659668,
+				-131.57661437988281,
+				-351.64157104492188
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999995231628418,
+				0.99999183416366577,
+				0.99999904632568359
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret1",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.064200401306152,
+				-3.230194091796875,
+				-41.72509765625
+			],
+			"m_rotation" : 
+			[
+				179.79827880859375,
+				89.999946594238281,
+				179.79815673828125
+			],
+			"m_scale" : 
+			[
+				0.20000232756137848,
+				0.20000727474689484,
+				0.20000222325325012
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.002197265625,
+				0.00872802734375,
+				0.0009937286376953125
+			],
+			"m_rotation" : 
+			[
+				-10.0,
+				-0.0,
+				-1.857472075456057e-12
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.000057578086853,
+				1.000003457069397
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret2",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.053683280944824,
+				-3.235595703125,
+				-40.429840087890625
+			],
+			"m_rotation" : 
+			[
+				179.79826354980469,
+				89.999946594238281,
+				179.798095703125
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.20000007748603821,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.0450439453125,
+				0.146240234375
+			],
+			"m_rotation" : 
+			[
+				-1.7771702830372955e-21,
+				-9.7708108964811302e-12,
+				-4.9696915249234847e-17
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.0000579357147217,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret4",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.053680419921875,
+				-3.235595703125,
+				-37.90679931640625
+			],
+			"m_rotation" : 
+			[
+				179.79826354980469,
+				89.999946594238281,
+				179.798095703125
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.1999986469745636,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret9",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.929811477661133,
+				-2.3292999267578125,
+				-39.222442626953125
+			],
+			"m_rotation" : 
+			[
+				179.60417175292969,
+				89.999946594238281,
+				179.60400390625
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.2000000923871994,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				10.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret10",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.929792404174805,
+				-2.3292999267578125,
+				-45.5501708984375
+			],
+			"m_rotation" : 
+			[
+				179.7982177734375,
+				89.999946594238281,
+				179.79808044433594
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.20000003278255463,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.0450439453125,
+				0.14623832702636719
+			],
+			"m_rotation" : 
+			[
+				-39.999984741210938,
+				9.7708108964811302e-12,
+				-1.0908473153633039e-14
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.0000545978546143,
+				1.0000028610229492
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret11",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.929789543151855,
+				-2.329315185546875,
+				-43.027099609375
+			],
+			"m_rotation" : 
+			[
+				179.7982177734375,
+				89.999946594238281,
+				179.79808044433594
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.20000003278255463,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				-20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret12",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.929791450500488,
+				-2.3292999267578125,
+				-44.342803955078125
+			],
+			"m_rotation" : 
+			[
+				179.7982177734375,
+				89.999946594238281,
+				179.79808044433594
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.19999793171882629,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				-30.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret13",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.940644264221191,
+				-2.32391357421875,
+				-46.81951904296875
+			],
+			"m_rotation" : 
+			[
+				179.79827880859375,
+				89.999946594238281,
+				179.79815673828125
+			],
+			"m_scale" : 
+			[
+				0.20000232756137848,
+				0.20000134408473969,
+				0.20000222325325012
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0008544921875
+			],
+			"m_rotation" : 
+			[
+				-50.0,
+				-6.0665187825536801e-21,
+				-6.3612051519020604e-15
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.000057578086853,
+				1.000003457069397
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret14",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.9298095703125,
+				-2.3292999267578125,
+				-37.90679931640625
+			],
+			"m_rotation" : 
+			[
+				179.79826354980469,
+				89.999946594238281,
+				179.798095703125
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.1999986469745636,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret15",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.929812431335449,
+				-2.3292999267578125,
+				-40.429840087890625
+			],
+			"m_rotation" : 
+			[
+				179.79826354980469,
+				89.999946594238281,
+				179.798095703125
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.20000007748603821,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.0450439453125,
+				0.146240234375
+			],
+			"m_rotation" : 
+			[
+				-1.7771702830372955e-21,
+				-9.7708108964811302e-12,
+				-4.9696915249234847e-17
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.0000579357147217,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret16",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.940332412719727,
+				-2.3238983154296875,
+				-41.725006103515625
+			],
+			"m_rotation" : 
+			[
+				179.79827880859375,
+				89.999946594238281,
+				179.79815673828125
+			],
+			"m_scale" : 
+			[
+				0.20000232756137848,
+				0.20000727474689484,
+				0.20000222325325012
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0008544921875
+			],
+			"m_rotation" : 
+			[
+				-10.0,
+				-6.0665187825536801e-21,
+				-6.3612051519020604e-15
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.000057578086853,
+				1.000003457069397
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret8",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.064040184020996,
+				-3.2302093505859375,
+				-46.849884033203125
+			],
+			"m_rotation" : 
+			[
+				179.79833984375,
+				89.999946594238281,
+				179.79820251464844
+			],
+			"m_scale" : 
+			[
+				0.20000232756137848,
+				0.20000134408473969,
+				0.20000222325325012
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.002197265625,
+				0.00860595703125,
+				0.000850677490234375
+			],
+			"m_rotation" : 
+			[
+				-49.99993896484375,
+				-0.0,
+				-6.4884290431818648e-13
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.0000569820404053,
+				1.0000028610229492
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret6",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.053662300109863,
+				-3.235595703125,
+				-44.342803955078125
+			],
+			"m_rotation" : 
+			[
+				179.7982177734375,
+				89.999946594238281,
+				179.79808044433594
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.19999793171882629,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				-30.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret5",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.05366039276123,
+				-3.2356109619140625,
+				-43.027099609375
+			],
+			"m_rotation" : 
+			[
+				179.7982177734375,
+				89.999946594238281,
+				179.79808044433594
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.20000003278255463,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				-20.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret7",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.05366325378418,
+				-3.235595703125,
+				-45.5501708984375
+			],
+			"m_rotation" : 
+			[
+				179.7982177734375,
+				89.999946594238281,
+				179.79808044433594
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.20000003278255463,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.0450439453125,
+				0.14623832702636719
+			],
+			"m_rotation" : 
+			[
+				-39.999984741210938,
+				9.7708108964811302e-12,
+				-1.0908473153633039e-14
+			],
+			"m_scale" : 
+			[
+				0.99998492002487183,
+				1.0000545978546143,
+				1.0000028610229492
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_Hit.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Explosion_SFX.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\Enemy_ShootBullet1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.20000000298023224,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Small_Turret3",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "c403cb16-3a52-4dd1-8783-c880849df478",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Basic_Root"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Scripting" : 
+		{
+			"BaseTurret" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Targetable"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.053681373596191,
+				-3.235595703125,
+				-39.22247314453125
+			],
+			"m_rotation" : 
+			[
+				179.79826354980469,
+				89.999946594238281,
+				179.798095703125
+			],
+			"m_scale" : 
+			[
+				0.20000022649765015,
+				0.20000007748603821,
+				0.20000012218952179
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Pivot_Object",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Pivot_Object"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0018310546875,
+				0.00860595703125,
+				0.0010986328125
+			],
+			"m_rotation" : 
+			[
+				10.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999849796295166,
+				1.000057578086853,
+				1.0000035762786865
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Body",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.7055225372314453e-08,
+				1.2858502864837646,
+				-2.2351741790771484e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms001",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Alien_Arms001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.36219784617424011,
+				0.61119914054870605,
+				0.1965106725692749
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Gun",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Gun"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.3411045074462891e-07,
+				1.2778388261795044,
+				1.2059001922607422
+			],
+			"m_rotation" : 
+			[
+				5.0089556680177338e-06,
+				-0.0,
+				5.0089201977243647e-06
+			],
+			"m_scale" : 
+			[
+				1.0000008344650269,
+				0.99999994039535522,
+				1.0000008344650269
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Turret_Muzzle",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Turret_Basic",
+				"Resources/Models\\Enemy",
+				"Turret_Muzzle"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.45408058166503906,
+				1.0765725374221802
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"Children" : 2,
 		"Name" : 
 		{
@@ -152334,15 +165837,15 @@
 			],
 			"m_rotation" : 
 			[
-				-7.5038988356368463e-09,
-				3.771291801388894e-15,
-				-4.8642228023254575e-09
+				-1.2119222070339219e-08,
+				7.0393901279342148e-15,
+				-1.0008452733245576e-08
 			],
 			"m_scale" : 
 			[
-				1.5895348787307739,
-				2.4114487171173096,
-				1.1997407674789429
+				1.5893206596374512,
+				2.41111159324646,
+				1.1995722055435181
 			]
 		}
 	},
@@ -153577,9 +167080,9 @@
 		"MovementBounds" : 
 		{
 			"maxX" : 10.0,
-			"maxY" : 7.0,
+			"maxY" : 5.0,
 			"minX" : 10.0,
-			"minY" : 3.0
+			"minY" : 2.0
 		},
 		"Name" : 
 		{
@@ -153635,9 +167138,9 @@
 		"MovementBounds" : 
 		{
 			"maxX" : 6.0,
-			"maxY" : 7.0,
+			"maxY" : 5.0,
 			"minX" : 6.0,
-			"minY" : 5.0
+			"minY" : 3.5
 		},
 		"Name" : 
 		{

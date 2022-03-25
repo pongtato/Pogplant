@@ -42,11 +42,12 @@ namespace Scripting
             AddTurretGroup("GatlingTurretGroup4");
             AddTurretGroup("GatlingTurretGroup5");
 
-
             AddTurretGroup("TurretGroup1");
             AddTurretGroup("TurretGroup2");
             AddTurretGroup("TurretGroup3");
             AddTurretGroup("TurretGroup4");
+            AddTurretGroup("TurretGroup5");
+            AddTurretGroup("TurretGroup6");
         }
 
         public override void Start()
