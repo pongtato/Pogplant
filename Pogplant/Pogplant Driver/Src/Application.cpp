@@ -620,8 +620,8 @@ void Application::UpdateTransforms(float _Dt)
 	PP::TextureResource::m_Updated = true;
 
 	//delete entity in the delete set
-	m_sGeneralSystem.DisableEntities();
 	m_sGeneralSystem.EnableEntities();
+	m_sGeneralSystem.DisableEntities();
 	m_sGeneralSystem.DeleteEntities();
 }
 

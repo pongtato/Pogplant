@@ -145,7 +145,7 @@ void ScriptSystem::Update(float dt)
 
 void ScriptSystem::LateUpdate(float dt)
 {
-	auto entities = m_ecs->view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
+	auto entities = m_ecs->view<Components::Scriptable, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
 	{

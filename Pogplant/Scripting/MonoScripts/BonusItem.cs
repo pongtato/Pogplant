@@ -8,6 +8,9 @@ namespace Scripting
 {
     public class BonusItem : MonoBehaviour
     {
+        private Transform m_Trans;
+        private float m_RotationSpeed = 100.0f;
+
         public BonusItem()
         {
         }
@@ -27,6 +30,9 @@ namespace Scripting
 
         public override void LateUpdate(float dt)
         {
+            ECS.GetTransformECS(entityID, ref m_Trans.Position, ref m_Trans.Rotation, ref m_Trans.Scale);
+            // Spin
+            ECS.SetRotation(entityID, new Vector3(m_Trans.Rotation.X, m_Trans.Rotation.Y + m_RotationSpeed * dt, m_Trans.Rotation.Z));
         }
 
         public override void OnTriggerEnter(uint id)
