@@ -166,6 +166,8 @@ namespace Scripting
 		//Subs
 		uint sub_renderer_id;
 
+		public bool update_controls { get; private set; }
+
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
@@ -239,6 +241,7 @@ namespace Scripting
 
 			sub_renderer_id = ECS.FindEntityWithName("Subs_Renderer");
 			ECS.PlaySubtitles(sub_renderer_id);
+			update_controls = true;
 		}
 
 		public void Awake()
@@ -302,264 +305,266 @@ namespace Scripting
 			ECS.GetTransformECS(entityID, ref playerTrans.Position, ref playerTrans.Rotation, ref playerTrans.Scale);
 			Camera.GetCamera(shipCameraEntity, ref camera.m_Yaw, ref camera.m_Pitch, ref camera.m_Roll);
 
-			bool rightPushed = InputUtility.onKeyHeld("RIGHT");
-			bool leftPushed = InputUtility.onKeyHeld("LEFT");
-			bool upPushed = InputUtility.onKeyHeld("UP");
-			bool downPushed = InputUtility.onKeyHeld("DOWN");
-
-			if (rightPushed || leftPushed)
-				horizontal_input = (rightPushed ? 1.0f : 0.0f) + (leftPushed ? -1.0f : 0.0f);
-			else
-				horizontal_input = InputUtility.GetAxis("MOVEX");
-
-			if (upPushed || downPushed)
-				vertical_input = (upPushed ? 1.0f : 0.0f) + (downPushed ? -1.0f : 0.0f);
-			else
-				vertical_input = -InputUtility.GetAxis("MOVEY");
-
-			Vector3 up_vec = Transform.GetUpVector(boxEntityID);
-			Vector3 forward_vec = Transform.GetForwardVector(boxEntityID);
-			Vector3 right_vec = Vector3.CrossProduct(forward_vec, up_vec);
-			
-
-			float length = playerTrans.Position.magnitude();
-
-			Vector3 playerGlobalPos = ECS.GetGlobalPosition(entityID);
-			Vector3 boxGlobalPos = ECS.GetGlobalPosition(boxEntityID);
-
-			//Old movement system
-			if (!mm_useNewMovementSystem)
+			if (update_controls)
 			{
-				Vector3 direc_vector = (right_vec * horizontal_input) + (up_vec * vertical_input);
+				bool rightPushed = InputUtility.onKeyHeld("RIGHT");
+				bool leftPushed = InputUtility.onKeyHeld("LEFT");
+				bool upPushed = InputUtility.onKeyHeld("UP");
+				bool downPushed = InputUtility.onKeyHeld("DOWN");
 
-				if (length > boxCollider.extends.X)
+				if (rightPushed || leftPushed)
+					horizontal_input = (rightPushed ? 1.0f : 0.0f) + (leftPushed ? -1.0f : 0.0f);
+				else
+					horizontal_input = InputUtility.GetAxis("MOVEX");
+
+				if (upPushed || downPushed)
+					vertical_input = (upPushed ? 1.0f : 0.0f) + (downPushed ? -1.0f : 0.0f);
+				else
+					vertical_input = -InputUtility.GetAxis("MOVEY");
+
+				Vector3 up_vec = Transform.GetUpVector(boxEntityID);
+				Vector3 forward_vec = Transform.GetForwardVector(boxEntityID);
+				Vector3 right_vec = Vector3.CrossProduct(forward_vec, up_vec);
+
+
+				float length = playerTrans.Position.magnitude();
+
+				Vector3 playerGlobalPos = ECS.GetGlobalPosition(entityID);
+				Vector3 boxGlobalPos = ECS.GetGlobalPosition(boxEntityID);
+
+				//Old movement system
+				if (!mm_useNewMovementSystem)
 				{
-					Vector3 newPosNoY = new Vector3(playerGlobalPos.X, 0.0f, playerGlobalPos.Z);
-					Vector3 newForwardNoY = new Vector3(forward_vec.X, 0.0f, forward_vec.Z);
-					Vector3 newBoxPosNoY = new Vector3(boxGlobalPos.X, 0.0f, boxGlobalPos.Z);
-					Vector3 boxtoplayer = Vector3.Normalise(newPosNoY - newBoxPosNoY);
+					Vector3 direc_vector = (right_vec * horizontal_input) + (up_vec * vertical_input);
 
-					float dotproduct = Vector3.Dot(right_vec, boxtoplayer);
-
-					if (dotproduct > 0.0f)
+					if (length > boxCollider.extends.X)
 					{
-						ECS.RigidbodyAddForce(entityID, right_vec * -dotproduct * 300f);
+						Vector3 newPosNoY = new Vector3(playerGlobalPos.X, 0.0f, playerGlobalPos.Z);
+						Vector3 newForwardNoY = new Vector3(forward_vec.X, 0.0f, forward_vec.Z);
+						Vector3 newBoxPosNoY = new Vector3(boxGlobalPos.X, 0.0f, boxGlobalPos.Z);
+						Vector3 boxtoplayer = Vector3.Normalise(newPosNoY - newBoxPosNoY);
+
+						float dotproduct = Vector3.Dot(right_vec, boxtoplayer);
+
+						if (dotproduct > 0.0f)
+						{
+							ECS.RigidbodyAddForce(entityID, right_vec * -dotproduct * 300f);
+						}
+						else
+						{
+							ECS.RigidbodyAddForce(entityID, right_vec * -dotproduct * 300f);
+						}
 					}
-					else
+
+					if (playerTrans.Position.Y > boxCollider.extends.Y)
 					{
-						ECS.RigidbodyAddForce(entityID, right_vec * -dotproduct * 300f);
+						ECS.RigidbodyAddForce(entityID, up_vec * (boxCollider.extends.Y - playerTrans.Position.Y) * 150f);
 					}
-				}
 
-				if (playerTrans.Position.Y > boxCollider.extends.Y)
+					if (playerTrans.Position.Y < -boxCollider.extends.Y)
+					{
+						ECS.RigidbodyAddForce(entityID, up_vec * (-boxCollider.extends.Y - playerTrans.Position.Y) * 350f);
+					}
+
+
+					float directionalMag = direc_vector.magnitude();
+
+					if (directionalMag > 1.0f)
+						direc_vector *= 1 / directionalMag;
+
+					Vector3 force_dir = direc_vector * movement_speed;
+
+					if (mm_enableTurbulence)
+					{
+						m_turbulenceTimer += dt;
+
+						if (m_turbulenceTimer > 2f * Math.PI)
+							m_turbulenceTimer -= 2f * (float)Math.PI;
+
+						force_dir += new Vector3((float)Math.Sin(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), (float)Math.Cos(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), 0);
+					}
+
+					ECS.RigidbodyAddForce(entityID, force_dir);
+				}
+				else//New movement system
 				{
-					ECS.RigidbodyAddForce(entityID, up_vec * (boxCollider.extends.Y - playerTrans.Position.Y) * 150f);
+					Vector3 rightForce;
+					Vector3 upForce;
+
+					rightForce = (right_vec * horizontal_input);
+					upForce = (up_vec * vertical_input);
+
+					Vector3 deltaPosition = playerGlobalPos - boxGlobalPos;
+
+					//Normalise movement
+					float directionalMag = (upForce + rightForce).magnitude();
+
+					if (directionalMag > 1.0f)
+					{
+						upForce *= 1 / directionalMag;
+						rightForce *= 1 / directionalMag;
+					}
+
+					upForce = upForce * movement_speed;
+					rightForce = rightForce * movement_speed;
+
+					//Apply turbulence
+					if (mm_enableTurbulence)
+					{
+						m_turbulenceTimer += dt;
+
+						if (m_turbulenceTimer > 2f * Math.PI)
+							m_turbulenceTimer -= 2f * (float)Math.PI;
+
+						rightForce += right_vec * (float)Math.Sin(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f);
+						upForce += up_vec * (float)Math.Cos(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f);
+					}
+
+					float deltaY = Vector3.Dot(deltaPosition, up_vec);
+					float deltaX = Vector3.Dot(deltaPosition, right_vec);
+
+					float forceDotY = Vector3.Dot(upForce, up_vec);
+					float forceDotX = Vector3.Dot(rightForce, right_vec);
+
+					//Console.WriteLine("PlayerScript.cs: X:" + deltaX + " Y:" + deltaY);
+
+					//Reduce force as it reaches edges
+					if (deltaX > 0 && forceDotX > 0)
+					{
+						rightForce = rightForce * ((m_newMovementLimits.Y - deltaX) / m_newMovementLimits.Y);
+					}
+					else if (deltaX < 0 && forceDotX < 0)
+					{
+						rightForce = rightForce * ((m_newMovementLimits.X + deltaX) / m_newMovementLimits.X);
+					}
+
+					if (deltaY > 0 && forceDotY > 0)
+					{
+						upForce = upForce * ((m_newMovementLimits.W - deltaY) / m_newMovementLimits.W);
+					}
+					else if (deltaY < 0 && forceDotY < 0)
+					{
+						upForce = upForce * ((m_newMovementLimits.Z + deltaY) / m_newMovementLimits.Z);
+					}
+
+
+					//Handle if it goes beyond the edge
+					if (deltaX > m_newMovementLimits.Y)
+					{
+						//Console.WriteLine("Limit Right");
+						rightForce -= right_vec * (deltaX - m_newMovementLimits.Y) * moveBackSpeed;
+					}
+					else if (deltaX < -m_newMovementLimits.X)
+					{
+						//Console.WriteLine("Limit Left");
+						rightForce += right_vec * (-m_newMovementLimits.X - deltaX) * moveBackSpeed;
+					}
+
+					if (deltaY > m_newMovementLimits.W)
+					{
+						//Console.WriteLine("Limit Up");
+						upForce -= up_vec * (deltaY - m_newMovementLimits.W) * moveBackSpeed;
+					}
+					else if (deltaY < -m_newMovementLimits.Z)
+					{
+						//Console.WriteLine("Limit Down");
+						upForce += up_vec * (-m_newMovementLimits.Z - deltaY) * moveBackSpeed;
+					}//*/
+
+					ECS.RigidbodyAddForce(entityID, upForce + rightForce);
 				}
 
-				if (playerTrans.Position.Y < -boxCollider.extends.Y)
+				Vector3 playerVel = ECS.GetVelocity(entityID);
+				float maxslowforce = playerVel.magnitude();
+				if (Math.Abs(maxslowforce) <= float.Epsilon)
+					maxslowforce = 0.0f;
+				else
 				{
-					ECS.RigidbodyAddForce(entityID, up_vec * (-boxCollider.extends.Y - playerTrans.Position.Y) * 350f);
+					Vector3 SlowDownVec = -playerVel * (1 / maxslowforce);
+					playerVel += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
 				}
 
-
-				float directionalMag = direc_vector.magnitude();
-
-				if (directionalMag > 1.0f)
-					direc_vector *= 1 / directionalMag;
-
-				Vector3 force_dir = direc_vector * movement_speed;
-
-				if (mm_enableTurbulence)
+				if (dt > float.Epsilon)
 				{
-					m_turbulenceTimer += dt;
-
-					if (m_turbulenceTimer > 2f * Math.PI)
-						m_turbulenceTimer -= 2f * (float)Math.PI;
-
-					force_dir += new Vector3((float)Math.Sin(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), (float)Math.Cos(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f), 0);
+					calculatedVelocity = lastPosition - playerGlobalPos;
+					calculatedVelocity = calculatedVelocity * (1 / dt);
 				}
 
-				ECS.RigidbodyAddForce(entityID, force_dir);
+				//float maxslowforce = rigidbody.velocity.magnitude();
+				//if (Math.Abs(maxslowforce) <= float.Epsilon)
+				//    maxslowforce = 0.0f;
+				//else
+				//{
+				//    Vector3 SlowDownVec = -rigidbody.velocity * (1 / maxslowforce);
+				//    rigidbody.velocity += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
+				//}
+
+				//if (dt > 0)
+				//{
+				//    calculatedVelocity = lastPosition - playerGlobalPos;
+				//    calculatedVelocity = calculatedVelocity * (1 / dt);
+				//}
+
+				lastPosition = playerGlobalPos;
+
+				//Ship tilter
+				float relativeVelX = Vector3.Dot(right_vec, calculatedVelocity);
+
+				//Left right tilt
+				targetRotation.Y = relativeVelX * shipYawMultiplier;
+
+				//Roll tilt
+				targetRotation.Z = -relativeVelX * shipRollMultiplier;
+
+				//Up down tilt
+				targetRotation.X = Vector3.Dot(up_vec, calculatedVelocity) * shipPitchMultiplier;
+
+				playerTrans.Rotation.Y += (targetRotation.Y - playerTrans.Rotation.Y) * shipYawFollowSpeed * dt;
+				playerTrans.Rotation.Z += (targetRotation.Z - playerTrans.Rotation.Z) * shipRollFollowSpeed * dt;
+				playerTrans.Rotation.X += (targetRotation.X - playerTrans.Rotation.X) * shipPitchFollowSpeed * dt;
+
+				playerTrans.Position.Z = 0.0f;
+
+				Vector3 pos = new Vector3();
+				Vector3 rot = new Vector3();
+				Vector3 scale = new Vector3();
+				ECS.GetTransformECS(boxEntityID, ref pos, ref rot, ref scale);
+				Transform box_pos = new Transform(pos, rot, scale);
+
+				Vector3 rotationTarget = new Vector3(
+					(-box_pos.Rotation.X - playerTrans.Rotation.X),
+					(box_pos.Rotation.Y + playerTrans.Rotation.Y) + 180.0f,
+					-playerTrans.Rotation.Z);
+
+				if (camera.m_Yaw - rotationTarget.Y > 180.0f)
+					camera.m_Yaw -= 360.0f;
+				else if (camera.m_Yaw - rotationTarget.Y < -180.0f)
+					camera.m_Yaw += 360.0f;
+
+				if (camera.m_Pitch - rotationTarget.X > 180.0f)
+					camera.m_Pitch -= 360.0f;
+				else if (camera.m_Pitch - rotationTarget.X < -180.0f)
+					camera.m_Pitch += 360.0f;
+
+				if (camera.m_Roll - rotationTarget.Z > 180.0f)
+					camera.m_Roll -= 360.0f;
+				else if (camera.m_Roll - rotationTarget.Z < -180.0f)
+					camera.m_Roll += 360.0f;
+
+				//Lerps yaw and pitch over time
+				camera.m_Yaw += (rotationTarget.Y - camera.m_Yaw) * dt * 20.0f;
+				camera.m_Pitch += (rotationTarget.X - camera.m_Pitch) * dt * 20.0f;
+				camera.m_Roll += (rotationTarget.Z - camera.m_Roll) * dt * 20.0f;
+
+				Camera.SetCamera(shipCameraEntity, camera.m_Yaw, camera.m_Pitch, camera.m_Roll);
+
+				//Console.WriteLine("Position: " + playerTrans.Position.X + '|' + playerTrans.Position.Y + '|' + playerTrans.Position.Z);
+				//Console.WriteLine("Rotation: " + playerTrans.Rotation.X + '|' + playerTrans.Rotation.Y + '|' + playerTrans.Rotation.Z);
+				//Console.WriteLine("Scale: " + playerTrans.Scale.X + '|' + playerTrans.Scale.Y + '|' + playerTrans.Scale.Z);
+
+				ECS.SetVelocity(entityID, playerVel);
+				ECS.SetTransformECS(entityID, playerTrans.Position, playerTrans.Rotation, playerTrans.Scale);
 			}
-			else//New movement system
-			{
-				Vector3 rightForce;
-				Vector3 upForce;
-
-				rightForce = (right_vec * horizontal_input);
-				upForce = (up_vec * vertical_input);
-
-				Vector3 deltaPosition = playerGlobalPos - boxGlobalPos;
-
-				//Normalise movement
-				float directionalMag = (upForce + rightForce).magnitude();
-
-				if (directionalMag > 1.0f)
-				{
-					upForce *= 1 / directionalMag;
-					rightForce *= 1 / directionalMag;
-				}
-
-				upForce = upForce * movement_speed;
-				rightForce = rightForce * movement_speed;
-
-				//Apply turbulence
-				if (mm_enableTurbulence)
-				{
-					m_turbulenceTimer += dt;
-
-					if (m_turbulenceTimer > 2f * Math.PI)
-						m_turbulenceTimer -= 2f * (float)Math.PI;
-
-					rightForce += right_vec * (float)Math.Sin(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f);
-					upForce += up_vec * (float)Math.Cos(m_turbulenceTimer) * PPMath.RandomFloat(0, 40f);
-				}
-
-				float deltaY = Vector3.Dot(deltaPosition, up_vec);
-				float deltaX = Vector3.Dot(deltaPosition, right_vec);
-
-				float forceDotY = Vector3.Dot(upForce, up_vec);
-				float forceDotX = Vector3.Dot(rightForce, right_vec);
-
-				//Console.WriteLine("PlayerScript.cs: X:" + deltaX + " Y:" + deltaY);
-
-				//Reduce force as it reaches edges
-				if (deltaX > 0 && forceDotX > 0)
-				{
-					rightForce = rightForce * ((m_newMovementLimits.Y - deltaX) / m_newMovementLimits.Y);
-				}
-				else if(deltaX < 0 && forceDotX < 0)
-				{
-					rightForce = rightForce * ((m_newMovementLimits.X + deltaX) / m_newMovementLimits.X);
-				}
-
-				if (deltaY > 0 && forceDotY > 0)
-				{
-					upForce = upForce * ((m_newMovementLimits.W - deltaY) / m_newMovementLimits.W);
-				}
-				else if (deltaY < 0 && forceDotY < 0)
-				{
-					upForce = upForce * ((m_newMovementLimits.Z + deltaY) / m_newMovementLimits.Z);
-				}
-
-
-				//Handle if it goes beyond the edge
-				if (deltaX > m_newMovementLimits.Y)
-				{
-					//Console.WriteLine("Limit Right");
-					rightForce -= right_vec * (deltaX - m_newMovementLimits.Y) * moveBackSpeed;
-				}
-				else if(deltaX < -m_newMovementLimits.X)
-				{
-					//Console.WriteLine("Limit Left");
-					rightForce += right_vec * (-m_newMovementLimits.X - deltaX) * moveBackSpeed;
-				}
-
-				if (deltaY > m_newMovementLimits.W)
-				{
-					//Console.WriteLine("Limit Up");
-					upForce -= up_vec * (deltaY - m_newMovementLimits.W) * moveBackSpeed;
-				}
-				else if (deltaY < -m_newMovementLimits.Z)
-				{
-					//Console.WriteLine("Limit Down");
-					upForce += up_vec * (-m_newMovementLimits.Z - deltaY) * moveBackSpeed;
-				}//*/
-
-				ECS.RigidbodyAddForce(entityID, upForce + rightForce);
-			}
-
-			Vector3 playerVel = ECS.GetVelocity(entityID);
-			float maxslowforce = playerVel.magnitude();
-			if (Math.Abs(maxslowforce) <= float.Epsilon)
-				maxslowforce = 0.0f;
-			else
-			{
-				Vector3 SlowDownVec = -playerVel * (1 / maxslowforce);
-				playerVel += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
-			}
-
-			if (dt > float.Epsilon)
-			{
-				calculatedVelocity = lastPosition - playerGlobalPos;
-				calculatedVelocity = calculatedVelocity * (1 / dt);
-			}
-
-			//float maxslowforce = rigidbody.velocity.magnitude();
-			//if (Math.Abs(maxslowforce) <= float.Epsilon)
-			//    maxslowforce = 0.0f;
-			//else
-			//{
-			//    Vector3 SlowDownVec = -rigidbody.velocity * (1 / maxslowforce);
-			//    rigidbody.velocity += SlowDownVec * Math.Min(maxslowforce, maxslowforce * slowForce * dt);
-			//}
-
-			//if (dt > 0)
-			//{
-			//    calculatedVelocity = lastPosition - playerGlobalPos;
-			//    calculatedVelocity = calculatedVelocity * (1 / dt);
-			//}
-
-			lastPosition = playerGlobalPos;
-
-			//Ship tilter
-			float relativeVelX = Vector3.Dot(right_vec, calculatedVelocity);
-
-			//Left right tilt
-			targetRotation.Y = relativeVelX * shipYawMultiplier;
-
-			//Roll tilt
-			targetRotation.Z = -relativeVelX * shipRollMultiplier;
-
-			//Up down tilt
-			targetRotation.X = Vector3.Dot(up_vec, calculatedVelocity) * shipPitchMultiplier;
-
-			playerTrans.Rotation.Y += (targetRotation.Y - playerTrans.Rotation.Y) * shipYawFollowSpeed * dt;
-			playerTrans.Rotation.Z += (targetRotation.Z - playerTrans.Rotation.Z) * shipRollFollowSpeed * dt;
-			playerTrans.Rotation.X += (targetRotation.X - playerTrans.Rotation.X) * shipPitchFollowSpeed * dt;
-
-			playerTrans.Position.Z = 0.0f;
-
-			Vector3 pos = new Vector3();
-			Vector3 rot = new Vector3();
-			Vector3 scale = new Vector3();
-			ECS.GetTransformECS(boxEntityID, ref pos, ref rot, ref scale);
-			Transform box_pos = new Transform(pos, rot, scale);
-
-			Vector3 rotationTarget = new Vector3(
-				(-box_pos.Rotation.X - playerTrans.Rotation.X),
-				(box_pos.Rotation.Y + playerTrans.Rotation.Y) + 180.0f,
-				-playerTrans.Rotation.Z);
-
-			if (camera.m_Yaw - rotationTarget.Y > 180.0f)
-				camera.m_Yaw -= 360.0f;
-			else if (camera.m_Yaw - rotationTarget.Y < -180.0f)
-				camera.m_Yaw += 360.0f;
-
-			if (camera.m_Pitch - rotationTarget.X > 180.0f)
-				camera.m_Pitch -= 360.0f;
-			else if (camera.m_Pitch - rotationTarget.X < -180.0f)
-				camera.m_Pitch += 360.0f;
-
-			if (camera.m_Roll - rotationTarget.Z > 180.0f)
-				camera.m_Roll -= 360.0f;
-			else if (camera.m_Roll - rotationTarget.Z < -180.0f)
-				camera.m_Roll += 360.0f;
-
-			//Lerps yaw and pitch over time
-			camera.m_Yaw += (rotationTarget.Y - camera.m_Yaw) * dt * 20.0f;
-			camera.m_Pitch += (rotationTarget.X - camera.m_Pitch) * dt * 20.0f;
-			camera.m_Roll += (rotationTarget.Z - camera.m_Roll) * dt * 20.0f;
-
-			Camera.SetCamera(shipCameraEntity, camera.m_Yaw, camera.m_Pitch, camera.m_Roll);
-
-			//Console.WriteLine("Position: " + playerTrans.Position.X + '|' + playerTrans.Position.Y + '|' + playerTrans.Position.Z);
-			//Console.WriteLine("Rotation: " + playerTrans.Rotation.X + '|' + playerTrans.Rotation.Y + '|' + playerTrans.Rotation.Z);
-			//Console.WriteLine("Scale: " + playerTrans.Scale.X + '|' + playerTrans.Scale.Y + '|' + playerTrans.Scale.Z);
-
-			ECS.SetVelocity(entityID, playerVel);
-			ECS.SetTransformECS(entityID, playerTrans.Position, playerTrans.Rotation, playerTrans.Scale);
-
 
 			//Pause menu
 			if (InputUtility.onKeyTriggered("ESCAPE"))
@@ -568,6 +573,12 @@ namespace Scripting
 				AudioEngine.PauseChannelGroup("VO");
 				GameUtilities.PauseScene();
 			}
+		}
+
+		public void ToggleEnableControls(bool toggle)
+		{
+			update_controls = toggle;
+			ECS.SetVelocity(entityID, new Vector3());
 		}
 
 		private Vector3 m_initialCameraPosition;

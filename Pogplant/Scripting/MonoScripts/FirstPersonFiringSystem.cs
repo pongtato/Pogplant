@@ -205,10 +205,12 @@ namespace Scripting
 			//Moving the hit box
 			ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
 
-			UpdateReticleMovementCanvas(ref transform, ref dt);
+			if (PlayerScript.m_singleton.update_controls)
+			{
+				UpdateReticleMovementCanvas(ref transform, ref dt);
+			}
 
 			ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
-
 			
 			m_shootVector = GameUtilities.GetRayCastDirCamera(shipCamera, inner_ret.Position);
 
@@ -297,41 +299,43 @@ namespace Scripting
 				m_actual_nuke_bar_charging_scale.X += dt * m_actual_nuke_bar_per_second;
 				ECS.SetScale(m_actual_nuke_bar_charging_id, new Vector3(m_actual_nuke_bar_charging_scale.X, m_actual_nuke_bar_filled_scale.Y, m_actual_nuke_bar_filled_scale.Z));
             }
-
-                if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK") || InputUtility.onKeyTriggered("LEFTCLICK"))
+			if (PlayerScript.m_singleton.update_controls)
 			{
-				if (p_fire_timer >= p_fireRate)
+				if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK") || InputUtility.onKeyTriggered("LEFTCLICK"))
 				{
-					// Call C++ side bullet firing
-					if(isHoming)
-						CallTurretHomingShoot(ref Turrets_A, dt);
-					else
-						CallTurretShoot(ref Turrets_A, dt);
-					//GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
-					OnMuzzleFlash(ref MuzzleFlashGroup,ref isMuzzleflashed);
-					ECS.PlayAudio(shipCamera, 1, "SFX");
-					p_fire_timer = 0.0f;
+					if (p_fire_timer >= p_fireRate)
+					{
+						// Call C++ side bullet firing
+						if (isHoming)
+							CallTurretHomingShoot(ref Turrets_A, dt);
+						else
+							CallTurretShoot(ref Turrets_A, dt);
+						//GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
+						OnMuzzleFlash(ref MuzzleFlashGroup, ref isMuzzleflashed);
+						ECS.PlayAudio(shipCamera, 1, "SFX");
+						p_fire_timer = 0.0f;
 
-					//Vibrate controller
-					InputUtility.VibrateControllerLightMotor(0.25f, 0.05f);
+						//Vibrate controller
+						InputUtility.VibrateControllerLightMotor(0.25f, 0.05f);
+					}
 				}
-			}
-			//used for nuke
-			else if (InputUtility.onKeyReleased("NUKE"))
-            {
-				if (m_actual_nuke_timer > m_actual_nuke_cooldown)
-                {
-					ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
-					ECS.SetActive(m_actual_nuke, true);
-					GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
+				//used for nuke
+				else if (InputUtility.onKeyReleased("NUKE"))
+				{
+					if (m_actual_nuke_timer > m_actual_nuke_cooldown)
+					{
+						ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
+						ECS.SetActive(m_actual_nuke, true);
+						GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
 
-					m_actual_nuke_timer = 0;
+						m_actual_nuke_timer = 0;
 
-					ECS.SetActive(m_actual_nuke_bar_charging_id, true);
-					ECS.SetActive(m_actual_nuke_bar_filled_id, false);
+						ECS.SetActive(m_actual_nuke_bar_charging_id, true);
+						ECS.SetActive(m_actual_nuke_bar_filled_id, false);
 
-					m_actual_nuke_bar_charging_scale.X = 0;
-					m_actual_nuke_set_scale = false;
+						m_actual_nuke_bar_charging_scale.X = 0;
+						m_actual_nuke_set_scale = false;
+					}
 				}
 			}
 		}

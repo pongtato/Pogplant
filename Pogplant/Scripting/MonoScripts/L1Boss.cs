@@ -120,6 +120,12 @@ namespace Scripting
 
         AnimationSystem boss_animation_system;
 
+        uint cinematic_bar_top_id;
+        uint cinematic_bar_bottom_id;
+        bool cinematic_cover_screen;
+        bool cinematic_bars_enter_screen;
+        const float cinematic_bar_speed = 3.0f;
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -197,6 +203,9 @@ namespace Scripting
             left_eyeball_id = ECS.FindEntityWithName("Left_Eye");
             right_eyeball_id = ECS.FindEntityWithName("Right_Eye");
 
+            cinematic_bar_top_id = ECS.FindEntityWithName("Top Cinematic Bar");
+            cinematic_bar_bottom_id = ECS.FindEntityWithName("Bottom Cinematic Bar");
+
             //Create and initialize the list of moving parts
             moving_parts_dict = new Dictionary<uint, MovingParts>();
 
@@ -260,7 +269,7 @@ namespace Scripting
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
             {
-                SetState(BOSS_BEHAVIOUR_STATE.CLAP_ATTACK.ToString());
+                SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE.ToString());
             }
 
             if (InputUtility.onKeyTriggered(KEY_ID.KEY_I))
@@ -270,6 +279,8 @@ namespace Scripting
 
             //Update mouths based on eye damage state
             UpdateMouths(dt);
+
+            UpdateCinematicBars(dt);
 
             if (show_white_flash)
             {
@@ -523,6 +534,39 @@ namespace Scripting
             else
             {
                 ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_min_scale, any_key_scale_speed * dt));
+            }
+        }
+
+        void UpdateCinematicBars(float dt)
+        {
+            if (cinematic_cover_screen)
+            {
+                //Top bar
+                if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 0.8f)
+                {
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 0.79f, 0.0f), cinematic_bar_speed * dt));
+                }
+                //Bottom bar
+                if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -0.8f)
+                {
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -0.79f, 0.0f), cinematic_bar_speed * dt));
+                }
+            }
+            else
+            {
+                if (cinematic_bars_enter_screen)
+                {
+                    //Top bar
+                    if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 1.3f || ECS.GetGlobalPosition(cinematic_bar_top_id).Y < 1.29f)
+                    {
+                        ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, 0.0f), cinematic_bar_speed * dt));
+                    }
+                    //Bottom bar
+                    if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -1.3f || ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < 1.29f)
+                    {
+                        ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, 0.0f), cinematic_bar_speed * dt));
+                    }
+                }
             }
         }
 
@@ -1489,6 +1533,9 @@ namespace Scripting
             moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 6.5f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
 
             ECS.SetActive(false_core_id, false);
+
+            PlayerScript.m_singleton.ToggleEnableControls(false);
+            cinematic_bars_enter_screen = true;
         }
 
         void RunDeathStateSequenceOne(float dt)
