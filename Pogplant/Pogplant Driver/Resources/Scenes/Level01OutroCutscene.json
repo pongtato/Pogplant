@@ -54143,6 +54143,7 @@
 		},
 		"Text" : 
 		{
+			"m_Center" : false,
 			"m_Color" : 
 			[
 				1.0,
@@ -54151,6 +54152,7 @@
 			],
 			"m_FontID" : "Ruda",
 			"m_Ortho" : false,
+			"m_PlaySpeed" : 1.0,
 			"m_Text" : "00000000"
 		},
 		"Transform" : 
@@ -54661,6 +54663,7 @@
 		},
 		"Text" : 
 		{
+			"m_Center" : false,
 			"m_Color" : 
 			[
 				0.0,
@@ -54669,6 +54672,7 @@
 			],
 			"m_FontID" : "Ruda",
 			"m_Ortho" : false,
+			"m_PlaySpeed" : 1.0,
 			"m_Text" : "Score"
 		},
 		"Transform" : 
@@ -67614,7 +67618,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.80000001192092896,
+				1.2999999523162842,
 				-1.0
 			],
 			"m_rotation" : 
@@ -67679,7 +67683,7 @@
 			"m_position" : 
 			[
 				0.0,
-				-0.80000001192092896,
+				-1.2999999523162842,
 				-1.0
 			],
 			"m_rotation" : 

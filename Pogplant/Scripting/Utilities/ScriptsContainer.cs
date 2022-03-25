@@ -55,6 +55,7 @@ namespace Scripting
             monoScriptNames.Add("L2Boss");
             monoScriptNames.Add("L1BossCloudMover");
             monoScriptNames.Add("EndGameMenuTrigger");
+            monoScriptNames.Add("LevelEndCinematicBar");
             monoScriptNames.Add("TetherEnemy");
             monoScriptNames.Add("ExplosiveEnemy");
             monoScriptNames.Add("ActivateChildren");

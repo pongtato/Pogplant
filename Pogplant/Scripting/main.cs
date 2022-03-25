@@ -88,6 +88,11 @@ namespace Scripting
             return new MovingParts();
         }
 
+        public static LevelEndCinematicBar LevelEndCinematicBar()
+        {
+            return new LevelEndCinematicBar();
+        }
+
         //public static EnemyManager EnemyManager()
         //{
         //    return new EnemyManager();

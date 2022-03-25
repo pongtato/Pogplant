@@ -122,7 +122,6 @@ namespace Scripting
 
         uint cinematic_bar_top_id;
         uint cinematic_bar_bottom_id;
-        bool cinematic_cover_screen;
         bool cinematic_bars_enter_screen;
         const float cinematic_bar_speed = 3.0f;
 
@@ -539,33 +538,17 @@ namespace Scripting
 
         void UpdateCinematicBars(float dt)
         {
-            if (cinematic_cover_screen)
+            if (cinematic_bars_enter_screen)
             {
                 //Top bar
-                if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 0.8f)
+                if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 1.3f || ECS.GetGlobalPosition(cinematic_bar_top_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 0.79f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, 0.0f), cinematic_bar_speed * dt));
                 }
                 //Bottom bar
-                if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -0.8f)
+                if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -1.3f || ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -0.79f, 0.0f), cinematic_bar_speed * dt));
-                }
-            }
-            else
-            {
-                if (cinematic_bars_enter_screen)
-                {
-                    //Top bar
-                    if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 1.3f || ECS.GetGlobalPosition(cinematic_bar_top_id).Y < 1.29f)
-                    {
-                        ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, 0.0f), cinematic_bar_speed * dt));
-                    }
-                    //Bottom bar
-                    if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -1.3f || ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < 1.29f)
-                    {
-                        ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, 0.0f), cinematic_bar_speed * dt));
-                    }
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, 0.0f), cinematic_bar_speed * dt));
                 }
             }
         }
