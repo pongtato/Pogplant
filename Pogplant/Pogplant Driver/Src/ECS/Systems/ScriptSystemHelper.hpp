@@ -1,6 +1,7 @@
 #include "ScriptSystemHelper.h"
 namespace SSH
 {
+#pragma optimize( "", off )
 	template<typename T>
 	T InvokeFunctionWithReturn(const std::string& scriptName, const std::string& funcName, const entt::entity& entity)
 	{
@@ -51,7 +52,7 @@ namespace SSH
 			// Maybe log something here
 			std::cout << "MonoClass not found" << std::endl;
 		}
-		
+
 		volatile std::string test = scriptName;
 		test;
 
@@ -73,7 +74,7 @@ namespace SSH
 			Pogplant::Logger::Log(
 				Pogplant::LogEntry{ "ScriptSystemHelper::InvokeFunction", Pogplant::LogEntry::LOGTYPE::ERROR, "Unknown error occured in invoke function" }, true);
 		}
-		
+
 	}
 
 	template<typename T, typename ...Args>
@@ -110,4 +111,5 @@ namespace SSH
 
 		return result;
 	}
+#pragma optimize( "", on )
 }

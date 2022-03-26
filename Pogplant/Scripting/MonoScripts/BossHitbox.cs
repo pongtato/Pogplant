@@ -83,7 +83,6 @@ namespace Scripting
 					if(m_applyForceOnHit)
 					{
 						ECS.RigidbodyAddImpulseForce(id, m_forceDirection);
-						Console.WriteLine("Force Applied");
 					}
 				}
 			}
