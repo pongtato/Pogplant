@@ -81,194 +81,6 @@
 		}
 	},
 	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Laser1",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.050000004470348358,
-				2.7473115921020508
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Laser" : 
-		{
-			"m_ActivateLaser" : false,
-			"m_Activetime" : 0.0,
-			"m_ChargeParticletime" : 0.0,
-			"m_Inactivetime" : 0.0,
-			"m_LaserLerptime" : 0.0,
-			"m_Spawntime" : 5.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "LaserObject",
-			"status" : true
-		},
-		"OBBBoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				1.0,
-				1.0,
-				20.0
-			],
-			"isStatic" : false,
-			"isTrigger" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.87498104572296143,
-				0.99534881114959717,
-				0.97295516729354858
-			],
-			"EmissiveTint" : 
-			[
-				0.25116276741027832,
-				0.25116026401519775,
-				0.25116026401519775
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Beam"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				2.9802322387695312e-08,
-				-4.76837158203125e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				2.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserOutLine",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Outline"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				2.3022294044494629e-06,
-				2.1457672119140625e-06
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 0,
 		"Name" : 
 		{
@@ -907,6 +719,181 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Laser1",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.050000004470348358,
+				2.7473115921020508
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 5.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "LaserObject",
+			"status" : true
+		},
+		"OBBBoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				10.0
+			],
+			"isStatic" : false,
+			"isTrigger" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				1.1175870895385742e-08,
+				19.257278442382812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				2.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 5.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "laser",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.87498104572296143,
+				0.99534881114959717,
+				0.97295516729354858
+			],
+			"EmissiveTint" : 
+			[
+				0.25116276741027832,
+				0.25116026401519775,
+				0.25116026401519775
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.049999956041574478,
+				-9.9827795028686523
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
