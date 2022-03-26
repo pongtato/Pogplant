@@ -124,24 +124,6 @@
 		}
 	},
 	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				4.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.5,
-				0.5,
-				10.0
-			],
-			"isStatic" : false,
-			"isTrigger" : false
-		},
 		"Children" : 1,
 		"Laser" : 
 		{
@@ -156,6 +138,24 @@
 		{
 			"m_Name" : "LaserObject",
 			"status" : true
+		},
+		"OBBBoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				20.0
+			],
+			"isStatic" : false,
+			"isTrigger" : false
 		},
 		"Prefab" : 
 		{
@@ -251,8 +251,8 @@
 			"m_position" : 
 			[
 				0.0,
-				1.1175870895385742e-08,
-				1.9073486328125e-06
+				2.3022294044494629e-06,
+				2.1457672119140625e-06
 			],
 			"m_rotation" : 
 			[
