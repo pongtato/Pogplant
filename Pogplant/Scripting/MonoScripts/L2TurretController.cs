@@ -48,6 +48,7 @@ namespace Scripting
             AddTurretGroup("TurretGroup4");
             AddTurretGroup("TurretGroup5");
             AddTurretGroup("TurretGroup6");
+            AddTurretGroup("TurretGroup7");
         }
 
         public override void Start()
