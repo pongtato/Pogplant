@@ -33,7 +33,7 @@
 				"Volume" : 0.25099998712539673
 			}
 		},
-		"Children" : 16,
+		"Children" : 18,
 		"Name" : 
 		{
 			"m_Name" : "MainMenuController",
@@ -255,7 +255,7 @@
 		{
 			"m_position" : 
 			[
-				0.37999999523162842,
+				1.8999999761581421,
 				-0.375,
 				0.96100002527236938
 			],
@@ -5413,6 +5413,138 @@
 				2.2000000476837158,
 				-0.44999998807907104,
 				0.96100002527236938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99999600648880005,
+				0.99998998641967773,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 47.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.875,
+					0.75
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "High Score Button",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.8999999761581421,
+				-0.30000001192092896,
+				0.96100002527236938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 48.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.875
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "High Score Button Faded",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.37999999523162842,
+				-0.30000001192092896,
+				0.95999997854232788
 			],
 			"m_rotation" : 
 			[
