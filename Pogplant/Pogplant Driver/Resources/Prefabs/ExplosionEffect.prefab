@@ -1,0 +1,254 @@
+[
+	{
+		"Children" : 2,
+		"Guid" : 
+		{
+			"m_guid" : "e65c7f28-2204-43d8-bb55-f5d248c9c6e5"
+		},
+		"Name" : 
+		{
+			"m_Name" : "ExplosionEffect",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "dfbf767c-c132-44e9-b971-af3fee23b478",
+			"prefab_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.95813953876495361,
+				0.87398433685302734,
+				0.33423471450805664
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 0.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 3,
+				"Name" : "DelayMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "DelayMin",
+				"Type" : 1
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "LerpDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.68999999761581421,
+				"Name" : "PersistDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.02500000037252903,
+				"Name" : "ScaleSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 16.899999618530273,
+				"Name" : "SpinSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 3,
+				"Name" : "TargetSizeMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 2,
+				"Name" : "TargetSizeMin",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"ExplosionEffect" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 0.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwave",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.59793627262115479,
+				0.60000002384185791,
+				0.15627908706665039
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Explosion_Shockwave"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outer_Sphere",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Outer_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]
