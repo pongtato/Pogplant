@@ -30,6 +30,8 @@ namespace Scripting
 		public uint mID_playerShip;
 		public int m_damageAmount = 50;
 		public bool m_damageHitBox = false;
+		public bool m_applyForceOnHit = false;
+		public Vector3 m_forceDirection;
 
 		public Vector3 m_cameraShakeInitMul;
 		public Vector3 m_cameraShakeMag;
@@ -46,6 +48,8 @@ namespace Scripting
 			m_coreNumber = ECS.GetValue<int>(entityID, 0, "CoreNumber");
 			m_damageAmount = ECS.GetValue<int>(entityID, 50, "DamageAmount");
 			m_damageHitBox = ECS.GetValue<bool>(entityID, false, "IsHitbox");
+			m_applyForceOnHit = ECS.GetValue<bool>(entityID, false, "ApplyForce");
+			m_forceDirection = ECS.GetValue<Vector3>(entityID, new Vector3(0.0f, -100f, 0.0f), "ForceDirection");
 
 			m_cameraShakeInitMul = ECS.GetValue<Vector3>(entityID, new Vector3(0.5f, 0.5f, 0.5f), "CameraShakeInit");
 			m_cameraShakeMag = ECS.GetValue<Vector3>(entityID, new Vector3(8f, 8f, 8f), "CameraShakeMag");
@@ -75,6 +79,12 @@ namespace Scripting
 						new Vector3(PPMath.RandomFloat(-m_cameraShakeMag.X, m_cameraShakeMag.X), PPMath.RandomFloat(-m_cameraShakeMag.Y, m_cameraShakeMag.Y), PPMath.RandomFloat(-m_cameraShakeMag.Z, m_cameraShakeMag.Z)),
 						m_cameraShakeDuration);
 					PlayerScript.AddScore(false, false, (uint)m_damageAmount);
+				
+					if(m_applyForceOnHit)
+					{
+						ECS.RigidbodyAddImpulseForce(id, m_forceDirection);
+						Console.WriteLine("Force Applied");
+					}
 				}
 			}
 			else

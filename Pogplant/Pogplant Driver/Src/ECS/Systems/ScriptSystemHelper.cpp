@@ -254,6 +254,16 @@ namespace SSH
 		}
 	}
 
+	void RigidbodyAddImpulseForce(std::uint32_t entityID, glm::vec3 direction)
+	{
+		auto rb = ScriptSystem::GetECS()->GetReg().try_get<Components::Rigidbody>(static_cast<entt::entity>(entityID));
+
+		if (rb)
+		{
+			rb->AddImpulseForce(direction);
+		}
+	}
+
 	void RigidbodySetGravity(std::uint32_t entityID, bool boolean)
 	{
 		auto rb = ScriptSystem::GetECS()->GetReg().try_get<Components::Rigidbody>(static_cast<entt::entity>(entityID));

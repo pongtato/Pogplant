@@ -479,6 +479,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetActive", SSH::SetActive);
 	mono_add_internal_call("Scripting.ECS::ToggleEntity", SSH::ToggleEntity);
 	mono_add_internal_call("Scripting.ECS::RigidbodyAddForce", SSH::RigidbodyAddForce);
+	mono_add_internal_call("Scripting.ECS::RigidbodyAddImpulseForce", SSH::RigidbodyAddImpulseForce);
 	mono_add_internal_call("Scripting.ECS::RigidbodySetGravity", SSH::RigidbodySetGravity);
 	mono_add_internal_call("Scripting.ECS::GetVelocity", SSH::GetVelocity);
 	mono_add_internal_call("Scripting.ECS::SetVelocity", SSH::SetVelocity);
