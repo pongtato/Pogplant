@@ -18,10 +18,10 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 14,
+		"Children" : 20,
 		"Guid" : 
 		{
-			"m_guid" : "9628af5f-5586-43c0-84e0-16de928a8171"
+			"m_guid" : "01dd002c-17c2-4b66-8f6f-112fe3be6ccf"
 		},
 		"Name" : 
 		{
@@ -83,3433 +83,6 @@
 				0.99999988079071045,
 				0.99999982118606567,
 				0.99999988079071045
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				1.0,
-				0.0,
-				-1.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				7.5,
-				4.0,
-				3.5
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Obj_2",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generator_Type_01",
-				"Resources/Models\\Environment",
-				"Generator_Type_01"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				5.89959716796875,
-				230.2864990234375,
-				0.54071044921875
-			],
-			"m_rotation" : 
-			[
-				-179.99989318847656,
-				89.999946594238281,
-				39.999919891357422
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0000007152557373,
-				0.99992650747299194
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				-10.5,
-				0.0,
-				-1.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				2.5,
-				3.0,
-				2.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.027330398559570312,
-				0.00012969970703125,
-				0.00018310546875
-			],
-			"m_rotation" : 
-			[
-				1.707546402940352e-06,
-				5.6995536762416421e-12,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0000004768371582,
-				1.0000002384185791
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				10.5,
-				0.0,
-				-1.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				2.5,
-				3.0,
-				2.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.029554367065429688,
-				0.00012969970703125,
-				0.00018310546875
-			],
-			"m_rotation" : 
-			[
-				1.707546402940352e-06,
-				1.0137063410908809e-09,
-				1.2188902109855348e-09
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0000004768371582,
-				1.0000002384185791
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "FallingSmokeTrio",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "f778335c-44f6-4799-84a8-6bfa297d02ea",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.06292724609375,
-				0.0001220703125,
-				-0.00011444091796875
-			],
-			"m_rotation" : 
-			[
-				-1.6973865513136843e-06,
-				2.441812160455803e-12,
-				1.6278747013570571e-12
-			],
-			"m_scale" : 
-			[
-				1.0003496408462524,
-				1.0059860944747925,
-				1.0000540018081665
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_0",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				4.3850650787353516,
-				5.5909614562988281,
-				0.51934814453125
-			],
-			"m_rotation" : 
-			[
-				-33.779819488525391,
-				5.0388336181640625,
-				-121.92738342285156
-			],
-			"m_scale" : 
-			[
-				0.99999916553497314,
-				1.0000095367431641,
-				0.99997645616531372
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_1",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-4.5134601593017578,
-				3.9113998413085938,
-				1.52362060546875
-			],
-			"m_rotation" : 
-			[
-				-42.430625915527344,
-				16.6219482421875,
-				-120.02053070068359
-			],
-			"m_scale" : 
-			[
-				0.99999672174453735,
-				1.0000162124633789,
-				1.0000312328338623
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_2",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
-			],
-			"m_rotation" : 
-			[
-				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
-			],
-			"m_scale" : 
-			[
-				0.99994903802871704,
-				1.0000271797180176,
-				1.0000334978103638
-			]
-		}
-	},
-	{
-		"Children" : 4,
-		"Name" : 
-		{
-			"m_Name" : "Obj_1",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generator_Type_02",
-				"Resources/Models\\Environment",
-				"Generator_Type_02"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				11.356536865234375,
-				156.23504638671875,
-				-2.9393520355224609
-			],
-			"m_rotation" : 
-			[
-				-103.74456787109375,
-				-8.5901365280151367,
-				-0.48477226495742798
-			],
-			"m_scale" : 
-			[
-				0.499998539686203,
-				0.49999961256980896,
-				0.59999799728393555
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				-1.0,
-				-8.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.0,
-				4.0,
-				5.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.05126953125,
-				0.002777099609375,
-				0.004425048828125
-			],
-			"m_rotation" : 
-			[
-				8.8072651124093682e-05,
-				-8.537824669474503e-07,
-				-3.3297514164587483e-05
-			],
-			"m_scale" : 
-			[
-				0.99998962879180908,
-				0.99999362230300903,
-				0.99986225366592407
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				-1.0,
-				-8.0,
-				-1.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.0,
-				4.0,
-				5.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0076904296875,
-				1.1102294921875,
-				8.4146270751953125
-			],
-			"m_rotation" : 
-			[
-				8.4524101112037897e-05,
-				-5.4428328439826146e-06,
-				-3.1589774152962491e-05
-			],
-			"m_scale" : 
-			[
-				0.99999523162841797,
-				0.99999392032623291,
-				0.99981170892715454
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				-1.0,
-				-8.0,
-				-1.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.0,
-				4.0,
-				5.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0518798828125,
-				1.1090240478515625,
-				22.31744384765625
-			],
-			"m_rotation" : 
-			[
-				8.8072651124093682e-05,
-				-8.537824669474503e-07,
-				-3.3297514164587483e-05
-			],
-			"m_scale" : 
-			[
-				0.99998962879180908,
-				0.99999362230300903,
-				0.99977058172225952
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "FallingSmokeTrio",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "f778335c-44f6-4799-84a8-6bfa297d02ea",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.00146484375,
-				-0.0059814453125,
-				-0.00115966796875
-			],
-			"m_rotation" : 
-			[
-				67.959602355957031,
-				-62.888015747070312,
-				-80.422012329101562
-			],
-			"m_scale" : 
-			[
-				1.9777135848999023,
-				1.6864956617355347,
-				2.0098259449005127
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_1",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-6.29486083984375,
-				4.007568359375,
-				-4.53594970703125
-			],
-			"m_rotation" : 
-			[
-				-0.85015779733657837,
-				40.430774688720703,
-				-35.444091796875
-			],
-			"m_scale" : 
-			[
-				0.9928935170173645,
-				1.0097308158874512,
-				1.0003954172134399
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_2",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-12.96173095703125,
-				0.158447265625,
-				-4.68096923828125
-			],
-			"m_rotation" : 
-			[
-				124.30232238769531,
-				14.506710052490234,
-				66.131263732910156
-			],
-			"m_scale" : 
-			[
-				2.0,
-				2.0,
-				0.99563246965408325
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_0",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				4.3875732421875,
-				5.5821533203125,
-				0.52130126953125
-			],
-			"m_rotation" : 
-			[
-				-1.3487175703048706,
-				12.565074920654297,
-				-52.412158966064453
-			],
-			"m_scale" : 
-			[
-				0.98788934946060181,
-				1.0187177658081055,
-				1.000441312789917
-			]
-		}
-	},
-	{
-		"Children" : 4,
-		"Name" : 
-		{
-			"m_Name" : "Obj_0",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generator_Type_01",
-				"Resources/Models\\Environment",
-				"Generator_Type_01"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				10.974517822265625,
-				66.94671630859375,
-				0.00421142578125
-			],
-			"m_rotation" : 
-			[
-				-89.999870300292969,
-				24.161581039428711,
-				89.999748229980469
-			],
-			"m_scale" : 
-			[
-				0.99995905160903931,
-				1.0000002384185791,
-				0.9999229907989502
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				-3.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				4.0,
-				2.0,
-				3.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.00023651123046875,
-				-6.67572021484375e-06,
-				-0.01898193359375
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				-3.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				4.0,
-				2.0,
-				2.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-7.227081298828125,
-				-9.5367431640625e-07,
-				-0.04083251953125
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				-3.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				4.0,
-				2.0,
-				2.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.3892745971679688,
-				-9.5367431640625e-07,
-				-0.036224365234375
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "FallingSmokeTrio",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "f778335c-44f6-4799-84a8-6bfa297d02ea",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-1.52587890625e-05,
-				0.0,
-				0.227813720703125
-			],
-			"m_rotation" : 
-			[
-				2.2265925281317323e-07,
-				5.498891297861519e-08,
-				-1.7085370700442581e-06
-			],
-			"m_scale" : 
-			[
-				1.0000069141387939,
-				1.0000344514846802,
-				1.0005805492401123
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_1",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-4.5134620666503906,
-				3.911376953125,
-				1.52362060546875
-			],
-			"m_rotation" : 
-			[
-				-43.680015563964844,
-				19.891899108886719,
-				-92.360015869140625
-			],
-			"m_scale" : 
-			[
-				0.99998962879180908,
-				1.0000190734863281,
-				1.000032901763916
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_2",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-10.558483123779297,
-				3.052978515625,
-				-0.650848388671875
-			],
-			"m_rotation" : 
-			[
-				138.79739379882812,
-				39.874885559082031,
-				54.162899017333984
-			],
-			"m_scale" : 
-			[
-				0.99994736909866333,
-				1.0000243186950684,
-				1.0000332593917847
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_0",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				4.385009765625,
-				5.59088134765625,
-				0.5223388671875
-			],
-			"m_rotation" : 
-			[
-				-35.113739013671875,
-				8.5904703140258789,
-				-91.484603881835938
-			],
-			"m_scale" : 
-			[
-				0.99999737739562988,
-				1.0000101327896118,
-				0.99997729063034058
-			]
-		}
-	},
-	{
-		"Children" : 4,
-		"Name" : 
-		{
-			"m_Name" : "Obj_3",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generator_Type_01",
-				"Resources/Models\\Environment",
-				"Generator_Type_01"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				1.96978759765625,
-				74.999969482421875,
-				9.54656982421875
-			],
-			"m_rotation" : 
-			[
-				-1.0522938964641071e-06,
-				2.0379945908644004e-06,
-				139.99998474121094
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				1.0,
-				0.99992287158966064
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				-3.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				3.0,
-				2.0,
-				4.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.00023651123046875,
-				-6.67572021484375e-06,
-				-0.01898193359375
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				-3.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				3.0,
-				2.0,
-				4.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-7.227081298828125,
-				-9.5367431640625e-07,
-				-0.04083251953125
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				-3.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				3.0,
-				2.0,
-				4.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Col",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.3892822265625,
-				0.0,
-				-0.036224365234375
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				1.707547198748216e-06
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "FallingSmokeTrio",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "f778335c-44f6-4799-84a8-6bfa297d02ea",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.27490234375,
-				1.5929336547851562,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				1.7032207866307658e-09,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0000772476196289,
-				1.0000004768371582,
-				1.0000004768371582
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_2",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
-			],
-			"m_rotation" : 
-			[
-				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
-			],
-			"m_scale" : 
-			[
-				0.99994903802871704,
-				1.0000271797180176,
-				1.0000334978103638
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_1",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-4.5134601593017578,
-				3.9113998413085938,
-				1.52362060546875
-			],
-			"m_rotation" : 
-			[
-				-42.430625915527344,
-				16.6219482421875,
-				-120.02053070068359
-			],
-			"m_scale" : 
-			[
-				0.99999672174453735,
-				1.0000162124633789,
-				1.0000312328338623
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_0",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				4.3850650787353516,
-				5.5909614562988281,
-				0.51934814453125
-			],
-			"m_rotation" : 
-			[
-				-33.779819488525391,
-				5.0388336181640625,
-				-121.92738342285156
-			],
-			"m_scale" : 
-			[
-				0.99999916553497314,
-				1.0000095367431641,
-				0.99997645616531372
 			]
 		}
 	},
@@ -3803,9 +376,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -3945,7 +518,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -3965,19 +538,19 @@
 		{
 			"m_position" : 
 			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
+				-10.5587158203125,
+				3.05352783203125,
+				-0.650238037109375
 			],
 			"m_rotation" : 
 			[
 				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
+				42.254604339599609,
+				1.8322432041168213
 			],
 			"m_scale" : 
 			[
-				0.99994903802871704,
+				0.99994868040084839,
 				1.0000271797180176,
 				1.0000334978103638
 			]
@@ -4001,9 +574,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -4143,7 +716,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -4199,9 +772,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27441859245300293,
+				0.27441585063934326,
+				0.27441585063934326,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -4341,7 +914,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -4361,21 +934,21 @@
 		{
 			"m_position" : 
 			[
-				4.3850650787353516,
-				5.5909614562988281,
-				0.51934814453125
+				4.3848876953125,
+				5.591583251953125,
+				0.519775390625
 			],
 			"m_rotation" : 
 			[
-				-33.779819488525391,
-				5.0388336181640625,
+				-33.77978515625,
+				5.0388302803039551,
 				-121.92738342285156
 			],
 			"m_scale" : 
 			[
-				0.99999916553497314,
-				1.0000095367431641,
-				0.99997645616531372
+				0.99999910593032837,
+				1.0000089406967163,
+				0.99997609853744507
 			]
 		}
 	},
@@ -4669,9 +1242,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -4811,7 +1384,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -4867,9 +1440,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -5009,7 +1582,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -5065,9 +1638,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -5207,7 +1780,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -5535,9 +2108,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -5677,7 +2250,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -5733,9 +2306,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -5875,7 +2448,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -5931,9 +2504,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -6073,7 +2646,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -6364,9 +2937,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -6506,7 +3079,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -6562,9 +3135,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -6704,7 +3277,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -6760,9 +3333,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -6902,7 +3475,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -7230,9 +3803,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -7372,7 +3945,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -7428,9 +4001,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -7570,7 +4143,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -7626,9 +4199,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -7768,7 +4341,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -8096,9 +4669,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -8238,7 +4811,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -8294,9 +4867,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -8436,7 +5009,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -8492,9 +5065,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -8634,7 +5207,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -8962,9 +5535,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -9104,7 +5677,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -9160,9 +5733,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -9302,7 +5875,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -9358,9 +5931,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -9500,7 +6073,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -9828,9 +6401,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -9970,7 +6543,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -10026,9 +6599,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -10168,7 +6741,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -10224,9 +6797,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -10366,7 +6939,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -10694,9 +7267,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -10836,7 +7409,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -10892,9 +7465,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -11034,7 +7607,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -11090,9 +7663,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -11232,7 +7805,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -11560,9 +8133,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -11702,7 +8275,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -11722,9 +8295,9 @@
 		{
 			"m_position" : 
 			[
-				-7.446563720703125,
-				3.150146484375,
-				-0.27239990234375
+				-7.449615478515625,
+				3.1505126953125,
+				-0.2738037109375
 			],
 			"m_rotation" : 
 			[
@@ -11758,9 +8331,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -11900,7 +8473,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -11956,9 +8529,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -12098,7 +8671,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -12133,6 +8706,4723 @@
 				1.0120469331741333,
 				0.99469846487045288,
 				0.9971650242805481
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				1.0,
+				0.0,
+				-1.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				7.5,
+				4.0,
+				3.5
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Obj_2",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.89959716796875,
+				230.2864990234375,
+				0.54071044921875
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				39.999919891357422
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0000007152557373,
+				0.99992650747299194
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				-10.5,
+				0.0,
+				-1.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.5,
+				3.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.027330398559570312,
+				0.00012969970703125,
+				0.00018310546875
+			],
+			"m_rotation" : 
+			[
+				1.707546402940352e-06,
+				5.6995536762416421e-12,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0000004768371582,
+				1.0000002384185791
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				10.5,
+				0.0,
+				-1.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				2.5,
+				3.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.029554367065429688,
+				0.00012969970703125,
+				0.00018310546875
+			],
+			"m_rotation" : 
+			[
+				1.707546402940352e-06,
+				1.0137063410908809e-09,
+				1.2188902109855348e-09
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0000004768371582,
+				1.0000002384185791
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "FallingSmokeTrio",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f778335c-44f6-4799-84a8-6bfa297d02ea",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.06292724609375,
+				0.0001220703125,
+				-0.00011444091796875
+			],
+			"m_rotation" : 
+			[
+				-1.6973865513136843e-06,
+				2.441812160455803e-12,
+				1.6278747013570571e-12
+			],
+			"m_scale" : 
+			[
+				1.0003496408462524,
+				1.0059860944747925,
+				1.0000540018081665
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_0",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				4.3850650787353516,
+				5.5909614562988281,
+				0.51934814453125
+			],
+			"m_rotation" : 
+			[
+				-33.779819488525391,
+				5.0388336181640625,
+				-121.92738342285156
+			],
+			"m_scale" : 
+			[
+				0.99999916553497314,
+				1.0000095367431641,
+				0.99997645616531372
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_1",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.5134601593017578,
+				3.9113998413085938,
+				1.52362060546875
+			],
+			"m_rotation" : 
+			[
+				-42.430625915527344,
+				16.6219482421875,
+				-120.02053070068359
+			],
+			"m_scale" : 
+			[
+				0.99999672174453735,
+				1.0000162124633789,
+				1.0000312328338623
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_2",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.55848217010498,
+				3.052978515625,
+				-0.650848388671875
+			],
+			"m_rotation" : 
+			[
+				131.78211975097656,
+				42.254611968994141,
+				1.8322427272796631
+			],
+			"m_scale" : 
+			[
+				0.99994903802871704,
+				1.0000271797180176,
+				1.0000334978103638
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "Obj_1",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_02",
+				"Resources/Models\\Environment",
+				"Generator_Type_02"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				11.356536865234375,
+				156.23504638671875,
+				-2.9393520355224609
+			],
+			"m_rotation" : 
+			[
+				-103.74456787109375,
+				-8.5901365280151367,
+				-0.48477226495742798
+			],
+			"m_scale" : 
+			[
+				0.499998539686203,
+				0.49999961256980896,
+				0.59999799728393555
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				-1.0,
+				-8.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.0,
+				4.0,
+				5.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.05126953125,
+				0.002777099609375,
+				0.004425048828125
+			],
+			"m_rotation" : 
+			[
+				8.8072651124093682e-05,
+				-8.537824669474503e-07,
+				-3.3297514164587483e-05
+			],
+			"m_scale" : 
+			[
+				0.99998962879180908,
+				0.99999362230300903,
+				0.99986225366592407
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				-1.0,
+				-8.0,
+				-1.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.0,
+				4.0,
+				5.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0076904296875,
+				1.1102294921875,
+				8.4146270751953125
+			],
+			"m_rotation" : 
+			[
+				8.4524101112037897e-05,
+				-5.4428328439826146e-06,
+				-3.1589774152962491e-05
+			],
+			"m_scale" : 
+			[
+				0.99999523162841797,
+				0.99999392032623291,
+				0.99981170892715454
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				-1.0,
+				-8.0,
+				-1.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.0,
+				4.0,
+				5.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0518798828125,
+				1.1090240478515625,
+				22.31744384765625
+			],
+			"m_rotation" : 
+			[
+				8.8072651124093682e-05,
+				-8.537824669474503e-07,
+				-3.3297514164587483e-05
+			],
+			"m_scale" : 
+			[
+				0.99998962879180908,
+				0.99999362230300903,
+				0.99977058172225952
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "FallingSmokeTrio",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f778335c-44f6-4799-84a8-6bfa297d02ea",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.00146484375,
+				-0.0059814453125,
+				-0.00115966796875
+			],
+			"m_rotation" : 
+			[
+				67.959602355957031,
+				-62.888015747070312,
+				-80.422012329101562
+			],
+			"m_scale" : 
+			[
+				1.9777135848999023,
+				1.6864956617355347,
+				2.0098259449005127
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_1",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.29486083984375,
+				4.007568359375,
+				-4.53594970703125
+			],
+			"m_rotation" : 
+			[
+				-0.85015779733657837,
+				40.430774688720703,
+				-35.444091796875
+			],
+			"m_scale" : 
+			[
+				0.9928935170173645,
+				1.0097308158874512,
+				1.0003954172134399
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_2",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-12.96173095703125,
+				0.158447265625,
+				-4.68096923828125
+			],
+			"m_rotation" : 
+			[
+				124.30232238769531,
+				14.506710052490234,
+				66.131263732910156
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				0.99563246965408325
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "Obj_0",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				10.974517822265625,
+				66.94671630859375,
+				0.00421142578125
+			],
+			"m_rotation" : 
+			[
+				-89.999870300292969,
+				24.161581039428711,
+				89.999748229980469
+			],
+			"m_scale" : 
+			[
+				0.99995905160903931,
+				1.0000002384185791,
+				0.9999229907989502
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				-3.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				4.0,
+				2.0,
+				3.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00023651123046875,
+				-6.67572021484375e-06,
+				-0.01898193359375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				-3.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				4.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-7.227081298828125,
+				-9.5367431640625e-07,
+				-0.04083251953125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				-3.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				4.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				8.3892745971679688,
+				-9.5367431640625e-07,
+				-0.036224365234375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "FallingSmokeTrio",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f778335c-44f6-4799-84a8-6bfa297d02ea",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-1.52587890625e-05,
+				0.0,
+				0.227813720703125
+			],
+			"m_rotation" : 
+			[
+				2.2265925281317323e-07,
+				5.498891297861519e-08,
+				-1.7085370700442581e-06
+			],
+			"m_scale" : 
+			[
+				1.0000069141387939,
+				1.0000344514846802,
+				1.0005805492401123
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_1",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.5134620666503906,
+				3.911376953125,
+				1.52362060546875
+			],
+			"m_rotation" : 
+			[
+				-43.680015563964844,
+				19.891899108886719,
+				-92.360015869140625
+			],
+			"m_scale" : 
+			[
+				0.99998962879180908,
+				1.0000190734863281,
+				1.000032901763916
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_2",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.558483123779297,
+				3.052978515625,
+				-0.650848388671875
+			],
+			"m_rotation" : 
+			[
+				138.79739379882812,
+				39.874885559082031,
+				54.162899017333984
+			],
+			"m_scale" : 
+			[
+				0.99994736909866333,
+				1.0000243186950684,
+				1.0000332593917847
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_0",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				4.385009765625,
+				5.59088134765625,
+				0.5223388671875
+			],
+			"m_rotation" : 
+			[
+				-35.113739013671875,
+				8.5904703140258789,
+				-91.484603881835938
+			],
+			"m_scale" : 
+			[
+				0.99999737739562988,
+				1.0000101327896118,
+				0.99997729063034058
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "Obj_3",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.96978759765625,
+				74.999969482421875,
+				9.54656982421875
+			],
+			"m_rotation" : 
+			[
+				-1.0522938964641071e-06,
+				2.0379945908644004e-06,
+				139.99998474121094
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				1.0,
+				0.99992287158966064
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				-3.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				3.0,
+				2.0,
+				4.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				8.3892822265625,
+				0.0,
+				-0.036224365234375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				1.707547198748216e-06
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "FallingSmokeTrio",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "f778335c-44f6-4799-84a8-6bfa297d02ea",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.27490234375,
+				1.5929336547851562,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				1.7032207866307658e-09,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0000772476196289,
+				1.0000004768371582,
+				1.0000004768371582
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_2",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.55848217010498,
+				3.052978515625,
+				-0.650848388671875
+			],
+			"m_rotation" : 
+			[
+				131.78211975097656,
+				42.254611968994141,
+				1.8322427272796631
+			],
+			"m_scale" : 
+			[
+				0.99994903802871704,
+				1.0000271797180176,
+				1.0000334978103638
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_1",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.5134601593017578,
+				3.9113998413085938,
+				1.52362060546875
+			],
+			"m_rotation" : 
+			[
+				-42.430625915527344,
+				16.6219482421875,
+				-120.02053070068359
+			],
+			"m_scale" : 
+			[
+				0.99999672174453735,
+				1.0000162124633789,
+				1.0000312328338623
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_0",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				4.3850650787353516,
+				5.5909614562988281,
+				0.51934814453125
+			],
+			"m_rotation" : 
+			[
+				-33.779819488525391,
+				5.0388336181640625,
+				-121.92738342285156
+			],
+			"m_scale" : 
+			[
+				0.99999916553497314,
+				1.0000095367431641,
+				0.99997645616531372
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				-3.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				3.0,
+				2.0,
+				4.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00023651123046875,
+				-6.67572021484375e-06,
+				-0.01898193359375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				-3.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				3.0,
+				2.0,
+				4.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Col",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-7.227081298828125,
+				-9.5367431640625e-07,
+				-0.04083251953125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "ExplosionEffect_0",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "dfbf767c-c132-44e9-b971-af3fee23b478",
+			"prefab_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.95813953876495361,
+				0.87398433685302734,
+				0.33423471450805664
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 0.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 3,
+				"Name" : "DelayMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "DelayMin",
+				"Type" : 1
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "LerpDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.68999999761581421,
+				"Name" : "PersistDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.02500000037252903,
+				"Name" : "ScaleSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 16.899999618530273,
+				"Name" : "SpinSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 5,
+				"Name" : "TargetSizeMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "TargetSizeMin",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"ExplosionEffect" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 0.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.490509033203125,
+				-87.43115234375,
+				4.32257080078125
+			],
+			"m_rotation" : 
+			[
+				-0.00016464067448396236,
+				89.999946594238281,
+				-0.00016464058717247099
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				1.0000002384185791,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwave",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.59793627262115479,
+				0.60000002384185791,
+				0.15627908706665039
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Explosion_Shockwave"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outer_Sphere",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Outer_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "ExplosionEffect_1",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "dfbf767c-c132-44e9-b971-af3fee23b478",
+			"prefab_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.95813953876495361,
+				0.87398433685302734,
+				0.33423471450805664
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 0.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 3,
+				"Name" : "DelayMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "DelayMin",
+				"Type" : 1
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "LerpDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.68999999761581421,
+				"Name" : "PersistDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.02500000037252903,
+				"Name" : "ScaleSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 16.899999618530273,
+				"Name" : "SpinSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 5,
+				"Name" : "TargetSizeMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "TargetSizeMin",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"ExplosionEffect" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 0.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-14.346343994140625,
+				-77.062942504882812,
+				-5.83026123046875
+			],
+			"m_rotation" : 
+			[
+				-0.00016464067448396236,
+				89.999946594238281,
+				-0.00016464058717247099
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				1.0000002384185791,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwave",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.59793627262115479,
+				0.60000002384185791,
+				0.15627908706665039
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Explosion_Shockwave"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outer_Sphere",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Outer_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "ExplosionEffect_2",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "dfbf767c-c132-44e9-b971-af3fee23b478",
+			"prefab_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.95813953876495361,
+				0.87398433685302734,
+				0.33423471450805664
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 0.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 3,
+				"Name" : "DelayMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "DelayMin",
+				"Type" : 1
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "LerpDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.68999999761581421,
+				"Name" : "PersistDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.02500000037252903,
+				"Name" : "ScaleSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 16.899999618530273,
+				"Name" : "SpinSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 5,
+				"Name" : "TargetSizeMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "TargetSizeMin",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"ExplosionEffect" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 0.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.619964599609375,
+				-63.052230834960938,
+				15.8934326171875
+			],
+			"m_rotation" : 
+			[
+				-0.00016464067448396236,
+				89.999946594238281,
+				-0.00016464058717247099
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				1.0000002384185791,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwave",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.59793627262115479,
+				0.60000002384185791,
+				0.15627908706665039
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Explosion_Shockwave"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outer_Sphere",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Outer_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "ExplosionEffect_3",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "dfbf767c-c132-44e9-b971-af3fee23b478",
+			"prefab_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.95813953876495361,
+				0.87398433685302734,
+				0.33423471450805664
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 0.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 3,
+				"Name" : "DelayMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "DelayMin",
+				"Type" : 1
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "LerpDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.68999999761581421,
+				"Name" : "PersistDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.02500000037252903,
+				"Name" : "ScaleSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 16.899999618530273,
+				"Name" : "SpinSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 5,
+				"Name" : "TargetSizeMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "TargetSizeMin",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"ExplosionEffect" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 0.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-14.442657470703125,
+				-50.379013061523438,
+				3.78192138671875
+			],
+			"m_rotation" : 
+			[
+				-0.00016464067448396236,
+				89.999946594238281,
+				-0.00016464058717247099
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				1.0000002384185791,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwave",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.59793627262115479,
+				0.60000002384185791,
+				0.15627908706665039
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Explosion_Shockwave"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outer_Sphere",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Outer_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "ExplosionEffect_4",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "dfbf767c-c132-44e9-b971-af3fee23b478",
+			"prefab_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.95813953876495361,
+				0.87398433685302734,
+				0.33423471450805664
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 0.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 3,
+				"Name" : "DelayMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "DelayMin",
+				"Type" : 1
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "LerpDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.68999999761581421,
+				"Name" : "PersistDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.02500000037252903,
+				"Name" : "ScaleSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 16.899999618530273,
+				"Name" : "SpinSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 5,
+				"Name" : "TargetSizeMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "TargetSizeMin",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"ExplosionEffect" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 0.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				14.467010498046875,
+				-16.225875854492188,
+				-7.5670166015625
+			],
+			"m_rotation" : 
+			[
+				-0.00016464067448396236,
+				89.999946594238281,
+				-0.00016464058717247099
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				1.0000002384185791,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwave",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.59793627262115479,
+				0.60000002384185791,
+				0.15627908706665039
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Explosion_Shockwave"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outer_Sphere",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Outer_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "ExplosionEffect_5",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "dfbf767c-c132-44e9-b971-af3fee23b478",
+			"prefab_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.95813953876495361,
+				0.87398433685302734,
+				0.33423471450805664
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 0.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 3,
+				"Name" : "DelayMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "DelayMin",
+				"Type" : 1
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "LerpDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.68999999761581421,
+				"Name" : "PersistDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.02500000037252903,
+				"Name" : "ScaleSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 16.899999618530273,
+				"Name" : "SpinSpeed",
+				"Type" : 0
+			},
+			{
+				"Data" : 5,
+				"Name" : "TargetSizeMax",
+				"Type" : 1
+			},
+			{
+				"Data" : 1,
+				"Name" : "TargetSizeMin",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"ExplosionEffect" : false
+		},
+		"SphereCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"isStatic" : false,
+			"isTrigger" : false,
+			"radius" : 0.0
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.7620849609375,
+				-28.403533935546875,
+				-15.283447265625
+			],
+			"m_rotation" : 
+			[
+				-0.00016464067448396236,
+				89.999946594238281,
+				-0.00016464058717247099
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				1.0000002384185791,
+				1.0000001192092896
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shockwave",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.59793627262115479,
+				0.60000002384185791,
+				0.15627908706665039
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Explosion_Shockwave"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Outer_Sphere",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FallingObj_3.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Outer_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	}

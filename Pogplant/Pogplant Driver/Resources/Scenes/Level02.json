@@ -77001,7 +77001,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 94.878120422363281,
+				"m_FrameCounter" : 88.20452880859375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77015,7 +77015,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.75
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77067,7 +77067,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 6.6035609245300293,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77081,7 +77081,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.015625
+					0.0625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77133,7 +77133,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 38.867103576660156,
+				"m_FrameCounter" : 50.738624572753906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77147,7 +77147,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.3125
+					0.40625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77199,7 +77199,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 6.596369743347168,
+				"m_FrameCounter" : 85.506561279296875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -77212,8 +77212,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.0625
+					0.5,
+					0.671875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77265,7 +77265,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 94.878120422363281,
+				"m_FrameCounter" : 88.20452880859375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77279,7 +77279,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.75
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77331,7 +77331,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 38.867103576660156,
+				"m_FrameCounter" : 50.738624572753906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77345,7 +77345,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.3125
+					0.40625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77397,7 +77397,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 13.633731842041016,
+				"m_FrameCounter" : 88.673484802246094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77410,8 +77410,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.109375
+					0.0,
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77463,7 +77463,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 94.878120422363281,
+				"m_FrameCounter" : 88.20452880859375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77477,7 +77477,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.75
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77529,7 +77529,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 13.633731842041016,
+				"m_FrameCounter" : 88.673484802246094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77542,8 +77542,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.109375
+					0.0,
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77595,7 +77595,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 15.094489097595215,
+				"m_FrameCounter" : 42.157115936279297,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -77608,8 +77608,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.125
+					0.0,
+					0.34375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77661,7 +77661,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 6.6035609245300293,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77675,7 +77675,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.015625
+					0.0625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -102826,9 +102826,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -102968,7 +102968,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -102984,19 +102984,19 @@
 		{
 			"m_position" : 
 			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
+				-10.5587158203125,
+				3.05352783203125,
+				-0.650238037109375
 			],
 			"m_rotation" : 
 			[
 				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
+				42.254604339599609,
+				1.8322432041168213
 			],
 			"m_scale" : 
 			[
-				0.99994903802871704,
+				0.99994868040084839,
 				1.0000271797180176,
 				1.0000334978103638
 			]
@@ -103020,9 +103020,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -103162,7 +103162,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -103214,9 +103214,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27441859245300293,
+				0.27441585063934326,
+				0.27441585063934326,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -103356,7 +103356,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -103372,21 +103372,21 @@
 		{
 			"m_position" : 
 			[
-				4.3850650787353516,
-				5.5909614562988281,
-				0.51934814453125
+				4.3848876953125,
+				5.591583251953125,
+				0.519775390625
 			],
 			"m_rotation" : 
 			[
-				-33.779819488525391,
-				5.0388336181640625,
+				-33.77978515625,
+				5.0388302803039551,
 				-121.92738342285156
 			],
 			"m_scale" : 
 			[
-				0.99999916553497314,
-				1.0000095367431641,
-				0.99997645616531372
+				0.99999910593032837,
+				1.0000089406967163,
+				0.99997609853744507
 			]
 		}
 	},
@@ -103660,9 +103660,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -103802,7 +103802,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -103854,9 +103854,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -103996,7 +103996,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -104048,9 +104048,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -104190,7 +104190,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -104494,9 +104494,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -104636,7 +104636,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -104688,9 +104688,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -104830,7 +104830,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -104882,9 +104882,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -105024,7 +105024,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -105295,9 +105295,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -105437,7 +105437,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -105489,9 +105489,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -105631,7 +105631,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -105683,9 +105683,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -105825,7 +105825,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -106129,9 +106129,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -106271,7 +106271,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -106323,9 +106323,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -106465,7 +106465,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -106517,9 +106517,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -106659,7 +106659,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -106963,9 +106963,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -107105,7 +107105,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -107157,9 +107157,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -107299,7 +107299,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -107351,9 +107351,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -107493,7 +107493,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -107797,9 +107797,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -107939,7 +107939,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -107991,9 +107991,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -108133,7 +108133,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -108185,9 +108185,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -108327,7 +108327,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -108631,9 +108631,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -108773,7 +108773,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -108825,9 +108825,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -108967,7 +108967,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -109019,9 +109019,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -109161,7 +109161,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -109465,9 +109465,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -109607,7 +109607,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -109659,9 +109659,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -109801,7 +109801,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -109853,9 +109853,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -109995,7 +109995,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -110299,9 +110299,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -110441,7 +110441,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -110493,9 +110493,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -110635,7 +110635,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -110687,9 +110687,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -110829,7 +110829,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -111100,9 +111100,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -111242,7 +111242,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -111294,9 +111294,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -111436,7 +111436,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -111488,9 +111488,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -111630,7 +111630,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -111879,7 +111879,7 @@
 		}
 	},
 	{
-		"Children" : 3,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "FallingSmokeTrio",
@@ -111934,9 +111934,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -112076,7 +112076,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -112128,9 +112128,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -112270,7 +112270,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -112301,200 +112301,6 @@
 				2.0,
 				2.0,
 				0.99563246965408325
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Particle_0",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "DarkSmoke.dds",
-			"m_Trail" : false
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				4.3875732421875,
-				5.5821533203125,
-				0.52130126953125
-			],
-			"m_rotation" : 
-			[
-				-1.3487175703048706,
-				12.565074920654297,
-				-52.412158966064453
-			],
-			"m_scale" : 
-			[
-				0.98788934946060181,
-				1.0187177658081055,
-				1.000441312789917
 			]
 		}
 	},
@@ -112768,9 +112574,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -112910,7 +112716,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -112962,9 +112768,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -113104,7 +112910,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -113156,9 +112962,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -113298,7 +113104,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -113500,9 +113306,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				0.99999672174453735,
-				0.99998998641967773,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -113642,7 +113448,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -113694,9 +113500,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -113836,7 +113642,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -113888,9 +113694,9 @@
 			],
 			"m_Color" : 
 			[
-				1.0,
-				1.0,
-				1.0,
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -114030,7 +113836,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "DarkSmoke.dds",
+			"m_TexName" : "Smoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -114274,9 +114080,9 @@
 		{
 			"m_position" : 
 			[
-				-11.282135009765625,
+				12.490509033203125,
 				-87.43115234375,
-				4.32611083984375
+				4.32257080078125
 			],
 			"m_rotation" : 
 			[
@@ -114510,9 +114316,9 @@
 		{
 			"m_position" : 
 			[
-				-13.708892822265625,
+				-14.346343994140625,
 				-77.062942504882812,
-				-5.82098388671875
+				-5.83026123046875
 			],
 			"m_rotation" : 
 			[
@@ -114746,9 +114552,9 @@
 		{
 			"m_position" : 
 			[
-				-11.4921875,
+				6.619964599609375,
 				-63.052230834960938,
-				8.57708740234375
+				15.8934326171875
 			],
 			"m_rotation" : 
 			[
@@ -114982,9 +114788,9 @@
 		{
 			"m_position" : 
 			[
-				-13.677825927734375,
+				-14.442657470703125,
 				-50.379013061523438,
-				-1.95416259765625
+				3.78192138671875
 			],
 			"m_rotation" : 
 			[
@@ -115218,9 +115024,9 @@
 		{
 			"m_position" : 
 			[
-				-12.92083740234375,
+				14.467010498046875,
 				-16.225875854492188,
-				9.44873046875
+				-7.5670166015625
 			],
 			"m_rotation" : 
 			[
@@ -115454,9 +115260,9 @@
 		{
 			"m_position" : 
 			[
-				-14.573974609375,
-				-34.881973266601562,
-				-7.17364501953125
+				-0.7620849609375,
+				-28.403533935546875,
+				-15.283447265625
 			],
 			"m_rotation" : 
 			[
@@ -115579,6 +115385,199 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Name" : 
+		{
+			"m_Name" : "Particle_0",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : true,
+			"m_Force" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-550.13372802734375,
+				410.71536254882812,
+				-481.87362670898438
+			],
+			"m_rotation" : 
+			[
+				165.90907287597656,
+				0.67210471630096436,
+				150.29812622070312
+			],
+			"m_scale" : 
+			[
+				0.90508264303207397,
+				1.134894847869873,
+				1.0143406391143799
 			]
 		}
 	},
