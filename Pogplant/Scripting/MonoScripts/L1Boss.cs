@@ -266,15 +266,6 @@ namespace Scripting
             moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
             moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
 
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
-            {
-                SetState(BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE.ToString());
-            }
-
-            if (InputUtility.onKeyTriggered(KEY_ID.KEY_I))
-            {
-                SetState(BOSS_BEHAVIOUR_STATE.SMASH_ATTACK.ToString());
-            }
 
             //Update mouths based on eye damage state
             UpdateMouths(dt);

@@ -278,7 +278,7 @@ namespace Scripting
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMin = 20.5f;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMax = 20.5f;
 
-			m_runStateInfo.stateDuration = 9.5f;
+			m_runStateInfo.stateDuration = 8.8f;
 			m_runStateInfo.lastAttackIsSpin = true;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].isVulnerable = true;
@@ -296,9 +296,19 @@ namespace Scripting
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMax = 20f;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].isVulnerable = false;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].shouldReturnToDefault = false;
-			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 30f;
-			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 30f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].shouldReturnToDefault = true;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 13.3f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMax = 13.3f;
+
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].isVulnerable = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].shouldReturnToDefault = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].stateDurationMin = 12f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].stateDurationMax = 12f;
+
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK].isVulnerable = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK].shouldReturnToDefault = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK].stateDurationMin = 12f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK].stateDurationMax = 12f;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].shouldReturnToDefault = false;
@@ -318,25 +328,27 @@ namespace Scripting
 			if (m_debugMode)
 			{
 				//Debug stuff
-				if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
-				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
-				}
-
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
 				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK);
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
 				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_K))
 				{
 					//DestroyedBothCores();
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
+					Console.WriteLine("L1BossBehaviour.cs: Triggered Spinning");
+				}
+
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_L))
+				{
+					//DestroyedBothCores();
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK);
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
@@ -483,8 +495,8 @@ namespace Scripting
 			{
 				if (m_stateBehaviours[(int)L1Boss.m_singleton.current_state].shouldReturnToDefault)
 				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
-					//Console.WriteLine("Boss: Changing to MOVING");
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, false);
+					Console.WriteLine("Boss: Changing to MOVING");
 				}
 			}
 
@@ -656,6 +668,9 @@ namespace Scripting
 				m_runStateInfo.stateDuration = PPMath.RandomFloat(
 					m_stateBehaviours[(int)nextState].stateDurationMin,
 					m_stateBehaviours[(int)nextState].stateDurationMax);
+
+				Console.WriteLine("L1BossBehaviour: Duration " + m_runStateInfo.stateDuration);
+				Console.WriteLine("L1BossBehaviour: Range " + m_stateBehaviours[(int)nextState].stateDurationMin + ", " + m_stateBehaviours[(int)nextState].stateDurationMax);
 			}
 		}
 
