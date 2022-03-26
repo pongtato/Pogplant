@@ -124,7 +124,7 @@
 			"m_position" : 
 			[
 				1.8999999761581421,
-				-0.22499999403953552,
+				-0.15000000596046448,
 				0.96100002527236938
 			],
 			"m_rotation" : 
@@ -190,7 +190,7 @@
 			"m_position" : 
 			[
 				1.8999999761581421,
-				-0.30000001192092896,
+				-0.22499999403953552,
 				0.96100002527236938
 			],
 			"m_rotation" : 
@@ -245,7 +245,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Credits Button",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -299,7 +299,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Settings Menu",
-			"status" : true
+			"status" : false
 		},
 		"Rigidbody" : 
 		{
@@ -375,7 +375,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Default Volume Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -441,7 +441,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Settings BG",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -507,7 +507,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Default Volume Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -573,7 +573,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Left Arrow",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -639,7 +639,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Right Arrow",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -705,7 +705,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Controls Text",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -3576,7 +3576,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SM_RightTab",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -3609,7 +3609,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Resolution Parent",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -3675,7 +3675,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Resolution Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -3741,7 +3741,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Resolution Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -3807,7 +3807,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Resolution Bar BG",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -3840,7 +3840,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Resolution Bar 3",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -3887,7 +3887,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Resolution Bar 1",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -3934,7 +3934,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Resolution Bar 2",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -3981,7 +3981,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Gamma Parent",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4047,7 +4047,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Gamma Button Faded",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4113,7 +4113,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Gamma Button",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4179,7 +4179,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Gamma Bar BG",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4245,7 +4245,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Gamma Bar 1",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4311,7 +4311,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Gamma Bar 2",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4377,7 +4377,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Gamma Bar 3",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4443,7 +4443,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Gamma Bar 4",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4509,7 +4509,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Gamma Bar 5",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4575,7 +4575,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SM_Q",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -4652,7 +4652,7 @@
 			"m_position" : 
 			[
 				1.3999999761581421,
-				-0.15000000596046448,
+				-0.075000002980232239,
 				0.96100002527236938
 			],
 			"m_rotation" : 
@@ -4718,7 +4718,7 @@
 			"m_position" : 
 			[
 				0.37999999523162842,
-				-0.15000000596046448,
+				-0.075000002980232239,
 				0.95999997854232788
 			],
 			"m_rotation" : 
@@ -4784,7 +4784,7 @@
 			"m_position" : 
 			[
 				0.37999999523162842,
-				-0.22499999403953552,
+				-0.15000000596046448,
 				0.95999997854232788
 			],
 			"m_rotation" : 
@@ -4850,7 +4850,7 @@
 			"m_position" : 
 			[
 				0.37999999523162842,
-				-0.30000001192092896,
+				-0.22499999403953552,
 				0.95999997854232788
 			],
 			"m_rotation" : 
@@ -4905,7 +4905,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Credits Button Faded",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -4982,7 +4982,7 @@
 			"m_position" : 
 			[
 				0.37999999523162842,
-				-0.375,
+				-0.44999998807907104,
 				0.95999997854232788
 			],
 			"m_rotation" : 
@@ -5411,7 +5411,7 @@
 			"m_position" : 
 			[
 				2.2000000476837158,
-				-0.375,
+				-0.44999998807907104,
 				0.96100002527236938
 			],
 			"m_rotation" : 
