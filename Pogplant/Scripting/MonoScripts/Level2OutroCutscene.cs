@@ -86,6 +86,12 @@ namespace Scripting
         uint gate_lower_id;
         uint gate_lower_2_id;
 
+        //Gate Gear
+        uint left_gear_top_id;
+        uint left_gear_bottom_id;
+        uint right_gear_top_id;
+        uint right_gear_bottom_id;
+
         uint camera_id;
         uint cinematic_bar_top_id;
         uint cinematic_bar_bottom_id;
@@ -207,6 +213,11 @@ namespace Scripting
             gate_lower_id = ECS.FindEntityWithName("Btm_Gate_Part_01");
             gate_lower_2_id = ECS.FindEntityWithName("Btm_Gate_Part_02");
 
+            left_gear_top_id = ECS.FindEntityWithName("Left_Gear_Top");
+            left_gear_bottom_id = ECS.FindEntityWithName("Left_Gear_Bottom");
+            right_gear_top_id = ECS.FindEntityWithName("Right_Gear_Top");
+            right_gear_bottom_id = ECS.FindEntityWithName("Right_Gear_Bottom");
+
             //Create and initialize the list of moving parts
             moving_parts_dict = new Dictionary<uint, MovingParts>();
 
@@ -273,6 +284,11 @@ namespace Scripting
             moving_parts_dict.Add(gate_upper_2_id, new MovingParts() { entity_id = gate_upper_2_id });
             moving_parts_dict.Add(gate_lower_id, new MovingParts() { entity_id = gate_lower_id });
             moving_parts_dict.Add(gate_lower_2_id, new MovingParts() { entity_id = gate_lower_2_id });
+
+            moving_parts_dict.Add(left_gear_top_id, new MovingParts() { entity_id = left_gear_top_id });
+            moving_parts_dict.Add(left_gear_bottom_id, new MovingParts() { entity_id = left_gear_bottom_id });
+            moving_parts_dict.Add(right_gear_top_id, new MovingParts() { entity_id = right_gear_top_id });
+            moving_parts_dict.Add(right_gear_bottom_id, new MovingParts() { entity_id = right_gear_bottom_id });
 
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
@@ -565,6 +581,11 @@ namespace Scripting
             moving_parts_dict[gate_upper_2_id].SetLinearPosition(new Vector3(0, 7.0f, 0), new Vector3(0, 0.7f, 0), true, true, true);
             moving_parts_dict[gate_lower_2_id].SetLinearPosition(new Vector3(0, -7.0f, 0), new Vector3(0, 0.7f, 0), true, true, true);
 
+            moving_parts_dict[left_gear_top_id].SetToggleSpin(true);
+            moving_parts_dict[left_gear_bottom_id].SetToggleSpin(true);
+            moving_parts_dict[right_gear_top_id].SetToggleSpin(true);
+            moving_parts_dict[right_gear_bottom_id].SetToggleSpin(true);
+
             cam_lerp_value = 0.0f;
         }
 
@@ -582,6 +603,11 @@ namespace Scripting
             moving_parts_dict[camera_id].UpdateMovingParts(dt);
             moving_parts_dict[gate_upper_2_id].UpdateMovingParts(dt);
             moving_parts_dict[gate_lower_2_id].UpdateMovingParts(dt);
+
+            moving_parts_dict[left_gear_top_id].SpinObjectEndless(1.0f, 0.0f, 0.0f, 50.0f, dt);
+            moving_parts_dict[left_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 50.0f, dt);
+            moving_parts_dict[right_gear_top_id].SpinObjectEndless(1.0f, 0.0f, 0.0f, 50.0f, dt);
+            moving_parts_dict[right_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 50.0f, dt);
         }
 
         void SetTakeOffAnimationsFive()
@@ -605,6 +631,11 @@ namespace Scripting
 
             moving_parts_dict[gate_upper_id].UpdateMovingParts(dt);
             moving_parts_dict[gate_lower_id].UpdateMovingParts(dt);
+
+            moving_parts_dict[left_gear_top_id].SpinObjectEndless(1.0f, 0.0f, 0.0f, 50.0f, dt);
+            moving_parts_dict[left_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 50.0f, dt);
+            moving_parts_dict[right_gear_top_id].SpinObjectEndless(1.0f, 0.0f, 0.0f, 50.0f, dt);
+            moving_parts_dict[right_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 50.0f, dt);
         }
 
         void SetTakeOffAnimationsSix()
@@ -625,6 +656,11 @@ namespace Scripting
             Camera.GetCamera(entityID, ref yaw, ref pitch, ref roll);
             Vector3 updated_cam_values = Vector3.Lerp(new Vector3(yaw, pitch, roll), new Vector3(18.0f, -18.0f, 0), cam_lerp_value);
             Camera.SetCamera(camera_id, updated_cam_values.X, updated_cam_values.Y, updated_cam_values.Z);
+
+            moving_parts_dict[left_gear_top_id].SpinObjectEndless(1.0f, 0.0f, 0.0f, 5.0f, dt);
+            moving_parts_dict[left_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 5.0f, dt);
+            moving_parts_dict[right_gear_top_id].SpinObjectEndless(1.0f, 0.0f, 0.0f, 5.0f, dt);
+            moving_parts_dict[right_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 5.0f, dt);
         }
 
         void SetTakeOffAnimationsSeven()

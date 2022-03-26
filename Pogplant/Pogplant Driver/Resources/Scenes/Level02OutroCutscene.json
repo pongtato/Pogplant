@@ -38111,7 +38111,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_Gear_02",
+			"m_Name" : "Right_Gear_Bottom",
 			"status" : true
 		},
 		"Render" : 
@@ -38166,7 +38166,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Right_Gear_01",
+			"m_Name" : "Right_Gear_Top",
 			"status" : true
 		},
 		"Render" : 
@@ -38206,7 +38206,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -38441,7 +38441,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_Gear_02",
+			"m_Name" : "Left_Gear_Top",
 			"status" : true
 		},
 		"Render" : 
@@ -38481,7 +38481,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -38826,7 +38826,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Left_Gear_01",
+			"m_Name" : "Left_Gear_Bottom",
 			"status" : true
 		},
 		"Render" : 
@@ -38866,7 +38866,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -42714,21 +42714,21 @@
 		{
 			"m_position" : 
 			[
-				-0.1627044677734375,
-				-4.5299530029296875e-06,
-				3.814697265625e-06
+				-0.1627197265625,
+				0.0,
+				1.52587890625e-05
 			],
 			"m_rotation" : 
 			[
-				0.0,
-				-0.0,
-				0.0
+				2.0192843230848467e-10,
+				-9.8184809758095071e-06,
+				6.4617209361017558e-09
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.99999141693115234,
+				0.99999308586120605,
+				0.99999147653579712
 			]
 		}
 	},
