@@ -21,7 +21,7 @@
 		"Children" : 14,
 		"Guid" : 
 		{
-			"m_guid" : "6f013d9c-5851-4deb-b359-5d15baa6501a"
+			"m_guid" : "9628af5f-5586-43c0-84e0-16de928a8171"
 		},
 		"Name" : 
 		{
@@ -481,7 +481,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -679,7 +679,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -877,7 +877,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -1347,7 +1347,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -1545,7 +1545,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -1743,7 +1743,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -1769,14 +1769,14 @@
 			],
 			"m_rotation" : 
 			[
-				-1.3487191200256348,
-				12.565075874328613,
-				-52.412181854248047
+				-1.3487175703048706,
+				12.565074920654297,
+				-52.412158966064453
 			],
 			"m_scale" : 
 			[
-				0.98788923025131226,
-				1.01871657371521,
+				0.98788934946060181,
+				1.0187177658081055,
 				1.000441312789917
 			]
 		}
@@ -2213,7 +2213,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -2411,7 +2411,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -2609,7 +2609,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -3079,7 +3079,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -3277,7 +3277,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -3475,7 +3475,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -3945,7 +3945,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -4143,7 +4143,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -4341,7 +4341,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -4811,7 +4811,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -5009,7 +5009,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -5207,7 +5207,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -5677,7 +5677,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -5875,7 +5875,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -6073,7 +6073,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -6506,7 +6506,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -6704,7 +6704,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -6902,7 +6902,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -7372,7 +7372,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -7570,7 +7570,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -7768,7 +7768,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -8238,7 +8238,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -8436,7 +8436,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -8634,7 +8634,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -9104,7 +9104,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -9302,7 +9302,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -9500,7 +9500,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -9970,7 +9970,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -10168,7 +10168,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -10366,7 +10366,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -10836,7 +10836,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -11034,7 +11034,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -11232,7 +11232,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -11702,7 +11702,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -11722,9 +11722,9 @@
 		{
 			"m_position" : 
 			[
-				-7.453948974609375,
-				3.1505126953125,
-				-0.274169921875
+				-7.446563720703125,
+				3.150146484375,
+				-0.27239990234375
 			],
 			"m_rotation" : 
 			[
@@ -11900,7 +11900,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -12098,7 +12098,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 

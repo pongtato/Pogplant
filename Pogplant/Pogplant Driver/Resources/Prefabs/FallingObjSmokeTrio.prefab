@@ -14,6 +14,11 @@
 		{
 			"file_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
 		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "d9fe6fce-407a-4fd5-b7ef-e62f7f094b01",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmokeTrio.prefab"
+		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -29,7 +34,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -200,7 +205,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -398,7 +403,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -596,7 +601,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"Prefab" : 
@@ -623,12 +628,12 @@
 			"m_rotation" : 
 			[
 				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
+				42.254608154296875,
+				1.8322423696517944
 			],
 			"m_scale" : 
 			[
-				0.99994903802871704,
+				0.99994891881942749,
 				1.0000271797180176,
 				1.0000334978103638
 			]

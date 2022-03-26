@@ -75720,7 +75720,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 42.619857788085938,
+				"m_FrameCounter" : 77.383224487304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -75733,8 +75733,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.34375
+					0.5,
+					0.609375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -75786,7 +75786,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 20.422264099121094,
+				"m_FrameCounter" : 102.09841156005859,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -75800,7 +75800,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.171875
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -75852,7 +75852,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 105.54431915283203,
+				"m_FrameCounter" : 44.996833801269531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -75865,8 +75865,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.828125
+					0.0,
+					0.359375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -75918,7 +75918,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 57.379074096679688,
+				"m_FrameCounter" : 12.683357238769531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -75931,8 +75931,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.453125
+					0.0,
+					0.109375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -75984,7 +75984,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 42.619857788085938,
+				"m_FrameCounter" : 77.383224487304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -75997,8 +75997,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.34375
+					0.5,
+					0.609375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -76050,7 +76050,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 105.54431915283203,
+				"m_FrameCounter" : 44.996833801269531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -76063,8 +76063,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.828125
+					0.0,
+					0.359375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -76116,7 +76116,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.9449462890625,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -76130,7 +76130,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -76182,7 +76182,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 42.619857788085938,
+				"m_FrameCounter" : 77.383224487304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -76195,8 +76195,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.34375
+					0.5,
+					0.609375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -76248,7 +76248,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.9449462890625,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -76262,7 +76262,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -76314,7 +76314,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.73825073242188,
+				"m_FrameCounter" : 79.962661743164062,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -76327,8 +76327,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.921875
+					0.5,
+					0.625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -76380,7 +76380,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 20.422264099121094,
+				"m_FrameCounter" : 102.09841156005859,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -76394,7 +76394,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.171875
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -101654,7 +101654,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -101848,7 +101848,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -102042,7 +102042,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -102488,7 +102488,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -102682,7 +102682,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -102876,7 +102876,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -102898,14 +102898,14 @@
 			],
 			"m_rotation" : 
 			[
-				-1.3487191200256348,
-				12.565075874328613,
-				-52.412181854248047
+				-1.3487175703048706,
+				12.565074920654297,
+				-52.412158966064453
 			],
 			"m_scale" : 
 			[
-				0.98788923025131226,
-				1.01871657371521,
+				0.98788934946060181,
+				1.0187177658081055,
 				1.000441312789917
 			]
 		}
@@ -103322,7 +103322,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -103516,7 +103516,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -103710,7 +103710,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -104156,7 +104156,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -104350,7 +104350,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -104544,7 +104544,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -104990,7 +104990,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -105184,7 +105184,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -105378,7 +105378,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -105824,7 +105824,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -106018,7 +106018,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -106212,7 +106212,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -106658,7 +106658,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -106852,7 +106852,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -107046,7 +107046,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -107459,7 +107459,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -107653,7 +107653,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -107847,7 +107847,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -108293,7 +108293,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -108487,7 +108487,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -108681,7 +108681,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -109127,7 +109127,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -109321,7 +109321,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -109515,7 +109515,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -109961,7 +109961,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -110155,7 +110155,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -110349,7 +110349,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -110795,7 +110795,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -110989,7 +110989,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -111183,7 +111183,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -111629,7 +111629,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -111823,7 +111823,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -112017,7 +112017,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -112463,7 +112463,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -112479,9 +112479,9 @@
 		{
 			"m_position" : 
 			[
-				-7.453948974609375,
+				-7.449615478515625,
 				3.1505126953125,
-				-0.274169921875
+				-0.2738037109375
 			],
 			"m_rotation" : 
 			[
@@ -112657,7 +112657,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
@@ -112851,7 +112851,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "DarkSmoke.dds",
 			"m_Trail" : false
 		},
 		"PrefabInstance" : 
