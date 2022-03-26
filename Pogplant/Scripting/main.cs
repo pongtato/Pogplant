@@ -319,5 +319,10 @@ namespace Scripting
         {
             return new PlayerNuke();
         }
+
+        public static ExplosionEffect ExplosionEffect()
+        {
+            return new ExplosionEffect();
+        }
     }
 }
