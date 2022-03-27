@@ -149,11 +149,11 @@ namespace Scripting
                 case "Level2_SegmentTwo":
                     Level2_SegmentTwo();
                     break;
+                case "Level2_SegmentThree":
+                    Level2_SegmentThree();
+                    break;
                 case "Level2_SegmentFour":
                     Level2_SegmentFour();
-                    break;
-                case "Level2_SegmentFive":
-                    Level2_SegmentFive();
                     break;
                 case "Level2_SegmentSeven":
                     Level2_SegmentSeven();
@@ -1873,10 +1873,10 @@ namespace Scripting
             encounterManager.AddEncounter(SegmentTwo);
         }
 
-        void Level2_SegmentFour()
+        void Level2_SegmentThree()
         {
             EnemyManager enemyManager = encounterManager.enemyManager;
-            Encounter SegmentTwo = new Encounter(0.0f, 30.0f, enemyManager);
+            Encounter SegmentTwo = new Encounter(0.0f, 33.0f, enemyManager);
 
             //
             // Part A
@@ -1884,27 +1884,27 @@ namespace Scripting
 
             for (int i = 0; i < 2; ++i)
             {
-                EnemyTemplate enemy9a = new EnemyTemplate(enemyManager.GetWaypoint("Near_T10_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy9b = new EnemyTemplate(enemyManager.GetWaypoint("Near_T10_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy9c = new EnemyTemplate(enemyManager.GetWaypoint("Near_T12_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy9d = new EnemyTemplate(enemyManager.GetWaypoint("Near_T12_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy9a = new EnemyTemplate(enemyManager.GetWaypoint("Near_T10_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy9b = new EnemyTemplate(enemyManager.GetWaypoint("Near_T10_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy9c = new EnemyTemplate(enemyManager.GetWaypoint("Near_T12_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy9d = new EnemyTemplate(enemyManager.GetWaypoint("Near_T12_Start"), 4.5f, small_enemy_health);
 
-                EnemyTemplate enemy10a = new EnemyTemplate(enemyManager.GetWaypoint("Near_T10_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy10b = new EnemyTemplate(enemyManager.GetWaypoint("Near_T10_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy10c = new EnemyTemplate(enemyManager.GetWaypoint("Near_T12_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy10d = new EnemyTemplate(enemyManager.GetWaypoint("Near_T12_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy10a = new EnemyTemplate(enemyManager.GetWaypoint("Near_T10_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy10b = new EnemyTemplate(enemyManager.GetWaypoint("Near_T10_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy10c = new EnemyTemplate(enemyManager.GetWaypoint("Near_T12_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy10d = new EnemyTemplate(enemyManager.GetWaypoint("Near_T12_Start"), 4.5f, small_enemy_health);
 
-                EnemyTemplate enemy11 = new EnemyTemplate(enemyManager.GetWaypoint("Near_T6_Start"), 5.0f, big_enemy_health); // big enemy
+                EnemyTemplate enemy11 = new EnemyTemplate(enemyManager.GetWaypoint("Near_T6_Start"), 4.5f, big_enemy_health); // big enemy
 
-                EnemyTemplate enemy12a = new EnemyTemplate(enemyManager.GetWaypoint("Near_T4_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy12b = new EnemyTemplate(enemyManager.GetWaypoint("Near_T4_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy12c = new EnemyTemplate(enemyManager.GetWaypoint("Near_T2_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy12d = new EnemyTemplate(enemyManager.GetWaypoint("Near_T2_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy12a = new EnemyTemplate(enemyManager.GetWaypoint("Near_T4_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy12b = new EnemyTemplate(enemyManager.GetWaypoint("Near_T4_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy12c = new EnemyTemplate(enemyManager.GetWaypoint("Near_T2_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy12d = new EnemyTemplate(enemyManager.GetWaypoint("Near_T2_Start"), 4.5f, small_enemy_health);
 
-                EnemyTemplate enemy13a = new EnemyTemplate(enemyManager.GetWaypoint("Near_T4_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy13b = new EnemyTemplate(enemyManager.GetWaypoint("Near_T4_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy13c = new EnemyTemplate(enemyManager.GetWaypoint("Near_T2_Start"), 5.0f, small_enemy_health);
-                EnemyTemplate enemy13d = new EnemyTemplate(enemyManager.GetWaypoint("Near_T2_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy13a = new EnemyTemplate(enemyManager.GetWaypoint("Near_T4_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy13b = new EnemyTemplate(enemyManager.GetWaypoint("Near_T4_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy13c = new EnemyTemplate(enemyManager.GetWaypoint("Near_T2_Start"), 4.5f, small_enemy_health);
+                EnemyTemplate enemy13d = new EnemyTemplate(enemyManager.GetWaypoint("Near_T2_Start"), 4.5f, small_enemy_health);
 
                 // Move and shoot
                 {
@@ -1970,7 +1970,7 @@ namespace Scripting
 
                     enemy12b.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T4_Start"), enemyManager.GetWaypoint("4,4,5"), 1.0f));
                     BaseAction[] action4b = new BaseAction[2];
-                    action4b[0] = new MoveAction(enemyManager.GetWaypoint("4,6,5"), enemyManager.GetWaypoint("4,6,5"), 3.0f);
+                    action4b[0] = new MoveAction(enemyManager.GetWaypoint("4,4,5"), enemyManager.GetWaypoint("4,4,5"), 3.0f);
                     action4b[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy12b.AddCommand(new CompositeAction(action4b));
 
@@ -2006,7 +2006,7 @@ namespace Scripting
 
                     enemy13d.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T2_Start"), enemyManager.GetWaypoint("2,3,5"), 1.0f));
                     BaseAction[] action5d = new BaseAction[2];
-                    action5d[0] = new MoveAction(enemyManager.GetWaypoint("2,3,5"), enemyManager.GetWaypoint("2,1,5"), 3.0f);
+                    action5d[0] = new MoveAction(enemyManager.GetWaypoint("2,3,5"), enemyManager.GetWaypoint("2,3,5"), 3.0f);
                     action5d[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy13d.AddCommand(new CompositeAction(action5d));
                 }
@@ -2064,39 +2064,39 @@ namespace Scripting
                 //
                 // GET SPAWN POINTS
                 //
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.0f), enemyManager.GetWaypoint("Near_T10_Start"), enemy9a, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.0f), enemyManager.GetWaypoint("Near_T10_Start"), enemy9b, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.0f), enemyManager.GetWaypoint("Near_T10_Start"), enemy9c, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.0f), enemyManager.GetWaypoint("Near_T10_Start"), enemy9d, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.5f), enemyManager.GetWaypoint("Near_T10_Start"), enemy9a, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.5f), enemyManager.GetWaypoint("Near_T10_Start"), enemy9b, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.5f), enemyManager.GetWaypoint("Near_T10_Start"), enemy9c, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.5f), enemyManager.GetWaypoint("Near_T10_Start"), enemy9d, "Enemy_01"));
 
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.0f), enemyManager.GetWaypoint("Near_T10_Start"), enemy10a, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.0f), enemyManager.GetWaypoint("Near_T10_Start"), enemy10b, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.0f), enemyManager.GetWaypoint("Near_T10_Start"), enemy10c, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.0f), enemyManager.GetWaypoint("Near_T10_Start"), enemy10d, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.5f), enemyManager.GetWaypoint("Near_T10_Start"), enemy10a, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.5f), enemyManager.GetWaypoint("Near_T10_Start"), enemy10b, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.5f), enemyManager.GetWaypoint("Near_T10_Start"), enemy10c, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.5f), enemyManager.GetWaypoint("Near_T10_Start"), enemy10d, "Enemy_01"));
 
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.0f), enemyManager.GetWaypoint("Near_T6_Start"), enemy11, "Enemy_02"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.5f), enemyManager.GetWaypoint("Near_T6_Start"), enemy11, "Enemy_02"));
 
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.0f), enemyManager.GetWaypoint("Near_T4_Start"), enemy12a, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.0f), enemyManager.GetWaypoint("Near_T4_Start"), enemy12b, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.0f), enemyManager.GetWaypoint("Near_T4_Start"), enemy12c, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.0f), enemyManager.GetWaypoint("Near_T4_Start"), enemy12d, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.5f), enemyManager.GetWaypoint("Near_T4_Start"), enemy12a, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.5f), enemyManager.GetWaypoint("Near_T4_Start"), enemy12b, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.5f), enemyManager.GetWaypoint("Near_T4_Start"), enemy12c, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.0f + (i * 5.5f), enemyManager.GetWaypoint("Near_T4_Start"), enemy12d, "Enemy_01"));
 
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.0f), enemyManager.GetWaypoint("Near_T4_Start"), enemy13a, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.0f), enemyManager.GetWaypoint("Near_T4_Start"), enemy13b, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.0f), enemyManager.GetWaypoint("Near_T4_Start"), enemy13c, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.0f), enemyManager.GetWaypoint("Near_T4_Start"), enemy13d, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.5f), enemyManager.GetWaypoint("Near_T4_Start"), enemy13a, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.5f), enemyManager.GetWaypoint("Near_T4_Start"), enemy13b, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.5f), enemyManager.GetWaypoint("Near_T4_Start"), enemy13c, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(0.2f + (i * 5.5f), enemyManager.GetWaypoint("Near_T4_Start"), enemy13d, "Enemy_01"));
             }
             //
             // Part B
             //
             {
-                EnemyTemplate enemy9 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L3_Start"), 6.0f, small_enemy_health);
-                EnemyTemplate enemy10 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L0_Start"), 6.0f, big_enemy_health); // laser
-                EnemyTemplate enemy11 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L3_Start"), 6.0f, small_enemy_health);
-                EnemyTemplate enemy12 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L0_Start"), 6.0f, big_enemy_health); // laser
-                EnemyTemplate enemy13 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L3_Start"), 6.0f, small_enemy_health);
-                EnemyTemplate enemy14 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L6_Start"), 6.0f, big_enemy_health); // laser
-                EnemyTemplate enemy15 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L6_Start"), 6.0f, big_enemy_health); // laser
+                EnemyTemplate enemy9 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L3_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy10 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L0_Start"), 5.0f, big_enemy_health); // laser
+                EnemyTemplate enemy11 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L3_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy12 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L0_Start"), 5.0f, big_enemy_health); // laser
+                EnemyTemplate enemy13 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L3_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy14 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L6_Start"), 5.0f, big_enemy_health); // laser
+                EnemyTemplate enemy15 = new EnemyTemplate(enemyManager.GetWaypoint("Near_L6_Start"), 5.0f, big_enemy_health); // laser
 
                 // Move and shoot
                 {
@@ -2120,20 +2120,16 @@ namespace Scripting
                 }
 
                 enemy10.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L0_Start"), enemyManager.GetWaypoint("4,0,2"), 1.0f));
-                enemy10.AddCommand(new WaitAction(1.0f));
                 enemy10.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f));
 
                 enemy12.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L0_Start"), enemyManager.GetWaypoint("10,0,2"), 1.0f));
-                enemy12.AddCommand(new WaitAction(1.4f));
-                enemy12.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.6f));
+                enemy12.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f));
 
                 enemy14.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L6_Start"), enemyManager.GetWaypoint("4,6,2"), 1.0f));
-                enemy14.AddCommand(new WaitAction(1.8f));
-                enemy14.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.2f));
+                enemy14.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f));
 
                 enemy15.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L6_Start"), enemyManager.GetWaypoint("10,6,2"), 1.0f));
-                enemy15.AddCommand(new WaitAction(2.2f));
-                enemy15.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 0.8f));
+                enemy15.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f));
 
 
                 enemy9.AddCommand(new MoveAction(enemyManager.GetWaypoint("2,3,2"), enemyManager.GetWaypoint("Near_R3_Start"), 1.0f));
@@ -2147,26 +2143,26 @@ namespace Scripting
                 //
                 // GET SPAWN POINTS
                 //
-                SegmentTwo.AddSpawnAction(new SpawnAction(10.2f, enemyManager.GetWaypoint("Near_L0_Start"), enemy12, "Enemy_02"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(10.2f, enemyManager.GetWaypoint("Near_L3_Start"), enemy13, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(10.2f, enemyManager.GetWaypoint("Near_L6_Start"), enemy15, "Enemy_02"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(10.4f, enemyManager.GetWaypoint("Near_L0_Start"), enemy10, "Enemy_02"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(10.4f, enemyManager.GetWaypoint("Near_L3_Start"), enemy11, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(10.4f, enemyManager.GetWaypoint("Near_L6_Start"), enemy14, "Enemy_02"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(10.6f, enemyManager.GetWaypoint("Near_L3_Start"), enemy9, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(12.2f, enemyManager.GetWaypoint("Near_L0_Start"), enemy12, "Enemy_02"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(12.2f, enemyManager.GetWaypoint("Near_L3_Start"), enemy13, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(12.2f, enemyManager.GetWaypoint("Near_L6_Start"), enemy15, "Enemy_02"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(12.4f, enemyManager.GetWaypoint("Near_L0_Start"), enemy10, "Enemy_02"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(12.4f, enemyManager.GetWaypoint("Near_L3_Start"), enemy11, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(12.4f, enemyManager.GetWaypoint("Near_L6_Start"), enemy14, "Enemy_02"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(12.6f, enemyManager.GetWaypoint("Near_L3_Start"), enemy9, "Enemy_01"));
             }
 
             //
             // Part C
             //
             {
-                EnemyTemplate enemy9 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R3_Start"), 6.0f, big_enemy_health); // laser
-                EnemyTemplate enemy10 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R0_Start"), 6.0f, small_enemy_health);
-                EnemyTemplate enemy11 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R3_Start"), 6.0f, big_enemy_health); // laser
-                EnemyTemplate enemy12 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R0_Start"), 6.0f, small_enemy_health);
-                EnemyTemplate enemy13 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R3_Start"), 6.0f, big_enemy_health); // laser
-                EnemyTemplate enemy14 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R6_Start"), 6.0f, small_enemy_health);
-                EnemyTemplate enemy15 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R6_Start"), 6.0f, small_enemy_health);
+                EnemyTemplate enemy9 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R3_Start"), 5.0f, big_enemy_health); // laser
+                EnemyTemplate enemy10 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R0_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy11 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R3_Start"), 5.0f, big_enemy_health); // laser
+                EnemyTemplate enemy12 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R0_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy13 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R3_Start"), 5.0f, big_enemy_health); // laser
+                EnemyTemplate enemy14 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R6_Start"), 5.0f, small_enemy_health);
+                EnemyTemplate enemy15 = new EnemyTemplate(enemyManager.GetWaypoint("Near_R6_Start"), 5.0f, small_enemy_health);
 
                 // Move and shoot
                 {
@@ -2196,16 +2192,13 @@ namespace Scripting
                 }
 
                 enemy9.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("2,3,2"), 1.0f));
-                enemy9.AddCommand(new WaitAction(1.0f));
                 enemy9.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f));
 
                 enemy11.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("7,3,2"), 1.0f));
-                enemy11.AddCommand(new WaitAction(1.4f));
-                enemy11.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.6f));
+                enemy11.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f));
 
                 enemy13.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("12,3,2"), 1.0f));
-                enemy13.AddCommand(new WaitAction(1.8f));
-                enemy13.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 1.8f));
+                enemy13.AddCommand(new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f));
 
 
                 enemy9.AddCommand(new MoveAction(enemyManager.GetWaypoint("2,3,2"), enemyManager.GetWaypoint("Near_L3_Start"), 1.0f));
@@ -2219,19 +2212,19 @@ namespace Scripting
                 //
                 // GET SPAWN POINTS
                 //
-                SegmentTwo.AddSpawnAction(new SpawnAction(18.2f, enemyManager.GetWaypoint("Near_R6_Start"), enemy15, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(18.4f, enemyManager.GetWaypoint("Near_R6_Start"), enemy14, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(18.6f, enemyManager.GetWaypoint("Near_R3_Start"), enemy13, "Enemy_02"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(18.8f, enemyManager.GetWaypoint("Near_R0_Start"), enemy12, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(19.0f, enemyManager.GetWaypoint("Near_R3_Start"), enemy11, "Enemy_02"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(19.2f, enemyManager.GetWaypoint("Near_R0_Start"), enemy10, "Enemy_01"));
-                SegmentTwo.AddSpawnAction(new SpawnAction(19.4f, enemyManager.GetWaypoint("Near_R3_Start"), enemy9, "Enemy_02"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(17.2f, enemyManager.GetWaypoint("Near_R6_Start"), enemy15, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(17.4f, enemyManager.GetWaypoint("Near_R6_Start"), enemy14, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(17.6f, enemyManager.GetWaypoint("Near_R3_Start"), enemy13, "Enemy_02"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(17.8f, enemyManager.GetWaypoint("Near_R0_Start"), enemy12, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(18.0f, enemyManager.GetWaypoint("Near_R3_Start"), enemy11, "Enemy_02"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(18.2f, enemyManager.GetWaypoint("Near_R0_Start"), enemy10, "Enemy_01"));
+                SegmentTwo.AddSpawnAction(new SpawnAction(18.4f, enemyManager.GetWaypoint("Near_R3_Start"), enemy9, "Enemy_02"));
             }
 
             encounterManager.AddEncounter(SegmentTwo);
         }
 
-        void Level2_SegmentFive()
+        void Level2_SegmentFour()
         {
             EnemyManager enemyManager = encounterManager.enemyManager;
             Encounter SegmentTwo = new Encounter(0.0f, 26.0f, enemyManager);

@@ -77001,7 +77001,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 33.094856262207031,
+				"m_FrameCounter" : 17.010421752929688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77015,7 +77015,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.265625
+					0.140625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77067,7 +77067,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.808017730712891,
+				"m_FrameCounter" : 16.443405151367188,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77080,8 +77080,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.140625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77133,7 +77133,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 47.206497192382812,
+				"m_FrameCounter" : 9.0894718170166016,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77147,7 +77147,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.375
+					0.078125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77199,7 +77199,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 15.309378623962402,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -77212,8 +77212,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.015625
+					0.5,
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77265,7 +77265,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 33.094856262207031,
+				"m_FrameCounter" : 17.010421752929688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77279,7 +77279,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.265625
+					0.140625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77331,7 +77331,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 47.206497192382812,
+				"m_FrameCounter" : 9.0894718170166016,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77345,7 +77345,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.375
+					0.078125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77397,7 +77397,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 41.305683135986328,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77410,8 +77410,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.328125
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77463,7 +77463,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 33.094856262207031,
+				"m_FrameCounter" : 17.010421752929688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77477,7 +77477,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.265625
+					0.140625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77529,7 +77529,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 41.305683135986328,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77542,8 +77542,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.328125
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77595,7 +77595,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 11.067154884338379,
+				"m_FrameCounter" : 43.982521057128906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -77609,7 +77609,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.09375
+					0.34375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77661,7 +77661,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.808017730712891,
+				"m_FrameCounter" : 16.443405151367188,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77674,8 +77674,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.140625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -185554,7 +185554,7 @@
 		}
 	},
 	{
-		"Children" : 4,
+		"Children" : 7,
 		"Name" : 
 		{
 			"m_Name" : "Level2_SegmentTriggers",
@@ -185613,12 +185613,12 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Segment_5",
+			"m_Name" : "Segment_4",
 			"status" : true
 		},
 		"Tag" : 
 		{
-			"m_tag" : "Level2_SegmentFive"
+			"m_tag" : "Level2_SegmentFour"
 		},
 		"Transform" : 
 		{
@@ -185664,12 +185664,12 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Segment_4",
+			"m_Name" : "Segment_3",
 			"status" : true
 		},
 		"Tag" : 
 		{
-			"m_tag" : "Level2_SegmentFour"
+			"m_tag" : "Level2_SegmentThree"
 		},
 		"Transform" : 
 		{
@@ -185779,6 +185779,159 @@
 			[
 				-307.66598510742188,
 				124.51271057128906,
+				-496.054443359375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "WAVETRIGGERS",
+			"extends" : 
+			[
+				30.0,
+				1.0,
+				30.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_5AA",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_AD"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-31.788360595703125,
+				-7.2390766143798828,
+				-496.054443359375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "WAVETRIGGERS",
+			"extends" : 
+			[
+				30.0,
+				1.0,
+				30.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_5AB",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_BA"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-31.788360595703125,
+				17.231773376464844,
+				-496.054443359375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "WAVETRIGGERS",
+			"extends" : 
+			[
+				30.0,
+				1.0,
+				30.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_5AC",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "SegmentNine_BB"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-31.788360595703125,
+				43.156070709228516,
 				-496.054443359375
 			],
 			"m_rotation" : 
