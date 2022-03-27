@@ -375,6 +375,8 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 						if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE)
 							continue;
 
+						SetParsed(query.m_ID1, query.m_ID2);
+
 						auto objects = m_triggerList.equal_range(query.m_ID1);
 
 						bool collided = false;
@@ -869,6 +871,8 @@ void PhysicsSystem::Update(float c_dt)
 
 	//std::cout << m_collisionQuery.m_query.size() << std::endl;
 
+	m_triggerPurgeList = m_triggerList;
+
 	//Set the other threads to update trigger behavior
 	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
 		m_hasTriggerJob[i]->release();
@@ -993,6 +997,31 @@ void PhysicsSystem::Update(float c_dt)
 		}
 
 		m_mTriggerQueueMutex.unlock();
+	}
+
+	//Process purge list, seems like gonna be slow
+	for (auto purgeItr : m_triggerPurgeList)
+	{
+		if (m_registry->GetReg().valid(purgeItr.first) && m_registry->GetReg().valid(purgeItr.second))
+			m_eventBus->emit(
+				std::make_shared<PPE::OnTriggerExitEvent>(
+					purgeItr.first,
+					purgeItr.second
+					)
+			);
+
+		auto objects = m_triggerList.equal_range(purgeItr.first);
+
+		for (auto it = objects.first; it != objects.second; ++it)
+		{
+			if ((*it).second == purgeItr.second)
+			{
+				m_triggerList.erase(it);
+				break;
+			}
+		}
+
+		break;
 	}
 }
 
