@@ -134,11 +134,26 @@ namespace SSH
 		return PPU::CustomSaver::template GetValue<T>(key, defaultValue, loadFromDocuments);
 	}
 
+	inline static MonoString* CustomSaverGetValueMonoString(MonoString* monoKey, MonoString* defaultValue, bool loadFromDocuments)
+	{
+		const char* key = mono_string_to_utf8(monoKey);
+		const char* defaultStrValue = mono_string_to_utf8(defaultValue);
+
+		return mono_string_new(mono_domain_get(), PPU::CustomSaver::GetValue<std::string>(key, defaultStrValue, loadFromDocuments).c_str());
+	}
+
 	template <typename T>
 	inline static void CustomSaverSetValueMono(MonoString* monoKey, T value, bool saveToDocuments)
 	{
 		const char* key = mono_string_to_utf8(monoKey);
 		PPU::CustomSaver::template Append<T>(key, value, saveToDocuments);
+	}
+
+	inline static void CustomSaverSetValueMonoString(MonoString* monoKey, MonoString* value, bool saveToDocuments)
+	{
+		const char* key = mono_string_to_utf8(monoKey);
+		const char* strValue = mono_string_to_utf8(value);
+		PPU::CustomSaver::Append<std::string>(key, strValue, saveToDocuments);
 	}
 
 	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params);

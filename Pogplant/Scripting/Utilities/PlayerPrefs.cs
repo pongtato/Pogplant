@@ -20,6 +20,10 @@ namespace Scripting
             {
                 return (T)(object)GetValueInt(key, (int)(object)defaultValue, loadFromDocuments);
             }
+            else if (typeof(T) == typeof(string))
+            {
+                return (T)(object)GetValueString(key, (string)(object)defaultValue, loadFromDocuments);
+            }
             else
             {
                 Console.WriteLine("Get Value not supported.");
@@ -38,6 +42,10 @@ namespace Scripting
             {
                 SetValueInt(key, (int)(object)value, saveToDocuments);
             }
+            else if (typeof(T) == typeof(string))
+            {
+                SetValueString(key, (string)(object)value, saveToDocuments);
+            }
             else
             {
                 Console.WriteLine("Set Value not supported.");
@@ -52,10 +60,16 @@ namespace Scripting
         private extern static int GetValueInt(string key, int defaultValue, bool loadFromDocuments = true);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static string GetValueString(string key, string defaultValue, bool loadFromDocuments = true);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static void SetValueFloat(string key, float value, bool saveToDocuments = true);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static void SetValueInt(string key, int value, bool saveToDocuments = true);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static void SetValueString(string key, string value, bool saveToDocuments = true);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void Save();
