@@ -44,16 +44,21 @@ namespace Scripting
 		uint m_Arrow_Right_DPad;
 
 		//private for score
-		private struct ScoreEntry
+		public struct ScoreEntry
 		{
-				
-			public ScoreEntry(uint _score, string _name)
+
+			public ScoreEntry(uint _score, uint _score_id, string _name, uint _name_id)
 			{
 				m_score = _score;
+				m_score_id = _score_id;
 				m_name = _name;
+				m_name_id = _name_id;
 			}
-			uint m_score;
-			string m_name;
+
+			public uint m_score;
+			public uint m_score_id;
+			public string m_name;
+			public uint m_name_id;
 		}
 
 		private List<ScoreEntry>[] ScoreList = new List<ScoreEntry>[4];
@@ -105,11 +110,8 @@ namespace Scripting
 
 
 			//populate ScoreList
-			//foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
-			//{
-			//	for (uint i = 0; i < 5; i++)
-			//		ScoreList[(uint)entry].Add(new ScoreEntry(i, "test" ));
-			//}
+			LoadScore();
+			UpdateScoreBoard(ref m_index);
 
 			prev_input = !InputUtility.IsControlledBeingUsed();
 			UpdateInputUi(InputUtility.IsControlledBeingUsed());
@@ -119,6 +121,48 @@ namespace Scripting
 		{
 		}
 
+		public void LoadScore()
+        {
+			foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
+			{
+				ScoreList[(uint)entry] = new List<ScoreEntry>();
+				for (uint i = 0; i < 4; i++)
+                {
+					uint parent_id = ECS.FindEntityWithName("Score_0" + (i + 1));
+					if (parent_id != m_null_entity)
+                    {
+                        ScoreList[(uint)entry].Add(new ScoreEntry(	PlayerPrefs.GetValue<uint>("L1_R" + i + 1 + "_score", 69 + i),
+																	ECS.FindChildEntityWithName(parent_id, "Score"),
+																	PlayerPrefs.GetValue<String>("L1_R" + i + 1 + "_name", "DIC"),
+																	ECS.FindChildEntityWithName(parent_id, "Name")));
+                    }
+					else
+                    {
+						Console.WriteLine("Unable to find Score_0" + (i + 1));
+                    }
+
+					//set the list
+					ScoreList[(uint)entry] = ScoreList[(uint)entry].OrderBy(o => o.m_score).ToList();
+
+					//ScoreList[(uint)entry].Add(new ScoreEntry(PlayerPrefs.GetValue<uint>("L1_R" + i + 1 + "_score", 69),
+					//						PlayerPrefs.GetValue<String>("L1_R" + i + 1 + "_name", "DIC")));
+				}
+
+			}
+		}
+
+
+		public void UpdateScoreBoard(ref int cur_index)
+		{
+			ScoreList[(uint)cur_index] = ScoreList[(uint)cur_index].OrderBy(o => o.m_score).ToList();
+
+			//for (int i = 0; i < 4; i++)
+   //         {
+			//	GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_name_id, ScoreList[(uint)cur_index][i].m_name);
+			//	GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_score_id, ScoreList[(uint)cur_index][i].m_score.ToString());
+			//}
+
+		}
 		public override void Update(float dt)
 		{
 			if (m_enabled)
