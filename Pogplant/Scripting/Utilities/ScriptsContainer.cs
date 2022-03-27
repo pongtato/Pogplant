@@ -73,6 +73,7 @@ namespace Scripting
             monoScriptNames.Add("SimpleMovement");
             monoScriptNames.Add("PlayerNuke");
             monoScriptNames.Add("ExplosionEffect");
+            monoScriptNames.Add("CorePillar");
 
             //let this be last lol
             monoScriptNames.Sort();

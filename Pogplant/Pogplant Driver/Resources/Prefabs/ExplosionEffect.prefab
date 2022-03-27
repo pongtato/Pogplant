@@ -3,11 +3,11 @@
 		"Children" : 3,
 		"Guid" : 
 		{
-			"m_guid" : "0a341da9-77e9-41d1-8c2e-025c09c31b4d"
+			"m_guid" : "8c5ef20d-b629-4c1d-8f3c-88393e6fc488"
 		},
 		"Name" : 
 		{
-			"m_Name" : "ExplosionEffect_1",
+			"m_Name" : "ExplosionEffect",
 			"status" : true
 		},
 		"ParticleSystem" : 
@@ -172,7 +172,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "5c9567ef-ba07-477a-b22a-abff959d9544",
+			"prefab_GUID" : "8fc27692-ff67-4374-a1ef-038c9821c627",
 			"prefab_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
 		},
 		"Render" : 
@@ -206,7 +206,7 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 4,
+				"Data" : 1,
 				"Name" : "DelayMax",
 				"Type" : 1
 			},
@@ -224,6 +224,11 @@
 				"Data" : 0.68999999761581421,
 				"Name" : "PersistDuration",
 				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Name" : "Repeat",
+				"Type" : 2
 			},
 			{
 				"Data" : 0.02500000037252903,
@@ -271,21 +276,21 @@
 		{
 			"m_position" : 
 			[
-				-14.0,
-				-77.0,
-				-6.0
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
 				0.023660339415073395,
 				89.999946594238281,
-				0.023672295734286308
+				0.02367229200899601
 			],
 			"m_scale" : 
 			[
-				1.0000001192092896,
-				1.0000002384185791,
-				1.0000001192092896
+				0.0010000000474974513,
+				0.0010000000474974513,
+				0.0010000000474974513
 			]
 		}
 	},

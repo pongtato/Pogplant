@@ -28,6 +28,8 @@ namespace Scripting
         uint m_Shockwave;
         uint m_SmokeEffect;
         uint m_null_entity;
+        bool m_Done = false;
+        bool m_Repeat = true;
         bool m_Playing = false;
 
         void FindAndCheck(ref uint destination, string entity_name, bool is_child)
@@ -50,6 +52,7 @@ namespace Scripting
             m_DelayMax = ECS.GetValue<int>(entityID, 1, "DelayMax");
             m_TargetSizeMin = ECS.GetValue<int>(entityID, 1, "TargetSizeMin");
             m_TargetSizeMax = ECS.GetValue<int>(entityID, 1, "TargetSizeMax");
+            m_Repeat = ECS.GetValue<bool>(entityID, true, "Repeat");
             m_null_entity = ECS.GetNull();
 
             FindAndCheck(ref m_Shockwave, "Shockwave", true);
@@ -77,8 +80,14 @@ namespace Scripting
             // Animation playing
             else
             {
+                if(m_Done && !m_Repeat)
+                {
+                    return;
+                }
+
                 if (!m_Playing)
                 {
+                    m_Done = false;
                     m_Playing = true;
                     ECS.SetParticlePlay(entityID, true);
                     ECS.SetParticlePlay(m_SmokeEffect, true);
@@ -108,6 +117,7 @@ namespace Scripting
                         m_Spin = m_Rand.Next(0, 360);
                         ECS.SetScale(entityID, new Vector3(0));
                         m_Playing = false;
+                        m_Done = true;
                     }
                 }
                 else
