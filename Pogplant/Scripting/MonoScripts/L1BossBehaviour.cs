@@ -86,11 +86,15 @@ namespace Scripting
 		float mSpawner_timeEndSpawnEnemies = 7f;
 		public float mSpawner_durationBetweenSpawns = 2f;
 
-		//Hardcoded smashhit
+		//Hardcoded hitboxes
 		uint mID_smashHitBox;
-		bool mSmash_enableOnce = false;
+		uint mID_clapHitBox;
+		bool m_hitboxEnableOnce = false;
 		float mSmash_timeToEnableCollider = 4f;
 		float mSmash_timeToDisableCollider = 4.2f;
+
+		float mClap_timeToEnableCollider = 1.5f;
+		float mClap_timeToDisableCollider = 2.0f;
 
 		#endregion
 
@@ -125,6 +129,8 @@ namespace Scripting
 			RuntimeStateVariables(int defaultVal = 0)
 			{
 				lastState = L1Boss.BOSS_BEHAVIOUR_STATE.TOTAL;
+				lastRNGState = -1;
+				lastIsMelee = true;
 				timer = 0f;
 				secondaryTimer = 0f;
 				stateDuration = 1f;
@@ -138,10 +144,11 @@ namespace Scripting
 				rightBallHealth = 0f;
 				canDamageSideCores = false;
 				canDamageMainCore = false;
-				lastAttackIsSpin = false;
 			}
 
 			public L1Boss.BOSS_BEHAVIOUR_STATE lastState;
+			public int lastRNGState;
+			public bool lastIsMelee;
 			public float timer;
 			public float secondaryTimer;
 			public float stateDuration;
@@ -160,8 +167,6 @@ namespace Scripting
 
 			public bool canDamageSideCores;
 			public bool canDamageMainCore;
-
-			public bool lastAttackIsSpin;
 		}
 
 		public struct GunBarrel
@@ -262,6 +267,7 @@ namespace Scripting
 			}
 
 			mID_smashHitBox = ECS.FindChildEntityWithName(bossShootPoints, "SmashHitbox");
+			mID_clapHitBox = ECS.FindChildEntityWithName(bossShootPoints, "ClapHitbox");
 
 			//Hardcode right and left 1 launcher to shoot around player angle
 			m_gunBarrels[0].rotationXLock = 20f;
@@ -287,7 +293,6 @@ namespace Scripting
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMax = 20.5f;
 
 			m_runStateInfo.stateDuration = 8.8f;
-			m_runStateInfo.lastAttackIsSpin = true;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].isVulnerable = true;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].shouldReturnToDefault = false;
@@ -398,28 +403,45 @@ namespace Scripting
 						//When timer is hit
 						if (m_runStateInfo.timeSinceLastSpawnTimer > m_runStateInfo.timeToNextSpawn)
 						{
-							bool shouldSpawn = false;
-
-							//Randomise a chance to either spawn enemies or do a spin attack
-							if (m_runStateInfo.lastAttackIsSpin)
-								shouldSpawn = true;
-							else if (PPMath.RandomInt(0, 100) > 60)
-								shouldSpawn = true;
-
-							if(shouldSpawn)
+							if (m_runStateInfo.lastIsMelee)
 							{
-								m_runStateInfo.lastAttackIsSpin = false;
-
 								TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
 
 								c_playedSpawnAnimation = false;
 								m_runStateInfo.timeSinceLastSpawnTimer = 0f;
 								m_runStateInfo.timeToNextSpawn = PPMath.RandomFloat(m_minDurationBetweenSpawns, m_maxDurationBetweenSpawns);
+
+								m_runStateInfo.lastIsMelee = false;
 							}
 							else
 							{
-								m_runStateInfo.lastAttackIsSpin = true;
-								TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
+								m_runStateInfo.lastIsMelee = true;
+
+								int stateSelection;
+
+								do
+								{
+									stateSelection = PPMath.RandomInt(0, 2);
+								}
+								while (m_runStateInfo.lastRNGState == stateSelection);
+
+								switch (stateSelection)
+								{
+									case 0:
+										TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
+										break;
+									case 1:
+										TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK);
+										break;
+									case 2:
+										TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK);
+										break;
+									default:
+										Console.WriteLine("L1BossBehaviour.cs: RNG out of range");
+										break;
+								}
+
+								m_runStateInfo.lastRNGState = stateSelection;
 							}
 						}
 					}
@@ -497,16 +519,32 @@ namespace Scripting
 
 				case L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK:
 				{
-					if(m_runStateInfo.timer > mSmash_timeToEnableCollider && !mSmash_enableOnce && m_runStateInfo.timer < mSmash_timeToDisableCollider)
+					if(m_runStateInfo.timer > mSmash_timeToEnableCollider && !m_hitboxEnableOnce && m_runStateInfo.timer < mSmash_timeToDisableCollider)
 					{
-						mSmash_enableOnce = true;
+						m_hitboxEnableOnce = true;
 						ECS.SetActive(mID_smashHitBox, true);
 					}
 					
-					if(m_runStateInfo.timer > mSmash_timeToDisableCollider && mSmash_enableOnce)
+					if(m_runStateInfo.timer > mSmash_timeToDisableCollider && m_hitboxEnableOnce)
 					{
-						mSmash_enableOnce = false;
+						m_hitboxEnableOnce = false;
 						ECS.SetActive(mID_smashHitBox, false);
+					}
+				}
+				break;
+
+				case L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK:
+				{
+					if (m_runStateInfo.timer > mClap_timeToEnableCollider && !m_hitboxEnableOnce && m_runStateInfo.timer < mClap_timeToDisableCollider)
+					{
+						m_hitboxEnableOnce = true;
+						ECS.SetActive(mID_clapHitBox, true);
+					}
+
+					if (m_runStateInfo.timer > mClap_timeToDisableCollider && m_hitboxEnableOnce)
+					{
+						m_hitboxEnableOnce = false;
+						ECS.SetActive(mID_clapHitBox, false);
 					}
 				}
 				break;

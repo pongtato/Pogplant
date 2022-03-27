@@ -30,12 +30,17 @@ namespace Scripting
 		public uint mID_playerShip;
 		public int m_damageAmount = 50;
 		public bool m_damageHitBox = false;
+		public bool m_applySucc = false;
 		public bool m_applyForceOnHit = false;
 		public Vector3 m_forceDirection;
+		float m_succForce;
+		float m_initialSuccForce;
 
 		public Vector3 m_cameraShakeInitMul;
 		public Vector3 m_cameraShakeMag;
 		public float m_cameraShakeDuration;
+
+		List<uint> m_succList = new List<uint>();
 
 		public override void Init(ref uint _entityID)
 		{
@@ -51,8 +56,12 @@ namespace Scripting
 			m_applyForceOnHit = ECS.GetValue<bool>(entityID, false, "ApplyForce");
 			m_forceDirection = ECS.GetValue<Vector3>(entityID, new Vector3(0.0f, -100f, 0.0f), "ForceDirection");
 
-			m_cameraShakeInitMul = ECS.GetValue<Vector3>(entityID, new Vector3(0.5f, 0.5f, 0.5f), "CameraShakeInit");
-			m_cameraShakeMag = ECS.GetValue<Vector3>(entityID, new Vector3(8f, 8f, 8f), "CameraShakeMag");
+			m_applySucc = ECS.GetValue<bool>(entityID, false, "ApplySucc");
+			m_succForce = ECS.GetValue<float>(entityID, 10f, "SuccForce");
+			m_initialSuccForce = ECS.GetValue<float>(entityID, 20f, "SuccForceInit");
+
+			m_cameraShakeInitMul = ECS.GetValue<Vector3>(entityID, new Vector3(0.6f, 0.6f, 0.4f), "CameraShakeInit");
+			m_cameraShakeMag = ECS.GetValue<Vector3>(entityID, new Vector3(10f, 10f, 10f), "CameraShakeMag");
 			m_cameraShakeDuration = ECS.GetValue<float>(entityID, 1f, "CameraShakeDuration");
 
 			mID_playerShip = ECS.FindEntityWithName("PlayerShip");
@@ -65,7 +74,19 @@ namespace Scripting
 
 		public override void LateUpdate(float dt)
 		{
-
+			for(int i = 0; i < m_succList.Count(); ++i)
+			{
+				if(ECS.CheckValidEntity(m_succList[i]))
+				{
+					ECS.RigidbodyAddForce(m_succList[i], (ECS.GetGlobalPosition(entityID) - ECS.GetGlobalPosition(m_succList[i])) * m_succForce);
+					//ECS.RigidbodyAddForce(m_succList[i], 0);
+				}
+				else
+				{
+					m_succList.RemoveAt(i);
+					--i;
+				}
+			}
 		}
 
 		public override void OnTriggerEnter(uint id)
@@ -75,15 +96,22 @@ namespace Scripting
 				if (id == mID_playerShip)
 				{
 					PlayerScript.m_singleton.TriggerCameraShake(
-						new Vector3(PPMath.RandomFloat(-m_cameraShakeInitMul.X, m_cameraShakeInitMul.X), PPMath.RandomFloat(-m_cameraShakeInitMul.Y, m_cameraShakeInitMul.Y), PPMath.RandomFloat(-m_cameraShakeInitMul.Z, m_cameraShakeInitMul.Z)),
-						new Vector3(PPMath.RandomFloat(-m_cameraShakeMag.X, m_cameraShakeMag.X), PPMath.RandomFloat(-m_cameraShakeMag.Y, m_cameraShakeMag.Y), PPMath.RandomFloat(-m_cameraShakeMag.Z, m_cameraShakeMag.Z)),
+						new Vector3(m_cameraShakeInitMul.X, m_cameraShakeInitMul.Y, m_cameraShakeInitMul.Z),
+						new Vector3(m_cameraShakeMag.X, m_cameraShakeMag.Y, m_cameraShakeMag.Z),
 						m_cameraShakeDuration);
 					PlayerScript.AddScore(false, false, (uint)m_damageAmount);
-				
-					if(m_applyForceOnHit)
-					{
-						ECS.RigidbodyAddImpulseForce(id, m_forceDirection);
-					}
+				}
+
+				if (m_applyForceOnHit)
+				{
+					ECS.RigidbodyAddImpulseForce(id, m_forceDirection);
+				}
+
+				if (m_applySucc)
+				{
+					m_succList.Add(id);
+
+					ECS.RigidbodyAddImpulseForce(id, (ECS.GetGlobalPosition(entityID) - ECS.GetGlobalPosition(id)) * m_initialSuccForce);
 				}
 			}
 			else
@@ -133,7 +161,10 @@ namespace Scripting
 
 		public override void OnTriggerExit(uint id)
 		{
-
+			if(m_damageHitBox && m_applySucc)
+			{
+				m_succList.Remove(id);
+			}
 		}
 	}
 }
