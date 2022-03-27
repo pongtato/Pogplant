@@ -6787,7 +6787,7 @@
 				"Volume" : 1.0
 			}
 		},
-		"Children" : 20,
+		"Children" : 21,
 		"Name" : 
 		{
 			"m_Name" : "Boss",
@@ -6836,6 +6836,87 @@
 				0.0,
 				-50.0,
 				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY PROJECTILES",
+			"extends" : 
+			[
+				4.5,
+				4.0,
+				2.5
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SmashHitbox",
+			"status" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : true,
+				"Name" : "ApplyForce",
+				"Type" : 2
+			},
+			{
+				"Data" : 50,
+				"Name" : "DamageAmount",
+				"Type" : 1
+			},
+			{
+				"Data" : true,
+				"Data0" : 7.3469503952179786e-39,
+				"Data1" : -100.0,
+				"Data2" : 6.9795972001982991e-39,
+				"Name" : "ForceDirection",
+				"Type" : 4
+			},
+			{
+				"Data" : true,
+				"Name" : "IsHitbox",
+				"Type" : 2
+			}
+		],
+		"Scripting" : 
+		{
+			"BossHitbox" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00024094304535537958,
+				0.0,
+				4.0858192443847656
 			],
 			"m_rotation" : 
 			[
@@ -9420,9 +9501,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				-0.044920396059751511,
-				0.99329918622970581,
-				-0.10648414492607117
+				-0.060420844703912735,
+				0.99285203218460083,
+				0.10292720049619675
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
@@ -9535,7 +9616,7 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 50,
+				"Data" : 100,
 				"Name" : "DamageAmount",
 				"Type" : 1
 			},
@@ -9572,7 +9653,7 @@
 			[
 				0.00024094304535537958,
 				0.01019287109375,
-				0.093808606266975403
+				-3.9317703247070312
 			],
 			"m_rotation" : 
 			[
@@ -11903,9 +11984,9 @@
 		},
 		"MovementBounds" : 
 		{
-			"maxX" : 6.0,
+			"maxX" : 7.0,
 			"maxY" : 1.5,
-			"minX" : 6.0,
+			"minX" : 7.0,
 			"minY" : 6.0
 		},
 		"Name" : 

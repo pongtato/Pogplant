@@ -86,6 +86,12 @@ namespace Scripting
 		float mSpawner_timeEndSpawnEnemies = 7f;
 		public float mSpawner_durationBetweenSpawns = 2f;
 
+		//Hardcoded smashhit
+		uint mID_smashHitBox;
+		bool mSmash_enableOnce = false;
+		float mSmash_timeToEnableCollider = 4f;
+		float mSmash_timeToDisableCollider = 4.2f;
+
 		#endregion
 
 		/**************************
@@ -254,6 +260,8 @@ namespace Scripting
 				m_gunBarrels[i].rotationXLock = 0f;
 				m_gunBarrels[i].ID_shootPoint = ECS.FindChildEntityWithName(m_gunBarrels[i].ID_barrel, "Shoot");
 			}
+
+			mID_smashHitBox = ECS.FindChildEntityWithName(bossShootPoints, "SmashHitbox");
 
 			//Hardcode right and left 1 launcher to shoot around player angle
 			m_gunBarrels[0].rotationXLock = 20f;
@@ -483,6 +491,22 @@ namespace Scripting
 						}
 
 						UpdateEnemySpawnAnimation(dt);
+					}
+				}
+				break;
+
+				case L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK:
+				{
+					if(m_runStateInfo.timer > mSmash_timeToEnableCollider && !mSmash_enableOnce && m_runStateInfo.timer < mSmash_timeToDisableCollider)
+					{
+						mSmash_enableOnce = true;
+						ECS.SetActive(mID_smashHitBox, true);
+					}
+					
+					if(m_runStateInfo.timer > mSmash_timeToDisableCollider && mSmash_enableOnce)
+					{
+						mSmash_enableOnce = false;
+						ECS.SetActive(mID_smashHitBox, false);
 					}
 				}
 				break;
