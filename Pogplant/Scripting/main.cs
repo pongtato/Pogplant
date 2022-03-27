@@ -328,5 +328,10 @@ namespace Scripting
         {
             return new ExplosionEffect();
         }
+
+        public static CorePillar CorePillar()
+        {
+            return new CorePillar();
+        }
     }
 }

@@ -1,14 +1,100 @@
 [
 	{
-		"Children" : 3,
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				3.0,
+				7.4000000953674316,
+				3.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 1,
 		"Guid" : 
 		{
-			"m_guid" : "8c5ef20d-b629-4c1d-8f3c-88393e6fc488"
+			"m_guid" : "bd8fd9b7-a800-4fe6-9b90-7d1405a85aa3"
 		},
 		"Name" : 
 		{
-			"m_Name" : "ExplosionEffect",
+			"m_Name" : "CorePillar",
 			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\CorePillar.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "545f289b-b18f-47fb-9efc-a3cf4515d599",
+			"prefab_path" : "Resources\\Prefabs\\CorePillar.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cube",
+				"Resources/Models\\cube",
+				"Box001"
+			],
+			"UseLight" : 1
+		},
+		"Scripting" : 
+		{
+			"CorePillar" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-398.0,
+				125.0,
+				-507.58035278320312
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "ExplosionEffect",
+			"status" : false
 		},
 		"ParticleSystem" : 
 		{
@@ -33,7 +119,7 @@
 			"m_Force" : 
 			[
 				0.0,
-				0.0,
+				3.0,
 				0.0
 			],
 			"m_Loop" : false,
@@ -44,7 +130,7 @@
 			"m_RandomRotate" : false,
 			"m_Scale" : 
 			{
-				"m_CurveMax" : 2.0,
+				"m_CurveMax" : 0.68999999761581421,
 				"m_CurveMin" : 0.0,
 				"m_CurvePoints" : 
 				[
@@ -91,10 +177,10 @@
 				1.0,
 				0.0
 			],
-			"m_SpawnRadius" : 2.0,
+			"m_SpawnRadius" : 1.0,
 			"m_Speed" : 
 			{
-				"m_CurveMax" : 20.0,
+				"m_CurveMax" : 10.0,
 				"m_CurveMin" : 1.0,
 				"m_CurvePoints" : 
 				[
@@ -168,11 +254,11 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+			"file_path" : "Resources\\Prefabs\\CorePillar.prefab"
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "8fc27692-ff67-4374-a1ef-038c9821c627",
+			"prefab_GUID" : "8c5ef20d-b629-4c1d-8f3c-88393e6fc488",
 			"prefab_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
 		},
 		"Render" : 
@@ -206,12 +292,12 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 1,
+				"Data" : 0,
 				"Name" : "DelayMax",
 				"Type" : 1
 			},
 			{
-				"Data" : 1,
+				"Data" : 0,
 				"Name" : "DelayMin",
 				"Type" : 1
 			},
@@ -221,12 +307,12 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 0.68999999761581421,
+				"Data" : 0.20000000298023224,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : true,
+				"Data" : false,
 				"Name" : "Repeat",
 				"Type" : 2
 			},
@@ -241,7 +327,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 3,
+				"Data" : 4,
 				"Name" : "TargetSizeMax",
 				"Type" : 1
 			},
@@ -298,12 +384,12 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Outer_Sphere",
-			"status" : true
+			"m_Name" : "Shockwave",
+			"status" : false
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+			"file_path" : "Resources\\Prefabs\\CorePillar.prefab"
 		},
 		"Render" : 
 		{
@@ -315,21 +401,21 @@
 			],
 			"EmissiveTint" : 
 			[
-				1.0,
-				0.36279070377349854,
-				0.0
+				0.59793627262115479,
+				0.60000002384185791,
+				0.15627908706665039
 			],
 			"RenderModel" : 
 			[
-				"Enemy_04_ExplosionRadius",
+				"Enemy_04_ExplosionShockwave",
 				"Resources/Models\\IngameObjects",
-				"Outer_Sphere"
+				"Shockwave"
 			],
 			"UseLight" : 1
 		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "Explosion_Shockwave"
 		},
 		"Transform" : 
 		{
@@ -358,7 +444,7 @@
 		"Name" : 
 		{
 			"m_Name" : "SmokeEffect",
-			"status" : true
+			"status" : false
 		},
 		"ParticleSystem" : 
 		{
@@ -383,18 +469,18 @@
 			"m_Force" : 
 			[
 				0.0,
-				0.0,
+				3.0,
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
+			"m_MaxLife" : 1.5,
 			"m_MinLife" : 1.0,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
 			"m_Scale" : 
 			{
-				"m_CurveMax" : 2.5,
+				"m_CurveMax" : 0.80000001192092896,
 				"m_CurveMin" : 0.0,
 				"m_CurvePoints" : 
 				[
@@ -441,10 +527,10 @@
 				1.0,
 				0.0
 			],
-			"m_SpawnRadius" : 2.0,
+			"m_SpawnRadius" : 1.0,
 			"m_Speed" : 
 			{
-				"m_CurveMax" : 20.0,
+				"m_CurveMax" : 10.0,
 				"m_CurveMin" : 1.0,
 				"m_CurvePoints" : 
 				[
@@ -518,7 +604,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+			"file_path" : "Resources\\Prefabs\\CorePillar.prefab"
 		},
 		"PrefabInstance" : 
 		{
@@ -555,12 +641,12 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Shockwave",
-			"status" : true
+			"m_Name" : "Outer_Sphere",
+			"status" : false
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Prefabs\\ExplosionEffect.prefab"
+			"file_path" : "Resources\\Prefabs\\CorePillar.prefab"
 		},
 		"Render" : 
 		{
@@ -572,21 +658,21 @@
 			],
 			"EmissiveTint" : 
 			[
-				0.59793627262115479,
-				0.60000002384185791,
-				0.15627908706665039
+				1.0,
+				0.36279070377349854,
+				0.0
 			],
 			"RenderModel" : 
 			[
-				"Enemy_04_ExplosionShockwave",
+				"Enemy_04_ExplosionRadius",
 				"Resources/Models\\IngameObjects",
-				"Shockwave"
+				"Outer_Sphere"
 			],
 			"UseLight" : 1
 		},
 		"Tag" : 
 		{
-			"m_tag" : "Explosion_Shockwave"
+			"m_tag" : "Untagged"
 		},
 		"Transform" : 
 		{

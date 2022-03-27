@@ -57,6 +57,7 @@
     <Compile Include="MonoScripts\BonusItem.cs" />
     <Compile Include="MonoScripts\BonusScoreCoin.cs" />
     <Compile Include="MonoScripts\BossHitbox.cs" />
+    <Compile Include="MonoScripts\CorePillar.cs" />
     <Compile Include="MonoScripts\ExplosionEffect.cs" />
     <Compile Include="MonoScripts\GameEndCutscene.cs" />
     <Compile Include="MonoScripts\L2BossBehaviour.cs" />
