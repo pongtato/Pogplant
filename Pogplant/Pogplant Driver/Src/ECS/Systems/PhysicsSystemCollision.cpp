@@ -394,6 +394,22 @@ decltype(auto) PhysicsSystem::GetTriggered(entt::entity c_triggerEntity, entt::e
 	return objects.second;
 }
 
+void PhysicsSystem::SetParsed(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
+{
+	m_mTriggerPurgeMutex.lock();
+	auto objects = m_triggerPurgeList.equal_range(c_triggerEntity);
+
+	for (auto it = objects.first; it != objects.second; ++it)
+	{
+		if ((*it).second == c_triggeringEntity)
+		{
+			m_triggerPurgeList.erase(it);
+			break;
+		}
+	}
+	m_mTriggerPurgeMutex.unlock();
+}
+
 void PhysicsSystem::SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
 {
 	m_mTriggerQueueMutex.lock();

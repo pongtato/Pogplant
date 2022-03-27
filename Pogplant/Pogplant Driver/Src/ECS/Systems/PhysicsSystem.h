@@ -137,6 +137,7 @@ private:
 	std::unique_ptr<std::binary_semaphore> m_hasTriggerJob[NUM_TRIGGER_THREADS];
 	std::unique_ptr<std::binary_semaphore> m_shouldContinue[NUM_TRIGGER_THREADS];
 	std::mutex m_mTriggerQueueMutex;
+	std::mutex m_mTriggerPurgeMutex;
 
 	/**************************
 	*
@@ -147,13 +148,16 @@ private:
 	void TriggerUpdate(int threadID);
 
 	decltype(auto) GetTriggered(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
+	void SetParsed(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 	void SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
+	
 	bool SetUntrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity);
 	
 	std::vector<QueuedTriggerAction> m_triggerQueue;
 	
 
 	std::unordered_multimap<entt::entity, entt::entity> m_triggerList;
+	std::unordered_multimap<entt::entity, entt::entity> m_triggerPurgeList;
 };
 
 #endif // !PHYSICSSYSTEM_H_

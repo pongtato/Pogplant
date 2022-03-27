@@ -44,16 +44,21 @@ namespace Scripting
 		uint m_Arrow_Right_DPad;
 
 		//private for score
-		private struct ScoreEntry
+		public struct ScoreEntry
 		{
-				
-			public ScoreEntry(uint _score, string _name)
+
+			public ScoreEntry(uint _score, uint _score_id, string _name, uint _name_id)
 			{
 				m_score = _score;
+				m_score_id = _score_id;
 				m_name = _name;
+				m_name_id = _name_id;
 			}
-			uint m_score;
-			string m_name;
+
+			public uint m_score;
+			public uint m_score_id;
+			public string m_name;
+			public uint m_name_id;
 		}
 
 		private List<ScoreEntry>[] ScoreList = new List<ScoreEntry>[4];
@@ -105,11 +110,8 @@ namespace Scripting
 
 
 			//populate ScoreList
-			//foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
-			//{
-			//	for (uint i = 0; i < 5; i++)
-			//		ScoreList[(uint)entry].Add(new ScoreEntry(i, "test" ));
-			//}
+			LoadScore();
+			UpdateScoreBoard(ref m_index);
 
 			prev_input = !InputUtility.IsControlledBeingUsed();
 			UpdateInputUi(InputUtility.IsControlledBeingUsed());
@@ -117,6 +119,69 @@ namespace Scripting
 
 		public override void Start()
 		{
+		}
+
+		public void LoadScore()
+        {
+			Random rnd = new Random();
+			foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
+			{
+				ScoreList[(uint)entry] = new List<ScoreEntry>();
+				for (uint i = 0; i < 5; i++)
+                {
+					uint parent_id = ECS.FindEntityWithName("Score_0" + (i + 1));
+					if (parent_id != m_null_entity)
+                    {
+                        ScoreList[(uint)entry].Add(new ScoreEntry(	PlayerPrefs.GetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", (uint)rnd.Next(99999999)),
+																	ECS.FindChildEntityWithName(parent_id, "Score"),
+																	PlayerPrefs.GetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", "DIC"),
+																	ECS.FindChildEntityWithName(parent_id, "Name")));
+                    }
+					else
+                    {
+						Console.WriteLine("Unable to find Score_0" + (i + 1));
+                    }
+				}
+			}
+		}
+
+		public void SaveScore()
+		{
+			foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
+			{
+				for (int i = 0; i < 5; i++)
+				{
+					
+					PlayerPrefs.SetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", ScoreList[(uint)entry][i].m_score);
+					PlayerPrefs.SetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", ScoreList[(uint)entry][i].m_name);
+
+				}
+			}
+			PlayerPrefs.Save();
+		}
+
+		public void UpdateScoreBoard(ref int cur_index)
+		{
+			List<ScoreEntry> temp = new List<ScoreEntry>();
+			temp = ScoreList[(uint)cur_index].ToList();
+			temp.Sort((x, y) => y.m_score.CompareTo(x.m_score));
+
+			//Console.WriteLine("=======================");
+
+			for (int i = 0; i < 5; i++)
+            {
+				string score_str = temp[i].m_score.ToString();
+				int padding_size = 8 - score_str.Length;
+				string padding = "";
+				for (int j = 0; j < padding_size; j++)
+					padding += 0;
+				//Console.WriteLine(ScoreList[(uint)cur_index][i].m_score_id);
+				//Console.WriteLine(padding + score_str);
+
+				GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_name_id, temp[i].m_name);
+                GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_score_id, padding + score_str);
+			}
+			//Console.WriteLine("=======================");
 		}
 
 		public override void Update(float dt)
@@ -149,8 +214,12 @@ namespace Scripting
 				{
 					if (m_index != m_prev_index)
 					{
+						Console.WriteLine("updated");
 						UpdateInputUi(InputUtility.IsControlledBeingUsed());
+						UpdateScoreBoard(ref m_index);
 						UpdateScoreUICategory();
+
+						m_prev_index = m_index;
 					}
 
 
@@ -251,6 +320,12 @@ namespace Scripting
 					m_index = (int)TITLE_ORDER.L1;
 				else
 					m_index++;
+			}
+
+			if (InputUtility.onKeyTriggered(KEY_ID.KEY_SLASH))
+            {
+				Console.WriteLine("Saved score");
+				SaveScore();
 			}
 		}
 
