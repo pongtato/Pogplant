@@ -24,9 +24,13 @@ namespace Scripting
             {
                 return (T)(object)GetValueString(key, (string)(object)defaultValue, loadFromDocuments);
             }
+            else if (typeof(T) == typeof(uint))
+            {
+                return (T)(object)GetValueUInt(key, (uint)(object)defaultValue, loadFromDocuments);
+            }
             else
             {
-                Console.WriteLine("Get Value not supported.");
+                Console.WriteLine("Get Value not supported");
             }
 
             return defaultValue;
@@ -41,6 +45,10 @@ namespace Scripting
             else if (typeof(T) == typeof(int))
             {
                 SetValueInt(key, (int)(object)value, saveToDocuments);
+            }
+            else if (typeof(T) == typeof(uint))
+            {
+                SetValueUInt(key, (uint)(object)value, saveToDocuments);
             }
             else if (typeof(T) == typeof(string))
             {
@@ -60,6 +68,9 @@ namespace Scripting
         private extern static int GetValueInt(string key, int defaultValue, bool loadFromDocuments = true);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static uint GetValueUInt(string key, uint defaultValue, bool loadFromDocuments = true);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static string GetValueString(string key, string defaultValue, bool loadFromDocuments = true);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -67,6 +78,9 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static void SetValueInt(string key, int value, bool saveToDocuments = true);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        private extern static void SetValueUInt(string key, uint value, bool saveToDocuments = true);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         private extern static void SetValueString(string key, string value, bool saveToDocuments = true);
