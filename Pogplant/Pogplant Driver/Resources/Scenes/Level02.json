@@ -77001,7 +77001,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.384048461914062,
+				"m_FrameCounter" : 102.83992004394531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77015,7 +77015,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.375
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77067,7 +77067,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 79.416641235351562,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77080,8 +77080,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.015625
+					0.5,
+					0.625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77133,7 +77133,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 28.456480026245117,
+				"m_FrameCounter" : 109.69589996337891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77146,8 +77146,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.234375
+					0.5,
+					0.859375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77199,7 +77199,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 59.525657653808594,
+				"m_FrameCounter" : 30.821849822998047,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -77212,8 +77212,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.46875
+					0.0,
+					0.25
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77265,7 +77265,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.384048461914062,
+				"m_FrameCounter" : 102.83992004394531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77279,7 +77279,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.375
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77331,7 +77331,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 28.456480026245117,
+				"m_FrameCounter" : 109.69589996337891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77344,8 +77344,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.234375
+					0.5,
+					0.859375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77397,7 +77397,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 24.899419784545898,
+				"m_FrameCounter" : 51.063602447509766,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77410,8 +77410,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.203125
+					0.5,
+					0.40625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77463,7 +77463,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.384048461914062,
+				"m_FrameCounter" : 102.83992004394531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77477,7 +77477,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.375
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77529,7 +77529,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 24.899419784545898,
+				"m_FrameCounter" : 51.063602447509766,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77542,8 +77542,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.203125
+					0.5,
+					0.40625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77595,7 +77595,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.554931640625,
+				"m_FrameCounter" : 106.26792144775391,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -77608,8 +77608,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.75
+					0.0,
+					0.84375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77661,7 +77661,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 79.416641235351562,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77674,8 +77674,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.015625
+					0.5,
+					0.625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -114011,8 +114011,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 1.5,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -114206,7 +114206,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 5,
+				"Data" : 6,
 				"Name" : "TargetSizeMax",
 				"Type" : 1
 			},
@@ -114293,8 +114293,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.5,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -114597,8 +114597,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 1.5,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -114792,7 +114792,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 5,
+				"Data" : 6,
 				"Name" : "TargetSizeMax",
 				"Type" : 1
 			},
@@ -114934,8 +114934,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.5,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -115183,8 +115183,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 1.5,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -115378,7 +115378,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 5,
+				"Data" : 6,
 				"Name" : "TargetSizeMax",
 				"Type" : 1
 			},
@@ -115520,8 +115520,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.5,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -115769,8 +115769,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 1.5,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -115964,7 +115964,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 5,
+				"Data" : 6,
 				"Name" : "TargetSizeMax",
 				"Type" : 1
 			},
@@ -116106,8 +116106,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.5,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -116355,8 +116355,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 1.5,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -116550,7 +116550,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 5,
+				"Data" : 6,
 				"Name" : "TargetSizeMax",
 				"Type" : 1
 			},
@@ -116692,8 +116692,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.5,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -116941,8 +116941,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 1.5,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.0,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
@@ -117136,7 +117136,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 5,
+				"Data" : 6,
 				"Name" : "TargetSizeMax",
 				"Type" : 1
 			},
@@ -117223,8 +117223,8 @@
 				0.0
 			],
 			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 1.0,
+			"m_MaxLife" : 1.5,
+			"m_MinLife" : 0.5,
 			"m_MoveToTarget" : false,
 			"m_Play" : false,
 			"m_RandomRotate" : false,
