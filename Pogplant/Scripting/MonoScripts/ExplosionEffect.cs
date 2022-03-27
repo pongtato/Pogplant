@@ -26,7 +26,9 @@ namespace Scripting
         int m_TargetSizeMin = 0;
         int m_TargetSizeMax = 0;
         uint m_Shockwave;
+        uint m_SmokeEffect;
         uint m_null_entity;
+        bool m_Playing = false;
 
         void FindAndCheck(ref uint destination, string entity_name, bool is_child)
         {
@@ -51,6 +53,7 @@ namespace Scripting
             m_null_entity = ECS.GetNull();
 
             FindAndCheck(ref m_Shockwave, "Shockwave", true);
+            FindAndCheck(ref m_SmokeEffect, "SmokeEffect", true);
             //m_ShockwaveScale = ECS.GetGlobalScale(m_Shockwave);
         }
 
@@ -74,6 +77,13 @@ namespace Scripting
             // Animation playing
             else
             {
+                if (!m_Playing)
+                {
+                    m_Playing = true;
+                    ECS.SetParticlePlay(entityID, true);
+                    ECS.SetParticlePlay(m_SmokeEffect, true);
+                }
+
                 // Lerp
                 m_LerpTimer += dt;
                 float ratio = m_LerpTimer / m_LerpDuration;
@@ -97,6 +107,7 @@ namespace Scripting
                         // Set random rot so its not so obvious
                         m_Spin = m_Rand.Next(0, 360);
                         ECS.SetScale(entityID, new Vector3(0));
+                        m_Playing = false;
                     }
                 }
                 else
