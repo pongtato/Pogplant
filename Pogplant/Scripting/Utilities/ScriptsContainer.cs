@@ -88,6 +88,7 @@ namespace Scripting
             pauseScriptNames.Add("LaserWeapon");
             pauseScriptNames.Add("EndGameMenu");
             pauseScriptNames.Add("HowToPlayMenu");
+            pauseScriptNames.Add("HighScoreMenu");
 
 
             //let this be last lol

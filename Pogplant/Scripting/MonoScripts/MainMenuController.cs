@@ -404,6 +404,8 @@ namespace Scripting
 						ECS.SetActive(settings_menu_id, true);
 						break;
 					case BUTTONS.HIGH_SCORE:
+						HighScoreMenu.Enable(true);
+						GameUtilities.PauseScene();
 						break;
 					case BUTTONS.CREDITS:
 						break;

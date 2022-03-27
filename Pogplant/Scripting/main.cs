@@ -295,6 +295,10 @@ namespace Scripting
             return new HowToPlayMenu();
         }
 
+        public static HighScoreMenu HighScoreMenu()
+        {
+            return new HighScoreMenu();
+        }
         public static L2FlockController L2FlockController()
         {
             return new L2FlockController();
