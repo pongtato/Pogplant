@@ -6884,7 +6884,7 @@
 				"Type" : 2
 			},
 			{
-				"Data" : 50,
+				"Data" : 500,
 				"Name" : "DamageAmount",
 				"Type" : 1
 			},
@@ -7003,7 +7003,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 15.0,
+				"Data" : 10.0,
 				"Name" : "IdleTimeMax",
 				"Type" : 0
 			},
@@ -9501,9 +9501,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				-0.086747400462627411,
-				0.99303311109542847,
-				-0.079750977456569672
+				-0.070341505110263824,
+				0.98986554145812988,
+				0.12336275726556778
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
@@ -9616,7 +9616,7 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 100,
+				"Data" : 1000,
 				"Name" : "DamageAmount",
 				"Type" : 1
 			},
@@ -11155,7 +11155,7 @@
 				"Type" : 4
 			},
 			{
-				"Data" : 50,
+				"Data" : 500,
 				"Name" : "DamageAmount",
 				"Type" : 1
 			},

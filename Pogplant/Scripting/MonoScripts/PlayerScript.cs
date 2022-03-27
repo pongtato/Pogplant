@@ -980,6 +980,11 @@ namespace Scripting
 					score -= amount;
 					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, amount, false));
 				}
+				else
+				{
+					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, score, false));
+					score = 0;
+				}
 				m_ScoreResetTimer = 0.01f;
 				ResetCombo();
 			}

@@ -194,8 +194,8 @@ namespace Scripting
 		Vector3 rot = new Vector3();
 		Vector3 scale = new Vector3();
 		private bool c_playedSpawnAnimation = false;
-		private float c_hardCodedUpAnimationSpeed = 10f;
-		private float c_animationDuration = 3f;
+		private float c_hardCodedUpAnimationSpeed = 12f;
+		private float c_animationDuration = 2.5f;
 
 		bool updateCoreLockOn = false;
 

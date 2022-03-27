@@ -74,7 +74,7 @@ namespace Scripting
 		private List<GameObject> m_enemySpawnInstances = new List<GameObject>();
 		private bool c_spawnedEnemies = false;
 		private bool c_playedSpawnAnimation = false;
-		private float c_hardCodedUpAnimationSpeed = 10f;
+		private float c_hardCodedUpAnimationSpeed = 12f;
 		private float c_animationDuration = 2.5f;
 
 		//--- Spawner variables
