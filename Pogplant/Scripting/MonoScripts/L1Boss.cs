@@ -266,6 +266,10 @@ namespace Scripting
             moving_parts_dict[left_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
             moving_parts_dict[right_large_laser_spin_id].SpinObjectEndless(1.0f, 0, 0, 200.0f, dt);
 
+            if (InputUtility.onKeyTriggered(KEY_ID.KEY_U))
+            {
+
+            }
 
             //Update mouths based on eye damage state
             UpdateMouths(dt);
@@ -615,6 +619,7 @@ namespace Scripting
         {
             //Body
             moving_parts_dict[entityID].SetPingPongPosition(new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 1.0f, 1.0f), true, false, false, true, false, false);
+            moving_parts_dict[entityID].SetLinearPosition(new Vector3(0, 0, 0), new Vector3(0, 0, 2.0f), false, false, true);
             moving_parts_dict[entityID].SetPingPongRotation(new Vector3(0, 0, -4), new Vector3(0, 0, 4), new Vector3(0, 0, 3.0f), false, false, true, false, false, true);
 
             //Arms
