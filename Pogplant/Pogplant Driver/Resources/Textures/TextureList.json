@@ -29,6 +29,11 @@
             "Dir"       : "Resources/Textures/UI",
             "Alpha"     : true
         },
+				{
+            "FileName"  : "1024_ExportSheet_02.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
 		{
             "FileName"  : "2048_ExportSheet_01.dds",
             "Dir"       : "Resources/Textures/UI",
@@ -41,6 +46,11 @@
         },
 		{
             "FileName"  : "2048_ExportSheet_03.dds",
+            "Dir"       : "Resources/Textures/UI",
+            "Alpha"     : true
+        },
+				{
+            "FileName"  : "2048_ExportSheet_04.dds",
             "Dir"       : "Resources/Textures/UI",
             "Alpha"     : true
         },
