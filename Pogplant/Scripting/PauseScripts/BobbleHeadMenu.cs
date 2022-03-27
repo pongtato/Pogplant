@@ -19,13 +19,19 @@ namespace Scripting
         private IMAGENUM m_prevImg = IMAGENUM.FIRST;
         private Dictionary<string, GameObject> m_Entities = new Dictionary<string, GameObject>();
         private bool m_menuActive = false;
+        private bool m_CallOnce = false;
         uint m_BobbleTimmy;
         uint m_BobbleProf;
         uint m_BobbleBoobas;
+        uint m_MenuGroupID;
+
+        float m_Timer = 0.0f;
+        float m_AnimationSpeed = 5.0f;
+        private Dictionary<string, GameObject> m_EntitiesMap = new Dictionary<string, GameObject>();
+        Transform m_Trans = new Transform();
 
         public BobbleHeadMenu()
         {
-
         }
 
         public override void Init(ref uint _entityID)
@@ -77,13 +83,24 @@ namespace Scripting
             ECS.GetTransformECS(txt3, ref pos, ref rot, ref scale);
             m_Entities.Add("TS_TXT3", new GameObject(txt3, new Transform(pos, rot, scale), "TS_TXT3"));
 
+            uint ct = ECS.FindEntityWithName("TS_ControlText");
+            ECS.GetTransformECS(ct, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_ControlText", new GameObject(ct, new Transform(pos, rot, scale), "TS_ControlText"));
+
+            
             m_BobbleTimmy = ECS.FindEntityWithName("BobbleTimmy");
             m_BobbleProf = ECS.FindEntityWithName("BobbleProf");
             m_BobbleBoobas = ECS.FindEntityWithName("BobbleBoobas");
 
+            m_MenuGroupID = ECS.FindEntityWithName("TrinketShopMenuGroup");
+            ECS.GetTransformECS(m_MenuGroupID, ref m_Trans.Position, ref m_Trans.Rotation, ref m_Trans.Scale);
+            m_Entities.Add("MenuMid", new GameObject(m_MenuGroupID, new Transform(new Vector3(m_Trans.Position.X, m_Trans.Position.Y + 1.0f, m_Trans.Position.Z), m_Trans.Rotation, m_Trans.Scale), "MenuMid"));
+            m_Entities.Add("MenuEnd", new GameObject(m_MenuGroupID, new Transform(new Vector3(m_Trans.Position.X, m_Trans.Position.Y + 0.85f, m_Trans.Position.Z), m_Trans.Rotation, m_Trans.Scale), "MenuEnd"));
+
             m_currImg = IMAGENUM.FIRST;
             m_prevImg = IMAGENUM.FIRST;
             m_menuActive = false;
+            m_CallOnce = false;
         }
 
         public override void Start()
@@ -102,6 +119,7 @@ namespace Scripting
                     ECS.SetActive(m_Entities["TS_IMG1"].id, true);
                     ECS.SetActive(m_Entities["TS_IMG2"].id, true);
                     ECS.SetActive(m_Entities["TS_IMG3"].id, true);
+                    ECS.SetActive(m_Entities["TS_ControlText"].id, false);
                     ECS.SetPosition(m_Entities["TS_IMG1"].id,
                         new Vector3(m_Entities["TS_MBox"].transform.Position.X, m_Entities["TS_MBox"].transform.Position.Y, m_Entities["TS_IMG1"].transform.Position.Z));
                     ECS.SetPosition(m_Entities["TS_IMG2"].id,
@@ -112,7 +130,28 @@ namespace Scripting
                     m_prevImg = IMAGENUM.FIRST;
                 }
                 else
-                    UpdateInputs();
+                {
+                    m_Timer += dt;
+                    ECS.GetTransformECS(m_MenuGroupID, ref m_Trans.Position, ref m_Trans.Rotation, ref m_Trans.Scale);
+
+                    if(m_Timer <= 0.5f)
+                    {
+                        ECS.SetPosition(m_MenuGroupID, Vector3.Lerp(m_Trans.Position, m_Entities["MenuMid"].transform.Position, m_AnimationSpeed * dt));
+                    }
+                    else if(m_Timer > 0.5f && m_Timer <= 1.0f)
+                    {
+                        ECS.SetPosition(m_MenuGroupID, Vector3.Lerp(m_Trans.Position, m_Entities["MenuEnd"].transform.Position, m_AnimationSpeed * dt));
+                    }
+                    else
+                    {
+                        if(!m_CallOnce)
+                        {
+                            ECS.SetActive(m_Entities["TS_ControlText"].id, true);
+                            m_CallOnce = false;
+                        }
+                        UpdateInputs();
+                    }
+                }        
             }
         }
 

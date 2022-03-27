@@ -38,5478 +38,6 @@
 		}
 	},
 	{
-		"Children" : 48,
-		"Name" : 
-		{
-			"m_Name" : "Segment_7_Obstaclas",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-33.795970916748047,
-				21.185279846191406,
-				-328.36160278320312
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-33.671756744384766,
-				23.187290191650391,
-				-329.36135864257812
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.9152374267578125,
-				-0.0001220703125,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-5.2180482157382357e-11,
-				-8.8167773082403755e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-33.551513671875,
-				21.185279846191406,
-				-332.25003051757812
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-43.508670806884766,
-				23.176874160766602,
-				-343.2196044921875
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.8547515869140625,
-				-0.0086212158203125,
-				0.001953125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.8067940333054153e-11,
-				-6.9540706526538543e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-33.971645355224609,
-				21.185279846191406,
-				-330.24139404296875
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-32.753200531005859,
-				21.185279846191406,
-				-334.16378784179688
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-42.475444793701172,
-				25.173171997070312,
-				-343.80587768554688
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-41.604579925537109,
-				23.176874160766602,
-				-344.25003051757812
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.8547515869140625,
-				-9.918212890625e-05,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.7080428177672644e-11,
-				-6.867965085533001e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-40.593925476074219,
-				21.183055877685547,
-				-344.51568603515625
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-5.7220458984375e-05,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.6617328133249352e-11,
-				-6.8478595016685517e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-42.451702117919922,
-				21.183055877685547,
-				-343.61904907226562
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-5.7220458984375e-05,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.6617328133249352e-11,
-				-6.8478595016685517e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-46.485294342041016,
-				21.183055877685547,
-				-333.29962158203125
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-4.57763671875e-05,
-				-35.759292602539062,
-				-86.35205078125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-5.0901265841174492e-11,
-				-4.1301770337121013e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-5.7220458984375e-05,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.6617328133249352e-11,
-				-6.8478595016685517e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-5.7220458984375e-05,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.6617328133249352e-11,
-				-6.8478595016685517e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-46.846645355224609,
-				21.183055877685547,
-				-331.493896484375
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-5.7220458984375e-05,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.6617328133249352e-11,
-				-6.8478595016685517e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-45.874622344970703,
-				21.183052062988281,
-				-335.168212890625
-			],
-			"m_rotation" : 
-			[
-				8.9999599456787109,
-				-1.7525053402824703e-13,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.099999867379665375,
-				0.099999606609344482
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-0.00164031982421875,
-				-0.0126953125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.670672537286034e-11,
-				-6.847717948232912e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-46.489162445068359,
-				23.190338134765625,
-				-334.21844482421875
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-0.00164031982421875,
-				-0.0126953125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.670672537286034e-11,
-				-6.847717948232912e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-46.917156219482422,
-				23.190338134765625,
-				-332.25885009765625
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-0.00164031982421875,
-				-0.0126953125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.670672537286034e-11,
-				-6.847717948232912e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-47.017520904541016,
-				21.183055877685547,
-				-329.48348999023438
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-5.7220458984375e-05,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.6617328133249352e-11,
-				-6.8478595016685517e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-47.121631622314453,
-				23.190338134765625,
-				-330.43234252929688
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-0.00164031982421875,
-				-0.0126953125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.670672537286034e-11,
-				-6.847717948232912e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-47.139644622802734,
-				25.171104431152344,
-				-331.39181518554688
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.854766845703125,
-				-0.00164031982421875,
-				-0.0126953125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-2.670672537286034e-11,
-				-6.847717948232912e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				6.4800152778625488,
-				21.185279846191406,
-				-335.65362548828125
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				19.908136367797852,
-				21.242141723632812,
-				-336.99923706054688
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				19.876495361328125,
-				21.242141723632812,
-				-338.75030517578125
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				19.993938446044922,
-				23.197963714599609,
-				-338.0087890625
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				20.007911682128906,
-				25.201114654541016,
-				-343.29660034179688
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				20.032587051391602,
-				23.197963714599609,
-				-342.43978881835938
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				14.536824226379395,
-				21.185279846191406,
-				-347.35433959960938
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				19.962347030639648,
-				21.185279846191406,
-				-342.92718505859375
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				19.82231330871582,
-				21.185279846191406,
-				-345.05734252929688
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				13.672808647155762,
-				23.197963714599609,
-				-346.840087890625
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				20.004119873046875,
-				23.197963714599609,
-				-344.0047607421875
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				12.707094192504883,
-				21.185279846191406,
-				-346.23263549804688
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				7.4959254264831543,
-				23.154304504394531,
-				-335.41012573242188
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.9202117919921875,
-				0.908203125,
-				-0.04541015625
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-5.3830315205338763e-11,
-				-8.9539714531738923e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.6545133590698242,
-				21.185279846191406,
-				-335.3704833984375
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.9202117919921875,
-				0.908203125,
-				-0.04541015625
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-5.3830315205338763e-11,
-				-8.9539714531738923e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-7.2095646858215332,
-				23.195919036865234,
-				-346.45379638671875
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-7.6500973701477051,
-				21.185279846191406,
-				-347.39141845703125
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-6.5137295722961426,
-				21.185279846191406,
-				-345.54888916015625
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-4.8210697174072266,
-				21.185279846191406,
-				-343.75326538085938
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-2.3606774806976318,
-				21.185279846191406,
-				-342.3399658203125
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-12.338643074035645,
-				23.193552017211914,
-				-335.15151977539062
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-12.387361526489258,
-				21.185279846191406,
-				-334.05160522460938
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-12.37828540802002,
-				21.185279846191406,
-				-336.2012939453125
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-20.458259582519531,
-				23.187662124633789,
-				-345.13174438476562
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-20.174177169799805,
-				21.185279846191406,
-				-346.150390625
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-33.427841186523438,
-				23.233091354370117,
-				-333.34320068359375
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-20.576137542724609,
-				21.185279846191406,
-				-344.12213134765625
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-33.8094482421875,
-				27.333776473999023,
-				-331.44967651367188
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-33.816658020019531,
-				25.248106002807617,
-				-330.37548828125
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-33.797653198242188,
-				25.248106002807617,
-				-332.44619750976562
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Obst_Cup",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_Cup",
-				"Resources/Models\\Environment",
-				"Cup"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-33.914192199707031,
-				23.233091354370117,
-				-331.38897705078125
-			],
-			"m_rotation" : 
-			[
-				9.0,
-				-0.0,
-				90.0
-			],
-			"m_scale" : 
-			[
-				0.099999390542507172,
-				0.10000000149011612,
-				0.099999904632568359
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				5.5,
-				10.0,
-				5.5
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-9.92022705078125,
-				-0.00011444091796875,
-				-0.003173828125
-			],
-			"m_rotation" : 
-			[
-				-6.8301978899398819e-06,
-				-4.9511072325314487e-11,
-				-8.5685369910493137e-10
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999868869781494,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 3,
 		"Name" : 
 		{
@@ -52907,6 +47435,5478 @@
 			[
 				1.0,
 				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 48,
+		"Name" : 
+		{
+			"m_Name" : "Segment_7_Obstaclas",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-46.846645355224609,
+				21.183055877685547,
+				-331.493896484375
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-5.7220458984375e-05,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.6617328133249352e-11,
+				-6.8478595016685517e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-45.874622344970703,
+				21.183052062988281,
+				-335.168212890625
+			],
+			"m_rotation" : 
+			[
+				8.9999599456787109,
+				-1.7525053402824703e-13,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.099999867379665375,
+				0.099999606609344482
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-0.00164031982421875,
+				-0.0126953125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.670672537286034e-11,
+				-6.847717948232912e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-46.489162445068359,
+				23.190338134765625,
+				-334.21844482421875
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-0.00164031982421875,
+				-0.0126953125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.670672537286034e-11,
+				-6.847717948232912e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-46.917156219482422,
+				23.190338134765625,
+				-332.25885009765625
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-0.00164031982421875,
+				-0.0126953125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.670672537286034e-11,
+				-6.847717948232912e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-47.017520904541016,
+				21.183055877685547,
+				-329.48348999023438
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-5.7220458984375e-05,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.6617328133249352e-11,
+				-6.8478595016685517e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-47.121631622314453,
+				23.190338134765625,
+				-330.43234252929688
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-0.00164031982421875,
+				-0.0126953125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.670672537286034e-11,
+				-6.847717948232912e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-47.139644622802734,
+				25.171104431152344,
+				-331.39181518554688
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-0.00164031982421875,
+				-0.0126953125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.670672537286034e-11,
+				-6.847717948232912e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.4800152778625488,
+				21.185279846191406,
+				-335.65362548828125
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				19.908136367797852,
+				21.242141723632812,
+				-336.99923706054688
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				19.876495361328125,
+				21.242141723632812,
+				-338.75030517578125
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				19.993938446044922,
+				23.197963714599609,
+				-338.0087890625
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				20.007911682128906,
+				25.201114654541016,
+				-343.29660034179688
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				20.032587051391602,
+				23.197963714599609,
+				-342.43978881835938
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				14.536824226379395,
+				21.185279846191406,
+				-347.35433959960938
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				19.962347030639648,
+				21.185279846191406,
+				-342.92718505859375
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				19.82231330871582,
+				21.185279846191406,
+				-345.05734252929688
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				13.672808647155762,
+				23.197963714599609,
+				-346.840087890625
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				20.004119873046875,
+				23.197963714599609,
+				-344.0047607421875
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.707094192504883,
+				21.185279846191406,
+				-346.23263549804688
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				7.4959254264831543,
+				23.154304504394531,
+				-335.41012573242188
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.9202117919921875,
+				0.908203125,
+				-0.04541015625
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-5.3830315205338763e-11,
+				-8.9539714531738923e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				8.6545133590698242,
+				21.185279846191406,
+				-335.3704833984375
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.9202117919921875,
+				0.908203125,
+				-0.04541015625
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-5.3830315205338763e-11,
+				-8.9539714531738923e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-7.2095646858215332,
+				23.195919036865234,
+				-346.45379638671875
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-7.6500973701477051,
+				21.185279846191406,
+				-347.39141845703125
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.5137295722961426,
+				21.185279846191406,
+				-345.54888916015625
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.8210697174072266,
+				21.185279846191406,
+				-343.75326538085938
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.3606774806976318,
+				21.185279846191406,
+				-342.3399658203125
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-12.338643074035645,
+				23.193552017211914,
+				-335.15151977539062
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-12.387361526489258,
+				21.185279846191406,
+				-334.05160522460938
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-12.37828540802002,
+				21.185279846191406,
+				-336.2012939453125
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-20.458259582519531,
+				23.187662124633789,
+				-345.13174438476562
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-20.174177169799805,
+				21.185279846191406,
+				-346.150390625
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.427841186523438,
+				23.233091354370117,
+				-333.34320068359375
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-20.576137542724609,
+				21.185279846191406,
+				-344.12213134765625
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.8094482421875,
+				27.333776473999023,
+				-331.44967651367188
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.816658020019531,
+				25.248106002807617,
+				-330.37548828125
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.797653198242188,
+				25.248106002807617,
+				-332.44619750976562
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.914192199707031,
+				23.233091354370117,
+				-331.38897705078125
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-42.475444793701172,
+				25.173171997070312,
+				-343.80587768554688
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-41.604579925537109,
+				23.176874160766602,
+				-344.25003051757812
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.8547515869140625,
+				-9.918212890625e-05,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.7080428177672644e-11,
+				-6.867965085533001e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-40.593925476074219,
+				21.183055877685547,
+				-344.51568603515625
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-5.7220458984375e-05,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.6617328133249352e-11,
+				-6.8478595016685517e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-42.451702117919922,
+				21.183055877685547,
+				-343.61904907226562
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-5.7220458984375e-05,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.6617328133249352e-11,
+				-6.8478595016685517e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-46.485294342041016,
+				21.183055877685547,
+				-333.29962158203125
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-4.57763671875e-05,
+				-35.759292602539062,
+				-86.35205078125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-5.0901265841174492e-11,
+				-4.1301770337121013e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-5.7220458984375e-05,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.6617328133249352e-11,
+				-6.8478595016685517e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.854766845703125,
+				-5.7220458984375e-05,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.6617328133249352e-11,
+				-6.8478595016685517e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.795970916748047,
+				21.185279846191406,
+				-328.36160278320312
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.671756744384766,
+				23.187290191650391,
+				-329.36135864257812
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.9152374267578125,
+				-0.0001220703125,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-5.2180482157382357e-11,
+				-8.8167773082403755e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.551513671875,
+				21.185279846191406,
+				-332.25003051757812
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-43.508670806884766,
+				23.176874160766602,
+				-343.2196044921875
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.8547515869140625,
+				-0.0086212158203125,
+				0.001953125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-2.8067940333054153e-11,
+				-6.9540706526538543e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.971645355224609,
+				21.185279846191406,
+				-330.24139404296875
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Obst_Cup",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a4ed7e47-cec3-4871-9890-c4dc9d5ed6cb",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_Cup",
+				"Resources/Models\\Environment",
+				"Cup"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-32.753200531005859,
+				21.185279846191406,
+				-334.16378784179688
+			],
+			"m_rotation" : 
+			[
+				9.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.099999390542507172,
+				0.10000000149011612,
+				0.099999904632568359
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				5.5,
+				10.0,
+				5.5
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-9.92022705078125,
+				-0.00011444091796875,
+				-0.003173828125
+			],
+			"m_rotation" : 
+			[
+				-6.8301978899398819e-06,
+				-4.9511072325314487e-11,
+				-8.5685369910493137e-10
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999868869781494,
 				1.0
 			]
 		}
@@ -145057,7 +145057,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 90.086654663085938,
+				"m_FrameCounter" : 125.47552490234375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -145070,8 +145070,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.71875
+					0.5,
+					0.984375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145123,7 +145123,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 90.086654663085938,
+				"m_FrameCounter" : 125.47552490234375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -145136,8 +145136,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.71875
+					0.5,
+					0.984375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145189,7 +145189,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 89.424224853515625,
+				"m_FrameCounter" : 56.913974761962891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -145202,8 +145202,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.703125
+					0.0,
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145255,7 +145255,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 90.086654663085938,
+				"m_FrameCounter" : 125.47552490234375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -145268,8 +145268,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.71875
+					0.5,
+					0.984375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145321,7 +145321,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 22.806449890136719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -145335,7 +145335,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.015625
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145387,7 +145387,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 90.086654663085938,
+				"m_FrameCounter" : 125.47552490234375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -145400,8 +145400,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.71875
+					0.5,
+					0.984375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145453,7 +145453,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 89.424224853515625,
+				"m_FrameCounter" : 56.913974761962891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -145466,8 +145466,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.703125
+					0.0,
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145519,7 +145519,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.779182434082031,
+				"m_FrameCounter" : 26.769599914550781,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -145533,7 +145533,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.515625
+					0.21875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145585,7 +145585,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 89.424224853515625,
+				"m_FrameCounter" : 56.913974761962891,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -145598,8 +145598,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.703125
+					0.0,
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145651,7 +145651,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.937755584716797,
+				"m_FrameCounter" : 87.628105163574219,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -145664,8 +145664,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.375
+					0.5,
+					0.6875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145717,7 +145717,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.779182434082031,
+				"m_FrameCounter" : 26.769599914550781,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -145731,7 +145731,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.515625
+					0.21875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -155980,7 +155980,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				-0.85000002384185791,
 				0.0
 			],
 			"m_rotation" : 
