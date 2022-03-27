@@ -602,6 +602,17 @@ namespace Scripting
 		}
 	}
 
+	void GameScript::UpdateText(std::uint32_t text_object, MonoString* _str)
+	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(text_object)))
+			return;
+
+		auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(text_object));
+
+		if (text)
+			text->m_Text = mono_string_to_utf8(_str);
+	}
+
 	std::uint32_t GameScript::UpdateScore_AddMinus(std::uint32_t dashboardID, std::uint32_t scorechange, bool isAdd)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(dashboardID)))

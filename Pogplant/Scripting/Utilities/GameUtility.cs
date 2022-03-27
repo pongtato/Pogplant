@@ -119,6 +119,9 @@ namespace Scripting
         public extern static void UpdateTextColor(uint entityID, Vector3 color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void UpdateText(uint entityID, string new_text);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint UpdateScore_AddMinus(uint text_object, uint score, bool isAdd);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

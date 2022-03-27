@@ -432,6 +432,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::EnemyTakeDamageFromID", &Scripting::GameScript::EnemyTakeDamageFromID);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateComboUI", &Scripting::GameScript::UpdateComboUI);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateTextColor", &Scripting::GameScript::UpdateTextColor);
+	mono_add_internal_call("Scripting.GameUtilities::UpdateText", &Scripting::GameScript::UpdateText);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore_AddMinus", &Scripting::GameScript::UpdateScore_AddMinus);
 	mono_add_internal_call("Scripting.GameUtilities::MoveWithImpulse", &Scripting::GameScript::MoveWithImpulse);
 	mono_add_internal_call("Scripting.GameUtilities::StopMoving", &Scripting::GameScript::StopMoving);
