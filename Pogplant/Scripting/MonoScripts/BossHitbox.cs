@@ -40,6 +40,9 @@ namespace Scripting
 		public Vector3 m_cameraShakeMag;
 		public float m_cameraShakeDuration;
 
+		public float m_vibrationForce;
+		public float m_vibrationDuration;
+
 		List<uint> m_succList = new List<uint>();
 
 		public override void Init(ref uint _entityID)
@@ -59,6 +62,9 @@ namespace Scripting
 			m_applySucc = ECS.GetValue<bool>(entityID, false, "ApplySucc");
 			m_succForce = ECS.GetValue<float>(entityID, 10f, "SuccForce");
 			m_initialSuccForce = ECS.GetValue<float>(entityID, 20f, "SuccForceInit");
+
+			m_vibrationDuration = ECS.GetValue<float>(entityID, 0.2f, "VibrationForce");
+			m_vibrationForce = ECS.GetValue<float>(entityID, 1.0f, "VibrationDuration");
 
 			m_cameraShakeInitMul = ECS.GetValue<Vector3>(entityID, new Vector3(0.6f, 0.6f, 0.4f), "CameraShakeInit");
 			m_cameraShakeMag = ECS.GetValue<Vector3>(entityID, new Vector3(10f, 10f, 10f), "CameraShakeMag");
@@ -100,6 +106,9 @@ namespace Scripting
 						new Vector3(m_cameraShakeMag.X, m_cameraShakeMag.Y, m_cameraShakeMag.Z),
 						m_cameraShakeDuration);
 					PlayerScript.AddScore(false, false, (uint)m_damageAmount);
+
+					//Add controller vibration
+					InputUtility.VibrateControllerHeavyMotor(m_vibrationForce, m_vibrationDuration);
 				}
 
 				if (m_applyForceOnHit)

@@ -1520,6 +1520,7 @@ namespace Scripting
 
         void RunDeathStateSequenceOne(float dt)
         {
+            InputUtility.VibrateControllerLightMotor(0.05f, 10f);
             //Arms
             moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
             moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
@@ -1614,6 +1615,9 @@ namespace Scripting
 
         void SetDeathStateAnimationsFour()
         {
+            //Add controller vibration
+            InputUtility.VibrateControllerHeavyMotor(1f, 1.5f);
+
             //Body
             moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, -0.2f, -4), new Vector3(0, 0.2f, 0), new Vector3(0, 0.0f, 10.0f), false, false, false, false, true, false);
             moving_parts_dict[main_laser_object_id].SetPingPongScale(new Vector3(0.1f, 0.1f, 3.0f), new Vector3(30.0f, 30.0f, 30.0f), new Vector3(8.0f, 8.0f, 0), true, true, false, false, false, false);
