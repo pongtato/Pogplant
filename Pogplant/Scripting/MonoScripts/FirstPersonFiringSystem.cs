@@ -709,7 +709,7 @@ namespace Scripting
 				Vector3 Position = ECS.GetGlobalPosition(MuzzleGroup[i]);
 				Vector3 Rotation = ECS.GetGlobalRotation(MuzzleGroup[i]);
 
-				GameUtilities.FirePlayerBullet(Position, m_shootVector, Rotation, false, 0);
+				GameUtilities.FirePlayerBullet(Position + m_shootVector, m_shootVector, Rotation, false, 0);
 			}
 		}
 
@@ -733,7 +733,7 @@ namespace Scripting
 				var new_position = enemy_pos + (enemy_velo * dt * 20.0f);
 				new_position -= Position;
 				var new_forward = Vector3.Normalise(new_position);
-				GameUtilities.FirePlayerBullet(Position, new_forward, Rotation, true, EntityID_of_FirstTargetablEnemy());
+				GameUtilities.FirePlayerBullet(Position + m_shootVector, new_forward, Rotation, true, EntityID_of_FirstTargetablEnemy());
 			}
 		}
 
