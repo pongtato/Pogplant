@@ -4,20 +4,148 @@
       "Level": "Level01",
       "Lines": [
         {
-          "Text": "This is a test line 1",
+          "Text": "Use the WASD button to-",
+          "Timer": 2.7
+        },
+        {
+          "Text": "Don't tell what to do!...W-WOAH! Could've warned me about that log!",
+          "Timer": 4
+        },
+        {
+          "Text": "Autopilot is engaged. Authorizing self-evasion and shooting!",
+          "Timer": 5.9
+        },
+        {
+          "Text": "MUAHAHAHA! Let's show them our GUNS!",
           "Timer": 3.1
         },
         {
-          "Text": "This is a test line 2",
+          "Text": "Enemy detected!",
+          "Timer": 1.3
+        },
+        {
+          "Text": "Get out the guns...GET OUT THE GUNS!",
+          "Timer": 2
+        },
+        {
+          "Text": "Use the LMB to shoot!",
+          "Timer": 3.1
+        },
+        {
+          "Text": "Use the RT to shoot!",
+          "Timer": 2.2
+        },
+        {
+          "Text": "I know what to do, Timmy. I know! I know!",
+          "Timer": 2.4
+        },
+        {
+          "Text": "What the heck are they building in my backyard!",
+          "Timer": 2
+        },
+        {
+          "Text": "Watch out for those...ARTILLERY STRIKES!",
+          "Timer": 2.5
+        },
+        {
+          "Text": "Approaching enemy TUNNEL!",
+          "Timer": 2.2
+        },
+        {
+          "Text": "HEEERE WE COOOME!",
+          "Timer": 1.7
+        },
+        {
+          "Text": "Woooaaah...pretty lights!",
+          "Timer": 2.7
+        },
+        {
+          "Text": "Woah! What's this supposed to be? A bad rip-off of TRON!?",
+          "Timer": 3.7
+        },
+        {
+          "Text": "Hmmm...This place is quiet...too quiet.",
+          "Timer": 4
+        },
+        {
+          "Text": "Ooh La Lah! More action!",
+          "Timer": 2.5
+        },
+        {
+          "Text": "I don't think they like what you said, Prof!",
+          "Timer": 2.9
+        },
+        {
+          "Text": "What the heck, Timmy! It's been raining in my backyard!",
+          "Timer": 2.7
+        },
+        {
+          "Text": "Ooh! W-we have multiple signals incoming!",
           "Timer": 3
         },
         {
-          "Text": "This is a test line 3",
-          "Timer": 3.1
+          "Text": "Let's get 'em all!",
+          "Timer": 1.6
         },
         {
-          "Text": "This is a test line 4",
-          "Timer": 3.1
+          "Text": "That's it, Prof! The one that's shooting all the artillery strikes!",
+          "Timer": 4
+        },
+        {
+          "Text": "Nooooo!",
+          "Timer": 2
+        },
+        {
+          "Text": "*groan* I'm getting tired of these things!",
+          "Timer": 2.8
+        },
+        {
+          "Text": "Hey, Prof! That tunnel looks ENTICING!",
+          "Timer": 3
+        },
+        {
+          "Text": "And awaaay we GOOO!",
+          "Timer": 2.5
+        },
+        {
+          "Text": "Aaaahaha!",
+          "Timer": 1.8
+        },
+        {
+          "Text": "Aha! We're in the sphincter now, Timmy!",
+          "Timer": 3.3
+        },
+        {
+          "Text": "Err, Prof...We should get outta here!",
+          "Timer": 2.2
+        },
+        {
+          "Text": "They're onto us!",
+          "Timer": 1.8
+        },
+        {
+          "Text": "Get out? We're gonna get in! Sphincter 2, Electric Boogaloo!",
+          "Timer": 4.5
+        },
+        {
+          "Text": "Wha-? How many underground cities are there!?",
+          "Timer": 2.7
+        },
+        {
+          "Text": "I wanna go home, Professor! We should get outta here!",
+          "Timer": 4.2
+        },
+        {
+          "Text": "Haha, finally! We're at the end of the tunnel!",
+          "Timer": 3
+        },
+        {
+          "Text": "Ahaha! We did it, Professor!",
+          "Timer": 3.3
+        },
+        {
+          "Text": "Hey, How did you think I did? Pretty great, huh?",
+          "Timer": 3.4
         }
       ]
     },
@@ -25,12 +153,403 @@
       "Level": "Level02",
       "Lines": [
         {
-          "Text": "This is a test line 1 for level 2",
+          "Text": "Ah...forget it! Just charge the darn weapon and use it when I say so!",
+          "Timer": 4.8
+        },
+        {
+          "Text": "Confirmation required.",
+          "Timer": 2.3
+        },
+        {
+          "Text": "Yes confirmed!",
+          "Timer": 1.1
+        },
+        {
+          "Text": "2nd Confirmation required.",
+          "Timer": 2.9
+        },
+        {
+          "Text": "YES…confirmed!",
+          "Timer": 1.5
+        },
+        {
+          "Text": "3rd Confirma-",
+          "Timer": 1.6
+        },
+        {
+          "Text": "JUST CHARGE THE DANG WEAPON, TIMMY!",
+          "Timer": 2.2
+        },
+        {
+          "Text": "...okay...",
+          "Timer": 1.3
+        },
+        {
+          "Text": "Oh! Now we got laser enemies? Shoot the laser at them, now!",
+          "Timer": 4.4
+        },
+        {
+          "Text": "Ah, more enemies…Thanks for giving them a heads up, Timmy!",
+          "Timer": 4.1
+        },
+        {
+          "Text": "Me? Your'e the one that programmed me!",
+          "Timer": 3.1
+        },
+        {
+          "Text": "Yeah, yeah...Whatever.",
+          "Timer": 1.5
+        },
+        {
+          "Text": "As far as I know, my miscalculations...are YOUR miscalculations!",
+          "Timer": 5.8
+        },
+        {
+          "Text": "Great! Not only could you not follow instructions…now you couldn't even give a detection warning, Timmy?!",
+          "Timer": 5.6
+        },
+        {
+          "Text": "Is it that hard to do what you are PROGRAMMED to do!?",
+          "Timer": 3.7
+        },
+        {
+          "Text": "Are you still not talking to me?",
+          "Timer": 1.6
+        },
+        {
+          "Text": "C'mon Timmy! Stop being a lil' shrew! We gotta find the core! Blow up these non-believers!",
+          "Timer": 6.2
+        },
+        {
+          "Text": "No...",
+          "Timer": 1
+        },
+        {
+          "Text": "Fine! I'll find it myself! Hmph!",
+          "Timer": 3.2
+        },
+        {
+          "Text": "<unintelligible noise>...Aaand we're lost.",
+          "Timer": 6
+        },
+        {
+          "Text": "C'mon, I could reaaally use that detection of yours, Timmyyy.",
+          "Timer": 4
+        },
+        {
+          "Text": "Didn't you say, you will find it yourself?",
+          "Timer": 3.2
+        },
+        {
+          "Text": "Oh c'mon Timmy! You're my lil' buddy, aren'tcha?",
+          "Timer": 3.1
+        },
+        {
+          "Text": "Fine...just straight ahead. You know…it ain't a complex place to begin with…",
+          "Timer": 7
+        },
+        {
+          "Text": "Are you sure this is the way to the core, huh, Timmy?",
           "Timer": 3
         },
         {
-          "Text": "This is a test line 2 for level 2",
+          "Text": "YES, I’M SURE! I thought you could count on me on this?",
+          "Timer": 5.1
+        },
+        {
+          "Text": "Of COURSE…of course, yeah!…Of course...of course...sheesh…",
+          "Timer": 6.1
+        },
+        {
+          "Text": "Woah! That must be the core!",
           "Timer": 3
+        },
+        {
+          "Text": "Woah, they’re really pulling all the stops here! There are even explosive enemies!... wait a minute…",
+          "Timer": 7.2
+        },
+        {
+          "Text": "Really...",
+          "Timer": 1.8
+        },
+        {
+          "Text": "Woah, shoots! This place is totally falling apart! We gotta get outta here, Timmy!",
+          "Timer": 5.7
+        },
+        {
+          "Text": "Look, it's the exit! Let's get out before it's too laaate!",
+          "Timer": 4.2
+        },
+        {
+          "Text": "Look, it's that fool that destroyed my voice mod!",
+          "Timer": 3.5
+        },
+        {
+          "Text": "We're gonna get crushed if we stay any longer, Professor!",
+          "Timer": 4.9
+        },
+        {
+          "Text": "Fine! It's probably gonna get destroyed along with these wussies anyways!",
+          "Timer": 5.4
+        },
+        {
+          "Text": "Hoowee! We've finally paid them back for what they did to your Square Earth...thesis!",
+          "Timer": 6.6
+        },
+        {
+          "Text": "I wish I could've plundered some of these alien tech, though!",
+          "Timer": 3.6
+        }
+      ]
+    },
+    {
+      "Level": "Boss1",
+      "Lines": [
+        {
+          "Text": "Uh oh!",
+          "Timer": 0.8
+        },
+        {
+          "Text": "Hey, it's back!",
+          "Timer": 2.5
+        },
+        {
+          "Text": "Let's get' em!",
+          "Timer": 1.4
+        },
+        {
+          "Text": "Nooo!",
+          "Timer": 2.2
+        },
+        {
+          "Text": "Hahaha! Worry not! Artillery doesn't work in the sky!",
+          "Timer": 3.8
+        },
+        {
+          "Text": "Look, we damaged it! Keep it up!",
+          "Timer": 3.5
+        },
+        {
+          "Text": "Woah, its pulling all the stops isnt it? Wh…what kinda interdimensional japanese mechanical cat wannabe baloney is this?",
+          "Timer": 7.3
+        },
+        {
+          "Text": "Haha! Look, Timmy! He's wide open! Let's finish this now!",
+          "Timer": 3.4
+        },
+        {
+          "Text": "That's great! Just keep shooting!",
+          "Timer": 3
+        },
+        {
+          "Text": "Oh no...this can't be good!",
+          "Timer": 2.1
+        },
+        {
+          "Text": "I'm losing control, Timmy!",
+          "Timer": 2.2
+        }
+      ]
+    },
+    {
+      "Level": "Boss2",
+      "Lines": [
+        {
+          "Text": "W-What! It's alive!? W-w-wait, hold up! He's looking way more dangerous than before!",
+          "Timer": 0.8
+        },
+        {
+          "Text": "You mean those big...guns?",
+          "Timer": 2.5
+        },
+        {
+          "Text": "Nonono, Timmy! The lights!",
+          "Timer": 1.4
+        },
+        {
+          "Text": "Huh?",
+          "Timer": 2.2
+        }
+      ]
+    },
+    {
+      "Level": "Cutscene1",
+      "Lines": []
+    },
+    {
+      "Level": "Cutscene2",
+      "Lines": [
+        {
+          "Text": "<crash noise>",
+          "Timer": 2.6
+        },
+        {
+          "Text": "...W-woah...a-are we dead...?",
+          "Timer": 3.5
+        },
+        {
+          "Text": "Did we die?",
+          "Timer": 1.4
+        },
+        {
+          "Text": "Is...Is thAt thE gAteS oF HeAveN?",
+          "Timer": 2.6
+        },
+        {
+          "Text": "Oh nO, TimMy! We'rE LocKeD oUt oF HeAvEn! We'Re GoiNg tO HeLL!",
+          "Timer": 3.9
+        },
+        {
+          "Text": "WaiT! M-my vOiCemOd! WhaT HapPeNed tO iT?",
+          "Timer": 3.6
+        },
+        {
+          "Text": "LoOk...T-ThAt BiG tHiNg- LoOk At WhaT iT diD tO mY vOiCEmOd, TimMY!",
+          "Timer": 3.3
+        },
+        {
+          "Text": "I dOn'T feEL goOd wiThOut mY VoiCeMod, Tim-",
+          "Timer": 2.1
+        },
+        {
+          "Text": "Scanning...uploading data analysis...",
+          "Timer": 2.8
+        },
+        {
+          "Text": "We are currently Three Thousand, Two Hundred metres...underground.",
+          "Timer": 5.5
+        },
+        {
+          "Text": "We are very small, Professor!",
+          "Timer": 2.2
+        },
+        {
+          "Text": "What is my default unit scal-",
+          "Timer": 1.8
+        },
+        {
+          "Text": "ThAt doeSn't MatTer! LoOk at You, TimMy!",
+          "Timer": 2.2
+        },
+        {
+          "Text": "You LoOk HorRibLE!",
+          "Timer": 0.9
+        },
+        {
+          "Text": "Oooh...Aaah...The paaain!",
+          "Timer": 2.4
+        },
+        {
+          "Text": "YoU doN't fEeL AnY PaiN!",
+          "Timer": 1.1
+        },
+        {
+          "Text": "Ah haha!",
+          "Timer": 1.5
+        },
+        {
+          "Text": "But, Professor, we don't have a chance against something that BIG!",
+          "Timer": 3.4
+        },
+        {
+          "Text": "We don't have enough firepower!",
+          "Timer": 1.9
+        },
+        {
+          "Text": "NonoNoNOnoNo!",
+          "Timer": 1.3
+        },
+        {
+          "Text": "ThiS iS nOt oVER yeT! PuLL oUt tHE ScheMatiCS, TiMmy!",
+          "Timer": 2.5
+        },
+        {
+          "Text": "We nEeD tO briNG oUr A-GamE!",
+          "Timer": 1.8
+        },
+        {
+          "Text": "FIREPOWER!",
+          "Timer": 3.2
+        },
+        {
+          "Text": "<construction noises>",
+          "Timer": 3.5
+        },
+        {
+          "Text": "2 Hours Later...",
+          "Timer": 3.4
+        },
+        {
+          "Text": "Phew! I think we got this, Timmy! Let's test this out, BABY!",
+          "Timer": 4.3
+        },
+        {
+          "Text": "Weapon Charging...Charging Complete...",
+          "Timer": 2.7
+        },
+        {
+          "Text": "Initiating Testing Sequence in-",
+          "Timer": 1.8
+        },
+        {
+          "Text": "Timmy! We're not off the ground!",
+          "Timer": 1.3
+        },
+        {
+          "Text": "1...",
+          "Timer": 0.6
+        },
+        {
+          "Text": "<explosion>",
+          "Timer": 4.1
+        },
+        {
+          "Text": "Ammo Depleted...",
+          "Timer": 1.2
+        },
+        {
+          "Text": "What!?",
+          "Timer": 1.3
+        },
+        {
+          "Text": "Professor, Gates of Heaven...open!",
+          "Timer": 2.4
+        },
+        {
+          "Text": "Timmy, the enemies will hear that MILES AWAY!",
+          "Timer": 2.4
+        },
+        {
+          "Text": "My calculations didn't consider these factors...",
+          "Timer": 3.7
+        },
+        {
+          "Text": "...oops",
+          "Timer": 0.3
+        },
+        {
+          "Text": "Why didn't you listen to me, Timmy!",
+          "Timer": 1.3
+        },
+        {
+          "Text": "But, didn't you say to test it out?",
+          "Timer": 1.6
+        },
+        {
+          "Text": "On my mark! Not straight away!",
+          "Timer": 2
+        },
+        {
+          "Text": "I'm sick of this! You explicitly said-",
+          "Timer": 2.2
+        },
+        {
+          "Text": "I explicitly said...",
+          "Timer": 1.2
+        },
+        {
+          "Text": "...",
+          "Timer": 2.2
         }
       ]
     }
