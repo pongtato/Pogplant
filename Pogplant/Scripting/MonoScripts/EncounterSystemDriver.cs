@@ -184,22 +184,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("12,1,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("9,1,5"), 0.8f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 0.8f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("5,1,5"), 0.6f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 0.6f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("2,1,5"), 0.4f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 0.4f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -207,22 +207,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("12,1,5"), enemyManager.GetWaypoint("14,1,8"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("9,1,5"), enemyManager.GetWaypoint("12,1,8"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("5,1,5"), enemyManager.GetWaypoint("10,1,8"), 1.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("2,1,5"), enemyManager.GetWaypoint("8,1,8"), 1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -230,22 +230,22 @@ namespace Scripting
 
             // Wait and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new WaitAction(1.0f);
                 action1[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new WaitAction(1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new WaitAction(1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new WaitAction(1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -253,22 +253,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("14,1,8"), enemyManager.GetWaypoint("12,7,2"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("12,1,8"), enemyManager.GetWaypoint("9,7,2"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("10,1,8"), enemyManager.GetWaypoint("5,7,2"), 1.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("8,1,8"), enemyManager.GetWaypoint("2,7,2"), 1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -276,22 +276,22 @@ namespace Scripting
 
             // Wait and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new WaitAction(2.0f);
                 action1[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new WaitAction(2.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.0f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new WaitAction(2.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.0f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new WaitAction(2.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -339,22 +339,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("12,1,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("9,1,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("5,1,5"), 1.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("2,1,5"), 1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -362,22 +362,22 @@ namespace Scripting
 
             // Wait and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new WaitAction(1.0f);
                 action1[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new WaitAction(1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new WaitAction(1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new WaitAction(1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -385,22 +385,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("12,1,5"), enemyManager.GetWaypoint("12,4,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("9,1,5"), enemyManager.GetWaypoint("9,4,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("5,1,5"), enemyManager.GetWaypoint("5,4,5"), 1.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("2,1,5"), enemyManager.GetWaypoint("2,4,5"), 1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -408,22 +408,22 @@ namespace Scripting
 
             // Wait and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new WaitAction(3.0f);
                 action1[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 3.0f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new WaitAction(3.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new WaitAction(3.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new WaitAction(3.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 3.0f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -432,22 +432,22 @@ namespace Scripting
             // PART B
             // Move and shoot enemy 5,6,7,8
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_Start"), enemyManager.GetWaypoint("0,1,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy5.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_L3_Start"), enemyManager.GetWaypoint("0,3,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy6.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L5_Start"), enemyManager.GetWaypoint("0,5,5"), 1.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy7.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L7_Start"), enemyManager.GetWaypoint("0,7,5"), 1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy8.AddCommand(new CompositeAction(action4));
@@ -455,22 +455,22 @@ namespace Scripting
 
             // Wait and shoot enemy 5,6,7,8
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new WaitAction(4.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 4.0f);
                 enemy5.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new WaitAction(4.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 4.0f);
                 enemy6.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new WaitAction(4.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 4.0f);
                 enemy7.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new WaitAction(4.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 4.0f);
                 enemy8.AddCommand(new CompositeAction(action4));
@@ -478,22 +478,22 @@ namespace Scripting
 
             // Move and shoot enemy 9,10,11,12
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_R1_Start"), enemyManager.GetWaypoint("14,1,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy9.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("14,3,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 1.0f);
                 enemy10.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_Start"), enemyManager.GetWaypoint("14,5,5"), 1.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy11.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_R7_Start"), enemyManager.GetWaypoint("14,7,5"), 1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy12.AddCommand(new CompositeAction(action4));
@@ -501,22 +501,22 @@ namespace Scripting
 
             // Wait and shoot enemy 9,10,11,12
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new WaitAction(3.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                 enemy9.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new WaitAction(3.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                 enemy10.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new WaitAction(3.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 3.0f);
                 enemy11.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new WaitAction(3.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 3.0f);
                 enemy12.AddCommand(new CompositeAction(action4));
@@ -573,32 +573,32 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("8,5,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("11,5,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_R3_MidM"), enemyManager.GetWaypoint("9,3,5"), 1.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.5f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_R3_MidM"), enemyManager.GetWaypoint("12,3,5"), 1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.5f);
                 enemy4.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_R1_MidM"), enemyManager.GetWaypoint("10,1,5"), 1.0f);
                 action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.5f);
                 enemy5.AddCommand(new CompositeAction(action5));
 
-                BaseAction[] action6 = new BaseAction[2];
+                IAction[] action6 = new IAction[2];
                 action6[0] = new MoveAction(enemyManager.GetWaypoint("Near_R1_MidM"), enemyManager.GetWaypoint("13,1,5"), 1.0f);
                 action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.5f);
                 enemy6.AddCommand(new CompositeAction(action6));
@@ -646,22 +646,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L2_Start"), enemyManager.GetWaypoint("5,2,5"), 1.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy9.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L2_Start"), enemyManager.GetWaypoint("2,2,5"), 1.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy10.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_L0_Start"), enemyManager.GetWaypoint("4,0,5"), 1.0f);
                 action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy11.AddCommand(new CompositeAction(action5));
 
-                BaseAction[] action6 = new BaseAction[2];
+                IAction[] action6 = new IAction[2];
                 action6[0] = new MoveAction(enemyManager.GetWaypoint("Near_L0_Start"), enemyManager.GetWaypoint("1,0,5"), 1.0f);
                 action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.0f);
                 enemy12.AddCommand(new CompositeAction(action6));
@@ -669,22 +669,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("5,2,5"), enemyManager.GetWaypoint("6,2,5"), 0.5f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.5f);
                 enemy9.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("2,2,5"), enemyManager.GetWaypoint("3,2,5"), 0.5f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.5f);
                 enemy10.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new MoveAction(enemyManager.GetWaypoint("4,0,5"), enemyManager.GetWaypoint("6,0,5"), 0.5f);
                 action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.5f);
                 enemy11.AddCommand(new CompositeAction(action5));
 
-                BaseAction[] action6 = new BaseAction[2];
+                IAction[] action6 = new IAction[2];
                 action6[0] = new MoveAction(enemyManager.GetWaypoint("1,0,5"), enemyManager.GetWaypoint("3,0,5"), 0.5f);
                 action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 1.5f);
                 enemy12.AddCommand(new CompositeAction(action6));
@@ -693,22 +693,22 @@ namespace Scripting
             // Move and shoot
             {
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("6,2,5"), enemyManager.GetWaypoint("9,2,5"), 0.5f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy9.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("3,2,5"), enemyManager.GetWaypoint("5,2,5"), 0.5f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy10.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new MoveAction(enemyManager.GetWaypoint("6,0,5"), enemyManager.GetWaypoint("9,0,5"), 0.5f);
                 action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy11.AddCommand(new CompositeAction(action5));
 
-                BaseAction[] action6 = new BaseAction[2];
+                IAction[] action6 = new IAction[2];
                 action6[0] = new MoveAction(enemyManager.GetWaypoint("3,0,5"), enemyManager.GetWaypoint("5,0,5"), 0.5f);
                 action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy12.AddCommand(new CompositeAction(action6));
@@ -716,22 +716,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new WaitAction(2.0f);
                 action3[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy9.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new WaitAction(2.0f);
                 action4[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy10.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new WaitAction(2.0f);
                 action5[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy11.AddCommand(new CompositeAction(action5));
 
-                BaseAction[] action6 = new BaseAction[2];
+                IAction[] action6 = new IAction[2];
                 action6[0] = new WaitAction(2.0f);
                 action6[1] = new AttackAction("Shoot_H_2", Enemy1_fire_rate, 2, 2.0f);
                 enemy12.AddCommand(new CompositeAction(action6));
@@ -762,7 +762,7 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("7,4,2"), enemyManager.GetWaypoint("7,4,2"), 1.0f);
                 action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 5.0f, 0.2f);
                 enemy1.AddCommand(new CompositeAction(action1));
@@ -797,7 +797,7 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("7,0,2"), enemyManager.GetWaypoint("14,1,2"), 2.0f);
                 action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.0f, 0.2f);
                 enemy1.AddCommand(new CompositeAction(action1));
@@ -807,7 +807,7 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("0,6,2"), enemyManager.GetWaypoint("0,1,2"), 2.0f);
                 action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.0f, 0.2f);
                 enemy2.AddCommand(new CompositeAction(action1));
@@ -815,12 +815,12 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("14,6,2"), enemyManager.GetWaypoint("7,7,2"), 2.0f);
                 action1[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.0f, 0.2f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("0,1,2"), enemyManager.GetWaypoint("7,0,2"), 2.0f);
                 action2[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 2.0f, 0.2f);
                 enemy2.AddCommand(new CompositeAction(action2));
@@ -858,27 +858,27 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("5,5,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("9,5,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_R4_MidM"), enemyManager.GetWaypoint("11,4,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_R3_MidM"), enemyManager.GetWaypoint("12,3,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy4.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_R2_MidM"), enemyManager.GetWaypoint("13,2,5"), 1.0f);
                 action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy5.AddCommand(new CompositeAction(action5));
@@ -930,27 +930,27 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_T10_MidM"), enemyManager.GetWaypoint("10,2,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy6.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_T7_MidM"), enemyManager.GetWaypoint("7,2,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy7.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_T4_MidM"), enemyManager.GetWaypoint("4,2,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy8.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_T6_MidM"), enemyManager.GetWaypoint("6,4,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy9.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_T8_MidM"), enemyManager.GetWaypoint("8,4,5"), 1.0f);
                 action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy10.AddCommand(new CompositeAction(action5));
@@ -1004,32 +1004,32 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_T6_MidM"), enemyManager.GetWaypoint("6,5,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_T8_MidM"), enemyManager.GetWaypoint("8,5,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_T11_MidM"), enemyManager.GetWaypoint("11,5,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_T12_MidM"), enemyManager.GetWaypoint("12,4,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy4.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_T13_MidM"), enemyManager.GetWaypoint("13,3,5"), 1.0f);
                 action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy5.AddCommand(new CompositeAction(action5));
 
-                BaseAction[] action6 = new BaseAction[2];
+                IAction[] action6 = new IAction[2];
                 action6[0] = new MoveAction(enemyManager.GetWaypoint("Near_T14_MidM"), enemyManager.GetWaypoint("14,2,5"), 1.0f);
                 action6[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy6.AddCommand(new CompositeAction(action6));
@@ -1082,22 +1082,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_T5_MidM"), enemyManager.GetWaypoint("5,6,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy8.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_T9_MidM"), enemyManager.GetWaypoint("9,6,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy9.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_T4_MidM"), enemyManager.GetWaypoint("4,5,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy10.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_T10_MidM"), enemyManager.GetWaypoint("10,5,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy11.AddCommand(new CompositeAction(action4));
@@ -1142,7 +1142,7 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_T7_MidM"), enemyManager.GetWaypoint("7,4,5"), 1.5f);
                 action1[1] = new AttackAction("Shoot_D_1", Enemy1_fire_rate, 2, 3.0f);
                 enemy12.AddCommand(new CompositeAction(action1));
@@ -1180,22 +1180,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_R4_MidM"), enemyManager.GetWaypoint("5,4,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_T8_MidM"), enemyManager.GetWaypoint("8,5,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("9,5,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_R6_MidM"), enemyManager.GetWaypoint("11,6,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy4.AddCommand(new CompositeAction(action4));
@@ -1242,22 +1242,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L3_Start"), enemyManager.GetWaypoint("Near_L3_MidM"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy5.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_L3_MidM"), enemyManager.GetWaypoint("8,3,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy6.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L2_MidM"), enemyManager.GetWaypoint("6,2,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy7.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L1_MidM"), enemyManager.GetWaypoint("4,1,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy8.AddCommand(new CompositeAction(action4));
@@ -1304,22 +1304,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_T5_MidM"), enemyManager.GetWaypoint("5,3,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy9.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_T7_MidM"), enemyManager.GetWaypoint("7,3,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy10.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_T9_MidM"), enemyManager.GetWaypoint("9,3,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy11.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_T11_MidM"), enemyManager.GetWaypoint("11,3,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy12.AddCommand(new CompositeAction(action4));
@@ -1365,22 +1365,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("10,5,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy13.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_L5_MidM"), enemyManager.GetWaypoint("4,5,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy14.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_R6_MidM"), enemyManager.GetWaypoint("8,6,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy15.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L6_MidM"), enemyManager.GetWaypoint("6,6,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy16.AddCommand(new CompositeAction(action4));
@@ -1427,22 +1427,22 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L6_MidM"), enemyManager.GetWaypoint("7,6,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy17.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_L2_MidM"), enemyManager.GetWaypoint("7,2,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy18.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L5_MidM"), enemyManager.GetWaypoint("5,5,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy19.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L3_MidM"), enemyManager.GetWaypoint("5,3,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy20.AddCommand(new CompositeAction(action4));
@@ -1507,32 +1507,32 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("8,5,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy1.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("10,5,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy2.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L5_MidM"), enemyManager.GetWaypoint("6,5,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy3.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L5_MidM"), enemyManager.GetWaypoint("4,5,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy4.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_L3_MidM"), enemyManager.GetWaypoint("3,3,5"), 1.0f);
                 action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy5.AddCommand(new CompositeAction(action5));
 
-                BaseAction[] action6 = new BaseAction[2];
+                IAction[] action6 = new IAction[2];
                 action6[0] = new MoveAction(enemyManager.GetWaypoint("Near_R3_MidM"), enemyManager.GetWaypoint("11,3,5"), 1.0f);
                 action6[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy6.AddCommand(new CompositeAction(action6));
@@ -1587,27 +1587,27 @@ namespace Scripting
 
             // Move and shoot
             {
-                BaseAction[] action1 = new BaseAction[2];
+                IAction[] action1 = new IAction[2];
                 action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_MidM"), enemyManager.GetWaypoint("9,5,5"), 1.0f);
                 action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy9.AddCommand(new CompositeAction(action1));
 
-                BaseAction[] action2 = new BaseAction[2];
+                IAction[] action2 = new IAction[2];
                 action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_L5_MidM"), enemyManager.GetWaypoint("5,5,5"), 1.0f);
                 action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy10.AddCommand(new CompositeAction(action2));
 
-                BaseAction[] action3 = new BaseAction[2];
+                IAction[] action3 = new IAction[2];
                 action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_R2_MidM"), enemyManager.GetWaypoint("10,2,5"), 1.0f);
                 action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy11.AddCommand(new CompositeAction(action3));
 
-                BaseAction[] action4 = new BaseAction[2];
+                IAction[] action4 = new IAction[2];
                 action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_L2_MidM"), enemyManager.GetWaypoint("4,2,5"), 1.0f);
                 action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy12.AddCommand(new CompositeAction(action4));
 
-                BaseAction[] action5 = new BaseAction[2];
+                IAction[] action5 = new IAction[2];
                 action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_T7_MidM"), enemyManager.GetWaypoint("7,3,5"), 1.5f);
                 action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 2.5f);
                 enemy13.AddCommand(new CompositeAction(action5));
@@ -1658,22 +1658,22 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_Start"), enemyManager.GetWaypoint("2,2,5"), 1.0f);
                     action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy9.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_Start"), enemyManager.GetWaypoint("4,2,5"), 1.0f);
                     action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy10.AddCommand(new CompositeAction(action2));
 
-                    BaseAction[] action4 = new BaseAction[2];
+                    IAction[] action4 = new IAction[2];
                     action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_Start"), enemyManager.GetWaypoint("10,2,5"), 1.0f);
                     action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy12.AddCommand(new CompositeAction(action4));
 
-                    BaseAction[] action5 = new BaseAction[2];
+                    IAction[] action5 = new IAction[2];
                     action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_R5_Start"), enemyManager.GetWaypoint("12,2,5"), 1.0f);
                     action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy13.AddCommand(new CompositeAction(action5));
@@ -1716,17 +1716,17 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L7_Start"), enemyManager.GetWaypoint("2,7,5"), 1.0f);
                     action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy9.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_L7_Start"), enemyManager.GetWaypoint("7,7,5"), 1.0f);
                     action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate * 2.0f, 2, 3.0f);
                     enemy11.AddCommand(new CompositeAction(action3));
 
-                    BaseAction[] action5 = new BaseAction[2];
+                    IAction[] action5 = new IAction[2];
                     action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_L7_Start"), enemyManager.GetWaypoint("12,7,5"), 1.0f);
                     action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy13.AddCommand(new CompositeAction(action5));
@@ -1742,17 +1742,17 @@ namespace Scripting
 
                 // Move and shoot part 2b
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("2,7,5"), enemyManager.GetWaypoint("2,3,5"), 1.0f);
                     action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy9.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("7,7,5"), enemyManager.GetWaypoint("7,3,5"), 1.0f);
                     action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate * 2.0f, 2, 3.0f);
                     enemy11.AddCommand(new CompositeAction(action3));
 
-                    BaseAction[] action5 = new BaseAction[2];
+                    IAction[] action5 = new IAction[2];
                     action5[0] = new MoveAction(enemyManager.GetWaypoint("12,7,5"), enemyManager.GetWaypoint("12,3,5"), 1.0f);
                     action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy13.AddCommand(new CompositeAction(action5));
@@ -1798,57 +1798,57 @@ namespace Scripting
                 EnemyTemplate enemy15 = new EnemyTemplate(enemyManager.GetWaypoint("Near_T7_Start"), 7.0f, big_enemy_health);
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_T1_Start"), enemyManager.GetWaypoint("1,2,5"), 1.0f);
                     action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 7.0f);
                     enemy9.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action1a = new BaseAction[2];
+                    IAction[] action1a = new IAction[2];
                     action1a[0] = new MoveAction(enemyManager.GetWaypoint("Near_T3_Start"), enemyManager.GetWaypoint("3,3,5"), 1.0f);
                     action1a[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 7.0f);
                     enemy9a.AddCommand(new CompositeAction(action1a));
 
-                    BaseAction[] action1b = new BaseAction[2];
+                    IAction[] action1b = new IAction[2];
                     action1b[0] = new MoveAction(enemyManager.GetWaypoint("Near_T3_Start"), enemyManager.GetWaypoint("3,5,5"), 1.0f);
                     action1b[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 7.0f);
                     enemy9b.AddCommand(new CompositeAction(action1b));
 
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_T1_Start"), enemyManager.GetWaypoint("1,4,5"), 1.0f);
                     action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate * 2.0f, 2, 7.0f);
                     enemy10.AddCommand(new CompositeAction(action3));
 
-                    BaseAction[] action5 = new BaseAction[2];
+                    IAction[] action5 = new IAction[2];
                     action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_T1_Start"), enemyManager.GetWaypoint("1,6,5"), 1.0f);
                     action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 7.0f);
                     enemy11.AddCommand(new CompositeAction(action5));
 
-                    BaseAction[] action6 = new BaseAction[2];
+                    IAction[] action6 = new IAction[2];
                     action6[0] = new MoveAction(enemyManager.GetWaypoint("Near_T13_Start"), enemyManager.GetWaypoint("13,2,5"), 1.0f);
                     action6[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 7.0f);
                     enemy12.AddCommand(new CompositeAction(action6));
 
-                    BaseAction[] action6a = new BaseAction[2];
+                    IAction[] action6a = new IAction[2];
                     action6a[0] = new MoveAction(enemyManager.GetWaypoint("Near_T11_Start"), enemyManager.GetWaypoint("11,3,5"), 1.0f);
                     action6a[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 7.0f);
                     enemy12a.AddCommand(new CompositeAction(action6a));
 
-                    BaseAction[] action6b = new BaseAction[2];
+                    IAction[] action6b = new IAction[2];
                     action6b[0] = new MoveAction(enemyManager.GetWaypoint("Near_T11_Start"), enemyManager.GetWaypoint("11,5,5"), 1.0f);
                     action6b[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 7.0f);
                     enemy12b.AddCommand(new CompositeAction(action6b));
 
-                    BaseAction[] action7 = new BaseAction[2];
+                    IAction[] action7 = new IAction[2];
                     action7[0] = new MoveAction(enemyManager.GetWaypoint("Near_T13_Start"), enemyManager.GetWaypoint("13,4,5"), 1.0f);
                     action7[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 7.0f);
                     enemy13.AddCommand(new CompositeAction(action7));
 
-                    BaseAction[] action8 = new BaseAction[2];
+                    IAction[] action8 = new IAction[2];
                     action8[0] = new MoveAction(enemyManager.GetWaypoint("Near_T13_Start"), enemyManager.GetWaypoint("13,6,5"), 1.0f);
                     action8[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 7.0f);
                     enemy14.AddCommand(new CompositeAction(action8));
 
-                    BaseAction[] action9 = new BaseAction[2];
+                    IAction[] action9 = new IAction[2];
                     action9[0] = new MoveAction(enemyManager.GetWaypoint("Near_T7_Start"), enemyManager.GetWaypoint("7,4,5"), 1.0f);
                     action9[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 7.0f);
                     enemy15.AddCommand(new CompositeAction(action9));
@@ -1909,103 +1909,103 @@ namespace Scripting
                 // Move and shoot
                 {
                     enemy9a.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T10_Start"), enemyManager.GetWaypoint("10,6,5"), 1.0f));
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("10,6,5"), enemyManager.GetWaypoint("10,6,5"), 3.0f);
                     action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy9a.AddCommand(new CompositeAction(action1));
 
                     enemy9b.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T10_Start"), enemyManager.GetWaypoint("10,4,5"), 1.0f));
-                    BaseAction[] action1b = new BaseAction[2];
+                    IAction[] action1b = new IAction[2];
                     action1b[0] = new MoveAction(enemyManager.GetWaypoint("10,4,5"), enemyManager.GetWaypoint("10,4,5"), 3.0f);
                     action1b[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy9b.AddCommand(new CompositeAction(action1b));
 
                     enemy9c.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T12_Start"), enemyManager.GetWaypoint("12,6,5"), 1.0f));
-                    BaseAction[] action1c = new BaseAction[2];
+                    IAction[] action1c = new IAction[2];
                     action1c[0] = new MoveAction(enemyManager.GetWaypoint("12,6,5"), enemyManager.GetWaypoint("12,6,5"), 3.0f);
                     action1c[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy9c.AddCommand(new CompositeAction(action1c));
 
                     enemy9d.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T12_Start"), enemyManager.GetWaypoint("12,4,5"), 1.0f));
-                    BaseAction[] action1d = new BaseAction[2];
+                    IAction[] action1d = new IAction[2];
                     action1d[0] = new MoveAction(enemyManager.GetWaypoint("12,4,5"), enemyManager.GetWaypoint("12,4,5"), 3.0f);
                     action1d[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy9d.AddCommand(new CompositeAction(action1d));
 
                     enemy10a.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T10_Start"), enemyManager.GetWaypoint("10,1,5"), 1.0f));
-                    BaseAction[] action2a = new BaseAction[2];
+                    IAction[] action2a = new IAction[2];
                     action2a[0] = new MoveAction(enemyManager.GetWaypoint("10,1,5"), enemyManager.GetWaypoint("10,1,5"), 3.0f);
                     action2a[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy10a.AddCommand(new CompositeAction(action2a));
 
                     enemy10b.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T10_Start"), enemyManager.GetWaypoint("10,3,5"), 1.0f));
-                    BaseAction[] action2b = new BaseAction[2];
+                    IAction[] action2b = new IAction[2];
                     action2b[0] = new MoveAction(enemyManager.GetWaypoint("10,3,5"), enemyManager.GetWaypoint("10,3,5"), 3.0f);
                     action2b[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy10b.AddCommand(new CompositeAction(action2b));
 
                     enemy10c.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T12_Start"), enemyManager.GetWaypoint("12,1,5"), 1.0f));
-                    BaseAction[] action2c = new BaseAction[2];
+                    IAction[] action2c = new IAction[2];
                     action2c[0] = new MoveAction(enemyManager.GetWaypoint("12,1,5"), enemyManager.GetWaypoint("12,1,5"), 3.0f);
                     action2c[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy10c.AddCommand(new CompositeAction(action2c));
 
                     enemy10d.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T12_Start"), enemyManager.GetWaypoint("12,3,5"), 1.0f));
-                    BaseAction[] action2d = new BaseAction[2];
+                    IAction[] action2d = new IAction[2];
                     action2d[0] = new MoveAction(enemyManager.GetWaypoint("12,3,5"), enemyManager.GetWaypoint("12,3,5"), 3.0f);
                     action2d[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy10d.AddCommand(new CompositeAction(action2d));
 
                     enemy11.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T6_Start"), enemyManager.GetWaypoint("6,3,5"), 1.0f));
-                    BaseAction[] action11 = new BaseAction[2];
+                    IAction[] action11 = new IAction[2];
                     action11[0] = new MoveAction(enemyManager.GetWaypoint("6,3,5"), enemyManager.GetWaypoint("6,3,5"), 3.0f);
                     action11[1] = new AttackAction("Spiral", Enemy2_fire_rate, 2, 3.0f);
                     enemy11.AddCommand(new CompositeAction(action11));
 
                     enemy12a.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T4_Start"), enemyManager.GetWaypoint("4,6,5"), 1.0f));
-                    BaseAction[] action4a = new BaseAction[2];
+                    IAction[] action4a = new IAction[2];
                     action4a[0] = new MoveAction(enemyManager.GetWaypoint("4,6,5"), enemyManager.GetWaypoint("4,6,5"), 3.0f);
                     action4a[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy12a.AddCommand(new CompositeAction(action4a));
 
                     enemy12b.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T4_Start"), enemyManager.GetWaypoint("4,4,5"), 1.0f));
-                    BaseAction[] action4b = new BaseAction[2];
+                    IAction[] action4b = new IAction[2];
                     action4b[0] = new MoveAction(enemyManager.GetWaypoint("4,4,5"), enemyManager.GetWaypoint("4,4,5"), 3.0f);
                     action4b[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy12b.AddCommand(new CompositeAction(action4b));
 
                     enemy12c.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T2_Start"), enemyManager.GetWaypoint("2,6,5"), 1.0f));
-                    BaseAction[] action4c = new BaseAction[2];
+                    IAction[] action4c = new IAction[2];
                     action4c[0] = new MoveAction(enemyManager.GetWaypoint("2,6,5"), enemyManager.GetWaypoint("2,6,5"), 3.0f);
                     action4c[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy12c.AddCommand(new CompositeAction(action4c));
 
                     enemy12d.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T2_Start"), enemyManager.GetWaypoint("2,4,5"), 1.0f));
-                    BaseAction[] action4d = new BaseAction[2];
+                    IAction[] action4d = new IAction[2];
                     action4d[0] = new MoveAction(enemyManager.GetWaypoint("2,4,5"), enemyManager.GetWaypoint("2,4,5"), 3.0f);
                     action4d[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy12d.AddCommand(new CompositeAction(action4d));
 
                     enemy13a.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T4_Start"), enemyManager.GetWaypoint("4,1,5"), 1.0f));
-                    BaseAction[] action5a = new BaseAction[2];
+                    IAction[] action5a = new IAction[2];
                     action5a[0] = new MoveAction(enemyManager.GetWaypoint("4,1,5"), enemyManager.GetWaypoint("4,1,5"), 3.0f);
                     action5a[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy13a.AddCommand(new CompositeAction(action5a));
 
                     enemy13b.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T4_Start"), enemyManager.GetWaypoint("4,3,5"), 1.0f));
-                    BaseAction[] action5b = new BaseAction[2];
+                    IAction[] action5b = new IAction[2];
                     action5b[0] = new MoveAction(enemyManager.GetWaypoint("4,3,5"), enemyManager.GetWaypoint("4,3,5"), 3.0f);
                     action5b[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy13b.AddCommand(new CompositeAction(action5b));
 
                     enemy13c.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T2_Start"), enemyManager.GetWaypoint("2,1,5"), 1.0f));
-                    BaseAction[] action5c = new BaseAction[2];
+                    IAction[] action5c = new IAction[2];
                     action5c[0] = new MoveAction(enemyManager.GetWaypoint("2,1,5"), enemyManager.GetWaypoint("2,1,5"), 3.0f);
                     action5c[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy13c.AddCommand(new CompositeAction(action5c));
 
                     enemy13d.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_T2_Start"), enemyManager.GetWaypoint("2,3,5"), 1.0f));
-                    BaseAction[] action5d = new BaseAction[2];
+                    IAction[] action5d = new IAction[2];
                     action5d[0] = new MoveAction(enemyManager.GetWaypoint("2,3,5"), enemyManager.GetWaypoint("2,3,5"), 3.0f);
                     action5d[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy13d.AddCommand(new CompositeAction(action5d));
@@ -2101,19 +2101,19 @@ namespace Scripting
                 // Move and shoot
                 {
                     enemy9.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L3_Start"), enemyManager.GetWaypoint("2,3,2"), 1.0f));
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("2,3,2"), enemyManager.GetWaypoint("2,3,2"), 3.0f);
                     action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy9.AddCommand(new CompositeAction(action1));
 
                     enemy11.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L3_Start"), enemyManager.GetWaypoint("7,3,2"), 1.0f));
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("7,3,2"), enemyManager.GetWaypoint("7,3,2"), 3.0f);
                     action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy11.AddCommand(new CompositeAction(action3));
 
                     enemy13.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_L3_Start"), enemyManager.GetWaypoint("12,3,2"), 1.0f));
-                    BaseAction[] action5 = new BaseAction[2];
+                    IAction[] action5 = new IAction[2];
                     action5[0] = new MoveAction(enemyManager.GetWaypoint("12,3,2"), enemyManager.GetWaypoint("12,3,2"), 3.0f);
                     action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy13.AddCommand(new CompositeAction(action5));
@@ -2167,25 +2167,25 @@ namespace Scripting
                 // Move and shoot
                 {
                     enemy10.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("4,0,2"), 1.0f));
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("4,0,2"), enemyManager.GetWaypoint("4,0,2"), 3.0f);
                     action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy10.AddCommand(new CompositeAction(action1));
 
                     enemy12.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("10,0,2"), 1.0f));
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("10,0,2"), enemyManager.GetWaypoint("10,0,2"), 3.0f);
                     action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy12.AddCommand(new CompositeAction(action3));
 
                     enemy14.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("4,6,2"), 1.0f));
-                    BaseAction[] action6 = new BaseAction[2];
+                    IAction[] action6 = new IAction[2];
                     action6[0] = new MoveAction(enemyManager.GetWaypoint("4,6,2"), enemyManager.GetWaypoint("4,6,2"), 3.0f);
                     action6[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy14.AddCommand(new CompositeAction(action6));
 
                     enemy15.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("10,6,2"), 1.0f));
-                    BaseAction[] action7 = new BaseAction[2];
+                    IAction[] action7 = new IAction[2];
                     action7[0] = new MoveAction(enemyManager.GetWaypoint("10,6,2"), enemyManager.GetWaypoint("10,6,2"), 3.0f);
                     action7[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy15.AddCommand(new CompositeAction(action7));
@@ -2251,7 +2251,7 @@ namespace Scripting
                 {
                     // Move and shoot bottom line
                     {
-                        BaseAction[] action1 = new BaseAction[2];
+                        IAction[] action1 = new IAction[2];
                         action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L6_Start"), enemyManager.GetWaypoint("12,6,5"), 1.0f);
                         action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 4.0f);
                         enemy1.AddCommand(new CompositeAction(action1));
@@ -2264,7 +2264,7 @@ namespace Scripting
                         enemy3.AddCommand(new WaitAction(1.0f));
                         enemy3.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 2.0f));
 
-                        BaseAction[] action5 = new BaseAction[2];
+                        IAction[] action5 = new IAction[2];
                         action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_L6_Start"), enemyManager.GetWaypoint("2,6,5"), 1.0f);
                         action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 4.0f);
                         enemy4.AddCommand(new CompositeAction(action5));
@@ -2289,12 +2289,12 @@ namespace Scripting
                         enemy5.AddCommand(new WaitAction(1.0f));
                         enemy5.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 2.0f));
 
-                        BaseAction[] action1 = new BaseAction[2];
+                        IAction[] action1 = new IAction[2];
                         action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L3_Start"), enemyManager.GetWaypoint("9,3,5"), 1.0f);
                         action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 4.0f);
                         enemy6.AddCommand(new CompositeAction(action1));
 
-                        BaseAction[] action5 = new BaseAction[2];
+                        IAction[] action5 = new IAction[2];
                         action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_L3_Start"), enemyManager.GetWaypoint("5,3,5"), 1.0f);
                         action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 4.0f);
                         enemy7.AddCommand(new CompositeAction(action5));
@@ -2320,7 +2320,7 @@ namespace Scripting
                 {
                     // Move and shoot bottom line
                     {
-                        BaseAction[] action1 = new BaseAction[2];
+                        IAction[] action1 = new IAction[2];
                         action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_L0_Start"), enemyManager.GetWaypoint("12,0,5"), 1.0f);
                         action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 4.0f);
                         enemy10.AddCommand(new CompositeAction(action1));
@@ -2333,7 +2333,7 @@ namespace Scripting
                         enemy12.AddCommand(new WaitAction(1.0f));
                         enemy12.AddCommand(new AttackAction("Laser", Enemy3_fire_rate, 2, 2.0f));
 
-                        BaseAction[] action5 = new BaseAction[2];
+                        IAction[] action5 = new IAction[2];
                         action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_L0_Start"), enemyManager.GetWaypoint("2,0,5"), 1.0f);
                         action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 4.0f);
                         enemy13.AddCommand(new CompositeAction(action5));
@@ -2423,27 +2423,27 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("Near_T10_MidM"), enemyManager.GetWaypoint("10,2,8"), 1.0f);
                     action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.5f);
                     enemy6.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("Near_T7_MidM"), enemyManager.GetWaypoint("7,2,8"), 1.0f);
                     action2[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.5f);
                     enemy7.AddCommand(new CompositeAction(action2));
 
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("Near_T4_MidM"), enemyManager.GetWaypoint("4,2,8"), 1.0f);
                     action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.5f);
                     enemy8.AddCommand(new CompositeAction(action3));
 
-                    BaseAction[] action4 = new BaseAction[2];
+                    IAction[] action4 = new IAction[2];
                     action4[0] = new MoveAction(enemyManager.GetWaypoint("Near_T6_MidM"), enemyManager.GetWaypoint("6,4,8"), 1.0f);
                     action4[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.5f);
                     enemy9.AddCommand(new CompositeAction(action4));
 
-                    BaseAction[] action5 = new BaseAction[2];
+                    IAction[] action5 = new IAction[2];
                     action5[0] = new MoveAction(enemyManager.GetWaypoint("Near_T8_MidM"), enemyManager.GetWaypoint("8,4,8"), 1.0f);
                     action5[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.5f);
                     enemy10.AddCommand(new CompositeAction(action5));
@@ -2477,25 +2477,25 @@ namespace Scripting
                 // Move and shoot
                 {
                     enemy10.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("4,0,5"), 1.0f));
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("4,0,5"), enemyManager.GetWaypoint("4,0,5"), 3.0f);
                     action1[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy10.AddCommand(new CompositeAction(action1));
 
                     enemy12.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("10,0,5"), 1.0f));
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("10,0,5"), enemyManager.GetWaypoint("10,0,5"), 3.0f);
                     action3[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy12.AddCommand(new CompositeAction(action3));
 
                     enemy14.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("4,6,5"), 1.0f));
-                    BaseAction[] action6 = new BaseAction[2];
+                    IAction[] action6 = new IAction[2];
                     action6[0] = new MoveAction(enemyManager.GetWaypoint("4,6,5"), enemyManager.GetWaypoint("4,6,5"), 3.0f);
                     action6[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy14.AddCommand(new CompositeAction(action6));
 
                     enemy15.AddCommand(new MoveAction(enemyManager.GetWaypoint("Near_R3_Start"), enemyManager.GetWaypoint("10,6,5"), 1.0f));
-                    BaseAction[] action7 = new BaseAction[2];
+                    IAction[] action7 = new IAction[2];
                     action7[0] = new MoveAction(enemyManager.GetWaypoint("10,6,5"), enemyManager.GetWaypoint("10,6,5"), 3.0f);
                     action7[1] = new AttackAction("Burst_Front", Enemy1_fire_rate, 2, 3.0f);
                     enemy15.AddCommand(new CompositeAction(action7));
@@ -2603,22 +2603,22 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("2,0,5"), enemyManager.GetWaypoint("2,7,5"), 1.5f);
                     action1[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("2,0,5"), enemyManager.GetWaypoint("2,7,5"), 1.5f);
                     action2[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy2.AddCommand(new CompositeAction(action2));
 
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("2,0,5"), enemyManager.GetWaypoint("2,7,5"), 1.5f);
                     action3[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy3.AddCommand(new CompositeAction(action3));
 
-                    BaseAction[] action4 = new BaseAction[2];
+                    IAction[] action4 = new IAction[2];
                     action4[0] = new MoveAction(enemyManager.GetWaypoint("2,0,5"), enemyManager.GetWaypoint("2,7,5"), 1.5f);
                     action4[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy4.AddCommand(new CompositeAction(action4));
@@ -2650,22 +2650,22 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("5,0,5"), enemyManager.GetWaypoint("5,7,5"), 1.5f);
                     action1[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy5.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("5,0,5"), enemyManager.GetWaypoint("5,7,5"), 1.5f);
                     action2[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy6.AddCommand(new CompositeAction(action2));
 
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("5,0,5"), enemyManager.GetWaypoint("5,7,5"), 1.5f);
                     action3[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy7.AddCommand(new CompositeAction(action3));
 
-                    BaseAction[] action4 = new BaseAction[2];
+                    IAction[] action4 = new IAction[2];
                     action4[0] = new MoveAction(enemyManager.GetWaypoint("5,0,5"), enemyManager.GetWaypoint("5,7,5"), 1.5f);
                     action4[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy8.AddCommand(new CompositeAction(action4));
@@ -2708,12 +2708,12 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("3,0,5"), enemyManager.GetWaypoint("3,6,5"), 2.0f);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("3,0,5"), enemyManager.GetWaypoint("3,1,5"), 2.0f);
                     action2[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy2.AddCommand(new CompositeAction(action2));
@@ -2722,12 +2722,12 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new WaitAction(6);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new WaitAction(6);
                     action2[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f, 2.0f);
                     enemy2.AddCommand(new CompositeAction(action2));
@@ -2770,7 +2770,7 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("3,0,5"), enemyManager.GetWaypoint("3,6,5"), 2.0f);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
@@ -2779,7 +2779,7 @@ namespace Scripting
 
                 // Wait and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new WaitAction(1);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 1.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
@@ -2789,7 +2789,7 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("3,6,5"), enemyManager.GetWaypoint("3,1,5"), 2.0f);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
@@ -2798,7 +2798,7 @@ namespace Scripting
 
                 // Wait and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new WaitAction(1);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 1.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
@@ -2808,7 +2808,7 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("3,1,5"), enemyManager.GetWaypoint("3,6,5"), 2.0f);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
@@ -2859,22 +2859,22 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("12,0,5"), enemyManager.GetWaypoint("12,7,5"), 1.5f);
                     action1[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("12,0,5"), enemyManager.GetWaypoint("12,7,5"), 1.5f);
                     action2[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy2.AddCommand(new CompositeAction(action2));
 
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("12,0,5"), enemyManager.GetWaypoint("12,7,5"), 1.5f);
                     action3[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy3.AddCommand(new CompositeAction(action3));
 
-                    BaseAction[] action4 = new BaseAction[2];
+                    IAction[] action4 = new IAction[2];
                     action4[0] = new MoveAction(enemyManager.GetWaypoint("12,0,5"), enemyManager.GetWaypoint("12,7,5"), 1.5f);
                     action4[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy4.AddCommand(new CompositeAction(action4));
@@ -2906,22 +2906,22 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("9,0,5"), enemyManager.GetWaypoint("9,7,5"), 1.5f);
                     action1[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy5.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("9,0,5"), enemyManager.GetWaypoint("9,7,5"), 1.5f);
                     action2[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy6.AddCommand(new CompositeAction(action2));
 
-                    BaseAction[] action3 = new BaseAction[2];
+                    IAction[] action3 = new IAction[2];
                     action3[0] = new MoveAction(enemyManager.GetWaypoint("9,0,5"), enemyManager.GetWaypoint("9,7,5"), 1.5f);
                     action3[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy7.AddCommand(new CompositeAction(action3));
 
-                    BaseAction[] action4 = new BaseAction[2];
+                    IAction[] action4 = new IAction[2];
                     action4[0] = new MoveAction(enemyManager.GetWaypoint("9,0,5"), enemyManager.GetWaypoint("9,7,5"), 1.5f);
                     action4[1] = new AttackAction("Burst_Front", new_firerate, 2, 1.5f);
                     enemy8.AddCommand(new CompositeAction(action4));
@@ -2964,12 +2964,12 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("11,0,5"), enemyManager.GetWaypoint("11,6,5"), 2.0f);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new MoveAction(enemyManager.GetWaypoint("11,0,5"), enemyManager.GetWaypoint("11,1,5"), 2.0f);
                     action2[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy2.AddCommand(new CompositeAction(action2));
@@ -2978,12 +2978,12 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new WaitAction(6);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
 
-                    BaseAction[] action2 = new BaseAction[2];
+                    IAction[] action2 = new IAction[2];
                     action2[0] = new WaitAction(6);
                     action2[1] = new AttackAction("Spiral", new_firerate, 2, 6.0f, 2.0f);
                     enemy2.AddCommand(new CompositeAction(action2));
@@ -3026,7 +3026,7 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("11,0,5"), enemyManager.GetWaypoint("11,6,5"), 2.0f);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
@@ -3034,7 +3034,7 @@ namespace Scripting
 
                 // Wait and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new WaitAction(1);
                     action1[1] = new AttackAction("Spiral", new_firerate, 1, 1.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
@@ -3042,7 +3042,7 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("11,6,5"), enemyManager.GetWaypoint("11,1,5"), 2.0f);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
@@ -3050,7 +3050,7 @@ namespace Scripting
 
                 // Wait and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new WaitAction(1);
                     action1[1] = new AttackAction("Spiral", new_firerate, 1, 1.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
@@ -3058,7 +3058,7 @@ namespace Scripting
 
                 // Move and shoot
                 {
-                    BaseAction[] action1 = new BaseAction[2];
+                    IAction[] action1 = new IAction[2];
                     action1[0] = new MoveAction(enemyManager.GetWaypoint("11,1,5"), enemyManager.GetWaypoint("11,6,5"), 2.0f);
                     action1[1] = new AttackAction("Spiral", new_firerate, 2, 2.0f, 2.0f);
                     enemy1.AddCommand(new CompositeAction(action1));
