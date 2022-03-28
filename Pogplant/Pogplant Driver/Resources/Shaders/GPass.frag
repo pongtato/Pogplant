@@ -36,7 +36,7 @@ struct DirectionalLight
     float Specular;
 };
 
-const int MAX_LIGHTS = 32;
+const int MAX_LIGHTS = 96;
 uniform Light lights[MAX_LIGHTS];
 uniform DirectionalLight directLight;
 uniform int activeLights;
