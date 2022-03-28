@@ -4,15 +4,15 @@
       "Level": "Level01",
       "Lines": [
         {
-          "Text": "Use the WASD button to-",
+          "Text": "AI: Use the WASD button to-",
           "Timer": 2.7
         },
         {
-          "Text": "Don't tell what to do!...W-WOAH! Could've warned me about that log!",
+          "Text": "Prof: Don't tell what to do!...W-WOAH! Could've warned me about that log!",
           "Timer": 4
         },
         {
-          "Text": "Autopilot is engaged. Authorizing self-evasion and shooting!",
+          "Text": "AI: Autopilot is engaged. Authorizing self-evasion and shooting!",
           "Timer": 5.9
         },
         {
@@ -20,7 +20,7 @@
           "Timer": 3.1
         },
         {
-          "Text": "Enemy detected!",
+          "Text": "AI: Enemy detected!",
           "Timer": 1.3
         },
         {
@@ -28,11 +28,11 @@
           "Timer": 2
         },
         {
-          "Text": "Use the LMB to shoot!",
+          "Text": "AI: Use the 'LMB' to shoot!",
           "Timer": 3.1
         },
         {
-          "Text": "Use the RT to shoot!",
+          "Text": "AI: Use the 'RT' to shoot!",
           "Timer": 2.2
         },
         {
@@ -44,11 +44,11 @@
           "Timer": 2
         },
         {
-          "Text": "Watch out for those...ARTILLERY STRIKES!",
+          "Text": "Timmy: Watch out for those...ARTILLERY STRIKES!",
           "Timer": 2.5
         },
         {
-          "Text": "Approaching enemy TUNNEL!",
+          "Text": "Timmy: Approaching enemy...TUNNEL!",
           "Timer": 2.2
         },
         {
@@ -56,7 +56,7 @@
           "Timer": 1.7
         },
         {
-          "Text": "Woooaaah...pretty lights!",
+          "Text": "Timmy: Woooaaah...pretty lights!",
           "Timer": 2.7
         },
         {
@@ -72,7 +72,7 @@
           "Timer": 2.5
         },
         {
-          "Text": "I don't think they like what you said, Prof!",
+          "Text": "Timmy: I don't think they like what you said, Prof!",
           "Timer": 2.9
         },
         {
@@ -80,7 +80,7 @@
           "Timer": 2.7
         },
         {
-          "Text": "Ooh! W-we have multiple signals incoming!",
+          "Text": "Timmy: Ooh! W-we have multiple signals incoming!",
           "Timer": 3
         },
         {
@@ -88,11 +88,11 @@
           "Timer": 1.6
         },
         {
-          "Text": "That's it, Prof! The one that's shooting all the artillery strikes!",
+          "Text": "Timmy: That's it, Prof! The one that's shooting all the artillery strikes!",
           "Timer": 4
         },
         {
-          "Text": "Nooooo!",
+          "Text": "Timmy: Nooooo!",
           "Timer": 2
         },
         {
@@ -100,7 +100,7 @@
           "Timer": 2.8
         },
         {
-          "Text": "Hey, Prof! That tunnel looks ENTICING!",
+          "Text": "Timmy: Hey, Prof! That tunnel looks...ENTICING!",
           "Timer": 3
         },
         {
@@ -108,7 +108,7 @@
           "Timer": 2.3
         },
         {
-          "Text": "Aaaahaha!",
+          "Text": "Timmy: Aaaahaha!",
           "Timer": 1.8
         },
         {
@@ -116,11 +116,11 @@
           "Timer": 3.3
         },
         {
-          "Text": "Err, Prof...We should get outta here!",
+          "Text": "Timmy: Err, Prof...We should get outta here!",
           "Timer": 2.2
         },
         {
-          "Text": "They're onto us, Prof!",
+          "Text": "Timmy: They're onto us, Prof!",
           "Timer": 1.8
         },
         {
@@ -132,7 +132,7 @@
           "Timer": 2.7
         },
         {
-          "Text": "I wanna go home, Professor! We should get outta here!",
+          "Text": "Timmy: I wanna go home, Professor! We should get outta here!",
           "Timer": 4.2
         },
         {
@@ -140,7 +140,7 @@
           "Timer": 3
         },
         {
-          "Text": "Ahaha! We did it, Professor!",
+          "Text": "Timmy: Ahaha! We did it, Professor!",
           "Timer": 3.3
         },
         {
@@ -157,23 +157,23 @@
           "Timer": 4.8
         },
         {
-          "Text": "Confirmation required.",
+          "Text": "Timmy: Confirmation required.",
           "Timer": 2.3
         },
         {
           "Text": "Yes confirmed!",
-          "Timer": 1.4
+          "Timer": 1.6
         },
         {
-          "Text": "2nd Confirmation required.",
+          "Text": "Timmy: 2nd Confirmation required.",
           "Timer": 2.9
         },
         {
           "Text": "YES...confirmed!",
-          "Timer": 1.8
+          "Timer": 2.1
         },
         {
-          "Text": "3rd Confirma-",
+          "Text": "Timmy: 3rd Confirma-",
           "Timer": 1.6
         },
         {
@@ -181,7 +181,7 @@
           "Timer": 2.2
         },
         {
-          "Text": "...okay...",
+          "Text": "Timmy: ...okay...",
           "Timer": 1.3
         },
         {
@@ -189,11 +189,11 @@
           "Timer": 4.4
         },
         {
-          "Text": "Ah, more enemies…Thanks for giving them a heads up, Timmy!",
+          "Text": "Ah, more enemies...Thanks for giving them a heads up, Timmy!",
           "Timer": 4.1
         },
         {
-          "Text": "Me? Your'e the one that programmed me!",
+          "Text": "Timmy: Me? Your'e the one that programmed me!",
           "Timer": 3.1
         },
         {
@@ -201,15 +201,19 @@
           "Timer": 1.5
         },
         {
-          "Text": "As far as I know, my miscalculations...are YOUR miscalculations!",
+          "Text": "Timmy: As far as I know, my miscalculations...are YOUR miscalculations!",
           "Timer": 5.8
         },
         {
-          "Text": "Great! Not only could you not follow instructions…now you couldn't even give a detection warning, Timmy?!",
-          "Timer": 5.6
+          "Text": "Great! Not only could you not follow instructions...",
+          "Timer": 2.7
         },
         {
-          "Text": "Is it that hard to do what you are PROGRAMMED to do!?",
+          "Text": "Now you couldn't even give a detection warning, Timmy?!",
+          "Timer": 3.0
+        },
+        {
+          "Text": "*groan* Is it that hard to do what you are PROGRAMMED to do!?",
           "Timer": 3.7
         },
         {
@@ -221,7 +225,7 @@
           "Timer": 6.2
         },
         {
-          "Text": "No...",
+          "Text": "Timmy: No...",
           "Timer": 1
         },
         {
@@ -237,7 +241,7 @@
           "Timer": 4
         },
         {
-          "Text": "Didn't you say, you will find it yourself?",
+          "Text": "Timmy: Didn't you say, you will find it yourself?",
           "Timer": 3.2
         },
         {
@@ -245,7 +249,7 @@
           "Timer": 3.1
         },
         {
-          "Text": "Fine...just straight ahead. You know…it ain't a complex place to begin with…",
+          "Text": "Timmy: Fine...just straight ahead. You know…it ain't a complex place to begin with…",
           "Timer": 7
         },
         {
@@ -253,11 +257,11 @@
           "Timer": 3
         },
         {
-          "Text": "YES, I’M SURE! I thought you could count on me on this?",
+          "Text": "Timmy: YES, I’M SURE! I thought you could count on me on this?",
           "Timer": 5.1
         },
         {
-          "Text": "Of COURSE…of course, yeah!…Of course...of course...sheesh…",
+          "Text": "Of COURSE...of course, yeah!...Of course...of course...sheesh…",
           "Timer": 6.1
         },
         {
@@ -269,7 +273,7 @@
           "Timer": 7.2
         },
         {
-          "Text": "Really...",
+          "Text": "Timmy: Really...",
           "Timer": 1.8
         },
         {
@@ -277,7 +281,7 @@
           "Timer": 5.7
         },
         {
-          "Text": "Look, it's the exit! Let's get out before it's too laaate!",
+          "Text": "Timmy: Look, it's the exit! Let's get out before it's too laaate!",
           "Timer": 4.2
         },
         {
@@ -285,7 +289,7 @@
           "Timer": 3.5
         },
         {
-          "Text": "We're gonna get crushed if we stay any longer, Professor!",
+          "Text": "Timmy: We're gonna get crushed if we stay any longer, Professor!",
           "Timer": 4.9
         },
         {
@@ -293,7 +297,7 @@
           "Timer": 5.4
         },
         {
-          "Text": "Hoowee! We've finally paid them back for what they did to your Square Earth...thesis!",
+          "Text": "Timmy: Hoowee! We've finally paid them back for what they did to your Square Earth...thesis!",
           "Timer": 6.6
         },
         {
@@ -310,7 +314,7 @@
           "Timer": 0.8
         },
         {
-          "Text": "Hey, it's back!",
+          "Text": "Timmy: Hey, it's back!",
           "Timer": 2.5
         },
         {
@@ -318,7 +322,7 @@
           "Timer": 1.4
         },
         {
-          "Text": "Nooo!",
+          "Text": "Timmy: Nooo!",
           "Timer": 2.2
         },
         {
@@ -326,19 +330,23 @@
           "Timer": 3.8
         },
         {
-          "Text": "Look, we damaged it! Keep it up!",
+          "Text": "Timmy: Look, we damaged it! Keep it up!",
           "Timer": 3.5
         },
         {
-          "Text": "Woah, its pulling all the stops isnt it? Wh…what kinda interdimensional japanese mechanical cat wannabe baloney is this?",
-          "Timer": 7.3
+          "Text": "Woah, it''s pulling all the stops isnt it?",
+          "Timer": 2.6
+        },
+        {
+          "Text": "Wh…what kinda interdimensional japanese mechanical cat wannabe baloney is this?",
+          "Timer": 4.7
         },
         {
           "Text": "Haha! Look, Timmy! He's wide open! Let's finish this now!",
           "Timer": 3.4
         },
         {
-          "Text": "That's great! Just keep shooting!",
+          "Text": "Timmy: That's great! Just keep shooting!",
           "Timer": 3
         },
         {
@@ -359,7 +367,7 @@
           "Timer": 0.8
         },
         {
-          "Text": "You mean those big...guns?",
+          "Text": "Timmy: You mean those big...guns?",
           "Timer": 2.5
         },
         {
@@ -367,14 +375,131 @@
           "Timer": 1.4
         },
         {
-          "Text": "Huh?",
+          "Text": "Timmy: Huh?",
           "Timer": 2.2
         }
       ]
     },
     {
       "Level": "Cutscene1",
-      "Lines": []
+      "Lines": [
+        {
+          "Text": "...",
+          "Timer": 1.1
+        },
+        {
+          "Text": "Alright, ya ding-a-lings! Listen up!",
+          "Timer": 1.8
+        },
+        {
+          "Text": "I'm gonna let y'all in on a TINY incident that happened to me today!",
+          "Timer": 3.6
+        },
+        {
+          "Text": "Being a scientist, I'm really busy with some science stuff...",
+          "Timer": 3.4
+        },
+        {
+          "Text": "...and I even came up with solid evidence that the Earth is not flat or round...",
+          "Timer": 4.2
+        },
+        {
+          "Text": "...but SQUARE!",
+          "Timer": 1.4
+        },
+        {
+          "Text": "Buuut, just when I was about to bring this up to the Board of Scientists...",
+          "Timer": 3.8
+        },
+        {
+          "Text": "...a dang meteor CRASHED into my backyard!",
+          "Timer": 2.6
+        },
+        {
+          "Text": "Not only was my backyard ruined, my EVIDENCE was completely destroyed as well!",
+          "Timer": 4.4
+        },
+        {
+          "Text": "Now I got no proof left! I-IT'S ALL GONE!",
+          "Timer": 2.8
+        },
+        {
+          "Text": "Well, it turns out, this meteor contained these TINY thingies",
+          "Timer": 3.4
+        },
+        {
+          "Text": "that came scurrying out right after the impact!",
+          "Timer": 2.6
+        },
+        {
+          "Text": "They were quick and SMALL, but I managed to see them clearly!",
+          "Timer": 3.7
+        },
+        {
+          "Text": "From my speculations, they were definitely from the Planet: C31 B00 BA!",
+          "Timer": 4.9
+        },
+        {
+          "Text": "For you ding-a-lings...",
+          "Timer": 1.4
+        },
+        {
+          "Text": "ALIENS...",
+          "Timer": 2.2
+        },
+        {
+          "Text": "So, I used all of my 5000 IQ brain to devise a plan to hunt down these non-believers!",
+          "Timer": 6.1
+        },
+        {
+          "Text": "I call this plan...",
+          "Timer": 1.4
+        },
+        {
+          "Text": "SQUARE-HATING ALIEN DESTRUCTION!!!",
+          "Timer": 3.2
+        },
+        {
+          "Text": "<cricket noises>",
+          "Timer": 2.9
+        },
+        {
+          "Text": "LET'S GET TO WORK!",
+          "Timer": 2.3
+        },
+        {
+          "Text": "<construction noises>",
+          "Timer": 6.9
+        },
+        {
+          "Text": "Aaand...",
+          "Timer": 1.7
+        },
+        {
+          "Text": "DONE!",
+          "Timer": 2.7
+        },
+        {
+          "Text": "Get up, sidekick! We've got some ALIENS TO BURN!",
+          "Timer": 4.1
+        },
+        {
+          "Text": "Hmm...what should I call you?",
+          "Timer": 2.7
+        },
+        {
+          "Text": "Lorraine? Jessica?",
+          "Timer": 2.4
+        },
+        {
+          "Text": "Reanu KEEVES???",
+          "Timer": 1.7
+        },
+        {
+          "Text": "...",
+          "Timer": 4.6
+        }
+      ]
     },
     {
       "Level": "Cutscene2",
@@ -412,19 +537,19 @@
           "Timer": 2.1
         },
         {
-          "Text": "Scanning...uploading data analysis...",
+          "Text": "Timmy: Scanning...uploading data analysis...",
           "Timer": 2.8
         },
         {
-          "Text": "We are currently Three Thousand, Two Hundred metres...underground.",
+          "Text": "Timmy: We are currently Three Thousand, Two Hundred metres...underground.",
           "Timer": 5.5
         },
         {
-          "Text": "We are very small, Professor!",
+          "Text": "Timmy: We are very small, Professor!",
           "Timer": 2.2
         },
         {
-          "Text": "What is my default unit scal-",
+          "Text": "Timmy: What is my default unit scal-",
           "Timer": 1.8
         },
         {
@@ -436,7 +561,7 @@
           "Timer": 0.9
         },
         {
-          "Text": "Oooh...Aaah...The paaain!",
+          "Text": "Timmy: Oooh...Aaah...The paaain!",
           "Timer": 2.4
         },
         {
@@ -444,15 +569,15 @@
           "Timer": 1.1
         },
         {
-          "Text": "Ah haha!",
+          "Text": "Timmy: Ah haha!",
           "Timer": 1.5
         },
         {
-          "Text": "But, Professor, we don't have a chance against something that BIG!",
+          "Text": "Timmy: But, Professor, we don't have a chance against something that BIG!",
           "Timer": 3.4
         },
         {
-          "Text": "We don't have enough firepower!",
+          "Text": "Timmy: We don't have enough firepower!",
           "Timer": 1.9
         },
         {
@@ -484,11 +609,11 @@
           "Timer": 4.3
         },
         {
-          "Text": "Weapon Charging...Charging Complete...",
+          "Text": "Timmy: Weapon Charging...Charging Complete...",
           "Timer": 2.7
         },
         {
-          "Text": "Initiating Testing Sequence in-",
+          "Text": "Timmy: Initiating Testing Sequence in-",
           "Timer": 1.8
         },
         {
@@ -496,7 +621,7 @@
           "Timer": 1.3
         },
         {
-          "Text": "1...",
+          "Text": "Timmy: 1...",
           "Timer": 0.6
         },
         {
@@ -504,7 +629,7 @@
           "Timer": 4.1
         },
         {
-          "Text": "Ammo Depleted...",
+          "Text": "Timmy: Ammo Depleted...",
           "Timer": 1.2
         },
         {
@@ -512,7 +637,7 @@
           "Timer": 1.3
         },
         {
-          "Text": "Professor, Gates of Heaven...open!",
+          "Text": "Timmy: Professor, Gates of Heaven...open!",
           "Timer": 2.4
         },
         {
@@ -520,11 +645,11 @@
           "Timer": 2.4
         },
         {
-          "Text": "My calculations didn't consider these factors...",
+          "Text": "Timmy: My calculations didn't consider these factors...",
           "Timer": 3.7
         },
         {
-          "Text": "...oops",
+          "Text": "Timmy: ...oops",
           "Timer": 0.3
         },
         {
@@ -532,7 +657,7 @@
           "Timer": 1.3
         },
         {
-          "Text": "But, didn't you say to test it out?",
+          "Text": "Timmy: But, didn't you say to test it out?",
           "Timer": 1.6
         },
         {
@@ -540,7 +665,7 @@
           "Timer": 2
         },
         {
-          "Text": "I'm sick of this! You explicitly said-",
+          "Text": "Timmy: I'm sick of this! You explicitly said-",
           "Timer": 2.2
         },
         {

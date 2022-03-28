@@ -73804,7 +73804,7 @@
 			},
 			"Clip3" : 
 			{
-				"Dir" : "Resources/Audio\\Menu\\ScoreMultiplierEnd.ogg",
+				"Dir" : "Resources/Audio\\Player\\Player_Damaged.ogg",
 				"UpdatePos" : true,
 				"Volume" : 0.50199997425079346
 			}
@@ -77007,7 +77007,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 9.1044597625732422,
+				"m_FrameCounter" : 42.533939361572266,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77020,8 +77020,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.078125
+					0.0,
+					0.34375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77073,7 +77073,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 33.77264404296875,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77086,8 +77086,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.265625
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77139,7 +77139,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 28.776832580566406,
+				"m_FrameCounter" : 64.331161499023438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77153,7 +77153,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.234375
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77205,7 +77205,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 87.915550231933594,
+				"m_FrameCounter" : 77.617439270019531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -77219,7 +77219,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.6875
+					0.609375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77271,7 +77271,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 9.1044597625732422,
+				"m_FrameCounter" : 42.533939361572266,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77284,8 +77284,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.078125
+					0.0,
+					0.34375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77337,7 +77337,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 28.776832580566406,
+				"m_FrameCounter" : 64.331161499023438,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77351,7 +77351,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.234375
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77403,7 +77403,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 41.931655883789062,
+				"m_FrameCounter" : 23.629703521728516,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77417,7 +77417,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.328125
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77469,7 +77469,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 9.1044597625732422,
+				"m_FrameCounter" : 42.533939361572266,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77482,8 +77482,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.078125
+					0.0,
+					0.34375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77535,7 +77535,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 41.931655883789062,
+				"m_FrameCounter" : 23.629703521728516,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77549,7 +77549,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.328125
+					0.1875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77601,7 +77601,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 36.101791381835938,
+				"m_FrameCounter" : 106.47719573974609,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -77615,7 +77615,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.296875
+					0.84375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77667,7 +77667,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 33.77264404296875,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77680,8 +77680,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.265625
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -84257,7 +84257,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "63325e99-a264-4b4f-880f-85fd4f09d354",
+			"prefab_GUID" : "3db50d0f-efed-4013-9b26-77d10a45c0bd",
 			"prefab_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
 		},
 		"Tag" : 
@@ -84361,12 +84361,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 36,
+				"Data" : 37,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 36,
+				"Data" : 37,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -84443,12 +84443,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 35,
+				"Data" : 36,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 35,
+				"Data" : 36,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -84558,12 +84558,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 20,
+				"Data" : 21,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 20,
+				"Data" : 21,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -84640,12 +84640,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 21,
+				"Data" : 22,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 21,
+				"Data" : 22,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -84755,12 +84755,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 18,
+				"Data" : 19,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 18,
+				"Data" : 19,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -84870,12 +84870,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 17,
+				"Data" : 18,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 17,
+				"Data" : 18,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -84952,12 +84952,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 15,
+				"Data" : 16,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 16,
+				"Data" : 17,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -85067,12 +85067,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 14,
+				"Data" : 15,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 14,
+				"Data" : 15,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -85187,7 +85187,7 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 13,
+				"Data" : 14,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -85806,7 +85806,7 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 3,
+				"Data" : 2,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
@@ -85921,12 +85921,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 34,
+				"Data" : 35,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 34,
+				"Data" : 35,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -85945,7 +85945,7 @@
 			[
 				-641.7232666015625,
 				223.43386840820312,
-				-524.79339599609375
+				-519.3731689453125
 			],
 			"m_rotation" : 
 			[
@@ -86003,12 +86003,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 33,
+				"Data" : 34,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 33,
+				"Data" : 34,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -86118,12 +86118,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 23,
+				"Data" : 24,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 23,
+				"Data" : 24,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -86200,8 +86200,13 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 22,
+				"Data" : 23,
 				"Name" : "SubBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 23,
+				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
 		],
@@ -86308,6 +86313,16 @@
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : 24,
+				"Name" : "SubBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 24,
+				"Name" : "SubEndIndex",
+				"Type" : 1
 			}
 		],
 		"Scripting" : 
@@ -86415,12 +86430,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 24,
+				"Data" : 25,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 24,
+				"Data" : 25,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -86497,12 +86512,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 25,
+				"Data" : 26,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 25,
+				"Data" : 26,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -86612,12 +86627,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 29,
+				"Data" : 30,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 29,
+				"Data" : 30,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -86634,7 +86649,7 @@
 		{
 			"m_position" : 
 			[
-				-346.13153076171875,
+				-361.46621704101562,
 				127.96757507324219,
 				-496.93710327148438
 			],
@@ -86871,12 +86886,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 30,
+				"Data" : 31,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 30,
+				"Data" : 31,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -86986,12 +87001,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 32,
+				"Data" : 33,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 32,
+				"Data" : 33,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -87068,12 +87083,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 31,
+				"Data" : 32,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 31,
+				"Data" : 32,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -87380,12 +87395,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 26,
+				"Data" : 27,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 26,
+				"Data" : 27,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -87495,12 +87510,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 28,
+				"Data" : 29,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 28,
+				"Data" : 29,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -87577,12 +87592,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 27,
+				"Data" : 28,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 27,
+				"Data" : 28,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -87692,12 +87707,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 19,
+				"Data" : 20,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 19,
+				"Data" : 20,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}

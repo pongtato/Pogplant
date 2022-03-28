@@ -3,7 +3,7 @@
 		"Children" : 21,
 		"Guid" : 
 		{
-			"m_guid" : "63325e99-a264-4b4f-880f-85fd4f09d354"
+			"m_guid" : "3db50d0f-efed-4013-9b26-77d10a45c0bd"
 		},
 		"Name" : 
 		{
@@ -16,7 +16,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "4d20a270-8137-4787-a34c-af376e02970f",
+			"prefab_GUID" : "9ce2800b-079d-482d-8590-0b9a54ad9ea7",
 			"prefab_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
 		},
 		"Tag" : 
@@ -128,12 +128,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 36,
+				"Data" : 37,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 36,
+				"Data" : 37,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -214,12 +214,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 35,
+				"Data" : 36,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 35,
+				"Data" : 36,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -337,12 +337,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 20,
+				"Data" : 21,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 20,
+				"Data" : 21,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -423,12 +423,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 21,
+				"Data" : 22,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 21,
+				"Data" : 22,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -546,12 +546,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 18,
+				"Data" : 19,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 18,
+				"Data" : 19,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -669,12 +669,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 17,
+				"Data" : 18,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 17,
+				"Data" : 18,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -755,12 +755,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 15,
+				"Data" : 16,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 16,
+				"Data" : 17,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -878,12 +878,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 14,
+				"Data" : 15,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 14,
+				"Data" : 15,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -1006,7 +1006,7 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 13,
+				"Data" : 14,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -1665,7 +1665,7 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 3,
+				"Data" : 2,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
@@ -1788,12 +1788,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 34,
+				"Data" : 35,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 34,
+				"Data" : 35,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -1812,7 +1812,7 @@
 			[
 				-641.7232666015625,
 				223.43386840820312,
-				-524.79339599609375
+				-519.3731689453125
 			],
 			"m_rotation" : 
 			[
@@ -1874,12 +1874,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 33,
+				"Data" : 34,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 33,
+				"Data" : 34,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -1997,12 +1997,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 23,
+				"Data" : 24,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 23,
+				"Data" : 24,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2083,8 +2083,13 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 22,
+				"Data" : 23,
 				"Name" : "SubBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 23,
+				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
 		],
@@ -2199,6 +2204,16 @@
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : 24,
+				"Name" : "SubBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 24,
+				"Name" : "SubEndIndex",
+				"Type" : 1
 			}
 		],
 		"Scripting" : 
@@ -2314,12 +2329,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 24,
+				"Data" : 25,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 24,
+				"Data" : 25,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2400,12 +2415,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 25,
+				"Data" : 26,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 25,
+				"Data" : 26,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2523,12 +2538,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 29,
+				"Data" : 30,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 29,
+				"Data" : 30,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2545,7 +2560,7 @@
 		{
 			"m_position" : 
 			[
-				-346.13153076171875,
+				-361.46621704101562,
 				127.96757507324219,
 				-496.93710327148438
 			],
@@ -2798,12 +2813,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 30,
+				"Data" : 31,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 30,
+				"Data" : 31,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2921,12 +2936,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 32,
+				"Data" : 33,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 32,
+				"Data" : 33,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3007,12 +3022,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 31,
+				"Data" : 32,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 31,
+				"Data" : 32,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3339,12 +3354,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 26,
+				"Data" : 27,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 26,
+				"Data" : 27,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3462,12 +3477,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 28,
+				"Data" : 29,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 28,
+				"Data" : 29,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3548,12 +3563,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 27,
+				"Data" : 28,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 27,
+				"Data" : 28,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3671,12 +3686,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 19,
+				"Data" : 20,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 19,
+				"Data" : 20,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
