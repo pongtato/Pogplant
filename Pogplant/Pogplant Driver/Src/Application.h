@@ -8,7 +8,7 @@
 //#define PPD_DEBUG_OBJECTS //Whether we should spawn those random debug stuff we using
 
 #define FIXEDUPDATEMINTIME 30.f
-#define FIXEDUPDATEMAXTIME 60.f
+#define FIXEDUPDATEMAXTIME 120.f
 
 #define NOMINMAX
 #include "ImguiHelper.h"
