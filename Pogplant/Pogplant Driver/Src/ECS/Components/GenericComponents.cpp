@@ -1040,5 +1040,8 @@ namespace Components
 		m_IndexMin = _Min;
 		m_IndexMax = _Max;
 		m_CurrentIndex = _Min;
+
+		//Added this as some VO boxes trigger before the timer is up for convenience
+		m_Timer = 0.0f;
 	}
 }
