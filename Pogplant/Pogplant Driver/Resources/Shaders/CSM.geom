@@ -10,7 +10,7 @@ layout (std140, binding = 0) uniform LightSpaceMatrices
 
 void main()
 {
-   for (int i = 0; i < 3; ++i)
+    for (int i = 0; i < 3; ++i)
 	{
 		gl_Position = lightSpaceMatrices[gl_InvocationID] * gl_in[i].gl_Position;
 		gl_Layer = gl_InvocationID;
