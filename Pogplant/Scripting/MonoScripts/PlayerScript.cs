@@ -183,6 +183,7 @@ namespace Scripting
 			DashboardScreenID = ECS.FindEntityWithName("DashBoard");
 			ECS.PlayAudio(shipCameraEntity, 0, "BGM");
 			ECS.PlayAudio(shipCameraEntity, 3, "SFX");
+			ECS.PlayAudio(shipCameraEntity, 4, "SFX");
 			boxCollider = ECS.GetComponent<BoxCollider>(boxEntityID);
 			lastPosition = ECS.GetGlobalPosition(entityID);
 			targetRotation = ECS.GetComponent<Transform>(entityID).Rotation;
