@@ -873,6 +873,8 @@ void PogplantDriver::Application::LoadScene(const std::string& newScene, const s
 	m_nextAppState = APPLICATIONSTATE::NEWSCENETRANSITION;
 	m_genericFilePath = newScene;
 	m_currentSceneName = sceneName;
+
+	PPA::AudioEngine::Instance().ResumeAllChannelGroups();
 }
 
 void PogplantDriver::Application::SetSceneNameFromFilePath(const std::string& scenePath)

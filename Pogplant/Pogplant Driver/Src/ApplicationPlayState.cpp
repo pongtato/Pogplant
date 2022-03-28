@@ -28,6 +28,9 @@ using namespace PogplantDriver;
 /******************************************************************************/
 void Application::EnterPlayState(const std::string& sceneToLoad)
 {
+	PPA::AudioEngine::Instance().ResumeAllChannelGroups();
+	PPA::AudioEngine::StopPlayingAll();
+
 	m_activeECS = &m_playECS;
 
 	PPD::ImguiHelper::RelinkECS(&m_playECS);

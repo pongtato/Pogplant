@@ -77001,7 +77001,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 82.715011596679688,
+				"m_FrameCounter" : 111.12567138671875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77014,8 +77014,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.65625
+					0.5,
+					0.875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77067,7 +77067,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.672924041748047,
+				"m_FrameCounter" : 89.400970458984375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77080,8 +77080,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.21875
+					0.5,
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77133,7 +77133,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.634269714355469,
+				"m_FrameCounter" : 118.53404998779297,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77146,8 +77146,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.75
+					0.0,
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77199,7 +77199,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 6.234138011932373,
+				"m_FrameCounter" : 49.946708679199219,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -77212,8 +77212,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.0625
+					0.5,
+					0.390625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77265,7 +77265,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 82.715011596679688,
+				"m_FrameCounter" : 111.12567138671875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77278,8 +77278,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.65625
+					0.5,
+					0.875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77331,7 +77331,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.634269714355469,
+				"m_FrameCounter" : 118.53404998779297,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77344,8 +77344,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.75
+					0.0,
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77397,7 +77397,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 102.94548797607422,
+				"m_FrameCounter" : 69.03546142578125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77410,8 +77410,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.8125
+					0.5,
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77463,7 +77463,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 82.715011596679688,
+				"m_FrameCounter" : 111.12567138671875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77476,8 +77476,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.65625
+					0.5,
+					0.875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77529,7 +77529,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 102.94548797607422,
+				"m_FrameCounter" : 69.03546142578125,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77542,8 +77542,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.8125
+					0.5,
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77595,7 +77595,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.933441162109375,
+				"m_FrameCounter" : 114.82986450195312,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -77608,8 +77608,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.390625
+					0.0,
+					0.90625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77661,7 +77661,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.672924041748047,
+				"m_FrameCounter" : 89.400970458984375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77674,8 +77674,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.21875
+					0.5,
+					0.703125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83182,7 +83182,7 @@
 				"Type" : 0
 			},
 			{
-				"Data" : "Level02_Boss",
+				"Data" : "Level02OutroCutscene",
 				"Name" : "SceneToLoad",
 				"Type" : 3
 			}
