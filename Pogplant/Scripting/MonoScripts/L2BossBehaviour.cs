@@ -281,7 +281,7 @@ namespace Scripting
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].isVulnerable = false;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].shouldReturnToDefault = true;
 
-			m_runStateInfo.stateDuration = 9.5f;
+			m_runStateInfo.stateDuration = 8.8f;
 		}
 
 
