@@ -117,6 +117,9 @@ namespace Scripting
         public extern static Vector3 GetGlobalScale(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetScale(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetGlobalPosition(uint entityID, Vector3 _Position);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
