@@ -1615,6 +1615,12 @@
 				"Dir" : "Resources/Audio\\Boss\\BossGunFire.ogg",
 				"UpdatePos" : true,
 				"Volume" : 0.55400002002716064
+			},
+			"Clip4" : 
+			{
+				"Dir" : "Resources/Audio\\Boss\\SFX_BossLaserAtk.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.68699997663497925
 			}
 		},
 		"Children" : 0,
@@ -2356,7 +2362,7 @@
 		}
 	},
 	{
-		"Children" : 6,
+		"Children" : 7,
 		"Name" : 
 		{
 			"m_Name" : "Left_ColourTurret_Body_Pivot",
@@ -2392,21 +2398,237 @@
 		{
 			"m_position" : 
 			[
-				1.9073486328125e-06,
-				2.6993513107299805,
-				-9.5367431640625e-07
+				-1.5735626220703125e-05,
+				2.6992778778076172,
+				-0.00011444091796875
 			],
 			"m_rotation" : 
 			[
-				-49.999992370605469,
-				-0.0,
-				0.0
+				-49.999668121337891,
+				-1.3427305930235889e-05,
+				-4.7469043238379527e-06
 			],
 			"m_scale" : 
 			[
-				0.99993479251861572,
+				0.99993467330932617,
+				0.99999761581420898,
+				0.99999701976776123
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "MainLaser",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00027894973754882812,
+				0.53389501571655273,
+				0.00016045570373535156
+			],
+			"m_rotation" : 
+			[
+				-9.2852760644746013e-06,
+				4.338713097240543e-06,
+				-1.7074513607440167e-06
+			],
+			"m_scale" : 
+			[
+				1.000053882598877,
+				1.0000119209289551,
+				1.0002928972244263
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserObject",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
 				1.0,
-				1.0
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				5.245208740234375e-06,
+				0.0,
+				2.5495028495788574
+			],
+			"m_rotation" : 
+			[
+				6.1005867024732652e-09,
+				2.6502743111223026e-08,
+				3.5867845152304234e-12
+			],
+			"m_scale" : 
+			[
+				0.099999964237213135,
+				0.099832698702812195,
+				2.9972538948059082
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserOutLine",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.30697673559188843,
+				0.30697673559188843
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.7642974853515625e-05,
+				-1.9073486328125e-06,
+				2.5495028495788574
+			],
+			"m_rotation" : 
+			[
+				3.0634023318043546e-08,
+				-1.2293893902892705e-08,
+				4.2702749851741828e-06
+			],
+			"m_scale" : 
+			[
+				0.099967136979103088,
+				0.099937066435813904,
+				2.9996588230133057
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserHitbox",
+			"status" : true
+		},
+		"OBBBoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY PROJECTILES",
+			"extends" : 
+			[
+				0.15000000596046448,
+				0.15000000596046448,
+				50.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 500,
+				"Name" : "DamageAmount",
+				"Type" : 1
+			},
+			{
+				"Data" : true,
+				"Name" : "IsHitScan",
+				"Type" : 2
+			},
+			{
+				"Data" : true,
+				"Name" : "IsHitbox",
+				"Type" : 2
+			}
+		],
+		"Scripting" : 
+		{
+			"BossHitbox" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00019979476928710938,
+				9.5367431640625e-07,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				2.789005293379887e-08,
+				2.657677633521871e-08,
+				1.0245310477330349e-05
+			],
+			"m_scale" : 
+			[
+				0.99999773502349854,
+				0.99960231781005859,
+				0.99981296062469482
 			]
 		}
 	},
@@ -4019,7 +4241,7 @@
 		}
 	},
 	{
-		"Children" : 6,
+		"Children" : 7,
 		"Name" : 
 		{
 			"m_Name" : "Right_ColourTurret_Body_Pivot",
@@ -4708,6 +4930,222 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "MainLaser",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.53400039672851562,
+				-0.00015544891357421875
+			],
+			"m_rotation" : 
+			[
+				-1.8570644897408783e-05,
+				8.6042346580939011e-09,
+				-24.999994277954102
+			],
+			"m_scale" : 
+			[
+				1.0000537633895874,
+				1.0000115633010864,
+				1.0002926588058472
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserHitbox",
+			"status" : true
+		},
+		"OBBBoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY PROJECTILES",
+			"extends" : 
+			[
+				0.15000000596046448,
+				0.15000000596046448,
+				50.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 500,
+				"Name" : "DamageAmount",
+				"Type" : 1
+			},
+			{
+				"Data" : true,
+				"Name" : "IsHitScan",
+				"Type" : 2
+			},
+			{
+				"Data" : true,
+				"Name" : "IsHitbox",
+				"Type" : 2
+			}
+		],
+		"Scripting" : 
+		{
+			"BossHitbox" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.011056900024414062,
+				0.0,
+				0.00035405158996582031
+			],
+			"m_rotation" : 
+			[
+				2.5812473936071001e-08,
+				2.8218961389825381e-08,
+				1.0236939488095231e-05
+			],
+			"m_scale" : 
+			[
+				0.99999773502349854,
+				0.99968415498733521,
+				0.9998130202293396
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserOutLine",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.30697673559188843,
+				0.30697673559188843
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Outline"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				2.5495669841766357
+			],
+			"m_rotation" : 
+			[
+				1.7881184311008269e-09,
+				7.1055339390113659e-10,
+				8.4500229036166274e-10
+			],
+			"m_scale" : 
+			[
+				0.099967144429683685,
+				0.099992968142032623,
+				3.0005481243133545
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "LaserObject",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_Laser",
+				"Resources/Models\\Enemy",
+				"Laser_Beam"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				2.5495352745056152
+			],
+			"m_rotation" : 
+			[
+				2.9542201573917737e-08,
+				1.4636345468943546e-08,
+				3.6627775465425394e-12
+			],
+			"m_scale" : 
+			[
+				0.099999964237213135,
+				0.099992454051971436,
+				3.0004043579101562
 			]
 		}
 	},
@@ -8184,6 +8622,72 @@
 		}
 	},
 	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 16.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.375
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerComboLargeFire",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.15000000596046448,
+				1.1000000238418579,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"Children" : 0,
 		"Name" : 
 		{
@@ -8470,72 +8974,6 @@
 			"m_scale" : 
 			[
 				2.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 16.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.375
-				]
-			},
-			"m_TexName" : "256_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "PlayerComboLargeFire",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.15000000596046448,
-				1.1000000238418579,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
 				1.0,
 				1.0
 			]

@@ -30,6 +30,8 @@ namespace Scripting
 		public uint mID_playerShip;
 		public int m_damageAmount = 50;
 		public bool m_damageHitBox = false;
+		public bool m_hitboxHitScan = false;
+		public float m_hitScanThickness;
 		public bool m_applySucc = false;
 		public bool m_applyForceOnHit = false;
 		public Vector3 m_forceDirection;
@@ -43,7 +45,7 @@ namespace Scripting
 		public float m_vibrationForce;
 		public float m_vibrationDuration;
 
-		List<uint> m_succList = new List<uint>();
+		List<uint> m_collidedList = new List<uint>();
 
 		public override void Init(ref uint _entityID)
 		{
@@ -56,6 +58,8 @@ namespace Scripting
 			m_coreNumber = ECS.GetValue<int>(entityID, 0, "CoreNumber");
 			m_damageAmount = ECS.GetValue<int>(entityID, 50, "DamageAmount");
 			m_damageHitBox = ECS.GetValue<bool>(entityID, false, "IsHitbox");
+			m_hitboxHitScan = ECS.GetValue<bool>(entityID, false, "IsHitScan");
+			m_hitScanThickness = ECS.GetValue<float>(entityID, 0.2f, "HitScanThickness");
 			m_applyForceOnHit = ECS.GetValue<bool>(entityID, false, "ApplyForce");
 			m_forceDirection = ECS.GetValue<Vector3>(entityID, new Vector3(0.0f, -100f, 0.0f), "ForceDirection");
 
@@ -80,16 +84,34 @@ namespace Scripting
 
 		public override void LateUpdate(float dt)
 		{
-			for(int i = 0; i < m_succList.Count(); ++i)
+			for(int i = 0; i < m_collidedList.Count(); ++i)
 			{
-				if(ECS.CheckValidEntity(m_succList[i]))
+				if(ECS.CheckValidEntity(m_collidedList[i]))
 				{
-					ECS.RigidbodyAddForce(m_succList[i], (ECS.GetGlobalPosition(entityID) - ECS.GetGlobalPosition(m_succList[i])) * m_succForce);
-					//ECS.RigidbodyAddForce(m_succList[i], 0);
+					if (m_applySucc)
+						ECS.RigidbodyAddForce(m_collidedList[i], (ECS.GetGlobalPosition(entityID) - ECS.GetGlobalPosition(m_collidedList[i])) * m_succForce);
+					else if (m_hitboxHitScan)
+					{
+						if(ECS.SphereCastEntity(ECS.GetGlobalPosition(entityID), Transform.GetForwardVector(entityID), m_hitScanThickness, m_collidedList[i]))
+						{
+							m_collidedList.RemoveAt(i);
+							--i;
+
+							PlayerScript.m_singleton.TriggerCameraShake(
+							new Vector3(m_cameraShakeInitMul.X, m_cameraShakeInitMul.Y, m_cameraShakeInitMul.Z),
+							new Vector3(m_cameraShakeMag.X, m_cameraShakeMag.Y, m_cameraShakeMag.Z),
+							m_cameraShakeDuration);
+
+							PlayerScript.AddScore(false, false, (uint)m_damageAmount);
+
+							//Add controller vibration
+							InputUtility.VibrateControllerHeavyMotor(m_vibrationForce, m_vibrationDuration);
+						}
+					}
 				}
 				else
 				{
-					m_succList.RemoveAt(i);
+					m_collidedList.RemoveAt(i);
 					--i;
 				}
 			}
@@ -101,14 +123,21 @@ namespace Scripting
 			{
 				if (id == mID_playerShip)
 				{
-					PlayerScript.m_singleton.TriggerCameraShake(
+					if(m_hitboxHitScan)
+					{
+						m_collidedList.Add(id);
+					}
+					else
+					{
+						PlayerScript.m_singleton.TriggerCameraShake(
 						new Vector3(m_cameraShakeInitMul.X, m_cameraShakeInitMul.Y, m_cameraShakeInitMul.Z),
 						new Vector3(m_cameraShakeMag.X, m_cameraShakeMag.Y, m_cameraShakeMag.Z),
 						m_cameraShakeDuration);
-					PlayerScript.AddScore(false, false, (uint)m_damageAmount);
+						PlayerScript.AddScore(false, false, (uint)m_damageAmount);
 
-					//Add controller vibration
-					InputUtility.VibrateControllerHeavyMotor(m_vibrationForce, m_vibrationDuration);
+						//Add controller vibration
+						InputUtility.VibrateControllerHeavyMotor(m_vibrationForce, m_vibrationDuration);
+					}
 				}
 
 				if (m_applyForceOnHit)
@@ -118,7 +147,7 @@ namespace Scripting
 
 				if (m_applySucc)
 				{
-					m_succList.Add(id);
+					m_collidedList.Add(id);
 
 					ECS.RigidbodyAddImpulseForce(id, (ECS.GetGlobalPosition(entityID) - ECS.GetGlobalPosition(id)) * m_initialSuccForce);
 				}
@@ -170,9 +199,9 @@ namespace Scripting
 
 		public override void OnTriggerExit(uint id)
 		{
-			if(m_damageHitBox && m_applySucc)
+			if(m_damageHitBox && (m_applySucc || (m_hitboxHitScan && id == mID_playerShip)))
 			{
-				m_succList.Remove(id);
+				m_collidedList.Remove(id);
 			}
 		}
 	}

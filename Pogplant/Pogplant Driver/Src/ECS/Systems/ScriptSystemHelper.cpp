@@ -541,6 +541,11 @@ namespace SSH
 	{
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalScale();
 	}
+	
+	glm::vec3 GetScale(std::uint32_t entityID)
+	{
+		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->m_scale;
+	}
 
 	void SetGlobalPosition(std::uint32_t entityID, glm::vec3 pos)
 	{

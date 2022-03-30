@@ -456,6 +456,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetGlobalPosition", SSH::GetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::GetGlobalRotation", SSH::GetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::GetGlobalScale", SSH::GetGlobalScale);
+	mono_add_internal_call("Scripting.ECS::GetScale", SSH::GetScale);
 	mono_add_internal_call("Scripting.ECS::SetGlobalPosition", SSH::SetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::SetGlobalRotation", SSH::SetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::SetGlobalScale", SSH::SetGlobalScale);
