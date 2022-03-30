@@ -9,6 +9,7 @@ namespace Scripting
     public class CorePillar : MonoBehaviour
     {
         uint m_Explosion;
+        uint m_EmissiveEntity;
         uint m_null_entity;
         bool m_Destroyed = false;
 
@@ -26,6 +27,7 @@ namespace Scripting
             entityID = _entityID;
             m_null_entity = ECS.GetNull();
             FindAndCheck(ref m_Explosion, "ExplosionEffect", true);
+            FindAndCheck(ref m_EmissiveEntity, "Energy_Capsule_Emissive", true);
         }
 
         public override void Start()
@@ -45,10 +47,10 @@ namespace Scripting
             if (!m_Destroyed)
             {
                 m_Destroyed = true;
-                ECS.SetGlobalPosition(m_Explosion, ECS.GetGlobalPosition(id));
+                //ECS.SetGlobalPosition(m_Explosion, ECS.GetGlobalPosition(id));
                 ECS.SetActive(m_Explosion, true);
                 Vector3 noEmi = new Vector3(0);
-                ECS.SetEmissiveTint(entityID, ref noEmi);
+                ECS.SetActive(m_EmissiveEntity, false);
             }
         }
 

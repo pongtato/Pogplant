@@ -77007,7 +77007,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 42.533939361572266,
+				"m_FrameCounter" : 39.089248657226562,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77020,8 +77020,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.34375
+					0.5,
+					0.3125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77073,7 +77073,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 26.987689971923828,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77087,7 +77087,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.015625
+					0.21875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77139,7 +77139,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.331161499023438,
+				"m_FrameCounter" : 53.551841735839844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77152,8 +77152,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.515625
+					0.5,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77205,7 +77205,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 77.617439270019531,
+				"m_FrameCounter" : 5.0824799537658691,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -77219,7 +77219,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.609375
+					0.046875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77271,7 +77271,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 42.533939361572266,
+				"m_FrameCounter" : 39.089248657226562,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77284,8 +77284,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.34375
+					0.5,
+					0.3125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77337,7 +77337,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 64.331161499023438,
+				"m_FrameCounter" : 53.551841735839844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77350,8 +77350,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.515625
+					0.5,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77403,7 +77403,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 23.629703521728516,
+				"m_FrameCounter" : 15.669471740722656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77417,7 +77417,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.1875
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77469,7 +77469,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 42.533939361572266,
+				"m_FrameCounter" : 39.089248657226562,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77482,8 +77482,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.34375
+					0.5,
+					0.3125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77535,7 +77535,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 23.629703521728516,
+				"m_FrameCounter" : 15.669471740722656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77549,7 +77549,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.1875
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77601,7 +77601,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 106.47719573974609,
+				"m_FrameCounter" : 46.104721069335938,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -77615,7 +77615,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.84375
+					0.375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77667,7 +77667,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 26.987689971923828,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77681,7 +77681,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.015625
+					0.21875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -189693,7 +189693,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "82297b16-d39b-4342-896b-709167c4c6f6",
+			"prefab_GUID" : "e75c4e9e-3407-445d-97be-793fa19ac6f5",
 			"prefab_path" : "Resources\\Prefabs\\CorePillarGroup.prefab"
 		},
 		"Tag" : 
@@ -189728,7 +189728,7 @@
 			"centre" : 
 			[
 				0.0,
-				0.0,
+				8.0,
 				0.0
 			],
 			"collisionLayer" : "OBSTACLES",
@@ -189741,7 +189741,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "CorePillar_0_Left",
@@ -189749,7 +189749,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "90eb06cb-fc72-46d1-a0e7-2bff29d50cbb",
+			"prefab_GUID" : "7e8a9dcb-6134-4c97-bd31-1f66671774fd",
 			"prefab_path" : "Resources\\Prefabs\\CorePillar.prefab"
 		},
 		"Render" : 
@@ -189768,9 +189768,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
 			],
 			"UseLight" : 1
 		},
@@ -189787,13 +189787,13 @@
 			"m_position" : 
 			[
 				-398.0,
-				124.79109191894531,
+				117.0,
 				-483.29998779296875
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -190013,12 +190013,12 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 0.5,
+				"Data" : 1.0,
 				"Name" : "LerpDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 0.20000000298023224,
+				"Data" : 0.40000000596046448,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
@@ -190074,20 +190074,20 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				10.0,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.023660339415073395,
 				89.999946594238281,
-				0.02367229200899601
+				0.023672284558415413
 			],
 			"m_scale" : 
 			[
-				0.0010000000474974513,
-				0.0010000000474974513,
-				0.0010000000474974513
+				2.0,
+				2.0,
+				2.0
 			]
 		}
 	},
@@ -190396,12 +190396,67 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279076337814331,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
 			[
 				0.0,
-				0.0,
+				8.0,
 				0.0
 			],
 			"collisionLayer" : "OBSTACLES",
@@ -190414,7 +190469,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "CorePillar_0_Right",
@@ -190441,9 +190496,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
 			],
 			"UseLight" : 1
 		},
@@ -190460,7 +190515,7 @@
 			"m_position" : 
 			[
 				-398.0,
-				125.0,
+				117.0,
 				-507.70001220703125
 			],
 			"m_rotation" : 
@@ -190686,12 +190741,12 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 0.5,
+				"Data" : 1.0,
 				"Name" : "LerpDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 0.20000000298023224,
+				"Data" : 0.40000000596046448,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
@@ -190747,7 +190802,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				10.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -191069,12 +191124,67 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279076337814331,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
 			[
 				0.0,
-				0.0,
+				8.0,
 				0.0
 			],
 			"collisionLayer" : "OBSTACLES",
@@ -191087,7 +191197,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "CorePillar_3_Left",
@@ -191114,9 +191224,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
 			],
 			"UseLight" : 1
 		},
@@ -191133,7 +191243,7 @@
 			"m_position" : 
 			[
 				-433.65036010742188,
-				125.0,
+				117.0,
 				-483.29998779296875
 			],
 			"m_rotation" : 
@@ -191359,12 +191469,12 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 0.5,
+				"Data" : 1.0,
 				"Name" : "LerpDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 0.20000000298023224,
+				"Data" : 0.40000000596046448,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
@@ -191420,7 +191530,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				10.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -191742,12 +191852,67 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279076337814331,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
 			[
 				0.0,
-				0.0,
+				8.0,
 				0.0
 			],
 			"collisionLayer" : "OBSTACLES",
@@ -191760,7 +191925,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "CorePillar_3_Right",
@@ -191787,9 +191952,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
 			],
 			"UseLight" : 1
 		},
@@ -191806,7 +191971,7 @@
 			"m_position" : 
 			[
 				-433.37130737304688,
-				125.0,
+				117.0,
 				-507.70001220703125
 			],
 			"m_rotation" : 
@@ -192032,12 +192197,12 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 0.5,
+				"Data" : 1.0,
 				"Name" : "LerpDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 0.20000000298023224,
+				"Data" : 0.40000000596046448,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
@@ -192093,7 +192258,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				10.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -192415,12 +192580,67 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279076337814331,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				2.1540630612548739e-08,
+				-1.3183848750486504e-06,
+				3.0225294267438585e-07
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
 			[
 				0.0,
-				0.0,
+				8.0,
 				0.0
 			],
 			"collisionLayer" : "OBSTACLES",
@@ -192433,7 +192653,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "CorePillar_2_Right",
@@ -192460,9 +192680,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
 			],
 			"UseLight" : 1
 		},
@@ -192479,7 +192699,7 @@
 			"m_position" : 
 			[
 				-421.14144897460938,
-				125.0,
+				117.0,
 				-507.70001220703125
 			],
 			"m_rotation" : 
@@ -192705,12 +192925,12 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 0.5,
+				"Data" : 1.0,
 				"Name" : "LerpDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 0.20000000298023224,
+				"Data" : 0.40000000596046448,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
@@ -192766,7 +192986,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				10.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -193088,12 +193308,67 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279076337814331,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
 			[
 				0.0,
-				0.0,
+				8.0,
 				0.0
 			],
 			"collisionLayer" : "OBSTACLES",
@@ -193106,7 +193381,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "CorePillar_1_Left",
@@ -193133,9 +193408,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
 			],
 			"UseLight" : 1
 		},
@@ -193152,7 +193427,7 @@
 			"m_position" : 
 			[
 				-409.17218017578125,
-				125.0,
+				117.0,
 				-483.29998779296875
 			],
 			"m_rotation" : 
@@ -193378,12 +193653,12 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 0.5,
+				"Data" : 1.0,
 				"Name" : "LerpDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 0.20000000298023224,
+				"Data" : 0.40000000596046448,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
@@ -193439,7 +193714,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				10.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -193761,12 +194036,67 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279076337814331,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
 			[
 				0.0,
-				0.0,
+				8.0,
 				0.0
 			],
 			"collisionLayer" : "OBSTACLES",
@@ -193779,7 +194109,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "CorePillar_2_Left",
@@ -193806,9 +194136,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
 			],
 			"UseLight" : 1
 		},
@@ -193825,7 +194155,7 @@
 			"m_position" : 
 			[
 				-420.96737670898438,
-				125.0,
+				117.0,
 				-483.29998779296875
 			],
 			"m_rotation" : 
@@ -194051,12 +194381,12 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 0.5,
+				"Data" : 1.0,
 				"Name" : "LerpDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 0.20000000298023224,
+				"Data" : 0.40000000596046448,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
@@ -194112,7 +194442,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				10.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -194434,12 +194764,67 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279076337814331,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
 			[
 				0.0,
-				0.0,
+				8.0,
 				0.0
 			],
 			"collisionLayer" : "OBSTACLES",
@@ -194452,7 +194837,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "CorePillar_1_Right",
@@ -194479,9 +194864,9 @@
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
 			],
 			"UseLight" : 1
 		},
@@ -194498,7 +194883,7 @@
 			"m_position" : 
 			[
 				-409.17218017578125,
-				125.0,
+				117.0,
 				-507.70001220703125
 			],
 			"m_rotation" : 
@@ -194724,12 +195109,12 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 0.5,
+				"Data" : 1.0,
 				"Name" : "LerpDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 0.20000000298023224,
+				"Data" : 0.40000000596046448,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
@@ -194785,7 +195170,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				10.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -195096,6 +195481,61 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279076337814331,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 

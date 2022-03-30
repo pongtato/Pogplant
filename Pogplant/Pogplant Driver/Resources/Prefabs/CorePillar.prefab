@@ -5,7 +5,7 @@
 			"centre" : 
 			[
 				0.0,
-				0.0,
+				8.0,
 				0.0
 			],
 			"collisionLayer" : "OBSTACLES",
@@ -18,14 +18,14 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 1,
+		"Children" : 2,
 		"Guid" : 
 		{
-			"m_guid" : "bd8fd9b7-a800-4fe6-9b90-7d1405a85aa3"
+			"m_guid" : "7e8a9dcb-6134-4c97-bd31-1f66671774fd"
 		},
 		"Name" : 
 		{
-			"m_Name" : "CorePillar",
+			"m_Name" : "CorePillar_0_Left",
 			"status" : true
 		},
 		"Prefab" : 
@@ -34,7 +34,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "545f289b-b18f-47fb-9efc-a3cf4515d599",
+			"prefab_GUID" : "b44946b0-a3f0-476b-a4f0-67c226d554b9",
 			"prefab_path" : "Resources\\Prefabs\\CorePillar.prefab"
 		},
 		"Render" : 
@@ -47,15 +47,15 @@
 			],
 			"EmissiveTint" : 
 			[
+				0.21395349502563477,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"RenderModel" : 
 			[
-				"Cube",
-				"Resources/Models\\cube",
-				"Box001"
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
 			],
 			"UseLight" : 1
 		},
@@ -72,13 +72,13 @@
 			"m_position" : 
 			[
 				-398.0,
-				125.0,
-				-507.58035278320312
+				117.0,
+				-483.29998779296875
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -302,12 +302,12 @@
 				"Type" : 1
 			},
 			{
-				"Data" : 0.5,
+				"Data" : 1.0,
 				"Name" : "LerpDuration",
 				"Type" : 0
 			},
 			{
-				"Data" : 0.20000000298023224,
+				"Data" : 0.40000000596046448,
 				"Name" : "PersistDuration",
 				"Type" : 0
 			},
@@ -363,20 +363,20 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				10.0,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.023660339415073395,
 				89.999946594238281,
-				0.02367229200899601
+				0.023672284558415413
 			],
 			"m_scale" : 
 			[
-				0.0010000000474974513,
-				0.0010000000474974513,
-				0.0010000000474974513
+				2.0,
+				2.0,
+				2.0
 			]
 		}
 	},
@@ -686,6 +686,65 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\CorePillar.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279076337814331,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
