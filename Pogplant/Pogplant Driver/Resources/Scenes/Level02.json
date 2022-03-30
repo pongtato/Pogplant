@@ -6726,6 +6726,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\SFX_FactoryLaser.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 2,
 		"Name" : 
 		{
@@ -7166,6 +7175,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\SFX_FactoryLaser.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 2,
 		"Name" : 
 		{
@@ -7606,6 +7624,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\SFX_FactoryLaser.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 2,
 		"Name" : 
 		{
@@ -8046,6 +8073,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\SFX_FactoryLaser.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 2,
 		"Name" : 
 		{
@@ -8486,6 +8522,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\SFX_FactoryLaser.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 2,
 		"Name" : 
 		{
@@ -8926,6 +8971,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\SFX_FactoryLaser.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 2,
 		"Name" : 
 		{
@@ -69447,7 +69501,7 @@
 			"m_position" : 
 			[
 				0.02056884765625,
-				0.05108642578125,
+				0.05218505859375,
 				-0.07843017578125
 			],
 			"m_rotation" : 
@@ -77007,7 +77061,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 39.089248657226562,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77020,8 +77074,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.3125
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77073,7 +77127,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.987689971923828,
+				"m_FrameCounter" : 81.79754638671875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77086,8 +77140,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.21875
+					0.5,
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77139,7 +77193,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.551841735839844,
+				"m_FrameCounter" : 90.259361267089844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77152,8 +77206,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.71875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77205,7 +77259,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 5.0824799537658691,
+				"m_FrameCounter" : 83.424606323242188,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -77219,7 +77273,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.046875
+					0.65625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77271,7 +77325,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 39.089248657226562,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77284,8 +77338,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.3125
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77337,7 +77391,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 53.551841735839844,
+				"m_FrameCounter" : 90.259361267089844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77350,8 +77404,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.421875
+					0.0,
+					0.71875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77403,7 +77457,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 15.669471740722656,
+				"m_FrameCounter" : 48.083393096923828,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77416,8 +77470,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.125
+					0.0,
+					0.390625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77469,7 +77523,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 39.089248657226562,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -77482,8 +77536,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.3125
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77535,7 +77589,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 15.669471740722656,
+				"m_FrameCounter" : 48.083393096923828,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77548,8 +77602,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.125
+					0.0,
+					0.390625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77601,7 +77655,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.104721069335938,
+				"m_FrameCounter" : 78.428047180175781,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -77615,7 +77669,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.375
+					0.625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77667,7 +77721,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.987689971923828,
+				"m_FrameCounter" : 81.79754638671875,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77680,8 +77734,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.21875
+					0.5,
+					0.640625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -84918,6 +84972,12 @@
 				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_50.ogg",
 				"UpdatePos" : true,
 				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\Ambience_ConveyorBelt.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.19900000095367432
 			}
 		},
 		"BoxCollider" : 
@@ -120282,6 +120342,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -120463,6 +120532,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -120677,6 +120755,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -120891,6 +120978,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -121105,6 +121201,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -121147,9 +121252,9 @@
 		{
 			"m_position" : 
 			[
-				2.691925048828125,
+				2.69036865234375,
 				113.63425445556641,
-				-1.2155017852783203
+				-1.2153072357177734
 			],
 			"m_rotation" : 
 			[
@@ -121319,6 +121424,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -121533,6 +121647,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -121747,6 +121870,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -121928,6 +122060,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -122142,6 +122283,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -122356,6 +122506,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -122570,6 +122729,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -122784,6 +122952,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -122998,6 +123175,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -123291,6 +123477,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -123384,8 +123579,8 @@
 		{
 			"m_position" : 
 			[
-				8.3892745971679688,
-				-9.5367431640625e-07,
+				8.3892688751220703,
+				3.814697265625e-06,
 				-0.036224365234375
 			],
 			"m_rotation" : 
@@ -123505,6 +123700,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -123686,6 +123890,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{
@@ -123900,6 +124113,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\FallingObjects.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 0,
 		"Name" : 
 		{
