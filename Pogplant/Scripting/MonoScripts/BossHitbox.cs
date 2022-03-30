@@ -183,6 +183,12 @@ namespace Scripting
 							case 1:
 								L2BossBehaviour.m_singleton?.DamageRightCore(1f);
 								break;
+							case 2:
+
+								break;
+							case 3:
+
+								break;
 							default:
 								Console.WriteLine("BossHitbox.cs: Lvl2 Unknown core number");
 								break;

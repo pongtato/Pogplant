@@ -142,7 +142,7 @@ namespace Scripting
                 Vector3 look_direction = waypoints[current_waypoint_index + lookat_waypoint_offset].Position - ECS.GetGlobalPosition(entityID);
                 Vector3 look_vector = look_direction - forward;
                 float interpolant = rotation_lerp_speed * dt / look_vector.magnitude();
-                Vector3 look_point = ECS.GetGlobalPosition(entityID) + (forward + (look_vector * interpolant));
+                Vector3 look_point = ECS.GetGlobalPosition(entityID) + (forward + (look_vector * Math.Min(interpolant, 1f)));
 
                 Transform.LookAtClamped(entityID, look_point);
             }

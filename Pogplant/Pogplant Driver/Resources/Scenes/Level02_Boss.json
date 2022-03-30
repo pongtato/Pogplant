@@ -1594,15 +1594,15 @@
 		{
 			"Clip0" : 
 			{
-				"Dir" : "Resources/Audio\\Boss\\CoreHit.ogg",
+				"Dir" : "Resources/Audio\\Boss\\SFX_BossCoreHit1.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.45600000023841858
 			},
 			"Clip1" : 
 			{
-				"Dir" : "Resources/Audio\\Boss\\CoreHitProtected.ogg",
+				"Dir" : "Resources/Audio\\Boss\\SFX_BossImmuneHit1.ogg",
 				"UpdatePos" : true,
-				"Volume" : 1.0
+				"Volume" : 0.45100000500679016
 			},
 			"Clip2" : 
 			{
@@ -10078,7 +10078,7 @@
 			[
 				6.9405040740966797,
 				-10.15313720703125,
-				0.0
+				55.777450561523438
 			],
 			"m_rotation" : 
 			[

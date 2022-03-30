@@ -53,6 +53,7 @@ namespace Scripting
 		//IDs
 		public uint mID_leftCore;
 		public uint mID_rightCore;
+		public uint mID_falseCore;
 		public uint mID_playerShip;
 		public uint[] mID_ventSpawnpoints = new uint[6];
 
@@ -118,12 +119,14 @@ namespace Scripting
 			public uint ID_laserObject;
 			public uint ID_laserOutline;
 			public uint ID_laserHitbox;
-			
+
 			public bool shouldLerp;
 
 			public Vector3 restingRotation;
 
 			public Vector3 targetRotation;
+
+			public float health;
 		}
 
 		struct RuntimeStateVariables
@@ -184,6 +187,12 @@ namespace Scripting
 		bool mLaser_useOnce = false;
 		#endregion
 
+		#region[Damage Animations]
+		Vector3 mColor_falseCoreNormal = new Vector3(1f, 0.725f, 0f);
+		Vector3 mColor_falseCoreCurrent = new Vector3(1f, 0.725f, 0f);
+		Vector3 mColor_falseCoreDamaged = new Vector3(1f, 0f, 0f);
+		#endregion
+
 		/******************************************************************************/
 		/*!
 		\brief
@@ -216,6 +225,8 @@ namespace Scripting
 
 			mID_leftCore = ECS.FindEntityWithName("Left_Eye");
 			mID_rightCore = ECS.FindEntityWithName("Right_Eye");
+			mID_falseCore = ECS.FindEntityWithName("FalseCore");
+			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreNormal);
 
 			m_turretGuns[0].ID_turretBody = ECS.FindEntityWithName("Left_ColourTurret_Body_Pivot");
 			m_turretGuns[1].ID_turretBody = ECS.FindEntityWithName("Right_ColourTurret_Body_Pivot");
@@ -239,6 +250,7 @@ namespace Scripting
 
 				m_turretGuns[i].targetRotation.Z = 0f;
 				m_turretGuns[i].shouldLerp = true;
+				m_turretGuns[i].health = mh_leftBallHealth;
 
 				ECS.SetActive(m_turretGuns[i].ID_laserObject, false);
 				ECS.SetActive(m_turretGuns[i].ID_laserOutline, false);
@@ -469,6 +481,7 @@ namespace Scripting
 				}
 			}
 
+			UpdateDamageColors(dt);
 			UpdateHPBar(dt);
 		}
 
@@ -532,6 +545,13 @@ namespace Scripting
 			}
 		}
 
+		//Used to update colors
+		void UpdateDamageColors(float dt)
+		{
+			mColor_falseCoreCurrent = Vector3.Lerp(mColor_falseCoreCurrent, mColor_falseCoreNormal, Math.Min(dt * 15f, 1f));
+			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreCurrent);
+		}
+
 		public override void LateUpdate(float dt)
 		{
 
@@ -574,7 +594,7 @@ namespace Scripting
 
 					for (int i = 0; i < 2; ++i)
 					{
-						if(m_turretGuns[i].shouldLerp)
+						if (m_turretGuns[i].shouldLerp)
 						{
 							ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
 							Vector3 beforeLerp = m_tempTransform.Rotation;
@@ -608,7 +628,7 @@ namespace Scripting
 									ECS.SetScale(m_turretGuns[i].ID_laserObject, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserObject), new Vector3(0.8f, 0.8f, 3f), dt * 3f));
 								}
 							}
-							else if (m_runStateInfo.bossShootTimer > 7f)
+							else if (m_runStateInfo.bossShootTimer > 7f && !mLaser_useOnce)
 							{
 								for (int i = 0; i < 2; ++i)
 								{
@@ -616,16 +636,17 @@ namespace Scripting
 									ECS.SetScale(m_turretGuns[i].ID_laserOutline, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserOutline), new Vector3(0.0f, 0.0f, 3f), dt * 6f));
 									ECS.SetScale(m_turretGuns[i].ID_laserObject, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserObject), new Vector3(0.0f, 0.0f, 3f), dt * 6f));
 								}
-							}
-							else if (m_runStateInfo.bossShootTimer > 9f && !mLaser_useOnce)
-							{
-								mLaser_useOnce = true;
 
-								L2Boss.m_singleton.SetColorTurretRecovery();
-								for (int i = 0; i < 2; ++i)
+								if (m_runStateInfo.bossShootTimer > 7.6f)
 								{
-									ECS.SetActive(m_turretGuns[i].ID_laserObject, false);
-									ECS.SetActive(m_turretGuns[i].ID_laserOutline, false);
+									mLaser_useOnce = true;
+
+									L2Boss.m_singleton.SetColorTurretRecovery();
+									for (int i = 0; i < 2; ++i)
+									{
+										ECS.SetActive(m_turretGuns[i].ID_laserObject, false);
+										ECS.SetActive(m_turretGuns[i].ID_laserOutline, false);
+									}
 								}
 							}
 						}
@@ -892,6 +913,8 @@ namespace Scripting
 
 			//Console.WriteLine("Boss Taken damage");
 			ECS.PlayAudio(entityID, 0, "SFX");
+
+			mColor_falseCoreCurrent = mColor_falseCoreDamaged;
 
 			mh_coreHealth -= 1f;
 			m_runStateInfo.damageTakenPeriod += 1f;
