@@ -66,6 +66,7 @@ namespace Scripting
 
 		public uint mID_leftCore;
 		public uint mID_rightCore;
+		public uint mID_falseCore;
 
 		//HP Bar vars
 		uint mID_hpBar;
@@ -199,6 +200,12 @@ namespace Scripting
 
 		bool updateCoreLockOn = false;
 
+		#region[Damage Animations]
+		Vector3 mColor_falseCoreNormal = new Vector3(1f, 0.725f, 0f);
+		Vector3 mColor_falseCoreCurrent = new Vector3(1f, 0.725f, 0f);
+		Vector3 mColor_falseCoreDamaged = new Vector3(1f, 0f, 0f);
+		#endregion
+
 		/******************************************************************************/
 		/*!
 		\brief
@@ -241,6 +248,8 @@ namespace Scripting
 
 			mID_leftCore = ECS.FindEntityWithName("Left_Eye");
 			mID_rightCore = ECS.FindEntityWithName("Right_Eye");
+			mID_falseCore = ECS.FindEntityWithName("FalseCore");
+			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreNormal);
 
 			uint bossPanelSpawns = ECS.FindEntityWithName("BossPanelSpawnPoints");
 			uint bossShootPoints = ECS.FindEntityWithName("Boss");
@@ -585,7 +594,14 @@ namespace Scripting
 				}
 			}
 
+			UpdateDamageColors(dt);
 			UpdateHPBar(dt);
+		}
+
+		void UpdateDamageColors(float dt)
+		{
+			mColor_falseCoreCurrent = Vector3.Lerp(mColor_falseCoreCurrent, mColor_falseCoreNormal, Math.Min(dt * 15f, 1f));
+			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreCurrent);
 		}
 
 		/***************************************************************************/
@@ -843,6 +859,8 @@ namespace Scripting
 
 			//Console.WriteLine("Boss Taken damage");
 			ECS.PlayAudio(entityID, 0, "SFX");
+
+			mColor_falseCoreCurrent = mColor_falseCoreDamaged;
 
 			mh_coreHealth -= 1f;
 			m_runStateInfo.damageTakenPeriod += 1f;
