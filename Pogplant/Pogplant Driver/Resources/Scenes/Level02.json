@@ -73964,391 +73964,6 @@
 		}
 	},
 	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "BobbleBoard",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Board",
-				"Resources/Models\\Bobbers",
-				"Bobber_Board"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.61999976634979248,
-				-0.05818939208984375,
-				0.0040164287202060223
-			],
-			"m_rotation" : 
-			[
-				1.078407883644104,
-				-14.501582145690918,
-				-4.2992911338806152
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99997472763061523,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "BobbleTimmy",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Timmy",
-				"Resources/Models\\Bobbers",
-				"Timmy_Head"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.099999427795410156,
-				0.0637054443359375,
-				-4.5299530029296875e-06
-			],
-			"m_rotation" : 
-			[
-				-1.3020047845202498e-05,
-				2.561320798122324e-06,
-				-6.4033019953058101e-07
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999982118606567
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "BobbleTimmyBody",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Timmy",
-				"Resources/Models\\Bobbers",
-				"Timmy_Body1"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "BobbleBoobas",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Boobas",
-				"Resources/Models\\Bobbers",
-				"Hula_Head"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.10000002384185791,
-				0.060394287109375,
-				7.2177499532699585e-09
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				4.0523148869147686e-15
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "BoobleBoobasBody",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Boobas",
-				"Resources/Models\\Bobbers",
-				"Hula_Head_Boobas"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.00024658441543579102,
-				0.06269073486328125,
-				-1.8998980522155762e-06
-			],
-			"m_rotation" : 
-			[
-				1.3027551259980896e-11,
-				-7.9513862670781837e-16,
-				4.0523165809806631e-15
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "BobbleProf",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Prof",
-				"Resources/Models\\Bobbers",
-				"Prrof_Head"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				1.1920928955078125e-07,
-				0.05998992919921875,
-				2.3283064365386963e-10
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-5.0089556680177338e-06,
-				1.1946321536171478e-11
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "BobbleProfBody",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bobber_Prof",
-				"Resources/Models\\Bobbers",
-				"Prrof_Head_Prof_Body"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.063000001013278961,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 1,
 		"Name" : 
 		{
@@ -75794,6 +75409,1056 @@
 		}
 	},
 	{
+		"Children" : 9,
+		"Name" : 
+		{
+			"m_Name" : "BobbleBoard",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "53d5b220-7a95-4ad6-9d3f-ce624549b6df",
+			"prefab_path" : "Resources\\Prefabs\\Bobble_Prefab.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Board",
+				"Resources/Models\\Bobbers",
+				"Bobber_Board"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.62000000476837158,
+				-0.057999998331069946,
+				0.0040000001899898052
+			],
+			"m_rotation" : 
+			[
+				1.0779999494552612,
+				-14.501999855041504,
+				-4.2989997863769531
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleBoobas1",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.10000002384185791,
+				0.060394287109375,
+				7.2177499532699585e-09
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				4.0523148869147686e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BoobleBoobasBody1",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head_Boobas"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00024658441543579102,
+				0.06269073486328125,
+				-1.8998980522155762e-06
+			],
+			"m_rotation" : 
+			[
+				1.3027551259980896e-11,
+				-7.9513862670781837e-16,
+				4.0523165809806631e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleProf2",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-5.14984130859375e-05,
+				0.0503692626953125,
+				-0.0019405782222747803
+			],
+			"m_rotation" : 
+			[
+				-6.4033019953058101e-07,
+				-1.707547198748216e-06,
+				-1.3340212490220438e-07
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999982118606567
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BobbleProfBody2",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head_Prof_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.063000001013278961,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmy3",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.099999427795410156,
+				0.0637054443359375,
+				-4.5299530029296875e-06
+			],
+			"m_rotation" : 
+			[
+				-1.3020047845202498e-05,
+				2.561320798122324e-06,
+				-6.4033019953058101e-07
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999982118606567
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmyBody3",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Body1"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleBoobas3",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.10000000149011612,
+				0.059999998658895493,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BoobleBoobasBody3",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head_Boobas"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00024658441543579102,
+				0.06269073486328125,
+				-1.8998980522155762e-06
+			],
+			"m_rotation" : 
+			[
+				1.3027551259980896e-11,
+				-7.9513862670781837e-16,
+				4.0523165809806631e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleProf1",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.10000000149011612,
+				0.059999998658895493,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BobbleProfBody1",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head_Prof_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.063000001013278961,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleProf3",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.10000000149011612,
+				0.059999998658895493,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BobbleProfBody3",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Prof",
+				"Resources/Models\\Bobbers",
+				"Prrof_Head_Prof_Body"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.063000001013278961,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmy1",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.10000000149011612,
+				0.059999998658895493,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmyBody1",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Body1"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmy2",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.059999998658895493,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BobbleTimmyBody2",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Timmy",
+				"Resources/Models\\Bobbers",
+				"Timmy_Body1"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "BobbleBoobas2",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.059999998658895493,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "BoobleBoobasBody2",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bobber_Boobas",
+				"Resources/Models\\Bobbers",
+				"Hula_Head_Boobas"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00024658441543579102,
+				0.06269073486328125,
+				-1.8998980522155762e-06
+			],
+			"m_rotation" : 
+			[
+				1.3027551259980896e-11,
+				-7.9513862670781837e-16,
+				4.0523165809806631e-15
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"Children" : 1,
 		"Name" : 
 		{
@@ -77127,7 +77792,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 81.79754638671875,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77140,8 +77805,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.640625
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77193,7 +77858,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 90.259361267089844,
+				"m_FrameCounter" : 67.764411926269531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77206,8 +77871,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.71875
+					0.5,
+					0.53125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77259,7 +77924,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 83.424606323242188,
+				"m_FrameCounter" : 35.740493774414062,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -77273,7 +77938,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.65625
+					0.28125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77391,7 +78056,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 90.259361267089844,
+				"m_FrameCounter" : 67.764411926269531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -77404,8 +78069,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.71875
+					0.5,
+					0.53125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77457,7 +78122,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 48.083393096923828,
+				"m_FrameCounter" : 37.064216613769531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77470,8 +78135,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.390625
+					0.5,
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77589,7 +78254,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 48.083393096923828,
+				"m_FrameCounter" : 37.064216613769531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -77602,8 +78267,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.390625
+					0.5,
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77655,7 +78320,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 78.428047180175781,
+				"m_FrameCounter" : 65.646774291992188,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -77668,8 +78333,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.625
+					0.5,
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -77721,7 +78386,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 81.79754638671875,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -77734,8 +78399,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.640625
+					0.0,
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"

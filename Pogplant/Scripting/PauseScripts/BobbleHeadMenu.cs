@@ -20,14 +20,14 @@ namespace Scripting
         private Dictionary<string, GameObject> m_Entities = new Dictionary<string, GameObject>();
         private bool m_menuActive = false;
         private bool m_CallOnce = false;
-        uint m_BobbleTimmy;
-        uint m_BobbleProf;
-        uint m_BobbleBoobas;
+        //uint m_BobbleTimmy;
+        //uint m_BobbleProf;
+        //uint m_BobbleBoobas;
         uint m_MenuGroupID;
 
         float m_Timer = 0.0f;
         float m_AnimationSpeed = 5.0f;
-        private Dictionary<string, GameObject> m_EntitiesMap = new Dictionary<string, GameObject>();
+        //private Dictionary<string, GameObject> m_EntitiesMap = new Dictionary<string, GameObject>();
         Transform m_Trans = new Transform();
 
         public BobbleHeadMenu()
@@ -87,10 +87,45 @@ namespace Scripting
             ECS.GetTransformECS(ct, ref pos, ref rot, ref scale);
             m_Entities.Add("TS_ControlText", new GameObject(ct, new Transform(pos, rot, scale), "TS_ControlText"));
 
-            
-            m_BobbleTimmy = ECS.FindEntityWithName("BobbleTimmy");
-            m_BobbleProf = ECS.FindEntityWithName("BobbleProf");
-            m_BobbleBoobas = ECS.FindEntityWithName("BobbleBoobas");
+            uint bt1 = ECS.FindEntityWithName("BobbleTimmy1");
+            ECS.GetTransformECS(bt1, ref pos, ref rot, ref scale);
+            m_Entities.Add("BobbleTimmy1", new GameObject(bt1, new Transform(pos, rot, scale), "BobbleTimmy1"));
+
+            bt1 = ECS.FindEntityWithName("BobbleTimmy2");
+            ECS.GetTransformECS(bt1, ref pos, ref rot, ref scale);
+            m_Entities.Add("BobbleTimmy2", new GameObject(bt1, new Transform(pos, rot, scale), "BobbleTimmy2"));
+
+            bt1 = ECS.FindEntityWithName("BobbleTimmy3");
+            ECS.GetTransformECS(bt1, ref pos, ref rot, ref scale);
+            m_Entities.Add("BobbleTimmy3", new GameObject(bt1, new Transform(pos, rot, scale), "BobbleTimmy3"));
+
+            uint bp1 = ECS.FindEntityWithName("BobbleProf1");
+            ECS.GetTransformECS(bp1, ref pos, ref rot, ref scale);
+            m_Entities.Add("BobbleProf1", new GameObject(bp1, new Transform(pos, rot, scale), "BobbleProf1"));
+
+            bp1 = ECS.FindEntityWithName("BobbleProf2");
+            ECS.GetTransformECS(bp1, ref pos, ref rot, ref scale);
+            m_Entities.Add("BobbleProf2", new GameObject(bp1, new Transform(pos, rot, scale), "BobbleProf2"));
+
+            bp1 = ECS.FindEntityWithName("BobbleProf3");
+            ECS.GetTransformECS(bp1, ref pos, ref rot, ref scale);
+            m_Entities.Add("BobbleProf3", new GameObject(bp1, new Transform(pos, rot, scale), "BobbleProf3"));
+
+            uint bb1 = ECS.FindEntityWithName("BobbleBoobas1");
+            ECS.GetTransformECS(bb1, ref pos, ref rot, ref scale);
+            m_Entities.Add("BobbleBoobas1", new GameObject(bb1, new Transform(pos, rot, scale), "BobbleBoobas1"));
+
+            bb1 = ECS.FindEntityWithName("BobbleBoobas2");
+            ECS.GetTransformECS(bb1, ref pos, ref rot, ref scale);
+            m_Entities.Add("BobbleBoobas2", new GameObject(bb1, new Transform(pos, rot, scale), "BobbleBoobas2"));
+
+            bb1 = ECS.FindEntityWithName("BobbleBoobas3");
+            ECS.GetTransformECS(bb1, ref pos, ref rot, ref scale);
+            m_Entities.Add("BobbleBoobas3", new GameObject(bb1, new Transform(pos, rot, scale), "BobbleBoobas3"));
+
+            //m_BobbleTimmy = ECS.FindEntityWithName("BobbleTimmy");
+            //m_BobbleProf = ECS.FindEntityWithName("BobbleProf");
+            //m_BobbleBoobas = ECS.FindEntityWithName("BobbleBoobas");
 
             m_MenuGroupID = ECS.FindEntityWithName("TrinketShopMenuGroup");
             ECS.GetTransformECS(m_MenuGroupID, ref m_Trans.Position, ref m_Trans.Rotation, ref m_Trans.Scale);
@@ -194,17 +229,19 @@ namespace Scripting
                 switch (m_currImg)
                 {
                     case IMAGENUM.FIRST:
-                        ECS.SetActive(m_BobbleBoobas, true);
+                        ECS.SetActive(m_Entities["BobbleBoobas" + PlayerScript.m_CollectiblesCount.ToString()].id, true);
                         //Console.WriteLine("Score Multiplier Boost Selected.");
                         ++PlayerScript.m_ScoreMultiplierBobbleCount;
                         break;
                     case IMAGENUM.SECOND:
-                        ECS.SetActive(m_BobbleProf, true);
+                        ECS.SetActive(m_Entities["BobbleProf" + PlayerScript.m_CollectiblesCount.ToString()].id, true);
+                        //ECS.SetActive(m_BobbleProf, true);
                         //Console.WriteLine("Combo Decay Timer Boost Selected");
                         ++PlayerScript.m_ComboBonusBobbleCount;
                         break;
                     case IMAGENUM.THIRD:
-                        ECS.SetActive(m_BobbleTimmy, true);
+                        ECS.SetActive(m_Entities["BobbleTimmy" + PlayerScript.m_CollectiblesCount.ToString()].id, true);
+                        //ECS.SetActive(m_BobbleTimmy, true);
                         //Console.WriteLine("Shield Invulnerable Duration Boost Selected.");
                         PlayerScript.m_ShieldHitCountMax = PlayerScript.m_ShieldHitCountMax * PlayerScript.m_ShieldBobbleCount;
                         PlayerScript.m_ShieldHitCount = PlayerScript.m_ShieldHitCountMax;
