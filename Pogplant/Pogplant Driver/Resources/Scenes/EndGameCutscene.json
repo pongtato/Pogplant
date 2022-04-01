@@ -52323,6 +52323,7 @@
 		},
 		"Text" : 
 		{
+			"m_Center" : false,
 			"m_Color" : 
 			[
 				1.0,
@@ -52331,6 +52332,7 @@
 			],
 			"m_FontID" : "Ruda",
 			"m_Ortho" : false,
+			"m_PlaySpeed" : 1.0,
 			"m_Text" : "00000000"
 		},
 		"Transform" : 
@@ -52841,6 +52843,7 @@
 		},
 		"Text" : 
 		{
+			"m_Center" : false,
 			"m_Color" : 
 			[
 				0.0,
@@ -52849,6 +52852,7 @@
 			],
 			"m_FontID" : "Ruda",
 			"m_Ortho" : false,
+			"m_PlaySpeed" : 1.0,
 			"m_Text" : "Score"
 		},
 		"Transform" : 
@@ -69882,8 +69886,8 @@
 			"m_Color" : 
 			[
 				1.0,
-				1.0,
-				1.0,
+				0.99998998641967773,
+				0.99998998641967773,
 				1.0
 			],
 			"m_ConeRadiusMax" : 0.0,
@@ -69947,9 +69951,9 @@
 			"m_SpawnCount" : 1,
 			"m_SpawnDirection" : 
 			[
-				0.69954448938369751,
-				0.53971034288406372,
-				-0.46834847331047058
+				0.90348368883132935,
+				0.31107738614082336,
+				-0.29486954212188721
 			],
 			"m_SpawnRadius" : 6.5,
 			"m_Speed" : 
@@ -69996,22 +70000,22 @@
 			},
 			"m_SpriteAnimation" : 
 			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
+				"m_Columns" : 8,
+				"m_FrameCounter" : 26.0,
+				"m_MaxFrames" : 64,
 				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
-				"m_Rows" : 1,
+				"m_Rows" : 8,
 				"m_Tiling" : 
 				[
-					1.0,
-					1.0
+					0.125,
+					0.125
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					1.0
+					0.25,
+					0.5
 				]
 			},
 			"m_SubDelay" : 1.0,
@@ -70023,7 +70027,7 @@
 				0.0,
 				0.0
 			],
-			"m_TexName" : "Smoke.dds",
+			"m_TexName" : "512_ExportSheet_01.dds",
 			"m_Trail" : false
 		},
 		"Tag" : 
@@ -70048,6 +70052,202 @@
 			[
 				1.0,
 				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Cloud_Prefab_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "b21e08d4-a8e8-4701-a028-045a0620fa60",
+			"prefab_path" : "Resources\\Prefabs\\Cloud_Prefab_01.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-138.80912780761719,
+				138.52261352539062,
+				-368.1533203125
+			],
+			"m_rotation" : 
+			[
+				-179.999755859375,
+				85.196739196777344,
+				-179.999755859375
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Cloud_Ring_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "7bc3fa97-d4cc-45af-bfb8-cc353b3d2230",
+			"prefab_path" : "Resources\\Prefabs\\Cloud_Prefab_01.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cloud_Ring_01",
+				"Resources/Models\\Environment",
+				"Cloud_Ring_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.1617021560668945,
+				12.316524505615234,
+				-5.8325252532958984
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Cloud_Prefab_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "b21e08d4-a8e8-4701-a028-045a0620fa60",
+			"prefab_path" : "Resources\\Prefabs\\Cloud_Prefab_01.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-127.55988311767578,
+				108.21415710449219,
+				-290.15960693359375
+			],
+			"m_rotation" : 
+			[
+				-179.999755859375,
+				-81.31634521484375,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				1.0,
+				0.99999988079071045
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Cloud_Ring_01",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "7bc3fa97-d4cc-45af-bfb8-cc353b3d2230",
+			"prefab_path" : "Resources\\Prefabs\\Cloud_Prefab_01.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Cloud_Ring_01",
+				"Resources/Models\\Environment",
+				"Cloud_Ring_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.1617021560668945,
+				12.316524505615234,
+				-5.8325252532958984
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999994039535522,
 				1.0
 			]
 		}

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Scripting.Utilities;
 
 namespace Scripting
 {
@@ -93,7 +91,8 @@ namespace Scripting
         uint explosion_vfx_two_id;
         uint explosion_vfx_three_id;
         uint explosion_vfx_four_id;
-        uint smoke_id;
+        uint boss_body_smoke_id;
+        uint crash_smoke_id;
         bool is_exploding;
         float explosion_loop_timer;
         const float explosion_speed = 5.0f;
@@ -115,6 +114,15 @@ namespace Scripting
 
         AnimationSystem boss_anim_system;
         AnimationSystem explosion_anim_system;
+
+        //Camera shake
+        private const float cameraShakeInitMultiplier = 0.007f;
+        private const float cameraShakeMagMultiplier = 5f;
+
+        private Vector3 m_initialCameraPosition;
+        private Vector3 m_cameraPosition;
+        private Vector3 m_cameraRotation;
+        private Vector3 m_cameraScale;
 
         public override void Init(ref uint _entityID)
         {
@@ -214,8 +222,11 @@ namespace Scripting
             explosion_vfx_two_id = ECS.FindEntityWithName("Explosion_VFX_2");
             explosion_vfx_three_id = ECS.FindEntityWithName("Explosion_VFX_3");
             explosion_vfx_four_id = ECS.FindEntityWithName("Explosion_VFX_4");
-            smoke_id = ECS.FindEntityWithName("Smoke_VFX");
-            ECS.SetParticlePlay(smoke_id, false);
+            boss_body_smoke_id = ECS.FindEntityWithName("Smoke_VFX");
+            ECS.SetParticlePlay(boss_body_smoke_id, false);
+
+            crash_smoke_id = ECS.FindEntityWithName("Crash_Smoke_VFX");
+            ECS.SetParticlePlay(crash_smoke_id, false);
 
             //Create and initialize the list of moving parts
             moving_parts_dict = new Dictionary<uint, MovingParts>();
@@ -349,24 +360,26 @@ namespace Scripting
                 case BOSS_ANIM_STATE.FLYING_DOWN:
                     boss_anim_system.StopAnimation(true, moving_parts_dict);
                     boss_anim_system.AddAnimationSpecsStack(SetFlyingDownAnimationsOne, 6.0f);
-                    boss_anim_system.AddAnimationSpecsStack(SetFlyingDownAnimationsTwo, 4.0f);
+                    boss_anim_system.AddAnimationSpecsStack(SetFlyingDownAnimationsTwo, 2.0f);
                     boss_anim_system.AddAnimationSpecsStack(MoveBlackBars, 2.0f);
-                    boss_anim_system.AddAnimationSpecsStack(GoToMenu, 0.1f);
                     boss_anim_system.AddAnimationUpdateStack(RunFlyingDownSequenceOne);
                     boss_anim_system.AddAnimationUpdateStack(RunFlyingDownSequenceTwo);
                     boss_anim_system.AddAnimationUpdateStack(EmptyUpdate);
-                    boss_anim_system.AddAnimationUpdateStack(EmptyUpdate);
-                    //boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.CRASHING.ToString());
+                    boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.CRASHING.ToString());
                     boss_anim_system.PlayAnimation();
                     break;
                 case BOSS_ANIM_STATE.CRASHING:
                     boss_anim_system.StopAnimation(true, moving_parts_dict);
-                    boss_anim_system.AddAnimationSpecsStack(SetApproachingAnimationsOne, 2.0f);
-                    boss_anim_system.AddAnimationSpecsStack(SetApproachingAnimationsTwo, 1.0f);
-                    boss_anim_system.AddAnimationSpecsStack(SetApproachingAnimationsThree, 0.5f);
-                    boss_anim_system.AddAnimationUpdateStack(RunApproachSequenceOne);
-                    boss_anim_system.AddAnimationUpdateStack(RunApproachSequenceTwo);
-                    boss_anim_system.AddAnimationUpdateStack(RunApproachSequenceThree);
+                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsOne, 0.5f);
+                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsTwo, 0.2f);
+                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsThree, 3.0f);
+                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsFour, 2.0f);
+                    //boss_anim_system.AddAnimationSpecsStack(GoToMenu, 0.1f);
+                    boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceOne);
+                    boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceTwo);
+                    boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceThree);
+                    boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceFour);
+                    //boss_anim_system.AddAnimationUpdateStack(EmptyUpdate);
                     boss_anim_system.PlayAnimation();
                     break;
             }
@@ -479,9 +492,52 @@ namespace Scripting
             }
         }
 
+        #region[Camera shake]
+        bool m_isShaking = false;
+        float m_shakeTimer = 0f;
+        float m_shakeAddUnit = 1f;
+        Vector3 m_shakeMagnitude;
+        Vector3 m_shakeInit;
+
+        public void TriggerCameraShake(Vector3 initialShake, Vector3 shakeAmount, float duration)
+        {
+            if (duration < float.Epsilon)
+                return;
+
+            m_isShaking = true;
+            m_shakeInit = initialShake;
+            m_shakeMagnitude = shakeAmount;
+            m_shakeAddUnit = 1 / duration;
+            m_shakeTimer = 0f;
+        }
+
+        // return float between zero and one
+        float GetRandFloat()
+        {
+            var rand = new Random();
+            return (float)rand.Next() / int.MaxValue;
+        }
+        #endregion
         public override void LateUpdate(float dt)
         {
+            if (m_isShaking)
+            {
+                ECS.GetTransformECS(camera_id, ref m_cameraPosition, ref m_cameraRotation, ref m_cameraScale);
 
+                m_shakeTimer += dt * m_shakeAddUnit;
+
+                m_cameraPosition.X = m_initialCameraPosition.X + m_shakeInit.X * (1f - Ease.EaseOutElastic(m_shakeTimer, m_shakeMagnitude.X));
+                m_cameraPosition.Y = m_initialCameraPosition.Y + m_shakeInit.Y * (1f - Ease.EaseOutElastic(m_shakeTimer, m_shakeMagnitude.Y));
+                m_cameraPosition.Z = m_initialCameraPosition.Z + m_shakeInit.Z * (1f - Ease.EaseOutElastic(m_shakeTimer, m_shakeMagnitude.Z));
+
+                if (m_shakeTimer >= 1f)
+                {
+                    m_isShaking = false;
+                    m_cameraPosition = m_initialCameraPosition;
+                }
+
+                ECS.SetTransformECS(camera_id, m_cameraPosition, m_cameraRotation, m_cameraScale);
+            }
         }
 
         public override void OnTriggerEnter(uint id)
@@ -603,8 +659,6 @@ namespace Scripting
 
             moving_parts_dict[left_leg_middle_joint_id].SetUpdatePingPongRotation(false);
             moving_parts_dict[right_leg_middle_joint_id].SetUpdatePingPongRotation(false);
-            //moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 36.0f, 0), new Vector3(0, 46.0f, 0), new Vector3(0, 0, 0), false, false, false, false, false, false);
-            //moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, -46.0f, 0), new Vector3(0, 36.0f, 0), new Vector3(0, 0, 0), false, false, false, false, false, false);
 
             moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(179, 46, 0), new Vector3(1.5f, 0.5f, 0.5f), true, true, true);
             moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -106.0f), new Vector3(0, 0, -96.0f), new Vector3(0, 0, 20.0f), false, false, false, false, false, true);
@@ -620,7 +674,7 @@ namespace Scripting
 
             moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 45.0f, 0), false, true, false, false, true, false);
             moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 45.0f, 0), false, false, false, false, true, false);
-            ECS.SetParticlePlay(smoke_id, true);
+            ECS.SetParticlePlay(boss_body_smoke_id, true);
         }
 
         void RunFlyingDownSequenceTwo(float dt)
@@ -666,219 +720,170 @@ namespace Scripting
         }
         #endregion
 
-        #region[Flying Up Animation Sequence]
+        #region[Crash Animation Sequence]
         /// <summary>
-        /// [Flying State] 
-        /// 1. Arms move down
-        /// 2. Main body flies up
-        /// 3. Black bars cover full screen, snap camera
+        /// [Crash State] 
+        /// 1. Main body crash
+        /// 2. Limbs go limp
+        /// 3. Black bars cover full screen, change scene
         /// </summary>
 
-        void SetFlyingUpAnimationsOne()
+        void SetCrashAnimationsOne()
         {
-            //Body
-            moving_parts_dict[boss_model_parent_id].SetPingPongPosition(new Vector3(), new Vector3(0, 100.0f, 0), new Vector3(0, 1.50f, 0), false, true, false, false, false, false);
+            cinematic_cover_screen = false;
+            ECS.SetGlobalPosition(camera_id, new Vector3(-19.5f, 37.0f, -323.0f));
+            ECS.SetGlobalPosition(boss_model_parent_id, new Vector3(-5.9f, 85.0f, -335.5f));
+            Camera.SetCamera(camera_id, -40.0f, -36.5f, 0);
 
-            //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(0, -42.0f, -44.0f), new Vector3(20.7f, 0, 0), new Vector3(2.0f, 2.0f, 2.0f), true, false, false, false, false, false);
-            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -66.0f), new Vector3(), new Vector3(0, 0, 1.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(0, 0, 0), new Vector3(44.0f, 43.0f, 47.0f), new Vector3(2.0f, 2.0f, 2.0f), true, true, true, false, false, false);
-            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(), new Vector3(0, 0, 66.0f), new Vector3(0.0f, 0.0f, 1.0f), false, false, true, false, false, false);
+            moving_parts_dict[boss_model_parent_id].SetLinearPosition(new Vector3(0, 21.0f, 0), new Vector3(0, 5.0f, 0), false, true, false);
 
-            //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-22.5f, 0, -9.0f), new Vector3(0, 0, 0), new Vector3(12.5f, 0, 1.5f), false, false, false, false, false, false);
-            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-33.5f, -38.5f, 0), new Vector3(0, 0, 4.0f), new Vector3(1.5f, 1.5f, 1.5f), false, false, true, false, false, false);
+            moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(-180, -46, 0), new Vector3(1.5f, 0.5f, 0.5f), true, true, true);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -106.0f), new Vector3(0, 0, -96.0f), new Vector3(0, 0, 20.0f), false, false, false, false, false, true);
+
+            moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(-180, -46, 0), new Vector3(1.5f, 0.5f, 0.5f), true, true, true);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 96.0f), new Vector3(0, 0, 106.0f), new Vector3(0, 0, 20.0f), false, false, false, false, false, true);
+
+            moving_parts_dict[left_leg_middle_joint_id].SetUpdatePingPongRotation(false);
+            moving_parts_dict[right_leg_middle_joint_id].SetUpdatePingPongRotation(false);
+
+            moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(179, 46, 0), new Vector3(1.5f, 0.5f, 0.5f), true, true, true);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -106.0f), new Vector3(0, 0, -96.0f), new Vector3(0, 0, 20.0f), false, false, false, false, false, true);
+
+            moving_parts_dict[right_leg_middle_joint_id].SetLinearRotation(new Vector3(179, -46, 0), new Vector3(1.5f, 0.5f, 0.5f), true, true, true);
+            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 96.0f), new Vector3(0, 0, 106.0f), new Vector3(0, 0, 20.0f), false, false, false, false, false, true);
+
+            moving_parts_dict[left_color_turret_1_id].SetLinearRotation(new Vector3(-98.0f, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
+            moving_parts_dict[left_color_turret_body_pivot_id].SetPingPongRotation(new Vector3(-78.0f, 0, 0), new Vector3(-66.0f, 0, 0), new Vector3(20.0f, 0, 0), false, false, false, true, false, false);
+
+            moving_parts_dict[right_color_turret_1_id].SetLinearRotation(new Vector3(-98.0f, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
+            moving_parts_dict[right_color_turret_body_pivot_id].SetPingPongRotation(new Vector3(-78.0f, 0, 0), new Vector3(-66.0f, 0, 0), new Vector3(20.0f, 0, 0), false, false, false, true, false, false);
+
+            moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 45.0f, 0), false, true, false, false, true, false);
+            moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 45.0f, 0), false, false, false, false, true, false);
+            ECS.SetParticlePlay(boss_body_smoke_id, true);
         }
 
-        void SetFlyingUpAnimationsTwo()
+        void SetCrashAnimationsTwo()
+        {
+            moving_parts_dict[boss_model_parent_id].SetLinearPosition(new Vector3(0, 22.0f, 0), new Vector3(0, 10.0f, 0), false, true, false);
+            moving_parts_dict[boss_model_parent_id].SetLinearRotation(new Vector3(0, 0, 0), new Vector3(10.0f, 10.0f, 10.0f), true, true, true);
+
+            ECS.SetParticlePlay(boss_body_smoke_id, false);
+            ECS.SetActive(boss_body_smoke_id, false);
+
+            //Cam shake
+            m_initialCameraPosition = ECS.GetComponent<Transform>(camera_id).Position;
+
+            //Triggers a random camera shake upon taking damage, scales with damage taken
+            TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * 200.0f, GetRandFloat() * cameraShakeInitMultiplier * 200.0f, GetRandFloat() * cameraShakeInitMultiplier * 200.0f),
+                new Vector3(GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier), 2.2f);
+        }
+
+        void SetCrashAnimationsThree()
+        {
+            //moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(-180, -46, 0), new Vector3(1.5f, 0.5f, 0.5f), true, true, true);
+            moving_parts_dict[left_arm_middle_joint_id].SetUpdateLinearRotation(false);
+            moving_parts_dict[left_arm_end_joint_id].SetUpdatePingPongRotation(false);
+            moving_parts_dict[left_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 0), new Vector3(10.0f, 10.0f, 10.0f), true, true, true);
+
+            //moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(-180, -46, 0), new Vector3(1.5f, 0.5f, 0.5f), true, true, true);
+            moving_parts_dict[right_arm_middle_joint_id].SetUpdateLinearRotation(false);
+            moving_parts_dict[right_arm_end_joint_id].SetUpdatePingPongRotation(false);
+            moving_parts_dict[right_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 0), new Vector3(10.0f, 10.0f, 10.0f), true, true, true);
+
+            moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(179, 46, 0), new Vector3(1.5f, 0.5f, 0.5f), true, true, true);
+            moving_parts_dict[left_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 0), new Vector3(10.0f, 10.0f, 10.0f), true, true, true);
+            moving_parts_dict[left_leg_end_joint_id].SetUpdatePingPongRotation(false);
+
+            moving_parts_dict[right_leg_middle_joint_id].SetLinearRotation(new Vector3(179, -46, 0), new Vector3(1.5f, 0.5f, 0.5f), true, true, true);
+            moving_parts_dict[right_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 0), new Vector3(10.0f, 10.0f, 10.0f), true, true, true);
+            moving_parts_dict[right_leg_end_joint_id].SetUpdatePingPongRotation(false);
+
+            moving_parts_dict[artillery_axis_id].SetLinearRotation(new Vector3(52.0f, 0.0f, 0.0f), new Vector3(3.0f, 0.0f, 0.0f), true, false, false);
+
+            moving_parts_dict[left_color_turret_1_id].SetLinearRotation(new Vector3(-52.0f, 18.2f, -48.4f), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
+            moving_parts_dict[left_color_turret_body_pivot_id].SetLinearRotation(new Vector3(-26.5f, -23.5f, -50.0f), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
+            moving_parts_dict[left_color_turret_body_pivot_id].SetUpdatePingPongRotation(false);
+
+            moving_parts_dict[right_color_turret_1_id].SetLinearRotation(new Vector3(-52.0f, 18.2f, 48.4f), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
+            moving_parts_dict[right_color_turret_body_pivot_id].SetLinearRotation(new Vector3(-48.6f, -10.4f, -23.4f), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
+            moving_parts_dict[right_color_turret_body_pivot_id].SetUpdatePingPongRotation(false);
+
+            moving_parts_dict[mouth_left_id].SetLinearRotation(new Vector3(0, 47.6f, 0), new Vector3(0, 5.0f, 0), true, true, true);
+            moving_parts_dict[mouth_right_id].SetLinearRotation(new Vector3(0, -22.6f, 0), new Vector3(0, 5.0f, 0), true, true, true);
+            moving_parts_dict[mouth_left_id].SetUpdatePingPongRotation(false);
+            moving_parts_dict[mouth_right_id].SetUpdatePingPongRotation(false);
+        }
+
+        void SetCrashAnimationsFour()
         {
             //Black bars cover the whole screen
             cinematic_cover_screen = true;
         }
 
-        void SetFlyingUpAnimationsThree()
+        void RunCrashSequenceOne(float dt)
         {
-            ////Shrink black bars and move objects around
-            //cinematic_cover_screen = false;
-            //ECS.SetGlobalPosition(camera_id, new Vector3(-123.0f, 120.66f, -234.4f));
-            //ECS.SetGlobalPosition(boss_model_parent_id, new Vector3(-123.5f, 50.0f, -259.7f));
-            //Camera.SetCamera(camera_id, 0, 0, 0);
-
-            ////Body
-            //moving_parts_dict[boss_model_parent_id].SetMovingPartsPosition(boss_model_parent_id, new Vector3(), new Vector3(0, 120.7f, 0), new Vector3(0, 1.5f, 0), false, true, false, false, false, false);
-            //moving_parts_dict[boss_model_parent_id].SetMovingPartsRotation(boss_model_parent_id, new Vector3(0, 0, 0), new Vector3(), new Vector3(3.0f, 3.0f, 3.0f), false, false, false, false, false, false);
-            //GameUtilities.LoadScene("Level01_Boss");
-        }
-
-        void RunFlyingSequenceOne(float dt)
-        {
-            //Body
             moving_parts_dict[boss_model_parent_id].UpdateMovingParts(dt);
+            moving_parts_dict[camera_id].UpdateMovingParts(dt);
 
-            //Arms
             moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
             moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+
             moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
             moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
-            //Arm Lasers
-            moving_parts_dict[left_large_laser_spin_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_large_laser_spin_id].UpdateMovingParts(dt);
-
-            //Legs
-            moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
-        }
-
-        void RunFlyingSequenceTwo(float dt)
-        {
-
-        }
-
-        void RunFlyingSequenceThree(float dt)
-        {
-            //Body
-            //moving_parts_dict[boss_model_parent_id].UpdateMovingParts(boss_model_parent_id, dt);
-        }
-
-        #endregion
-
-        #region[Approaching Player Animation Sequence]
-        /// <summary>
-        /// [Approaching State] 
-        /// 1. Flailing animation for boss idle
-        /// 2. Black screen
-        /// 3. Change to L1Boss scene
-        /// </summary>
-
-        void SetApproachingAnimationsOne()
-        {
-            //Body
-            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
-            moving_parts_dict[entityID].SetPingPongRotation(new Vector3(0, 0, -4), new Vector3(0, 0, 4), new Vector3(0, 0, 3.0f), false, false, true, false, false, true);
-
-            //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
-            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -85), new Vector3(0, 0, -65), new Vector3(0, 0, 5.0f), false, false, false, false, false, true);
-            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90, -10, 0), new Vector3(0, 10, 10), new Vector3(10.0f, 5.0f, 0), false, false, true, false, true, false);
-            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 65), new Vector3(0, 0, 85), new Vector3(0.0f, 0.0f, 5.0f), false, false, false, false, false, true);
-
-            //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90, 0, -35), new Vector3(0, 0, 0), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, 50), new Vector3(0, 0, 100), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90, 0, 0), new Vector3(0, 0, 35), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-            moving_parts_dict[right_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -100), new Vector3(0, 0, -50), new Vector3(10.0f, 15.0f, 5.0f), false, false, true, false, false, true);
-
-            //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[right_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-
-            moving_parts_dict[left_launching_bay_one_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_two_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[left_launching_bay_three_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-
-            //Mouth
-            moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 2.0f, 0), false, true, false, false, true, false);
-            moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 2.0f, 0), false, false, false, false, true, false);
-
-            //Artillery
-            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(), new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), false, false, false, false, false, false);
-            moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(), new Vector3(0, 10.3f, 0), new Vector3(10.0f, 10.0f, 10.0f), false, true, false, false, false, false);
-        }
-
-        void SetApproachingAnimationsTwo()
-        {
-            cinematic_cover_screen = true;
-        }
-
-        void SetApproachingAnimationsThree()
-        {
-            GameUtilities.LoadScene("Level01_Boss");
-        }
-
-        void RunApproachSequenceOne(float dt)
-        {
-            //Body
-            moving_parts_dict[boss_model_parent_id].UpdateMovingParts(dt);
-
-            //Arms
-            moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
-            moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
-
-            //Arm Lasers
-            moving_parts_dict[left_large_laser_spin_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_large_laser_spin_id].UpdateMovingParts(dt);
-
-            //Legs
             moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
             moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
+
             moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
             moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
 
-            //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_color_turret_1_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_color_turret_body_pivot_id].UpdateMovingParts(dt);
 
-            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(dt);
-            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(dt);
-            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_color_turret_1_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_color_turret_body_pivot_id].UpdateMovingParts(dt);
 
-            //Artillery
-            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
-            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
-
-            //Mouth
             moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
             moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
         }
 
-        void RunApproachSequenceTwo(float dt)
+        void RunCrashSequenceTwo(float dt)
         {
-            //Body
             moving_parts_dict[boss_model_parent_id].UpdateMovingParts(dt);
+        }
 
-            //Arms
+        void RunCrashSequenceThree(float dt)
+        {
             moving_parts_dict[left_arm_middle_joint_id].UpdateMovingParts(dt);
             moving_parts_dict[left_arm_end_joint_id].UpdateMovingParts(dt);
+
             moving_parts_dict[right_arm_middle_joint_id].UpdateMovingParts(dt);
             moving_parts_dict[right_arm_end_joint_id].UpdateMovingParts(dt);
 
-            //Arm Lasers
-            moving_parts_dict[left_large_laser_spin_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_large_laser_spin_id].UpdateMovingParts(dt);
-
-            //Legs
             moving_parts_dict[left_leg_middle_joint_id].UpdateMovingParts(dt);
-            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
             moving_parts_dict[right_leg_middle_joint_id].UpdateMovingParts(dt);
+
+            moving_parts_dict[left_leg_end_joint_id].UpdateMovingParts(dt);
             moving_parts_dict[right_leg_end_joint_id].UpdateMovingParts(dt);
 
-            //Launching bays
-            moving_parts_dict[right_launching_bay_one_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_launching_bay_two_id].UpdateMovingParts(dt);
-            moving_parts_dict[right_launching_bay_three_id].UpdateMovingParts(dt);
-
-            moving_parts_dict[left_launching_bay_one_id].UpdateMovingParts(dt);
-            moving_parts_dict[left_launching_bay_two_id].UpdateMovingParts(dt);
-            moving_parts_dict[left_launching_bay_three_id].UpdateMovingParts(dt);
-
-            //Artillery
             moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
-            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
 
-            //Mouth
+            moving_parts_dict[left_color_turret_1_id].UpdateMovingParts(dt);
+            moving_parts_dict[left_color_turret_body_pivot_id].UpdateMovingParts(dt);
+
+            moving_parts_dict[right_color_turret_1_id].UpdateMovingParts(dt);
+            moving_parts_dict[right_color_turret_body_pivot_id].UpdateMovingParts(dt);
+
             moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
             moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
         }
 
-        void RunApproachSequenceThree(float dt)
+        void RunCrashSequenceFour(float dt)
         {
 
         }
+
         #endregion
     }
 }
