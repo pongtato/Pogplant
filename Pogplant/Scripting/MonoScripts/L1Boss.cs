@@ -373,11 +373,11 @@ namespace Scripting
                 case BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK:
                     fly_up_delay = fly_up_short_delay;
                     boss_animation_system.StopAnimation(true, moving_parts_dict);
-                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsOne, 2.0f);
-                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsTwo, 1.5f);
-                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsThree, 1.5f);
-                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsFour, 1.5f);
-                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsFive, 1.5f);
+                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsOne, 1.5f);
+                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsTwo, 1.35f);
+                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsThree, 1.35f);
+                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsFour, 1.35f);
+                    boss_animation_system.AddAnimationSpecsStack(SetSpinningStateAnimationsFive, 1.35f);
                     boss_animation_system.AddAnimationUpdateStack(RunSpinningStateAnimationsOne);
                     boss_animation_system.AddAnimationUpdateStack(RunSpinningStateAnimationsTwo);
                     boss_animation_system.AddAnimationUpdateStack(RunSpinningStateAnimationsThree);
@@ -403,8 +403,8 @@ namespace Scripting
                     break;
                 case BOSS_BEHAVIOUR_STATE.CLAP_ATTACK:
                     boss_animation_system.StopAnimation(true, moving_parts_dict);
-                    boss_animation_system.AddAnimationSpecsStack(SetClapStateAnimationsOne, 1.5f);
-                    boss_animation_system.AddAnimationSpecsStack(SetClapStateAnimationsTwo, 0.75f);
+                    boss_animation_system.AddAnimationSpecsStack(SetClapStateAnimationsOne, 1.35f);
+                    boss_animation_system.AddAnimationSpecsStack(SetClapStateAnimationsTwo, 0.7f);
                     boss_animation_system.AddAnimationUpdateStack(RunClapStateAnimationsOne);
                     boss_animation_system.AddAnimationUpdateStack(RunClapStateAnimationsTwo);
                     boss_animation_system.SetStateQueue(SetState, BOSS_BEHAVIOUR_STATE.MOVING.ToString());
@@ -412,10 +412,10 @@ namespace Scripting
                     break;
                 case BOSS_BEHAVIOUR_STATE.SMASH_ATTACK:
                     boss_animation_system.StopAnimation(true, moving_parts_dict);
-                    boss_animation_system.AddAnimationSpecsStack(SetSmashStateAnimationsOne, 1.5f);
-                    boss_animation_system.AddAnimationSpecsStack(SetSmashStateAnimationsTwo, 1.5f);
-                    boss_animation_system.AddAnimationSpecsStack(SetSmashStateAnimationsThree, 1.0f);
-                    boss_animation_system.AddAnimationSpecsStack(SetSmashStateAnimationsFour, 1.5f);
+                    boss_animation_system.AddAnimationSpecsStack(SetSmashStateAnimationsOne, 1.35f);
+                    boss_animation_system.AddAnimationSpecsStack(SetSmashStateAnimationsTwo, 1.35f);
+                    boss_animation_system.AddAnimationSpecsStack(SetSmashStateAnimationsThree, 0.9f);
+                    boss_animation_system.AddAnimationSpecsStack(SetSmashStateAnimationsFour, 1.35f);
                     boss_animation_system.AddAnimationUpdateStack(RunSmashStateAnimationsOne);
                     boss_animation_system.AddAnimationUpdateStack(RunSmashStateAnimationsTwo);
                     boss_animation_system.AddAnimationUpdateStack(RunSmashStateAnimationsThree);
@@ -1193,16 +1193,16 @@ namespace Scripting
             moving_parts_dict[entityID].SetLinearRotation(new Vector3(-8, 0, 0), new Vector3(3.0f, 0, 0), true, false, false);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(-99, 35, 0), new Vector3(10.0f, 5.0f, 5.0f), true, true, true);
-            moving_parts_dict[left_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, -111), new Vector3(0, 0, 5.0f), false, false, true);
-            moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(-99, -35, 0), new Vector3(10.0f, 5.0f, 5.0f), true, true, true);
-            moving_parts_dict[right_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 111), new Vector3(0.0f, 0.0f, 5.0f), false, false, true);
+            moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(-99, 35, 0), new Vector3(11.0f, 5.5f, 5.5f), true, true, true);
+            moving_parts_dict[left_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, -111), new Vector3(0, 0, 5.5f), false, false, true);
+            moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(-99, -35, 0), new Vector3(11.0f, 5.5f, 5.5f), true, true, true);
+            moving_parts_dict[right_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 111), new Vector3(0.0f, 0.0f, 5.5f), false, false, true);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, 35, 0), new Vector3(10.0f, 5.0f, 0), true, true, false);
-            moving_parts_dict[left_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, -111), new Vector3(0, 0, 5.0f), false, false, true);
-            moving_parts_dict[right_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, -35, 0), new Vector3(10.0f, 5.0f, 0), true, true, false);
-            moving_parts_dict[right_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 111), new Vector3(0.0f, 0.0f, 5.0f), false, false, true);
+            moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, 35, 0), new Vector3(11.0f, 5.5f, 0), true, true, false);
+            moving_parts_dict[left_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, -111), new Vector3(0, 0, 5.5f), false, false, true);
+            moving_parts_dict[right_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, -35, 0), new Vector3(11.0f, 5.5f, 0), true, true, false);
+            moving_parts_dict[right_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 111), new Vector3(0.0f, 0.0f, 5.5f), false, false, true);
 
             //Launching bays
             moving_parts_dict[right_launching_bay_one_id].SetLinearRotation(new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), true, true, true);
@@ -1275,10 +1275,10 @@ namespace Scripting
             moving_parts_dict[entityID].SetLinearRotation(new Vector3(0, 0, 0), new Vector3(3.0f, 0, 0), true, false, false);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(-112, -80, 0), new Vector3(35.0f, 20.0f, 0), true, true, false);
-            moving_parts_dict[left_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, -95), new Vector3(0, 0, 10.0f), false, false, true);
-            moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(-112, 80, 0), new Vector3(35.0f, 20.0f, 0), true, true, false);
-            moving_parts_dict[right_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 95), new Vector3(0.0f, 0.0f, 10.0f), false, false, true);
+            moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(-112, -80, 0), new Vector3(38.5f, 22.0f, 0), true, true, false);
+            moving_parts_dict[left_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, -95), new Vector3(0, 0, 11.0f), false, false, true);
+            moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(-112, 80, 0), new Vector3(38.5f, 22.0f, 0), true, true, false);
+            moving_parts_dict[right_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 95), new Vector3(0.0f, 0.0f, 11.0f), false, false, true);
 
             //Legs
             moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, 35, 0), new Vector3(10.0f, 5.0f, 0), true, true, false);
@@ -1327,16 +1327,16 @@ namespace Scripting
         void SetSmashStateAnimationsOne()
         {
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(180.0f, -66.0f, 95.0f), new Vector3(10.0f, 5.0f, 5.0f), true, true, true);
-            moving_parts_dict[left_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, -90), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
-            moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(180.0f, 66.0f, -95.0f), new Vector3(10.0f, 5.0f, 5.0f), true, true, true);
-            moving_parts_dict[right_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 90), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
+            moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(180.0f, -66.0f, 95.0f), new Vector3(11.0f, 5.5f, 5.5f), true, true, true);
+            moving_parts_dict[left_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, -90), new Vector3(5.5f, 5.5f, 5.5f), true, true, true);
+            moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(180.0f, 66.0f, -95.0f), new Vector3(11.0f, 5.5f, 5.5f), true, true, true);
+            moving_parts_dict[right_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 90), new Vector3(5.5f, 5.5f, 5.5f), true, true, true);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, 35, 0), new Vector3(10.0f, 5.0f, 0), true, true, false);
-            moving_parts_dict[left_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, -111), new Vector3(0, 0, 5.0f), false, false, true);
-            moving_parts_dict[right_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, -35, 0), new Vector3(10.0f, 5.0f, 0), true, true, false);
-            moving_parts_dict[right_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 111), new Vector3(0.0f, 0.0f, 5.0f), false, false, true);
+            moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, 35, 0), new Vector3(11.0f, 5.5f, 0), true, true, false);
+            moving_parts_dict[left_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, -111), new Vector3(0, 0, 5.5f), false, false, true);
+            moving_parts_dict[right_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, -35, 0), new Vector3(11.0f, 5.5f, 0), true, true, false);
+            moving_parts_dict[right_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 111), new Vector3(0.0f, 0.0f, 5.5f), false, false, true);
 
             //Launching bays
             moving_parts_dict[right_launching_bay_one_id].SetLinearRotation(new Vector3(), new Vector3(10.0f, 10.0f, 10.0f), true, true, true);
@@ -1405,8 +1405,8 @@ namespace Scripting
         void SetSmashStateAnimationsTwo()
         {
             //Body
-            moving_parts_dict[entityID].SetLinearRotation(new Vector3(-20, 0, 0), new Vector3(5.0f, 0, 0), true, false, false);
-            moving_parts_dict[entityID].SetLinearPosition(new Vector3(0, 2.0f, 0), new Vector3(0, 2.0f, 0), false, true, false);
+            moving_parts_dict[entityID].SetLinearRotation(new Vector3(-20, 0, 0), new Vector3(5.5f, 0, 0), true, false, false);
+            moving_parts_dict[entityID].SetLinearPosition(new Vector3(0, 2.0f, 0), new Vector3(0, 2.2f, 0), false, true, false);
         }
 
         void RunSmashStateAnimationsTwo(float dt)
@@ -1417,7 +1417,7 @@ namespace Scripting
         void SetSmashStateAnimationsThree()
         {
             //Body
-            moving_parts_dict[entityID].SetLinearPosition(new Vector3(0, 0, 7.0f), new Vector3(0, 0, 4.0f), false, false, true);
+            moving_parts_dict[entityID].SetLinearPosition(new Vector3(0, 0, 7.0f), new Vector3(0, 0, 4.4f), false, false, true);
         }
 
         void RunSmashStateAnimationsThree(float dt)
@@ -1431,16 +1431,16 @@ namespace Scripting
             moving_parts_dict[entityID].SetLinearRotation(new Vector3(0, 0, 0), new Vector3(5.0f, 0, 0), true, false, false);
 
             //Arms
-            moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(0.0f, -60.0f, -100.0f), new Vector3(35.0f, 20.0f, 20.0f), true, true, true);
-            moving_parts_dict[left_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, -95), new Vector3(0, 0, 10.0f), false, false, true);
-            moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(0.0f, 60, 100), new Vector3(35.0f, 20.0f, 20.0f), true, true, true);
-            moving_parts_dict[right_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 95), new Vector3(0.0f, 0.0f, 10.0f), false, false, true);
+            moving_parts_dict[left_arm_middle_joint_id].SetLinearRotation(new Vector3(0.0f, -60.0f, -100.0f), new Vector3(38.5f, 22.0f, 22.0f), true, true, true);
+            moving_parts_dict[left_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, -95), new Vector3(0, 0, 11.0f), false, false, true);
+            moving_parts_dict[right_arm_middle_joint_id].SetLinearRotation(new Vector3(0.0f, 60, 100), new Vector3(38.5f, 22.0f, 22.0f), true, true, true);
+            moving_parts_dict[right_arm_end_joint_id].SetLinearRotation(new Vector3(0, 0, 95), new Vector3(0.0f, 0.0f, 11.0f), false, false, true);
 
             //Legs
-            moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, 35, 0), new Vector3(10.0f, 5.0f, 0), true, true, false);
-            moving_parts_dict[left_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 65), new Vector3(0, 0, 5.0f), false, false, true);
-            moving_parts_dict[right_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, -35, 0), new Vector3(10.0f, 5.0f, 0), true, true, false);
-            moving_parts_dict[right_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 65), new Vector3(0.0f, 0.0f, 5.0f), false, false, true);
+            moving_parts_dict[left_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, 35, 0), new Vector3(11.0f, 5.5f, 0), true, true, false);
+            moving_parts_dict[left_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 65), new Vector3(0, 0, 5.5f), false, false, true);
+            moving_parts_dict[right_leg_middle_joint_id].SetLinearRotation(new Vector3(-99, -35, 0), new Vector3(11.0f, 5.5f, 0), true, true, false);
+            moving_parts_dict[right_leg_end_joint_id].SetLinearRotation(new Vector3(0, 0, 65), new Vector3(0.0f, 0.0f, 5.5f), false, false, true);
         }
 
         void RunSmashStateAnimationsFour(float dt)
