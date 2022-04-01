@@ -103,9 +103,10 @@ namespace Scripting
         uint white_flash_id;
         bool show_white_flash;
         bool fade_to_black;
+        bool any_key_active;
         bool increase_any_key_timer;
         const float white_flash_scale_speed = 25.0f;
-        const float time_until_any_key = 1.0f;
+        const float time_until_any_key = 4.0f;
         float any_key_timer;
         Vector3 flash_color;
 
@@ -329,6 +330,7 @@ namespace Scripting
                         {
                             increase_any_key_timer = false;
                             ECS.SetActive(any_key_continue_id, true);
+                            any_key_active = true;
                         }
                     }
                     
@@ -336,7 +338,7 @@ namespace Scripting
                     {
                         UpdateAnyKeyScaling(dt);
                         
-                        if (InputUtility.onAnyKey())
+                        if (any_key_active && InputUtility.onAnyKey())
                         {
                             GameUtilities.LoadScene("CutScene2");
                         }
@@ -1050,7 +1052,7 @@ namespace Scripting
         /// 2. Slow spin
         /// 3. Mid spin
         /// 4. Fast spin
-        /// 4. Move towards player
+        /// 5. Move towards player
         /// </summary>
 
         void SetSpinningStateAnimationsOne()
