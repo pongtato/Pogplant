@@ -381,7 +381,7 @@
       ]
     },
     {
-      "Level": "Cutscene1",
+      "Level": "CutScene",
       "Lines": [
         {
           "Text": "...",
@@ -502,7 +502,7 @@
       ]
     },
     {
-      "Level": "Cutscene2",
+      "Level": "CutScene2",
       "Lines": [
         {
           "Text": "<crash noise>",

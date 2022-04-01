@@ -94,6 +94,24 @@
 			"mass" : 10.0,
 			"useGravity" : false
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 0,
+				"Name" : "SubBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 0,
+				"Name" : "SubCtrlerBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 28,
+				"Name" : "SubEndIndex",
+				"Type" : 1
+			}
+		],
 		"Scripting" : 
 		{
 			"CutSceneController" : false
@@ -266,23 +284,23 @@
 		},
 		"Text" : 
 		{
-			"m_Center" : false,
+			"m_Center" : true,
 			"m_Color" : 
 			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
+				0.19607843458652496,
+				0.13333334028720856,
+				0.08235294371843338
 			],
 			"m_FontID" : "Bangers",
 			"m_Ortho" : true,
 			"m_PlaySpeed" : 1.0,
-			"m_Text" : "Lorem ipsum dolor sit amet"
+			"m_Text" : ""
 		},
 		"Transform" : 
 		{
 			"m_position" : 
 			[
-				-0.30000001192092896,
+				0.0,
 				-0.40000000596046448,
 				0.0
 			],

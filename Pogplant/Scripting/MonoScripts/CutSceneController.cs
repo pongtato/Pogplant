@@ -20,7 +20,11 @@ namespace Scripting
         bool bIsInputHeldDown = false;
         bool bCanLoadCutScene = false;
 
-
+        public int subs_begin_index;        //For kb/mouse
+        public int subs_end_index;
+        public int subs_controller_begin_index;
+        public string subs_level_id;
+        uint sub_renderer_id;
         public CutSceneController() 
         {
 
@@ -28,7 +32,7 @@ namespace Scripting
 
         public override void Start()
         {
-
+            ECS.PlaySubtitles(sub_renderer_id);
         }
 
         public override void Init(ref uint _entityID)
@@ -42,6 +46,14 @@ namespace Scripting
             ECS.SetGlobalPosition(entityID, InitialCamPos);
             ECS.SetFOV(entityID, InitialFOV);
             ECS.PlayAudio(entityID, 0, "VO");
+
+            subs_begin_index = ECS.GetValue<int>(entityID, 0, "SubBeginIndex");
+            subs_controller_begin_index = ECS.GetValue<int>(entityID, 0, "SubCtrlerBeginIndex");
+            subs_end_index = ECS.GetValue<int>(entityID, 1, "SubEndIndex");
+            subs_level_id = GameUtilities.GetSceneName();
+            sub_renderer_id = ECS.FindEntityWithName("Subs_Renderer");
+
+            ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_controller_begin_index, subs_end_index);
         }
 
         public override void Update(float dt)
