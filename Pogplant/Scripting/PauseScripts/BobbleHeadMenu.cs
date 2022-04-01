@@ -149,6 +149,7 @@ namespace Scripting
                 if (!m_menuActive)
                 {
                     m_menuActive = true;
+                    m_Timer = 0.0f;
                     ECS.SetActive(m_Entities["TS_BG"].id, true);
                     ECS.SetActive(m_Entities["TS_TXT1"].id, true);
                     ECS.SetActive(m_Entities["TS_IMG1"].id, true);
