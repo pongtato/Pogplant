@@ -207,61 +207,6 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "ControlPoint_1",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"sphere",
-				"Resources/Models\\sphere",
-				"Sphere001"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "1"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				12.305637359619141,
-				14.404170989990234
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999656081199646,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
 			"m_Name" : "ControlPoint_5",
 			"status" : true
 		},
@@ -583,6 +528,61 @@
 			"m_scale" : 
 			[
 				0.99992698431015015,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "ControlPoint_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"sphere",
+				"Resources/Models\\sphere",
+				"Sphere001"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "1"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				12.305637359619141,
+				14.404170989990234
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999656081199646,
 				1.0,
 				1.0
 			]
@@ -9507,9 +9507,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				-0.093467280268669128,
-				0.99436867237091064,
-				-0.049948845058679581
+				0.092606246471405029,
+				0.98703658580780029,
+				0.13108342885971069
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
@@ -12145,25 +12145,25 @@
 		},
 		"Text" : 
 		{
-			"m_Center" : false,
+			"m_Center" : true,
 			"m_Color" : 
 			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
+				0.83529412746429443,
+				0.26274511218070984,
+				0.098039217293262482
 			],
 			"m_FontID" : "Bangers",
 			"m_Ortho" : true,
 			"m_PlaySpeed" : 1.0,
-			"m_Text" : "Lorem ipsum dolor sit amet"
+			"m_Text" : ""
 		},
 		"Transform" : 
 		{
 			"m_position" : 
 			[
-				-0.30000001192092896,
-				-0.40000000596046448,
-				0.0
+				0.0,
+				0.34999999403953552,
+				-1.0
 			],
 			"m_rotation" : 
 			[
