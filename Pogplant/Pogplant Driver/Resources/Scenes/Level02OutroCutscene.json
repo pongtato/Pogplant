@@ -39153,7 +39153,7 @@
 		}
 	},
 	{
-		"Children" : 18,
+		"Children" : 19,
 		"Name" : 
 		{
 			"m_Name" : "Boss_Mk2",
@@ -42729,6 +42729,116 @@
 				0.99999141693115234,
 				0.99999308586120605,
 				0.99999147653579712
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "AssFire",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"AssFire",
+				"Resources/Models\\Enemy",
+				"AssFire_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.10000000149011612,
+				0.0386505126953125,
+				-9.6000003814697266
+			],
+			"m_rotation" : 
+			[
+				8.5376689185068244e-07,
+				1.408192292728927e-05,
+				-4.5909793300324964e-08
+			],
+			"m_scale" : 
+			[
+				1.0000002384185791,
+				1.0000078678131104,
+				0.0010000092443078756
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "AssFire_Inner",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.53023254871368408,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"AssFire",
+				"Resources/Models\\Enemy",
+				"AssFire_Inner"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				8.4052658166910987e-08,
+				-0.48072624206542969
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},

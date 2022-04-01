@@ -53,6 +53,9 @@ namespace Scripting
         uint mouth_left_id;
         uint mouth_right_id;
 
+        //Ass fire
+        uint ass_fire_id;
+
         //Color turret
         uint right_color_turret_1_id;
         uint right_color_turret_2_id;
@@ -150,6 +153,7 @@ namespace Scripting
             //Mouth
             mouth_left_id = ECS.FindEntityWithName("Mouth_L");
             mouth_right_id = ECS.FindEntityWithName("Mouth_R");
+            ass_fire_id = ECS.FindEntityWithName("AssFire");
 
             //Arms
             left_arm_middle_joint_id = ECS.FindEntityWithName("Left_Arm_Middle_Joint");
@@ -230,6 +234,7 @@ namespace Scripting
             //Core
             moving_parts_dict.Add(mouth_left_id, new MovingParts() { entity_id = mouth_left_id });
             moving_parts_dict.Add(mouth_right_id, new MovingParts() { entity_id = mouth_right_id });
+            moving_parts_dict.Add(ass_fire_id, new MovingParts() { entity_id = ass_fire_id });
 
             //Arms
             moving_parts_dict.Add(left_arm_middle_joint_id, new MovingParts() { entity_id = left_arm_middle_joint_id });
@@ -564,12 +569,16 @@ namespace Scripting
             moving_parts_dict[runway_left_wing_id].SetLinearRotation(new Vector3(0, 0, -35), new Vector3(0, 0, 1.5f), false, false, true);
 
             begin_glow = true;
+
+            //moving_parts_dict[ass_fire_id].SetLinearScale(new Vector3(1.0f, 0.8f, 1.5f), new Vector3(0, 0, 15.0f), false, false, true);
+            moving_parts_dict[ass_fire_id].SetPingPongScale(new Vector3(0, 0, 0.9f), new Vector3(0, 0, 1.5f), new Vector3(0.0f, 0.0f, 20.0f), false, false, true, false, false, true);
         }
 
         void RunTakeOffSequenceThree(float dt)
         {
             moving_parts_dict[runway_left_wing_id].UpdateMovingParts(dt);
             moving_parts_dict[runway_right_wing_id].UpdateMovingParts(dt);
+            moving_parts_dict[ass_fire_id].UpdateMovingParts(dt);
         }
 
         void SetTakeOffAnimationsFour()
@@ -608,6 +617,8 @@ namespace Scripting
             moving_parts_dict[left_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 50.0f, dt);
             moving_parts_dict[right_gear_top_id].SpinObjectEndless(1.0f, 0.0f, 0.0f, 50.0f, dt);
             moving_parts_dict[right_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 50.0f, dt);
+
+            moving_parts_dict[ass_fire_id].UpdateMovingParts(dt);
         }
 
         void SetTakeOffAnimationsFive()
@@ -620,6 +631,8 @@ namespace Scripting
 
             moving_parts_dict[gate_upper_id].SetLinearPosition(new Vector3(0, 236.0f, 0), new Vector3(0, 1.0f, 0), true, true, true);
             moving_parts_dict[gate_lower_id].SetLinearPosition(new Vector3(0, 203.0f, 0), new Vector3(0, 1.0f, 0), true, true, true);
+
+            moving_parts_dict[ass_fire_id].SetPingPongScale(new Vector3(0, 0, 1.2f), new Vector3(0, 0, 1.5f), new Vector3(0.0f, 0.0f, 30.0f), false, false, true, false, false, true);
         }
 
         void RunTakeOffSequenceFive(float dt)
@@ -636,6 +649,8 @@ namespace Scripting
             moving_parts_dict[left_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 50.0f, dt);
             moving_parts_dict[right_gear_top_id].SpinObjectEndless(1.0f, 0.0f, 0.0f, 50.0f, dt);
             moving_parts_dict[right_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 50.0f, dt);
+
+            moving_parts_dict[ass_fire_id].UpdateMovingParts(dt);
         }
 
         void SetTakeOffAnimationsSix()
@@ -661,6 +676,8 @@ namespace Scripting
             moving_parts_dict[left_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 5.0f, dt);
             moving_parts_dict[right_gear_top_id].SpinObjectEndless(1.0f, 0.0f, 0.0f, 5.0f, dt);
             moving_parts_dict[right_gear_bottom_id].SpinObjectEndless(-1.0f, 0.0f, 0.0f, 5.0f, dt);
+
+            moving_parts_dict[ass_fire_id].UpdateMovingParts(dt);
         }
 
         void SetTakeOffAnimationsSeven()

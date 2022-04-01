@@ -156,7 +156,6 @@ namespace Scripting
         public bool left_arm_broken;
         public bool right_arm_broken;
 
-
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
