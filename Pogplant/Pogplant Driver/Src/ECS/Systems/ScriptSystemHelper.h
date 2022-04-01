@@ -84,6 +84,7 @@ namespace SSH
 
 	glm::vec3 GetGlobalPosition(std::uint32_t entityID);
 	glm::vec3 GetGlobalRotation(std::uint32_t entityID);
+	glm::vec3 GetRotation(std::uint32_t entityID);
 	glm::vec3 GetGlobalScale(std::uint32_t entityID);
 	glm::vec3 GetScale(std::uint32_t entityID);
 	void SetGlobalPosition(std::uint32_t entityID, glm::vec3 pos);

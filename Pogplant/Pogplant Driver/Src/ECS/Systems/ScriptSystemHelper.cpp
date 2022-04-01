@@ -537,6 +537,11 @@ namespace SSH
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalRotation();
 	}
 
+	glm::vec3 GetRotation(std::uint32_t entityID)
+	{
+		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->m_rotation;
+	}
+
 	glm::vec3 GetGlobalScale(std::uint32_t entityID)
 	{
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalScale();

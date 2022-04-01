@@ -114,6 +114,9 @@ namespace Scripting
         public extern static Vector3 GetGlobalRotation(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetRotation(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector3 GetGlobalScale(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

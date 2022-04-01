@@ -67,6 +67,8 @@ namespace Scripting
 		public uint mID_leftCore;
 		public uint mID_rightCore;
 		public uint mID_falseCore;
+		public uint mID_falseCoreMouthL;
+		public uint mID_falseCoreMouthR;
 
 		//HP Bar vars
 		uint mID_hpBar;
@@ -91,8 +93,8 @@ namespace Scripting
 		uint mID_smashHitBox;
 		uint mID_clapHitBox;
 		bool m_hitboxEnableOnce = false;
-		float mSmash_timeToEnableCollider = 4f;
-		float mSmash_timeToDisableCollider = 4.2f;
+		float mSmash_timeToEnableCollider = 3.65f;
+		float mSmash_timeToDisableCollider = 3.85f;
 
 		float mClap_timeToEnableCollider = 1.5f;
 		float mClap_timeToDisableCollider = 2.0f;
@@ -204,6 +206,10 @@ namespace Scripting
 		Vector3 mColor_falseCoreNormal = new Vector3(1f, 0.725f, 0f);
 		Vector3 mColor_falseCoreCurrent = new Vector3(1f, 0.725f, 0f);
 		Vector3 mColor_falseCoreDamaged = new Vector3(1f, 0f, 0f);
+
+		Vector3 mColor_falseCoreCoverNormal = new Vector3(1f, 1f, 1f);
+		Vector3 mColor_falseCoreCoverCurrent = new Vector3(1f, 1f, 1f);
+		Vector3 mColor_falseCoreCoverDamaged = new Vector3(0.25f, 0.25f, 0.25f);
 		#endregion
 
 		/******************************************************************************/
@@ -249,6 +255,8 @@ namespace Scripting
 			mID_leftCore = ECS.FindEntityWithName("Left_Eye");
 			mID_rightCore = ECS.FindEntityWithName("Right_Eye");
 			mID_falseCore = ECS.FindEntityWithName("FalseCore");
+			mID_falseCoreMouthL = ECS.FindEntityWithName("Mouth_L");
+			mID_falseCoreMouthR = ECS.FindEntityWithName("Mouth_R");
 			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreNormal);
 
 			uint bossPanelSpawns = ECS.FindEntityWithName("BossPanelSpawnPoints");
@@ -258,7 +266,7 @@ namespace Scripting
 			{
 				mID_ventSpawnpoints[i] = ECS.FindChildEntityWithName(bossPanelSpawns, (i + 1).ToString());
 			}
-			
+
 			m_gunBarrels[0].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Right_MiniLaser_Launcher_01");
 			m_gunBarrels[1].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Right_MiniLaser_Launcher_02");
 			m_gunBarrels[2].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Right_MiniLaser_Launcher_03");
@@ -267,7 +275,7 @@ namespace Scripting
 			m_gunBarrels[4].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Left_MiniLaser_Launcher_02");
 			m_gunBarrels[5].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Left_MiniLaser_Launcher_03");
 
-			for(int i = 0; i < 6; ++i)
+			for (int i = 0; i < 6; ++i)
 			{
 				m_gunBarrels[i].rotationState = (PPMath.RandomInt(0, 1) == 0);
 				m_gunBarrels[i].rotationSpeed = PPMath.RandomFloat(m_gunBarrelYRotationSpeedMin, m_gunBarrelYRotationSpeedMax);
@@ -391,7 +399,7 @@ namespace Scripting
 				FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(entityID, 0);
 			}
 			//If is vulnerable
-			else if(!updateCoreLockOn && m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable && m_runStateInfo.canDamageMainCore)
+			else if (!updateCoreLockOn && m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable && m_runStateInfo.canDamageMainCore)
 			{
 				updateCoreLockOn = true;
 				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
@@ -528,13 +536,13 @@ namespace Scripting
 
 				case L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK:
 				{
-					if(m_runStateInfo.timer > mSmash_timeToEnableCollider && !m_hitboxEnableOnce && m_runStateInfo.timer < mSmash_timeToDisableCollider)
+					if (m_runStateInfo.timer > mSmash_timeToEnableCollider && !m_hitboxEnableOnce && m_runStateInfo.timer < mSmash_timeToDisableCollider)
 					{
 						m_hitboxEnableOnce = true;
 						ECS.SetActive(mID_smashHitBox, true);
 					}
-					
-					if(m_runStateInfo.timer > mSmash_timeToDisableCollider && m_hitboxEnableOnce)
+
+					if (m_runStateInfo.timer > mSmash_timeToDisableCollider && m_hitboxEnableOnce)
 					{
 						m_hitboxEnableOnce = false;
 						ECS.SetActive(mID_smashHitBox, false);
@@ -602,6 +610,10 @@ namespace Scripting
 		{
 			mColor_falseCoreCurrent = Vector3.Lerp(mColor_falseCoreCurrent, mColor_falseCoreNormal, Math.Min(dt * 15f, 1f));
 			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreCurrent);
+
+			mColor_falseCoreCoverCurrent = Vector3.Lerp(mColor_falseCoreCoverCurrent, mColor_falseCoreCoverNormal, Math.Min(dt * 15f, 1f));
+			ECS.SetDiffuseTint(mID_falseCoreMouthL, ref mColor_falseCoreCoverCurrent);
+			ECS.SetDiffuseTint(mID_falseCoreMouthR, ref mColor_falseCoreCoverCurrent);
 		}
 
 		/***************************************************************************/
@@ -653,7 +665,7 @@ namespace Scripting
 		/***************************************************************************/
 		void UpdateGunRotationBehaviour(float dt)
 		{
-			for(int i = 0; i < 6; ++i)
+			for (int i = 0; i < 6; ++i)
 			{
 				ECS.GetTransformECS(m_gunBarrels[i].ID_barrel, ref pos, ref rot, ref scale);
 
@@ -820,7 +832,7 @@ namespace Scripting
 		{
 			m_runStateInfo.canDamageMainCore = true;
 			m_runStateInfo.canDamageSideCores = false;
-			
+
 			//reset health
 			m_runStateInfo.leftBallHealth = mh_leftBallHealth;
 			m_runStateInfo.rightBallHealth = mh_rightBallHealth;
@@ -851,8 +863,11 @@ namespace Scripting
 		public override void OnTriggerEnter(uint id)
 		{
 			//Invulnerable in protection mode
-			if (!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore)
+			//Invulnerable if angle between mouth too low
+			if (!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore
+				|| Math.Abs(ECS.GetRotation(mID_falseCoreMouthL).Y) + Math.Abs(ECS.GetRotation(mID_falseCoreMouthR).Y) < 30f)
 			{
+				mColor_falseCoreCoverCurrent = mColor_falseCoreCoverDamaged;
 				ECS.PlayAudio(entityID, 1, "SFX");
 				return;
 			}

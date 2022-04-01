@@ -54,6 +54,8 @@ namespace Scripting
 		public uint mID_leftCore;
 		public uint mID_rightCore;
 		public uint mID_falseCore;
+		public uint mID_falseCoreMouthL;
+		public uint mID_falseCoreMouthR;
 		public uint mID_playerShip;
 		public uint[] mID_ventSpawnpoints = new uint[6];
 
@@ -191,6 +193,10 @@ namespace Scripting
 		Vector3 mColor_falseCoreNormal = new Vector3(1f, 0.725f, 0f);
 		Vector3 mColor_falseCoreCurrent = new Vector3(1f, 0.725f, 0f);
 		Vector3 mColor_falseCoreDamaged = new Vector3(1f, 0f, 0f);
+
+		Vector3 mColor_falseCoreCoverNormal = new Vector3(1f, 1f, 1f);
+		Vector3 mColor_falseCoreCoverCurrent = new Vector3(1f, 1f, 1f);
+		Vector3 mColor_falseCoreCoverDamaged = new Vector3(0.25f, 0.25f, 0.25f);
 		#endregion
 
 		/******************************************************************************/
@@ -226,6 +232,8 @@ namespace Scripting
 			mID_leftCore = ECS.FindEntityWithName("Left_Eye");
 			mID_rightCore = ECS.FindEntityWithName("Right_Eye");
 			mID_falseCore = ECS.FindEntityWithName("FalseCore");
+			mID_falseCoreMouthL = ECS.FindChildEntityWithName(mID_falseCore, "Mouth_L");
+			mID_falseCoreMouthR = ECS.FindChildEntityWithName(mID_falseCore, "Mouth_R");
 			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreNormal);
 
 			m_turretGuns[0].ID_turretBody = ECS.FindEntityWithName("Left_ColourTurret_Body_Pivot");
@@ -550,6 +558,10 @@ namespace Scripting
 		{
 			mColor_falseCoreCurrent = Vector3.Lerp(mColor_falseCoreCurrent, mColor_falseCoreNormal, Math.Min(dt * 15f, 1f));
 			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreCurrent);
+
+			mColor_falseCoreCoverCurrent = Vector3.Lerp(mColor_falseCoreCoverCurrent, mColor_falseCoreCoverNormal, Math.Min(dt * 15f, 1f));
+			ECS.SetDiffuseTint(mID_falseCoreMouthL, ref mColor_falseCoreCoverCurrent);
+			ECS.SetDiffuseTint(mID_falseCoreMouthR, ref mColor_falseCoreCoverCurrent);
 		}
 
 		public override void LateUpdate(float dt)
@@ -905,8 +917,11 @@ namespace Scripting
 		public override void OnTriggerEnter(uint id)
 		{
 			//Invulnerable in protection mode
-			if (!m_stateBehaviours[(int)L2Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore)
+			//Invulnerable if angle between mouth too low
+			if (!m_stateBehaviours[(int)L2Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore
+				|| Math.Abs(ECS.GetRotation(mID_falseCoreMouthL).Y) + Math.Abs(ECS.GetRotation(mID_falseCoreMouthR).Y) < 30f)
 			{
+				mColor_falseCoreCoverCurrent = mColor_falseCoreCoverDamaged;
 				ECS.PlayAudio(entityID, 1, "SFX");
 				return;
 			}
