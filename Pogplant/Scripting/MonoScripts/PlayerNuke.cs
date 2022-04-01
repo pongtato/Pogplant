@@ -279,6 +279,8 @@ namespace Scripting
 							or_Nuke_Swirl_scale = m_Nuke_Swirl_scale[3];
 							or_Nuke_Outer_Spikes_scale = m_Nuke_Outer_Spikes_scale[3];
 							or_Nuke_Outer_Outline_scale = m_Nuke_Outer_Outline_scale[3];
+
+							TimeManager.TriggerTimeAlter(0.5f, 2f);
 						}
 
 						GrowShrink(dt);
