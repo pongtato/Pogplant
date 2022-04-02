@@ -1055,10 +1055,18 @@ namespace Scripting
 					GameUtilities.UpdateScore(m_ScoreTextID, m_OldScore - (uint)((m_OldScore - score) * (m_ScoreResetTimer / m_ScoreResetTimeLimit)));
 			}
 		}
-		public static void InitScore(uint _score)
+		public static void InitScore(uint _score, uint _EnemyDestroyedCount, uint _PlayerHitCount, uint _CollectiblesCount)
 		{
 			score = _score;
 			m_OldScore = _score;
+
+			m_EnemyDestroyedCount = _EnemyDestroyedCount;
+			m_PlayerHitCount = _PlayerHitCount;
+			m_CollectiblesCount = _CollectiblesCount;
+
+			Console.WriteLine("m_EnemyDestroyedCount: " + m_EnemyDestroyedCount);
+			Console.WriteLine("m_PlayerHitCount: " + m_PlayerHitCount);
+			Console.WriteLine("m_CollectiblesCount: " + m_CollectiblesCount);
 		}
 	}
 }

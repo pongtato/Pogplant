@@ -261,7 +261,10 @@ namespace Scripting
 
             SetState(BOSS_BEHAVIOUR_STATE.FLYING_UP.ToString());
 
-            PlayerScript.InitScore(PlayerPrefs.GetValue<uint>("CurrentScore", 0));
+            PlayerScript.InitScore( PlayerPrefs.GetValue<uint>("CurrentScore", 0),
+                                    PlayerPrefs.GetValue<uint>("m_EnemyDestroyedCount", 0),
+                                    PlayerPrefs.GetValue<uint>("m_PlayerHitCount", 0),
+                                    PlayerPrefs.GetValue<uint>("m_CollectiblesCount", 0));
 
             //Console.WriteLine("========================================================================");
             //Console.WriteLine("loading score: " + PlayerScript.score);

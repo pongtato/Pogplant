@@ -45,8 +45,11 @@ namespace Scripting
                 {
 
                     PlayerPrefs.SetValue<uint>("CurrentScore", PlayerScript.score);
-                    PlayerPrefs.Save();
+                    PlayerPrefs.SetValue<uint>("m_EnemyDestroyedCount", PlayerScript.m_EnemyDestroyedCount);
+                    PlayerPrefs.SetValue<uint>("m_PlayerHitCount", PlayerScript.m_PlayerHitCount);
+                    PlayerPrefs.SetValue<uint>("m_CollectiblesCount", PlayerScript.m_CollectiblesCount);
 
+                    PlayerPrefs.Save();
                     //Console.WriteLine("========================================================================");
                     //Console.WriteLine("saving score: " + PlayerScript.score);
                     //Console.WriteLine("========================================================================");
