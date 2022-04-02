@@ -148,6 +148,7 @@ namespace Scripting
             {
                 if (!m_menuActive)
                 {
+                    ECS.PlayAudio(entityID, 3, "SFX");
                     m_menuActive = true;
                     m_Timer = 0.0f;
                     ECS.SetActive(m_Entities["TS_BG"].id, true);
@@ -209,7 +210,7 @@ namespace Scripting
                     m_currImg = IMAGENUM.FIRST;
                 else
                     ++m_currImg;
-
+                ECS.PlayAudio(entityID, 0, "SFX");
             }
             else if (InputUtility.onKeyTriggered("MENURIGHT"))
             {
@@ -218,7 +219,7 @@ namespace Scripting
                     m_currImg = IMAGENUM.THIRD;
                 else
                     --m_currImg;
-
+                ECS.PlayAudio(entityID, 1, "SFX");
             }
 
             //Console.WriteLine(m_currImg);
@@ -264,6 +265,7 @@ namespace Scripting
                 ECS.SetActive(m_Entities["TS_TXT1"].id, false);
                 ECS.SetActive(m_Entities["TS_TXT2"].id, false);
                 ECS.SetActive(m_Entities["TS_TXT3"].id, false);
+                ECS.PlayAudio(entityID, 2, "SFX");
                 GameUtilities.ResumeScene();
             }
             else 

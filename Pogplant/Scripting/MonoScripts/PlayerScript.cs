@@ -944,7 +944,7 @@ namespace Scripting
 						ECS.PlayAudio(entity_id, 0, "SFX");
 					}
 
-					uint addscore = kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber;
+					uint addscore = (kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber)/5;
 					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, addscore, true));
 					m_ScoreResetTimer = 0.01f;
 
@@ -954,7 +954,7 @@ namespace Scripting
 				{
 					ECS.PlayAudio(entity_id, 0, "SFX");
 
-					uint addscore = kill_score * PlayerScript.m_ScoreMultiplierBobbleCount;
+					uint addscore = (kill_score * PlayerScript.m_ScoreMultiplierBobbleCount)/5;
 					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, addscore, true));
 					m_ScoreResetTimer = 0.01f;
 
@@ -976,10 +976,11 @@ namespace Scripting
 				// Just change the color first
 				ECS.PlayAudio(entity_id, 3, "SFX");
 				GameUtilities.UpdateTextColor(m_ScoreTextID, new Vector3(1.0f, 0.0f, 0.0f));
-				if (score > amount)
+				if (score > 0)
 				{
-					score -= amount;
-					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, amount, false));
+					uint minus = (score / 20);
+					score -= minus;
+					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, minus, false));
 				}
 				else
 				{
