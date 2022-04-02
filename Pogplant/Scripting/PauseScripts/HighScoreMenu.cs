@@ -17,9 +17,7 @@ namespace Scripting
 		public enum TITLE_ORDER
 		{
 			L1 = 0,
-			L1Boss = 1,
-			L2 = 2,
-			L2Boss = 3
+			L2 = 1,
 		}
 
 		static bool m_enabled = false;
@@ -94,9 +92,7 @@ namespace Scripting
 			m_sliding_speed = ECS.GetValue<float>(entityID, 3.0f, "cinematic_bar_speed");
 
 			AddTitle("Title_L1");
-			AddTitle("Title_L1Boss");
 			AddTitle("Title_L2");
-			AddTitle("Title_L2Boss");
 
 			m_Arrow_Left_A = ECS.FindChildEntityWithName(entityID, "Arrow_Left_A");
 			m_Arrow_Left_DPad = ECS.FindChildEntityWithName(entityID, "Arrow_Left_DPad");
@@ -306,7 +302,7 @@ namespace Scripting
 				m_prev_index = m_index;
 
 				if (m_index - 1 < (int)TITLE_ORDER.L1)
-					m_index = (int)TITLE_ORDER.L2Boss;
+					m_index = (int)TITLE_ORDER.L2;
 				else
 					m_index--;
 			}
@@ -316,7 +312,7 @@ namespace Scripting
 
 				m_prev_index = m_index;
 
-				if (m_index + 1 > (int)TITLE_ORDER.L2Boss)
+				if (m_index + 1 > (int)TITLE_ORDER.L2)
 					m_index = (int)TITLE_ORDER.L1;
 				else
 					m_index++;
