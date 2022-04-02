@@ -25,6 +25,7 @@ namespace Scripting
             REPEL_ATTACK,
             DEATH_SEQUENCE,
             TRANSIT_SCENE,
+            STUN_FIELD,
             TOTAL
         }
 
