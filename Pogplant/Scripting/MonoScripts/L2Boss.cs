@@ -335,6 +335,17 @@ namespace Scripting
             any_key_max_scale = new Vector3(0.5f, 0.5f, 1.0f);
 
             SetState(BOSS_BEHAVIOUR_STATE.FLYING_UP.ToString());
+
+            //PlayerScript.score = PlayerPrefs.GetValue<uint>("CurrentScore", 0);
+
+            //Console.WriteLine("========================================================================");
+            //Console.WriteLine("loading score: " + PlayerScript.score);
+            //Console.WriteLine("========================================================================");
+
+            PlayerScript.InitScore(PlayerPrefs.GetValue<uint>("CurrentScore", 0));
+
+            PlayerPrefs.SetValue<uint>("CurrentScore", 0);
+            PlayerPrefs.Save();
         }
 
         public override void Update(float dt)

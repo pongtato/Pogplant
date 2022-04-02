@@ -1055,5 +1055,10 @@ namespace Scripting
 					GameUtilities.UpdateScore(m_ScoreTextID, m_OldScore - (uint)((m_OldScore - score) * (m_ScoreResetTimer / m_ScoreResetTimeLimit)));
 			}
 		}
+		public static void InitScore(uint _score)
+		{
+			score = _score;
+			m_OldScore = _score;
+		}
 	}
 }

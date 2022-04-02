@@ -43,6 +43,15 @@ namespace Scripting
                 }
                 else
                 {
+
+                    PlayerPrefs.SetValue<uint>("CurrentScore", PlayerScript.score);
+                    PlayerPrefs.Save();
+
+                    //Console.WriteLine("========================================================================");
+                    //Console.WriteLine("saving score: " + PlayerScript.score);
+                    //Console.WriteLine("========================================================================");
+
+
                     GameUtilities.LoadScene(scene_to_load);
                 }
             }
