@@ -26,6 +26,8 @@ namespace Scripting
         public string subs_level_id;
         uint sub_renderer_id;
 
+        uint skip_kb_id;
+        uint skip_ctrler_id;
         public CutScene2Controller()
         {
 
@@ -41,6 +43,9 @@ namespace Scripting
             //Cam is the self id
             entityID = _entityID;
             CS_Board = ECS.FindEntityWithName("CS_Canvas");
+
+            skip_kb_id = ECS.FindEntityWithName("KB_Hint");
+            skip_ctrler_id = ECS.FindEntityWithName("Ctrler_Hint");
 
             ECS.SetGlobalPosition(CS_Board, InitialCanvasPos);
             ECS.SetGlobalPosition(entityID, InitialCamPos);
@@ -58,14 +63,35 @@ namespace Scripting
 
         public override void Update(float dt)
         {
-            if (InputUtility.onKeyHeld(KEY_ID.KEY_ESCAPE))
+            if (InputUtility.IsControlledBeingUsed())
             {
-                bIsInputHeldDown = true;
+                ECS.SetActive(skip_kb_id, false);
+                ECS.SetActive(skip_ctrler_id, true);
+
+                if (InputUtility.onKeyHeld("ESCAPE"))
+                {
+                    bIsInputHeldDown = true;
+                }
+                else
+                {
+                    bIsInputHeldDown = false;
+                    HeldDownAccu = 0;
+                }
             }
             else
             {
-                bIsInputHeldDown = false;
-                HeldDownAccu = 0;
+                ECS.SetActive(skip_kb_id, true);
+                ECS.SetActive(skip_ctrler_id, false);
+
+                if (InputUtility.onKeyHeld(KEY_ID.KEY_ESCAPE))
+                {
+                    bIsInputHeldDown = true;
+                }
+                else
+                {
+                    bIsInputHeldDown = false;
+                    HeldDownAccu = 0;
+                }
             }
 
             overall_acc_dt += dt;

@@ -33,1276 +33,6 @@
 		}
 	},
 	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Segment_02_and_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.27554351091384888,
-				0.032558143138885498
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Segment_02_and_03",
-				"Resources/Models\\Environment",
-				"Level_02_Segment_02_and_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 16,
-		"Name" : 
-		{
-			"m_Name" : "Segment_03_Environmental_Addons",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generator_Type_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generator_Type_01",
-				"Resources/Models\\Environment",
-				"Generator_Type_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-96.029556274414062,
-				-33.749156951904297,
-				-308.31527709960938
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.6156001091003418,
-				0.6156001091003418,
-				0.6156001091003418
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generator_Type_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generator_Type_01",
-				"Resources/Models\\Environment",
-				"Generator_Type_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-95.705436706542969,
-				-44.776924133300781,
-				-329.2315673828125
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.61539953947067261,
-				0.92991411685943604,
-				0.6156001091003418
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generator_Type_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generator_Type_01",
-				"Resources/Models\\Environment",
-				"Generator_Type_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-95.705001831054688,
-				-54.148323059082031,
-				-329.2315673828125
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.61550581455230713,
-				0.92991411685943604,
-				0.6156001091003418
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generator_Type_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generator_Type_01",
-				"Resources/Models\\Environment",
-				"Generator_Type_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-95.705001831054688,
-				-64.081588745117188,
-				-329.2315673828125
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.61534798145294189,
-				0.92991411685943604,
-				0.6156001091003418
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Platform_5",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Platform",
-				"Resources/Models\\Environment",
-				"Generic_Platform"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-101.75717163085938,
-				-97.724945068359375,
-				-299.9334716796875
-			],
-			"m_rotation" : 
-			[
-				179.99989318847656,
-				89.999946594238281,
-				179.9998779296875
-			],
-			"m_scale" : 
-			[
-				0.99999934434890747,
-				0.99999767541885376,
-				1.2491201162338257
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Platform_5",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Platform",
-				"Resources/Models\\Environment",
-				"Generic_Platform"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-79.47357177734375,
-				-100.67623138427734,
-				-316.07308959960938
-			],
-			"m_rotation" : 
-			[
-				-179.999755859375,
-				-0.0,
-				179.99989318847656
-			],
-			"m_scale" : 
-			[
-				0.99999964237213135,
-				0.99999767541885376,
-				1.249119758605957
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generator_Type_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generator_Type_01",
-				"Resources/Models\\Environment",
-				"Generator_Type_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-97.230117797851562,
-				-88.633003234863281,
-				-308.31527709960938
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.6156001091003418,
-				0.6156001091003418,
-				0.6156001091003418
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Generator_Core_Pillar_2",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Generator_Core",
-				"Resources/Models\\Environment",
-				"Generic_Generator_Core"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-110.0013427734375,
-				-112.51198577880859,
-				-307.03860473632812
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-3.7432618718016494e-14,
-				-90.0
-			],
-			"m_scale" : 
-			[
-				8.0,
-				0.20000000298023224,
-				0.19996529817581177
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Generator_Core_1",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Generator_Core",
-				"Resources/Models\\Environment",
-				"Generic_Generator_Core"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-119.46272277832031,
-				27.422605514526367,
-				-322.92694091796875
-			],
-			"m_rotation" : 
-			[
-				-60.0,
-				-3.7443623370067222e-14,
-				-90.0
-			],
-			"m_scale" : 
-			[
-				0.5,
-				0.49999943375587463,
-				0.49998775124549866
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Platform_1",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Platform",
-				"Resources/Models\\Environment",
-				"Generic_Platform"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-112.03799438476562,
-				14.954708099365234,
-				-333.510498046875
-			],
-			"m_rotation" : 
-			[
-				-179.99989318847656,
-				-89.999946594238281,
-				-179.99989318847656
-			],
-			"m_scale" : 
-			[
-				0.99999994039535522,
-				0.99999779462814331,
-				1.2491198778152466
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Platform_4",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Platform",
-				"Resources/Models\\Environment",
-				"Generic_Platform"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-116.69996643066406,
-				-38.238399505615234,
-				-311.92111206054688
-			],
-			"m_rotation" : 
-			[
-				-179.99989318847656,
-				-0.0,
-				-179.999755859375
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999779462814331,
-				1.2491196393966675
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Platform_3",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Platform",
-				"Resources/Models\\Environment",
-				"Generic_Platform"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-95.064048767089844,
-				-42.608554840087891,
-				-299.9334716796875
-			],
-			"m_rotation" : 
-			[
-				179.99989318847656,
-				89.999946594238281,
-				179.9998779296875
-			],
-			"m_scale" : 
-			[
-				0.99999934434890747,
-				0.99999767541885376,
-				1.2491201162338257
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Generator_Core_Mini_1",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Generator_Core",
-				"Resources/Models\\Environment",
-				"Generic_Generator_Core"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-111.73865509033203,
-				27.422605514526367,
-				-328.63250732421875
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-3.7443758895338783e-14,
-				-90.0
-			],
-			"m_scale" : 
-			[
-				0.20000000298023224,
-				0.20000000298023224,
-				0.19999302923679352
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Generator_Core_Pillar_1",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Generator_Core",
-				"Resources/Models\\Environment",
-				"Generic_Generator_Core"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-119.46272277832031,
-				-115.34500122070312,
-				-322.92694091796875
-			],
-			"m_rotation" : 
-			[
-				-60.0,
-				-3.7441787002637575e-14,
-				-90.0
-			],
-			"m_scale" : 
-			[
-				10.0,
-				0.5,
-				0.49998775124549866
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Generator_Core_Mini_2",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Generator_Core",
-				"Resources/Models\\Environment",
-				"Generic_Generator_Core"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-107.33866119384766,
-				27.422605514526367,
-				-328.63250732421875
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-3.7443755507206994e-14,
-				-90.0
-			],
-			"m_scale" : 
-			[
-				0.20000000298023224,
-				0.20000000298023224,
-				0.19999095797538757
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Platform_2",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Platform",
-				"Resources/Models\\Environment",
-				"Generic_Platform"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-116.70011138916016,
-				-5.4063577651977539,
-				-311.92111206054688
-			],
-			"m_rotation" : 
-			[
-				-179.99989318847656,
-				-0.0,
-				-179.999755859375
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99999779462814331,
-				1.2491196393966675
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Segment_03_Drill",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-106.43768310546875,
-				119.28863525390625,
-				-317.472412109375
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Generator_Core",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Generator_Core",
-				"Resources/Models\\Environment",
-				"Generic_Generator_Core"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-14.180366516113281,
-				-288.1234130859375,
-				0.660919189453125
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				-90.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.8999999761581421,
-				1.8997801542282104
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Generator_Core",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Generator_Core",
-				"Resources/Models\\Environment",
-				"Generic_Generator_Core"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-11.011993408203125,
-				4.0791664123535156,
-				-0.1150970458984375
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				5.7337502801235729e-11
-			],
-			"m_scale" : 
-			[
-				0.29998582601547241,
-				0.49998104572296143,
-				0.49997815489768982
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Generic_Generator_Core",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Generic_Generator_Core",
-				"Resources/Models\\Environment",
-				"Generic_Generator_Core"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				4.856353759765625,
-				4.0207901000976562,
-				-0.064971923828125
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				4.5799979477359476e-13
-			],
-			"m_scale" : 
-			[
-				2.0000002384185791,
-				0.50000029802322388,
-				0.5
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				-20.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				1.5,
-				150.0,
-				1.5
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Level_02_Segment_03_Drill_Bit",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Level_02_Segment_02_and_03",
-				"Resources/Models\\Environment",
-				"Drill_Bit"
-			],
-			"UseLight" : 1
-		},
-		"Rigidbody" : 
-		{
-			"isKinematic" : false,
-			"mass" : 10.0,
-			"useGravity" : false
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : true,
-				"Data0" : 0.0,
-				"Data1" : -1.0,
-				"Data2" : 0.0,
-				"Name" : "Rotation_axis",
-				"Type" : 4
-			},
-			{
-				"Data" : true,
-				"Name" : "Rotation_rotate_endlessly",
-				"Type" : 2
-			},
-			{
-				"Data" : 150.0,
-				"Name" : "Rotation_speed",
-				"Type" : 0
-			}
-		],
-		"Scripting" : 
-		{
-			"Rotation" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				1.1694412231445312,
-				-127.76100158691406,
-				0.335205078125
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 10,
 		"Name" : 
 		{
@@ -68820,7 +67550,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -68883,6 +67613,1276 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Segment_02_and_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.27554351091384888,
+				0.032558143138885498
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Segment_02_and_03",
+				"Resources/Models\\Environment",
+				"Level_02_Segment_02_and_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Segment_03_Drill",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-106.43768310546875,
+				119.28863525390625,
+				-317.472412109375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-14.180366516113281,
+				-288.1234130859375,
+				0.660919189453125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.8999999761581421,
+				1.8997801542282104
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-11.011993408203125,
+				4.0791664123535156,
+				-0.1150970458984375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				5.7337502801235729e-11
+			],
+			"m_scale" : 
+			[
+				0.29998582601547241,
+				0.49998104572296143,
+				0.49997815489768982
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				4.856353759765625,
+				4.0207901000976562,
+				-0.064971923828125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				4.5799979477359476e-13
+			],
+			"m_scale" : 
+			[
+				2.0000002384185791,
+				0.50000029802322388,
+				0.5
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				-20.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.5,
+				150.0,
+				1.5
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Level_02_Segment_03_Drill_Bit",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Level_02_Segment_02_and_03",
+				"Resources/Models\\Environment",
+				"Drill_Bit"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : -1.0,
+				"Data2" : 0.0,
+				"Name" : "Rotation_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : true,
+				"Name" : "Rotation_rotate_endlessly",
+				"Type" : 2
+			},
+			{
+				"Data" : 150.0,
+				"Name" : "Rotation_speed",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"Rotation" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.1694412231445312,
+				-127.76100158691406,
+				0.335205078125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 16,
+		"Name" : 
+		{
+			"m_Name" : "Segment_03_Environmental_Addons",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_3",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-95.064048767089844,
+				-42.608554840087891,
+				-299.9334716796875
+			],
+			"m_rotation" : 
+			[
+				179.99989318847656,
+				89.999946594238281,
+				179.9998779296875
+			],
+			"m_scale" : 
+			[
+				0.99999934434890747,
+				0.99999767541885376,
+				1.2491201162338257
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_Mini_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-111.73865509033203,
+				27.422605514526367,
+				-328.63250732421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.7443758895338783e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.19999302923679352
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_Pillar_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-119.46272277832031,
+				-115.34500122070312,
+				-322.92694091796875
+			],
+			"m_rotation" : 
+			[
+				-60.0,
+				-3.7441787002637575e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				10.0,
+				0.5,
+				0.49998775124549866
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_Mini_2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-107.33866119384766,
+				27.422605514526367,
+				-328.63250732421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.7443755507206994e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				0.19999095797538757
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-116.70011138916016,
+				-5.4063577651977539,
+				-311.92111206054688
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.999755859375
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999779462814331,
+				1.2491196393966675
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-96.029556274414062,
+				-33.749156951904297,
+				-308.31527709960938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.6156001091003418,
+				0.6156001091003418,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-95.705436706542969,
+				-44.776924133300781,
+				-329.2315673828125
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.61539953947067261,
+				0.92991411685943604,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-95.705001831054688,
+				-54.148323059082031,
+				-329.2315673828125
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.61550581455230713,
+				0.92991411685943604,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-95.705001831054688,
+				-64.081588745117188,
+				-329.2315673828125
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.61534798145294189,
+				0.92991411685943604,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-101.75717163085938,
+				-97.724945068359375,
+				-299.9334716796875
+			],
+			"m_rotation" : 
+			[
+				179.99989318847656,
+				89.999946594238281,
+				179.9998779296875
+			],
+			"m_scale" : 
+			[
+				0.99999934434890747,
+				0.99999767541885376,
+				1.2491201162338257
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_5",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-79.47357177734375,
+				-100.67623138427734,
+				-316.07308959960938
+			],
+			"m_rotation" : 
+			[
+				-179.999755859375,
+				-0.0,
+				179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999964237213135,
+				0.99999767541885376,
+				1.249119758605957
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generator_Type_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generator_Type_01",
+				"Resources/Models\\Environment",
+				"Generator_Type_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-97.230117797851562,
+				-88.633003234863281,
+				-308.31527709960938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.6156001091003418,
+				0.6156001091003418,
+				0.6156001091003418
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_Pillar_2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-110.0013427734375,
+				-112.51198577880859,
+				-307.03860473632812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-3.7432618718016494e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				8.0,
+				0.20000000298023224,
+				0.19996529817581177
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Generator_Core_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Generator_Core",
+				"Resources/Models\\Environment",
+				"Generic_Generator_Core"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-119.46272277832031,
+				27.422605514526367,
+				-322.92694091796875
+			],
+			"m_rotation" : 
+			[
+				-60.0,
+				-3.7443623370067222e-14,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.49999943375587463,
+				0.49998775124549866
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_1",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-112.03799438476562,
+				14.954708099365234,
+				-333.510498046875
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999994039535522,
+				0.99999779462814331,
+				1.2491198778152466
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Generic_Platform_4",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Generic_Platform",
+				"Resources/Models\\Environment",
+				"Generic_Platform"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-116.69996643066406,
+				-38.238399505615234,
+				-311.92111206054688
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				-179.999755859375
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999779462814331,
+				1.2491196393966675
 			]
 		}
 	},
@@ -78952,7 +78952,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.79686737060547,
+				"m_FrameCounter" : 99.434669494628906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -78965,8 +78965,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.921875
+					0.5,
+					0.78125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79018,7 +79018,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.565299987792969,
+				"m_FrameCounter" : 21.271324157714844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -79031,8 +79031,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.609375
+					0.5,
+					0.171875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79084,7 +79084,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.865982055664062,
+				"m_FrameCounter" : 53.025184631347656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -79097,8 +79097,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.375
+					0.5,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79150,7 +79150,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 17.554319381713867,
+				"m_FrameCounter" : 109.33800506591797,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -79164,7 +79164,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.140625
+					0.859375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79216,7 +79216,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.79686737060547,
+				"m_FrameCounter" : 99.434669494628906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -79229,8 +79229,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.921875
+					0.5,
+					0.78125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79282,7 +79282,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 46.865982055664062,
+				"m_FrameCounter" : 53.025184631347656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -79295,8 +79295,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.375
+					0.5,
+					0.421875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79348,7 +79348,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.043098449707031,
+				"m_FrameCounter" : 72.109764099121094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -79362,7 +79362,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.578125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79414,7 +79414,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 116.79686737060547,
+				"m_FrameCounter" : 99.434669494628906,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -79427,8 +79427,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.921875
+					0.5,
+					0.78125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79480,7 +79480,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 52.043098449707031,
+				"m_FrameCounter" : 72.109764099121094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -79494,7 +79494,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.421875
+					0.578125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79546,7 +79546,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 25.27857780456543,
+				"m_FrameCounter" : 28.631908416748047,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -79559,8 +79559,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.203125
+					0.0,
+					0.234375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79612,7 +79612,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 76.565299987792969,
+				"m_FrameCounter" : 21.271324157714844,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -79625,8 +79625,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.609375
+					0.5,
+					0.171875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -105321,20 +105321,20 @@
 		{
 			"m_position" : 
 			[
-				6.889434814453125,
-				2.66290283203125,
-				0.0631103515625
+				-6.103515625e-05,
+				0.99993896484375,
+				0.0089111328125
 			],
 			"m_rotation" : 
 			[
-				-1.6284433653965258e-12,
-				-3.0614746293622375e-09,
-				0.0
+				6.0578125848920195e-10,
+				-6.9371747235535963e-10,
+				-2.049057547992561e-05
 			],
 			"m_scale" : 
 			[
-				1.2999999523162842,
-				1.0000003576278687,
+				0.9999995231628418,
+				0.9999997615814209,
 				1.0001236200332642
 			]
 		}
@@ -105365,12 +105365,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -105515,21 +105515,21 @@
 		{
 			"m_position" : 
 			[
-				-10.558456420898438,
-				3.052978515625,
-				-0.65643310546875
+				-2.676788330078125,
+				0.001953125,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				102.07179260253906,
-				62.781604766845703,
-				-83.77362060546875
+				-3.0777227988387779e-10,
+				-1.153045325885671e-09,
+				4.0984938095789403e-05
 			],
 			"m_scale" : 
 			[
 				0.99990719556808472,
-				1.0000120401382446,
-				1.0000407695770264
+				1.0000118017196655,
+				1.0000516176223755
 			]
 		}
 	},
@@ -105559,12 +105559,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -105709,20 +105709,20 @@
 		{
 			"m_position" : 
 			[
-				-4.5135498046875,
-				3.911376953125,
-				1.51995849609375
+				0.34991455078125,
+				0.001708984375,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				-54.860862731933594,
-				-5.8096375465393066,
-				-179.33872985839844
+				-8.1424381126460332e-12,
+				4.0710360083018315e-10,
+				4.0980390622280538e-05
 			],
 			"m_scale" : 
 			[
-				1.0000182390213013,
-				0.99997299909591675,
+				1.0000181198120117,
+				0.99997305870056152,
 				1.0000209808349609
 			]
 		}
@@ -105753,12 +105753,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -105903,21 +105903,21 @@
 		{
 			"m_position" : 
 			[
-				1.9864349365234375,
-				3.7742919921875,
-				-0.65203857421875
+				3.5664520263671875,
+				0.00140380859375,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				-45.985931396484375,
-				-17.897310256958008,
-				-179.48855590820312
+				-1.3712051494252364e-09,
+				-2.3937691828734842e-09,
+				8.5375813796417788e-06
 			],
 			"m_scale" : 
 			[
 				1.0000181198120117,
-				0.99995952844619751,
-				0.99995613098144531
+				0.99995958805084229,
+				0.99997055530548096
 			]
 		}
 	},
@@ -106122,21 +106122,21 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				-0.0012054443359375,
-				-0.00079345703125
+				-0.05230712890625,
+				-0.069061279296875,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				34.062416076660156,
-				2.7454290390014648,
-				-5.9684767723083496
+				-0.00062152865575626493,
+				-8.3351903157335983e-09,
+				-1.3862128334096724e-08
 			],
 			"m_scale" : 
 			[
-				1.2999999523162842,
 				1.0,
-				1.0000468492507935
+				1.0000298023223877,
+				1.000075101852417
 			]
 		}
 	},
@@ -106152,9 +106152,9 @@
 			"_EmitterType" : "GENERAL",
 			"m_BillboardAxis" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Color" : 
 			[
@@ -106166,12 +106166,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -106316,21 +106316,21 @@
 		{
 			"m_position" : 
 			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
+				2.29510498046875,
+				-0.000762939453125,
+				0.00152587890625
 			],
 			"m_rotation" : 
 			[
-				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
+				0.0,
+				9.5539833822044784e-09,
+				5.9640479221911846e-09
 			],
 			"m_scale" : 
 			[
-				1.5,
+				1.5001003742218018,
 				1.0000271797180176,
-				1.0000334978103638
+				1.0000336170196533
 			]
 		}
 	},
@@ -106360,12 +106360,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -106510,19 +106510,19 @@
 		{
 			"m_position" : 
 			[
-				-4.5134601593017578,
-				3.9113998413085938,
-				1.52362060546875
+				0.0,
+				-0.00146484375,
+				0.00396728515625
 			],
 			"m_rotation" : 
 			[
-				-42.430625915527344,
-				16.6219482421875,
-				-120.02053070068359
+				-0.00015367676678579301,
+				9.6267234184210793e-09,
+				5.7664810704238789e-09
 			],
 			"m_scale" : 
 			[
-				1.5,
+				1.5000991821289062,
 				1.0000162124633789,
 				1.0000312328338623
 			]
@@ -106554,12 +106554,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -106704,21 +106704,21 @@
 		{
 			"m_position" : 
 			[
-				2.81695556640625,
-				6.44329833984375,
-				1.706298828125
+				-3.37664794921875,
+				-0.0015869140625,
+				0.00250244140625
 			],
 			"m_rotation" : 
 			[
-				-33.779720306396484,
-				5.0388340950012207,
-				-121.92738342285156
+				1.707531282590935e-06,
+				7.9875173142340827e-09,
+				2.5493289701472577e-09
 			],
 			"m_scale" : 
 			[
-				2.0000002384185791,
+				1.0,
 				1.000009298324585,
-				0.99997663497924805
+				0.9999767541885376
 			]
 		}
 	},
@@ -107000,12 +107000,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -107150,19 +107150,19 @@
 		{
 			"m_position" : 
 			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
+				4.31097412109375,
+				-0.0003662109375,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
+				0.0,
+				7.4562125362831466e-09,
+				-1.0245702469546814e-05
 			],
 			"m_scale" : 
 			[
-				0.99994903802871704,
+				0.99994885921478271,
 				1.0000271797180176,
 				1.0000334978103638
 			]
@@ -107194,12 +107194,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -107344,19 +107344,19 @@
 		{
 			"m_position" : 
 			[
-				-4.5134601593017578,
-				3.9113998413085938,
-				1.52362060546875
+				0.0,
+				-3.0517578125e-05,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				-42.430625915527344,
-				16.6219482421875,
-				-120.02053070068359
+				-5.2109358494867308e-11,
+				1.449319969593077e-10,
+				-1.1952765817113686e-05
 			],
 			"m_scale" : 
 			[
-				0.99999672174453735,
+				0.99999666213989258,
 				1.0000162124633789,
 				1.0000312328338623
 			]
@@ -107388,12 +107388,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -107538,15 +107538,15 @@
 		{
 			"m_position" : 
 			[
-				4.3850650787353516,
-				5.5909614562988281,
-				0.51934814453125
+				-3.4986572265625,
+				-0.000244140625,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				-33.779819488525391,
-				5.0388336181640625,
-				-121.92738342285156
+				-2.6888608672948067e-08,
+				4.6215276050531884e-09,
+				1.0442544745581372e-10
 			],
 			"m_scale" : 
 			[
@@ -107790,8 +107790,8 @@
 		{
 			"m_position" : 
 			[
-				-0.007152557373046875,
-				0.03350830078125,
+				0.0,
+				0.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -107834,12 +107834,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -107984,21 +107984,21 @@
 		{
 			"m_position" : 
 			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
+				3.1068611145019531,
+				0.01470947265625,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
+				1.0894988383691739e-10,
+				-5.4861001158590383e-11,
+				2.3906877686385997e-05
 			],
 			"m_scale" : 
 			[
-				0.99994903802871704,
-				1.0000271797180176,
-				1.0000334978103638
+				0.99994909763336182,
+				1.0000293254852295,
+				1.0002084970474243
 			]
 		}
 	},
@@ -108028,12 +108028,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -108178,21 +108178,21 @@
 		{
 			"m_position" : 
 			[
-				-4.5134601593017578,
-				3.9113998413085938,
-				1.52362060546875
+				8.0108642578125e-05,
+				0.00177001953125,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				-42.430625915527344,
-				16.6219482421875,
-				-120.02053070068359
+				7.5314296466011399e-11,
+				-3.5520548308243249e-11,
+				3.9273712900467217e-05
 			],
 			"m_scale" : 
 			[
-				0.99999672174453735,
-				1.0000162124633789,
-				1.0000312328338623
+				0.9999968409538269,
+				1.000016450881958,
+				1.0000365972518921
 			]
 		}
 	},
@@ -108222,12 +108222,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -108372,21 +108372,21 @@
 		{
 			"m_position" : 
 			[
-				4.3850650787353516,
-				5.5909614562988281,
-				0.51934814453125
+				-3.6833000183105469,
+				0.01824951171875,
+				0.01953125
 			],
 			"m_rotation" : 
 			[
-				-33.779819488525391,
-				5.0388336181640625,
-				-121.92738342285156
+				2.7425779425271912e-09,
+				2.3408900685917278e-12,
+				1.7075486766771064e-06
 			],
 			"m_scale" : 
 			[
 				0.99999916553497314,
-				1.0000095367431641,
-				0.99997645616531372
+				1.0000097751617432,
+				1.0000660419464111
 			]
 		}
 	},
@@ -108624,21 +108624,21 @@
 		{
 			"m_position" : 
 			[
-				-0.183929443359375,
-				8.0517578125,
-				0.00201416015625
+				-0.00128173828125,
+				0.0009765625,
+				-0.0008544921875
 			],
 			"m_rotation" : 
 			[
-				6.2596244812011719,
-				89.9998779296875,
-				7.894963264465332
+				1.600825726200128e-06,
+				-0.0,
+				0.0
 			],
 			"m_scale" : 
 			[
-				1.7959591150283813,
-				1.9787172079086304,
-				1.9071156978607178
+				1.0,
+				0.99999988079071045,
+				1.0
 			]
 		}
 	},
@@ -108668,12 +108668,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -108818,21 +108818,21 @@
 		{
 			"m_position" : 
 			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
+				0.0001220703125,
+				0.0029296875,
+				5.74249267578125
 			],
 			"m_rotation" : 
 			[
-				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
+				-1.0244968507322483e-05,
+				2.3906846763566136e-05,
+				-4.6319513785419986e-05
 			],
 			"m_scale" : 
 			[
-				0.99994903802871704,
-				1.0000271797180176,
-				1.0000334978103638
+				0.99995040893554688,
+				1.0000307559967041,
+				1.0000343322753906
 			]
 		}
 	},
@@ -108862,12 +108862,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -109012,21 +109012,21 @@
 		{
 			"m_position" : 
 			[
-				-4.5134601593017578,
-				3.9113998413085938,
-				1.52362060546875
+				0.0018310546875,
+				0.000244140625,
+				-6.37921142578125
 			],
 			"m_rotation" : 
 			[
-				-42.430625915527344,
-				16.6219482421875,
-				-120.02053070068359
+				-8.3241247921250761e-06,
+				2.3905680791358463e-05,
+				-7.2784256190061569e-05
 			],
 			"m_scale" : 
 			[
-				0.99999672174453735,
-				1.0000162124633789,
-				1.0000312328338623
+				0.99999916553497314,
+				1.0000201463699341,
+				1.0000313520431519
 			]
 		}
 	},
@@ -109056,12 +109056,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -109206,21 +109206,21 @@
 		{
 			"m_position" : 
 			[
-				4.3850650787353516,
-				5.5909614562988281,
-				0.51934814453125
+				3.0517578125e-05,
+				0.0,
+				6.103515625e-05
 			],
 			"m_rotation" : 
 			[
-				-33.779819488525391,
-				5.0388336181640625,
-				-121.92738342285156
+				1.1098954928456806e-05,
+				-1.7075486766771064e-06,
+				-5.549532943405211e-06
 			],
 			"m_scale" : 
 			[
 				0.99999916553497314,
-				1.0000095367431641,
-				0.99997645616531372
+				1.0000091791152954,
+				0.9999765157699585
 			]
 		}
 	},
@@ -109458,9 +109458,9 @@
 		{
 			"m_position" : 
 			[
-				4.6865234375,
-				2.870941162109375,
-				0.06829833984375
+				0.0,
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
@@ -109502,12 +109502,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -109652,21 +109652,21 @@
 		{
 			"m_position" : 
 			[
-				-10.55865478515625,
-				3.05242919921875,
-				-0.65081787109375
+				2.9638671875,
+				-0.00714111328125,
+				0.017333984375
 			],
 			"m_rotation" : 
 			[
-				122.05386352539062,
-				30.051034927368164,
-				-62.936721801757812
+				6.5136771844331864e-12,
+				4.331897063281076e-09,
+				1.7076401945814723e-06
 			],
 			"m_scale" : 
 			[
-				0.99994546175003052,
+				0.99994552135467529,
 				1.0000151395797729,
-				1.0000337362289429
+				0.99999988079071045
 			]
 		}
 	},
@@ -109696,12 +109696,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -109846,21 +109846,21 @@
 		{
 			"m_position" : 
 			[
-				-3.45068359375,
-				3.742889404296875,
-				1.85870361328125
+				-4.15576171875,
+				-0.004180908203125,
+				0.014892578125
 			],
 			"m_rotation" : 
 			[
-				-23.954204559326172,
-				16.918109893798828,
-				171.27162170410156
+				-3.2568676488348158e-12,
+				1.5893517613108088e-09,
+				0.0
 			],
 			"m_scale" : 
 			[
 				1.0000059604644775,
 				1.0000061988830566,
-				0.99999463558197021
+				0.99996554851531982
 			]
 		}
 	},
@@ -109890,12 +109890,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -110040,21 +110040,21 @@
 		{
 			"m_position" : 
 			[
-				3.59906005859375,
-				3.26116943359375,
-				-0.1146240234375
+				-0.0306396484375,
+				-0.006683349609375,
+				0.01617431640625
 			],
 			"m_rotation" : 
 			[
-				-14.863742828369141,
-				7.632199764251709,
-				159.53306579589844
+				6.7907373058062603e-09,
+				5.1717781168747479e-09,
+				1.7074944480555132e-06
 			],
 			"m_scale" : 
 			[
 				1.0000308752059937,
-				0.99998211860656738,
-				0.99993133544921875
+				0.99998140335083008,
+				0.99989873170852661
 			]
 		}
 	},
@@ -110292,21 +110292,21 @@
 		{
 			"m_position" : 
 			[
-				3.60845947265625,
-				10.2239990234375,
-				0.00921630859375
+				-6.103515625e-05,
+				0.0,
+				0.0001220703125
 			],
 			"m_rotation" : 
 			[
-				175.65098571777344,
-				89.999946594238281,
-				-158.45901489257812
+				2.7752294045058079e-06,
+				4.2729695337584417e-07,
+				4.3277170334476978e-05
 			],
 			"m_scale" : 
 			[
-				1.9980806112289429,
-				1.9996771812438965,
-				1.6687326431274414
+				1.9980801343917847,
+				1.9996647834777832,
+				1.6687287092208862
 			]
 		}
 	},
@@ -110336,12 +110336,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -110486,21 +110486,21 @@
 		{
 			"m_position" : 
 			[
-				-7.449615478515625,
-				3.1505126953125,
-				-0.2738037109375
+				-0.00079345703125,
+				0.021484375,
+				-2.752349853515625
 			],
 			"m_rotation" : 
 			[
-				131.26423645019531,
-				49.624652862548828,
-				-29.82402229309082
+				2.3003378373687156e-05,
+				-3.5944860428571701e-05,
+				3.7977456486260053e-06
 			],
 			"m_scale" : 
 			[
-				0.99759769439697266,
-				0.99746978282928467,
-				1.0067851543426514
+				0.99759721755981445,
+				0.99746942520141602,
+				1.0067750215530396
 			]
 		}
 	},
@@ -110530,12 +110530,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -110680,21 +110680,21 @@
 		{
 			"m_position" : 
 			[
-				-1.571197509765625,
-				3.2978515625,
-				1.6104736328125
+				-0.0028076171875,
+				0.0302734375,
+				3.511749267578125
 			],
 			"m_rotation" : 
 			[
-				-48.927375793457031,
-				12.046996116638184,
-				-161.06910705566406
+				-1.6798911019577645e-05,
+				-3.3418464226997457e-06,
+				-6.1354211311481777e-07
 			],
 			"m_scale" : 
 			[
 				1.0219184160232544,
-				0.99105024337768555,
-				0.99516016244888306
+				0.99105143547058105,
+				0.99515897035598755
 			]
 		}
 	},
@@ -110724,12 +110724,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -110874,21 +110874,21 @@
 		{
 			"m_position" : 
 			[
-				3.939208984375,
-				3.59832763671875,
-				-0.2889404296875
+				0.0,
+				6.103515625e-05,
+				6.103515625e-05
 			],
 			"m_rotation" : 
 			[
-				-41.306838989257812,
-				1.8485933542251587,
-				-158.24220275878906
+				-3.2187153919949196e-07,
+				-1.2654160173042328e-06,
+				-3.4271684512532374e-07
 			],
 			"m_scale" : 
 			[
 				1.0120469331741333,
 				0.99469846487045288,
-				0.9971650242805481
+				0.99715191125869751
 			]
 		}
 	},
@@ -111093,9 +111093,9 @@
 		{
 			"m_position" : 
 			[
-				0.06292724609375,
-				0.0001220703125,
-				-0.00011444091796875
+				0.00201416015625,
+				-0.00128173828125,
+				-0.00109100341796875
 			],
 			"m_rotation" : 
 			[
@@ -111137,12 +111137,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -111287,21 +111287,21 @@
 		{
 			"m_position" : 
 			[
-				4.3850650787353516,
-				5.5909614562988281,
-				0.51934814453125
+				-2.69793701171875,
+				0.0,
+				1.52587890625e-05
 			],
 			"m_rotation" : 
 			[
-				-33.779819488525391,
-				5.0388336181640625,
-				-121.92738342285156
+				8.7083288235589862e-05,
+				1.4818851701292601e-10,
+				1.0992005222698609e-10
 			],
 			"m_scale" : 
 			[
-				0.99999916553497314,
-				1.0000095367431641,
-				0.99997645616531372
+				0.99999922513961792,
+				1.0000185966491699,
+				0.99998641014099121
 			]
 		}
 	},
@@ -111331,12 +111331,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -111481,21 +111481,21 @@
 		{
 			"m_position" : 
 			[
-				-4.5134601593017578,
-				3.9113998413085938,
-				1.52362060546875
+				2.849609375,
+				0.0,
+				1.52587890625e-05
 			],
 			"m_rotation" : 
 			[
-				-42.430625915527344,
-				16.6219482421875,
-				-120.02053070068359
+				0.00013489220873452723,
+				8.1422466425423723e-13,
+				-8.1422466425423723e-13
 			],
 			"m_scale" : 
 			[
 				0.99999672174453735,
-				1.0000162124633789,
-				1.0000312328338623
+				1.0000298023223877,
+				1.0000855922698975
 			]
 		}
 	},
@@ -111525,12 +111525,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -111675,21 +111675,21 @@
 		{
 			"m_position" : 
 			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
+				0.0257568359375,
+				0.0,
+				1.52587890625e-05
 			],
 			"m_rotation" : 
 			[
-				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
+				3.4149918064940721e-05,
+				2.4427905444962539e-12,
+				8.1426347869201221e-13
 			],
 			"m_scale" : 
 			[
 				0.99994903802871704,
-				1.0000271797180176,
-				1.0000334978103638
+				1.0000300407409668,
+				1.000037670135498
 			]
 		}
 	},
@@ -111908,7 +111908,7 @@
 		}
 	},
 	{
-		"Children" : 2,
+		"Children" : 3,
 		"Name" : 
 		{
 			"m_Name" : "FallingSmokeTrio",
@@ -111927,21 +111927,21 @@
 		{
 			"m_position" : 
 			[
-				-0.00146484375,
-				-0.0059814453125,
-				-0.00115966796875
+				-0.00439453125,
+				-0.00341796875,
+				-0.00067138671875
 			],
 			"m_rotation" : 
 			[
-				67.959602355957031,
-				-62.888015747070312,
-				-80.422012329101562
+				1.7085507352021523e-05,
+				2.1584756382253545e-07,
+				-1.640441405470483e-05
 			],
 			"m_scale" : 
 			[
-				1.9777135848999023,
-				1.6864956617355347,
-				2.0098259449005127
+				1.9777234792709351,
+				1.6865088939666748,
+				2.00982666015625
 			]
 		}
 	},
@@ -111971,12 +111971,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -112121,21 +112121,21 @@
 		{
 			"m_position" : 
 			[
-				-6.29486083984375,
-				4.007568359375,
-				-4.53594970703125
+				0.00537109375,
+				-0.06378173828125,
+				3.3840789794921875
 			],
 			"m_rotation" : 
 			[
-				-0.85015779733657837,
-				40.430774688720703,
-				-35.444091796875
+				1.8496268694434548e-06,
+				2.1497071429621428e-06,
+				-6.0191810007381719e-06
 			],
 			"m_scale" : 
 			[
-				0.9928935170173645,
-				1.0097308158874512,
-				1.0003954172134399
+				0.99289512634277344,
+				1.0097332000732422,
+				1.000395655632019
 			]
 		}
 	},
@@ -112165,12 +112165,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -112315,21 +112315,215 @@
 		{
 			"m_position" : 
 			[
-				-12.96173095703125,
-				0.158447265625,
-				-4.68096923828125
+				-0.00482177734375,
+				0.00030517578125,
+				-2.8327789306640625
 			],
 			"m_rotation" : 
 			[
-				124.30232238769531,
-				14.506710052490234,
-				66.131263732910156
+				1.5207842807285488e-06,
+				1.920990598591743e-06,
+				1.707547198748216e-06
 			],
 			"m_scale" : 
 			[
 				2.0,
 				2.0,
-				0.99563246965408325
+				0.99563270807266235
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle_0",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				0.27450981736183167,
+				0.27450981736183167,
+				0.27450981736183167,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.05000000074505806,
+			"m_FollowParent" : false,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 0.5,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 2.0,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 3.0,
+				"m_CurveMin" : 1.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 1.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					1.0
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "Smoke.dds",
+			"m_Trail" : false
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
+			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.00189208984375,
+				-0.00750732421875,
+				-0.00103759765625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				3.4568270166346338e-06,
+				-5.8333953347755596e-06
+			],
+			"m_scale" : 
+			[
+				0.98792755603790283,
+				1.0738683938980103,
+				1.0140169858932495
 			]
 		}
 	},
@@ -112569,19 +112763,19 @@
 			[
 				-1.52587890625e-05,
 				0.0,
-				0.227813720703125
+				0.00103759765625
 			],
 			"m_rotation" : 
 			[
-				2.2265925281317323e-07,
-				5.498891297861519e-08,
+				2.2443092007051746e-07,
+				5.5431847556519642e-08,
 				-1.7085370700442581e-06
 			],
 			"m_scale" : 
 			[
 				1.0000069141387939,
 				1.0000344514846802,
-				1.0005805492401123
+				1.000584602355957
 			]
 		}
 	},
@@ -112611,12 +112805,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -112761,15 +112955,15 @@
 		{
 			"m_position" : 
 			[
-				-4.5134620666503906,
-				3.911376953125,
-				1.52362060546875
+				3.7739601135253906,
+				-0.0225830078125,
+				0.001800537109375
 			],
 			"m_rotation" : 
 			[
-				-43.680015563964844,
-				19.891899108886719,
-				-92.360015869140625
+				0.0,
+				7.165227855487899e-10,
+				-1.0024536756247926e-09
 			],
 			"m_scale" : 
 			[
@@ -112805,12 +112999,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -112955,19 +113149,19 @@
 		{
 			"m_position" : 
 			[
-				-10.558483123779297,
-				3.052978515625,
-				-0.650848388671875
+				-3.6951866149902344,
+				-0.02130126953125,
+				0.00103759765625
 			],
 			"m_rotation" : 
 			[
-				138.79739379882812,
-				39.874885559082031,
-				54.162899017333984
+				1.016124295816212e-09,
+				1.3028239077839121e-11,
+				-1.0024504559780212e-09
 			],
 			"m_scale" : 
 			[
-				0.99994736909866333,
+				0.99994724988937378,
 				1.0000243186950684,
 				1.0000332593917847
 			]
@@ -112999,12 +113193,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -113149,21 +113343,21 @@
 		{
 			"m_position" : 
 			[
-				4.385009765625,
-				5.59088134765625,
-				0.5223388671875
+				0.000980377197265625,
+				-0.00653076171875,
+				0.0
 			],
 			"m_rotation" : 
 			[
-				-35.113739013671875,
-				8.5904703140258789,
-				-91.484603881835938
+				1.9020032215877336e-09,
+				7.686274727802811e-09,
+				-1.7085542367567541e-06
 			],
 			"m_scale" : 
 			[
 				0.99999737739562988,
 				1.0000101327896118,
-				0.99997729063034058
+				0.9999772310256958
 			]
 		}
 	},
@@ -113299,13 +113493,13 @@
 		{
 			"m_position" : 
 			[
-				-0.27490234375,
-				1.5929336547851562,
+				0.00030517578125,
+				1.5929641723632812,
 				0.0
 			],
 			"m_rotation" : 
 			[
-				0.0,
+				1.4655987534695214e-10,
 				1.7032207866307658e-09,
 				0.0
 			],
@@ -113343,12 +113537,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -113493,15 +113687,15 @@
 		{
 			"m_position" : 
 			[
-				-10.55848217010498,
-				3.052978515625,
-				-0.650848388671875
+				2.7314453125,
+				-0.0003662109375,
+				-0.02081298828125
 			],
 			"m_rotation" : 
 			[
-				131.78211975097656,
-				42.254611968994141,
-				1.8322427272796631
+				-1.1105685260304199e-09,
+				1.1106553454709456e-09,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -113537,12 +113731,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -113687,19 +113881,19 @@
 		{
 			"m_position" : 
 			[
-				-4.5134601593017578,
-				3.9113998413085938,
-				1.52362060546875
+				-1.05377197265625,
+				-0.0002593994140625,
+				-0.015625
 			],
 			"m_rotation" : 
 			[
-				-42.430625915527344,
-				16.6219482421875,
-				-120.02053070068359
+				0.0,
+				3.2568982233360799e-12,
+				1.7075526557164267e-06
 			],
 			"m_scale" : 
 			[
-				0.99999672174453735,
+				0.99999678134918213,
 				1.0000162124633789,
 				1.0000312328338623
 			]
@@ -113731,12 +113925,12 @@
 			"m_ConeRadiusMax" : 0.0,
 			"m_ConeRadiusMin" : 1.0,
 			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
+			"m_FollowParent" : false,
 			"m_Force" : 
 			[
+				0.0,
 				1.0,
-				1.0,
-				1.0
+				0.0
 			],
 			"m_Loop" : false,
 			"m_MaxLife" : 2.0,
@@ -113881,15 +114075,15 @@
 		{
 			"m_position" : 
 			[
-				4.3850650787353516,
-				5.5909614562988281,
-				0.51934814453125
+				-3.52947998046875,
+				-0.000274658203125,
+				-0.01934814453125
 			],
 			"m_rotation" : 
 			[
-				-33.779819488525391,
-				5.0388336181640625,
-				-121.92738342285156
+				-1.0324235910630364e-09,
+				1.0324343602263752e-09,
+				0.0
 			],
 			"m_scale" : 
 			[
@@ -123376,199 +123570,6 @@
 				1.0,
 				1.0,
 				1.0
-			]
-		}
-	},
-	{
-		"Name" : 
-		{
-			"m_Name" : "Particle_0",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				0.27450981736183167,
-				0.27450981736183167,
-				0.27450981736183167,
-				1.0
-			],
-			"m_ConeRadiusMax" : 0.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.05000000074505806,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 2.0,
-			"m_MinLife" : 0.5,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 1,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				1.0,
-				0.0
-			],
-			"m_SpawnRadius" : 2.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 3.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						0.8571428656578064
-					],
-					[
-						0.28571429848670959,
-						0.71428573131561279
-					],
-					[
-						0.4285714328289032,
-						0.57142853736877441
-					],
-					[
-						0.57142859697341919,
-						0.42857140302658081
-					],
-					[
-						0.71428573131561279,
-						0.28571426868438721
-					],
-					[
-						0.8571428656578064,
-						0.1428571343421936
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.5,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					1.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 1,
-			"m_TargetConeScale" : 45.0,
-			"m_TargetPos" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_TexName" : "Smoke.dds",
-			"m_Trail" : false
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "0b61fafd-3128-4259-8826-b74d2313a0cc",
-			"prefab_path" : "Resources\\Prefabs\\FallingObjSmoke.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-550.13372802734375,
-				410.71536254882812,
-				-481.87362670898438
-			],
-			"m_rotation" : 
-			[
-				165.90907287597656,
-				0.67210471630096436,
-				150.29812622070312
-			],
-			"m_scale" : 
-			[
-				0.90508264303207397,
-				1.134894847869873,
-				1.0143406391143799
 			]
 		}
 	},
@@ -192340,6 +192341,33 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.18299999833106995
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.18299999833106995
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\SFX_SelectedBobble.ogg",
+				"UpdatePos" : false,
+				"Volume" : 1.0
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\SFX_CollectBobble.ogg",
+				"UpdatePos" : false,
+				"Volume" : 1.0
+			}
+		},
 		"Children" : 0,
 		"Name" : 
 		{
