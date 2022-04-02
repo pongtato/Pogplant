@@ -191,7 +191,7 @@ namespace Scripting
 				{
 					//Bottom bar
 					if (ECS.GetGlobalPosition(m_score_board).Y < -0.15f)
-						ECS.SetGlobalPosition(m_score_board, Vector3.Lerp(ECS.GetGlobalPosition(m_score_board), new Vector3(0.0f, -0.149f, -0.010f), m_sliding_speed * dt));
+						ECS.SetGlobalPosition(m_score_board, Vector3.Lerp(ECS.GetGlobalPosition(m_score_board), new Vector3(0.0f, -0.149f, -0.2f), m_sliding_speed * dt));
 					else
 						m_entering_animation = false;
 				}
@@ -200,7 +200,7 @@ namespace Scripting
 				{
 					//Bottom bar
 					if (ECS.GetGlobalPosition(m_score_board).Y > -1.3f)
-						ECS.SetGlobalPosition(m_score_board, Vector3.Lerp(ECS.GetGlobalPosition(m_score_board), new Vector3(0.0f, -1.31f, -0.010f), m_sliding_speed * dt));
+						ECS.SetGlobalPosition(m_score_board, Vector3.Lerp(ECS.GetGlobalPosition(m_score_board), new Vector3(0.0f, -1.31f, -0.2f), m_sliding_speed * dt));
 					else
 					{
 						m_exiting_animation = false;
@@ -302,7 +302,6 @@ namespace Scripting
 				if (InputUtility.onKeyTriggered("ESCAPE"))
 				{
 					//ECS.PlayAudio(entityID, 3, "SFX");
-
 					m_exiting_animation = true;
 				}
 

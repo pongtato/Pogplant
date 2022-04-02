@@ -40,8 +40,9 @@ namespace Scripting
 
         float m_TransitDelayTimer;
         const float m_BarsDuration = 1.0f;
-        const float m_SceneChangeDelayDuration = 4.0f;
+        const float m_SceneChangeDelayDuration = 0.0f;
         bool m_EnableTransitDelayCountdown;
+        bool m_EnableHighScoreOnce;
 
         bool cinematic_cover_screen;
         uint cinematic_bar_top_id;
@@ -260,10 +261,16 @@ namespace Scripting
                 m_TransitDelayTimer += dt;
                 cinematic_cover_screen = true;
                 UpdateCinematicBars(dt);
-                if (m_TransitDelayTimer > m_SceneChangeDelayDuration)
+
+                if (ECS.GetGlobalPosition(entityID).Y > -1.25f)
                 {
-                    GameUtilities.ResumeScene();
-                    GameUtilities.LoadScene(scene_to_load);
+                    ECS.SetGlobalPosition(entityID, Vector3.Lerp(ECS.GetGlobalPosition(entityID), new Vector3(0.0f, -1.3f, -0.1f), m_AnimationSpeed * dt));
+                }
+
+                if (m_TransitDelayTimer > m_SceneChangeDelayDuration && m_EnableHighScoreOnce)
+                {
+                    m_EnableHighScoreOnce = false;
+                    HighScoreMenu.Enable(true, scene_to_load);
                 }
             }
         }
@@ -424,6 +431,7 @@ namespace Scripting
                     {
                         m_TransitDelayTimer = 0.0f;
                         m_EnableTransitDelayCountdown = true;
+                        m_EnableHighScoreOnce = true;
                         ECS.SetActive(cinematic_bar_top_id, true);
                         ECS.SetActive(cinematic_bar_bottom_id, true);
                         ECS.PlayAudio(entityID, 6, "SFX");
@@ -470,12 +478,12 @@ namespace Scripting
                 //Top bar
                 if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 0.8f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 0.79f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 0.79f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
                 //Bottom bar
                 if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -0.8f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -0.79f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -0.79f, ECS.GetGlobalPosition(cinematic_bar_bottom_id).Z), cinematic_bar_speed * dt));
                 }
             }
             else
@@ -483,12 +491,12 @@ namespace Scripting
                 //Top bar
                 if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 1.3f || ECS.GetGlobalPosition(cinematic_bar_top_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
                 //Bottom bar
                 if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -1.3f || ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, ECS.GetGlobalPosition(cinematic_bar_bottom_id).Z), cinematic_bar_speed * dt));
                 }
             }
         }
