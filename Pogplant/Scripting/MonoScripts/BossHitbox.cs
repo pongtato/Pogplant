@@ -59,7 +59,7 @@ namespace Scripting
 			m_damageAmount = ECS.GetValue<int>(entityID, 50, "DamageAmount");
 			m_damageHitBox = ECS.GetValue<bool>(entityID, false, "IsHitbox");
 			m_hitboxHitScan = ECS.GetValue<bool>(entityID, false, "IsHitScan");
-			m_hitScanThickness = ECS.GetValue<float>(entityID, 0.2f, "HitScanThickness");
+			m_hitScanThickness = ECS.GetValue<float>(entityID, 0.1f, "HitScanThickness");
 			m_applyForceOnHit = ECS.GetValue<bool>(entityID, false, "ApplyForce");
 			m_forceDirection = ECS.GetValue<Vector3>(entityID, new Vector3(0.0f, -100f, 0.0f), "ForceDirection");
 

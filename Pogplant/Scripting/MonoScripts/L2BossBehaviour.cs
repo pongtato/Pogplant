@@ -187,6 +187,12 @@ namespace Scripting
 		#region[Laser Stuff]
 		public float mLaser_timer = 0f;
 		bool mLaser_useOnce = false;
+
+		Vector3 mLaserBounds_TL;
+		Vector3 mLaserBounds_TR;
+		Vector3 mLaserBounds_BL;
+		Vector3 mLaserBounds_BR;
+
 		#endregion
 
 		#region[Damage Animations]
@@ -246,6 +252,7 @@ namespace Scripting
 				mID_ventSpawnpoints[i] = ECS.FindChildEntityWithName(bossPanelSpawns, (i + 1).ToString());
 			}
 
+			//Init turrets
 			for (int i = 0; i < 2; ++i)
 			{
 				m_turretGuns[i].ID_shootPoint = ECS.FindChildEntityWithName(m_turretGuns[i].ID_turretBody, "Shoot");
@@ -264,6 +271,13 @@ namespace Scripting
 				ECS.SetActive(m_turretGuns[i].ID_laserOutline, false);
 				ECS.SetActive(m_turretGuns[i].ID_laserHitbox, false);
 			}
+
+			//Get laser positions;
+			uint laserBounds = ECS.FindEntityWithName("BossLaserTargetBounds");
+			mLaserBounds_TL = ECS.GetGlobalPosition(ECS.FindChildEntityWithName(laserBounds, "TL"));
+			mLaserBounds_TR = ECS.GetGlobalPosition(ECS.FindChildEntityWithName(laserBounds, "TR"));
+			mLaserBounds_BL = ECS.GetGlobalPosition(ECS.FindChildEntityWithName(laserBounds, "BL"));
+			mLaserBounds_BR = ECS.GetGlobalPosition(ECS.FindChildEntityWithName(laserBounds, "BR"));
 
 			m_runStateInfo.canDamageSideCores = false;
 			m_runStateInfo.canDamageMainCore = true;
@@ -293,6 +307,11 @@ namespace Scripting
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK].stateDurationMin = 9.1f;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK].stateDurationMax = 9.1f;
 
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.STUN_FIELD].isVulnerable = false;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.STUN_FIELD].shouldReturnToDefault = true;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.STUN_FIELD].stateDurationMin = 9.1f;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.STUN_FIELD].stateDurationMax = 9.1f;
+
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].isVulnerable = false;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].shouldReturnToDefault = true;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMin = 20f;
@@ -318,6 +337,14 @@ namespace Scripting
 		{
 			//Debug test codes
 			{
+				if (InputUtility.onKeyHeld(KEY_ID.KEY_LEFT_SHIFT))
+				{
+					if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+					{
+						GameUtilities.LoadScene("EndGameCutscene");
+					}
+				}
+
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
 				{
 					Console.WriteLine("L2BossBehaviour.cs: Boss state is: " + L2Boss.m_singleton.current_state);
@@ -328,6 +355,16 @@ namespace Scripting
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
 				{
 					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK);
+				}
+
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_K))
+				{
+					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK);
+				}
+
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_L))
+				{
+					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK);
 				}
 			}
 
@@ -595,98 +632,7 @@ namespace Scripting
 				//Sweep attack
 				case 2:
 				{
-					/*//Lerp gun to random target
-					for (int i = 0; i < 2; ++i)
-					{
-						m_tempTransform.Rotation = ECS.GetGlobalRotation(m_turretGuns[i].ID_turretBody);
-						m_tempTransform.Rotation = Vector3.Lerp(m_tempTransform.Rotation, m_turretGuns[i].targetRotation, dt * 2f);
-						ECS.SetGlobalRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
-					}//*/
-					Vector3 shipPos = ECS.GetGlobalPosition(mID_playerShip) - new Vector3(0, 0.55f, 0);
-
-					for (int i = 0; i < 2; ++i)
-					{
-						if (m_turretGuns[i].shouldLerp)
-						{
-							ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
-							Vector3 beforeLerp = m_tempTransform.Rotation;
-							Transform.LookAt(m_turretGuns[i].ID_turretBody, shipPos);
-							ECS.GetTransformECS(m_turretGuns[i].ID_turretBody, ref m_tempTransform.Position, ref m_tempTransform.Rotation, ref m_tempTransform.Scale);
-
-							m_tempTransform.Rotation = Vector3.Lerp(beforeLerp, m_tempTransform.Rotation, dt * 10f);
-
-							ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
-						}
-					}
-
-					//Fire
-					if (m_runStateInfo.bossTurretShouldFire)
-					{
-						m_runStateInfo.bossShootTimer += dt;
-
-						if (!m_runStateInfo.bossShootReloading)
-						{
-							//Wait for the audio to play then turn on the laser LOL
-
-
-							if (m_runStateInfo.bossShootTimer > 6f && m_runStateInfo.bossShootTimer < 7f)
-							{
-								for (int i = 0; i < 2; ++i)
-								{
-									ECS.SetActive(m_turretGuns[i].ID_laserOutline, true);
-									ECS.SetActive(m_turretGuns[i].ID_laserHitbox, true);
-
-									ECS.SetScale(m_turretGuns[i].ID_laserOutline, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserOutline), new Vector3(0.9f, 0.9f, 3f), dt * 3f));
-									ECS.SetScale(m_turretGuns[i].ID_laserObject, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserObject), new Vector3(0.8f, 0.8f, 3f), dt * 3f));
-								}
-							}
-							else if (m_runStateInfo.bossShootTimer > 7f && !mLaser_useOnce)
-							{
-								for (int i = 0; i < 2; ++i)
-								{
-									ECS.SetActive(m_turretGuns[i].ID_laserHitbox, false);
-									ECS.SetScale(m_turretGuns[i].ID_laserOutline, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserOutline), new Vector3(0.0f, 0.0f, 3f), dt * 6f));
-									ECS.SetScale(m_turretGuns[i].ID_laserObject, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserObject), new Vector3(0.0f, 0.0f, 3f), dt * 6f));
-								}
-
-								if (m_runStateInfo.bossShootTimer > 7.6f)
-								{
-									mLaser_useOnce = true;
-
-									L2Boss.m_singleton.SetColorTurretRecovery();
-									for (int i = 0; i < 2; ++i)
-									{
-										ECS.SetActive(m_turretGuns[i].ID_laserObject, false);
-										ECS.SetActive(m_turretGuns[i].ID_laserOutline, false);
-									}
-								}
-							}
-						}
-						else if (m_runStateInfo.bossShootReloading)
-						{
-							if (m_runStateInfo.bossShootTimer > m_bossShootingCoolDown)
-							{
-								m_runStateInfo.bossShootReloading = false;
-								m_runStateInfo.bossShootTimer = -0.2f;
-
-								L2Boss.m_singleton.SetTurretColors();
-								L2Boss.m_singleton.SetColorTurretPreparingFire();
-
-								ECS.PlayAudio(entityID, 4, "SFX");
-
-								for (int i = 0; i < 2; ++i)
-								{
-									ECS.SetActive(m_turretGuns[i].ID_laserObject, true);
-									ECS.SetScale(m_turretGuns[i].ID_laserOutline, new Vector3(0f, 0f, 3f));
-									ECS.SetScale(m_turretGuns[i].ID_laserObject, new Vector3(0.1f, 0.1f, 3f));
-
-									m_turretGuns[i].shouldLerp = true;
-								}
-
-								mLaser_useOnce = false;
-							}
-						}
-					}
+					UpdateLaserAttack(dt);
 				}
 				break;//*/
 			}
@@ -736,30 +682,10 @@ namespace Scripting
 
 						for (int i = 0; i < 2; ++i)
 						{
-							Vector3 up = Transform.GetUpVector(m_turretGuns[i].ID_shootPoint);
-							Vector3 shootPos = ECS.GetGlobalPosition(m_turretGuns[i].ID_shootPoint);
-							Vector3 forwardVec = Transform.GetForwardVector(m_turretGuns[i].ID_shootPoint);
-							Vector3 right = Vector3.CrossProduct(forwardVec, up);
-
 							GameUtilities.FireEnemyBullet(
 								m_turretGuns[i].ID_shootPoint,
-								shootPos + up * 0.2f,
-								forwardVec, 14.0f, 3.0f);
-
-							GameUtilities.FireEnemyBullet(
-								m_turretGuns[i].ID_shootPoint,
-								shootPos - up * 0.2f,
-								forwardVec, 14.0f, 3.0f);
-
-							GameUtilities.FireEnemyBullet(
-								m_turretGuns[i].ID_shootPoint,
-								shootPos + right * 0.2f,
-								forwardVec, 14.0f, 3.0f);
-
-							GameUtilities.FireEnemyBullet(
-								m_turretGuns[i].ID_shootPoint,
-								shootPos - right * 0.2f,
-								forwardVec, 14.0f, 3.0f);
+								ECS.GetGlobalPosition(m_turretGuns[i].ID_shootPoint),
+								Transform.GetForwardVector(m_turretGuns[i].ID_shootPoint), 22.0f, 3.0f, false, 3f);
 						}
 					}
 				}
@@ -777,6 +703,96 @@ namespace Scripting
 			}
 		}
 
+		void UpdateLaserAttack(float dt)
+		{
+			Vector3 shipPos = ECS.GetGlobalPosition(mID_playerShip) - new Vector3(0, 0.55f, 0);
+
+			if (m_runStateInfo.bossShootTimer < 5.85f)
+			{
+				//Aim/lerp to player
+				for (int i = 0; i < 2; ++i)
+				{
+					if (m_turretGuns[i].shouldLerp)
+					{
+						Vector3 beforeLerp = ECS.GetRotation(m_turretGuns[i].ID_turretBody);
+						Transform.LookAt(m_turretGuns[i].ID_turretBody, shipPos);
+						m_tempTransform.Rotation = Vector3.Lerp(beforeLerp, ECS.GetRotation(m_turretGuns[i].ID_turretBody), dt * 10f);
+
+						ECS.SetRotation(m_turretGuns[i].ID_turretBody, m_tempTransform.Rotation);
+					}
+				}
+			}
+
+			//Fire
+			if (m_runStateInfo.bossTurretShouldFire)
+			{
+				m_runStateInfo.bossShootTimer += dt;
+
+				if (!m_runStateInfo.bossShootReloading)
+				{
+					//Wait for the audio to play then turn on the laser LOL
+
+
+					if (m_runStateInfo.bossShootTimer > 6f && m_runStateInfo.bossShootTimer < 7f)
+					{
+						for (int i = 0; i < 2; ++i)
+						{
+							ECS.SetActive(m_turretGuns[i].ID_laserOutline, true);
+							ECS.SetActive(m_turretGuns[i].ID_laserHitbox, true);
+
+							ECS.SetScale(m_turretGuns[i].ID_laserOutline, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserOutline), new Vector3(0.9f, 0.9f, 3f), dt * 3f));
+							ECS.SetScale(m_turretGuns[i].ID_laserObject, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserObject), new Vector3(0.8f, 0.8f, 3f), dt * 3f));
+						}
+					}
+					else if (m_runStateInfo.bossShootTimer > 7f && !mLaser_useOnce)
+					{
+						for (int i = 0; i < 2; ++i)
+						{
+							ECS.SetActive(m_turretGuns[i].ID_laserHitbox, false);
+							ECS.SetScale(m_turretGuns[i].ID_laserOutline, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserOutline), new Vector3(0.0f, 0.0f, 3f), dt * 6f));
+							ECS.SetScale(m_turretGuns[i].ID_laserObject, Vector3.Lerp(ECS.GetScale(m_turretGuns[i].ID_laserObject), new Vector3(0.0f, 0.0f, 3f), dt * 6f));
+						}
+
+						if (m_runStateInfo.bossShootTimer > 7.6f)
+						{
+							mLaser_useOnce = true;
+
+							L2Boss.m_singleton.SetColorTurretRecovery();
+							for (int i = 0; i < 2; ++i)
+							{
+								ECS.SetActive(m_turretGuns[i].ID_laserObject, false);
+								ECS.SetActive(m_turretGuns[i].ID_laserOutline, false);
+							}
+						}
+					}
+				}
+				else if (m_runStateInfo.bossShootReloading)
+				{
+					if (m_runStateInfo.bossShootTimer > m_bossShootingCoolDown)
+					{
+						m_runStateInfo.bossShootReloading = false;
+						m_runStateInfo.bossShootTimer = -0.2f;
+
+						L2Boss.m_singleton.SetTurretColors();
+						L2Boss.m_singleton.SetColorTurretPreparingFire();
+
+						ECS.PlayAudio(entityID, 4, "SFX");
+
+						for (int i = 0; i < 2; ++i)
+						{
+							ECS.SetActive(m_turretGuns[i].ID_laserObject, true);
+							ECS.SetScale(m_turretGuns[i].ID_laserOutline, new Vector3(0f, 0f, 3f));
+							ECS.SetScale(m_turretGuns[i].ID_laserObject, new Vector3(0.1f, 0.1f, 3f));
+
+							m_turretGuns[i].shouldLerp = true;
+						}
+
+						mLaser_useOnce = false;
+					}
+				}
+			}
+		}
+
 		void TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false, bool dontResetTimer = false)
 		{
 			m_runStateInfo.lastState = L2Boss.m_singleton.current_state;
@@ -785,6 +801,7 @@ namespace Scripting
 
 			switch (L2Boss.m_singleton.current_state)
 			{
+				case L2Boss.BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK:
 				case L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK:
 				case L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK:
 				{

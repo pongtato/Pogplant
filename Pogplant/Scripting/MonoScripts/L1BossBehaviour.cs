@@ -357,6 +357,18 @@ namespace Scripting
 		{
 			if (m_debugMode)
 			{
+				if(InputUtility.onKeyHeld(KEY_ID.KEY_LEFT_SHIFT))
+				{
+					if(InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+					{
+						mh_coreHealth = 0f;
+
+						if (L1Boss.m_singleton.current_state != L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE)
+						{
+							TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+						}
+					}
+				}
 				//Debug stuff
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
 				{
