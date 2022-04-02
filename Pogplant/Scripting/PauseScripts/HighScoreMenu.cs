@@ -205,7 +205,8 @@ namespace Scripting
 					{
 						m_exiting_animation = false;
 
-						GameUtilities.ResumeScene();
+						//GameUtilities.ResumeScene();
+						GameUtilities.LoadScene(m_next_scene);
 					}
 				}
 
@@ -296,7 +297,7 @@ namespace Scripting
 		{
 			//different controls based on the scene
 			//main menu controls
-			if (m_next_scene == "None")
+			//if (m_next_scene == "None")
             {
 				if (InputUtility.onKeyTriggered("ESCAPE"))
 				{
@@ -334,10 +335,10 @@ namespace Scripting
 					SaveScore();
 				}
 			}
-			else //controls during L1Boss and L2Boss
-            {
+			//else //controls during L1Boss and L2Boss
+   //         {
 
-            }
+   //         }
 		}
 
 		private void UpdateInputUi(bool controller_used)

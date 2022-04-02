@@ -353,10 +353,10 @@ namespace Scripting
                         
                         if (any_key_active && InputUtility.onAnyKey())
                         {
-                            //HighScoreMenu.Enable(true);
-                            //GameUtilities.PauseScene();
+                            HighScoreMenu.Enable(true, "CutScene2");
+                            GameUtilities.PauseScene();
 
-                            GameUtilities.LoadScene("CutScene2");
+                            //GameUtilities.LoadScene("CutScene2");
                         }
                     }
                     break;
