@@ -340,6 +340,9 @@ namespace Scripting
                         
                         if (any_key_active && InputUtility.onAnyKey())
                         {
+                            //HighScoreMenu.Enable(true);
+                            //GameUtilities.PauseScene();
+
                             GameUtilities.LoadScene("CutScene2");
                         }
                     }
@@ -540,12 +543,12 @@ namespace Scripting
                 //Top bar
                 if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 1.3f || ECS.GetGlobalPosition(cinematic_bar_top_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
                 //Bottom bar
                 if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -1.3f || ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
             }
         }
