@@ -537,8 +537,8 @@ namespace Components
 			bool _MoveToTarget
 		);
 
-		void Update(float _Dt, const Transform& _Transform, const glm::vec3& _CamPos);
-		void Spawn(const Transform& _Transform, glm::vec3 _RandPos, glm::vec3 _Direction);
+		void Update(float _Dt, Transform& _Transform, const glm::vec3& _CamPos);
+		void Spawn(Transform& _Transform, glm::vec3 _RandPos, glm::vec3 _Direction);
 		void Clear();
 		void UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos, const glm::mat4& _ParentMtx, bool _Parented);
 		void init();

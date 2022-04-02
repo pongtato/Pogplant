@@ -417,7 +417,7 @@ namespace Components
 		m_CurrentLifetime = 0.0f;
 	}
 
-	void ParticleSystem::Update(float _Dt, const Transform& _Transform, const glm::vec3& _CamPos)
+	void ParticleSystem::Update(float _Dt, Transform& _Transform, const glm::vec3& _CamPos)
 	{
 		if (!m_Play || m_Pause)
 		{
@@ -568,15 +568,11 @@ namespace Components
 		m_CurrentLifetime += _Dt;
 	}
 
-	void ParticleSystem::Spawn(const Transform& _Transform, glm::vec3 _RandPos, glm::vec3 _Direction)
+	void ParticleSystem::Spawn(Transform& _Transform, glm::vec3 _RandPos, glm::vec3 _Direction)
 	{
 		glm::vec3 posCalc = glm::vec3{ 1 };
-		// Local
-		glm::mat4 localMtx = glm::translate(glm::mat4{ 1 }, _Transform.m_position);
-
 		// Get global pos
-		glm::mat4 concat = _Transform.m_ModelMtx * localMtx;
-		ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(concat), glm::value_ptr(posCalc), nullptr, nullptr);
+		ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(_Transform.m_ModelMtx), glm::value_ptr(posCalc), nullptr, nullptr);
 
 		// Override
 		if (m_MoveToTarget)

@@ -113183,7 +113183,7 @@
 			"isStatic" : true,
 			"isTrigger" : true
 		},
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Coin3",
@@ -113242,6 +113242,200 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.10000000149011612,
+			"m_FollowParent" : false,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 1.0,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 0.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 0.5,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.73469388484954834
+					],
+					[
+						0.28571429848670959,
+						0.51020407676696777
+					],
+					[
+						0.4285714328289032,
+						0.32653063535690308
+					],
+					[
+						0.57142859697341919,
+						0.1836734414100647
+					],
+					[
+						0.71428573131561279,
+						0.081632614135742188
+					],
+					[
+						0.8571428656578064,
+						0.020408153533935547
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 2.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 44.0,
+				"m_MaxFrames" : 45,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.75
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "256_ExportSheet_01.dds",
+			"m_Trail" : false
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a6f7c8f3-fdc9-4efd-ad23-56d79a136532",
+			"prefab_path" : "Resources\\Prefabs\\Coin_Particle.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				4.0,
+				4.0,
+				4.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -113260,7 +113454,7 @@
 			"isStatic" : true,
 			"isTrigger" : true
 		},
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Coin2",
@@ -113319,6 +113513,200 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.10000000149011612,
+			"m_FollowParent" : false,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 1.0,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 0.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 0.5,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.73469388484954834
+					],
+					[
+						0.28571429848670959,
+						0.51020407676696777
+					],
+					[
+						0.4285714328289032,
+						0.32653063535690308
+					],
+					[
+						0.57142859697341919,
+						0.1836734414100647
+					],
+					[
+						0.71428573131561279,
+						0.081632614135742188
+					],
+					[
+						0.8571428656578064,
+						0.020408153533935547
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 2.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 44.0,
+				"m_MaxFrames" : 45,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.75
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "256_ExportSheet_01.dds",
+			"m_Trail" : false
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a6f7c8f3-fdc9-4efd-ad23-56d79a136532",
+			"prefab_path" : "Resources\\Prefabs\\Coin_Particle.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				5.0087655836250633e-06,
+				-4.1557182695051154e-10
+			],
+			"m_scale" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -113337,7 +113725,7 @@
 			"isStatic" : true,
 			"isTrigger" : true
 		},
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Coin1",
@@ -113392,6 +113780,200 @@
 				0.5,
 				0.5,
 				0.5
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Particle",
+			"status" : true
+		},
+		"ParticleSystem" : 
+		{
+			"_EmitterType" : "GENERAL",
+			"m_BillboardAxis" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ConeRadiusMax" : 0.0,
+			"m_ConeRadiusMin" : 1.0,
+			"m_Delay" : 0.10000000149011612,
+			"m_FollowParent" : false,
+			"m_Force" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_Loop" : false,
+			"m_MaxLife" : 2.0,
+			"m_MinLife" : 1.0,
+			"m_MoveToTarget" : false,
+			"m_Play" : true,
+			"m_RandomRotate" : false,
+			"m_Scale" : 
+			{
+				"m_CurveMax" : 1.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.8571428656578064
+					],
+					[
+						0.28571429848670959,
+						0.71428573131561279
+					],
+					[
+						0.4285714328289032,
+						0.57142853736877441
+					],
+					[
+						0.57142859697341919,
+						0.42857140302658081
+					],
+					[
+						0.71428573131561279,
+						0.28571426868438721
+					],
+					[
+						0.8571428656578064,
+						0.1428571343421936
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.5,
+				"m_MultiplierMin" : 0.0
+			},
+			"m_SpawnCount" : 1,
+			"m_SpawnDirection" : 
+			[
+				0.0,
+				1.0,
+				0.0
+			],
+			"m_SpawnRadius" : 0.5,
+			"m_Speed" : 
+			{
+				"m_CurveMax" : 2.0,
+				"m_CurveMin" : 0.0,
+				"m_CurvePoints" : 
+				[
+					[
+						0.0,
+						1.0
+					],
+					[
+						0.1428571492433548,
+						0.73469388484954834
+					],
+					[
+						0.28571429848670959,
+						0.51020407676696777
+					],
+					[
+						0.4285714328289032,
+						0.32653063535690308
+					],
+					[
+						0.57142859697341919,
+						0.1836734414100647
+					],
+					[
+						0.71428573131561279,
+						0.081632614135742188
+					],
+					[
+						0.8571428656578064,
+						0.020408153533935547
+					],
+					[
+						1.0,
+						0.0
+					]
+				],
+				"m_MultiplierMax" : 1.0,
+				"m_MultiplierMin" : 2.0
+			},
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 44.0,
+				"m_MaxFrames" : 45,
+				"m_Play" : true,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.75
+				]
+			},
+			"m_SubDelay" : 1.0,
+			"m_SubSpawnCount" : 1,
+			"m_TargetConeScale" : 45.0,
+			"m_TargetPos" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_TexName" : "256_ExportSheet_01.dds",
+			"m_Trail" : false
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "a6f7c8f3-fdc9-4efd-ad23-56d79a136532",
+			"prefab_path" : "Resources\\Prefabs\\Coin_Particle.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				4.0,
+				4.0,
+				4.0
 			]
 		}
 	},
@@ -145723,7 +146305,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 39.343620300292969,
+				"m_FrameCounter" : 56.885936737060547,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -145736,8 +146318,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.3125
+					0.0,
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145789,7 +146371,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 39.343620300292969,
+				"m_FrameCounter" : 56.885936737060547,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -145802,8 +146384,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.3125
+					0.0,
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145855,7 +146437,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 93.102790832519531,
+				"m_FrameCounter" : 102.50592041015625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -145868,8 +146450,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.734375
+					0.0,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145921,7 +146503,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 39.343620300292969,
+				"m_FrameCounter" : 56.885936737060547,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -145934,8 +146516,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.3125
+					0.0,
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -145987,7 +146569,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 5.9002799987792969,
+				"m_FrameCounter" : 36.361469268798828,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -146000,8 +146582,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.046875
+					0.0,
+					0.296875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146053,7 +146635,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 39.343620300292969,
+				"m_FrameCounter" : 56.885936737060547,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 200.0,
@@ -146066,8 +146648,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.3125
+					0.0,
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146119,7 +146701,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 93.102790832519531,
+				"m_FrameCounter" : 102.50592041015625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146132,8 +146714,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.734375
+					0.0,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146185,7 +146767,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.991462707519531,
+				"m_FrameCounter" : 7.7787895202636719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146199,7 +146781,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.390625
+					0.0625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146251,7 +146833,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 93.102790832519531,
+				"m_FrameCounter" : 102.50592041015625,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 250.0,
@@ -146264,8 +146846,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.734375
+					0.0,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146317,7 +146899,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 11.8914794921875,
+				"m_FrameCounter" : 1.7252199649810791,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 100.0,
@@ -146331,7 +146913,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.09375
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -146383,7 +146965,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 49.991462707519531,
+				"m_FrameCounter" : 7.7787895202636719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 150.0,
@@ -146397,7 +146979,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.390625
+					0.0625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
