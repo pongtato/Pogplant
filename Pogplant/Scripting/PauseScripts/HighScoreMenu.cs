@@ -41,6 +41,9 @@ namespace Scripting
 		uint m_Arrow_Right_D;
 		uint m_Arrow_Right_DPad;
 
+		//used to track the next scene
+		static string m_next_scene;
+		static int m_score_array_index;
 		//private for score
 		public struct ScoreEntry
 		{
@@ -128,9 +131,9 @@ namespace Scripting
 					uint parent_id = ECS.FindEntityWithName("Score_0" + (i + 1));
 					if (parent_id != m_null_entity)
                     {
-                        ScoreList[(uint)entry].Add(new ScoreEntry(	PlayerPrefs.GetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", (uint)rnd.Next(99999999)),
+                        ScoreList[(uint)entry].Add(new ScoreEntry(	PlayerPrefs.GetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", 00000000),
 																	ECS.FindChildEntityWithName(parent_id, "Score"),
-																	PlayerPrefs.GetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", "DIC"),
+																	PlayerPrefs.GetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", "AAA"),
 																	ECS.FindChildEntityWithName(parent_id, "Name")));
                     }
 					else
@@ -210,7 +213,6 @@ namespace Scripting
 				{
 					if (m_index != m_prev_index)
 					{
-						Console.WriteLine("updated");
 						UpdateInputUi(InputUtility.IsControlledBeingUsed());
 						UpdateScoreBoard(ref m_index);
 						UpdateScoreUICategory();
@@ -279,50 +281,63 @@ namespace Scripting
 		{
 		}
 
-		public static void Enable(bool isResumeScene)
+		//ScoreArrayIndex = 0 -> L1Boss
+		//scoreArrayIndex = 1 -> L2Boss
+		public static void Enable(bool isResumeScene, string next_scene = "None", int ScoreArrayIndex = -1)
 		{
 			m_enabled = isResumeScene;
 			m_entering_animation = true;
+
+			m_next_scene = next_scene;
+			m_score_array_index = ScoreArrayIndex;
 		}
 
 		private void UpdateMenuInput()
 		{
-
-			if (InputUtility.onKeyTriggered("ESCAPE"))
-			{
-				//ECS.PlayAudio(entityID, 3, "SFX");
-
-				m_exiting_animation = true;
-			}
-
-			if (InputUtility.onKeyTriggered("MENULEFT"))
-			{
-				ECS.PlayAudio(entityID, 0, "SFX");
-
-				m_prev_index = m_index;
-
-				if (m_index - 1 < (int)TITLE_ORDER.L1)
-					m_index = (int)TITLE_ORDER.L2;
-				else
-					m_index--;
-			}
-			else if (InputUtility.onKeyTriggered("MENURIGHT"))
-			{
-				ECS.PlayAudio(entityID, 1, "SFX");
-
-				m_prev_index = m_index;
-
-				if (m_index + 1 > (int)TITLE_ORDER.L2)
-					m_index = (int)TITLE_ORDER.L1;
-				else
-					m_index++;
-			}
-
-			if (InputUtility.onKeyTriggered(KEY_ID.KEY_SLASH))
+			//different controls based on the scene
+			//main menu controls
+			if (m_next_scene == "None")
             {
-				Console.WriteLine("Saved score");
-				SaveScore();
+				if (InputUtility.onKeyTriggered("ESCAPE"))
+				{
+					//ECS.PlayAudio(entityID, 3, "SFX");
+
+					m_exiting_animation = true;
+				}
+
+				if (InputUtility.onKeyTriggered("MENULEFT"))
+				{
+					ECS.PlayAudio(entityID, 0, "SFX");
+
+					m_prev_index = m_index;
+
+					if (m_index - 1 < (int)TITLE_ORDER.L1)
+						m_index = (int)TITLE_ORDER.L2;
+					else
+						m_index--;
+				}
+				else if (InputUtility.onKeyTriggered("MENURIGHT"))
+				{
+					ECS.PlayAudio(entityID, 1, "SFX");
+
+					m_prev_index = m_index;
+
+					if (m_index + 1 > (int)TITLE_ORDER.L2)
+						m_index = (int)TITLE_ORDER.L1;
+					else
+						m_index++;
+				}
+
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_SLASH))
+				{
+					Console.WriteLine("Saved score");
+					SaveScore();
+				}
 			}
+			else //controls during L1Boss and L2Boss
+            {
+
+            }
 		}
 
 		private void UpdateInputUi(bool controller_used)
