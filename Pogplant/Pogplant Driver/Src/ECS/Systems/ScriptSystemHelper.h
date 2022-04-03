@@ -59,6 +59,8 @@ namespace SSH
 	void PlaySubtitles(std::uint32_t entityID);
 	void PauseSubtitles(std::uint32_t entityID);
 
+	void ChangeSkybox(MonoString* skyboxName);
+
 	// True is enabled, False is disabled
 	void SetActive(std::uint32_t entityID, bool isEnabled);
 	void ToggleEntity(std::uint32_t entityID);

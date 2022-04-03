@@ -69,6 +69,8 @@ namespace Pogplant
 		//static RenderMode m_DebugRenderMode;
 		static bool m_EditorCamDebug;
 
+		static std::string m_CurrentSkybox;
+
 	private:
 		static void DrawText(entt::registry& registry, bool _EditorMode);
 	};

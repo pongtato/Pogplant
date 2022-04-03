@@ -162,5 +162,8 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void GameSetFullscreen(bool _Fullscreen);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void ChangeSkybox(string levelID);
     }
 }

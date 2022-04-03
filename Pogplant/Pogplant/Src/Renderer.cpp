@@ -48,6 +48,8 @@ namespace Pogplant
 	// Hard fix for shadows, good angle for minimal artifacts
 	const glm::vec3 lightDir = glm::normalize(glm::vec3(10.0f, 20.0f, 10.0f));
 
+	std::string Renderer::m_CurrentSkybox = "Skybox";
+
 	/// QUAT TEST
 	glm::vec3 Renderer::m_QuatTestPos = glm::vec3{ 0 };
 	glm::vec3 Renderer::m_QuatTestRot = glm::vec3{ 0 };
@@ -605,7 +607,7 @@ namespace Pogplant
 		glm::mat4 skyboxView = glm::mat4(glm::mat3(ret.m_View));
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", skyboxView);
-		Skybox::Draw(TextureResource::m_TexturePool["Skybox"]);
+		Skybox::Draw(TextureResource::m_TexturePool[m_CurrentSkybox]);
 		ShaderLinker::UnUse();
 		glDepthFunc(GL_LESS);
 
