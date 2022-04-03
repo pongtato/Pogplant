@@ -93,6 +93,11 @@ namespace Scripting
             return new LevelEndCinematicBar();
         }
 
+        public static SkyboxChanger SkyboxChanger()
+        {
+            return new SkyboxChanger();
+        }
+
         //public static EnemyManager EnemyManager()
         //{
         //    return new EnemyManager();

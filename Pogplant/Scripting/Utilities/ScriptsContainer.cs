@@ -74,7 +74,7 @@ namespace Scripting
             monoScriptNames.Add("PlayerNuke");
             monoScriptNames.Add("ExplosionEffect");
             monoScriptNames.Add("CorePillar");
-
+            monoScriptNames.Add("SkyboxChanger");
             //let this be last lol
             monoScriptNames.Sort();
         }

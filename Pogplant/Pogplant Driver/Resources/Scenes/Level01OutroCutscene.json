@@ -67699,5 +67699,55 @@
 				1.0
 			]
 		}
+	},
+		{
+		"Name" : 
+		{
+			"m_Name" : "Skybox Changer",
+			"status" : true
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "Skybox",
+				"Name" : "SkyboxToLoad",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"SkyboxChanger" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
 	}
 ]

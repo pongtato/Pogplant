@@ -698,7 +698,8 @@ namespace Scripting
         void SetMovingStateAnimations()
         {
             //Body
-            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 0, 0), true, false, false, true, false, false);
+            moving_parts_dict[entityID].SetPingPongPosition(new Vector3(-0.2f, 0, 0), new Vector3(0.2f, 0, 0), new Vector3(1.0f, 1.0f, 1.0f), true, false, false, true, false, false);
+            moving_parts_dict[entityID].SetLinearPosition(new Vector3(0, 0, 0), new Vector3(0, 0, 2.0f), false, false, true);
             moving_parts_dict[entityID].SetPingPongRotation(new Vector3(0, 0, -4), new Vector3(0, 0, 4), new Vector3(0, 0, 3.0f), false, false, true, false, false, true);
 
             //Arms
