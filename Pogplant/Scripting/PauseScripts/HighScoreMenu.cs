@@ -205,7 +205,7 @@ namespace Scripting
 					{
 						m_exiting_animation = false;
 
-						//GameUtilities.ResumeScene();
+						GameUtilities.ResumeScene();
 						GameUtilities.LoadScene(m_next_scene);
 					}
 				}

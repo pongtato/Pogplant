@@ -12,7 +12,10 @@ namespace Scripting
         public enum BOSS_ANIM_STATE
         {
             FLYING_DOWN,
-            CRASHING
+            CRASHING,
+            OUTRO,
+            LEVEL_SCORE,
+            HIGH_SCORE
         }
 
         BOSS_ANIM_STATE current_state;
@@ -124,6 +127,18 @@ namespace Scripting
         private Vector3 m_cameraRotation;
         private Vector3 m_cameraScale;
 
+        ////Any key continue
+        //bool any_key_active;
+        //bool increase_any_key_timer;
+        //const float time_until_any_key = 4.0f;
+        //float any_key_timer;
+
+        //bool any_key_scale_up;
+        //uint any_key_continue_id;
+        //Vector3 any_key_max_scale;
+        //Vector3 any_key_min_scale;
+        //const float any_key_scale_speed = 5.0f;
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -152,6 +167,8 @@ namespace Scripting
             cinematic_bar_top_id = ECS.FindEntityWithName("Top Cinematic Bar");
             cinematic_bar_bottom_id = ECS.FindEntityWithName("Bottom Cinematic Bar");
             camera_id = ECS.FindEntityWithName("Cinematic Camera");
+
+            //any_key_continue_id = ECS.FindEntityWithName("Any Key Continue");
 
             //Main body
             boss_model_parent_id = ECS.FindEntityWithName("Boss_Mk2");
@@ -306,6 +323,13 @@ namespace Scripting
             explosion_anim_system.AddAnimationUpdateStack(RunExplodingAnimations);
             explosion_anim_system.SetLoopAllAnimations(true);
             explosion_anim_system.PlayAnimation();
+
+            //any_key_scale_up = false;
+            //any_key_min_scale = new Vector3(0.45f, 0.45f, 1.0f);
+            //any_key_max_scale = new Vector3(0.5f, 0.5f, 1.0f);
+
+            PlayerPrefs.SetValue<uint>("CurrentScore", 0);
+            PlayerPrefs.Save();
         }
 
         public override void Update(float dt)
@@ -319,6 +343,40 @@ namespace Scripting
                 UpdateExplosions(dt);
             boss_anim_system.Update(dt);
             explosion_anim_system.Update(dt);
+
+            switch (current_state)
+            {
+                case BOSS_ANIM_STATE.LEVEL_SCORE:
+                    
+                    ////Update until any key to continue appears
+                    //if (increase_any_key_timer)
+                    //{
+                    //    if (any_key_timer < time_until_any_key)
+                    //    {
+                    //        any_key_timer += dt;
+                    //    }
+                    //    else
+                    //    {
+                    //        increase_any_key_timer = false;
+                    //        ECS.SetActive(any_key_continue_id, true);
+                    //        any_key_active = true;
+                    //    }
+                    //}
+
+                    //if (!increase_any_key_timer)
+                    //{
+                    //    UpdateAnyKeyScaling(dt);
+
+                    //    if (any_key_active && InputUtility.onAnyKey())
+                    //    {
+                    //        HighScoreMenu.Enable(true, "MainMenu");
+                    //        GameUtilities.PauseScene();
+
+                    //        //GameUtilities.LoadScene("CutScene2");
+                    //    }
+                    //}
+                    break;
+            }
         }
 
         void UpdateCinematicBars(float dt)
@@ -328,12 +386,12 @@ namespace Scripting
                 //Top bar
                 if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 0.8f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 0.79f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 0.79f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
                 //Bottom bar
                 if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -0.8f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -0.79f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -0.79f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
             }
             else
@@ -341,15 +399,38 @@ namespace Scripting
                 //Top bar
                 if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 1.3f || ECS.GetGlobalPosition(cinematic_bar_top_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
                 //Bottom bar
                 if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -1.3f || ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
             }
         }
+
+        //void UpdateAnyKeyScaling(float dt)
+        //{
+        //    ECS.GetTransformECS(any_key_continue_id, ref pos, ref rot, ref scale);
+
+        //    if (scale.X >= any_key_max_scale.X - 0.01f)
+        //    {
+        //        any_key_scale_up = false;
+        //    }
+        //    if (scale.X <= any_key_min_scale.X + 0.01f)
+        //    {
+        //        any_key_scale_up = true;
+        //    }
+
+        //    if (any_key_scale_up)
+        //    {
+        //        ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_max_scale, any_key_scale_speed * dt));
+        //    }
+        //    else
+        //    {
+        //        ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_min_scale, any_key_scale_speed * dt));
+        //    }
+        //}
 
         public void SetState(string set_state)
         {
@@ -374,13 +455,25 @@ namespace Scripting
                     boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsTwo, 0.2f);
                     boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsThree, 3.0f);
                     boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsFour, 2.0f);
-                    //boss_anim_system.AddAnimationSpecsStack(GoToMenu, 0.1f);
                     boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceOne);
                     boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceTwo);
                     boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceThree);
                     boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceFour);
-                    //boss_anim_system.AddAnimationUpdateStack(EmptyUpdate);
+                    boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.LEVEL_SCORE.ToString());
                     boss_anim_system.PlayAnimation();
+                    break;
+                case BOSS_ANIM_STATE.OUTRO:
+                    //increase_any_key_timer = true;
+                    boss_anim_system.StopAnimation(true, moving_parts_dict);
+
+                    boss_anim_system.AddAnimationSpecsStack(SetEmpty, 7.0f);
+                    boss_anim_system.AddAnimationUpdateStack(RunEmpty);
+                    boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.LEVEL_SCORE.ToString());
+                    boss_anim_system.PlayAnimation();
+                    break;
+                case BOSS_ANIM_STATE.LEVEL_SCORE:
+                    EndGameMenuTrigger.EnableEndGameMenu();
+                    SetState(BOSS_ANIM_STATE.HIGH_SCORE.ToString());
                     break;
             }
         }
@@ -885,5 +978,15 @@ namespace Scripting
         }
 
         #endregion
+
+        void SetEmpty()
+        {
+
+        }
+
+        void RunEmpty(float dt)
+        {
+
+        }
     }
 }
