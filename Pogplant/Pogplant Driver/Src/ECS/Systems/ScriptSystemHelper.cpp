@@ -479,6 +479,11 @@ namespace SSH
 		}
 	}
 
+	void ChangeSkybox(MonoString* skyboxName)
+	{
+		PP::Renderer::m_CurrentSkybox = mono_string_to_utf8(skyboxName);
+	}
+
 	void SetActive(std::uint32_t entityID, bool isEnabled)
 	{
 		if (isEnabled)

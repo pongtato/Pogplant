@@ -8536,7 +8536,7 @@
 			},
 			"Clip3" : 
 			{
-				"Dir" : "Resources/Audio\\Boss\\SFX_Boss_Warning.ogg",
+				"Dir" : "Resources/Audio\\Boss\\SFX_Boss_Warning2.ogg",
 				"UpdatePos" : true,
 				"Volume" : 0.89899998903274536
 			},
