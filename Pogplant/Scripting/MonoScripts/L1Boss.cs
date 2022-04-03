@@ -274,7 +274,10 @@ namespace Scripting
             //Console.WriteLine("loading score: " + PlayerScript.score);
             //Console.WriteLine("========================================================================");
 
-            PlayerPrefs.SetValue<uint>("CurrentScore", 0);
+            //PlayerPrefs.SetValue<uint>("CurrentScore", 0);
+            //PlayerPrefs.SetValue<uint>("m_EnemyDestroyedCount", 0);
+            //PlayerPrefs.SetValue<uint>("m_PlayerHitCount", 0);
+            //PlayerPrefs.SetValue<uint>("m_CollectiblesCount", 0);
             PlayerPrefs.Save();
 
         }

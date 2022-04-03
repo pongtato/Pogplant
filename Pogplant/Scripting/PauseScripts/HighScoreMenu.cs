@@ -51,8 +51,8 @@ namespace Scripting
 		static int m_name_placement = 0;
 		int m_cur_name_cursor = 0; //range is 0 to 2
 		int m_prev_name_cursor = 0; //range is 0 to 2
-		int m_cur_letter_index = 0; //range is A to Z;
-		int m_prev_letter_index = 0; //range is A to Z;
+		int[] m_cur_letter_index = { 0, 0, 0 }; //range is A to Z;
+		int[] m_prev_letter_index = { 0, 0, 0 }; //range is A to Z;
 		float m_up_down_offset;
 		Vector3 m_up_down_pos = new Vector3();
 		uint m_cur_name_cursor_id;
@@ -179,20 +179,20 @@ namespace Scripting
 
 		public void SaveScore()
 		{
-			//foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
-			//{
-			//	for (int i = 0; i < 5; i++)
-			//	{
-					
-			//		PlayerPrefs.SetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", ScoreList[(uint)entry][i].m_score);
-			//		PlayerPrefs.SetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", ScoreList[(uint)entry][i].m_name);
+            foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
+            {
+                for (int i = 0; i < 5; i++)
+                {
 
-			//	}
-			//}
-			//PlayerPrefs.Save();
-		}
+                    PlayerPrefs.SetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", ScoreList[(uint)entry][i].m_score);
+                    PlayerPrefs.SetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", ScoreList[(uint)entry][i].m_name);
 
-		public void UpdateScoreBoard(ref int cur_index)
+                }
+            }
+            PlayerPrefs.Save();
+        }
+
+        static public void UpdateScoreBoard(ref int cur_index)
 		{
 			List<ScoreEntry> temp = new List<ScoreEntry>();
 			temp = ScoreList[(uint)cur_index].ToList();
@@ -244,8 +244,11 @@ namespace Scripting
 					{
 						m_exiting_animation = false;
 
-						if(m_after_endgame)
+						if (m_after_endgame)
+                        {
+							SaveScore();
 							GameUtilities.LoadScene(m_next_scene);
+						}
 						
 						GameUtilities.ResumeScene();
 					}
@@ -255,7 +258,7 @@ namespace Scripting
 				{
 					if ((m_index != m_prev_index && !m_after_endgame) ||
 						(m_cur_name_cursor != m_prev_name_cursor && m_after_endgame) ||
-						(m_prev_letter_index != m_cur_letter_index && m_after_endgame))
+						(m_prev_letter_index[m_cur_name_cursor] != m_cur_letter_index[m_cur_name_cursor] && m_after_endgame))
 					{
 
 						if(!m_after_endgame)
@@ -269,10 +272,10 @@ namespace Scripting
 								m_prev_name_cursor = m_cur_name_cursor;
 							}
 
-							if (m_prev_letter_index != m_cur_letter_index)
-                            {
+							if (m_prev_letter_index[m_cur_name_cursor] != m_cur_letter_index[m_cur_name_cursor])
+							{
 								UpdateNameLetterIndex();
-								m_prev_letter_index = m_cur_letter_index;
+								m_prev_letter_index[m_cur_name_cursor] = m_cur_letter_index[m_cur_name_cursor];
 								Console.WriteLine("do once");
 							}
 						}
@@ -366,11 +369,26 @@ namespace Scripting
 					//manually sort lol
 					for (int i = 0; i < 5; i++)
                     {
+						//Console.WriteLine("Adding into index: " + i);
 						if (PlayerScript.score > ScoreList[m_index][i].m_score)
                         {
-							Console.WriteLine("inserting into index: " + i);
+							for (int j = 3; j > (i-1); j--)
+                            {
+								//Console.WriteLine("Copying " + j +  " into " + (j+1));
+								ScoreEntry temp = ScoreList[m_index][j+1];
+								temp.m_score = ScoreList[m_index][j].m_score;
+								temp.m_name = ScoreList[m_index][j].m_name;
+								ScoreList[m_index][j+1] = temp;
+							}
+
 							m_name_placement = i;
 
+							ScoreEntry asd = ScoreList[m_index][m_name_placement];
+							asd.m_score = PlayerScript.score;
+							ScoreList[m_index][m_name_placement] = asd;
+							//Console.WriteLine("Added into index: " + m_name_placement);
+
+							UpdateScoreBoard(ref m_index);
 							break;
                         }
 
@@ -453,21 +471,23 @@ namespace Scripting
 			if (InputUtility.onKeyTriggered("MENUUP") && m_after_endgame)
 			{
 				//ECS.PlayAudio(entityID, 2, "SFX");
-				m_prev_letter_index = m_cur_letter_index;
-
-				++m_cur_letter_index;
-
-				if (m_cur_letter_index > m_valid_letters.Length - 1)
-					m_cur_letter_index = 0;
+				m_prev_letter_index[m_cur_name_cursor] = m_cur_letter_index[m_cur_name_cursor];
+				
+				m_cur_letter_index[m_cur_name_cursor] += 1;
+				//Console.WriteLine(m_cur_letter_index[m_cur_name_cursor]);
+				if (m_cur_letter_index[m_cur_name_cursor] > m_valid_letters.Length - 1)
+					m_cur_letter_index[m_cur_name_cursor] = 0;
 			}
 			else if (InputUtility.onKeyTriggered("MENUDOWN") && m_after_endgame)
 			{
 				//ECS.PlayAudio(entityID, 3, "SFX");
-				m_prev_letter_index = m_cur_letter_index;
-				--m_cur_letter_index;
+				m_prev_letter_index[m_cur_name_cursor] = m_cur_letter_index[m_cur_name_cursor];
 
-				if (m_cur_letter_index < 0)
-					m_cur_letter_index = m_valid_letters.Length - 1;
+				m_cur_letter_index[m_cur_name_cursor] -= 1;
+
+				//Console.WriteLine(m_cur_letter_index[m_cur_name_cursor]);
+				if (m_cur_letter_index[m_cur_name_cursor] < 0)
+					m_cur_letter_index[m_cur_name_cursor] = m_valid_letters.Length - 1;
 			}
 
 
@@ -520,24 +540,24 @@ namespace Scripting
 			switch (m_cur_name_cursor)
             {
 				case 0:
-					//ScoreList[m_index][m_name_placement].m_name = m_valid_letters[m_cur_letter_index];
-					new_name = "" + m_valid_letters[m_cur_letter_index] + asd.m_name[1] + asd.m_name[2];
+					new_name = "" + m_valid_letters[m_cur_letter_index[m_cur_name_cursor]] + asd.m_name[1] + asd.m_name[2];
 					break;
 				case 1:
-					new_name = "" + asd.m_name[0] + m_valid_letters[m_cur_letter_index]  + asd.m_name[2];
+					new_name = "" + asd.m_name[0] + m_valid_letters[m_cur_letter_index[m_cur_name_cursor]]  + asd.m_name[2];
 					break;
 				case 2:
-					new_name = "" + asd.m_name[0] + asd.m_name[1] + m_valid_letters[m_cur_letter_index];
+					new_name = "" + asd.m_name[0] + asd.m_name[1] + m_valid_letters[m_cur_letter_index[m_cur_name_cursor]];
 					break;
 
             }
 			asd.m_name = new_name;
 			ScoreList[m_index][m_name_placement] = asd;
-			//Console.WriteLine("===============================================");
-			//Console.WriteLine(m_valid_letters[m_cur_letter_index]);
-			//Console.WriteLine(asd);
-			//Console.WriteLine(ScoreList[m_index][m_name_placement].m_name);
-			//Console.WriteLine("===============================================");
-		}
+
+            //Console.WriteLine("===============================================");
+            //Console.WriteLine(m_valid_letters[m_cur_letter_index[m_cur_name_cursor]]);
+            //Console.WriteLine(asd);
+            //Console.WriteLine(ScoreList[m_index][m_name_placement].m_name);
+            //Console.WriteLine("===============================================");
+        }
 	}
 }
