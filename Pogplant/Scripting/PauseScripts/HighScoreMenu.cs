@@ -245,8 +245,8 @@ namespace Scripting
 
 						if(m_after_endgame)
 							GameUtilities.LoadScene(m_next_scene);
-						else
-							GameUtilities.ResumeScene();
+						
+						GameUtilities.ResumeScene();
 					}
 				}
 
@@ -491,7 +491,7 @@ namespace Scripting
 
 		private void UpdateNameCursorPos()
         {
-			ECS.SetGlobalPosition(m_cur_name_cursor_id, new Vector3(m_up_down_pos.X + m_up_down_offset * m_cur_name_cursor, m_up_down_pos.Y, m_up_down_pos.Z));
+			ECS.SetGlobalPosition(m_cur_name_cursor_id, new Vector3(m_up_down_pos.X + m_up_down_offset * m_cur_name_cursor, 0, m_up_down_pos.Z));
         }
 
 		private void UpdateNameLetterIndex()
