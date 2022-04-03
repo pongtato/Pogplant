@@ -105,18 +105,20 @@ namespace Scripting
         uint white_flash_id;
         bool show_white_flash;
         bool fade_to_black;
-        bool any_key_active;
-        bool increase_any_key_timer;
+        
         const float white_flash_scale_speed = 25.0f;
         const float time_until_any_key = 4.0f;
-        float any_key_timer;
+        
         Vector3 flash_color;
 
-        bool any_key_scale_up;
-        uint any_key_continue_id;
-        Vector3 any_key_max_scale;
-        Vector3 any_key_min_scale;
-        const float any_key_scale_speed = 5.0f;
+        //float any_key_timer;
+        //bool any_key_active;
+        //bool increase_any_key_timer;
+        //bool any_key_scale_up;
+        //uint any_key_continue_id;
+        //Vector3 any_key_max_scale;
+        //Vector3 any_key_min_scale;
+        //const float any_key_scale_speed = 5.0f;
 
         float fly_up_delay;
         const float fly_up_short_delay = 2.5f;
@@ -154,7 +156,7 @@ namespace Scripting
         void FindEntities()
         {
             white_flash_id = ECS.FindEntityWithName("White_Flash");
-            any_key_continue_id = ECS.FindEntityWithName("Any Key Continue");
+            //any_key_continue_id = ECS.FindEntityWithName("Any Key Continue");
 
             //Player ship
             player_ship_id = ECS.FindEntityWithName("PlayerBox");
@@ -257,9 +259,9 @@ namespace Scripting
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
 
-            any_key_scale_up = false;
-            any_key_min_scale = new Vector3(0.45f, 0.45f, 1.0f);
-            any_key_max_scale = new Vector3(0.5f, 0.5f, 1.0f);
+            //any_key_scale_up = false;
+            //any_key_min_scale = new Vector3(0.45f, 0.45f, 1.0f);
+            //any_key_max_scale = new Vector3(0.5f, 0.5f, 1.0f);
 
             SetState(BOSS_BEHAVIOUR_STATE.FLYING_UP.ToString());
 
@@ -299,9 +301,9 @@ namespace Scripting
                 if (ECS.GetGlobalScale(white_flash_id).X > 3.9f)
                 {
                     show_white_flash = false;
-                    increase_any_key_timer = true;
+                    //increase_any_key_timer = true;
                     fade_to_black = true;
-                    any_key_timer = 0.0f;
+                    //any_key_timer = 0.0f;
                 }
             }
 
@@ -462,7 +464,7 @@ namespace Scripting
 
                     //Plays the level ending VO
                     ECS.PlayAudio(entityID, 0, "VO");
-                    boss_animation_system.AddAnimationSpecsStack(SetEmpty, 2.0f);
+                    boss_animation_system.AddAnimationSpecsStack(SetEmpty, 7.0f);
                     boss_animation_system.AddAnimationUpdateStack(RunEmpty);
                     boss_animation_system.SetStateQueue(SetState, BOSS_BEHAVIOUR_STATE.LEVEL_SCORE.ToString());
                     boss_animation_system.PlayAnimation();
@@ -538,28 +540,28 @@ namespace Scripting
             }
         }
 
-        void UpdateAnyKeyScaling(float dt)
-        {
-            ECS.GetTransformECS(any_key_continue_id, ref pos, ref rot, ref scale);
+        //void UpdateAnyKeyScaling(float dt)
+        //{
+        //    ECS.GetTransformECS(any_key_continue_id, ref pos, ref rot, ref scale);
 
-            if (scale.X >= any_key_max_scale.X - 0.01f)
-            {
-                any_key_scale_up = false;
-            }
-            if (scale.X <= any_key_min_scale.X + 0.01f)
-            {
-                any_key_scale_up = true;
-            }
+        //    if (scale.X >= any_key_max_scale.X - 0.01f)
+        //    {
+        //        any_key_scale_up = false;
+        //    }
+        //    if (scale.X <= any_key_min_scale.X + 0.01f)
+        //    {
+        //        any_key_scale_up = true;
+        //    }
 
-            if (any_key_scale_up)
-            {
-                ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_max_scale, any_key_scale_speed * dt));
-            }
-            else
-            {
-                ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_min_scale, any_key_scale_speed * dt));
-            }
-        }
+        //    if (any_key_scale_up)
+        //    {
+        //        ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_max_scale, any_key_scale_speed * dt));
+        //    }
+        //    else
+        //    {
+        //        ECS.SetScale(any_key_continue_id, Vector3.Lerp(scale, any_key_min_scale, any_key_scale_speed * dt));
+        //    }
+        //}
 
         void UpdateCinematicBars(float dt)
         {
