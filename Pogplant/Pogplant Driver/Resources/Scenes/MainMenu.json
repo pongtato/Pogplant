@@ -7343,7 +7343,7 @@
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Score_03",
+			"m_Name" : "Score_01",
 			"status" : true
 		},
 		"Tag" : 
@@ -7355,13 +7355,13 @@
 			"m_position" : 
 			[
 				-0.090000003576278687,
-				-0.045000001788139343,
+				0.18500000238418579,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -7369,180 +7369,6 @@
 				0.34999999403953552,
 				0.34999999403953552,
 				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Name",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.55000001192092896,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_3",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.14000000059604645,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.070000000298023224,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
 			]
 		}
 	},
@@ -7583,6 +7409,180 @@
 			[
 				0.0,
 				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Name",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.55000001192092896,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_3",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : true,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.18000000715255737,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : true,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.039999999105930328,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : true,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.10999999940395355,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -7627,180 +7627,6 @@
 		}
 	},
 	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Name",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.55000001192092896,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_3",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.14000000059604645,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.070000000298023224,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
 		"Children" : 0,
 		"Name" : 
 		{
@@ -7848,10 +7674,184 @@
 		}
 	},
 	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Name",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.55000001192092896,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_3",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : true,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.18000000715255737,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : true,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.039999999105930328,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : true,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.10999999940395355,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
 		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Score_01",
+			"m_Name" : "Score_03",
 			"status" : true
 		},
 		"Tag" : 
@@ -7863,40 +7863,7 @@
 			"m_position" : 
 			[
 				-0.090000003576278687,
-				0.18500000238418579,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.34999999403953552,
-				0.34999999403953552,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Name",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.55000001192092896,
-				0.0,
+				-0.045000001788139343,
 				0.0
 			],
 			"m_rotation" : 
@@ -7907,149 +7874,8 @@
 			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_3",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.14000000059604645,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.070000000298023224,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
+				0.34999999403953552,
+				0.34999999403953552,
 				1.0
 			]
 		}
@@ -8098,6 +7924,180 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Name",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.55000001192092896,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_3",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : true,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.18000000715255737,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : true,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.039999999105930328,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : true,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.10999999940395355,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
 			]
 		}
 	},
@@ -8218,7 +8218,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Letter_2",
+			"m_Name" : "Letter_1",
 			"status" : true
 		},
 		"Tag" : 
@@ -8227,7 +8227,7 @@
 		},
 		"Text" : 
 		{
-			"m_Center" : false,
+			"m_Center" : true,
 			"m_Color" : 
 			[
 				0.47058823704719543,
@@ -8243,14 +8243,14 @@
 		{
 			"m_position" : 
 			[
-				0.070000000298023224,
+				0.039999999105930328,
 				0.0,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -8265,7 +8265,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Letter_1",
+			"m_Name" : "Letter_2",
 			"status" : true
 		},
 		"Tag" : 
@@ -8274,7 +8274,7 @@
 		},
 		"Text" : 
 		{
-			"m_Center" : false,
+			"m_Center" : true,
 			"m_Color" : 
 			[
 				0.47058823704719543,
@@ -8290,14 +8290,14 @@
 		{
 			"m_position" : 
 			[
-				0.0,
+				0.10999999940395355,
 				0.0,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -8321,7 +8321,7 @@
 		},
 		"Text" : 
 		{
-			"m_Center" : false,
+			"m_Center" : true,
 			"m_Color" : 
 			[
 				0.47058823704719543,
@@ -8337,7 +8337,7 @@
 		{
 			"m_position" : 
 			[
-				0.14000000059604645,
+				0.18000000715255737,
 				0.0,
 				0.0
 			],
@@ -8472,7 +8472,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Letter_2",
+			"m_Name" : "Letter_3",
 			"status" : true
 		},
 		"Tag" : 
@@ -8481,7 +8481,7 @@
 		},
 		"Text" : 
 		{
-			"m_Center" : false,
+			"m_Center" : true,
 			"m_Color" : 
 			[
 				0.47058823704719543,
@@ -8497,14 +8497,14 @@
 		{
 			"m_position" : 
 			[
-				0.070000000298023224,
+				0.18000000715255737,
 				0.0,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -8519,7 +8519,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Letter_3",
+			"m_Name" : "Letter_2",
 			"status" : true
 		},
 		"Tag" : 
@@ -8528,7 +8528,7 @@
 		},
 		"Text" : 
 		{
-			"m_Center" : false,
+			"m_Center" : true,
 			"m_Color" : 
 			[
 				0.47058823704719543,
@@ -8544,14 +8544,14 @@
 		{
 			"m_position" : 
 			[
-				0.14000000059604645,
+				0.10999999940395355,
 				0.0,
 				0.0
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -8575,7 +8575,7 @@
 		},
 		"Text" : 
 		{
-			"m_Center" : false,
+			"m_Center" : true,
 			"m_Color" : 
 			[
 				0.47058823704719543,
@@ -8591,7 +8591,7 @@
 		{
 			"m_position" : 
 			[
-				0.0,
+				0.039999999105930328,
 				0.0,
 				0.0
 			],
@@ -8801,7 +8801,7 @@
 			],
 			"m_scale" : 
 			[
-				0.5,
+				0.31999999284744263,
 				0.25,
 				1.0
 			]
@@ -8822,10 +8822,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 5.0,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 16,
 				"m_Play" : false,
-				"m_PlaySpeed" : 0.0,
+				"m_PlaySpeed" : 1.0,
 				"m_Repeat" : false,
 				"m_Rows" : 14,
 				"m_Tiling" : 
@@ -8835,8 +8835,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.25,
-					0.1428571492433548
+					0.0,
+					0.071428574621677399
 				]
 			},
 			"m_TexName" : "1024_ExportSheet_02.dds"
@@ -8855,8 +8855,8 @@
 		{
 			"m_position" : 
 			[
-				-0.17499999701976776,
-				-0.30000001192092896,
+				0.0,
+				-0.15000000596046448,
 				-0.10000000149011612
 			],
 			"m_rotation" : 
@@ -9350,7 +9350,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 8,
-				"m_FrameCounter" : 33.0,
+				"m_FrameCounter" : 34.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : false,
 				"m_PlaySpeed" : 1.0,
@@ -9363,7 +9363,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.125,
+					0.25,
 					0.625
 				]
 			},
@@ -9372,8 +9372,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Title_L1",
-			"status" : true
+			"m_Name" : "Title_L1Boss",
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -9416,7 +9416,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 8,
-				"m_FrameCounter" : 34.0,
+				"m_FrameCounter" : 33.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : false,
 				"m_PlaySpeed" : 1.0,
@@ -9429,7 +9429,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.25,
+					0.125,
 					0.625
 				]
 			},
@@ -9438,8 +9438,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Title_L1Boss",
-			"status" : false
+			"m_Name" : "Title_L1",
+			"status" : true
 		},
 		"Tag" : 
 		{

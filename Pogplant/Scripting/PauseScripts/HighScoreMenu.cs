@@ -276,7 +276,7 @@ namespace Scripting
 							{
 								UpdateNameLetterIndex();
 								m_prev_letter_index[m_cur_name_cursor] = m_cur_letter_index[m_cur_name_cursor];
-								Console.WriteLine("do once");
+								//Console.WriteLine("do once");
 							}
 						}
 						UpdateScoreBoard(ref m_index);
