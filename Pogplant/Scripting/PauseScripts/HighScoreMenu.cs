@@ -31,7 +31,7 @@ namespace Scripting
 		private Dictionary<TITLE_ORDER, string> EnumToTitleMap = new Dictionary<TITLE_ORDER, string>();
 
 		//to keep track of the current index
-		private int m_index = 0;
+		static private int m_index = 0;
 		private int m_prev_index = 1;
 
 		//false = keyboard, true = controller
@@ -43,26 +43,42 @@ namespace Scripting
 
 		//used to track the next scene
 		static string m_next_scene;
-		static int m_score_array_index;
+		static bool m_after_endgame = false;
+
+		char[] m_cur_name = new char[3];
+		uint[] m_cur_name_letters = new uint[3];
+		char[] m_valid_letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+		int m_cur_name_cursor = 0; //range is 0 to 2
+		int m_prev_name_cursor = 0; //range is 0 to 2
+		int m_cur_letter_index = 0; //range is A to Z;
+		int m_prev_letter_index = 0; //range is A to Z;
+		float m_up_down_offset;
+		Vector3 m_up_down_pos = new Vector3();
+		uint m_cur_name_cursor_id;
+
 		//private for score
 		public struct ScoreEntry
 		{
 
-			public ScoreEntry(uint _score, uint _score_id, string _name, uint _name_id)
+			public ScoreEntry(uint _score, uint _score_id, string _name, uint _letter_1, uint _letter_2, uint _letter_3)
 			{
 				m_score = _score;
 				m_score_id = _score_id;
 				m_name = _name;
-				m_name_id = _name_id;
+				m_letter_1 = _letter_1;
+				m_letter_2 = _letter_2;
+				m_letter_3 = _letter_3;
 			}
 
 			public uint m_score;
 			public uint m_score_id;
 			public string m_name;
-			public uint m_name_id;
+			public uint m_letter_1;
+			public uint m_letter_2;
+			public uint m_letter_3;
 		}
 
-		private List<ScoreEntry>[] ScoreList = new List<ScoreEntry>[4];
+		static private List<ScoreEntry>[] ScoreList = new List<ScoreEntry>[2];
 
 		static bool m_entering_animation = false;
 		static bool m_exiting_animation = false;
@@ -102,11 +118,16 @@ namespace Scripting
 			m_Arrow_Right_D = ECS.FindChildEntityWithName(entityID, "Arrow_Right_D");
 			m_Arrow_Right_DPad = ECS.FindChildEntityWithName(entityID, "Arrow_Right_DPad");
 
+			//used for inputting of name for highscore
+			m_cur_name_cursor_id = ECS.FindChildEntityWithName(entityID, "Arrow_Up_Down");
+
 			//cinematic_bar_top_id = ECS.FindChildEntityWithName(entityID, "Top Cinematic Bar");
 			//cinematic_bar_bottom_id = ECS.FindChildEntityWithName(entityID, "Bottom Cinematic Bar");
 
 			//cinematic_bar_speed = ECS.GetValue<float>(entityID, 3.0f, "cinematic_bar_speed");
 
+			m_up_down_offset = ECS.GetValue<float>(entityID, 0.025f, "Arrow_Up_Down_Offset");
+			m_up_down_pos = ECS.GetGlobalPosition(m_cur_name_cursor_id);
 
 			//populate ScoreList
 			LoadScore();
@@ -114,6 +135,12 @@ namespace Scripting
 
 			prev_input = !InputUtility.IsControlledBeingUsed();
 			UpdateInputUi(InputUtility.IsControlledBeingUsed());
+
+			for (int i = 0; i < 3; i++)
+			{
+				m_cur_name[i] = 'A';
+
+			}
 		}
 
 		public override void Start()
@@ -121,42 +148,47 @@ namespace Scripting
 		}
 
 		public void LoadScore()
-        {
+		{
 			Random rnd = new Random();
 			foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
 			{
 				ScoreList[(uint)entry] = new List<ScoreEntry>();
 				for (uint i = 0; i < 5; i++)
-                {
+				{
 					uint parent_id = ECS.FindEntityWithName("Score_0" + (i + 1));
 					if (parent_id != m_null_entity)
-                    {
-                        ScoreList[(uint)entry].Add(new ScoreEntry(	PlayerPrefs.GetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", 00000000),
-																	ECS.FindChildEntityWithName(parent_id, "Score"),
-																	PlayerPrefs.GetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", "AAA"),
-																	ECS.FindChildEntityWithName(parent_id, "Name")));
+					{
+						uint _name_id = ECS.FindChildEntityWithName(parent_id, "Name");
+
+                        ScoreList[(uint)entry].Add(new ScoreEntry(PlayerPrefs.GetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", 0),
+                                                                    ECS.FindChildEntityWithName(parent_id, "Score"),
+                                                                    PlayerPrefs.GetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", "AAA"),
+																	ECS.FindChildEntityWithName(parent_id, "Letter_" + 1),
+																	ECS.FindChildEntityWithName(parent_id, "Letter_" + 2),
+																	ECS.FindChildEntityWithName(parent_id, "Letter_" + 3)
+																	));
                     }
 					else
-                    {
+					{
 						Console.WriteLine("Unable to find Score_0" + (i + 1));
-                    }
+					}
 				}
 			}
 		}
 
 		public void SaveScore()
 		{
-			foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
-			{
-				for (int i = 0; i < 5; i++)
-				{
+			//foreach (TITLE_ORDER entry in Enum.GetValues(typeof(TITLE_ORDER)))
+			//{
+			//	for (int i = 0; i < 5; i++)
+			//	{
 					
-					PlayerPrefs.SetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", ScoreList[(uint)entry][i].m_score);
-					PlayerPrefs.SetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", ScoreList[(uint)entry][i].m_name);
+			//		PlayerPrefs.SetValue<uint>(entry.ToString() + "_R" + (i + 1) + "_score", ScoreList[(uint)entry][i].m_score);
+			//		PlayerPrefs.SetValue<String>(entry.ToString() + "_R" + (i + 1) + "_name", ScoreList[(uint)entry][i].m_name);
 
-				}
-			}
-			PlayerPrefs.Save();
+			//	}
+			//}
+			//PlayerPrefs.Save();
 		}
 
 		public void UpdateScoreBoard(ref int cur_index)
@@ -168,7 +200,7 @@ namespace Scripting
 			//Console.WriteLine("=======================");
 
 			for (int i = 0; i < 5; i++)
-            {
+			{
 				string score_str = temp[i].m_score.ToString();
 				int padding_size = 8 - score_str.Length;
 				string padding = "";
@@ -177,9 +209,15 @@ namespace Scripting
 				//Console.WriteLine(ScoreList[(uint)cur_index][i].m_score_id);
 				//Console.WriteLine(padding + score_str);
 
-				GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_name_id, temp[i].m_name);
+
+				char[] temp_c_array = temp[i].m_name.ToCharArray();
+				GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_letter_1, temp_c_array[0].ToString());
+				GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_letter_2, temp_c_array[1].ToString());
+				GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_letter_3, temp_c_array[2].ToString());
+
+
                 GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_score_id, padding + score_str);
-			}
+            }
 			//Console.WriteLine("=======================");
 		}
 
@@ -205,16 +243,38 @@ namespace Scripting
 					{
 						m_exiting_animation = false;
 
-						//GameUtilities.ResumeScene();
-						GameUtilities.LoadScene(m_next_scene);
+						if(m_after_endgame)
+							GameUtilities.LoadScene(m_next_scene);
+						else
+							GameUtilities.ResumeScene();
 					}
 				}
 
 				if (!m_exiting_animation && !m_entering_animation)
 				{
-					if (m_index != m_prev_index)
+					if ((m_index != m_prev_index && !m_after_endgame) ||
+						(m_cur_name_cursor != m_prev_name_cursor && m_after_endgame) ||
+						(m_prev_letter_index != m_cur_letter_index && m_after_endgame))
 					{
-						UpdateInputUi(InputUtility.IsControlledBeingUsed());
+
+						if(!m_after_endgame)
+							UpdateInputUi(InputUtility.IsControlledBeingUsed());
+						else
+                        {
+							//update cursor position
+							if (m_cur_name_cursor != m_prev_name_cursor)
+                            {
+								UpdateNameCursorPos();
+								m_prev_name_cursor = m_cur_name_cursor;
+							}
+
+							if (m_prev_letter_index != m_cur_letter_index)
+                            {
+								UpdateNameLetterIndex();
+								m_prev_letter_index = m_cur_letter_index;
+								Console.WriteLine("do once");
+							}
+						}
 						UpdateScoreBoard(ref m_index);
 						UpdateScoreUICategory();
 
@@ -284,31 +344,52 @@ namespace Scripting
 
 		//ScoreArrayIndex = 0 -> L1Boss
 		//scoreArrayIndex = 1 -> L2Boss
-		public static void Enable(bool isResumeScene, string next_scene = "None", int ScoreArrayIndex = -1)
+		public static void Enable(bool isResumeScene, string next_scene = "None")
 		{
 			m_enabled = isResumeScene;
 			m_entering_animation = true;
 
 			m_next_scene = next_scene;
-			m_score_array_index = ScoreArrayIndex;
+
+			
+			if (next_scene != "None")
+            {
+				m_after_endgame = true;
+
+				string current_scene = GameUtilities.GetSceneName();
+
+				m_index = current_scene == "Level01_Boss" ? 0 : 1;
+
+				if (PlayerScript.score > ScoreList[m_index][4].m_score)
+                {
+					//add into scorelist
+                }
+				else
+                {
+					GameUtilities.LoadScene(m_next_scene);
+					GameUtilities.ResumeScene();
+				}
+
+			}
 		}
 
 		private void UpdateMenuInput()
 		{
-			//different controls based on the scene
-			//main menu controls
-			//if (m_next_scene == "None")
-            {
-				if (InputUtility.onKeyTriggered("ESCAPE"))
-				{
-					//ECS.PlayAudio(entityID, 3, "SFX");
-					m_exiting_animation = true;
-				}
 
-				if (InputUtility.onKeyTriggered("MENULEFT"))
-				{
-					ECS.PlayAudio(entityID, 0, "SFX");
+			if (InputUtility.onKeyTriggered("ESCAPE") && !m_after_endgame)
+			{
+				//ECS.PlayAudio(entityID, 3, "SFX");
+				m_exiting_animation = true;
+			}
 
+
+
+			if (InputUtility.onKeyTriggered("MENULEFT"))
+			{
+				ECS.PlayAudio(entityID, 0, "SFX");
+				//used for main menu
+				if (!m_after_endgame)
+                {
 					m_prev_index = m_index;
 
 					if (m_index - 1 < (int)TITLE_ORDER.L1)
@@ -316,10 +397,24 @@ namespace Scripting
 					else
 						m_index--;
 				}
-				else if (InputUtility.onKeyTriggered("MENURIGHT"))
-				{
-					ECS.PlayAudio(entityID, 1, "SFX");
+				else //used for after endgame score
+                {
+					m_prev_name_cursor = m_cur_name_cursor;
 
+					if (m_cur_name_cursor - 1 < 0)
+						m_cur_name_cursor = 2;
+					else
+						m_cur_name_cursor--;
+                }
+				
+			}
+			else if (InputUtility.onKeyTriggered("MENURIGHT"))
+			{
+				ECS.PlayAudio(entityID, 1, "SFX");
+
+				//used for main menu
+				if (!m_after_endgame)
+                {
 					m_prev_index = m_index;
 
 					if (m_index + 1 > (int)TITLE_ORDER.L2)
@@ -327,17 +422,51 @@ namespace Scripting
 					else
 						m_index++;
 				}
-
-				if (InputUtility.onKeyTriggered(KEY_ID.KEY_SLASH))
+				else //used for after endgame score
 				{
-					Console.WriteLine("Saved score");
-					SaveScore();
+					m_prev_name_cursor = m_cur_name_cursor;
+
+					if (m_cur_name_cursor + 1 > 2)
+						m_cur_name_cursor = 0;
+					else
+						m_cur_name_cursor++;
 				}
 			}
-			//else //controls during L1Boss and L2Boss
-   //         {
 
-   //         }
+			//used for updating letters in inputting name
+			if (InputUtility.onKeyTriggered("MENUUP") && m_after_endgame)
+			{
+				//ECS.PlayAudio(entityID, 2, "SFX");
+				m_prev_letter_index = m_cur_letter_index;
+
+				++m_cur_letter_index;
+
+				if (m_cur_letter_index > m_valid_letters.Length - 1)
+					m_cur_letter_index = 0;
+			}
+			else if (InputUtility.onKeyTriggered("MENUDOWN") && m_after_endgame)
+			{
+				//ECS.PlayAudio(entityID, 3, "SFX");
+				m_prev_letter_index = m_cur_letter_index;
+				--m_cur_letter_index;
+
+				if (m_cur_letter_index < 0)
+					m_cur_letter_index = m_valid_letters.Length - 1;
+			}
+
+
+
+
+			if (InputUtility.onKeyTriggered("MENUSELECT") && m_after_endgame)
+            {
+				m_exiting_animation = true;
+			}
+
+			if (InputUtility.onKeyTriggered(KEY_ID.KEY_SLASH))
+			{
+				Console.WriteLine("Saved score");
+				SaveScore();
+			}
 		}
 
 		private void UpdateInputUi(bool controller_used)
@@ -359,5 +488,15 @@ namespace Scripting
 			foreach (KeyValuePair<TITLE_ORDER, string> entry in EnumToTitleMap)
 				ECS.SetActive(TitleMap[entry.Value], entry.Key == (TITLE_ORDER)m_index ? true : false);
 		}
+
+		private void UpdateNameCursorPos()
+        {
+			ECS.SetGlobalPosition(m_cur_name_cursor_id, new Vector3(m_up_down_pos.X + m_up_down_offset * m_cur_name_cursor, m_up_down_pos.Y, m_up_down_pos.Z));
+        }
+
+		private void UpdateNameLetterIndex()
+        {
+
+        }
 	}
 }
