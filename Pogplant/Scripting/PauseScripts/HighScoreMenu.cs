@@ -48,6 +48,7 @@ namespace Scripting
 		char[] m_cur_name = new char[3];
 		uint[] m_cur_name_letters = new uint[3];
 		char[] m_valid_letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+		static int m_name_placement = 0;
 		int m_cur_name_cursor = 0; //range is 0 to 2
 		int m_prev_name_cursor = 0; //range is 0 to 2
 		int m_cur_letter_index = 0; //range is A to Z;
@@ -368,7 +369,7 @@ namespace Scripting
 						if (PlayerScript.score > ScoreList[m_index][i].m_score)
                         {
 							Console.WriteLine("inserting into index: " + i);
-
+							m_name_placement = i;
 
 							break;
                         }
@@ -434,6 +435,8 @@ namespace Scripting
 						m_index = (int)TITLE_ORDER.L1;
 					else
 						m_index++;
+
+					//after moving left and right, gotta update the letter index to the current letter
 				}
 				else //used for after endgame score
 				{
@@ -509,7 +512,32 @@ namespace Scripting
 
 		private void UpdateNameLetterIndex()
         {
+			//GameUtilities.UpdateText(ScoreList[(uint)cur_index][i].m_letter_1, temp_c_array[0].ToString());
 
-        }
+			//if(m_cur_name_cursor)
+			ScoreEntry asd = ScoreList[m_index][m_name_placement];
+			string new_name = "";
+			switch (m_cur_name_cursor)
+            {
+				case 0:
+					//ScoreList[m_index][m_name_placement].m_name = m_valid_letters[m_cur_letter_index];
+					new_name = "" + m_valid_letters[m_cur_letter_index] + asd.m_name[1] + asd.m_name[2];
+					break;
+				case 1:
+					new_name = "" + asd.m_name[0] + m_valid_letters[m_cur_letter_index]  + asd.m_name[2];
+					break;
+				case 2:
+					new_name = "" + asd.m_name[0] + asd.m_name[1] + m_valid_letters[m_cur_letter_index];
+					break;
+
+            }
+			asd.m_name = new_name;
+			ScoreList[m_index][m_name_placement] = asd;
+			//Console.WriteLine("===============================================");
+			//Console.WriteLine(m_valid_letters[m_cur_letter_index]);
+			//Console.WriteLine(asd);
+			//Console.WriteLine(ScoreList[m_index][m_name_placement].m_name);
+			//Console.WriteLine("===============================================");
+		}
 	}
 }
