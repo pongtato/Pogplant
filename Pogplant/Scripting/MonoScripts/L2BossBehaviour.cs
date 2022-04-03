@@ -208,6 +208,13 @@ namespace Scripting
 		Vector3 mColor_falseCoreCoverDamaged = new Vector3(0.25f, 0.25f, 0.25f);
 		#endregion
 
+		#region[Clap Attack]
+		uint mID_clapHitBox;
+		bool m_hitboxEnableOnce = false;
+		float mClap_timeToEnableCollider = 1.3f;
+		float mClap_timeToDisableCollider = 1.8f;
+		#endregion
+
 		/******************************************************************************/
 		/*!
 		\brief
@@ -274,6 +281,8 @@ namespace Scripting
 				ECS.SetActive(m_turretGuns[i].ID_laserHitbox, false);
 			}
 
+			mID_clapHitBox = ECS.FindEntityWithName("ClapHitbox");
+
 			//Get laser positions;
 			uint laserBounds = ECS.FindEntityWithName("BossLaserTargetBounds");
 			mLaserBounds_TL = ECS.GetGlobalPosition(ECS.FindChildEntityWithName(laserBounds, "TL"));
@@ -327,6 +336,11 @@ namespace Scripting
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].isVulnerable = false;
 			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].shouldReturnToDefault = true;
 
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].isVulnerable = false;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].shouldReturnToDefault = false;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].stateDurationMin = 12f;
+			m_stateBehaviours[(int)L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].stateDurationMax = 12f;
+
 			m_runStateInfo.stateDuration = 8.8f;
 		}
 
@@ -357,6 +371,11 @@ namespace Scripting
 					Console.WriteLine("L2BossBehaviour.cs: Boss state is: " + L2Boss.m_singleton.current_state);
 					Console.WriteLine("L2BossBehaviour.cs: Timer is: " + m_runStateInfo.timer);
 					Console.WriteLine("L2BossBehaviour.cs: AimState is: " + m_runStateInfo.bossTurretAimState);
+				}
+
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
+				{
+					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK);
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
@@ -414,6 +433,9 @@ namespace Scripting
 										break;
 									case 2:
 										TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK);
+										break;
+									case 3:
+										TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK);
 										break;
 								}
 							}
@@ -503,6 +525,22 @@ namespace Scripting
 						}
 
 						UpdateEnemySpawnAnimation(dt);
+					}
+				}
+				break;
+
+				case L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK:
+				{
+					if (m_runStateInfo.timer > mClap_timeToEnableCollider && !m_hitboxEnableOnce && m_runStateInfo.timer < mClap_timeToDisableCollider)
+					{
+						m_hitboxEnableOnce = true;
+						ECS.SetActive(mID_clapHitBox, true);
+					}
+
+					if (m_runStateInfo.timer > mClap_timeToDisableCollider && m_hitboxEnableOnce)
+					{
+						m_hitboxEnableOnce = false;
+						ECS.SetActive(mID_clapHitBox, false);
 					}
 				}
 				break;
