@@ -249,7 +249,7 @@
           "Timer": 3.1
         },
         {
-          "Text": "Timmy: Fine...just straight ahead. You know…it ain't a complex place to begin with…",
+          "Text": "Timmy: Fine...just straight ahead. You know...this ain't a complex place to begin with...",
           "Timer": 7
         },
         {
@@ -409,7 +409,7 @@
         },
         {
           "Text": "Buuut, just when I was about to bring this up to the Board of Scientists...",
-          "Timer": 3.8
+          "Timer": 3.5
         },
         {
           "Text": "...a dang meteor CRASHED into my backyard!",
@@ -437,7 +437,7 @@
         },
         {
           "Text": "From my speculations, they were definitely from the Planet: C31 B00 BA!",
-          "Timer": 4.9
+          "Timer": 4.8
         },
         {
           "Text": "For you ding-a-lings...",
@@ -469,11 +469,11 @@
         },
         {
           "Text": "<construction noises>",
-          "Timer": 6.9
+          "Timer": 6.4
         },
         {
           "Text": "Aaand...",
-          "Timer": 1.7
+          "Timer": 1.5
         },
         {
           "Text": "DONE!",
@@ -526,7 +526,7 @@
         },
         {
           "Text": "Prof: WaiT! M-my vOiCemOd! WhaT HapPeNed tO iT?",
-          "Timer": 3.6
+          "Timer": 3.4
         },
         {
           "Text": "Prof: LoOk...T-ThAt BiG tHiNg- LoOk At WhaT iT diD tO mY vOiCEmOd, TimMY!",
@@ -574,7 +574,7 @@
         },
         {
           "Text": "Timmy: But, Professor, we don't have a chance against something that BIG!",
-          "Timer": 3.4
+          "Timer": 3.2
         },
         {
           "Text": "Timmy: We don't have enough firepower!",
@@ -590,7 +590,7 @@
         },
         {
           "Text": "Prof: We nEeD tO briNG oUr A-GamE!",
-          "Timer": 1.8
+          "Timer": 1.6
         },
         {
           "Text": "<FIREPOWER>",
@@ -602,11 +602,11 @@
         },
         {
           "Text": "2 Hours Later...",
-          "Timer": 3.4
+          "Timer": 2.5
         },
         {
           "Text": "Prof: Phew! I think we got this, Timmy! Let's test this out, BABY!",
-          "Timer": 4.3
+          "Timer": 4.2
         },
         {
           "Text": "Timmy: Weapon Charging...Charging Complete...",
@@ -618,7 +618,7 @@
         },
         {
           "Text": "Prof: Timmy! We're not off the ground!",
-          "Timer": 1.3
+          "Timer": 1.1
         },
         {
           "Text": "Timmy: 1...",
@@ -626,7 +626,7 @@
         },
         {
           "Text": "<explosion>",
-          "Timer": 4.1
+          "Timer": 4.0
         },
         {
           "Text": "Timmy: Ammo Depleted...",
