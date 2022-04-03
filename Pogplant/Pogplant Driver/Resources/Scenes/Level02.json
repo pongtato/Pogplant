@@ -352,7 +352,7 @@
 		}
 	},
 	{
-		"Children" : 3,
+		"Children" : 4,
 		"Name" : 
 		{
 			"m_Name" : "Crane_02_Top",
@@ -1191,6 +1191,116 @@
 		}
 	},
 	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.1531982421875,
+				6.0407943725585938,
+				0.039947509765625
+			],
+			"m_rotation" : 
+			[
+				0.00010427199595142156,
+				89.999946594238281,
+				0.00010427370580146089
+			],
+			"m_scale" : 
+			[
+				0.69999998807907104,
+				0.5,
+				0.69999998807907104
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.59524083137512207,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"Children" : 2,
 		"Name" : 
 		{
@@ -1246,7 +1356,7 @@
 		}
 	},
 	{
-		"Children" : 3,
+		"Children" : 4,
 		"Name" : 
 		{
 			"m_Name" : "Crane_01_Top",
@@ -2088,6 +2198,161 @@
 		"Children" : 2,
 		"Name" : 
 		{
+			"m_Name" : "Energy_Capsule",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.15037155151367188,
+				5.8861541748046875,
+				0.024932861328125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.69999998807907104,
+				0.5,
+				0.69999998807907104
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				1.0,
+				0.56744194030761719
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment3_Light_4",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				1.0,
+				0.95813894271850586
+			],
+			"m_Intensity" : 2.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-62.5279541015625,
+				-138.39501953125,
+				-304.46194458007812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427360464644153e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.5714280605316162,
+				2.1999084949493408,
+				1.5714280605316162
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
 			"m_Name" : "Waypoint",
 			"status" : true
 		},
@@ -2400,7 +2665,7 @@
 		}
 	},
 	{
-		"Children" : 3,
+		"Children" : 4,
 		"Name" : 
 		{
 			"m_Name" : "Crane_01_Top",
@@ -3242,6 +3507,161 @@
 		"Children" : 2,
 		"Name" : 
 		{
+			"m_Name" : "Energy_Capsule",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.11944961547851562,
+				5.8861541748046875,
+				0.030517578125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.69999998807907104,
+				0.5,
+				0.69999998807907104
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				1.0,
+				0.56744194030761719
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				3.814697265625e-06,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999070167541504,
+				0.99999350309371948,
+				0.99999070167541504
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment3_Light_4",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				0.93023252487182617,
+				1.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-26.527976989746094,
+				-96.394989013671875,
+				-329.46197509765625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427360464644153e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.5714280605316162,
+				2.1994738578796387,
+				1.5714280605316162
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
 			"m_Name" : "Crane_03_Rails",
 			"status" : true
 		},
@@ -3393,7 +3813,7 @@
 		}
 	},
 	{
-		"Children" : 3,
+		"Children" : 4,
 		"Name" : 
 		{
 			"m_Name" : "Crane_02_Top",
@@ -4232,6 +4652,116 @@
 		}
 	},
 	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.026302337646484375,
+				6.0407943725585938,
+				-0.001861572265625
+			],
+			"m_rotation" : 
+			[
+				0.00010427199595142156,
+				89.999946594238281,
+				0.00010427370580146089
+			],
+			"m_scale" : 
+			[
+				0.69999998807907104,
+				0.5,
+				0.69999998807907104
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.59524083137512207,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"Children" : 2,
 		"Name" : 
 		{
@@ -4386,7 +4916,7 @@
 		}
 	},
 	{
-		"Children" : 3,
+		"Children" : 4,
 		"Name" : 
 		{
 			"m_Name" : "Crane_02_Top",
@@ -5195,6 +5725,116 @@
 				"Level_02_Segment_04",
 				"Resources/Models\\Environment",
 				"Crane_02_Left_Claw_Arm_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.12652587890625,
+				6.0407943725585938,
+				0.071968071162700653
+			],
+			"m_rotation" : 
+			[
+				-1.7066089652573169e-09,
+				-5.4641510359942913e-05,
+				9.4885217738482908e-11
+			],
+			"m_scale" : 
+			[
+				0.69999998807907104,
+				0.50000005960464478,
+				0.69999998807907104
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.59524083137512207,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
 			],
 			"UseLight" : 1
 		},
@@ -67888,7 +68528,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
-		"Children" : 0,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Level_02_Segment_03_Drill_Bit",
@@ -67963,6 +68603,116 @@
 			[
 				0.0,
 				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0140380859375,
+				-147.15641784667969,
+				-0.009552001953125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.59524083137512207,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -69886,7 +70636,7 @@
 			"m_position" : 
 			[
 				0.02056884765625,
-				1.7905120849609375,
+				1.865509033203125,
 				-0.07843017578125
 			],
 			"m_rotation" : 
@@ -78805,29 +79555,18 @@
 			],
 			"m_scale" : 
 			[
-				0.99955540895462036,
+				0.99934983253479004,
 				0.99988162517547607,
 				0.99999642372131348
 			]
 		}
 	},
 	{
+		"Children" : 8,
 		"Name" : 
 		{
-			"m_Name" : "Light",
+			"m_Name" : "Lights",
 			"status" : true
-		},
-		"Point_Light" : 
-		{
-			"m_Color" : 
-			[
-				0.80000001192092896,
-				0.0,
-				0.0
-			],
-			"m_Intensity" : 1.0,
-			"m_Linear" : 9.9999999392252903e-09,
-			"m_Quadratic" : 9.9999999392252903e-09
 		},
 		"Tag" : 
 		{
@@ -78837,9 +79576,9 @@
 		{
 			"m_position" : 
 			[
-				54.242168426513672,
 				0.0,
-				-162.51152038574219
+				0.0,
+				0.0
 			],
 			"m_rotation" : 
 			[
@@ -78856,22 +79595,11 @@
 		}
 	},
 	{
+		"Children" : 25,
 		"Name" : 
 		{
-			"m_Name" : "Light",
+			"m_Name" : "Segment_7",
 			"status" : true
-		},
-		"Point_Light" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				0.17905896902084351,
-				0.013953506946563721
-			],
-			"m_Intensity" : 1.0,
-			"m_Linear" : 9.9999999392252903e-09,
-			"m_Quadratic" : 9.9999999392252903e-09
 		},
 		"Tag" : 
 		{
@@ -78896,6 +79624,3112 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_2",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-318.35726928710938,
+				120.42118072509766,
+				-454.60736083984375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_3",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-341.18435668945312,
+				120.42118072509766,
+				-419.67807006835938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_4",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-375.75958251953125,
+				120.42118072509766,
+				-396.7161865234375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_5",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-416.60821533203125,
+				120.42118072509766,
+				-388.36883544921875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_6",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-457.88601684570312,
+				120.42118072509766,
+				-396.87744140625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_7",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-492.17538452148438,
+				120.42118072509766,
+				-419.83297729492188
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_8",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-515.59423828125,
+				120.42118072509766,
+				-454.2789306640625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_9",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-523.4447021484375,
+				120.42118072509766,
+				-495.15618896484375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_10",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-515.37957763671875,
+				120.42118072509766,
+				-536.18707275390625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_11",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-492.46170043945312,
+				120.42118072509766,
+				-570.6480712890625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_12",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-457.9322509765625,
+				120.42118072509766,
+				-593.44403076171875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_13",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-417.02102661132812,
+				120.42118072509766,
+				-601.5303955078125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_14",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-376.15170288085938,
+				120.42118072509766,
+				-593.7645263671875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_15",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-341.3692626953125,
+				120.42118072509766,
+				-571.37322998046875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_16",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-318.470947265625,
+				120.42118072509766,
+				-535.84039306640625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_17",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.27906978130340576,
+				0.0
+			],
+			"m_Intensity" : 20.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-417.21994018554688,
+				223.60343933105469,
+				-495.02108764648438
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_19",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.27906978130340576,
+				0.0
+			],
+			"m_Intensity" : 1.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-393.61032104492188,
+				124.91387939453125,
+				-507.627685546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_18",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.27906978130340576,
+				0.0
+			],
+			"m_Intensity" : 1.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-409.30966186523438,
+				124.91387939453125,
+				-483.0849609375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_18",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.27906978130340576,
+				0.0
+			],
+			"m_Intensity" : 1.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-421.14968872070312,
+				124.91387939453125,
+				-483.0849609375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_18",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.27906978130340576,
+				0.0
+			],
+			"m_Intensity" : 1.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-433.99087524414062,
+				124.91387939453125,
+				-483.0849609375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_18",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.27906978130340576,
+				0.0
+			],
+			"m_Intensity" : 1.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-393.61032104492188,
+				124.91387939453125,
+				-483.0849609375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_19",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.27906978130340576,
+				0.0
+			],
+			"m_Intensity" : 1.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-409.24246215820312,
+				124.91387939453125,
+				-507.627685546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_19",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.27906978130340576,
+				0.0
+			],
+			"m_Intensity" : 1.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-420.92752075195312,
+				124.91387939453125,
+				-507.627685546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_19",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.27906978130340576,
+				0.0
+			],
+			"m_Intensity" : 1.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-433.50344848632812,
+				124.91387939453125,
+				-507.627685546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment7_Light_1",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-310.2503662109375,
+				120.42118072509766,
+				-494.88970947265625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 6,
+		"Name" : 
+		{
+			"m_Name" : "Segment_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment1_Light_1",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.85116279125213623,
+				0.17645630240440369,
+				0.11480798572301865
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.15014505386352539,
+				10.518168449401855,
+				-63.127033233642578
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment1_Light_3",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.6418604850769043,
+				0.17773537337779999,
+				0.11941592395305634
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				6.8903813362121582,
+				12.995843887329102,
+				-131.01646423339844
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment1_Light_4",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.81395351886749268,
+				0.20248027145862579,
+				0.079502448439598083
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-58.978317260742188,
+				-3.693610668182373,
+				-167.37551879882812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment1_Light_5",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.94418603181838989,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-75.732490539550781,
+				7.2217535972595215,
+				-166.12147521972656
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment1_Light_2",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.82325577735900879,
+				0.04903021827340126,
+				0.026803679764270782
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-7.0448713302612305,
+				13.159086227416992,
+				-111.67530059814453
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment1_Light_6",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.90697675943374634,
+				0.28263929486274719,
+				0.28263929486274719
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.15014505386352539,
+				10.518168449401855,
+				-5.013247013092041
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Segment_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment2_Light_1",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.80000001192092896,
+				0.11162791401147842,
+				0.0
+			],
+			"m_Intensity" : 3.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-104.32386016845703,
+				49.248813629150391,
+				-166.34989929199219
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment2_Light_2",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.80000001192092896,
+				0.11162791401147842,
+				0.0
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-104.32386016845703,
+				72.443031311035156,
+				-166.34989929199219
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment2_Light_3",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.80000001192092896,
+				0.11162791401147842,
+				0.0
+			],
+			"m_Intensity" : 4.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-104.32386016845703,
+				98.285438537597656,
+				-166.34989929199219
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "Segment_3",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment3_Light_1",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.63255810737609863,
+				0.37802958488464355,
+				0.27950239181518555
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0020000000949949026,
+			"m_Quadratic" : 0.0020000000949949026
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-105.45792388916016,
+				125.87204742431641,
+				-308.3328857421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Segment3_Light_2",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				1.0,
+				0.95813894271850586
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-116.01761627197266,
+				12.631921768188477,
+				-307.21380615234375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0972137451171875,
+				-9.460601806640625,
+				-0.1580810546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.59524083137512207,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Segment3_Light_3",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				1.0,
+				0.95813894271850586
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-118.72134399414062,
+				-81.80010986328125,
+				-314.593505859375
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				7.2427371833327925e-07,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.99994200468063354,
+				0.99995237588882446,
+				0.9999992847442627
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.0972137451171875,
+				-9.460601806640625,
+				-0.1580810546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Energy_Capsule_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				0.0,
+				0.59524083137512207,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Energy_Capsule",
+				"Resources/Models\\Environment",
+				"Energy_Capsule_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment3_Light_4",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				1.0,
+				0.95813894271850586
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-105.14727020263672,
+				-145.22213745117188,
+				-316.97286987304688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Segment_4",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment4_Light_1",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				1.0,
+				0.95813894271850586
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.18704932928085327,
+				-116.44937896728516,
+				-361.80349731445312
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment4_Light_2",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				1.0,
+				0.95813894271850586
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				26.150768280029297,
+				-116.44937896728516,
+				-402.58062744140625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment4_Light_3",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				0.0,
+				1.0,
+				0.95813894271850586
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.1416323184967041,
+				-116.44937896728516,
+				-414.26632690429688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 4,
+		"Name" : 
+		{
+			"m_Name" : "Segment_5",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment5_Light_1",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.19534885883331299,
+				0.0
+			],
+			"m_Intensity" : 7.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				10.973821640014648,
+				-84.186141967773438,
+				-449.258056640625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment5_Light_2",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.11162793636322021,
+				0.0
+			],
+			"m_Intensity" : 7.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				10.973821640014648,
+				-26.920730590820312,
+				-449.258056640625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment5_Light_3",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.055813968181610107,
+				0.0
+			],
+			"m_Intensity" : 7.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-33.549831390380859,
+				-19.554920196533203,
+				-489.25469970703125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment5_Light_4",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.055813968181610107,
+				0.0
+			],
+			"m_Intensity" : 7.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-30.698562622070312,
+				41.172996520996094,
+				-489.25469970703125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 7,
+		"Name" : 
+		{
+			"m_Name" : "Segment_6",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment6_Light_1",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 7.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-90.053367614746094,
+				100.58039855957031,
+				-499.41702270507812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment6_Light_2",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.083720922470092773,
+				0.0
+			],
+			"m_Intensity" : 7.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-131.89877319335938,
+				97.940841674804688,
+				-495.55810546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment6_Light_3",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 7.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-177.37925720214844,
+				97.940841674804688,
+				-495.55810546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment6_Light_4",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 3.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-204.11293029785156,
+				97.940841674804688,
+				-495.55810546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment6_Light_5",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 3.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-239.84181213378906,
+				97.940841674804688,
+				-495.55810546875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment6_Light_6",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 3.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-222.05168151855469,
+				97.940841674804688,
+				-478.96099853515625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment6_Light_7",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"m_Intensity" : 3.0,
+			"m_Linear" : 0.0030000000260770321,
+			"m_Quadratic" : 0.0030000000260770321
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-222.05168151855469,
+				97.940841674804688,
+				-513.4503173828125
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 7,
+		"Name" : 
+		{
+			"m_Name" : "Segment_8",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment8_Light_6",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.16744184494018555,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0010000000474974513,
+			"m_Quadratic" : 0.0010000000474974513
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-644.9971923828125,
+				222.09951782226562,
+				-614.2625732421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment8_Light_1",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.083720922470092773,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-559.55670166015625,
+				136.41255187988281,
+				-492.00070190429688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment8_Light_2",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.11162793636322021,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-559.55670166015625,
+				192.71516418457031,
+				-492.00070190429688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment8_Light_3",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.11162793636322021,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-559.55670166015625,
+				255.45741271972656,
+				-492.00070190429688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment8_Light_4",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.11162793636322021,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-559.55670166015625,
+				316.44906616210938,
+				-492.00070190429688
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment8_Light_4",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.16744184494018555,
+				0.0
+			],
+			"m_Intensity" : 10.0,
+			"m_Linear" : 0.0040000001899898052,
+			"m_Quadratic" : 0.0040000001899898052
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-633.04315185546875,
+				225.28359985351562,
+				-495.33148193359375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment8_Light_5",
+			"status" : true
+		},
+		"Point_Light" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.11162793636322021,
+				0.0
+			],
+			"m_Intensity" : 5.0,
+			"m_Linear" : 0.0010000000474974513,
+			"m_Quadratic" : 0.0010000000474974513
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-644.9971923828125,
+				222.09951782226562,
+				-554.1275634765625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				7.2427366148986039e-07,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.1000000238418579,
+				1.1000000238418579,
+				1.1000000238418579
 			]
 		}
 	},
@@ -78952,7 +82786,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 38.260440826416016,
+				"m_FrameCounter" : 5.2039799690246582,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -78965,8 +82799,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.3125
+					0.5,
+					0.046875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79018,7 +82852,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 84.427261352539062,
+				"m_FrameCounter" : 10.03489875793457,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -79032,7 +82866,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.671875
+					0.09375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79084,7 +82918,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 110.75109100341797,
+				"m_FrameCounter" : 68.759681701660156,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -79098,7 +82932,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.875
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79150,7 +82984,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 63.86566162109375,
+				"m_FrameCounter" : 95.250984191894531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -79164,7 +82998,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.5
+					0.75
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79216,7 +83050,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 38.260440826416016,
+				"m_FrameCounter" : 5.2039799690246582,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -79229,8 +83063,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.3125
+					0.5,
+					0.046875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79282,7 +83116,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 110.75109100341797,
+				"m_FrameCounter" : 68.759681701660156,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -79296,7 +83130,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.875
+					0.546875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79348,7 +83182,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 127.57765197753906,
+				"m_FrameCounter" : 127.49382781982422,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -79414,7 +83248,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 38.260440826416016,
+				"m_FrameCounter" : 5.2039799690246582,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -79427,8 +83261,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.3125
+					0.5,
+					0.046875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79480,7 +83314,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 127.57765197753906,
+				"m_FrameCounter" : 127.49382781982422,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -79546,7 +83380,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 124.23968505859375,
+				"m_FrameCounter" : 21.945457458496094,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -79559,8 +83393,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.984375
+					0.5,
+					0.171875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -79612,7 +83446,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 84.427261352539062,
+				"m_FrameCounter" : 10.03489875793457,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -79626,7 +83460,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.671875
+					0.09375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -105717,13 +109551,13 @@
 		{
 			"m_position" : 
 			[
-				1.880035400390625,
+				1.885040283203125,
 				172.8240966796875,
 				-9.23956298828125
 			],
 			"m_rotation" : 
 			[
-				-1.0420593525850563e-06,
+				-1.0417923022032483e-06,
 				2.0361023871373618e-06,
 				-149.0
 			],
@@ -105731,7 +109565,7 @@
 			[
 				0.9999997615814209,
 				0.9999997615814209,
-				0.99980467557907104
+				0.99979978799819946
 			]
 		}
 	},
@@ -106569,7 +110403,7 @@
 		{
 			"m_position" : 
 			[
-				5.358123779296875,
+				5.35955810546875,
 				485.26873779296875,
 				-0.90509033203125
 			],
@@ -107352,9 +111186,9 @@
 		{
 			"m_position" : 
 			[
-				-17.639007568359375,
+				-7.446319580078125,
 				546.074951171875,
-				-0.00579833984375
+				-0.04754638671875
 			],
 			"m_rotation" : 
 			[
@@ -108186,7 +112020,7 @@
 		{
 			"m_position" : 
 			[
-				-2.985809326171875,
+				-2.978729248046875,
 				290.3555908203125,
 				-6.3970947265625
 			],
@@ -109020,7 +112854,7 @@
 		{
 			"m_position" : 
 			[
-				-5.577484130859375,
+				-5.57281494140625,
 				325.5615234375,
 				8.29864501953125
 			],
@@ -109071,21 +112905,21 @@
 		{
 			"m_position" : 
 			[
-				2.45318603515625,
-				-10.5279541015625,
-				-13.75830078125
+				2.159027099609375,
+				-10.52978515625,
+				-13.75860595703125
 			],
 			"m_rotation" : 
 			[
-				0.00014556982205249369,
-				-0.00014343512884806842,
-				1.4941159633963252e-06
+				0.00014503620332106948,
+				-0.00014172756345942616,
+				2.1344513356780226e-07
 			],
 			"m_scale" : 
 			[
 				0.99999189376831055,
 				0.99999022483825684,
-				0.99986189603805542
+				0.9998619556427002
 			]
 		}
 	},
@@ -109122,21 +112956,21 @@
 		{
 			"m_position" : 
 			[
-				-0.7882080078125,
+				0.790496826171875,
 				-8.9376220703125,
-				-4.472900390625
+				-4.47259521484375
 			],
 			"m_rotation" : 
 			[
-				0.00015965710917953402,
-				-2.2198215447133407e-05,
-				5.9764420257124584e-06
+				0.00016339236753992736,
+				-1.3660439435625449e-05,
+				-4.6957761696830858e-06
 			],
 			"m_scale" : 
 			[
 				0.99999547004699707,
-				0.99999094009399414,
-				0.99981158971786499
+				0.99999117851257324,
+				0.99981135129928589
 			]
 		}
 	},
@@ -109173,15 +113007,15 @@
 		{
 			"m_position" : 
 			[
-				0.7713623046875,
-				-8.488494873046875,
-				4.790496826171875
+				0.772857666015625,
+				-8.4864501953125,
+				4.7906494140625
 			],
 			"m_rotation" : 
 			[
-				0.00014556982205249369,
-				-0.00014343512884806842,
-				1.4941159633963252e-06
+				0.00014503620332106948,
+				-0.00014172756345942616,
+				2.1344513356780226e-07
 			],
 			"m_scale" : 
 			[
@@ -109854,7 +113688,7 @@
 		{
 			"m_position" : 
 			[
-				-1.87567138671875,
+				-1.86395263671875,
 				386.9556884765625,
 				8.41253662109375
 			],
@@ -110688,7 +114522,7 @@
 		{
 			"m_position" : 
 			[
-				-0.612213134765625,
+				-0.603607177734375,
 				500.45233154296875,
 				-5.462158203125
 			],
@@ -111540,7 +115374,7 @@
 		{
 			"m_position" : 
 			[
-				5.9010009765625,
+				5.906494140625,
 				230.2864990234375,
 				0.54071044921875
 			],
@@ -112323,7 +116157,7 @@
 		{
 			"m_position" : 
 			[
-				11.35797119140625,
+				11.35943603515625,
 				156.23504638671875,
 				-2.93939208984375
 			],
@@ -113157,7 +116991,7 @@
 		{
 			"m_position" : 
 			[
-				10.976165771484375,
+				10.97772216796875,
 				66.94671630859375,
 				0.00421142578125
 			],
@@ -113991,14 +117825,14 @@
 		{
 			"m_position" : 
 			[
-				1.971466064453125,
+				1.973052978515625,
 				74.999969482421875,
 				9.54656982421875
 			],
 			"m_rotation" : 
 			[
-				-1.0526522373766056e-06,
-				2.0381735339469742e-06,
+				-1.0529909104661783e-06,
+				2.0383429273351794e-06,
 				139.99998474121094
 			],
 			"m_scale" : 
@@ -193366,6 +197200,586 @@
 			"collisionLayer" : "TRIGGERS",
 			"extends" : 
 			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.0,
+			"maxY" : 1.0,
+			"minX" : 4.0,
+			"minY" : 1.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_3_Drill",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-106.43888854980469,
+				96.151565551757812,
+				-321.63494873046875
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99984246492385864,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				1.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 5.0,
+			"maxY" : 4.0,
+			"minX" : 4.0,
+			"minY" : 4.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_3_Drill_Down",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-105.51068115234375,
+				79.658103942871094,
+				-328.73178100585938
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99938756227493286,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				12.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 7.0,
+			"maxY" : 6.0,
+			"minX" : 7.0,
+			"minY" : 3.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_4_SecondTrack",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.126845359802246,
+				-134.66975402832031,
+				-322.07553100585938
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99949431419372559,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				12.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 7.0,
+			"maxY" : 4.0,
+			"minX" : 7.0,
+			"minY" : 2.5
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_4_Start",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-76.027854919433594,
+				-148.40168762207031,
+				-317.00552368164062
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99949431419372559,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				12.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 4.0,
+			"maxY" : 4.0,
+			"minX" : 7.0,
+			"minY" : 2.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_4_Elevation ",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-13.82456111907959,
+				-146.09426879882812,
+				-317.14053344726562
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99949431419372559,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				12.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 6.0,
+			"maxY" : 6.0,
+			"minX" : 6.0,
+			"minY" : 6.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_5_Box1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.1268310546875,
+				-125.1304931640625,
+				-450.90274047851562
+			],
+			"m_rotation" : 
+			[
+				90.000007629394531,
+				4.8054207724135267e-08,
+				4.5580496842168028e-12
+			],
+			"m_scale" : 
+			[
+				0.99934667348861694,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				12.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 7.0,
+			"maxY" : 3.0,
+			"minX" : 7.0,
+			"minY" : 3.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_5_Mid",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				11.954755783081055,
+				-34.944652557373047,
+				-450.719482421875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99931430816650391,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				12.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 8.0,
+			"maxY" : 6.0,
+			"minX" : 8.0,
+			"minY" : 6.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_5_Box1_B",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.126845359802246,
+				-28.238533020019531,
+				-450.9027099609375
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99927598237991333,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				12.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 6.0,
+			"maxY" : 7.0,
+			"minX" : 6.0,
+			"minY" : 3.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_8",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-578.91058349609375,
+				219.34310913085938,
+				-494.99658203125
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				89.999946594238281,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99907833337783813,
+				0.99999988079071045,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				12.0,
+				12.0,
+				12.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"MovementBounds" : 
+		{
+			"maxX" : 7.0,
+			"maxY" : 7.0,
+			"minX" : 7.0,
+			"minY" : 7.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "Segment_5_Box2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Movement"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-22.741636276245117,
+				-32.226032257080078,
+				-494.21163940429688
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99914747476577759,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
 				12.0,
 				12.0,
 				12.0
@@ -193587,586 +198001,6 @@
 		}
 	},
 	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				10.0,
-				10.0,
-				1.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 4.0,
-			"maxY" : 1.0,
-			"minX" : 4.0,
-			"minY" : 1.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_3_Drill",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-106.43888854980469,
-				96.151565551757812,
-				-321.63494873046875
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99984246492385864,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				10.0,
-				1.0,
-				10.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 5.0,
-			"maxY" : 4.0,
-			"minX" : 6.0,
-			"minY" : 4.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_3_Drill_Down",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-105.51068115234375,
-				79.658103942871094,
-				-328.73178100585938
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99941372871398926,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				12.0,
-				12.0,
-				12.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 7.0,
-			"maxY" : 4.0,
-			"minX" : 7.0,
-			"minY" : 2.5
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_4_Start",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-76.027854919433594,
-				-148.40168762207031,
-				-317.00552368164062
-			],
-			"m_rotation" : 
-			[
-				-179.99989318847656,
-				-89.999946594238281,
-				-179.99989318847656
-			],
-			"m_scale" : 
-			[
-				0.99949431419372559,
-				0.99999994039535522,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				12.0,
-				12.0,
-				12.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 4.0,
-			"maxY" : 4.0,
-			"minX" : 7.0,
-			"minY" : 2.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_4_Elevation ",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-13.82456111907959,
-				-146.09426879882812,
-				-317.14053344726562
-			],
-			"m_rotation" : 
-			[
-				-179.99989318847656,
-				-89.999946594238281,
-				-179.99989318847656
-			],
-			"m_scale" : 
-			[
-				0.99949431419372559,
-				0.99999994039535522,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				12.0,
-				12.0,
-				12.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 7.0,
-			"maxY" : 6.0,
-			"minX" : 7.0,
-			"minY" : 3.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_4_SecondTrack",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				12.126845359802246,
-				-134.66975402832031,
-				-322.07553100585938
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99949431419372559,
-				0.99999994039535522,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				12.0,
-				12.0,
-				12.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 6.0,
-			"maxY" : 6.0,
-			"minX" : 6.0,
-			"minY" : 6.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_5_Box1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				12.1268310546875,
-				-125.1304931640625,
-				-450.90274047851562
-			],
-			"m_rotation" : 
-			[
-				90.000007629394531,
-				4.8054207724135267e-08,
-				4.5580496842168028e-12
-			],
-			"m_scale" : 
-			[
-				0.99934667348861694,
-				0.99999994039535522,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				12.0,
-				12.0,
-				12.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 7.0,
-			"maxY" : 3.0,
-			"minX" : 7.0,
-			"minY" : 3.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_5_Mid",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				11.954755783081055,
-				-34.944652557373047,
-				-450.719482421875
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99931430816650391,
-				0.99999994039535522,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				12.0,
-				12.0,
-				12.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 7.0,
-			"maxY" : 7.0,
-			"minX" : 7.0,
-			"minY" : 7.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_5_Box2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-22.741636276245117,
-				-31.84516716003418,
-				-494.21163940429688
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99917268753051758,
-				0.99999994039535522,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				12.0,
-				12.0,
-				12.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 6.0,
-			"maxY" : 7.0,
-			"minX" : 6.0,
-			"minY" : 3.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_8",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-578.91058349609375,
-				219.34310913085938,
-				-494.99658203125
-			],
-			"m_rotation" : 
-			[
-				-179.99989318847656,
-				89.999946594238281,
-				-179.99989318847656
-			],
-			"m_scale" : 
-			[
-				0.99907833337783813,
-				0.99999988079071045,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "TRIGGERS",
-			"extends" : 
-			[
-				12.0,
-				12.0,
-				12.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"MovementBounds" : 
-		{
-			"maxX" : 8.0,
-			"maxY" : 6.0,
-			"minX" : 8.0,
-			"minY" : 6.0
-		},
-		"Name" : 
-		{
-			"m_Name" : "Segment_5_Box1_B",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Movement"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				12.126845359802246,
-				-28.238533020019531,
-				-450.9027099609375
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99927598237991333,
-				0.99999994039535522,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 2,
 		"Name" : 
 		{
@@ -194184,57 +198018,6 @@
 				0.0,
 				0.0,
 				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.5,
-				5.0,
-				10.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment1_End",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-94.227439880371094,
-				-4.9428892135620117,
-				-165.39091491699219
 			],
 			"m_rotation" : 
 			[
@@ -194337,6 +198120,57 @@
 				0.0,
 				8.9288530349731445,
 				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.5,
+				5.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment1_End",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-94.227439880371094,
+				-4.9428892135620117,
+				-165.39091491699219
 			],
 			"m_rotation" : 
 			[
@@ -194531,7 +198365,7 @@
 		{
 			"m_position" : 
 			[
-				-110.64842224121094,
+				-99.969886779785156,
 				93.435111999511719,
 				-229.09808349609375
 			],
@@ -194546,6 +198380,204 @@
 				0.40000000596046448,
 				0.40000000596046448,
 				0.40000000596046448
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_VFX",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.0010000000474974513,
+				0.0010000000474974513,
+				0.0010000000474974513
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_sphere",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.99998998641967773,
+				1.0,
+				0.99999815225601196
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.97739315032958984,
+				0.027906954288482666
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999982118606567,
+				0.99999982118606567,
+				0.99999982118606567
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Enemy_04_ExplosionRadius",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.49319630861282349,
+				0.20465117692947388
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Outer_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_ring",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.74876880645751953,
+				0.074418604373931885
+			],
+			"EmissiveTint" : 
+			[
+				0.82325577735900879,
+				0.48629525303840637,
+				0.48629525303840637
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.99999988079071045,
+				0.99999988079071045
 			]
 		}
 	},
@@ -194759,204 +198791,6 @@
 			[
 				0.0,
 				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Explosion_VFX",
-			"status" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.0010000000474974513,
-				0.0010000000474974513,
-				0.0010000000474974513
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Explosion_ring",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.74876880645751953,
-				0.074418604373931885
-			],
-			"EmissiveTint" : 
-			[
-				0.82325577735900879,
-				0.48629525303840637,
-				0.48629525303840637
-			],
-			"RenderModel" : 
-			[
-				"Enemy_04_ExplosionShockwave",
-				"Resources/Models\\IngameObjects",
-				"Shockwave"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.99999988079071045,
-				0.99999988079071045
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Explosion_sphere",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.99998998641967773,
-				1.0,
-				0.99999815225601196
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.97739315032958984,
-				0.027906954288482666
-			],
-			"RenderModel" : 
-			[
-				"Enemy_04_ExplosionRadius",
-				"Resources/Models\\IngameObjects",
-				"Inner_Sphere"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999982118606567,
-				0.99999982118606567,
-				0.99999982118606567
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Enemy_04_ExplosionRadius",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.49319630861282349,
-				0.20465117692947388
-			],
-			"RenderModel" : 
-			[
-				"Enemy_04_ExplosionRadius",
-				"Resources/Models\\IngameObjects",
-				"Outer_Sphere"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -195113,7 +198947,7 @@
 		{
 			"m_position" : 
 			[
-				-99.969886779785156,
+				-110.64842224121094,
 				93.435111999511719,
 				-229.09808349609375
 			],
@@ -195132,31 +198966,64 @@
 		}
 	},
 	{
-		"Children" : 0,
+		"Children" : 2,
 		"Name" : 
 		{
-			"m_Name" : "Outline",
+			"m_Name" : "Explosion_VFX",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.0010000000474974513,
+				0.0010000000474974513,
+				0.0010000000474974513
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Explosion_sphere",
 			"status" : false
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
-				0.96744143962860107,
+				0.99998998641967773,
 				1.0,
-				0.0
+				0.99999815225601196
 			],
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.92093020677566528,
-				0.0
+				0.97739315032958984,
+				0.027906954288482666
 			],
 			"RenderModel" : 
 			[
-				"Enemy_04",
-				"Resources/Models\\Enemy",
-				"Outline"
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Inner_Sphere"
 			],
 			"UseLight" : 1
 		},
@@ -195169,7 +199036,62 @@
 			"m_position" : 
 			[
 				0.0,
-				-0.163299560546875,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999982118606567,
+				0.99999982118606567,
+				0.99999982118606567
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Enemy_04_ExplosionRadius",
+			"status" : false
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.49319630861282349,
+				0.20465117692947388
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04_ExplosionRadius",
+				"Resources/Models\\IngameObjects",
+				"Outer_Sphere"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
 				0.0
 			],
 			"m_rotation" : 
@@ -195190,28 +199112,28 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Eyes",
-			"status" : true
+			"m_Name" : "Explosion_ring",
+			"status" : false
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
 				1.0,
-				1.0,
-				1.0
+				0.74876880645751953,
+				0.074418604373931885
 			],
 			"EmissiveTint" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.82325577735900879,
+				0.48629525303840637,
+				0.48629525303840637
 			],
 			"RenderModel" : 
 			[
-				"Enemy_04",
-				"Resources/Models\\Enemy",
-				"Eyes"
+				"Enemy_04_ExplosionShockwave",
+				"Resources/Models\\IngameObjects",
+				"Shockwave"
 			],
 			"UseLight" : 1
 		},
@@ -195223,21 +199145,21 @@
 		{
 			"m_position" : 
 			[
-				-2.7388491474766852e-10,
-				-0.13313589990139008,
-				2.514568109290849e-09
-			],
-			"m_rotation" : 
-			[
 				0.0,
 				0.0,
 				0.0
 			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
 			"m_scale" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.99999988079071045,
+				0.99999988079071045,
+				0.99999988079071045
 			]
 		}
 	},
@@ -195352,11 +199274,33 @@
 		}
 	},
 	{
-		"Children" : 2,
+		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Explosion_VFX",
-			"status" : false
+			"m_Name" : "Eyes",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Eyes"
+			],
+			"UseLight" : 1
 		},
 		"Tag" : 
 		{
@@ -195366,21 +199310,21 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				0.0,
-				0.0
+				-2.7388491474766852e-10,
+				-0.13313589990139008,
+				2.514568109290849e-09
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
 			[
-				0.0010000000474974513,
-				0.0010000000474974513,
-				0.0010000000474974513
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -195388,28 +199332,28 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Explosion_ring",
+			"m_Name" : "Outline",
 			"status" : false
 		},
 		"Render" : 
 		{
 			"ColorTint" : 
 			[
+				0.96744143962860107,
 				1.0,
-				0.74876880645751953,
-				0.074418604373931885
+				0.0
 			],
 			"EmissiveTint" : 
 			[
-				0.82325577735900879,
-				0.48629525303840637,
-				0.48629525303840637
+				1.0,
+				0.92093020677566528,
+				0.0
 			],
 			"RenderModel" : 
 			[
-				"Enemy_04_ExplosionShockwave",
-				"Resources/Models\\IngameObjects",
-				"Shockwave"
+				"Enemy_04",
+				"Resources/Models\\Enemy",
+				"Outline"
 			],
 			"UseLight" : 1
 		},
@@ -195422,117 +199366,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.99999988079071045,
-				0.99999988079071045
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Explosion_sphere",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.99998998641967773,
-				1.0,
-				0.99999815225601196
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.97739315032958984,
-				0.027906954288482666
-			],
-			"RenderModel" : 
-			[
-				"Enemy_04_ExplosionRadius",
-				"Resources/Models\\IngameObjects",
-				"Inner_Sphere"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999982118606567,
-				0.99999982118606567,
-				0.99999982118606567
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Enemy_04_ExplosionRadius",
-			"status" : false
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.49319630861282349,
-				0.20465117692947388
-			],
-			"RenderModel" : 
-			[
-				"Enemy_04_ExplosionRadius",
-				"Resources/Models\\IngameObjects",
-				"Outer_Sphere"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
+				-0.163299560546875,
 				0.0
 			],
 			"m_rotation" : 
