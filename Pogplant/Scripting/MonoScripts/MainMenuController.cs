@@ -305,7 +305,7 @@ namespace Scripting
 						}
 						else
 						{
-							ECS.SetGlobalPosition(logo_id, Vector3.Lerp(ECS.GetGlobalPosition(logo_id), new Vector3(-0.2f, 0.18f), dt * logo_move_top_left_anim_speed));
+							ECS.SetGlobalPosition(logo_id, Vector3.Lerp(ECS.GetGlobalPosition(logo_id), new Vector3(-0.2f, 0.18f, ECS.GetGlobalPosition(logo_id).Z), dt * logo_move_top_left_anim_speed));
 						}
 					}
 					break;

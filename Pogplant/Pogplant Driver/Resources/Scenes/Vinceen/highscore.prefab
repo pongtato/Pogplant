@@ -30,7 +30,7 @@
 		"Children" : 1,
 		"Guid" : 
 		{
-			"m_guid" : "93f38672-38ad-44b6-af98-b5cf8b11ea38"
+			"m_guid" : "673da4bb-f5e6-4405-9006-a339102e0d5b"
 		},
 		"Name" : 
 		{
@@ -91,7 +91,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				-1.2999999523162842,
 				-0.20000000298023224
 			],
 			"m_rotation" : 
@@ -105,1396 +105,6 @@
 				1.0,
 				1.0,
 				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Score_01",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.090000003576278687,
-				0.18500000238418579,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.34999999403953552,
-				0.34999999403953552,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Score",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "00000000"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Name",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.55000001192092896,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_1",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_2",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.070000000298023224,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_3",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.14000000059604645,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Score_02",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.090000003576278687,
-				0.070000000298023224,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.34999999403953552,
-				0.34999999403953552,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Score",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "00000000"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Name",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.55000001192092896,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_1",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_2",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.070000000298023224,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_3",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.14000000059604645,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Score_03",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.090000003576278687,
-				-0.045000001788139343,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.34999999403953552,
-				0.34999999403953552,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Score",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "00000000"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Name",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.55000001192092896,
-				0.0,
-				0.19999998807907104
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_1",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_2",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.070000000298023224,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_3",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.14000000059604645,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Score_04",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.090000003576278687,
-				-0.15999999642372131,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.34999999403953552,
-				0.34999999403953552,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Score",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "00000000"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Name",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.55000001192092896,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999988079071045
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_1",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_2",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.070000000298023224,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_3",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.14000000059604645,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Score_05",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.090000003576278687,
-				-0.27500000596046448,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.34999999403953552,
-				0.34999999403953552,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Score",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "00000000"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 3,
-		"Name" : 
-		{
-			"m_Name" : "Name",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.55000001192092896,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999982118606567
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_1",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_2",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.070000000298023224,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Letter_3",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Text" : 
-		{
-			"m_Center" : false,
-			"m_Color" : 
-			[
-				0.47058823704719543,
-				0.47058823704719543,
-				0.47058823704719543
-			],
-			"m_FontID" : "Bangers",
-			"m_Ortho" : true,
-			"m_PlaySpeed" : 1.0,
-			"m_Text" : "G"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.14000000059604645,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.99999994039535522
 			]
 		}
 	},
@@ -2409,6 +1019,1396 @@
 				0.024999998509883881,
 				0.024999998509883881,
 				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Score_05",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.090000003576278687,
+				-0.27500000596046448,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.34999999403953552,
+				0.34999999403953552,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Name",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.55000001192092896,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999982118606567
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_1",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_2",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.070000000298023224,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_3",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.14000000059604645,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Score",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "00000000"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Score_04",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.090000003576278687,
+				-0.15999999642372131,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.34999999403953552,
+				0.34999999403953552,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Name",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.55000001192092896,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999988079071045
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_3",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.14000000059604645,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_2",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.070000000298023224,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_1",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Score",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "00000000"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Score_03",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.090000003576278687,
+				-0.045000001788139343,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.34999999403953552,
+				0.34999999403953552,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Name",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.55000001192092896,
+				0.0,
+				0.19999998807907104
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_3",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.14000000059604645,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_2",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.070000000298023224,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_1",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Score",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "00000000"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Score_02",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.090000003576278687,
+				0.070000000298023224,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.34999999403953552,
+				0.34999999403953552,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Name",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.55000001192092896,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_3",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.14000000059604645,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_2",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.070000000298023224,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_1",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.99999994039535522
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Score",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "00000000"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Score_01",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.090000003576278687,
+				0.18500000238418579,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.34999999403953552,
+				0.34999999403953552,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 3,
+		"Name" : 
+		{
+			"m_Name" : "Name",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.55000001192092896,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_3",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.14000000059604645,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_2",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.070000000298023224,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Letter_1",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "G"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Score",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Scenes\\Vinceen\\highscore.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Text" : 
+		{
+			"m_Center" : false,
+			"m_Color" : 
+			[
+				0.47058823704719543,
+				0.47058823704719543,
+				0.47058823704719543
+			],
+			"m_FontID" : "Bangers",
+			"m_Ortho" : true,
+			"m_PlaySpeed" : 1.0,
+			"m_Text" : "00000000"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	}
