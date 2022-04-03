@@ -569,6 +569,9 @@ void ScriptSystem::BindFunctions()
 	//Windows Resolution Settings
 	mono_add_internal_call("Scripting.GameUtilities::GameSetFullscreen", Pogplant::Window::GameSetFullscreen);
 	mono_add_internal_call("Scripting.GameUtilities::GameSetWindowSize", Pogplant::Window::GameSetWindowSize);
+
+	// Skybox
+	mono_add_internal_call("Scripting.GameUtilities::ChangeSkybox", SSH::ChangeSkybox);
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)

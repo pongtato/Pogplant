@@ -1,10 +1,14 @@
 {
     "CUBEMAP": 
     [
-        {
-            "FileName"  : ["px.dds","nx.dds","py.dds","ny.dds","pz.dds","nz.dds"],
-            "Dir"       : "Resources\\Textures\\Skybox"
-        }
+      {
+        "FileName": [ "px.dds", "nx.dds", "py.dds", "ny.dds", "pz.dds", "nz.dds" ],
+        "Dir": "Resources\\Textures\\Skybox"
+      },
+      {
+        "FileName": [ "px.dds", "nx.dds", "py.dds", "ny.dds", "pz.dds", "nz.dds" ],
+        "Dir": "Resources\\Textures\\Skybox2"
+      }
     ],
 
     "GAMMA": [
