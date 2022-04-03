@@ -362,6 +362,19 @@ namespace Scripting
 
 				if (PlayerScript.score > ScoreList[m_index][4].m_score)
                 {
+					//manually sort lol
+					for (int i = 0; i < 5; i++)
+                    {
+						if (PlayerScript.score > ScoreList[m_index][i].m_score)
+                        {
+							Console.WriteLine("inserting into index: " + i);
+
+
+							break;
+                        }
+
+					}
+
 					//add into scorelist
                 }
 				else
@@ -491,7 +504,7 @@ namespace Scripting
 
 		private void UpdateNameCursorPos()
         {
-			ECS.SetGlobalPosition(m_cur_name_cursor_id, new Vector3(m_up_down_pos.X + m_up_down_offset * m_cur_name_cursor, 0, m_up_down_pos.Z));
+			ECS.SetGlobalPosition(m_cur_name_cursor_id, new Vector3(m_up_down_pos.X + m_up_down_offset * m_cur_name_cursor, -0.15f, m_up_down_pos.Z));
         }
 
 		private void UpdateNameLetterIndex()
