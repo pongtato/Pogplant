@@ -8801,7 +8801,7 @@
 			],
 			"m_scale" : 
 			[
-				0.31999999284744263,
+				0.5,
 				0.25,
 				1.0
 			]
@@ -8822,10 +8822,10 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 5.0,
 				"m_MaxFrames" : 16,
 				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
 				"m_Rows" : 14,
 				"m_Tiling" : 
@@ -8835,8 +8835,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.071428574621677399
+					0.25,
+					0.1428571492433548
 				]
 			},
 			"m_TexName" : "1024_ExportSheet_02.dds"
@@ -8855,8 +8855,8 @@
 		{
 			"m_position" : 
 			[
-				0.0,
-				-0.15000000596046448,
+				-0.17499999701976776,
+				-0.30000001192092896,
 				-0.10000000149011612
 			],
 			"m_rotation" : 
