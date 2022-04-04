@@ -16,8 +16,8 @@ namespace Scripting
 
 		//Press any key flashing
 		const float any_key_scale_speed = 5.0f;
-		const float any_key_expanded_scale = 0.52f;
-		const float any_key_default_scale = 0.48f;
+		const float any_key_expanded_scale = 0.8f;
+		const float any_key_default_scale = 0.75f;
 		const float any_key_spin_speed = 2.0f;
 		const float any_key_move_out_speed = 4.0f;
 		bool any_key_expand;
@@ -74,7 +74,7 @@ namespace Scripting
 				{
 					if (any_key_expand)
 					{
-						ECS.SetGlobalScale(any_key_to_continue_id, Vector3.Lerp(new Vector3(ECS.GetGlobalScale(any_key_to_continue_id).X, ECS.GetGlobalScale(any_key_to_continue_id).Y, 1.0f), new Vector3(any_key_expanded_scale, any_key_expanded_scale, 1.0f), any_key_scale_speed * dt));
+						ECS.SetGlobalScale(any_key_to_continue_id, Vector3.Lerp(new Vector3(ECS.GetGlobalScale(any_key_to_continue_id).X, ECS.GetGlobalScale(any_key_to_continue_id).Y, 1.0f), new Vector3(any_key_expanded_scale, any_key_expanded_scale * 0.5f, 1.0f), any_key_scale_speed * dt));
 						if (ECS.GetGlobalScale(any_key_to_continue_id).X >= any_key_expanded_scale - 0.01f)
 						{
 							any_key_expand = false;
@@ -82,7 +82,7 @@ namespace Scripting
 					}
 					else
 					{
-						ECS.SetGlobalScale(any_key_to_continue_id, Vector3.Lerp(new Vector3(ECS.GetGlobalScale(any_key_to_continue_id).X, ECS.GetGlobalScale(any_key_to_continue_id).Y, 1.0f), new Vector3(any_key_default_scale, any_key_default_scale, 1.0f), any_key_scale_speed * dt));
+						ECS.SetGlobalScale(any_key_to_continue_id, Vector3.Lerp(new Vector3(ECS.GetGlobalScale(any_key_to_continue_id).X, ECS.GetGlobalScale(any_key_to_continue_id).Y, 1.0f), new Vector3(any_key_default_scale, any_key_default_scale * 0.5f, 1.0f), any_key_scale_speed * dt));
 						if (ECS.GetGlobalScale(any_key_to_continue_id).X <= any_key_default_scale + 0.01f)
 						{
 							any_key_expand = true;
