@@ -15,10 +15,10 @@ namespace Scripting
         float cinematic_bar_speed;
 
 		static bool m_entering_animation = false;
-		static bool m_exiting_animation = false;
+		//static bool m_exiting_animation = false;
 		static bool m_enabled = false;
 
-		public override void Init(ref uint _entityID)
+        public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
 			
@@ -59,7 +59,11 @@ namespace Scripting
                         move_top_bar = true;
                         move_bottom_bar = true;
                         m_entering_animation = false;
-                        m_exiting_animation = false;
+                        //m_exiting_animation = false;
+
+                        GameUtilities.LoadScene("CreditScene");
+                        GameUtilities.ResumeScene();
+
                     }
                 }
 
@@ -108,11 +112,11 @@ namespace Scripting
 		private void UpdateMenuInput()
 		{
 
-			if (InputUtility.onKeyTriggered("ESCAPE"))
-			{
-				//ECS.PlayAudio(entityID, 3, "SFX");
-				m_exiting_animation = true;
-			}
+			//if (InputUtility.onKeyTriggered("ESCAPE"))
+			//{
+			//	//ECS.PlayAudio(entityID, 3, "SFX");
+			//	m_exiting_animation = true;
+			//}
 		}
 
 	}

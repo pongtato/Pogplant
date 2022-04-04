@@ -75,6 +75,8 @@ namespace Scripting
             monoScriptNames.Add("ExplosionEffect");
             monoScriptNames.Add("CorePillar");
             monoScriptNames.Add("SkyboxChanger");
+            monoScriptNames.Add("Credits");
+
             //let this be last lol
             monoScriptNames.Sort();
         }

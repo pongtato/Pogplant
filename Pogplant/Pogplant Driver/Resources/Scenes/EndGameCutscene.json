@@ -38,3438 +38,6 @@
 		}
 	},
 	{
-		"Children" : 10,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "eee0dd57-1648-400d-abed-92a3d302a76f",
-			"prefab_path" : ""
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				-1.2999999523162842,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				1.7000000476837158,
-				1.2000000476837158,
-				10.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Bridge_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bridge",
-				"Resources/Models\\Environment",
-				"Bridge"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				120.39548492431641,
-				-35.373001098632812,
-				-261.16519165039062
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				-179.99989318847656
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				2.5999999046325684,
-				-1.5
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				1.5,
-				2.5,
-				6.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Bridge_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bridge",
-				"Resources/Models\\Environment",
-				"Bridge"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				99.845001220703125,
-				-33.65386962890625,
-				-261.16519165039062
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Bridge_02.2",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bridge",
-				"Resources/Models\\Environment",
-				"Bridge"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				99.845222473144531,
-				-28.080547332763672,
-				-261.16055297851562
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				-179.99989318847656
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.99999988079071045,
-				0.99999350309371948
-			]
-		}
-	},
-	{
-		"Children" : 11,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Final_Merged",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.61860466003417969,
-				0.61859846115112305,
-				0.61859846115112305
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.56282711029052734,
-				0.12156862020492554
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_04_Final_Merged"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Seg_04_Floor_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.36279070377349854,
-				0.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Seg_04_Floor_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Building_01_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.25116276741027832,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.1209302544593811,
-				0.1209302544593811
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Building_01_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Building_02_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.16744184494018555,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.56841534376144409,
-				0.023255825042724609
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Building_02_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Building_03_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.25098040699958801,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.12156862765550613,
-				0.12156862765550613
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Building_03_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Building_04_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.32631689310073853,
-				0.027906954288482666
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Building_04_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Building_05_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.27906966209411621,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.12156862020492554,
-				0.12156862020492554
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Building_05_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Building_06_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.8837209939956665,
-				1.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.415740966796875,
-				0.12156862020492554
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Building_06_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Building_07_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.0,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.39122658967971802,
-				0.12156862020492554
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Building_07_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Building_08_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.25098040699958801,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.12156862765550613,
-				0.12156862765550613
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Building_08_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Building_09_Emissive",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				0.36279070377349854,
-				0.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				0.12156862765550613,
-				0.12156862765550613
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Building_09_Emissive"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Segment_04_Canopy",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Segment_04_Final_Merged",
-				"Resources/Models\\Environment",
-				"Segment_04_Canopy"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				-1.2999999523162842,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				1.7000000476837158,
-				1.2000000476837158,
-				10.0
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Bridge_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Bridge",
-				"Resources/Models\\Environment",
-				"Bridge"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				88.933883666992188,
-				-35.373043060302734,
-				-261.16519165039062
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				-179.99989318847656
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 8,
-		"Name" : 
-		{
-			"m_Name" : "Obst_VerticalPillar",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_Pillar_Base"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				135.13787841796875,
-				-40.970943450927734,
-				-265.47650146484375
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				9.9979896545410156,
-				10.0,
-				10.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.11999999731779099,
-				0.090000003576278687
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.014247894287109375,
-				1.000866174697876
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999886155128479,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.5,
-				0.10000000149011612
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.00643157958984375,
-				0.36945390701293945
-			],
-			"m_rotation" : 
-			[
-				-6.1066662794193038e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				0.034473419189453125,
-				0.60899996757507324
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_04"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.019640922546386719,
-				0.041269302368164062,
-				-0.00012445449829101562
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_05",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_05"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_00",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_00"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 8,
-		"Name" : 
-		{
-			"m_Name" : "Obst_VerticalPillar",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_Pillar_Base"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				76.336723327636719,
-				-40.970943450927734,
-				-265.523681640625
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				9.9952516555786133,
-				10.0,
-				10.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.11999999731779099,
-				0.090000003576278687
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.014247894287109375,
-				1.0008444786071777
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999511241912842,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.5,
-				0.10000000149011612
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.00643157958984375,
-				0.36946725845336914
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0000001192092896,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_00",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_00"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				0.034473419189453125,
-				0.60899996757507324
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_04"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.019640922546386719,
-				0.041269302368164062,
-				-0.00012445449829101562
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_05",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_05"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 8,
-		"Name" : 
-		{
-			"m_Name" : "Obst_VerticalPillar",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_Pillar_Base"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				85.414169311523438,
-				-40.970943450927734,
-				-259.9647216796875
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				9.9967203140258789,
-				10.0,
-				10.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.11999999731779099,
-				0.090000003576278687
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.014247894287109375,
-				1.0008041858673096
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99998146295547485,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.5,
-				0.10000000149011612
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.00643157958984375,
-				0.36938381195068359
-			],
-			"m_rotation" : 
-			[
-				-6.1066662794193038e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999988079071045,
-				0.9999997615814209,
-				0.9999997615814209
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_00",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_00"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				0.034473419189453125,
-				0.60899996757507324
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_04"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.019640922546386719,
-				0.041269302368164062,
-				-0.00012445449829101562
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_05",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_05"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 8,
-		"Name" : 
-		{
-			"m_Name" : "Obst_VerticalPillar",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_Pillar_Base"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				113.85737609863281,
-				-40.970943450927734,
-				-259.876708984375
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				9.9973440170288086,
-				10.0,
-				10.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.11999999731779099,
-				0.090000003576278687
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.014249801635742188,
-				1.0008037090301514
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99998211860656738,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.5,
-				0.10000000149011612
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0064334869384765625,
-				0.36938357353210449
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_00",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_00"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				0.034473419189453125,
-				0.60899996757507324
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_04"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.019640922546386719,
-				0.041269302368164062,
-				-0.00012445449829101562
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_05",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_05"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 8,
-		"Name" : 
-		{
-			"m_Name" : "Obst_VerticalPillar",
-			"status" : true
-		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
-			"prefab_path" : ""
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_Pillar_Base"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				128.60183715820312,
-				-40.970943450927734,
-				-259.95672607421875
-			],
-			"m_rotation" : 
-			[
-				-90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				9.9974250793457031,
-				10.0,
-				10.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.11999999731779099,
-				0.090000003576278687
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.014247894287109375,
-				1.0008037090301514
-			],
-			"m_rotation" : 
-			[
-				90.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.99999505281448364,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.10000000149011612,
-				0.5,
-				0.10000000149011612
-			],
-			"isStatic" : true,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Collider_1",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.00643157958984375,
-				0.36938357353210449
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_00",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_00"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_01",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_01"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_02",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_02"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_03",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_03"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				0.034473419189453125,
-				0.60899996757507324
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_04",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_04"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.019640922546386719,
-				0.041269302368164062,
-				-0.00012445449829101562
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Vertical_PillarPart_05",
-			"status" : true
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Obst_VerticalPillar",
-				"Resources/Models\\Environment",
-				"Vertical_PillarPart_05"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-3.814697265625e-06,
-				3.814697265625e-06,
-				-6.67572021484375e-06
-			],
-			"m_rotation" : 
-			[
-				-2.035554884372015e-13,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.9999997615814209,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 3,
 		"Name" : 
 		{
@@ -50707,6 +47275,3438 @@
 		}
 	},
 	{
+		"Children" : 10,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "eee0dd57-1648-400d-abed-92a3d302a76f",
+			"prefab_path" : ""
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				-1.2999999523162842,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.7000000476837158,
+				1.2000000476837158,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bridge",
+				"Resources/Models\\Environment",
+				"Bridge"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				88.933883666992188,
+				-35.373043060302734,
+				-261.16519165039062
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				135.13787841796875,
+				-40.970943450927734,
+				-265.47650146484375
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9979896545410156,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014247894287109375,
+				1.000866174697876
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999886155128479,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.00643157958984375,
+				0.36945390701293945
+			],
+			"m_rotation" : 
+			[
+				-6.1066662794193038e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				76.336723327636719,
+				-40.970943450927734,
+				-265.523681640625
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9952516555786133,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014247894287109375,
+				1.0008444786071777
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999511241912842,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.00643157958984375,
+				0.36946725845336914
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0000001192092896,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				85.414169311523438,
+				-40.970943450927734,
+				-259.9647216796875
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9967203140258789,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014247894287109375,
+				1.0008041858673096
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99998146295547485,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.00643157958984375,
+				0.36938381195068359
+			],
+			"m_rotation" : 
+			[
+				-6.1066662794193038e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.9999997615814209,
+				0.9999997615814209
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				113.85737609863281,
+				-40.970943450927734,
+				-259.876708984375
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9973440170288086,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014249801635742188,
+				1.0008037090301514
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99998211860656738,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0064334869384765625,
+				0.36938357353210449
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 8,
+		"Name" : 
+		{
+			"m_Name" : "Obst_VerticalPillar",
+			"status" : true
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "3d9dcc83-2526-441d-bb6b-797fc91d1214",
+			"prefab_path" : ""
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_Pillar_Base"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				128.60183715820312,
+				-40.970943450927734,
+				-259.95672607421875
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				9.9974250793457031,
+				10.0,
+				10.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.11999999731779099,
+				0.090000003576278687
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.014247894287109375,
+				1.0008037090301514
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.99999505281448364,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				0.10000000149011612,
+				0.5,
+				0.10000000149011612
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Collider_1",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.00643157958984375,
+				0.36938357353210449
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_00",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_00"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_01"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_02"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_03"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				0.034473419189453125,
+				0.60899996757507324
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_04"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.019640922546386719,
+				0.041269302368164062,
+				-0.00012445449829101562
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Vertical_PillarPart_05",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Obst_VerticalPillar",
+				"Resources/Models\\Environment",
+				"Vertical_PillarPart_05"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.814697265625e-06,
+				3.814697265625e-06,
+				-6.67572021484375e-06
+			],
+			"m_rotation" : 
+			[
+				-2.035554884372015e-13,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.9999997615814209,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				-1.2999999523162842,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.7000000476837158,
+				1.2000000476837158,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bridge",
+				"Resources/Models\\Environment",
+				"Bridge"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				120.39548492431641,
+				-35.373001098632812,
+				-261.16519165039062
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				2.5999999046325684,
+				-1.5
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.5,
+				2.5,
+				6.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bridge",
+				"Resources/Models\\Environment",
+				"Bridge"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				99.845001220703125,
+				-33.65386962890625,
+				-261.16519165039062
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Bridge_02.2",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Bridge",
+				"Resources/Models\\Environment",
+				"Bridge"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				99.845222473144531,
+				-28.080547332763672,
+				-261.16055297851562
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-179.99989318847656
+			],
+			"m_scale" : 
+			[
+				0.99999988079071045,
+				0.99999988079071045,
+				0.99999350309371948
+			]
+		}
+	},
+	{
+		"Children" : 11,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Final_Merged",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.61860466003417969,
+				0.61859846115112305,
+				0.61859846115112305
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.56282711029052734,
+				0.12156862020492554
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Seg_04_Final_Merged"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Seg_04_Floor_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Seg_04_Floor_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_01_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.25116276741027832,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.1209302544593811,
+				0.1209302544593811
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_01_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_02_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.16744184494018555,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.56841534376144409,
+				0.023255825042724609
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_02_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_03_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.25098040699958801,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.12156862765550613,
+				0.12156862765550613
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_03_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_04_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.32631689310073853,
+				0.027906954288482666
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_04_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_05_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.27906966209411621,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.12156862020492554,
+				0.12156862020492554
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_05_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_06_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.8837209939956665,
+				1.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.415740966796875,
+				0.12156862020492554
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_06_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_07_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.39122658967971802,
+				0.12156862020492554
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_07_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_08_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.25098040699958801,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.12156862765550613,
+				0.12156862765550613
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_08_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Building_09_Emissive",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.36279070377349854,
+				0.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.12156862765550613,
+				0.12156862765550613
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Building_09_Emissive"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_04_Canopy",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Segment_04_Final_Merged",
+				"Resources/Models\\Environment",
+				"Segment_04_Canopy"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -69951,9 +69951,9 @@
 			"m_SpawnCount" : 1,
 			"m_SpawnDirection" : 
 			[
-				0.19956134259700775,
-				-0.93484896421432495,
-				0.29365399479866028
+				0.88232868909835815,
+				-0.30350661277770996,
+				0.35969418287277222
 			],
 			"m_SpawnRadius" : 6.5,
 			"m_Speed" : 
@@ -70354,7 +70354,7 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : "MainMenu",
+				"Data" : "CreditScene",
 				"Name" : "SceneToLoad",
 				"Type" : 3
 			}

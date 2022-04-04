@@ -342,5 +342,10 @@ namespace Scripting
         {
             return new CinematicBar();
         }
+
+        public static Credits Credits()
+        {
+            return new Credits();
+        }
     }
 }

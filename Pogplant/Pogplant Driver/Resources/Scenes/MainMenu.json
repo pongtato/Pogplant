@@ -76,204 +76,6 @@
 		}
 	},
 	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				0.99999600648880005,
-				0.99998998641967773,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 2.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.25,
-					0.125
-				]
-			},
-			"m_TexName" : "512_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "How To Play Button",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				1.8999999761581421,
-				-0.15000000596046448,
-				0.10000000149011612
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.25,
-				0.25,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				0.99999600648880005,
-				0.99998998641967773,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 4.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.125
-				]
-			},
-			"m_TexName" : "512_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Settings Button",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				1.8999999761581421,
-				-0.22499999403953552,
-				0.10000000149011612
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.25,
-				0.25,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				0.99999600648880005,
-				0.99998998641967773,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 6.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.75,
-					0.125
-				]
-			},
-			"m_TexName" : "512_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Credits Button",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				1.8999999761581421,
-				-0.375,
-				0.10000000149011612
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.25,
-				0.25,
-				1.0
-			]
-		}
-	},
-	{
 		"AudioSource" : 
 		{
 			"Clip0" : 
@@ -5561,6 +5363,204 @@
 		}
 	},
 	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99999600648880005,
+				0.99998998641967773,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 2.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.25,
+					0.125
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "How To Play Button",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.8999999761581421,
+				-0.15000000596046448,
+				0.10000000149011612
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99999600648880005,
+				0.99998998641967773,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 4.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.125
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Settings Button",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.8999999761581421,
+				-0.22499999403953552,
+				0.10000000149011612
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				0.99999600648880005,
+				0.99998998641967773,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 6.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.75,
+					0.125
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Credits Button",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				1.8999999761581421,
+				-0.375,
+				0.10000000149011612
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
 		"Camera" : 
 		{
 			"m_Active" : true,
@@ -9544,6 +9544,14 @@
 		{
 			"CinematicBar" : false
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 2.0,
+				"Name" : "cinematic_bar_speed",
+				"Type" : 0
+			}
+		],
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
