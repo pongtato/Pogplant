@@ -235,6 +235,7 @@ namespace Scripting
                 
                 if(m_Timer < 0.5f)
                 {
+                    ECS.SetActive(m_EndScoreID, true);
                     ECS.SetPosition(entityID, Vector3.Lerp(m_pos, m_LettersMap["EndMenuControllerMid"].transform.Position, m_AnimationSpeed * dt));
                 }
                 else if(m_Timer >= 0.5f && m_Timer < 1.0f)
@@ -254,11 +255,6 @@ namespace Scripting
                     UpdateCollectGrade(dt);
                 }
                 else if(m_Timer >= 4.0f && m_Timer < 5.0f)
-                {
-                    ECS.SetActive(m_EndScoreID, true);
-                    GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
-                }
-                else if(m_Timer >= 5.0f && m_Timer < 6.0f)
                 {
                     UpdateMedals();
                 }
@@ -326,6 +322,7 @@ namespace Scripting
                     m_OverallGrade += (uint)MEDALGRADE.GOLD;
                     PlayerScript.score += bonusScoreA;
                 }
+                GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 m_CallOnceDes = false;
             }
             else
@@ -363,6 +360,7 @@ namespace Scripting
                     m_OverallGrade += (uint)MEDALGRADE.GOLD;
                     PlayerScript.score += bonusScoreA;
                 }
+                GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 m_CallOnceEva = false;
             }
             else
@@ -399,6 +397,7 @@ namespace Scripting
                     m_OverallGrade += (uint)MEDALGRADE.GOLD;
                     PlayerScript.score += bonusScoreA;
                 }
+                GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 m_CallOnceCol = false;
             }
             else
