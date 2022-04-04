@@ -1,5 +1,14 @@
 [
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.25
+			}
+		},
 		"Children" : 3,
 		"Name" : 
 		{

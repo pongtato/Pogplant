@@ -101,6 +101,7 @@ namespace Scripting
             if (InputUtility.onKeyTriggered("ESCAPE") ||
 				(!move_bottom_bar && InputUtility.onAnyKey()))
             {
+				ECS.PlayAudio(entityID, 0, "SFX");
 				GameUtilities.LoadScene("MainMenu");
             }
         }
