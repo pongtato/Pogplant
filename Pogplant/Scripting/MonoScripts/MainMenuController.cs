@@ -408,6 +408,8 @@ namespace Scripting
 						GameUtilities.PauseScene();
 						break;
 					case BUTTONS.CREDITS:
+						CinematicBar.Enable(true);
+						GameUtilities.PauseScene();
 						break;
 					case BUTTONS.QUIT_GAME:
 						GameUtilities.ExitScene();

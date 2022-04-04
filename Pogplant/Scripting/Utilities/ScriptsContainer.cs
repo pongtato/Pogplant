@@ -90,7 +90,7 @@ namespace Scripting
             pauseScriptNames.Add("EndGameMenu");
             pauseScriptNames.Add("HowToPlayMenu");
             pauseScriptNames.Add("HighScoreMenu");
-
+            pauseScriptNames.Add("CinematicBar");
 
             //let this be last lol
             pauseScriptNames.Sort();

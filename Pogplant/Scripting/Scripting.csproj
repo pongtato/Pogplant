@@ -86,6 +86,7 @@
     <Compile Include="MonoScripts\TetherEnemy.cs" />
     <Compile Include="MonoScripts\TriggerAudioPlay.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />
+    <Compile Include="PauseScripts\CinematicBar.cs" />
     <Compile Include="PauseScripts\EndGameMenu.cs" />
     <Compile Include="PauseScripts\HighScoreMenu.cs" />
     <Compile Include="PauseScripts\HowToPlayMenu.cs" />

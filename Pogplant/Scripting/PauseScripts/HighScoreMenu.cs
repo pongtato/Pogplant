@@ -137,12 +137,6 @@ namespace Scripting
 
 			prev_input = !InputUtility.IsControlledBeingUsed();
 			UpdateInputUi(InputUtility.IsControlledBeingUsed());
-
-			for (int i = 0; i < 3; i++)
-			{
-				m_cur_name[i] = 'A';
-
-			}
 		}
 
 		public override void Start()

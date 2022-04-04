@@ -338,5 +338,9 @@ namespace Scripting
         {
             return new CorePillar();
         }
+        public static CinematicBar CinematicBar()
+        {
+            return new CinematicBar();
+        }
     }
 }
