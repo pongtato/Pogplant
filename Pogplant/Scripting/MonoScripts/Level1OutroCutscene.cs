@@ -409,14 +409,7 @@ namespace Scripting
             //moving_parts_dict[boss_model_parent_id].SetMovingPartsPosition(boss_model_parent_id, new Vector3(), new Vector3(0, 120.7f, 0), new Vector3(0, 1.5f, 0), false, true, false, false, false, false);
             //moving_parts_dict[boss_model_parent_id].SetMovingPartsRotation(boss_model_parent_id, new Vector3(0, 0, 0), new Vector3(), new Vector3(3.0f, 3.0f, 3.0f), false, false, false, false, false, false);
 
-            //save the score to carry over to L1Boss
-            //PlayerPrefs.SetValue<uint>("CurrentScore", PlayerScript.score);
-            //PlayerPrefs.Save();
-
             GameUtilities.LoadScene("Level01_Boss");
-
-            //PlayerScript.score = PlayerPrefs.GetValue<uint>("CurrentScore", 0);
-
         }
 
         void RunFlyingSequenceOne(float dt)

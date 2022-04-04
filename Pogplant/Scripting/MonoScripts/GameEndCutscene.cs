@@ -327,9 +327,6 @@ namespace Scripting
             //any_key_scale_up = false;
             //any_key_min_scale = new Vector3(0.45f, 0.45f, 1.0f);
             //any_key_max_scale = new Vector3(0.5f, 0.5f, 1.0f);
-
-            PlayerPrefs.SetValue<uint>("CurrentScore", 0);
-            PlayerPrefs.Save();
         }
 
         public override void Update(float dt)

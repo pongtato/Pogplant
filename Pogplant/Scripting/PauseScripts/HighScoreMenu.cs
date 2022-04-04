@@ -249,6 +249,14 @@ namespace Scripting
 						if (m_after_endgame)
                         {
 							SaveScore();
+
+							//reset the score variables
+							PlayerPrefs.SetValue<uint>("CurrentScore", 0);
+							PlayerPrefs.SetValue<uint>("m_EnemyDestroyedCount", 0);
+							PlayerPrefs.SetValue<uint>("m_PlayerHitCount", 0);
+							PlayerPrefs.SetValue<uint>("m_CollectiblesCount", 0);
+							PlayerPrefs.Save();
+
 							GameUtilities.LoadScene(m_next_scene);
 						}
 						

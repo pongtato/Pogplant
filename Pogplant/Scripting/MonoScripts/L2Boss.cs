@@ -347,8 +347,7 @@ namespace Scripting
                                     PlayerPrefs.GetValue<uint>("m_PlayerHitCount", 0),
                                     PlayerPrefs.GetValue<uint>("m_CollectiblesCount", 0));
 
-            PlayerPrefs.SetValue<uint>("CurrentScore", 0);
-            PlayerPrefs.Save();
+
         }
 
         public override void Update(float dt)

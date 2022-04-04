@@ -50,9 +50,12 @@ namespace Scripting
                     PlayerPrefs.SetValue<uint>("m_CollectiblesCount", PlayerScript.m_CollectiblesCount);
 
                     PlayerPrefs.Save();
-                    //Console.WriteLine("========================================================================");
-                    //Console.WriteLine("saving score: " + PlayerScript.score);
-                    //Console.WriteLine("========================================================================");
+                    Console.WriteLine("========================================================================");
+                    Console.WriteLine("saving score: " + PlayerScript.score);
+                    Console.WriteLine("saving m_EnemyDestroyedCount: " + PlayerScript.m_EnemyDestroyedCount);
+                    Console.WriteLine("saving m_PlayerHitCount: " + PlayerScript.m_PlayerHitCount);
+                    Console.WriteLine("saving m_CollectiblesCount: " + PlayerScript.m_CollectiblesCount);
+                    Console.WriteLine("========================================================================");
 
 
                     GameUtilities.LoadScene(scene_to_load);

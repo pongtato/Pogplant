@@ -193,6 +193,21 @@ namespace Scripting
             m_TransitDelayTimer = 0.0f;
 
             scene_to_load = ECS.GetValue<string>(entityID, "Level01OutroCutscene", "SceneToLoad");
+
+
+            //load the current score details
+            PlayerScript.InitScore( PlayerPrefs.GetValue<uint>("CurrentScore", 0),
+                                    PlayerPrefs.GetValue<uint>("m_EnemyDestroyedCount", 0),
+                                    PlayerPrefs.GetValue<uint>("m_PlayerHitCount", 0),
+                                    PlayerPrefs.GetValue<uint>("m_CollectiblesCount", 0));
+
+
+            ////reset the score data in playerpref file
+            //PlayerPrefs.SetValue<uint>("CurrentScore", 0);
+            //PlayerPrefs.SetValue<uint>("m_EnemyDestroyedCount", 0);
+            //PlayerPrefs.SetValue<uint>("m_PlayerHitCount", 0);
+            //PlayerPrefs.SetValue<uint>("m_CollectiblesCount", 0);
+            //PlayerPrefs.Save();
         }
 
         public override void Start()

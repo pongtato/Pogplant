@@ -362,6 +362,22 @@ namespace Scripting
 				{
 					if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
 					{
+						PlayerPrefs.SetValue<uint>("CurrentScore", PlayerScript.score);
+						PlayerPrefs.SetValue<uint>("m_EnemyDestroyedCount", PlayerScript.m_EnemyDestroyedCount);
+						PlayerPrefs.SetValue<uint>("m_PlayerHitCount", PlayerScript.m_PlayerHitCount);
+						PlayerPrefs.SetValue<uint>("m_CollectiblesCount", PlayerScript.m_CollectiblesCount);
+
+						PlayerPrefs.Save();
+
+						Console.WriteLine("========================================================================");
+						Console.WriteLine("L2BossBehaviour");
+						Console.WriteLine("saving score: " + PlayerScript.score);
+						Console.WriteLine("saving m_EnemyDestroyedCount: " + PlayerScript.m_EnemyDestroyedCount);
+						Console.WriteLine("saving m_PlayerHitCount: " + PlayerScript.m_PlayerHitCount);
+						Console.WriteLine("saving m_CollectiblesCount: " + PlayerScript.m_CollectiblesCount);
+						Console.WriteLine("========================================================================");
+
+
 						GameUtilities.LoadScene("EndGameCutscene");
 					}
 				}
@@ -1208,6 +1224,22 @@ namespace Scripting
 				{
 					Console.WriteLine("L2BossBehaviour.cs: Boss is dead, triggering sequence");
 					//TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+
+					PlayerPrefs.SetValue<uint>("CurrentScore", PlayerScript.score);
+					PlayerPrefs.SetValue<uint>("m_EnemyDestroyedCount", PlayerScript.m_EnemyDestroyedCount);
+					PlayerPrefs.SetValue<uint>("m_PlayerHitCount", PlayerScript.m_PlayerHitCount);
+					PlayerPrefs.SetValue<uint>("m_CollectiblesCount", PlayerScript.m_CollectiblesCount);
+
+					PlayerPrefs.Save();
+
+					Console.WriteLine("========================================================================");
+					Console.WriteLine("L2BossBehaviour");
+					Console.WriteLine("saving score: " + PlayerScript.score);
+					Console.WriteLine("saving m_EnemyDestroyedCount: " + PlayerScript.m_EnemyDestroyedCount);
+					Console.WriteLine("saving m_PlayerHitCount: " + PlayerScript.m_PlayerHitCount);
+					Console.WriteLine("saving m_CollectiblesCount: " + PlayerScript.m_CollectiblesCount);
+					Console.WriteLine("========================================================================");
+
 					GameUtilities.LoadScene("EndGameCutscene");
 				}
 			}

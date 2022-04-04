@@ -1064,7 +1064,8 @@ namespace Scripting
 			m_EnemyDestroyedCount = _EnemyDestroyedCount;
 			m_PlayerHitCount = _PlayerHitCount;
 			m_CollectiblesCount = _CollectiblesCount;
-
+			Console.WriteLine("InitScore");
+			Console.WriteLine("_score: " + _score);
 			Console.WriteLine("m_EnemyDestroyedCount: " + m_EnemyDestroyedCount);
 			Console.WriteLine("m_PlayerHitCount: " + m_PlayerHitCount);
 			Console.WriteLine("m_CollectiblesCount: " + m_CollectiblesCount);
