@@ -335,6 +335,8 @@ namespace Scripting
 
 						m_actual_nuke_bar_charging_scale.X = 0;
 						m_actual_nuke_set_scale = false;
+
+						PlayerNuke.m_has_fired = true;
 					}
 				}
 			}

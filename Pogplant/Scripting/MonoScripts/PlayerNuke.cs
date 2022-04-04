@@ -54,6 +54,9 @@ namespace Scripting
 		int m_state_counter = 0;
 		float m_timer = 0.0f;
 
+		//used to stop it from shooting 
+		public static bool m_has_fired = false;
+
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
@@ -318,44 +321,47 @@ namespace Scripting
 
 		public override void Update(float dt)
 		{
-			if (m_state_counter < m_state_time.Count())
+			if (m_has_fired)
             {
-				m_timer += dt;
-				//Console.WriteLine(m_state_counter + 1);
-				Animation_State(m_state_counter + 1, dt);
-
-				if (m_timer > m_state_time[m_state_counter])
+				if (m_state_counter < m_state_time.Count())
 				{
+					m_timer += dt;
+					//Console.WriteLine(m_state_counter + 1);
+					Animation_State(m_state_counter + 1, dt);
+
+					if (m_timer > m_state_time[m_state_counter])
+					{
+						m_timer = 0;
+						m_state_counter++;
+						set_transition = true;
+					}
+				}
+				else
+				{
+					//if exceed, hit everyone
+
+					var NoDuplicate = m_enemy_in_range.Distinct();
+					//Console.WriteLine( "in range of nuke: " + NoDuplicate.Count());
+					foreach (uint entity in NoDuplicate)
+					{
+						//SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
+						GameUtilities.EnemyTakeDamageFromID(entity, 9999);
+						EncounterSystemDriver.TakeDamage(entity, 9999);
+
+					}
+
+					m_enemy_in_range.Clear();
+
+					//disable self
+					ECS.SetActive(entityID, false);
+
+					//reset variables 
 					m_timer = 0;
-					m_state_counter++;
+					m_state_counter = 0;
 					set_transition = true;
+					m_has_fired = false;
 				}
 			}
-			else
-            {
-				//if exceed, hit everyone
-
-				var NoDuplicate = m_enemy_in_range.Distinct();
-				//Console.WriteLine( "in range of nuke: " + NoDuplicate.Count());
-				foreach (uint entity in NoDuplicate)
-                {
-					//SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
-                    GameUtilities.EnemyTakeDamageFromID(entity, 9999);
-					EncounterSystemDriver.TakeDamage(entity, 9999);
-
-				}
-
-				m_enemy_in_range.Clear();
-
-				//disable self
-				ECS.SetActive(entityID, false);
-
-				//reset variables 
-				m_timer = 0;
-				m_state_counter = 0;
-				set_transition = true;
-			}
-
 		}
 
 		void SpinObjectEndless(uint id, Vector3 axis, float spin_speed, float dt)
