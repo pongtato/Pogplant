@@ -8627,7 +8627,7 @@
 			{
 				"Dir" : "Resources/Audio\\Game_BGM_JP_High.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.11800000071525574
+				"Volume" : 0.17399999499320984
 			},
 			"Clip1" : 
 			{
@@ -9276,6 +9276,105 @@
 		"Children" : 1,
 		"Name" : 
 		{
+			"m_Name" : "Reticle2",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-6.3226082147593843e-09,
+				-0.00051116943359375,
+				-1.2712301213468891e-05
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				0.0010000000474974513
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : true,
+			"m_Ortho" : false,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 1,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 1,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 1,
+				"m_Tiling" : 
+				[
+					1.0,
+					1.0
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.0
+				]
+			},
+			"m_TexName" : "Lockon.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Child",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-2.4670043785590678e-11,
+				6.1583705246448517e-08,
+				8.7637454271316528e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99993693828582764,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
 			"m_Name" : "Reticle3",
 			"status" : true
 		},
@@ -9565,105 +9664,6 @@
 			[
 				1.0,
 				0.99991780519485474,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 1,
-		"Name" : 
-		{
-			"m_Name" : "Reticle2",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-6.3226082147593843e-09,
-				-0.00051116943359375,
-				-1.2712301213468891e-05
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				0.0010000000474974513
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : true,
-			"m_Ortho" : false,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_TexName" : "Lockon.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Child",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-2.4670043785590678e-11,
-				6.1583705246448517e-08,
-				8.7637454271316528e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				0.99993693828582764,
 				1.0
 			]
 		}
