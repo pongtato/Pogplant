@@ -8625,9 +8625,9 @@
 		{
 			"Clip0" : 
 			{
-				"Dir" : "Resources/Audio\\Game_BGM_JP_High.ogg",
+				"Dir" : "Resources/Audio\\Game_BGM_JP_High2.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.17399999499320984
+				"Volume" : 0.19499999284744263
 			},
 			"Clip1" : 
 			{
