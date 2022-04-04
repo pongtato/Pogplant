@@ -606,7 +606,7 @@
         },
         {
           "Text": "Prof: Phew! I think we got this, Timmy! Let's test this out, BABY!",
-          "Timer": 4.2
+          "Timer": 4.0
         },
         {
           "Text": "Timmy: Weapon Charging...Charging Complete...",
@@ -641,7 +641,7 @@
           "Timer": 2.4
         },
         {
-          "Text": "Timmy, the enemies will hear that MILES AWAY!",
+          "Text": "Prof: Timmy, the enemies will hear that MILES AWAY!",
           "Timer": 2.4
         },
         {
