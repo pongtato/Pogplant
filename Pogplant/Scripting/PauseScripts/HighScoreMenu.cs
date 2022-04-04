@@ -36,26 +36,27 @@ namespace Scripting
 
 		//false = keyboard, true = controller
 		private bool prev_input = true;
-		uint m_Arrow_Left_A;
-		uint m_Arrow_Left_DPad;
-		uint m_Arrow_Right_D;
-		uint m_Arrow_Right_DPad;
+		static uint m_Arrow_Left_A;
+		static uint m_Arrow_Left_DPad;
+		static uint m_Arrow_Right_D;
+		static uint m_Arrow_Right_DPad;
 
 		//used to track the next scene
 		static string m_next_scene;
 		static bool m_after_endgame = false;
 
-		char[] m_cur_name = new char[3];
-		uint[] m_cur_name_letters = new uint[3];
-		char[] m_valid_letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+		static char[] m_cur_name = new char[3];
+		static uint[] m_cur_name_letters = new uint[3];
+		static char[] m_valid_letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 		static int m_name_placement = 0;
-		int m_cur_name_cursor = 0; //range is 0 to 2
-		int m_prev_name_cursor = 0; //range is 0 to 2
-		int[] m_cur_letter_index = { 0, 0, 0 }; //range is A to Z;
-		int[] m_prev_letter_index = { 0, 0, 0 }; //range is A to Z;
-		float m_up_down_offset;
-		Vector3 m_up_down_pos = new Vector3();
-		uint m_cur_name_cursor_id;
+		static int m_cur_name_cursor = 0; //range is 0 to 2
+		static int m_prev_name_cursor = 0; //range is 0 to 2
+		static int[] m_cur_letter_index = { 0, 0, 0 }; //range is A to Z;
+		static int[] m_prev_letter_index = { 0, 0, 0 }; //range is A to Z;
+		static float m_up_down_offset;
+		static Vector3 m_up_down_pos = new Vector3();
+		static uint m_cur_name_cursor_id;
+		static uint m_new_highscore_id;
 
 		//private for score
 		public struct ScoreEntry
@@ -121,7 +122,7 @@ namespace Scripting
 
 			//used for inputting of name for highscore
 			m_cur_name_cursor_id = ECS.FindChildEntityWithName(entityID, "Arrow_Up_Down");
-
+			m_new_highscore_id = ECS.FindChildEntityWithName(entityID, "New_HighScore");
 			//cinematic_bar_top_id = ECS.FindChildEntityWithName(entityID, "Top Cinematic Bar");
 			//cinematic_bar_bottom_id = ECS.FindChildEntityWithName(entityID, "Bottom Cinematic Bar");
 
@@ -232,7 +233,14 @@ namespace Scripting
 					if (ECS.GetGlobalPosition(m_score_board).Y < -0.15f)
 						ECS.SetGlobalPosition(m_score_board, Vector3.Lerp(ECS.GetGlobalPosition(m_score_board), new Vector3(0.0f, -0.149f, -0.2f), m_sliding_speed * dt));
 					else
+                    {
+						if (m_after_endgame)
+                        {
+							m_up_down_pos = ECS.GetGlobalPosition(m_cur_name_cursor_id);
+							UpdateNameCursorPos();
+						}
 						m_entering_animation = false;
+					}
 				}
 
 				if (m_exiting_animation)
@@ -383,6 +391,18 @@ namespace Scripting
 
 							m_name_placement = i;
 
+							//move "New highscore" to the index's row
+							Vector3 temp_pos = ECS.GetGlobalPosition(m_new_highscore_id);
+							ECS.SetGlobalPosition(m_new_highscore_id, new Vector3(temp_pos.X, temp_pos.Y - m_name_placement * 0.115f, temp_pos.Z));
+							temp_pos = ECS.GetGlobalPosition(m_cur_name_cursor_id);
+							ECS.SetGlobalPosition(m_cur_name_cursor_id, new Vector3(temp_pos.X, temp_pos.Y - m_name_placement * 0.115f, temp_pos.Z));
+
+							//deactivate arrows lol
+							ECS.SetActive(m_Arrow_Left_A, false);
+							ECS.SetActive(m_Arrow_Left_DPad, false);
+							ECS.SetActive(m_Arrow_Right_D, false);
+							ECS.SetActive(m_Arrow_Right_DPad, false);
+
 							ScoreEntry asd = ScoreList[m_index][m_name_placement];
 							asd.m_score = PlayerScript.score;
 							ScoreList[m_index][m_name_placement] = asd;
@@ -470,7 +490,7 @@ namespace Scripting
 			//used for updating letters in inputting name
 			if (InputUtility.onKeyTriggered("MENUUP") && m_after_endgame)
 			{
-				//ECS.PlayAudio(entityID, 2, "SFX");
+				ECS.PlayAudio(entityID, 0, "SFX");
 				m_prev_letter_index[m_cur_name_cursor] = m_cur_letter_index[m_cur_name_cursor];
 				
 				m_cur_letter_index[m_cur_name_cursor] += 1;
@@ -480,7 +500,7 @@ namespace Scripting
 			}
 			else if (InputUtility.onKeyTriggered("MENUDOWN") && m_after_endgame)
 			{
-				//ECS.PlayAudio(entityID, 3, "SFX");
+				ECS.PlayAudio(entityID, 1, "SFX");
 				m_prev_letter_index[m_cur_name_cursor] = m_cur_letter_index[m_cur_name_cursor];
 
 				m_cur_letter_index[m_cur_name_cursor] -= 1;
@@ -525,9 +545,9 @@ namespace Scripting
 				ECS.SetActive(TitleMap[entry.Value], entry.Key == (TITLE_ORDER)m_index ? true : false);
 		}
 
-		private void UpdateNameCursorPos()
+		static private void UpdateNameCursorPos()
         {
-			ECS.SetGlobalPosition(m_cur_name_cursor_id, new Vector3(m_up_down_pos.X + m_up_down_offset * m_cur_name_cursor, -0.15f, m_up_down_pos.Z));
+			ECS.SetPosition(m_cur_name_cursor_id, new Vector3(m_up_down_offset * m_cur_name_cursor, -m_name_placement * 0.115f, 0));
         }
 
 		private void UpdateNameLetterIndex()
