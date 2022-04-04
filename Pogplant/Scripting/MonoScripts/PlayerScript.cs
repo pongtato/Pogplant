@@ -152,7 +152,7 @@ namespace Scripting
 		// Score
 		public static uint score = 0;                                    // Current score
 		public static uint m_OldScore = 0;                               // Old score
-		private static uint kill_score = 100;                            // Addition to base score everytime an enemy is killed
+		private static uint kill_score = 1000;                            // Addition to base score everytime an enemy is killed
 		static uint m_ScoreTextID;
 		static float m_ScoreResetTimer;
 		const float m_ScoreResetTimeLimit = 1.0f;
@@ -944,7 +944,7 @@ namespace Scripting
 						ECS.PlayAudio(entity_id, 0, "SFX");
 					}
 
-					uint addscore = (kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber)/5;
+					uint addscore = kill_score + (kill_score * PlayerScript.m_ScoreMultiplierBobbleCount * PlayerScript.m_ComboNumber)/5;
 					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, addscore, true));
 					m_ScoreResetTimer = 0.01f;
 
@@ -954,7 +954,7 @@ namespace Scripting
 				{
 					ECS.PlayAudio(entity_id, 0, "SFX");
 
-					uint addscore = (kill_score * PlayerScript.m_ScoreMultiplierBobbleCount)/5;
+					uint addscore = kill_score + (kill_score * PlayerScript.m_ScoreMultiplierBobbleCount)/5;
 					m_AddScoreListIDs.Add(GameUtilities.UpdateScore_AddMinus(DashboardScreenID, addscore, true));
 					m_ScoreResetTimer = 0.01f;
 
