@@ -58,7 +58,10 @@ namespace Scripting
         public extern static string GetTagECS(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static uint PlayAudio(uint entityID, uint index, string channelGroupName = "NULL");
+        public extern static void PlayAudio(uint entityID, uint index, string channelGroupName = "NULL");
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void StopAudio(uint entityID, uint index);
 
         // Set to True to enable, false to disable entity
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

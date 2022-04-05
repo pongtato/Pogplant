@@ -665,6 +665,14 @@ namespace SSH
 		}
 	}
 
+	void StopAudio(std::uint32_t entity, std::uint32_t index)
+	{
+		const auto& audio_comp = ScriptSystem::GetECS()->GetReg().try_get<Components::AudioSource>(static_cast<entt::entity>(entity));
+
+		if (audio_comp)
+			audio_comp->StopAudio(index);
+	}
+
 	void CreateAudioChannelGroup(MonoString* channelGroupName)
 	{
 		std::string channelGroupNameStr = mono_string_to_utf8(channelGroupName);

@@ -787,7 +787,7 @@ namespace Scripting
 
 		void UpdateLaserAttack(float dt)
 		{
-			Vector3 shipPos = ECS.GetGlobalPosition(mID_playerShip) - new Vector3(0, 0.55f, 0);
+			Vector3 shipPos = ECS.GetGlobalPosition(mID_playerShip) - new Vector3(0, 0.65f, 0);
 
 			if (m_runStateInfo.bossShootTimer < 5.85f)
 			{
@@ -904,6 +904,7 @@ namespace Scripting
 						L2Boss.m_singleton.SetTurretColors();
 						L2Boss.m_singleton.SetColorTurretPreparingFire();
 
+						ECS.PlayAudio(entityID, 5, "SFX");
 
 						for (int i = 0; i < 2; ++i)
 						{
@@ -928,7 +929,7 @@ namespace Scripting
 						//Charge up
 						case 0:
 						{
-							if (m_runStateInfo.bossShootTimer > 6.2f)
+							if (m_runStateInfo.bossShootTimer > 5.2f)
 							{
 
 								for (int i = 0; i < 2; ++i)
@@ -937,6 +938,8 @@ namespace Scripting
 									ECS.SetActive(m_turretGuns[i].ID_laserHitbox, true);
 								}
 
+								ECS.StopAudio(entityID, 5);
+								ECS.PlayAudio(entityID, 6, "SFX");
 								mLaser_attackState = 1;
 							}
 						}
@@ -1052,6 +1055,9 @@ namespace Scripting
 						{
 							mLaser_attackState = 2;
 							m_runStateInfo.bossShootTimer = 0f;
+
+							ECS.StopAudio(entityID, 6);
+							ECS.PlayAudio(entityID, 7, "SFX");
 						}
 					}
 				}

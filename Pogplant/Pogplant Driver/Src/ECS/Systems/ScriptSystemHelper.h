@@ -73,6 +73,7 @@ namespace SSH
 	void LookAtDirectionalVector(std::uint32_t self_entityID, glm::vec3& directionalVector);
 	glm::vec3 GetUpVector(std::uint32_t self_entityID);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index, MonoString* channelGroupName = nullptr);
+	void StopAudio(std::uint32_t entity, std::uint32_t index);
 	void CreateAudioChannelGroup(MonoString* channelGroupName);
 	void PauseAudioChannelGroup(MonoString* channelGroupName);
 	void ResumeAudioChannelGroup(MonoString* channelGroupName);

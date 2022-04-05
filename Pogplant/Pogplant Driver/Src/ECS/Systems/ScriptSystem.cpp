@@ -462,6 +462,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetGlobalRotation", SSH::SetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::SetGlobalScale", SSH::SetGlobalScale);
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);
+	mono_add_internal_call("Scripting.ECS::StopAudio", SSH::StopAudio);
 
 
 	mono_add_internal_call("Scripting.ECS::GetValueFloat", SSH::ScriptVariableGet<float>);

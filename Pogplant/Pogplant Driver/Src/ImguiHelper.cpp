@@ -1203,7 +1203,10 @@ namespace PogplantDriver
 								audioSourceComponent->m_audioSources[i].m_audioClip = &audioClipIt->second;
 							}
 
-							ImGui::Text("AudioSource");
+							std::stringstream ssT;
+							ssT << "AudioSource " << i;
+
+							ImGui::Text(ssT.str().c_str());
 							if (ImGui::BeginCombo("###Sound", audioClipIt->first.c_str(), ImGuiComboFlags_PopupAlignLeft))
 							{
 								for (auto it = PPA::AudioResource::AudioPool().begin(); it != PPA::AudioResource::AudioPool().end(); ++it)
