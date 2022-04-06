@@ -50,11 +50,11 @@ namespace Scripting
         const float cinematic_bar_speed = 3.0f;
 
         public string scene_to_load;
-        const int totalEnemies = 174;
+        const int totalEnemies = 200; //this 200 is an average value of both levels total enemy count lv1 = 174 & lv2 = 215
 
-        uint bonusScoreA = 50000;
-        uint bonusScoreB = 30000;
-        uint bonusScoreC = 10000;
+        uint bonusScoreA = 200000;
+        uint bonusScoreB = 100000;
+        uint bonusScoreC = 50000;
 
         // Number of enemies destroyed
         private enum GRADE_DES
@@ -65,11 +65,17 @@ namespace Scripting
         }
 
         // Number of times hit
-        private enum GRADE_EVA
+        private enum GRADE_EVA_LV1
         {
             A = 0,
             B = 10,
             C = 20
+        }
+        private enum GRADE_EVA_LV2
+        {
+            A = 0,
+            B = 25,
+            C = 50
         }
 
         // Number of coins collected
@@ -237,6 +243,7 @@ namespace Scripting
                 {
                     ECS.SetActive(m_EndScoreID, true);
                     ECS.SetPosition(entityID, Vector3.Lerp(m_pos, m_LettersMap["EndMenuControllerMid"].transform.Position, m_AnimationSpeed * dt));
+                    GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 }
                 else if(m_Timer >= 0.5f && m_Timer < 1.0f)
                 {
@@ -336,30 +343,59 @@ namespace Scripting
         {
             if (m_CallOnceEva)
             {
-                // Grade C for Evasiveness
-                if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA.C)
+                //check scene
+                if(GameUtilities.GetSceneName() == "Level01_Boss")
                 {
-                    ECS.PlayAudio(entityID, 4, "SFX");
-                    SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
-                    m_OverallGrade += (uint)MEDALGRADE.BRONZE;
-                    PlayerScript.score += bonusScoreC;
+                    // Grade C for Evasiveness
+                    if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA_LV1.C)
+                    {
+                        ECS.PlayAudio(entityID, 4, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                        PlayerScript.score += bonusScoreC;
+                    }
+                    // Grade B for Evasiveness
+                    else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA_LV1.B && PlayerScript.m_PlayerHitCount < (uint)GRADE_EVA_LV1.C)
+                    {
+                        ECS.PlayAudio(entityID, 3, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.SILVER;
+                        PlayerScript.score += bonusScoreB;
+                    }
+                    // Grade A for Evasiveness
+                    else
+                    {
+                        ECS.PlayAudio(entityID, 2, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_A"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                        PlayerScript.score += bonusScoreA;
+                    }
                 }
-                // Grade B for Evasiveness
-                else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA.B && PlayerScript.m_PlayerHitCount < (uint)GRADE_EVA.C)
-                {
-                    ECS.PlayAudio(entityID, 3, "SFX");
-                    SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
-                    m_OverallGrade += (uint)MEDALGRADE.SILVER;
-                    PlayerScript.score += bonusScoreB;
-                }
-                // Grade A for Evasiveness
                 else
                 {
-                    ECS.PlayAudio(entityID, 2, "SFX");
-                    SwapGrade(m_LettersMap["Evasiveness_A"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id);
-                    m_OverallGrade += (uint)MEDALGRADE.GOLD;
-                    PlayerScript.score += bonusScoreA;
+                    if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA_LV2.C)
+                    {
+                        ECS.PlayAudio(entityID, 4, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                        PlayerScript.score += bonusScoreC;
+                    }
+                    else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA_LV2.B && PlayerScript.m_PlayerHitCount < (uint)GRADE_EVA_LV2.C)
+                    {
+                        ECS.PlayAudio(entityID, 3, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.SILVER;
+                        PlayerScript.score += bonusScoreB;
+                    }
+                    else
+                    {
+                        ECS.PlayAudio(entityID, 2, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_A"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                        PlayerScript.score += bonusScoreA;
+                    }
                 }
+
                 GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 m_CallOnceEva = false;
             }
@@ -408,25 +444,45 @@ namespace Scripting
         }
         private void UpdateMedals()
         {
-            if(m_CallOnceMedal)
+            if (m_CallOnceMedal)
             {
-                if (m_OverallGrade >= (uint)MEDALGRADE.OVERALLBRONZE && m_OverallGrade < (uint)MEDALGRADE.OVERALLSILVER)
+                if (PlayerScript.score >= 1000000)
                 {
-                    ECS.PlayAudio(entityID, 4, "SFX");
-                    SwapGrade(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
+                    ECS.PlayAudio(entityID, 2, "SFX");
+                    SwapGrade(m_LettersMap["Medal_Gold"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id);
                 }
-                else if(m_OverallGrade >= (uint)MEDALGRADE.OVERALLSILVER && m_OverallGrade < (uint)MEDALGRADE.OVERALLGOLD)
+                else if (PlayerScript.score >= 750000)
                 {
                     ECS.PlayAudio(entityID, 3, "SFX");
                     SwapGrade(m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Gold"].id);
                 }
                 else
                 {
-                    ECS.PlayAudio(entityID, 2, "SFX");
-                    SwapGrade(m_LettersMap["Medal_Gold"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id);
+                    ECS.PlayAudio(entityID, 4, "SFX");
+                    SwapGrade(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
                 }
                 m_CallOnceMedal = false;
             }
+            //old ABC grading system
+            //if (m_CallOnceMedal)
+            //{
+            //    if (m_OverallGrade >= (uint)MEDALGRADE.OVERALLBRONZE && m_OverallGrade < (uint)MEDALGRADE.OVERALLSILVER)
+            //    {
+            //        ECS.PlayAudio(entityID, 4, "SFX");
+            //        SwapGrade(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
+            //    }
+            //    else if(m_OverallGrade >= (uint)MEDALGRADE.OVERALLSILVER && m_OverallGrade < (uint)MEDALGRADE.OVERALLGOLD)
+            //    {
+            //        ECS.PlayAudio(entityID, 3, "SFX");
+            //        SwapGrade(m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Gold"].id);
+            //    }
+            //    else
+            //    {
+            //        ECS.PlayAudio(entityID, 2, "SFX");
+            //        SwapGrade(m_LettersMap["Medal_Gold"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id);
+            //    }
+            //    m_CallOnceMedal = false;
+            //}
         }
 
         private void UpdateContinue(float dt)

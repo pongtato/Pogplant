@@ -8,7 +8,7 @@ namespace Scripting
 {
     public class BonusScoreCoin : MonoBehaviour
     {
-        uint m_BonusScoreAmt = 1000;
+        uint m_BonusScoreAmt = 5000;
         bool m_isShrink = false;
         private Transform m_Trans;
         private float m_rotationSpeed = 100.0f;
