@@ -98,6 +98,11 @@ namespace Scripting
             return new SkyboxChanger();
         }
 
+        public static SplashScreen SplashScreen()
+        {
+            return new SplashScreen();
+        }
+
         //public static EnemyManager EnemyManager()
         //{
         //    return new EnemyManager();

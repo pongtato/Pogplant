@@ -84,6 +84,7 @@
     <Compile Include="MonoScripts\GameEndingTrigger.cs" />
     <Compile Include="MonoScripts\SimpleMovement.cs" />
     <Compile Include="MonoScripts\SkyboxChanger.cs" />
+    <Compile Include="MonoScripts\SplashScreen.cs" />
     <Compile Include="MonoScripts\TetherEnemy.cs" />
     <Compile Include="MonoScripts\TriggerAudioPlay.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />

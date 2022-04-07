@@ -157,6 +157,9 @@ namespace Scripting
         public extern static void SetColorTint(uint entityID, ref Vector3 Color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetCanvasAlpha(uint entityID, float alpha);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetDiffuseTint(uint entityID, ref Vector3 Color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]

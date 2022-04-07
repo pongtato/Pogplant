@@ -417,6 +417,15 @@ namespace SSH
 		}
 	}
 
+	void SetCanvasAlpha(std::uint32_t entityID, float alpha)
+	{
+		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));
+		if (canvas)
+		{
+			canvas->m_Color.w = alpha;
+		}
+	}
+
 	void SetDiffuseTint(std::uint32_t entityID, glm::vec3& color)
 	{
 		auto renderer = ScriptSystem::GetECS()->GetReg().try_get<Components::Renderer>(static_cast<entt::entity>(entityID));

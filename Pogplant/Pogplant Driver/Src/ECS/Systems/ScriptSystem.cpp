@@ -503,6 +503,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetFOV", SSH::GetFOV);
 	mono_add_internal_call("Scripting.ECS::SetFrames", SSH::SetFrames);
 	mono_add_internal_call("Scripting.ECS::SetColorTint", SSH::SetColorTint);
+	mono_add_internal_call("Scripting.ECS::SetCanvasAlpha", SSH::SetCanvasAlpha);
 	mono_add_internal_call("Scripting.ECS::SetDiffuseTint", SSH::SetDiffuseTint);
 	mono_add_internal_call("Scripting.ECS::SetEmissiveTint", SSH::SetEmissiveTint);
 	mono_add_internal_call("Scripting.ECS::GetColorTint", SSH::GetColorTint);
