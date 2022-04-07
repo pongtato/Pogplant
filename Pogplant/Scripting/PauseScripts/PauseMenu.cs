@@ -22,7 +22,7 @@ namespace Scripting
             YES = 1
         }
 
-        enum MENU_STATE
+        public enum MENU_STATE
         {
             INACTIVE,
             OPENING_MENU,
@@ -33,7 +33,7 @@ namespace Scripting
 
         bool enabled;
 
-        MENU_STATE menu_state;
+        public static MENU_STATE menu_state;
 
         uint pause_menu_id;
         private Dictionary<string, GameObject> button_map = new Dictionary<string, GameObject>();
@@ -143,7 +143,7 @@ namespace Scripting
             if (InputUtility.onKeyTriggered("ESCAPE"))
             {
                 ECS.PlayAudio(entityID, 3, "SFX");
-                menu_state = MENU_STATE.INPUT_READY;
+                //menu_state = MENU_STATE.INPUT_READY;
             }
 
             if (PlayerScript.m_EnablePauseMenu)
@@ -251,11 +251,13 @@ namespace Scripting
                         break;
                     case 1:
                         menu_state = MENU_STATE.IN_SUB_MENU;
-                        PauseSettingsMenu.refresh = true;
+                        //PauseSettingsMenu.refresh = true;
                         HowToPlayMenu.EnableHowToPlayMenu(false);
+                        HowToPlayMenu.current_state = HowToPlayMenu.ANIM_STATE.OPENING;
                         break;
                     case 2:
                         menu_state = MENU_STATE.IN_SUB_MENU;
+                        PauseSettingsMenu.current_state = PauseSettingsMenu.ANIM_STATE.OPENING;
                         PauseSettingsMenu.refresh = true;
                         ECS.SetActive(settings_menu_id, true);
                         break;

@@ -122,7 +122,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				-1.1000000238418579,
 				0.0
 			],
 			"m_rotation" : 
@@ -6369,7 +6369,7 @@
 			"m_position" : 
 			[
 				0.0,
-				0.0,
+				-1.1000000238418579,
 				0.0
 			],
 			"m_rotation" : 
@@ -6622,7 +6622,7 @@
 		"Name" : 
 		{
 			"m_Name" : "HTP_ControlText",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -6688,7 +6688,7 @@
 		"Name" : 
 		{
 			"m_Name" : "HTP_KeyD",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -6950,7 +6950,7 @@
 		"Name" : 
 		{
 			"m_Name" : "HTP_Image1",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -7016,7 +7016,7 @@
 		"Name" : 
 		{
 			"m_Name" : "HTP_BG",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{
@@ -7148,7 +7148,7 @@
 		"Name" : 
 		{
 			"m_Name" : "HTP_ArrowR",
-			"status" : false
+			"status" : true
 		},
 		"Tag" : 
 		{

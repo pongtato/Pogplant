@@ -54,7 +54,7 @@ namespace Scripting
 		bool move_arrow_left;
 
 		//Anim sequences
-		enum MENU_STATE
+		public enum MENU_STATE
 		{
 			LOGO_SHRINK_EXPAND,
 			ANY_KEY_FLASHING,
@@ -63,7 +63,7 @@ namespace Scripting
 			INPUT_READY,
 			IN_SUB_MENU
 		}
-		MENU_STATE menu_state;
+		public static MENU_STATE menu_state;
 
 		//Logo expand
 		const float max_logo_expand_scale = 1.4f;
@@ -195,7 +195,7 @@ namespace Scripting
 		{
 			if (InputUtility.onKeyTriggered("ESCAPE"))
 			{
-				menu_state = MENU_STATE.INPUT_READY;
+				//menu_state = MENU_STATE.INPUT_READY;
 				ECS.PlayAudio(entityID, 4, "SFX");
 			}
 
@@ -396,11 +396,13 @@ namespace Scripting
 						break;
 					case BUTTONS.HOW_TO_PLAY:
 						HowToPlayMenu.EnableHowToPlayMenu(true);
+						HowToPlayMenu.current_state = HowToPlayMenu.ANIM_STATE.OPENING;
 						GameUtilities.PauseScene();
 						break;
 					case BUTTONS.SETTINGS:
 						menu_state = MENU_STATE.IN_SUB_MENU;
 						SettingsMenu.refresh = true;
+						SettingsMenu.current_state = SettingsMenu.ANIM_STATE.OPENING;
 						ECS.SetActive(settings_menu_id, true);
 						break;
 					case BUTTONS.HIGH_SCORE:

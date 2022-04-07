@@ -23,6 +23,19 @@ namespace Scripting
         static public bool m_EnableHTP = false;
         static public bool m_IsResumeScene = false;
         private bool m_isActive = false;
+        uint m_MenuGroupID;
+
+        public enum ANIM_STATE
+        {
+            OPENING,
+            CLOSING,
+            INPUT_READY,
+            INACTIVE
+        }
+
+        public static ANIM_STATE current_state;
+        float anim_lerp_step;
+        const float anim_lerp_speed = 0.1f;
 
         public override void Init(ref uint _entityID)
         {
@@ -76,7 +89,11 @@ namespace Scripting
             uint ct = ECS.FindEntityWithName("HTP_ControlText");
             ECS.GetTransformECS(ct, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_ControlText", new GameObject(ct, new Transform(pos, rot, scale), "HTP_ControlText"));
-            
+
+            m_MenuGroupID = ECS.FindEntityWithName("HowToPlayMenuGroup");
+
+            current_state = ANIM_STATE.INACTIVE;
+            anim_lerp_step = 0.0f;
         }
 
         public override void Start()
@@ -100,70 +117,68 @@ namespace Scripting
                 }
                 else
                 {
-                    UpdateMenuInput();
-
-                    if(m_PrevMenuState != m_MenuState)
+                    switch (current_state)
                     {
-                        switch (m_MenuState)
-                        {
-                        case MENUSTATE.IMG1:
-                            {
-                                ECS.SetActive(mEntities["HTP_Image1"].id, true);
-                                ECS.SetActive(mEntities["HTP_KeyD"].id, true);
-
-                                ECS.SetActive(mEntities["HTP_KeyA"].id, false);
-                                ECS.SetActive(mEntities["HTP_ArrowL"].id, false);
-                                ECS.SetActive(mEntities["HTP_Image2"].id, false);
-                            }
+                        case ANIM_STATE.INPUT_READY:
+                            UpdateMenuInput();
                             break;
-                        case MENUSTATE.IMG2:
-                            {
-                                ECS.SetActive(mEntities["HTP_KeyD"].id, true);
-                                ECS.SetActive(mEntities["HTP_KeyA"].id, true);
-                                ECS.SetActive(mEntities["HTP_Image2"].id, true);
-                                ECS.SetActive(mEntities["HTP_ArrowL"].id, true);
-
-                                ECS.SetActive(mEntities["HTP_Image1"].id, false);
-                                ECS.SetActive(mEntities["HTP_Image3"].id, false);
-                            }
+                        case ANIM_STATE.OPENING:
+                            UpdateSettingsMenuAnimation(true, dt);
                             break;
-                        case MENUSTATE.IMG3:
-                            {
-                                ECS.SetActive(mEntities["HTP_KeyD"].id, true);
-                                ECS.SetActive(mEntities["HTP_KeyA"].id, true);
-                                ECS.SetActive(mEntities["HTP_Image3"].id, true);
-                                ECS.SetActive(mEntities["HTP_ArrowR"].id, true);
-
-                                ECS.SetActive(mEntities["HTP_Image2"].id, false);
-                                ECS.SetActive(mEntities["HTP_Image4"].id, false);
-                            }
+                        case ANIM_STATE.CLOSING:
+                            UpdateSettingsMenuAnimation(false, dt);
                             break;
-                        case MENUSTATE.IMG4:
-                            {
-                                ECS.SetActive(mEntities["HTP_Image4"].id, true);
-                                ECS.SetActive(mEntities["HTP_KeyA"].id, true);
-
-                                ECS.SetActive(mEntities["HTP_KeyD"].id, false);
-                                ECS.SetActive(mEntities["HTP_Image3"].id, false);
-                                ECS.SetActive(mEntities["HTP_ArrowR"].id, false);
-                            }
-                            break;
-                        case MENUSTATE.EXIT:
-                            {
-                                m_isActive = false;
-                                m_EnableHTP = false;
-                                foreach (var entity in mEntities)
-                                {
-                                    ECS.SetActive(entity.Value.id, false);
-                                }
-                                if(m_IsResumeScene)
-                                    GameUtilities.ResumeScene();
-                            }
-                            break;
-                        }
-
-                        m_PrevMenuState = m_MenuState;
                     }
+                }
+            }
+        }
+
+        void UpdateSettingsMenuAnimation(bool opening, float dt)
+        {
+            //Menu slide in from below
+            if (opening)
+            {
+                if (ECS.GetGlobalPosition(m_MenuGroupID).Y < 0.0f && anim_lerp_step <= 1.0f)
+                {
+                    anim_lerp_step += dt;
+                    ECS.SetGlobalPosition(m_MenuGroupID, Vector3.Lerp(ECS.GetGlobalPosition(m_MenuGroupID), new Vector3(0.0f, 0.0f, ECS.GetGlobalPosition(m_MenuGroupID).Z), anim_lerp_step * anim_lerp_speed));
+                }
+
+                if (anim_lerp_step > 1.0f)
+                {
+                    anim_lerp_step = 0.0f;
+                    current_state = ANIM_STATE.INPUT_READY;
+                }
+            }
+            //Menu slide out to below
+            else
+            {
+                if (ECS.GetGlobalPosition(m_MenuGroupID).Y > -1.1f && anim_lerp_step <= 1.0f)
+                {
+                    anim_lerp_step += dt;
+                    ECS.SetGlobalPosition(m_MenuGroupID, Vector3.Lerp(ECS.GetGlobalPosition(m_MenuGroupID), new Vector3(0.0f, -1.1f, ECS.GetGlobalPosition(m_MenuGroupID).Z), anim_lerp_step * anim_lerp_speed));
+                }
+                
+                if (anim_lerp_step > 1.0f)
+                {
+                    m_isActive = false;
+                    m_EnableHTP = false;
+
+                    foreach (var entity in mEntities)
+                    {
+                        ECS.SetActive(entity.Value.id, false);
+                    }
+
+                    current_state = ANIM_STATE.INACTIVE;
+                    anim_lerp_step = 0.0f;
+
+                    if (GameUtilities.GetSceneName() == "MainMenu")
+                        MainMenuController.menu_state = MainMenuController.MENU_STATE.INPUT_READY;
+                    else
+                        PauseMenu.menu_state = PauseMenu.MENU_STATE.INPUT_READY;
+
+                    if (m_IsResumeScene)
+                        GameUtilities.ResumeScene();
                 }
             }
         }
@@ -203,6 +218,63 @@ namespace Scripting
                 ECS.PlayAudio(entityID, 3, "SFX");
                 m_PrevMenuState = m_MenuState;
                 m_MenuState = MENUSTATE.EXIT;
+                current_state = ANIM_STATE.CLOSING;
+            }
+
+            if (m_PrevMenuState != m_MenuState)
+            {
+                switch (m_MenuState)
+                {
+                    case MENUSTATE.IMG1:
+                        {
+                            ECS.SetActive(mEntities["HTP_Image1"].id, true);
+                            ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+
+                            ECS.SetActive(mEntities["HTP_KeyA"].id, false);
+                            ECS.SetActive(mEntities["HTP_ArrowL"].id, false);
+                            ECS.SetActive(mEntities["HTP_Image2"].id, false);
+                        }
+                        break;
+                    case MENUSTATE.IMG2:
+                        {
+                            ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                            ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                            ECS.SetActive(mEntities["HTP_Image2"].id, true);
+                            ECS.SetActive(mEntities["HTP_ArrowL"].id, true);
+
+                            ECS.SetActive(mEntities["HTP_Image1"].id, false);
+                            ECS.SetActive(mEntities["HTP_Image3"].id, false);
+                        }
+                        break;
+                    case MENUSTATE.IMG3:
+                        {
+                            ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                            ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                            ECS.SetActive(mEntities["HTP_Image3"].id, true);
+                            ECS.SetActive(mEntities["HTP_ArrowR"].id, true);
+
+                            ECS.SetActive(mEntities["HTP_Image2"].id, false);
+                            ECS.SetActive(mEntities["HTP_Image4"].id, false);
+                        }
+                        break;
+                    case MENUSTATE.IMG4:
+                        {
+                            ECS.SetActive(mEntities["HTP_Image4"].id, true);
+                            ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+
+                            ECS.SetActive(mEntities["HTP_KeyD"].id, false);
+                            ECS.SetActive(mEntities["HTP_Image3"].id, false);
+                            ECS.SetActive(mEntities["HTP_ArrowR"].id, false);
+                        }
+                        break;
+                    case MENUSTATE.EXIT:
+                        {
+
+                        }
+                        break;
+                }
+
+                m_PrevMenuState = m_MenuState;
             }
         }
     }
