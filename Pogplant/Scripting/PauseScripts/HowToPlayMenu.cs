@@ -34,8 +34,12 @@ namespace Scripting
         }
 
         public static ANIM_STATE current_state;
-        float anim_lerp_step;
-        const float anim_lerp_speed = 0.1f;
+        public static float anim_lerp_step;
+        const float anim_lerp_speed = 1.5f;
+        const float lerp_min = 0.0f;
+        const float lerp_max = 1.0f;
+        Vector3 lerp_initial_position;
+        Vector3 lerp_final_position;
 
         public override void Init(ref uint _entityID)
         {
@@ -94,6 +98,8 @@ namespace Scripting
 
             current_state = ANIM_STATE.INACTIVE;
             anim_lerp_step = 0.0f;
+            lerp_initial_position = new Vector3(0.0f, -1.1f, ECS.GetGlobalPosition(entityID).Z);
+            lerp_final_position = new Vector3(0.0f, 0.0f, ECS.GetGlobalPosition(entityID).Z);
         }
 
         public override void Start()
@@ -106,6 +112,12 @@ namespace Scripting
             {
                 if (!m_isActive)
                 {
+                    //foreach (var entity in mEntities)
+                    //{
+                    //    ECS.SetActive(entity.Value.id, false);
+                    //}
+                    ResetMenuState();
+
                     ECS.SetActive(mEntities["HTP_BG"].id, true);
                     ECS.SetActive(mEntities["HTP_Image1"].id, true);
                     ECS.SetActive(mEntities["HTP_KeyD"].id, true);
@@ -133,44 +145,40 @@ namespace Scripting
             }
         }
 
+        void ResetMenuState()
+        {
+            ECS.SetActive(mEntities["HTP_KeyA"].id, false);
+            ECS.SetActive(mEntities["HTP_ArrowL"].id, false);
+            ECS.SetActive(mEntities["HTP_Image2"].id, false);
+            ECS.SetActive(mEntities["HTP_Image3"].id, false);
+            ECS.SetActive(mEntities["HTP_Image4"].id, false);
+        }
+
         void UpdateSettingsMenuAnimation(bool opening, float dt)
         {
+            anim_lerp_step += dt * anim_lerp_speed;
+
             //Menu slide in from below
             if (opening)
             {
-                if (ECS.GetGlobalPosition(m_MenuGroupID).Y < 0.0f && anim_lerp_step <= 1.0f)
+                if (anim_lerp_step > lerp_max)
                 {
-                    anim_lerp_step += dt;
-                    ECS.SetGlobalPosition(m_MenuGroupID, Vector3.Lerp(ECS.GetGlobalPosition(m_MenuGroupID), new Vector3(0.0f, 0.0f, ECS.GetGlobalPosition(m_MenuGroupID).Z), anim_lerp_step * anim_lerp_speed));
-                }
-
-                if (anim_lerp_step > 1.0f)
-                {
-                    anim_lerp_step = 0.0f;
+                    anim_lerp_step = lerp_max;
                     current_state = ANIM_STATE.INPUT_READY;
                 }
+
+                ECS.SetGlobalPosition(m_MenuGroupID, Vector3.Lerp(lerp_initial_position, lerp_final_position, anim_lerp_step));
             }
             //Menu slide out to below
             else
             {
-                if (ECS.GetGlobalPosition(m_MenuGroupID).Y > -1.1f && anim_lerp_step <= 1.0f)
+                if (anim_lerp_step > lerp_max)
                 {
-                    anim_lerp_step += dt;
-                    ECS.SetGlobalPosition(m_MenuGroupID, Vector3.Lerp(ECS.GetGlobalPosition(m_MenuGroupID), new Vector3(0.0f, -1.1f, ECS.GetGlobalPosition(m_MenuGroupID).Z), anim_lerp_step * anim_lerp_speed));
-                }
-                
-                if (anim_lerp_step > 1.0f)
-                {
+                    anim_lerp_step = lerp_max;
                     m_isActive = false;
                     m_EnableHTP = false;
 
-                    foreach (var entity in mEntities)
-                    {
-                        ECS.SetActive(entity.Value.id, false);
-                    }
-
                     current_state = ANIM_STATE.INACTIVE;
-                    anim_lerp_step = 0.0f;
 
                     if (GameUtilities.GetSceneName() == "MainMenu")
                         MainMenuController.menu_state = MainMenuController.MENU_STATE.INPUT_READY;
@@ -180,6 +188,9 @@ namespace Scripting
                     if (m_IsResumeScene)
                         GameUtilities.ResumeScene();
                 }
+
+                ECS.SetGlobalPosition(m_MenuGroupID, Vector3.Lerp(lerp_final_position, lerp_initial_position, anim_lerp_step));
+                
             }
         }
 
@@ -193,6 +204,7 @@ namespace Scripting
 
         public static void EnableHowToPlayMenu(bool isResumeScene)
         {
+            anim_lerp_step = 0.0f;
             m_EnableHTP = true;
             m_IsResumeScene = isResumeScene;
         }
@@ -219,6 +231,7 @@ namespace Scripting
                 m_PrevMenuState = m_MenuState;
                 m_MenuState = MENUSTATE.EXIT;
                 current_state = ANIM_STATE.CLOSING;
+                anim_lerp_step = lerp_min;
             }
 
             if (m_PrevMenuState != m_MenuState)

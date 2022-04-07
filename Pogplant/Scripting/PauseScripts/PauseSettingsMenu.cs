@@ -93,8 +93,12 @@ namespace Scripting
         }
 
         public static ANIM_STATE current_state;
-        float anim_lerp_step;
-        const float anim_lerp_speed = 0.1f;
+        public static float anim_lerp_step;
+        const float anim_lerp_speed = 1.5f;
+        const float lerp_min = 0.0f;
+        const float lerp_max = 1.0f;
+        Vector3 lerp_initial_position;
+        Vector3 lerp_final_position;
 
         /// <summary>
         /// 0. Select
@@ -249,6 +253,8 @@ namespace Scripting
 
             current_state = ANIM_STATE.INACTIVE;
             anim_lerp_step = 0.0f;
+            lerp_initial_position = new Vector3(0.0f, -1.1f, ECS.GetGlobalPosition(entityID).Z);
+            lerp_final_position = new Vector3(0.0f, 0.0f, ECS.GetGlobalPosition(entityID).Z);
         }
 
         public override void Update(float dt)
@@ -309,38 +315,31 @@ namespace Scripting
 
         void UpdateSettingsMenuAnimation(bool opening, float dt)
         {
+            anim_lerp_step += dt * anim_lerp_speed;
+
             //Menu slide in from below
             if (opening)
             {
-                if (ECS.GetGlobalPosition(entityID).Y < 0.0f && anim_lerp_step < 1.0f)
+                if (anim_lerp_step > lerp_max)
                 {
-                    anim_lerp_step += dt;
-                    ECS.SetGlobalPosition(entityID, Vector3.Lerp(ECS.GetGlobalPosition(entityID), new Vector3(0.0f, 0.0f, ECS.GetGlobalPosition(entityID).Z), anim_lerp_step * anim_lerp_speed));
-                }
-
-                if (anim_lerp_step >= 1.0f)
-                {
-                    anim_lerp_step = 0.0f;
+                    anim_lerp_step = lerp_max;
                     current_state = ANIM_STATE.INPUT_READY;
                 }
+
+                ECS.SetGlobalPosition(entityID, Vector3.Lerp(lerp_initial_position, lerp_final_position, anim_lerp_step));
             }
             //Menu slide out to below
             else
             {
-                if (ECS.GetGlobalPosition(entityID).Y > -1.1f && anim_lerp_step < 1.0f)
+                if (anim_lerp_step > lerp_max)
                 {
-                    anim_lerp_step += dt;
-                    ECS.SetGlobalPosition(entityID, Vector3.Lerp(ECS.GetGlobalPosition(entityID), new Vector3(0.0f, -1.1f, ECS.GetGlobalPosition(entityID).Z), anim_lerp_step * anim_lerp_speed));
-                }
-
-                if (anim_lerp_step >= 1.0f)
-                {
+                    anim_lerp_step = lerp_max;
                     PauseMenu.menu_state = PauseMenu.MENU_STATE.INPUT_READY;
                     current_state = ANIM_STATE.INACTIVE;
-                    anim_lerp_step = 0.0f;
                 }
+
+                ECS.SetGlobalPosition(entityID, Vector3.Lerp(lerp_final_position, lerp_initial_position, anim_lerp_step));
             }
-            Console.WriteLine("Settings " + anim_lerp_step);
         }
 
         void UpdateSettingsMenuInput(float dt)
@@ -348,6 +347,7 @@ namespace Scripting
             if (InputUtility.onKeyTriggered("ESCAPE"))
             {
                 //ECS.SetActive(entityID, false);
+                anim_lerp_step = lerp_min;
                 current_state = ANIM_STATE.CLOSING;
             }
 

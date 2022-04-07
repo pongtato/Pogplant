@@ -257,6 +257,7 @@ namespace Scripting
                         break;
                     case 2:
                         menu_state = MENU_STATE.IN_SUB_MENU;
+                        PauseSettingsMenu.anim_lerp_step = 0.0f;
                         PauseSettingsMenu.current_state = PauseSettingsMenu.ANIM_STATE.OPENING;
                         PauseSettingsMenu.refresh = true;
                         ECS.SetActive(settings_menu_id, true);

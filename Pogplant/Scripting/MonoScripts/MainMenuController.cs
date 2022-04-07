@@ -402,6 +402,7 @@ namespace Scripting
 					case BUTTONS.SETTINGS:
 						menu_state = MENU_STATE.IN_SUB_MENU;
 						SettingsMenu.refresh = true;
+						SettingsMenu.anim_lerp_step = 0.0f;
 						SettingsMenu.current_state = SettingsMenu.ANIM_STATE.OPENING;
 						ECS.SetActive(settings_menu_id, true);
 						break;
