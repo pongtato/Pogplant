@@ -90,15 +90,18 @@ namespace Scripting
         uint cheek_lights_three_id;
 
         //Explosion & smokeeffects
-        uint explosion_vfx_one_id;
-        uint explosion_vfx_two_id;
-        uint explosion_vfx_three_id;
-        uint explosion_vfx_four_id;
+        //uint explosion_vfx_one_id;
+        //uint explosion_vfx_two_id;
+        //uint explosion_vfx_three_id;
+        //uint explosion_vfx_four_id;
+        List<uint> explosion_vfx_id_list;
+        const int explosion_vfx_max_count = 12;
+
         uint boss_body_smoke_id;
         uint crash_smoke_id;
         bool is_exploding;
         float explosion_loop_timer;
-        const float explosion_speed = 5.0f;
+        const float explosion_speed = 10.0f;
         const float explosion_max_loop_duration = 6.0f;
         const float explosion_max_scale = 1.2f;
 
@@ -139,6 +142,15 @@ namespace Scripting
         //Vector3 any_key_min_scale;
         //const float any_key_scale_speed = 5.0f;
 
+        uint final_explosion_id;
+        uint final_explosion_ring_id;
+
+        uint white_flash_id;
+        bool show_white_flash;
+        bool fade_to_black;
+        const float white_flash_scale_speed = 25.0f;
+        Vector3 flash_color;
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -154,10 +166,15 @@ namespace Scripting
             explosion_anim_system = new AnimationSystem();
             explosion_anim_system.Init();
 
+            explosion_vfx_id_list = new List<uint>();
+
             FindEntities();
 
             red_color = new Vector3(1.0f, 0, 0);
             black_color = new Vector3();
+
+            flash_color = new Vector3(1.0f, 1.0f, 1.0f);
+
             explosion_loop_timer = 0.0f;
             is_exploding = true;
         }
@@ -168,6 +185,7 @@ namespace Scripting
             cinematic_bar_bottom_id = ECS.FindEntityWithName("Bottom Cinematic Bar");
             camera_id = ECS.FindEntityWithName("Cinematic Camera");
 
+            white_flash_id = ECS.FindEntityWithName("White_Flash");
             //any_key_continue_id = ECS.FindEntityWithName("Any Key Continue");
 
             //Main body
@@ -231,14 +249,23 @@ namespace Scripting
             cheek_lights_three_id = ECS.FindEntityWithName("Cheeck_Lights_3");
 
             //Artillery
-            artillery_axis_id = ECS.FindEntityWithName("Arti_Axis");
+            artillery_axis_id = ECS.FindEntityWithName("Arti_PivotObj");
             artillery_barrel_id = ECS.FindEntityWithName("Arti_Barrel");
 
             //Explosion VFX
-            explosion_vfx_one_id = ECS.FindEntityWithName("Explosion_VFX_1");
-            explosion_vfx_two_id = ECS.FindEntityWithName("Explosion_VFX_2");
-            explosion_vfx_three_id = ECS.FindEntityWithName("Explosion_VFX_3");
-            explosion_vfx_four_id = ECS.FindEntityWithName("Explosion_VFX_4");
+            //explosion_vfx_one_id = ECS.FindEntityWithName("Explosion_VFX_1");
+            //explosion_vfx_two_id = ECS.FindEntityWithName("Explosion_VFX_2");
+            //explosion_vfx_three_id = ECS.FindEntityWithName("Explosion_VFX_3");
+            //explosion_vfx_four_id = ECS.FindEntityWithName("Explosion_VFX_4");
+
+            for (int i = 0; i < explosion_vfx_max_count; ++i)
+            {
+                explosion_vfx_id_list.Add(ECS.FindEntityWithName("Explosion_VFX_" + i.ToString()));
+            }
+
+            final_explosion_id = ECS.FindEntityWithName("Final_Explosion_VFX");
+            final_explosion_ring_id = ECS.FindEntityWithName("Final_Explosion_ring");
+
             boss_body_smoke_id = ECS.FindEntityWithName("Smoke_VFX");
             ECS.SetParticlePlay(boss_body_smoke_id, false);
 
@@ -303,10 +330,16 @@ namespace Scripting
             moving_parts_dict.Add(artillery_axis_id, new MovingParts() { entity_id = artillery_axis_id });
             moving_parts_dict.Add(artillery_barrel_id, new MovingParts() { entity_id = artillery_barrel_id });
 
-            explosion_moving_parts_dict.Add(explosion_vfx_one_id, new MovingParts() { entity_id = explosion_vfx_one_id });
-            explosion_moving_parts_dict.Add(explosion_vfx_two_id, new MovingParts() { entity_id = explosion_vfx_two_id });
-            explosion_moving_parts_dict.Add(explosion_vfx_three_id, new MovingParts() { entity_id = explosion_vfx_three_id });
-            explosion_moving_parts_dict.Add(explosion_vfx_four_id, new MovingParts() { entity_id = explosion_vfx_four_id });
+            //Explosion
+            for (int i = 0; i < explosion_vfx_id_list.Count; ++i)
+            {
+                explosion_moving_parts_dict.Add(explosion_vfx_id_list[i], new MovingParts() { entity_id = explosion_vfx_id_list[i] });
+            }
+
+            //Final explosion
+            moving_parts_dict.Add(final_explosion_id, new MovingParts() { entity_id = final_explosion_id });
+            moving_parts_dict.Add(final_explosion_ring_id, new MovingParts() { entity_id = final_explosion_ring_id });
+
 
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
@@ -314,9 +347,13 @@ namespace Scripting
             SetState(BOSS_ANIM_STATE.FLYING_DOWN.ToString());
 
             explosion_anim_system.AddAnimationSpecsStack(SetExplodingAnimationsOne, 0.2f);
-            explosion_anim_system.AddAnimationSpecsStack(SetExplodingAnimationsTwo, 0.3f);
-            explosion_anim_system.AddAnimationSpecsStack(SetExplodingAnimationsThree, 0.2f);
-            explosion_anim_system.AddAnimationSpecsStack(SetExplodingAnimationsFour, 0.4f);
+            explosion_anim_system.AddAnimationSpecsStack(SetExplodingAnimationsTwo, 0.12f);
+            explosion_anim_system.AddAnimationSpecsStack(SetExplodingAnimationsThree, 0.07f);
+            explosion_anim_system.AddAnimationSpecsStack(SetExplodingAnimationsFour, 0.1f);
+            explosion_anim_system.AddAnimationSpecsStack(SetExplodingAnimationsFive, 0.15f);
+            explosion_anim_system.AddAnimationSpecsStack(SetExplodingAnimationsSix, 0.25f);
+            explosion_anim_system.AddAnimationUpdateStack(RunExplodingAnimations);
+            explosion_anim_system.AddAnimationUpdateStack(RunExplodingAnimations);
             explosion_anim_system.AddAnimationUpdateStack(RunExplodingAnimations);
             explosion_anim_system.AddAnimationUpdateStack(RunExplodingAnimations);
             explosion_anim_system.AddAnimationUpdateStack(RunExplodingAnimations);
@@ -338,13 +375,39 @@ namespace Scripting
             UpdateFlashingLights(dt);
             if (is_exploding)
                 UpdateExplosions(dt);
+
+            if (show_white_flash && current_state == BOSS_ANIM_STATE.OUTRO)
+            {
+                ECS.SetGlobalScale(white_flash_id, Vector3.Lerp(ECS.GetGlobalScale(white_flash_id), new Vector3(4.0f, 4.0f, 1.0f), white_flash_scale_speed * dt));
+
+                if (ECS.GetGlobalScale(white_flash_id).X > 3.9f)
+                {
+                    show_white_flash = false;
+                    //increase_any_key_timer = true;
+                    fade_to_black = true;
+                    //any_key_timer = 0.0f;
+                }
+            }
+
             boss_anim_system.Update(dt);
             explosion_anim_system.Update(dt);
 
             switch (current_state)
             {
-                case BOSS_ANIM_STATE.LEVEL_SCORE:
-                    
+                case BOSS_ANIM_STATE.OUTRO:
+
+                    if (fade_to_black)
+                    {
+                        //Update white flash and fade to black
+                        if (flash_color.X > 0)
+                        {
+                            flash_color.X -= dt;
+                            flash_color.Y -= dt;
+                            flash_color.Z -= dt;
+
+                            ECS.SetColorTint(white_flash_id, ref flash_color);
+                        }
+                    }
                     ////Update until any key to continue appears
                     //if (increase_any_key_timer)
                     //{
@@ -450,20 +513,25 @@ namespace Scripting
                     boss_anim_system.StopAnimation(true, moving_parts_dict);
                     boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsOne, 0.5f);
                     boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsTwo, 0.2f);
-                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsThree, 3.0f);
-                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsFour, 2.0f);
+                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsThree, 0.6f);
+                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsFour, 0.2f);
+                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsFive, 1.0f);
+                    boss_anim_system.AddAnimationSpecsStack(SetCrashAnimationsSix, 0.3f);
                     boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceOne);
                     boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceTwo);
                     boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceThree);
                     boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceFour);
-                    boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.LEVEL_SCORE.ToString());
+                    boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceFive);
+                    boss_anim_system.AddAnimationUpdateStack(RunCrashSequenceSix);
+                    boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.OUTRO.ToString());
                     boss_anim_system.PlayAnimation();
                     break;
                 case BOSS_ANIM_STATE.OUTRO:
                     //increase_any_key_timer = true;
                     boss_anim_system.StopAnimation(true, moving_parts_dict);
-
-                    boss_anim_system.AddAnimationSpecsStack(SetEmpty, 7.0f);
+                    boss_anim_system.AddAnimationSpecsStack(SetOutroAnimationsOne, 0.8f);
+                    boss_anim_system.AddAnimationSpecsStack(SetOutroAnimationsTwo, 2.0f);
+                    boss_anim_system.AddAnimationUpdateStack(RunEmpty);
                     boss_anim_system.AddAnimationUpdateStack(RunEmpty);
                     boss_anim_system.SetStateQueue(SetState, BOSS_ANIM_STATE.LEVEL_SCORE.ToString());
                     boss_anim_system.PlayAnimation();
@@ -548,37 +616,46 @@ namespace Scripting
             {
                 explosion_loop_timer += dt;
 
-                //Reset the explosion if max scale
-                ECS.GetTransformECS(explosion_vfx_one_id, ref pos, ref rot, ref scale);
-                if (scale.X >= explosion_max_scale - 0.05f)
+                for (int i = 0; i < explosion_vfx_id_list.Count; ++i)
                 {
-                    ECS.SetScale(explosion_vfx_one_id, new Vector3());
+                    ECS.GetTransformECS(explosion_vfx_id_list[i], ref pos, ref rot, ref scale);
+
+                    //Reset the explosion if max scale
+                    if (scale.X >= explosion_max_scale - 0.05f)
+                    {
+                        ECS.SetScale(explosion_vfx_id_list[i], new Vector3());
+                    }
                 }
-                ECS.GetTransformECS(explosion_vfx_two_id, ref pos, ref rot, ref scale);
-                if (scale.X >= explosion_max_scale - 0.05f)
-                {
-                    ECS.SetScale(explosion_vfx_two_id, new Vector3());
-                }
-                ECS.GetTransformECS(explosion_vfx_three_id, ref pos, ref rot, ref scale);
-                if (scale.X >= explosion_max_scale - 0.05f)
-                {
-                    ECS.SetScale(explosion_vfx_three_id, new Vector3());
-                }
-                ECS.GetTransformECS(explosion_vfx_four_id, ref pos, ref rot, ref scale);
-                if (scale.X >= explosion_max_scale - 0.05f)
-                {
-                    ECS.SetScale(explosion_vfx_four_id, new Vector3());
-                }
+
+                
+                //ECS.GetTransformECS(explosion_vfx_one_id, ref pos, ref rot, ref scale);
+                
+                //ECS.GetTransformECS(explosion_vfx_two_id, ref pos, ref rot, ref scale);
+                //if (scale.X >= explosion_max_scale - 0.05f)
+                //{
+                //    ECS.SetScale(explosion_vfx_two_id, new Vector3());
+                //}
+                //ECS.GetTransformECS(explosion_vfx_three_id, ref pos, ref rot, ref scale);
+                //if (scale.X >= explosion_max_scale - 0.05f)
+                //{
+                //    ECS.SetScale(explosion_vfx_three_id, new Vector3());
+                //}
+                //ECS.GetTransformECS(explosion_vfx_four_id, ref pos, ref rot, ref scale);
+                //if (scale.X >= explosion_max_scale - 0.05f)
+                //{
+                //    ECS.SetScale(explosion_vfx_four_id, new Vector3());
+                //}
             }
             else
             {
                 is_exploding = false;
                 explosion_anim_system.SetLoopAllAnimations(false);
                 explosion_anim_system.StopAnimation(true, explosion_moving_parts_dict);
-                ECS.SetScale(explosion_vfx_one_id, new Vector3());
-                ECS.SetScale(explosion_vfx_two_id, new Vector3());
-                ECS.SetScale(explosion_vfx_three_id, new Vector3());
-                ECS.SetScale(explosion_vfx_four_id, new Vector3());
+                
+                for (int i = 0; i < explosion_vfx_id_list.Count; ++i)
+                {
+                    ECS.SetScale(explosion_vfx_id_list[i], new Vector3());
+                }
             }
         }
 
@@ -608,6 +685,7 @@ namespace Scripting
             return (float)rand.Next() / int.MaxValue;
         }
         #endregion
+
         public override void LateUpdate(float dt)
         {
             if (m_isShaking)
@@ -643,31 +721,47 @@ namespace Scripting
         #region[Exploding Animation Sequence]
         void SetExplodingAnimationsOne()
         {
-            explosion_moving_parts_dict[explosion_vfx_one_id].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[0]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[11]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
         }
 
         void SetExplodingAnimationsTwo()
         {
-            explosion_moving_parts_dict[explosion_vfx_two_id].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[1]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[10]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
         }
 
         void SetExplodingAnimationsThree()
         {
-            explosion_moving_parts_dict[explosion_vfx_three_id].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[2]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[9]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
         }
 
         void SetExplodingAnimationsFour()
         {
-            explosion_moving_parts_dict[explosion_vfx_four_id].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[3]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[8]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+        }
+
+        void SetExplodingAnimationsFive()
+        {
+            explosion_moving_parts_dict[explosion_vfx_id_list[4]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[7]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+        }
+
+        void SetExplodingAnimationsSix()
+        {
+            explosion_moving_parts_dict[explosion_vfx_id_list[5]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
+            explosion_moving_parts_dict[explosion_vfx_id_list[6]].SetLinearScale(new Vector3(explosion_max_scale, explosion_max_scale, explosion_max_scale), new Vector3(explosion_speed, explosion_speed, explosion_speed), true, true, true);
         }
 
         void RunExplodingAnimations(float dt)
         {
             //Using the same for all
-            explosion_moving_parts_dict[explosion_vfx_one_id].UpdateMovingParts(dt);
-            explosion_moving_parts_dict[explosion_vfx_two_id].UpdateMovingParts(dt);
-            explosion_moving_parts_dict[explosion_vfx_three_id].UpdateMovingParts(dt);
-            explosion_moving_parts_dict[explosion_vfx_four_id].UpdateMovingParts(dt);
+            for (int i = 0; i < explosion_vfx_id_list.Count; ++i)
+            {
+                explosion_moving_parts_dict[explosion_vfx_id_list[i]].UpdateMovingParts(dt);
+            }
         }
         #endregion
 
@@ -685,26 +779,29 @@ namespace Scripting
         {
             moving_parts_dict[boss_model_parent_id].SetLinearRotation(new Vector3(-30, 0, 0), new Vector3(2.0f, 0, 0), true, false, false);
 
-            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, -46.0f, 0), new Vector3(0, -36.0f, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
-            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -15.0f), new Vector3(0, 0, 15.0f), new Vector3(0, 0, 10.0f), false, false, false, false, false, true);
+            moving_parts_dict[left_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, -46.0f, 0), new Vector3(0, -36.0f, 0), new Vector3(0, 9.0f, 0), false, false, false, false, true, false);
+            moving_parts_dict[left_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -15.0f), new Vector3(0, 0, 15.0f), new Vector3(0, 0, 12.0f), false, false, false, false, false, true);
 
-            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 36.0f, 0), new Vector3(0, 46.0f, 0), new Vector3(0, 10.0f, 0), false, true, false, false, true, false);
-            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -15.0f), new Vector3(0, 0, 15.0f), new Vector3(0, 0, 10.0f), false, false, false, false, false, true);
+            moving_parts_dict[right_arm_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 36.0f, 0), new Vector3(0, 46.0f, 0), new Vector3(0, 11.0f, 0), false, true, false, false, true, false);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -15.0f), new Vector3(0, 0, 15.0f), new Vector3(0, 0, 8.5f), false, false, false, false, false, true);
 
-            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 36.0f, 0), new Vector3(0, 46.0f, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
-            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -15.0f), new Vector3(0, 0, 15.0f), new Vector3(0, 0, 10.0f), false, false, false, false, false, true);
+            moving_parts_dict[left_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, 36.0f, 0), new Vector3(0, 46.0f, 0), new Vector3(0, 15.0f, 0), false, false, false, false, true, false);
+            moving_parts_dict[left_leg_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -15.0f), new Vector3(0, 0, 15.0f), new Vector3(0, 0, 12.3f), false, false, false, false, false, true);
             
-            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, -46.0f, 0), new Vector3(0, 36.0f, 0), new Vector3(0, 10.0f, 0), false, false, false, false, true, false);
-            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -15.0f), new Vector3(0, 0, 15.0f), new Vector3(0, 0, 10.0f), false, false, false, false, false, true);
+            moving_parts_dict[right_leg_middle_joint_id].SetPingPongRotation(new Vector3(-90.0f, -46.0f, 0), new Vector3(0, 36.0f, 0), new Vector3(0, 11.5f, 0), false, false, false, false, true, false);
+            moving_parts_dict[right_arm_end_joint_id].SetPingPongRotation(new Vector3(0, 0, -15.0f), new Vector3(0, 0, 15.0f), new Vector3(0, 0, 13.2f), false, false, false, false, false, true);
 
-            moving_parts_dict[left_color_turret_1_id].SetPingPongRotation(new Vector3(-90.0f, 0, 0), new Vector3(-70.0f, 0, 0), new Vector3(10.0f, 0, 0), false, true, false, true, false, false);
+            moving_parts_dict[left_color_turret_1_id].SetPingPongRotation(new Vector3(-90.0f, 0, 0), new Vector3(-70.0f, 0, 0), new Vector3(12.5f, 0, 0), false, true, false, true, false, false);
             moving_parts_dict[left_color_turret_2_id].SetLinearRotation(new Vector3(120, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
 
-            moving_parts_dict[right_color_turret_1_id].SetPingPongRotation(new Vector3(-90.0f, 0, 0), new Vector3(-70.0f, 0, 0), new Vector3(10.0f, 0, 0), false, false, false, true, false, false);
+            moving_parts_dict[right_color_turret_1_id].SetPingPongRotation(new Vector3(-90.0f, 0, 0), new Vector3(-70.0f, 0, 0), new Vector3(9.8f, 0, 0), false, false, false, true, false, false);
             moving_parts_dict[right_color_turret_2_id].SetLinearRotation(new Vector3(120, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
 
-            moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 30.0f, 0), false, true, false, false, true, false);
-            moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 30.0f, 0), false, false, false, false, true, false);
+            moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 35.0f, 0), false, true, false, false, true, false);
+            moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 27.0f, 0), false, false, false, false, true, false);
+
+            moving_parts_dict[artillery_axis_id].SetPingPongRotation(new Vector3(-45.0f, 0, 0), new Vector3(0.0f, 0, 0), new Vector3(5.0f, 0, 0), false, false, false, true, false, false);
+            //moving_parts_dict[artillery_barrel_id].SetPingPongPosition(new Vector3(0, 6.5f, 0), new Vector3(0, 8.0f, 0), new Vector3(0, 23.0f, 0), false, true, false, false, true, false);
         }
 
         void RunFlyingDownSequenceOne(float dt)
@@ -731,6 +828,9 @@ namespace Scripting
 
             moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
             moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
+
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            //moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
         }
 
         void SetFlyingDownAnimationsTwo()
@@ -764,6 +864,11 @@ namespace Scripting
 
             moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 45.0f, 0), false, true, false, false, true, false);
             moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 45.0f, 0), false, false, false, false, true, false);
+
+            moving_parts_dict[artillery_axis_id].SetUpdatePingPongRotation(false);
+            moving_parts_dict[artillery_axis_id].SetLinearRotation(new Vector3(-45.0f, 0, 0), new Vector3(10.0f, 0, 0), true, false, false);
+            moving_parts_dict[artillery_barrel_id].SetUpdatePingPongPosition(false);
+            
             ECS.SetParticlePlay(boss_body_smoke_id, true);
         }
 
@@ -792,6 +897,9 @@ namespace Scripting
 
             moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
             moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
+
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
         }
 
         void MoveBlackBars()
@@ -804,10 +912,6 @@ namespace Scripting
 
         }
 
-        void GoToMenu()
-        {
-            GameUtilities.LoadScene("MainMenu");
-        }
         #endregion
 
         #region[Crash Animation Sequence]
@@ -815,7 +919,9 @@ namespace Scripting
         /// [Crash State] 
         /// 1. Main body crash
         /// 2. Limbs go limp
-        /// 3. Black bars cover full screen, change scene
+        /// 3. Barrel drops quicker
+        /// 4. Nuke explosion
+        /// 5. Black bars cover full screen, change scene
         /// </summary>
 
         void SetCrashAnimationsOne()
@@ -850,6 +956,7 @@ namespace Scripting
 
             moving_parts_dict[mouth_left_id].SetPingPongRotation(new Vector3(), new Vector3(0, 45, 0), new Vector3(0, 45.0f, 0), false, true, false, false, true, false);
             moving_parts_dict[mouth_right_id].SetPingPongRotation(new Vector3(0, -45, 0), new Vector3(), new Vector3(0, 45.0f, 0), false, false, false, false, true, false);
+
             ECS.SetParticlePlay(boss_body_smoke_id, true);
         }
 
@@ -864,7 +971,7 @@ namespace Scripting
             //Cam shake
             m_initialCameraPosition = ECS.GetComponent<Transform>(camera_id).Position;
 
-            //Triggers a random camera shake upon taking damage, scales with damage taken
+            //Crash screen shake
             TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * 200.0f, GetRandFloat() * cameraShakeInitMultiplier * 200.0f, GetRandFloat() * cameraShakeInitMultiplier * 200.0f),
                 new Vector3(GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier), 2.2f);
         }
@@ -903,12 +1010,34 @@ namespace Scripting
             moving_parts_dict[mouth_right_id].SetLinearRotation(new Vector3(0, -22.6f, 0), new Vector3(0, 5.0f, 0), true, true, true);
             moving_parts_dict[mouth_left_id].SetUpdatePingPongRotation(false);
             moving_parts_dict[mouth_right_id].SetUpdatePingPongRotation(false);
+
+            moving_parts_dict[artillery_axis_id].SetLinearRotation(new Vector3(-145.0f, 0, 0), new Vector3(0.25f, 0, 0), true, false, false);
+            moving_parts_dict[artillery_barrel_id].SetLinearPosition(new Vector3(0, 10.0f, 0), new Vector3(0, 2.5f, 0), false, true, false);
         }
 
         void SetCrashAnimationsFour()
         {
-            //Black bars cover the whole screen
-            cinematic_cover_screen = true;
+            moving_parts_dict[artillery_axis_id].SetLinearRotation(new Vector3(-145.0f, 0, 0), new Vector3(10.0f, 0, 0), true, false, false);
+
+            //Barrel drop screen shake
+            TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * 200.0f, GetRandFloat() * cameraShakeInitMultiplier * 200.0f, GetRandFloat() * cameraShakeInitMultiplier * 200.0f),
+                new Vector3(GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier), 0.2f);
+        }
+
+        void SetCrashAnimationsFive()
+        {
+            //Pre-final explosion screen shake
+            TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * 50.0f, GetRandFloat() * cameraShakeInitMultiplier * 50.0f, GetRandFloat() * cameraShakeInitMultiplier * 50.0f),
+                new Vector3(GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier), 0.5f);
+        }
+
+        void SetCrashAnimationsSix()
+        {
+            moving_parts_dict[final_explosion_id].SetLinearScale(new Vector3(10.0f, 10.0f, 10.0f), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
+            moving_parts_dict[final_explosion_ring_id].SetToggleSpin(true);
+
+            TriggerCameraShake(new Vector3(GetRandFloat() * cameraShakeInitMultiplier * 300.0f, GetRandFloat() * cameraShakeInitMultiplier * 300.0f, GetRandFloat() * cameraShakeInitMultiplier * 300.0f),
+                new Vector3(GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier, GetRandFloat() * cameraShakeMagMultiplier), 3.0f);
         }
 
         void RunCrashSequenceOne(float dt)
@@ -967,13 +1096,42 @@ namespace Scripting
 
             moving_parts_dict[mouth_left_id].UpdateMovingParts(dt);
             moving_parts_dict[mouth_right_id].UpdateMovingParts(dt);
+
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
         }
 
         void RunCrashSequenceFour(float dt)
         {
-
+            moving_parts_dict[artillery_axis_id].UpdateMovingParts(dt);
+            moving_parts_dict[artillery_barrel_id].UpdateMovingParts(dt);
         }
 
+        void RunCrashSequenceFive(float dt)
+        {
+            
+        }
+
+        void RunCrashSequenceSix(float dt)
+        {
+            moving_parts_dict[final_explosion_id].UpdateMovingParts(dt);
+            moving_parts_dict[final_explosion_ring_id].SpinObjectEndless(0, 1.0f, 0, 0.2f, dt);
+        }
+
+        #endregion
+
+        #region[Outro Animation Sequence]
+        void SetOutroAnimationsOne()
+        {
+            //White flash
+            show_white_flash = true;
+        }
+
+        void SetOutroAnimationsTwo()
+        {
+            //Black bars cover the whole screen
+            cinematic_cover_screen = true;
+        }
         #endregion
 
         void SetEmpty()

@@ -105,12 +105,10 @@ namespace Scripting
         uint white_flash_id;
         bool show_white_flash;
         bool fade_to_black;
-        
         const float white_flash_scale_speed = 25.0f;
-        const float time_until_any_key = 4.0f;
-        
         Vector3 flash_color;
 
+        //const float time_until_any_key = 4.0f;
         //float any_key_timer;
         //bool any_key_active;
         //bool increase_any_key_timer;
