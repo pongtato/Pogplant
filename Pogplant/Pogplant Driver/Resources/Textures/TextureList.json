@@ -18,6 +18,11 @@
             "Alpha": true
         },
         {
+            "FileName": "Fire_Export_01.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
+        },
+        {
             "FileName": "Credits_Export",
             "Dir": "Resources/Textures/UI",
             "Alpha": true
@@ -97,7 +102,7 @@
             "Dir": "Resources/Textures/UI/",
             "Alpha": true
         },
-		{
+        {
             "FileName": "Credits_Export.dds",
             "Dir": "Resources/Textures/UI/",
             "Alpha": true
