@@ -7,6 +7,12 @@
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
 				"UpdatePos" : true,
 				"Volume" : 0.25
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Game_BGM_Credits.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.85699999332427979
 			}
 		},
 		"Children" : 3,

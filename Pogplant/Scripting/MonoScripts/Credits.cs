@@ -33,6 +33,7 @@ namespace Scripting
 		public override void Start()
 		{
 			BindData();
+			ECS.PlayAudio(entityID, 1, "BGM");
 		}
 
 		//mainly for binding of datas and entity id
