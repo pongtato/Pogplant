@@ -58,6 +58,7 @@ namespace Scripting
 		public uint mID_falseCoreMouthR;
 		public uint mID_playerShip;
 		public uint[] mID_ventSpawnpoints = new uint[6];
+		public uint mID_Nuke;
 
 		//HP Bar vars
 		uint mID_hpBar;
@@ -304,6 +305,9 @@ namespace Scripting
 			mID_hpBar = ECS.FindEntityWithName("HP_Bar_Red");
 			m_bossHpScale = new Vector3(2.1f, 0.3f, 1.0f);
 			m_bossHPBarLerpValue = 0.0f;
+
+			mID_Nuke = ECS.FindEntityWithName("Actual_Nuke");
+			Console.WriteLine("Nuke id: " + mID_Nuke);
 		}
 
 		void InitStateBehaviours()
@@ -1204,6 +1208,16 @@ namespace Scripting
 
 		public override void OnTriggerEnter(uint id)
 		{
+			if (L2Boss.m_singleton.current_state == L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE)
+			{
+				//Boss will only "really" die when hit by a nuke at death sequence
+				if (id == mID_Nuke)
+				{
+					Console.WriteLine("hit nuke");
+					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.TRANSIT_SCENE);
+				}
+			}
+
 			//Invulnerable in protection mode
 			//Invulnerable if angle between mouth too low
 			if (!m_stateBehaviours[(int)L2Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore
@@ -1229,7 +1243,7 @@ namespace Scripting
 				if (L2Boss.m_singleton.current_state != L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE)
 				{
 					Console.WriteLine("L2BossBehaviour.cs: Boss is dead, triggering sequence");
-					//TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
 
 					PlayerPrefs.SetValue<uint>("CurrentScore", PlayerScript.score);
 					PlayerPrefs.SetValue<uint>("m_EnemyDestroyedCount", PlayerScript.m_EnemyDestroyedCount);
@@ -1246,7 +1260,7 @@ namespace Scripting
 					Console.WriteLine("saving m_CollectiblesCount: " + PlayerScript.m_CollectiblesCount);
 					Console.WriteLine("========================================================================");
 
-					GameUtilities.LoadScene("EndGameCutscene");
+
 				}
 			}
 		}
