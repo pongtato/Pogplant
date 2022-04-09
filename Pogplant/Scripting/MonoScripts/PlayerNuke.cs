@@ -57,6 +57,8 @@ namespace Scripting
 		//used to stop it from shooting 
 		public static bool m_has_fired = false;
 
+		bool delay_hit = false;
+
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
@@ -279,6 +281,7 @@ namespace Scripting
 							ECS.SetActive(m_Nuke_Outer_Outline, true);
 
 							set_transition = false;
+							delay_hit = true;
 
 							or_Overall_scale = m_Overall_scale[3];
 							or_Shockwaves_scale = m_Shockwaves_scale[3];
@@ -339,6 +342,7 @@ namespace Scripting
 					m_state_counter = 0;
 					set_transition = true;
 					m_has_fired = false;
+					delay_hit = false;
 				}
 			}
 		}
@@ -387,7 +391,7 @@ namespace Scripting
 
 			//}
 
-			if (m_has_fired)
+			if (delay_hit)
             {
 				GameUtilities.EnemyTakeDamageFromID(id, 9999);
 				EncounterSystemDriver.TakeDamage(id, 9999);
