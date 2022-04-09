@@ -76063,6 +76063,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeShoot.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.28299999237060547
+			}
+		},
 		"Children" : 1,
 		"Name" : 
 		{
@@ -76107,7 +76116,7 @@
 			"m_rotation" : 
 			[
 				0.0,
-				-9.8776097978009458e-13,
+				-9.9337660493248325e-13,
 				2.0844186099377993e-10
 			],
 			"m_scale" : 
@@ -83004,7 +83013,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 110.90535736083984,
+				"m_FrameCounter" : 100.85568237304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83018,7 +83027,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.875
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83070,7 +83079,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 51.018829345703125,
+				"m_FrameCounter" : 19.571317672729492,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -83084,7 +83093,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.40625
+					0.15625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83136,7 +83145,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 31.074241638183594,
+				"m_FrameCounter" : 14.630847930908203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -83149,8 +83158,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.25
+					0.0,
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83202,7 +83211,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 99.814811706542969,
+				"m_FrameCounter" : 42.441761016845703,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -83215,8 +83224,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.78125
+					0.0,
+					0.34375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83268,7 +83277,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 110.90535736083984,
+				"m_FrameCounter" : 100.85568237304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83282,7 +83291,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.875
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83334,7 +83343,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 31.074241638183594,
+				"m_FrameCounter" : 14.630847930908203,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -83347,8 +83356,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.25
+					0.0,
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83400,7 +83409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 108.88645935058594,
+				"m_FrameCounter" : 6.5160760879516602,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -83414,7 +83423,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.859375
+					0.0625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83466,7 +83475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 110.90535736083984,
+				"m_FrameCounter" : 100.85568237304688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83480,7 +83489,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.875
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83532,7 +83541,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 108.88645935058594,
+				"m_FrameCounter" : 6.5160760879516602,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -83546,7 +83555,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.859375
+					0.0625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83598,7 +83607,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 36.228866577148438,
+				"m_FrameCounter" : 14.173633575439453,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -83612,7 +83621,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.296875
+					0.125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83664,7 +83673,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 51.018829345703125,
+				"m_FrameCounter" : 19.571317672729492,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -83678,7 +83687,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.40625
+					0.15625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -85282,7 +85291,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 5.3640398979187012,
+				"m_FrameCounter" : 7.0036001205444336,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 12.0,
@@ -85295,7 +85304,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.25,
+					0.75,
 					1.0
 				]
 			},
@@ -85348,7 +85357,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 2.9275362491607666,
+				"m_FrameCounter" : 4.3708271980285645,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 15.0,
@@ -85361,8 +85370,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.5
+					0.0,
+					1.0
 				]
 			},
 			"m_TexName" : "Fire_Export_01.dds"
@@ -94587,11 +94596,20 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.28299999237060547
+			}
+		},
 		"Children" : 5,
 		"Name" : 
 		{
 			"m_Name" : "Actual_Nuke",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -94692,7 +94710,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Nuke_Outer_Outline",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -94747,7 +94765,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Nuke_Outer_Spikes",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -94802,7 +94820,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Nuke_Swirl",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{
@@ -94857,7 +94875,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Nuke_Outer",
-			"status" : true
+			"status" : false
 		},
 		"Render" : 
 		{

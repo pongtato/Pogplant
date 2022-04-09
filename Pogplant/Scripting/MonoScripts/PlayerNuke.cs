@@ -186,6 +186,8 @@ namespace Scripting
 					{
 						if (set_transition)
 						{
+							ECS.PlayAudio(entityID, 0, "SFX");
+
 							CalcScaleRate(1);
 
 							ECS.SetActive(m_Shockwaves, false);
@@ -202,6 +204,8 @@ namespace Scripting
 							or_Nuke_Swirl_scale = m_Nuke_Swirl_scale[0];
 							or_Nuke_Outer_Spikes_scale = m_Nuke_Outer_Spikes_scale[0];
 							or_Nuke_Outer_Outline_scale = m_Nuke_Outer_Outline_scale[0];
+
+
 						}
 
 						//grow/shrink
@@ -289,33 +293,8 @@ namespace Scripting
 						GrowShrink(dt);
 					}
 					break;
-				case 5:
-					{
-						//Console.WriteLine("beep beep beep");
-						//if (set_transition)
-						//{
-						//	CalcScaleRate(5);
-
-						//	ECS.SetActive(m_Shockwaves, true);
-						//	ECS.SetActive(m_Nuke_Outer, true);
-						//	ECS.SetActive(m_Nuke_Swirl, false);
-						//	ECS.SetActive(m_Nuke_Outer_Spikes, true);
-						//	ECS.SetActive(m_Nuke_Outer_Outline, true);
-
-						//	set_transition = false;
-
-						//	or_Overall_scale = m_Overall_scale[4];
-						//	or_Shockwaves_scale = m_Shockwaves_scale[4];
-						//	or_Nuke_Outer_scale = m_Nuke_Outer_scale[4];
-						//	or_Nuke_Swirl_scale = m_Nuke_Swirl_scale[4];
-						//	or_Nuke_Outer_Spikes_scale = m_Nuke_Outer_Spikes_scale[4];
-						//	or_Nuke_Outer_Outline_scale = m_Nuke_Outer_Outline_scale[4];
-						//}
-
-						//GrowShrink(dt);
-					}
+				default:
 					break;
-
 			}
 		}
 
@@ -340,17 +319,17 @@ namespace Scripting
 				{
 					//if exceed, hit everyone
 
-					var NoDuplicate = m_enemy_in_range.Distinct();
-					//Console.WriteLine( "in range of nuke: " + NoDuplicate.Count());
-					foreach (uint entity in NoDuplicate)
-					{
-						//SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
-						GameUtilities.EnemyTakeDamageFromID(entity, 9999);
-						EncounterSystemDriver.TakeDamage(entity, 9999);
+					//var NoDuplicate = m_enemy_in_range.Distinct();
+					////Console.WriteLine( "in range of nuke: " + NoDuplicate.Count());
+					//foreach (uint entity in NoDuplicate)
+					//{
+					//	//SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
+					//	GameUtilities.EnemyTakeDamageFromID(entity, 9999);
+					//	EncounterSystemDriver.TakeDamage(entity, 9999);
 
-					}
+					//}
 
-					m_enemy_in_range.Clear();
+					//m_enemy_in_range.Clear();
 
 					//disable self
 					ECS.SetActive(entityID, false);
@@ -398,8 +377,23 @@ namespace Scripting
 			//	if (!m_armed)
 			//		m_armed = true;
 			//}
-			m_enemy_in_range.Add(id);
-			
+			//m_enemy_in_range.Add(id);
+
+			//foreach (uint entity in NoDuplicate)
+			//{
+			//	//SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
+			//	GameUtilities.EnemyTakeDamageFromID(entity, 9999);
+			//	EncounterSystemDriver.TakeDamage(entity, 9999);
+
+			//}
+
+			if (m_has_fired)
+            {
+				GameUtilities.EnemyTakeDamageFromID(id, 9999);
+				EncounterSystemDriver.TakeDamage(id, 9999);
+			}
+
+
 		}
 
 		public override void OnTriggerExit(uint id)

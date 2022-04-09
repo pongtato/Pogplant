@@ -324,6 +324,8 @@ namespace Scripting
 				{
 					if (m_actual_nuke_timer > m_actual_nuke_cooldown)
 					{
+						ECS.PlayAudio(entityID, 0, "SFX");
+
 						ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
 						ECS.SetActive(m_actual_nuke, true);
 						GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
