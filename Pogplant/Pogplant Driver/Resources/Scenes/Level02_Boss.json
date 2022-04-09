@@ -8705,72 +8705,6 @@
 		}
 	},
 	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 16.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.375
-				]
-			},
-			"m_TexName" : "256_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "PlayerComboLargeFire",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.15000000596046448,
-				1.1000000238418579,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
 		"Children" : 0,
 		"Name" : 
 		{
@@ -8813,72 +8747,6 @@
 			[
 				3.0,
 				3.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 15.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.875,
-					0.25
-				]
-			},
-			"m_TexName" : "256_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "PlayerComboSmallFire",
-			"status" : true
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.15000000596046448,
-				1.1000000238418579,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
 				1.0
 			]
 		}
@@ -9058,6 +8926,138 @@
 			[
 				2.0,
 				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 0.15050040185451508,
+				"m_MaxFrames" : 8,
+				"m_Play" : true,
+				"m_PlaySpeed" : 12.0,
+				"m_Repeat" : true,
+				"m_Rows" : 2,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.5
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.5
+				]
+			},
+			"m_TexName" : "Fire_Export_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerComboSmallFire",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.14999985694885254,
+				1.0999999046325684,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-19.999994277954102
+			],
+			"m_scale" : 
+			[
+				0.99999994039535522,
+				0.99999994039535522,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 2.0232105255126953,
+				"m_MaxFrames" : 8,
+				"m_Play" : true,
+				"m_PlaySpeed" : 15.0,
+				"m_Repeat" : true,
+				"m_Rows" : 2,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.5
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.5
+				]
+			},
+			"m_TexName" : "Fire_Export_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "PlayerComboLargeFire",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.16999983787536621,
+				1.0999999046325684,
+				-1.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				-19.999992370605469
+			],
+			"m_scale" : 
+			[
+				1.4999998807907104,
+				1.4999998807907104,
 				1.0
 			]
 		}
