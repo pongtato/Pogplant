@@ -80,6 +80,7 @@ namespace Scripting
 		private bool c_playedSpawnAnimation = false;
 		private float c_hardCodedUpAnimationSpeed = 12f;
 		private float c_animationDuration = 2.5f;
+		int c_spawnSoundPlayState = 0;
 
 		//--- Spawner variables
 		//This is hardcoded second for spawner
@@ -393,6 +394,11 @@ namespace Scripting
 					Console.WriteLine("L2BossBehaviour.cs: AimState is: " + m_runStateInfo.bossTurretAimState);
 				}
 
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_U))
+				{
+					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+				}
+
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
 				{
 					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK);
@@ -493,6 +499,25 @@ namespace Scripting
 
 				case L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
 				{
+					switch (c_spawnSoundPlayState)
+					{
+						case 1:
+							if (m_runStateInfo.timer > 1.7f)
+							{
+								ECS.PlayAudio(entityID, 9, "SFX");
+								c_spawnSoundPlayState = 2;
+							}
+							break;
+						case 2:
+							if (m_runStateInfo.timer > 7.5f)
+							{
+								ECS.StopAudio(entityID, 9);
+								ECS.PlayAudio(entityID, 11, "SFX");
+								c_spawnSoundPlayState = 0;
+							}
+							break;
+					}
+
 					if (m_runStateInfo.timer > mSpawner_timeStartSpawnEnemies && m_runStateInfo.timer < mSpawner_timeEndSpawnEnemies)
 					{
 						if (m_runStateInfo.timer > mSpawner_durationToSpawn && !c_spawnedEnemies)
@@ -530,6 +555,9 @@ namespace Scripting
 
 						if (!c_playedSpawnAnimation)
 						{
+							//Plau launch sounds
+							ECS.PlayAudio(entityID, 10, "SFX");
+
 							c_playedSpawnAnimation = true;
 
 							Console.WriteLine("L2BossBehaviour.cs: SpawnAnimation");
@@ -868,7 +896,7 @@ namespace Scripting
 						{
 							ECS.SetActive(m_turretGuns[i].ID_laserObject, true);
 							ECS.SetScale(m_turretGuns[i].ID_laserOutline, new Vector3(0f, 0f, 3f));
-							ECS.SetScale(m_turretGuns[i].ID_laserObject, new Vector3(0.1f, 0.1f, 3f));
+							ECS.SetScale(m_turretGuns[i].ID_laserObject, new Vector3(0.1f, 0.1f, 0.6f));
 
 							m_turretGuns[i].shouldLerp = true;
 						}
@@ -1089,8 +1117,12 @@ namespace Scripting
 				{
 					c_playedSpawnAnimation = false;
 					c_spawnedEnemies = false;
+					c_spawnSoundPlayState = 1;
 				}
 				break;
+				case L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK:
+					ECS.PlayAudio(entityID, 8, "SFX");
+					break;
 			}
 
 			if (!dontResetTimer)

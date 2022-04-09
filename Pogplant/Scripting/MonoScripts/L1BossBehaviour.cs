@@ -199,6 +199,7 @@ namespace Scripting
 		private bool c_playedSpawnAnimation = false;
 		private float c_hardCodedUpAnimationSpeed = 12f;
 		private float c_animationDuration = 2.5f;
+		int c_spawnSoundPlayState = 0;
 
 		bool updateCoreLockOn = false;
 
@@ -357,9 +358,9 @@ namespace Scripting
 		{
 			if (m_debugMode)
 			{
-				if(InputUtility.onKeyHeld(KEY_ID.KEY_LEFT_SHIFT))
+				if (InputUtility.onKeyHeld(KEY_ID.KEY_LEFT_SHIFT))
 				{
-					if(InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+					if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
 					{
 						mh_coreHealth = 0f;
 
@@ -370,6 +371,12 @@ namespace Scripting
 					}
 				}
 				//Debug stuff
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_U))
+				{
+					//DestroyedBothCores();
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+				}
+
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
 				{
 					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK);
@@ -384,7 +391,6 @@ namespace Scripting
 				{
 					//DestroyedBothCores();
 					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
-					Console.WriteLine("L1BossBehaviour.cs: Triggered Spinning");
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_L))
@@ -487,6 +493,25 @@ namespace Scripting
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
 				{
+					switch(c_spawnSoundPlayState)
+					{
+						case 1:
+							if (m_runStateInfo.timer > 1.7f)
+							{
+								ECS.PlayAudio(entityID, 5, "SFX");
+								c_spawnSoundPlayState = 2;
+							}
+							break;
+						case 2:
+							if (m_runStateInfo.timer > 7.5f)
+							{
+								ECS.StopAudio(entityID, 5);
+								ECS.PlayAudio(entityID, 7, "SFX");
+								c_spawnSoundPlayState = 0;
+							}
+							break;
+					}
+
 					if (m_runStateInfo.timer > mSpawner_timeStartSpawnEnemies && m_runStateInfo.timer < mSpawner_timeEndSpawnEnemies)
 					{
 						m_runStateInfo.secondaryTimer += dt;
@@ -527,6 +552,9 @@ namespace Scripting
 
 						if (!c_playedSpawnAnimation)
 						{
+							//Plau launch sounds
+							ECS.PlayAudio(entityID, 6, "SFX");
+
 							c_playedSpawnAnimation = true;
 
 							//Console.WriteLine("SpawnAnimation");
@@ -755,6 +783,22 @@ namespace Scripting
 		{
 			m_runStateInfo.lastState = L1Boss.m_singleton.current_state;
 			L1Boss.m_singleton.SetState(nextState.ToString());
+
+			switch (L1Boss.m_singleton.current_state)
+			{
+				case L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK:
+					ECS.PlayAudio(entityID, 2, "SFX");
+					break;
+				case L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK:
+					ECS.PlayAudio(entityID, 3, "SFX");
+					break;
+				case L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK:
+					ECS.PlayAudio(entityID, 4, "SFX");
+					break;
+				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
+					c_spawnSoundPlayState = 1;
+					break;
+			}
 
 			if (!dontResetTimer)
 				m_runStateInfo.timer = 0f;
