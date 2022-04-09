@@ -8945,7 +8945,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 0.15050040185451508,
+				"m_FrameCounter" : 2.6578176021575928,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 12.0,
@@ -8958,7 +8958,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
+					0.5,
 					0.5
 				]
 			},
@@ -9011,7 +9011,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 2.0232105255126953,
+				"m_FrameCounter" : 3.5088961124420166,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 15.0,
@@ -9024,7 +9024,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
+					0.75,
 					0.5
 				]
 			},
@@ -11085,7 +11085,7 @@
 		}
 	},
 	{
-		"Children" : 13,
+		"Children" : 14,
 		"Name" : 
 		{
 			"m_Name" : "HowToPlayMenuGroup",
@@ -11333,24 +11333,24 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 6.0,
-				"m_MaxFrames" : 16,
+				"m_FrameCounter" : 0.0,
+				"m_MaxFrames" : 64,
 				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
-				"m_Rows" : 4,
+				"m_Rows" : 16,
 				"m_Tiling" : 
 				[
 					0.25,
-					0.25
+					0.0625
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.5
+					0.0,
+					0.0625
 				]
 			},
-			"m_TexName" : "1024_ExportSheet_01.dds"
+			"m_TexName" : "1024_ExportSheet_02.dds"
 		},
 		"Children" : 0,
 		"Name" : 
@@ -11366,7 +11366,7 @@
 		{
 			"m_position" : 
 			[
-				0.31499999761581421,
+				0.25499999523162842,
 				-0.43000000715255737,
 				0.0
 			],
@@ -11379,7 +11379,7 @@
 			"m_scale" : 
 			[
 				0.5,
-				0.5,
+				0.15000000596046448,
 				1.0
 			]
 		}
@@ -11631,7 +11631,7 @@
 			"m_position" : 
 			[
 				0.0060000000521540642,
-				-0.039999999105930328,
+				-0.039999961853027344,
 				0.0
 			],
 			"m_rotation" : 
@@ -11962,6 +11962,72 @@
 			[
 				0.0060000000521540642,
 				-0.039999999105930328,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 15.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 4,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.25
+				],
+				"m_UV_Offset" : 
+				[
+					0.75,
+					1.0
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_Image5",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0060000000521540642,
+				-0.039999961853027344,
 				0.0
 			],
 			"m_rotation" : 
@@ -16232,24 +16298,24 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 6.0,
-				"m_MaxFrames" : 8,
+				"m_FrameCounter" : 12.0,
+				"m_MaxFrames" : 64,
 				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
-				"m_Rows" : 4,
+				"m_Rows" : 16,
 				"m_Tiling" : 
 				[
 					0.25,
-					0.25
+					0.0625
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.5
+					0.0,
+					0.25
 				]
 			},
-			"m_TexName" : "1024_ExportSheet_01.dds"
+			"m_TexName" : "1024_ExportSheet_02.dds"
 		},
 		"Children" : 0,
 		"Name" : 
@@ -16265,20 +16331,20 @@
 		{
 			"m_position" : 
 			[
-				0.31499999761581421,
-				-0.43000000715255737,
+				0.25499999523162842,
+				-0.4299999475479126,
 				0.99000000953674316
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
 			[
 				0.5,
-				0.5,
+				0.15000000596046448,
 				1.0
 			]
 		}
