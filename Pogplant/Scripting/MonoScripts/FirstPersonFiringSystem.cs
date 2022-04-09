@@ -327,6 +327,7 @@ namespace Scripting
 						ECS.PlayAudio(entityID, 0, "SFX");
 
 						ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
+						ECS.SetRotation(m_actual_nuke, ECS.GetGlobalRotation(PlayerShip));
 						ECS.SetActive(m_actual_nuke, true);
 						GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
 

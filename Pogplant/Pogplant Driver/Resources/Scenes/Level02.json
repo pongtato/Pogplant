@@ -76087,7 +76087,7 @@
 		"ScriptVariables" : 
 		[
 			{
-				"Data" : 25.0,
+				"Data" : 0.0,
 				"Name" : "m_actual_nuke_cooldown",
 				"Type" : 0
 			},
@@ -83013,7 +83013,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 100.85568237304688,
+				"m_FrameCounter" : 101.17127990722656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83026,7 +83026,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
+					0.5,
 					0.796875
 				]
 			},
@@ -83079,7 +83079,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 19.571317672729492,
+				"m_FrameCounter" : 64.69769287109375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -83092,8 +83092,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.15625
+					0.0,
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83145,7 +83145,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 14.630847930908203,
+				"m_FrameCounter" : 122.16098785400391,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -83159,7 +83159,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.125
+					0.96875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83211,7 +83211,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 42.441761016845703,
+				"m_FrameCounter" : 103.07334899902344,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -83224,8 +83224,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.34375
+					0.5,
+					0.8125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83277,7 +83277,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 100.85568237304688,
+				"m_FrameCounter" : 101.17127990722656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83290,7 +83290,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
+					0.5,
 					0.796875
 				]
 			},
@@ -83343,7 +83343,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 14.630847930908203,
+				"m_FrameCounter" : 122.16098785400391,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -83357,7 +83357,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.125
+					0.96875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83409,7 +83409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 6.5160760879516602,
+				"m_FrameCounter" : 44.056232452392578,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -83423,7 +83423,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.0625
+					0.359375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83475,7 +83475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 100.85568237304688,
+				"m_FrameCounter" : 101.17127990722656,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83488,7 +83488,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
+					0.5,
 					0.796875
 				]
 			},
@@ -83541,7 +83541,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 6.5160760879516602,
+				"m_FrameCounter" : 44.056232452392578,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -83555,7 +83555,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.0625
+					0.359375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83607,7 +83607,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 14.173633575439453,
+				"m_FrameCounter" : 104.54367065429688,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -83621,7 +83621,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.125
+					0.828125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83673,7 +83673,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 19.571317672729492,
+				"m_FrameCounter" : 64.69769287109375,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -83686,8 +83686,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.15625
+					0.0,
+					0.515625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -85291,7 +85291,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 7.0036001205444336,
+				"m_FrameCounter" : 0.80236804485321045,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 12.0,
@@ -85304,8 +85304,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.75,
-					1.0
+					0.0,
+					0.5
 				]
 			},
 			"m_TexName" : "Fire_Export_01.dds"
@@ -85357,7 +85357,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 4.3708271980285645,
+				"m_FrameCounter" : 5.3955025672912598,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 15.0,
@@ -85370,7 +85370,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
+					0.25,
 					1.0
 				]
 			},
@@ -94609,7 +94609,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Actual_Nuke",
-			"status" : false
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -94689,12 +94689,12 @@
 			[
 				6.9405040740966797,
 				-10.15313720703125,
-				0.0
+				6.6120586395263672
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -94710,7 +94710,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Nuke_Outer_Outline",
-			"status" : false
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -94765,7 +94765,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Nuke_Outer_Spikes",
-			"status" : false
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -94820,7 +94820,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Nuke_Swirl",
-			"status" : false
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -94843,6 +94843,37 @@
 				"Nuke_Swirl"
 			],
 			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 0.0,
+				"Data2" : 1.0,
+				"Name" : "Rotation_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : true,
+				"Name" : "Rotation_rotate_endlessly",
+				"Type" : 2
+			},
+			{
+				"Data" : 90.0,
+				"Name" : "Rotation_speed",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"Rotation" : false
 		},
 		"Tag" : 
 		{
@@ -94875,7 +94906,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Nuke_Outer",
-			"status" : false
+			"status" : true
 		},
 		"Render" : 
 		{
@@ -94930,7 +94961,7 @@
 		"Name" : 
 		{
 			"m_Name" : "Shockwaves",
-			"status" : false
+			"status" : true
 		},
 		"Render" : 
 		{
