@@ -70764,7 +70764,7 @@
 			"m_position" : 
 			[
 				0.02056884765625,
-				1.8938446044921875,
+				1.933563232421875,
 				-0.07843017578125
 			],
 			"m_rotation" : 
@@ -79692,7 +79692,7 @@
 			],
 			"m_scale" : 
 			[
-				0.99934983253479004,
+				0.99928379058837891,
 				0.99988162517547607,
 				0.99999642372131348
 			]
@@ -83013,7 +83013,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 33.969749450683594,
+				"m_FrameCounter" : 60.565406799316406,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83026,8 +83026,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.265625
+					0.0,
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83079,7 +83079,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.063430786132812,
+				"m_FrameCounter" : 101.15132141113281,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -83092,8 +83092,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.21875
+					0.5,
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83145,7 +83145,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 72.060279846191406,
+				"m_FrameCounter" : 17.548383712768555,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -83158,8 +83158,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.578125
+					0.5,
+					0.140625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83211,7 +83211,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 127.37347412109375,
+				"m_FrameCounter" : 118.81733703613281,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -83224,8 +83224,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					1.0
+					0.0,
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83277,7 +83277,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 33.969749450683594,
+				"m_FrameCounter" : 60.565406799316406,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83290,8 +83290,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.265625
+					0.0,
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83343,7 +83343,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 72.060279846191406,
+				"m_FrameCounter" : 17.548383712768555,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -83356,8 +83356,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.578125
+					0.5,
+					0.140625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83409,7 +83409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 6.5082359313964844,
+				"m_FrameCounter" : 56.527717590332031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -83423,7 +83423,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.0625
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83475,7 +83475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 33.969749450683594,
+				"m_FrameCounter" : 60.565406799316406,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83488,8 +83488,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.265625
+					0.0,
+					0.484375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83541,7 +83541,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 6.5082359313964844,
+				"m_FrameCounter" : 56.527717590332031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -83555,7 +83555,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.0625
+					0.453125
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83607,7 +83607,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 48.640300750732422,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -83621,7 +83621,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.390625
+					0.015625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83673,7 +83673,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.063430786132812,
+				"m_FrameCounter" : 101.15132141113281,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -83686,8 +83686,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.21875
+					0.5,
+					0.796875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -85291,7 +85291,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 1.0784866809844971,
+				"m_FrameCounter" : 0.65806436538696289,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 12.0,
@@ -85304,7 +85304,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.25,
+					0.0,
 					0.5
 				]
 			},
@@ -85357,7 +85357,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 5.3863153457641602,
+				"m_FrameCounter" : 6.6009631156921387,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 15.0,
@@ -85370,7 +85370,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.25,
+					0.5,
 					1.0
 				]
 			},
@@ -200012,6 +200012,754 @@
 				1.0,
 				1.0,
 				1.0
+			]
+		}
+	},
+	{
+		"Children" : 13,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_Group",
+			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_01",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.39999997615814209,
+				0.19038721919059753,
+				0.085581392049789429
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-103.58627319335938,
+				12.048356056213379,
+				-149.26168823242188
+			],
+			"m_rotation" : 
+			[
+				-90.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				0.9997829794883728,
+				0.9997829794883728,
+				0.99998891353607178
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_02",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-96.714057922363281,
+				123.20668792724609,
+				-149.87678527832031
+			],
+			"m_rotation" : 
+			[
+				-62.999996185302734,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				20.0,
+				0.99999964237213135,
+				0.99998873472213745
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_03",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-98.388153076171875,
+				50.626571655273438,
+				-177.96864318847656
+			],
+			"m_rotation" : 
+			[
+				79.999969482421875,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				7.5,
+				0.49999880790710449,
+				0.99998873472213745
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_04",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-89.015037536621094,
+				97.984466552734375,
+				-177.63377380371094
+			],
+			"m_rotation" : 
+			[
+				79.999969482421875,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				5.0,
+				0.49999880790710449,
+				0.99998873472213745
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_05",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-124.61353302001953,
+				56.648872375488281,
+				-183.00230407714844
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				4.996274471282959,
+				0.49969974160194397,
+				7.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_06",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-62.285552978515625,
+				-160.79591369628906,
+				-300.39114379882812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				5.0,
+				0.49999880790710449,
+				0.99989962577819824
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_08",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				29.670196533203125,
+				-21.663400650024414,
+				-469.43310546875
+			],
+			"m_rotation" : 
+			[
+				90.0,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				3.9998862743377686,
+				0.49998459219932556,
+				0.49996563792228699
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_11",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-53.74951171875,
+				87.784912109375,
+				-495.37725830078125
+			],
+			"m_rotation" : 
+			[
+				0.00010427392408018932,
+				89.999946594238281,
+				-90.0
+			],
+			"m_scale" : 
+			[
+				4.9992008209228516,
+				0.49999874830245972,
+				0.49996334314346313
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_07",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-5.228302001953125,
+				-21.663400650024414,
+				-468.05322265625
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				90.0
+			],
+			"m_scale" : 
+			[
+				4.0,
+				0.49999880790710449,
+				0.49997073411941528
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_09",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-10.329623222351074,
+				-42.441165924072266,
+				-494.33572387695312
+			],
+			"m_rotation" : 
+			[
+				0.00010427404049551114,
+				89.999946594238281,
+				-89.999946594238281
+			],
+			"m_scale" : 
+			[
+				3.9999997615814209,
+				0.4999987781047821,
+				0.49996334314346313
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Patcher_10",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.032558143138885498,
+				0.032557934522628784,
+				0.032557815313339233
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Patcher",
+				"Resources/Models\\Environment",
+				"Patcher"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				9.8873825073242188,
+				-18.633474349975586,
+				-469.7320556640625
+			],
+			"m_rotation" : 
+			[
+				-179.99989318847656,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				3.9999423027038574,
+				0.4999987781047821,
+				0.49996334314346313
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench",
+				"Resources/Models\\Environment",
+				"Ground_Trench"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-51.833168029785156,
+				0.40920805931091309,
+				-139.36782836914062
+			],
+			"m_rotation" : 
+			[
+				-85.83624267578125,
+				-25.451572418212891,
+				88.667404174804688
+			],
+			"m_scale" : 
+			[
+				2.9999468326568604,
+				2.9999775886535645,
+				5.9999260902404785
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ground_Trench",
+			"status" : true
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Ground_Trench",
+				"Resources/Models\\Environment",
+				"Ground_Trench"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-77.149391174316406,
+				-0.24458871781826019,
+				-140.998779296875
+			],
+			"m_rotation" : 
+			[
+				-90.000007629394531,
+				-42.738750457763672,
+				90.000205993652344
+			],
+			"m_scale" : 
+			[
+				2.9999873638153076,
+				2.9999959468841553,
+				5.0
 			]
 		}
 	}
