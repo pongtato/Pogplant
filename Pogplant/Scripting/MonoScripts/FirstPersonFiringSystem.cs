@@ -31,7 +31,7 @@ namespace Scripting
 
 		//used for nuke
 		uint m_actual_nuke;
-		float m_actual_nuke_speed;
+		public float m_actual_nuke_speed;
         float m_actual_nuke_cooldown;
 		float m_actual_nuke_timer;
 		uint m_actual_nuke_bar_charging_id;
