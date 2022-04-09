@@ -128,6 +128,8 @@ namespace Scripting
         bool cinematic_bars_enter_screen;
         const float cinematic_bar_speed = 3.0f;
 
+        bool play_first_dialogue;
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -272,8 +274,7 @@ namespace Scripting
             //Console.WriteLine("loading score: " + PlayerScript.score);
             //Console.WriteLine("========================================================================");
 
-
-
+            play_first_dialogue = true;
         }
 
         public override void Update(float dt)
@@ -460,7 +461,7 @@ namespace Scripting
                     boss_animation_system.StopAnimation(true, moving_parts_dict);
 
                     //Plays the level ending VO
-                    ECS.PlayAudio(entityID, 0, "VO");
+                    ECS.PlayAudio(entityID, 1, "VO");
                     boss_animation_system.AddAnimationSpecsStack(SetEmpty, 7.0f);
                     boss_animation_system.AddAnimationUpdateStack(RunEmpty);
                     boss_animation_system.SetStateQueue(SetState, BOSS_BEHAVIOUR_STATE.LEVEL_SCORE.ToString());
@@ -618,6 +619,12 @@ namespace Scripting
         {
             moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, 0, 0), new Vector3(0, 5, 0), new Vector3(0, 2.0f, 0), false, false, false, false, false, false);
             moving_parts_dict[entityID].SetPingPongRotation(new Vector3(ECS.GetGlobalRotation(entityID).X, 0, 0), new Vector3(0, 0, 0), new Vector3(2.0f, 0, 0), true, false, false, false, false, false);
+
+            if (play_first_dialogue)
+            {
+                play_first_dialogue = false;
+                ECS.PlayAudio(entityID, 0, "VO");
+            }
         }
 
         void RunFlyingUpSequenceOne(float dt)
