@@ -158,6 +158,8 @@ namespace Scripting
 
         uint sub_renderer_id;
 
+        bool play_first_dialogue;
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -351,7 +353,7 @@ namespace Scripting
                                     PlayerPrefs.GetValue<uint>("m_PlayerHitCount", 0),
                                     PlayerPrefs.GetValue<uint>("m_CollectiblesCount", 0));
 
-
+            play_first_dialogue = true;
         }
 
         public override void Update(float dt)
@@ -691,6 +693,12 @@ namespace Scripting
         {
             moving_parts_dict[entityID].SetPingPongPosition(new Vector3(0, 0, 0), new Vector3(0, 5, 0), new Vector3(0, 2.0f, 0), false, false, false, false, false, false);
             moving_parts_dict[entityID].SetPingPongRotation(new Vector3(ECS.GetGlobalRotation(entityID).X, 0, 0), new Vector3(0, 0, 0), new Vector3(2.0f, 0, 0), true, false, false, false, false, false);
+
+            if (play_first_dialogue)
+            {
+                play_first_dialogue = false;
+                ECS.PlayAudio(entityID, 0, "VO");
+            }
         }
 
         void RunFlyingUpSequenceOne(float dt)
@@ -1761,7 +1769,7 @@ namespace Scripting
         void SetDeathStateAnimationsThree()
         {
             ECS.SetSubtitles(sub_renderer_id, GameUtilities.GetSceneName(), 0, 0);
-            ECS.PlayAudio(entityID, 0, "VO");
+            ECS.PlayAudio(entityID, 1, "VO");
         }
 
         void RunDeathStateSequenceThree(float dt)
