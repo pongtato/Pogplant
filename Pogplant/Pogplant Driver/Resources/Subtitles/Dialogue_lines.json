@@ -269,7 +269,7 @@
           "Timer": 6.1
         },
         {
-          "Text": "Prof: Woah! That must be the core!",
+          "Text": "Prof: Wowza! That must be the core!",
           "Timer": 3
         },
         {
@@ -315,30 +315,30 @@
       "Lines": [
         {
           "Text": "Prof: Uh oh!",
-          "Timer": 0.8
+          "Timer": 0.7
         },
         {
           "Text": "Timmy: Hey, it's back!",
-          "Timer": 2.5
-        },
-        {
-          "Text": "Prof: Let's get' em!",
           "Timer": 1.4
         },
         {
-          "Text": "Timmy: Nooo!",
-          "Timer": 2.2
+          "Text": "Prof: Hahaha! Worry not! Artillery doesn't work in the sky!",
+          "Timer": 3.6
         },
         {
-          "Text": "Prof: Hahaha! Worry not! Artillery doesn't work in the sky!",
-          "Timer": 3.8
+          "Text": "Prof: Let's get' em!",
+          "Timer": 1.0
+        },
+        {
+          "Text": "Timmy: Nooo!",
+          "Timer": 1.2
         },
         {
           "Text": "Timmy: Look, we damaged it! Keep it up!",
           "Timer": 3.5
         },
         {
-          "Text": "Prof: Woah, it''s pulling all the stops isnt it?",
+          "Text": "Prof: Woah, it's pulling all the stops isnt it?",
           "Timer": 2.6
         },
         {
@@ -358,7 +358,7 @@
           "Timer": 2.1
         },
         {
-          "Text": "Prof: I'm losing control, Timmy!",
+          "Text": "Prof: I-I'm losing control, Timmy!",
           "Timer": 2.2
         }
       ]
@@ -368,19 +368,27 @@
       "Lines": [
         {
           "Text": "Prof: W-What! It's alive!? W-w-wait, hold up! He's looking way more dangerous than before!",
-          "Timer": 0.8
+          "Timer": 6.5
         },
         {
           "Text": "Timmy: You mean those big...guns?",
-          "Timer": 2.5
+          "Timer": 2.4
         },
         {
           "Text": "Prof: Nonono, Timmy! The lights!",
-          "Timer": 1.4
+          "Timer": 2.4
         },
         {
           "Text": "Timmy: Huh?",
-          "Timer": 2.2
+          "Timer": 1.2
+        },
+        {
+          "Text": "Prof: Aren't those...RGB upgrades!?",
+          "Timer": 3.1
+        },
+        {
+          "Text": "Prof: Not gpood, Timmy...Th-That is what ULTIMATE POWER is about!",
+          "Timer": 3.9
         }
       ]
     },
@@ -609,7 +617,7 @@
           "Timer": 2.5
         },
         {
-          "Text": "Prof: Phew! I think we got this, Timmy! Let's test this out, BABY!",
+          "Text": "Prof: Phew! Alright...I think we got this, Timmy! Let's test this out, BABY!",
           "Timer": 4.0
         },
         {

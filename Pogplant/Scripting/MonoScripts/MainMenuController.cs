@@ -258,7 +258,7 @@ namespace Scripting
 						if (InputUtility.onAnyKey() && !begin_any_key_spin)
 						{
 							begin_any_key_spin = true;
-							ECS.PlayAudio(entityID, 1, "SFX");
+							ECS.PlayAudio(entityID, 5, "SFX");
 						}
 						else
 						{

@@ -31,6 +31,12 @@
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
 				"UpdatePos" : true,
 				"Volume" : 0.25099998712539673
+			},
+			"Clip5" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\SFX_MenuStart.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.61000001430511475
 			}
 		},
 		"Children" : 18,
