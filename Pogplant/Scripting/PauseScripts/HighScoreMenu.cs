@@ -432,7 +432,7 @@ namespace Scripting
 
 			if (InputUtility.onKeyTriggered("ESCAPE") && !m_after_endgame)
 			{
-				//ECS.PlayAudio(entityID, 3, "SFX");
+				ECS.PlayAudio(entityID, 4, "SFX");
 				m_exiting_animation = true;
 			}
 
@@ -517,6 +517,7 @@ namespace Scripting
 
 			if (InputUtility.onKeyTriggered("MENUSELECT") && m_after_endgame)
             {
+				ECS.PlayAudio(entityID, 4, "SFX");
 				m_exiting_animation = true;
 			}
 

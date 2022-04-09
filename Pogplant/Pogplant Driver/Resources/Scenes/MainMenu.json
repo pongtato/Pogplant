@@ -7334,6 +7334,12 @@
 				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
 				"UpdatePos" : false,
 				"Volume" : 0.18799999356269836
+			},
+			"Clip4" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\ResultScreen_Exit.ogg",
+				"UpdatePos" : false,
+				"Volume" : 1.0
 			}
 		},
 		"Children" : 1,
@@ -7346,6 +7352,14 @@
 		{
 			"HighScoreMenu" : false
 		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 5.0,
+				"Name" : "cinematic_bar_speed",
+				"Type" : 0
+			}
+		],
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -8258,7 +8272,7 @@
 			"m_scale" : 
 			[
 				0.5,
-				0.30000001192092896,
+				0.125,
 				1.0
 			]
 		}
@@ -8278,21 +8292,21 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 5.0,
 				"m_MaxFrames" : 16,
 				"m_Play" : false,
 				"m_PlaySpeed" : 1.0,
 				"m_Repeat" : false,
-				"m_Rows" : 14,
+				"m_Rows" : 16,
 				"m_Tiling" : 
 				[
 					0.25,
-					0.071428574621677399
+					0.0625
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.071428574621677399
+					0.25,
+					0.125
 				]
 			},
 			"m_TexName" : "1024_ExportSheet_02.dds"
@@ -8312,7 +8326,7 @@
 			"m_position" : 
 			[
 				0.0,
-				-0.15000000596046448,
+				-0.25,
 				-0.10000000149011612
 			],
 			"m_rotation" : 
@@ -8324,7 +8338,7 @@
 			"m_scale" : 
 			[
 				1.0,
-				0.5,
+				1.0,
 				1.0
 			]
 		}
