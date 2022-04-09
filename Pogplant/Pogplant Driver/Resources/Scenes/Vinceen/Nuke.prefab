@@ -1,9 +1,18 @@
 [
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.28299999237060547
+			}
+		},
 		"Children" : 5,
 		"Guid" : 
 		{
-			"m_guid" : "b901230a-d15d-4121-8a8a-96b5890dd4bb"
+			"m_guid" : "281af4ac-e716-4528-96b9-42809140122f"
 		},
 		"Name" : 
 		{
@@ -12,7 +21,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Scenes\\Vinceen\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -92,12 +101,12 @@
 			[
 				6.9405040740966797,
 				-10.15313720703125,
-				0.0
+				6.6120586395263672
 			],
 			"m_rotation" : 
 			[
 				0.0,
-				-0.0,
+				0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -117,7 +126,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Scenes\\Vinceen\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -176,7 +185,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Scenes\\Vinceen\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -235,7 +244,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Scenes\\Vinceen\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -258,6 +267,37 @@
 				"Nuke_Swirl"
 			],
 			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 0.0,
+				"Data2" : 1.0,
+				"Name" : "Rotation_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : true,
+				"Name" : "Rotation_rotate_endlessly",
+				"Type" : 2
+			},
+			{
+				"Data" : 90.0,
+				"Name" : "Rotation_speed",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"Rotation" : false
 		},
 		"Tag" : 
 		{
@@ -294,7 +334,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Scenes\\Vinceen\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -349,11 +389,11 @@
 		"Name" : 
 		{
 			"m_Name" : "Shockwaves",
-			"status" : false
+			"status" : true
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Scenes\\Vinceen\\Nuke.prefab"
 		},
 		"Render" : 
 		{

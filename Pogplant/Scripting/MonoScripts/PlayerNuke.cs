@@ -398,7 +398,7 @@ namespace Scripting
 
 		public override void OnTriggerExit(uint id)
 		{
-			m_enemy_in_range.Remove(id);
+			//m_enemy_in_range.Remove(id);
 		}
 
 		public void TakeDamage(float damage)
