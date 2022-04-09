@@ -12,7 +12,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Prefabs\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -117,7 +117,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Prefabs\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -176,7 +176,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Prefabs\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -235,7 +235,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Prefabs\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -294,7 +294,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Prefabs\\Nuke.prefab"
 		},
 		"Render" : 
 		{
@@ -353,7 +353,7 @@
 		},
 		"Prefab" : 
 		{
-			"file_path" : "Resources\\Scenes\\Vinceen\\test_nuke.prefab"
+			"file_path" : "Resources\\Prefabs\\Nuke.prefab"
 		},
 		"Render" : 
 		{

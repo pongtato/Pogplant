@@ -1,9 +1,9 @@
 [
 	{
-		"Children" : 21,
+		"Children" : 22,
 		"Guid" : 
 		{
-			"m_guid" : "3db50d0f-efed-4013-9b26-77d10a45c0bd"
+			"m_guid" : "8aa06a53-51ba-4328-9f2e-388c809b431e"
 		},
 		"Name" : 
 		{
@@ -16,7 +16,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "9ce2800b-079d-482d-8590-0b9a54ad9ea7",
+			"prefab_GUID" : "3db50d0f-efed-4013-9b26-77d10a45c0bd",
 			"prefab_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
 		},
 		"Tag" : 
@@ -30,215 +30,6 @@
 				0.0,
 				0.0,
 				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
-		"Name" : 
-		{
-			"m_Name" : "Group_21",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_63.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				20.0,
-				20.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_21",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			},
-			{
-				"Data" : 37,
-				"Name" : "SubBeginIndex",
-				"Type" : 1
-			},
-			{
-				"Data" : 37,
-				"Name" : "SubEndIndex",
-				"Type" : 1
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-643.216552734375,
-				223.43386840820312,
-				-606.30181884765625
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_49.ogg",
-				"UpdatePos" : true,
-				"Volume" : 1.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				20.0,
-				20.0,
-				1.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Timmy_21",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			},
-			{
-				"Data" : 36,
-				"Name" : "SubBeginIndex",
-				"Type" : 1
-			},
-			{
-				"Data" : 36,
-				"Name" : "SubEndIndex",
-				"Type" : 1
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-645.31854248046875,
-				224.70616149902344,
-				-566.98455810546875
 			],
 			"m_rotation" : 
 			[
@@ -717,6 +508,12 @@
 				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_50.ogg",
 				"UpdatePos" : true,
 				"Volume" : 1.0
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\Ambience_ConveyorBelt.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.19900000095367432
 			}
 		},
 		"BoxCollider" : 
@@ -1788,12 +1585,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 35,
+				"Data" : 36,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 35,
+				"Data" : 36,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -1874,12 +1671,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 34,
+				"Data" : 35,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 34,
+				"Data" : 35,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2206,12 +2003,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 24,
+				"Data" : 25,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 24,
+				"Data" : 25,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2329,12 +2126,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 25,
+				"Data" : 26,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 25,
+				"Data" : 26,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2415,12 +2212,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 26,
+				"Data" : 27,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 26,
+				"Data" : 27,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2538,12 +2335,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 30,
+				"Data" : 31,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 30,
+				"Data" : 31,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2813,12 +2610,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 31,
+				"Data" : 32,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 31,
+				"Data" : 32,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -2936,12 +2733,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 33,
+				"Data" : 34,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 33,
+				"Data" : 34,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3022,12 +2819,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 32,
+				"Data" : 33,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 32,
+				"Data" : 33,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3354,12 +3151,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 27,
+				"Data" : 28,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 27,
+				"Data" : 28,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3477,12 +3274,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 29,
+				"Data" : 30,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 29,
+				"Data" : 30,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3563,12 +3360,12 @@
 				"Type" : 3
 			},
 			{
-				"Data" : 28,
+				"Data" : 29,
 				"Name" : "SubBeginIndex",
 				"Type" : 1
 			},
 			{
-				"Data" : 28,
+				"Data" : 29,
 				"Name" : "SubEndIndex",
 				"Type" : 1
 			}
@@ -3711,6 +3508,328 @@
 				12.522404670715332,
 				-107.45841217041016,
 				-449.76406860351562
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 1,
+		"Name" : 
+		{
+			"m_Name" : "Ambience_BGM",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\Ambience_Lvl2.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.80099999904632568
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				11.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ambience",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				5.6031007766723633,
+				-2.7000000476837158
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 2,
+		"Name" : 
+		{
+			"m_Name" : "Group_21",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_63.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Prof_21",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			},
+			{
+				"Data" : 38,
+				"Name" : "SubBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 38,
+				"Name" : "SubEndIndex",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-643.216552734375,
+				223.43386840820312,
+				-606.30181884765625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\Timmy\\Level2\\Timmy_49.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Timmy_21",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			},
+			{
+				"Data" : 37,
+				"Name" : "SubBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 37,
+				"Name" : "SubEndIndex",
+				"Type" : 1
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-645.31854248046875,
+				224.70616149902344,
+				-566.98455810546875
 			],
 			"m_rotation" : 
 			[
