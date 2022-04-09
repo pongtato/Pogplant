@@ -150,7 +150,7 @@ namespace Scripting
 			m_actual_nuke_bar_filled_id = ECS.FindEntityWithName("Bar_Filled");
 			m_actual_nuke_speed = ECS.GetValue<float>(entityID, 300, "m_actual_nuke_speed");
 			m_actual_nuke_cooldown = ECS.GetValue<float>(entityID, 5, "m_actual_nuke_cooldown");
-			m_actual_nuke_timer = m_actual_nuke_cooldown;
+			m_actual_nuke_timer = 0;
 
 			Vector3 throw_away_pos = new Vector3();
 			Vector3 throw_away_rot = new Vector3();
