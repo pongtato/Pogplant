@@ -463,26 +463,6 @@ namespace Scripting
                 }
                 m_CallOnceMedal = false;
             }
-            //old ABC grading system
-            //if (m_CallOnceMedal)
-            //{
-            //    if (m_OverallGrade >= (uint)MEDALGRADE.OVERALLBRONZE && m_OverallGrade < (uint)MEDALGRADE.OVERALLSILVER)
-            //    {
-            //        ECS.PlayAudio(entityID, 4, "SFX");
-            //        SwapGrade(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
-            //    }
-            //    else if(m_OverallGrade >= (uint)MEDALGRADE.OVERALLSILVER && m_OverallGrade < (uint)MEDALGRADE.OVERALLGOLD)
-            //    {
-            //        ECS.PlayAudio(entityID, 3, "SFX");
-            //        SwapGrade(m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Gold"].id);
-            //    }
-            //    else
-            //    {
-            //        ECS.PlayAudio(entityID, 2, "SFX");
-            //        SwapGrade(m_LettersMap["Medal_Gold"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id);
-            //    }
-            //    m_CallOnceMedal = false;
-            //}
         }
 
         private void UpdateContinue(float dt)

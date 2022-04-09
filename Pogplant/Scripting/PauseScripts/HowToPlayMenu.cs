@@ -14,6 +14,7 @@ namespace Scripting
             IMG2,
             IMG3,
             IMG4,
+            IMG5,
             EXIT
         }
 
@@ -52,7 +53,7 @@ namespace Scripting
             Vector3 pos = new Vector3();
             Vector3 rot = new Vector3();
             Vector3 scale = new Vector3();
-            for (int i = 1; i < 5; ++i)
+            for (int i = 1; i < 6; ++i)
             {
                 uint htpImg = ECS.FindEntityWithName("HTP_Image" + i);
                 ECS.GetTransformECS(htpImg, ref pos, ref rot, ref scale);
@@ -152,6 +153,7 @@ namespace Scripting
             ECS.SetActive(mEntities["HTP_Image2"].id, false);
             ECS.SetActive(mEntities["HTP_Image3"].id, false);
             ECS.SetActive(mEntities["HTP_Image4"].id, false);
+            ECS.SetActive(mEntities["HTP_Image5"].id, false);
         }
 
         void UpdateSettingsMenuAnimation(bool opening, float dt)
@@ -222,7 +224,7 @@ namespace Scripting
             {
                 ECS.PlayAudio(entityID, 1, "SFX");
                 m_PrevMenuState = m_MenuState;
-                if (m_MenuState < MENUSTATE.IMG4)
+                if (m_MenuState < MENUSTATE.IMG5)
                     m_MenuState++;
             }
             else if (InputUtility.onKeyTriggered("ESCAPE"))
@@ -275,8 +277,19 @@ namespace Scripting
                             ECS.SetActive(mEntities["HTP_Image4"].id, true);
                             ECS.SetActive(mEntities["HTP_KeyA"].id, true);
 
-                            ECS.SetActive(mEntities["HTP_KeyD"].id, false);
+                            ECS.SetActive(mEntities["HTP_KeyD"].id, true);
                             ECS.SetActive(mEntities["HTP_Image3"].id, false);
+                            ECS.SetActive(mEntities["HTP_Image5"].id, false);
+                            ECS.SetActive(mEntities["HTP_ArrowR"].id, true);
+                        }
+                        break;
+                    case MENUSTATE.IMG5:
+                        {
+                            ECS.SetActive(mEntities["HTP_Image5"].id, true);
+                            ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+
+                            ECS.SetActive(mEntities["HTP_KeyD"].id, false);
+                            ECS.SetActive(mEntities["HTP_Image4"].id, false);
                             ECS.SetActive(mEntities["HTP_ArrowR"].id, false);
                         }
                         break;
