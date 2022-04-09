@@ -5727,7 +5727,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 7.648259162902832,
+				"m_FrameCounter" : 6.6426458358764648,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 12.0,
@@ -5740,7 +5740,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.75,
+					0.5,
 					1.0
 				]
 			},
@@ -5793,7 +5793,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 2.9602138996124268,
+				"m_FrameCounter" : 0.0,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 15.0,
@@ -5806,7 +5806,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
+					0.0,
 					0.5
 				]
 			},
@@ -8203,37 +8203,37 @@
 			{
 				"Dir" : "Resources/Audio\\Boss\\SFX_BossClawCharge.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.25299999117851257
+				"Volume" : 0.40099999308586121
 			},
 			"Clip3" : 
 			{
 				"Dir" : "Resources/Audio\\Boss\\SFX_BossHandSlam.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.24699999392032623
+				"Volume" : 0.59899997711181641
 			},
 			"Clip4" : 
 			{
 				"Dir" : "Resources/Audio\\Boss\\SFX_BossSpinningAtk.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.28600001335144043
+				"Volume" : 0.69999998807907104
 			},
 			"Clip5" : 
 			{
 				"Dir" : "Resources/Audio\\Boss\\SFX_BossSpawnEnemyChargingUp.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.19799999892711639
+				"Volume" : 0.50199997425079346
 			},
 			"Clip6" : 
 			{
 				"Dir" : "Resources/Audio\\Boss\\SFX_BossSpawnEnemy.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.14300000667572021
+				"Volume" : 0.49799999594688416
 			},
 			"Clip7" : 
 			{
 				"Dir" : "Resources/Audio\\Boss\\SFX_BossSpawnEnemyPowerDown.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.19799999892711639
+				"Volume" : 0.49799999594688416
 			}
 		},
 		"Children" : 0,
@@ -10652,9 +10652,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				-0.12200892716646194,
-				0.98885649442672729,
-				0.085303373634815216
+				-0.11875195801258087,
+				0.99095869064331055,
+				0.062441490590572357
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
