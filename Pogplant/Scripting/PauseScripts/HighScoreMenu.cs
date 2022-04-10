@@ -40,6 +40,8 @@ namespace Scripting
 		static uint m_Arrow_Left_DPad;
 		static uint m_Arrow_Right_D;
 		static uint m_Arrow_Right_DPad;
+		static uint m_Bottom_Right_KB;
+		static uint m_Bottom_Right_CTRL;
 
 		//used to track the next scene
 		static string m_next_scene;
@@ -57,6 +59,8 @@ namespace Scripting
 		static Vector3 m_up_down_pos = new Vector3();
 		static uint m_cur_name_cursor_id;
 		static uint m_new_highscore_id;
+
+
 
 		//private for score
 		public struct ScoreEntry
@@ -119,10 +123,15 @@ namespace Scripting
 			m_Arrow_Left_DPad = ECS.FindChildEntityWithName(entityID, "Arrow_Left_DPad");
 			m_Arrow_Right_D = ECS.FindChildEntityWithName(entityID, "Arrow_Right_D");
 			m_Arrow_Right_DPad = ECS.FindChildEntityWithName(entityID, "Arrow_Right_DPad");
-
+			m_Bottom_Right_KB = ECS.FindChildEntityWithName(entityID, "Arrow_Right_DPad");
+			m_Bottom_Right_CTRL = ECS.FindChildEntityWithName(entityID, "Arrow_Right_DPad");
 			//used for inputting of name for highscore
 			m_cur_name_cursor_id = ECS.FindChildEntityWithName(entityID, "Arrow_Up_Down");
 			m_new_highscore_id = ECS.FindChildEntityWithName(entityID, "New_HighScore");
+
+			m_Bottom_Right_KB = ECS.FindChildEntityWithName(entityID, "bottom_right_keyboard");
+			m_Bottom_Right_CTRL = ECS.FindChildEntityWithName(entityID, "bottom_right_controller");
+
 			//cinematic_bar_top_id = ECS.FindChildEntityWithName(entityID, "Top Cinematic Bar");
 			//cinematic_bar_bottom_id = ECS.FindChildEntityWithName(entityID, "Bottom Cinematic Bar");
 
@@ -288,7 +297,17 @@ namespace Scripting
 								m_prev_letter_index[m_cur_name_cursor] = m_cur_letter_index[m_cur_name_cursor];
 								//Console.WriteLine("do once");
 							}
-						}
+
+                            bool controller_used = InputUtility.IsControlledBeingUsed();
+                            if (controller_used != prev_input)
+                            {
+                                ECS.SetActive(m_Bottom_Right_KB, !controller_used);
+
+                                ECS.SetActive(m_Bottom_Right_CTRL, controller_used);
+
+                                prev_input = controller_used;
+                            }
+                        }
 						UpdateScoreBoard(ref m_index);
 						UpdateScoreUICategory();
 
@@ -430,7 +449,7 @@ namespace Scripting
 		private void UpdateMenuInput()
 		{
 
-			if (InputUtility.onKeyTriggered("ESCAPE") && !m_after_endgame)
+			if (InputUtility.onKeyTriggered("RETURN") && !m_after_endgame)
 			{
 				ECS.PlayAudio(entityID, 4, "SFX");
 				m_exiting_animation = true;
@@ -534,9 +553,12 @@ namespace Scripting
 			{
 				ECS.SetActive(m_Arrow_Right_D, !controller_used);
 				ECS.SetActive(m_Arrow_Left_A, !controller_used);
+				ECS.SetActive(m_Bottom_Right_KB, !controller_used);
 
+				ECS.SetActive(m_Bottom_Right_CTRL, controller_used);
 				ECS.SetActive(m_Arrow_Left_DPad, controller_used);
 				ECS.SetActive(m_Arrow_Right_DPad, controller_used);
+
 
 				prev_input = controller_used;
 			}
@@ -550,6 +572,7 @@ namespace Scripting
 
 		static private void UpdateNameCursorPos()
         {
+			Console.WriteLine(m_up_down_offset * m_cur_name_cursor);
 			ECS.SetPosition(m_cur_name_cursor_id, new Vector3(m_up_down_offset * m_cur_name_cursor, -m_name_placement * 0.115f, 0));
         }
 

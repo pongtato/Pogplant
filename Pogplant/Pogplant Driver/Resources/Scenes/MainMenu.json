@@ -7489,7 +7489,7 @@
 		}
 	},
 	{
-		"Children" : 1,
+		"Children" : 2,
 		"Name" : 
 		{
 			"m_Name" : "bottom right scale",
@@ -7558,8 +7558,74 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "bottom_right_ctrl",
+			"m_Name" : "bottom_right_keyboard",
 			"status" : true
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.25,
+				-0.10000000149011612
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 7.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 16,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.0625
+				],
+				"m_UV_Offset" : 
+				[
+					0.75,
+					0.125
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_02.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "bottom_right_controller",
+			"status" : false
 		},
 		"Tag" : 
 		{
