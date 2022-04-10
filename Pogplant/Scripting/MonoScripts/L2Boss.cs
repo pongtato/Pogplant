@@ -1549,6 +1549,7 @@ namespace Scripting
 
         void SetColorTurretAttackStateAnimationsOne()
         {
+            SetMovingStateAnimations();
             moving_parts_dict[left_color_turret_tube_1_id].SetLinearPosition(new Vector3(0, -0.65f, 0), new Vector3(0, 2.0f, 0), false, true, false);
             moving_parts_dict[left_color_turret_tube_2_id].SetLinearPosition(new Vector3(0, -0.65f, 0), new Vector3(0, 2.0f, 0), false, true, false);
             moving_parts_dict[left_color_turret_tube_3_id].SetLinearPosition(new Vector3(0, -0.65f, 0), new Vector3(0, 2.0f, 0), false, true, false);
@@ -1560,6 +1561,7 @@ namespace Scripting
 
         void RunColorTurretAttackStateAnimationsOne(float dt)
         {
+            RunMovingSequence(dt);
             moving_parts_dict[left_color_turret_tube_1_id].UpdateMovingParts(dt);
             moving_parts_dict[left_color_turret_tube_2_id].UpdateMovingParts(dt);
             moving_parts_dict[left_color_turret_tube_3_id].UpdateMovingParts(dt);
@@ -1571,6 +1573,7 @@ namespace Scripting
 
         void SetColorTurretAttackStateAnimationsTwo()
         {
+            SetMovingStateAnimations();
             moving_parts_dict[left_color_turret_1_id].SetLinearRotation(new Vector3(-75.0f, 0, 0), new Vector3(10.0f, 0, 0), true, false, false);
             moving_parts_dict[left_color_turret_2_id].SetLinearRotation(new Vector3(112.0f, 0, 0), new Vector3(10.0f, 0, 0), true, false, false);
 
@@ -1580,6 +1583,7 @@ namespace Scripting
 
         void RunColorTurretAttackStateAnimationsTwo(float dt)
         {
+            RunMovingSequence(dt);
             moving_parts_dict[left_color_turret_1_id].UpdateMovingParts(dt);
             moving_parts_dict[left_color_turret_2_id].UpdateMovingParts(dt);
 
@@ -1589,6 +1593,7 @@ namespace Scripting
 
         void SetColorTurretAttackStateAnimationsThree()
         {
+            SetMovingStateAnimations();
             moving_parts_dict[left_color_turret_1_id].SetLinearRotation(new Vector3(-70, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
             moving_parts_dict[left_color_turret_2_id].SetLinearRotation(new Vector3(120, 0, 0), new Vector3(5.0f, 5.0f, 5.0f), true, true, true);
 
@@ -1598,6 +1603,7 @@ namespace Scripting
 
         void RunColorTurretAttackStateAnimationsThree(float dt)
         {
+            RunMovingSequence(dt);
             moving_parts_dict[left_color_turret_1_id].UpdateMovingParts(dt);
             moving_parts_dict[left_color_turret_2_id].UpdateMovingParts(dt);
 
@@ -1607,6 +1613,8 @@ namespace Scripting
 
         void SetColorTurretAttackStateAnimationsFour()
         {
+            SetMovingStateAnimations();
+
             ECS.SetDiffuseTint(right_color_turret_light_1_id, ref default_color);
             ECS.SetDiffuseTint(right_color_turret_light_2_id, ref default_color);
             ECS.SetDiffuseTint(right_color_turret_light_3_id, ref default_color);
@@ -1632,6 +1640,8 @@ namespace Scripting
 
         void RunRepelAttackStateAnimationsFour(float dt)
         {
+            RunMovingSequence(dt);
+
             moving_parts_dict[left_color_turret_tube_1_id].UpdateMovingParts(dt);
             moving_parts_dict[left_color_turret_tube_2_id].UpdateMovingParts(dt);
             moving_parts_dict[left_color_turret_tube_3_id].UpdateMovingParts(dt);
