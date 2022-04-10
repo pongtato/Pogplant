@@ -164,6 +164,8 @@ namespace Scripting
 			if (m_actual_nuke_bar_charging_id != m_null_entity && m_actual_nuke_bar_filled_id != m_null_entity)
             {
 				m_actual_nuke_bar_per_second = m_actual_nuke_bar_filled_scale.X / m_actual_nuke_cooldown;
+				ECS.SetActive(m_actual_nuke_bar_charging_id, true);
+				ECS.SetActive(m_actual_nuke_bar_filled_id, false);
 			}
 
 			Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
