@@ -1,9 +1,9 @@
 [
 	{
-		"Children" : 9,
+		"Children" : 11,
 		"Guid" : 
 		{
-			"m_guid" : "0e769756-948a-47e3-b540-79106d572e0d"
+			"m_guid" : "9cf7cd7a-725b-40b3-a4cc-6bb114636dd6"
 		},
 		"Name" : 
 		{
@@ -13,6 +13,11 @@
 		"Prefab" : 
 		{
 			"file_path" : "Resources\\Prefabs\\PauseMenu.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "09d714da-d5ac-4e1b-bb8c-b8ac4a676d22",
+			"prefab_path" : "Resources\\Prefabs\\PauseMenu.prefab"
 		},
 		"Tag" : 
 		{
@@ -25,76 +30,6 @@
 				0.0,
 				1.5,
 				-0.89999997615814209
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 2,
-				"m_FrameCounter" : 3.0,
-				"m_MaxFrames" : 4,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 2,
-				"m_Tiling" : 
-				[
-					0.5,
-					0.5
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					1.0
-				]
-			},
-			"m_TexName" : "2048_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Pause Menu Background",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\PauseMenu.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
 			],
 			"m_rotation" : 
 			[
@@ -176,6 +111,76 @@
 			[
 				0.25,
 				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 3.0,
+				"m_MaxFrames" : 4,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 2,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.5
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					1.0
+				]
+			},
+			"m_TexName" : "2048_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Pause Menu Background",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\PauseMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
 				1.0
 			]
 		}
@@ -498,7 +503,7 @@
 		"Name" : 
 		{
 			"m_Name" : "How To Play Button Faded",
-			"status" : false
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -655,6 +660,146 @@
 				0.0,
 				-0.20000000298023224,
 				0.019999999552965164
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 51.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 0.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.375,
+					0.875
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Quit Game Button Faded",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\PauseMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.30000001192092896,
+				0.019999999552965164
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 50.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 0.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.25,
+					0.875
+				]
+			},
+			"m_TexName" : "512_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Quit Game Button",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\PauseMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.30000001192092896,
+				0.0099999997764825821
 			],
 			"m_rotation" : 
 			[

@@ -13,7 +13,8 @@ namespace Scripting
             RESUME_GAME = 0,
             HOW_TO_PLAY = 1,
             SETTINGS = 2,
-            RETURN_TO_MENU = 3
+            RETURN_TO_MENU = 3,
+            QUIT_GAME
         }
 
         enum CONFIRMATION_MENU_BUTTONS
@@ -28,6 +29,7 @@ namespace Scripting
             OPENING_MENU,
             INPUT_READY,
             CONFIRMATION,
+            QUIT_CONFIRMATION,
             IN_SUB_MENU
         }
 
@@ -45,6 +47,11 @@ namespace Scripting
 
         int active_index;
         int confirmation_index;
+        int quit_confirmation_index;
+
+        uint quit_confirm_menu_id;
+        private Dictionary<string, GameObject> quit_confirm_button_map = new Dictionary<string, GameObject>();
+        private Dictionary<string, GameObject> quit_faded_confirm_button_map = new Dictionary<string, GameObject>();
 
         uint settings_menu_id;
         const float opening_speed = 8.0f;
@@ -70,6 +77,7 @@ namespace Scripting
             pause_menu_id = ECS.FindEntityWithName("Pause Menu");
             confirm_menu_id = ECS.FindEntityWithName("Confirmation Menu");
             settings_menu_id = ECS.FindEntityWithName("Settings Menu");
+            quit_confirm_menu_id = ECS.FindEntityWithName("Quit Confirmation Menu");
 
             //Pause menu full opacity
             uint resume_game_button_id = ECS.FindChildEntityWithName(pause_menu_id, "Resume Game Button");
@@ -89,6 +97,10 @@ namespace Scripting
             ECS.GetTransformECS(main_menu_button_id, ref pos, ref rot, ref scale);
             button_map.Add("Main Menu Button", new GameObject(main_menu_button_id, new Transform(pos, rot, scale), "Main Menu Button"));
 
+            uint quit_game_button_id = ECS.FindChildEntityWithName(pause_menu_id, "Quit Game Button");
+            ECS.GetTransformECS(quit_game_button_id, ref pos, ref rot, ref scale);
+            button_map.Add("Quit Game Button", new GameObject(quit_game_button_id, new Transform(pos, rot, scale), "Quit Game Button"));
+
             //Pause menu faded
             uint resume_game_button_faded_id = ECS.FindChildEntityWithName(pause_menu_id, "Resume Game Button Faded");
             ECS.GetTransformECS(resume_game_button_faded_id, ref pos, ref rot, ref scale);
@@ -106,6 +118,10 @@ namespace Scripting
             uint main_menu_button_faded_id = ECS.FindChildEntityWithName(pause_menu_id, "Main Menu Button Faded");
             ECS.GetTransformECS(main_menu_button_faded_id, ref pos, ref rot, ref scale);
             faded_button_map.Add("Main Menu Button Faded", new GameObject(main_menu_button_faded_id, new Transform(pos, rot, scale), "Main Menu Button Faded"));
+
+            uint quit_game_button_faded_id = ECS.FindChildEntityWithName(pause_menu_id, "Quit Game Button Faded");
+            ECS.GetTransformECS(quit_game_button_faded_id, ref pos, ref rot, ref scale);
+            faded_button_map.Add("Quit Game Button Faded", new GameObject(quit_game_button_faded_id, new Transform(pos, rot, scale), "Quit Game Button Faded"));
 
             //Confirmation menu full opacity
             uint confirm_yes_button_id = ECS.FindChildEntityWithName(confirm_menu_id, "Confirm Yes Button");
@@ -125,12 +141,33 @@ namespace Scripting
             ECS.GetTransformECS(confirm_no_button_faded_id, ref pos, ref rot, ref scale);
             faded_confirm_button_map.Add("Confirm No Button Faded", new GameObject(confirm_no_button_faded_id, new Transform(pos, rot, scale), "Confirm No Button Faded"));
 
+
+            //Quit Confirmation menu full opacity
+            uint quit_confirm_yes_button_id = ECS.FindChildEntityWithName(quit_confirm_menu_id, "Quit Confirm Yes Button");
+            ECS.GetTransformECS(quit_confirm_yes_button_id, ref pos, ref rot, ref scale);
+            quit_confirm_button_map.Add("Quit Confirm Yes Button", new GameObject(quit_confirm_yes_button_id, new Transform(pos, rot, scale), "Quit Confirm Yes Button"));
+
+            uint quit_confirm_no_button_id = ECS.FindChildEntityWithName(quit_confirm_menu_id, "Quit Confirm No Button");
+            ECS.GetTransformECS(quit_confirm_no_button_id, ref pos, ref rot, ref scale);
+            quit_confirm_button_map.Add("Quit Confirm No Button", new GameObject(quit_confirm_no_button_id, new Transform(pos, rot, scale), "Quit Confirm No Button"));
+
+            //Quit Confirmation menu faded
+            uint quit_confirm_yes_button_faded_id = ECS.FindChildEntityWithName(quit_confirm_menu_id, "Quit Confirm Yes Button Faded");
+            ECS.GetTransformECS(quit_confirm_yes_button_faded_id, ref pos, ref rot, ref scale);
+            quit_faded_confirm_button_map.Add("Quit Confirm Yes Button Faded", new GameObject(quit_confirm_yes_button_faded_id, new Transform(pos, rot, scale), "Quit Confirm Yes Button Faded"));
+
+            uint quit_confirm_no_button_faded_id = ECS.FindChildEntityWithName(quit_confirm_menu_id, "Quit Confirm No Button Faded");
+            ECS.GetTransformECS(quit_confirm_no_button_faded_id, ref pos, ref rot, ref scale);
+            quit_faded_confirm_button_map.Add("Quit Confirm No Button Faded", new GameObject(quit_confirm_no_button_faded_id, new Transform(pos, rot, scale), "Quit Confirm No Button Faded"));
+
             menu_state = MENU_STATE.INACTIVE;
             ECS.SetActive(confirm_menu_id, false);
+            ECS.SetActive(quit_confirm_menu_id, false);
             ECS.SetActive(pause_menu_id, false);
 
             active_index = 0;
             confirmation_index = 0;
+            quit_confirmation_index = 0;
             enabled = false;
         }
 
@@ -179,6 +216,9 @@ namespace Scripting
                     case MENU_STATE.CONFIRMATION:
                         UpdateConfirmationInput();
                         break;
+                    case MENU_STATE.QUIT_CONFIRMATION:
+                        UpdateQuitConfirmationInput();
+                        break;
                 }
             }
         }
@@ -216,7 +256,7 @@ namespace Scripting
 
                 if (active_index < (int)PAUSE_MENU_BUTTONS.RESUME_GAME)
                 {
-                    active_index = (int)PAUSE_MENU_BUTTONS.RETURN_TO_MENU;
+                    active_index = (int)PAUSE_MENU_BUTTONS.QUIT_GAME;
 
                 }
                 UpdatePauseMenuButtonFade();
@@ -227,7 +267,7 @@ namespace Scripting
 
                 ++active_index;
 
-                if (active_index > (int)PAUSE_MENU_BUTTONS.RETURN_TO_MENU)
+                if (active_index > (int)PAUSE_MENU_BUTTONS.QUIT_GAME)
                 {
                     active_index = (int)PAUSE_MENU_BUTTONS.RESUME_GAME;
                 }
@@ -265,6 +305,10 @@ namespace Scripting
                     case 3:
                         menu_state = MENU_STATE.CONFIRMATION;
                         ECS.SetActive(confirm_menu_id, true);
+                        break;
+                    case 4:
+                        menu_state = MENU_STATE.QUIT_CONFIRMATION;
+                        ECS.SetActive(quit_confirm_menu_id, true);
                         break;
                     default:
                         break;
@@ -322,6 +366,55 @@ namespace Scripting
             }
         }
 
+        void UpdateQuitConfirmationInput()
+        {
+            //Key input
+            if (InputUtility.onKeyTriggered("MENULEFT"))
+            {
+                ECS.PlayAudio(entityID, 2, "SFX");
+
+                --quit_confirmation_index;
+
+                if (quit_confirmation_index < (int)CONFIRMATION_MENU_BUTTONS.NO)
+                {
+                    quit_confirmation_index = (int)CONFIRMATION_MENU_BUTTONS.YES;
+                }
+                UpdateQuitConfirmationButtonFade();
+            }
+            else if (InputUtility.onKeyTriggered("MENURIGHT"))
+            {
+                ECS.PlayAudio(entityID, 1, "SFX");
+
+                ++quit_confirmation_index;
+
+                if (quit_confirmation_index > (int)CONFIRMATION_MENU_BUTTONS.YES)
+                {
+                    quit_confirmation_index = (int)CONFIRMATION_MENU_BUTTONS.NO;
+                }
+                UpdateQuitConfirmationButtonFade();
+            }
+
+            if (InputUtility.onKeyTriggered("MENUSELECT"))
+            {
+                ECS.PlayAudio(entityID, 0, "SFX");
+
+                //Cancel or confirm quit game based on index
+                switch (quit_confirmation_index)
+                {
+                    case 0:
+                        ECS.SetActive(quit_confirm_menu_id, false);
+                        menu_state = MENU_STATE.INPUT_READY;
+                        break;
+                    case 1:
+                        menu_state = MENU_STATE.INACTIVE;
+                        GameUtilities.ExitScene();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         void UpdatePauseMenuButtonFade()
         {
             switch (active_index)
@@ -352,6 +445,12 @@ namespace Scripting
                         ToggleButtonFade(button_map, faded_button_map, "Main Menu Button", "Main Menu Button Faded");
                     }
                     break;
+                case 4:
+                    {
+                        //Set only the selected button to be non faded
+                        ToggleButtonFade(button_map, faded_button_map, "Quit Game Button", "Quit Game Button Faded");
+                    }
+                    break;
             }
         }
 
@@ -366,6 +465,22 @@ namespace Scripting
                 case 1:
                     //Set only the selected button to be non faded
                     ToggleButtonFade(confirm_button_map, faded_confirm_button_map, "Confirm Yes Button", "Confirm Yes Button Faded");
+                    break;
+            }
+        }
+
+
+        void UpdateQuitConfirmationButtonFade()
+        {
+            switch (quit_confirmation_index)
+            {
+                case 0:
+                    //Set only the selected button to be non faded
+                    ToggleButtonFade(quit_confirm_button_map, quit_faded_confirm_button_map, "Quit Confirm No Button", "Quit Confirm No Button Faded");
+                    break;
+                case 1:
+                    //Set only the selected button to be non faded
+                    ToggleButtonFade(quit_confirm_button_map, quit_faded_confirm_button_map, "Quit Confirm Yes Button", "Quit Confirm Yes Button Faded");
                     break;
             }
         }

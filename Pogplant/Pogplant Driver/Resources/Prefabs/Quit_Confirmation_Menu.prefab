@@ -1,0 +1,393 @@
+[
+	{
+		"Children" : 5,
+		"Guid" : 
+		{
+			"m_guid" : "344938c0-a76c-4889-a40f-4c539cc7fd58"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Quit Confirmation Menu",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Quit_Confirmation_Menu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				-0.69999998807907104
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 1.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.125,
+					0.125
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Quit Confirm Yes Button",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Quit_Confirmation_Menu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.10000000149011612,
+				-0.15000000596046448,
+				0.0099999997764825821
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 2.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.25,
+					0.125
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Quit Confirm Yes Button Faded",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Quit_Confirmation_Menu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.10000000149011612,
+				-0.15000000596046448,
+				0.019999999552965164
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 3.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.375,
+					0.125
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Quit Confirm No Button",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Quit_Confirmation_Menu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.10000000149011612,
+				-0.15000000596046448,
+				0.019999999552965164
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 4.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.125
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Quit Confirm No Button Faded",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Quit_Confirmation_Menu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.10000000149011612,
+				-0.15000000596046448,
+				0.0099999997764825821
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.20000000298023224,
+				0.20000000298023224,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 8.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 4,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.25
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.75
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_02.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Quit Pop Up Backing",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Quit_Confirmation_Menu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.05000000074505806,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]
