@@ -163,6 +163,9 @@ namespace Scripting
 		const float m_ScoreAnimationSpeed = 3.0f;
 		static uint entity_id;
 
+		// ShieldUI
+		public static uint m_shieldNumberID;
+
 		//Subs
 		uint sub_renderer_id;
 
@@ -239,6 +242,9 @@ namespace Scripting
 			slowForce = ECS.GetValue<float>(entityID, 4f, "SlowForce");
 			mm_useNewMovementSystem = ECS.GetValue<bool>(entityID, false, "NewMovement");
 			mm_enableTurbulence = ECS.GetValue<bool>(entityID, false, "Turbulence");
+
+			m_shieldNumberID = ECS.FindEntityWithName("PlayerShieldNumber");
+			m_ShieldHitCount = 0;
 
 			sub_renderer_id = ECS.FindEntityWithName("Subs_Renderer");
 			ECS.PlaySubtitles(sub_renderer_id);
@@ -970,7 +976,8 @@ namespace Scripting
 					//Console.WriteLine("Shield Count:" + m_ShieldHitCount);
 					//Console.WriteLine("Max Shield Count:" + m_ShieldHitCountMax);
 					//Console.WriteLine("SHIELD/MAX:" + ((float)m_ShieldHitCount / (float)m_ShieldHitCountMax));
-					ECS.SetScale(m_ComboBarID, new Vector3(m_FullComboBarScale.X * ((float)m_ShieldHitCount / (float)m_ShieldHitCountMax), m_FullComboBarScale.Y, m_FullComboBarScale.Z));
+					//ECS.SetScale(m_ComboBarID, new Vector3(m_FullComboBarScale.X * ((float)m_ShieldHitCount / (float)m_ShieldHitCountMax), m_FullComboBarScale.Y, m_FullComboBarScale.Z));
+					GameUtilities.UpdateShieldUI(m_shieldNumberID, m_ShieldHitCount);
 					return;
 				}
 				// Just change the color first

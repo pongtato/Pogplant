@@ -165,5 +165,8 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void ChangeSkybox(string levelID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void UpdateShieldUI(uint entityID, uint new_text);
     }
 }

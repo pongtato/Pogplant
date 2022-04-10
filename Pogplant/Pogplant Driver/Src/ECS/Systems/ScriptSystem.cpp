@@ -436,6 +436,7 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore_AddMinus", &Scripting::GameScript::UpdateScore_AddMinus);
 	mono_add_internal_call("Scripting.GameUtilities::MoveWithImpulse", &Scripting::GameScript::MoveWithImpulse);
 	mono_add_internal_call("Scripting.GameUtilities::StopMoving", &Scripting::GameScript::StopMoving);
+	mono_add_internal_call("Scripting.GameUtilities::UpdateShieldUI", &Scripting::GameScript::UpdateShieldUI);
 
 	mono_add_internal_call("Scripting.GameUtilities::GetRayCastDirCamera", &Scripting::GameScript::GetRayCastDirCamera);
 	mono_add_internal_call("Scripting.GameUtilities::GetMovementBounds", &SSH::GetMovementBounds);

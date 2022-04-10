@@ -69,6 +69,8 @@ namespace Scripting
 		static std::uint32_t UpdateScore_AddMinus(std::uint32_t dashboardID, std::uint32_t scorechange, bool isAdd);
 		static void UpdateComboUI(std::uint32_t text_object, std::uint32_t score);
 
+		static void UpdateShieldUI(std::uint32_t text_object, std::uint32_t score);
+
 		// Get the player healths
 		static float GetPlayerHealth();
 		static float GetPlayerMaxHealth();

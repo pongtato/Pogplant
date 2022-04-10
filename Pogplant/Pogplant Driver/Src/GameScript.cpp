@@ -776,6 +776,21 @@ namespace Scripting
 		}
 	}
 
+	void GameScript::UpdateShieldUI(std::uint32_t text_object, std::uint32_t score)
+	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(text_object)))
+			return;
+
+		auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(text_object));
+
+		static std::string scoreText;
+		if (text)
+		{
+			scoreText = std::to_string(score);
+			text->m_Text = scoreText;
+		}
+	}
+
 	void GameScript::PlayEnemyDeathAnimation(std::uint32_t entityID)
 	{
 		auto rb = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(static_cast<entt::entity>(entityID));

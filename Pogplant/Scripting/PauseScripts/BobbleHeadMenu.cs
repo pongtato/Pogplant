@@ -245,11 +245,14 @@ namespace Scripting
                         ECS.SetActive(m_Entities["BobbleTimmy" + PlayerScript.m_CollectiblesCount.ToString()].id, true);
                         //ECS.SetActive(m_BobbleTimmy, true);
                         //Console.WriteLine("Shield Invulnerable Duration Boost Selected.");
-                        PlayerScript.m_ShieldHitCountMax = PlayerScript.m_ShieldHitCountMax * PlayerScript.m_ShieldBobbleCount;
-                        PlayerScript.m_ShieldHitCount = PlayerScript.m_ShieldHitCountMax;
+                        //PlayerScript.m_ShieldHitCountMax = PlayerScript.m_ShieldHitCountMax * PlayerScript.m_ShieldBobbleCount;
+                        //PlayerScript.m_ShieldHitCount = PlayerScript.m_ShieldHitCountMax;
+                        PlayerScript.m_ShieldHitCount += 3;
                         //Console.WriteLine("Max Shield Count:" + PlayerScript.m_ShieldHitCountMax);
                         //Console.WriteLine("Shield Count:" + PlayerScript.m_ShieldHitCount);
-                        ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_FullComboBarScale);
+                        //GameUtilities.UpdateShieldUI();
+                        GameUtilities.UpdateShieldUI(PlayerScript.m_shieldNumberID, PlayerScript.m_ShieldHitCount);
+                        //ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_FullComboBarScale);
                         ++PlayerScript.m_ShieldBobbleCount;
                         break;
                 }
