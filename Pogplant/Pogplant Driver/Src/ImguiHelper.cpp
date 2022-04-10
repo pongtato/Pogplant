@@ -98,10 +98,10 @@ namespace PogplantDriver
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::OBBBoxCollider>(PPD::ImguiHelper::m_CurrentEntity);
 		}
-		if (ImGui::MenuItem("Mesh Collider", NULL, false, adding_enabled))
+		/*if (ImGui::MenuItem("Mesh Collider", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::MeshCollider>(PPD::ImguiHelper::m_CurrentEntity);
-		}
+		}//*/
 		if (ImGui::MenuItem(ICON_FA_CAMERA "  Camera", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::Camera>(PPD::ImguiHelper::m_CurrentEntity);
@@ -150,6 +150,11 @@ namespace PogplantDriver
 		if (ImGui::MenuItem("Particle System", NULL, false, adding_enabled))
 		{
 			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::ParticleSystem>(PPD::ImguiHelper::m_CurrentEntity);
+		}
+
+		if (ImGui::MenuItem("MovementBounds", NULL, false, adding_enabled))
+		{
+			(void)PPD::ImguiHelper::m_ecs->GetReg().get_or_emplace<Components::MovementBounds>(PPD::ImguiHelper::m_CurrentEntity);
 		}
 
 		if (ImGui::MenuItem("Transform Debugger", NULL, false, adding_enabled))
@@ -785,9 +790,31 @@ namespace PogplantDriver
 						sprintf_s(font_stuff, IM_ARRAYSIZE(font_stuff), text->m_Text.c_str());
 						ImGui::InputText("TextInput", font_stuff, IM_ARRAYSIZE(font_stuff));
 						text->m_Text = font_stuff;
-
 						ImguiBlankSeperator(1);
 						ImGui::Checkbox("Use Ortho", &text->m_Ortho);
+						ImguiBlankSeperator(1);
+						ImGui::Checkbox("Center text", &text->m_Center);
+						ImguiBlankSeperator(1);
+						ImGui::Text("Play Speed");
+						ImGui::DragFloat("###PlaySpeedText", &text->m_PlaySpeed);
+						ImGui::Text("Current Index %d, Min. Index %d, Max. Index %d", text->m_CurrentIndex, text->m_IndexMin, text->m_IndexMax);
+						ImGui::Text("Timer %f, Delay %f", text->m_Timer, text->m_Delay);
+						ImguiBlankSeperator(1);
+						if (text->m_Play)
+						{
+							if (ImGui::Button("Pause"))
+							{
+								text->m_Play = false;
+							}
+						}
+						else
+						{
+							if (ImGui::Button("Play"))
+							{
+								text->m_Play = true;
+							}
+						}
+
 						ImguiBlankSeperator(2);
 					}
 					if (!enable_text)
@@ -883,6 +910,24 @@ namespace PogplantDriver
 						if (m_ecs->GetReg().try_get<Components::ColliderIdentifier>(m_CurrentEntity))
 							m_ecs->GetReg().remove<Components::ColliderIdentifier>(m_CurrentEntity);
 					}
+				}
+
+				auto movementBound = m_ecs->GetReg().try_get<Components::MovementBounds>(m_CurrentEntity);
+				if (movementBound)
+				{
+					bool enable_move_bound = true;
+					if (ImGui::CollapsingHeader(ICON_FA_BOXES "  Movement Bounds", &enable_move_bound, ImGuiTreeNodeFlags_DefaultOpen))
+					{
+						//Reflect_ImGui(movementBound);//didn't work
+
+						ImGui::DragFloat("minX", &movementBound->minX, 1.f , 0.1f);
+						ImGui::DragFloat("maxX", &movementBound->maxX, 1.f , 0.1f);
+						ImGui::DragFloat("minY", &movementBound->minY, 1.f , 0.1f);
+						ImGui::DragFloat("maxY", &movementBound->maxY, 1.f , 0.1f);
+					}
+					
+					if (!enable_move_bound)
+						m_ecs->GetReg().remove<Components::MovementBounds>(m_CurrentEntity);
 				}
 
 				auto box_colliderOBB = m_ecs->GetReg().try_get <Components::OBBBoxCollider> (m_CurrentEntity);
@@ -1158,7 +1203,10 @@ namespace PogplantDriver
 								audioSourceComponent->m_audioSources[i].m_audioClip = &audioClipIt->second;
 							}
 
-							ImGui::Text("AudioSource");
+							std::stringstream ssT;
+							ssT << "AudioSource " << i;
+
+							ImGui::Text(ssT.str().c_str());
 							if (ImGui::BeginCombo("###Sound", audioClipIt->first.c_str(), ImGuiComboFlags_PopupAlignLeft))
 							{
 								for (auto it = PPA::AudioResource::AudioPool().begin(); it != PPA::AudioResource::AudioPool().end(); ++it)
@@ -1534,7 +1582,7 @@ namespace PogplantDriver
 			{
 				PP::Window::HideCursor();
 			}
-			if (ImGui::IsKeyPressed(GLFW_KEY_Z))
+			/*if (ImGui::IsKeyPressed(GLFW_KEY_Z))
 			{
 				Application::GetInstance().SetPlayState(Application::PLAYSTATE::PAUSE);
 			}
@@ -1545,7 +1593,7 @@ namespace PogplantDriver
 			if (ImGui::IsKeyPressed(GLFW_KEY_C))
 			{
 				Application::GetInstance().SetPlayState(Application::PLAYSTATE::STEPNEXT);
-			}
+			}*/
 		}
 		ImGui::End();
 

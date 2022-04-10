@@ -225,7 +225,7 @@ namespace Scripting
 		body->AddImpulseForce(Powershot);
 	}
 
-	void GameScript::FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue)
+	void GameScript::FireEnemyBullet(std::uint32_t entityID, glm::vec3 _Position, glm::vec3 _Rotation, float _Speed, float _Lifetime, bool isTrue, float scaleMultiplier)
 	{
 		//Get enemy transform 
 		entt::entity enemy = static_cast<entt::entity>(entityID);
@@ -247,12 +247,21 @@ namespace Scripting
 		PogplantDriver::Application::GetInstance().m_activeECS->GetReg().emplace<Projectile>(bullet, _Lifetime, 1.f, Components::Projectile::OwnerType::Enemy);
 
 		auto body = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(bullet);
-		//Hardcoded for now
-		glm::vec3 forward_vec = _Rotation;
+		auto transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Transform>(bullet);
+		
+		if (body)
+		{
+			//Hardcoded for now
+			glm::vec3 forward_vec = _Rotation;
 
-		//Add power to the shots
-		forward_vec *= _Speed;
-		body->AddImpulseForce(forward_vec);
+			//Add power to the shots
+			forward_vec *= _Speed;
+			body->AddImpulseForce(forward_vec);
+		}
+		if (transform)
+		{
+			transform->m_scale *= scaleMultiplier;
+		}
 	}
 
 	void GameScript::SpawnStaticExplosion(glm::vec3& position, int type)
@@ -329,7 +338,6 @@ namespace Scripting
 			GameScript::InvokeEnemyTakeDamage("BaseTurret", object, other, player_projectile_script, enemy_object_script);
 			GameScript::InvokeEnemyTakeDamage("BaseGattling", object, other, player_projectile_script, enemy_object_script);
 			GameScript::InvokeEnemyTakeDamage("BaseFlock", object, other, player_projectile_script, enemy_object_script);
-			GameScript::InvokeEnemyTakeDamage("L1BossShield", object, other, player_projectile_script, enemy_object_script);
 			GameScript::InvokeEnemyTakeDamage("ExplosiveEnemy", object, other, player_projectile_script, enemy_object_script);
 		}
 		if (player_projectile_script)
@@ -344,12 +352,13 @@ namespace Scripting
 						if (playerbox_scriptable && playerbox_scriptable->m_ScriptTypes.contains("EncounterSystemDriver"))
 						{
 							SSH::InvokeFunction("EncounterSystemDriver", "TakeDamage", GameScript::GetPlayerBox(), static_cast<std::uint32_t>(other), player_projectile_script->m_Damage);
-							auto bullet_transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Transform>(other);
-							GameScript::InstantiateParticle_C("GunFire", bullet_transform->GetGlobalPosition(), bullet_transform->GetGlobalRotation());
-							PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 						}
 					}
 				}
+
+				auto bullet_transform = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Transform>(object);
+				GameScript::InstantiateParticle_C("GunFire", bullet_transform->GetGlobalPosition(), bullet_transform->GetGlobalRotation());
+				PogplantDriver::Application::GetInstance().m_activeECS->DestroyEntity(object);
 			}
 		}
 	}
@@ -593,6 +602,17 @@ namespace Scripting
 		}
 	}
 
+	void GameScript::UpdateText(std::uint32_t text_object, MonoString* _str)
+	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(text_object)))
+			return;
+
+		auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(text_object));
+
+		if (text)
+			text->m_Text = mono_string_to_utf8(_str);
+	}
+
 	std::uint32_t GameScript::UpdateScore_AddMinus(std::uint32_t dashboardID, std::uint32_t scorechange, bool isAdd)
 	{
 		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(dashboardID)))
@@ -753,6 +773,21 @@ namespace Scripting
 
 				text->m_Text += scoreText;
 			}
+		}
+	}
+
+	void GameScript::UpdateShieldUI(std::uint32_t text_object, std::uint32_t score)
+	{
+		if (!PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(text_object)))
+			return;
+
+		auto text = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Text>(static_cast<entt::entity>(text_object));
+
+		static std::string scoreText;
+		if (text)
+		{
+			scoreText = std::to_string(score);
+			text->m_Text = scoreText;
 		}
 	}
 
@@ -927,19 +962,52 @@ namespace Scripting
 	//Helper function for Playerbullet taking damage
 	void GameScript::EnemyTakeDamageFromID(std::uint32_t entityID, float damage)
 	{
-		auto enemy_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(entityID));
-
-		if (enemy_script)
+		if (PogplantDriver::Application::GetInstance().m_activeECS->GetReg().valid(static_cast<entt::entity>(entityID)))
 		{
-			if (enemy_script->m_ScriptTypes.contains("BaseTurret"))
-				SSH::InvokeFunction("BaseTurret", "TakeDamage", static_cast<entt::entity>(entityID), damage);
-			else if (enemy_script->m_ScriptTypes.contains("BaseGattling"))
-				SSH::InvokeFunction("BaseGattling", "TakeDamage", static_cast<entt::entity>(entityID), damage);
-			else if (enemy_script->m_ScriptTypes.contains("BaseFlock"))
-				SSH::InvokeFunction("BaseFlock", "TakeDamage", static_cast<entt::entity>(entityID), damage);
-			else if (enemy_script->m_ScriptTypes.contains("L1BossShield"))
-				SSH::InvokeFunction("L1BossShield", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			auto enemy_script = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::Scriptable>(static_cast<entt::entity>(entityID));
+
+			if (enemy_script)
+			{
+				if (enemy_script->m_ScriptTypes.contains("BaseTurret"))
+					SSH::InvokeFunction("BaseTurret", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+				else if (enemy_script->m_ScriptTypes.contains("BaseGattling"))
+					SSH::InvokeFunction("BaseGattling", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+				else if (enemy_script->m_ScriptTypes.contains("BaseFlock"))
+					SSH::InvokeFunction("BaseFlock", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+				else if (enemy_script->m_ScriptTypes.contains("L1BossShield"))
+					SSH::InvokeFunction("L1BossShield", "TakeDamage", static_cast<entt::entity>(entityID), damage);
+			}
 		}
+	}
+
+	void GameScript::MoveWithImpulse(std::uint32_t obj_to_move, glm::vec3 dir, float speed)
+	{
+		entt::entity _entity = static_cast<entt::entity>(obj_to_move);
+
+		if (_entity == entt::null)
+			return;
+
+		auto rb = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(_entity);
+
+		if (rb)
+			rb->AddImpulseForce(dir * speed);
+
+	}
+
+	void GameScript::StopMoving(std::uint32_t obj_to_move)
+	{
+		entt::entity _entity = static_cast<entt::entity>(obj_to_move);
+
+		if (_entity == entt::null)
+			return;
+
+		auto rb = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Rigidbody>(_entity);
+
+		if (rb)
+		{
+			rb->velocity = PhysicsDLC::Vector::Zero;
+		}
+
 	}
 }
 

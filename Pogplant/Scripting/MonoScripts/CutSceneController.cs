@@ -20,15 +20,23 @@ namespace Scripting
         bool bIsInputHeldDown = false;
         bool bCanLoadCutScene = false;
 
+        public int subs_begin_index;        //For kb/mouse
+        public int subs_end_index;
+        public int subs_controller_begin_index;
+        public string subs_level_id;
+        uint sub_renderer_id;
+
+        uint skip_kb_id;
+        uint skip_ctrler_id;
 
         public CutSceneController() 
         {
-
+            
         }
 
         public override void Start()
         {
-
+            ECS.PlaySubtitles(sub_renderer_id);
         }
 
         public override void Init(ref uint _entityID)
@@ -36,26 +44,57 @@ namespace Scripting
             //Cam is the self id
             entityID = _entityID;
             CS_Board = ECS.FindEntityWithName("CS_Canvas");
-            
+
+            skip_kb_id = ECS.FindEntityWithName("KB_Hint");
+            skip_ctrler_id = ECS.FindEntityWithName("Ctrler_Hint");
 
             ECS.SetGlobalPosition(CS_Board, InitialCanvasPos);
             ECS.SetGlobalPosition(entityID, InitialCamPos);
             ECS.SetFOV(entityID, InitialFOV);
-            ECS.PlayAudio(entityID, 0);
+            ECS.PlayAudio(entityID, 0, "VO");
+
+            subs_begin_index = ECS.GetValue<int>(entityID, 0, "SubBeginIndex");
+            subs_controller_begin_index = ECS.GetValue<int>(entityID, 0, "SubCtrlerBeginIndex");
+            subs_end_index = ECS.GetValue<int>(entityID, 1, "SubEndIndex");
+            subs_level_id = GameUtilities.GetSceneName();
+            sub_renderer_id = ECS.FindEntityWithName("Subs_Renderer");
+
+            ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_controller_begin_index, subs_end_index);
         }
 
         public override void Update(float dt)
         {
-            if (InputUtility.onKeyHeld("RIGHTCLICK"))
+            if (InputUtility.IsControlledBeingUsed())
             {
-                bIsInputHeldDown = true;
+                ECS.SetActive(skip_kb_id, false);
+                ECS.SetActive(skip_ctrler_id, true);
+
+                if (InputUtility.onKeyHeld("ESCAPE"))
+                {
+                    bIsInputHeldDown = true;
+                }
+                else
+                {
+                    bIsInputHeldDown = false;
+                    HeldDownAccu = 0;
+                }
             }
             else
             {
-                bIsInputHeldDown = false;
-                HeldDownAccu = 0;
-            }
+                ECS.SetActive(skip_kb_id, true);
+                ECS.SetActive(skip_ctrler_id, false);
 
+                if (InputUtility.onKeyHeld(KEY_ID.KEY_ESCAPE))
+                {
+                    bIsInputHeldDown = true;
+                }
+                else
+                {
+                    bIsInputHeldDown = false;
+                    HeldDownAccu = 0;
+                }
+            }
+            
             //For the first 0.5 sec
             overall_acc_dt += dt;
             Phase_CS_TP(0, 0.5f, new Vector3(0, 0.03f, 0));

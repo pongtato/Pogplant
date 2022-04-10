@@ -57,6 +57,9 @@ namespace PPU
 		template <>
 		inline static int GetValue<int>(const std::string& key, const int& defaultValue, bool loadFromDocuments);
 
+		template <>
+		inline static unsigned int GetValue<unsigned int>(const std::string& key, const unsigned int& defaultValue, bool loadFromDocuments);
+
 		static Json::Value GetValueJson(const std::string& key, bool loadFromDocuments = true);
 
 		static void Save();

@@ -17,31 +17,34 @@ using System.Collections.Generic;
 namespace Scripting
 {
     // Abstract action class that all enemy actions will derive from.
-    public abstract class BaseAction
+    public interface IAction
     {
-        public abstract bool Execute(float dt, GameObject owner = null, EnemyManager manager = null);
-        public abstract bool GetIsFinished();
+        bool Execute(float dt, GameObject owner = null, EnemyManager manager = null);
+        bool GetIsFinished();
 
     }
 
     // This action moves an enemy from waypoint to waypoint in a given time
-    public class MoveAction : BaseAction
+    public struct MoveAction : IAction
     {
         private GameObject start_position; // starting location (local space)
         private GameObject end_position; // ending location (local space)
         private float duration; // duration of this action
 
-        private float current_time = 0.0f;
-        private bool is_finished = false;
+        private float current_time;
+        private bool is_finished;
 
         public MoveAction(GameObject startPos, GameObject endPos, float totalDuration)
         {
             start_position = startPos;
             end_position = endPos;
             duration = totalDuration;
+
+            current_time = 0.0f;
+            is_finished = false;
         }
 
-        public override bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
+        public bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
         {
             float progress = current_time / duration; // calculate current progress
 
@@ -77,22 +80,17 @@ namespace Scripting
             return is_finished;
         }
 
-        public MoveAction MakeCopy()
-        {
-            return (MoveAction)this.MemberwiseClone();
-        }
-
-        public override bool GetIsFinished()
+        public bool GetIsFinished()
         {
             return is_finished;
         }
     }
 
     // This action causes the enemy to stop for a duration.
-    public class WaitAction : BaseAction
+    public struct WaitAction : IAction
     {
         private float duration;
-        private bool is_finished = false;
+        private bool is_finished;
 
         private float current_time;
 
@@ -100,8 +98,10 @@ namespace Scripting
         public WaitAction(float totalDuration)
         {
             duration = totalDuration;
+            is_finished = false;
+            current_time = 0.0f;
         }
-        public override bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
+        public bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
         {
             if (is_finished)
                 return is_finished;
@@ -113,84 +113,78 @@ namespace Scripting
 
             return is_finished;
         }
-
-        public WaitAction MakeCopy()
-        {
-            return (WaitAction)this.MemberwiseClone();
-        }
-        public override bool GetIsFinished()
+        public bool GetIsFinished()
         {
             return is_finished;
         }
     }
 
     // This action makes the enemy attack
-    public class AttackAction : BaseAction
+    public struct AttackAction : IAction
     {
         private string attack_animation; // the pattern the enemy will shoot in
         private float fire_rate; // how many bullets per second the enemy will shoot
         private int true_bullet_interval; // how many false bullets in between a true bullet
         private float duration; // how long the enemy will attack for
-
-        //private Animator animator = null;
-        //private EnemyManager em;
-        private uint laser_object_id; // entityID to the laser object (optional)
-        private float current_time;
-        //private int current_interval = 0;
-        private float fire_timer = 0.0f;
-        private bool is_finished = false;
-
-        private bool is_primed = false;
-        private bool is_reseting = false;
-        private float primer_timer;
-        private float primer_time = 0.5f;
         private float bullet_speed;
+        private float current_time;
+        private float fire_timer;
+        private bool is_finished;
+        private bool isInit;
+
+        private uint laser_object_id; // entityID to the laser object (optional)
+        private uint Laser_object;
+        private bool laser_state;
+
+        private bool is_primed;
+        private bool is_reseting;
+        private float primer_timer;
+        private float primer_time;
 
         public AttackAction(string attackPattern, float fireRate, int trueBulletInterval, float totalDuration, float bulletSpeed = 5.0f)
         {
-            fire_rate = 1 / fireRate;
             attack_animation = attackPattern;
+            fire_rate = 1 / fireRate;
             true_bullet_interval = 0; // ignore truebulletinterval param
             duration = totalDuration;
             bullet_speed = bulletSpeed;
+            current_time = fire_timer = 0.0f;
+            is_finished = isInit = false;
+
+            laser_object_id = ECS.GetNull();
+            Laser_object = ECS.GetNull();
+            laser_state = false;
+
+            is_primed = is_reseting = false;
+            primer_timer = primer_time = 0.0f;
 
         }
-        public override bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
+        public bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
         {
             if (is_finished)
                 return is_finished;
 
 
             // Play animation once, runtime initialization
-            if (owner != null)
+            if (!isInit)
             {
-                //animator = owner.GetComponentInChildren<Animator>();
-                //em = manager;
-                //animator.Play(attack_animation);
-
-                //muzzle_transforms = owner.GetComponent<BaseEnemy>().muzzles;
-                //is_primed = false;
-                //primer_timer = primer_time;
+                isInit = true;
+                if (attack_animation == "Laser")
+                {
+                    laser_object_id = ECS.FindChildEntityWithName(owner.id, "Laser1");
+                    Laser_object = ECS.FindChildEntityWithName(laser_object_id, "LaserObject");
+                    ECS.SetActive(Laser_object, false);
+                }
             }
 
             if (is_reseting)
             {
-                //resets primer and reset
-                //is_primed = false;
-                //is_reseting = false;
                 primer_timer = primer_time;
             }
 
             //countdown for attack to prime itself
             primer_timer -= dt;
             if (primer_timer <= 0.001f) is_primed = true;
-
-            //checks for is_reseting
-            //if (is_reseting == false)
-            //{
-            //    float temp = current_time + primer_time;
-            //    if (temp <= duration) is_reseting = true;
-            //}
 
             current_time += dt;
             fire_timer += dt;
@@ -199,26 +193,6 @@ namespace Scripting
             if (fire_timer >= fire_rate && is_primed == true && is_reseting == false)
             {
                 fire_timer = 0.0f;
-
-                //for (int i = 0; i < muzzle_transforms.Length; ++i)
-                //{
-                //    if (current_interval == true_bullet_interval)
-                //    {
-                //        current_interval = 0;
-
-                //        //FireBullet(em.GetBullet(true), i);
-                //        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id), true);
-                //        //Debug.Log("Firing true bullet");
-                //    }
-                //    else
-                //    {
-                //        ++current_interval;
-                //        //FireBullet(em.GetBullet(false), i);
-                //        GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id), ECS.GetGlobalRotation(owner.id));
-                //        //Debug.Log("Firing false bullet");
-                //    }
-                //}
-                //Console.WriteLine("Firing bullet");
 
                 if (attack_animation == "Spiral")
                 {
@@ -242,14 +216,13 @@ namespace Scripting
                     GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + direction * 0.3f, direction, bullet_speed, 10.0f);
 
                 }
-                else if (attack_animation == "Lazer")
+                else if (attack_animation == "Laser")
                 {
-                    if (!ECS.CheckValidEntity(laser_object_id))
-                    {
-                        laser_object_id = ECS.FindChildEntityWithName(owner.id,"Laser1");
-                    }
-
-                    GameUtilities.StartLaser(laser_object_id);
+                    laser_state = !laser_state;
+                    if (laser_state)
+                        ECS.SetLaserStart(Laser_object, laser_state);
+                    else
+                        ECS.ResetLaser(Laser_object);
                 }
                 else
                     GameUtilities.FireEnemyBullet(owner.id, ECS.GetGlobalPosition(owner.id) + Transform.GetForwardVector(owner.id) * 0.2f, Transform.GetForwardVector(owner.id), bullet_speed, 3.0f);
@@ -261,40 +234,40 @@ namespace Scripting
             if (current_time >= duration)
             {
                 is_finished = true;
-                //animator.Play("Default");
+                if (attack_animation == "Laser")
+                {
+                    ECS.ResetLaser(Laser_object);
+                }
             }
 
             return is_finished;
         }
 
-        public AttackAction MakeCopy()
-        {
-            return (AttackAction)this.MemberwiseClone();
-        }
-
-        public override bool GetIsFinished()
+        public bool GetIsFinished()
         {
             return is_finished;
         }
     }
 
     // This action is a collection of actions, use this action when you want the enemy to perform multiple actions at once.
-    public class CompositeAction : BaseAction
+    public struct CompositeAction : IAction
     {
-        private BaseAction[] action_array; // list of actions to execute
+        private IAction[] action_array; // list of actions to execute
 
-        private bool is_finished = false;
-        private int actions_finished = 0;
-        public CompositeAction(BaseAction[] actions)
+        private bool is_finished;
+        private int actions_finished;
+        public CompositeAction(IAction[] actions)
         {
+            is_finished = false;
+            actions_finished = 0;
             action_array = actions;
         }
-        public override bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
+        public bool Execute(float dt, GameObject owner = null, EnemyManager manager = null)
         {
             if (is_finished)
                 return is_finished;
 
-            foreach (BaseAction item in action_array)
+            foreach (IAction item in action_array)
             {
                 if (!item.GetIsFinished())
                     if (item.Execute(dt, owner, manager))
@@ -306,17 +279,7 @@ namespace Scripting
             return is_finished;
         }
 
-        public float progress()
-        {
-            return (float)actions_finished / action_array.Length;
-        }
-
-        public CompositeAction MakeCopy()
-        {
-            return (CompositeAction)this.MemberwiseClone();
-        }
-
-        public override bool GetIsFinished()
+        public bool GetIsFinished()
         {
             return is_finished;
         }
@@ -327,12 +290,12 @@ namespace Scripting
     public class EnemyTemplate
     {
         public GameObject start_location; // where the enemy will start
-        public List<BaseAction> commands; // the list of instructions/actions the enemy will do after spawning
+        public List<IAction> commands; // the list of instructions/actions the enemy will do after spawning
         public float life_time; // how long the enemy will stay active.
 
         public float health; // health of the enemy
 
-        public EnemyTemplate(GameObject startLocation, float lifeTime, float startHealth, List<BaseAction> actions = null)
+        public EnemyTemplate(GameObject startLocation, float lifeTime, float startHealth, List<IAction> actions = null)
         {
             start_location = startLocation;
             life_time = lifeTime;
@@ -340,7 +303,7 @@ namespace Scripting
             commands = actions;
 
             if (commands == null)
-                commands = new List<BaseAction>();
+                commands = new List<IAction>();
         }
 
         public EnemyTemplate(EnemyTemplate rhs)
@@ -351,10 +314,10 @@ namespace Scripting
         }
 
         // Add a action to an enemy
-        public void AddCommand(BaseAction command)
+        public void AddCommand(IAction command)
         {
             if (command == null)
-                return;
+                commands = new List<IAction>();
             commands.Add(command);
         }
 
@@ -425,16 +388,9 @@ namespace Scripting
             else
             {
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(gameObject.id), 1);
-                //GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
                 DashboardScreen.SwapFace(DashboardScreen.FACES.HAPPY);
                 HandleDeath(true);
             }
-
-            //else
-            //{
-            //    GameUtilities.UpdateDashboardFace(DashboardScreenID, 1);
-            //    HandleDeath(true);
-            //}
         }
 
         // This function handles what happens when enemy dies,
@@ -482,7 +438,7 @@ namespace Scripting
             {
                 // Execute the actions like a sequence node in a BT
                 // upate actions only if the enemy is alive
-                foreach (BaseAction action in my_info.commands)
+                foreach (IAction action in my_info.commands)
                 {
                     if (!action.Execute(dt, gameObject, em))
                         break;

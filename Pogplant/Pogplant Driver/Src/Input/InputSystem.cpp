@@ -40,11 +40,9 @@ namespace PPI
 		InputSystem::Instance().AppendKey("DOWN", GLFW_KEY_S, GLFW_GAMEPAD_BUTTON_DPAD_UP);
 		InputSystem::Instance().AppendKey("UP", GLFW_KEY_W, GLFW_GAMEPAD_BUTTON_DPAD_DOWN);
 		InputSystem::Instance().AppendKey("SHOOT", GLFW_KEY_SPACE, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER + JOYSTICKOSET);
-		InputSystem::Instance().AppendKey("LASER", GLFW_KEY_G, GLFW_GAMEPAD_BUTTON_CIRCLE);
+		InputSystem::Instance().AppendKey("NUKE", GLFW_MOUSE_BUTTON_RIGHT, GLFW_GAMEPAD_BUTTON_CIRCLE);
 
 		InputSystem::Instance().AppendKey("SLOWMO", GLFW_KEY_LEFT_CONTROL, GLFW_GAMEPAD_BUTTON_LEFT_BUMPER);
-		InputSystem::Instance().AppendKey("LEVEL_BOSS", GLFW_KEY_F3, GLFW_KEY_0);
-		InputSystem::Instance().AppendKey("LEVEL2", GLFW_KEY_F2, GLFW_KEY_0);
 
 		/*Set menu buttons*/
 		InputSystem::Instance().AppendKey("ESCAPE", GLFW_KEY_ESCAPE, GLFW_GAMEPAD_BUTTON_START);
@@ -54,6 +52,8 @@ namespace PPI
 		InputSystem::Instance().AppendKey("MENUDOWN", GLFW_KEY_S, GLFW_GAMEPAD_BUTTON_DPAD_DOWN);
 		InputSystem::Instance().AppendKey("MENULEFT", GLFW_KEY_A, GLFW_GAMEPAD_BUTTON_DPAD_LEFT);
 		InputSystem::Instance().AppendKey("MENURIGHT", GLFW_KEY_D, GLFW_GAMEPAD_BUTTON_DPAD_RIGHT);
+		InputSystem::Instance().AppendKey("MENUTABLEFT", GLFW_KEY_Q, GLFW_GAMEPAD_BUTTON_LEFT_BUMPER);
+		InputSystem::Instance().AppendKey("MENUTABRIGHT", GLFW_KEY_E, GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER);
 
 		InputSystem::Instance().AppendAxis("MOVEX", GLFW_GAMEPAD_AXIS_LEFT_X, false, true, 0.2f, 0.f);
 		InputSystem::Instance().AppendAxis("MOVEY", GLFW_GAMEPAD_AXIS_LEFT_Y, false, true, 0.2f, 0.f);

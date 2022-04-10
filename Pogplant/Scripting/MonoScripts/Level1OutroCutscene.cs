@@ -19,53 +19,47 @@ namespace Scripting
 
         BOSS_ANIM_STATE current_state;
 
-        //For ECS get transform
-        Vector3 pos = new Vector3();
-        Vector3 rot = new Vector3();
-        Vector3 scale = new Vector3();
-
         //Entities
-        public uint boss_model_parent_id;
+        uint boss_model_parent_id;
 
         //Arms
-        public uint left_arm_middle_joint_id;
-        public uint left_arm_end_joint_id;
-        public uint right_arm_middle_joint_id;
-        public uint right_arm_end_joint_id;
+        uint left_arm_middle_joint_id;
+        uint left_arm_end_joint_id;
+        uint right_arm_middle_joint_id;
+        uint right_arm_end_joint_id;
 
         //Arm lasers
-        public uint left_large_laser_spin_id;
-        public uint right_large_laser_spin_id;
+        uint left_large_laser_spin_id;
+        uint right_large_laser_spin_id;
 
         //Legs
-        public uint left_leg_middle_joint_id;
-        public uint right_leg_middle_joint_id;
-        public uint left_leg_end_joint_id;
-        public uint right_leg_end_joint_id;
+        uint left_leg_middle_joint_id;
+        uint right_leg_middle_joint_id;
+        uint left_leg_end_joint_id;
+        uint right_leg_end_joint_id;
 
         //Launching bays
-        public uint right_launching_bay_one_id;
-        public uint right_launching_bay_two_id;
-        public uint right_launching_bay_three_id;
+        uint right_launching_bay_one_id;
+        uint right_launching_bay_two_id;
+        uint right_launching_bay_three_id;
 
-        public uint left_launching_bay_one_id;
-        public uint left_launching_bay_two_id;
-        public uint left_launching_bay_three_id;
+        uint left_launching_bay_one_id;
+        uint left_launching_bay_two_id;
+        uint left_launching_bay_three_id;
 
         //Artillery
-        public uint artillery_axis_id;
-        public uint artillery_barrel_id;
+        uint artillery_axis_id;
+        uint artillery_barrel_id;
 
         //Mouth
-        public uint mouth_left_id;
-        public uint mouth_right_id;
+        uint mouth_left_id;
+        uint mouth_right_id;
 
         uint camera_id;
         uint cinematic_bar_top_id;
         uint cinematic_bar_bottom_id;
         bool cinematic_cover_screen;
         const float cinematic_bar_speed = 3.0f;
-        float yaw, pitch, roll;
 
         AnimationSystem boss_anim_system;
 
@@ -76,6 +70,7 @@ namespace Scripting
 
         public override void Start()
         {
+            ECS.PlayAudio(entityID, 0, "SFX");
             boss_anim_system = new AnimationSystem();
             boss_anim_system.Init();
             FindEntities();
@@ -413,6 +408,7 @@ namespace Scripting
             ////Body
             //moving_parts_dict[boss_model_parent_id].SetMovingPartsPosition(boss_model_parent_id, new Vector3(), new Vector3(0, 120.7f, 0), new Vector3(0, 1.5f, 0), false, true, false, false, false, false);
             //moving_parts_dict[boss_model_parent_id].SetMovingPartsRotation(boss_model_parent_id, new Vector3(0, 0, 0), new Vector3(), new Vector3(3.0f, 3.0f, 3.0f), false, false, false, false, false, false);
+
             GameUtilities.LoadScene("Level01_Boss");
         }
 

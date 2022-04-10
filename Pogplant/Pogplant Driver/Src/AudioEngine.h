@@ -44,6 +44,7 @@ namespace PPA
 		static void SetAllChannelGroupPitch(float pitch);
 		static float GetChannelGroupVolume(const std::string& channelGroupName);
 		static void PauseChannelGroup(const std::string& channelGroupName);
+		static void ResumeAllChannelGroups();
 		static void ResumeChannelGroup(const std::string& channelGroupName);
 		static void StopChannelGroup(const std::string& channelGroupName);
 

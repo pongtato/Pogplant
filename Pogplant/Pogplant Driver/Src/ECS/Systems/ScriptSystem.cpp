@@ -12,6 +12,8 @@
 */
 /*****************************************************************************/
 
+#include <Pogplant.h>
+
 #include "ScriptSystem.h"
 #include "ScriptSystemHelper.h"
 #include "ScriptResource.h"
@@ -143,7 +145,7 @@ void ScriptSystem::Update(float dt)
 
 void ScriptSystem::LateUpdate(float dt)
 {
-	auto entities = m_ecs->view<Components::Scriptable, Components::Rigidbody, Components::Transform, Components::Name>();
+	auto entities = m_ecs->view<Components::Scriptable, Components::Transform, Components::Name>();
 
 	for (auto& entity : entities)
 	{
@@ -430,10 +432,14 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.GameUtilities::EnemyTakeDamageFromID", &Scripting::GameScript::EnemyTakeDamageFromID);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateComboUI", &Scripting::GameScript::UpdateComboUI);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateTextColor", &Scripting::GameScript::UpdateTextColor);
+	mono_add_internal_call("Scripting.GameUtilities::UpdateText", &Scripting::GameScript::UpdateText);
 	mono_add_internal_call("Scripting.GameUtilities::UpdateScore_AddMinus", &Scripting::GameScript::UpdateScore_AddMinus);
-
+	mono_add_internal_call("Scripting.GameUtilities::MoveWithImpulse", &Scripting::GameScript::MoveWithImpulse);
+	mono_add_internal_call("Scripting.GameUtilities::StopMoving", &Scripting::GameScript::StopMoving);
+	mono_add_internal_call("Scripting.GameUtilities::UpdateShieldUI", &Scripting::GameScript::UpdateShieldUI);
 
 	mono_add_internal_call("Scripting.GameUtilities::GetRayCastDirCamera", &Scripting::GameScript::GetRayCastDirCamera);
+	mono_add_internal_call("Scripting.GameUtilities::GetMovementBounds", &SSH::GetMovementBounds);
 
 	// ECS & Component st
 	mono_add_internal_call("Scripting.ECS::CreateEntity", SSH::CreateEntity);
@@ -441,6 +447,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::CreateChild", SSH::CreateChild);
 	mono_add_internal_call("Scripting.ECS::FindEntityWithName", SSH::FindEntityWithName);
 	mono_add_internal_call("Scripting.ECS::FindChildEntityWithName", SSH::FindChildEntityWithName);
+	mono_add_internal_call("Scripting.ECS::GetParent", SSH::GetParent);
+	mono_add_internal_call("Scripting.ECS::GetNull", SSH::GetNull);
 	mono_add_internal_call("Scripting.ECS::GetTransformECS", SSH::GetTransformECS);
 	mono_add_internal_call("Scripting.ECS::SetTransformECS", SSH::SetTransformECS);
 	mono_add_internal_call("Scripting.ECS::SetTransformParent", SSH::SetTransformParent);
@@ -448,11 +456,14 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::RemoveParentFrom", SSH::RemoveParentFrom);
 	mono_add_internal_call("Scripting.ECS::GetGlobalPosition", SSH::GetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::GetGlobalRotation", SSH::GetGlobalRotation);
+	mono_add_internal_call("Scripting.ECS::GetRotation", SSH::GetRotation);
 	mono_add_internal_call("Scripting.ECS::GetGlobalScale", SSH::GetGlobalScale);
+	mono_add_internal_call("Scripting.ECS::GetScale", SSH::GetScale);
 	mono_add_internal_call("Scripting.ECS::SetGlobalPosition", SSH::SetGlobalPosition);
 	mono_add_internal_call("Scripting.ECS::SetGlobalRotation", SSH::SetGlobalRotation);
 	mono_add_internal_call("Scripting.ECS::SetGlobalScale", SSH::SetGlobalScale);
 	mono_add_internal_call("Scripting.ECS::PlayAudio", SSH::PlayAudio);
+	mono_add_internal_call("Scripting.ECS::StopAudio", SSH::StopAudio);
 
 
 	mono_add_internal_call("Scripting.ECS::GetValueFloat", SSH::ScriptVariableGet<float>);
@@ -473,6 +484,8 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::SetActive", SSH::SetActive);
 	mono_add_internal_call("Scripting.ECS::ToggleEntity", SSH::ToggleEntity);
 	mono_add_internal_call("Scripting.ECS::RigidbodyAddForce", SSH::RigidbodyAddForce);
+	mono_add_internal_call("Scripting.ECS::RigidbodyAddImpulseForce", SSH::RigidbodyAddImpulseForce);
+	mono_add_internal_call("Scripting.ECS::RigidbodySetGravity", SSH::RigidbodySetGravity);
 	mono_add_internal_call("Scripting.ECS::GetVelocity", SSH::GetVelocity);
 	mono_add_internal_call("Scripting.ECS::SetVelocity", SSH::SetVelocity);
 	mono_add_internal_call("Scripting.ECS::SetPosition", SSH::SetPosition);
@@ -491,11 +504,17 @@ void ScriptSystem::BindFunctions()
 	mono_add_internal_call("Scripting.ECS::GetFOV", SSH::GetFOV);
 	mono_add_internal_call("Scripting.ECS::SetFrames", SSH::SetFrames);
 	mono_add_internal_call("Scripting.ECS::SetColorTint", SSH::SetColorTint);
+	mono_add_internal_call("Scripting.ECS::SetCanvasAlpha", SSH::SetCanvasAlpha);
 	mono_add_internal_call("Scripting.ECS::SetDiffuseTint", SSH::SetDiffuseTint);
 	mono_add_internal_call("Scripting.ECS::SetEmissiveTint", SSH::SetEmissiveTint);
 	mono_add_internal_call("Scripting.ECS::GetColorTint", SSH::GetColorTint);
 
+	mono_add_internal_call("Scripting.ECS::SetSubtitles", SSH::SetSubtitles);
+	mono_add_internal_call("Scripting.ECS::PlaySubtitles", SSH::PlaySubtitles);
+	mono_add_internal_call("Scripting.ECS::PauseSubtitles", SSH::PauseSubtitles);
+
 	mono_add_internal_call("Scripting.ECS::RayCastEntity", SSH::RayCastEntity);
+	mono_add_internal_call("Scripting.ECS::SphereCastEntity", SSH::SphereCastEntity);
 
 	mono_add_internal_call("Scripting.GameObject::AddComponentTransform", SSH::AddComponentTransform);
 	mono_add_internal_call("Scripting.GameObject::AddComponentRigidbody", SSH::AddComponentRigidbody);
@@ -525,8 +544,12 @@ void ScriptSystem::BindFunctions()
 	//Save/loading
 	mono_add_internal_call("Scripting.PlayerPrefs::GetValueFloat", SSH::CustomSaverGetValueMono<float>);
 	mono_add_internal_call("Scripting.PlayerPrefs::GetValueInt", SSH::CustomSaverGetValueMono<int>);
+	mono_add_internal_call("Scripting.PlayerPrefs::GetValueUInt", SSH::CustomSaverGetValueMono<unsigned int>);
+	mono_add_internal_call("Scripting.PlayerPrefs::GetValueString", SSH::CustomSaverGetValueMonoString);
 	mono_add_internal_call("Scripting.PlayerPrefs::SetValueFloat", SSH::CustomSaverSetValueMono<float>);
+	mono_add_internal_call("Scripting.PlayerPrefs::SetValueString", SSH::CustomSaverSetValueMonoString);
 	mono_add_internal_call("Scripting.PlayerPrefs::SetValueInt", SSH::CustomSaverSetValueMono<int>);
+	mono_add_internal_call("Scripting.PlayerPrefs::SetValueUInt", SSH::CustomSaverSetValueMono<unsigned int>);
 	mono_add_internal_call("Scripting.PlayerPrefs::Save", PPU::CustomSaver::SaveGame);
 
 	//Audio
@@ -545,6 +568,13 @@ void ScriptSystem::BindFunctions()
 	//Gamma settings
 	mono_add_internal_call("Scripting.GameUtilities::GetGamma", SSH::GetGamma);
 	mono_add_internal_call("Scripting.GameUtilities::SetGamma", SSH::SetGamma);
+	
+	//Windows Resolution Settings
+	mono_add_internal_call("Scripting.GameUtilities::GameSetFullscreen", Pogplant::Window::GameSetFullscreen);
+	mono_add_internal_call("Scripting.GameUtilities::GameSetWindowSize", Pogplant::Window::GameSetWindowSize);
+
+	// Skybox
+	mono_add_internal_call("Scripting.GameUtilities::ChangeSkybox", SSH::ChangeSkybox);
 }
 
 void ScriptSystem::AddScriptToEntity(const entt::entity& entity)

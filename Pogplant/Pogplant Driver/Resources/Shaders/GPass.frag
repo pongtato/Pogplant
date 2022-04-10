@@ -36,7 +36,7 @@ struct DirectionalLight
     float Specular;
 };
 
-const int MAX_LIGHTS = 32;
+const int MAX_LIGHTS = 96;
 uniform Light lights[MAX_LIGHTS];
 uniform DirectionalLight directLight;
 uniform int activeLights;
@@ -97,7 +97,7 @@ float Shadow(vec3 normal, vec4 fragPosViewSpace, vec3 fragPos)
     }
 
     // Bias calc
-    float bias = max(0.025 * (1.0 - dot(normal, lightDir)), 0.005);
+    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);
     if (layer == cascadeCount)
     {
         bias *= 1 / (farPlane * 0.5f);
@@ -120,7 +120,7 @@ float Shadow(vec3 normal, vec4 fragPosViewSpace, vec3 fragPos)
         }    
     }
     
-    return shadow /= pow((samples * 2 + 1), 2);;
+    return shadow /= pow((samples * 2 + 1), 2);
 }
 
 void main()

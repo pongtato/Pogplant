@@ -60,6 +60,39 @@
 		"ScriptVariables" : 
 		[
 			{
+				"Data" : 69420.0,
+				"Name" : "m_ExplosiveEnemy_damage",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.10000000149011612,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
+				"Type" : 0
+			},
+			{
+				"Data" : 0.5,
+				"Name" : "m_ExplosiveEnemy_flicker_rate_2",
+				"Type" : 0
+			},
+			{
+				"Data" : 100.0,
+				"Name" : "m_ExplosiveEnemy_health",
+				"Type" : 0
+			},
+			{
+				"Data" : 7.0,
+				"Name" : "m_ExplosiveEnemy_lifetime",
+				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Data0" : 0.0,
+				"Data1" : 1.0,
+				"Data2" : 0.0,
+				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
+				"Type" : 4
+			},
+			{
 				"Data" : 500.0,
 				"Name" : "m_ExplosiveEnemy_propeller_speed",
 				"Type" : 0
@@ -75,44 +108,6 @@
 				"Type" : 0
 			},
 			{
-				"Data" : 0.10000000149011612,
-				"Name" : "m_ExplosiveEnemy_flicker_rate_1",
-				"Type" : 0
-			},
-			{
-				"Data" : true,
-				"Data0" : 0.0,
-				"Data1" : 1.0,
-				"Data2" : 0.0,
-				"Name" : "m_ExplosiveEnemy_propeller_rot_axis",
-				"Type" : 4
-			},
-			{
-				"Data" : 3.0,
-				"Name" : "m_sphere_value",
-				"Type" : 0
-			},
-			{
-				"Data" : 100.0,
-				"Name" : "m_ExplosiveEnemy_health",
-				"Type" : 0
-			},
-			{
-				"Data" : 0.5,
-				"Name" : "m_ExplosiveEnemy_flicker_rate_2",
-				"Type" : 0
-			},
-			{
-				"Data" : 7.0,
-				"Name" : "m_ExplosiveEnemy_lifetime",
-				"Type" : 0
-			},
-			{
-				"Data" : 69420.0,
-				"Name" : "m_ExplosiveEnemy_damage",
-				"Type" : 0
-			},
-			{
 				"Data" : 2.5,
 				"Name" : "m_sphere_max_radius",
 				"Type" : 0
@@ -120,6 +115,11 @@
 			{
 				"Data" : 100.0,
 				"Name" : "m_sphere_rot_speed",
+				"Type" : 0
+			},
+			{
+				"Data" : 3.0,
+				"Name" : "m_sphere_value",
 				"Type" : 0
 			}
 		],

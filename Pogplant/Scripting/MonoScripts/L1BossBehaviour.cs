@@ -35,6 +35,7 @@ namespace Scripting
 		#region[Core Variables]
 		/**> The health of the boss core*/
 		public float mh_coreHealth;
+		float mh_defaultHealth;
 
 		public float mh_leftBallHealth;
 		public float mh_rightBallHealth;
@@ -65,6 +66,19 @@ namespace Scripting
 
 		public uint mID_leftCore;
 		public uint mID_rightCore;
+		public uint mID_falseCore;
+		public uint mID_falseCoreMouthL;
+		public uint mID_falseCoreMouthR;
+
+		//HP Bar vars
+		uint mID_hpBar;
+		Vector3 m_bossHpScale;
+		const float m_bossHPDefaultScaling = 2.0f;
+		const float m_bossHPOffset = 0.1f;
+		const float m_bossHPBarAnimateSpeed = 3.0f;
+		float m_bossHPBarLerpValue;
+		bool m_hasBossHPBarAnimated;
+		public bool m_beginBossHPBarAnimation;
 
 		//--- Spawner variables
 
@@ -74,6 +88,16 @@ namespace Scripting
 		float mSpawner_timeStartSpawnEnemies = 4.2f;
 		float mSpawner_timeEndSpawnEnemies = 7f;
 		public float mSpawner_durationBetweenSpawns = 2f;
+
+		//Hardcoded hitboxes
+		uint mID_smashHitBox;
+		uint mID_clapHitBox;
+		bool m_hitboxEnableOnce = false;
+		float mSmash_timeToEnableCollider = 3.65f;
+		float mSmash_timeToDisableCollider = 3.85f;
+
+		float mClap_timeToEnableCollider = 1.5f;
+		float mClap_timeToDisableCollider = 2.0f;
 
 		#endregion
 
@@ -108,6 +132,8 @@ namespace Scripting
 			RuntimeStateVariables(int defaultVal = 0)
 			{
 				lastState = L1Boss.BOSS_BEHAVIOUR_STATE.TOTAL;
+				lastRNGState = -1;
+				lastIsMelee = true;
 				timer = 0f;
 				secondaryTimer = 0f;
 				stateDuration = 1f;
@@ -124,6 +150,8 @@ namespace Scripting
 			}
 
 			public L1Boss.BOSS_BEHAVIOUR_STATE lastState;
+			public int lastRNGState;
+			public bool lastIsMelee;
 			public float timer;
 			public float secondaryTimer;
 			public float stateDuration;
@@ -142,7 +170,6 @@ namespace Scripting
 
 			public bool canDamageSideCores;
 			public bool canDamageMainCore;
-
 		}
 
 		public struct GunBarrel
@@ -170,8 +197,21 @@ namespace Scripting
 		Vector3 rot = new Vector3();
 		Vector3 scale = new Vector3();
 		private bool c_playedSpawnAnimation = false;
-		private float c_hardCodedUpAnimationSpeed = 10f;
-		private float c_animationDuration = 2f;
+		private float c_hardCodedUpAnimationSpeed = 12f;
+		private float c_animationDuration = 2.5f;
+		int c_spawnSoundPlayState = 0;
+
+		bool updateCoreLockOn = false;
+
+		#region[Damage Animations]
+		Vector3 mColor_falseCoreNormal = new Vector3(1f, 0.725f, 0f);
+		Vector3 mColor_falseCoreCurrent = new Vector3(1f, 0.725f, 0f);
+		Vector3 mColor_falseCoreDamaged = new Vector3(1f, 0f, 0f);
+
+		Vector3 mColor_falseCoreCoverNormal = new Vector3(1f, 1f, 1f);
+		Vector3 mColor_falseCoreCoverCurrent = new Vector3(1f, 1f, 1f);
+		Vector3 mColor_falseCoreCoverDamaged = new Vector3(0.25f, 0.25f, 0.25f);
+		#endregion
 
 		/******************************************************************************/
 		/*!
@@ -193,7 +233,8 @@ namespace Scripting
 		/******************************************************************************/
 		public override void Start()
 		{
-			mh_coreHealth = ECS.GetValue<float>(entityID, 100f, "CoreHealth");
+			//mh_coreHealth = ECS.GetValue<float>(entityID, 100f, "CoreHealth");
+			mh_defaultHealth = ECS.GetValue<float>(entityID, 100f, "CoreHealth");
 			mh_leftBallHealth = ECS.GetValue<float>(entityID, 50f, "LeftBallHealth");
 			mh_rightBallHealth = ECS.GetValue<float>(entityID, 50f, "RightBallHealth");
 
@@ -214,6 +255,10 @@ namespace Scripting
 
 			mID_leftCore = ECS.FindEntityWithName("Left_Eye");
 			mID_rightCore = ECS.FindEntityWithName("Right_Eye");
+			mID_falseCore = ECS.FindEntityWithName("FalseCore");
+			mID_falseCoreMouthL = ECS.FindEntityWithName("Mouth_L");
+			mID_falseCoreMouthR = ECS.FindEntityWithName("Mouth_R");
+			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreNormal);
 
 			uint bossPanelSpawns = ECS.FindEntityWithName("BossPanelSpawnPoints");
 			uint bossShootPoints = ECS.FindEntityWithName("Boss");
@@ -222,7 +267,7 @@ namespace Scripting
 			{
 				mID_ventSpawnpoints[i] = ECS.FindChildEntityWithName(bossPanelSpawns, (i + 1).ToString());
 			}
-			
+
 			m_gunBarrels[0].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Right_MiniLaser_Launcher_01");
 			m_gunBarrels[1].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Right_MiniLaser_Launcher_02");
 			m_gunBarrels[2].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Right_MiniLaser_Launcher_03");
@@ -231,13 +276,16 @@ namespace Scripting
 			m_gunBarrels[4].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Left_MiniLaser_Launcher_02");
 			m_gunBarrels[5].ID_barrel = ECS.FindChildEntityWithName(bossShootPoints, "Left_MiniLaser_Launcher_03");
 
-			for(int i = 0; i < 6; ++i)
+			for (int i = 0; i < 6; ++i)
 			{
 				m_gunBarrels[i].rotationState = (PPMath.RandomInt(0, 1) == 0);
 				m_gunBarrels[i].rotationSpeed = PPMath.RandomFloat(m_gunBarrelYRotationSpeedMin, m_gunBarrelYRotationSpeedMax);
 				m_gunBarrels[i].rotationXLock = 0f;
 				m_gunBarrels[i].ID_shootPoint = ECS.FindChildEntityWithName(m_gunBarrels[i].ID_barrel, "Shoot");
 			}
+
+			mID_smashHitBox = ECS.FindChildEntityWithName(bossShootPoints, "SmashHitbox");
+			mID_clapHitBox = ECS.FindChildEntityWithName(bossShootPoints, "ClapHitbox");
 
 			//Hardcode right and left 1 launcher to shoot around player angle
 			m_gunBarrels[0].rotationXLock = 20f;
@@ -248,16 +296,21 @@ namespace Scripting
 
 			m_runStateInfo.canDamageMainCore = true;
 			m_runStateInfo.canDamageSideCores = false;
+
+			//Init default hp scale
+			mID_hpBar = ECS.FindEntityWithName("HP_Bar_Red");
+			m_bossHpScale = new Vector3(0.1f, 0.3f, 1.0f);
+			m_bossHPBarLerpValue = 0.0f;
 		}
 
 		void InitStateBehaviours()
 		{
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].shouldReturnToDefault = true;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMin = 12.5f;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMax = 12.5f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMin = 20.5f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.FLYING_UP].stateDurationMax = 20.5f;
 
-			m_runStateInfo.stateDuration = 9f;
+			m_runStateInfo.stateDuration = 8.8f;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].isVulnerable = true;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.MOVING].shouldReturnToDefault = false;
@@ -268,21 +321,29 @@ namespace Scripting
 			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].isVulnerable = false;
 			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.PROTECTION].shouldReturnToDefault = false;
 
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].isVulnerable = true;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].shouldReturnToDefault = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMin = 20f;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS].stateDurationMax = 20f;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].isVulnerable = false;
-			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].shouldReturnToDefault = false;
-			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 30f;
-			//m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 30f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].shouldReturnToDefault = true;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMin = 13.3f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK].stateDurationMax = 13.3f;
+
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].isVulnerable = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].shouldReturnToDefault = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].stateDurationMin = 12f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK].stateDurationMax = 12f;
+
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK].isVulnerable = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK].shouldReturnToDefault = false;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK].stateDurationMin = 12f;
+			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK].stateDurationMax = 12f;
 
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].isVulnerable = false;
 			m_stateBehaviours[(int)L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE].shouldReturnToDefault = false;
 		}
-
-		bool delayedInit = true;
 
 		/******************************************************************************/
 		/*!
@@ -297,26 +358,45 @@ namespace Scripting
 		{
 			if (m_debugMode)
 			{
-				//Debug stuff
-				if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+				if (InputUtility.onKeyHeld(KEY_ID.KEY_LEFT_SHIFT))
 				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING);
+					if (InputUtility.onKeyTriggered(KEY_ID.KEY_G))
+					{
+						mh_coreHealth = 0f;
+
+						if (L1Boss.m_singleton.current_state != L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE)
+						{
+							TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+						}
+					}
+				}
+				//Debug stuff
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_U))
+				{
+					//DestroyedBothCores();
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_H))
 				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK);
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_J))
 				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_K))
 				{
 					//DestroyedBothCores();
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
+				}
+
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_L))
+				{
+					//DestroyedBothCores();
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK);
 				}
 
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
@@ -327,11 +407,20 @@ namespace Scripting
 				//return;
 			}
 
-			if(delayedInit)
+			//if Is invulnerable to main core
+			if ((!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore) && updateCoreLockOn)
 			{
-				//Add core to lock on list
+				updateCoreLockOn = false;
+
+				//Remove core from lock on list
+				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Remove(entityID);
+				FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(entityID, 0);
+			}
+			//If is vulnerable
+			else if (!updateCoreLockOn && m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable && m_runStateInfo.canDamageMainCore)
+			{
+				updateCoreLockOn = true;
 				FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
-				delayedInit = false;
 			}
 
 			//Timers
@@ -339,21 +428,6 @@ namespace Scripting
 			m_runStateInfo.timeSinceLastDamageTimer += dt;
 			m_runStateInfo.timeSinceLastSpawnTimer += dt;
 
-			/*if (L1Boss.m_singleton.left_ball_protection || L1Boss.m_singleton.right_ball_protection)
-			{
-				UpdateShootingBehaviour(dt);
-
-				if (m_runStateInfo.leftBallHealth <= 0 && m_runStateInfo.rightBallHealth <= 0)
-				{
-					//Reset health
-					m_runStateInfo.leftBallHealth = mh_leftBallHealth;
-					m_runStateInfo.rightBallHealth = mh_rightBallHealth;
-
-					//Go back to moving state
-					Console.WriteLine("L1BossBehaviour.cs: Boss returning to moving state");
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
-				}
-			}//*/
 
 			switch (L1Boss.m_singleton.current_state)
 			{
@@ -361,13 +435,49 @@ namespace Scripting
 				{
 					if (m_runStateInfo.timer > m_runStateInfo.stateDuration)
 					{
+						//When timer is hit
 						if (m_runStateInfo.timeSinceLastSpawnTimer > m_runStateInfo.timeToNextSpawn)
 						{
-							TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
+							if (m_runStateInfo.lastIsMelee)
+							{
+								TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS);
 
-							c_playedSpawnAnimation = false;
-							m_runStateInfo.timeSinceLastSpawnTimer = 0f;
-							m_runStateInfo.timeToNextSpawn = PPMath.RandomFloat(m_minDurationBetweenSpawns, m_maxDurationBetweenSpawns);
+								c_playedSpawnAnimation = false;
+								m_runStateInfo.timeSinceLastSpawnTimer = 0f;
+								m_runStateInfo.timeToNextSpawn = PPMath.RandomFloat(m_minDurationBetweenSpawns, m_maxDurationBetweenSpawns);
+
+								m_runStateInfo.lastIsMelee = false;
+							}
+							else
+							{
+								m_runStateInfo.lastIsMelee = true;
+
+								int stateSelection;
+
+								do
+								{
+									stateSelection = PPMath.RandomInt(0, 2);
+								}
+								while (m_runStateInfo.lastRNGState == stateSelection);
+
+								switch (stateSelection)
+								{
+									case 0:
+										TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK);
+										break;
+									case 1:
+										TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK);
+										break;
+									case 2:
+										TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK);
+										break;
+									default:
+										Console.WriteLine("L1BossBehaviour.cs: RNG out of range");
+										break;
+								}
+
+								m_runStateInfo.lastRNGState = stateSelection;
+							}
 						}
 					}
 
@@ -383,6 +493,25 @@ namespace Scripting
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
 				{
+					switch(c_spawnSoundPlayState)
+					{
+						case 1:
+							if (m_runStateInfo.timer > 1.7f)
+							{
+								ECS.PlayAudio(entityID, 5, "SFX");
+								c_spawnSoundPlayState = 2;
+							}
+							break;
+						case 2:
+							if (m_runStateInfo.timer > 7.5f)
+							{
+								ECS.StopAudio(entityID, 5);
+								ECS.PlayAudio(entityID, 7, "SFX");
+								c_spawnSoundPlayState = 0;
+							}
+							break;
+					}
+
 					if (m_runStateInfo.timer > mSpawner_timeStartSpawnEnemies && m_runStateInfo.timer < mSpawner_timeEndSpawnEnemies)
 					{
 						m_runStateInfo.secondaryTimer += dt;
@@ -423,6 +552,9 @@ namespace Scripting
 
 						if (!c_playedSpawnAnimation)
 						{
+							//Plau launch sounds
+							ECS.PlayAudio(entityID, 6, "SFX");
+
 							c_playedSpawnAnimation = true;
 
 							//Console.WriteLine("SpawnAnimation");
@@ -430,13 +562,46 @@ namespace Scripting
 							//Do enemy spawn animation
 							for (int i = 0; i < 6; ++i)
 							{
-								ECS.GetTransformECS(mID_ventSpawnpoints[i], ref pos, ref rot, ref scale);
+								rot = ECS.GetGlobalRotation(mID_ventSpawnpoints[i]);
+								pos = ECS.GetGlobalPosition(mID_ventSpawnpoints[i]);
 								GameObject instance = GameUtilities.InstantiateObject("Enemy_01", pos, rot);
 								m_enemySpawnInstances.Add(instance);
 							}
 						}
 
 						UpdateEnemySpawnAnimation(dt);
+					}
+				}
+				break;
+
+				case L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK:
+				{
+					if (m_runStateInfo.timer > mSmash_timeToEnableCollider && !m_hitboxEnableOnce && m_runStateInfo.timer < mSmash_timeToDisableCollider)
+					{
+						m_hitboxEnableOnce = true;
+						ECS.SetActive(mID_smashHitBox, true);
+					}
+
+					if (m_runStateInfo.timer > mSmash_timeToDisableCollider && m_hitboxEnableOnce)
+					{
+						m_hitboxEnableOnce = false;
+						ECS.SetActive(mID_smashHitBox, false);
+					}
+				}
+				break;
+
+				case L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK:
+				{
+					if (m_runStateInfo.timer > mClap_timeToEnableCollider && !m_hitboxEnableOnce && m_runStateInfo.timer < mClap_timeToDisableCollider)
+					{
+						m_hitboxEnableOnce = true;
+						ECS.SetActive(mID_clapHitBox, true);
+					}
+
+					if (m_runStateInfo.timer > mClap_timeToDisableCollider && m_hitboxEnableOnce)
+					{
+						m_hitboxEnableOnce = false;
+						ECS.SetActive(mID_clapHitBox, false);
 					}
 				}
 				break;
@@ -449,8 +614,8 @@ namespace Scripting
 			{
 				if (m_stateBehaviours[(int)L1Boss.m_singleton.current_state].shouldReturnToDefault)
 				{
-					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, true);
-					//Console.WriteLine("Boss: Changing to MOVING");
+					TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE.MOVING, false, false);
+					Console.WriteLine("Boss: Changing to MOVING");
 				}
 			}
 
@@ -465,6 +630,30 @@ namespace Scripting
 			{
 				m_runStateInfo.damageTakenPeriod = 0f;
 			}
+
+			//Update the hp bar to lerp when the boss first appears
+			if (!m_hasBossHPBarAnimated && m_beginBossHPBarAnimation)
+			{
+				m_bossHPBarLerpValue += m_bossHPBarAnimateSpeed * dt;
+				mh_coreHealth = PPMath.Lerp(mh_coreHealth, mh_defaultHealth, m_bossHPBarLerpValue);
+				if (mh_coreHealth >= mh_defaultHealth)
+				{
+					m_hasBossHPBarAnimated = true;
+				}
+			}
+
+			UpdateDamageColors(dt);
+			UpdateHPBar(dt);
+		}
+
+		void UpdateDamageColors(float dt)
+		{
+			mColor_falseCoreCurrent = Vector3.Lerp(mColor_falseCoreCurrent, mColor_falseCoreNormal, Math.Min(dt * 15f, 1f));
+			ECS.SetEmissiveTint(mID_falseCore, ref mColor_falseCoreCurrent);
+
+			mColor_falseCoreCoverCurrent = Vector3.Lerp(mColor_falseCoreCoverCurrent, mColor_falseCoreCoverNormal, Math.Min(dt * 15f, 1f));
+			ECS.SetDiffuseTint(mID_falseCoreMouthL, ref mColor_falseCoreCoverCurrent);
+			ECS.SetDiffuseTint(mID_falseCoreMouthR, ref mColor_falseCoreCoverCurrent);
 		}
 
 		/***************************************************************************/
@@ -516,7 +705,7 @@ namespace Scripting
 		/***************************************************************************/
 		void UpdateGunRotationBehaviour(float dt)
 		{
-			for(int i = 0; i < 6; ++i)
+			for (int i = 0; i < 6; ++i)
 			{
 				ECS.GetTransformECS(m_gunBarrels[i].ID_barrel, ref pos, ref rot, ref scale);
 
@@ -592,14 +781,25 @@ namespace Scripting
 
 		void TriggerNextState(L1Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false, bool dontResetTimer = false)
 		{
-			if(nextState == L1Boss.BOSS_BEHAVIOUR_STATE.MOVING)
-			{
-				//Add boss core to lock on list
-				//FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
-			}
-
 			m_runStateInfo.lastState = L1Boss.m_singleton.current_state;
 			L1Boss.m_singleton.SetState(nextState.ToString());
+
+			switch (L1Boss.m_singleton.current_state)
+			{
+				case L1Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK:
+					ECS.PlayAudio(entityID, 2, "SFX");
+					break;
+				case L1Boss.BOSS_BEHAVIOUR_STATE.SMASH_ATTACK:
+					ECS.PlayAudio(entityID, 3, "SFX");
+					break;
+				case L1Boss.BOSS_BEHAVIOUR_STATE.SPINNING_ATTACK:
+					ECS.PlayAudio(entityID, 4, "SFX");
+					break;
+				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
+					c_spawnSoundPlayState = 1;
+					ECS.PlayAudio(entityID, 8, "VO");
+					break;
+			}
 
 			if (!dontResetTimer)
 				m_runStateInfo.timer = 0f;
@@ -615,17 +815,22 @@ namespace Scripting
 				m_runStateInfo.stateDuration = PPMath.RandomFloat(
 					m_stateBehaviours[(int)nextState].stateDurationMin,
 					m_stateBehaviours[(int)nextState].stateDurationMax);
+
+				Console.WriteLine("L1BossBehaviour: Duration " + m_runStateInfo.stateDuration);
+				Console.WriteLine("L1BossBehaviour: Range " + m_stateBehaviours[(int)nextState].stateDurationMin + ", " + m_stateBehaviours[(int)nextState].stateDurationMax);
 			}
 		}
 
 		public void DamageLeftCore(float damageAmount)
 		{
-			if (m_runStateInfo.canDamageSideCores)
+			if (m_runStateInfo.canDamageSideCores && L1Boss.m_singleton.left_ball_protection)
 			{
+				ECS.PlayAudio(entityID, 0, "SFX");
+
 				//Console.WriteLine("L1BossBehaviour.cs: Left damage taken");
 				m_runStateInfo.leftBallHealth -= damageAmount;
 
-				if (m_runStateInfo.leftBallHealth <= 0f && L1Boss.m_singleton.left_ball_protection)
+				if (m_runStateInfo.leftBallHealth <= 0f)
 				{
 					m_runStateInfo.leftBallHealth = 0f;
 
@@ -642,16 +847,22 @@ namespace Scripting
 					Console.WriteLine("L1BossBehaviour.cs: Left core dead");
 				}
 			}
+			else
+			{
+				ECS.PlayAudio(entityID, 1, "SFX");
+			}
 		}
 
 		public void DamageRightCore(float damageAmount)
 		{
-			if (m_runStateInfo.canDamageSideCores)
+			if (m_runStateInfo.canDamageSideCores && L1Boss.m_singleton.right_ball_protection)
 			{
+				ECS.PlayAudio(entityID, 0, "SFX");
+
 				//Console.WriteLine("Right damage taken");
 				m_runStateInfo.rightBallHealth -= damageAmount;
 
-				if (m_runStateInfo.rightBallHealth <= 0f && L1Boss.m_singleton.right_ball_protection)
+				if (m_runStateInfo.rightBallHealth <= 0f)
 				{
 					m_runStateInfo.rightBallHealth = 0f;
 
@@ -665,8 +876,12 @@ namespace Scripting
 					if (!L1Boss.m_singleton.left_ball_protection)
 						DestroyedBothCores();
 
-					Console.WriteLine("L1BossBehaviour.cs: L1BossBehaviour.cs: Right core dead");
+					Console.WriteLine("L1BossBehaviour.cs: Right core dead");
 				}
+			}
+			else
+			{
+				ECS.PlayAudio(entityID, 1, "SFX");
 			}
 		}
 
@@ -674,13 +889,10 @@ namespace Scripting
 		{
 			m_runStateInfo.canDamageMainCore = true;
 			m_runStateInfo.canDamageSideCores = false;
-			
+
 			//reset health
 			m_runStateInfo.leftBallHealth = mh_leftBallHealth;
 			m_runStateInfo.rightBallHealth = mh_rightBallHealth;
-
-			//Add core back to lock on list
-			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(entityID, true);
 		}
 
 		public void TriggerProtectionState()
@@ -691,10 +903,6 @@ namespace Scripting
 
 			m_runStateInfo.damageTakenPeriod = 0f;
 
-			//Remove core from lock on list
-			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Remove(entityID);
-			FirstPersonFiringSystem.RemoveEnemyFromListOfTargets(entityID, 0);
-
 			//add left and right cores to list
 			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(mID_leftCore, true);
 			FirstPersonFiringSystem.m_singleton.m_enemiesToRayCast.Add(mID_rightCore, true);
@@ -702,15 +910,29 @@ namespace Scripting
 			Console.WriteLine("L1BossBehaviour.cs: Boss hit damage threshold, entering protection");
 		}
 
+		void UpdateHPBar(float dt)
+		{
+			//Hp Bar
+			m_bossHpScale.X = PPMath.Lerp(m_bossHpScale.X, (((mh_coreHealth / mh_defaultHealth) * m_bossHPDefaultScaling) + m_bossHPOffset), m_bossHPBarAnimateSpeed * dt);
+			ECS.SetScale(mID_hpBar, m_bossHpScale);
+		}
+
 		public override void OnTriggerEnter(uint id)
 		{
 			//Invulnerable in protection mode
-			if (!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore)
+			//Invulnerable if angle between mouth too low
+			if (!m_stateBehaviours[(int)L1Boss.m_singleton.current_state].isVulnerable || !m_runStateInfo.canDamageMainCore
+				|| Math.Abs(ECS.GetRotation(mID_falseCoreMouthL).Y) + Math.Abs(ECS.GetRotation(mID_falseCoreMouthR).Y) < 30f)
 			{
+				mColor_falseCoreCoverCurrent = mColor_falseCoreCoverDamaged;
+				ECS.PlayAudio(entityID, 1, "SFX");
 				return;
 			}
 
 			//Console.WriteLine("Boss Taken damage");
+			ECS.PlayAudio(entityID, 0, "SFX");
+
+			mColor_falseCoreCurrent = mColor_falseCoreDamaged;
 
 			mh_coreHealth -= 1f;
 			m_runStateInfo.damageTakenPeriod += 1f;

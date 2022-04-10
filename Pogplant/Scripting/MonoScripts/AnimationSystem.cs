@@ -21,10 +21,12 @@ namespace Scripting
         List<Animation_Stack> animation_specs_stack;
         List<Action<float>> animation_update_stack;
         Action<string> queue_state_func;
+        Action end_anim_func;
         string queue_state;
         float current_animation_time;
         int current_animation_index;
         bool play_animation;
+        bool loop_all_animations;
 
         public void Init()
         {
@@ -41,7 +43,6 @@ namespace Scripting
                 //Go to the next stack in the animation if the duration exceeds
                 if (current_animation_time >= animation_specs_stack[current_animation_index].animation_duration)
                 {
-                    
                     RunNextAnimationStack();
                 }
                 else
@@ -76,6 +77,16 @@ namespace Scripting
                 animation_duration = anim_duration,
                 loop_animation = loop
             });
+        }
+
+        public void SetLoopAllAnimations(bool loop_all)
+        {
+            loop_all_animations = loop_all;
+        }
+
+        public void SetEndAnimFunction(Action action)
+        {
+            end_anim_func = action;
         }
 
         public void AddAnimationUpdateStack(Action<float> action)
@@ -146,6 +157,14 @@ namespace Scripting
                 ++current_animation_index;
             }
 
+            if (loop_all_animations)
+            {
+                if (current_animation_index >= animation_specs_stack.Count)
+                {
+                    current_animation_index = 0;
+                }
+            }
+
             if (current_animation_index <= animation_specs_stack.Count - 1)
             {
                 //Only run if the stack still has actions
@@ -163,6 +182,11 @@ namespace Scripting
                 if (queue_state_func != null)
                 {
                     queue_state_func.Invoke(queue_state);
+                }
+
+                if (end_anim_func != null)
+                {
+                    end_anim_func.Invoke();
                 }
             }
         }

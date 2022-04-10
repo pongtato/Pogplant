@@ -27,11 +27,22 @@ namespace Scripting
 		uint ShootingBox;
 		uint ReticleGroupID;
 		uint PlayerBox;
-
 		uint ScoreText; // id of score text object
 
-		//Player Firing 
-		float p_fireRate = 0.1f;
+		//used for nuke
+		uint m_actual_nuke;
+		public float m_actual_nuke_speed;
+        float m_actual_nuke_cooldown;
+		float m_actual_nuke_timer;
+		uint m_actual_nuke_bar_charging_id;
+		Vector3 m_actual_nuke_bar_charging_scale = new Vector3();
+		uint m_actual_nuke_bar_filled_id;
+		Vector3 m_actual_nuke_bar_filled_scale = new Vector3();
+		float m_actual_nuke_bar_per_second;
+		bool m_actual_nuke_set_scale = false;
+
+        //Player Firing 
+        float p_fireRate = 0.1f;
 		float p_fire_timer = 0.0f;
 		float m_rotspeed = 20.0f;
 		//float turret_rot_lerp_limit = 15.0f;
@@ -90,7 +101,10 @@ namespace Scripting
 		uint EnemyTrack = 0;
 
 		//
-		Vector3 m_shootVector = new Vector3(0f, 0f, 1f);
+		public Vector3 m_shootVector = new Vector3(0f, 0f, 1f);
+
+		//null entity
+		uint m_null_entity;
 
 		public class Reticle
 		{
@@ -114,6 +128,7 @@ namespace Scripting
 		public override void Init(ref uint _entityID)
 		{
 			entityID = _entityID;
+			m_null_entity = ECS.GetNull();
 			m_singleton = this;
 		}
 
@@ -128,6 +143,28 @@ namespace Scripting
 			LargeCrosshair = ECS.FindEntityWithName("LargeCrosshair");
 			ReticleGroupID = ECS.FindEntityWithName("ReticleGroup");
 			ScoreText = ECS.FindEntityWithName("Score_Text");
+
+			//variables for actual nuke
+			m_actual_nuke = ECS.FindEntityWithName("Actual_Nuke");
+			m_actual_nuke_bar_charging_id = ECS.FindEntityWithName("Bar_Charging");
+			m_actual_nuke_bar_filled_id = ECS.FindEntityWithName("Bar_Filled");
+			m_actual_nuke_speed = ECS.GetValue<float>(entityID, 300, "m_actual_nuke_speed");
+			m_actual_nuke_cooldown = ECS.GetValue<float>(entityID, 5, "m_actual_nuke_cooldown");
+			m_actual_nuke_timer = 0;
+
+			Vector3 throw_away_pos = new Vector3();
+			Vector3 throw_away_rot = new Vector3();
+
+			if (m_actual_nuke_bar_charging_id != m_null_entity)
+				ECS.GetTransformECS(m_actual_nuke_bar_charging_id, ref throw_away_pos, ref throw_away_rot, ref m_actual_nuke_bar_charging_scale);
+
+			if (m_actual_nuke_bar_filled_id != m_null_entity)
+				ECS.GetTransformECS(m_actual_nuke_bar_filled_id, ref throw_away_pos, ref throw_away_rot, ref m_actual_nuke_bar_filled_scale);
+
+			if (m_actual_nuke_bar_charging_id != m_null_entity && m_actual_nuke_bar_filled_id != m_null_entity)
+            {
+				m_actual_nuke_bar_per_second = m_actual_nuke_bar_filled_scale.X / m_actual_nuke_cooldown;
+			}
 
 			Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret1"));
 			Turrets_A.Add(ECS.FindChildEntityWithName(PlayerShip, "PlayerTurret2"));
@@ -168,10 +205,12 @@ namespace Scripting
 			//Moving the hit box
 			ECS.GetTransformECS(entityID, ref transform.Position, ref transform.Rotation, ref transform.Scale);
 
-			UpdateReticleMovementCanvas(ref transform, ref dt);
+			if (PlayerScript.m_singleton.update_controls)
+			{
+				UpdateReticleMovementCanvas(ref transform, ref dt);
+			}
 
 			ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
-
 			
 			m_shootVector = GameUtilities.GetRayCastDirCamera(shipCamera, inner_ret.Position);
 
@@ -184,7 +223,8 @@ namespace Scripting
 					//	Console.WriteLine("Yes");
 					//Ray cast against hitboxes, if hit, add to list of enemies in range
 					//If value is true, means it's overwritten and should target immediately
-					if (ECS.RayCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, m_enemiesToRayCast.ElementAt(i).Key))
+					if (ECS.SphereCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, 0.5f, m_enemiesToRayCast.ElementAt(i).Key) && !float.IsNaN(m_shootVector.X))
+					//if (ECS.RayCastEntity(ECS.GetGlobalPosition(shipCamera), m_shootVector, m_enemiesToRayCast.ElementAt(i).Key) && !float.IsNaN(m_shootVector.X))
 					{
 						//if (ECS.GetTagECS(m_enemiesToRayCast.ElementAt(i).Key) == "BossCore")
 						//	Console.WriteLine("Yes");
@@ -210,7 +250,7 @@ namespace Scripting
 					m_enemiesToRayCast.Remove(m_enemiesToRayCast.ElementAt(i).Key);
 					--i;
 
-					Console.Write("FPSSystem: Removal");
+					Console.WriteLine("FPSSystem: Manual removal of invalid");
 				}
 			}
 
@@ -244,23 +284,63 @@ namespace Scripting
 		public override void LateUpdate(float dt)
 		{
 			OffMuzzleFlash(ref MuzzleFlashGroup, ref isMuzzleflashed);
-			p_fire_timer += dt;
-			if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK") || InputUtility.onKeyTriggered("LEFTCLICK"))
-			{
-				if (p_fire_timer >= p_fireRate)
-				{
-					// Call C++ side bullet firing
-					if(isHoming)
-						CallTurretHomingShoot(ref Turrets_A, dt);
-					else
-						CallTurretShoot(ref Turrets_A, dt);
-					//GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
-					OnMuzzleFlash(ref MuzzleFlashGroup,ref isMuzzleflashed);
-					ECS.PlayAudio(shipCamera, 1, "SFX");
-					p_fire_timer = 0.0f;
 
-					//Vibrate controller
-					InputUtility.VibrateControllerLightMotor(0.25f, 0.05f);
+			p_fire_timer += dt;
+			m_actual_nuke_timer += dt;
+
+			if (!m_actual_nuke_set_scale && m_actual_nuke_timer > m_actual_nuke_cooldown)
+			{
+				m_actual_nuke_set_scale = true;
+				ECS.SetActive(m_actual_nuke_bar_charging_id, false);
+				ECS.SetActive(m_actual_nuke_bar_filled_id, true);
+			}
+			else
+            {
+				m_actual_nuke_bar_charging_scale.X += dt * m_actual_nuke_bar_per_second;
+				ECS.SetScale(m_actual_nuke_bar_charging_id, new Vector3(m_actual_nuke_bar_charging_scale.X, m_actual_nuke_bar_filled_scale.Y, m_actual_nuke_bar_filled_scale.Z));
+            }
+			if (PlayerScript.m_singleton.update_controls)
+			{
+				if ((InputUtility.onKeyHeld("SHOOT")) || InputUtility.onKeyHeld("LEFTCLICK") || InputUtility.onKeyTriggered("LEFTCLICK"))
+				{
+					if (p_fire_timer >= p_fireRate)
+					{
+						// Call C++ side bullet firing
+						if (isHoming)
+							CallTurretHomingShoot(ref Turrets_A, dt);
+						else
+							CallTurretShoot(ref Turrets_A, dt);
+						//GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
+						OnMuzzleFlash(ref MuzzleFlashGroup, ref isMuzzleflashed);
+						ECS.PlayAudio(shipCamera, 1, "SFX");
+						p_fire_timer = 0.0f;
+
+						//Vibrate controller
+						InputUtility.VibrateControllerLightMotor(0.25f, 0.05f);
+					}
+				}
+				//used for nuke
+				else if (InputUtility.onKeyReleased("NUKE"))
+				{
+					if (m_actual_nuke_timer > m_actual_nuke_cooldown)
+					{
+						ECS.PlayAudio(entityID, 0, "SFX");
+
+						ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
+						ECS.SetRotation(m_actual_nuke, ECS.GetGlobalRotation(PlayerShip));
+						ECS.SetActive(m_actual_nuke, true);
+						GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
+
+						m_actual_nuke_timer = 0;
+
+						ECS.SetActive(m_actual_nuke_bar_charging_id, true);
+						ECS.SetActive(m_actual_nuke_bar_filled_id, false);
+
+						m_actual_nuke_bar_charging_scale.X = 0;
+						m_actual_nuke_set_scale = false;
+
+						PlayerNuke.m_has_fired = true;
+					}
 				}
 			}
 		}
@@ -299,6 +379,15 @@ namespace Scripting
 		}
 		void DoRemovalList()
 		{
+			foreach(uint ID in enemy_to_target_A)
+			{
+				if (!ECS.CheckValidEntity(ID) && !removal_list.Contains(ID))
+				{
+					Console.WriteLine("FPS System: Prevented a crash by removing invalid");
+					removal_list.Add(ID);
+				}
+			}
+
 			foreach (uint removable in removal_list)
 			{
 				enemy_in_range_A.Remove(removable);
@@ -527,6 +616,9 @@ namespace Scripting
 
 		void SetTurretRotation(ref List<uint> TurretGroup, int Offset, float dt)
 		{
+			if (float.IsNaN(m_shootVector.X))
+				return;
+
 			isHoming = false;
 			for (int i = 0; i < TurretGroup.Count; ++i)
 			{
@@ -612,6 +704,9 @@ namespace Scripting
 			//    GameUtilities.InstantiateParticle("GunFire", Position, Rotation, true, PlayerShip);
 			//}
 
+			if (float.IsNaN(m_shootVector.X))
+				return;
+
 			for (int i = 0; i < Turrets_A.Count; i++)
 			{
 				//Predict the enemy movement a little.
@@ -619,12 +714,18 @@ namespace Scripting
 				Vector3 Position = ECS.GetGlobalPosition(MuzzleGroup[i]);
 				Vector3 Rotation = ECS.GetGlobalRotation(MuzzleGroup[i]);
 
-				GameUtilities.FirePlayerBullet(Position, m_shootVector, Rotation, false, 0);
+				GameUtilities.FirePlayerBullet(Position + m_shootVector, m_shootVector, Rotation, false, 0);
 			}
 		}
 
 		public void CallTurretHomingShoot(ref List<uint> TurretGroup, float dt)
 		{
+			if(enemy_to_target_A.Count == 0)
+			{
+				Console.WriteLine("FPS System: Prevented a crash by preventing shoot");
+				return;
+			}
+
 			for (int i = 0; i < Turrets_A.Count; i++)
 			{
 				//Predict the enemy movement a little.
@@ -637,7 +738,7 @@ namespace Scripting
 				var new_position = enemy_pos + (enemy_velo * dt * 20.0f);
 				new_position -= Position;
 				var new_forward = Vector3.Normalise(new_position);
-				GameUtilities.FirePlayerBullet(Position, new_forward, Rotation, true, EntityID_of_FirstTargetablEnemy());
+				GameUtilities.FirePlayerBullet(Position + m_shootVector, new_forward, Rotation, true, EntityID_of_FirstTargetablEnemy());
 			}
 		}
 

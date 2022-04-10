@@ -74,6 +74,7 @@ namespace Scripting
         float lerp_scale_speed_Z;
 
         Vector3 lerp_scale_upper_limit;
+        Vector3 lerp_linear_scale;
         Vector3 lerp_scale_lower_limit;
 
         bool lerp_scale_positive_direction_X;
@@ -84,7 +85,13 @@ namespace Scripting
         bool lerp_scale_ping_pong_Y;
         bool lerp_scale_ping_pong_Z;
 
-        bool update_scale = false;
+        bool update_pingpong_scale = false;
+
+        bool lerp_scale_linear_X;
+        bool lerp_scale_linear_Y;
+        bool lerp_scale_linear_Z;
+
+        bool update_linear_scale = false;
 
         //Position
         void SetLerpPosSpeedX(float value)
@@ -147,7 +154,7 @@ namespace Scripting
             lerp_position_ping_pong_Z = value;
         }
 
-        void SetUpdatePingPongPosition(bool value)
+        public void SetUpdatePingPongPosition(bool value)
         {
             update_pingpong_position = value;
         }
@@ -314,9 +321,34 @@ namespace Scripting
             lerp_scale_ping_pong_Z = value;
         }
 
-        public void SetUpdateScale(bool value)
+        public void SetUpdatePingPongScale(bool value)
         {
-            update_scale = value;
+            update_pingpong_scale = value;
+        }
+
+        public void SetUpdateLinearScale(bool value)
+        {
+            update_linear_scale = value;
+        }
+
+        void SetLerpScaleLinearX(bool value)
+        {
+            lerp_scale_linear_X = value;
+        }
+
+        void SetLerpScaleLinearY(bool value)
+        {
+            lerp_scale_linear_Y = value;
+        }
+
+        void SetLerpScaleLinearZ(bool value)
+        {
+            lerp_scale_linear_Z = value;
+        }
+
+        void SetLerpLinearScale(Vector3 value)
+        {
+            lerp_linear_scale = value;
         }
 
         //Misc
@@ -386,6 +418,7 @@ namespace Scripting
             lerp_scale_speed_Z = 0.0f;
 
             lerp_scale_upper_limit = new Vector3();
+            lerp_linear_scale = new Vector3();
             lerp_scale_lower_limit = new Vector3();
 
             lerp_scale_positive_direction_X = false;
@@ -396,7 +429,13 @@ namespace Scripting
             lerp_scale_ping_pong_Y = false;
             lerp_scale_ping_pong_Z = false;
 
-            update_scale = false;
+            update_pingpong_scale = false;
+
+            lerp_scale_linear_X = false;
+            lerp_scale_linear_Y = false;
+            lerp_scale_linear_Z = false;
+
+            update_linear_scale = false;
         }
 
         #region[Set & Update moving parts animation]
@@ -472,7 +511,6 @@ namespace Scripting
             SetLerpRotSpeedY(lerp_speed.Y);
             SetLerpRotSpeedZ(lerp_speed.Z);
 
-
             SetLerpRotLinearX(set_lerp_X);
             SetLerpRotLinearY(set_lerp_Y);
             SetLerpRotLinearZ(set_lerp_Z);
@@ -480,7 +518,7 @@ namespace Scripting
             SetUpdateLinearRotation(true);
         }
 
-        public void SetMovingPartsScale(Vector3 set_scale_lower_limit, Vector3 set_scale_upper_limit, Vector3 lerp_speed,
+        public void SetPingPongScale(Vector3 set_scale_lower_limit, Vector3 set_scale_upper_limit, Vector3 lerp_speed,
             bool set_positive_direction_X, bool set_positive_direction_Y, bool set_positive_direction_Z,
             bool set_ping_pong_X, bool set_ping_pong_Y, bool set_ping_pong_Z)
         {
@@ -501,7 +539,22 @@ namespace Scripting
             SetLerpScalePositiveDirectionZ(set_positive_direction_Z);
 
             //Automatically enable since already setting
-            SetUpdateScale(true);
+            SetUpdatePingPongScale(true);
+        }
+
+        public void SetLinearScale(Vector3 set_target_scale, Vector3 lerp_speed, bool set_lerp_X, bool set_lerp_Y, bool set_lerp_Z)
+        {
+            SetLerpLinearScale(set_target_scale);
+
+            SetLerpScaleSpeedX(lerp_speed.X);
+            SetLerpScaleSpeedY(lerp_speed.Y);
+            SetLerpScaleSpeedZ(lerp_speed.Z);
+
+            SetLerpScaleLinearX(set_lerp_X);
+            SetLerpScaleLinearY(set_lerp_Y);
+            SetLerpScaleLinearZ(set_lerp_Z);
+
+            SetUpdateLinearScale(true);
         }
 
         public void UpdateMovingParts(float dt)
@@ -529,9 +582,14 @@ namespace Scripting
             }
 
             //Update scale only if needed
-            if (update_scale)
+            if (update_pingpong_scale)
             {
-                UpdateMovingPartsScale(dt);
+                UpdatePingPongScale(dt);
+            }
+            //Update linear scale only if needed
+            if (update_linear_scale)
+            {
+                UpdateLinearScale(dt);
             }
         }
 
@@ -855,7 +913,7 @@ namespace Scripting
             }
         }
 
-        void UpdateMovingPartsScale(float dt)
+        void UpdatePingPongScale(float dt)
         {
             //===============================================================================================================================================//
             //X Axis
@@ -993,6 +1051,25 @@ namespace Scripting
                 {
                     ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_scale_lower_limit.Z), lerp_scale_speed_Z * dt));
                 }
+            }
+        }
+
+        void UpdateLinearScale(float dt)
+        {
+            if (lerp_scale_linear_X)
+            {
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
+                ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(lerp_linear_scale.X, scale.Y, scale.Z), lerp_scale_speed_X * dt)); ;
+            }
+            if (lerp_scale_linear_Y)
+            {
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
+                ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, lerp_linear_scale.Y, scale.Z), lerp_scale_speed_Y * dt));
+            }
+            if (lerp_scale_linear_Z)
+            {
+                ECS.GetTransformECS(entity_id, ref pos, ref rot, ref scale);
+                ECS.SetScale(entity_id, Vector3.Lerp(scale, new Vector3(scale.X, scale.Y, lerp_linear_scale.Z), lerp_scale_speed_Z * dt));
             }
         }
 

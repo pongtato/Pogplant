@@ -40,28 +40,42 @@ namespace Scripting
 
         float m_TransitDelayTimer;
         const float m_BarsDuration = 1.0f;
-        const float m_SceneChangeDelayDuration = 4.0f;
+        const float m_SceneChangeDelayDuration = 0.0f;
         bool m_EnableTransitDelayCountdown;
+        bool m_EnableHighScoreOnce;
 
         bool cinematic_cover_screen;
         uint cinematic_bar_top_id;
         uint cinematic_bar_bottom_id;
         const float cinematic_bar_speed = 3.0f;
 
+        public string scene_to_load;
+        const int totalEnemies = 200; //this 200 is an average value of both levels total enemy count lv1 = 174 & lv2 = 215
+
+        uint bonusScoreA = 200000;
+        uint bonusScoreB = 100000;
+        uint bonusScoreC = 50000;
+
         // Number of enemies destroyed
         private enum GRADE_DES
         {
             C = 0,
-            B = 20,
-            A = 40
+            B = (int)(totalEnemies * 0.4),
+            A = (int)(totalEnemies * 0.6)
         }
 
         // Number of times hit
-        private enum GRADE_EVA
+        private enum GRADE_EVA_LV1
         {
             A = 0,
             B = 10,
             C = 20
+        }
+        private enum GRADE_EVA_LV2
+        {
+            A = 0,
+            B = 25,
+            C = 50
         }
 
         // Number of coins collected
@@ -183,6 +197,23 @@ namespace Scripting
 
             ECS.SetActive(entityID, false);
             m_TransitDelayTimer = 0.0f;
+
+            scene_to_load = ECS.GetValue<string>(entityID, "Level01OutroCutscene", "SceneToLoad");
+
+
+            //load the current score details
+            PlayerScript.InitScore( PlayerPrefs.GetValue<uint>("CurrentScore", 0),
+                                    PlayerPrefs.GetValue<uint>("m_EnemyDestroyedCount", 0),
+                                    PlayerPrefs.GetValue<uint>("m_PlayerHitCount", 0),
+                                    PlayerPrefs.GetValue<uint>("m_CollectiblesCount", 0));
+
+
+            ////reset the score data in playerpref file
+            //PlayerPrefs.SetValue<uint>("CurrentScore", 0);
+            //PlayerPrefs.SetValue<uint>("m_EnemyDestroyedCount", 0);
+            //PlayerPrefs.SetValue<uint>("m_PlayerHitCount", 0);
+            //PlayerPrefs.SetValue<uint>("m_CollectiblesCount", 0);
+            //PlayerPrefs.Save();
         }
 
         public override void Start()
@@ -210,7 +241,9 @@ namespace Scripting
                 
                 if(m_Timer < 0.5f)
                 {
+                    ECS.SetActive(m_EndScoreID, true);
                     ECS.SetPosition(entityID, Vector3.Lerp(m_pos, m_LettersMap["EndMenuControllerMid"].transform.Position, m_AnimationSpeed * dt));
+                    GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 }
                 else if(m_Timer >= 0.5f && m_Timer < 1.0f)
                 {
@@ -230,11 +263,6 @@ namespace Scripting
                 }
                 else if(m_Timer >= 4.0f && m_Timer < 5.0f)
                 {
-                    ECS.SetActive(m_EndScoreID, true);
-                    GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
-                }
-                else if(m_Timer >= 5.0f && m_Timer < 6.0f)
-                {
                     UpdateMedals();
                 }
                 else
@@ -251,10 +279,16 @@ namespace Scripting
                 m_TransitDelayTimer += dt;
                 cinematic_cover_screen = true;
                 UpdateCinematicBars(dt);
-                if (m_TransitDelayTimer > m_SceneChangeDelayDuration)
+
+                if (ECS.GetGlobalPosition(entityID).Y > -1.25f)
                 {
-                    GameUtilities.ResumeScene();
-                    GameUtilities.LoadScene("Level01OutroCutscene");
+                    ECS.SetGlobalPosition(entityID, Vector3.Lerp(ECS.GetGlobalPosition(entityID), new Vector3(0.0f, -1.3f, -0.1f), m_AnimationSpeed * dt));
+                }
+
+                if (m_TransitDelayTimer > m_SceneChangeDelayDuration && m_EnableHighScoreOnce)
+                {
+                    m_EnableHighScoreOnce = false;
+                    HighScoreMenu.Enable(true, scene_to_load);
                 }
             }
         }
@@ -277,6 +311,7 @@ namespace Scripting
                     ECS.PlayAudio(entityID, 4, "SFX");
                     SwapGrade(m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                    PlayerScript.score += bonusScoreC;
                 }
                 // Grade B for Destruction
                 else if (PlayerScript.m_EnemyDestroyedCount >= (uint)GRADE_DES.B && PlayerScript.m_EnemyDestroyedCount < (uint)GRADE_DES.A)
@@ -284,6 +319,7 @@ namespace Scripting
                     ECS.PlayAudio(entityID, 3, "SFX");
                     SwapGrade(m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_C"].id, m_LettersMap["Destruction_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.SILVER;
+                    PlayerScript.score += bonusScoreB;
                 }
                 // Grade A for Destruction
                 else
@@ -291,7 +327,9 @@ namespace Scripting
                     ECS.PlayAudio(entityID, 2, "SFX");
                     SwapGrade(m_LettersMap["Destruction_A"].id, m_LettersMap["Destruction_B"].id, m_LettersMap["Destruction_C"].id);
                     m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                    PlayerScript.score += bonusScoreA;
                 }
+                GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 m_CallOnceDes = false;
             }
             else
@@ -305,27 +343,60 @@ namespace Scripting
         {
             if (m_CallOnceEva)
             {
-                // Grade C for Evasiveness
-                if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA.C)
+                //check scene
+                if(GameUtilities.GetSceneName() == "Level01_Boss")
                 {
-                    ECS.PlayAudio(entityID, 4, "SFX");
-                    SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
-                    m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                    // Grade C for Evasiveness
+                    if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA_LV1.C)
+                    {
+                        ECS.PlayAudio(entityID, 4, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                        PlayerScript.score += bonusScoreC;
+                    }
+                    // Grade B for Evasiveness
+                    else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA_LV1.B && PlayerScript.m_PlayerHitCount < (uint)GRADE_EVA_LV1.C)
+                    {
+                        ECS.PlayAudio(entityID, 3, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.SILVER;
+                        PlayerScript.score += bonusScoreB;
+                    }
+                    // Grade A for Evasiveness
+                    else
+                    {
+                        ECS.PlayAudio(entityID, 2, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_A"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                        PlayerScript.score += bonusScoreA;
+                    }
                 }
-                // Grade B for Evasiveness
-                else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA.B && PlayerScript.m_PlayerHitCount < (uint)GRADE_EVA.C)
-                {
-                    ECS.PlayAudio(entityID, 3, "SFX");
-                    SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
-                    m_OverallGrade += (uint)MEDALGRADE.SILVER;
-                }
-                // Grade A for Evasiveness
                 else
                 {
-                    ECS.PlayAudio(entityID, 2, "SFX");
-                    SwapGrade(m_LettersMap["Evasiveness_A"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id);
-                    m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                    if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA_LV2.C)
+                    {
+                        ECS.PlayAudio(entityID, 4, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_A"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                        PlayerScript.score += bonusScoreC;
+                    }
+                    else if (PlayerScript.m_PlayerHitCount >= (uint)GRADE_EVA_LV2.B && PlayerScript.m_PlayerHitCount < (uint)GRADE_EVA_LV2.C)
+                    {
+                        ECS.PlayAudio(entityID, 3, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id, m_LettersMap["Evasiveness_A"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.SILVER;
+                        PlayerScript.score += bonusScoreB;
+                    }
+                    else
+                    {
+                        ECS.PlayAudio(entityID, 2, "SFX");
+                        SwapGrade(m_LettersMap["Evasiveness_A"].id, m_LettersMap["Evasiveness_B"].id, m_LettersMap["Evasiveness_C"].id);
+                        m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                        PlayerScript.score += bonusScoreA;
+                    }
                 }
+
+                GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 m_CallOnceEva = false;
             }
             else
@@ -344,6 +415,7 @@ namespace Scripting
                     ECS.PlayAudio(entityID, 4, "SFX");
                     SwapGrade(m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.BRONZE;
+                    PlayerScript.score += bonusScoreC;
                 }
                 // Grade B for Collectibles
                 else if (PlayerScript.m_CollectiblesCount >= (uint)GRADE_COL.B && PlayerScript.m_CollectiblesCount < (uint)GRADE_COL.A)
@@ -351,6 +423,7 @@ namespace Scripting
                     ECS.PlayAudio(entityID, 3, "SFX");
                     SwapGrade(m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_C"].id, m_LettersMap["Collectibles_A"].id);
                     m_OverallGrade += (uint)MEDALGRADE.SILVER;
+                    PlayerScript.score += bonusScoreB;
                 }
                 // Grade A for Collectibles
                 else
@@ -358,7 +431,9 @@ namespace Scripting
                     ECS.PlayAudio(entityID, 2, "SFX");
                     SwapGrade(m_LettersMap["Collectibles_A"].id, m_LettersMap["Collectibles_B"].id, m_LettersMap["Collectibles_C"].id);
                     m_OverallGrade += (uint)MEDALGRADE.GOLD;
+                    PlayerScript.score += bonusScoreA;
                 }
+                GameUtilities.UpdateScore(m_EndScoreID, PlayerScript.score);
                 m_CallOnceCol = false;
             }
             else
@@ -369,22 +444,22 @@ namespace Scripting
         }
         private void UpdateMedals()
         {
-            if(m_CallOnceMedal)
+            if (m_CallOnceMedal)
             {
-                if (m_OverallGrade >= (uint)MEDALGRADE.OVERALLBRONZE && m_OverallGrade < (uint)MEDALGRADE.OVERALLSILVER)
+                if (PlayerScript.score >= 1000000)
                 {
-                    ECS.PlayAudio(entityID, 4, "SFX");
-                    SwapGrade(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
+                    ECS.PlayAudio(entityID, 2, "SFX");
+                    SwapGrade(m_LettersMap["Medal_Gold"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id);
                 }
-                else if(m_OverallGrade >= (uint)MEDALGRADE.OVERALLSILVER && m_OverallGrade < (uint)MEDALGRADE.OVERALLGOLD)
+                else if (PlayerScript.score >= 750000)
                 {
                     ECS.PlayAudio(entityID, 3, "SFX");
                     SwapGrade(m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Gold"].id);
                 }
                 else
                 {
-                    ECS.PlayAudio(entityID, 2, "SFX");
-                    SwapGrade(m_LettersMap["Medal_Gold"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Bronze"].id);
+                    ECS.PlayAudio(entityID, 4, "SFX");
+                    SwapGrade(m_LettersMap["Medal_Bronze"].id, m_LettersMap["Medal_Silver"].id, m_LettersMap["Medal_Gold"].id);
                 }
                 m_CallOnceMedal = false;
             }
@@ -404,16 +479,12 @@ namespace Scripting
                 {
                     if (!m_EnableTransitDelayCountdown)
                     {
-                        switch (GameUtilities.GetSceneName())
-                        {
-                            case "Level01":
-                                m_TransitDelayTimer = 0.0f;
-                                m_EnableTransitDelayCountdown = true;
-                                ECS.SetActive(cinematic_bar_top_id, true);
-                                ECS.SetActive(cinematic_bar_bottom_id, true);
-                                ECS.PlayAudio(entityID, 6, "SFX");
-                                break;
-                        }
+                        m_TransitDelayTimer = 0.0f;
+                        m_EnableTransitDelayCountdown = true;
+                        m_EnableHighScoreOnce = true;
+                        ECS.SetActive(cinematic_bar_top_id, true);
+                        ECS.SetActive(cinematic_bar_bottom_id, true);
+                        ECS.PlayAudio(entityID, 6, "SFX");
                     }
                 }
 
@@ -457,12 +528,12 @@ namespace Scripting
                 //Top bar
                 if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 0.8f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 0.79f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 0.79f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
                 //Bottom bar
                 if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -0.8f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -0.79f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -0.79f, ECS.GetGlobalPosition(cinematic_bar_bottom_id).Z), cinematic_bar_speed * dt));
                 }
             }
             else
@@ -470,12 +541,12 @@ namespace Scripting
                 //Top bar
                 if (ECS.GetGlobalPosition(cinematic_bar_top_id).Y > 1.3f || ECS.GetGlobalPosition(cinematic_bar_top_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_top_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_top_id), new Vector3(0.0f, 1.3f, ECS.GetGlobalPosition(cinematic_bar_top_id).Z), cinematic_bar_speed * dt));
                 }
                 //Bottom bar
                 if (ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < -1.3f || ECS.GetGlobalPosition(cinematic_bar_bottom_id).Y < 1.29f)
                 {
-                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, 0.0f), cinematic_bar_speed * dt));
+                    ECS.SetGlobalPosition(cinematic_bar_bottom_id, Vector3.Lerp(ECS.GetGlobalPosition(cinematic_bar_bottom_id), new Vector3(0.0f, -1.3f, ECS.GetGlobalPosition(cinematic_bar_bottom_id).Z), cinematic_bar_speed * dt));
                 }
             }
         }

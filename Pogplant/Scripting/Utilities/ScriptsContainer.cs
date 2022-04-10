@@ -50,20 +50,36 @@ namespace Scripting
             monoScriptNames.Add("BossWarning");
             monoScriptNames.Add("L1Boss");
             monoScriptNames.Add("L1BossBehaviour");
+            monoScriptNames.Add("L2BossBehaviour");
             monoScriptNames.Add("BossHitbox");
             monoScriptNames.Add("L2Boss");
             monoScriptNames.Add("L1BossCloudMover");
             monoScriptNames.Add("EndGameMenuTrigger");
+            monoScriptNames.Add("LevelEndCinematicBar");
             monoScriptNames.Add("TetherEnemy");
             monoScriptNames.Add("ExplosiveEnemy");
             monoScriptNames.Add("ActivateChildren");
+            monoScriptNames.Add("ActivateChildrenGravity");
             monoScriptNames.Add("TriggerAudioPlay");
             monoScriptNames.Add("AnimationSystem");
             monoScriptNames.Add("MovingParts");
             monoScriptNames.Add("Level1OutroCutscene");
+            monoScriptNames.Add("Level2OutroCutscene");
+            monoScriptNames.Add("GameEndCutscene");
             monoScriptNames.Add("CutSceneController");
+            monoScriptNames.Add("CutScene2Controller");
             monoScriptNames.Add("BonusScoreCoin");
             monoScriptNames.Add("Rotation");
+            monoScriptNames.Add("SimpleMovement");
+            monoScriptNames.Add("PlayerNuke");
+            monoScriptNames.Add("ExplosionEffect");
+            monoScriptNames.Add("CorePillar");
+            monoScriptNames.Add("SkyboxChanger");
+            monoScriptNames.Add("SplashScreen");
+            monoScriptNames.Add("Credits");
+
+            //let this be last lol
+            monoScriptNames.Sort();
         }
 
         private void AddPauseScripts()
@@ -76,6 +92,11 @@ namespace Scripting
             pauseScriptNames.Add("LaserWeapon");
             pauseScriptNames.Add("EndGameMenu");
             pauseScriptNames.Add("HowToPlayMenu");
+            pauseScriptNames.Add("HighScoreMenu");
+            pauseScriptNames.Add("CinematicBar");
+
+            //let this be last lol
+            pauseScriptNames.Sort();
         }
 
         public string GetScriptNameElement(int index)

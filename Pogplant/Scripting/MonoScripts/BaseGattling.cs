@@ -167,6 +167,7 @@ namespace Scripting
                 isAlive = false;
                 isFiring = false;
                 ECS.PlayAudio(entityID, 1, "SFX");
+                ECS.SetActive(entityID, false);
                 GameUtilities.SpawnStaticExplosion(ECS.GetGlobalPosition(entityID), 0);
             }
         }

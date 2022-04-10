@@ -143,6 +143,16 @@ entt::entity ECS::FindChildEntityWithName(entt::entity parentID, const std::stri
 	return entt::null;
 }
 
+//returns the immediate parent of entity_id
+entt::entity ECS::GetParent(entt::entity entity_id)
+{
+	return m_registry.get<Transform>(entity_id).m_parent;
+}
+
+entt::entity ECS::GetNull()
+{
+	return entt::null;
+}
 
 //returns the first entity with the tag
 entt::entity ECS::FindEntityWithTag(std::string _tag)
@@ -170,6 +180,17 @@ entt::entity ECS::CopyEntity(entt::entity _target, entt::entity _override)
 	entt::entity new_entity = m_registry.create();
 
 	auto& new_transform = m_registry.emplace_or_replace<Transform>(new_entity, transform.m_position, transform.m_rotation, transform.m_scale);
+
+	//if (transform.m_parent != entt::null)
+	//{
+	//	//set new parent
+	//	new_transform.m_parent = transform.m_parent;
+
+	//	//set children in parent
+	//	m_registry.get<Transform>(transform.m_parent).m_children.insert(new_entity);
+	//}
+
+
 	if (_override != entt::null)
 	{
 		const auto override_transform = m_registry.get<Transform>(_override);
@@ -323,12 +344,14 @@ bool ECS::IsChildOf(entt::entity _parent, entt::entity _child)
 
 void ECS::DisableEntity(entt::entity _entity)
 {
-	m_EntitiesToDisable.insert(_entity);
+	if(_entity != entt::null)
+		m_EntitiesToDisable.insert(_entity);
 }
 
 void ECS::EnableEntity(entt::entity _entity)
 {
-	m_EntitiesToEnable.insert(_entity);
+	if(_entity != entt::null)
+		m_EntitiesToEnable.insert(_entity);
 }
 
 void ECS::ToggleEntity(entt::entity _entity)
@@ -365,6 +388,9 @@ void ECS::TrulyDisableEntity(entt::entity _entity)
 
 void ECS::TrulyEnableEntity(entt::entity _entity)
 {
+	if (!m_registry.valid(_entity))
+		return;
+
 	//assert(m_registry.try_get<Disabled>(_entity) != nullptr);
 	if (m_registry.try_get<Disabled>(_entity) == nullptr)
 		return;

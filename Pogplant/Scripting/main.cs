@@ -73,6 +73,11 @@ namespace Scripting
             return new Level1OutroCutscene();
         }
 
+        public static Level2OutroCutscene Level2OutroCutscene()
+        {
+            return new Level2OutroCutscene();
+        }
+
         public static AnimationSystem AnimationSystem()
         {
             return new AnimationSystem();
@@ -81,6 +86,21 @@ namespace Scripting
         public static MovingParts MovingParts()
         {
             return new MovingParts();
+        }
+
+        public static LevelEndCinematicBar LevelEndCinematicBar()
+        {
+            return new LevelEndCinematicBar();
+        }
+
+        public static SkyboxChanger SkyboxChanger()
+        {
+            return new SkyboxChanger();
+        }
+
+        public static SplashScreen SplashScreen()
+        {
+            return new SplashScreen();
         }
 
         //public static EnemyManager EnemyManager()
@@ -214,6 +234,11 @@ namespace Scripting
             return new L1BossBehaviour();
 		}
 
+        public static L2BossBehaviour L2BossBehaviour()
+        {
+            return new L2BossBehaviour();
+        }
+
         public static BossHitbox BossHitbox()
         {
             return new BossHitbox();
@@ -255,6 +280,16 @@ namespace Scripting
             return new CutSceneController();
         }
 
+        public static CutScene2Controller CutScene2Controller()
+        {
+            return new CutScene2Controller();
+        }
+
+        public static GameEndCutscene GameEndCutscene()
+        {
+            return new GameEndCutscene();
+        }
+
         public static BonusScoreCoin BonusScoreCoin()
         {
             return new BonusScoreCoin();
@@ -270,6 +305,10 @@ namespace Scripting
             return new HowToPlayMenu();
         }
 
+        public static HighScoreMenu HighScoreMenu()
+        {
+            return new HighScoreMenu();
+        }
         public static L2FlockController L2FlockController()
         {
             return new L2FlockController();
@@ -278,6 +317,40 @@ namespace Scripting
         public static L2TurretController L2TurretController()
         {
             return new L2TurretController();
+        }
+
+        public static SimpleMovement SimpleMovement()
+        {
+            return new SimpleMovement();
+        }
+
+        public static ActivateChildrenGravity ActivateChildrenGravity()
+        {
+            return new ActivateChildrenGravity();
+        }
+
+        public static PlayerNuke PlayerNuke()
+        {
+            return new PlayerNuke();
+        }
+
+        public static ExplosionEffect ExplosionEffect()
+        {
+            return new ExplosionEffect();
+        }
+
+        public static CorePillar CorePillar()
+        {
+            return new CorePillar();
+        }
+        public static CinematicBar CinematicBar()
+        {
+            return new CinematicBar();
+        }
+
+        public static Credits Credits()
+        {
+            return new Credits();
         }
     }
 }

@@ -314,13 +314,56 @@ namespace Components
 
 	struct Text
 	{
-		Text() = default;
-		Text(glm::vec3 Color, std::string FontID, std::string Text = "", bool Ortho = false) :
-			m_Color(Color), m_FontID(FontID), m_Text(Text), m_Ortho(Ortho) {};
+		Text():
+			m_Color{ glm::vec3(1) },
+			m_FontID{ "" },
+			m_Text{ "" },
+			m_LevelID{ "" },
+			m_PlaySpeed{ 1.0f },
+			m_Timer{ 0.0f },
+			m_Delay{ 0.0f },
+			m_IndexMin{ 0 },
+			m_IndexMax{ 0 },
+			m_CurrentIndex{ 0 },
+			m_Ortho{ false },
+			m_Center{ false },
+			m_Play{ false }
+		{
+		};
+
+		Text(glm::vec3 Color, std::string FontID, std::string Text = "", float PlaySpeed = 1.0, bool Ortho = false) :
+			m_Color{Color},
+			m_FontID{FontID},
+			m_Text{Text},
+			m_LevelID{ "" },
+			m_PlaySpeed{PlaySpeed},
+			m_Timer{0.0f},
+			m_Delay{0.0f},
+			m_IndexMin{0},
+			m_IndexMax{0},
+			m_CurrentIndex{0},
+			m_Ortho{Ortho},
+			m_Center{false},
+			m_Play{false}
+		{
+		};
+
+		void Update(float _Dt);
+		void SetSubtitle(std::string _levelID, int _Min, int _Max);
+
 		glm::vec3 m_Color;
 		std::string m_FontID;
 		std::string m_Text;
+		std::string m_LevelID;
+		float m_PlaySpeed;
+		float m_Timer;
+		float m_Delay;
+		int m_IndexMin;
+		int m_IndexMax;
+		int m_CurrentIndex;
 		bool m_Ortho;
+		bool m_Center;
+		bool m_Play;
 	};
 
 	struct Camera
@@ -494,8 +537,8 @@ namespace Components
 			bool _MoveToTarget
 		);
 
-		void Update(float _Dt, const Transform& _Transform, const glm::vec3& _CamPos);
-		void Spawn(glm::vec3 _BasePos, glm::vec3 _RandPos, glm::vec3 _Direction);
+		void Update(float _Dt, Transform& _Transform, const glm::vec3& _CamPos);
+		void Spawn(Transform& _Transform, glm::vec3 _RandPos, glm::vec3 _Direction);
 		void Clear();
 		void UpdateInstance(Particle& _Particle, float _Dt, const glm::vec3& _CamPos, const glm::mat4& _ParentMtx, bool _Parented);
 		void init();

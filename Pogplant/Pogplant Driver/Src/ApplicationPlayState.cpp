@@ -28,6 +28,9 @@ using namespace PogplantDriver;
 /******************************************************************************/
 void Application::EnterPlayState(const std::string& sceneToLoad)
 {
+	PPA::AudioEngine::Instance().ResumeAllChannelGroups();
+	PPA::AudioEngine::StopPlayingAll();
+
 	m_activeECS = &m_playECS;
 
 	PPD::ImguiHelper::RelinkECS(&m_playECS);
@@ -79,11 +82,11 @@ void Application::UpdatePlayState(float c_dt)
 
 			m_accumulatedFixedTime = 0.f;
 		}
-		else
+		else if(m_accumulatedFixedTime > m_maxFixedUpdateTime * timeMulti)
 		{
 			float timeToUpdate = m_minFixedUpdateTime * timeMulti;
 
-			while (m_accumulatedFixedTime > timeToUpdate)
+			while (m_accumulatedFixedTime > m_minFixedUpdateTime)
 			{
 				
 				m_sPhysicsSystem.Update(timeToUpdate);
@@ -94,7 +97,7 @@ void Application::UpdatePlayState(float c_dt)
 
 				PPI::InputSystem::PollEvents(timeToUpdate);
 
-				m_accumulatedFixedTime -= timeToUpdate * timeMulti;
+				m_accumulatedFixedTime -= m_minFixedUpdateTime;
 			}
 		}
 

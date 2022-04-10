@@ -99,6 +99,31 @@ namespace SSH
 		return result;
 	}
 
+
+	std::uint32_t GetParent(std::uint32_t m_id)
+	{
+		std::uint32_t result = static_cast<std::uint32_t>(ScriptSystem::GetECS()->GetParent(static_cast<entt::entity>(m_id)));
+		//assert(result != entt::null);
+
+		if (result == entt::null)
+		{
+			std::stringstream ss;
+			ss << "Unable to find entity's parent: \"" << m_id << "\"";
+			Pogplant::Logger::Log(
+				Pogplant::LogEntry{ "GetParent()", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+		}
+
+		return result;
+	}
+
+
+	std::uint32_t GetNull()
+	{
+		//no need error check lol
+
+		return static_cast<std::uint32_t>(entt::null);
+	}
+
 	void LookAt(std::uint32_t self_entityID, glm::vec3& target)
 	{
 		const auto& self_trans = ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(self_entityID));
@@ -226,6 +251,26 @@ namespace SSH
 		if (rb)
 		{
 			rb->AddForce(direction);
+		}
+	}
+
+	void RigidbodyAddImpulseForce(std::uint32_t entityID, glm::vec3 direction)
+	{
+		auto rb = ScriptSystem::GetECS()->GetReg().try_get<Components::Rigidbody>(static_cast<entt::entity>(entityID));
+
+		if (rb)
+		{
+			rb->AddImpulseForce(direction);
+		}
+	}
+
+	void RigidbodySetGravity(std::uint32_t entityID, bool boolean)
+	{
+		auto rb = ScriptSystem::GetECS()->GetReg().try_get<Components::Rigidbody>(static_cast<entt::entity>(entityID));
+
+		if (rb)
+		{
+			rb->useGravity = boolean;
 		}
 	}
 
@@ -372,6 +417,15 @@ namespace SSH
 		}
 	}
 
+	void SetCanvasAlpha(std::uint32_t entityID, float alpha)
+	{
+		auto canvas = ScriptSystem::GetECS()->GetReg().try_get<Components::Canvas>(static_cast<entt::entity>(entityID));
+		if (canvas)
+		{
+			canvas->m_Color.w = alpha;
+		}
+	}
+
 	void SetDiffuseTint(std::uint32_t entityID, glm::vec3& color)
 	{
 		auto renderer = ScriptSystem::GetECS()->GetReg().try_get<Components::Renderer>(static_cast<entt::entity>(entityID));
@@ -400,6 +454,43 @@ namespace SSH
 			Vec3Val = OldVal;
 		}
 		return Vec3Val;
+	}
+
+	void SetSubtitles(std::uint32_t entityID, MonoString* levelID, int indexMin, int indexMax)
+	{
+		auto text = ScriptSystem::GetECS()->GetReg().try_get<Components::Text>(static_cast<entt::entity>(entityID));
+		if (text)
+		{
+			std::string lvlID = mono_string_to_utf8(levelID);
+			//text->m_LevelID = lvlID;
+			//text->m_IndexMin = indexMin;
+			//text->m_IndexMax = indexMax;
+			//text->m_CurrentIndex = text->m_IndexMin;
+			text->SetSubtitle(lvlID, indexMin, indexMax);
+		}
+	}
+
+	void PlaySubtitles(std::uint32_t entityID)
+	{
+		auto text = ScriptSystem::GetECS()->GetReg().try_get<Components::Text>(static_cast<entt::entity>(entityID));
+		if (text)
+		{
+			text->m_Play = true;
+		}
+	}
+
+	void PauseSubtitles(std::uint32_t entityID)
+	{
+		auto text = ScriptSystem::GetECS()->GetReg().try_get<Components::Text>(static_cast<entt::entity>(entityID));
+		if (text)
+		{
+			text->m_Play = false;
+		}
+	}
+
+	void ChangeSkybox(MonoString* skyboxName)
+	{
+		PP::Renderer::m_CurrentSkybox = mono_string_to_utf8(skyboxName);
 	}
 
 	void SetActive(std::uint32_t entityID, bool isEnabled)
@@ -460,9 +551,19 @@ namespace SSH
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalRotation();
 	}
 
+	glm::vec3 GetRotation(std::uint32_t entityID)
+	{
+		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->m_rotation;
+	}
+
 	glm::vec3 GetGlobalScale(std::uint32_t entityID)
 	{
 		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->GetGlobalScale();
+	}
+	
+	glm::vec3 GetScale(std::uint32_t entityID)
+	{
+		return ScriptSystem::GetECS()->GetReg().try_get<Components::Transform>(static_cast<entt::entity>(entityID))->m_scale;
 	}
 
 	void SetGlobalPosition(std::uint32_t entityID, glm::vec3 pos)
@@ -495,6 +596,28 @@ namespace SSH
 	bool RayCastEntity(glm::vec3 rayOrigin, glm::vec3 rayDir, std::uint32_t entityIDToCast)
 	{
 		return PogplantDriver::Application::GetInstance().m_sPhysicsSystem.RayCastObject(rayOrigin, rayDir, static_cast<entt::entity>(entityIDToCast));
+	}
+
+	bool SphereCastEntity(glm::vec3 rayOrigin, glm::vec3 rayDir, float radius, std::uint32_t entityIDToCast)
+	{
+		return PogplantDriver::Application::GetInstance().m_sPhysicsSystem.SphereCastObject(rayOrigin, rayDir, radius, static_cast<entt::entity>(entityIDToCast));
+	}
+
+	glm::vec4 GetMovementBounds(std::uint32_t entityID)
+	{
+		auto movementBounds = PogplantDriver::Application::GetInstance().m_activeECS->GetReg().try_get<Components::MovementBounds>((entt::entity)entityID);
+
+		if (movementBounds)
+		{
+			return glm::vec4{movementBounds->minX, movementBounds->maxX, movementBounds->minY, movementBounds->maxY};
+		}
+
+		std::stringstream ss;
+		ss << "Unable to get movementBound: " << entityID;
+		Pogplant::Logger::Log(
+			Pogplant::LogEntry{ "GetMovementBounds()", Pogplant::LogEntry::LOGTYPE::ERROR, ss.str() }, true);
+
+		return glm::vec4{ 0.f, 0.f, 0.f, 0.f };
 	}
 
 	void AddComponentTransform(unsigned int id, Components::Transform transform)
@@ -549,6 +672,14 @@ namespace SSH
 			if (audio_comp)
 				audio_comp->PlayAudio(index);
 		}
+	}
+
+	void StopAudio(std::uint32_t entity, std::uint32_t index)
+	{
+		const auto& audio_comp = ScriptSystem::GetECS()->GetReg().try_get<Components::AudioSource>(static_cast<entt::entity>(entity));
+
+		if (audio_comp)
+			audio_comp->StopAudio(index);
 	}
 
 	void CreateAudioChannelGroup(MonoString* channelGroupName)

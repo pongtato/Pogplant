@@ -159,7 +159,7 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 
 				if (collisionResult)
 				{
-					std::cout << "COLLIDE: " << c_dt << std::endl;
+					//std::cout << "COLLIDE: " << c_dt << std::endl;
 					PhysicsDLC::Physics::ResolveSphereSphereDynamic(
 						c_1transform.GetGlobalPosition(),
 						c_1rigidbody,
@@ -168,7 +168,6 @@ void PhysicsSystem::HandleCollision(const entt::entity& c_1entity,
 						_2collider->sphere,
 						collisionResult,
 						c_dt);
-					//	PhysicsDLC::Physics::ResolveAABBAABBDynamic(c_1transform.m_position, c_1rigidbody, c_2rigidbody, _1collider->aabb, _2collider->aabb, collisionResult.collisionTime, c_dt);
 				}
 			}
 
@@ -285,6 +284,22 @@ void PhysicsSystem::DrawColliders()
 			cam.m_Front
 		);
 	}
+
+	auto movementBounds = m_registry->view<Components::Transform, Components::MovementBounds>();
+
+	for (auto& movementBoundObj : movementBounds)
+	{
+		auto& movementLimit = movementBounds.get<Components::MovementBounds>(movementBoundObj);
+		auto& transform = movementBounds.get<Components::Transform>(movementBoundObj);
+
+		glm::vec3 maxPtY = transform.m_ModelMtx * glm::vec4{0.f, movementLimit.maxY, 0.f, 1.f};
+		glm::vec3 maxPtX = transform.m_ModelMtx * glm::vec4{ movementLimit.maxX, 0.f, 0.f, 1.f};
+		glm::vec3 minPtY = transform.m_ModelMtx * glm::vec4{0.f, -movementLimit.minY, 0.f, 1.f};
+		glm::vec3 minPtX = transform.m_ModelMtx * glm::vec4{ -movementLimit.minX, 0.f, 0.f, 1.f};
+
+		PP::DebugDraw::DebugLine(maxPtY, minPtY);
+		PP::DebugDraw::DebugLine(maxPtX, minPtX);
+	}
 }
 
 void PhysicsSystem::SetCollisionRule(int collisionLayer1, int collisionLayer2, Components::Collider::COLLISION_RULE collisionRule)
@@ -377,6 +392,22 @@ decltype(auto) PhysicsSystem::GetTriggered(entt::entity c_triggerEntity, entt::e
 	}
 
 	return objects.second;
+}
+
+void PhysicsSystem::SetParsed(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)
+{
+	m_mTriggerPurgeMutex.lock();
+	auto objects = m_triggerPurgeList.equal_range(c_triggerEntity);
+
+	for (auto it = objects.first; it != objects.second; ++it)
+	{
+		if ((*it).second == c_triggeringEntity)
+		{
+			m_triggerPurgeList.erase(it);
+			break;
+		}
+	}
+	m_mTriggerPurgeMutex.unlock();
 }
 
 void PhysicsSystem::SetTrigger(entt::entity c_triggerEntity, entt::entity c_triggeringEntity)

@@ -1,88 +1,116 @@
 {
     "CUBEMAP": 
     [
-        {
-            "FileName"  : ["px.dds","nx.dds","py.dds","ny.dds","pz.dds","nz.dds"],
-            "Dir"       : "Resources\\Textures\\Skybox"
-        }
+      {
+        "FileName": [ "px.dds", "nx.dds", "py.dds", "ny.dds", "pz.dds", "nz.dds" ],
+        "Dir": "Resources\\Textures\\Skybox"
+      },
+      {
+        "FileName": [ "px.dds", "nx.dds", "py.dds", "ny.dds", "pz.dds", "nz.dds" ],
+        "Dir": "Resources\\Textures\\Skybox2"
+      }
     ],
 
-    "GAMMA": 
-    [
-		{
-            "FileName"  : "SpeedLines.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-		{
-            "FileName"  : "256_ExportSheet_01.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-		{
-            "FileName"  : "512_ExportSheet_01.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-		{
-            "FileName"  : "1024_ExportSheet_01.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-		{
-            "FileName"  : "2048_ExportSheet_01.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-		{
-            "FileName"  : "2048_ExportSheet_02.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
-        },
-		{
-            "FileName"  : "2048_ExportSheet_03.dds",
-            "Dir"       : "Resources/Textures/UI",
-            "Alpha"     : true
+    "GAMMA": [
+        {
+            "FileName": "SpeedLines.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
         },
         {
-            "FileName"  : "Shoot_VFX.dds",
-            "Dir"       : "Resources/Textures/VFX",
-            "Alpha"     : true
+            "FileName": "Fire_Export_01.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
         },
         {
-            "FileName"  : "DarkSmoke.dds",
-            "Dir"       : "Resources/Textures/Smoke",
-            "Alpha"     : true
+            "FileName": "Credits_Export",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
         },
         {
-            "FileName"  : "Smoke.dds",
-            "Dir"       : "Resources/Textures/Smoke",
-            "Alpha"     : true
+            "FileName": "256_ExportSheet_01.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
         },
         {
-            "FileName"  : "Smoke_E.dds",
-            "Dir"       : "Resources/Textures/Smoke",
-            "Alpha"     : true
+            "FileName": "512_ExportSheet_01.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
         },
         {
-            "FileName"  : "ParticleTest.dds",
-            "Dir"       : "Resources/Textures/Particle",
-            "Alpha"     : true
+            "FileName": "1024_ExportSheet_01.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
         },
         {
-            "FileName"  : "kekwiggle.dds",
-            "Dir"       : "Resources/Textures/SpriteAnimation",
-            "Alpha"     : false
-        },
-		{
-            "FileName"  : "Lockon.dds",
-            "Dir"       : "Resources/Textures/UI/",
-            "Alpha"     : true
+            "FileName": "1024_ExportSheet_02.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
         },
         {
-          "FileName": "BlackBG.dds",
-          "Dir": "Resources/Textures/UI/Main Menu",
-          "Alpha": true
+            "FileName": "2048_ExportSheet_01.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
+        },
+        {
+            "FileName": "2048_ExportSheet_02.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
+        },
+        {
+            "FileName": "2048_ExportSheet_03.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
+        },
+        {
+            "FileName": "2048_ExportSheet_04.dds",
+            "Dir": "Resources/Textures/UI",
+            "Alpha": true
+        },
+        {
+            "FileName": "Shoot_VFX.dds",
+            "Dir": "Resources/Textures/VFX",
+            "Alpha": true
+        },
+        {
+            "FileName": "DarkSmoke.dds",
+            "Dir": "Resources/Textures/Smoke",
+            "Alpha": true
+        },
+        {
+            "FileName": "Smoke.dds",
+            "Dir": "Resources/Textures/Smoke",
+            "Alpha": true
+        },
+        {
+            "FileName": "Smoke_E.dds",
+            "Dir": "Resources/Textures/Smoke",
+            "Alpha": true
+        },
+        {
+            "FileName": "ParticleTest.dds",
+            "Dir": "Resources/Textures/Particle",
+            "Alpha": true
+        },
+        {
+            "FileName": "kekwiggle.dds",
+            "Dir": "Resources/Textures/SpriteAnimation",
+            "Alpha": false
+        },
+        {
+            "FileName": "Lockon.dds",
+            "Dir": "Resources/Textures/UI/",
+            "Alpha": true
+        },
+        {
+            "FileName": "Credits_Export.dds",
+            "Dir": "Resources/Textures/UI/",
+            "Alpha": true
+        },
+        {
+            "FileName": "BlackBG.dds",
+            "Dir": "Resources/Textures/UI/Main Menu",
+            "Alpha": true
         }
     ],
 
@@ -105,6 +133,10 @@
       },
       {
         "FileName": "Cutscene_NarrationBoard.dds",
+        "Dir": "Resources/Textures/UI/Cutscenes"
+      },
+	        {
+        "FileName": "Cutscene2_NarrationBoard.dds",
         "Dir": "Resources/Textures/UI/Cutscenes"
       }
   ]

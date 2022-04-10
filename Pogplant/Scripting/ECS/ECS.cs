@@ -26,6 +26,12 @@ namespace Scripting
         public extern static uint FindChildEntityWithName(uint parentID, string name);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static uint GetParent(uint entity_id);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static uint GetNull();
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void GetTransformECS(uint entityID, ref Vector3 pos, ref Vector3 rot, ref Vector3 scale);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -52,7 +58,10 @@ namespace Scripting
         public extern static string GetTagECS(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static uint PlayAudio(uint entityID, uint index, string channelGroupName = "NULL");
+        public extern static void PlayAudio(uint entityID, uint index, string channelGroupName = "NULL");
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void StopAudio(uint entityID, uint index);
 
         // Set to True to enable, false to disable entity
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -63,6 +72,12 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void RigidbodyAddForce(uint entityID, Vector3 dir);
+        
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void RigidbodyAddImpulseForce(uint entityID, Vector3 dir);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void RigidbodySetGravity(uint entityID, bool boolean);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static bool CheckValidEntity(uint entityID);
@@ -102,7 +117,13 @@ namespace Scripting
         public extern static Vector3 GetGlobalRotation(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetRotation(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector3 GetGlobalScale(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector3 GetScale(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetGlobalPosition(uint entityID, Vector3 _Position);
@@ -136,6 +157,9 @@ namespace Scripting
         public extern static void SetColorTint(uint entityID, ref Vector3 Color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetCanvasAlpha(uint entityID, float alpha);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetDiffuseTint(uint entityID, ref Vector3 Color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -143,6 +167,15 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector3 GetColorTint(uint entityID, ref Vector3 Color);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void SetSubtitles(uint entityID, string levelID, int indexMin, int indexMax);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void PlaySubtitles(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void PauseSubtitles(uint entityID);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetFOV(uint entityID, float fov);
@@ -183,6 +216,9 @@ namespace Scripting
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static bool RayCastEntity(Vector3 rayOrigin, Vector3 rayDir, uint entityIDToCast);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static bool SphereCastEntity(Vector3 rayOrigin, Vector3 rayDir, float radius, uint entityIDToCast);
 
 
         public static T GetValue<T>(uint entityID, T defaultValue, string name)

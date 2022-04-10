@@ -34,7 +34,7 @@ namespace Scripting
 
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
-        public extern static void FireEnemyBullet(uint entityID, Vector3 _Position, Vector3 _Rotation, float _Speed, float _Lifetime, bool isTrue = false);
+        public extern static void FireEnemyBullet(uint entityID, Vector3 _Position, Vector3 _Rotation, float _Speed, float _Lifetime, bool isTrue = false, float scaleMultiplier = 1f);
         //[MethodImplAttribute(MethodImplOptions.InternalCall)]
         //public extern static void DebugSphere(float pos_x, float pos_y, float pos_z, float camdir_x, float camdir_y, float camdit_z, float _Radius);
 
@@ -119,6 +119,9 @@ namespace Scripting
         public extern static void UpdateTextColor(uint entityID, Vector3 color);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void UpdateText(uint entityID, string new_text);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static uint UpdateScore_AddMinus(uint text_object, uint score, bool isAdd);
 
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
@@ -127,6 +130,11 @@ namespace Scripting
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static void SetGamma(float newGamma);
 
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void MoveWithImpulse(uint obj_to_move, Vector3 dir, float speed);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void StopMoving(uint obj_to_move);
 
         /*************************************************************************/
         /*!
@@ -144,5 +152,21 @@ namespace Scripting
         /*************************************************************************/
         [MethodImplAttribute(MethodImplOptions.InternalCall)]
         public extern static Vector3 GetRayCastDirCamera(uint cameraEntityID, Vector3 screenCoordinates);
+
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static Vector4 GetMovementBounds(uint entityID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void GameSetWindowSize(int _Width, int _Height);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void GameSetFullscreen(bool _Fullscreen);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void ChangeSkybox(string levelID);
+
+        [MethodImplAttribute(MethodImplOptions.InternalCall)]
+        public extern static void UpdateShieldUI(uint entityID, uint new_text);
     }
 }

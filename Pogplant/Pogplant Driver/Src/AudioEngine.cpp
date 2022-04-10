@@ -243,6 +243,17 @@ namespace PPA
 		itr->second.second.m_setPaused = true;
 	}
 
+	void AudioEngine::ResumeAllChannelGroups()
+	{
+		auto c_instance = &AudioEngine::Instance();
+
+		for (auto& itr : c_instance->xFmod.m_channelGroupMap)
+		{
+			itr.second.first->setPaused(false);
+			itr.second.second.m_setPaused = false;
+		}
+	}
+
 	/***************************************************************************/
 	/*!
 	\brief

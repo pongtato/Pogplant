@@ -19,6 +19,8 @@ namespace SSH
 	std::uint32_t CreateChild(std::uint32_t parentID, MonoString* name, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale, MonoString* tag);
 	std::uint32_t FindEntityWithName(MonoString* name);
 	std::uint32_t FindChildEntityWithName(std::uint32_t parentID, MonoString* name);
+	std::uint32_t GetParent(std::uint32_t m_id);
+	std::uint32_t GetNull();
 	void GetTransformECS(std::uint32_t entityID, glm::vec3& pos, glm::vec3& rot, glm::vec3& scale);
 	void SetTransformECS(std::uint32_t entityID, glm::vec3 pos, glm::vec3 rot, glm::vec3 scale);
 	void SetTransformParent(std::uint32_t childID, std::uint32_t parentID);
@@ -30,6 +32,8 @@ namespace SSH
 	glm::vec3 GetVelocity(std::uint32_t entityID);
 	void SetVelocity(std::uint32_t entityID, glm::vec3 velocity);
 	void RigidbodyAddForce(std::uint32_t entityID, glm::vec3 direction);
+	void RigidbodyAddImpulseForce(std::uint32_t entityID, glm::vec3 direction);
+	void RigidbodySetGravity(std::uint32_t entityID, bool boolean);
 	void GetCamera(std::uint32_t entityID, float& yaw, float& pitch, float& roll);
 	void SetCamera(std::uint32_t entityID, float yaw, float pitch, float roll);
 	void SetPosition(std::uint32_t entityID, glm::vec3 pos);
@@ -45,11 +49,18 @@ namespace SSH
 	void ResetLaser(std::uint32_t entityID);
 	//Canvas Component
 	void SetFrames(std::uint32_t entityID, int frameValue);
+	void SetCanvasAlpha(std::uint32_t entityID, float alpha);
 	void SetColorTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
 	void SetDiffuseTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
 	void SetEmissiveTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
 	glm::vec3 GetColorTint(std::uint32_t entityID, glm::vec3& color); //Does not get the alpha
 
+	// Text Component
+	void SetSubtitles(std::uint32_t entityID, MonoString* levelID, int indexMin, int indexMax);
+	void PlaySubtitles(std::uint32_t entityID);
+	void PauseSubtitles(std::uint32_t entityID);
+
+	void ChangeSkybox(MonoString* skyboxName);
 
 	// True is enabled, False is disabled
 	void SetActive(std::uint32_t entityID, bool isEnabled);
@@ -63,6 +74,7 @@ namespace SSH
 	void LookAtDirectionalVector(std::uint32_t self_entityID, glm::vec3& directionalVector);
 	glm::vec3 GetUpVector(std::uint32_t self_entityID);
 	void PlayAudio(std::uint32_t entity, std::uint32_t index, MonoString* channelGroupName = nullptr);
+	void StopAudio(std::uint32_t entity, std::uint32_t index);
 	void CreateAudioChannelGroup(MonoString* channelGroupName);
 	void PauseAudioChannelGroup(MonoString* channelGroupName);
 	void ResumeAudioChannelGroup(MonoString* channelGroupName);
@@ -76,12 +88,16 @@ namespace SSH
 
 	glm::vec3 GetGlobalPosition(std::uint32_t entityID);
 	glm::vec3 GetGlobalRotation(std::uint32_t entityID);
+	glm::vec3 GetRotation(std::uint32_t entityID);
 	glm::vec3 GetGlobalScale(std::uint32_t entityID);
+	glm::vec3 GetScale(std::uint32_t entityID);
 	void SetGlobalPosition(std::uint32_t entityID, glm::vec3 pos);
 	void SetGlobalRotation(std::uint32_t entityID, glm::vec3 rot);
 	void SetGlobalScale(std::uint32_t entityID, glm::vec3 scale);
 	glm::vec3 GetForwardVector(std::uint32_t entityID);
 	bool RayCastEntity(glm::vec3 rayOrigin, glm::vec3 rayDir, std::uint32_t entityIDToCast);
+	bool SphereCastEntity(glm::vec3 rayOrigin, glm::vec3 rayDir, float radius, std::uint32_t entityIDToCast);
+	glm::vec4 GetMovementBounds(std::uint32_t entityID);
 
 	// Components for GambObject
 	void AddComponentTransform(unsigned int id, Components::Transform transform);
@@ -124,11 +140,26 @@ namespace SSH
 		return PPU::CustomSaver::template GetValue<T>(key, defaultValue, loadFromDocuments);
 	}
 
+	inline static MonoString* CustomSaverGetValueMonoString(MonoString* monoKey, MonoString* defaultValue, bool loadFromDocuments)
+	{
+		const char* key = mono_string_to_utf8(monoKey);
+		const char* defaultStrValue = mono_string_to_utf8(defaultValue);
+
+		return mono_string_new(mono_domain_get(), PPU::CustomSaver::GetValue<std::string>(key, defaultStrValue, loadFromDocuments).c_str());
+	}
+
 	template <typename T>
 	inline static void CustomSaverSetValueMono(MonoString* monoKey, T value, bool saveToDocuments)
 	{
 		const char* key = mono_string_to_utf8(monoKey);
 		PPU::CustomSaver::template Append<T>(key, value, saveToDocuments);
+	}
+
+	inline static void CustomSaverSetValueMonoString(MonoString* monoKey, MonoString* value, bool saveToDocuments)
+	{
+		const char* key = mono_string_to_utf8(monoKey);
+		const char* strValue = mono_string_to_utf8(value);
+		PPU::CustomSaver::Append<std::string>(key, strValue, saveToDocuments);
 	}
 
 	MonoMethod* FindMethod(MonoClass* klass, const std::string& methodName, int params);

@@ -1,0 +1,213 @@
+[
+	{
+		"Children" : 3,
+		"Guid" : 
+		{
+			"m_guid" : "421b11bb-886c-463c-a149-6cece48ab115"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Level2_SegmentTriggers",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Level2_SegmentTriggers.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "41e99eb4-89dd-47bb-ba97-3b467cdc5e6b",
+			"prefab_path" : "Resources\\Prefabs\\Level2_SegmentTriggers.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "WAVETRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				10.0,
+				1.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_5",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Level2_SegmentTriggers.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Level2_SegmentFive"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				12.651065826416016,
+				-130.35838317871094,
+				-329.46307373046875
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "WAVETRIGGERS",
+			"extends" : 
+			[
+				10.0,
+				1.0,
+				10.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_4",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Level2_SegmentTriggers.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Level2_SegmentFour"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-101.36864471435547,
+				84.614753723144531,
+				-322.5133056640625
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "WAVETRIGGERS",
+			"extends" : 
+			[
+				20.0,
+				20.0,
+				5.0
+			],
+			"isStatic" : true,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Segment_2",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Level2_SegmentTriggers.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Level2_SegmentTwo"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				8.490260124206543,
+				-140.01803588867188
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	}
+]

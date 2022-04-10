@@ -19,6 +19,7 @@ namespace Scripting
 		float m_rotation_degree;
 
 		Vector3 m_rotation_value;
+		bool m_has_trigger = false;
 
 		bool m_do_once = false;
 
@@ -40,25 +41,37 @@ namespace Scripting
 			m_rotation_speed = ECS.GetValue<float>(entityID, 1.0f, "Rotation_speed");
 			m_rotation_axis = ECS.GetValue<Vector3>(entityID, new Vector3(0, 1, 0), "Rotation_axis");
 			m_rotation_degree = ECS.GetValue<float>(entityID, 69.0f, "Rotation_degree");
+			m_has_trigger = ECS.GetValue<bool>(entityID, false, "Rotation_has_trigger");
 		}
 
-		public override void Update(float dt)
-		{
+		//just to make code look cleaner
+		void TrueUpdate(ref float dt)
+        {
 			if (m_rotate_endlessly)
 			{
 				SpinObjectEndless(entityID, m_rotation_axis, m_rotation_speed, dt);
 			}
 			else
 			{
-				if(m_rotation_degree > 0.0f)
+				if (m_rotation_degree > 0.0f)
 					FixedRotation(entityID, m_rotation_axis, m_rotation_speed, dt, m_rotation_degree);
 			}
+		}
 
-            //if (m_do_once)
-            //{
-            //    Console.WriteLine(entityID + " Has be activated");
-            //    m_do_once = false;
-            //}
+		public override void Update(float dt)
+		{
+			if(m_has_trigger)
+            {
+                //wait for trigger to be activated
+                if (m_do_once)
+                {
+					TrueUpdate(ref dt);
+				}
+			}
+			else
+            {
+				TrueUpdate(ref dt);
+			}
         }
 
 		void SpinObjectEndless(uint id, Vector3 axis, float spin_speed, float dt)
@@ -106,6 +119,7 @@ namespace Scripting
 		public void EnableLogic()
 		{
 			m_do_once = true;
+			Console.WriteLine("called");
 		}
 	}
 }

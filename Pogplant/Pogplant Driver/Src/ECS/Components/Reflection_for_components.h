@@ -39,7 +39,9 @@ namespace Components
 			.property("m_Color", &Text::m_Color)
 			.property("m_FontID", &Text::m_FontID)
 			.property("m_Text", &Text::m_Text)
-			.property("m_Ortho", &Text::m_Ortho);
+			.property("m_PlaySpeed", &Text::m_PlaySpeed)
+			.property("m_Ortho", &Text::m_Ortho)
+			.property("m_Center", &Text::m_Center);
 
 		rttr::registration::class_<Rigidbody>("Rigidbody")
 			.property("mass", &Rigidbody::mass)
@@ -159,6 +161,12 @@ namespace Components
 				rttr::value("BURST", ParticleSystem::EMITTER_TYPE::BURST),
 				rttr::value("CONE", ParticleSystem::EMITTER_TYPE::CONE)
 			);
+
+		rttr::registration::class_<MovementBounds>("MovementBounds")
+			.property("maxX", &MovementBounds::maxX)
+			.property("minX", &MovementBounds::minX)
+			.property("maxY", &MovementBounds::maxY)
+			.property("minY", &MovementBounds::minY);
 	}
 }
 

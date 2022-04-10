@@ -38,10 +38,17 @@ namespace Scripting
  
             AddTurretGroup("GatlingTurretGroup1");
             AddTurretGroup("GatlingTurretGroup2");
+            AddTurretGroup("GatlingTurretGroup3");
+            AddTurretGroup("GatlingTurretGroup4");
+            AddTurretGroup("GatlingTurretGroup5");
 
             AddTurretGroup("TurretGroup1");
             AddTurretGroup("TurretGroup2");
             AddTurretGroup("TurretGroup3");
+            AddTurretGroup("TurretGroup4");
+            AddTurretGroup("TurretGroup5");
+            AddTurretGroup("TurretGroup6");
+            AddTurretGroup("TurretGroup7");
         }
 
         public override void Start()

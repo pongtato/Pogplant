@@ -135,14 +135,14 @@ namespace Scripting
                 transform.Position += (Vector3.Lerp(waypoints[current_waypoint_index - 1].Position, waypoints[current_waypoint_index].Position, alpha) - transform.Position) * translation_lerpSpeed * dt;
                 ECS.SetTransformECS(entityID, transform.Position, transform.Rotation, transform.Scale);
 
-                float rotation_lerp_speed = 1.5f;
+                float rotation_lerp_speed = 1.2f;
 
                 // Rotate the game object by finding a waypoint infront to look at
                 Vector3 forward = Transform.GetForwardVector(entityID);
                 Vector3 look_direction = waypoints[current_waypoint_index + lookat_waypoint_offset].Position - ECS.GetGlobalPosition(entityID);
                 Vector3 look_vector = look_direction - forward;
                 float interpolant = rotation_lerp_speed * dt / look_vector.magnitude();
-                Vector3 look_point = ECS.GetGlobalPosition(entityID) + (forward + (look_vector * interpolant));
+                Vector3 look_point = ECS.GetGlobalPosition(entityID) + (forward + (look_vector * Math.Min(interpolant, 1f)));
 
                 Transform.LookAtClamped(entityID, look_point);
             }

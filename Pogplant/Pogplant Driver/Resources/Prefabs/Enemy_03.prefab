@@ -1,5 +1,23 @@
 [
 	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "ENEMY",
+			"extends" : 
+			[
+				2.0,
+				2.0,
+				2.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
 		"Children" : 4,
 		"Guid" : 
 		{
@@ -38,7 +56,7 @@
 		},
 		"Tag" : 
 		{
-			"m_tag" : "Untagged"
+			"m_tag" : "Targetable"
 		},
 		"Transform" : 
 		{
@@ -59,6 +77,65 @@
 				0.20000000298023224,
 				0.20000000298023224,
 				0.20000000298023224
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Spinning_Disk",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_03",
+				"Resources/Models\\Enemy",
+				"Spinning_Disk"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				-0.95851993560791016,
+				4.76837158203125e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
 			]
 		}
 	},
@@ -240,6 +317,124 @@
 		}
 	},
 	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Mohawk",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_03",
+				"Resources/Models\\Enemy",
+				"Mohawk"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				8.9406967163085938e-08,
+				1.4248909950256348,
+				-8.6519867181777954e-07
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Alien_Arms",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_03",
+				"Resources/Models\\Enemy",
+				"Alien_Arms"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.3621978759765625,
+				0.61234688758850098,
+				0.14358304440975189
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
 		"Children" : 4,
 		"Name" : 
 		{
@@ -283,6 +478,65 @@
 				0.0,
 				0.224241703748703,
 				0.91790628433227539
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Laser_Studs",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Enemy_03",
+				"Resources/Models\\Enemy",
+				"Laser_Studs"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				8.9406967163085938e-08,
+				0.3567543625831604,
+				0.60498690605163574
 			],
 			"m_rotation" : 
 			[
@@ -476,243 +730,7 @@
 		}
 	},
 	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Laser_Studs",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_03",
-				"Resources/Models\\Enemy",
-				"Laser_Studs"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.9406967163085938e-08,
-				0.3567543625831604,
-				0.60498690605163574
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Mohawk",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_03",
-				"Resources/Models\\Enemy",
-				"Mohawk"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				8.9406967163085938e-08,
-				1.4248909950256348,
-				-8.6519867181777954e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Alien_Arms",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_03",
-				"Resources/Models\\Enemy",
-				"Alien_Arms"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.3621978759765625,
-				0.61234688758850098,
-				0.14358304440975189
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Spinning_Disk",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_03",
-				"Resources/Models\\Enemy",
-				"Spinning_Disk"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				-0.95851993560791016,
-				4.76837158203125e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 2,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Laser1",
@@ -722,21 +740,12 @@
 		{
 			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
 		},
-		"PrefabInstance" : 
-		{
-			"prefab_GUID" : "65c82dde-63b5-4184-b92d-cccbd1d029b4",
-			"prefab_path" : "Resources\\Prefabs\\Laser.prefab"
-		},
 		"Rigidbody" : 
 		{
 			"isKinematic" : false,
 			"mass" : 10.0,
 			"useGravity" : false
 		},
-		"Scripting" : 
-		{
-			"Laser" : false
-		},
 		"Tag" : 
 		{
 			"m_tag" : "Untagged"
@@ -746,8 +755,8 @@
 			"m_position" : 
 			[
 				0.0,
-				0.11869072914123535,
-				2.6828508377075195
+				0.050000004470348358,
+				2.7473115921020508
 			],
 			"m_rotation" : 
 			[
@@ -764,217 +773,6 @@
 		}
 	},
 	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserParticle",
-			"status" : true
-		},
-		"ParticleSystem" : 
-		{
-			"_EmitterType" : "GENERAL",
-			"m_BillboardAxis" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_Color" : 
-			[
-				0.93023252487182617,
-				0.11249325424432755,
-				0.11249325424432755,
-				1.0
-			],
-			"m_ConeRadiusMax" : 2.0,
-			"m_ConeRadiusMin" : 1.0,
-			"m_Delay" : 0.10000000149011612,
-			"m_FollowParent" : true,
-			"m_Force" : 
-			[
-				1.0,
-				3.0,
-				0.0
-			],
-			"m_Loop" : false,
-			"m_MaxLife" : 5.0,
-			"m_MinLife" : 2.0,
-			"m_MoveToTarget" : false,
-			"m_Play" : true,
-			"m_RandomRotate" : false,
-			"m_Scale" : 
-			{
-				"m_CurveMax" : 2.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						0.94921875
-					],
-					[
-						0.1428571492433548,
-						0.77747905254364014
-					],
-					[
-						0.28571429848670959,
-						0.56611621379852295
-					],
-					[
-						0.4285714328289032,
-						0.37651020288467407
-					],
-					[
-						0.57142859697341919,
-						0.21816849708557129
-					],
-					[
-						0.71428573131561279,
-						0.09903109073638916
-					],
-					[
-						0.8571428656578064,
-						0.025072097778320312
-					],
-					[
-						1.0,
-						0.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : 1.0
-			},
-			"m_SpawnCount" : 100,
-			"m_SpawnDirection" : 
-			[
-				0.0,
-				0.0,
-				1.0
-			],
-			"m_SpawnRadius" : 1.0,
-			"m_Speed" : 
-			{
-				"m_CurveMax" : 1.0,
-				"m_CurveMin" : 1.0,
-				"m_CurvePoints" : 
-				[
-					[
-						0.0,
-						1.0
-					],
-					[
-						0.1428571492433548,
-						1.0
-					],
-					[
-						0.28571429848670959,
-						1.0
-					],
-					[
-						0.42857146263122559,
-						1.0
-					],
-					[
-						0.57142859697341919,
-						1.0
-					],
-					[
-						0.71428573131561279,
-						1.0
-					],
-					[
-						0.85714292526245117,
-						1.0
-					],
-					[
-						1.0,
-						1.0
-					]
-				],
-				"m_MultiplierMax" : 1.0,
-				"m_MultiplierMin" : -1.0
-			},
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 1,
-				"m_FrameCounter" : 0.0,
-				"m_MaxFrames" : 1,
-				"m_Play" : true,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 1,
-				"m_Tiling" : 
-				[
-					1.0,
-					1.0
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.0
-				]
-			},
-			"m_SubDelay" : 1.0,
-			"m_SubSpawnCount" : 200,
-			"m_TargetConeScale" : 10.0,
-			"m_TargetPos" : 
-			[
-				7.5670117073540122e-43,
-				1.1024311780226917e-35,
-				7.5670117073540122e-43
-			],
-			"m_TexName" : "ParticleTest2.dds",
-			"m_Trail" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				1.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				2.0
-			],
-			"collisionLayer" : "OBSTACLES",
-			"extends" : 
-			[
-				0.5,
-				0.5,
-				10.0
-			],
-			"isStatic" : true,
-			"isTrigger" : false
-		},
 		"Children" : 1,
 		"Laser" : 
 		{
@@ -990,6 +788,70 @@
 			"m_Name" : "LaserObject",
 			"status" : true
 		},
+		"OBBBoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "OBSTACLES",
+			"extends" : 
+			[
+				1.0,
+				1.0,
+				10.0
+			],
+			"isStatic" : false,
+			"isTrigger" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				1.1175870895385742e-08,
+				19.257278442382812
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				2.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Laser" : 
+		{
+			"m_ActivateLaser" : false,
+			"m_Activetime" : 0.0,
+			"m_ChargeParticletime" : 0.0,
+			"m_Inactivetime" : 0.0,
+			"m_LaserLerptime" : 0.0,
+			"m_Spawntime" : 5.0
+		},
+		"Name" : 
+		{
+			"m_Name" : "laser",
+			"status" : true
+		},
 		"Prefab" : 
 		{
 			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
@@ -998,15 +860,15 @@
 		{
 			"ColorTint" : 
 			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
+				0.87498104572296143,
+				0.99534881114959717,
+				0.97295516729354858
 			],
 			"EmissiveTint" : 
 			[
-				1.0,
-				1.0,
-				1.0
+				0.25116276741027832,
+				0.25116026401519775,
+				0.25116026401519775
 			],
 			"RenderModel" : 
 			[
@@ -1025,67 +887,8 @@
 			"m_position" : 
 			[
 				0.0,
-				2.2351741790771484e-08,
-				-7.152557373046875e-07
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "LaserOutLine",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\Enemy_03.prefab"
-		},
-		"Render" : 
-		{
-			"ColorTint" : 
-			[
-				0.83499997854232788,
-				0.92100000381469727,
-				0.90499997138977051
-			],
-			"EmissiveTint" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			],
-			"RenderModel" : 
-			[
-				"Enemy_Laser",
-				"Resources/Models\\Enemy",
-				"Laser_Outline"
-			],
-			"UseLight" : 1
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
+				-0.049999956041574478,
+				-9.9827795028686523
 			],
 			"m_rotation" : 
 			[

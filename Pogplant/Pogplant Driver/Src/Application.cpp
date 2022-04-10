@@ -13,6 +13,10 @@
 
 #include "Serialiser/CustomSaver.h"
 
+#ifdef TRACY_ENABLE
+#include "../../Tools/Tracy/Tracy.hpp"
+#endif
+
 namespace PPD = PogplantDriver;
 using namespace Components;
 using namespace PogplantDriver;
@@ -391,6 +395,9 @@ void Application::BindEvents()
 
 void Application::UpdateTransforms(float _Dt)
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
 	//auto lol_id = m_activeECS->FindEntityWithName("Green light");
 
 	// Debug with editor cam
@@ -521,6 +528,14 @@ void Application::UpdateTransforms(float _Dt)
 		}
 	}
 
+	/// Text
+	auto textView = m_activeECS->view<Text>();
+	for (auto it : textView)
+	{
+		auto& text = textView.get<Text>(it);
+		text.Update(_Dt);
+	}
+
 	/// Canvas
 	auto canvasView = m_activeECS->view<Transform, Canvas>();
 	for (auto it : canvasView)
@@ -605,8 +620,8 @@ void Application::UpdateTransforms(float _Dt)
 	PP::TextureResource::m_Updated = true;
 
 	//delete entity in the delete set
-	m_sGeneralSystem.DisableEntities();
 	m_sGeneralSystem.EnableEntities();
+	m_sGeneralSystem.DisableEntities();
 	m_sGeneralSystem.DeleteEntities();
 }
 
@@ -633,6 +648,9 @@ void Application::UpdateModelRef(std::vector<std::string>& _EditedModels)
 
 void Application::DrawCommon()
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
 	/// For all draws
 	// If something is selected choose it to be highlighted
 	Renderer* renderOjbect = nullptr;
@@ -656,6 +674,9 @@ void Application::DrawCommon()
 
 void Application::DrawEditor()
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
 	// Models for Gpass
 	PP::Renderer::StartGBuffer();
 	PP::Renderer::ClearBuffer();
@@ -683,6 +704,9 @@ void Application::DrawEditor()
 
 void Application::DrawGame()
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
 	auto results = m_activeECS->view<Renderer>();
 
 	// Models for Gpass
@@ -712,6 +736,9 @@ void Application::DrawGame()
 
 void Application::DrawScreen()
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
 	PP::Renderer::EndBuffer();
 	PP::Renderer::ClearBuffer();
 	PP::Renderer::DrawScreen();
@@ -719,8 +746,19 @@ void Application::DrawScreen()
 
 void Application::DrawImGUI()
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
 	PP::Renderer::ClearBuffer();
 	PPD::ImguiHelper::DrawImgui();
+}
+
+void DrawFunctionForTracy()
+{
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
+	PP::Renderer::SwapBuffer();
 }
 
 /******************************************************************************/
@@ -731,6 +769,10 @@ void Application::DrawImGUI()
 /******************************************************************************/
 void Application::Run()
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
+
 	// Delta time
 	PPU::ChronoTimer<float> c_dtTimer;
 	float c_deltaTime = 0.f;
@@ -775,7 +817,8 @@ void Application::Run()
 
 		PPA::AudioEngine::Update();
 		//PPI::InputSystem::PollEvents();
-		PP::Renderer::SwapBuffer();
+
+		DrawFunctionForTracy();
 
 		if (m_nextAppState != m_appState)
 		{
@@ -819,6 +862,9 @@ void Application::Run()
 		}
 
 		c_deltaTime = c_dtTimer.getElapsedTimePrecise();
+#ifdef TRACY_ENABLE
+		FrameMark
+#endif
 	}
 }
 
@@ -827,6 +873,8 @@ void PogplantDriver::Application::LoadScene(const std::string& newScene, const s
 	m_nextAppState = APPLICATIONSTATE::NEWSCENETRANSITION;
 	m_genericFilePath = newScene;
 	m_currentSceneName = sceneName;
+
+	PPA::AudioEngine::Instance().ResumeAllChannelGroups();
 }
 
 void PogplantDriver::Application::SetSceneNameFromFilePath(const std::string& scenePath)

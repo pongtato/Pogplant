@@ -1,0 +1,258 @@
+[
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				51.0
+			],
+			"collisionLayer" : "TRIGGERS",
+			"extends" : 
+			[
+				13.5,
+				25.5,
+				0.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 2,
+		"Guid" : 
+		{
+			"m_guid" : "727a0f0d-98cb-4369-b34c-31e5527eec9d"
+		},
+		"Name" : 
+		{
+			"m_Name" : "Gate",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Gate_with_trigger.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : true,
+				"Name" : "m_Children_Single",
+				"Type" : 2
+			},
+			{
+				"Data" : "EnableLogic",
+				"Name" : "m_Children_function_name",
+				"Type" : 3
+			},
+			{
+				"Data" : 1,
+				"Name" : "m_Children_max_index_range",
+				"Type" : 1
+			},
+			{
+				"Data" : "btm_gate",
+				"Name" : "m_Children_name",
+				"Type" : 3
+			},
+			{
+				"Data" : "Rotation",
+				"Name" : "m_Children_script_name",
+				"Type" : 3
+			}
+		],
+		"Scripting" : 
+		{
+			"ActivateChildren" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				-106.42500305175781
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "btm_gate",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Gate_with_trigger.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Gate_Temp",
+				"Resources/Models\\Environment",
+				"Btm_Gate"
+			],
+			"UseLight" : 1
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : false,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : true,
+				"Data0" : 1.0,
+				"Data1" : 7.1632653899173529e-39,
+				"Data2" : 6.9795972001982991e-39,
+				"Name" : "Rotation_axis",
+				"Type" : 4
+			},
+			{
+				"Data" : 90.0,
+				"Name" : "Rotation_degree",
+				"Type" : 0
+			},
+			{
+				"Data" : true,
+				"Name" : "Rotation_has_trigger",
+				"Type" : 2
+			},
+			{
+				"Data" : false,
+				"Name" : "Rotation_rotate_endlessly",
+				"Type" : 2
+			},
+			{
+				"Data" : 100.0,
+				"Name" : "Rotation_speed",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"Rotation" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "btm_gate_sides",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\Gate_with_trigger.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				0.83499997854232788,
+				0.92100000381469727,
+				0.90499997138977051
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			],
+			"RenderModel" : 
+			[
+				"Gate_Temp",
+				"Resources/Models\\Environment",
+				"Btm_Gate_Sides"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				0.99999970197677612,
+				1.0
+			]
+		}
+	}
+]

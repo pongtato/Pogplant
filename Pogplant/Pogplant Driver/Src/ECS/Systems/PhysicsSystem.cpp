@@ -28,6 +28,10 @@
 
 #include "../../Serialiser/CustomSaver.h"
 
+#ifdef TRACY_ENABLE
+#include "../../Tools/Tracy/Tracy.hpp"
+#endif
+
 PhysicsSystem::PhysicsSystem()
 	:
 	m_registry{ nullptr },
@@ -371,6 +375,8 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 						if (collisionRule == Components::Collider::COLLISION_RULE::CR_IGNORE)
 							continue;
 
+						SetParsed(query.m_ID1, query.m_ID2);
+
 						auto objects = m_triggerList.equal_range(query.m_ID1);
 
 						bool collided = false;
@@ -662,6 +668,10 @@ void PhysicsSystem::TriggerUpdate(int threadID)
 /******************************************************************************/
 void PhysicsSystem::UpdateEditor()
 {
+#ifdef TRACY_ENABLE
+	ZoneScoped
+#endif
+
 	//Update all colliders
 	auto boxColliders = m_registry->view<Components::Transform, Components::BoxCollider>();
 	for (auto& collidable : boxColliders)
@@ -861,6 +871,8 @@ void PhysicsSystem::Update(float c_dt)
 
 	//std::cout << m_collisionQuery.m_query.size() << std::endl;
 
+	m_triggerPurgeList = m_triggerList;
+
 	//Set the other threads to update trigger behavior
 	for (size_t i = 0; i < NUM_TRIGGER_THREADS; i++)
 		m_hasTriggerJob[i]->release();
@@ -986,6 +998,31 @@ void PhysicsSystem::Update(float c_dt)
 
 		m_mTriggerQueueMutex.unlock();
 	}
+
+	//Process purge list, seems like gonna be slow
+	for (auto purgeItr : m_triggerPurgeList)
+	{
+		if (m_registry->GetReg().valid(purgeItr.first) && m_registry->GetReg().valid(purgeItr.second))
+			m_eventBus->emit(
+				std::make_shared<PPE::OnTriggerExitEvent>(
+					purgeItr.first,
+					purgeItr.second
+					)
+			);
+
+		auto objects = m_triggerList.equal_range(purgeItr.first);
+
+		for (auto it = objects.first; it != objects.second; ++it)
+		{
+			if ((*it).second == purgeItr.second)
+			{
+				m_triggerList.erase(it);
+				break;
+			}
+		}
+
+		break;
+	}
 }
 
 /******************************************************************************/
@@ -1107,6 +1144,31 @@ bool PhysicsSystem::RayCastObject(const glm::vec3& pos, const glm::vec3& dir, en
 	{
 		float castTime;
 		return PhysicsDLC::Collision::RaySphere(ray, sphereCollider->sphere, castTime);
+	}
+
+	return false;
+}
+
+bool PhysicsSystem::SphereCastObject(const glm::vec3& pos, const glm::vec3& dir, float radius, entt::entity entityToCast)
+{
+	if (!m_registry->GetReg().valid(entityToCast))
+	{
+		std::cout << "SphereCastObject: You casted an invalid entity!" << std::endl;
+		return false;
+	}
+
+	auto boxCollider = m_registry->GetReg().try_get<Components::BoxCollider>(entityToCast);
+	auto sphereCollider = m_registry->GetReg().try_get<Components::SphereCollider>(entityToCast);
+
+	if (boxCollider)
+	{
+		float castTime;
+		return PhysicsDLC::Collision::SphereCastAABB(pos, dir, radius, boxCollider->aabb.m_min, boxCollider->aabb.m_max, castTime);
+	}
+	else if (sphereCollider)
+	{
+		float castTime;
+		return PhysicsDLC::Collision::SphereCastSphere(pos, dir, radius, sphereCollider->sphere.m_pos, sphereCollider->sphere.m_radius, castTime);
 	}
 
 	return false;

@@ -14,7 +14,7 @@ void main()
     vec4 hdrColor = texture(scene, TexCoords);      
     vec4 bloomColor = texture(bloomBlur, TexCoords);
     vec4 debugColor = texture(debug, TexCoords);
-  
+
     if(bloom)
     {
         hdrColor += bloomColor;
@@ -24,9 +24,7 @@ void main()
     {
         outColor = vec4(hdrColor.rgb, 1.0);
     }
-
-    //outColor = bloomColor;
-
+    
     if(length(debugColor.rgb) > 0)
     {
         outColor = debugColor;

@@ -52,10 +52,17 @@
     <Compile Include="ECS\ECS.cs" />
     <Compile Include="ECS\GameObject.cs" />
     <Compile Include="MonoScripts\ActivateChildren.cs" />
+    <Compile Include="MonoScripts\ActivateChildrenGravity.cs" />
     <Compile Include="MonoScripts\AnimationSystem.cs" />
     <Compile Include="MonoScripts\BonusItem.cs" />
     <Compile Include="MonoScripts\BonusScoreCoin.cs" />
     <Compile Include="MonoScripts\BossHitbox.cs" />
+    <Compile Include="MonoScripts\CorePillar.cs" />
+    <Compile Include="MonoScripts\Credits.cs" />
+    <Compile Include="MonoScripts\ExplosionEffect.cs" />
+    <Compile Include="MonoScripts\GameEndCutscene.cs" />
+    <Compile Include="MonoScripts\L2BossBehaviour.cs" />
+    <Compile Include="MonoScripts\CutScene2Controller.cs" />
     <Compile Include="MonoScripts\CutSceneController.cs" />
     <Compile Include="MonoScripts\EndGameMenuTrigger.cs" />
     <Compile Include="MonoScripts\ExplosiveEnemy.cs" />
@@ -68,14 +75,22 @@
     <Compile Include="MonoScripts\L2FlockController.cs" />
     <Compile Include="MonoScripts\L2TurretController.cs" />
     <Compile Include="MonoScripts\Level1OutroCutscene.cs" />
+    <Compile Include="MonoScripts\Level2OutroCutscene.cs" />
+    <Compile Include="MonoScripts\LevelEndCinematicBar.cs" />
     <Compile Include="MonoScripts\MovingParts.cs" />
+    <Compile Include="MonoScripts\PlayerNuke.cs" />
     <Compile Include="MonoScripts\Rotation.cs" />
     <Compile Include="MonoScripts\SettingsMenu.cs" />
     <Compile Include="MonoScripts\GameEndingTrigger.cs" />
+    <Compile Include="MonoScripts\SimpleMovement.cs" />
+    <Compile Include="MonoScripts\SkyboxChanger.cs" />
+    <Compile Include="MonoScripts\SplashScreen.cs" />
     <Compile Include="MonoScripts\TetherEnemy.cs" />
     <Compile Include="MonoScripts\TriggerAudioPlay.cs" />
     <Compile Include="PauseScripts\BobbleHeadMenu.cs" />
+    <Compile Include="PauseScripts\CinematicBar.cs" />
     <Compile Include="PauseScripts\EndGameMenu.cs" />
+    <Compile Include="PauseScripts\HighScoreMenu.cs" />
     <Compile Include="PauseScripts\HowToPlayMenu.cs" />
     <Compile Include="PauseScripts\PauseMenu.cs" />
     <Compile Include="PauseScripts\PauseSettingsMenu.cs" />
@@ -116,6 +131,7 @@
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MonoScripts\PlayerScript.cs" />
+    <Compile Include="Utilities\Vector4.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,7 +1,7 @@
 #version 450 core
 
-layout (location = 3) out vec4 FragColor;
-layout (location = 5) out vec4 gShaft;
+layout (location = 5) out vec4 FragColor;
+layout (location = 3) out vec4 gShaft;
 
 in vec3 TexCoords;
 

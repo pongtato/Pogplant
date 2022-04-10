@@ -31,6 +31,6 @@ void main()
     }
     else
     {
-         FragColor = vec4(textColor, opacity);
+        FragColor = vec4(textColor, opacity);
     }
 }

@@ -48,6 +48,8 @@ namespace Pogplant
 	// Hard fix for shadows, good angle for minimal artifacts
 	const glm::vec3 lightDir = glm::normalize(glm::vec3(10.0f, 20.0f, 10.0f));
 
+	std::string Renderer::m_CurrentSkybox = "Skybox";
+
 	/// QUAT TEST
 	glm::vec3 Renderer::m_QuatTestPos = glm::vec3{ 0 };
 	glm::vec3 Renderer::m_QuatTestRot = glm::vec3{ 0 };
@@ -229,6 +231,14 @@ namespace Pogplant
 			sample *= scale;
 			m_AOKernel.push_back(sample);
 		}
+
+		ShaderLinker::Use("SSAO");
+		// Send kernel + rotation 
+		for (unsigned int i = 0; i < m_AOKernel.size(); ++i)
+		{
+			ShaderLinker::SetUniform(("v3_Samples[" + std::to_string(i) + "]").c_str(), m_AOKernel[i]);
+		}
+		ShaderLinker::UnUse();
 	}
 
 	void Renderer::StartEditorBuffer()
@@ -253,16 +263,10 @@ namespace Pogplant
 
 	void Renderer::AOPass(entt::registry& registry, bool _EditorMode)
 	{
+		ShaderLinker::Use("SSAO");
 		FrameBuffer::BindFrameBuffer(BufferType::SSAO_BUFFER);
 		glClear(GL_COLOR_BUFFER_BIT);
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
-		ShaderLinker::Use("SSAO");
-		// Send kernel + rotation 
-		for (unsigned int i = 0; i < m_AOKernel.size(); ++i)
-		{
-			ShaderLinker::SetUniform(("v3_Samples[" + std::to_string(i) + "]").c_str(), m_AOKernel[i]);
-		}
-
 		ShaderLinker::SetUniform("v2_Noise", { static_cast<float>(Window::m_Width) * 0.25f, static_cast<float>(Window::m_Height) * 0.25f });
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", glm::transpose(glm::inverse(ret.m_View)));
@@ -334,7 +338,6 @@ namespace Pogplant
 		ShaderLinker::SetUniform("Exposure", m_Exposure);
 		ShaderLinker::SetUniform("Gamma", m_Gamma);
 		ShaderLinker::SetUniform("Shadows", m_EnableShadows);
-
 
 		//// Editor cam by default;
 		CameraReturnData ret = GetCurrentCamera(registry, _EditorMode);
@@ -604,7 +607,7 @@ namespace Pogplant
 		glm::mat4 skyboxView = glm::mat4(glm::mat3(ret.m_View));
 		ShaderLinker::SetUniform("m4_Projection", ret.m_Projection);
 		ShaderLinker::SetUniform("m4_View", skyboxView);
-		Skybox::Draw(TextureResource::m_TexturePool["Skybox"]);
+		Skybox::Draw(TextureResource::m_TexturePool[m_CurrentSkybox]);
 		ShaderLinker::UnUse();
 		glDepthFunc(GL_LESS);
 
@@ -821,19 +824,33 @@ namespace Pogplant
 			// Use this as the basis for all offsets
 			const  auto& refChar = currFont->m_Font['A'];
 			const float yOffset = -(refChar.m_Size.y - refChar.m_Offsets.y);
+
+			// Centering
+			float size = 0;
+			float accumulate = 0;
+			if (it_Text.m_Center)
+			{
+				// Get Size
+				for (const auto& it : it_Text.m_Text)
+				{
+					const auto& currChar = currFont->m_Font[it];
+					float x = accumulate + currChar.m_Offsets.x;
+					accumulate += currChar.m_Advance;
+					size = x + currChar.m_Size.x;
+				}
+				size *= 0.5f;
+			}
+
 			for (const auto& it : it_Text.m_Text)
 			{
 				const auto& currChar = currFont->m_Font[it];
 				ShaderLinker::SetUniform("offset", currChar.m_TexCoords);
 
-				const float xPos = xAccumulate + currChar.m_Offsets.x;
-				float yPos = -(currChar.m_Size.y - currChar.m_Offsets.y) - yOffset;
+				const float xPos = xAccumulate + currChar.m_Offsets.x - size;
+				const float yPos = -(currChar.m_Size.y - currChar.m_Offsets.y) - yOffset;
 				//const float yPos = 0.0f; // By line
 
-				const float width = currChar.m_Size.x;
-				const float height = currChar.m_Size.y;
-
-				MeshBuilder::RebindTextQuad(xPos, yPos, width, height, currChar.m_Size.x, currChar.m_Size.y);
+				MeshBuilder::RebindTextQuad(xPos, yPos, currChar.m_Size.x, currChar.m_Size.y, currChar.m_Size.x, currChar.m_Size.y);
 
 				/// Draw
 				glBindVertexArray(MeshResource::m_MeshPool[MeshResource::MESH_TYPE::TEXT_QUAD]->m_VAO);

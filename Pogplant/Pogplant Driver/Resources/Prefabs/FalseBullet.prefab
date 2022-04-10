@@ -1,5 +1,14 @@
 [
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Enemy\\SFX_EnemyBulletFollowLoop1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -11,10 +20,11 @@
 			"collisionLayer" : "ENEMY PROJECTILES",
 			"extends" : 
 			[
-				0.035000000149011612,
-				0.035000000149011612,
-				0.035000000149011612
+				0.30000001192092896,
+				0.30000001192092896,
+				0.30000001192092896
 			],
+			"isStatic" : false,
 			"isTrigger" : true
 		},
 		"Guid" : 
@@ -23,11 +33,17 @@
 		},
 		"Name" : 
 		{
-			"m_Name" : "False_Bullet"
+			"m_Name" : "False_Bullet",
+			"status" : true
 		},
 		"Prefab" : 
 		{
 			"file_path" : "Resources\\Prefabs\\FalseBullet.prefab"
+		},
+		"PrefabInstance" : 
+		{
+			"prefab_GUID" : "ca7f686f-7c23-4d11-b4e1-ee08e594f88c",
+			"prefab_path" : "Resources\\Prefabs\\FalseBullet.prefab"
 		},
 		"Render" : 
 		{

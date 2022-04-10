@@ -9,7 +9,7 @@ namespace Scripting
     public class EndGameMenuTrigger : MonoBehaviour
     {
         uint m_PlayerID;
-        uint m_EndMenuControllerID;
+        static uint m_EndMenuControllerID;
         // End Game Menu
         static public bool m_EnableEndGameMenu = false;
 
@@ -36,15 +36,19 @@ namespace Scripting
         {
         }
 
+        public static void EnableEndGameMenu()
+        {
+            m_EnableEndGameMenu = true;
+            ECS.SetActive(m_EndMenuControllerID, true);
+            GameUtilities.PauseScene();
+        }
+
         public override void OnTriggerEnter(uint id)
         {
             // On Player Collision
             if (id == m_PlayerID)
             {
                 Console.WriteLine("Level Clear");
-                m_EnableEndGameMenu = true;
-                ECS.SetActive(m_EndMenuControllerID, true);
-                GameUtilities.PauseScene();
             }
         }
         public override void OnTriggerExit(uint id)

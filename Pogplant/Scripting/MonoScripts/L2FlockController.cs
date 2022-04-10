@@ -40,7 +40,8 @@ namespace Scripting
             //Change speed inside editor
             AddFlockGroup("FlockGroup1");
             AddFlockGroup("FlockGroup2");
-
+            AddFlockGroup("FlockGroup3");
+            AddFlockGroup("FlockGroup4");
 
         }
 

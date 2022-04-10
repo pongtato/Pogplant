@@ -189,4 +189,50 @@ namespace PPU
 
 		return defaultValue;
 	}
+
+
+	/**************************************************************************/
+	/*!
+	\brief
+		Attempts to get a uint from the save file with the key
+
+	\param key
+		The key of the item
+
+	\param defaultValue
+		The default value to be returned if the key is not found
+
+	\param loadFromDocuments
+		If true, will load the data from the save file in documents folder,
+		otherwise, will load from internal.pog in Resources
+
+	\return
+		Returns the value from the save file, if not found returns default
+	*/
+	/**************************************************************************/
+	template <>
+	unsigned int CustomSaver::GetValue<unsigned int>(const std::string& key, const unsigned int& defaultValue, bool loadFromDocuments)
+	{
+		auto& instance = Instance();
+
+		if (loadFromDocuments)
+		{
+			if (instance.m_documentJson[key])
+				return instance.m_documentJson[key].asUInt();
+		}
+		else
+		{
+			if (instance.m_internalJson[key])
+				return instance.m_internalJson[key].asUInt();
+		}
+
+		std::stringstream ss;
+
+		ss << "Unable to load key: " << key;
+
+		Pogplant::Logger::Log(
+			Pogplant::LogEntry{ "CustomSaver::GetValue<uint>", Pogplant::LogEntry::LOGTYPE::WARNING, ss.str() }, true);
+
+		return defaultValue;
+	}
 }

@@ -53,6 +53,18 @@ namespace Components
 		Laser(float Spawntime = 5.f, float Activetime = 0.f, float Inactivetime = 0.f, float ChargeParticletime = 0.f, float LaserLerptime = 0.f) :
 			m_Spawntime(Spawntime), m_Activetime(Activetime), m_Inactivetime(Inactivetime), m_ChargeParticletime(ChargeParticletime), m_LaserLerptime(LaserLerptime) {};
 	};
+
+	struct MovementBounds
+	{
+		//Editor
+		bool m_drawBounds = true;
+		
+		//Other
+		float maxX = 1.f;
+		float minX = 1.f;
+		float maxY = 1.f;
+		float minY = 1.f;
+	};
 }
 
 #endif // !GENERICCOMPONENTS_H_

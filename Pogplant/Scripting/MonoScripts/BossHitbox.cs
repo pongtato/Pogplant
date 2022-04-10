@@ -30,10 +30,22 @@ namespace Scripting
 		public uint mID_playerShip;
 		public int m_damageAmount = 50;
 		public bool m_damageHitBox = false;
+		public bool m_hitboxHitScan = false;
+		public float m_hitScanThickness;
+		public bool m_applySucc = false;
+		public bool m_applyForceOnHit = false;
+		public Vector3 m_forceDirection;
+		float m_succForce;
+		float m_initialSuccForce;
 
 		public Vector3 m_cameraShakeInitMul;
 		public Vector3 m_cameraShakeMag;
 		public float m_cameraShakeDuration;
+
+		public float m_vibrationForce;
+		public float m_vibrationDuration;
+
+		List<uint> m_collidedList = new List<uint>();
 
 		public override void Init(ref uint _entityID)
 		{
@@ -46,9 +58,20 @@ namespace Scripting
 			m_coreNumber = ECS.GetValue<int>(entityID, 0, "CoreNumber");
 			m_damageAmount = ECS.GetValue<int>(entityID, 50, "DamageAmount");
 			m_damageHitBox = ECS.GetValue<bool>(entityID, false, "IsHitbox");
+			m_hitboxHitScan = ECS.GetValue<bool>(entityID, false, "IsHitScan");
+			m_hitScanThickness = ECS.GetValue<float>(entityID, 0.1f, "HitScanThickness");
+			m_applyForceOnHit = ECS.GetValue<bool>(entityID, false, "ApplyForce");
+			m_forceDirection = ECS.GetValue<Vector3>(entityID, new Vector3(0.0f, -100f, 0.0f), "ForceDirection");
 
-			m_cameraShakeInitMul = ECS.GetValue<Vector3>(entityID, new Vector3(0.5f, 0.5f, 0.5f), "CameraShakeInit");
-			m_cameraShakeMag = ECS.GetValue<Vector3>(entityID, new Vector3(8f, 8f, 8f), "CameraShakeMag");
+			m_applySucc = ECS.GetValue<bool>(entityID, false, "ApplySucc");
+			m_succForce = ECS.GetValue<float>(entityID, 10f, "SuccForce");
+			m_initialSuccForce = ECS.GetValue<float>(entityID, 20f, "SuccForceInit");
+
+			m_vibrationDuration = ECS.GetValue<float>(entityID, 0.2f, "VibrationForce");
+			m_vibrationForce = ECS.GetValue<float>(entityID, 1.0f, "VibrationDuration");
+
+			m_cameraShakeInitMul = ECS.GetValue<Vector3>(entityID, new Vector3(0.6f, 0.6f, 0.4f), "CameraShakeInit");
+			m_cameraShakeMag = ECS.GetValue<Vector3>(entityID, new Vector3(10f, 10f, 10f), "CameraShakeMag");
 			m_cameraShakeDuration = ECS.GetValue<float>(entityID, 1f, "CameraShakeDuration");
 
 			mID_playerShip = ECS.FindEntityWithName("PlayerShip");
@@ -61,19 +84,73 @@ namespace Scripting
 
 		public override void LateUpdate(float dt)
 		{
+			for(int i = 0; i < m_collidedList.Count(); ++i)
+			{
+				if(ECS.CheckValidEntity(m_collidedList[i]))
+				{
+					if (m_applySucc)
+						ECS.RigidbodyAddForce(m_collidedList[i], (ECS.GetGlobalPosition(entityID) - ECS.GetGlobalPosition(m_collidedList[i])) * m_succForce);
+					else if (m_hitboxHitScan)
+					{
+						if(ECS.SphereCastEntity(ECS.GetGlobalPosition(entityID), Transform.GetForwardVector(entityID), m_hitScanThickness, m_collidedList[i]))
+						{
+							m_collidedList.RemoveAt(i);
+							--i;
 
+							PlayerScript.m_singleton.TriggerCameraShake(
+							new Vector3(m_cameraShakeInitMul.X, m_cameraShakeInitMul.Y, m_cameraShakeInitMul.Z),
+							new Vector3(m_cameraShakeMag.X, m_cameraShakeMag.Y, m_cameraShakeMag.Z),
+							m_cameraShakeDuration);
+
+							PlayerScript.AddScore(false, false, (uint)m_damageAmount);
+
+							//Add controller vibration
+							InputUtility.VibrateControllerHeavyMotor(m_vibrationForce, m_vibrationDuration);
+						}
+					}
+				}
+				else
+				{
+					m_collidedList.RemoveAt(i);
+					--i;
+				}
+			}
 		}
 
 		public override void OnTriggerEnter(uint id)
 		{
-			PPMath.RandomFloat(-5f, 5f);
-			if (m_damageHitBox && id == mID_playerShip)
+			if (m_damageHitBox)
 			{
-				PlayerScript.m_singleton.TriggerCameraShake(
-					new Vector3(PPMath.RandomFloat(-m_cameraShakeInitMul.X, m_cameraShakeInitMul.X), PPMath.RandomFloat(-m_cameraShakeInitMul.Y, m_cameraShakeInitMul.Y), PPMath.RandomFloat(-m_cameraShakeInitMul.Z, m_cameraShakeInitMul.Z)),
-					new Vector3(PPMath.RandomFloat(-m_cameraShakeMag.X, m_cameraShakeMag.X), PPMath.RandomFloat(-m_cameraShakeMag.Y, m_cameraShakeMag.Y), PPMath.RandomFloat(-m_cameraShakeMag.Z, m_cameraShakeMag.Z)),
-					m_cameraShakeDuration);
-				PlayerScript.AddScore(false, false, (uint)m_damageAmount);
+				if (id == mID_playerShip)
+				{
+					if(m_hitboxHitScan)
+					{
+						m_collidedList.Add(id);
+					}
+					else
+					{
+						PlayerScript.m_singleton.TriggerCameraShake(
+						new Vector3(m_cameraShakeInitMul.X, m_cameraShakeInitMul.Y, m_cameraShakeInitMul.Z),
+						new Vector3(m_cameraShakeMag.X, m_cameraShakeMag.Y, m_cameraShakeMag.Z),
+						m_cameraShakeDuration);
+						PlayerScript.AddScore(false, false, (uint)m_damageAmount);
+
+						//Add controller vibration
+						InputUtility.VibrateControllerHeavyMotor(m_vibrationForce, m_vibrationDuration);
+					}
+				}
+
+				if (m_applyForceOnHit)
+				{
+					ECS.RigidbodyAddImpulseForce(id, m_forceDirection);
+				}
+
+				if (m_applySucc)
+				{
+					m_collidedList.Add(id);
+
+					ECS.RigidbodyAddImpulseForce(id, (ECS.GetGlobalPosition(entityID) - ECS.GetGlobalPosition(id)) * m_initialSuccForce);
+				}
 			}
 			else
 			{
@@ -89,13 +166,31 @@ namespace Scripting
 							case 1:
 								L1BossBehaviour.m_singleton?.DamageRightCore(1f);
 								break;
+							default:
+								Console.WriteLine("BossHitbox.cs: Lvl1 Unknown core number");
+								break;
+						}
+					}
+					break;
+
+					case 2:
+					{
+						switch (m_coreNumber)
+						{
+							case 0:
+								L2BossBehaviour.m_singleton?.DamageLeftCore(1f);
+								break;
+							case 1:
+								L2BossBehaviour.m_singleton?.DamageRightCore(1f);
+								break;
 							case 2:
-							{
 
 								break;
-							}
+							case 3:
+
+								break;
 							default:
-								Console.WriteLine("BossHitbox.cs: Unknown core number");
+								Console.WriteLine("BossHitbox.cs: Lvl2 Unknown core number");
 								break;
 						}
 					}
@@ -110,7 +205,10 @@ namespace Scripting
 
 		public override void OnTriggerExit(uint id)
 		{
-
+			if(m_damageHitBox && (m_applySucc || (m_hitboxHitScan && id == mID_playerShip)))
+			{
+				m_collidedList.Remove(id);
+			}
 		}
 	}
 }

@@ -417,7 +417,7 @@ namespace Components
 		m_CurrentLifetime = 0.0f;
 	}
 
-	void ParticleSystem::Update(float _Dt, const Transform& _Transform, const glm::vec3& _CamPos)
+	void ParticleSystem::Update(float _Dt, Transform& _Transform, const glm::vec3& _CamPos)
 	{
 		if (!m_Play || m_Pause)
 		{
@@ -438,7 +438,7 @@ namespace Components
 			{
 				m_Timer = 0.0f;
 
-				Spawn(_Transform.m_position, glm::sphericalRand(m_SpawnRadius), m_SpawnDirection);
+				Spawn(_Transform, glm::sphericalRand(m_SpawnRadius), m_SpawnDirection);
 			}
 			break;
 		case ParticleSystem::EMITTER_TYPE::BURST:
@@ -456,7 +456,7 @@ namespace Components
 
 					for (int i = 0; i < m_SpawnCount; i++)
 					{
-						Spawn(_Transform.m_position, glm::vec3{ 0 }, glm::sphericalRand(1.0f));
+						Spawn(_Transform, glm::vec3{ 0 }, glm::sphericalRand(1.0f));
 					}
 				}
 			}
@@ -517,7 +517,7 @@ namespace Components
 				}
 				else
 				{
-					Spawn(_Transform.m_position, resultantPos, resultantDir);
+					Spawn(_Transform, resultantPos, resultantDir);
 				}
 			}
 			break;
@@ -531,7 +531,7 @@ namespace Components
 			{
 				if(subEmi.Update(_Dt, m_SubDelay))
 				{
-					Spawn(_Transform.m_position, subEmi.m_Position, subEmi.m_Direction);
+					Spawn(_Transform, subEmi.m_Position, subEmi.m_Direction);
 				}
 			}
 			else
@@ -568,13 +568,17 @@ namespace Components
 		m_CurrentLifetime += _Dt;
 	}
 
-	void ParticleSystem::Spawn(glm::vec3 _BasePos, glm::vec3 _RandPos, glm::vec3 _Direction)
+	void ParticleSystem::Spawn(Transform& _Transform, glm::vec3 _RandPos, glm::vec3 _Direction)
 	{
+		glm::vec3 posCalc = glm::vec3{ 1 };
+		// Get global pos
+		ImGuizmo::DecomposeMatrixToComponents(glm::value_ptr(_Transform.m_ModelMtx), glm::value_ptr(posCalc), nullptr, nullptr);
+
 		// Override
 		if (m_MoveToTarget)
 		{
-			glm::vec3 globalRandPos = _BasePos + _RandPos;
-			m_SpawnDirection = glm::normalize((_BasePos + m_TargetPos) - globalRandPos);
+			glm::vec3 globalRandPos = posCalc + _RandPos;
+			m_SpawnDirection = glm::normalize((posCalc + m_TargetPos) - globalRandPos);
 			_Direction = m_SpawnDirection;
 		}
 
@@ -596,7 +600,7 @@ namespace Components
 			&m_Speed.m_CurveData,
 			&m_Scale.m_CurveData,
 			m_Color,
-			_BasePos,
+			posCalc,
 			_RandPos,
 			_Direction,
 			glm::vec3{0},
@@ -994,5 +998,54 @@ namespace Components
 		int yOffset = currFrame / m_Columns;
 		int xOffset = currFrame % m_Columns;
 		m_UV_Offset = { xOffset * m_Tiling.x, (1.0f + yOffset) * m_Tiling.y };
+	}
+
+	void Text::Update(float _Dt)
+	{
+		// Debug
+		// m_IndexMax = 1;
+		// m_LevelID = "Level 1";
+
+		if (m_Play)
+		{
+			if (m_CurrentIndex <= m_IndexMax)
+			{
+				const auto& currTextContainer = PP::FontResource::m_Subtitles[m_LevelID];
+				if (m_CurrentIndex >= currTextContainer.size())
+				{
+					return;
+				}
+
+				m_Delay = currTextContainer[m_CurrentIndex].m_Delay;
+				if (m_Timer < m_Delay)
+				{
+					// Display the text
+					m_Text = currTextContainer[m_CurrentIndex].m_Text;
+					// How long to display this for
+					m_Timer += m_PlaySpeed * _Dt;
+				}
+				else
+				{
+					m_Timer = 0.0f;
+					m_CurrentIndex++;
+				}
+			}
+			else
+			{
+				// Clear text
+				m_Text = "";
+			}
+		}
+	}
+
+	void Text::SetSubtitle(std::string _levelID, int _Min, int _Max)
+	{
+		m_LevelID = _levelID;
+		m_IndexMin = _Min;
+		m_IndexMax = _Max;
+		m_CurrentIndex = _Min;
+
+		//Added this as some VO boxes trigger before the timer is up for convenience
+		m_Timer = 0.0f;
 	}
 }
