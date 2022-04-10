@@ -3,7 +3,7 @@
 		"Children" : 17,
 		"Guid" : 
 		{
-			"m_guid" : "dcc08f08-c681-45c7-9589-03391772e8ad"
+			"m_guid" : "93d3b36b-2807-42f9-b06e-4ffe07c300e1"
 		},
 		"Name" : 
 		{
@@ -16,7 +16,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "b8a66809-5855-4031-a4ad-8cdfeb2f524c",
+			"prefab_GUID" : "ea9036eb-81b0-4a93-951b-9054c725feb2",
 			"prefab_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
 		},
 		"Tag" : 
@@ -60,29 +60,29 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 5.0,
-				"m_MaxFrames" : 64,
+				"m_FrameCounter" : 10.0,
+				"m_MaxFrames" : 16,
 				"m_Play" : false,
-				"m_PlaySpeed" : 0.0,
+				"m_PlaySpeed" : 1.0,
 				"m_Repeat" : false,
-				"m_Rows" : 16,
+				"m_Rows" : 4,
 				"m_Tiling" : 
 				[
 					0.25,
-					0.0625
+					0.25
 				],
 				"m_UV_Offset" : 
 				[
-					0.25,
-					0.125
+					0.5,
+					0.75
 				]
 			},
-			"m_TexName" : "1024_ExportSheet_02.dds"
+			"m_TexName" : "1024_ExportSheet_01.dds"
 		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "HTP_KBControlText",
+			"m_Name" : "HTP_Image4",
 			"status" : false
 		},
 		"Prefab" : 
@@ -97,8 +97,8 @@
 		{
 			"m_position" : 
 			[
-				0.25499999523162842,
-				0.67000001668930054,
+				0.0060000000521540642,
+				-0.039999961853027344,
 				0.0
 			],
 			"m_rotation" : 
@@ -110,6 +110,76 @@
 			"m_scale" : 
 			[
 				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 28.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.5
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_ArrowL",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.27000001072883606,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				-0.125,
 				0.125,
 				1.0
 			]
@@ -129,8 +199,78 @@
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
+				"m_Columns" : 2,
+				"m_FrameCounter" : 1.0,
+				"m_MaxFrames" : 2,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 2,
+				"m_Tiling" : 
+				[
+					0.5,
+					0.5
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.5
+				]
+			},
+			"m_TexName" : "2048_ExportSheet_03.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_BG",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				-0.0099999997764825821
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 9.0,
+				"m_FrameCounter" : 7.0,
 				"m_MaxFrames" : 16,
 				"m_Play" : false,
 				"m_PlaySpeed" : 1.0,
@@ -143,8 +283,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.25,
-					0.75
+					0.75,
+					0.5
 				]
 			},
 			"m_TexName" : "1024_ExportSheet_01.dds"
@@ -152,8 +292,8 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "HTP_Image3",
-			"status" : false
+			"m_Name" : "HTP_Image1",
+			"status" : true
 		},
 		"Prefab" : 
 		{
@@ -199,30 +339,30 @@
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 32.0,
-				"m_MaxFrames" : 64,
+				"m_Columns" : 4,
+				"m_FrameCounter" : 8.0,
+				"m_MaxFrames" : 16,
 				"m_Play" : false,
 				"m_PlaySpeed" : 1.0,
 				"m_Repeat" : false,
-				"m_Rows" : 8,
+				"m_Rows" : 4,
 				"m_Tiling" : 
 				[
-					0.125,
-					0.125
+					0.25,
+					0.25
 				],
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.625
+					0.75
 				]
 			},
-			"m_TexName" : "256_ExportSheet_01.dds"
+			"m_TexName" : "1024_ExportSheet_01.dds"
 		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "HTP_ConD",
+			"m_Name" : "HTP_Image2",
 			"status" : false
 		},
 		"Prefab" : 
@@ -237,7 +377,215 @@
 		{
 			"m_position" : 
 			[
-				0.25499999523162842,
+				0.0060000000521540642,
+				-0.039999999105930328,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.18500000238418579
+			},
+			"Clip1" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.18500000238418579
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.18500000238418579
+			},
+			"Clip3" : 
+			{
+				"Dir" : "Resources/Audio\\Menu\\MainMenu_Back.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.18500000238418579
+			}
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_Controller",
+			"status" : true
+		},
+		"P_Scripting" : 
+		{
+			"HowToPlayMenu" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 28.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.5
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_ArrowR",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.28999999165534973,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.125,
+				0.125,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 30.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.75,
+					0.5
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_KeyA",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.23499999940395355,
 				0.0,
 				0.0
 			],
@@ -339,6 +687,146 @@
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 32.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.625
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_ConD",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.25499999523162842,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.064999997615814209,
+				0.064999997615814209,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 9.0,
+				"m_MaxFrames" : 16,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 4,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.25
+				],
+				"m_UV_Offset" : 
+				[
+					0.25,
+					0.75
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_Image3",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0060000000521540642,
+				-0.039999999105930328,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
 				"m_Columns" : 4,
 				"m_FrameCounter" : 7.0,
 				"m_MaxFrames" : 64,
@@ -409,30 +897,30 @@
 			"m_Ortho" : true,
 			"m_SpriteAnimation" : 
 			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 29.0,
+				"m_Columns" : 4,
+				"m_FrameCounter" : 5.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
+				"m_PlaySpeed" : 0.0,
 				"m_Repeat" : false,
-				"m_Rows" : 8,
+				"m_Rows" : 16,
 				"m_Tiling" : 
 				[
-					0.125,
-					0.125
+					0.25,
+					0.0625
 				],
 				"m_UV_Offset" : 
 				[
-					0.625,
-					0.5
+					0.25,
+					0.125
 				]
 			},
-			"m_TexName" : "256_ExportSheet_01.dds"
+			"m_TexName" : "1024_ExportSheet_02.dds"
 		},
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "HTP_KeyD",
+			"m_Name" : "HTP_KBControlText",
 			"status" : false
 		},
 		"Prefab" : 
@@ -448,215 +936,7 @@
 			"m_position" : 
 			[
 				0.25499999523162842,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.064999997615814209,
-				0.064999997615814209,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 30.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.75,
-					0.5
-				]
-			},
-			"m_TexName" : "256_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HTP_KeyA",
-			"status" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.23499999940395355,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.064999997615814209,
-				0.064999997615814209,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\Menu\\MainMenu_Up.ogg",
-				"UpdatePos" : false,
-				"Volume" : 0.18500000238418579
-			},
-			"Clip1" : 
-			{
-				"Dir" : "Resources/Audio\\Menu\\MainMenu_Down.ogg",
-				"UpdatePos" : false,
-				"Volume" : 0.18500000238418579
-			},
-			"Clip2" : 
-			{
-				"Dir" : "Resources/Audio\\Menu\\MainMenu_Select.ogg",
-				"UpdatePos" : false,
-				"Volume" : 0.18500000238418579
-			},
-			"Clip3" : 
-			{
-				"Dir" : "Resources/Audio\\Menu\\MainMenu_Back.ogg",
-				"UpdatePos" : false,
-				"Volume" : 0.18500000238418579
-			}
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HTP_Controller",
-			"status" : true
-		},
-		"P_Scripting" : 
-		{
-			"HowToPlayMenu" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 4,
-				"m_FrameCounter" : 8.0,
-				"m_MaxFrames" : 16,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 4,
-				"m_Tiling" : 
-				[
-					0.25,
-					0.25
-				],
-				"m_UV_Offset" : 
-				[
-					0.0,
-					0.75
-				]
-			},
-			"m_TexName" : "1024_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HTP_Image2",
-			"status" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0060000000521540642,
-				-0.039999999105930328,
+				-0.43000000715255737,
 				0.0
 			],
 			"m_rotation" : 
@@ -668,357 +948,7 @@
 			"m_scale" : 
 			[
 				0.5,
-				0.5,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 4,
-				"m_FrameCounter" : 7.0,
-				"m_MaxFrames" : 16,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 4,
-				"m_Tiling" : 
-				[
-					0.25,
-					0.25
-				],
-				"m_UV_Offset" : 
-				[
-					0.75,
-					0.5
-				]
-			},
-			"m_TexName" : "1024_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HTP_Image1",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0060000000521540642,
-				-0.039999999105930328,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.5,
-				0.5,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 2,
-				"m_FrameCounter" : 1.0,
-				"m_MaxFrames" : 2,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 2,
-				"m_Tiling" : 
-				[
-					0.5,
-					0.5
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.5
-				]
-			},
-			"m_TexName" : "2048_ExportSheet_03.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HTP_BG",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0,
-				0.0,
-				-0.0099999997764825821
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 28.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.5
-				]
-			},
-			"m_TexName" : "256_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HTP_ArrowL",
-			"status" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-0.27000001072883606,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				-0.125,
 				0.125,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 8,
-				"m_FrameCounter" : 28.0,
-				"m_MaxFrames" : 64,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 8,
-				"m_Tiling" : 
-				[
-					0.125,
-					0.125
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.5
-				]
-			},
-			"m_TexName" : "256_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HTP_ArrowR",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.28999999165534973,
-				0.0,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.125,
-				0.125,
-				1.0
-			]
-		}
-	},
-	{
-		"Canvas" : 
-		{
-			"m_Color" : 
-			[
-				1.0,
-				1.0,
-				1.0,
-				1.0
-			],
-			"m_ForceAlpha" : false,
-			"m_Ortho" : true,
-			"m_SpriteAnimation" : 
-			{
-				"m_Columns" : 4,
-				"m_FrameCounter" : 10.0,
-				"m_MaxFrames" : 16,
-				"m_Play" : false,
-				"m_PlaySpeed" : 1.0,
-				"m_Repeat" : false,
-				"m_Rows" : 4,
-				"m_Tiling" : 
-				[
-					0.25,
-					0.25
-				],
-				"m_UV_Offset" : 
-				[
-					0.5,
-					0.75
-				]
-			},
-			"m_TexName" : "1024_ExportSheet_01.dds"
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "HTP_Image4",
-			"status" : false
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				0.0060000000521540642,
-				-0.039999961853027344,
-				0.0
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				0.5,
-				0.5,
 				1.0
 			]
 		}
@@ -1089,6 +1019,76 @@
 			[
 				0.5,
 				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 29.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.625,
+					0.5
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_KeyD",
+			"status" : false
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.25499999523162842,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.064999997615814209,
+				0.064999997615814209,
 				1.0
 			]
 		}

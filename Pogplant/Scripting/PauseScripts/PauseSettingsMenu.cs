@@ -100,11 +100,15 @@ namespace Scripting
         Vector3 lerp_initial_position;
         Vector3 lerp_final_position;
 
-        /// <summary>
-        /// 0. Select
-        /// 1. Up
-        /// 2. Down
-        /// </summary>
+        //Control type UI
+        uint kb_instructions_id;
+        uint ctrler_instructions_id;
+
+        uint q_button_id;
+        uint lbumper_button_id;
+
+        uint e_button_id;
+        uint rbumper_button_id;
 
         public PauseSettingsMenu()
         {
@@ -255,6 +259,15 @@ namespace Scripting
             anim_lerp_step = 0.0f;
             lerp_initial_position = new Vector3(0.0f, -1.1f, ECS.GetGlobalPosition(entityID).Z);
             lerp_final_position = new Vector3(0.0f, 0.0f, ECS.GetGlobalPosition(entityID).Z);
+
+            kb_instructions_id = ECS.FindEntityWithName("KB_Instructions");
+            ctrler_instructions_id = ECS.FindEntityWithName("Ctrler_Instructions");
+
+            q_button_id = ECS.FindEntityWithName("SM_Q");
+            lbumper_button_id = ECS.FindEntityWithName("SM_LB");
+
+            e_button_id = ECS.FindEntityWithName("SM_E");
+            rbumper_button_id = ECS.FindEntityWithName("SM_RB");
         }
 
         public override void Update(float dt)
@@ -268,6 +281,18 @@ namespace Scripting
                     RefreshVolumeBars(bgm_bars_list, "BGM");
                     RefreshVolumeBars(sfx_bars_list, "SFX");
                     RefreshVolumeBars(vo_bars_list, "VO");
+
+                    if (InputUtility.IsControlledBeingUsed())
+                    {
+                        ECS.SetActive(e_button_id, false);
+                        ECS.SetActive(rbumper_button_id, true);
+                    }
+                    else
+                    {
+                        ECS.SetActive(e_button_id, true);
+                        ECS.SetActive(rbumper_button_id, false);
+                    }
+
                 }
                 else if (m_Mode == SETTINGS_MODE.RIGHT)
                 {
@@ -275,6 +300,17 @@ namespace Scripting
                     ECS.SetActive(rightBarID, true);
                     UpdateGammaBar(gamma_bars_list);
                     UpdateResolutionBar(resolution_bars_list);
+
+                    if (InputUtility.IsControlledBeingUsed())
+                    {
+                        ECS.SetActive(q_button_id, false);
+                        ECS.SetActive(lbumper_button_id, true);
+                    }
+                    else
+                    {
+                        ECS.SetActive(q_button_id, true);
+                        ECS.SetActive(lbumper_button_id, false);
+                    }
                 }
                 UpdatePauseMenuButtonFade();
                 ResetArrowAnimation();
@@ -344,21 +380,45 @@ namespace Scripting
 
         void UpdateSettingsMenuInput(float dt)
         {
-            if (InputUtility.onKeyTriggered("ESCAPE"))
+            if (InputUtility.onKeyTriggered("MENUBACK") || InputUtility.onKeyTriggered("ESCAPE"))
             {
                 //ECS.SetActive(entityID, false);
                 anim_lerp_step = lerp_min;
                 current_state = ANIM_STATE.CLOSING;
             }
 
+            if (InputUtility.IsControlledBeingUsed())
+            {
+                ECS.SetActive(kb_instructions_id, false);
+                ECS.SetActive(ctrler_instructions_id, true);
+            }
+            else
+            {
+                ECS.SetActive(kb_instructions_id, true);
+                ECS.SetActive(ctrler_instructions_id, false);
+            }
+
             //Key input
             if (m_Mode == SETTINGS_MODE.LEFT)
             {
-                if (InputUtility.onKeyTriggered(KEY_ID.KEY_E))
+                if (InputUtility.IsControlledBeingUsed())
+                {
+                    ECS.SetActive(e_button_id, false);
+                    ECS.SetActive(rbumper_button_id, true);
+                }
+                else
+                {
+                    ECS.SetActive(e_button_id, true);
+                    ECS.SetActive(rbumper_button_id, false);
+                }
+
+                if (InputUtility.onKeyTriggered("MENUTABRIGHT"))
                 {
                     m_Mode = SETTINGS_MODE.RIGHT;
                     ECS.SetActive(rightBarID, true);
                     ECS.SetActive(leftBarID, false);
+
+
                     UpdatePauseMenuButtonFade();
                     ResetArrowAnimation();
                     m_resetBars = true;
@@ -505,11 +565,23 @@ namespace Scripting
             }
             else if (m_Mode == SETTINGS_MODE.RIGHT)
             {
-                if (InputUtility.onKeyTriggered(KEY_ID.KEY_Q))
+                if (InputUtility.IsControlledBeingUsed())
+                {
+                    ECS.SetActive(q_button_id, false);
+                    ECS.SetActive(lbumper_button_id, true);
+                }
+                else
+                {
+                    ECS.SetActive(q_button_id, true);
+                    ECS.SetActive(lbumper_button_id, false);
+                }
+
+                if (InputUtility.onKeyTriggered("MENUTABLEFT"))
                 {
                     m_Mode = SETTINGS_MODE.LEFT;
                     ECS.SetActive(leftBarID, true);
                     ECS.SetActive(rightBarID, false);
+
                     UpdatePauseMenuButtonFade();
                     ResetArrowAnimation();
                     m_resetBars = true;

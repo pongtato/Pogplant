@@ -556,8 +556,6 @@ namespace Scripting
                         RefreshVolumeBars(bgm_bars_list, "BGM");
                         RefreshVolumeBars(sfx_bars_list, "SFX");
                         RefreshVolumeBars(vo_bars_list, "VO");
-
-                        Console.WriteLine("asd");
                     }
                 }
 

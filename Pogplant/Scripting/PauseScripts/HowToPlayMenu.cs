@@ -266,11 +266,15 @@ namespace Scripting
                             if (InputUtility.IsControlledBeingUsed())
                             {
                                 ECS.SetActive(mEntities["HTP_ConD"].id, true);
+                                ECS.SetActive(mEntities["HTP_KeyD"].id, false);
                                 ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, false);
                             }
                             else
                             {
                                 ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                                ECS.SetActive(mEntities["HTP_ConD"].id, false);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, false);
                                 ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
                             }
                             ECS.SetActive(mEntities["HTP_Image1"].id, true);
@@ -287,12 +291,18 @@ namespace Scripting
                             {
                                 ECS.SetActive(mEntities["HTP_ConA"].id, true);
                                 ECS.SetActive(mEntities["HTP_ConD"].id, true);
+                                ECS.SetActive(mEntities["HTP_KeyA"].id, false);
+                                ECS.SetActive(mEntities["HTP_KeyD"].id, false);
                                 ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, false);
                             }
                             else
                             {
+                                ECS.SetActive(mEntities["HTP_ConA"].id, false);
+                                ECS.SetActive(mEntities["HTP_ConD"].id, false);
                                 ECS.SetActive(mEntities["HTP_KeyA"].id, true);
                                 ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, false);
                                 ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
                             }
                             
@@ -309,12 +319,18 @@ namespace Scripting
                             {
                                 ECS.SetActive(mEntities["HTP_ConA"].id, true);
                                 ECS.SetActive(mEntities["HTP_ConD"].id, true);
+                                ECS.SetActive(mEntities["HTP_KeyA"].id, false);
+                                ECS.SetActive(mEntities["HTP_KeyD"].id, false);
                                 ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, false);
                             }
                             else
                             {
+                                ECS.SetActive(mEntities["HTP_ConA"].id, false);
+                                ECS.SetActive(mEntities["HTP_ConD"].id, false);
                                 ECS.SetActive(mEntities["HTP_KeyA"].id, true);
                                 ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, false);
                                 ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
                             }
 
@@ -327,17 +343,23 @@ namespace Scripting
                         break;
                     case MENUSTATE.IMG4:
                         {
-                            
+
                             if (InputUtility.IsControlledBeingUsed())
                             {
                                 ECS.SetActive(mEntities["HTP_ConA"].id, true);
                                 ECS.SetActive(mEntities["HTP_ConD"].id, true);
+                                ECS.SetActive(mEntities["HTP_KeyA"].id, false);
+                                ECS.SetActive(mEntities["HTP_KeyD"].id, false);
                                 ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, false);
                             }
                             else
                             {
+                                ECS.SetActive(mEntities["HTP_ConA"].id, false);
+                                ECS.SetActive(mEntities["HTP_ConD"].id, false);
                                 ECS.SetActive(mEntities["HTP_KeyA"].id, true);
                                 ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, false);
                                 ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
                             }
 
@@ -352,11 +374,15 @@ namespace Scripting
                             if (InputUtility.IsControlledBeingUsed())
                             {
                                 ECS.SetActive(mEntities["HTP_ConA"].id, true);
+                                ECS.SetActive(mEntities["HTP_KeyA"].id, false);
                                 ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, false);
                             }
                             else
                             {
+                                ECS.SetActive(mEntities["HTP_ConA"].id, false);
                                 ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, false);
                                 ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
                             }
                             
