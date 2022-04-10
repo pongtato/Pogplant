@@ -482,7 +482,7 @@ namespace Scripting
                 {
                     ECS.PlayAudio(entityID, 0, "SFX");
 
-                    if (active_index == 4)
+                    if (active_index == 3)
                     {
                         AudioEngine.SetChannelGroupVolume("BGM", default_value);
                         AudioEngine.SetChannelGroupVolume("SFX", default_value);
