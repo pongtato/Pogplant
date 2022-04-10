@@ -415,6 +415,7 @@ namespace Scripting
 
                 if (InputUtility.onKeyTriggered("MENUTABRIGHT"))
                 {
+                    ECS.PlayAudio(entityID, 2, "SFX");
                     m_Mode = SETTINGS_MODE.RIGHT;
                     ECS.SetActive(rightBarID, true);
                     ECS.SetActive(leftBarID, false);
@@ -579,7 +580,7 @@ namespace Scripting
 
                 if (InputUtility.onKeyTriggered("MENUTABLEFT"))
                 {
-                    ECS.PlayAudio(entityID, 2, "SFX");
+                    ECS.PlayAudio(entityID, 1, "SFX");
                     m_Mode = SETTINGS_MODE.LEFT;
                     ECS.SetActive(leftBarID, true);
                     ECS.SetActive(rightBarID, false);
