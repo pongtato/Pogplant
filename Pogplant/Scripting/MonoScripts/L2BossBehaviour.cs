@@ -414,10 +414,10 @@ namespace Scripting
 					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK);
 				}
 
-				if (InputUtility.onKeyTriggered(KEY_ID.KEY_L))
+				/*if (InputUtility.onKeyTriggered(KEY_ID.KEY_L))
 				{
 					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK);
-				}
+				}//*/
 			}
 
 			//Update shooting gun behaviour
@@ -433,6 +433,9 @@ namespace Scripting
 					//m_runStateInfo.bossTurretReady = true;
 					//m_runStateInfo.bossTurretShouldFire = true;
 
+					m_runStateInfo.bossTurretAimState = 1;
+					m_runStateInfo.bossTurretShouldFire = true;
+
 					if (m_runStateInfo.timer > m_runStateInfo.stateDuration)
 					{
 						int stateSelection;
@@ -447,11 +450,12 @@ namespace Scripting
 						{
 							case 0:
 							{
-								int stateSelect2 = PPMath.RandomInt(0, 3);
+								int stateSelect2 = PPMath.RandomInt(1, 3);
 
 								switch (stateSelect2)
 								{
 									case 0:
+										//Will no longer be called
 										TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK);
 										break;
 									case 1:
@@ -1098,12 +1102,16 @@ namespace Scripting
 
 		void TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false, bool dontResetTimer = false)
 		{
+			if(m_runStateInfo.lastState == L2Boss.BOSS_BEHAVIOUR_STATE.MOVING)
+				L2Boss.m_singleton.SetColorTurretRecovery();
+
 			m_runStateInfo.lastState = L2Boss.m_singleton.current_state;
 			L2Boss.m_singleton.SetState(nextState.ToString());
 
 
 			switch (L2Boss.m_singleton.current_state)
 			{
+				case L2Boss.BOSS_BEHAVIOUR_STATE.MOVING:
 				case L2Boss.BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK:
 				case L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK:
 				case L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK:
