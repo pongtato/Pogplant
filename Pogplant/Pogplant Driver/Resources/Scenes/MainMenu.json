@@ -103,7 +103,7 @@
 				"Volume" : 0.2070000022649765
 			}
 		},
-		"Children" : 8,
+		"Children" : 9,
 		"Name" : 
 		{
 			"m_Name" : "Settings Menu",
@@ -141,6 +141,72 @@
 			[
 				1.0,
 				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 14.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 0.0,
+				"m_Repeat" : false,
+				"m_Rows" : 16,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.0625
+				],
+				"m_UV_Offset" : 
+				[
+					0.5,
+					0.25
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_02.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ctrler_Instructions",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.25499999523162842,
+				-0.43000000715255737,
+				0.99000000953674316
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.125,
 				1.0
 			]
 		}
@@ -512,7 +578,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "Controls Text",
+			"m_Name" : "KB_Instructions",
 			"status" : false
 		},
 		"Tag" : 
@@ -575,7 +641,7 @@
 			},
 			"m_TexName" : "512_ExportSheet_01.dds"
 		},
-		"Children" : 4,
+		"Children" : 5,
 		"Name" : 
 		{
 			"m_Name" : "SM_LeftTab",
@@ -597,6 +663,72 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 27.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.375,
+					0.5
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SM_RB",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.44999998807907104,
+				0.0,
+				0.0099999997764825821
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -3380,7 +3512,7 @@
 			},
 			"m_TexName" : "512_ExportSheet_01.dds"
 		},
-		"Children" : 3,
+		"Children" : 4,
 		"Name" : 
 		{
 			"m_Name" : "SM_RightTab",
@@ -3402,6 +3534,72 @@
 			[
 				0.0,
 				0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.25,
+				0.25,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 26.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.25,
+					0.5
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "SM_LB",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.44999998807907104,
+				0.0,
+				0.0099999997764825821
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
 				0.0
 			],
 			"m_scale" : 
@@ -6355,7 +6553,7 @@
 		}
 	},
 	{
-		"Children" : 14,
+		"Children" : 17,
 		"Name" : 
 		{
 			"m_Name" : "HowToPlayMenuGroup",
@@ -6363,7 +6561,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "8a38cbc8-ed0c-471b-9ebc-0227ce72988c",
+			"prefab_GUID" : "dcc08f08-c681-45c7-9589-03391772e8ad",
 			"prefab_path" : "Resources\\Prefabs\\HowToPlayMenu.prefab"
 		},
 		"Tag" : 
@@ -6388,6 +6586,72 @@
 			[
 				1.0,
 				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 4,
+				"m_FrameCounter" : 5.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 0.0,
+				"m_Repeat" : false,
+				"m_Rows" : 16,
+				"m_Tiling" : 
+				[
+					0.25,
+					0.0625
+				],
+				"m_UV_Offset" : 
+				[
+					0.25,
+					0.125
+				]
+			},
+			"m_TexName" : "1024_ExportSheet_02.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_KBControlText",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.25499999523162842,
+				0.67000001668930054,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.5,
+				0.125,
 				1.0
 			]
 		}
@@ -6605,7 +6869,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 7.0,
 				"m_MaxFrames" : 64,
 				"m_Play" : false,
 				"m_PlaySpeed" : 0.0,
@@ -6618,8 +6882,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.0625
+					0.75,
+					0.125
 				]
 			},
 			"m_TexName" : "1024_ExportSheet_02.dds"
@@ -6627,7 +6891,7 @@
 		"Children" : 0,
 		"Name" : 
 		{
-			"m_Name" : "HTP_ControlText",
+			"m_Name" : "HTP_CtrlerControlText",
 			"status" : true
 		},
 		"Tag" : 
@@ -6694,7 +6958,7 @@
 		"Name" : 
 		{
 			"m_Name" : "HTP_KeyD",
-			"status" : true
+			"status" : false
 		},
 		"Tag" : 
 		{
@@ -7310,6 +7574,138 @@
 			[
 				0.5,
 				0.5,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 31.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.875,
+					0.5
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_ConA",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-0.23499999940395355,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.064999997615814209,
+				0.064999997615814209,
+				1.0
+			]
+		}
+	},
+	{
+		"Canvas" : 
+		{
+			"m_Color" : 
+			[
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"m_ForceAlpha" : false,
+			"m_Ortho" : true,
+			"m_SpriteAnimation" : 
+			{
+				"m_Columns" : 8,
+				"m_FrameCounter" : 32.0,
+				"m_MaxFrames" : 64,
+				"m_Play" : false,
+				"m_PlaySpeed" : 1.0,
+				"m_Repeat" : false,
+				"m_Rows" : 8,
+				"m_Tiling" : 
+				[
+					0.125,
+					0.125
+				],
+				"m_UV_Offset" : 
+				[
+					0.0,
+					0.625
+				]
+			},
+			"m_TexName" : "256_ExportSheet_01.dds"
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "HTP_ConD",
+			"status" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.25499999523162842,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.064999997615814209,
+				0.064999997615814209,
 				1.0
 			]
 		}

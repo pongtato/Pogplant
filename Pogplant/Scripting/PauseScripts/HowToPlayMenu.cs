@@ -70,12 +70,12 @@ namespace Scripting
             mEntities.Add("HTP_KeyD", new GameObject(keyD, new Transform(pos, rot, scale), "Key_D"));
 
             uint conA = ECS.FindEntityWithName("HTP_ConA");
-            ECS.GetTransformECS(keyA, ref pos, ref rot, ref scale);
-            mEntities.Add("HTP_ConA", new GameObject(keyA, new Transform(pos, rot, scale), "HTP_ConA"));
+            ECS.GetTransformECS(conA, ref pos, ref rot, ref scale);
+            mEntities.Add("HTP_ConA", new GameObject(conA, new Transform(pos, rot, scale), "HTP_ConA"));
 
             uint conD = ECS.FindEntityWithName("HTP_ConD");
-            ECS.GetTransformECS(keyD, ref pos, ref rot, ref scale);
-            mEntities.Add("HTP_ConD", new GameObject(keyD, new Transform(pos, rot, scale), "HTP_ConD"));
+            ECS.GetTransformECS(conD, ref pos, ref rot, ref scale);
+            mEntities.Add("HTP_ConD", new GameObject(conD, new Transform(pos, rot, scale), "HTP_ConD"));
 
             // Add Arrows
             uint arrowR = ECS.FindEntityWithName("HTP_ArrowR");
@@ -94,6 +94,15 @@ namespace Scripting
             uint ct = ECS.FindEntityWithName("HTP_ControlText");
             ECS.GetTransformECS(ct, ref pos, ref rot, ref scale);
             mEntities.Add("HTP_ControlText", new GameObject(ct, new Transform(pos, rot, scale), "HTP_ControlText"));
+
+            //Back
+            uint kb_ct = ECS.FindEntityWithName("HTP_KBControlText");
+            ECS.GetTransformECS(kb_ct, ref pos, ref rot, ref scale);
+            mEntities.Add("HTP_KBControlText", new GameObject(kb_ct, new Transform(pos, rot, scale), "HTP_KBControlText"));
+
+            uint con_ct = ECS.FindEntityWithName("HTP_CtrlerControlText");
+            ECS.GetTransformECS(con_ct, ref pos, ref rot, ref scale);
+            mEntities.Add("HTP_CtrlerControlText", new GameObject(con_ct, new Transform(pos, rot, scale), "HTP_CtrlerControlText"));
 
             m_MenuGroupID = ECS.FindEntityWithName("HowToPlayMenuGroup");
 
@@ -121,9 +130,20 @@ namespace Scripting
 
                     ECS.SetActive(mEntities["HTP_BG"].id, true);
                     ECS.SetActive(mEntities["HTP_Image1"].id, true);
-                    ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+
+                    if (InputUtility.IsControlledBeingUsed())
+                    {
+                        ECS.SetActive(mEntities["HTP_ConD"].id, true);
+                        ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                    }
+                    else
+                    {
+                        ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                        ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
+                    }
+
                     ECS.SetActive(mEntities["HTP_ArrowR"].id, true);
-                    ECS.SetActive(mEntities["HTP_ControlText"].id, true);
+                    
                     m_MenuState = MENUSTATE.IMG1;
                     m_PrevMenuState = MENUSTATE.IMG1;
                     m_isActive = true;
@@ -149,6 +169,7 @@ namespace Scripting
         void ResetMenuState()
         {
             ECS.SetActive(mEntities["HTP_KeyA"].id, false);
+            ECS.SetActive(mEntities["HTP_ConA"].id, false);
             ECS.SetActive(mEntities["HTP_ArrowL"].id, false);
             ECS.SetActive(mEntities["HTP_Image2"].id, false);
             ECS.SetActive(mEntities["HTP_Image3"].id, false);
@@ -227,7 +248,7 @@ namespace Scripting
                 if (m_MenuState < MENUSTATE.IMG5)
                     m_MenuState++;
             }
-            else if (InputUtility.onKeyTriggered("ESCAPE"))
+            else if (InputUtility.onKeyTriggered("MENUBACK") || InputUtility.onKeyTriggered("ESCAPE"))
             {
                 ECS.PlayAudio(entityID, 3, "SFX");
                 m_PrevMenuState = m_MenuState;
@@ -242,18 +263,39 @@ namespace Scripting
                 {
                     case MENUSTATE.IMG1:
                         {
+                            if (InputUtility.IsControlledBeingUsed())
+                            {
+                                ECS.SetActive(mEntities["HTP_ConD"].id, true);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                            }
+                            else
+                            {
+                                ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
+                            }
                             ECS.SetActive(mEntities["HTP_Image1"].id, true);
-                            ECS.SetActive(mEntities["HTP_KeyD"].id, true);
 
                             ECS.SetActive(mEntities["HTP_KeyA"].id, false);
+                            ECS.SetActive(mEntities["HTP_ConA"].id, false);
                             ECS.SetActive(mEntities["HTP_ArrowL"].id, false);
                             ECS.SetActive(mEntities["HTP_Image2"].id, false);
                         }
                         break;
                     case MENUSTATE.IMG2:
                         {
-                            ECS.SetActive(mEntities["HTP_KeyD"].id, true);
-                            ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                            if (InputUtility.IsControlledBeingUsed())
+                            {
+                                ECS.SetActive(mEntities["HTP_ConA"].id, true);
+                                ECS.SetActive(mEntities["HTP_ConD"].id, true);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                            }
+                            else
+                            {
+                                ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                                ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
+                            }
+                            
                             ECS.SetActive(mEntities["HTP_Image2"].id, true);
                             ECS.SetActive(mEntities["HTP_ArrowL"].id, true);
 
@@ -263,8 +305,19 @@ namespace Scripting
                         break;
                     case MENUSTATE.IMG3:
                         {
-                            ECS.SetActive(mEntities["HTP_KeyD"].id, true);
-                            ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                            if (InputUtility.IsControlledBeingUsed())
+                            {
+                                ECS.SetActive(mEntities["HTP_ConA"].id, true);
+                                ECS.SetActive(mEntities["HTP_ConD"].id, true);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                            }
+                            else
+                            {
+                                ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                                ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
+                            }
+
                             ECS.SetActive(mEntities["HTP_Image3"].id, true);
                             ECS.SetActive(mEntities["HTP_ArrowR"].id, true);
 
@@ -274,10 +327,21 @@ namespace Scripting
                         break;
                     case MENUSTATE.IMG4:
                         {
-                            ECS.SetActive(mEntities["HTP_Image4"].id, true);
-                            ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                            
+                            if (InputUtility.IsControlledBeingUsed())
+                            {
+                                ECS.SetActive(mEntities["HTP_ConA"].id, true);
+                                ECS.SetActive(mEntities["HTP_ConD"].id, true);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                            }
+                            else
+                            {
+                                ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                                ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
+                            }
 
-                            ECS.SetActive(mEntities["HTP_KeyD"].id, true);
+                            ECS.SetActive(mEntities["HTP_Image4"].id, true);
                             ECS.SetActive(mEntities["HTP_Image3"].id, false);
                             ECS.SetActive(mEntities["HTP_Image5"].id, false);
                             ECS.SetActive(mEntities["HTP_ArrowR"].id, true);
@@ -285,10 +349,21 @@ namespace Scripting
                         break;
                     case MENUSTATE.IMG5:
                         {
+                            if (InputUtility.IsControlledBeingUsed())
+                            {
+                                ECS.SetActive(mEntities["HTP_ConA"].id, true);
+                                ECS.SetActive(mEntities["HTP_CtrlerControlText"].id, true);
+                            }
+                            else
+                            {
+                                ECS.SetActive(mEntities["HTP_KeyA"].id, true);
+                                ECS.SetActive(mEntities["HTP_KBControlText"].id, true);
+                            }
+                            
                             ECS.SetActive(mEntities["HTP_Image5"].id, true);
-                            ECS.SetActive(mEntities["HTP_KeyA"].id, true);
 
                             ECS.SetActive(mEntities["HTP_KeyD"].id, false);
+                            ECS.SetActive(mEntities["HTP_ConD"].id, false);
                             ECS.SetActive(mEntities["HTP_Image4"].id, false);
                             ECS.SetActive(mEntities["HTP_ArrowR"].id, false);
                         }
