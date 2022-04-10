@@ -46,7 +46,7 @@ namespace Scripting
 		public float m_coreProtectionDamageDuration;
 
 		//Shooting stuff
-		public float m_bossShootingDelay = 0.6f;
+		public float m_bossShootingDelay = 0.8f;
 		public float m_bossShootingCoolDown = 3f;
 		public int m_bossShootCountLimit = 8;
 
@@ -433,8 +433,11 @@ namespace Scripting
 					//m_runStateInfo.bossTurretReady = true;
 					//m_runStateInfo.bossTurretShouldFire = true;
 
-					m_runStateInfo.bossTurretAimState = 1;
-					m_runStateInfo.bossTurretShouldFire = true;
+					if (m_runStateInfo.timer > 0.5f)
+					{
+						m_runStateInfo.bossTurretAimState = 1;
+						m_runStateInfo.bossTurretShouldFire = true;
+					}
 
 					if (m_runStateInfo.timer > m_runStateInfo.stateDuration)
 					{
@@ -450,21 +453,21 @@ namespace Scripting
 						{
 							case 0:
 							{
-								int stateSelect2 = PPMath.RandomInt(1, 3);
+								int stateSelect2 = PPMath.RandomInt(0, 2);
 
 								switch (stateSelect2)
 								{
-									case 0:
+									/*case 0:
 										//Will no longer be called
 										TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK);
-										break;
-									case 1:
+										break;//*/
+									case 0:
 										TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK);
 										break;
-									case 2:
+									case 1:
 										TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK);
 										break;
-									case 3:
+									case 2:
 										TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.CLAP_ATTACK);
 										break;
 								}
@@ -812,7 +815,7 @@ namespace Scripting
 					if (m_runStateInfo.bossShootTimer > m_bossShootingCoolDown)
 					{
 						m_runStateInfo.bossShootReloading = false;
-						m_runStateInfo.bossShootTimer = -0.2f;
+						m_runStateInfo.bossShootTimer = 0f;
 
 						L2Boss.m_singleton.SetTurretColors();
 						L2Boss.m_singleton.SetColorTurretPreparingFire();
@@ -913,7 +916,7 @@ namespace Scripting
 
 		void UpdateLaserSweepAttack(float dt)
 		{
-			//Aim/lerp to player
+			//Aim/lerp to targets
 			for (int i = 0; i < 2; ++i)
 			{
 				if (m_turretGuns[i].shouldLerp)
@@ -1102,25 +1105,21 @@ namespace Scripting
 
 		void TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE nextState, bool forceNonReturn = false, bool dontResetTimer = false)
 		{
-			if(m_runStateInfo.lastState == L2Boss.BOSS_BEHAVIOUR_STATE.MOVING)
-				L2Boss.m_singleton.SetColorTurretRecovery();
+			//if(m_runStateInfo.lastState == L2Boss.BOSS_BEHAVIOUR_STATE.MOVING)
+			//	L2Boss.m_singleton.SetColorTurretRecovery();
 
 			m_runStateInfo.lastState = L2Boss.m_singleton.current_state;
 			L2Boss.m_singleton.SetState(nextState.ToString());
 
+			m_runStateInfo.bossShootReloading = true;
+			m_runStateInfo.bossShootTimer = m_bossShootingCoolDown;
+			m_runStateInfo.bossShootCount = 0;
+			m_runStateInfo.bossTurretAimState = 0;
 
-			switch (L2Boss.m_singleton.current_state)
+			mLaser_useOnce = false;
+
+			switch (nextState)
 			{
-				case L2Boss.BOSS_BEHAVIOUR_STATE.MOVING:
-				case L2Boss.BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK:
-				case L2Boss.BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK:
-				case L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK:
-				{
-					m_runStateInfo.bossShootReloading = true;
-					m_runStateInfo.bossShootTimer = m_bossShootingCoolDown;
-					m_runStateInfo.bossShootCount = 0;
-				}
-				break;
 				case L2Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
 				{
 					c_playedSpawnAnimation = false;
