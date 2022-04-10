@@ -251,6 +251,7 @@ namespace Scripting
                         //Console.WriteLine("Max Shield Count:" + PlayerScript.m_ShieldHitCountMax);
                         //Console.WriteLine("Shield Count:" + PlayerScript.m_ShieldHitCount);
                         //GameUtilities.UpdateShieldUI();
+                        ECS.SetActive(PlayerScript.m_shieldParent, true);
                         GameUtilities.UpdateShieldUI(PlayerScript.m_shieldNumberID, PlayerScript.m_ShieldHitCount);
                         //ECS.SetScale(PlayerScript.m_ComboBarID, PlayerScript.m_FullComboBarScale);
                         ++PlayerScript.m_ShieldBobbleCount;

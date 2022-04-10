@@ -165,6 +165,7 @@ namespace Scripting
 
 		// ShieldUI
 		public static uint m_shieldNumberID;
+		public static uint m_shieldParent;
 
 		//Subs
 		uint sub_renderer_id;
@@ -244,10 +245,12 @@ namespace Scripting
 			mm_enableTurbulence = ECS.GetValue<bool>(entityID, false, "Turbulence");
 
 			m_shieldNumberID = ECS.FindEntityWithName("PlayerShieldNumber");
+			m_shieldParent = ECS.FindEntityWithName("PlayerShieldUI");
 			m_ShieldHitCount = 0;
 
 			sub_renderer_id = ECS.FindEntityWithName("Subs_Renderer");
 			ECS.PlaySubtitles(sub_renderer_id);
+			ECS.SetActive(m_shieldParent, false);
 			update_controls = true;
 		}
 
@@ -977,6 +980,11 @@ namespace Scripting
 					//Console.WriteLine("Max Shield Count:" + m_ShieldHitCountMax);
 					//Console.WriteLine("SHIELD/MAX:" + ((float)m_ShieldHitCount / (float)m_ShieldHitCountMax));
 					//ECS.SetScale(m_ComboBarID, new Vector3(m_FullComboBarScale.X * ((float)m_ShieldHitCount / (float)m_ShieldHitCountMax), m_FullComboBarScale.Y, m_FullComboBarScale.Z));
+					if(m_ShieldHitCount == 0)
+                    {
+						ECS.SetActive(m_shieldParent, false);
+						return;
+					}
 					GameUtilities.UpdateShieldUI(m_shieldNumberID, m_ShieldHitCount);
 					return;
 				}
