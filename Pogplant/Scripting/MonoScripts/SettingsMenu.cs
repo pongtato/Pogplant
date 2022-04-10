@@ -579,6 +579,7 @@ namespace Scripting
 
                 if (InputUtility.onKeyTriggered("MENUTABLEFT"))
                 {
+                    ECS.PlayAudio(entityID, 2, "SFX");
                     m_Mode = SETTINGS_MODE.LEFT;
                     ECS.SetActive(leftBarID, true);
                     ECS.SetActive(rightBarID, false);
