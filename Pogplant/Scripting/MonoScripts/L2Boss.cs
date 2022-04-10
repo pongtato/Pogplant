@@ -493,6 +493,7 @@ namespace Scripting
                     break;
                 case BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
                     boss_animation_system.StopAnimation(true, moving_parts_dict);
+                    ECS.PlayAudio(entityID, 2, "SFX");
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsOne, 1.5f);
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsTwo, 4.0f);
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsThree, 3.5f);

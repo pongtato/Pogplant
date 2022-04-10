@@ -445,6 +445,8 @@ namespace Scripting
                 case BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE:
                     boss_animation_system.StopAnimation(true, moving_parts_dict);
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsOne, 1.5f);
+                    ECS.PlayAudio(entityID, 3, "VO");
+                    ECS.PlayAudio(entityID, 2, "SFX");
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsTwo, 7.0f);
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsThree, 2.0f);
                     boss_animation_system.AddAnimationSpecsStack(SetDeathStateAnimationsFour, 0.25f);

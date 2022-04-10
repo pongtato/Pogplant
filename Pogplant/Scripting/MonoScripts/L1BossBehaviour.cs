@@ -797,6 +797,7 @@ namespace Scripting
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
 					c_spawnSoundPlayState = 1;
+					ECS.PlayAudio(entityID, 8, "VO");
 					break;
 			}
 
