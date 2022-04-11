@@ -46,6 +46,7 @@ namespace Scripting
         {
             if (!m_Destroyed)
             {
+                ECS.PlayAudio(entityID, 0, "SFX");
                 m_Destroyed = true;
                 //ECS.SetGlobalPosition(m_Explosion, ECS.GetGlobalPosition(id));
                 ECS.SetActive(m_Explosion, true);

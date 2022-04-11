@@ -83131,7 +83131,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.936130523681641,
+				"m_FrameCounter" : 70.486137390136719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83145,7 +83145,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.21875
+					0.5625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83197,7 +83197,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.038259506225586,
+				"m_FrameCounter" : 78.912239074707031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -83211,7 +83211,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.21875
+					0.625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83263,7 +83263,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.595138549804688,
+				"m_FrameCounter" : 31.840095520019531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -83277,7 +83277,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.75
+					0.25
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83329,7 +83329,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 96.608779907226562,
+				"m_FrameCounter" : 43.327140808105469,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 270.0,
@@ -83342,8 +83342,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.765625
+					0.5,
+					0.34375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83395,7 +83395,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.936130523681641,
+				"m_FrameCounter" : 70.486137390136719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83409,7 +83409,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.21875
+					0.5625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83461,7 +83461,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 95.595138549804688,
+				"m_FrameCounter" : 31.840095520019531,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 320.0,
@@ -83475,7 +83475,7 @@
 				"m_UV_Offset" : 
 				[
 					0.5,
-					0.75
+					0.25
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83527,7 +83527,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 100.18687438964844,
+				"m_FrameCounter" : 117.52912902832031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -83540,8 +83540,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.796875
+					0.5,
+					0.921875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83593,7 +83593,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.936130523681641,
+				"m_FrameCounter" : 70.486137390136719,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 300.0,
@@ -83607,7 +83607,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.21875
+					0.5625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83659,7 +83659,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 100.18687438964844,
+				"m_FrameCounter" : 117.52912902832031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 280.0,
@@ -83672,8 +83672,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					0.796875
+					0.5,
+					0.921875
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83725,7 +83725,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 92.607795715332031,
+				"m_FrameCounter" : 118.62037658691406,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 310.0,
@@ -83739,7 +83739,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.734375
+					0.9375
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -83791,7 +83791,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 2,
-				"m_FrameCounter" : 26.038259506225586,
+				"m_FrameCounter" : 78.912239074707031,
 				"m_MaxFrames" : 128,
 				"m_Play" : true,
 				"m_PlaySpeed" : 290.0,
@@ -83805,7 +83805,7 @@
 				"m_UV_Offset" : 
 				[
 					0.0,
-					0.21875
+					0.625
 				]
 			},
 			"m_TexName" : "SpeedLines.dds"
@@ -85409,7 +85409,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 5.7719602584838867,
+				"m_FrameCounter" : 7.8817543983459473,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 12.0,
@@ -85422,7 +85422,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.25,
+					0.75,
 					1.0
 				]
 			},
@@ -85475,7 +85475,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 0.0,
+				"m_FrameCounter" : 0.88855648040771484,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 15.0,
@@ -122113,6 +122113,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.76399999856948853
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -122841,6 +122850,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.77399998903274536
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -123569,6 +123587,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.67699998617172241
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -124297,6 +124324,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.7850000262260437
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -125025,6 +125061,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.91600000858306885
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -125753,6 +125798,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.82800000905990601
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -126481,6 +126535,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.73400002717971802
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
@@ -127209,6 +127272,15 @@
 		}
 	},
 	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Player\\Player_NukeExplode.ogg",
+				"UpdatePos" : false,
+				"Volume" : 0.76800000667572021
+			}
+		},
 		"BoxCollider" : 
 		{
 			"centre" : 
