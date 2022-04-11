@@ -657,7 +657,7 @@
 			},
 			"Clip1" : 
 			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Boss2\\Prof_114.ogg",
+				"Dir" : "Resources/Audio\\VO\\Prof\\Boss2\\Prof_Boss_NukeEnd1.ogg",
 				"UpdatePos" : false,
 				"Volume" : 1.0
 			},
@@ -3081,9 +3081,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				0.1399189680814743,
-				0.98901182413101196,
-				-0.04773276299238205
+				0.059213694185018539,
+				0.9874577522277832,
+				-0.14635922014713287
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
@@ -9503,7 +9503,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 0.16711559891700745,
+				"m_FrameCounter" : 1.6217327117919922,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 12.0,
@@ -9516,7 +9516,7 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
+					0.25,
 					0.5
 				]
 			},
@@ -9569,7 +9569,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 2.7093870639801025,
+				"m_FrameCounter" : 4.4110231399536133,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 15.0,
@@ -9582,8 +9582,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.5,
-					0.5
+					0.0,
+					1.0
 				]
 			},
 			"m_TexName" : "Fire_Export_01.dds"
