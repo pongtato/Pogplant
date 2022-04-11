@@ -14,6 +14,7 @@ namespace Scripting
         public int subs_begin_index;        //For kb/mouse
         public int subs_end_index;
         public int subs_controller_begin_index;
+        public int subs_controller_end_index;
         public string subs_level_id;
         uint player_id;
         uint sub_renderer_id;
@@ -32,6 +33,7 @@ namespace Scripting
 
             subs_begin_index = ECS.GetValue<int>(entityID, 0, "SubBeginIndex");
             subs_controller_begin_index = ECS.GetValue<int>(entityID, 0, "SubCtrlerBeginIndex");
+            subs_controller_end_index = ECS.GetValue<int>(entityID, 0, "SubCtrlerEndIndex");
             subs_end_index = ECS.GetValue<int>(entityID, 1, "SubEndIndex");
             subs_level_id = GameUtilities.GetSceneName();
             sub_renderer_id = ECS.FindEntityWithName("Subs_Renderer");
@@ -58,7 +60,7 @@ namespace Scripting
                     if (InputUtility.IsControlledBeingUsed())
                     {
                         if(play_subs)
-                            ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_controller_begin_index, subs_end_index);
+                            ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_controller_begin_index, subs_controller_end_index);
                         ECS.PlayAudio(entityID, 0, audio_type);
                     }
                     //Keyboard audio
