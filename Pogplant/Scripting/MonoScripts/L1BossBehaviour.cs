@@ -204,8 +204,8 @@ namespace Scripting
 		bool updateCoreLockOn = false;
 
 		#region[Damage Animations]
-		Vector3 mColor_falseCoreNormal = new Vector3(1f, 0.725f, 0f);
-		Vector3 mColor_falseCoreCurrent = new Vector3(1f, 0.725f, 0f);
+		Vector3 mColor_falseCoreNormal = new Vector3(0.094f, 0.59f, 0f);
+		Vector3 mColor_falseCoreCurrent = new Vector3(0.094f, 0.59f, 0f);
 		Vector3 mColor_falseCoreDamaged = new Vector3(1f, 0f, 0f);
 
 		Vector3 mColor_falseCoreCoverNormal = new Vector3(1f, 1f, 1f);
