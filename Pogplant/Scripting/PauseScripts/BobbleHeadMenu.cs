@@ -163,6 +163,7 @@ namespace Scripting
             {
                 if (!m_menuActive)
                 {
+                    AudioEngine.PauseChannelGroup("VO");
                     ECS.PlayAudio(entityID, 3, "SFX");
                     m_menuActive = true;
                     m_Timer = 0.0f;
@@ -285,6 +286,7 @@ namespace Scripting
                 ECS.SetActive(m_Entities["TS_TXT2"].id, false);
                 ECS.SetActive(m_Entities["TS_TXT3"].id, false);
                 ECS.PlayAudio(entityID, 2, "SFX");
+                AudioEngine.ResumeChannelGroup("VO");
                 GameUtilities.ResumeScene();
             }
             else 

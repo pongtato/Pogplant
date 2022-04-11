@@ -3081,9 +3081,9 @@
 			"m_SpawnCount" : 100,
 			"m_SpawnDirection" : 
 			[
-				0.059213694185018539,
-				0.9874577522277832,
-				-0.14635922014713287
+				-0.12023037672042847,
+				0.98981904983520508,
+				-0.076177351176738739
 			],
 			"m_SpawnRadius" : 10.0,
 			"m_Speed" : 
@@ -9179,7 +9179,7 @@
 			{
 				"Dir" : "Resources/Audio\\Boss\\SFX_Boss_Warning2.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.89899998903274536
+				"Volume" : 0.59899997711181641
 			},
 			"Clip4" : 
 			{
@@ -9503,7 +9503,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 1.6217327117919922,
+				"m_FrameCounter" : 7.8117618560791016,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 12.0,
@@ -9516,8 +9516,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.25,
-					0.5
+					0.75,
+					1.0
 				]
 			},
 			"m_TexName" : "Fire_Export_01.dds"
@@ -9569,7 +9569,7 @@
 			"m_SpriteAnimation" : 
 			{
 				"m_Columns" : 4,
-				"m_FrameCounter" : 4.4110231399536133,
+				"m_FrameCounter" : 1.3416945934295654,
 				"m_MaxFrames" : 8,
 				"m_Play" : true,
 				"m_PlaySpeed" : 15.0,
@@ -9582,8 +9582,8 @@
 				],
 				"m_UV_Offset" : 
 				[
-					0.0,
-					1.0
+					0.25,
+					0.5
 				]
 			},
 			"m_TexName" : "Fire_Export_01.dds"

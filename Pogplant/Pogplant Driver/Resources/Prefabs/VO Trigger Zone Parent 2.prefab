@@ -3,7 +3,7 @@
 		"Children" : 23,
 		"Guid" : 
 		{
-			"m_guid" : "0b465fff-d89d-4d98-a66d-7c37a874b9e2"
+			"m_guid" : "b74a4f0f-1c4f-4e49-a1e7-81a61d37de74"
 		},
 		"Name" : 
 		{
@@ -16,7 +16,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "dd49b45c-b9a5-4101-8a0d-a89ff82bf11d",
+			"prefab_GUID" : "0b465fff-d89d-4d98-a66d-7c37a874b9e2",
 			"prefab_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
 		},
 		"Tag" : 
@@ -2606,7 +2606,7 @@
 		}
 	},
 	{
-		"Children" : 2,
+		"Children" : 1,
 		"Name" : 
 		{
 			"m_Name" : "Group_17",
@@ -2710,84 +2710,8 @@
 		{
 			"m_position" : 
 			[
-				-361.46621704101562,
+				-363.81069946289062,
 				127.96757507324219,
-				-496.93710327148438
-			],
-			"m_rotation" : 
-			[
-				0.0,
-				-0.0,
-				0.0
-			],
-			"m_scale" : 
-			[
-				1.0,
-				1.0,
-				1.0
-			]
-		}
-	},
-	{
-		"AudioSource" : 
-		{
-			"Clip0" : 
-			{
-				"Dir" : "Resources/Audio\\VO\\Prof\\Lvl2\\Prof_59.ogg",
-				"UpdatePos" : true,
-				"Volume" : 0.0
-			}
-		},
-		"BoxCollider" : 
-		{
-			"centre" : 
-			[
-				0.0,
-				0.0,
-				0.0
-			],
-			"collisionLayer" : "DEFAULT",
-			"extends" : 
-			[
-				1.0,
-				20.0,
-				20.0
-			],
-			"isStatic" : false,
-			"isTrigger" : true
-		},
-		"Children" : 0,
-		"Name" : 
-		{
-			"m_Name" : "Prof_17",
-			"status" : true
-		},
-		"Prefab" : 
-		{
-			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent 2.prefab"
-		},
-		"ScriptVariables" : 
-		[
-			{
-				"Data" : "VO",
-				"Name" : "AudioType",
-				"Type" : 3
-			}
-		],
-		"Scripting" : 
-		{
-			"TriggerAudioPlay" : false
-		},
-		"Tag" : 
-		{
-			"m_tag" : "Untagged"
-		},
-		"Transform" : 
-		{
-			"m_position" : 
-			[
-				-362.3463134765625,
-				126.69013214111328,
 				-496.93710327148438
 			],
 			"m_rotation" : 
@@ -2885,6 +2809,11 @@
 				"Data" : "VO",
 				"Name" : "AudioType",
 				"Type" : 3
+			},
+			{
+				"Data" : false,
+				"Name" : "PlaySubs",
+				"Type" : 2
 			}
 		],
 		"Scripting" : 
