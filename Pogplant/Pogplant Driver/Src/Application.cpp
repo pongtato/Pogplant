@@ -108,7 +108,7 @@ void Application::Init()
 	PP::Window::HideCursor();
 	m_appState = Application::APPLICATIONSTATE::PLAY;
 	m_nextAppState = Application::APPLICATIONSTATE::PLAY;
-	EnterPlayState("Resources/Scenes/MainMenu.json");
+	EnterPlayState("Resources/Scenes/SplashScreen.json");
 #endif // PPD_EDITOR_BUILD
 
 	BindEvents();
