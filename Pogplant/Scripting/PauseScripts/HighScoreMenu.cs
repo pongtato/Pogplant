@@ -426,8 +426,10 @@ namespace Scripting
 
 							ScoreEntry asd = ScoreList[m_index][m_name_placement];
 							asd.m_score = PlayerScript.score;
+							m_cur_letter_index = new int[]{ 0, 0, 0};
+							asd.m_name = "AAA";
 							ScoreList[m_index][m_name_placement] = asd;
-							//Console.WriteLine("Added into index: " + m_name_placement);
+							//Console.WriteLine("aaaaaa");
 
 							UpdateScoreBoard(ref m_index);
 							break;
@@ -572,7 +574,7 @@ namespace Scripting
 
 		static private void UpdateNameCursorPos()
         {
-			Console.WriteLine(m_up_down_offset * m_cur_name_cursor);
+			//Console.WriteLine(m_up_down_offset * m_cur_name_cursor);
 			ECS.SetPosition(m_cur_name_cursor_id, new Vector3(m_up_down_offset * m_cur_name_cursor, -m_name_placement * 0.115f, 0));
         }
 
