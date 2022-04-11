@@ -34,6 +34,7 @@ namespace Scripting
 		{
 			BindData();
 			ECS.PlayAudio(entityID, 1, "BGM");
+			ECS.PlayAudio(entityID, 2, "VO");
 		}
 
 		//mainly for binding of datas and entity id

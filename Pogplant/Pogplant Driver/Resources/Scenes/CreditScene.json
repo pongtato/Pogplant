@@ -12,7 +12,13 @@
 			{
 				"Dir" : "Resources/Audio\\Game_BGM_Credits.ogg",
 				"UpdatePos" : true,
-				"Volume" : 0.85699999332427979
+				"Volume" : 0.80099999904632568
+			},
+			"Clip2" : 
+			{
+				"Dir" : "Resources/Audio\\VO\\GameVO_Credits.ogg",
+				"UpdatePos" : true,
+				"Volume" : 0.80500000715255737
 			}
 		},
 		"Children" : 3,
