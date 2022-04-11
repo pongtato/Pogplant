@@ -17,6 +17,7 @@ namespace Scripting
         public string subs_level_id;
         uint player_id;
         uint sub_renderer_id;
+        public bool play_subs;
 
         public override void Init(ref uint _entityID)
         {
@@ -30,6 +31,7 @@ namespace Scripting
             subs_end_index = ECS.GetValue<int>(entityID, 1, "SubEndIndex");
             subs_level_id = GameUtilities.GetSceneName();
             sub_renderer_id = ECS.FindEntityWithName("Subs_Renderer");
+            play_subs = ECS.GetValue<bool>(entityID, true, "PlaySubs");
         }
         public override void Start()
         {
@@ -55,19 +57,22 @@ namespace Scripting
                     //Controller audio
                     if (InputUtility.IsControlledBeingUsed())
                     {
-                        ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_controller_begin_index, subs_end_index);
+                        if(play_subs)
+                            ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_controller_begin_index, subs_end_index);
                         ECS.PlayAudio(entityID, 0, audio_type);
                     }
                     //Keyboard audio
                     else
                     {
-                        ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_begin_index, subs_end_index);
+                        if (play_subs)
+                            ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_begin_index, subs_end_index);
                         ECS.PlayAudio(entityID, 1, audio_type);
                     }
                 }
                 else
                 {
-                    ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_begin_index, subs_end_index);
+                    if (play_subs)
+                        ECS.SetSubtitles(sub_renderer_id, subs_level_id, subs_begin_index, subs_end_index);
                     ECS.PlayAudio(entityID, 0, audio_type);
                 }
             }

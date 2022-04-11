@@ -61,7 +61,7 @@ namespace Scripting
                         m_entering_animation = false;
                         //m_exiting_animation = false;
 
-                        GameUtilities.LoadScene("CreditScene");
+                        GameUtilities.LoadScene("CreditScene_NoVO");
                         GameUtilities.ResumeScene();
 
                     }

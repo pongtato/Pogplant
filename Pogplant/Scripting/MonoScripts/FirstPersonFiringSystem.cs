@@ -106,6 +106,21 @@ namespace Scripting
 		//null entity
 		uint m_null_entity;
 
+		//Auto Nuke
+		public float auto_nuke_delay_duration;
+		uint auto_nuke_text_id;
+		float auto_nuke_timer;
+		Vector3 hint_scale_min_size;
+		Vector3 hint_scale_max_size;
+		float hint_scale_speed = 6.0f;
+		bool hint_scale_up;
+		public bool begin_auto_nuke;
+
+		//For ECS get transform
+		Vector3 pos = new Vector3();
+		Vector3 rot = new Vector3();
+		Vector3 scale = new Vector3();
+
 		public class Reticle
 		{
 			public uint parent_id = 0;
@@ -198,6 +213,12 @@ namespace Scripting
 			{
 				ECS.SetActive(t, false);
 			}
+
+			auto_nuke_delay_duration = ECS.GetValue<float>(entityID, 5.0f, "AutoNukeDelayDuration");
+			begin_auto_nuke = false;
+			auto_nuke_text_id = ECS.FindEntityWithName("Auto Nuke Text");
+			hint_scale_min_size = new Vector3(0.2f, 0.2f, 1.0f);
+			hint_scale_max_size = new Vector3(0.3f, 0.3f, 1.0f);
 		}
 
 		public override void Update(float dt)
@@ -282,6 +303,8 @@ namespace Scripting
 				//SetRotateCrosshair(Slow & blue);
 				//SetOuterCrosshair(blue)b
 			}
+
+			UpdateAutoNuke(dt);
 		}
 		public override void LateUpdate(float dt)
 		{
@@ -324,25 +347,83 @@ namespace Scripting
 				//used for nuke
 				else if (InputUtility.onKeyReleased("NUKE"))
 				{
-					if (m_actual_nuke_timer > m_actual_nuke_cooldown)
-					{
-						ECS.PlayAudio(entityID, 0, "SFX");
+					FireNuke();
+				}
+			}
+		}
 
-						ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
-						ECS.SetRotation(m_actual_nuke, ECS.GetGlobalRotation(PlayerShip));
-						ECS.SetActive(m_actual_nuke, true);
-						GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
+		void FireNuke(bool forceRefresh = false)
+		{
+			if (forceRefresh)
+			{
+				m_actual_nuke_timer = m_actual_nuke_cooldown + 1.0f;
+			}
 
-						m_actual_nuke_timer = 0;
+			if (m_actual_nuke_timer > m_actual_nuke_cooldown)
+			{
+				ECS.PlayAudio(entityID, 0, "SFX");
 
-						ECS.SetActive(m_actual_nuke_bar_charging_id, true);
-						ECS.SetActive(m_actual_nuke_bar_filled_id, false);
+				ECS.SetPosition(m_actual_nuke, ECS.GetGlobalPosition(PlayerShip));
+				ECS.SetRotation(m_actual_nuke, ECS.GetGlobalRotation(PlayerShip));
+				ECS.SetActive(m_actual_nuke, true);
+				GameUtilities.MoveWithImpulse(m_actual_nuke, m_shootVector, m_actual_nuke_speed);
 
-						m_actual_nuke_bar_charging_scale.X = 0;
-						m_actual_nuke_set_scale = false;
+				m_actual_nuke_timer = 0;
 
-						PlayerNuke.m_has_fired = true;
-					}
+				ECS.SetActive(m_actual_nuke_bar_charging_id, true);
+				ECS.SetActive(m_actual_nuke_bar_filled_id, false);
+
+				m_actual_nuke_bar_charging_scale.X = 0;
+				m_actual_nuke_set_scale = false;
+
+				PlayerNuke.m_has_fired = true;
+			}
+		}
+
+		public void BeginAutoNukeCountdown()
+		{
+			begin_auto_nuke = true;
+			ECS.SetActive(auto_nuke_text_id, true);
+		}
+
+		void UpdateAutoNuke(float dt)
+		{
+			if (begin_auto_nuke)
+			{
+				auto_nuke_timer += dt;
+				
+				//Fire the nuke if timer exceed
+				if (auto_nuke_timer > auto_nuke_delay_duration)
+				{
+					begin_auto_nuke = false;
+					FireNuke(true);
+					ECS.SetActive(auto_nuke_text_id, false);
+				}
+
+				//Play the voice line 2 seconds earlier
+				if (auto_nuke_timer + 2.0f > auto_nuke_delay_duration)
+				{
+					ECS.PlayAudio(entityID, 2, "VO");
+				}
+
+				ECS.GetTransformECS(auto_nuke_text_id, ref pos, ref rot, ref scale);
+
+				if (scale.X >= hint_scale_max_size.X - 0.01f)
+				{
+					hint_scale_up = false;
+				}
+				if (scale.X <= hint_scale_min_size.X + 0.01f)
+				{
+					hint_scale_up = true;
+				}
+
+				if (hint_scale_up)
+				{
+					ECS.SetScale(auto_nuke_text_id, Vector3.Lerp(scale, hint_scale_max_size, hint_scale_speed * dt));
+				}
+				else
+				{
+					ECS.SetScale(auto_nuke_text_id, Vector3.Lerp(scale, hint_scale_min_size, hint_scale_speed * dt));
 				}
 			}
 		}

@@ -160,6 +160,11 @@ namespace Scripting
 
         bool play_first_dialogue;
 
+        float rgb_change_duration = 0.3f;
+        float rgb_change_timer;
+        int rgb_index;
+        bool cycle_rgb;
+
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
@@ -392,6 +397,11 @@ namespace Scripting
                 ResetAllColors();
                 SetColorTurretRecovery();
             }*/
+
+            if (current_state != BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK && current_state != BOSS_BEHAVIOUR_STATE.LASER_SWEEP_ATTACK)
+            {
+                UpdateCheekRGB(dt);
+            }
 
             UpdateMouths(dt);
 
@@ -626,6 +636,54 @@ namespace Scripting
             }
         }
 
+        void UpdateCheekRGB(float dt)
+        {
+            rgb_change_timer += dt;
+
+            if (rgb_change_timer > rgb_change_duration)
+            {
+                rgb_change_timer = 0.0f;
+
+                ++rgb_index;
+
+                if (rgb_index > 2)
+                {
+                    rgb_index = 0;
+                }
+
+                switch (rgb_index)
+                {
+                    //R1 B2 G3
+                    case 0:
+                        ECS.SetDiffuseTint(cheek_lights_one_id, ref turret_red_color);
+                        ECS.SetEmissiveTint(cheek_lights_one_id, ref turret_red_color);
+                        ECS.SetDiffuseTint(cheek_lights_two_id, ref turret_blue_color);
+                        ECS.SetEmissiveTint(cheek_lights_two_id, ref turret_emissive_blue_color);
+                        ECS.SetDiffuseTint(cheek_lights_three_id, ref turret_green_color);
+                        ECS.SetEmissiveTint(cheek_lights_three_id, ref turret_green_color);
+                        break;
+                    //R2 B3 G1
+                    case 1:
+                        ECS.SetDiffuseTint(cheek_lights_two_id, ref turret_red_color);
+                        ECS.SetEmissiveTint(cheek_lights_two_id, ref turret_red_color);
+                        ECS.SetDiffuseTint(cheek_lights_one_id, ref turret_green_color);
+                        ECS.SetEmissiveTint(cheek_lights_one_id, ref turret_green_color);
+                        ECS.SetDiffuseTint(cheek_lights_three_id, ref turret_blue_color);
+                        ECS.SetEmissiveTint(cheek_lights_three_id, ref turret_emissive_blue_color);
+                        break;
+                    //R3 B1 G2
+                    case 2:
+                        ECS.SetDiffuseTint(cheek_lights_two_id, ref turret_green_color);
+                        ECS.SetEmissiveTint(cheek_lights_two_id, ref turret_green_color);
+                        ECS.SetDiffuseTint(cheek_lights_one_id, ref turret_blue_color);
+                        ECS.SetEmissiveTint(cheek_lights_one_id, ref turret_emissive_blue_color);
+                        ECS.SetDiffuseTint(cheek_lights_three_id, ref turret_red_color);
+                        ECS.SetEmissiveTint(cheek_lights_three_id, ref turret_red_color);
+                        break;
+                }
+            }
+        }
+
         void UpdateAnyKeyScaling(float dt)
         {
             ECS.GetTransformECS(any_key_continue_id, ref pos, ref rot, ref scale);
@@ -773,6 +831,8 @@ namespace Scripting
 
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
+
+            cycle_rgb = true;
         }
 
         void RunMovingSequence(float dt)
@@ -1779,7 +1839,6 @@ namespace Scripting
 
         void SetDeathStateAnimationsThree()
         {
-            ECS.SetSubtitles(sub_renderer_id, GameUtilities.GetSceneName(), 0, 0);
             ECS.PlayAudio(entityID, 1, "VO");
         }
 
@@ -1791,6 +1850,7 @@ namespace Scripting
         void SetDeathStateAnimationsFour()
         {
             FirstPersonFiringSystem.m_singleton.m_actual_nuke_speed = 400.0f;
+            FirstPersonFiringSystem.m_singleton.BeginAutoNukeCountdown();
 
             ECS.SetSubtitles(sub_renderer_id, GameUtilities.GetSceneName(), 1, 1);
         }
