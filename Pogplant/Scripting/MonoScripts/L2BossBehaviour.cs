@@ -387,7 +387,7 @@ namespace Scripting
 					}
 				}
 
-				if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
+				/*if (InputUtility.onKeyTriggered(KEY_ID.KEY_0))
 				{
 					Console.WriteLine("L2BossBehaviour.cs: Boss state is: " + L2Boss.m_singleton.current_state);
 					Console.WriteLine("L2BossBehaviour.cs: Timer is: " + m_runStateInfo.timer);
@@ -414,7 +414,7 @@ namespace Scripting
 					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.VACUUM_ATTACK);
 				}
 
-				/*if (InputUtility.onKeyTriggered(KEY_ID.KEY_L))
+				if (InputUtility.onKeyTriggered(KEY_ID.KEY_L))
 				{
 					TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.REPEL_ATTACK);
 				}//*/
@@ -1047,7 +1047,7 @@ namespace Scripting
 							{
 								if (m_turretGuns[i].sweepState)
 								{
-									m_turretGuns[i].targetLock.X += dt * 5f;
+									m_turretGuns[i].targetLock.X += dt * 7f;
 
 									if (m_turretGuns[i].targetLock.X > mLaserBounds_TR.X)
 									{
@@ -1057,7 +1057,7 @@ namespace Scripting
 								}
 								else
 								{
-									m_turretGuns[i].targetLock.X -= dt * 5f;
+									m_turretGuns[i].targetLock.X -= dt * 7f;
 
 									if (m_turretGuns[i].targetLock.X < 0f)
 									{
@@ -1070,7 +1070,7 @@ namespace Scripting
 							{
 								if (m_turretGuns[i].sweepState)
 								{
-									m_turretGuns[i].targetLock.X += dt * 5f;
+									m_turretGuns[i].targetLock.X += dt * 7f;
 
 									if (m_turretGuns[i].targetLock.X > 0f)
 									{
@@ -1080,7 +1080,7 @@ namespace Scripting
 								}
 								else
 								{
-									m_turretGuns[i].targetLock.X -= dt * 5f;
+									m_turretGuns[i].targetLock.X -= dt * 7f;
 
 									if (m_turretGuns[i].targetLock.X < mLaserBounds_TL.X)
 									{

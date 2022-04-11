@@ -203,6 +203,8 @@ namespace Scripting
 
 		bool updateCoreLockOn = false;
 
+		bool m_playVOOnce = false;
+
 		#region[Damage Animations]
 		Vector3 mColor_falseCoreNormal = new Vector3(0.094f, 0.59f, 0f);
 		Vector3 mColor_falseCoreCurrent = new Vector3(0.094f, 0.59f, 0f);
@@ -370,7 +372,8 @@ namespace Scripting
 						}
 					}
 				}
-				//Debug stuff
+
+				/*//Debug stuff
 				if (InputUtility.onKeyTriggered(KEY_ID.KEY_U))
 				{
 					//DestroyedBothCores();
@@ -403,8 +406,7 @@ namespace Scripting
 				{
 					Console.WriteLine("L1BossBehaviour.cs: Boss state is: " + L1Boss.m_singleton.current_state);
 					Console.WriteLine("L1BossBehaviour.cs: Timer is: " + m_runStateInfo.timer);
-				}
-				//return;
+				}//*/
 			}
 
 			//if Is invulnerable to main core
@@ -797,7 +799,12 @@ namespace Scripting
 					break;
 				case L1Boss.BOSS_BEHAVIOUR_STATE.LAUNCH_NORMAL_ADDS:
 					c_spawnSoundPlayState = 1;
-					ECS.PlayAudio(entityID, 8, "VO");
+
+					if (!m_playVOOnce)
+					{
+						m_playVOOnce = true;
+						ECS.PlayAudio(entityID, 8, "VO");
+					}
 					break;
 			}
 
