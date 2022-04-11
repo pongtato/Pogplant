@@ -87,6 +87,10 @@ namespace Scripting
             ECS.GetTransformECS(ct, ref pos, ref rot, ref scale);
             m_Entities.Add("TS_ControlText", new GameObject(ct, new Transform(pos, rot, scale), "TS_ControlText"));
 
+            uint ct_r = ECS.FindEntityWithName("TS_ControlText_Remote");
+            ECS.GetTransformECS(ct_r, ref pos, ref rot, ref scale);
+            m_Entities.Add("TS_ControlText_Remote", new GameObject(ct_r, new Transform(pos, rot, scale), "TS_ControlText_Remote"));
+
             uint bt1 = ECS.FindEntityWithName("BobbleTimmy1");
             ECS.GetTransformECS(bt1, ref pos, ref rot, ref scale);
             m_Entities.Add("BobbleTimmy1", new GameObject(bt1, new Transform(pos, rot, scale), "BobbleTimmy1"));
@@ -144,6 +148,17 @@ namespace Scripting
 
         public override void Update(float dt)
         {
+            if (InputUtility.IsControlledBeingUsed())
+            {
+                ECS.SetActive(m_Entities["TS_ControlText_Remote"].id, true);
+                ECS.SetActive(m_Entities["TS_ControlText"].id, false);
+            }
+            else
+            {
+                ECS.SetActive(m_Entities["TS_ControlText"].id, true);
+                ECS.SetActive(m_Entities["TS_ControlText_Remote"].id, false);
+            }
+
             if (PlayerScript.m_EnableBonusScreen)
             {
                 if (!m_menuActive)
@@ -156,7 +171,7 @@ namespace Scripting
                     ECS.SetActive(m_Entities["TS_IMG1"].id, true);
                     ECS.SetActive(m_Entities["TS_IMG2"].id, true);
                     ECS.SetActive(m_Entities["TS_IMG3"].id, true);
-                    ECS.SetActive(m_Entities["TS_ControlText"].id, false);
+                    //ECS.SetActive(m_Entities["TS_ControlText"].id, false);
                     ECS.SetPosition(m_Entities["TS_IMG1"].id,
                         new Vector3(m_Entities["TS_MBox"].transform.Position.X, m_Entities["TS_MBox"].transform.Position.Y, m_Entities["TS_IMG1"].transform.Position.Z));
                     ECS.SetPosition(m_Entities["TS_IMG2"].id,
@@ -183,7 +198,7 @@ namespace Scripting
                     {
                         if(!m_CallOnce)
                         {
-                            ECS.SetActive(m_Entities["TS_ControlText"].id, true);
+                            //ECS.SetActive(m_Entities["TS_ControlText"].id, true);
                             m_CallOnce = false;
                         }
                         UpdateInputs();
