@@ -8,6 +8,8 @@ namespace Scripting
 {
     public class PauseMenu : PauseBehaviour
     {
+        public static PauseMenu m_singleton;
+
         enum PAUSE_MENU_BUTTONS
         {
             RESUME_GAME = 0,
@@ -57,6 +59,8 @@ namespace Scripting
         const float opening_speed = 8.0f;
         bool pulling_down;
 
+        public bool can_pause;
+
         //Audio tracks
         /// <summary>
         /// 0. Select
@@ -69,6 +73,7 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+            m_singleton = this;
 
             Vector3 pos = new Vector3();
             Vector3 rot = new Vector3();
@@ -169,6 +174,7 @@ namespace Scripting
             confirmation_index = 0;
             quit_confirmation_index = 0;
             enabled = false;
+            can_pause = false;
         }
 
         public override void Start()
@@ -185,9 +191,10 @@ namespace Scripting
 
             if (PlayerScript.m_EnablePauseMenu)
             {
-                if (!enabled)
+                if (!enabled && can_pause)
                 {
                     enabled = true;
+                    can_pause = false;
                     ECS.PlayAudio(entityID, 4, "SFX");
                     ECS.SetGlobalPosition(pause_menu_id, new Vector3(0, 1.5f, -0.9f));
                     ECS.SetActive(pause_menu_id, true);
@@ -287,6 +294,7 @@ namespace Scripting
                         enabled = false;
                         PlayerScript.m_EnablePauseMenu = false;
                         GameUtilities.ResumeScene();
+                        can_pause = true;
                         AudioEngine.ResumeChannelGroup("VO");
                         break;
                     case 1:
@@ -510,6 +518,11 @@ namespace Scripting
                     ECS.SetActive(entry.Value.id, true);
                 }
             }
+        }
+
+        public void ToggleManualCanPause(bool toggle)
+        {
+            can_pause = toggle;
         }
 
         public override void OnTriggerEnter(uint id)

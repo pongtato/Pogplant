@@ -579,10 +579,26 @@ namespace Scripting
 			//Pause menu
 			if (InputUtility.onKeyTriggered("ESCAPE"))
 			{
-				m_EnablePauseMenu = true;
-				AudioEngine.PauseChannelGroup("VO");
-				GameUtilities.PauseScene();
+				if (GameUtilities.GetSceneName() == "Level01_Boss" || GameUtilities.GetSceneName() == "Level02_Boss")
+				{
+					if (PauseMenu.m_singleton.can_pause)
+					{
+						EnablePauseMenu();
+					}
+				}
+				else
+				{
+					EnablePauseMenu();
+					PauseMenu.m_singleton.ToggleManualCanPause(true);
+				}
 			}
+		}
+
+		void EnablePauseMenu()
+		{
+			m_EnablePauseMenu = true;
+			AudioEngine.PauseChannelGroup("VO");
+			GameUtilities.PauseScene();
 		}
 
 		public void ToggleEnableControls(bool toggle)

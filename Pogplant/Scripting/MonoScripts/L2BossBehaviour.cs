@@ -239,6 +239,7 @@ namespace Scripting
 		{
 			//mh_coreHealth = ECS.GetValue<float>(entityID, 200f, "CoreHealth");
 			mh_defaultHealth = ECS.GetValue<float>(entityID, 200f, "CoreHealth");
+			mh_defaultHealth = 5;
 			mh_leftBallHealth = ECS.GetValue<float>(entityID, 70f, "LeftBallHealth");
 			mh_rightBallHealth = ECS.GetValue<float>(entityID, 70f, "RightBallHealth");
 

@@ -1779,7 +1779,6 @@ namespace Scripting
 
         void SetDeathStateAnimationsThree()
         {
-            ECS.SetSubtitles(sub_renderer_id, GameUtilities.GetSceneName(), 0, 0);
             ECS.PlayAudio(entityID, 1, "VO");
         }
 
@@ -1791,6 +1790,7 @@ namespace Scripting
         void SetDeathStateAnimationsFour()
         {
             FirstPersonFiringSystem.m_singleton.m_actual_nuke_speed = 400.0f;
+            FirstPersonFiringSystem.m_singleton.BeginAutoNukeCountdown();
 
             ECS.SetSubtitles(sub_renderer_id, GameUtilities.GetSceneName(), 1, 1);
         }

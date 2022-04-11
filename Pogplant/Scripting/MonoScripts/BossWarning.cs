@@ -66,6 +66,7 @@ namespace Scripting
             black_bg_id = ECS.FindChildEntityWithName(entityID, "Black Screen");
 
             text_pulse_current_count = 0;
+            
         }
         public override void Start()
         {
@@ -83,6 +84,7 @@ namespace Scripting
                 if (current_anim_state == ANIM_STATE.COUNT_DOWN)
                 {
                     begin_animation = true;
+                    PauseMenu.m_singleton.ToggleManualCanPause(false);
                     current_anim_state = ANIM_STATE.SCREEN_IN;
                 }
             }
@@ -165,10 +167,10 @@ namespace Scripting
                         ECS.SetGlobalPosition(warning_screen_left, Vector3.Lerp(ECS.GetGlobalPosition(warning_screen_left), new Vector3(-screen_begin_X, 0, screen_Z), screen_anim_speed * dt));
                         ECS.SetGlobalPosition(warning_screen_right, Vector3.Lerp(ECS.GetGlobalPosition(warning_screen_right), new Vector3(screen_begin_X, 0, screen_Z), screen_anim_speed * dt));
 
-                        //if (ECS.GetGlobalPosition(warning_screen_left).X <= -screen_begin_X + 0.01f)
-                        //{
-                            
-                        //}
+                        if (ECS.GetGlobalPosition(warning_screen_left).X <= -screen_begin_X + 0.01f)
+                        {
+                            PauseMenu.m_singleton.ToggleManualCanPause(true);
+                        }
                     }
                     break;
                 }
