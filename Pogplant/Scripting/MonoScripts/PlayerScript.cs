@@ -266,7 +266,7 @@ namespace Scripting
 			}
 			if (InputUtility.onKeyTriggered(KEY_ID.KEY_F1))
 			{
-				GameUtilities.LoadScene("Level01_Boss");
+				GameUtilities.LoadScene("Level01OutroCutscene");
 			}
 			if (InputUtility.onKeyTriggered(KEY_ID.KEY_F2))
 			{
@@ -275,7 +275,7 @@ namespace Scripting
 
 			if (InputUtility.onKeyTriggered(KEY_ID.KEY_F3))
 			{
-				GameUtilities.LoadScene("Level02_Boss");
+				GameUtilities.LoadScene("Level02OutroCutscene");
 			}
 
 			//Return to main menu key
