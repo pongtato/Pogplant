@@ -22,20 +22,20 @@ namespace Scripting
         public override void Init(ref uint _entityID)
         {
             entityID = _entityID;
+        }
+
+        public override void Start()
+        {
             player_id = ECS.FindEntityWithName("PlayerShip");
             audio_type = ECS.GetValue<string>(entityID, "VO", "AudioType");
             double_control_audio = ECS.GetValue<bool>(entityID, false, "DoubleControlAudio");
-            
+
             subs_begin_index = ECS.GetValue<int>(entityID, 0, "SubBeginIndex");
             subs_controller_begin_index = ECS.GetValue<int>(entityID, 0, "SubCtrlerBeginIndex");
             subs_end_index = ECS.GetValue<int>(entityID, 1, "SubEndIndex");
             subs_level_id = GameUtilities.GetSceneName();
             sub_renderer_id = ECS.FindEntityWithName("Subs_Renderer");
             play_subs = ECS.GetValue<bool>(entityID, true, "PlaySubs");
-        }
-        public override void Start()
-        {
-            
         }
 
         public override void Update(float dt)

@@ -103,6 +103,11 @@ namespace Scripting
             return new SplashScreen();
         }
 
+        public static TutPopup TutPopup()
+        {
+            return new TutPopup();
+        }
+
         //public static EnemyManager EnemyManager()
         //{
         //    return new EnemyManager();

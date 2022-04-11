@@ -77,6 +77,7 @@ namespace Scripting
             monoScriptNames.Add("SkyboxChanger");
             monoScriptNames.Add("SplashScreen");
             monoScriptNames.Add("Credits");
+            monoScriptNames.Add("TutPopup");
 
             //let this be last lol
             monoScriptNames.Sort();
