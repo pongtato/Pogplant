@@ -384,6 +384,12 @@ namespace Scripting
             if (InputUtility.onKeyTriggered("MENUBACK") || InputUtility.onKeyTriggered("ESCAPE"))
             {
                 //ECS.SetActive(entityID, false);
+
+                //this play audio is a ghetto fix for controller only. in KB/mouse the pressing of ESC key from pause menu will make the sound
+                if (InputUtility.onKeyTriggered("MENUBACK"))
+                {
+                    ECS.PlayAudio(entityID, 2, "SFX");
+                }
                 anim_lerp_step = lerp_min;
                 current_state = ANIM_STATE.CLOSING;
             }

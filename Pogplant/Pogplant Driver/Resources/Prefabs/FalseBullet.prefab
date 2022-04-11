@@ -27,6 +27,7 @@
 			"isStatic" : false,
 			"isTrigger" : true
 		},
+		"Children" : 1,
 		"Guid" : 
 		{
 			"m_guid" : "f90c590d-454a-4155-98ee-60aaa02d893e"
@@ -56,8 +57,8 @@
 			"EmissiveTint" : 
 			[
 				1.0,
-				0.22790700197219849,
-				0.22790700197219849
+				0.19069766998291016,
+				0.19069766998291016
 			],
 			"RenderModel" : 
 			[
@@ -92,6 +93,65 @@
 				0.20000000298023224,
 				0.20000000298023224,
 				0.20000000298023224
+			]
+		}
+	},
+	{
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Nuke_Outer",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\FalseBullet.prefab"
+		},
+		"Render" : 
+		{
+			"ColorTint" : 
+			[
+				1.0,
+				0.58604651689529419,
+				0.58604651689529419
+			],
+			"EmissiveTint" : 
+			[
+				1.0,
+				0.0,
+				0.0
+			],
+			"RenderModel" : 
+			[
+				"Nuke",
+				"Resources/Models\\Ship",
+				"Nuke_Outer"
+			],
+			"UseLight" : 1
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				0.30000001192092896,
+				0.30000001192092896,
+				0.30000001192092896
 			]
 		}
 	}
