@@ -307,6 +307,18 @@
         {
           "Text": "Prof: I wish I could've plundered some of these alien tech, though!",
           "Timer": 3.6
+        },
+        {
+          "Text": "Prof: Yeah, it should be the 'B' Button.",
+          "Timer": 3.5
+        },
+        {
+          "Text": "Prof: Yeah, it should be the 'Circle' Button.",
+          "Timer": 3.5
+        },
+        {
+          "Text": "Prof: Yeah, it should be the 'RMB' Button.",
+          "Timer": 3.5
         }
       ]
     },
@@ -387,8 +399,16 @@
           "Timer": 3.1
         },
         {
-          "Text": "Prof: Not gpood, Timmy...Th-That is what ULTIMATE POWER is about!",
+          "Text": "Prof: Not good, Timmy...Th-That is what ULTIMATE POWER is about!",
           "Timer": 3.9
+        },
+        {
+          "Text": "Prof: Alright, ready the cannons, Timmy!...Aaand, FIRE!",
+          "Timer": 5.6
+        },
+        {
+          "Text": "Prof: Fine! I'll do it myself!",
+          "Timer": 4.4
         }
       ]
     },

@@ -1,9 +1,9 @@
 [
 	{
-		"Children" : 19,
+		"Children" : 20,
 		"Guid" : 
 		{
-			"m_guid" : "e9da594c-ee49-458a-95ea-512db1f71c36"
+			"m_guid" : "aa2c5599-9c63-49bf-af0a-ae24c778ceb9"
 		},
 		"Name" : 
 		{
@@ -16,7 +16,7 @@
 		},
 		"PrefabInstance" : 
 		{
-			"prefab_GUID" : "605a4b0e-410c-455d-aa6d-f67e004bbb38",
+			"prefab_GUID" : "e9da594c-ee49-458a-95ea-512db1f71c36",
 			"prefab_path" : "Resources\\Prefabs\\VO Trigger Zone Parent.prefab"
 		},
 		"Tag" : 
@@ -1330,7 +1330,7 @@
 		}
 	},
 	{
-		"Children" : 2,
+		"Children" : 3,
 		"Name" : 
 		{
 			"m_Name" : "Group_01",
@@ -1523,6 +1523,89 @@
 				0.0,
 				5.6031007766723633,
 				-44.207790374755859
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				5.0,
+				5.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Movement_Tut",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 3.0,
+				"Name" : "DeactivateDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : "Tut_Movement_UI",
+				"Name" : "EntityToFind",
+				"Type" : 3
+			},
+			{
+				"Data" : 0.2800000011920929,
+				"Name" : "OffsetY",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"TutPopup" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.7252902984619141e-09,
+				5.6031007766723633,
+				-26.0
 			],
 			"m_rotation" : 
 			[
@@ -1957,7 +2040,7 @@
 		}
 	},
 	{
-		"Children" : 2,
+		"Children" : 3,
 		"Name" : 
 		{
 			"m_Name" : "Group_04",
@@ -2141,6 +2224,16 @@
 				"Type" : 1
 			},
 			{
+				"Data" : 7,
+				"Name" : "SubCntrlerBeginIndex",
+				"Type" : 1
+			},
+			{
+				"Data" : 7,
+				"Name" : "SubCtrlerEndIndex",
+				"Type" : 1
+			},
+			{
 				"Data" : 6,
 				"Name" : "SubEndIndex",
 				"Type" : 1
@@ -2149,6 +2242,89 @@
 		"Scripting" : 
 		{
 			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				65.108139038085938,
+				20.297178268432617,
+				-111.5677490234375
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				1.0,
+				8.0,
+				8.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Shoot_Tut",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent.prefab"
+		},
+		"Rigidbody" : 
+		{
+			"isKinematic" : true,
+			"mass" : 10.0,
+			"useGravity" : false
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : 3.0,
+				"Name" : "DeactivateDuration",
+				"Type" : 0
+			},
+			{
+				"Data" : "Tut_Shoot_UI",
+				"Name" : "EntityToFind",
+				"Type" : 3
+			},
+			{
+				"Data" : 0.2800000011920929,
+				"Name" : "OffsetY",
+				"Type" : 0
+			}
+		],
+		"Scripting" : 
+		{
+			"TutPopup" : false
 		},
 		"Tag" : 
 		{
@@ -3900,6 +4076,87 @@
 				-140.9219970703125,
 				16.739215850830078,
 				-366.13699340820312
+			],
+			"m_rotation" : 
+			[
+				0.0,
+				-0.0,
+				0.0
+			],
+			"m_scale" : 
+			[
+				1.0,
+				1.0,
+				1.0
+			]
+		}
+	},
+	{
+		"AudioSource" : 
+		{
+			"Clip0" : 
+			{
+				"Dir" : "Resources/Audio\\Environment\\Ambience\\Ambience_Lvl1.ogg",
+				"UpdatePos" : true,
+				"Volume" : 1.0
+			}
+		},
+		"BoxCollider" : 
+		{
+			"centre" : 
+			[
+				0.0,
+				0.0,
+				0.0
+			],
+			"collisionLayer" : "DEFAULT",
+			"extends" : 
+			[
+				5.0,
+				5.0,
+				1.0
+			],
+			"isStatic" : false,
+			"isTrigger" : true
+		},
+		"Children" : 0,
+		"Name" : 
+		{
+			"m_Name" : "Ambience BGM",
+			"status" : true
+		},
+		"Prefab" : 
+		{
+			"file_path" : "Resources\\Prefabs\\VO Trigger Zone Parent.prefab"
+		},
+		"ScriptVariables" : 
+		[
+			{
+				"Data" : "VO",
+				"Name" : "AudioType",
+				"Type" : 3
+			},
+			{
+				"Data" : false,
+				"Name" : "PlaySubs",
+				"Type" : 2
+			}
+		],
+		"Scripting" : 
+		{
+			"TriggerAudioPlay" : false
+		},
+		"Tag" : 
+		{
+			"m_tag" : "Untagged"
+		},
+		"Transform" : 
+		{
+			"m_position" : 
+			[
+				-3.7252902984619141e-09,
+				5.6031007766723633,
+				-26.003566741943359
 			],
 			"m_rotation" : 
 			[
