@@ -451,13 +451,17 @@ namespace Scripting
 		private void UpdateMenuInput()
 		{
 
-			if (InputUtility.onKeyTriggered("RETURN") && !m_after_endgame)
+			if (InputUtility.onKeyTriggered("MAIN_MENU_BACK_LOL") && !m_after_endgame)
 			{
 				ECS.PlayAudio(entityID, 4, "SFX");
 				m_exiting_animation = true;
 			}
 
-
+			if (InputUtility.onKeyTriggered("RETURN") && m_after_endgame)
+			{
+				ECS.PlayAudio(entityID, 4, "SFX");
+				m_exiting_animation = true;
+			}
 
 			if (InputUtility.onKeyTriggered("MENULEFT"))
 			{
@@ -531,21 +535,6 @@ namespace Scripting
 				//Console.WriteLine(m_cur_letter_index[m_cur_name_cursor]);
 				if (m_cur_letter_index[m_cur_name_cursor] < 0)
 					m_cur_letter_index[m_cur_name_cursor] = m_valid_letters.Length - 1;
-			}
-
-
-
-
-			if (InputUtility.onKeyTriggered("MENUSELECT") && m_after_endgame)
-            {
-				ECS.PlayAudio(entityID, 4, "SFX");
-				m_exiting_animation = true;
-			}
-
-			if (InputUtility.onKeyTriggered(KEY_ID.KEY_SLASH))
-			{
-				Console.WriteLine("Saved score");
-				SaveScore();
 			}
 		}
 
