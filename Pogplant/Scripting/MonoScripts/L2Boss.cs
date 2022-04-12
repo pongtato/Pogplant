@@ -163,7 +163,6 @@ namespace Scripting
         float rgb_change_duration = 0.3f;
         float rgb_change_timer;
         int rgb_index;
-        bool cycle_rgb;
 
         public override void Init(ref uint _entityID)
         {
@@ -831,8 +830,6 @@ namespace Scripting
 
             moving_parts_dict[left_large_laser_spin_id].SetToggleSpin(true);
             moving_parts_dict[right_large_laser_spin_id].SetToggleSpin(true);
-
-            cycle_rgb = true;
         }
 
         void RunMovingSequence(float dt)

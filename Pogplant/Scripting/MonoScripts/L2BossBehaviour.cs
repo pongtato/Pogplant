@@ -308,7 +308,6 @@ namespace Scripting
 			m_bossHPBarLerpValue = 0.0f;
 
 			mID_Nuke = ECS.FindEntityWithName("Actual_Nuke");
-			Console.WriteLine("Nuke id: " + mID_Nuke);
 		}
 
 		void InitStateBehaviours()
