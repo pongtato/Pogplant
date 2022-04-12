@@ -382,7 +382,8 @@ namespace Scripting
 						Console.WriteLine("========================================================================");
 
 
-						GameUtilities.LoadScene("EndGameCutscene");
+						//GameUtilities.LoadScene("EndGameCutscene");
+						TriggerNextState(L2Boss.BOSS_BEHAVIOUR_STATE.DEATH_SEQUENCE);
 					}
 				}
 
